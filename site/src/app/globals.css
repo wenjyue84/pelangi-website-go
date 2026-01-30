@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased bg-stone-50 text-stone-800;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+
+  /* Elegant selection color */
+  ::selection {
+    background-color: #e8ddd0;
+    color: #4a3f33;
+  }
+}
+
+@layer components {
+  /* Primary Button - Warm, sophisticated */
+  .btn-primary {
+    @apply bg-stone-700 hover:bg-stone-800 text-white font-medium
+           py-3.5 px-8 rounded-full transition-all duration-300
+           shadow-sm hover:shadow-md cursor-pointer
+           tracking-wide text-sm uppercase;
+  }
+
+  /* Secondary Button - Minimal outline */
+  .btn-secondary {
+    @apply bg-transparent hover:bg-stone-100 text-stone-700
+           font-medium py-3.5 px-8 rounded-full
+           border border-stone-300 hover:border-stone-400
+           transition-all duration-300 cursor-pointer
+           tracking-wide text-sm uppercase;
+  }
+
+  /* Section spacing - More breathing room */
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32 px-6 md:px-8;
+  }
+
+  /* Container */
+  .container-custom {
+    @apply max-w-6xl mx-auto;
+  }
+
+  /* Section label - Elegant uppercase */
+  .section-label {
+    @apply text-xs font-medium tracking-widest uppercase text-amber-700 mb-4;
+  }
+
+  /* Section heading - Serif display font */
+  .section-heading {
+    @apply text-3xl md:text-4xl lg:text-5xl font-medium text-stone-900
+           leading-tight tracking-tight;
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  /* Body text */
+  .body-text {
+    @apply text-stone-600 leading-relaxed;
+  }
+
+  /* Card with subtle hover */
+  .card {
+    @apply bg-white rounded-2xl p-6 md:p-8
+           shadow-sm hover:shadow-md transition-shadow duration-300
+           border border-stone-100;
+  }
+
+  /* Image container with elegant corners */
+  .image-frame {
+    @apply rounded-2xl overflow-hidden shadow-lg;
+  }
+
+  /* Divider */
+  .divider {
+    @apply h-px bg-gradient-to-r from-transparent via-stone-200 to-transparent;
+  }
+
+  /* Feature icon container */
+  .icon-box {
+    @apply w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center
+           text-amber-700;
+  }
+}
+
+@layer utilities {
+  /* Display font utility */
+  .font-display {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-gradient-to-r from-amber-700 to-orange-600 bg-clip-text text-transparent;
+  }
+
+  /* Smooth image zoom on hover */
+  .image-zoom {
+    @apply transition-transform duration-700 ease-out;
+  }
+
+  .group:hover .image-zoom {
+    @apply scale-105;
+  }
+
+  /* Fade in animation delays */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+
+  /* Hide scrollbar for horizontal scroll sections */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-stone-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-stone-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-stone-400;
+}

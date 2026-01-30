@@ -1,0 +1,14 @@
+# Robots.txt for Pelangi Capsule Hostel
+# https://pelangicapsulehostel.com
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Disallow private/admin areas
+Disallow: /private/
+Disallow: /api/
+Disallow: /_next/
+
+# Sitemap location
+Sitemap: https://pelangicapsulehostel.com/sitemap.xml

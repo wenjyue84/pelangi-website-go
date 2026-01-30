@@ -1,0 +1,150 @@
+export default function StructuredData() {
+  const hostelSchema = {
+    "@context": "https://schema.org",
+    "@type": "Hostel",
+    "name": "Pelangi Capsule Hostel",
+    "image": [
+      "https://pelangicapsulehostel.com/images/hero-main.webp",
+      "https://pelangicapsulehostel.com/images/capsule-1.webp",
+      "https://pelangicapsulehostel.com/images/capsule-2.webp",
+      "https://pelangicapsulehostel.com/images/exterior-1.webp"
+    ],
+    "description": "Japanese-style capsule hostel in the heart of Johor Bahru. Affordable, private, and comfortable pods with free WiFi, 24/7 access, hot showers, and personal lockers. Perfect budget accommodation for travelers exploring JB and Singapore.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Jalan Maju, Taman Pelangi",
+      "addressLocality": "Johor Bahru",
+      "addressRegion": "Johor",
+      "postalCode": "80400",
+      "addressCountry": "MY"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 1.4855,
+      "longitude": 103.7594
+    },
+    "url": "https://pelangicapsulehostel.com",
+    "telephone": "+60123456789",
+    "priceRange": "RM35-RM55",
+    "currenciesAccepted": "MYR",
+    "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "checkinTime": "15:00",
+    "checkoutTime": "12:00",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Free WiFi",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "24/7 Access",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Hot Shower",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Personal Lockers",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Air Conditioning",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Shared Kitchen",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Water Dispenser",
+        "value": true
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "500",
+      "reviewCount": "500"
+    },
+    "sameAs": [
+      "https://www.facebook.com/pelangicapsulehostel",
+      "https://www.instagram.com/pelangicapsulehostel"
+    ]
+  };
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Pelangi Capsule Hostel",
+    "image": "https://pelangicapsulehostel.com/images/hero-main.webp",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Jalan Maju, Taman Pelangi",
+      "addressLocality": "Johor Bahru",
+      "addressRegion": "Johor",
+      "postalCode": "80400",
+      "addressCountry": "MY"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 1.4855,
+      "longitude": 103.7594
+    },
+    "url": "https://pelangicapsulehostel.com",
+    "telephone": "+60123456789",
+    "priceRange": "RM35-RM55"
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://pelangicapsulehostel.com"
+      }
+    ]
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(hostelSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+    </>
+  );
+}
