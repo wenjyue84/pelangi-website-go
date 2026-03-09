@@ -38,8 +38,25 @@ export default function Booking() {
             Ready to Experience<br />Capsule Living?
           </h2>
           <p className="text-amber-200 mb-10 max-w-xl mx-auto text-lg leading-relaxed">
-            Book through your preferred platform or contact us directly for the best rates.
+            Or book through a third-party platform:
           </p>
+
+          {/* Book Direct — primary CTA */}
+          <div className="mb-10">
+            <a
+              href="/book"
+              className="inline-flex items-center gap-3 bg-white text-amber-800 rounded-2xl
+                         py-5 px-10 font-semibold text-lg hover:bg-amber-50 transition-all
+                         duration-300 hover:-translate-y-1 hover:shadow-xl"
+            >
+              <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              Book Direct — Best Rate Guaranteed
+            </a>
+            <p className="text-amber-300 text-sm mt-3">No platform fees · Instant confirmation · Pay at arrival</p>
+          </div>
 
           {/* Price Highlight */}
           <div className="inline-flex flex-col items-center mb-14">
