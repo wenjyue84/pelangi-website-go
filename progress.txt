@@ -187,3 +187,29 @@ Completed: Update sitemap.ts to include all blog posts (ID: US-006) in 2m
 ## Iteration 6 - Fri, Mar 13, 2026  1:18:00 AM
 Completed: Add RSS/Atom feed at /feed.xml for the blog (ID: US-003) in 3m
 
+## Iteration 6 - Fri, Mar 13, 2026  1:18:20 AM
+Incomplete: Add 'Singapore Day Trip' teaser section to homepage (ID: US-008) — attempt 1/3
+
+
+## Iteration N - Story: Enhance /guide page with rich backpacker-focused local content (US-007)
+
+### What was implemented
+- Rewrote `site/src/app/guide/page.tsx` with 7 content sections:
+  1. Getting Around JB — GrabCar/taxi/bus fares with real prices
+  2. Money & Currency — Jalan Wong Ah Fook changers, ATMs, approximate rates table
+  3. Singapore Day Trip — Causeway vs Second Link, hours, bus numbers, immigration tip
+  4. Top Hawker Centres Near Us — 4 hawker spots with distance and hours
+  5. Restaurants Near Us (enhanced original section with opening hours)
+  6. Safety Tips for Backpackers — 4 categories
+  7. Useful Local Apps — Grab, MyRapid, Google Maps, XE Currency, MySejahtera
+- Added `generateMetadata` with 'Johor Bahru local guide backpacker' keywords
+- Added internal Links to /blog/singapore-to-jb-day-trip-causeway-guide and /blog/jb-hawker-centres-street-food-must-visit
+- Added quick-nav anchor links at top
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Quick-nav anchors work with section `id` attributes and `href="#id"` anchors
+- `border-l-4 border-l-{color}` creates colored left border accent on cards
+
+### Gotchas
+- None — straightforward content + Tailwind work
