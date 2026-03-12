@@ -9,7 +9,7 @@ const cspHeader = [
   // next/font/google self-hosts fonts; no external font CDN needed
   "font-src 'self'",
   // Images: self, data URIs, blob URLs, TripCdn (hotel photos), admin proxy
-  "img-src 'self' blob: data: https://ak-d.tripcdn.com https://admin.pelangicapsulehostel.com",
+  "img-src 'self' blob: data: https://ak-d.tripcdn.com https://admin.pelangicapsulehostel.com https://img.youtube.com",
   // API calls: same-origin rewrites proxy to admin; admin also whitelisted for direct calls
   "connect-src 'self' https://admin.pelangicapsulehostel.com",
   // Google Maps embeds + YouTube embeds
@@ -59,7 +59,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'youtube.com',
+        hostname: 'img.youtube.com',
       },
     ],
   },

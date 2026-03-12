@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Link from "next/link";
+import YouTubeFacade from "@/components/YouTubeFacade";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -57,12 +57,9 @@ export default function CheckInPage() {
 
                     {/* Video Section */}
                     <div className="bg-stone-900 rounded-3xl overflow-hidden shadow-2xl mb-12 relative aspect-video">
-                        <iframe
-                            src="https://www.youtube.com/embed/6Ux11oBZaQQ"
+                        <YouTubeFacade
+                            videoId="6Ux11oBZaQQ"
                             title="Pelangi Capsule Hostel Check-in Guide"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                            className="absolute inset-0 w-full h-full"
                         />
                     </div>
 

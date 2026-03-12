@@ -1941,3 +1941,111 @@ Here is a technical brief tailored for the correct (Next.js) technology stack:
 ### Gotchas
 - `datePublished` only available in Reviews.tsx (month/year format like "January 2025"), not in Testimonials.tsx (no dates in data)
 - `author.sameAs` used for source platform per AC — semantically links to the platform, not the author's profile
+
+
+## Pre-analysis for US-048 (Gemini 2.5 Pro)
+**Technical Brief: US-048 - Newsletter Signup Form**
+
+**Project:** `pelangi-website/site` (Next.js/TypeScript)
+**Objective:** Implement a newsletter signup form on the blog index page using a Next.js Server Action to interface with the Brevo (Sendinblue) API.
+
+**File Modifications:**
+*   **Create:** `site/src/components/ui/NewsletterForm.tsx` - A new client component for the form UI and state management (`useState`).
+*   **Create:** `site/src/app/actions/newsletterActions.ts` - To house the `subscribeToNewsletter` Server Action which will call the Brevo API.
+*   **Modify:** `site/src/app/blog/page.tsx` (or equivalent blog index) - To import and render the `<NewsletterForm />` component at the bottom.
+*   **Modify:** `site/src/components/CookieConsent.tsx` (or similar) - To add a sentence regarding email marketing for PDPA compliance.
+*   **Modify:** `site/.env.local` - To securely store the `BREVO_API_KEY`.
+
+**Implementation Approach:**
+1.  Build the `NewsletterForm` with accessible `name` and `email` input fields and a visible privacy notice.
+2.  Create a `subscribeToNewsletter` Server Action that receives form data.
+3.  Inside the action, use `fetch` to POST to the Brevo "create contact" endpoint (`https://api.brevo.com/v3/contacts`).
+4.  Handle the API response in the form component to display a success or error message to the user.
+5.  Update the cookie consent component text as per the acceptance criteria.
+
+**Gotchas & Edge Cases:**
+*   Ensure the Brevo API key is stored in environment variables (`process.env.BREVO_API_KEY`) and never exposed client-side.
+*   Implement robust server-side validation for the email format and name.
+*   Handle API errors gracefully (e.g., user already exists, invalid key, network failure) and provide clear feedback.
+*   The form must explicitly state what the user is signing up for to comply with PDPA.
+
+
+## Iteration 41 - Story: Add ImageGallery and ImageObject schema to Gallery page
+
+### What was implemented
+- Added `imageGallerySchema` const to `site/src/app/gallery/page.tsx` (server component)
+- Schema type: `ImageGallery` with 8 `ImageObject` entries covering: living room, capsule pod interior (×3), entrance, exterior, bathroom, hot water heater
+- Each ImageObject includes: `contentUrl` (absolute HTTPS URL), `name`, `description`, `encodingFormat` (image/jpeg or image/webp per actual file type)
+- Rendered as `<script type="application/ld+json">` in `<main>` matching project pattern
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Gallery page is a server component wrapping a client `Gallery` component — JSON-LD goes in the server page, not the client component
+- File extension determines encodingFormat: `.webp` → `image/webp`, `.jpeg`/`.jpg`/`.JPG` → `image/jpeg`
+
+### Gotchas
+- `python3` on Windows defaults to cp1252 encoding — must use `open(..., encoding='utf-8')` when reading/writing prd.json
+## Iteration 7 - Fri, Mar 13, 2026  4:36:40 AM
+Incomplete: Add email newsletter capture form for guest re-marketing (ID: US-048) — attempt 1/3
+
+
+## Pre-analysis for US-048 (Gemini 2.5 Pro)
+Based on the user story `US-048`, here is the technical brief for implementation. The story specifies a Next.js frontend, not a Frappe/Python backend.
+
+**Project:** Next.js Website (`/site` directory)
+**User Story:** US-048: Add email newsletter capture form for guest re-marketing
+
+### 1. Files to Modify/Create
+
+*   **Create:** `site/src/components/ui/NewsletterForm.tsx`
+    *   A new client component containing the form UI (name, email fields) and state management for submission.
+*   **Create/Modify:** `site/src/app/actions/newsletter.ts`
+    *   A new file to house the Next.js Server Action that will call the Brevo API. This keeps server-side logic separate.
+*   **Modify:** `site/src/app/blog/page.tsx` (or the equivalent blog index page)
+    *   Import and render the new `NewsletterForm` component at the bottom of the page.
+*   **Modify:** `site/src/components/CookieConsent.tsx` (or similar privacy component)
+    *   Update the text to disclose the use of email for marketing purposes, per PDPA requirements.
+
+### 2. Frappe DocTypes / Hooks (Next.js Equivalents)
+
+*   **Next.js Server Action:** The primary mechanism. The form will invoke a server action (`subscribeToNewsletter`) defined in `newsletter.ts`. This action will execute on the server, securely handling the API call to Brevo.
+*   **React `useFormState` Hook:** Use this in the `NewsletterForm.tsx` component to manage form state (pending, success, error) and display appropriate messages to the user without a full page reload.
+
+### 3. Recommended Implementation Approach
+
+1.  **Create the Server Action:** In `newsletter.ts`, define an async function `subscribeToNewsletter`. It will read the Brevo API key from server-side environment variables (`process.env.BREVO_API_KEY`). It should call Brevo's `POST /contacts` endpoint with the name and email from the form.
+2.  **Build the Form Component:** In `NewsletterForm.tsx`, create the form with proper `<label>` elements for name and email. Use the `useFormState` hook, passing it your server action. This will handle the form submission and update the UI with the return value (e.g., a success or error message).
+3.  **Integrate:** Add the `<NewsletterForm />` component to the bottom of your main blog page component.
+4.  **Update Privacy Text:** Modify the relevant component to include a line about the newsletter, ensuring transparency.
+
+### 4. Edge Cases & Gotchas
+
+*   **API Key Security:** The Brevo API key **must** be stored in `.env.local` and only accessed within the Server Action. Do not expose it to the client.
+*   **Error Handling:** The server action should gracefully handle API errors from Brevo (e.g., `400` for an already subscribed email) and return a clear, user-friendly error message.
+*   **Validation:** Implement basic client-side validation for the email format and server-side validation within the action as a second layer of defense.
+*   **Content Security Policy (CSP):** Using a Server Action is the correct approach as it avoids needing to add `api.brevo.com` to your CSP's `connect-src` directive, enhancing security.
+*   **Accessibility:** Ensure the form is fully accessible with visible labels, proper `for/id` attributes, and focus management.
+
+
+## Iteration - Story: US-043 Replace eager YouTube iframe with facade pattern on check-in page
+
+### What was implemented
+- Created `site/src/components/YouTubeFacade.tsx` — client component with useState facade pattern
+- Shows YouTube thumbnail (maxresdefault.jpg) with red play button overlay
+- On click, replaces thumbnail with autoplay iframe
+- Play button is a native `<button>` element — keyboard accessible by default (Enter/Space)
+- Play button is 64x64px (md:80x80px) — exceeds WCAG 2.2 SC 2.5.8 target size minimum (≥24x24px)
+- Uses Next.js `<Image>` with `loading="eager"` for LCP optimization
+- Updated `site/src/app/check-in/page.tsx` to use `YouTubeFacade` instead of eager iframe
+- Added `img.youtube.com` to `next.config.ts` remotePatterns (was incorrectly `youtube.com`)
+- Added `https://img.youtube.com` to CSP `img-src` directive
+- Removed unused `Link` import from check-in page
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- CSP `img-src` must include `img.youtube.com` for YouTube thumbnails
+- `remotePatterns` hostname must be exact — `youtube.com` does NOT match `img.youtube.com`
+- Facade pattern: client component with useState toggle, server page stays as RSC
+
+### Gotchas
+- The existing `remotePatterns` had `youtube.com` which wouldn't match `img.youtube.com` — fixed to correct hostname
