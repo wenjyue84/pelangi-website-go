@@ -93,14 +93,6 @@ export default function StructuredData() {
         "value": true
       }
     ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "bestRating": "5",
-      "worstRating": "1",
-      "ratingCount": "500",
-      "reviewCount": "500"
-    },
     "sameAs": [
       "https://www.facebook.com/pelangicapsulehostel",
       "https://www.instagram.com/pelangicapsulehostel"

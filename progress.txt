@@ -1062,3 +1062,49 @@ Here is the technical brief:
 - ISO 8601 Time format requires `T` prefix: `"T14:00:00"` not `"14:00"`
 - Language objects use `@type: "Language"` with a `name` field, not just string values
 
+## Iteration 3 - Fri, Mar 13, 2026  3:07:28 AM
+Completed: Add LodgingBusiness schema: checkinTime, checkoutTime, availableLanguage, petsAllowed (ID: US-025) in 3m
+
+
+## Pre-analysis for US-026 (Gemini 2.5 Pro)
+This user story is for a React/Next.js application, not a Frappe/Python one. The file extension `.tsx` indicates a TypeScript/React component.
+
+Here is the technical brief based on the provided JSON:
+
+**Technical Brief: US-026**
+
+1.  **File to Modify:**
+    *   The primary target is `site/src/components/StructuredData.tsx`. This component is responsible for generating the JSON-LD structured data for the `Hostel` schema.
+
+2.  **DocTypes / Hooks Involved:**
+    *   None. This is a frontend task within a Next.js project. No Frappe DocTypes or Python hooks are relevant.
+
+3.  **Recommended Implementation Approach:**
+    *   Navigate to `site/src/components/StructuredData.tsx`.
+    *   Locate the `application/ld+json` script block.
+    *   Within the JSON object, find and completely remove the `AggregateRating` key and its associated object value, which currently contains the hardcoded '4.9' rating.
+    *   Ensure that removing this property does not leave a syntactical error, such as a trailing comma, in the JSON object.
+
+4.  **Edge Cases & Gotchas:**
+    *   **Do Not Touch the UI:** The change is only for the invisible JSON-LD schema. Do not alter the visual star rating displayed by the `Reviews.tsx` component.
+    *   **Schema Validation:** After removing the code, the resulting JSON-LD must still be valid. A syntax error could invalidate all structured data on the page.
+    *   **Verification:** After deployment, use Google's Rich Results Test tool on the live URL to confirm that the `AggregateRating` property is no longer present and that the remaining `Hostel` schema is still valid.
+
+
+## Iteration N - Story: Remove or replace first-party AggregateRating in StructuredData.tsx (US-026)
+
+### What was implemented
+- Removed the `aggregateRating` block (lines 96-103) from `hostelSchema` in `site/src/components/StructuredData.tsx`
+- Block contained hardcoded `ratingValue: "4.9"`, `ratingCount: "500"` — self-declared, violates Google policy
+- The visual star rating in `Reviews.tsx` is UI-only and was NOT touched
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Self-hosted AggregateRating on the entity's own page is disallowed by Google's structured data guidelines for rich result eligibility
+- Reviews.tsx UI component is separate from JSON-LD schema — removing schema block has no visual impact
+
+### Gotchas
+- prd.json must be read/written with `encoding='utf-8'` on Windows due to smart quotes in description fields
+
+## Iteration N - Fri, Mar 13, 2026
+Completed: Remove or replace first-party AggregateRating in StructuredData.tsx (ID: US-026)
