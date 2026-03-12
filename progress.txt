@@ -914,3 +914,53 @@ This user story pertains to the **Next.js/React frontend**, not the Frappe/Pytho
 *   **Icon Consistency:** The new Instagram icon's styling (size, color, hover state) must exactly match the existing Facebook and WhatsApp icons.
 *   **Environment Variables:** Check if social links are hardcoded or if they should be moved to environment variables (`.env.local`) for better management. Prefer environment variables if that's an established pattern in the project.
 
+
+## Pre-analysis for US-023 (Gemini 2.5 Pro)
+This user story is for a **Next.js/TypeScript** project, not Frappe/Python. The context has been adjusted accordingly.
+
+**Project:** Pelangi Website
+**User Story:** US-023: Add HTTP security headers to next.config.ts
+
+**Technical Brief:**
+
+The goal is to enhance security by adding several HTTP headers to the Next.js application configuration.
+
+1.  **File to Modify:**
+    *   `site/next.config.ts`
+
+2.  **Next.js Configuration Involved:**
+    *   `nextConfig` exported object.
+    *   `async headers()` function for custom headers.
+    *   `poweredByHeader` root-level property.
+
+3.  **Implementation Approach:**
+    *   In `site/next.config.ts`, add the `poweredByHeader: false` property to the main `nextConfig` object to remove the `X-Powered-By` header.
+    *   Implement the `async headers()` function within the `nextConfig` object.
+    *   This function should return an array containing a single configuration object that applies to all routes (`source: '/(.*)'`).
+    *   This object's `headers` array should contain the following key-value pairs:
+        *   `X-Content-Type-Options`: `nosniff`
+        *   `X-Frame-Options`: `SAMEORIGIN`
+        *   `Referrer-Policy`: `strict-origin-when-cross-origin`
+        *   `Permissions-Policy`: `camera=(), microphone=(), geolocation=()`
+        *   `Strict-Transport-Security`: `max-age=63072000; includeSubDomains; preload`
+
+4.  **Gotchas & Verification:**
+    *   Ensure `poweredByHeader` is at the root of the config, not inside `headers()`.
+    *   The `headers()` function must be `async` and return an array of objects.
+    *   After applying changes, the Next.js server must be restarted.
+    *   Verify the final implementation using an online tool like securityheaders.com as per the acceptance criteria.
+
+
+## Iteration N - Story: Add HTTP security headers to next.config.ts (US-023)
+
+### What was implemented
+- Added `poweredByHeader: false` to nextConfig to suppress X-Powered-By fingerprinting
+- Added `async headers()` with source `/(.*)`  covering all routes
+- Headers added: X-Content-Type-Options: nosniff, X-Frame-Options: SAMEORIGIN, Referrer-Policy: strict-origin-when-cross-origin, Permissions-Policy: camera=(), microphone=(), geolocation=(), Strict-Transport-Security with max-age=63072000
+
+### Patterns discovered
+- next.config.ts supports both `rewrites()` and `headers()` as async methods at the same level
+- `poweredByHeader: false` goes at the root nextConfig level (not inside headers)
+
+### Gotchas
+- prd.json must be read/written with explicit `encoding='utf-8'` on Windows (default cp1252 fails)

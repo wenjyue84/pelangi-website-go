@@ -22,13 +22,13 @@
         "/blog/[slug] renders individual article with full HTML content, author, date, tags, and back link",
         "Both pages have generateMetadata with unique title, description, and OG image",
         "TypeScript compiles without errors",
-        "No external database or CMS â€” pure static data in /src/data/blog/posts.ts"
+        "No external database or CMS \u00e2\u20ac\u201d pure static data in /src/data/blog/posts.ts"
       ],
       "technicalNotes": [
-        "site/src/data/blog/posts.ts â€” create blog post data array",
-        "site/src/app/blog/page.tsx â€” blog listing page",
-        "site/src/app/blog/[slug]/page.tsx â€” individual article page",
-        "site/src/components/BlogCard.tsx â€” reusable card component",
+        "site/src/data/blog/posts.ts \u00e2\u20ac\u201d create blog post data array",
+        "site/src/app/blog/page.tsx \u00e2\u20ac\u201d blog listing page",
+        "site/src/app/blog/[slug]/page.tsx \u00e2\u20ac\u201d individual article page",
+        "site/src/components/BlogCard.tsx \u00e2\u20ac\u201d reusable card component",
         "Use Tailwind prose classes for article body typography"
       ],
       "dependencies": [],
@@ -48,7 +48,7 @@
         "All articles have SEO-friendly titles with keywords like 'Johor Bahru', 'JB', 'budget', 'backpacker'"
       ],
       "technicalNotes": [
-        "site/src/data/blog/posts.ts â€” add all 6 articles",
+        "site/src/data/blog/posts.ts \u00e2\u20ac\u201d add all 6 articles",
         "Research sources: numbeo.com, hostelworld.com, lonelyplanet.com, timeout.com/kuala-lumpur, thepoortraveler.net",
         "Content must be original rewrites, not copy-paste",
         "Use categories: 'Food & Drink', 'Travel Tips', 'Things To Do', 'Local Life'",
@@ -73,10 +73,10 @@
         "TypeScript compiles without errors"
       ],
       "technicalNotes": [
-        "site/src/app/feed.xml/route.ts â€” Route Handler returning XML",
+        "site/src/app/feed.xml/route.ts \u00e2\u20ac\u201d Route Handler returning XML",
         "Import posts from /src/data/blog/posts.ts",
         "Use Response with headers {'Content-Type': 'application/xml'}",
-        "site/src/app/layout.tsx â€” add RSS link in <head>"
+        "site/src/app/layout.tsx \u00e2\u20ac\u201d add RSS link in <head>"
       ],
       "dependencies": [
         "US-001"
@@ -88,7 +88,7 @@
       "id": "US-004",
       "title": "Add JB News & Updates widget on homepage using curated RSS links",
       "priority": "medium",
-      "description": "Add a 'JB Buzz' section on the homepage between CommunityEvents and the teaser section. This is a static, curated section (no live API calls at runtime to avoid SSR issues). It should show: (1) a list of 4-5 curated news/blog links from real JB/Malaysia sources like Johor Now, Malay Mail, The Star Johor, and Visit Johor â€” shown as stylish news cards with title, source, date, and a short description. (2) An RSS subscribe button linking to /feed.xml. (3) A 'Latest from Our Blog' teaser showing the 3 most recent blog posts. All links open in new tab with rel='noopener noreferrer'.",
+      "description": "Add a 'JB Buzz' section on the homepage between CommunityEvents and the teaser section. This is a static, curated section (no live API calls at runtime to avoid SSR issues). It should show: (1) a list of 4-5 curated news/blog links from real JB/Malaysia sources like Johor Now, Malay Mail, The Star Johor, and Visit Johor \u00e2\u20ac\u201d shown as stylish news cards with title, source, date, and a short description. (2) An RSS subscribe button linking to /feed.xml. (3) A 'Latest from Our Blog' teaser showing the 3 most recent blog posts. All links open in new tab with rel='noopener noreferrer'.",
       "acceptanceCriteria": [
         "New 'JB Buzz' section visible on homepage with at least 4 curated external news links",
         "Section has 'Latest from Our Blog' showing 3 most recent blog post cards",
@@ -97,8 +97,8 @@
         "Section looks consistent with existing design (stone/amber color scheme, rounded cards)"
       ],
       "technicalNotes": [
-        "site/src/components/JBBuzz.tsx â€” new component",
-        "site/src/app/page.tsx â€” import and add <JBBuzz /> after <CommunityEvents />",
+        "site/src/components/JBBuzz.tsx \u00e2\u20ac\u201d new component",
+        "site/src/app/page.tsx \u00e2\u20ac\u201d import and add <JBBuzz /> after <CommunityEvents />",
         "Curated links: johornow.com, malaymail.com, thestar.com.my, visitjohor.com",
         "Latest blog posts: import from posts.ts and show top 3 by date",
         "Use same card styling as other homepage sections"
@@ -123,8 +123,8 @@
         "Schema validates correctly (structure is correct JSON-LD)"
       ],
       "technicalNotes": [
-        "site/src/components/BlogStructuredData.tsx â€” new component accepting post data",
-        "site/src/app/blog/[slug]/page.tsx â€” import and render BlogStructuredData",
+        "site/src/components/BlogStructuredData.tsx \u00e2\u20ac\u201d new component accepting post data",
+        "site/src/app/blog/[slug]/page.tsx \u00e2\u20ac\u201d import and render BlogStructuredData",
         "BreadcrumbList: Home > Blog > Article Title",
         "Publisher logo URL: https://pelangicapsulehostel.com/images/logo.png"
       ],
@@ -144,10 +144,10 @@
         "/sitemap.xml includes all individual blog post URLs",
         "Each blog post entry has correct slug from posts.ts",
         "TypeScript compiles without errors",
-        "No hardcoded slugs â€” all generated dynamically from posts array"
+        "No hardcoded slugs \u00e2\u20ac\u201d all generated dynamically from posts array"
       ],
       "technicalNotes": [
-        "site/src/app/sitemap.ts â€” update to import posts and map to sitemap entries",
+        "site/src/app/sitemap.ts \u00e2\u20ac\u201d update to import posts and map to sitemap entries",
         "Import: import { posts } from '@/data/blog/posts'",
         "Add /blog and /blog/[slug] entries to the returned array"
       ],
@@ -161,16 +161,16 @@
       "id": "US-007",
       "title": "Enhance /guide page with rich backpacker-focused local content",
       "priority": "medium",
-      "description": "Substantially improve the /guide page (site/src/app/guide/page.tsx) with richer, more lively content for backpackers. Add sections: (1) Getting Around JB â€” GrabCar, bus, taxi fares with real prices; (2) Money & Currency â€” where to exchange, ATMs near Taman Pelangi; (3) Singapore Day Trip â€” Causeway vs Second Link, immigration tips, operating hours; (4) Top Hawker Centers Near Us â€” with distance and opening hours; (5) Safety Tips for Backpackers; (6) Useful Local Apps â€” Grab, MyRapid, MySejahtera. All with practical, accurate information. Add internal links to /blog articles where relevant.",
+      "description": "Substantially improve the /guide page (site/src/app/guide/page.tsx) with richer, more lively content for backpackers. Add sections: (1) Getting Around JB \u00e2\u20ac\u201d GrabCar, bus, taxi fares with real prices; (2) Money & Currency \u00e2\u20ac\u201d where to exchange, ATMs near Taman Pelangi; (3) Singapore Day Trip \u00e2\u20ac\u201d Causeway vs Second Link, immigration tips, operating hours; (4) Top Hawker Centers Near Us \u00e2\u20ac\u201d with distance and opening hours; (5) Safety Tips for Backpackers; (6) Useful Local Apps \u00e2\u20ac\u201d Grab, MyRapid, MySejahtera. All with practical, accurate information. Add internal links to /blog articles where relevant.",
       "acceptanceCriteria": [
         "/guide page has at least 6 content sections as described",
-        "Each section has practical, specific information (prices, distances, hours â€” not vague)",
+        "Each section has practical, specific information (prices, distances, hours \u00e2\u20ac\u201d not vague)",
         "Page has proper metadata with 'Johor Bahru local guide backpacker' keywords",
         "Internal links to 2+ blog articles (once those exist)",
         "Consistent design with rest of site (Tailwind, stone/amber palette)"
       ],
       "technicalNotes": [
-        "site/src/app/guide/page.tsx â€” read existing file first, then enhance",
+        "site/src/app/guide/page.tsx \u00e2\u20ac\u201d read existing file first, then enhance",
         "Add generateMetadata with description targeting 'JB travel guide backpacker' keywords",
         "Currency exchange: Jalan Wong Ah Fook money changers",
         "Causeway: open 24h, busiest 7-9am and 5-8pm",
@@ -195,10 +195,10 @@
         "Responsive design matches rest of site"
       ],
       "technicalNotes": [
-        "site/src/components/SingaporeTeaser.tsx â€” new component",
-        "site/src/app/page.tsx â€” add <SingaporeTeaser /> between <LocationMap /> and <FAQ />",
+        "site/src/components/SingaporeTeaser.tsx \u00e2\u20ac\u201d new component",
+        "site/src/app/page.tsx \u00e2\u20ac\u201d add <SingaporeTeaser /> between <LocationMap /> and <FAQ />",
         "Use amber/warm gradient background to stand out",
-        "Keep it concise â€” 3-4 stat/icon cards max"
+        "Keep it concise \u00e2\u20ac\u201d 3-4 stat/icon cards max"
       ],
       "dependencies": [
         "US-002"
@@ -210,7 +210,7 @@
       "id": "US-009",
       "title": "Create /book page with direct booking + OTA options",
       "priority": "critical",
-      "description": "The /book URL is linked from the homepage dashboard card, footer, Hero CTAs, and multiple components, but no app/book/page.tsx exists — users hit a 404. Create a dedicated booking page with: (1) direct WhatsApp booking as primary CTA with pre-filled message, (2) direct booking benefits section, (3) Booking.com and Hostelworld links as secondary OTA options, (4) pricing summary (RM35 nightly, RM594 monthly), and (5) house rules summary.",
+      "description": "The /book URL is linked from the homepage dashboard card, footer, Hero CTAs, and multiple components, but no app/book/page.tsx exists \u2014 users hit a 404. Create a dedicated booking page with: (1) direct WhatsApp booking as primary CTA with pre-filled message, (2) direct booking benefits section, (3) Booking.com and Hostelworld links as secondary OTA options, (4) pricing summary (RM35 nightly, RM594 monthly), and (5) house rules summary.",
       "acceptanceCriteria": [
         "GET /book returns a 200 page (no 404)",
         "Page has a primary WhatsApp CTA that opens wa.me/60127088789 with a pre-filled booking message",
@@ -233,20 +233,20 @@
       "id": "US-010",
       "title": "Create custom not-found.tsx (404 page) with hostel branding",
       "priority": "high",
-      "description": "No app/not-found.tsx exists; Next.js App Router serves a generic 404. A branded 404 page recovers lost visitors by surfacing key navigation links and a WhatsApp booking CTA. Google recommends soft 404 handling (do not redirect all 404s to homepage) — a proper not-found.tsx is the correct approach.",
+      "description": "No app/not-found.tsx exists; Next.js App Router serves a generic 404. A branded 404 page recovers lost visitors by surfacing key navigation links and a WhatsApp booking CTA. Google recommends soft 404 handling (do not redirect all 404s to homepage) \u2014 a proper not-found.tsx is the correct approach.",
       "acceptanceCriteria": [
         "app/not-found.tsx file exists and renders on any invalid URL",
         "Page has a friendly on-brand message (e.g. 'Looks like this pod is taken!')",
         "Page includes navigation links to: Home, Rooms, /book, /guide, /blog",
         "Page includes a WhatsApp contact CTA",
         "Header and Footer are present for consistent navigation",
-        "Page has proper HTTP 404 status (not 200) — Next.js App Router not-found.tsx sets this automatically"
+        "Page has proper HTTP 404 status (not 200) \u2014 Next.js App Router not-found.tsx sets this automatically"
       ],
       "technicalNotes": [
-        "Create site/src/app/not-found.tsx (not 404.tsx — App Router convention)",
+        "Create site/src/app/not-found.tsx (not 404.tsx \u2014 App Router convention)",
         "Import Header and Footer components",
         "Use amber/stone design consistent with rest of site",
-        "No generateMetadata needed — Next.js sets noindex automatically for 404 pages"
+        "No generateMetadata needed \u2014 Next.js sets noindex automatically for 404 pages"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
@@ -256,7 +256,7 @@
       "id": "US-011",
       "title": "Fix NAP inconsistency in StructuredData.tsx (wrong phone and address)",
       "priority": "high",
-      "description": "StructuredData.tsx contains factually incorrect business data: phone is '+60123456789' (placeholder, not a real number) and street address is 'Jalan Maju, Taman Pelangi' (wrong — correct is '26A Jalan Perang'). NAP (Name, Address, Phone) must exactly match Google Business Profile for local search trust. These errors could suppress local ranking and confuse map integrations.",
+      "description": "StructuredData.tsx contains factually incorrect business data: phone is '+60123456789' (placeholder, not a real number) and street address is 'Jalan Maju, Taman Pelangi' (wrong \u2014 correct is '26A Jalan Perang'). NAP (Name, Address, Phone) must exactly match Google Business Profile for local search trust. These errors could suppress local ranking and confuse map integrations.",
       "acceptanceCriteria": [
         "telephone in Hostel schema is '+60127088789' (Jay's real number from business data)",
         "streetAddress in Hostel schema is '26A Jalan Perang, Taman Pelangi'",
@@ -267,7 +267,7 @@
       ],
       "technicalNotes": [
         "Edit site/src/components/StructuredData.tsx",
-        "Correct phone: +60127088789 (Jay) — from pelangi-website-plan.md",
+        "Correct phone: +60127088789 (Jay) \u2014 from pelangi-website-plan.md",
         "Correct address: 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru",
         "Check-in from plan: 2:00 PM = 14:00 in ISO 8601; current file has 15:00",
         "Validate via: https://search.google.com/test/rich-results after fix"
@@ -317,7 +317,7 @@
         "Export: export const size = { width: 1200, height: 630 } and export const contentType = 'image/png'",
         "Only flexbox CSS supported in ImageResponse (no grid)",
         "Font: use fetch() to load .ttf font or use system font fallback",
-        "Access post data via params.slug — import posts from data/blog/posts.ts",
+        "Access post data via params.slug \u2014 import posts from data/blog/posts.ts",
         "Reference: https://nextjs.org/docs/app/api-reference/file-conventions/opengraph-image"
       ],
       "dependencies": [],
@@ -338,7 +338,7 @@
       ],
       "technicalNotes": [
         "Edit site/src/app/rooms/page.tsx to inject JSON-LD script",
-        "Dual type: '@type': ['HotelRoom', 'Product'] — both required for pricing rich results",
+        "Dual type: '@type': ['HotelRoom', 'Product'] \u2014 both required for pricing rich results",
         "Offer structure: { '@type': 'Offer', 'price': '35', 'priceCurrency': 'MYR', 'businessFunction': 'http://purl.org/goodrelations/v1#LeaseOut' }",
         "containedInPlace: { '@type': 'Hostel', 'name': 'Pelangi Capsule Hostel', 'url': 'https://pelangicapsulehostel.com' }",
         "Reference: https://schema.org/HotelRoom and https://wordlift.io/blog/en/schema-markup-for-hotels-bb-and-resorts-a-complete-guide/"
@@ -359,7 +359,7 @@
         "No TypeScript errors"
       ],
       "technicalNotes": [
-        "Edit site/src/app/layout.tsx — find the verification: {} object",
+        "Edit site/src/app/layout.tsx \u2014 find the verification: {} object",
         "Add: verification: { google: 'YOUR_VERIFICATION_TOKEN' }",
         "Get token from: Google Search Console > Add Property > HTML tag method",
         "After deploy, verify ownership in GSC and submit sitemap.xml",
@@ -398,7 +398,7 @@
       "id": "US-017",
       "title": "Add canonical URL tags to all inner pages via generateMetadata",
       "priority": "medium",
-      "description": "Currently only the homepage has an explicit canonical URL in metadata. Inner pages (/about, /rooms, /gallery, /contact, /check-in, /guide, /book) rely on Next.js auto-generation, which may not produce the exact preferred URL format. Explicit canonical tags on each page prevent duplicate content issues and confirm the preferred URL to Google — especially important now that blog posts exist with similar content themes.",
+      "description": "Currently only the homepage has an explicit canonical URL in metadata. Inner pages (/about, /rooms, /gallery, /contact, /check-in, /guide, /book) rely on Next.js auto-generation, which may not produce the exact preferred URL format. Explicit canonical tags on each page prevent duplicate content issues and confirm the preferred URL to Google \u2014 especially important now that blog posts exist with similar content themes.",
       "acceptanceCriteria": [
         "Each inner page (/about, /rooms, /gallery, /contact, /check-in, /guide, /book) has generateMetadata with alternates.canonical set to the full absolute URL",
         "/blog page and /blog/[slug] pages already have canonical set (verify existing implementation)",
@@ -420,7 +420,7 @@
       "id": "US-018",
       "title": "Add Core Web Vitals optimization: hero image priority and lazy-loading",
       "priority": "medium",
-      "description": "The Hero component (Hero.tsx) likely uses a large banner image that is the Largest Contentful Paint (LCP) element. Without the `priority` prop on the Next.js Image component, the hero image is lazy-loaded, causing LCP scores above 4s on mobile — a Google ranking signal. Additionally, below-fold images should be explicitly lazy-loaded and sized with the `sizes` attribute to prevent Cumulative Layout Shift (CLS). Target: LCP < 2.5s, CLS < 0.1.",
+      "description": "The Hero component (Hero.tsx) likely uses a large banner image that is the Largest Contentful Paint (LCP) element. Without the `priority` prop on the Next.js Image component, the hero image is lazy-loaded, causing LCP scores above 4s on mobile \u2014 a Google ranking signal. Additionally, below-fold images should be explicitly lazy-loaded and sized with the `sizes` attribute to prevent Cumulative Layout Shift (CLS). Target: LCP < 2.5s, CLS < 0.1.",
       "acceptanceCriteria": [
         "Hero image uses <Image priority> prop (no lazy loading on LCP element)",
         "Hero image has explicit width, height, and sizes attribute set",
@@ -467,11 +467,11 @@
       "id": "US-020",
       "title": "Add hreflang tags for EN/ZH-CN multilingual SEO groundwork",
       "priority": "low",
-      "description": "Pelangi Capsule Hostel's primary market includes Singapore and Malaysian Chinese-speaking travelers. The website content doc explicitly calls for EN/ZH support. Even before a full Chinese translation is available, adding hreflang infrastructure (x-default + en) in generateMetadata prevents future SEO migration pain. A Chinese landing page at /zh targeting Singapore Chinese travelers is a second phase. Hreflang is bidirectional — each language version must reference all others.",
+      "description": "Pelangi Capsule Hostel's primary market includes Singapore and Malaysian Chinese-speaking travelers. The website content doc explicitly calls for EN/ZH support. Even before a full Chinese translation is available, adding hreflang infrastructure (x-default + en) in generateMetadata prevents future SEO migration pain. A Chinese landing page at /zh targeting Singapore Chinese travelers is a second phase. Hreflang is bidirectional \u2014 each language version must reference all others.",
       "acceptanceCriteria": [
         "layout.tsx metadata includes alternates.languages with at minimum 'en' and 'x-default' pointing to canonical URL",
         "Code is structured to easily add 'zh-CN': 'https://pelangicapsulehostel.com/zh' when Chinese content is ready",
-        "HTML lang attribute in layout.tsx is 'en' (currently correct — verify it stays 'en' not 'en-MY')",
+        "HTML lang attribute in layout.tsx is 'en' (currently correct \u2014 verify it stays 'en' not 'en-MY')",
         "No TypeScript errors"
       ],
       "technicalNotes": [
@@ -522,13 +522,279 @@
       ],
       "technicalNotes": [
         "Category filter: add 'use client' to blog/page.tsx or extract to a client FilterBar component",
-        "Categories come from posts.ts data — derive unique categories dynamically",
+        "Categories come from posts.ts data \u2014 derive unique categories dynamically",
         "Static category pages: site/src/app/blog/category/[category]/page.tsx with generateStaticParams",
         "generateStaticParams: derive from [...new Set(posts.map(p => p.category.toLowerCase().replace(/ /g, '-')))]",
         "Category pages have their own sitemap entries (update sitemap.ts)"
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-023",
+      "title": "Add HTTP security headers to next.config.ts",
+      "priority": "critical",
+      "description": "The site currently has no HTTP security headers configured in next.config.ts. Missing headers include X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy, and Strict-Transport-Security, leaving the site exposed to MIME-sniffing, clickjacking, and cross-origin data leakage attacks.",
+      "acceptanceCriteria": [
+        "next.config.ts async headers() returns X-Content-Type-Options: nosniff on all routes",
+        "X-Frame-Options: SAMEORIGIN or frame-ancestors 'self' via CSP is set",
+        "Referrer-Policy: strict-origin-when-cross-origin is set on all routes",
+        "Permissions-Policy disables unused APIs: camera=(), microphone=(), geolocation=()",
+        "poweredByHeader: false is set to remove X-Powered-By: Next.js fingerprinting",
+        "Headers verified with securityheaders.com scoring B or above"
+      ],
+      "technicalNotes": [
+        "Use async headers() in next.config.ts with source: '/(.*)'",
+        "poweredByHeader: false can be set at the root nextConfig level",
+        "Reference: https://nextjs.org/docs/pages/api-reference/config/next-config-js/headers",
+        "Reference: https://blog.kieranroberts.dev/http-security-headers-and-how-to-set-them-in-nextjs"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": true
+    },
+    {
+      "id": "US-024",
+      "title": "Implement Content Security Policy (CSP) header",
+      "priority": "high",
+      "description": "No Content Security Policy exists on the site, leaving it vulnerable to XSS and code injection attacks. A CSP for a static/SSG Next.js site can be configured without nonces via next.config.ts, whitelisting self, inline styles, and the specific third-party domains actually used (e.g. booking proxy). This is a layered defense on top of basic security headers.",
+      "acceptanceCriteria": [
+        "CSP header present on all HTML page responses",
+        "default-src 'self' is the base policy",
+        "script-src allows 'self' and whitelisted third parties (e.g. googletagmanager.com if used)",
+        "frame-ancestors restricts embedding to same origin",
+        "img-src allows 'self', blob:, data:, and ak-d.tripcdn.com (already used for remote images)",
+        "CSP does not block any existing site functionality (no console CSP errors)",
+        "Policy validated with Google CSP Evaluator tool"
+      ],
+      "technicalNotes": [
+        "Since the site uses static/ISR rendering, use the without-nonces approach via next.config.ts headers()",
+        "Must whitelist admin.pelangicapsulehostel.com for the /book proxy rewrite",
+        "Reference: https://nextjs.org/docs/app/guides/content-security-policy",
+        "Use upgrade-insecure-requests directive to enforce HTTPS"
+      ],
+      "dependencies": [
+        "Add HTTP security headers to next.config.ts"
+      ],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-025",
+      "title": "Add LodgingBusiness schema: checkinTime, checkoutTime, availableLanguage, petsAllowed",
+      "priority": "high",
+      "description": "The existing Hostel schema in StructuredData.tsx is missing several LodgingBusiness-specific properties that Google uses for hotel knowledge panels and rich results: checkinTime/checkoutTime (already in the data layer but not in schema), availableLanguage (EN/ZH), petsAllowed, and numberOfRooms. These properties are required for full LodgingBusiness rich result eligibility.",
+      "acceptanceCriteria": [
+        "checkinTime: 'T14:00' and checkoutTime: 'T12:00' are added using ISO 8601 Time format",
+        "availableLanguage array includes Language objects for English and Chinese",
+        "petsAllowed: false is explicitly declared",
+        "numberOfRooms is populated with actual pod count",
+        "Updated schema validates without errors in Google Rich Results Test",
+        "starRating property is absent (hostel has no official star rating body)"
+      ],
+      "technicalNotes": [
+        "checkinTime/checkoutTime accept ISO 8601 Time values like 'T14:00:00'",
+        "availableLanguage uses Language type: {\"@type\": \"Language\", \"name\": \"English\"}",
+        "Reference: https://schema.org/LodgingBusiness",
+        "Reference: https://schema.org/docs/hotels.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-026",
+      "title": "Remove or replace first-party AggregateRating in StructuredData.tsx",
+      "priority": "high",
+      "description": "The current StructuredData.tsx embeds a hardcoded AggregateRating with ratingValue: '4.9' and ratingCount: '500' directly on the hostel's own website. Google's structured data guidelines explicitly prohibit first-party self-declared reviews for rich result eligibility \u2014 this risks a manual action or loss of star review features in SERPs.",
+      "acceptanceCriteria": [
+        "The hardcoded AggregateRating block is removed from the self-hosted Hostel schema OR replaced with a clearly attributed third-party source",
+        "If removed, no AggregateRating property exists in any self-hosted schema on the same entity",
+        "Site does not receive a Google Search Console 'Structured data' manual action warning",
+        "The visual 4.9/5 star rating in Reviews.tsx component is unaffected (it is UI, not schema)"
+      ],
+      "technicalNotes": [
+        "Google policy: 'If the entity being reviewed controls the reviews, pages are ineligible for star review features'",
+        "Reference: https://developers.google.com/search/docs/appearance/structured-data/review-snippet",
+        "Alternative: embed a third-party review widget (Hostelworld, Booking.com) and use their schema",
+        "The Reviews.tsx component currently shows curated hardcoded reviews \u2014 this is UI-only and acceptable"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-027",
+      "title": "Add skip navigation link and ARIA landmarks for keyboard accessibility (WCAG 2.2 SC 2.4.1)",
+      "priority": "high",
+      "description": "The site currently has no skip navigation link, meaning keyboard and screen reader users must tab through the entire header on every page load. WCAG 2.2 Success Criterion 2.4.1 (Bypass Blocks) requires a mechanism to skip repeated navigation. The EU European Accessibility Act (EAA) mandates compliance for websites serving EU customers from June 2025.",
+      "acceptanceCriteria": [
+        "A visually hidden 'Skip to main content' link is the first focusable element on every page",
+        "The skip link becomes visible when focused (not permanently hidden)",
+        "The skip link targets an element with id='main-content' or role='main'",
+        "All major page sections use semantic HTML5 landmarks: <header>, <nav>, <main>, <footer>",
+        "All interactive elements are reachable and operable via keyboard alone",
+        "Focus indicators are visible on all interactive elements"
+      ],
+      "technicalNotes": [
+        "Implement in layout.tsx as first child of <body>",
+        "Use Tailwind sr-only class with focus:not-sr-only focus:absolute for visible-on-focus pattern",
+        "Reference: https://www.w3.org/WAI/standards-guidelines/wcag/"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-028",
+      "title": "Optimize INP (Interaction to Next Paint) for booking and filter interactions",
+      "priority": "high",
+      "description": "INP replaced FID as a Core Web Vital in March 2024 and measures responsiveness to all user interactions. The blog category filter, booking bar, and chat widget are likely sources of long tasks inflating INP on mobile. Poor INP (>200ms) negatively impacts Google ranking. The existing CWV work only addressed LCP and lazy-loading, not interaction responsiveness.",
+      "acceptanceCriteria": [
+        "INP score is 200ms or below at the 75th percentile as measured by Chrome UX Report or Vercel Speed Insights",
+        "No single user interaction triggers a JavaScript task longer than 50ms",
+        "The blog category filter interaction completes visual update within 200ms on mid-range Android device",
+        "Heavy client components (ChatWidget, MobileBookingBar) are wrapped in dynamic import with loading skeleton",
+        "INP measured before and after implementation showing improvement"
+      ],
+      "technicalNotes": [
+        "Use next/dynamic with ssr: false for ChatWidget and MobileBookingBar to reduce initial JS bundle",
+        "Break up long event handlers with scheduler.yield() or setTimeout(0) where applicable",
+        "Reference: https://web.dev/articles/inp"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-029",
+      "title": "Add AVIF/WebP format support and responsive sizes prop to gallery images",
+      "priority": "medium",
+      "description": "The Gallery.tsx component may serve unoptimised images without the sizes prop, causing Next.js to generate fixed 1x/2x descriptors instead of a full responsive srcset. AVIF compresses 20% smaller than WebP and reduces image payload by 60-80%, directly improving LCP and data usage for mobile users on Malaysian mobile networks.",
+      "acceptanceCriteria": [
+        "All gallery images use the Next.js <Image> component (not plain <img> tags)",
+        "All <Image> components include a sizes prop appropriate to layout (e.g. '(max-width: 768px) 100vw, 33vw')",
+        "next.config.ts includes formats: ['image/avif', 'image/webp'] in the images config",
+        "Chrome DevTools Network tab shows .avif or .webp files served to supporting browsers",
+        "Lighthouse image audit shows no 'Serve images in next-gen formats' warning for gallery images"
+      ],
+      "technicalNotes": [
+        "Add formats: ['image/avif', 'image/webp'] to the images block in next.config.ts",
+        "The sizes prop is required for responsive srcset generation; without it Next.js generates only 1x/2x fixed descriptors",
+        "Reference: https://nextjs.org/docs/app/api-reference/components/image"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-030",
+      "title": "Add language switcher UI component with NEXT_LOCALE cookie persistence",
+      "priority": "medium",
+      "description": "Hreflang tags have been added for EN/ZH-CN but there is no visible language switcher for users. Chinese travellers from Singapore and China represent a significant portion of JB hostel guests. A language switcher that sets the NEXT_LOCALE cookie ensures preference persists across sessions and is the prerequisite UI before any translated content can be deployed.",
+      "acceptanceCriteria": [
+        "A language switcher (EN | \u4e2d\u6587) is visible in the Header component",
+        "Clicking \u4e2d\u6587 sets NEXT_LOCALE=zh cookie and shows a 'Chinese version coming soon' toast if translations don't exist yet",
+        "Clicking EN sets NEXT_LOCALE=en",
+        "The current active language is visually indicated",
+        "The switcher is accessible: keyboard operable and has aria-label='Language selector'",
+        "The cookie is set with SameSite=Lax per Next.js i18n documentation"
+      ],
+      "technicalNotes": [
+        "Next.js NEXT_LOCALE cookie takes priority over Accept-Language header",
+        "Reference: https://nextjs.org/docs/pages/guides/internationalization",
+        "Can initially render as a static UI with the ZH option showing toast 'Chinese version coming soon'",
+        "Use URL subdirectory pattern /zh/ when translations are ready"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-031",
+      "title": "Add 'Book Direct' benefits section to /book page for conversion uplift",
+      "priority": "medium",
+      "description": "The /book page proxies the booking engine but lacks visible 'book direct' trust signals. Research shows that hospitality sites displaying direct booking benefits (best price guarantee, direct support, flexible cancellation) see 10-22% improvement in direct conversion rates. The surrounding page wrapper is rendered by Next.js and can be enhanced without touching the proxied booking widget.",
+      "acceptanceCriteria": [
+        "A 'Why Book Direct?' section is visible above or alongside the booking widget on /book",
+        "Section includes at least 3 concrete direct-booking benefits (e.g. Best Rate Guarantee, Free WhatsApp support, Flexible cancellation)",
+        "Section includes at least one trust badge or security indicator",
+        "A comparison callout showing OTA commission savings vs direct price is present",
+        "Section is mobile-responsive and does not obscure the booking widget CTA on small screens"
+      ],
+      "technicalNotes": [
+        "The /book route is a rewrite to admin.pelangicapsulehostel.com \u2014 the surrounding page wrapper is rendered by Next.js",
+        "Reference: https://spiltmilkwebdesign.com/conversion-rate-optimization-website-ux-for-boutique-hotels-in-2025/"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-032",
+      "title": "Add PDPA/GDPR cookie consent banner for analytics compliance",
+      "priority": "medium",
+      "description": "If the site uses Google Analytics or any tracking pixels, Malaysia's Personal Data Protection Act (PDPA) requires explicit user consent before loading non-essential cookies. The EU GDPR applies to EU visitors. Currently there is no consent mechanism on the site, creating a legal compliance gap as the hostel attracts international visitors.",
+      "acceptanceCriteria": [
+        "A cookie consent banner appears on first visit for users who have not yet consented",
+        "Banner offers Accept All and Reject Non-Essential options at minimum",
+        "Non-essential scripts (analytics, tracking) are not loaded until the user accepts",
+        "Consent choice is stored in a cookie and the banner does not re-appear on subsequent visits",
+        "Banner is keyboard accessible and screen reader friendly (role='dialog', aria-label)",
+        "Consent state is respected on all pages"
+      ],
+      "technicalNotes": [
+        "Use client-side cookie reading to keep pages statically generated (no SSR performance hit)",
+        "Reference: https://posthog.com/tutorials/nextjs-cookie-banner",
+        "Libraries: react-cookie-consent or CookieYes SaaS embed are both viable options"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-033",
+      "title": "Add dedicated /amenities page with full LocationFeatureSpecification schema",
+      "priority": "medium",
+      "description": "Amenities content is currently only in the homepage Amenities.tsx component. A dedicated /amenities page with expanded content (Wi-Fi speed, co-working details, laundry, kitchen rules) creates a new indexable URL capturing digital-nomad and long-stay search queries. Full LocationFeatureSpecification objects in JSON-LD enable Google's amenities panel in hotel rich results.",
+      "acceptanceCriteria": [
+        "/amenities page exists and returns HTTP 200",
+        "Page has generateMetadata with target keywords (e.g. 'free WiFi hostel JB', 'co-working hostel Johor Bahru')",
+        "Page includes a complete amenity list with icons, descriptions, and relevant caveats (e.g. WiFi speed, kitchen hours)",
+        "JSON-LD on the page includes expanded amenityFeature array with all amenities as LocationFeatureSpecification",
+        "Page is linked from the homepage Amenities section and the site Footer",
+        "Page is added to sitemap.ts"
+      ],
+      "technicalNotes": [
+        "LocationFeatureSpecification requires name and value (boolean or string) properties",
+        "Reference: https://schema.org/LodgingBusiness (amenityFeature property)",
+        "Target audience: digital nomads searching for co-working hostels near Singapore",
+        "Example: {\"@type\": \"LocationFeatureSpecification\", \"name\": \"Free WiFi\", \"value\": true}"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-034",
+      "title": "Add Google Sustainability Attributes and eco-friendly content section",
+      "priority": "low",
+      "description": "Google Business Profile for hotels supports sustainability attributes, and 82% of travellers say sustainability influences their booking decisions. Adding a sustainability section to the website and corresponding GBP attributes signals relevance for the growing 'sustainable travel' search segment, increasingly weighted in Google's 2025 hotel profile algorithm.",
+      "acceptanceCriteria": [
+        "A brief sustainability/eco-friendly section (minimum one paragraph) exists on the About or /amenities page",
+        "Content mentions at least 2 verifiable eco practices (e.g. water dispensers to reduce plastic bottles, LED lighting, recycling bins)",
+        "Google Business Profile sustainability attributes are documented as an offline task to action",
+        "The website content references the hostel's actual practices \u2014 no fabricated claims",
+        "Section is linked from the homepage or Footer if standalone"
+      ],
+      "technicalNotes": [
+        "GBP sustainability attributes are set in Google Business Profile dashboard under 'Attributes'",
+        "Reference: https://gmbapi.com/news/optimising-google-business-profiles-for-hotels-with-new-features/",
+        "No schema.org type currently exists specifically for sustainability; use plain content + GBP attributes"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
       "passes": false
     }
   ]
