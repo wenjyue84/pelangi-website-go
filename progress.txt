@@ -524,3 +524,52 @@ Here is the technical brief for the Next.js user story.
 ## Iteration 5 - Fri, Mar 13, 2026 2:30 AM
 Completed: Add dynamic OG images for blog posts using next/og ImageResponse (ID: US-013) in 5m
 
+## Iteration 5 - Fri, Mar 13, 2026  2:06:48 AM
+Incomplete: Add web app manifest (manifest.json) for mobile installability (ID: US-019) — attempt 1/3
+
+
+## Pre-analysis for US-019 (Gemini 2.5 Pro)
+Here is a technical brief for user story US-019.
+
+**Objective:** Implement a PWA Web App Manifest for the Next.js site to enable 'Add to Home Screen' functionality, improving access for repeat visitors.
+
+**Note:** The user story specifies a Next.js implementation. The prompt's reference to "Frappe/Python" should be disregarded as it contradicts the story's technical details.
+
+**Primary Files:**
+*   `site/src/app/manifest.ts` (Create): This new file will programmatically generate the `manifest.json`.
+*   `site/public/icons/icon-192.png` (Create): New 192x192px app icon.
+*   `site/public/icons/icon-512.png` (Create): New 512x512px app icon.
+
+**Implementation Approach:**
+1.  Create the file `site/src/app/manifest.ts`.
+2.  Import `MetadataRoute` from `'next'`.
+3.  Export a default function `manifest()` which returns a `MetadataRoute.Manifest` object.
+4.  Populate the manifest with: `name`, `short_name`, `start_url: '/'`, `display: 'standalone'`, and `theme_color: '#a68b64'`.
+5.  Generate the 192px and 512px PNG icons, possibly from an existing logo like `assets/images/logo.png`, and place them in `site/public/icons/`.
+6.  Reference these icons in the manifest's `icons` array.
+
+**Gotchas & Edge Cases:**
+*   Next.js App Router handles manifest linking automatically; do not add a `<link>` tag to the layout.
+*   Icon paths in the manifest must be absolute from the root (e.g., `/icons/icon-192.png`).
+*   The `site/public/icons/` directory may need to be created.
+*   Testing the 'Add to Home Screen' prompt has browser-specific heuristics and may not appear immediately on every visit.
+
+
+## Iteration N - Story: Add HotelRoom structured data with Offer pricing on /rooms page
+
+### What was implemented
+- `site/src/app/rooms/page.tsx` — added `metadata` export with canonical URL and two JSON-LD HotelRoom schemas
+- Standard Capsule Pod: RM35/night + RM594/month using UnitPriceSpecification
+- Premium Capsule Pod: RM45/night
+- Both use dual @type: ['HotelRoom', 'Product'] and containedInPlace linking to the hostel
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- JSON-LD scripts can be injected via `<script dangerouslySetInnerHTML>` directly in page JSX (before Header)
+- Map over an array of schemas to render multiple JSON-LD blocks cleanly
+- UnitPriceSpecification inside Offer priceSpecification represents per-unit pricing for hotels
+
+### Gotchas
+- prd.json has non-ASCII characters (em-dashes) — must open with encoding='utf-8' in Python
+- containedInPlace must be extracted as a const to avoid repeating the hostel object in both schemas
+
