@@ -42,6 +42,11 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://pelangicapsulehostel.com",
+    languages: {
+      "en": "https://pelangicapsulehostel.com",
+      "x-default": "https://pelangicapsulehostel.com",
+      // "zh-CN": "https://pelangicapsulehostel.com/zh", // Enable when Chinese translation is ready
+    },
     types: {
       "application/rss+xml": "https://pelangicapsulehostel.com/feed.xml",
     },

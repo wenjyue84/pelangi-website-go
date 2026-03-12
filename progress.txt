@@ -735,3 +735,59 @@ This user story is for a **Next.js** application, not Frappe/Python. Here is the
 ### Gotchas
 - `python3` on Windows defaults to cp1252 encoding — use `encoding='utf-8'` when reading/writing prd.json
 - `rtk npx tsc` fails because rtk doesn't have a tsc handler on this system — use `npx tsc --noEmit` directly
+
+
+## Pre-analysis for US-019 (Gemini 2.5 Pro)
+### Technical Brief: US-019 PWA Manifest
+
+**1. Files to Modify:**
+- **Create:** `site/src/app/manifest.ts` (This is the core file for the manifest generation).
+- **Create:** `site/public/icons/icon-192x192.png`
+- **Create:** `site/public/icons/icon-512x512.png`
+- **Verify:** `site/src/app/layout.tsx` (Ensure no conflicting manual `<link rel="manifest">` tag exists).
+
+**2. Framework/Next.js Features:**
+- **Next.js App Router:** The implementation relies on the file-based metadata convention.
+- **`MetadataRoute.Manifest` type:** This is the return type for the `manifest()` function, providing strong typing for the manifest fields.
+- **PWA (Progressive Web App):** The manifest is a key component for enabling PWA features like "Add to Home Screen".
+
+**3. Implementation Approach:**
+1. Create the new file `site/src/app/manifest.ts`.
+2. Import the `MetadataRoute` type: `import { MetadataRoute } from 'next'`.
+3. Define and export a default function that returns the manifest object: `export default function manifest(): MetadataRoute.Manifest { ... }`.
+4. Populate the manifest with the specified properties:
+   - `name`: 'Pelangi Capsule Hostel'
+   - `short_name`: 'Pelangi Hostel'
+   - `start_url`: '/'
+   - `display`: 'standalone'
+   - `background_color`: '#ffffff` (or a suitable light color)
+   - `theme_color`: '#a68b64'
+   - `icons`: An array of objects pointing to the icon paths (e.g., `/icons/icon-192x192.png`).
+5. Create the two icon files from the main `logo.png` and place them in `site/public/icons/`.
+
+**4. Edge Cases & Gotchas:**
+- Icon paths in the manifest must be absolute URLs from the root of the site (e.g., `/icons/icon-512x512.png`), not relative paths.
+- The `theme_color` should be consistent with any `theme-color` meta tag in `layout.tsx` for a seamless browser UI experience.
+- Testing the "Add to Home Screen" prompt requires deployment to an HTTPS environment (like Vercel) and specific browser conditions. It may not appear on every page load.
+- Ensure the icon `.png` files have transparent backgrounds if the original logo does.
+
+
+## Iteration N - Story: Add hreflang tags for EN/ZH-CN multilingual SEO groundwork (US-020)
+
+### What was implemented
+- Added `languages` property to `metadata.alternates` in `site/src/app/layout.tsx`
+- Languages: 'en' and 'x-default' both pointing to canonical URL https://pelangicapsulehostel.com
+- Added commented-out 'zh-CN' line for easy enablement when Chinese translation is ready
+- Structure allows seamless addition of Chinese content at /zh without breaking existing hreflang setup
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Next.js metadata.alternates.languages maps to hreflang tags automatically
+- x-default is the fallback language for unspecified locales
+
+### Gotchas
+- None — straightforward metadata update
+
+## Iteration 11 - Fri, Mar 13, 2026  [TIME] AM
+Completed: Add hreflang tags for EN/ZH-CN multilingual SEO groundwork (ID: US-020) in 2m
+
