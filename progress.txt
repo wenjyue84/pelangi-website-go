@@ -3189,3 +3189,56 @@ This is a technical brief for implementing the contact form feature (US-068) on 
 - The `priority` prop on Next.js `Image` in Hero.tsx already injects a preload at component render time, but the layout-level preload ensures it appears in the initial HTML document before component hydration
 - Preloading `/_next/image` URLs (not raw `/images/*.png`) is critical — the browser never fetches the raw path when using Next.js Image optimization
 - This preload fires on all pages (not just homepage) since it's in root layout; acceptable trade-off for a hostel site where homepage is primary landing page
+## Iteration 6 - Fri, Mar 13, 2026  7:05:37 AM
+Incomplete: Add contact inquiry form with Resend email auto-reply on /contact page (ID: US-068) — attempt 1/3
+
+
+## Pre-analysis for US-068 (Gemini 2.5 Pro)
+This user story is for a **Next.js/TypeScript** application, not Frappe/Python. The technical brief below is tailored for the Next.js framework based on the story's `technicalNotes`.
+
+### Technical Brief: US-068 Contact Form
+
+**1. Files to Modify/Create:**
+*   **`site/src/app/contact/page.tsx`**: Create this new page to host the contact form and render the location map.
+*   **`site/src/components/ContactForm.tsx`**: New client component (`'use client'`) for the form UI, state management (e.g., `useState`, `useFormState`), and client-side validation.
+*   **`site/src/app/actions.ts`** (or similar): New file to define the Next.js Server Action (`'use server'`) that will process the form submission.
+*   **`site/src/components/emails/InquiryAcknowledgement.tsx`**: New component for the Resend auto-reply email template.
+*   **`site/.env.local`**: Add `RESEND_API_KEY` and `ADMIN_EMAIL` variables.
+
+**2. DocTypes & Hooks:**
+*   None. This is a Next.js project; Frappe concepts do not apply.
+
+**3. Implementation Approach:**
+*   Use a Next.js Server Action to handle form submission, ensuring no new API routes are needed.
+*   The action will validate input server-side (Zod recommended), check a honeypot field, and perform rate limiting against the user's IP.
+*   On success, it will instantiate the `Resend` client and make two parallel calls:
+    1.  `resend.emails.send()` to send the inquiry to the `ADMIN_EMAIL`.
+    2.  `resend.emails.send()` to send the `<InquiryAcknowledgement />` component to the user's email.
+*   Log all form submissions to a local file or logging service before sending emails to prevent data loss on API failure.
+
+**4. Gotchas & Edge Cases:**
+*   **Rate Limiting on Vercel:** IP tracking for rate limiting can be unreliable on serverless platforms. Use Vercel's `request.ip` or a library like `request-ip`.
+*   **Error Handling:** The Server Action must have robust `try/catch` blocks to handle Resend API failures gracefully and return a user-friendly error state to the form.
+*   **Environment Variables:** Ensure `.env.local` is added to `site/.gitignore`.
+
+
+
+## Iteration - Story: US-068 - Add contact inquiry form with Resend email auto-reply on /contact page
+
+### What was implemented
+- `site/src/app/actions/contact.ts` — Server Action with honeypot check, in-memory rate limiting (3/hr/IP), Resend email dispatch (admin notification + guest auto-reply)
+- `site/src/components/ContactForm.tsx` — Client component with fields: name (required), email (required), check-in date, check-out date, number of guests, message (required); uses `useActionState` pattern from newsletter form
+- Updated `site/src/app/contact/page.tsx` — Added ContactForm above Location section, removed `force-static` export
+- Installed `resend` npm package
+- Email templates use inline HTML (no React Email dependency needed)
+- Admin email includes all form fields with reply-to set to guest's email
+- Guest auto-reply includes booking link, WhatsApp number, and 24h response expectation
+
+### Patterns discovered
+- Server Actions work independently of page rendering mode — `useActionState` pattern works even without `force-static`
+- Rate limiting in server actions can use `headers()` to get IP, matching the middleware pattern
+- Dynamic import of `resend` in the action avoids bundling issues
+
+### Gotchas
+- `force-static` must be removed from pages that use server actions (contact page now renders dynamically)
+- Environment variables `RESEND_API_KEY` and `ADMIN_EMAIL` must be set for email delivery; form gracefully falls back to WhatsApp if not configured

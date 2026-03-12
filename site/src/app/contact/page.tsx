@@ -1,9 +1,8 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Location from "@/components/Location";
+import ContactForm from "@/components/ContactForm";
 import type { Metadata } from "next";
-
-export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
     title: "Contact | Pelangi Capsule Hostel Johor Bahru",
@@ -18,6 +17,7 @@ export default function ContactPage() {
         <main id="main-content" className="min-h-screen">
             <Header />
             <div className="pt-20">
+                <ContactForm />
                 <Location />
             </div>
             <Footer />
