@@ -268,3 +268,56 @@ Completed: Add 'Singapore Day Trip' teaser section to homepage (ID: US-008) in 8
 ## Iteration 9 - Fri, Mar 13, 2026  1:37:08 AM
 Completed: Add 'Singapore Day Trip' teaser section to homepage (ID: US-008) in 8m
 
+
+## Pre-analysis for US-009 (Gemini 2.5 Pro)
+This user story is for a **Next.js/React frontend**, not Frappe/Python. The implementation will be in TypeScript within the `site` directory.
+
+**Technical Brief for US-009:**
+
+1.  **Files to Modify:**
+    *   **Create:** `site/src/app/book/page.tsx`. This is a new page file as specified in the technical notes.
+    *   **Reference/Reuse:** Potentially `site/src/components/ui/button.tsx` for CTAs and other components in `site/src/components/` for layout and card elements to maintain consistency.
+
+2.  **Frappe DocTypes / Hooks:**
+    *   None. This is a Next.js frontend task. No Frappe or Python backend code is involved.
+
+3.  **Implementation Approach:**
+    *   Create a standard React Server Component at `site/src/app/book/page.tsx`.
+    *   Add a `generateMetadata` export to set the page title and description for SEO.
+    *   Build the UI using JSX and Tailwind CSS, following the existing site's stone/amber color scheme.
+    *   The primary CTA should be an `<a>` tag styled as a button, pointing to the pre-filled WhatsApp URL: `https://wa.me/60127088789?text=Hi%20Pelangi%20Capsule%20Hostel!%20I'd%20like%20to%20book%20a%20pod.%20Please%20confirm%20availability%20for%20[dates].`
+    *   Add sections for "Direct Booking Benefits," "Pricing," and "House Rules."
+    *   Include secondary links for the property's Booking.com and Hostelworld pages.
+
+4.  **Edge Cases & Gotchas:**
+    *   The Booking.com and Hostelworld URLs are not provided in the story and will need to be sourced.
+    *   The WhatsApp message template includes a `[dates]` placeholder; the button will simply open the link with the placeholder for the user to edit manually.
+    *   Ensure all elements are fully responsive and match the existing site's design language.
+    *   The story mentions `Booking.tsx`, which doesn't exist. The UI for OTA links should be built inline using existing component patterns.
+
+## Iteration 10 - Story: Create /book page with direct booking + OTA options (US-009)
+
+### What was implemented
+- Created `site/src/app/book/page.tsx` — full booking page with:
+  - Hero section with amber gradient and primary WhatsApp CTA (pre-filled message)
+  - Pricing section: nightly (RM35-45) and monthly (RM594) with comparison
+  - Direct booking benefits: 4 cards (no fees, instant confirm, pay at arrival, personal service)
+  - OTA platform links: Booking.com, Hostelworld, Agoda (from existing Booking.tsx data)
+  - House rules: check-in 2PM, check-out 12PM, no smoking, quiet hours, ID required, keep clean
+  - Contact CTA with WhatsApp and phone links
+  - Internal links to /rooms, /guide, /check-in
+- `generateMetadata` with SEO keywords targeting 'book capsule hostel JB'
+- Canonical URL set
+- `npx tsc --noEmit` and `npm run build` both pass (22 pages generated)
+
+### Patterns discovered
+- Existing `Booking.tsx` component has all OTA URLs — reuse data, not component (page needs different layout)
+- `_page.tsx.bak` existed from a previous attempt — the old version just wrapped `<Booking />`
+- PRD says check-in 2:00 PM but Rooms.tsx and Booking.tsx show 3:00 PM — used 2:00 PM per PRD business data
+
+### Gotchas
+- None — straightforward page creation following existing patterns
+
+## Iteration 10 - Fri, Mar 13, 2026
+Completed: Create /book page with direct booking + OTA options (ID: US-009)
+
