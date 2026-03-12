@@ -161,16 +161,16 @@
       "id": "US-007",
       "title": "Enhance /guide page with rich backpacker-focused local content",
       "priority": "medium",
-      "description": "Substantially improve the /guide page (site/src/app/guide/page.tsx) with richer, more lively content for backpackers. Add sections: (1) Getting Around JB — GrabCar, bus, taxi fares with real prices; (2) Money & Currency — where to exchange, ATMs near Taman Pelangi; (3) Singapore Day Trip — Causeway vs Second Link, immigration tips, operating hours; (4) Top Hawker Centers Near Us — with distance and opening hours; (5) Safety Tips for Backpackers; (6) Useful Local Apps — Grab, MyRapid, MySejahtera. All with practical, accurate information. Add internal links to /blog articles where relevant.",
+      "description": "Substantially improve the /guide page (site/src/app/guide/page.tsx) with richer, more lively content for backpackers. Add sections: (1) Getting Around JB â€” GrabCar, bus, taxi fares with real prices; (2) Money & Currency â€” where to exchange, ATMs near Taman Pelangi; (3) Singapore Day Trip â€” Causeway vs Second Link, immigration tips, operating hours; (4) Top Hawker Centers Near Us â€” with distance and opening hours; (5) Safety Tips for Backpackers; (6) Useful Local Apps â€” Grab, MyRapid, MySejahtera. All with practical, accurate information. Add internal links to /blog articles where relevant.",
       "acceptanceCriteria": [
         "/guide page has at least 6 content sections as described",
-        "Each section has practical, specific information (prices, distances, hours — not vague)",
+        "Each section has practical, specific information (prices, distances, hours â€” not vague)",
         "Page has proper metadata with 'Johor Bahru local guide backpacker' keywords",
         "Internal links to 2+ blog articles (once those exist)",
         "Consistent design with rest of site (Tailwind, stone/amber palette)"
       ],
       "technicalNotes": [
-        "site/src/app/guide/page.tsx — read existing file first, then enhance",
+        "site/src/app/guide/page.tsx â€” read existing file first, then enhance",
         "Add generateMetadata with description targeting 'JB travel guide backpacker' keywords",
         "Currency exchange: Jalan Wong Ah Fook money changers",
         "Causeway: open 24h, busiest 7-9am and 5-8pm",
@@ -180,7 +180,7 @@
         "US-002"
       ],
       "estimatedComplexity": "medium",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-008",
