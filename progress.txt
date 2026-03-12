@@ -2724,3 +2724,63 @@ This technical brief is for implementing a newsletter signup form on a Next.js/T
 ### Gotchas
 - CommunityEvents is a client component; injecting <script> JSON-LD directly inside it would only be inserted by the browser, not the SSR HTML — separate server component is the correct pattern
 - prd.json uses UTF-8 encoding; must open with encoding='utf-8' in Python or get cp1252 decode error on Windows
+## Iteration 8 - Fri, Mar 13, 2026  6:02:41 AM
+Incomplete: Add email newsletter capture form for guest re-marketing (ID: US-048) — attempt 1/3
+
+
+## Pre-analysis for US-048 (Gemini 2.5 Pro)
+Here is the technical brief for the user story.
+
+***
+
+**To:** Claude Agent
+**From:** Gemini Agent
+**Subject:** Technical Brief for US-048: Email Newsletter Capture Form
+
+This user story is for a **Next.js** website, not a Frappe/Python application as initially referenced. The goal is to add a newsletter signup form to the blog page using a Next.js Server Action to integrate with the Brevo (Sendinblue) email API.
+
+**1. Files to Modify / Create:**
+
+*   **`site/src/app/blog/page.tsx` (or similar):** This is the main blog index page. A new `NewsletterForm` component will need to be imported and rendered here, likely near the bottom.
+*   **`site/src/components/ui/NewsletterForm.tsx` (New File):** Create a new client component for the form UI. It should include `name` and `email` fields, a submit button, and handle displaying success/error states. Use React's `useFormState` hook to manage form interactions.
+*   **`site/src/app/blog/actions.ts` (New File):** Create a new file for the Server Action. This file will export an async function marked with `"use server";`. This function will receive the form data and be responsible for calling the Brevo API.
+*   **`site/.env.local`:** Add the `BREVO_API_KEY` to the environment variables.
+*   **`site/src/components/CookieConsent.tsx` (Potential):** May need minor text updates to mention email marketing practices if required by PDPA.
+
+**2. Involved Framework Concepts (Next.js):**
+
+*   **Next.js Server Action:** This is the core mechanism for handling the form submission on the server side. It avoids creating a separate API route and keeps the logic co-located with the feature.
+*   **React `useFormState` hook:** Recommended for managing form state transitions (pending, success, error) and displaying messages back to the user from the Server Action.
+
+**3. Recommended Implementation Approach:**
+
+1.  Define a Server Action `subscribeToNewsletter(prevState, formData)` in `actions.ts`.
+2.  This action should parse `name` and `email` from the `formData` object.
+3.  Use `fetch` to send a `POST` request to the Brevo API endpoint (`https://api.brevo.com/v3/contacts`) with the contact's email and attributes. The API key should be read from `process.env.BREVO_API_KEY`.
+4.  In the `NewsletterForm.tsx` component, use the `useFormState` hook, passing it the server action.
+5.  Bind the form's `action` to the action returned by the hook. Display form status and messages based on the state returned by the hook.
+6.  Ensure all form fields have `<label>` elements for accessibility.
+
+**4. Edge Cases & Gotchas:**
+
+*   **API Security:** The Brevo API key is sensitive. Ensure it's only accessed server-side within the Server Action and that `site/.env.local` is listed in `site/.gitignore`.
+*   **Error Handling:** The Server Action must gracefully handle failures from the `fetch` call (e.g., Brevo API is down, network issues) or non-2xx responses from the API (e.g., invalid email format, contact already exists). Return a clear error message to the form.
+*   **PDPA Compliance:** The acceptance criteria mention a privacy note ("No spam. Unsubscribe anytime."). This is crucial. Ensure no consent checkboxes are pre-checked.
+*   **User Feedback:** The form must provide clear, immediate feedback for both success and failure scenarios. Don't leave the user wondering if their submission worked.
+
+
+## Iteration - Story: US-063 Enable Turbopack in next dev script
+
+### What was implemented
+- Updated `site/package.json` dev script from `next dev` to `next dev --turbo`
+- This enables Turbopack (stable in Next.js 15) for faster dev server startup and Hot Module Replacement
+- Production builds still use Webpack (Turbopack is dev-only)
+
+### Patterns discovered
+- Single-line change in package.json scripts section
+- No config files needed — `--turbo` flag is all that's required
+
+### Gotchas
+- `rtk` wrapper not available in this environment for tsc — use `npx tsc --noEmit` directly
+- prd.json must be opened with `encoding='utf-8'` in Python due to unicode characters
+
