@@ -57,8 +57,9 @@ export default function ChatWidget() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, sending]);
 
-  // ─── Focus input when opened ───────────────────────────────────────
+  // ─── Focus input when opened + notify other components ─────────────
   useEffect(() => {
+    window.dispatchEvent(new CustomEvent('chatwidget-toggle', { detail: isOpen }));
     if (isOpen) {
       setHasUnread(false);
       setTimeout(() => inputRef.current?.focus(), 120);

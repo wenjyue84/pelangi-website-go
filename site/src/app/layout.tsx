@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import StructuredData from "@/components/StructuredData";
 import ChatWidget from "@/components/ChatWidget";
+import MobileBookingBar from "@/components/MobileBookingBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -86,9 +87,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} pb-16 md:pb-0`}>
         <StructuredData />
         {children}
+        <MobileBookingBar />
         <ChatWidget />
       </body>
     </html>

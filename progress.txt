@@ -573,3 +573,55 @@ Here is a technical brief for user story US-019.
 - prd.json has non-ASCII characters (em-dashes) — must open with encoding='utf-8' in Python
 - containedInPlace must be extracted as a const to avoid repeating the hostel object in both schemas
 
+## Iteration 6 - Fri, Mar 13, 2026  2:10:36 AM
+Incomplete: Add web app manifest (manifest.json) for mobile installability (ID: US-019) — attempt 2/3
+
+
+## Pre-analysis for US-019 (Gemini 2.5 Pro)
+Here is the technical brief for the user story:
+
+**To:** Claude Code Agent
+**From:** Gemini Agent
+**Re:** Technical Brief for US-019: Add Web App Manifest
+
+This user story requires adding Progressive Web App (PWA) capabilities to the existing Next.js application. The primary goal is to generate a `manifest.json` file so users can install the website on their mobile devices.
+
+**1. Files to Modify/Create:**
+*   **Create:** `site/src/app/manifest.ts`. This is the core file Next.js uses to generate the manifest.
+*   **Create:** `site/public/icons/icon-192.png` and `site/public/icons/icon-512.png`. These icon files are required by the manifest. You can use the existing `assets/images/logo.png` as the source for these.
+
+**2. Framework & Conventions:**
+*   This is a **Next.js 15 App Router** project.
+*   The key convention is using the special file `manifest.ts` within the `src/app` directory to automatically generate the `/manifest.json` route.
+*   You will need to import the `MetadataRoute` type from the `next` package.
+
+**3. Implementation Approach:**
+1.  Create the `site/src/app/manifest.ts` file.
+2.  Import the `Manifest` type: `import { MetadataRoute } from 'next'`.
+3.  Export a default function that returns the manifest object: `export default function manifest(): MetadataRoute.Manifest { ... }`.
+4.  Populate the manifest object with: `name`, `short_name`, `start_url: '/'`, `display: 'standalone'`, `theme_color: '#a68b64'`, and `background_color`.
+5.  For the `icons` property, provide an array of objects pointing to the public paths `/icons/icon-192.png` and `/icons/icon-512.png`.
+6.  Create the corresponding PNG files in the `site/public/icons/` directory.
+
+**4. Edge Cases & Verification:**
+*   Ensure the icon paths in `manifest.ts` are absolute paths from the public root (e.g., `/icons/icon-192.png`), not relative file paths.
+*   The icon files *must* exist at the specified paths, or the manifest will be invalid.
+*   Verify success by running the dev server and navigating to `/manifest.json` to see the generated output.
+
+
+## Iteration 15 - Story: Add sticky mobile WhatsApp booking bar for conversion
+
+### What was implemented
+- `site/src/components/MobileBookingBar.tsx` — sticky bottom bar with WhatsApp icon, "Book from RM35/night" text, and green "Book Now" CTA
+- Modified `site/src/components/ChatWidget.tsx` — dispatches `chatwidget-toggle` custom event so MobileBookingBar hides when chat is open
+- Modified `site/src/app/layout.tsx` — imported MobileBookingBar, added `pb-16 md:pb-0` to body to prevent content overlap
+- Bar uses z-40 (below ChatWidget z-50), md:hidden (mobile only), links to wa.me/60127088789 with pre-filled message
+- Accessible: aria-label on bar container and CTA link
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Custom events (`window.dispatchEvent(new CustomEvent(...))`) work well for cross-component communication without shared state/context in Next.js
+
+### Gotchas
+- Body padding-bottom needed on mobile to prevent fixed bar from covering page footer content
+- ChatWidget button at z-50 floats above the bar at z-40 — no visual conflict
