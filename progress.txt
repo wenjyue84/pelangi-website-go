@@ -1700,3 +1700,49 @@ Here is the plan for implementing GA4 analytics in the Next.js application.
 - `@next/third-parties` must be installed separately (`npm install @next/third-parties`) — not included with next by default
 - GA4 script won't load with placeholder ID `G-XXXXXXXXXX` — owner must replace with real measurement ID from GA4 property settings
 - `Booking.tsx` needed "use client" directive since it now calls `sendGAEvent` (a client-only function)
+## Iteration 1 - Fri, Mar 13, 2026  4:11:41 AM
+Completed: Integrate GA4 analytics via @next/third-parties/google (ID: US-035) in 6m
+
+
+## Pre-analysis for US-036 (Gemini 2.5 Pro)
+This technical brief outlines the implementation for user story US-036. Note: The story pertains to a Next.js/React application, not Frappe/Python.
+
+**1. Python Files to Modify:**
+This is a Next.js project. No Python files are involved. The following new TypeScript files must be created within the `site/` directory:
+- `src/app/error.tsx`
+- `src/app/global-error.tsx`
+
+**2. Frappe DocTypes / Hooks:**
+Not applicable. The relevant Next.js App Router conventions are file-based error boundaries. `error.tsx` creates a boundary for its segment, and `global-error.tsx` acts as a global catch-all.
+
+**3. Recommended Implementation Approach:**
+- **`site/src/app/error.tsx`**:
+    - Must start with the `'use client';` directive.
+    - The component receives props: `{ error: Error, reset: () => void }`.
+    - Create a branded component that displays an error message and a "Try Again" button.
+    - The button's `onClick` handler must call the `reset()` function to re-render the segment.
+- **`site/src/app/global-error.tsx`**:
+    - Also requires `'use client';`.
+    - This component replaces the root layout entirely, so it **must** include its own `<html>` and `<body>` tags.
+    - Implement a simple, branded "Something went wrong" page with a refresh button.
+
+**4. Edge Cases & Gotchas:**
+- The custom error UI from `error.tsx` and `global-error.tsx` is **only visible in production**. In development, Next.js will show its own error overlay. Testing requires running a production build (`npm run build && npm run start`).
+- `error.tsx` does not catch errors originating in the `layout.tsx` file of the same route segment. `global-error.tsx` is the fallback for that.
+- The `reset()` function will re-run the code. If the error is persistent (not a one-off network issue), the error boundary will simply be triggered again. Consider logging the `error` object to a service like Sentry or LogRocket.
+
+
+## Iteration N - Story: Add App Router error boundaries: error.tsx and global-error.tsx
+
+### What was implemented
+- `site/src/app/error.tsx` — branded error page with Header/Footer, amber "Try again" button calling reset(), "Go home" link, optional error.digest display
+- `site/src/app/global-error.tsx` — last-resort fallback with own <html>/<body> tags, inline styles (no Tailwind available at this level), amber branding, reset() and homepage link
+
+### Patterns discovered
+- global-error.tsx cannot use Tailwind classes — must use inline styles since it replaces the root layout (no stylesheet loaded)
+- error.tsx CAN use Header/Footer and Tailwind since root layout still wraps it
+
+### Gotchas
+- Both files require 'use client' directive
+- global-error.tsx must include <html lang="en"> and <body> — Next.js requirement when root layout crashes
+- error.digest is optional (string | undefined) — guard with conditional rendering
