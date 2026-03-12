@@ -155,3 +155,35 @@ Completed: Add Article schema and BreadcrumbList structured data to blog pages (
 
 ### Gotchas
 - None — straightforward story
+## Iteration 5 - Fri, Mar 13, 2026  1:15:09 AM
+Completed: Update sitemap.ts to include all blog posts (ID: US-006) in 2m
+
+
+## Iteration 6 - Story: Add RSS/Atom feed at /feed.xml for the blog (US-003)
+
+### What was implemented
+- `site/src/app/feed.xml/route.ts` — Next.js Route Handler that:
+  - Imports blogPosts from @/data/blog/posts
+  - Sorts posts by date (newest first)
+  - Generates valid RSS 2.0 XML with proper namespaces
+  - Includes channel metadata (title, link, description, language, lastBuildDate)
+  - Maps each post to RSS <item> with: title, link, description (excerpt), pubDate, category, guid
+  - Uses CDATA for content field (safely embeds HTML)
+  - Escapes XML special characters (&, <, >, ", ')
+  - Returns Response with Content-Type: application/xml and cache headers
+- `site/src/app/layout.tsx` — added RSS feed link to metadata.alternates.types
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Next.js Route Handlers at /app/[route]/route.ts replace Express-style endpoints
+- RSS feeds should sort posts newest-first for feed reader UX
+- CDATA sections in RSS allow raw HTML content without escaping
+- metadata.alternates.types is the Next.js way to add alternate links (RSS, etc.) to layout metadata
+
+### Gotchas
+- XML special chars must be escaped in channel/item metadata but not in CDATA
+- RSS 2.0 uses RFC 822 date format (toUTCString())
+
+## Iteration 6 - Fri, Mar 13, 2026  1:18:00 AM
+Completed: Add RSS/Atom feed at /feed.xml for the blog (ID: US-003) in 3m
+

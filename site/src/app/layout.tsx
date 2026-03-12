@@ -41,6 +41,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://pelangicapsulehostel.com",
+    types: {
+      "application/rss+xml": "https://pelangicapsulehostel.com/feed.xml",
+    },
   },
   openGraph: {
     title: "Pelangi Capsule Hostel | Budget Accommodation in Johor Bahru",
