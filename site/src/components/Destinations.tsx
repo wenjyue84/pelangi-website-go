@@ -305,6 +305,7 @@ export default function Destinations() {
                   src={dest.image}
                   alt={`${dest.name} - ${dest.category} destination near Johor Bahru`}
                   fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute top-3 left-3">
@@ -379,6 +380,7 @@ export default function Destinations() {
                 src={selectedDest.image}
                 alt={selectedDest.name}
                 fill
+                sizes="(max-width: 768px) 100vw, 600px"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-transparent to-transparent" />

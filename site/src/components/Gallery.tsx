@@ -139,6 +139,7 @@ export default function Gallery() {
                 src={photo.src}
                 alt={photo.alt}
                 fill
+                sizes="(max-width: 768px) 288px, 320px"
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent
@@ -169,6 +170,7 @@ export default function Gallery() {
                 src={photo.src}
                 alt={photo.alt}
                 fill
+                sizes="(max-width: 768px) 160px, 192px"
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-stone-900/0 group-hover:bg-stone-900/20 transition-colors" />
@@ -204,6 +206,7 @@ export default function Gallery() {
                   src={dest.src}
                   alt={dest.name}
                   fill
+                  sizes="(max-width: 768px) 256px, 288px"
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/20 to-transparent" />
@@ -263,6 +266,7 @@ export default function Gallery() {
               src={selectedImage}
               alt="Pelangi Capsule Hostel Johor Bahru - Gallery photo view"
               fill
+              sizes="100vw"
               className="object-contain"
             />
           </div>
@@ -310,6 +314,7 @@ export default function Gallery() {
                       src={photo.src}
                       alt={photo.alt}
                       fill
+                      sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 20vw"
                       className="object-cover transition-transform duration-300 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-stone-900/0 group-hover:bg-stone-900/30 transition-colors" />

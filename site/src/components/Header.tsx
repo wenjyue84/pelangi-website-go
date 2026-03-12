@@ -27,6 +27,7 @@ export default function Header() {
               src="/images/logo.png"
               alt="Pelangi Capsule Hostel Logo - Budget accommodation in Johor Bahru"
               fill
+              sizes="40px"
               className="object-contain"
             />
           </div>

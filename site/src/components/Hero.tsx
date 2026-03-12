@@ -11,6 +11,7 @@ export default function Hero() {
           alt="Pelangi Capsule Hostel - Affordable Japanese-style pod accommodation in Johor Bahru near Singapore"
           fill
           priority
+          sizes="100vw"
           className="object-cover"
         />
         {/* Elegant overlay gradient */}

@@ -13,6 +13,7 @@ export default function About() {
                 src="/images/exterior.JPG"
                 alt="Pelangi Capsule Hostel building"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover image-zoom"
               />
             </div>

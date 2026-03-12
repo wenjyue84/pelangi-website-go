@@ -69,6 +69,7 @@ export default function Rooms() {
                 src="/images/capsule-4.webp"
                 alt="Modern Japanese-style capsule pod interior at Pelangi Hostel Johor Bahru with personal lighting and privacy curtain"
                 fill
+                sizes="(max-width: 1024px) 100vw, 60vw"
                 className="object-cover image-zoom"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-stone-900/40 to-transparent" />
@@ -82,6 +83,7 @@ export default function Rooms() {
                 src="/images/capsule-2.webp"
                 alt="Comfortable premium mattress in budget capsule hostel pod in Taman Pelangi JB"
                 fill
+                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 50vw, 30vw"
                 className="object-cover image-zoom"
               />
             </div>
@@ -90,6 +92,7 @@ export default function Rooms() {
                 src="/images/capsule-3.webp"
                 alt="Capsule pod amenities including USB charging ports and personal ventilation at Pelangi Hostel"
                 fill
+                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 50vw, 30vw"
                 className="object-cover image-zoom"
               />
             </div>
@@ -228,6 +231,7 @@ export default function Rooms() {
                 src="/images/destinations/pasar-malam.jpg"
                 alt="Taman Pelangi Pasar Malam night market with street food stalls near Pelangi Capsule Hostel"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent" />
