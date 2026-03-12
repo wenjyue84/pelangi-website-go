@@ -1010,3 +1010,55 @@ Based on the user story, here is a concise technical brief for implementation:
 - `X-Frame-Options: SAMEORIGIN` already present — keep it for older browser compat; `frame-ancestors 'self'` in CSP takes precedence in modern browsers
 - YouTube embeds need `frame-src https://www.youtube.com`; Google Maps embeds need `frame-src https://www.google.com`
 
+## Iteration 2 - Fri, Mar 13, 2026  3:03:39 AM
+Incomplete: Add LodgingBusiness schema: checkinTime, checkoutTime, availableLanguage, petsAllowed (ID: US-025) — attempt 1/3
+
+
+## Pre-analysis for US-025 (Gemini 2.5 Pro)
+This user story is for a **Next.js/TypeScript** frontend, not a Frappe/Python backend. The technical brief should target the `site/src/components/StructuredData.tsx` file.
+
+Here is the technical brief:
+
+**Project:** Pelangi Website (Next.js)
+**Objective:** Enhance the `Hostel` JSON-LD schema in `StructuredData.tsx` with `LodgingBusiness` properties to improve Google rich result eligibility.
+
+**File to Modify:**
+*   `site/src/components/StructuredData.tsx`: This component contains the JSON-LD schema definition for the hostel.
+
+**Involved Data/Types:**
+*   **DocType:** None. This is a frontend change.
+*   **Data Source:** The `hostelData` object, likely imported from `site/src/data/hostelData.ts`, is the source for existing schema information. This object should be the source for `checkinTime`, `checkoutTime`, and the number of rooms.
+
+**Implementation Approach:**
+1.  Locate the `hostelSchema` object within `StructuredData.tsx`.
+2.  Add the `checkinTime` and `checkoutTime` properties, sourcing their values (e.g., "14:00", "12:00") from the `hostelData` object and formatting them as ISO 8601 Time strings (e.g., 'T14:00').
+3.  Add the `numberOfRooms` property, sourcing the pod count from `hostelData`.
+4.  Hardcode the `petsAllowed` property to `false`.
+5.  Hardcode the `availableLanguage` property as an array of `Language` objects for "English" and "Chinese", per schema.org standards: `[{ "@type": "Language", "name": "English" }, { "@type": "Language", "name": "Chinese" }]`.
+6.  Ensure the `starRating` property is not present in the final schema.
+
+**Gotchas & Edge Cases:**
+*   **Data Consistency:** Ensure the values for check-in/out times and room count exist in `hostelData.ts`. If not, they must be added there first to maintain a single source of truth.
+*   **ISO 8601 Formatting:** The time values must be prefixed with 'T' (e.g., 'T14:00').
+*   **Validation:** After implementation, copy the generated JSON-LD from the page source and validate it using the Google Rich Results Test tool to confirm correctness.
+
+## Iteration N - Story: US-025 - Add LodgingBusiness schema properties
+
+### What was implemented
+- Updated `site/src/components/StructuredData.tsx` hostelSchema:
+  - Changed `checkinTime` from `"14:00"` to `"T14:00:00"` (ISO 8601 Time format)
+  - Changed `checkoutTime` from `"12:00"` to `"T12:00:00"` (ISO 8601 Time format)
+  - Added `numberOfRooms: 24` (actual pod count)
+  - Added `petsAllowed: false`
+  - Added `availableLanguage` array with Language objects for English and Chinese
+- No `starRating` property added (hostel has no official star rating body)
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- checkinTime/checkoutTime were already present but not in ISO 8601 format — just needed the `T` prefix and seconds
+- Pod count (24) confirmed from progress.txt research notes
+
+### Gotchas
+- ISO 8601 Time format requires `T` prefix: `"T14:00:00"` not `"14:00"`
+- Language objects use `@type: "Language"` with a `name` field, not just string values
+

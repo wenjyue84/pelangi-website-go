@@ -42,8 +42,20 @@ export default function StructuredData() {
       "opens": "00:00",
       "closes": "23:59"
     },
-    "checkinTime": "14:00",
-    "checkoutTime": "12:00",
+    "checkinTime": "T14:00:00",
+    "checkoutTime": "T12:00:00",
+    "numberOfRooms": 24,
+    "petsAllowed": false,
+    "availableLanguage": [
+      {
+        "@type": "Language",
+        "name": "English"
+      },
+      {
+        "@type": "Language",
+        "name": "Chinese"
+      }
+    ],
     "amenityFeature": [
       {
         "@type": "LocationFeatureSpecification",
