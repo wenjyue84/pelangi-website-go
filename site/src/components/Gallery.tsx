@@ -55,9 +55,10 @@ export default function Gallery() {
     const scroll = (direction: 'left' | 'right') => {
       if (scrollRef.current) {
         const scrollAmount = 320;
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         scrollRef.current.scrollBy({
           left: direction === 'left' ? -scrollAmount : scrollAmount,
-          behavior: 'smooth'
+          behavior: prefersReducedMotion ? 'auto' : 'smooth'
         });
       }
     };

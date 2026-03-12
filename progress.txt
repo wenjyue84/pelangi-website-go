@@ -2316,3 +2316,52 @@ Here is the technical brief for the agent:
 - `prose prose-stone prose-lg` from @tailwindcss/typography applies to the content div for styled body text
 - Privacy policy table uses raw HTML table elements (not prose-styled) for the third-party processors section
 
+## Iteration 1 - Fri, Mar 13, 2026  5:19:34 AM
+Completed: Create /privacy-policy page with PDPA Section 7 compliant content (ID: US-049) in 4m
+
+
+## Pre-analysis for US-050 (Gemini 2.5 Pro)
+This user story is for a **Next.js/Tailwind CSS** project, not a Frappe/Python application. The goal is to respect the `prefers-reduced-motion` accessibility setting to disable animations for users who are sensitive to motion.
+
+Here is the technical brief based on the provided JSON:
+
+**1. Files to Modify:**
+*   `site/src/app/globals.css`: To add a site-wide media query that disables all CSS transitions and animations.
+*   `site/src/components/Hero.tsx`: To check for JavaScript-driven scroll animations and disable them based on the user's preference.
+*   `site/src/components/Gallery.tsx`: To disable any scroll-triggered fade-in or animation effects.
+*   `site/src/components/Destinations.tsx`: To inspect for and disable any JS-based animation logic.
+
+**2. Frameworks/Hooks Involved:**
+*   **Tailwind CSS:** Animations and transitions are likely implemented using Tailwind's utility classes (`transition`, `duration-*`, `animate-*`).
+*   **Next.js/React:** Components like `Hero.tsx` use React hooks (`useEffect`, `useState`, `useRef`) and potentially the Intersection Observer API for scroll animations.
+
+**3. Implementation Approach:**
+*   In `globals.css`, add the provided `@media (prefers-reduced-motion: reduce)` block to globally neutralize animations and transitions.
+*   In the specified React components, use a `useEffect` hook to check `window.matchMedia('(prefers-reduced-motion: reduce)').matches`.
+*   Store this boolean preference in a state variable.
+*   Conditionally skip adding animation classes or triggering Intersection Observer animations if the preference is set to `reduce`.
+
+**4. Edge Cases & Gotchas:**
+*   Ensure that disabling motion does not hide content or break component layouts. The visual end-state of an animation (e.g., an element becoming visible) must still be applied instantly.
+*   Hover and focus styles should remain, only the transition *between* states should be removed.
+*   The `!important` keyword in the global CSS override is necessary to override Tailwind's utility class specificity.
+*   Server-Side Rendering (SSR): `window.matchMedia` is a client-side API. Any check must be performed within a `useEffect` hook or after the component has mounted to avoid errors during server rendering.
+
+
+## Iteration - Story: US-050 Implement prefers-reduced-motion across all CSS and JS animations
+
+### What was implemented
+- **globals.css**: Added `@media (prefers-reduced-motion: reduce)` block setting `animation-duration: 0.01ms !important`, `animation-iteration-count: 1 !important`, `transition-duration: 0.01ms !important`, `scroll-behavior: auto !important` for all elements
+- **Gallery.tsx**: Updated `scroll()` function to check `window.matchMedia('(prefers-reduced-motion: reduce)').matches` and use `behavior: 'auto'` instead of `'smooth'` when reduced motion is preferred
+
+### Patterns discovered
+- Hero.tsx uses custom Tailwind keyframe animations (`animate-fade-in`, `animate-slide-up`) and built-in ones (`animate-bounce`, `animate-pulse`) — all handled purely by CSS, no JS needed
+- Destinations.tsx uses only CSS transitions (`transition-all duration-300`, etc.) — CSS media query handles everything
+- Gallery.tsx is the only component with JS-driven scroll behavior that needed an explicit `matchMedia` check
+
+### Gotchas
+- The global `@media (prefers-reduced-motion: reduce)` rule with `!important` correctly overrides Tailwind's utility classes without requiring changes to each individual component
+- `scrollBy({ behavior: 'smooth' })` is a JS API call — NOT affected by CSS `scroll-behavior: auto`, so must be patched in JS
+- `window.matchMedia` is client-safe in Gallery.tsx because it's a `"use client"` component inside a callback (not in render/SSR path)
+
+## Iteration 1 - Fri, Mar 13, 2026 - Completed: Implement prefers-reduced-motion (ID: US-050)
