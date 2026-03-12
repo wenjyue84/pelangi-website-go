@@ -1,319 +1,325 @@
 {
   "stories": [
     {
-      "title": "Integrate GA4 analytics via @next/third-parties/google",
+      "title": "Create /privacy-policy page with PDPA Section 7 compliant content",
       "priority": "high",
-      "description": "The site has a CookieConsent component but zero analytics tracking code. Without GA4, there is no visibility into traffic sources, booking funnel drop-off, or blog performance. The @next/third-parties/google package provides a Next.js-native GoogleAnalytics component that defers loading until after hydration for performance.",
+      "description": "Malaysia's Personal Data Protection Act 2010 (PDPA) Section 7 requires a privacy notice disclosing what personal data is collected, the purpose of collection, and user rights to access/correct data. The site currently collects guest emails via the newsletter form and processes analytics via GA4, but has no privacy policy page. This is a legal compliance requirement.",
       "acceptanceCriteria": [
-        "GoogleAnalytics component with measurement ID added to root layout.tsx, gated behind cookie consent",
-        "sendGAEvent helper used for at minimum: 'book_click', 'whatsapp_click', and blog page views",
-        "GA4 script does NOT load before the user accepts cookie consent (PDPA/GDPR)",
-        "Google Tag Assistant confirms events are received in debug view"
+        "A /privacy-policy route exists and returns a 200 with full page content",
+        "Page discloses: data categories collected (name, email, IP, cookies), processing purposes (booking, analytics, marketing), third-party processors (GA4, Sentry), data retention periods, and user rights (access, correction, withdrawal)",
+        "Footer contains a visible 'Privacy Policy' link pointing to /privacy-policy",
+        "CookieConsent banner links to /privacy-policy",
+        "Page includes Data Controller contact details and registration note per PDPA",
+        "generateMetadata sets canonical, noindex:false, and descriptive title/description"
       ],
       "technicalNotes": [
-        "Use @next/third-parties/google — official package, no extra bundle weight",
-        "Ref: https://nextjs.org/docs/messages/next-script-for-ga",
-        "CookieConsent.tsx already exists — wire the consent callback to conditionally render <GoogleAnalytics />",
-        "Measurement ID format: G-XXXXXXXXXX from GA4 property settings"
+        "Create site/src/app/privacy-policy/page.tsx",
+        "PDPA 2010 Section 7 — notice and choice principle: https://www.pdp.gov.my/",
+        "Reference GDPR Article 13/14 equivalents for EU visitors already covered by cookie consent",
+        "Add link in site/src/components/Footer.tsx and site/src/components/CookieConsent.tsx"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "source": "https://nextjs.org/docs/messages/next-script-for-ga"
+      "source": "https://www.pdp.gov.my/ppdpv1/en/faq/"
     },
     {
-      "title": "Add App Router error boundaries: error.tsx and global-error.tsx",
+      "title": "Implement prefers-reduced-motion across all CSS and JS animations",
       "priority": "high",
-      "description": "The Next.js App Router requires explicit error.tsx files per route segment for graceful error handling. Currently the site has no error boundaries — a runtime error on any page results in a blank screen with no user guidance. global-error.tsx is the last-resort fallback that replaces the root layout on catastrophic errors.",
+      "description": "Users with vestibular disorders, epilepsy, or motion sensitivity rely on `prefers-reduced-motion: reduce` to suppress animations. WCAG 2.3.3 (AAA) and WCAG 2.2.2 (AA) both have related requirements, and Google's Lighthouse audits flag missing reduced-motion support. The site uses Tailwind transitions and scroll-triggered effects that need to respect this OS-level preference.",
       "acceptanceCriteria": [
-        "src/app/error.tsx created with a branded fallback UI and a 'Try again' reset button",
-        "src/app/global-error.tsx created with its own <html> and <body> tags as required by Next.js",
-        "Error component calls reset() prop when user clicks retry",
-        "Error page matches hostel branding (not default Next.js error page)",
-        "Accessing a broken route in production shows the custom error UI, not a blank page"
+        "All CSS transition and animation classes are wrapped in `@media (prefers-reduced-motion: no-preference)` or overridden inside `@media (prefers-reduced-motion: reduce)`",
+        "In globals.css, a root-level block sets animation-duration, animation-iteration-count, transition-duration to near-zero and scroll-behavior to auto for reduced motion users",
+        "Any JS-driven scroll animation (intersection observers for fade-in) checks `window.matchMedia('(prefers-reduced-motion: reduce)').matches` and skips animations if true",
+        "Lighthouse accessibility audit passes with no motion-related flags",
+        "Visual appearance on hover/focus states is preserved — only motion is removed, not styling"
       ],
       "technicalNotes": [
-        "error.tsx receives { error: Error, reset: () => void } props",
-        "global-error.tsx must include <html> and <body> as it replaces root layout",
-        "In development an overlay is shown instead; test in production build (npm run build && npm start)",
-        "Ref: https://nextjs.org/docs/app/getting-started/error-handling"
+        "Add to site/src/app/globals.css: @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } }",
+        "WCAG Technique C39: https://www.w3.org/WAI/WCAG22/Techniques/css/C39",
+        "Check Hero.tsx, Gallery.tsx, Destinations.tsx for any JS animation or intersection observer fade-in classes"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "source": "https://nextjs.org/docs/app/getting-started/error-handling"
+      "source": "https://www.w3.org/WAI/WCAG22/Techniques/css/C39"
     },
     {
-      "title": "Remove duplicate public/robots.txt — rely solely on robots.ts",
+      "title": "Audit and fix WCAG 1.4.3 color contrast failures across all components",
       "priority": "high",
-      "description": "There are two robots files: the dynamic src/app/robots.ts (Next.js App Router convention) and a static public/robots.txt. The static file in /public takes precedence over the dynamically generated one, meaning the App Router robots.ts is silently ignored. This is a technical SEO inconsistency that prevents the sitemap URL from being properly advertised.",
+      "description": "WCAG 2.1 SC 1.4.3 (Level AA) requires a minimum 4.5:1 contrast ratio for normal text and 3:1 for large text. Common failure points include amber/orange CTAs on white, grey placeholder text, badge text on coloured backgrounds, and footer links. A systematic audit using automated tooling followed by targeted fixes ensures the site meets AA compliance.",
       "acceptanceCriteria": [
-        "public/robots.txt file is archived (not permanently deleted per project policy)",
-        "GET /robots.txt returns the correct response generated by src/app/robots.ts",
-        "Sitemap URL in robots output matches https://pelangicapsulehostel.com/sitemap.xml",
-        "Google Search Console 'Robots.txt' report shows no errors after deploy"
+        "All normal text (under 18pt / 14pt bold) achieves at least 4.5:1 contrast against its background",
+        "All large text and UI component boundaries achieve at least 3:1 contrast",
+        "Zero contrast errors reported by axe-core or Lighthouse accessibility audit",
+        "Amber/orange button text is darkened or the button background adjusted to meet 4.5:1 — amber-500 (#f59e0b on white = 2.26:1) fails and must be replaced",
+        "Grey placeholder text in forms meets 4.5:1 (typically requires #767676 or darker on white)"
       ],
       "technicalNotes": [
-        "Next.js App Router: src/app/robots.ts generates /robots.txt at request time",
-        "Files in /public are served as-is and override App Router route handlers for the same path",
-        "Archive the old public/robots.txt content to 4-archive/ before removal",
-        "Ref: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots"
+        "Run Lighthouse Accessibility audit or axe DevTools to enumerate all failures first",
+        "Use WebAIM Contrast Checker: https://webaim.org/resources/contrastchecker/",
+        "Tailwind amber-700 (#b45309) on white = 5.01:1 passes; amber-500 (#f59e0b) on white = 2.26:1 fails",
+        "Fix badge foreground/background pairs in BlogCard.tsx, BlogFilter.tsx, and category pages",
+        "WCAG 1.4.3: https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "source": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+    },
+    {
+      "title": "Add GeoCoordinates to LodgingBusiness schema for Google Maps local pack",
+      "priority": "high",
+      "description": "The existing LodgingBusiness JSON-LD in StructuredData.tsx is missing a `geo` property with precise latitude and longitude. Google uses GeoCoordinates for local pack positioning, Maps integration, and Knowledge Panel accuracy. Hostelworld and Booking.com listings already have coordinates, so the website's structured data should match to improve local SEO.",
+      "acceptanceCriteria": [
+        "LodgingBusiness JSON-LD in StructuredData.tsx includes a `geo` property of type `GeoCoordinates`",
+        "GeoCoordinates contains `latitude` and `longitude` with at least 5 decimal places matching the physical address",
+        "The `address` PostalAddress object includes `addressCountry: 'MY'`, `postalCode`, `addressLocality: 'Johor Bahru'`, and `addressRegion: 'Johor'`",
+        "Google Rich Results Test validates the updated schema without errors",
+        "The coordinates match the pin location on Google Maps for the hostel"
+      ],
+      "technicalNotes": [
+        "Edit site/src/components/StructuredData.tsx — add geo: { '@type': 'GeoCoordinates', latitude: X.XXXXX, longitude: Y.YYYYY }",
+        "Schema.org GeoCoordinates: https://schema.org/GeoCoordinates",
+        "Google LocalBusiness structured data docs: https://developers.google.com/search/docs/appearance/structured-data/local-business",
+        "Verify coordinates match Google Business Profile pin to avoid NAP inconsistency"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "source": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots"
+      "source": "https://schema.org/GeoCoordinates"
     },
     {
-      "title": "Add image entries to sitemap.ts for gallery and room photos",
-      "priority": "medium",
-      "description": "sitemap.ts generates page URLs but contains no image entries. Google's image sitemap extension allows crawlers to discover gallery images, room photos, and hero images — critical for a hostel whose visual appeal drives bookings. This is especially important since Next.js lazy-loads images that Googlebot may not execute scripts to find.",
+      "title": "Apply rate limiting middleware to /api/public and /api/chat proxy routes",
+      "priority": "high",
+      "description": "The Next.js site proxies booking API calls (/api/public/*) and Rainbow AI chat (/api/chat/*) to the admin server. These endpoints have no rate limiting, making them vulnerable to DoS attacks, credential stuffing, and API abuse. OWASP API Security Top 10 item API4:2023 (Unrestricted Resource Consumption) specifically covers this risk.",
       "acceptanceCriteria": [
-        "Gallery page sitemap entry includes an images[] array with all /images/*.webp URLs and descriptive captions",
-        "Rooms page entry includes capsule pod images with captions",
-        "Homepage entry includes hero image",
-        "Each image entry has url, title, and caption fields as per Google image sitemap specification",
-        "Google Search Console Image Indexing report shows increased indexed images after deploy"
+        "Requests to /api/public/* are limited to 30 requests per minute per IP; excess requests receive HTTP 429 with a Retry-After header",
+        "Requests to /api/chat/* are limited to 20 requests per minute per IP; excess requests receive HTTP 429",
+        "Rate limit headers (X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset) are present on API responses",
+        "Legitimate users completing a normal booking flow are not rate-limited",
+        "Rate limiting is implemented at the Edge in site/src/middleware.ts before the proxy rewrite executes"
       ],
       "technicalNotes": [
-        "Next.js MetadataRoute.Sitemap supports images property per entry since Next.js 14.2",
-        "Image sitemap format: { url, images: [{ url, title, caption }] }",
-        "All image URLs must be absolute (https://pelangicapsulehostel.com/images/...)",
-        "Ref: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap"
+        "Implement in site/src/middleware.ts using @upstash/ratelimit with Upstash Redis free tier, or use a simple in-memory sliding window with next-rate-limit for zero-infrastructure option",
+        "OWASP API4:2023: https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/",
+        "Next.js Middleware docs: https://nextjs.org/docs/app/building-your-application/routing/middleware",
+        "Upstash ratelimit: https://github.com/upstash/ratelimit-js"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "source": "https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/"
+    },
+    {
+      "title": "Add static OG images for /rooms, /amenities, and /guide pages",
+      "priority": "medium",
+      "description": "Blog posts already have dynamic OG images via next/og ImageResponse, but the key conversion pages (/rooms, /amenities, /guide) fall back to the generic site-wide OG image. Unique per-page OG images increase click-through rates by 2-3x on social shares and appear correctly in WhatsApp link previews. WhatsApp requires images under 200 KB for reliable CDN delivery.",
+      "acceptanceCriteria": [
+        "/rooms page has a unique OG image showing capsule pod photography with 'Capsule Rooms from RM35/night' text overlay",
+        "/amenities page has a unique OG image with relevant facilities photography",
+        "/guide page has a unique OG image with JB skyline/landmark and 'Johor Bahru Backpacker Guide' text",
+        "Each page's generateMetadata exports openGraph.images with width: 1200, height: 630, and alt text",
+        "All three OG images are under 200 KB",
+        "og:image:alt is populated with descriptive text on all three pages"
+      ],
+      "technicalNotes": [
+        "Option A: Create static PNG/JPEG files at site/public/images/og-rooms.jpg, og-amenities.jpg, og-guide.jpg",
+        "Option B: Use next/og opengraph-image.tsx convention per route (matches pattern used by blog)",
+        "Update generateMetadata in site/src/app/rooms/page.tsx, amenities/page.tsx, guide/page.tsx",
+        "Test with: https://opengraphdebug.com/ and share on WhatsApp to verify thumbnail",
+        "Next.js opengraph-image file convention: https://nextjs.org/docs/app/api-reference/file-conventions/opengraph-image"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "source": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap"
+      "source": "https://nextjs.org/docs/app/api-reference/file-conventions/opengraph-image"
     },
     {
-      "title": "Add VideoObject schema to check-in page for YouTube embed",
+      "title": "Add TouristAttraction schema markup to /guide page for JB attractions",
       "priority": "medium",
-      "description": "The check-in page embeds a YouTube video but has no VideoObject structured data. Google uses VideoObject schema to generate video rich results and video carousels — particularly valuable for search queries like 'pelangi hostel check in' or 'capsule hostel JB how to check in', driving qualified traffic from travelers actively planning their stay.",
+      "description": "The /guide page lists major Johor Bahru attractions and activities for backpackers but has no structured data. Adding TouristAttraction (or Place) schema with name, description, and geo coordinates for each listed attraction enables rich snippets in search and helps Google understand the page as a destination guide, boosting its local SEO value and authority.",
       "acceptanceCriteria": [
-        "VideoObject JSON-LD added to check-in page with name, description, thumbnailUrl, uploadDate, and embedUrl",
-        "thumbnailUrl uses a publicly accessible HTTPS URL at least 1200px wide",
-        "Google Rich Results Test validates the VideoObject without errors",
-        "Schema does not duplicate or conflict with page's existing Metadata"
+        "Each major attraction section on /guide has a corresponding TouristAttraction JSON-LD block with @type, name, description, and geo (GeoCoordinates)",
+        "Minimum 5 attractions are marked up with TouristAttraction schema",
+        "A BreadcrumbList schema is present on the /guide page (Home > Guide)",
+        "Google Rich Results Test shows no errors for the /guide page markup",
+        "Structured data is injected via <script type='application/ld+json'> scoped to the page component, not globally in layout"
       ],
       "technicalNotes": [
-        "Required Google fields: name, description, thumbnailUrl, uploadDate",
-        "Recommended: duration (ISO 8601, e.g. PT3M20S), contentUrl or embedUrl",
-        "YouTube thumbnail: https://img.youtube.com/vi/6Ux11oBZaQQ/maxresdefault.jpg",
-        "Ref: https://developers.google.com/search/docs/appearance/structured-data/video"
+        "Create a GuideStructuredData component or inline JSON-LD in site/src/app/guide/page.tsx",
+        "Schema.org TouristAttraction: https://schema.org/TouristAttraction",
+        "Attractions to include: Johor Bahru City Square, Danga Bay, KSL City Mall, Arulmigu Raja Mariamman Temple, Johor Bahru Old Chinese Temple",
+        "Can use @type: ['TouristAttraction', 'Place'] for broader matching"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "source": "https://developers.google.com/search/docs/appearance/structured-data/video"
+      "source": "https://schema.org/TouristAttraction"
     },
     {
-      "title": "Add Event schema to CommunityEvents component",
+      "title": "Add Event schema to CommunityEvents component for Google event rich results",
       "priority": "medium",
-      "description": "CommunityEvents.tsx renders hostel events but has no Event structured data. Google surfaces events in search results and Google Events, driving incremental traffic from travelers planning a visit to JB. Events appearing in Google's event rich results significantly increase click-through rates for local and travel queries.",
+      "description": "The CommunityEvents component displays hostel and local JB events on the homepage but has no Event structured data. Adding Event JSON-LD enables Google to display event rich results (date, location, ticket link) in the SERP event carousel, increasing click-through for event-related queries such as 'things to do in JB this weekend'.",
       "acceptanceCriteria": [
-        "Each event in events.ts data includes startDate, endDate, location, and description fields",
-        "CommunityEvents component emits Event JSON-LD for each upcoming event",
-        "Event schema includes organizer (Pelangi Capsule Hostel), location (PostalAddress), and eventStatus",
-        "Google Rich Results Test validates Event schema without errors",
-        "Past events are excluded from schema output (only future/ongoing events emitted)"
+        "Each event rendered by CommunityEvents has a corresponding Event JSON-LD with: @type: 'Event', name, startDate (ISO 8601), endDate, location (Place with address), description, and organizer",
+        "Events use eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode' for in-person events",
+        "Events use eventStatus: 'https://schema.org/EventScheduled'",
+        "Google Rich Results Test validates Event markup with no critical errors",
+        "Past events (startDate < today) are excluded from the JSON-LD output to avoid stale data warnings"
       ],
       "technicalNotes": [
-        "Required fields: name, startDate, location (Place or PostalAddress)",
-        "Recommended: endDate, description, image, organizer, eventAttendanceMode",
-        "EventAttendanceMode: https://schema.org/OfflineEventAttendanceMode for in-person events",
-        "Ref: https://developers.google.com/search/docs/appearance/structured-data/event"
+        "Edit site/src/components/CommunityEvents.tsx to inject per-event <script type='application/ld+json'>",
+        "Schema.org Event: https://schema.org/Event",
+        "Google Event rich results docs: https://developers.google.com/search/docs/appearance/structured-data/event",
+        "Filter events array before building JSON-LD: events.filter(e => new Date(e.startDate) >= new Date())"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
       "source": "https://developers.google.com/search/docs/appearance/structured-data/event"
     },
     {
-      "title": "Add schema.org Review markup to Reviews and Testimonials components",
+      "title": "Set up Lighthouse CI in GitHub Actions for automated performance budgets",
       "priority": "medium",
-      "description": "Reviews.tsx and Testimonials.tsx display guest reviews as HTML but emit no structured data. Individual Review items with schema.org markup help Google understand review sentiment and attribute content correctly, improving E-E-A-T signals. The existing AggregateRating has correctly been removed; adding only Review items (not AggregateRating) is safe and compliant.",
+      "description": "Without automated Lighthouse checks, performance regressions (bundle bloat, new render-blocking resources, CLS shifts) go undetected until after deployment. Lighthouse CI on GitHub Actions runs audits on every PR and fails the check if scores drop below defined thresholds, creating a continuous performance safety net for the website.",
       "acceptanceCriteria": [
-        "Each testimonial/review item wrapped in schema.org Review JSON-LD with reviewBody, author (Person type), and reviewRating",
-        "Source platform (Google, Hostelworld, Booking.com) included as author.sameAs where available",
-        "Schema does not include AggregateRating (must remain absent per US-026 decision)",
-        "Google Rich Results Test shows no warnings for the Review markup",
-        "Reviews include datePublished where date is known"
+        "A .github/workflows/lighthouse.yml workflow file exists and triggers on pull_request to master/main",
+        "Workflow builds the Next.js app, starts it on a local port, and runs lhci autorun against the homepage, /rooms, and /blog URLs",
+        "Lighthouse CI fails the build if: Performance < 80, Accessibility < 90, Best Practices < 90, SEO < 90",
+        "A lighthouserc.json config file exists at the repo root with the above assertions and numberOfRuns: 3",
+        "Workflow results appear as a named GitHub status check on each PR"
       ],
       "technicalNotes": [
-        "Use @type: Review, reviewRating: { @type: Rating, ratingValue, bestRating: 5 }",
-        "Author: { @type: Person, name: '...' }",
-        "itemReviewed should reference the Hostel schema entity via @id",
-        "Ref: https://schema.org/Review"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "source": "https://schema.org/Review"
-    },
-    {
-      "title": "Add ImageGallery and ImageObject schema to Gallery page",
-      "priority": "medium",
-      "description": "The /gallery page has no structured data. Adding ImageGallery schema with individual ImageObject entries enables Google Image Search rich results and increases photo discoverability. For a hostel, gallery photos are the primary conversion asset — surfacing them in image search drives qualified visitors who are visually evaluating accommodation options.",
-      "acceptanceCriteria": [
-        "Gallery page emits ImageGallery JSON-LD containing an array of ImageObject entries",
-        "Each ImageObject includes contentUrl, name (descriptive caption), description, and encodingFormat (image/webp)",
-        "All contentUrl values are absolute HTTPS URLs",
-        "Google Rich Results Test validates without errors",
-        "At least 6 key images (pods, common areas, exterior) included in schema"
-      ],
-      "technicalNotes": [
-        "Schema: { @type: ImageGallery, image: [{ @type: ImageObject, contentUrl, name, ... }] }",
-        "Absolute URLs required for all contentUrl values",
-        "Ref: https://schema.org/ImageGallery and https://schema.org/ImageObject",
-        "Ref: https://koanthic.com/en/image-schema-markup-complete-implementation-guide-2026/"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "source": "https://schema.org/ImageGallery"
-    },
-    {
-      "title": "Implement Sentry error monitoring for client, server, and edge",
-      "priority": "medium",
-      "description": "Production errors are currently silent — there is no error monitoring configured. Without Sentry, broken pages go undetected until a guest reports them. For a live hostel booking site, undetected booking form errors or API failures directly cost revenue. Sentry's Next.js SDK instruments client, server, and Edge Runtime with a single setup wizard.",
-      "acceptanceCriteria": [
-        "@sentry/nextjs installed and initialised via Sentry wizard (npx @sentry/wizard@latest -i nextjs)",
-        "sentry.client.config.ts, sentry.server.config.ts present",
-        "withSentryConfig wrapper applied in next.config.ts",
-        "Source maps uploaded to Sentry on build via SENTRY_AUTH_TOKEN environment variable",
-        "A test error triggers an issue in the Sentry project dashboard",
-        "DSN stored in NEXT_PUBLIC_SENTRY_DSN env var, not hardcoded"
-      ],
-      "technicalNotes": [
-        "Run: npx @sentry/wizard@latest -i nextjs",
-        "Set tracesSampleRate: 0.1 (10%) in production to control costs",
-        "Configure ignoreErrors for known non-actionable browser errors (ResizeObserver, etc.)",
-        "Ref: https://docs.sentry.io/platforms/javascript/guides/nextjs/"
+        "Install: npm install --save-dev @lhci/cli",
+        "@lhci/cli package and docs: https://github.com/GoogleChrome/lighthouse-ci",
+        "Use treoshark/lighthouse-ci-action from GitHub Marketplace for simplified setup",
+        "web.dev Lighthouse CI guide: https://web.dev/articles/lighthouse-ci",
+        "numberOfRuns: 3 reduces variance from system load fluctuations"
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
-      "source": "https://docs.sentry.io/platforms/javascript/guides/nextjs/"
+      "source": "https://github.com/GoogleChrome/lighthouse-ci"
     },
     {
-      "title": "Replace eager YouTube iframe with facade pattern on check-in page",
+      "title": "Upgrade web-vitals to v4 and report INP attribution breakdown to GA4",
       "priority": "medium",
-      "description": "The check-in page loads the YouTube iframe eagerly, triggering third-party requests on every page load regardless of whether the user watches the video. A facade pattern (poster image + play overlay) defers the iframe until click, reducing initial payload by 500KB+, improving LCP, and reducing unnecessary data transfer for mobile visitors on slower connections.",
+      "description": "The current GA4 integration via @next/third-parties captures page views but not Core Web Vitals breakdown data. Web Vitals v4's attribution build provides INP sub-component data (inputDelay, processingTime, presentationDelay) and LoAF (Long Animation Frames) that pinpoint which interactions are slow. Sending this to GA4 as custom events enables data-driven INP optimization.",
       "acceptanceCriteria": [
-        "YouTube iframe is not loaded until user clicks the play button",
-        "Thumbnail image shown as poster (fetched from YouTube's CDN at build time or statically)",
-        "Play button overlay is keyboard-accessible (focusable, activates on Enter/Space)",
-        "Play overlay meets WCAG 2.2 Target Size minimum (≥24×24px)",
-        "After click, iframe loads and autoplays correctly",
-        "Lighthouse Performance score maintains or improves vs current baseline"
+        "The web-vitals package is version 4.x in package.json",
+        "A 'use client' component imports from web-vitals/attribution and registers onINP, onLCP, onCLS handlers",
+        "Each metric fires a GA4 custom event via gtag with: metric_name, metric_value, metric_id, and for INP: input_delay, processing_time, presentation_delay, interaction_target",
+        "Events appear in GA4 DebugView as web_vitals events with correct parameters",
+        "The reporter component is loaded with next/dynamic (ssr: false) to avoid SSR issues"
       ],
       "technicalNotes": [
-        "Thumbnail URL: https://img.youtube.com/vi/6Ux11oBZaQQ/hqdefault.jpg",
-        "Pattern: useState(false) → show poster image with button → on click setState(true) → render iframe",
-        "Mark the poster image as Next.js <Image> with loading='eager' since it IS the LCP for that section",
-        "Ref: https://web.dev/third-party-facades/"
+        "npm install web-vitals@^4",
+        "web-vitals v4 CHANGELOG: https://github.com/GoogleChrome/web-vitals/blob/main/CHANGELOG.md",
+        "Attribution import: import { onINP } from 'web-vitals/attribution'",
+        "Create site/src/components/WebVitalsReporter.tsx as a 'use client' component loaded in layout.tsx",
+        "Use navigator.sendBeacon for reliable metric delivery on page unload"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "source": "https://web.dev/third-party-facades/"
+      "source": "https://github.com/GoogleChrome/web-vitals"
     },
     {
-      "title": "Fix WCAG 2.2 SC 2.4.11 — Focus Not Obscured by sticky MobileBookingBar",
+      "title": "Add @next/bundle-analyzer and enforce 250 KB initial JS budget per route",
       "priority": "medium",
-      "description": "WCAG 2.2 SC 2.4.11 (Level AA) requires keyboard-focused components are not entirely hidden by sticky UI. The MobileBookingBar is fixed at the viewport bottom. When users tab through footer links, booking CTAs, or cookie consent — elements near the bottom — the focused element may be completely hidden behind the bar, blocking keyboard navigation.",
+      "description": "As the site grows, JavaScript bundles can silently balloon with new dependencies. Without a bundle analyzer, there is no visibility into what contributes to load time. Setting a 250 KB initial JS budget for the homepage (Google's recommended threshold) and running analysis in CI prevents future regressions caused by unnoticed large imports.",
       "acceptanceCriteria": [
-        "All focusable elements on every page are at least partially visible when focused, even with MobileBookingBar visible",
-        "scroll-padding-bottom CSS applied to html or body matching bar height (~64px) on mobile viewports",
-        "Keyboard-only navigation test passes through all pages with no fully-obscured focus indicators",
-        "WAVE accessibility tool reports no Focus Not Obscured violations on any page",
-        "Fix does not break existing scroll behaviour for mouse users"
+        "@next/bundle-analyzer is installed as a dev dependency and wired into next.config.ts",
+        "Running ANALYZE=true npm run build opens a bundle treemap in the browser",
+        "A size-limit config in package.json defines a 250 KB budget for the main JS chunk and CI fails on breach",
+        "The three largest current bundle contributors are documented in a comment in next.config.ts",
+        "Sentry SDK tree-shaking is verified to be working (no unused Sentry modules in bundle)"
       ],
       "technicalNotes": [
-        "Fix: add scroll-padding-bottom: 4rem (64px) to html in globals.css, scoped to mobile only via @media",
-        "Alternatively use scroll-margin-bottom on interactive elements if global fix causes side effects",
-        "WCAG 2.2 SC 2.4.11 Level AA: component does not need to be fully visible, only partially visible",
-        "Ref: https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html"
+        "npm install --save-dev @next/bundle-analyzer",
+        "@next/bundle-analyzer docs: https://nextjs.org/docs/app/building-your-application/optimizing/bundle-analyzer",
+        "Wrap in next.config.ts: withBundleAnalyzer({ enabled: process.env.ANALYZE === 'true' })(nextConfig)",
+        "size-limit for CI enforcement: https://github.com/ai/size-limit",
+        "Sentry tree-shaking guide: https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/tree-shaking/"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "source": "https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html"
+      "source": "https://nextjs.org/docs/app/building-your-application/optimizing/bundle-analyzer"
     },
     {
-      "title": "Audit and remediate touch target sizes for WCAG 2.2 SC 2.5.8",
+      "title": "Add honeypot field to contact form to block spam bot submissions",
       "priority": "medium",
-      "description": "WCAG 2.2 SC 2.5.8 Target Size (Minimum) at Level AA requires interactive elements to have a minimum target size of 24×24 CSS pixels. The site has several candidates that may fall below this threshold: social media icon links in the Footer, blog category filter chips, and star rating icons. Failing this criterion can trigger legal accessibility complaints in EU (EAA) and US (ADA) contexts.",
+      "description": "The contact form at /contact has no bot protection. Spam bots that auto-fill all form fields will submit noise or malicious payloads. A CSS-hidden honeypot field (visible to bots that ignore CSS, invisible to real users) is a zero-friction, privacy-respecting alternative to reCAPTCHA that adds no third-party script, no cookie consent requirement, and no user friction.",
       "acceptanceCriteria": [
-        "All interactive elements have a touch target of at least 24×24px (target size or spacing offset)",
-        "Footer social media icon links have min-h-6 min-w-6 (24px) applied",
-        "BlogFilter category chips have min height of 24px",
-        "No clickable element smaller than 24×24px without sufficient spacing to adjacent targets",
-        "DevTools mobile emulation confirms all targets pass the 24×24px threshold"
+        "The contact form includes a hidden input field (e.g., name='website') styled with position: absolute; left: -9999px; opacity: 0 so real users cannot see or interact with it",
+        "The field has aria-hidden='true' and tabIndex={-1} to exclude it from keyboard navigation and screen readers",
+        "Server-side handling rejects (returns 400 or silently drops) any submission where the honeypot field is non-empty",
+        "Legitimate form submissions from real users are unaffected",
+        "No third-party scripts (reCAPTCHA, hCaptcha) are added to the page"
       ],
       "technicalNotes": [
-        "WCAG 2.2 SC 2.5.8 Level AA: 24×24px minimum target size OR 24px offset spacing around smaller targets",
-        "Use Tailwind min-h-6 min-w-6 (= 24px) as the minimum baseline for all interactive elements",
-        "Check: Footer social icons, BlogFilter.tsx chips, any icon-only buttons",
-        "Ref: https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html"
+        "Edit site/src/app/contact/page.tsx or the form component it uses",
+        "Honeypot pattern reference: https://css-tricks.com/fighting-spam-with-honeypots/",
+        "Add a <label> pointing to the honeypot field with visually-hidden text to confuse advanced bots that look for unlabelled fields",
+        "Combine with rate limiting (separate story) for layered bot protection"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "source": "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html"
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Blocking_Brute_Force_Attacks.html"
     },
     {
-      "title": "Add resource hints (preconnect/dns-prefetch) for third-party origins",
+      "title": "WCAG 2.2 SC 3.3.7: Audit and comply with Redundant Entry requirement",
       "priority": "medium",
-      "description": "The site makes requests to YouTube (check-in video), Google Maps (LocationMap iframe), and TripCDN (review images) without preconnect hints. Without these hints the browser pays a full DNS + TCP + TLS round-trip penalty on first use of each origin, increasing perceived load time. Preconnect for hot paths and dns-prefetch for cold paths reduce this overhead.",
+      "description": "WCAG 2.2 Success Criterion 3.3.7 Redundant Entry (Level A, new in WCAG 2.2) requires that information previously entered by the user in the same process is auto-populated or available for selection, avoiding cognitive burden of re-entering data. Any multi-step booking or enquiry flow on the site must comply with this new baseline Level A requirement.",
       "acceptanceCriteria": [
-        "layout.tsx includes preconnect for https://www.youtube.com and https://www.google.com",
-        "dns-prefetch added for https://ak-d.tripcdn.com",
-        "Preconnect tags appear in <head> before any resource from those origins is requested",
-        "Lighthouse 'Preconnect to required origins' audit passes with no warnings",
-        "No CORS errors in browser console related to preconnect hints"
+        "All forms on the site are audited for fields requesting the same data type more than once (e.g., email + confirm email) — duplicate-entry fields are either removed or auto-populated",
+        "If a confirm email field exists in the contact form, it uses browser autocomplete='email' pairing and is justified in a code comment",
+        "If the booking flow (proxied admin SPA) has multi-step data re-entry, it is documented as out-of-scope with a ticket raised to the admin team",
+        "A WCAG 2.2 SC 3.3.7 compliance note is added to the accessibility section of project documentation",
+        "Manual audit checklist passes with no violations in the site's own forms"
       ],
       "technicalNotes": [
-        "Add via Next.js metadata or directly in layout.tsx <head> using next/head",
-        "Use only 2-3 preconnect hints — too many compete for connections",
-        "Pair preconnect with crossOrigin='anonymous' for font/image origins",
-        "Ref: https://web.dev/preconnect-and-dns-prefetch/"
+        "WCAG 2.2 SC 3.3.7 Understanding: https://www.w3.org/WAI/WCAG22/Understanding/redundant-entry.html",
+        "Check site/src/app/contact/page.tsx for all form fields",
+        "Correct autocomplete attribute values per spec: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill",
+        "The /book route is a proxy — SC 3.3.7 compliance there is the admin SPA's responsibility"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "source": "https://web.dev/preconnect-and-dns-prefetch/"
+      "source": "https://www.w3.org/WAI/WCAG22/Understanding/redundant-entry.html"
     },
     {
-      "title": "Add email newsletter capture form for guest re-marketing",
+      "title": "Enable Turbopack in next dev script for faster local development startup",
       "priority": "low",
-      "description": "The site has no mechanism to capture visitor emails. Email is a proven re-marketing channel for hospitality — visitors who don't book immediately can be nurtured via a newsletter (local tips, JB updates, promotions). A lightweight inline signup form placed at the bottom of the blog index converts reader intent into a direct communication channel without requiring OTA commission.",
+      "description": "Next.js 15 ships Turbopack stable for development. It delivers up to 76.7% faster local server startup and 96.3% faster Fast Refresh compared to Webpack. Enabling it via the `--turbo` flag on the dev script is a zero-risk, zero-config developer experience improvement with no production impact.",
       "acceptanceCriteria": [
-        "Newsletter signup form added to blog index page bottom with name and email fields",
-        "Form connects to an email marketing service (Brevo/Mailchimp) via a server action or API route to avoid CSP violations",
-        "Success confirmation message shown on submit",
-        "Privacy note included: 'No spam. Unsubscribe anytime.'",
-        "Form has visible labels (not placeholder-only) per WCAG 1.3.1",
-        "CookieConsent updated to mention email marketing if applicable under PDPA"
+        "The dev script in site/package.json is updated to include the --turbo flag: 'next dev --turbo'",
+        "Running npm run dev starts the server using Turbopack (confirmed by terminal output showing 'Turbopack')",
+        "No TypeScript errors or missing module errors appear that were not present before enabling Turbopack",
+        "All existing pages load correctly in development mode with Turbopack",
+        "A comment in package.json or CLAUDE.md notes that Turbopack is dev-only; production builds still use Webpack"
       ],
       "technicalNotes": [
-        "Brevo (Sendinblue) free tier: 300 emails/day, unlimited contacts",
-        "Use a Next.js Server Action to call Brevo API — avoids adding external script to CSP",
-        "PDPA (Malaysia): requires explicit consent before adding to mailing list",
-        "Ref: https://developers.brevo.com/reference/createcontact"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "medium",
-      "source": "https://www.littlehotelier.com/blog/get-more-bookings/hotel-website-conversion-rate/"
-    },
-    {
-      "title": "Verify WCAG 2.2 SC 3.3.8 accessible authentication in booking flow",
-      "priority": "medium",
-      "description": "WCAG 2.2 SC 3.3.8 (Accessible Authentication, Minimum — Level AA) requires authentication and form processes not rely on cognitive tests (e.g., image CAPTCHA) as the only option. The /book page proxies an external SPA from admin.pelangicapsulehostel.com — this remote booking form must be verified to support password managers, not block paste, and offer accessible auth alternatives if any CAPTCHA is present.",
-      "acceptanceCriteria": [
-        "Booking SPA at /book supports password manager autofill (no autocomplete='off' on credential fields)",
-        "No field blocks paste operations (no onPaste preventDefault on any input)",
-        "If CAPTCHA is present in booking flow, at least one accessible alternative is offered",
-        "Contact form (if added in future) follows same rules",
-        "Test with screen reader confirms no authentication barriers in booking flow"
-      ],
-      "technicalNotes": [
-        "WCAG 2.2 SC 3.3.8 Level AA — new in WCAG 2.2, referenced in EAA (EU effective 2025) and ADA (US)",
-        "The proxied /book SPA (admin.pelangicapsulehostel.com) must also comply — coordinate with admin site",
-        "Ensure all <input> elements have appropriate autocomplete attributes",
-        "Ref: https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html"
+        "Edit site/package.json scripts.dev from 'next dev' to 'next dev --turbo'",
+        "Next.js 15 Turbopack stable blog: https://nextjs.org/blog/turbopack-for-development-stable",
+        "Turbopack docs: https://nextjs.org/docs/architecture/turbopack",
+        "Production build (next build) still uses Webpack — Turbopack production support is a future release"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "source": "https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html"
+      "source": "https://nextjs.org/docs/architecture/turbopack"
+    },
+    {
+      "title": "Add CSP violation reporting via report-uri directive to Sentry",
+      "priority": "medium",
+      "description": "The Content Security Policy is already implemented in enforce mode, but without a `report-uri` directive, CSP violations are silent — they block threats but provide no forensic data. Sentry (already installed) provides a dedicated CSP report endpoint. Adding the report-uri directive routes all violation reports into the existing Sentry project, enabling monitoring of injection attempts and misconfigured third-party scripts.",
+      "acceptanceCriteria": [
+        "The CSP header in next.config.ts includes a report-uri directive pointing to the Sentry security endpoint",
+        "The Sentry CSP report URI is stored in an environment variable NEXT_PUBLIC_SENTRY_CSP_REPORT_URI or SENTRY_CSP_REPORT_URI rather than hard-coded",
+        "Deliberately triggering a CSP violation in a development/staging environment produces a report in Sentry under Security Issues",
+        "Existing CSP enforcement (blocking behaviour) is unaffected — only reporting is added",
+        "Environment variable is documented in .env.example or project README"
+      ],
+      "technicalNotes": [
+        "Sentry CSP reporting docs: https://docs.sentry.io/product/security-policy-reporting/",
+        "Sentry security endpoint format: https://o<org-id>.ingest.sentry.io/api/<project-id>/security/?sentry_key=<public-key>",
+        "Add report-uri directive to cspHeader array in site/next.config.ts",
+        "Can also use report-to + Report-To header for newer Reporting API (browsers are migrating from report-uri to report-to)"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://docs.sentry.io/product/security-policy-reporting/"
     }
   ]
 }
