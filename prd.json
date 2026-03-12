@@ -144,10 +144,10 @@
         "/sitemap.xml includes all individual blog post URLs",
         "Each blog post entry has correct slug from posts.ts",
         "TypeScript compiles without errors",
-        "No hardcoded slugs — all generated dynamically from posts array"
+        "No hardcoded slugs â€” all generated dynamically from posts array"
       ],
       "technicalNotes": [
-        "site/src/app/sitemap.ts — update to import posts and map to sitemap entries",
+        "site/src/app/sitemap.ts â€” update to import posts and map to sitemap entries",
         "Import: import { posts } from '@/data/blog/posts'",
         "Add /blog and /blog/[slug] entries to the returned array"
       ],
@@ -155,7 +155,7 @@
         "US-001"
       ],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-007",
