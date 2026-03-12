@@ -15,6 +15,9 @@ export const metadata: Metadata = {
         "Johor Bahru getting around",
         "Singapore day trip Causeway",
     ],
+    alternates: {
+        canonical: "https://pelangicapsulehostel.com/guide",
+    },
     openGraph: {
         title: "Johor Bahru Backpacker Guide 2026 | Pelangi Capsule Hostel",
         description:

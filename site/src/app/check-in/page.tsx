@@ -1,6 +1,15 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Self Check-in Guide | Pelangi Capsule Hostel",
+    description: "Self check-in guide for Pelangi Capsule Hostel. Video tutorial, step-by-step instructions, check-in times, and contact info.",
+    alternates: {
+        canonical: "https://pelangicapsulehostel.com/check-in",
+    },
+};
 
 export default function CheckInPage() {
     return (
