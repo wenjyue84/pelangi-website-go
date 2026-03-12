@@ -88,7 +88,7 @@ const otaPlatforms = [
 
 export default function BookPage() {
   return (
-    <main className="min-h-screen bg-stone-50">
+    <main id="main-content" className="min-h-screen bg-stone-50">
       <Header />
 
       {/* Hero */}

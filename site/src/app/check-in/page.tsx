@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function CheckInPage() {
     return (
-        <main className="min-h-screen">
+        <main id="main-content" className="min-h-screen">
             <Header />
             <div className="pt-28 pb-16 container-custom">
                 <div className="max-w-4xl mx-auto">

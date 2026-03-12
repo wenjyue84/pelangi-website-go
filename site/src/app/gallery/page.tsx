@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function GalleryPage() {
     return (
-        <main className="min-h-screen">
+        <main id="main-content" className="min-h-screen">
             <Header />
             <div className="pt-20">
                 <Gallery />

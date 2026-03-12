@@ -127,7 +127,7 @@ export default function GuidePage() {
     ];
 
     return (
-        <main className="min-h-screen bg-stone-50">
+        <main id="main-content" className="min-h-screen bg-stone-50">
             <Header />
             <div className="pt-28 pb-16 container-custom">
                 <div className="max-w-4xl mx-auto">

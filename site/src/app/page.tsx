@@ -14,7 +14,7 @@ import SingaporeTeaser from "@/components/SingaporeTeaser";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-stone-50">
+    <main id="main-content" className="min-h-screen bg-stone-50">
       <Header />
       <Hero />
 

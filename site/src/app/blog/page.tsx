@@ -56,7 +56,7 @@ const blogBreadcrumbSchema = {
 
 export default function BlogPage() {
   return (
-    <main className="min-h-screen bg-stone-50">
+    <main id="main-content" className="min-h-screen bg-stone-50">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogBreadcrumbSchema) }}
