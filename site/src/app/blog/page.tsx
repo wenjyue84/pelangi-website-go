@@ -5,6 +5,8 @@ import BlogFilter from "@/components/BlogFilter";
 import NewsletterSignupForm from "@/components/NewsletterSignupForm";
 import { blogPosts } from "@/data/blog/posts";
 
+export const revalidate = 3600; // ISR: regenerate at most every hour
+
 export const metadata: Metadata = {
   title: "JB Travel Blog | Tips & Guides for Backpackers",
   description:

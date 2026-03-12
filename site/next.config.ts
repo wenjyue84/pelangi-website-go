@@ -28,6 +28,13 @@ const cspHeader = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  experimental: {
+    // Control Client Router Cache TTLs (Next.js 15 — staleTimes are in seconds)
+    staleTimes: {
+      dynamic: 30,   // Dynamic pages: cache prefetched links for 30s
+      static: 180,   // Static pages: cache prefetched links for 3 min
+    },
+  },
   async headers() {
     return [
       {

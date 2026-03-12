@@ -4,6 +4,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import GuideStructuredData from "@/components/GuideStructuredData";
 
+export const revalidate = 3600; // ISR: regenerate at most every hour
+
 export const metadata: Metadata = {
     title: "Johor Bahru Backpacker Guide 2026 | Pelangi Capsule Hostel",
     description:

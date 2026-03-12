@@ -7,6 +7,8 @@ import BlogStructuredData from "@/components/BlogStructuredData";
 import BlogPageViewTracker from "@/components/BlogPageViewTracker";
 import { blogPosts, getPostBySlug } from "@/data/blog/posts";
 
+export const revalidate = 3600; // ISR: regenerate at most every hour
+
 interface Props {
   params: Promise<{ slug: string }>;
 }

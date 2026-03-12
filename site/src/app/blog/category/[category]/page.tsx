@@ -11,6 +11,8 @@ import {
   getUniqueCategories,
 } from "@/data/blog/posts";
 
+export const revalidate = 3600; // ISR: regenerate at most every hour
+
 interface PageProps {
   params: Promise<{ category: string }>;
 }

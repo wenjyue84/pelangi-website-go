@@ -2979,3 +2979,58 @@ This technical brief is for a **JavaScript/Next.js** project, based on the provi
 - `eslint-config-next@latest` installed v16.1.6 which requires ESLint 9 flat config
 - The `set-state-in-effect` rule is new and strict — common patterns like reading cookies on mount need eslint-disable comments
 - `setConsentState(getConsent())` didn't trigger the rule (function call return), but `setMounted(true)` did (direct value)
+## Iteration 2 - Fri, Mar 13, 2026  6:42:47 AM
+Completed: Upgrade ESLint to v9 with flat config format (ID: US-064) in 10m
+
+
+## Pre-analysis for US-065 (Gemini 2.5 Pro)
+This user story describes a migration for a Next.js 15 application, not a Frappe/Python one. The concepts of `fetch` caching, `revalidate`, and `force-static` are specific to Next.js.
+
+Assuming the goal is to create a brief for the *actual* story provided, here is a technical brief for a Next.js developer:
+
+**Subject: Technical Brief for US-065: Audit Next.js 15 Caching**
+
+This story addresses the breaking change in Next.js 15 where `fetch` requests are no longer cached by default. The goal is to explicitly define caching behavior across the application to prevent performance regressions and ensure data freshness.
+
+**1. Files to Modify / Key Areas for Review:**
+*   Any Server Component using `fetch()`: `app/**/*.tsx`
+*   Route Handlers making GET requests: `app/api/**/*.ts`
+*   Static & semi-static pages: `app/(pages)/about`, `app/(pages)/amenities`, etc.
+*   Dynamic data pages: `app/(booking)/**`
+*   Blog/Guide pages: `app/blog/[slug]`, `app/guides/[slug]`
+
+**2. Core Next.js Concepts Involved:**
+*   `fetch()` API caching options: `{ cache: 'force-cache' | 'no-store' }`
+*   Incremental Static Regeneration (ISR): `{ next: { revalidate: <seconds> } }`
+*   Segment-level configuration: `export const dynamic = 'force-static';`, `export const revalidate = <seconds>;`
+
+**3. Recommended Implementation Approach:**
+1.  Globally search for all `fetch()` calls in server components and API routes.
+2.  For booking/pricing, apply `{ cache: 'no-store' }` to ensure live data.
+3.  For blog/guides, use `{ next: { revalidate: 3600 } }` for one-hour ISR.
+4.  In static page layouts (`/about`, `/rooms`), add `export const dynamic = 'force-static';`.
+5.  For all other general fetches (e.g., fetching UI content), explicitly add `{ cache: 'force-cache' }`.
+
+**4. Edge Cases & Gotchas:**
+*   Be aware of `POST` Route Handlers, as they are also uncached by default.
+*   The Client Router Cache is separate; review `staleTime` in `next.config.js` if client-side navigation feels slow.
+*   Verify changes using the Network tab in browser dev tools—check for `(disk cache)` or `(memory cache)` on static assets and data fetches after the initial load.
+
+
+## Iteration N - Story: Audit and configure explicit cache policies for all Next.js 15 fetch calls
+
+### What was implemented
+- Added `export const dynamic = 'force-static'` to 10 purely static pages: home, about, amenities, rooms, gallery, check-in, contact, guide (no—guide uses ISR), privacy-policy, book
+- Added `export const revalidate = 3600` to blog listing, blog [slug], blog category pages, and guide page (ISR — 1-hour TTL)
+- Added `experimental.staleTimes` to next.config.ts: dynamic=30s, static=180s for Client Router Cache
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- None of the pages use server-side fetch() calls — all data comes from TypeScript imports
+- The `/book` rewrite in next.config.ts returns a plain array → treated as afterFiles (filesystem routing wins), so book/page.tsx IS served
+- feed.xml/route.ts already had Cache-Control headers set manually — no changes needed
+
+### Gotchas
+- `export const dynamic` and `export const revalidate` are segment-level route exports — place them after imports, before metadata
+- `staleTimes` is under `experimental` in next.config.ts (Next.js 15)
+- No fetch() calls exist in server components, so the `{ cache: 'force-cache' }` criterion is vacuously met

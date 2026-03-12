@@ -3,6 +3,8 @@ import Footer from "@/components/Footer";
 import Gallery from "@/components/Gallery";
 import type { Metadata } from "next";
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
     title: "Gallery | Pelangi Capsule Hostel Johor Bahru",
     description: "See photos of Pelangi Capsule Hostel — our modern capsule pods, facilities, common areas, and the Taman Pelangi neighbourhood.",
