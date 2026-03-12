@@ -317,6 +317,7 @@ export default function ChatWidget() {
             placeholder="Type a message…"
             rows={1}
             disabled={sending}
+            autoComplete="on"
             className="
               flex-1 resize-none text-sm outline-none transition
               border border-stone-200 rounded-xl px-3 py-2

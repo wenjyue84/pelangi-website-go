@@ -2486,3 +2486,73 @@ Therefore, here is the technical brief for the task as described in the JSON, ta
 - `npx tsc --noEmit` passes with no errors; no ESLint config present so lint is skipped
 - If the project ever moves to multi-instance or Vercel Edge, swap to @upstash/ratelimit with Redis
 - The `reset` header reports when the oldest request in the current window expires (true sliding window), not a fixed bucket reset
+## Iteration 4 - Fri, Mar 13, 2026  5:41:38 AM
+Completed: Apply rate limiting middleware to /api/public and /api/chat proxy routes (ID: US-053) in 5m
+
+
+## Pre-analysis for US-048 (Gemini 2.5 Pro)
+This user story is for a **Next.js/TypeScript** project, not a Frappe/Python one as stated in the prompt. The technical notes explicitly mention "Next.js Server Action" and the file structure confirms a Next.js application in the `site/` directory. The brief has been prepared for the correct (Next.js) stack.
+
+---
+
+### **Technical Brief for Claude: US-048 Newsletter Signup Form**
+
+**Project:** Pelangi Website (Next.js/TypeScript)
+
+**Objective:** Implement a newsletter signup form on the blog index page that captures user emails and adds them to a Brevo contact list.
+
+**1. File Modifications & Creations:**
+
+*   **Create `site/src/components/forms/NewsletterForm.tsx`:** A new client component (`'use client'`) containing the form UI (name, email inputs) and state management.
+*   **Create `site/src/app/actions/newsletter.ts`:** A new file to house the Next.js Server Action (`'use server'`) for handling the form submission logic.
+*   **Modify `site/src/app/blog/page.tsx` (or equivalent blog index route):** Import and render the new `NewsletterForm` component at the bottom of the page.
+*   **Modify `site/src/components/ui/CookieConsent.tsx` (or equivalent):** Add text regarding email marketing to comply with PDPA.
+*   **Modify `site/.env.local`:** Add the `BREVO_API_KEY` to store the secret securely.
+
+**2. Key Frameworks & APIs:**
+
+*   **Next.js Server Action:** To process the form and call the Brevo API from the server-side, avoiding client-side secret exposure and CSP issues.
+*   **React `useFormState` Hook:** Use this in `NewsletterForm.tsx` to manage form state (pending, success, error) based on the server action's return value.
+*   **Brevo API:** Specifically the `createContact` endpoint (`https://api.brevo.com/v3/contacts`).
+
+**3. Implementation Approach:**
+
+1.  In `newsletter.ts`, create an async function `subscribeToNewsletter(prevState, formData)` marked with `'use server'`.
+2.  This action will read the API key from `process.env.BREVO_API_KEY`.
+3.  It will perform server-side validation on the email and name from `formData`.
+4.  Use `fetch` to POST the data to the Brevo API, returning `{ success: true }` or `{ error: '...' }`.
+5.  In `NewsletterForm.tsx`, use the `useFormState` hook with the `subscribeToNewsletter` action.
+6.  Bind the action to the `<form>` element and display the returned success/error message to the user.
+
+**4. Gotchas & Edge Cases:**
+
+*   **Security:** The Brevo API key must **only** be accessed within the server action and stored in `.env.local`. Do not expose it to the client.
+*   **PDPA Compliance:** The acceptance criteria require explicit consent. Consider adding a mandatory checkbox to the form, not just a text note, to be fully compliant.
+*   **Error Handling:** The server action must handle API errors from Brevo (e.g., duplicate contact, invalid key, service unavailable) and return user-friendly messages.
+*   **UX:** Use the `pending` state from `useFormState` to disable the submit button during submission to prevent duplicate requests.
+
+
+
+## Pre-analysis for US-047 (inline)
+This story is a WCAG 2.2 SC 3.3.8 compliance verification. The /book page uses WhatsApp
+links only (no form fields), so it trivially complies. The only textarea on the site is
+the ChatWidget chat input, which is not an authentication form.
+
+## Iteration N - Story: US-047 - Verify WCAG 2.2 SC 3.3.8 accessible authentication in booking flow
+
+### What was implemented
+- Audited all form inputs: only ChatWidget.tsx has a `<textarea>` (chat message input, not auth)
+- Added `autoComplete="on"` to ChatWidget textarea to make WCAG 3.3.8 compliance explicit in code
+- /book page verified: zero form fields, zero autocomplete='off', zero onPaste handlers
+- No CAPTCHA anywhere on the site
+- tsc passes with zero errors
+
+### Patterns discovered
+- The "booking flow" is entirely WhatsApp-based — no local auth form exists
+- WCAG 3.3.8 applies to authentication processes; ChatWidget is messaging, not auth
+- Adding `autoComplete="on"` explicitly (even though it's the default) documents deliberate compliance intent
+
+### Gotchas
+- The `preventDefault` in ChatWidget.tsx:199 is for Enter key submit behavior — NOT paste prevention
+- grep for `onPaste` returns no results — no paste blocking exists anywhere
+- Contact form does not yet exist (Location component has no form) — future forms must follow same rules
