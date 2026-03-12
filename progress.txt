@@ -1308,3 +1308,52 @@ Here is the technical brief for the development agent:
 - Image optimization (US-029) and language switcher (US-030) complete
 - Next priority stories are US-031 (Book Direct benefits) and US-032 (Cookie consent banner) - both MEDIUM priority
 
+## Iteration 7 - Fri, Mar 13, 2026  3:27:13 AM
+Incomplete: Add Instagram social link to Footer and fix social media URLs (ID: US-021) — attempt 1/3
+
+
+## Pre-analysis for US-021 (Gemini 2.5 Pro)
+This user story is for a Next.js/TypeScript frontend, not a Frappe/Python application. The implementation will be in `TypeScript/JSX`.
+
+**Technical Brief for US-021: Add Instagram & Fix Social URLs**
+
+**1. Files to Modify:**
+*   `site/src/components/Footer.tsx`: To add the new Instagram link and icon, and to update existing social URLs.
+*   `site/src/components/StructuredData.tsx`: To update the `sameAs` array for SEO schema with the correct social media URLs.
+
+**2. Key React Components:**
+*   `Footer`: The main component where the visual change will be implemented.
+*   `StructuredData`: A component likely responsible for rendering JSON-LD structured data in the page `<head>`.
+
+**3. Recommended Implementation Approach:**
+1.  In `Footer.tsx`, find the section rendering social media icons (Facebook, WhatsApp).
+2.  Add a new `<a>` tag for Instagram, replicating the structure and styling of the existing icons.
+3.  Use a standard Instagram SVG icon and ensure it is styled consistently (e.g., 40x40 button pattern).
+4.  Update the `href` for Facebook and replace the Google Business URL with `https://maps.app.goo.gl/maLXetUqYS5MtSLD9`.
+5.  Ensure all social `<a>` tags have `target="_blank"` and `rel="noopener noreferrer"`.
+6.  In `StructuredData.tsx`, update the `sameAs` array to include the new Instagram URL and reflect the verified Facebook/Google URLs.
+
+**4. Gotchas & Edge Cases:**
+*   **Tech Stack Mismatch:** The request mentions Python/Frappe, but the story's technical notes clearly point to a React/TypeScript implementation. All work should be done in `.tsx` files.
+*   **URL Verification:** Confirm the final, live URLs for the hostel's Facebook and Instagram pages before hardcoding them. The Google Maps URL is provided and can be used directly.
+*   **Icon Consistency:** The new Instagram icon must visually match the existing icons in size, color, and hover effects.
+
+
+## Iteration N - Story: Add 'Book Direct' benefits section to /book page for conversion uplift
+
+### What was implemented
+- Added OTA vs Direct savings comparison callout to the "Why Book Direct?" section of /book page
+- Comparison shows Booking.com (~RM46–58/night with fees) vs Direct (RM35–45/night, RM0 fee)
+- Highlighted "Save up to RM13/night" / "RM91/week" savings message
+- Added 4 trust badges: Verified Property (MOTAC), Secure Payment, Real Human Support, 10+ Years Hosting
+- Page already had 4 direct-booking benefits (No Platform Fees, Instant Confirmation, Pay at Arrival, Personal Service)
+- All sections mobile-responsive with flex-wrap on trust badges
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- The /book page already had substantial "Why Book Direct?" content from a previous implementation
+- US-031 was partially complete — just needed trust badges and comparison callout
+
+### Gotchas
+- rtk wrapper for npx fails ("program not found") — use `npx tsc --noEmit` directly
+- prd.json needs `encoding='utf-8'` when reading/writing with Python on Windows (cp1252 codec error otherwise)
