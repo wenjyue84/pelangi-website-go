@@ -3135,3 +3135,57 @@ Incomplete: Add Fuse.js client-side site search for blog and guide content (ID: 
 ### Gotchas
 - Previous attempt (iteration 4) didn't complete — likely ran out of context. Kept implementation focused and minimal this time.
 - SearchDialog must render outside the `<nav>` but inside `<header>` to avoid z-index stacking issues with the fixed header
+## Iteration 5 - Fri, Mar 13, 2026  7:00:43 AM
+Completed: Add Fuse.js client-side site search for blog and guide content (ID: US-066) in 6m
+
+
+## Pre-analysis for US-068 (Gemini 2.5 Pro)
+This is a technical brief for implementing the contact form feature (US-068) on the Next.js website.
+
+**1. Files to Modify/Create:**
+
+*   `src/app/contact/page.tsx`: Render the new contact form component here.
+*   `src/components/ContactForm.tsx` (New): The main form component with client-side validation.
+*   `src/app/actions/sendInquiry.ts` (New): The Next.js Server Action to handle form submission, rate limiting, and email dispatch.
+*   `src/components/emails/InquiryAcknowledgement.tsx` (New): The React component for the Resend auto-reply email template.
+*   `.env.local`: Add `RESEND_API_KEY` and `ADMIN_EMAIL` variables.
+
+**2. Involved Framework Features:**
+
+*   **Next.js Server Action**: The core logic for processing the form data server-side without a dedicated API route.
+*   **React Hooks**: Use `useFormState` to manage form state (pending, success, error) and display feedback from the server action.
+
+**3. Implementation Approach:**
+
+1.  Build the `ContactForm` component with fields specified in the acceptance criteria. Implement a hidden "honeypot" input.
+2.  Create the `sendInquiry` Server Action. It should validate input, check the honeypot field, and apply rate limiting logic (e.g., using Vercel KV or Upstash for a persistent store).
+3.  In the action, use the `resend` SDK to send two emails: one with the form data to the admin and an auto-reply using the `InquiryAcknowledgement` component to the guest.
+4.  Log submissions before sending emails to prevent data loss if the email service fails.
+
+**4. Gotchas & Edge Cases:**
+
+*   **Rate Limiting:** A simple in-memory object won't work in a serverless environment. Use a distributed cache like Vercel KV or Upstash.
+*   **Resend DNS:** Ensure the domain's DNS records (DKIM, SPF) are correctly configured for Resend to avoid emails landing in spam.
+*   **Server-Side Validation:** Do not trust client-side validation. Re-validate all data within the Server Action before processing.
+*   **Error Handling:** The server action must gracefully handle failures from the Resend API and return a clear error state to the client.
+
+
+## Iteration - Story: US-069 - Add <link rel='preload'> for LCP hero image in layout <head>
+
+### What was implemented
+- Added `<link rel="preload" as="image">` with `imageSrcSet` and `imageSizes="100vw"` to `site/src/app/layout.tsx` `<head>`
+- srcset matches Next.js Image optimization pipeline URLs (`/_next/image?url=...&w=WIDTH&q=75`) for all default `deviceSizes`: 640, 750, 828, 1080, 1200, 1920, 2048, 3840
+- Added `fetchPriority="high"` to prioritize the hero image download
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Actual hero image is `/images/hero-final.png` (not `hero-main.webp` as PRD assumed) — Hero.tsx references `hero-final.png`
+- Next.js Image optimization transforms source images via `/_next/image?url=ENCODED_PATH&w=WIDTH&q=QUALITY` — preload must target these URLs, not the raw image path
+- Next.js 15 default `deviceSizes` = [640, 750, 828, 1080, 1200, 1920, 2048, 3840]; no custom sizes in next.config.ts
+- Image formats configured as `['image/avif', 'image/webp']` — browser content negotiation selects format, no `type` attribute needed on preload
+- React 19 supports `imageSrcSet`, `imageSizes`, and `fetchPriority` as native JSX props on `<link>`
+
+### Gotchas
+- The `priority` prop on Next.js `Image` in Hero.tsx already injects a preload at component render time, but the layout-level preload ensures it appears in the initial HTML document before component hydration
+- Preloading `/_next/image` URLs (not raw `/images/*.png`) is critical — the browser never fetches the raw path when using Next.js Image optimization
+- This preload fires on all pages (not just homepage) since it's in root layout; acceptable trade-off for a hostel site where homepage is primary landing page

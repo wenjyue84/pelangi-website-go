@@ -100,6 +100,14 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.google.com" />
         {/* DNS-prefetch: Trip.com CDN for review/OTA images (cold path) */}
         <link rel="dns-prefetch" href="https://ak-d.tripcdn.com" />
+        {/* Preload LCP hero image — srcset matches Next.js Image optimization breakpoints */}
+        <link
+          rel="preload"
+          as="image"
+          fetchPriority="high"
+          imageSrcSet="/_next/image?url=%2Fimages%2Fhero-final.png&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fhero-final.png&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fhero-final.png&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fhero-final.png&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fhero-final.png&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fhero-final.png&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fhero-final.png&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fhero-final.png&w=3840&q=75 3840w"
+          imageSizes="100vw"
+        />
       </head>
       <body className={`${inter.className} pb-16 md:pb-0`}>
         <a
