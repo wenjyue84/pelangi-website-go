@@ -2619,3 +2619,59 @@ Here is the technical brief for the user story.
 ### Gotchas
 - When using opengraph-image.tsx convention AND setting openGraph.images in metadata, the metadata images serve as fallback/override — keep them in sync
 - The route for the OG image is `/[route]/opengraph-image` (e.g., `/rooms/opengraph-image`)
+## Iteration 6 - Fri, Mar 13, 2026  5:52:49 AM
+Incomplete: Add email newsletter capture form for guest re-marketing (ID: US-048) — attempt 2/3
+
+
+## Pre-analysis for US-048 (Gemini 2.5 Pro)
+### Technical Brief: US-048 Newsletter Signup Form
+
+This brief outlines the implementation plan for adding a newsletter capture form to the Pelangi Capsule Hostel's Next.js website, as described in the user story. Note: The project is a Next.js application, not Frappe/Python; therefore, the implementation details are for a TypeScript/React environment.
+
+**1. Python Files to Modify / Key Files to Create/Modify:**
+
+*   **`site/src/app/blog/page.tsx` (or primary page):** This file will be modified to import and render the new newsletter signup form component at the bottom of the page.
+*   **`site/src/components/forms/NewsletterForm.tsx` (New File):** A new client-side React component (`"use client"`) containing the form with "Name" and "Email" fields, state management for user input, and logic to display success/error messages.
+*   **`site/src/app/actions.ts` (or `site/src/app/newsletter/actions.ts`):** A new file to house the Next.js Server Action. This action will securely handle the API call to the email marketing service.
+*   **`site/.env.local`:** This file must be updated with the API key for the email service (e.g., `BREVO_API_KEY=...`).
+
+**2. Frappe DocTypes or Hooks Involved / Key Next.js Concepts:**
+
+*   **Next.js Server Action:** This is the core mechanism for handling the form submission. The server-side function will receive the form data and communicate with the Brevo API, keeping API keys and logic off the client.
+*   **React State Management (`useState`):** The client component will use state to handle form inputs and submission status (idle, loading, success, error).
+*   **Environment Variables:** The Server Action must securely access the API key via `process.env`.
+
+**3. Recommended Implementation Approach:**
+
+1.  Build the `NewsletterForm.tsx` component with accessible, visibly-labeled name and email inputs and a submit button.
+2.  Implement the Server Action that accepts `formData`. This action will call the Brevo "Create Contact" API endpoint (`https://api.brevo.com/reference/createcontact`) using `fetch`.
+3.  Connect the form's `onSubmit` event to the Server Action. The action should return a JSON object indicating success or failure.
+4.  The client component will use the action's return value to display an appropriate confirmation ("Success! Check your email.") or error message to the user.
+5.  Place the `<NewsletterForm />` component at the bottom of the relevant page (e.g., `site/src/app/blog/page.tsx`).
+
+**4. Edge Cases or Gotchas to Watch For:**
+
+*   **Security:** The API key must remain server-side and should be added to `.env.local` (and this file must be in `.gitignore`).
+*   **Error Handling:** The Server Action must gracefully handle API errors from Brevo (e.g., contact already exists, invalid data) and network failures, returning clear error messages.
+*   **Validation:** Implement both client-side validation for immediate user feedback and robust server-side validation within the Server Action as a security measure.
+*   **PDPA Compliance:** The form must include the specified "No spam. Unsubscribe anytime." privacy note. If a cookie/consent banner component exists, it should be updated to mention email marketing.
+
+
+## Iteration 7 - Story: US-055 Add TouristAttraction schema markup to /guide page
+
+### What was implemented
+- `site/src/components/GuideStructuredData.tsx` — new component with JSON-LD structured data
+- 6 TouristAttraction schema blocks: Johor Bahru City Square, Danga Bay, KSL City Mall, Arulmigu Raja Mariamman Temple, Johor Bahru Old Chinese Temple, Jalan Yahya Awal Hawker Centre
+- Each attraction has @type: ['TouristAttraction', 'Place'], name, description, geo (GeoCoordinates), address (PostalAddress), and url
+- BreadcrumbList schema: Home > Guide
+- Imported and rendered GuideStructuredData in `site/src/app/guide/page.tsx` inside <main> before <Header />
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Existing structured data pattern uses separate component files (StructuredData.tsx, BlogStructuredData.tsx)
+- JSON-LD blocks are rendered as `<script type="application/ld+json">` with `dangerouslySetInnerHTML`
+- Each schema block gets its own `<script>` tag (not combined into an array)
+
+### Gotchas
+- @type can be an array for broader matching: ['TouristAttraction', 'Place']
+- Geo coordinates must be accurate for the specific location (verified against known addresses)

@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import GuideStructuredData from "@/components/GuideStructuredData";
 
 export const metadata: Metadata = {
     title: "Johor Bahru Backpacker Guide 2026 | Pelangi Capsule Hostel",
@@ -138,6 +139,7 @@ export default function GuidePage() {
 
     return (
         <main id="main-content" className="min-h-screen bg-stone-50">
+            <GuideStructuredData />
             <Header />
             <div className="pt-28 pb-16 container-custom">
                 <div className="max-w-4xl mx-auto">
