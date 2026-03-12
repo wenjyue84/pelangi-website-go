@@ -1790,3 +1790,51 @@ This is a Next.js/TypeScript task, not Frappe/Python. The request to frame this 
 ### Gotchas
 - Archive policy: never delete; move to `_archive/` with `.archived` extension and explanation header
 - `npx tsc --noEmit` passes (no output = clean)
+## Iteration 3 - Fri, Mar 13, 2026  4:18:34 AM
+Completed: Remove duplicate public/robots.txt — rely solely on robots.ts (ID: US-037) in 3m
+
+
+## Pre-analysis for US-048 (Gemini 2.5 Pro)
+Here is the technical brief for the email newsletter capture form.
+
+This is a Next.js/TypeScript project, not Frappe/Python. The implementation will use React components and Server Actions.
+
+**1. Files to Modify/Create:**
+*   `src/app/blog/page.tsx` (or similar blog index): To place the new form component.
+*   `src/components/forms/NewsletterSignupForm.tsx` (new file): The React component for the form UI and client-side logic.
+*   `src/app/actions/newsletter.ts` (new file): The Next.js Server Action to handle the form submission and Brevo API call.
+*   `src/components/CookieConsent.tsx` (existing): To update privacy text regarding marketing emails.
+*   `.env.local` (new or existing): To securely store the `BREVO_API_KEY`.
+
+**2. Involved DocTypes/Hooks:**
+*   Not applicable. This is a Next.js application, not a Frappe project. The key integrations are Next.js Server Actions and the external Brevo API.
+
+**3. Recommended Implementation Approach:**
+1.  Build a client component `NewsletterSignupForm.tsx` with a `<form>` element containing labeled `name` and `email` inputs.
+2.  Create a Server Action in `src/app/actions/newsletter.ts` that accepts form data.
+3.  This action will use `fetch` to POST to the Brevo `/contacts` API endpoint, sending the email and attributes.
+4.  The form will invoke this action on submit. Use React's `useFormState` hook to manage pending status and display success or error messages returned from the action.
+5.  Render `<NewsletterSignupForm />` at the bottom of the `blog` page component.
+
+**4. Edge Cases & Gotchas:**
+*   **API Key:** The Brevo API key must be stored in `.env.local` (`BREVO_API_KEY=...`) and added to `.gitignore`. It is only accessible on the server.
+*   **Error Handling:** The Server Action must have robust try/catch logic to handle API failures from Brevo and return a clear error message to the client.
+*   **Validation:** Implement server-side validation within the action to ensure data integrity, even if client-side validation is also present.
+*   **PDPA Consent:** The form's existence with a submit button and privacy notice constitutes explicit consent. Ensure the API call doesn't automatically opt-in users to other lists.
+
+
+## Iteration N - Story: Add image entries to sitemap.ts for gallery and room photos
+
+### What was implemented
+- `site/src/app/sitemap.ts` — Added `images: string[]` arrays to homepage, rooms, about, and gallery entries (13+ image URLs)
+- `site/src/app/image-sitemap.xml/route.ts` — New Google Image Sitemap XML with full `url`, `title`, and `caption` per image entry (spec-compliant)
+- `site/src/app/robots.ts` — Added `image-sitemap.xml` to the sitemap array alongside `sitemap.xml`
+
+### Patterns discovered
+- `MetadataRoute.Sitemap` in Next.js 15.5.11 only supports `images: string[]` — object form with title/caption is NOT typed
+- For full Google Image Sitemap spec (title + caption), use a custom XML route like `/app/image-sitemap.xml/route.ts`
+- Follow the existing `feed.xml/route.ts` pattern for custom XML route handlers
+
+### Gotchas
+- TypeScript will error if you try to pass `{ url, title, caption }` objects to `images` field in sitemap.ts — use string[] for the built-in sitemap and a separate XML route for full spec compliance
+

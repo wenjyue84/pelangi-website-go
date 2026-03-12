@@ -7,6 +7,9 @@ export default function robots(): MetadataRoute.Robots {
             allow: "/",
             disallow: "/private/",
         },
-        sitemap: "https://pelangicapsulehostel.com/sitemap.xml",
+        sitemap: [
+            "https://pelangicapsulehostel.com/sitemap.xml",
+            "https://pelangicapsulehostel.com/image-sitemap.xml",
+        ],
     };
 }
