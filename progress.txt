@@ -1,0 +1,35 @@
+## Codebase Patterns
+
+- Pages use `<Header />` + `<Footer />` from `@/components/`, wrapped in `<main className="min-h-screen bg-stone-50">`
+- Content sections use `pt-28 pb-16 container-custom` for top-padding that clears the fixed header
+- `font-display` maps to Playfair Display (serif); `font-sans` maps to Inter
+- Tailwind custom colors: `stone-*`, `amber-*`, `primary-*`, `accent-*`, `sand-*`
+- Data files live in `site/src/data/` and export typed interfaces + arrays
+- Next.js App Router with `generateMetadata` for SEO; `metadataBase` set in layout.tsx
+- `@tailwindcss/typography` installed (iteration 1) — use `prose prose-stone prose-lg` for HTML content rendering
+- No ESLint config in project — skip `npm run lint`; use `npx tsc --noEmit` as the quality check
+
+---
+
+# Ralph Progress Log - Fri, Mar 13, 2026 12:51:16 AM
+Started autonomous agent loop for PRD completion
+
+## Iteration 1 - Story: Create blog system with static TypeScript data
+
+### What was implemented
+- `site/src/data/blog/posts.ts` — BlogPost interface + 6 full travel articles about JB
+- `site/src/components/BlogCard.tsx` — reusable card with category badge, excerpt, date, read time
+- `site/src/app/blog/page.tsx` — listing page with grid, metadata, OG tags
+- `site/src/app/blog/[slug]/page.tsx` — article page with generateMetadata, prose content, tags, back link
+- Installed `@tailwindcss/typography` and added to tailwind.config.ts plugins
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Next.js `params` must be `Promise<{slug: string}>` and awaited in App Router (Next.js 15 async params)
+- No ESLint config present — skip lint, use tsc only
+- Pages import Header/Footer directly; no layout wrapping per route
+
+### Gotchas
+- `@tailwindcss/typography` was not installed — needed npm install + tailwind.config.ts plugin registration
+- `params` in App Router Next.js 15 is async (Promise), must `await params` before destructuring
+
