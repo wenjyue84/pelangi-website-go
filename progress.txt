@@ -3034,3 +3034,53 @@ This story addresses the breaking change in Next.js 15 where `fetch` requests ar
 - `export const dynamic` and `export const revalidate` are segment-level route exports — place them after imports, before metadata
 - `staleTimes` is under `experimental` in next.config.ts (Next.js 15)
 - No fetch() calls exist in server components, so the `{ cache: 'force-cache' }` criterion is vacuously met
+## Iteration 3 - Fri, Mar 13, 2026  6:49:50 AM
+Completed: Audit and configure explicit cache policies for all Next.js 15 fetch calls (ID: US-065) in 7m
+
+
+## Pre-analysis for US-066 (Gemini 2.5 Pro)
+This technical brief outlines the implementation plan for adding client-side search with Fuse.js to the Next.js application, based on story US-066.
+
+**1. Files to Modify/Create:**
+
+*   **`src/components/layout/Header.tsx`**: Add a search icon button and the global `Cmd/Ctrl+K` keyboard shortcut listener to trigger the search dialog.
+*   **`src/components/search/SearchDialog.tsx` (New File)**: Create this component to house the search UI. It will be dynamically imported and responsible for input handling, rendering results, and keyboard navigation.
+*   **`src/lib/search.ts` (New File)**: This utility file will contain the logic to generate the Fuse.js search index from content sources at build time. It will also export the initialized Fuse instance.
+*   **`src/data/blog.ts` & `src/data/guide.ts` (Assumed)**: These files, or wherever blog/guide content is sourced, will need to be read by the index-building script.
+
+**2. Frappe DocTypes/Hooks:**
+
+*   None. The user story describes a pure client-side implementation within the Next.js frontend. No backend or Frappe integration is required.
+
+**3. Implementation Approach:**
+
+1.  **Install Fuse.js**: `npm install fuse.js`.
+2.  **Build Index**: In `src/lib/search.ts`, create a `generateSearchIndex` function that reads blog posts and guide sections, formats them into a searchable collection, and uses `Fuse.createIndex` to prepare a static index.
+3.  **Create Component**: Build the `SearchDialog.tsx` component with an input field and a results list. It should accept the search query, perform the search using the pre-built index, and render the results with links.
+4.  **Dynamic Loading**: Use `next/dynamic` in the main layout (`_app.tsx` or a layout component) to lazy-load `SearchDialog.tsx` with `ssr: false` to keep it out of the main bundle.
+5.  **State Management**: Use a global state (e.g., Zustand or React Context) or component-level state to manage the dialog's open/closed state.
+
+**4. Edge Cases & Gotchas:**
+
+*   **Index Staleness**: The search index is only generated at build time. New content will not be searchable until the next site deployment.
+*   **Accessibility**: Rigorously implement keyboard navigation (Up/Down/Enter/Esc) and a focus trap within the dialog for accessibility compliance as per the acceptance criteria.
+*   **Performance**: The search index must be generated and loaded efficiently. Lazy-loading the component and the index is critical.
+*   **Content Parsing**: The index generation script must robustly parse different content sources (e.g., Markdown frontmatter for blogs, structured data for guides).
+
+
+## Iteration - Story: US-067 Extend sameAs in Hostel schema to include OTA profile URLs
+
+### What was implemented
+- Added 4 OTA property URLs to `sameAs` array in `site/src/components/StructuredData.tsx`
+- Booking.com: `https://www.booking.com/hotel/my/pelangi-hostel-capsule.html`
+- Hostelworld: `https://www.hostelworld.com/pwa/hosteldetails.php/Pelangi-Capsule-Hostel/Johor-Bahru/317698`
+- TripAdvisor: `https://www.tripadvisor.com/Hotel_Review-g298278-d27125478-Reviews-Pelangi_Capsule_Hostel-Johor_Bahru_Johor_Bahru_District_Johor.html`
+- Agoda: `https://www.agoda.com/en-in/pelangi-hostel-capsule/hotel/johor-bahru-my.html`
+
+### Patterns discovered
+- OTA URLs already documented in `assets-from-web.md` and used in `Booking.tsx` and `book/page.tsx`
+- sameAs array is in the hostelSchema object only (not duplicated in localBusinessSchema)
+
+### Gotchas
+- Hostelworld has two URL formats in codebase: `/pwa/hosteldetails.php/...` (used in Booking.tsx) and `/hostels/p/317698/...` (in assets-from-web.md). Used the one matching existing components.
+- `rtk npx` doesn't work for tsc — use `npx` directly

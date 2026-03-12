@@ -97,7 +97,11 @@ export default function StructuredData() {
     "sameAs": [
       "https://www.facebook.com/pelangicapsulehostel",
       "https://www.instagram.com/pelangicapsulehostel",
-      "https://maps.app.goo.gl/maLXetUqYS5MtSLD9"
+      "https://maps.app.goo.gl/maLXetUqYS5MtSLD9",
+      "https://www.booking.com/hotel/my/pelangi-hostel-capsule.html",
+      "https://www.hostelworld.com/pwa/hosteldetails.php/Pelangi-Capsule-Hostel/Johor-Bahru/317698",
+      "https://www.tripadvisor.com/Hotel_Review-g298278-d27125478-Reviews-Pelangi_Capsule_Hostel-Johor_Bahru_Johor_Bahru_District_Johor.html",
+      "https://www.agoda.com/en-in/pelangi-hostel-capsule/hotel/johor-bahru-my.html"
     ]
   };
 
