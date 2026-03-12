@@ -418,3 +418,49 @@ This is not a Frappe/Python task. The target file is a React component containin
 
 ### Gotchas
 - prd.json must be read/written as utf-8 on Windows (cp1252 default fails on em-dash characters in the file)
+## Iteration 3 - Fri, Mar 13, 2026  1:59:09 AM
+Completed: Fix NAP inconsistency in StructuredData.tsx (wrong phone and address) (ID: US-011) in 3m
+
+
+## Pre-analysis for US-012 (Gemini 2.5 Pro)
+Here is the technical brief for user story US-012.
+
+**Project:** Pelangi Website (Next.js/React)
+**User Story:** US-012: Add FAQPage JSON-LD schema to FAQ component
+
+**1. Primary File for Modification:**
+*   `site/src/components/FAQ.tsx`: This is the most logical place to add the schema, as it encapsulates all the FAQ-related data and rendering logic.
+
+**2. Framework & Data Context:**
+*   **Component:** `FAQ.tsx` (React/TypeScript)
+*   **Framework:** Next.js (likely App Router, given `app/page.tsx`)
+*   **Data:** The implementation will use the existing array of question-and-answer objects that the `FAQ.tsx` component already maps over to render the visible FAQ list.
+
+**3. Recommended Implementation Approach:**
+1.  Inside the `FAQ.tsx` component, create a constant for the JSON-LD schema object.
+2.  This object's `mainEntity` property should be populated by mapping over your FAQ data array, transforming each Q&A item into a `{ "@type": "Question", "name": "...", "acceptedAnswer": { "@type": "Answer", "text": "..." } }` object.
+3.  In the component's return statement (JSX), add a `<script>` tag.
+4.  Set the script's attributes: `type="application/ld+json"`.
+5.  Inject the schema by using `dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchemaObject) }}`.
+
+**4. Validation & Key Considerations:**
+*   **Validation:** After implementation, copy the generated `<script>` content from the browser's "View Page Source" and validate it using the [Google Rich Results Test](https://search.google.com/test/rich-results).
+*   **Content:** Per the story, ensure FAQ questions cover high-value topics (check-in, WiFi, price, location) and keep answers concise (1-3 sentences).
+*   **Safety:** `dangerouslySetInnerHTML` is safe here because you are stringifying your own trusted data object, not user-provided content.
+*   **TypeScript:** Ensure the new code is fully typed and introduces no TS errors.
+
+
+## Iteration N - Story: Add FAQPage JSON-LD schema to FAQ component (US-012)
+
+### What was implemented
+- `site/src/components/FAQ.tsx` — added FAQPage JSON-LD schema as `<script type="application/ld+json">` rendered via `dangerouslySetInnerHTML`
+- Expanded FAQ data from 5 to 8 items, adding: price (RM55/night), free WiFi, location (31 Jalan Trus), and Singapore proximity (15 min from Woodlands)
+- `faqSchema` const built from the `faqs` array using `.map()` so schema stays in sync with displayed content
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Client components (`'use client'`) can render JSON-LD `<script>` tags via `dangerouslySetInnerHTML` — Next.js does not hoist these to `<head>` but Google can still parse them from the body
+- Wrap the component return in `<>...</>` Fragment to allow sibling `<script>` + `<section>` without a wrapping div
+
+### Gotchas
+- `prd.json` is UTF-8 encoded; Python `open()` must specify `encoding='utf-8'` on Windows (default is cp1252 which fails)

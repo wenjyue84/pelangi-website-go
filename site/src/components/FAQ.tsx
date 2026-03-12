@@ -7,6 +7,22 @@ const faqs = [
         answer: "Check-in is from 3:00 PM onwards, and check-out is before 11:00 AM. We offer self-check-in so you can arrive anytime after 3 PM!"
     },
     {
+        question: "How much does it cost per night?",
+        answer: "Our capsule pods start from RM55 per night for a bed in a shared dormitory. Private pods are also available. Book direct for the best rate — no booking fees!"
+    },
+    {
+        question: "Is there free WiFi?",
+        answer: "Yes! We provide complimentary high-speed WiFi throughout the hostel, including in the sleeping pod areas and the common lounge. Perfect for remote workers and travellers."
+    },
+    {
+        question: "Where is Pelangi Capsule Hostel located?",
+        answer: "We are located in Johor Bahru city centre, just minutes from the Woodlands CIQ checkpoint and a short Grab ride from Senai International Airport. Exact address: 31, Jalan Trus, Bandar Johor Bahru."
+    },
+    {
+        question: "How far is it from Singapore?",
+        answer: "Pelangi Capsule Hostel is only 15 minutes by car from the Woodlands CIQ checkpoint in Singapore. It's a convenient and affordable base for day trips to Singapore."
+    },
+    {
         question: "Do you provide towels and toiletries?",
         answer: "Yes! Every pod comes with a fresh towel. We provide body wash and shampoo in the shared bathrooms. Toothbrushes are available for a small fee."
     },
@@ -17,17 +33,31 @@ const faqs = [
     {
         question: "Is it quiet? Can I work there?",
         answer: "We have a strict quiet policy in the sleeping pods area ensuring a good night's rest. For working, we have a designated common area with high-speed WiFi."
-    },
-    {
-        question: "How do I get there from the airport?",
-        answer: "From Senai Airport, it's about a 30-minute Grab ride (approx RM30-40). From Singapore (Woodlands), it's a 15-minute drive from the CIQ checkpoint."
     }
 ];
+
+const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.answer,
+        },
+    })),
+};
 
 export default function FAQ() {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
+        <>
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
         <section className="py-20 bg-white">
             <div className="container-custom max-w-3xl">
                 <h2 className="font-display text-4xl font-medium mb-10 text-center text-stone-900">Common Questions</h2>
@@ -58,5 +88,6 @@ export default function FAQ() {
                 </div>
             </div>
         </section>
+        </>
     );
 }
