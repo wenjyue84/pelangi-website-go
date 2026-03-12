@@ -1,1 +1,337 @@
-{"stories":[]}
+{
+  "stories": [
+    {
+      "title": "Create /book page with direct booking + OTA options",
+      "priority": "critical",
+      "description": "The /book URL is linked from the homepage dashboard card, footer, Hero CTAs, and multiple components, but no app/book/page.tsx exists — users hit a 404. Create a dedicated booking page with: (1) direct WhatsApp booking as primary CTA with pre-filled message, (2) direct booking benefits section, (3) Booking.com and Hostelworld links as secondary OTA options, (4) pricing summary (RM35 nightly, RM594 monthly), and (5) house rules summary.",
+      "acceptanceCriteria": [
+        "GET /book returns a 200 page (no 404)",
+        "Page has a primary WhatsApp CTA that opens wa.me/60127088789 with a pre-filled booking message",
+        "Page shows nightly (RM35-45) and monthly (RM594) pricing clearly",
+        "Page has secondary links to Booking.com and Hostelworld listings",
+        "Page has proper generateMetadata with title/description targeting 'book capsule hostel JB'",
+        "Responsive design consistent with site (stone/amber palette, Tailwind)"
+      ],
+      "technicalNotes": [
+        "Create site/src/app/book/page.tsx",
+        "Pre-filled WhatsApp URL: https://wa.me/60127088789?text=Hi%20Pelangi%20Capsule%20Hostel!%20I'd%20like%20to%20book%20a%20pod.%20Please%20confirm%20availability%20for%20[dates].",
+        "Check-in: 2:00 PM / Check-out: 12:00 PM (from business data)",
+        "Import Booking.tsx component or build inline; reuse existing amber/stone card patterns"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "source": "https://developers.google.com/search/docs/crawling-indexing/http-network-errors"
+    },
+    {
+      "title": "Create custom not-found.tsx (404 page) with hostel branding",
+      "priority": "high",
+      "description": "No app/not-found.tsx exists; Next.js App Router serves a generic 404. A branded 404 page recovers lost visitors by surfacing key navigation links and a WhatsApp booking CTA. Google recommends soft 404 handling (do not redirect all 404s to homepage) — a proper not-found.tsx is the correct approach.",
+      "acceptanceCriteria": [
+        "app/not-found.tsx file exists and renders on any invalid URL",
+        "Page has a friendly on-brand message (e.g. 'Looks like this pod is taken!')",
+        "Page includes navigation links to: Home, Rooms, /book, /guide, /blog",
+        "Page includes a WhatsApp contact CTA",
+        "Header and Footer are present for consistent navigation",
+        "Page has proper HTTP 404 status (not 200) — Next.js App Router not-found.tsx sets this automatically"
+      ],
+      "technicalNotes": [
+        "Create site/src/app/not-found.tsx (not 404.tsx — App Router convention)",
+        "Import Header and Footer components",
+        "Use amber/stone design consistent with rest of site",
+        "No generateMetadata needed — Next.js sets noindex automatically for 404 pages"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://nextjs.org/docs/app/api-reference/file-conventions/not-found"
+    },
+    {
+      "title": "Fix NAP inconsistency in StructuredData.tsx (wrong phone and address)",
+      "priority": "high",
+      "description": "StructuredData.tsx contains factually incorrect business data: phone is '+60123456789' (placeholder, not a real number) and street address is 'Jalan Maju, Taman Pelangi' (wrong — correct is '26A Jalan Perang'). NAP (Name, Address, Phone) must exactly match Google Business Profile for local search trust. These errors could suppress local ranking and confuse map integrations.",
+      "acceptanceCriteria": [
+        "telephone in Hostel schema is '+60127088789' (Jay's real number from business data)",
+        "streetAddress in Hostel schema is '26A Jalan Perang, Taman Pelangi'",
+        "Same NAP fixes applied to localBusinessSchema in same file",
+        "geo coordinates updated to 5 decimal precision (e.g. latitude: 1.48552, longitude: 103.75940)",
+        "checkinTime updated to '14:00' (business data shows 2:00 PM, not 15:00)",
+        "TypeScript compiles without errors after changes"
+      ],
+      "technicalNotes": [
+        "Edit site/src/components/StructuredData.tsx",
+        "Correct phone: +60127088789 (Jay) — from pelangi-website-plan.md",
+        "Correct address: 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru",
+        "Check-in from plan: 2:00 PM = 14:00 in ISO 8601; current file has 15:00",
+        "Validate via: https://search.google.com/test/rich-results after fix"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://developers.google.com/search/docs/appearance/structured-data/local-business"
+    },
+    {
+      "title": "Add FAQPage JSON-LD schema to FAQ component",
+      "priority": "high",
+      "description": "The FAQ.tsx component renders a set of Q&A items on the homepage, but there is no FAQPage JSON-LD structured data. Adding the FAQPage schema can earn an expandable FAQ rich result in Google SERPs, increasing click-through rate. This is one of the highest-ROI structured data additions for a local business.",
+      "acceptanceCriteria": [
+        "Homepage (or FAQ component) renders a <script type='application/ld+json'> with @type: 'FAQPage'",
+        "Each FAQ item maps to a Question with name (question text) and acceptedAnswer.text",
+        "Schema validates without errors in Google Rich Results Test",
+        "Questions include high-value search queries: check-in time, WiFi, price, location, Singapore proximity",
+        "No TypeScript errors"
+      ],
+      "technicalNotes": [
+        "Edit site/src/components/FAQ.tsx or inject from site/src/app/page.tsx",
+        "Schema structure: { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [ { '@type': 'Question', name: '...', acceptedAnswer: { '@type': 'Answer', text: '...' } } ] }",
+        "Keep answer text concise (1-3 sentences) to maximize SERP display",
+        "Validate at: https://search.google.com/test/rich-results",
+        "Reference: https://developers.google.com/search/docs/appearance/structured-data/faqpage"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://developers.google.com/search/docs/appearance/structured-data/faqpage"
+    },
+    {
+      "title": "Add dynamic OG images for blog posts using next/og ImageResponse",
+      "priority": "medium",
+      "description": "All blog posts currently share the same static /images/og-image.png when shared on social media. Next.js App Router supports per-route dynamic OG image generation via opengraph-image.tsx using the ImageResponse API. Adding per-post OG images with the article title, category badge, and branding significantly improves social sharing click-through from WhatsApp, Facebook, and Twitter.",
+      "acceptanceCriteria": [
+        "Each blog post URL generates a unique 1200x630 OG image when scraped by social crawlers",
+        "OG image shows: post title (large text), category badge, site name 'Pelangi Capsule Hostel', amber/stone brand colors",
+        "Validates correctly with Facebook Sharing Debugger and Twitter Card Validator",
+        "No TypeScript errors",
+        "Image generation does not exceed 500KB bundle limit"
+      ],
+      "technicalNotes": [
+        "Create site/src/app/blog/[slug]/opengraph-image.tsx",
+        "Use ImageResponse from 'next/og'",
+        "Export: export const size = { width: 1200, height: 630 } and export const contentType = 'image/png'",
+        "Only flexbox CSS supported in ImageResponse (no grid)",
+        "Font: use fetch() to load .ttf font or use system font fallback",
+        "Access post data via params.slug — import posts from data/blog/posts.ts",
+        "Reference: https://nextjs.org/docs/app/api-reference/file-conventions/opengraph-image"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "source": "https://nextjs.org/docs/app/api-reference/file-conventions/opengraph-image"
+    },
+    {
+      "title": "Add HotelRoom structured data with Offer pricing on /rooms page",
+      "priority": "medium",
+      "description": "The /rooms page describes capsule pod pricing but has no structured data. Google's hotel rich results support HotelRoom schema (typed as ['HotelRoom', 'Product']) with Offer/UnitPriceSpecification for pricing. Adding this can make pricing visible in Google Search and enable integration with Google Hotels panel. This is separate from the site-level Hostel schema already in StructuredData.tsx.",
+      "acceptanceCriteria": [
+        "/rooms page includes JSON-LD with @type: ['HotelRoom', 'Product'] for each pod type",
+        "Each room has: name, description, containedInPlace (linking to hostel schema), and offers (Offer with price, priceCurrency, businessFunction)",
+        "Nightly rate (RM35-45) and monthly rate (RM594) are both represented",
+        "Schema validates in Google Rich Results Test without errors",
+        "No TypeScript errors"
+      ],
+      "technicalNotes": [
+        "Edit site/src/app/rooms/page.tsx to inject JSON-LD script",
+        "Dual type: '@type': ['HotelRoom', 'Product'] — both required for pricing rich results",
+        "Offer structure: { '@type': 'Offer', 'price': '35', 'priceCurrency': 'MYR', 'businessFunction': 'http://purl.org/goodrelations/v1#LeaseOut' }",
+        "containedInPlace: { '@type': 'Hostel', 'name': 'Pelangi Capsule Hostel', 'url': 'https://pelangicapsulehostel.com' }",
+        "Reference: https://schema.org/HotelRoom and https://wordlift.io/blog/en/schema-markup-for-hotels-bb-and-resorts-a-complete-guide/"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://schema.org/HotelRoom"
+    },
+    {
+      "title": "Add Google Search Console verification meta tag to layout.tsx",
+      "priority": "medium",
+      "description": "layout.tsx has a TODO comment: '// TODO: Add your Google Search Console verification code'. Google Search Console is required to monitor indexing status, Core Web Vitals data, search performance, and submit sitemaps. Without verification, there is no visibility into whether Google is correctly crawling the site. This is a one-line configuration change.",
+      "acceptanceCriteria": [
+        "layout.tsx metadata includes a valid Google Search Console verification code",
+        "Google Search Console shows the property as 'verified'",
+        "The sitemap URL (https://pelangicapsulehostel.com/sitemap.xml) is submitted in GSC",
+        "No TypeScript errors"
+      ],
+      "technicalNotes": [
+        "Edit site/src/app/layout.tsx — find the verification: {} object",
+        "Add: verification: { google: 'YOUR_VERIFICATION_TOKEN' }",
+        "Get token from: Google Search Console > Add Property > HTML tag method",
+        "After deploy, verify ownership in GSC and submit sitemap.xml",
+        "Reference: https://nextjs.org/docs/app/api-reference/functions/generate-metadata#verification"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#verification"
+    },
+    {
+      "title": "Add sticky mobile WhatsApp booking bar for conversion",
+      "priority": "medium",
+      "description": "WhatsApp has a 98% open rate and 45-60% conversion rate for hospitality. Mobile visitors (majority of hostel traffic) should always see a persistent 'Book via WhatsApp' CTA regardless of scroll position. A sticky bottom bar appearing on mobile-only (hidden on desktop where the chat widget serves this role) is a proven conversion pattern for small hostels. The pre-filled message reduces friction.",
+      "acceptanceCriteria": [
+        "A sticky bar appears at the bottom of all pages on mobile (hidden on md: and above)",
+        "Bar contains: WhatsApp icon, 'Book from RM35/night' text, and a green CTA button",
+        "Clicking opens wa.me/60127088789 with pre-filled booking message",
+        "Bar does not overlap the existing ChatWidget floating button (positioned to avoid conflict)",
+        "Bar is hidden when the ChatWidget is open",
+        "Accessible: has aria-label and sufficient color contrast"
+      ],
+      "technicalNotes": [
+        "Create site/src/components/MobileBookingBar.tsx",
+        "Add to site/src/app/layout.tsx (renders on all pages)",
+        "Use fixed bottom-0 left-0 right-0 z-40 (below ChatWidget's z-50)",
+        "Hidden on md+ screens: className='md:hidden'",
+        "Pre-filled URL: https://wa.me/60127088789?text=Hi!%20I'd%20like%20to%20book%20a%20pod%20at%20Pelangi%20Capsule%20Hostel.",
+        "Add padding-bottom to <body> or main sections to prevent bar from covering content"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://www.simplotel.com/blogs/drive-more-direct-hotel-bookings-with-whatsapp"
+    },
+    {
+      "title": "Add canonical URL tags to all inner pages via generateMetadata",
+      "priority": "medium",
+      "description": "Currently only the homepage has an explicit canonical URL in metadata. Inner pages (/about, /rooms, /gallery, /contact, /check-in, /guide, /book) rely on Next.js auto-generation, which may not produce the exact preferred URL format. Explicit canonical tags on each page prevent duplicate content issues and confirm the preferred URL to Google — especially important now that blog posts exist with similar content themes.",
+      "acceptanceCriteria": [
+        "Each inner page (/about, /rooms, /gallery, /contact, /check-in, /guide, /book) has generateMetadata with alternates.canonical set to the full absolute URL",
+        "/blog page and /blog/[slug] pages already have canonical set (verify existing implementation)",
+        "Canonical URLs use https://pelangicapsulehostel.com as base (no trailing slash inconsistency)",
+        "TypeScript compiles without errors"
+      ],
+      "technicalNotes": [
+        "Edit each page.tsx to add export async function generateMetadata()",
+        "Pattern: alternates: { canonical: 'https://pelangicapsulehostel.com/PAGE_PATH' }",
+        "Pages to update: /about, /rooms, /gallery, /contact, /check-in, /guide",
+        "Verify blog pages already have this from US-005 implementation",
+        "Reference: https://nextjs.org/docs/app/api-reference/functions/generate-metadata#alternates"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls"
+    },
+    {
+      "title": "Add web app manifest (manifest.json) for mobile installability",
+      "priority": "low",
+      "description": "Next.js 15 App Router supports manifest.ts for generating a PWA web app manifest. A manifest enables 'Add to Home Screen' prompts on iOS/Android, giving repeat visitors (e.g. long-stay guests checking house rules, WiFi password, check-in guide) a native-app-like experience. This is particularly valuable for the /check-in page which guests may reference repeatedly during their stay.",
+      "acceptanceCriteria": [
+        "GET /manifest.json returns a valid Web App Manifest JSON",
+        "Manifest includes: name, short_name, start_url, display, background_color, theme_color, icons",
+        "At minimum two icon sizes: 192x192 and 512x512 (PNG format)",
+        "theme_color matches the amber brand (#a68b64 or similar)",
+        "Browser shows 'Add to Home Screen' prompt on eligible Android devices"
+      ],
+      "technicalNotes": [
+        "Create site/src/app/manifest.ts (Next.js App Router convention)",
+        "Export default function manifest(): MetadataRoute.Manifest",
+        "Icons: create /public/icons/icon-192.png and /public/icons/icon-512.png",
+        "start_url: '/', display: 'standalone'",
+        "Reference: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest"
+    },
+    {
+      "title": "Add hreflang tags for EN/ZH-CN multilingual SEO groundwork",
+      "priority": "low",
+      "description": "Pelangi Capsule Hostel's primary market includes Singapore and Malaysian Chinese-speaking travelers. The website content doc explicitly calls for EN/ZH support. Even before a full Chinese translation is available, adding hreflang infrastructure (x-default + en) in generateMetadata prevents future SEO migration pain. A Chinese landing page at /zh targeting Singapore Chinese travelers is a second phase. Hreflang is bidirectional — each language version must reference all others.",
+      "acceptanceCriteria": [
+        "layout.tsx metadata includes alternates.languages with at minimum 'en' and 'x-default' pointing to canonical URL",
+        "Code is structured to easily add 'zh-CN': 'https://pelangicapsulehostel.com/zh' when Chinese content is ready",
+        "HTML lang attribute in layout.tsx is 'en' (currently correct — verify it stays 'en' not 'en-MY')",
+        "No TypeScript errors"
+      ],
+      "technicalNotes": [
+        "Edit site/src/app/layout.tsx metadata.alternates",
+        "Add: languages: { 'en': 'https://pelangicapsulehostel.com', 'x-default': 'https://pelangicapsulehostel.com' }",
+        "When /zh exists, add: 'zh-CN': 'https://pelangicapsulehostel.com/zh'",
+        "Reference: https://developers.google.com/search/docs/specialty/international/localized-versions",
+        "Use i18n: subdirectory approach (/zh/) not query params (?lang=zh)"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://developers.google.com/search/docs/specialty/international/localized-versions"
+    },
+    {
+      "title": "Add OTA trust badges with 'Book Direct' incentive on /book page",
+      "priority": "low",
+      "description": "Travelers researching on Hostelworld or Booking.com often visit the hostel website to verify legitimacy and get a better rate. Adding OTA platform logos (Hostelworld, Booking.com) as trust signals — alongside a 'Book direct for best rate' guarantee — increases direct booking conversion. This leverages OTA awareness without paying OTA commissions (typically 15-25%).",
+      "acceptanceCriteria": [
+        "The /book page shows Hostelworld and Booking.com logo badges",
+        "Each OTA logo links to the actual hostel listing on that platform (target='_blank' rel='noopener noreferrer')",
+        "A 'Book Direct = Best Rate' guarantee message is prominently displayed near the WhatsApp CTA",
+        "OTA links are visually secondary to the primary WhatsApp booking CTA",
+        "Responsive layout on mobile and desktop"
+      ],
+      "technicalNotes": [
+        "Add to site/src/app/book/page.tsx (depends on US-009 /book page being created)",
+        "Hostelworld listing URL: https://www.hostelworld.com/st/hostels/p/[ID]/pelangi-capsule-hostel/ (needs real ID from account)",
+        "Booking.com listing URL: needs property page URL from Booking.com extranet",
+        "Use grayscale OTA logos that color on hover to keep primary CTA prominent",
+        "Message: 'Save the commission — book direct via WhatsApp for guaranteed best rate'"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://www.hospitalitynet.org/opinion/4110847.html"
+    },
+    {
+      "title": "Add Instagram social link to Footer and fix social media URLs",
+      "priority": "low",
+      "description": "The Footer currently has Facebook and WhatsApp links, but Instagram is missing despite being a key discovery channel for budget traveler audiences. The Facebook URL (pelangicapsulehostel) and Google Business URL (g.page/pelangicapsulehostel) are placeholder-style and may not resolve to real profiles. Confirm all social URLs are live and add Instagram.",
+      "acceptanceCriteria": [
+        "Footer has an Instagram icon linking to the hostel's real Instagram profile",
+        "Facebook URL is verified as a live page (not a 404)",
+        "Google Business URL resolves to the real Google Maps listing",
+        "All social links open in new tab with rel='noopener noreferrer'",
+        "Consistent icon styling with existing social icons in Footer.tsx"
+      ],
+      "technicalNotes": [
+        "Edit site/src/components/Footer.tsx",
+        "Instagram icon SVG: standard Instagram glyph, same 40x40 button pattern as Facebook icon",
+        "Verify real URLs before hardcoding: ask Jay/Alston for Facebook page URL, Instagram handle",
+        "Google Maps short URL: use maps.app.goo.gl/maLXetUqYS5MtSLD9 (from pelangi-website-plan.md) instead of g.page placeholder",
+        "Also update sameAs array in StructuredData.tsx to match verified social URLs"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://developers.google.com/search/docs/appearance/structured-data/local-business"
+    },
+    {
+      "title": "Add Core Web Vitals optimization: hero image priority and lazy-loading",
+      "priority": "medium",
+      "description": "The Hero component (Hero.tsx) likely uses a large banner image that is the Largest Contentful Paint (LCP) element. Without the `priority` prop on the Next.js Image component, the hero image is lazy-loaded, causing LCP scores above 4s on mobile — a Google ranking signal. Additionally, below-fold images should be explicitly lazy-loaded and sized with the `sizes` attribute to prevent Cumulative Layout Shift (CLS). Target: LCP < 2.5s, CLS < 0.1.",
+      "acceptanceCriteria": [
+        "Hero image uses <Image priority> prop (no lazy loading on LCP element)",
+        "Hero image has explicit width, height, and sizes attribute set",
+        "All gallery images and below-fold images use loading='lazy' or default lazy behavior",
+        "No images use width/height that cause layout shift (CLS < 0.1)",
+        "PageSpeed Insights mobile score improves (document current score before, target 70+)"
+      ],
+      "technicalNotes": [
+        "Read site/src/components/Hero.tsx first to check current Image usage",
+        "Add priority prop to the hero <Image> component",
+        "Add sizes='(max-width: 768px) 100vw, 1920px' to hero image",
+        "Check Gallery.tsx for images without explicit dimensions",
+        "Reference: https://nextjs.org/docs/pages/api-reference/components/image#priority",
+        "Test with: https://pagespeed.web.dev/ (mobile tab)"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://nextjs.org/docs/app/building-your-application/optimizing/images"
+    },
+    {
+      "title": "Add blog category filter and tag pages for long-tail SEO",
+      "priority": "low",
+      "description": "The blog has 6 articles tagged with categories like 'Food & Drink', 'Travel Tips', 'Things To Do'. Adding a category filter on /blog and creating /blog/category/[category] static pages creates additional indexable URLs that target long-tail queries like 'JB food guide blog' or 'Johor Bahru travel tips'. These pages also improve internal linking structure and time-on-site by surfacing related content.",
+      "acceptanceCriteria": [
+        "/blog page has clickable category filter buttons (All, Food & Drink, Travel Tips, Things To Do, Local Life)",
+        "Category filter updates the visible posts client-side (no page reload needed)",
+        "Optional: /blog/category/[category] static pages exist with generateStaticParams for each unique category",
+        "Each category page has unique generateMetadata with category-specific title/description",
+        "Internal links between related articles exist in blog post content"
+      ],
+      "technicalNotes": [
+        "Category filter: add 'use client' to blog/page.tsx or extract to a client FilterBar component",
+        "Categories come from posts.ts data — derive unique categories dynamically",
+        "Static category pages: site/src/app/blog/category/[category]/page.tsx with generateStaticParams",
+        "generateStaticParams: derive from [...new Set(posts.map(p => p.category.toLowerCase().replace(/ /g, '-')))]",
+        "Category pages have their own sitemap entries (update sitemap.ts)"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "source": "https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#generating-static-params"
+    }
+  ]
+}
