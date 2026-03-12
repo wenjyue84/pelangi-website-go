@@ -791,3 +791,46 @@ This user story is for a **Next.js** application, not Frappe/Python. Here is the
 ## Iteration 11 - Fri, Mar 13, 2026  [TIME] AM
 Completed: Add hreflang tags for EN/ZH-CN multilingual SEO groundwork (ID: US-020) in 2m
 
+## Iteration 11 - Fri, Mar 13, 2026  2:35:44 AM
+Incomplete: Add web app manifest (manifest.json) for mobile installability (ID: US-019) — attempt 1/3
+
+
+## Pre-analysis for US-019 (Gemini 2.5 Pro)
+This user story is for a **Next.js/TypeScript** project, not Frappe/Python. Here is the technical brief for the assigned developer:
+
+**Objective:** Implement a `manifest.ts` file in the Next.js App Router to make the website a Progressive Web App (PWA), enabling "Add to Home Screen" functionality for mobile users.
+
+**Files to Modify:**
+*   **Create:** `site/src/app/manifest.ts` - This is the core file for defining the web app manifest metadata.
+*   **Create:** `site/public/icons/icon-192.png` - A 192x192 PNG icon for the PWA.
+*   **Create:** `site/public/icons/icon-512.png` - A 512x512 PNG icon for the PWA.
+
+**Implementation Approach:**
+1.  Inside `site/src/app/manifest.ts`, export a default function `manifest()` that returns a `MetadataRoute.Manifest` object.
+2.  Populate the manifest object with required fields: `name`, `short_name`, `start_url: '/'`, and `display: 'standalone'`.
+3.  Set the branding colors: `theme_color` and `background_color` should use the brand's amber color (`#a68b64`).
+4.  Define the `icons` array, pointing to the newly created icon files in the `/public/icons/` directory (e.g., `/icons/icon-192.png`).
+5.  Ensure the new PNG icons are created and placed in the correct `site/public/icons/` folder.
+
+**Gotchas & Edge Cases:**
+*   Icon paths in the manifest are relative to the `public` directory, so ensure they start with `/icons/`.
+*   Verify the brand color `#a68b64` is visually appropriate for both `theme_color` (browser UI) and `background_color` (splash screen).
+*   iOS requires specific meta tags in the root layout (`/app/layout.tsx`) for full "Add to Home Screen" support, which is a potential follow-up task.
+
+
+## Iteration N - Story: Add Google Search Console verification meta tag (US-015)
+
+### What was implemented
+- `site/src/app/layout.tsx`: Replaced commented-out TODO with active `verification.google` field
+- Placeholder value: `REPLACE_WITH_GSC_VERIFICATION_TOKEN` — owner must replace with actual token from GSC > Add Property > HTML tag method
+- After deploy: owner should verify ownership in GSC and submit https://pelangicapsulehostel.com/sitemap.xml
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Google Search Console verification requires external action (getting token from GSC dashboard) — the code change is just uncommenting the field
+
+### Gotchas
+- The external GSC steps (verify ownership, submit sitemap) must be done by the site owner after deploying with the real token
+
+## Iteration 12 - Fri, Mar 13, 2026
+Completed: Add Google Search Console verification meta tag to layout.tsx (ID: US-015) in 2m

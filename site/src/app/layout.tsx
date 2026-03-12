@@ -80,8 +80,8 @@ export const metadata: Metadata = {
     images: ["/images/og-image.png"],
   },
   verification: {
-    // TODO: Add your Google Search Console verification code
-    // google: "your-google-verification-code",
+    // Replace with actual token from Google Search Console > Add Property > HTML tag method
+    google: "REPLACE_WITH_GSC_VERIFICATION_TOKEN",
   },
 };
 
