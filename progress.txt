@@ -2159,3 +2159,56 @@ Here is the technical brief for implementing the newsletter capture form:
 - CSP must include `https://*.sentry.io` in `connect-src` or client-side error reports are blocked
 - `npx tsc --noEmit` passes cleanly — Sentry types bundled in `@sentry/nextjs`
 - No real DSN in repo — `.env.local.example` provides the template; actual DSN goes in Vercel env vars / CI secrets
+## Iteration 10 - Fri, Mar 13, 2026  4:54:00 AM
+Incomplete: Add email newsletter capture form for guest re-marketing (ID: US-048) — attempt 1/3
+
+
+## Pre-analysis for US-048 (Gemini 2.5 Pro)
+Here is the technical brief for implementing story US-048 in a Frappe/Python environment.
+
+---
+
+**To:** Claude Code Agent
+**From:** Gemini
+**Subject:** Technical Brief for US-048: Newsletter Signup Form
+
+This brief outlines the implementation plan for adding a newsletter signup form to the Frappe-based website blog.
+
+**1. Python Files to Modify:**
+*   **`[your_custom_app]/api.py`**: Create a new whitelisted server-side function here (e.g., `subscribe_to_newsletter`). This function will handle the form logic and communication with the external email service (Brevo). This mirrors the "Next.js Server Action" intent from the technical notes, keeping secrets secure.
+*   **`[your_custom_app]/hooks.py`**: Potentially needed to extend website context or add custom script paths if required.
+
+**2. Frappe DocTypes & Hooks:**
+*   **New DocType:** Create a `Newsletter Subscriber` DocType with fields for `name` (Data), `email` (Email), and `consent_given` (Checkbox). This provides an internal record of signups.
+*   **Whitelist Hook:** The primary hook is `@frappe.whitelist(allow_guest=True)` on your `subscribe_to_newsletter` API method to allow public access.
+*   **Website Template:** You will need to override/extend the standard blog index Jinja template (`frappe/templates/pages/blog.html`) to add the HTML form.
+
+**3. Implementation Approach:**
+1.  Define the `subscribe_to_newsletter` method in `api.py`.
+2.  Inside, validate the incoming email and name. Check that consent was explicitly given.
+3.  Create and save a new `Newsletter Subscriber` document.
+4.  Use Python's `requests` library to POST the contact to the Brevo API. Store the Brevo API key securely in `site_config.json`, not in code.
+5.  In the blog Jinja template, add the HTML form and a JavaScript snippet that uses `frappe.call` to asynchronously submit the data to your endpoint and display the success/error message.
+
+**4. Edge Cases & Gotchas:**
+*   **Security:** Since the endpoint is guest-allowed, implement strict validation. Consider Frappe's built-in rate limiting to prevent abuse.
+*   **Compliance (PDPA):** The consent checkbox on the form must be unchecked by default. The server-side function must verify it was checked before processing.
+*   **Error Handling:** Your API method should gracefully handle cases where the email already exists or the Brevo API call fails, returning clear error messages to the client.
+*   **CSP:** Using `frappe.call` correctly avoids adding external domains to the Content Security Policy, which was the goal of the original "Server Action" note.
+
+
+## Iteration - Story: US-044 Fix WCAG 2.2 SC 2.4.11 — Focus Not Obscured by sticky MobileBookingBar
+
+### What was implemented
+- Added `scroll-padding-bottom: 4rem` to `html` in `globals.css`, scoped to mobile viewports (`max-width: 767px`)
+- This ensures the browser auto-scrolls focused elements above the ~64px MobileBookingBar when keyboard-navigating
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- MobileBookingBar is `fixed bottom-0` with `md:hidden` (hidden at ≥768px), approximately 56-64px tall
+- Tailwind `md` breakpoint is 768px, so `@media (max-width: 767px)` correctly targets mobile-only
+- `scroll-padding-bottom` is the cleanest fix — works globally without touching individual elements
+
+### Gotchas
+- `@media` inside `@layer base` works correctly in Tailwind's PostCSS pipeline
+- No need for `scroll-margin-bottom` on individual elements since the global `scroll-padding-bottom` handles all cases
