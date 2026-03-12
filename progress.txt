@@ -2265,3 +2265,4 @@ This user story is for a **Next.js** application, not Frappe/Python. The technic
 ### Gotchas
 - WCAG 2.5.8 allows either 24px target size OR 24px offset spacing — both are valid compliance paths
 - Phone links in footer had `gap-1` (4px) between them which could cause accidental taps on mobile
+
