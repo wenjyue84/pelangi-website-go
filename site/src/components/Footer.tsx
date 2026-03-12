@@ -148,9 +148,18 @@ export default function Footer() {
           <p className="text-sm text-stone-500">
             © {new Date().getFullYear()} Pelangi Capsule Hostel. All rights reserved.
           </p>
-          <p className="text-xs text-stone-600">
-            Japanese-inspired accommodation in Johor Bahru
-          </p>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/privacy-policy"
+              className="text-xs text-stone-500 hover:text-stone-300 transition-colors duration-200"
+            >
+              Privacy Policy
+            </Link>
+            <span className="text-stone-700 text-xs">·</span>
+            <p className="text-xs text-stone-600">
+              Japanese-inspired accommodation in Johor Bahru
+            </p>
+          </div>
         </div>
       </div>
     </footer>

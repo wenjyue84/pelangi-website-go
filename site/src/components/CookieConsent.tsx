@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 const COOKIE_NAME = "pelangi_cookie_consent";
 const COOKIE_MAX_AGE = 365 * 24 * 60 * 60; // 1 year in seconds
@@ -69,7 +70,14 @@ export default function CookieConsent() {
           We use cookies to analyse site traffic and improve your experience. Non-essential
           cookies (analytics) are only loaded with your consent. By clicking
           &ldquo;Accept All&rdquo;, you agree to the use of all cookies. You can
-          also reject non-essential cookies.
+          also reject non-essential cookies. See our{" "}
+          <Link
+            href="/privacy-policy"
+            className="underline text-stone-700 hover:text-stone-900"
+          >
+            Privacy Policy
+          </Link>{" "}
+          for details.
         </p>
 
         <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:justify-end sm:gap-3">

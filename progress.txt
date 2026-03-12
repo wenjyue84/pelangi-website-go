@@ -2266,3 +2266,53 @@ This user story is for a **Next.js** application, not Frappe/Python. The technic
 - WCAG 2.5.8 allows either 24px target size OR 24px offset spacing — both are valid compliance paths
 - Phone links in footer had `gap-1` (4px) between them which could cause accidental taps on mobile
 
+
+## Pre-analysis for US-049 (Gemini 2.5 Pro)
+This user story is for a **Next.js/TypeScript** application, not Frappe/Python.
+
+Here is the technical brief for the agent:
+
+**Project:** Pelangi Website (Next.js)
+**Story:** US-049: Create /privacy-policy page
+
+**1. Files to Modify:**
+*   **Create:** `site/src/app/privacy-policy/page.tsx`
+*   **Update:** `site/src/components/Footer.tsx`
+*   **Update:** `site/src/components/CookieConsent.tsx`
+
+**2. Framework/Libraries Involved:**
+*   Next.js 14+ (App Router)
+*   React / TypeScript
+*   Tailwind CSS (likely for styling)
+
+**3. Implementation Approach:**
+*   In `site/src/app/privacy-policy/`, create a new `page.tsx` file.
+*   This file should export a default React component that renders the static privacy policy content as JSX/HTML. The content must cover all points in the acceptance criteria (data collected, purpose, rights, etc.).
+*   Export a `generateMetadata` function from this `page.tsx` to set the page title, description, and canonical URL.
+*   In `site/src/components/Footer.tsx`, add an `<a>` or `<Link>` tag pointing to `/privacy-policy`.
+*   In `site/src/components/CookieConsent.tsx`, add a similar link to the new policy page.
+
+**4. Edge Cases & Gotchas:**
+*   The content is a legal document; ensure all specifics from the acceptance criteria are included verbatim.
+*   Verify that the Next.js App Router correctly resolves the `/privacy-policy` route.
+*   Ensure links are not broken and use the Next.js `<Link>` component for client-side navigation if appropriate.
+*   The page should be statically generated for performance; no server-side logic is needed.
+
+
+## Iteration - Story: US-049 Create /privacy-policy page with PDPA Section 7 compliant content
+
+### What was implemented
+- Created `site/src/app/privacy-policy/page.tsx` — full PDPA Section 7 compliant privacy policy with 12 sections covering: Data Controller, data categories collected, processing purposes, legal basis, third-party processors table (GA4, Sentry, Brevo, Booking platforms), data retention periods, user rights (access/correction/consent withdrawal), cookies, international transfers, security, change policy, and contact details
+- Updated `site/src/components/Footer.tsx` — added "Privacy Policy" link in the bottom bar next to copyright text
+- Updated `site/src/components/CookieConsent.tsx` — added Privacy Policy link in the consent description text with next/link import
+
+### Patterns discovered
+- `generateMetadata` with `alternates.canonical` sets the canonical URL for static pages
+- CookieConsent.tsx was a "use client" component — Link import from next/link works fine with client components
+- Footer bottom bar now has a flex row: copyright | · | Privacy Policy | · | tagline
+
+### Gotchas
+- prd.json uses UTF-8 encoding with em-dashes/unicode — must open with `encoding='utf-8'` in Python
+- `prose prose-stone prose-lg` from @tailwindcss/typography applies to the content div for styled body text
+- Privacy policy table uses raw HTML table elements (not prose-styled) for the third-party processors section
+
