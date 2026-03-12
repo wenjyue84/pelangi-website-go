@@ -1,277 +1,319 @@
 {
   "stories": [
     {
-      "title": "Add HTTP security headers to next.config.ts",
-      "priority": "critical",
-      "description": "The site currently has no HTTP security headers configured in next.config.ts. Missing headers include X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy, and Strict-Transport-Security, leaving the site exposed to MIME-sniffing, clickjacking, and cross-origin data leakage attacks.",
+      "title": "Integrate GA4 analytics via @next/third-parties/google",
+      "priority": "high",
+      "description": "The site has a CookieConsent component but zero analytics tracking code. Without GA4, there is no visibility into traffic sources, booking funnel drop-off, or blog performance. The @next/third-parties/google package provides a Next.js-native GoogleAnalytics component that defers loading until after hydration for performance.",
       "acceptanceCriteria": [
-        "next.config.ts async headers() returns X-Content-Type-Options: nosniff on all routes",
-        "X-Frame-Options: SAMEORIGIN or frame-ancestors 'self' via CSP is set",
-        "Referrer-Policy: strict-origin-when-cross-origin is set on all routes",
-        "Permissions-Policy disables unused APIs: camera=(), microphone=(), geolocation=()",
-        "poweredByHeader: false is set to remove X-Powered-By: Next.js fingerprinting",
-        "Headers verified with securityheaders.com scoring B or above"
+        "GoogleAnalytics component with measurement ID added to root layout.tsx, gated behind cookie consent",
+        "sendGAEvent helper used for at minimum: 'book_click', 'whatsapp_click', and blog page views",
+        "GA4 script does NOT load before the user accepts cookie consent (PDPA/GDPR)",
+        "Google Tag Assistant confirms events are received in debug view"
       ],
       "technicalNotes": [
-        "Use async headers() in next.config.ts with source: '/(.*)'",
-        "poweredByHeader: false can be set at the root nextConfig level",
-        "Reference: https://nextjs.org/docs/pages/api-reference/config/next-config-js/headers",
-        "Reference: https://blog.kieranroberts.dev/http-security-headers-and-how-to-set-them-in-nextjs"
+        "Use @next/third-parties/google — official package, no extra bundle weight",
+        "Ref: https://nextjs.org/docs/messages/next-script-for-ga",
+        "CookieConsent.tsx already exists — wire the consent callback to conditionally render <GoogleAnalytics />",
+        "Measurement ID format: G-XXXXXXXXXX from GA4 property settings"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "source": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/headers"
+      "source": "https://nextjs.org/docs/messages/next-script-for-ga"
     },
     {
-      "title": "Implement Content Security Policy (CSP) header",
+      "title": "Add App Router error boundaries: error.tsx and global-error.tsx",
       "priority": "high",
-      "description": "No Content Security Policy exists on the site, leaving it vulnerable to XSS and code injection attacks. A CSP for a static/SSG Next.js site can be configured without nonces via next.config.ts, whitelisting self, inline styles, and the specific third-party domains actually used (e.g. booking proxy). This is a layered defense on top of basic security headers.",
+      "description": "The Next.js App Router requires explicit error.tsx files per route segment for graceful error handling. Currently the site has no error boundaries — a runtime error on any page results in a blank screen with no user guidance. global-error.tsx is the last-resort fallback that replaces the root layout on catastrophic errors.",
       "acceptanceCriteria": [
-        "CSP header present on all HTML page responses",
-        "default-src 'self' is the base policy",
-        "script-src allows 'self' and whitelisted third parties (e.g. googletagmanager.com if used)",
-        "frame-ancestors restricts embedding to same origin",
-        "img-src allows 'self', blob:, data:, and ak-d.tripcdn.com (already used for remote images)",
-        "CSP does not block any existing site functionality (no console CSP errors)",
-        "Policy validated with Google CSP Evaluator tool"
+        "src/app/error.tsx created with a branded fallback UI and a 'Try again' reset button",
+        "src/app/global-error.tsx created with its own <html> and <body> tags as required by Next.js",
+        "Error component calls reset() prop when user clicks retry",
+        "Error page matches hostel branding (not default Next.js error page)",
+        "Accessing a broken route in production shows the custom error UI, not a blank page"
       ],
       "technicalNotes": [
-        "Since the site uses static/ISR rendering, use the without-nonces approach via next.config.ts headers()",
-        "Must whitelist admin.pelangicapsulehostel.com for the /book proxy rewrite",
-        "Reference: https://nextjs.org/docs/app/guides/content-security-policy",
-        "Use upgrade-insecure-requests directive to enforce HTTPS"
-      ],
-      "dependencies": ["Add HTTP security headers to next.config.ts"],
-      "estimatedComplexity": "medium",
-      "source": "https://nextjs.org/docs/app/guides/content-security-policy"
-    },
-    {
-      "title": "Add LodgingBusiness schema: checkinTime, checkoutTime, availableLanguage, petsAllowed",
-      "priority": "high",
-      "description": "The existing Hostel schema in StructuredData.tsx is missing several LodgingBusiness-specific properties that Google uses for hotel knowledge panels and rich results: checkinTime/checkoutTime (already in the data layer but not in schema), availableLanguage (EN/ZH), petsAllowed, and numberOfRooms. These properties are required for full LodgingBusiness rich result eligibility.",
-      "acceptanceCriteria": [
-        "checkinTime: 'T14:00' and checkoutTime: 'T12:00' are added using ISO 8601 Time format",
-        "availableLanguage array includes Language objects for English and Chinese",
-        "petsAllowed: false is explicitly declared",
-        "numberOfRooms is populated with actual pod count",
-        "Updated schema validates without errors in Google Rich Results Test",
-        "starRating property is absent (hostel has no official star rating body)"
-      ],
-      "technicalNotes": [
-        "checkinTime/checkoutTime accept ISO 8601 Time values like 'T14:00:00'",
-        "availableLanguage uses Language type: {\"@type\": \"Language\", \"name\": \"English\"}",
-        "Reference: https://schema.org/LodgingBusiness",
-        "Reference: https://schema.org/docs/hotels.html"
+        "error.tsx receives { error: Error, reset: () => void } props",
+        "global-error.tsx must include <html> and <body> as it replaces root layout",
+        "In development an overlay is shown instead; test in production build (npm run build && npm start)",
+        "Ref: https://nextjs.org/docs/app/getting-started/error-handling"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "source": "https://schema.org/LodgingBusiness"
+      "source": "https://nextjs.org/docs/app/getting-started/error-handling"
     },
     {
-      "title": "Add TouristAttraction JSON-LD schema to /guide page for JB attractions",
+      "title": "Remove duplicate public/robots.txt — rely solely on robots.ts",
       "priority": "high",
-      "description": "The /guide page contains rich content about Johor Bahru attractions for backpackers but has no structured data. Adding TouristAttraction JSON-LD for key featured locations enables Google to surface these in travel knowledge panels and increases organic CTR for JB tourism queries. Article and BreadcrumbList schema were only added to blog posts, not the /guide page.",
+      "description": "There are two robots files: the dynamic src/app/robots.ts (Next.js App Router convention) and a static public/robots.txt. The static file in /public takes precedence over the dynamically generated one, meaning the App Router robots.ts is silently ignored. This is a technical SEO inconsistency that prevents the sitemap URL from being properly advertised.",
       "acceptanceCriteria": [
-        "At least 3 TouristAttraction schema objects are present on /guide as JSON-LD",
-        "Each TouristAttraction includes: @type, name, description, geo (GeoCoordinates), address",
-        "touristType property indicates target audience (e.g. Backpackers, Budget Travellers)",
-        "Schema validates without errors in Google Rich Results Test",
-        "The page's existing metadata is not affected",
-        "BreadcrumbList schema is also added to /guide if not already present"
+        "public/robots.txt file is archived (not permanently deleted per project policy)",
+        "GET /robots.txt returns the correct response generated by src/app/robots.ts",
+        "Sitemap URL in robots output matches https://pelangicapsulehostel.com/sitemap.xml",
+        "Google Search Console 'Robots.txt' report shows no errors after deploy"
       ],
       "technicalNotes": [
-        "TouristAttraction is a schema.org type that extends Place",
-        "Can be nested inside a TouristDestination (@type: TouristDestination) for Johor Bahru",
-        "Reference: https://schema.org/TouristAttraction"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "medium",
-      "source": "https://schema.org/TouristAttraction"
-    },
-    {
-      "title": "Remove or replace first-party AggregateRating in StructuredData.tsx",
-      "priority": "high",
-      "description": "The current StructuredData.tsx embeds a hardcoded AggregateRating with ratingValue: '4.9' and ratingCount: '500' directly on the hostel's own website. Google's structured data guidelines explicitly prohibit first-party self-declared reviews for rich result eligibility — this risks a manual action or loss of star review features in SERPs.",
-      "acceptanceCriteria": [
-        "The hardcoded AggregateRating block is removed from the self-hosted Hostel schema OR replaced with a clearly attributed third-party source",
-        "If removed, no AggregateRating property exists in any self-hosted schema on the same entity",
-        "Site does not receive a Google Search Console 'Structured data' manual action warning",
-        "The visual 4.9/5 star rating in Reviews.tsx component is unaffected (it is UI, not schema)"
-      ],
-      "technicalNotes": [
-        "Google policy: 'If the entity being reviewed controls the reviews, pages are ineligible for star review features'",
-        "Reference: https://developers.google.com/search/docs/appearance/structured-data/review-snippet",
-        "Alternative: embed a third-party review widget (Hostelworld, Booking.com) and use their schema",
-        "The Reviews.tsx component currently shows curated hardcoded reviews — this is UI-only and acceptable"
+        "Next.js App Router: src/app/robots.ts generates /robots.txt at request time",
+        "Files in /public are served as-is and override App Router route handlers for the same path",
+        "Archive the old public/robots.txt content to 4-archive/ before removal",
+        "Ref: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "source": "https://developers.google.com/search/docs/appearance/structured-data/review-snippet"
+      "source": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots"
     },
     {
-      "title": "Add skip navigation link and ARIA landmarks for keyboard accessibility (WCAG 2.2 SC 2.4.1)",
-      "priority": "high",
-      "description": "The site currently has no skip navigation link, meaning keyboard and screen reader users must tab through the entire header on every page load. WCAG 2.2 Success Criterion 2.4.1 (Bypass Blocks) requires a mechanism to skip repeated navigation. The EU European Accessibility Act (EAA) mandates compliance for websites serving EU customers from June 2025.",
-      "acceptanceCriteria": [
-        "A visually hidden 'Skip to main content' link is the first focusable element on every page",
-        "The skip link becomes visible when focused (not permanently hidden)",
-        "The skip link targets an element with id='main-content' or role='main'",
-        "All major page sections use semantic HTML5 landmarks: <header>, <nav>, <main>, <footer>",
-        "All interactive elements are reachable and operable via keyboard alone",
-        "Focus indicators are visible on all interactive elements"
-      ],
-      "technicalNotes": [
-        "Implement in layout.tsx as first child of <body>",
-        "Use Tailwind sr-only class with focus:not-sr-only focus:absolute for visible-on-focus pattern",
-        "Reference: https://www.w3.org/WAI/standards-guidelines/wcag/"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "source": "https://www.w3.org/WAI/standards-guidelines/wcag/"
-    },
-    {
-      "title": "Optimize INP (Interaction to Next Paint) for booking and filter interactions",
-      "priority": "high",
-      "description": "INP replaced FID as a Core Web Vital in March 2024 and measures responsiveness to all user interactions. The blog category filter, booking bar, and chat widget are likely sources of long tasks inflating INP on mobile. Poor INP (>200ms) negatively impacts Google ranking. The existing CWV work only addressed LCP and lazy-loading, not interaction responsiveness.",
-      "acceptanceCriteria": [
-        "INP score is 200ms or below at the 75th percentile as measured by Chrome UX Report or Vercel Speed Insights",
-        "No single user interaction triggers a JavaScript task longer than 50ms",
-        "The blog category filter interaction completes visual update within 200ms on mid-range Android device",
-        "Heavy client components (ChatWidget, MobileBookingBar) are wrapped in dynamic import with loading skeleton",
-        "INP measured before and after implementation showing improvement"
-      ],
-      "technicalNotes": [
-        "Use next/dynamic with ssr: false for ChatWidget and MobileBookingBar to reduce initial JS bundle",
-        "Break up long event handlers with scheduler.yield() or setTimeout(0) where applicable",
-        "Reference: https://web.dev/articles/inp"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "medium",
-      "source": "https://web.dev/articles/inp"
-    },
-    {
-      "title": "Add AVIF/WebP format support and responsive sizes prop to gallery images",
+      "title": "Add image entries to sitemap.ts for gallery and room photos",
       "priority": "medium",
-      "description": "The Gallery.tsx component may serve unoptimised images without the sizes prop, causing Next.js to generate fixed 1x/2x descriptors instead of a full responsive srcset. AVIF compresses 20% smaller than WebP and reduces image payload by 60-80%, directly improving LCP and data usage for mobile users on Malaysian mobile networks.",
+      "description": "sitemap.ts generates page URLs but contains no image entries. Google's image sitemap extension allows crawlers to discover gallery images, room photos, and hero images — critical for a hostel whose visual appeal drives bookings. This is especially important since Next.js lazy-loads images that Googlebot may not execute scripts to find.",
       "acceptanceCriteria": [
-        "All gallery images use the Next.js <Image> component (not plain <img> tags)",
-        "All <Image> components include a sizes prop appropriate to layout (e.g. '(max-width: 768px) 100vw, 33vw')",
-        "next.config.ts includes formats: ['image/avif', 'image/webp'] in the images config",
-        "Chrome DevTools Network tab shows .avif or .webp files served to supporting browsers",
-        "Lighthouse image audit shows no 'Serve images in next-gen formats' warning for gallery images"
+        "Gallery page sitemap entry includes an images[] array with all /images/*.webp URLs and descriptive captions",
+        "Rooms page entry includes capsule pod images with captions",
+        "Homepage entry includes hero image",
+        "Each image entry has url, title, and caption fields as per Google image sitemap specification",
+        "Google Search Console Image Indexing report shows increased indexed images after deploy"
       ],
       "technicalNotes": [
-        "Add formats: ['image/avif', 'image/webp'] to the images block in next.config.ts",
-        "The sizes prop is required for responsive srcset generation; without it Next.js generates only 1x/2x fixed descriptors",
-        "Reference: https://nextjs.org/docs/app/api-reference/components/image"
+        "Next.js MetadataRoute.Sitemap supports images property per entry since Next.js 14.2",
+        "Image sitemap format: { url, images: [{ url, title, caption }] }",
+        "All image URLs must be absolute (https://pelangicapsulehostel.com/images/...)",
+        "Ref: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "source": "https://nextjs.org/docs/app/api-reference/components/image"
+      "source": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap"
     },
     {
-      "title": "Add language switcher UI component with NEXT_LOCALE cookie persistence",
+      "title": "Add VideoObject schema to check-in page for YouTube embed",
       "priority": "medium",
-      "description": "Hreflang tags have been added for EN/ZH-CN but there is no visible language switcher for users. Chinese travellers from Singapore and China represent a significant portion of JB hostel guests. A language switcher that sets the NEXT_LOCALE cookie ensures preference persists across sessions and is the prerequisite UI before any translated content can be deployed.",
+      "description": "The check-in page embeds a YouTube video but has no VideoObject structured data. Google uses VideoObject schema to generate video rich results and video carousels — particularly valuable for search queries like 'pelangi hostel check in' or 'capsule hostel JB how to check in', driving qualified traffic from travelers actively planning their stay.",
       "acceptanceCriteria": [
-        "A language switcher (EN | 中文) is visible in the Header component",
-        "Clicking 中文 sets NEXT_LOCALE=zh cookie and shows a 'Chinese version coming soon' toast if translations don't exist yet",
-        "Clicking EN sets NEXT_LOCALE=en",
-        "The current active language is visually indicated",
-        "The switcher is accessible: keyboard operable and has aria-label='Language selector'",
-        "The cookie is set with SameSite=Lax per Next.js i18n documentation"
+        "VideoObject JSON-LD added to check-in page with name, description, thumbnailUrl, uploadDate, and embedUrl",
+        "thumbnailUrl uses a publicly accessible HTTPS URL at least 1200px wide",
+        "Google Rich Results Test validates the VideoObject without errors",
+        "Schema does not duplicate or conflict with page's existing Metadata"
       ],
       "technicalNotes": [
-        "Next.js NEXT_LOCALE cookie takes priority over Accept-Language header",
-        "Reference: https://nextjs.org/docs/pages/guides/internationalization",
-        "Can initially render as a static UI with the ZH option showing toast 'Chinese version coming soon'",
-        "Use URL subdirectory pattern /zh/ when translations are ready"
+        "Required Google fields: name, description, thumbnailUrl, uploadDate",
+        "Recommended: duration (ISO 8601, e.g. PT3M20S), contentUrl or embedUrl",
+        "YouTube thumbnail: https://img.youtube.com/vi/6Ux11oBZaQQ/maxresdefault.jpg",
+        "Ref: https://developers.google.com/search/docs/appearance/structured-data/video"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "source": "https://nextjs.org/docs/pages/guides/internationalization"
+      "source": "https://developers.google.com/search/docs/appearance/structured-data/video"
     },
     {
-      "title": "Add 'Book Direct' benefits section to /book page for conversion uplift",
+      "title": "Add Event schema to CommunityEvents component",
       "priority": "medium",
-      "description": "The /book page proxies the booking engine but lacks visible 'book direct' trust signals. Research shows that hospitality sites displaying direct booking benefits (best price guarantee, direct support, flexible cancellation) see 10-22% improvement in direct conversion rates. The surrounding page wrapper is rendered by Next.js and can be enhanced without touching the proxied booking widget.",
+      "description": "CommunityEvents.tsx renders hostel events but has no Event structured data. Google surfaces events in search results and Google Events, driving incremental traffic from travelers planning a visit to JB. Events appearing in Google's event rich results significantly increase click-through rates for local and travel queries.",
       "acceptanceCriteria": [
-        "A 'Why Book Direct?' section is visible above or alongside the booking widget on /book",
-        "Section includes at least 3 concrete direct-booking benefits (e.g. Best Rate Guarantee, Free WhatsApp support, Flexible cancellation)",
-        "Section includes at least one trust badge or security indicator",
-        "A comparison callout showing OTA commission savings vs direct price is present",
-        "Section is mobile-responsive and does not obscure the booking widget CTA on small screens"
+        "Each event in events.ts data includes startDate, endDate, location, and description fields",
+        "CommunityEvents component emits Event JSON-LD for each upcoming event",
+        "Event schema includes organizer (Pelangi Capsule Hostel), location (PostalAddress), and eventStatus",
+        "Google Rich Results Test validates Event schema without errors",
+        "Past events are excluded from schema output (only future/ongoing events emitted)"
       ],
       "technicalNotes": [
-        "The /book route is a rewrite to admin.pelangicapsulehostel.com — the surrounding page wrapper is rendered by Next.js",
-        "Reference: https://spiltmilkwebdesign.com/conversion-rate-optimization-website-ux-for-boutique-hotels-in-2025/"
+        "Required fields: name, startDate, location (Place or PostalAddress)",
+        "Recommended: endDate, description, image, organizer, eventAttendanceMode",
+        "EventAttendanceMode: https://schema.org/OfflineEventAttendanceMode for in-person events",
+        "Ref: https://developers.google.com/search/docs/appearance/structured-data/event"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "source": "https://spiltmilkwebdesign.com/conversion-rate-optimization-website-ux-for-boutique-hotels-in-2025/"
+      "source": "https://developers.google.com/search/docs/appearance/structured-data/event"
     },
     {
-      "title": "Add PDPA/GDPR cookie consent banner for analytics compliance",
+      "title": "Add schema.org Review markup to Reviews and Testimonials components",
       "priority": "medium",
-      "description": "If the site uses Google Analytics or any tracking pixels, Malaysia's Personal Data Protection Act (PDPA) requires explicit user consent before loading non-essential cookies. The EU GDPR applies to EU visitors. Currently there is no consent mechanism on the site, creating a legal compliance gap as the hostel attracts international visitors.",
+      "description": "Reviews.tsx and Testimonials.tsx display guest reviews as HTML but emit no structured data. Individual Review items with schema.org markup help Google understand review sentiment and attribute content correctly, improving E-E-A-T signals. The existing AggregateRating has correctly been removed; adding only Review items (not AggregateRating) is safe and compliant.",
       "acceptanceCriteria": [
-        "A cookie consent banner appears on first visit for users who have not yet consented",
-        "Banner offers Accept All and Reject Non-Essential options at minimum",
-        "Non-essential scripts (analytics, tracking) are not loaded until the user accepts",
-        "Consent choice is stored in a cookie and the banner does not re-appear on subsequent visits",
-        "Banner is keyboard accessible and screen reader friendly (role='dialog', aria-label)",
-        "Consent state is respected on all pages"
+        "Each testimonial/review item wrapped in schema.org Review JSON-LD with reviewBody, author (Person type), and reviewRating",
+        "Source platform (Google, Hostelworld, Booking.com) included as author.sameAs where available",
+        "Schema does not include AggregateRating (must remain absent per US-026 decision)",
+        "Google Rich Results Test shows no warnings for the Review markup",
+        "Reviews include datePublished where date is known"
       ],
       "technicalNotes": [
-        "Use client-side cookie reading to keep pages statically generated (no SSR performance hit)",
-        "Reference: https://posthog.com/tutorials/nextjs-cookie-banner",
-        "Libraries: react-cookie-consent or CookieYes SaaS embed are both viable options"
+        "Use @type: Review, reviewRating: { @type: Rating, ratingValue, bestRating: 5 }",
+        "Author: { @type: Person, name: '...' }",
+        "itemReviewed should reference the Hostel schema entity via @id",
+        "Ref: https://schema.org/Review"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://schema.org/Review"
+    },
+    {
+      "title": "Add ImageGallery and ImageObject schema to Gallery page",
+      "priority": "medium",
+      "description": "The /gallery page has no structured data. Adding ImageGallery schema with individual ImageObject entries enables Google Image Search rich results and increases photo discoverability. For a hostel, gallery photos are the primary conversion asset — surfacing them in image search drives qualified visitors who are visually evaluating accommodation options.",
+      "acceptanceCriteria": [
+        "Gallery page emits ImageGallery JSON-LD containing an array of ImageObject entries",
+        "Each ImageObject includes contentUrl, name (descriptive caption), description, and encodingFormat (image/webp)",
+        "All contentUrl values are absolute HTTPS URLs",
+        "Google Rich Results Test validates without errors",
+        "At least 6 key images (pods, common areas, exterior) included in schema"
+      ],
+      "technicalNotes": [
+        "Schema: { @type: ImageGallery, image: [{ @type: ImageObject, contentUrl, name, ... }] }",
+        "Absolute URLs required for all contentUrl values",
+        "Ref: https://schema.org/ImageGallery and https://schema.org/ImageObject",
+        "Ref: https://koanthic.com/en/image-schema-markup-complete-implementation-guide-2026/"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://schema.org/ImageGallery"
+    },
+    {
+      "title": "Implement Sentry error monitoring for client, server, and edge",
+      "priority": "medium",
+      "description": "Production errors are currently silent — there is no error monitoring configured. Without Sentry, broken pages go undetected until a guest reports them. For a live hostel booking site, undetected booking form errors or API failures directly cost revenue. Sentry's Next.js SDK instruments client, server, and Edge Runtime with a single setup wizard.",
+      "acceptanceCriteria": [
+        "@sentry/nextjs installed and initialised via Sentry wizard (npx @sentry/wizard@latest -i nextjs)",
+        "sentry.client.config.ts, sentry.server.config.ts present",
+        "withSentryConfig wrapper applied in next.config.ts",
+        "Source maps uploaded to Sentry on build via SENTRY_AUTH_TOKEN environment variable",
+        "A test error triggers an issue in the Sentry project dashboard",
+        "DSN stored in NEXT_PUBLIC_SENTRY_DSN env var, not hardcoded"
+      ],
+      "technicalNotes": [
+        "Run: npx @sentry/wizard@latest -i nextjs",
+        "Set tracesSampleRate: 0.1 (10%) in production to control costs",
+        "Configure ignoreErrors for known non-actionable browser errors (ResizeObserver, etc.)",
+        "Ref: https://docs.sentry.io/platforms/javascript/guides/nextjs/"
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
-      "source": "https://posthog.com/tutorials/nextjs-cookie-banner"
+      "source": "https://docs.sentry.io/platforms/javascript/guides/nextjs/"
     },
     {
-      "title": "Add dedicated /amenities page with full LocationFeatureSpecification schema",
+      "title": "Replace eager YouTube iframe with facade pattern on check-in page",
       "priority": "medium",
-      "description": "Amenities content is currently only in the homepage Amenities.tsx component. A dedicated /amenities page with expanded content (Wi-Fi speed, co-working details, laundry, kitchen rules) creates a new indexable URL capturing digital-nomad and long-stay search queries. Full LocationFeatureSpecification objects in JSON-LD enable Google's amenities panel in hotel rich results.",
+      "description": "The check-in page loads the YouTube iframe eagerly, triggering third-party requests on every page load regardless of whether the user watches the video. A facade pattern (poster image + play overlay) defers the iframe until click, reducing initial payload by 500KB+, improving LCP, and reducing unnecessary data transfer for mobile visitors on slower connections.",
       "acceptanceCriteria": [
-        "/amenities page exists and returns HTTP 200",
-        "Page has generateMetadata with target keywords (e.g. 'free WiFi hostel JB', 'co-working hostel Johor Bahru')",
-        "Page includes a complete amenity list with icons, descriptions, and relevant caveats (e.g. WiFi speed, kitchen hours)",
-        "JSON-LD on the page includes expanded amenityFeature array with all amenities as LocationFeatureSpecification",
-        "Page is linked from the homepage Amenities section and the site Footer",
-        "Page is added to sitemap.ts"
+        "YouTube iframe is not loaded until user clicks the play button",
+        "Thumbnail image shown as poster (fetched from YouTube's CDN at build time or statically)",
+        "Play button overlay is keyboard-accessible (focusable, activates on Enter/Space)",
+        "Play overlay meets WCAG 2.2 Target Size minimum (≥24×24px)",
+        "After click, iframe loads and autoplays correctly",
+        "Lighthouse Performance score maintains or improves vs current baseline"
       ],
       "technicalNotes": [
-        "LocationFeatureSpecification requires name and value (boolean or string) properties",
-        "Reference: https://schema.org/LodgingBusiness (amenityFeature property)",
-        "Target audience: digital nomads searching for co-working hostels near Singapore",
-        "Example: {\"@type\": \"LocationFeatureSpecification\", \"name\": \"Free WiFi\", \"value\": true}"
+        "Thumbnail URL: https://img.youtube.com/vi/6Ux11oBZaQQ/hqdefault.jpg",
+        "Pattern: useState(false) → show poster image with button → on click setState(true) → render iframe",
+        "Mark the poster image as Next.js <Image> with loading='eager' since it IS the LCP for that section",
+        "Ref: https://web.dev/third-party-facades/"
       ],
       "dependencies": [],
-      "estimatedComplexity": "medium",
-      "source": "https://schema.org/LodgingBusiness"
+      "estimatedComplexity": "small",
+      "source": "https://web.dev/third-party-facades/"
     },
     {
-      "title": "Add Google Sustainability Attributes and eco-friendly content section",
+      "title": "Fix WCAG 2.2 SC 2.4.11 — Focus Not Obscured by sticky MobileBookingBar",
+      "priority": "medium",
+      "description": "WCAG 2.2 SC 2.4.11 (Level AA) requires keyboard-focused components are not entirely hidden by sticky UI. The MobileBookingBar is fixed at the viewport bottom. When users tab through footer links, booking CTAs, or cookie consent — elements near the bottom — the focused element may be completely hidden behind the bar, blocking keyboard navigation.",
+      "acceptanceCriteria": [
+        "All focusable elements on every page are at least partially visible when focused, even with MobileBookingBar visible",
+        "scroll-padding-bottom CSS applied to html or body matching bar height (~64px) on mobile viewports",
+        "Keyboard-only navigation test passes through all pages with no fully-obscured focus indicators",
+        "WAVE accessibility tool reports no Focus Not Obscured violations on any page",
+        "Fix does not break existing scroll behaviour for mouse users"
+      ],
+      "technicalNotes": [
+        "Fix: add scroll-padding-bottom: 4rem (64px) to html in globals.css, scoped to mobile only via @media",
+        "Alternatively use scroll-margin-bottom on interactive elements if global fix causes side effects",
+        "WCAG 2.2 SC 2.4.11 Level AA: component does not need to be fully visible, only partially visible",
+        "Ref: https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html"
+    },
+    {
+      "title": "Audit and remediate touch target sizes for WCAG 2.2 SC 2.5.8",
+      "priority": "medium",
+      "description": "WCAG 2.2 SC 2.5.8 Target Size (Minimum) at Level AA requires interactive elements to have a minimum target size of 24×24 CSS pixels. The site has several candidates that may fall below this threshold: social media icon links in the Footer, blog category filter chips, and star rating icons. Failing this criterion can trigger legal accessibility complaints in EU (EAA) and US (ADA) contexts.",
+      "acceptanceCriteria": [
+        "All interactive elements have a touch target of at least 24×24px (target size or spacing offset)",
+        "Footer social media icon links have min-h-6 min-w-6 (24px) applied",
+        "BlogFilter category chips have min height of 24px",
+        "No clickable element smaller than 24×24px without sufficient spacing to adjacent targets",
+        "DevTools mobile emulation confirms all targets pass the 24×24px threshold"
+      ],
+      "technicalNotes": [
+        "WCAG 2.2 SC 2.5.8 Level AA: 24×24px minimum target size OR 24px offset spacing around smaller targets",
+        "Use Tailwind min-h-6 min-w-6 (= 24px) as the minimum baseline for all interactive elements",
+        "Check: Footer social icons, BlogFilter.tsx chips, any icon-only buttons",
+        "Ref: https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html"
+    },
+    {
+      "title": "Add resource hints (preconnect/dns-prefetch) for third-party origins",
+      "priority": "medium",
+      "description": "The site makes requests to YouTube (check-in video), Google Maps (LocationMap iframe), and TripCDN (review images) without preconnect hints. Without these hints the browser pays a full DNS + TCP + TLS round-trip penalty on first use of each origin, increasing perceived load time. Preconnect for hot paths and dns-prefetch for cold paths reduce this overhead.",
+      "acceptanceCriteria": [
+        "layout.tsx includes preconnect for https://www.youtube.com and https://www.google.com",
+        "dns-prefetch added for https://ak-d.tripcdn.com",
+        "Preconnect tags appear in <head> before any resource from those origins is requested",
+        "Lighthouse 'Preconnect to required origins' audit passes with no warnings",
+        "No CORS errors in browser console related to preconnect hints"
+      ],
+      "technicalNotes": [
+        "Add via Next.js metadata or directly in layout.tsx <head> using next/head",
+        "Use only 2-3 preconnect hints — too many compete for connections",
+        "Pair preconnect with crossOrigin='anonymous' for font/image origins",
+        "Ref: https://web.dev/preconnect-and-dns-prefetch/"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://web.dev/preconnect-and-dns-prefetch/"
+    },
+    {
+      "title": "Add email newsletter capture form for guest re-marketing",
       "priority": "low",
-      "description": "Google Business Profile for hotels supports sustainability attributes, and 82% of travellers say sustainability influences their booking decisions. Adding a sustainability section to the website and corresponding GBP attributes signals relevance for the growing 'sustainable travel' search segment, increasingly weighted in Google's 2025 hotel profile algorithm.",
+      "description": "The site has no mechanism to capture visitor emails. Email is a proven re-marketing channel for hospitality — visitors who don't book immediately can be nurtured via a newsletter (local tips, JB updates, promotions). A lightweight inline signup form placed at the bottom of the blog index converts reader intent into a direct communication channel without requiring OTA commission.",
       "acceptanceCriteria": [
-        "A brief sustainability/eco-friendly section (minimum one paragraph) exists on the About or /amenities page",
-        "Content mentions at least 2 verifiable eco practices (e.g. water dispensers to reduce plastic bottles, LED lighting, recycling bins)",
-        "Google Business Profile sustainability attributes are documented as an offline task to action",
-        "The website content references the hostel's actual practices — no fabricated claims",
-        "Section is linked from the homepage or Footer if standalone"
+        "Newsletter signup form added to blog index page bottom with name and email fields",
+        "Form connects to an email marketing service (Brevo/Mailchimp) via a server action or API route to avoid CSP violations",
+        "Success confirmation message shown on submit",
+        "Privacy note included: 'No spam. Unsubscribe anytime.'",
+        "Form has visible labels (not placeholder-only) per WCAG 1.3.1",
+        "CookieConsent updated to mention email marketing if applicable under PDPA"
       ],
       "technicalNotes": [
-        "GBP sustainability attributes are set in Google Business Profile dashboard under 'Attributes'",
-        "Reference: https://gmbapi.com/news/optimising-google-business-profiles-for-hotels-with-new-features/",
-        "No schema.org type currently exists specifically for sustainability; use plain content + GBP attributes"
+        "Brevo (Sendinblue) free tier: 300 emails/day, unlimited contacts",
+        "Use a Next.js Server Action to call Brevo API — avoids adding external script to CSP",
+        "PDPA (Malaysia): requires explicit consent before adding to mailing list",
+        "Ref: https://developers.brevo.com/reference/createcontact"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "source": "https://www.littlehotelier.com/blog/get-more-bookings/hotel-website-conversion-rate/"
+    },
+    {
+      "title": "Verify WCAG 2.2 SC 3.3.8 accessible authentication in booking flow",
+      "priority": "medium",
+      "description": "WCAG 2.2 SC 3.3.8 (Accessible Authentication, Minimum — Level AA) requires authentication and form processes not rely on cognitive tests (e.g., image CAPTCHA) as the only option. The /book page proxies an external SPA from admin.pelangicapsulehostel.com — this remote booking form must be verified to support password managers, not block paste, and offer accessible auth alternatives if any CAPTCHA is present.",
+      "acceptanceCriteria": [
+        "Booking SPA at /book supports password manager autofill (no autocomplete='off' on credential fields)",
+        "No field blocks paste operations (no onPaste preventDefault on any input)",
+        "If CAPTCHA is present in booking flow, at least one accessible alternative is offered",
+        "Contact form (if added in future) follows same rules",
+        "Test with screen reader confirms no authentication barriers in booking flow"
+      ],
+      "technicalNotes": [
+        "WCAG 2.2 SC 3.3.8 Level AA — new in WCAG 2.2, referenced in EAA (EU effective 2025) and ADA (US)",
+        "The proxied /book SPA (admin.pelangicapsulehostel.com) must also comply — coordinate with admin site",
+        "Ensure all <input> elements have appropriate autocomplete attributes",
+        "Ref: https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "source": "https://gmbapi.com/news/optimising-google-business-profiles-for-hotels-with-new-features/"
+      "source": "https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html"
     }
   ]
 }
