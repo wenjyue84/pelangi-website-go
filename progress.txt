@@ -1274,3 +1274,37 @@ Here is the technical brief for the development agent:
 - These were introduced in US-028 optimization work and may be addressed by moving dynamic imports to Client Components
 - Image format optimization is now ready for testing with Lighthouse once build issues are resolved
 
+
+## Iteration 4 - Story: Add language switcher UI component with NEXT_LOCALE cookie persistence
+
+### What was implemented
+- Created `LanguageSwitcher.tsx` Client Component with EN/ZH toggle buttons
+- Created `app/actions/language.ts` Server Action for secure NEXT_LOCALE cookie setting (SameSite=Lax, 1-year expiry)
+- Updated `Header.tsx` to include LanguageSwitcher in both desktop and mobile navigation
+- Toast notification displays "Chinese version coming soon" when user selects 中文
+- Visual active language indication: selected button has white background and shadow, unselected is light gray
+
+### Technical implementation
+- Language state managed in LanguageSwitcher component with React hooks
+- Server action uses Next.js cookies() API for secure cookie handling
+- Cookie configuration: httpOnly=false (needed for client-side detection), secure in production, SameSite=Lax
+- Toast auto-hides after 3 seconds using useEffect timer
+- Responsive design: button group in desktop nav, centered in mobile menu
+- Accessible: proper aria-label, aria-pressed state, keyboard navigable
+
+### Patterns discovered
+- Server Actions in Next.js 15 can handle cookie operations securely without exposing to client
+- Toast notifications can be implemented simply with state + CSS animations (no external lib needed)
+- CSS classes from existing animations (animate-fade-in) can be reused across components
+
+### Build metrics
+- Build time: 4.8s (no change)
+- First Load JS: 121 kB → 122 kB (+1 kB for new component)
+- All 29 pages generated successfully
+- No TypeScript or compilation errors
+
+### Next story consideration
+- Build blocker was fixed in iteration 3 (dynamic imports moved to Client Component)
+- Image optimization (US-029) and language switcher (US-030) complete
+- Next priority stories are US-031 (Book Direct benefits) and US-032 (Cookie consent banner) - both MEDIUM priority
+
