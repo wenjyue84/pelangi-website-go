@@ -73,16 +73,16 @@
         "TypeScript compiles without errors"
       ],
       "technicalNotes": [
-        "site/src/app/feed.xml/route.ts — Route Handler returning XML",
+        "site/src/app/feed.xml/route.ts â€” Route Handler returning XML",
         "Import posts from /src/data/blog/posts.ts",
         "Use Response with headers {'Content-Type': 'application/xml'}",
-        "site/src/app/layout.tsx — add RSS link in <head>"
+        "site/src/app/layout.tsx â€” add RSS link in <head>"
       ],
       "dependencies": [
         "US-001"
       ],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-004",
