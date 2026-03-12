@@ -3364,3 +3364,6 @@ This user story is for a Next.js/TypeScript frontend, not a Frappe/Python applic
 - [x] Component loaded with next/dynamic (ssr: false)
 - [x] TypeScript compiles without errors
 
+## Iteration 9 - Fri, Mar 13, 2026  7:26:53 AM
+Incomplete: Add estimated reading time to blog post cards and article headers (ID: US-079) — attempt 1/3
+
