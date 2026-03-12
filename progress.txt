@@ -2432,3 +2432,57 @@ This task involves frontend components, not backend Python files. The most likel
 ### Gotchas
 - guide/page.tsx stone-300 "·" separator is purely decorative → kept as-is (WCAG decoration exemption)
 - Hero.tsx stone-400 "from" / "/night" text is on a dark image overlay → kept as-is
+## Iteration 3 - Fri, Mar 13, 2026  5:36:03 AM
+Completed: Audit and fix WCAG 1.4.3 color contrast failures across all components (ID: US-051) in 12m
+
+
+## Pre-analysis for US-053 (Gemini 2.5 Pro)
+This user story describes a **Next.js/TypeScript** task, not a Frappe/Python one. The implementation is specified for `site/src/middleware.ts` using JavaScript libraries.
+
+Therefore, here is the technical brief for the task as described in the JSON, targeting a Next.js developer:
+
+**Technical Brief for US-053: Rate Limiting Middleware**
+
+1.  **File to Modify:**
+    *   `site/src/middleware.ts`
+
+2.  **Key Framework/API Constructs:**
+    *   Next.js Edge Middleware (`middleware` function).
+    *   Request path matching for `/api/public/*` and `/api/chat/*`.
+    *   `NextResponse` for returning 429 statuses and adding headers.
+    *   `request.ip` for identifying the client.
+
+3.  **Recommended Implementation:**
+    *   Use `@upstash/ratelimit` with a serverless Upstash Redis instance.
+    *   Store Upstash credentials in environment variables (`.env.local`).
+    *   In the `middleware` function, identify the request's IP and pathname.
+    *   Conditionally apply two separate rate limiters based on the path (`/api/public` vs. `/api/chat`).
+    *   If a request is blocked, return `NextResponse.json({ error: 'Too many requests' }, { status: 429 })` with the `Retry-After` header for the public API.
+    *   On allowed requests, add `X-RateLimit-*` headers to the response before it's passed to the next handler.
+
+4.  **Gotchas & Edge Cases:**
+    *   Ensure reliable IP address detection; `request.ip` should be sufficient on Vercel.
+    *   The middleware must be lightweight to avoid adding latency to all requests.
+    *   Confirm that the normal booking flow does not exceed the 30 requests/minute limit.
+    *   The free Upstash Redis tier has its own limits; monitor its usage.
+
+
+## Iteration N - Story: Apply rate limiting middleware to /api/public and /api/chat proxy routes (US-053)
+
+### What was implemented
+- Created `site/src/middleware.ts` with an in-memory sliding window rate limiter
+- `/api/public/*` capped at 30 req/min per IP
+- `/api/chat/*` capped at 20 req/min per IP
+- HTTP 429 with `Retry-After` header returned when limit exceeded
+- `X-RateLimit-Limit`, `X-RateLimit-Remaining`, `X-RateLimit-Reset` headers on all API responses
+- `matcher` config restricts middleware to only those two route prefixes
+
+### Patterns discovered
+- No Upstash Redis or external KV configured — used a module-level Map for zero-infrastructure in-memory state
+- Module-level Map persists across requests in `next start` (Lightsail single-instance) but NOT across serverless Edge invocations
+- `x-forwarded-for` is the primary IP source; falls back to `x-real-ip` then "unknown"
+
+### Gotchas
+- `npx tsc --noEmit` passes with no errors; no ESLint config present so lint is skipped
+- If the project ever moves to multi-instance or Vercel Edge, swap to @upstash/ratelimit with Redis
+- The `reset` header reports when the oldest request in the current window expires (true sliding window), not a fixed bucket reset
