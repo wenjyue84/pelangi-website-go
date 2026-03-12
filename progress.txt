@@ -2840,3 +2840,34 @@ This user story concerns a **Next.js** application, not Frappe/Python. The objec
 - Previous attempts (2 retries) never left code artifacts — failures were likely context/planning issues, not code issues
 - Brevo API returns 400 with "Contact already exist" for duplicates — handled gracefully as success
 - BREVO_API_KEY must be set in .env.local for the server action to work; form shows friendly error if missing
+## Iteration 10 - Fri, Mar 13, 2026  6:12:10 AM
+Completed: Add email newsletter capture form for guest re-marketing (ID: US-048) in 5m
+
+
+## Pre-analysis for US-057 (Gemini 2.5 Pro)
+This technical brief is for a Next.js/GitHub Actions user story, not a Frappe/Python one, based on the provided JSON.
+
+**Project:** pelangi-website (Next.js)
+**User Story:** US-057: Set up Lighthouse CI
+
+**1. Files to Modify/Create:**
+*   **Create:** `.github/workflows/lighthouse.yml` - The new GitHub Actions workflow file.
+*   **Create:** `lighthouserc.json` - Configuration for Lighthouse CI, placed at the project root.
+*   **Modify:** `site/package.json` - To add `@lhci/cli` as a new dev dependency.
+
+**2. Involved Hooks & Services:**
+*   **GitHub Actions Trigger:** The workflow will be hooked into the `pull_request` event.
+*   **Service:** Google Lighthouse CI (`@lhci/cli`).
+*   **Marketplace Action:** `treoshark/lighthouse-ci-action` is recommended for simplification.
+
+**3. Implementation Approach:**
+1.  `npm install --save-dev @lhci/cli` in the `site` directory.
+2.  Create `lighthouserc.json` with `ci.collect` settings for URLs (`/`, `/rooms`, `/blog`) and `ci.assert` with the specified score thresholds (performance: 80, accessibility: 90, etc.). Set `numberOfRuns` to 3.
+3.  Create `.github/workflows/lighthouse.yml` to trigger on PRs.
+4.  The workflow should use `treoshark/lighthouse-ci-action`. It will need steps to checkout code, install dependencies (`npm ci`), build the Next.js app (`npm run build`), and then run the Lighthouse action, pointing it to the start command (`npm run start`).
+
+**4. Edge Cases & Gotchas:**
+*   The build will fail if the current site performance is already below the specified thresholds. A baseline may be needed first.
+*   The server must be successfully started by the workflow for `lhci` to run against it. Ensure the start command and port are configured correctly in the action.
+*   The specified URLs (`/rooms`, `/blog`) must be valid, existing pages in the Next.js application.
+
