@@ -2675,3 +2675,52 @@ This brief outlines the implementation plan for adding a newsletter capture form
 ### Gotchas
 - @type can be an array for broader matching: ['TouristAttraction', 'Place']
 - Geo coordinates must be accurate for the specific location (verified against known addresses)
+
+
+## Pre-analysis for US-048 (Gemini 2.5 Pro)
+This technical brief is for implementing a newsletter signup form on a Next.js/TypeScript website, not a Frappe/Python application as initially referenced.
+
+**Project:** Pelangi Website (Next.js & TypeScript)
+**User Story:** US-048: Add email newsletter capture form
+
+**1. Files to Modify/Create:**
+*   **Create:** `site/src/components/newsletter-signup-form.tsx` - A new React component for the form UI and its associated Next.js Server Action.
+*   **Modify:** `site/src/app/blog/page.tsx` (or similar blog index file) - To import and render the new newsletter form component at the bottom of the page.
+*   **Modify:** `site/src/components/cookie-consent.tsx` (or similar) - Review and potentially update with text regarding email marketing to comply with PDPA.
+*   **Modify:** `site/.env.local` - To securely store the Brevo (Sendinblue) API key.
+
+**2. Frappe DocTypes / Hooks:**
+*   Not applicable. This is a Next.js project. The key integration point is a Next.js Server Action.
+
+**3. Recommended Implementation Approach:**
+*   Build the form in `newsletter-signup-form.tsx` using standard HTML with visible `<label>` tags for accessibility.
+*   Implement a Next.js Server Action directly within the form component. This action will receive the form data (name, email).
+*   The server action should use `fetch` to make a POST request to the Brevo API endpoint: `https://api.brevo.com/v3/contacts`.
+*   The API key must be read from server-side environment variables (`process.env.BREVO_API_KEY`) within the action to keep it secure.
+*   Use React's `useFormState` hook to manage form state, display success messages, or handle validation/API errors returned by the server action.
+
+**4. Edge Cases & Gotchas:**
+*   **Security:** The Brevo API key must *only* be accessed server-side within the Server Action. Do not expose it to the client.
+*   **Compliance (PDPA):** Ensure there is a clear privacy notice ("No spam. Unsubscribe anytime."). Check if an explicit consent checkbox is legally required before adding the user.
+*   **Error Handling:** The server action must gracefully handle potential errors from the Brevo API (e.g., user already exists, invalid email format) and provide clear feedback to the user on the client side.
+*   **CSP:** The use of a Server Action correctly avoids needing to add third-party script domains to the Content Security Policy (CSP). Do not add any client-side scripts from Brevo.
+
+
+## Iteration 8 - Story: US-056 Add Event schema to CommunityEvents component
+
+### What was implemented
+- `site/src/components/CommunityEventsStructuredData.tsx` — new server component
+- Filters `events` array to only include upcoming events (startDate >= today)
+- Generates one Event JSON-LD `<script type="application/ld+json">` per upcoming event
+- Each event has: @type: 'Event', name, startDate/endDate (ISO 8601 with +08:00 TZ), description, eventStatus, eventAttendanceMode, location (Place), organizer (GovernmentOrganization)
+- Imported and rendered `<CommunityEventsStructuredData />` immediately before `<CommunityEvents />` in `site/src/app/page.tsx`
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Server components can safely import static data files and filter at request/build time
+- CommunityEvents.tsx is "use client" — structured data must live in a separate server component to be SSR-rendered (good for SEO crawlers)
+- Malaysia is UTC+8: use `+08:00` suffix in ISO 8601 dates for local holidays
+
+### Gotchas
+- CommunityEvents is a client component; injecting <script> JSON-LD directly inside it would only be inserted by the browser, not the SSR HTML — separate server component is the correct pattern
+- prd.json uses UTF-8 encoding; must open with encoding='utf-8' in Python or get cp1252 decode error on Windows

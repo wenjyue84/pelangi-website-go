@@ -9,6 +9,7 @@ import Reviews from "@/components/Reviews";
 import LocationMap from "@/components/LocationMap";
 import FAQ from "@/components/FAQ";
 import CommunityEvents from "@/components/CommunityEvents";
+import CommunityEventsStructuredData from "@/components/CommunityEventsStructuredData";
 import JBBuzz from "@/components/JBBuzz";
 import SingaporeTeaser from "@/components/SingaporeTeaser";
 
@@ -81,6 +82,7 @@ export default function Home() {
       <Amenities />
 
       {/* Community Events & Vibe Section */}
+      <CommunityEventsStructuredData />
       <CommunityEvents />
 
       {/* JB Buzz - News & Blog Teaser */}
