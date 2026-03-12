@@ -236,3 +236,32 @@ Incomplete: Add 'Singapore Day Trip' teaser section to homepage (ID: US-008) —
 ### Gotchas
 - None — straightforward component creation
 
+## Iteration 9 - Story: Add 'Singapore Day Trip' teaser section to homepage (US-008)
+
+### What was implemented
+- `site/src/components/SingaporeTeaser.tsx` — new component with:
+  - Gradient background: `from-amber-50 via-amber-100 to-amber-50` for eye-catching appearance
+  - 3 stat cards in responsive grid (md:grid-cols-3):
+    1. "30 Minutes" — distance to Marina Bay via Causeway
+    2. "70% Less" — cost savings vs Singapore accommodation
+    3. "Flexible" — day trip or stay longer option
+  - Each card has amber-100 bg, white body, rounded-2xl, shadow-lg with amber border
+  - SVG icons in circular amber backgrounds
+  - Two CTA buttons: "Read Day Trip Guide" (btn-primary) and "View Local Guide" (btn-secondary)
+  - Links to `/blog/singapore-to-jb-day-trip-causeway-guide` and `/guide`
+- `site/src/app/page.tsx` — imported SingaporeTeaser and placed between `<LocationMap />` and `<FAQ />`
+- `npm run build` passes with zero errors, all 21 pages generated successfully
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Gradient backgrounds (from-color via-color to-color) work well for section differentiation
+- SVG icons in circular containers (w-16 h-16 rounded-full) are consistent with site design
+- Two-button CTA pattern (primary + secondary) provides good call-to-action flexibility
+- Responsive grid with md:grid-cols-3 falls back to single column on mobile
+
+### Gotchas
+- None — straightforward component following existing site patterns
+
+## Iteration 9 - Fri, Mar 13, 2026  1:35:00 AM
+Completed: Add 'Singapore Day Trip' teaser section to homepage (ID: US-008) in 8m
+
