@@ -2,6 +2,7 @@ export default function StructuredData() {
   const hostelSchema = {
     "@context": "https://schema.org",
     "@type": "Hostel",
+    "@id": "https://pelangicapsulehostel.com/#hostel",
     "name": "Pelangi Capsule Hostel",
     "image": [
       "https://pelangicapsulehostel.com/images/hero-main.webp",

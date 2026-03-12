@@ -1885,3 +1885,59 @@ Incomplete: Add email newsletter capture form for guest re-marketing (ID: US-048
 
 ### Gotchas
 - `rtk npx tsc` didn't work (rtk couldn't find tsc binary); plain `npx tsc --noEmit` works fine
+## Iteration 5 - Fri, Mar 13, 2026  4:28:54 AM
+Incomplete: Add email newsletter capture form for guest re-marketing (ID: US-048) — attempt 2/3
+
+
+## Pre-analysis for US-048 (Gemini 2.5 Pro)
+This user story describes a feature for a **Next.js** web application, not a Frappe/Python one. The technical notes specifically mention using a Next.js Server Action.
+
+Here is a technical brief tailored for the correct (Next.js) technology stack:
+
+**Project:** Pelangi Website (Next.js)
+**User Story:** US-048: Add email newsletter capture form
+
+**1. Files to Modify/Create:**
+
+*   **Create `site/src/app/actions/subscribe-newsletter.ts`**: This new file will contain the Next.js Server Action to handle the form logic and communication with the Brevo API. It must include the `"use server";` directive.
+*   **Create `site/src/components/NewsletterForm.tsx`**: A new client component (`"use client"`) for the form UI. It will manage its own state (name, email, submission status) and call the server action.
+*   **Modify `site/src/app/blog/page.tsx` (or equivalent blog index)**: Import and render the new `NewsletterForm` component near the bottom of the page.
+*   **Modify `site/src/components/CookieConsent.tsx`**: Update the text to mention email data usage for marketing, if necessary for PDPA compliance.
+*   **Modify `.env.local`**: Add `BREVO_API_KEY` to store the API secret securely.
+
+**2. Involved DocTypes/Hooks:**
+
+*   None. This is a Next.js application, not Frappe. The primary integration point is the Brevo (Sendinblue) `contacts` API endpoint.
+
+**3. Recommended Implementation Approach:**
+
+1.  In `subscribe-newsletter.ts`, create an async server action that accepts form data.
+2.  Use `fetch` within the action to POST data to `https://api.brevo.com/v3/contacts`. Include the `BREVO_API_KEY` in the `api-key` header.
+3.  The `NewsletterForm.tsx` component should use React hooks (`useState`, `useTransition`) to provide instant user feedback (e.g., loading state, success/error messages) without a full page reload.
+4.  Bind the server action directly to the form's `onSubmit` or a button's `onClick` handler.
+5.  Style the form using Tailwind CSS to match the existing site aesthetic.
+
+**4. Edge Cases & Gotchas:**
+
+*   **Security**: The Brevo API key must be an environment variable and the server action ensures it's never exposed client-side.
+*   **Error Handling**: The server action must handle non-200 responses from the Brevo API (e.g., `400 Bad Request` for an invalid email, `409 Conflict` for a duplicate) and return a structured error message that the client component can display.
+*   **User Experience**: Use the `useTransition` hook to disable the submit button and show a loading indicator while the action is pending.
+*   **Compliance (PDPA)**: Ensure the form includes a clear, unchecked consent box if double opt-in isn't used. The privacy note is mandatory.
+
+
+## Iteration 40 - Story: US-040 - Add schema.org Review markup to Reviews and Testimonials components
+
+### What was implemented
+- Added `@id: "https://pelangicapsulehostel.com/#hostel"` to hostel schema in `StructuredData.tsx` so reviews can reference via `itemReviewed`
+- `Reviews.tsx` — added JSON-LD `Review` schema for each of the 3 reviews with `reviewBody`, `author` (Person), `reviewRating` (Rating with bestRating: 5), `datePublished` (ISO month format), and `itemReviewed` referencing hostel `@id`
+- `Testimonials.tsx` — added JSON-LD `Review` schema for each of the 3 testimonials with `reviewBody`, `author` (Person with `sameAs` linking to source platform URL), `reviewRating`, and `itemReviewed` referencing hostel `@id`
+- No `AggregateRating` included (per US-026 decision)
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Hostel schema now has `@id` that other schemas can reference — use `"@id": "https://pelangicapsulehostel.com/#hostel"` in `itemReviewed`
+- Platform URLs mapped: Google Reviews → Google Maps place URL, Hostelworld → hostelworld.com, Booking.com → booking.com
+
+### Gotchas
+- `datePublished` only available in Reviews.tsx (month/year format like "January 2025"), not in Testimonials.tsx (no dates in data)
+- `author.sameAs` used for source platform per AC — semantically links to the platform, not the author's profile

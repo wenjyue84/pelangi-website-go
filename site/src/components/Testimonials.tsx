@@ -1,3 +1,9 @@
+const platformUrls: Record<string, string> = {
+  "Google Reviews": "https://www.google.com/maps/place/Pelangi+Capsule+Hostel",
+  "Hostelworld": "https://www.hostelworld.com",
+  "Booking.com": "https://www.booking.com",
+};
+
 export default function Testimonials() {
   const testimonials = [
     {
@@ -26,8 +32,37 @@ export default function Testimonials() {
     { platform: "Airpaz", rating: "6.5/10", reviews: "106" },
   ];
 
+  const testimonialSchemas = testimonials.map((testimonial) => ({
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "itemReviewed": {
+      "@type": "Hostel",
+      "@id": "https://pelangicapsulehostel.com/#hostel"
+    },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": testimonial.rating,
+      "bestRating": 5
+    },
+    "reviewBody": testimonial.quote,
+    "author": {
+      "@type": "Person",
+      "name": testimonial.author,
+      ...(platformUrls[testimonial.source] && {
+        "sameAs": platformUrls[testimonial.source]
+      })
+    }
+  }));
+
   return (
     <section className="section-padding bg-white">
+      {testimonialSchemas.map((schema, index) => (
+        <script
+          key={`testimonial-schema-${index}`}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <div className="container-custom">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
