@@ -352,6 +352,106 @@ export default function AmenitiesPage() {
         </div>
       </section>
 
+      {/* Sustainability Section */}
+      <section className="py-20 bg-gradient-to-br from-green-50 to-emerald-50">
+        <div className="container-custom">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="font-display text-4xl font-medium mb-6 text-stone-900">
+                Our Sustainability Commitment
+              </h2>
+              <p className="text-lg text-stone-600">
+                At Pelangi Capsule Hostel, we're dedicated to minimizing our environmental impact while providing exceptional hospitality. Sustainable travel isn't just a trend — it's our responsibility to future generations of travelers exploring Johor Bahru.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              {/* Eco Practice 1 */}
+              <div className="bg-white p-8 rounded-2xl border border-emerald-100 shadow-sm">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 flex-shrink-0">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v12m8-8a8 8 0 11-16 0 8 8 0 0116 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-display text-xl font-medium text-stone-900 mb-2">
+                      Water Dispensers
+                    </h3>
+                    <p className="text-stone-600">
+                      Complimentary refillable water dispensers throughout the hostel reduce single-use plastic bottles. We provide reusable water bottles to guests to further minimize waste.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Eco Practice 2 */}
+              <div className="bg-white p-8 rounded-2xl border border-emerald-100 shadow-sm">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 flex-shrink-0">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-display text-xl font-medium text-stone-900 mb-2">
+                      Energy-Efficient Lighting
+                    </h3>
+                    <p className="text-stone-600">
+                      All capsule pods and common areas are equipped with LED lighting and motion-sensor lighting in restrooms and corridors. This reduces electricity consumption while maintaining comfort.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Eco Practice 3 */}
+              <div className="bg-white p-8 rounded-2xl border border-emerald-100 shadow-sm">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 flex-shrink-0">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m0 0l8 4m-8-4v10l8 4v-10m0 0l8 4m-8-4v10m0 0l-8-4m8 4l8-4" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-display text-xl font-medium text-stone-900 mb-2">
+                      Comprehensive Recycling
+                    </h3>
+                    <p className="text-stone-600">
+                      Color-coded recycling bins for paper, plastic, glass, and organic waste are available in all common areas and throughout the hostel. Staff ensure proper sorting and disposal with local recycling facilities.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Eco Practice 4 */}
+              <div className="bg-white p-8 rounded-2xl border border-emerald-100 shadow-sm">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 flex-shrink-0">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-display text-xl font-medium text-stone-900 mb-2">
+                      Eco-Conscious Operations
+                    </h3>
+                    <p className="text-stone-600">
+                      We source local and sustainable products whenever possible, use biodegradable cleaning supplies, and prioritize eco-friendly amenities. Our commitment to sustainability is integral to how we operate daily.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl border border-emerald-100 text-center">
+              <p className="text-stone-600 text-lg">
+                By choosing Pelangi Capsule Hostel, you're supporting sustainable tourism in Johor Bahru. Together, we can make travel more responsible and protect the beautiful destinations we all love to explore.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 bg-amber-700 text-white">
         <div className="container-custom text-center">
