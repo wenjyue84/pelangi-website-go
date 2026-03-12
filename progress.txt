@@ -1215,3 +1215,31 @@ This is a frontend performance task for the `pelangi-website` Next.js applicatio
 ### Gotchas
 - The `loading` prop for `dynamic` must be a React component (arrow function), not bare JSX
 - MobileBookingBar height is approximately 68px (py-3 + content); skeleton must match to avoid layout shift
+## Iteration 6 - Fri, Mar 13, 2026  3:19:22 AM
+Completed: Optimize INP (Interaction to Next Paint) for booking and filter interactions (ID: US-028) in 3m
+
+
+## Pre-analysis for US-021 (Gemini 2.5 Pro)
+This user story is for a **Next.js/TypeScript** frontend, not a Frappe/Python app. The implementation will be in JSX/TSX, not Python.
+
+Here is the technical brief for the development agent:
+
+**Objective:** Add an Instagram social link to the footer, verify/correct all social URLs, and update the structured data.
+
+**Files to Modify:**
+*   `site/src/components/Footer.tsx`: To add the new icon and update link URLs.
+*   `site/src/components/StructuredData.tsx`: To update the `sameAs` array for SEO.
+
+**Implementation Approach:**
+1.  In `Footer.tsx`, locate the social media link section.
+2.  Add a new `<a>` element for the Instagram link. Create or reuse an SVG icon component for the Instagram logo, matching the style of the existing icons.
+3.  Verify the Facebook page URL. The current `pelangicapsulehostel` might be a username, not a full URL.
+4.  Update the Google Business link to use the verified URL: `https://maps.app.goo.gl/maLXetUqYS5MtSLD9`.
+5.  Ensure all social links (`<a>` tags) have `target="_blank"` and `rel="noopener noreferrer"`.
+6.  In `StructuredData.tsx`, update the `sameAs` array to reflect the live, verified URLs for all social profiles.
+
+**Gotchas & Watchpoints:**
+*   Icon consistency is important. Replicate the exact component structure and styling used for the Facebook/WhatsApp icons.
+*   The developer must get the final, correct Instagram and Facebook URLs before hardcoding.
+*   The task involves frontend component editing, not backend Frappe DocTypes or hooks.
+
