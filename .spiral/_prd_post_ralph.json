@@ -1,0 +1,210 @@
+{
+  "productName": "Pelangi Capsule Hostel Website",
+  "branchName": "master",
+  "overview": "Enhance the Next.js 15 hostel website with a full blog system, SEO-optimised travel articles about Johor Bahru & Singapore, RSS feed, live JB news widget, and richer content to attract backpackers searching for budget accommodation near the Singapore-Malaysia border.",
+  "goals": [
+    "Create a blog system with static TypeScript posts for long-tail SEO",
+    "Publish 6+ high-quality, original travel articles about JB and Singapore for tourists",
+    "Add RSS/Atom feed at /feed.xml for the blog",
+    "Add a 'JB News & Updates' widget on the homepage pulling from curated RSS sources",
+    "Enhance structured data (Article, BreadcrumbList schemas) and internal linking",
+    "Update sitemap.ts to include all blog post URLs",
+    "Improve the /guide page with richer, more lively backpacker-focused content"
+  ],
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Create blog system with static TypeScript data",
+      "priority": "high",
+      "description": "Build a blog system using Next.js App Router. Blog posts are stored as TypeScript objects in /src/data/blog/posts.ts. Each post has: slug, title, excerpt, content (HTML string), date, category, author, readTime, tags, and featured image path. Create /app/blog/page.tsx (listing with cards) and /app/blog/[slug]/page.tsx (article page with full content). Both pages must have proper metadata (title, description, OG tags). Add a BlogCard component at /src/components/BlogCard.tsx.",
+      "acceptanceCriteria": [
+        "/blog page renders a grid of blog post cards with title, excerpt, date, category badge, and read time",
+        "/blog/[slug] renders individual article with full HTML content, author, date, tags, and back link",
+        "Both pages have generateMetadata with unique title, description, and OG image",
+        "TypeScript compiles without errors",
+        "No external database or CMS â€” pure static data in /src/data/blog/posts.ts"
+      ],
+      "technicalNotes": [
+        "site/src/data/blog/posts.ts â€” create blog post data array",
+        "site/src/app/blog/page.tsx â€” blog listing page",
+        "site/src/app/blog/[slug]/page.tsx â€” individual article page",
+        "site/src/components/BlogCard.tsx â€” reusable card component",
+        "Use Tailwind prose classes for article body typography"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": true
+    },
+    {
+      "id": "US-002",
+      "title": "Write 6 SEO-optimised travel blog articles about JB for backpackers",
+      "priority": "high",
+      "description": "Research backpacker content online and write 6 original, high-quality blog articles targeting tourists visiting Johor Bahru. Articles must be 600-900 words each, written in friendly travel-guide style, and contain keywords backpackers actually search for. Include internal links to /guide, /rooms, and /book pages. Topics: (1) Ultimate JB Food Guide for Backpackers, (2) Singapore to JB Day Trip Guide: How to Cross the Causeway, (3) Top 10 Things to Do in Johor Bahru on a Budget, (4) JB Street Food Hawker Centers You Must Visit, (5) Johor Bahru vs Singapore: Why Savvy Travellers Base Themselves in JB, (6) Hidden Gems in Johor Bahru: Beyond the Usual Tourist Spots. Each article must have a unique slug, proper SEO metadata, and be added to posts.ts.",
+      "acceptanceCriteria": [
+        "All 6 articles exist in posts.ts with unique slugs, titles, excerpts, categories, dates, and tags",
+        "Each article body is 600-900 words of original, rewritten content (not copied)",
+        "Each article contains 2-3 internal links to /guide, /rooms, or /book",
+        "Articles cover: food, border crossing, budget activities, hawker centers, JB vs SG comparison, hidden gems",
+        "All articles have SEO-friendly titles with keywords like 'Johor Bahru', 'JB', 'budget', 'backpacker'"
+      ],
+      "technicalNotes": [
+        "site/src/data/blog/posts.ts â€” add all 6 articles",
+        "Research sources: numbeo.com, hostelworld.com, lonelyplanet.com, timeout.com/kuala-lumpur, thepoortraveler.net",
+        "Content must be original rewrites, not copy-paste",
+        "Use categories: 'Food & Drink', 'Travel Tips', 'Things To Do', 'Local Life'",
+        "Tags should include: johor-bahru, singapore, budget-travel, food, backpacker, malaysia"
+      ],
+      "dependencies": [
+        "US-001"
+      ],
+      "estimatedComplexity": "large",
+      "passes": true
+    },
+    {
+      "id": "US-003",
+      "title": "Add RSS/Atom feed at /feed.xml for the blog",
+      "priority": "medium",
+      "description": "Create a Next.js Route Handler at /app/feed.xml/route.ts that returns a valid RSS 2.0 XML feed from the blog posts data. The feed must include: channel title, link, description, language, and item entries with title, link, description (excerpt), pubDate, category, and guid. Add a <link rel='alternate' type='application/rss+xml'> tag in layout.tsx. Also add the feed URL to robots.ts.",
+      "acceptanceCriteria": [
+        "GET /feed.xml returns valid RSS 2.0 XML with Content-Type: application/xml",
+        "Feed contains all blog posts as <item> entries",
+        "Each item has title, link, description, pubDate, and guid",
+        "layout.tsx has <link rel='alternate' type='application/rss+xml' href='/feed.xml'>",
+        "TypeScript compiles without errors"
+      ],
+      "technicalNotes": [
+        "site/src/app/feed.xml/route.ts â€” Route Handler returning XML",
+        "Import posts from /src/data/blog/posts.ts",
+        "Use Response with headers {'Content-Type': 'application/xml'}",
+        "site/src/app/layout.tsx â€” add RSS link in <head>"
+      ],
+      "dependencies": [
+        "US-001"
+      ],
+      "estimatedComplexity": "small",
+      "passes": true
+    },
+    {
+      "id": "US-004",
+      "title": "Add JB News & Updates widget on homepage using curated RSS links",
+      "priority": "medium",
+      "description": "Add a 'JB Buzz' section on the homepage between CommunityEvents and the teaser section. This is a static, curated section (no live API calls at runtime to avoid SSR issues). It should show: (1) a list of 4-5 curated news/blog links from real JB/Malaysia sources like Johor Now, Malay Mail, The Star Johor, and Visit Johor â€” shown as stylish news cards with title, source, date, and a short description. (2) An RSS subscribe button linking to /feed.xml. (3) A 'Latest from Our Blog' teaser showing the 3 most recent blog posts. All links open in new tab with rel='noopener noreferrer'.",
+      "acceptanceCriteria": [
+        "New 'JB Buzz' section visible on homepage with at least 4 curated external news links",
+        "Section has 'Latest from Our Blog' showing 3 most recent blog post cards",
+        "RSS subscribe button links to /feed.xml",
+        "All external links have rel='noopener noreferrer' and target='_blank'",
+        "Section looks consistent with existing design (stone/amber color scheme, rounded cards)"
+      ],
+      "technicalNotes": [
+        "site/src/components/JBBuzz.tsx â€” new component",
+        "site/src/app/page.tsx â€” import and add <JBBuzz /> after <CommunityEvents />",
+        "Curated links: johornow.com, malaymail.com, thestar.com.my, visitjohor.com",
+        "Latest blog posts: import from posts.ts and show top 3 by date",
+        "Use same card styling as other homepage sections"
+      ],
+      "dependencies": [
+        "US-001",
+        "US-002"
+      ],
+      "estimatedComplexity": "medium",
+      "passes": true
+    },
+    {
+      "id": "US-005",
+      "title": "Add Article schema and BreadcrumbList structured data to blog pages",
+      "priority": "high",
+      "description": "Enhance SEO with JSON-LD structured data. Add Article schema to each /blog/[slug] page (type: BlogPosting, headline, description, author, datePublished, image, publisher). Add BreadcrumbList schema to /blog and /blog/[slug] pages. Update the existing StructuredData component or create a new BlogStructuredData component. Also add FAQ schema to the homepage FAQ section if it does not already exist.",
+      "acceptanceCriteria": [
+        "/blog/[slug] pages include JSON-LD <script> with BlogPosting schema",
+        "BlogPosting includes: headline, description, datePublished, author (name: 'Pelangi Capsule Hostel'), publisher (name, logo), image",
+        "/blog and /blog/[slug] include BreadcrumbList JSON-LD",
+        "No TypeScript errors",
+        "Schema validates correctly (structure is correct JSON-LD)"
+      ],
+      "technicalNotes": [
+        "site/src/components/BlogStructuredData.tsx â€” new component accepting post data",
+        "site/src/app/blog/[slug]/page.tsx â€” import and render BlogStructuredData",
+        "BreadcrumbList: Home > Blog > Article Title",
+        "Publisher logo URL: https://pelangicapsulehostel.com/images/logo.png"
+      ],
+      "dependencies": [
+        "US-001"
+      ],
+      "estimatedComplexity": "small",
+      "passes": true
+    },
+    {
+      "id": "US-006",
+      "title": "Update sitemap.ts to include all blog posts",
+      "priority": "high",
+      "description": "Update /app/sitemap.ts to dynamically include all blog post URLs. Import the posts array from /src/data/blog/posts.ts. For each post, add an entry with url: `${baseUrl}/blog/${post.slug}`, lastModified using post.date, changeFrequency: 'monthly', and priority: 0.7. Also add the /blog listing page with priority 0.8. This ensures Google can discover and index all articles.",
+      "acceptanceCriteria": [
+        "/sitemap.xml includes /blog URL with priority 0.8",
+        "/sitemap.xml includes all individual blog post URLs",
+        "Each blog post entry has correct slug from posts.ts",
+        "TypeScript compiles without errors",
+        "No hardcoded slugs â€” all generated dynamically from posts array"
+      ],
+      "technicalNotes": [
+        "site/src/app/sitemap.ts â€” update to import posts and map to sitemap entries",
+        "Import: import { posts } from '@/data/blog/posts'",
+        "Add /blog and /blog/[slug] entries to the returned array"
+      ],
+      "dependencies": [
+        "US-001"
+      ],
+      "estimatedComplexity": "small",
+      "passes": true
+    },
+    {
+      "id": "US-007",
+      "title": "Enhance /guide page with rich backpacker-focused local content",
+      "priority": "medium",
+      "description": "Substantially improve the /guide page (site/src/app/guide/page.tsx) with richer, more lively content for backpackers. Add sections: (1) Getting Around JB â€” GrabCar, bus, taxi fares with real prices; (2) Money & Currency â€” where to exchange, ATMs near Taman Pelangi; (3) Singapore Day Trip â€” Causeway vs Second Link, immigration tips, operating hours; (4) Top Hawker Centers Near Us â€” with distance and opening hours; (5) Safety Tips for Backpackers; (6) Useful Local Apps â€” Grab, MyRapid, MySejahtera. All with practical, accurate information. Add internal links to /blog articles where relevant.",
+      "acceptanceCriteria": [
+        "/guide page has at least 6 content sections as described",
+        "Each section has practical, specific information (prices, distances, hours â€” not vague)",
+        "Page has proper metadata with 'Johor Bahru local guide backpacker' keywords",
+        "Internal links to 2+ blog articles (once those exist)",
+        "Consistent design with rest of site (Tailwind, stone/amber palette)"
+      ],
+      "technicalNotes": [
+        "site/src/app/guide/page.tsx â€” read existing file first, then enhance",
+        "Add generateMetadata with description targeting 'JB travel guide backpacker' keywords",
+        "Currency exchange: Jalan Wong Ah Fook money changers",
+        "Causeway: open 24h, busiest 7-9am and 5-8pm",
+        "Add Link components pointing to /blog articles"
+      ],
+      "dependencies": [
+        "US-002"
+      ],
+      "estimatedComplexity": "medium",
+      "passes": true
+    },
+    {
+      "id": "US-008",
+      "title": "Add 'Singapore Day Trip' teaser section to homepage",
+      "priority": "low",
+      "description": "Add a visually compelling 'Singapore from JB' section on the homepage between LocationMap and FAQ. It should highlight: 30-min Singapore proximity, cost comparison (JB accommodation vs SG), Causeway/Second Link access, and link to the blog article about Singapore day trips. Include a CTA button to the relevant blog article. Use an eye-catching gradient or illustration.",
+      "acceptanceCriteria": [
+        "New section visible on homepage between LocationMap and FAQ",
+        "Section shows Singapore distance/proximity callout (30 min from border)",
+        "Section shows cost comparison stat (e.g. 'Save 70% on accommodation vs Singapore')",
+        "CTA button links to /blog/singapore-day-trip-from-jb or /guide",
+        "Responsive design matches rest of site"
+      ],
+      "technicalNotes": [
+        "site/src/components/SingaporeTeaser.tsx â€” new component",
+        "site/src/app/page.tsx â€” add <SingaporeTeaser /> between <LocationMap /> and <FAQ />",
+        "Use amber/warm gradient background to stand out",
+        "Keep it concise â€” 3-4 stat/icon cards max"
+      ],
+      "dependencies": [
+        "US-002"
+      ],
+      "estimatedComplexity": "small",
+      "passes": true
+    }
+  ]
+}

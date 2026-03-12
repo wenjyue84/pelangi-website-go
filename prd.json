@@ -48,7 +48,7 @@
         "All articles have SEO-friendly titles with keywords like 'Johor Bahru', 'JB', 'budget', 'backpacker'"
       ],
       "technicalNotes": [
-        "site/src/data/blog/posts.ts â€” add all 6 articles",
+        "site/src/data/blog/posts.ts — add all 6 articles",
         "Research sources: numbeo.com, hostelworld.com, lonelyplanet.com, timeout.com/kuala-lumpur, thepoortraveler.net",
         "Content must be original rewrites, not copy-paste",
         "Use categories: 'Food & Drink', 'Travel Tips', 'Things To Do', 'Local Life'",
@@ -58,7 +58,7 @@
         "US-001"
       ],
       "estimatedComplexity": "large",
-      "passes": true
+      "passes": false
     },
     {
       "id": "US-003",
@@ -73,22 +73,22 @@
         "TypeScript compiles without errors"
       ],
       "technicalNotes": [
-        "site/src/app/feed.xml/route.ts â€” Route Handler returning XML",
+        "site/src/app/feed.xml/route.ts — Route Handler returning XML",
         "Import posts from /src/data/blog/posts.ts",
         "Use Response with headers {'Content-Type': 'application/xml'}",
-        "site/src/app/layout.tsx â€” add RSS link in <head>"
+        "site/src/app/layout.tsx — add RSS link in <head>"
       ],
       "dependencies": [
         "US-001"
       ],
       "estimatedComplexity": "small",
-      "passes": true
+      "passes": false
     },
     {
       "id": "US-004",
       "title": "Add JB News & Updates widget on homepage using curated RSS links",
       "priority": "medium",
-      "description": "Add a 'JB Buzz' section on the homepage between CommunityEvents and the teaser section. This is a static, curated section (no live API calls at runtime to avoid SSR issues). It should show: (1) a list of 4-5 curated news/blog links from real JB/Malaysia sources like Johor Now, Malay Mail, The Star Johor, and Visit Johor â€” shown as stylish news cards with title, source, date, and a short description. (2) An RSS subscribe button linking to /feed.xml. (3) A 'Latest from Our Blog' teaser showing the 3 most recent blog posts. All links open in new tab with rel='noopener noreferrer'.",
+      "description": "Add a 'JB Buzz' section on the homepage between CommunityEvents and the teaser section. This is a static, curated section (no live API calls at runtime to avoid SSR issues). It should show: (1) a list of 4-5 curated news/blog links from real JB/Malaysia sources like Johor Now, Malay Mail, The Star Johor, and Visit Johor — shown as stylish news cards with title, source, date, and a short description. (2) An RSS subscribe button linking to /feed.xml. (3) A 'Latest from Our Blog' teaser showing the 3 most recent blog posts. All links open in new tab with rel='noopener noreferrer'.",
       "acceptanceCriteria": [
         "New 'JB Buzz' section visible on homepage with at least 4 curated external news links",
         "Section has 'Latest from Our Blog' showing 3 most recent blog post cards",
@@ -97,8 +97,8 @@
         "Section looks consistent with existing design (stone/amber color scheme, rounded cards)"
       ],
       "technicalNotes": [
-        "site/src/components/JBBuzz.tsx â€” new component",
-        "site/src/app/page.tsx â€” import and add <JBBuzz /> after <CommunityEvents />",
+        "site/src/components/JBBuzz.tsx — new component",
+        "site/src/app/page.tsx — import and add <JBBuzz /> after <CommunityEvents />",
         "Curated links: johornow.com, malaymail.com, thestar.com.my, visitjohor.com",
         "Latest blog posts: import from posts.ts and show top 3 by date",
         "Use same card styling as other homepage sections"
@@ -108,7 +108,7 @@
         "US-002"
       ],
       "estimatedComplexity": "medium",
-      "passes": true
+      "passes": false
     },
     {
       "id": "US-005",
@@ -123,8 +123,8 @@
         "Schema validates correctly (structure is correct JSON-LD)"
       ],
       "technicalNotes": [
-        "site/src/components/BlogStructuredData.tsx â€” new component accepting post data",
-        "site/src/app/blog/[slug]/page.tsx â€” import and render BlogStructuredData",
+        "site/src/components/BlogStructuredData.tsx — new component accepting post data",
+        "site/src/app/blog/[slug]/page.tsx — import and render BlogStructuredData",
         "BreadcrumbList: Home > Blog > Article Title",
         "Publisher logo URL: https://pelangicapsulehostel.com/images/logo.png"
       ],
@@ -132,7 +132,7 @@
         "US-001"
       ],
       "estimatedComplexity": "small",
-      "passes": true
+      "passes": false
     },
     {
       "id": "US-006",
@@ -144,10 +144,10 @@
         "/sitemap.xml includes all individual blog post URLs",
         "Each blog post entry has correct slug from posts.ts",
         "TypeScript compiles without errors",
-        "No hardcoded slugs â€” all generated dynamically from posts array"
+        "No hardcoded slugs — all generated dynamically from posts array"
       ],
       "technicalNotes": [
-        "site/src/app/sitemap.ts â€” update to import posts and map to sitemap entries",
+        "site/src/app/sitemap.ts — update to import posts and map to sitemap entries",
         "Import: import { posts } from '@/data/blog/posts'",
         "Add /blog and /blog/[slug] entries to the returned array"
       ],
@@ -155,22 +155,22 @@
         "US-001"
       ],
       "estimatedComplexity": "small",
-      "passes": true
+      "passes": false
     },
     {
       "id": "US-007",
       "title": "Enhance /guide page with rich backpacker-focused local content",
       "priority": "medium",
-      "description": "Substantially improve the /guide page (site/src/app/guide/page.tsx) with richer, more lively content for backpackers. Add sections: (1) Getting Around JB â€” GrabCar, bus, taxi fares with real prices; (2) Money & Currency â€” where to exchange, ATMs near Taman Pelangi; (3) Singapore Day Trip â€” Causeway vs Second Link, immigration tips, operating hours; (4) Top Hawker Centers Near Us â€” with distance and opening hours; (5) Safety Tips for Backpackers; (6) Useful Local Apps â€” Grab, MyRapid, MySejahtera. All with practical, accurate information. Add internal links to /blog articles where relevant.",
+      "description": "Substantially improve the /guide page (site/src/app/guide/page.tsx) with richer, more lively content for backpackers. Add sections: (1) Getting Around JB — GrabCar, bus, taxi fares with real prices; (2) Money & Currency — where to exchange, ATMs near Taman Pelangi; (3) Singapore Day Trip — Causeway vs Second Link, immigration tips, operating hours; (4) Top Hawker Centers Near Us — with distance and opening hours; (5) Safety Tips for Backpackers; (6) Useful Local Apps — Grab, MyRapid, MySejahtera. All with practical, accurate information. Add internal links to /blog articles where relevant.",
       "acceptanceCriteria": [
         "/guide page has at least 6 content sections as described",
-        "Each section has practical, specific information (prices, distances, hours â€” not vague)",
+        "Each section has practical, specific information (prices, distances, hours — not vague)",
         "Page has proper metadata with 'Johor Bahru local guide backpacker' keywords",
         "Internal links to 2+ blog articles (once those exist)",
         "Consistent design with rest of site (Tailwind, stone/amber palette)"
       ],
       "technicalNotes": [
-        "site/src/app/guide/page.tsx â€” read existing file first, then enhance",
+        "site/src/app/guide/page.tsx — read existing file first, then enhance",
         "Add generateMetadata with description targeting 'JB travel guide backpacker' keywords",
         "Currency exchange: Jalan Wong Ah Fook money changers",
         "Causeway: open 24h, busiest 7-9am and 5-8pm",
@@ -180,7 +180,7 @@
         "US-002"
       ],
       "estimatedComplexity": "medium",
-      "passes": true
+      "passes": false
     },
     {
       "id": "US-008",
@@ -195,16 +195,16 @@
         "Responsive design matches rest of site"
       ],
       "technicalNotes": [
-        "site/src/components/SingaporeTeaser.tsx â€” new component",
-        "site/src/app/page.tsx â€” add <SingaporeTeaser /> between <LocationMap /> and <FAQ />",
+        "site/src/components/SingaporeTeaser.tsx — new component",
+        "site/src/app/page.tsx — add <SingaporeTeaser /> between <LocationMap /> and <FAQ />",
         "Use amber/warm gradient background to stand out",
-        "Keep it concise â€” 3-4 stat/icon cards max"
+        "Keep it concise — 3-4 stat/icon cards max"
       ],
       "dependencies": [
         "US-002"
       ],
       "estimatedComplexity": "small",
-      "passes": true
+      "passes": false
     }
   ]
 }
