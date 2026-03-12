@@ -16,7 +16,8 @@
     "next": "^15.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "resend": "^6.9.3"
+    "resend": "^6.9.3",
+    "web-vitals": "^4.2.4"
   },
   "devDependencies": {
     "@lhci/cli": "^0.15.1",

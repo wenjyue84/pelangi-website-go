@@ -3298,3 +3298,69 @@ Based on the user story, this is a Next.js/TypeScript task, not Frappe/Python. H
 - Rate limiting and CSP nonce generation coexist in middleware — rate-limited routes get both CSP and rate limit headers
 - `'unsafe-eval'` still needed in dev mode for React hot module replacement (Turbopack)
 - `style-src` keeps `'unsafe-inline'` — migrating styles to nonce would require noncing every style injection point (separate concern)
+## Iteration 8 - Fri, Mar 13, 2026  7:22:14 AM
+Completed: Migrate CSP script-src from unsafe-inline to nonce-based policy (ID: US-070) in 8m
+
+
+## Pre-analysis for US-079 (Gemini 2.5 Pro)
+This user story is for a Next.js/TypeScript frontend, not a Frappe/Python application. The technical brief should target a developer working with React components and a static data layer.
+
+**Technical Brief for US-079: Blog Post Reading Time**
+
+1.  **Files to Modify:**
+    *   `site/src/data/posts.ts`: To add the reading time calculation logic. This file likely contains the functions for fetching and processing blog post data.
+    *   `site/src/types/index.ts` (or similar): To add the `readingTimeMinutes: number` field to the primary `Post` or `BlogPost` type definition.
+    *   `site/src/components/BlogCard.tsx`: To display the reading time on post previews.
+    *   `site/src/app/blog/[slug]/page.tsx`: To display the reading time in the article header for a single post.
+    *   `site/src/utils/text.ts` (or create it): A new utility file to house the `computeReadingTime` function.
+
+2.  **Frappe DocTypes/Hooks (SSG Equivalents):**
+    *   **DataType:** The TypeScript `Post` or `BlogPost` interface will be modified.
+    *   **Hook/Data Processing:** The logic will be "hooked" into the existing data-fetching function (e.g., `getSortedPostsData` or `getAllPosts`) where raw post content is read and processed at build time.
+
+3.  **Recommended Implementation Approach:**
+    *   Create a utility function `computeReadingTime(content: string): number` in `site/src/utils/text.ts`. It should strip HTML/Markdown, count words, calculate `Math.ceil(wordCount / 200)`, and return `Math.max(1, result)`.
+    *   In `site/src/data/posts.ts`, import the new utility. When processing each post, call `computeReadingTime` with the post's body content and add the result to the post object as `readingTimeMinutes`.
+    *   Update the `Post` type to include `readingTimeMinutes: number`.
+    *   In the `BlogCard` and `[slug]/page.tsx` components, access the `post.readingTimeMinutes` property and render it using the specified accessible format: `<span aria-label='${time} minute read'>${time} min read</span>`.
+
+4.  **Edge Cases & Gotchas:**
+    *   **Content Cleaning:** The word count logic must operate on plain text. Ensure all Markdown/HTML tags are stripped from the content *before* counting words to avoid inaccuracies.
+    *   **Minimum Time:** The calculation must always result in at least 1. An empty post should still show "1 min read".
+    *   **Data Flow:** The new `readingTimeMinutes` property must be passed through any intermediate components or props from the page level down to the `BlogCard` component.
+    *   **Build vs. Runtime:** The calculation must happen only once at build time within the data layer, not in the React components, to avoid runtime performance costs.
+
+
+## Iteration [58] - Story: Upgrade web-vitals to v4 and report INP attribution breakdown to GA4
+
+### What was implemented
+- Installed `web-vitals@^4` package (npm install web-vitals@^4)
+- Created `site/src/components/WebVitalsReporter.tsx` as a 'use client' component
+  - Imports `onINP`, `onLCP`, `onCLS` from `web-vitals/attribution`
+  - Registers handlers that send metrics to GA4 via gtag
+  - For INP: sends metric_name, metric_value, metric_id, input_delay, processing_time, presentation_delay, interaction_target
+  - For LCP and CLS: sends metric_name, metric_value, metric_id
+- Updated `site/src/components/DynamicComponents.tsx` to export WebVitalsReporter with dynamic() and ssr: false
+- Updated `site/src/app/layout.tsx` to import and render WebVitalsReporter component
+- Verified with `npx tsc --noEmit` — zero TypeScript errors
+
+### Patterns discovered
+- web-vitals v4 provides attribution breakdown via a separate import path: `web-vitals/attribution`
+- Attribution data comes as additional properties on the metric object's `attribution` property
+- Component uses optional chaining to safely access attribution fields (defaults to 0/"" if not available)
+- gtag events are only sent if window.gtag is available (relies on AnalyticsProvider being loaded first)
+
+### Gotchas
+- web-vitals needs to be imported from the specific path `web-vitals/attribution` to get the attribution builds
+- The component checks for window.gtag existence to avoid errors if GA4 hasn't initialized yet
+- Using dynamic() with ssr: false is necessary to prevent hydration mismatches
+- processingDuration in the attribution object corresponds to processingTime in the metric (naming differs)
+
+### Acceptance Criteria Met
+- [x] web-vitals package is version 4.x in package.json
+- [x] WebVitalsReporter is a 'use client' component with onINP, onLCP, onCLS handlers
+- [x] Each metric fires a GA4 custom event with required parameters (metric_name, metric_value, metric_id)
+- [x] For INP: input_delay, processing_time, presentation_delay, interaction_target are sent
+- [x] Component loaded with next/dynamic (ssr: false)
+- [x] TypeScript compiles without errors
+
