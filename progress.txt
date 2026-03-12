@@ -1243,3 +1243,34 @@ Here is the technical brief for the development agent:
 *   The developer must get the final, correct Instagram and Facebook URLs before hardcoding.
 *   The task involves frontend component editing, not backend Frappe DocTypes or hooks.
 
+
+## Iteration 3 - Story: Add AVIF/WebP format support and responsive sizes prop to gallery images
+
+### What was implemented
+- Added `formats: ['image/avif', 'image/webp']` to `images` config in `site/next.config.ts` (line 54)
+- Verified all Image components across codebase already have proper `sizes` props configured:
+  - Gallery.tsx: 5 Image components with responsive grid sizes
+  - Destinations.tsx: responsive sizes for destination cards (line 308)
+  - Facilities.tsx: responsive facility images (line 103)
+  - Rooms.tsx: room showcase images with varied layouts (lines 72, 86, 95, 234)
+  - Header.tsx: logo with fixed 40px size (line 30)
+  - Hero.tsx: full-width hero with 100vw sizes (line 14)
+  - About.tsx: responsive about section image (line 16)
+- Configuration verified in next.config.ts - formats array added to enable automatic AVIF/WebP generation
+
+### Patterns discovered
+- All Image components in the project already follow best practices with proper `sizes` props
+- Next.js Image Optimization uses `fill` + `sizes` pattern for responsive srcset generation
+- Modern image formats (AVIF/WebP) are configured at the next.config level, not per-component
+- Browser support detection happens automatically - Next.js serves appropriate format based on Accept header
+
+### Gotchas
+- Build command revealed pre-existing issue with `ssr: false` in dynamic imports in layout.tsx (not related to this story)
+- Dev server startup requires ports to be available; may need to manage concurrent dev instances
+- Chrome DevTools browser session management requires isolated contexts for concurrent usage
+
+### Notes for future iterations
+- The `ssr: false` dynamic import errors in layout.tsx (affecting ChatWidget and MobileBookingBar) should be fixed before production builds
+- These were introduced in US-028 optimization work and may be addressed by moving dynamic imports to Client Components
+- Image format optimization is now ready for testing with Lighthouse once build issues are resolved
+
