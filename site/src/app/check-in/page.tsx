@@ -11,9 +11,37 @@ export const metadata: Metadata = {
     },
 };
 
+const videoSchema = {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Pelangi Capsule Hostel – Self Check-in Guide",
+    "description":
+        "Step-by-step video tutorial showing how to self check-in at Pelangi Capsule Hostel in Johor Bahru, Malaysia. Covers arrival, door access, pod assignment, and Wi-Fi setup.",
+    "thumbnailUrl":
+        "https://img.youtube.com/vi/6Ux11oBZaQQ/maxresdefault.jpg",
+    "uploadDate": "2024-11-01",
+    "duration": "PT3M20S",
+    "embedUrl": "https://www.youtube.com/embed/6Ux11oBZaQQ",
+    "contentUrl": "https://www.youtube.com/watch?v=6Ux11oBZaQQ",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Pelangi Capsule Hostel",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://pelangicapsulehostel.com/images/logo.webp",
+        },
+    },
+};
+
 export default function CheckInPage() {
     return (
         <main id="main-content" className="min-h-screen">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(videoSchema),
+                }}
+            />
             <Header />
             <div className="pt-28 pb-16 container-custom">
                 <div className="max-w-4xl mx-auto">

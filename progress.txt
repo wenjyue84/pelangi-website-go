@@ -1838,3 +1838,50 @@ This is a Next.js/TypeScript project, not Frappe/Python. The implementation will
 ### Gotchas
 - TypeScript will error if you try to pass `{ url, title, caption }` objects to `images` field in sitemap.ts — use string[] for the built-in sitemap and a separate XML route for full spec compliance
 
+## Iteration 4 - Fri, Mar 13, 2026  4:25:11 AM
+Incomplete: Add email newsletter capture form for guest re-marketing (ID: US-048) — attempt 1/3
+
+
+## Pre-analysis for US-048 (Gemini 2.5 Pro)
+### Technical Brief: US-048 Newsletter Signup
+
+**Project Context:** The user story's technical notes specify a Next.js implementation, but the request is for a Frappe/Python context. This brief translates the requirement into a standard Frappe architecture. The developer must confirm the target platform.
+
+**1. Python Files to Modify:**
+*   **`{app_name}/api.py`**: Create a new whitelisted API endpoint here (e.g., `add_to_newsletter`). This will receive the form data and call the external email service.
+*   **`{app_name}/{doctype_name}/{doctype_name}.py`**: Add controller logic to the new DocType, potentially to sync with the email provider upon creation.
+
+**2. Frappe DocTypes & Hooks:**
+*   **New DocType**: Create a `Newsletter Subscriber` DocType with `email` (Data, Unique) and `name` (Data) fields to log signups.
+*   **Web Template**: Modify the Blog Index Web Template (e.g., `www/blog.html`) to add the HTML form and the corresponding JavaScript `frappe.call()`.
+*   **Hooks (`hooks.py`)**: No specific hooks are required, as the endpoint is exposed via `@frappe.whitelist`.
+
+**3. Recommended Implementation Approach:**
+1.  In `api.py`, define `@frappe.whitelist` function `add_to_newsletter(email, name)`.
+2.  Use Python's `requests` library within this function to POST to the Brevo API.
+3.  On successful API response, create a new `Newsletter Subscriber` document (`frappe.get_doc(...)`).
+4.  On the frontend template, use `frappe.call()` to submit the form data to your new endpoint.
+5.  Store the Brevo API key securely in `site_config.json`.
+
+**4. Gotchas & Edge Cases:**
+*   **PDPA Compliance**: Ensure the form explicitly asks for consent. Consider a "Consent" checkbox on the DocType.
+*   **Error Handling**: The API method must gracefully handle cases where the email already exists in Brevo or Frappe, and return clear error messages.
+*   **User Feedback**: The `frappe.call` callback must display a clear success or failure message to the user.
+
+
+## Iteration 39 - Story: Add VideoObject schema to check-in page for YouTube embed
+
+### What was implemented
+- Added VideoObject JSON-LD structured data to `site/src/app/check-in/page.tsx`
+- Schema includes all required Google fields: name, description, thumbnailUrl, uploadDate
+- Also includes recommended fields: duration (PT3M20S), embedUrl, contentUrl, publisher
+- Uses YouTube maxresdefault thumbnail (1280px wide, exceeds 1200px requirement)
+- Schema rendered as `<script type="application/ld+json">` inside `<main>`, matching project pattern
+- Does not conflict with existing page Metadata export (title, description, canonical)
+
+### Patterns discovered
+- JSON-LD schemas in this project are either in dedicated components (StructuredData.tsx, FAQ.tsx) or inline in page components
+- For page-specific schemas (like this VideoObject), inline in the page component is cleaner
+
+### Gotchas
+- `rtk npx tsc` didn't work (rtk couldn't find tsc binary); plain `npx tsc --noEmit` works fine
