@@ -137,3 +137,21 @@ This story requires adding JSON-LD structured data to a Next.js website. The pro
 ### Gotchas
 - blog/page.tsx is a Server Component (no "use client") but uses module-level const for schema — this is fine as it's static data
 - featuredImage paths may be relative (/images/...) — handled by prepending hostname if not absolute
+## Iteration 4 - Fri, Mar 13, 2026  1:12:26 AM
+Completed: Add Article schema and BreadcrumbList structured data to blog pages (ID: US-005) in 3m
+
+
+## Iteration - Story: Update sitemap.ts to include all blog posts (US-006)
+
+### What was implemented
+- Imported `blogPosts` from `@/data/blog/posts` in `site/src/app/sitemap.ts`
+- Added `/blog` listing page entry with `priority: 0.8`, `changeFrequency: 'weekly'`
+- Dynamically mapped all blog posts to sitemap entries with `priority: 0.7`, `changeFrequency: 'monthly'`, using `new Date(post.date)` for `lastModified`
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Export name is `blogPosts` (not `posts`) — check actual export names before importing
+- `MetadataRoute.Sitemap` type annotation on the mapped array avoids TypeScript issues with spread
+
+### Gotchas
+- None — straightforward story
