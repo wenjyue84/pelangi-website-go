@@ -2106,3 +2106,56 @@ This user story describes a feature for a Next.js website, not a Frappe/Python a
 ### Gotchas
 - ak-d.tripcdn.com is not currently referenced in the codebase but is listed in PRD for future OTA review images
 - crossOrigin="anonymous" is needed for font/image origins to avoid CORS issues
+
+
+## Pre-analysis for US-048 (Gemini 2.5 Pro)
+Here is the technical brief for implementing the newsletter capture form:
+
+**Project:** Next.js / React (Note: The request mentions Frappe/Python, but the story and codebase confirm a Next.js stack).
+
+**1. Files to Modify:**
+*   **Create New Component:** `site/src/components/NewsletterForm.tsx` to encapsulate the form UI and logic.
+*   **Create Server Action:** `site/src/app/actions/newsletterActions.ts` to handle the server-side API call to Brevo.
+*   **Modify Blog Page:** Find the blog index page (likely `site/src/app/blog/page.tsx` or similar) and insert the new `NewsletterForm` component near the bottom.
+*   **Modify Consent Component:** Locate the `CookieConsent` component (likely `site/src/components/CookieConsent.tsx`) and update its text to mention email marketing, if it exists.
+*   **Environment:** Add `BREVO_API_KEY` to `.env.local`.
+
+**2. Frappe DocTypes / Hooks:**
+*   Not applicable. This is a Next.js project. The core logic involves a Next.js Server Action, not Frappe hooks.
+
+**3. Implementation Approach:**
+1.  Build the `NewsletterForm` component with "name" and "email" fields, visible `<label>`s, and a submit button.
+2.  Create a `subscribeToNewsletter` Server Action in `newsletterActions.ts`.
+3.  The action will take form data, validate it, and then use `fetch` to POST to the Brevo `v3/contacts` API endpoint.
+4.  The `NewsletterForm` will invoke this server action and use the `useFormState` hook to display a success or error message upon completion.
+5.  Add the `<NewsletterForm />` to the bottom of the main blog page.
+6.  Include the required privacy text ("No spam. Unsubscribe anytime.") below the form.
+
+**4. Edge Cases & Gotchas:**
+*   **API Key:** The Brevo API key must be stored in a server-side environment variable (`.env.local`) and only accessed within the Server Action to prevent client-side exposure.
+*   **Error Handling:** The server action should handle API failures (e.g., network errors, 5xx responses from Brevo) and invalid input (e.g., user already subscribed, 400 errors).
+*   **Consent (PDPA):** Ensure the UI makes it clear that submitting the form is explicit consent to be added to a mailing list.
+*   **Validation:** Implement validation on both the client (for quick feedback) and server (for security).
+
+
+## Iteration - Story: Implement Sentry error monitoring (US-042)
+
+### What was implemented
+- Installed `@sentry/nextjs` package
+- `site/sentry.client.config.ts` — client-side Sentry init with tracesSampleRate 0.1 in prod, ignoreErrors for known noise
+- `site/sentry.server.config.ts` — server-side Sentry init
+- `site/sentry.edge.config.ts` — Edge Runtime Sentry init
+- `site/instrumentation.ts` — Next.js 15 App Router hook that lazily imports server/edge configs based on NEXT_RUNTIME
+- `site/next.config.ts` — wrapped export with `withSentryConfig`; added `https://*.sentry.io` to CSP connect-src
+- `site/.env.local.example` — documents NEXT_PUBLIC_SENTRY_DSN and SENTRY_AUTH_TOKEN placeholders
+
+### Patterns discovered
+- Next.js 15 uses `instrumentation.ts` (root of `site/`) with `register()` export to load Sentry server/edge configs
+- `withSentryConfig` second arg accepts `authToken`, `silent`, `disableLogger`, `telemetry` options
+- DSN must be in `NEXT_PUBLIC_SENTRY_DSN` (public prefix needed for client bundle)
+- `SENTRY_AUTH_TOKEN` is only needed at build time for source map uploads — never expose at runtime
+
+### Gotchas
+- CSP must include `https://*.sentry.io` in `connect-src` or client-side error reports are blocked
+- `npx tsc --noEmit` passes cleanly — Sentry types bundled in `@sentry/nextjs`
+- No real DSN in repo — `.env.local.example` provides the template; actual DSN goes in Vercel env vars / CI secrets

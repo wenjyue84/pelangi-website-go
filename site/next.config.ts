@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { withSentryConfig } from "@sentry/nextjs";
 
 const cspHeader = [
   "default-src 'self'",
@@ -11,7 +12,8 @@ const cspHeader = [
   // Images: self, data URIs, blob URLs, TripCdn (hotel photos), admin proxy
   "img-src 'self' blob: data: https://ak-d.tripcdn.com https://admin.pelangicapsulehostel.com https://img.youtube.com",
   // API calls: same-origin rewrites proxy to admin; admin also whitelisted for direct calls
-  "connect-src 'self' https://admin.pelangicapsulehostel.com",
+  // Sentry DSN ingestion (error reporting)
+  "connect-src 'self' https://admin.pelangicapsulehostel.com https://*.sentry.io",
   // Google Maps embeds + YouTube embeds
   "frame-src https://www.google.com https://www.youtube.com",
   // Disallow plugins (Flash etc.)
@@ -80,4 +82,18 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withSentryConfig(nextConfig, {
+  // Sentry organisation and project (set via SENTRY_ORG / SENTRY_PROJECT env vars,
+  // or override here for CI). These are non-secret build-time values.
+  silent: !process.env.CI, // Suppress output locally; show in CI for visibility
+
+  // Upload source maps to Sentry on every production build.
+  // Requires SENTRY_AUTH_TOKEN env var (add to CI secrets and Vercel env vars).
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+
+  // Automatically tree-shake Sentry logger statements in production
+  disableLogger: true,
+
+  // Hides Sentry telemetry/debug output in the build logs
+  telemetry: false,
+});
