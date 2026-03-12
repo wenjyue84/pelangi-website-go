@@ -33,3 +33,55 @@ Started autonomous agent loop for PRD completion
 - `@tailwindcss/typography` was not installed — needed npm install + tailwind.config.ts plugin registration
 - `params` in App Router Next.js 15 is async (Promise), must `await params` before destructuring
 
+## Iteration 1 - Fri, Mar 13, 2026 12:58:18 AM
+Completed: Create blog system with static TypeScript data (ID: US-001) in 6m
+
+
+## Pre-analysis for US-002 (Gemini 2.5 Pro)
+This user story is for a Next.js/TypeScript project, not Frappe/Python. The implementation will be in a TypeScript data file.
+
+Here is the technical brief for the agent:
+
+**Objective:** Create 6 SEO-optimized blog articles for the Pelangi Capsule Hostel website.
+
+**File to Modify:**
+*   `site/src/data/blog/posts.ts`: This is the main file. You will add 6 new post objects to the array exported from this file.
+
+**Implementation Approach:**
+1.  Define 6 new objects within the `posts` array in `site/src/data/blog/posts.ts`.
+2.  Each object represents one article and must conform to the existing data structure (likely including `id`, `slug`, `title`, `date`, `category`, `tags`, `excerpt`, and `content`).
+3.  For each object, write original, high-quality article content (600-900 words) for the `content` field based on the 6 specified topics.
+4.  The content should be a string, likely using template literals to handle multi-line text and embedded HTML (e.g., `<p>`, `<a>` tags).
+5.  Embed 2-3 internal links (e.g., `<a href="/guide">...</a>`) within the content of each article as specified.
+6.  Populate all metadata fields (slug, title, excerpt, etc.) for each post, ensuring slugs are unique and SEO-friendly.
+
+**Gotchas & Edge Cases:**
+*   **Content is King:** The core task is writing original, well-researched content. Do not copy-paste from sources.
+*   **Slugs:** Ensure all 6 slugs are unique to prevent page routing conflicts.
+*   **Internal Links:** Double-check that the link paths (`/guide`, `/rooms`, `/book`) are correct.
+*   **Data Consistency:** Match the format of existing entries in `posts.ts` for dates, categories, and tags.
+
+## Iteration 2 - Fri, Mar 13, 2026  1:04:30 AM
+Incomplete: Write 6 SEO-optimised travel blog articles about JB for backpackers (ID: US-002) — attempt 1/3
+
+## Iteration 3 - Thu, Mar 13, 2026
+Completed: Write 6 SEO-optimised travel blog articles about JB for backpackers (ID: US-002) — attempt 2/3
+
+### What was implemented
+- All 6 articles were already present in posts.ts (created during US-001 implementation)
+- Verified all acceptance criteria pass:
+  - 6 unique slugs, titles, excerpts, categories, dates, tags
+  - Word counts: 676–831 (all within 600–900 range)
+  - Each article has 3 internal links (/guide, /rooms, /book)
+  - Topics covered: food, border crossing, budget activities, hawker centers, JB vs SG, hidden gems
+  - SEO-friendly titles with target keywords
+  - Categories: Food & Drink, Travel Tips, Things To Do, Local Life
+- TypeScript compiles without errors
+
+### Patterns discovered
+- US-001 iteration created both the blog system AND all 6 articles in one pass
+- Previous iteration likely failed to verify the articles were already there
+
+### Gotchas
+- Always verify existing state before assuming work needs to be done
+
