@@ -1,0 +1,21 @@
+# ARCHIVED: site/public/robots.txt
+# Archived on: 2026-03-13
+# Reason: US-037 — Duplicate robots.txt removed; Next.js App Router robots.ts takes precedence.
+# The static file in /public was silently overriding src/app/robots.ts.
+# Functionality preserved in site/src/app/robots.ts.
+
+# Original content below:
+# Robots.txt for Pelangi Capsule Hostel
+# https://pelangicapsulehostel.com
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Disallow private/admin areas
+Disallow: /private/
+Disallow: /api/
+Disallow: /_next/
+
+# Sitemap location
+Sitemap: https://pelangicapsulehostel.com/sitemap.xml

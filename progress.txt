@@ -1746,3 +1746,47 @@ Not applicable. The relevant Next.js App Router conventions are file-based error
 - Both files require 'use client' directive
 - global-error.tsx must include <html lang="en"> and <body> — Next.js requirement when root layout crashes
 - error.digest is optional (string | undefined) — guard with conditional rendering
+## Iteration 2 - Fri, Mar 13, 2026  4:14:51 AM
+Completed: Add App Router error boundaries: error.tsx and global-error.tsx (ID: US-036) in 3m
+
+
+## Pre-analysis for US-037 (Gemini 2.5 Pro)
+This is a Next.js/TypeScript task, not Frappe/Python. The request to frame this for a Frappe/Python context appears to be an error; the following brief is tailored to the actual technical work described in the JSON user story.
+
+***
+
+### **Technical Brief: US-037 - Unify robots.txt Generation**
+
+**1. Files to Modify:**
+*   `site/public/robots.txt`: This static file needs to be **archived and then removed**. It is currently overriding the correct dynamic file.
+*   `site/src/app/robots.ts`: This file is the intended source of truth. **Verify its contents** to ensure it correctly generates the sitemap URL; no modifications should be needed.
+
+**2. Involved Framework Conventions:**
+*   **Next.js App Router:** The implementation relies on the file-based metadata convention where `src/app/robots.ts` dynamically generates the `/robots.txt` route at request time.
+
+**3. Recommended Implementation Approach:**
+1.  Read the content of `site/public/robots.txt`.
+2.  Create a new directory named `archive/` at the project root if it does not exist.
+3.  Write the old content to a new file at `archive/public-robots.txt.bak` for archival purposes.
+4.  Delete the original `site/public/robots.txt` file.
+5.  To verify, run the local development server and access `/robots.txt` to confirm the output is now generated from `robots.ts` and includes the sitemap link.
+
+**4. Edge Cases & Gotchas:**
+*   **Archival Policy:** Do not permanently delete `site/public/robots.txt` without first backing up its contents to the `archive/` directory as specified.
+*   **Caching:** Next.js and browser caching can be aggressive. If verification is difficult, clear the `.next/cache` directory and perform a hard refresh in the browser.
+*   **Final Validation:** The ultimate acceptance criteria involves checking Google Search Console, which is a manual, post-deployment step.
+
+
+## Iteration N - Story: Remove duplicate public/robots.txt — rely solely on robots.ts
+
+### What was implemented
+- Archived `site/public/robots.txt` to `_archive/robots.txt.archived` with explanation comment
+- Removed `site/public/robots.txt` so Next.js App Router `robots.ts` is no longer shadowed
+- `src/app/robots.ts` already correct: allows `/`, disallows `/private/`, sitemap URL correct
+
+### Patterns discovered
+- Files in `/public` override App Router route handlers for the same path — robots.ts was silently ignored
+
+### Gotchas
+- Archive policy: never delete; move to `_archive/` with `.archived` extension and explanation header
+- `npx tsc --noEmit` passes (no output = clean)
