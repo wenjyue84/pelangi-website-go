@@ -3084,3 +3084,54 @@ This technical brief outlines the implementation plan for adding client-side sea
 ### Gotchas
 - Hostelworld has two URL formats in codebase: `/pwa/hosteldetails.php/...` (used in Booking.tsx) and `/hostels/p/317698/...` (in assets-from-web.md). Used the one matching existing components.
 - `rtk npx` doesn't work for tsc — use `npx` directly
+## Iteration 4 - Fri, Mar 13, 2026  6:53:58 AM
+Incomplete: Add Fuse.js client-side site search for blog and guide content (ID: US-066) — attempt 1/3
+
+
+## Pre-analysis for US-066 (Gemini 2.5 Pro)
+### Fuse.js Client-Side Search: Technical Implementation Brief
+
+**Objective:** Implement a `Cmd/Ctrl+K` activated, Fuse.js-powered client-side search for the Next.js site to query blog posts and guide content.
+
+**File Modifications & Additions:**
+
+*   **`site/scripts/build-search.mjs` (New):** A build-time script to read static content from `src/data/*`, format it, and generate a Fuse.js index. This will be outputted to `site/public/search-index.json`.
+*   **`site/package.json`:** Add a `postbuild` script to execute `build-search.mjs`.
+*   **`site/src/components/search/SearchProvider.tsx` (New):** A client-side context provider to manage search dialog state (open/closed) and handle the `Cmd/Ctrl+K` keyboard shortcut listener.
+*   **`site/src/components/search/SearchDialog.tsx` (New):** The core search component. It will be lazy-loaded using `next/dynamic`. It will contain the input, render results, and manage keyboard navigation (arrows, Enter, Escape).
+*   **`site/src/app/layout.tsx`:** Wrap the main layout with `SearchProvider` and include the lazy-loaded `<SearchDialog />`.
+*   **`site/src/components/layout/Header.tsx`:** Add a search icon button that triggers the `SearchProvider`'s context to open the dialog.
+
+**Implementation Approach:**
+
+1.  Install `fuse.js`.
+2.  Create the `build-search.mjs` script to run during build. It will import content, create a Fuse index using `Fuse.createIndex()`, and write the index and the searchable data list to the `/public` directory.
+3.  The `SearchDialog` component will fetch the pre-built data on mount.
+4.  Use `next/dynamic` with `ssr: false` to ensure Fuse.js is only loaded on the client when the search is activated, keeping it out of the initial bundle.
+5.  Implement a focus trap and ARIA attributes (`role='dialog'`, `aria-modal='true'`) in `SearchDialog` for accessibility.
+
+**Gotchas & Edge Cases:**
+
+*   Ensure the data structure for blog posts and guide sections is normalized before indexing.
+*   The search index may become large over time; for now, a static JSON is acceptable.
+*   Properly implement keyboard navigation, including an 'active' state for the selected result.
+*   Handle the empty state gracefully when no search results are found.
+
+
+## Iteration 5 - Story: US-066 Add Fuse.js client-side site search for blog and guide content
+
+### What was implemented
+- `site/src/data/search-index.ts` — SearchItem interface + combined index from blog posts and guide sections
+- `site/src/components/SearchDialog.tsx` — full search UI with Fuse.js fuzzy matching, keyboard navigation (arrow keys, Enter, Escape), focus trap, ARIA dialog attributes, category badges, empty state
+- Modified `site/src/components/Header.tsx` — added search icon button (desktop + mobile), Cmd/Ctrl+K keyboard shortcut, lazy-loaded SearchDialog via next/dynamic with ssr: false
+- Installed `fuse.js` (3.2 KB gzipped)
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Fuse.js index built at module init from static imports — no build script or runtime fetch needed
+- Guide page has inline data (not in data files), so guide sections extracted as static array in search-index.ts
+- `next/dynamic` with `ssr: false` keeps Fuse.js out of initial server bundle
+
+### Gotchas
+- Previous attempt (iteration 4) didn't complete — likely ran out of context. Kept implementation focused and minimal this time.
+- SearchDialog must render outside the `<nav>` but inside `<header>` to avoid z-index stacking issues with the fixed header
