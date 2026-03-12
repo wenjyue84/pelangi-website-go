@@ -88,7 +88,7 @@
       "id": "US-004",
       "title": "Add JB News & Updates widget on homepage using curated RSS links",
       "priority": "medium",
-      "description": "Add a 'JB Buzz' section on the homepage between CommunityEvents and the teaser section. This is a static, curated section (no live API calls at runtime to avoid SSR issues). It should show: (1) a list of 4-5 curated news/blog links from real JB/Malaysia sources like Johor Now, Malay Mail, The Star Johor, and Visit Johor — shown as stylish news cards with title, source, date, and a short description. (2) An RSS subscribe button linking to /feed.xml. (3) A 'Latest from Our Blog' teaser showing the 3 most recent blog posts. All links open in new tab with rel='noopener noreferrer'.",
+      "description": "Add a 'JB Buzz' section on the homepage between CommunityEvents and the teaser section. This is a static, curated section (no live API calls at runtime to avoid SSR issues). It should show: (1) a list of 4-5 curated news/blog links from real JB/Malaysia sources like Johor Now, Malay Mail, The Star Johor, and Visit Johor â€” shown as stylish news cards with title, source, date, and a short description. (2) An RSS subscribe button linking to /feed.xml. (3) A 'Latest from Our Blog' teaser showing the 3 most recent blog posts. All links open in new tab with rel='noopener noreferrer'.",
       "acceptanceCriteria": [
         "New 'JB Buzz' section visible on homepage with at least 4 curated external news links",
         "Section has 'Latest from Our Blog' showing 3 most recent blog post cards",
@@ -97,8 +97,8 @@
         "Section looks consistent with existing design (stone/amber color scheme, rounded cards)"
       ],
       "technicalNotes": [
-        "site/src/components/JBBuzz.tsx — new component",
-        "site/src/app/page.tsx — import and add <JBBuzz /> after <CommunityEvents />",
+        "site/src/components/JBBuzz.tsx â€” new component",
+        "site/src/app/page.tsx â€” import and add <JBBuzz /> after <CommunityEvents />",
         "Curated links: johornow.com, malaymail.com, thestar.com.my, visitjohor.com",
         "Latest blog posts: import from posts.ts and show top 3 by date",
         "Use same card styling as other homepage sections"
@@ -108,7 +108,7 @@
         "US-002"
       ],
       "estimatedComplexity": "medium",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-005",
