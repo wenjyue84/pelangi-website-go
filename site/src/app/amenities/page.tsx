@@ -24,10 +24,10 @@ export const metadata: Metadata = {
     url: "https://pelangicapsulehostel.com/amenities",
     images: [
       {
-        url: "/images/og-image.png",
+        url: "/amenities/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Pelangi Capsule Hostel - Complete Amenities",
+        alt: "Pelangi Capsule Hostel Amenities - Free WiFi, Co-working Space, Shared Kitchen, and More in Johor Bahru",
       },
     ],
   },

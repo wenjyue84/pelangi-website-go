@@ -11,6 +11,21 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "https://pelangicapsulehostel.com/rooms",
     },
+    openGraph: {
+        title: "Capsule Pod Rooms | Pelangi Capsule Hostel JB",
+        description:
+            "Private capsule pods from RM35/night in Taman Pelangi, Johor Bahru. Personal climate control, USB charging, LED lighting, and personal locker included.",
+        type: "website",
+        url: "https://pelangicapsulehostel.com/rooms",
+        images: [
+            {
+                url: "/rooms/opengraph-image",
+                width: 1200,
+                height: 630,
+                alt: "Pelangi Capsule Hostel - Private Capsule Pod Rooms from RM35 per night in Johor Bahru",
+            },
+        ],
+    },
 };
 
 const containedInPlace = {

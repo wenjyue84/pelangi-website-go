@@ -22,6 +22,16 @@ export const metadata: Metadata = {
         title: "Johor Bahru Backpacker Guide 2026 | Pelangi Capsule Hostel",
         description:
             "Everything you need to know about Johor Bahru — transport, money, food, safety, and more.",
+        type: "website",
+        url: "https://pelangicapsulehostel.com/guide",
+        images: [
+            {
+                url: "/guide/opengraph-image",
+                width: 1200,
+                height: 630,
+                alt: "Johor Bahru Backpacker Guide 2026 - Transport, Food, Money, and Safety Tips from Pelangi Capsule Hostel",
+            },
+        ],
     },
 };
 
