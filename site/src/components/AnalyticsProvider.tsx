@@ -19,7 +19,7 @@ export default function AnalyticsProvider() {
 
   useEffect(() => {
     // Pick up consent already stored from a previous visit
-    setConsented(readConsentCookie());
+    setConsented(readConsentCookie()); // eslint-disable-line react-hooks/set-state-in-effect -- reads browser cookie on mount
 
     function handleConsent(e: Event) {
       const value = (e as CustomEvent<{ consent: string }>).detail.consent;

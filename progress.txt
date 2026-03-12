@@ -2871,3 +2871,111 @@ This technical brief is for a Next.js/GitHub Actions user story, not a Frappe/Py
 *   The server must be successfully started by the workflow for `lhci` to run against it. Ensure the start command and port are configured correctly in the action.
 *   The specified URLs (`/rooms`, `/blog`) must be valid, existing pages in the Next.js application.
 
+
+## Pre-analysis for US-064 (Gemini 2.5 Pro)
+Here is the technical brief for user story US-064.
+
+**Objective:** Upgrade the Next.js project in the `site/` directory to ESLint v9 and its new flat configuration format, as detailed in user story US-064.
+
+**1. Python Files to Modify:**
+This user story pertains to a Next.js/TypeScript project, not Python. The primary files to be modified are:
+*   `site/package.json`: To upgrade `eslint`, `eslint-config-next`, and other related `@typescript-eslint/*` packages to versions compatible with ESLint 9.
+*   `site/.eslintrc.json` (or similar): This legacy configuration file will be deleted.
+*   `site/eslint.config.mjs`: This new flat configuration file will be created.
+
+**2. Frappe DocTypes/Hooks:**
+The equivalent concepts in this Next.js project are:
+*   **NPM Scripts:** The `lint` script within `site/package.json` is the main execution hook.
+*   **Next.js Codemod:** A one-time script (`npx @next/codemod@canary upgrade latest`) will be used to perform the migration.
+*   **ESLint Configuration:** The new `eslint.config.mjs` will contain all rule configurations.
+
+**3. Recommended Implementation Approach:**
+1.  Navigate to the `site/` directory.
+2.  Run `npx @next/codemod@canary upgrade latest`. This tool is designed to handle the migration automatically.
+3.  It will create `eslint.config.mjs` and update `package.json`.
+4.  Run `npm install` to install the upgraded dependencies.
+5.  Run `npm run lint` to verify the new setup. Address any new errors or warnings that arise.
+6.  Delete the old `.eslintrc.json` file once the new configuration is confirmed to be working correctly.
+
+**4. Edge Cases & Gotchas:**
+*   The Next.js codemod may not perfectly migrate all existing custom rules or plugins. A manual review of the generated `eslint.config.mjs` is crucial.
+*   The flat config uses ESM syntax (`import/export`), which may require changes if any custom plugins were written in CommonJS.
+*   The `lint` command in `package.json` might need flags like `--ext` removed, as file paths are now specified directly within `eslint.config.mjs`.
+
+
+## Iteration - Story: Set up Lighthouse CI in GitHub Actions for automated performance budgets
+
+### What was implemented
+- `.github/workflows/lighthouse.yml` — GitHub Actions workflow triggering on pull_request to master/main
+- `lighthouserc.json` — Lighthouse CI config at repo root with assertions (Perf ≥ 80, A11y/Best Practices/SEO ≥ 90) and numberOfRuns: 3
+- Installed `@lhci/cli` as devDependency in `site/package.json`
+- Workflow: checkout → setup Node 20 → npm ci → next build → start server → wait-on → lhci autorun
+
+### Patterns discovered
+- `lighthouserc.json` must be at the repo root (not inside `site/`), where `lhci autorun` is invoked
+- `chromeFlags: "--no-sandbox"` required for headless Chrome in GitHub Actions Ubuntu runners
+- `wait-on` is used to poll localhost:3000 before running audits (avoids race condition)
+- `LHCI_GITHUB_APP_TOKEN` secret enables named GitHub status checks on PRs
+
+### Gotchas
+- `npx @lhci/cli@latest autorun` (using npx) avoids requiring global install in CI
+- `npm run start &` (background) + `wait-on` is the standard pattern for starting Next.js in CI
+- working-directory for lhci must point to repo root where lighthouserc.json lives
+## Iteration 1 - Fri, Mar 13, 2026  6:31:50 AM
+Incomplete: Upgrade ESLint to v9 with flat config format (ID: US-064) — attempt 1/3
+
+
+## Pre-analysis for US-064 (Gemini 2.5 Pro)
+This technical brief is for a **JavaScript/Next.js** project, based on the provided JSON. The references to "Frappe/Python" in the prompt appear to be incorrect for this user story.
+
+**Project:** pelangi-website
+**User Story:** US-064: Upgrade ESLint to v9 with flat config
+
+**1. Files to Modify:**
+*   `site/package.json`: Upgrade `eslint`, `eslint-config-next`, and any other ESLint plugins (e.g., `@typescript-eslint/eslint-plugin`) to versions compatible with ESLint v9.
+*   `site/.eslintrc.json` (or similar): This legacy file will be **deleted**.
+*   `site/eslint.config.mjs`: This new file will be **created** to house the new flat configuration.
+
+**2. Involved Framework/Tooling Hooks:**
+*   **NPM Scripts:** The `lint` script within `site/package.json` is the primary execution hook.
+*   **Next.js:** The `eslint-config-next` package provides the base ruleset, which is critical.
+*   **ESLint:** The core linter. The main change is its configuration format from legacy to "flat config".
+
+**3. Recommended Implementation Approach:**
+1.  Utilize the Next.js codemod as suggested: `npx @next/codemod@canary upgrade latest`. This should automate most of the migration.
+2.  Manually create/verify `site/eslint.config.mjs`. Ensure it imports `next/core-web-vitals` and `@typescript-eslint` rules correctly using ESM `import` syntax.
+3.  Update the `devDependencies` in `site/package.json` to ensure `eslint` is `^9.0.0`.
+4.  Delete the old `site/.eslintrc.json` file.
+5.  Run `npm install` to get the new packages.
+6.  Execute `npm run lint` and fix any reported errors to meet the acceptance criteria.
+
+**4. Edge Cases & Gotchas:**
+*   **Plugin Incompatibility:** Older or less common ESLint plugins may not support the flat config format. Check `package.json` for any custom plugins and verify their compatibility.
+*   **ESM Syntax:** The new `eslint.config.mjs` file strictly requires ES Module syntax (`import/export`). CommonJS (`require()`) is not supported.
+*   **Codemod Imperfections:** The codemod may not perfectly migrate all custom rules or settings. The generated `eslint.config.mjs` will likely require manual review and tweaking.
+
+
+## Iteration - Story: Upgrade ESLint to v9 with flat config format (US-064)
+
+### What was implemented
+- Installed `eslint@^9.39.4` and `eslint-config-next@^16.1.6` as devDependencies
+- Created `site/eslint.config.mjs` with ESLint v9 flat config format using `defineConfig` and `globalIgnores`
+- Configured `eslint-config-next/core-web-vitals` and `eslint-config-next/typescript` rules
+- Updated `package.json` lint script from `next lint` to `eslint .`
+- Fixed 20 errors + 2 warnings across 11 files:
+  - Escaped unescaped entities (`'` → `&apos;`, `"` → `&ldquo;`/`&rdquo;`) in JSX text
+  - Removed unused imports (`Image` from page.tsx, `useEffect` from Header.tsx)
+  - Added eslint-disable for legitimate patterns (global-error `<a>` tag, setState in useEffect for hydration guards, tailwind.config require())
+- `npm run lint` passes with zero errors and zero warnings
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- ESLint v9 flat config uses `defineConfig` and `globalIgnores` from `eslint/config`
+- `eslint-config-next` v16+ exports `core-web-vitals` and `typescript` sub-configs for flat format
+- New `react-hooks/set-state-in-effect` rule flags setState in useEffect — legitimate for hydration guards and browser API reads
+- No legacy `.eslintrc.*` existed; this was a fresh ESLint setup
+
+### Gotchas
+- `eslint-config-next@latest` installed v16.1.6 which requires ESLint 9 flat config
+- The `set-state-in-effect` rule is new and strict — common patterns like reading cookies on mount need eslint-disable comments
+- `setConsentState(getConsent())` didn't trigger the rule (function call return), but `setMounted(true)` did (direct value)

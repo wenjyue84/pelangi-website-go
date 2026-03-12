@@ -275,7 +275,7 @@ export default function GuidePage() {
                                         <span className="text-amber-700 font-bold mt-0.5">3.</span>
                                         <div>
                                             <strong>ATMs (Maybank, CIMB, RHB)</strong>
-                                            <p className="text-sm text-stone-500">Available at Pelangi Leisure Mall (10 min walk). Use Visa/Mastercard; your bank's foreign fee typically applies.</p>
+                                            <p className="text-sm text-stone-500">Available at Pelangi Leisure Mall (10 min walk). Use Visa/Mastercard; your bank&apos;s foreign fee typically applies.</p>
                                         </div>
                                     </li>
                                 </ul>

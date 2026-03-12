@@ -10,7 +10,7 @@ export default function SingaporeTeaser() {
               Singapore Nearby, JB Rates
             </h2>
             <p className="text-lg text-stone-700 mb-8">
-              Just 30 minutes from the Marina Bay skyline, but with a backpacker's budget. Day trip to Singapore or base yourself here?
+              Just 30 minutes from the Marina Bay skyline, but with a backpacker&apos;s budget. Day trip to Singapore or base yourself here?
             </p>
           </div>
 

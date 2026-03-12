@@ -12,7 +12,7 @@ export default function CommunityEvents() {
             .filter(e => new Date(e.date) >= now)
             .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
             .slice(0, 5);
-        setUpcomingHolidays(upcoming);
+        setUpcomingHolidays(upcoming); // eslint-disable-line react-hooks/set-state-in-effect -- date-dependent filter must run client-side
     }, []);
 
     return (
@@ -27,8 +27,8 @@ export default function CommunityEvents() {
                             <h2 className="font-display text-4xl font-medium mb-6 text-stone-900">More than just a place to sleep</h2>
                             <p className="text-stone-600 text-lg mb-6">
                                 At Pelangi, we believe travel is about connection. Our common areas are designed to spark conversations,
-                                and our weekly events bring everyone together. Whether you're a solo traveler or with a group,
-                                you'll find your tribe here.
+                                and our weekly events bring everyone together. Whether you&apos;re a solo traveler or with a group,
+                                you&apos;ll find your tribe here.
                             </p>
                         </div>
 
@@ -57,7 +57,7 @@ export default function CommunityEvents() {
                                     </div>
                                     <div className="h-10 w-px bg-stone-300 mx-4"></div>
                                     <div className="text-left max-w-xs text-sm text-stone-600">
-                                        "The rooftop terrace is the perfect place to unwind after a day of exploring."
+                                        &ldquo;The rooftop terrace is the perfect place to unwind after a day of exploring.&rdquo;
                                     </div>
                                 </div>
                             </div>

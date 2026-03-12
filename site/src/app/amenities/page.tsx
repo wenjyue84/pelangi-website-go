@@ -173,7 +173,7 @@ export default function AmenitiesPage() {
               Everything You Need
             </h1>
             <p className="text-lg text-stone-600 mb-6">
-              Pelangi Capsule Hostel is equipped with modern amenities designed for digital nomads, long-stay guests, and backpackers. From high-speed WiFi to a dedicated co-working space, we've thought of everything to make your stay comfortable and productive.
+              Pelangi Capsule Hostel is equipped with modern amenities designed for digital nomads, long-stay guests, and backpackers. From high-speed WiFi to a dedicated co-working space, we&apos;ve thought of everything to make your stay comfortable and productive.
             </p>
             <div className="flex justify-center gap-4">
               <Link
@@ -361,7 +361,7 @@ export default function AmenitiesPage() {
                 Our Sustainability Commitment
               </h2>
               <p className="text-lg text-stone-600">
-                At Pelangi Capsule Hostel, we're dedicated to minimizing our environmental impact while providing exceptional hospitality. Sustainable travel isn't just a trend — it's our responsibility to future generations of travelers exploring Johor Bahru.
+                At Pelangi Capsule Hostel, we&apos;re dedicated to minimizing our environmental impact while providing exceptional hospitality. Sustainable travel isn&apos;t just a trend — it&apos;s our responsibility to future generations of travelers exploring Johor Bahru.
               </p>
             </div>
 
@@ -445,7 +445,7 @@ export default function AmenitiesPage() {
 
             <div className="bg-white p-8 rounded-2xl border border-emerald-100 text-center">
               <p className="text-stone-600 text-lg">
-                By choosing Pelangi Capsule Hostel, you're supporting sustainable tourism in Johor Bahru. Together, we can make travel more responsible and protect the beautiful destinations we all love to explore.
+                By choosing Pelangi Capsule Hostel, you&apos;re supporting sustainable tourism in Johor Bahru. Together, we can make travel more responsible and protect the beautiful destinations we all love to explore.
               </p>
             </div>
           </div>

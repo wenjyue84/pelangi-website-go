@@ -161,7 +161,7 @@ export default function Rooms() {
         {/* Hostel Highlights Grid */}
         <div className="mb-16">
           <h3 className="font-display text-2xl font-medium text-stone-900 text-center mb-10">
-            Everything You Need, Nothing You Don't
+            Everything You Need, Nothing You Don&apos;t
           </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {hostelHighlights.map((highlight, index) => (
@@ -200,7 +200,7 @@ export default function Rooms() {
               </h3>
               <p className="text-lg text-stone-600 mb-6">
                 Every <span className="font-semibold text-amber-700">Tuesday from 4:30 PM</span>,
-                step outside and you're in the heart of Taman Pelangi's famous pasar malam.
+                step outside and you&apos;re in the heart of Taman Pelangi&apos;s famous pasar malam.
               </p>
               <div className="space-y-3 text-stone-600">
                 <div className="flex items-start gap-3">

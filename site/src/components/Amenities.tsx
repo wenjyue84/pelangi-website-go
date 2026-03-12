@@ -74,7 +74,7 @@ export default function Amenities() {
             <div className="container-custom">
                 <div className="text-center max-w-2xl mx-auto mb-16">
                     <h2 className="font-display text-4xl font-medium mb-4 text-stone-900">Everything you need</h2>
-                    <p className="text-stone-600 text-lg">Designed for the modern traveler. We've got the essentials covered so you can focus on exploring.</p>
+                    <p className="text-stone-600 text-lg">Designed for the modern traveler. We&apos;ve got the essentials covered so you can focus on exploring.</p>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
