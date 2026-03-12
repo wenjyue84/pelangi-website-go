@@ -235,3 +235,4 @@ Incomplete: Add 'Singapore Day Trip' teaser section to homepage (ID: US-008) —
 
 ### Gotchas
 - None — straightforward component creation
+

@@ -10,6 +10,7 @@ import LocationMap from "@/components/LocationMap";
 import FAQ from "@/components/FAQ";
 import CommunityEvents from "@/components/CommunityEvents";
 import JBBuzz from "@/components/JBBuzz";
+import SingaporeTeaser from "@/components/SingaporeTeaser";
 
 export default function Home() {
   return (
@@ -101,6 +102,9 @@ export default function Home() {
 
       {/* Location Map */}
       <LocationMap />
+
+      {/* Singapore Teaser Section */}
+      <SingaporeTeaser />
 
       {/* FAQ Section */}
       <FAQ />
