@@ -1164,3 +1164,54 @@ This user story is for a **Next.js/TypeScript/Tailwind CSS** project, not Frappe
 ### Gotchas
 - The `<main>` element in these pages wraps the Header too (not just page content) — this is a structural limitation but does not block WCAG 2.1 SC 2.4.1 compliance via automated checkers
 - Windows file paths need `C:/` not `/c/` when using Python's open()
+## Iteration 5 - Fri, Mar 13, 2026  3:15:42 AM
+Completed: Add skip navigation link and ARIA landmarks for keyboard accessibility (WCAG 2.2 SC 2.4.1) (ID: US-027) in 5m
+
+
+## Pre-analysis for US-028 (Gemini 2.5 Pro)
+This user story is for a **Next.js/TypeScript** frontend application, not a Frappe/Python backend. The technical notes (`next/dynamic`, `scheduler.yield()`) and components (ChatWidget, BookingBar) are specific to a modern JavaScript framework.
+
+Here is the technical brief for the `pelangi-website` Next.js project:
+
+**Subject: Technical Brief for US-028: Optimize INP**
+
+This is a frontend performance task for the `pelangi-website` Next.js application. The goal is to improve the INP Core Web Vital score below the 200ms threshold by optimizing slow user interactions.
+
+**1. Files to Modify:**
+*   `site/src/components/chat/ChatWidget.tsx` (or similar): Likely a heavy component that needs to be code-split.
+*   `site/src/components/booking/MobileBookingBar.tsx`: Another target for dynamic loading.
+*   `site/src/components/blog/BlogCategoryFilter.tsx`: The event handlers in this component are a probable source of long tasks.
+*   Parent components/layouts (e.g., `site/src/app/layout.tsx`, `site/src/app/blog/page.tsx`): These will be modified to import the above components dynamically.
+
+**2. Involved Next.js/React Concepts:**
+*   `next/dynamic`: For client-side dynamic imports to code-split heavy components.
+*   React State/Event Handlers: The logic within `onClick` or `onChange` handlers is the primary focus for optimization.
+
+**3. Recommended Implementation Approach:**
+1.  Wrap the `ChatWidget` and `MobileBookingBar` imports in their parent components using `next/dynamic` with `ssr: false` and a loading skeleton placeholder.
+2.  Profile the blog category filter interaction using the browser's Performance tab to identify specific long-running JavaScript functions.
+3.  For any identified long tasks (>50ms), break them up by deferring non-critical parts of the execution using `setTimeout(..., 0)`.
+
+**4. Edge Cases & Gotchas:**
+*   **Cumulative Layout Shift (CLS):** Ensure loading skeletons for dynamically loaded components have defined dimensions to prevent layout shifts.
+*   **State Consistency:** Be careful when deferring state updates with `setTimeout` to avoid race conditions or UI displaying stale data.
+*   **Measurement:** Use Lighthouse or the Vercel Speed Insights for immediate feedback, but the official INP score is based on the 28-day CrUX report.
+
+
+## Iteration N - Story: Optimize INP for booking and filter interactions (US-028)
+
+### What was implemented
+- `site/src/app/layout.tsx`: Replaced static imports of `ChatWidget` and `MobileBookingBar` with `next/dynamic` (`ssr: false`)
+- Added loading skeletons for both components to prevent CLS during lazy load
+  - ChatWidget skeleton: matching `w-14 h-14 rounded-full` button placeholder with `animate-pulse`
+  - MobileBookingBar skeleton: matching `h-[68px]` bar placeholder at bottom of screen
+- This defers the JS bundles for both heavy client components from the critical rendering path, reducing INP
+
+### Patterns discovered
+- `next/dynamic` with `ssr: false` works in Server Components (layout.tsx) in Next.js App Router
+- Blog page has no client-side filter (US-022 not yet implemented), so no filter interaction to optimize
+- Loading skeleton height must match real component to avoid CLS
+
+### Gotchas
+- The `loading` prop for `dynamic` must be a React component (arrow function), not bare JSX
+- MobileBookingBar height is approximately 68px (py-3 + content); skeleton must match to avoid layout shift
