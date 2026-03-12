@@ -89,7 +89,7 @@ export default function Reviews() {
                                     <h4 className="font-bold text-stone-900">{review.name}</h4>
                                     <p className="text-sm text-stone-500">{review.country}</p>
                                 </div>
-                                <div className="text-xs text-stone-400 border border-stone-200 px-2 py-1 rounded-full">
+                                <div className="text-xs text-stone-500 border border-stone-200 px-2 py-1 rounded-full">
                                     Verified Guest
                                 </div>
                             </div>

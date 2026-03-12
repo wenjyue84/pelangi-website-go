@@ -101,7 +101,7 @@ export default function CommunityEvents() {
                         </div>
 
                         <div className="mt-6 text-center">
-                            <p className="text-xs text-stone-400">
+                            <p className="text-xs text-stone-500">
                                 Source: Official Malaysia Public Holidays 2026
                             </p>
                         </div>

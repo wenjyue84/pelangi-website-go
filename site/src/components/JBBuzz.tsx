@@ -63,7 +63,7 @@ export default function JBBuzz() {
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <span className="text-amber-600 font-medium tracking-wider text-sm uppercase mb-2 block">
+          <span className="text-amber-700 font-medium tracking-wider text-sm uppercase mb-2 block">
             JB Buzz
           </span>
           <h2 className="font-display text-4xl font-medium mb-4 text-stone-900">
@@ -125,8 +125,8 @@ export default function JBBuzz() {
                       <p className="text-sm text-stone-500 line-clamp-2 mb-2">
                         {item.description}
                       </p>
-                      <div className="flex items-center gap-3 text-xs text-stone-400">
-                        <span className="font-medium text-amber-600">
+                      <div className="flex items-center gap-3 text-xs text-stone-500">
+                        <span className="font-medium text-amber-700">
                           {item.source}
                         </span>
                         <span>·</span>

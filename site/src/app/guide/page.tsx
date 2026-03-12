@@ -221,7 +221,7 @@ export default function GuidePage() {
                                     <ul className="space-y-2">
                                         {t.items.map((item) => (
                                             <li key={item} className="text-sm text-stone-700 flex items-start gap-2">
-                                                <span className="mt-0.5 text-stone-400">•</span>
+                                                <span className="mt-0.5 text-stone-500">•</span>
                                                 <span>{item}</span>
                                             </li>
                                         ))}
@@ -246,21 +246,21 @@ export default function GuidePage() {
                                 <h3 className="font-bold text-lg text-stone-900 mb-4">Best places to exchange</h3>
                                 <ul className="space-y-3 text-stone-700">
                                     <li className="flex gap-3">
-                                        <span className="text-amber-500 font-bold mt-0.5">1.</span>
+                                        <span className="text-amber-700 font-bold mt-0.5">1.</span>
                                         <div>
                                             <strong>Jalan Wong Ah Fook money changers</strong>
                                             <p className="text-sm text-stone-500">Best SGD/MYR rates in JB. Multiple competing stalls — compare a few before exchanging. ~10 min from us by Grab.</p>
                                         </div>
                                     </li>
                                     <li className="flex gap-3">
-                                        <span className="text-amber-500 font-bold mt-0.5">2.</span>
+                                        <span className="text-amber-700 font-bold mt-0.5">2.</span>
                                         <div>
                                             <strong>JB Sentral / CIQ Complex</strong>
                                             <p className="text-sm text-stone-500">Convenient if arriving from Singapore, but rates are slightly worse than street changers.</p>
                                         </div>
                                     </li>
                                     <li className="flex gap-3">
-                                        <span className="text-amber-500 font-bold mt-0.5">3.</span>
+                                        <span className="text-amber-700 font-bold mt-0.5">3.</span>
                                         <div>
                                             <strong>ATMs (Maybank, CIMB, RHB)</strong>
                                             <p className="text-sm text-stone-500">Available at Pelangi Leisure Mall (10 min walk). Use Visa/Mastercard; your bank's foreign fee typically applies.</p>
@@ -352,8 +352,8 @@ export default function GuidePage() {
                                         <p className="text-stone-600 mt-1">{h.desc}</p>
                                     </div>
                                     <div className="text-right shrink-0">
-                                        <p className="text-sm font-medium text-amber-600">{h.dist}</p>
-                                        <p className="text-xs text-stone-400 mt-1">{h.hours}</p>
+                                        <p className="text-sm font-medium text-amber-700">{h.dist}</p>
+                                        <p className="text-xs text-stone-500 mt-1">{h.hours}</p>
                                     </div>
                                 </div>
                             ))}
@@ -372,9 +372,9 @@ export default function GuidePage() {
                                         <div key={i} className="bg-white p-5 rounded-2xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow">
                                             <h3 className="font-bold text-lg text-stone-900">{place.name}</h3>
                                             <div className="flex gap-3 mb-2">
-                                                <p className="text-sm font-medium text-amber-600">{place.dist}</p>
-                                                <span className="text-stone-300">·</span>
-                                                <p className="text-sm text-stone-400">{place.hours}</p>
+                                                <p className="text-sm font-medium text-amber-700">{place.dist}</p>
+                                                <span className="text-stone-400">·</span>
+                                                <p className="text-sm text-stone-500">{place.hours}</p>
                                             </div>
                                             <p className="text-stone-600 text-sm">{place.desc}</p>
                                         </div>
@@ -389,7 +389,7 @@ export default function GuidePage() {
                                     {shopping.map((place, i) => (
                                         <div key={i} className="bg-white p-5 rounded-2xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow">
                                             <h3 className="font-bold text-lg text-stone-900">{place.name}</h3>
-                                            <p className="text-sm font-medium text-amber-600 mb-2">{place.dist}</p>
+                                            <p className="text-sm font-medium text-amber-700 mb-2">{place.dist}</p>
                                             <p className="text-stone-600 text-sm">{place.desc}</p>
                                         </div>
                                     ))}

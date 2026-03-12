@@ -41,7 +41,7 @@ export default function BlogCard({ post }: BlogCardProps) {
           </p>
 
           {/* Meta row */}
-          <div className="flex items-center justify-between text-xs text-stone-400 pt-4 border-t border-stone-100">
+          <div className="flex items-center justify-between text-xs text-stone-500 pt-4 border-t border-stone-100">
             <span>
               {new Date(post.date).toLocaleDateString("en-MY", {
                 day: "numeric",

@@ -149,7 +149,7 @@ export default function BookPage() {
               <div className="text-xs tracking-widest uppercase text-stone-500 mb-2">Nightly Stay</div>
               <div className="flex items-baseline justify-center gap-1 mb-4">
                 <span className="font-display text-5xl font-medium text-stone-900">RM35</span>
-                <span className="text-stone-400">–</span>
+                <span className="text-stone-500">–</span>
                 <span className="font-display text-5xl font-medium text-stone-900">45</span>
                 <span className="text-stone-500 ml-1">/night</span>
               </div>
@@ -301,7 +301,7 @@ export default function BookPage() {
 
           {/* Trust Badges */}
           <div className="mt-10 max-w-3xl mx-auto">
-            <p className="text-center text-xs font-medium tracking-[0.3em] uppercase text-stone-400 mb-5">
+            <p className="text-center text-xs font-medium tracking-[0.3em] uppercase text-stone-500 mb-5">
               Trusted &amp; Secure
             </p>
             <div className="flex flex-wrap justify-center gap-4">
@@ -336,7 +336,7 @@ export default function BookPage() {
                   </svg>
                   <div>
                     <div className="text-xs font-semibold text-stone-800">{badge.label}</div>
-                    <div className="text-xs text-stone-400">{badge.sub}</div>
+                    <div className="text-xs text-stone-500">{badge.sub}</div>
                   </div>
                 </div>
               ))}
@@ -468,7 +468,7 @@ export default function BookPage() {
                 Call +60 12-708 8789
               </a>
             </div>
-            <p className="text-stone-400 text-sm mt-6">
+            <p className="text-stone-500 text-sm mt-6">
               <Link href="/rooms" className="text-amber-700 hover:underline">View our rooms</Link>
               {" · "}
               <Link href="/guide" className="text-amber-700 hover:underline">Local guide</Link>

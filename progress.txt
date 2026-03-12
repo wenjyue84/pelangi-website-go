@@ -2365,3 +2365,70 @@ Here is the technical brief based on the provided JSON:
 - `window.matchMedia` is client-safe in Gallery.tsx because it's a `"use client"` component inside a callback (not in render/SSR path)
 
 ## Iteration 1 - Fri, Mar 13, 2026 - Completed: Implement prefers-reduced-motion (ID: US-050)
+## Iteration 2 - Fri, Mar 13, 2026  5:23:41 AM
+Completed: Implement prefers-reduced-motion across all CSS and JS animations (ID: US-050) in 4m
+
+
+## Pre-analysis for US-051 (Gemini 2.5 Pro)
+This user story is a frontend accessibility task, not a Frappe/Python task. The implementation will focus on React/Next.js components and Tailwind CSS utility classes.
+
+### Technical Brief for US-051: WCAG Color Contrast Fixes
+
+**1. Files to Modify:**
+This task involves frontend components, not backend Python files. The most likely candidates are:
+*   `tailwind.config.ts`: To potentially adjust the global color palette, especially the 'amber' or 'gray' shades.
+*   `src/app/globals.css` (or equivalent): For global styles, especially input placeholder text.
+*   Components using color classes directly, such as:
+    *   `src/components/ui/Button.tsx` (or equivalent for CTAs)
+    *   `src/components/BlogCard.tsx`
+    *   `src/components/BlogFilter.tsx`
+    *   Layout files containing the site footer.
+
+**2. Frappe DocTypes/Hooks:**
+*   None. This is a pure frontend CSS and component issue.
+
+**3. Recommended Implementation Approach:**
+*   **Audit First:** Run a Lighthouse or `axe-core` accessibility audit to generate a complete list of all elements failing the 1.4.3 contrast ratio check.
+*   **Global Fixes:** Prioritize fixing colors at the source. If `amber-500` is part of a theme (e.g., `primary`), consider changing the theme definition in `tailwind.config.ts` to a compliant shade like `amber-700` (`#b45309`).
+*   **Targeted Fixes:** For components listed in the audit, replace failing utility classes.
+    *   **Example:** Change `bg-amber-500` to `bg-amber-700` on buttons.
+    *   **Placeholders:** Target `input::placeholder` to use a darker gray like `text-gray-600` (`#4b5563`).
+*   **Verification:** Use the WebAIM Contrast Checker to test specific color pairs before committing to a change. Re-run the Lighthouse audit to confirm all issues are resolved.
+
+**4. Edge Cases & Gotchas:**
+*   **Hover/Focus States:** Ensure that interactive elements (buttons, links) also meet contrast requirements in their `:hover` and `:focus` states.
+*   **Brand Consistency:** The goal is compliance, not a redesign. Stick to the existing color palette, simply selecting darker, compliant shades as suggested (`amber-700`).
+*   **Text on Images:** Text overlaid on background images is a common failure point. It may require adding a semi-opaque dark overlay behind the text to ensure contrast regardless of the image section underneath.
+
+
+## Iteration N - Story: US-052 - Add GeoCoordinates to LodgingBusiness schema
+
+### What was implemented
+- GeoCoordinates already existed in StructuredData.tsx from a prior iteration (both hostelSchema and localBusinessSchema)
+- address PostalAddress already complete with all required fields
+- Marked passes: true (implementation was already complete)
+
+### Gotchas
+- prd.json passes flag was not updated by the prior iteration that implemented this
+
+## Iteration N - Story: US-051 - Audit and fix WCAG 1.4.3 color contrast failures
+
+### What was implemented
+- Replaced text-amber-500 (2.06:1) → text-amber-700 (5.01:1) in guide/page.tsx numbered list
+- Replaced text-amber-600 (3.14:1) → text-amber-700 (5.01:1) in: amenities/page.tsx (checkmarks), guide/page.tsx (dist text), Booking.tsx (call labels), JBBuzz.tsx (section header, source name)
+- Replaced text-amber-600 → text-amber-800 on bg-amber-50 backgrounds in amenities/page.tsx and Amenities.tsx (icon containers)
+- Replaced text-stone-400 (2.33:1) → text-stone-500 (4.80:1) in: BlogCard.tsx (meta row), book/page.tsx (4 locations), guide/page.tsx (hours text, bullet), error.tsx, ChatWidget.tsx (2 locations), Reviews.tsx (badge), CommunityEvents.tsx (source attribution), JBBuzz.tsx (date row)
+- Added placeholder:text-stone-500 to ChatWidget.tsx textarea for form placeholder contrast
+- npx tsc --noEmit passes with zero errors
+
+### Patterns discovered
+- stone-500 (#78716c) = 4.80:1 on white → passes WCAG AA (4.5:1 minimum)
+- amber-700 (#b45309) = 5.01:1 on white → passes WCAG AA
+- amber-600 (#d97706) = 3.14:1 on white → fails for normal text
+- amber-500 (#f59e0b) = 2.06:1 on white → fails
+- Dark backgrounds (stone-900, image overlays) → stone-400 and stone-300 are fine
+- Don't change stone-400 in: Hero.tsx (dark overlay), Footer.tsx (dark bg), Facilities.tsx (dark section), Gallery.tsx (dark modal header)
+
+### Gotchas
+- guide/page.tsx stone-300 "·" separator is purely decorative → kept as-is (WCAG decoration exemption)
+- Hero.tsx stone-400 "from" / "/night" text is on a dark image overlay → kept as-is

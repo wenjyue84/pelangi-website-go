@@ -202,7 +202,7 @@ export default function AmenitiesPage() {
                 key={index}
                 className="bg-white p-8 rounded-2xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className="w-14 h-14 bg-amber-50 rounded-full flex items-center justify-center text-amber-600 mb-6">
+                <div className="w-14 h-14 bg-amber-50 rounded-full flex items-center justify-center text-amber-800 mb-6">
                   {amenity.icon}
                 </div>
                 <h3 className="font-display text-xl font-medium mb-3 text-stone-900">
@@ -235,23 +235,23 @@ export default function AmenitiesPage() {
               </p>
               <ul className="space-y-2 text-stone-600">
                 <li className="flex gap-2">
-                  <span className="text-amber-600 font-medium">✓</span>
+                  <span className="text-amber-700 font-medium">✓</span>
                   <span>Full-size refrigerator with labeled storage</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-600 font-medium">✓</span>
+                  <span className="text-amber-700 font-medium">✓</span>
                   <span>Electric stove, oven, and microwave</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-600 font-medium">✓</span>
+                  <span className="text-amber-700 font-medium">✓</span>
                   <span>Dishwasher and basic cooking utensils</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-600 font-medium">✓</span>
+                  <span className="text-amber-700 font-medium">✓</span>
                   <span>Common dining area with seating for 20+</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-600 font-medium">✓</span>
+                  <span className="text-amber-700 font-medium">✓</span>
                   <span>Free spices, oil, and condiments</span>
                 </li>
               </ul>
@@ -267,23 +267,23 @@ export default function AmenitiesPage() {
               </p>
               <ul className="space-y-2 text-stone-600">
                 <li className="flex gap-2">
-                  <span className="text-amber-600 font-medium">✓</span>
+                  <span className="text-amber-700 font-medium">✓</span>
                   <span>Dedicated desk with ergonomic seating</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-600 font-medium">✓</span>
+                  <span className="text-amber-700 font-medium">✓</span>
                   <span>Gigabit fiber WiFi (50+ Mbps)</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-600 font-medium">✓</span>
+                  <span className="text-amber-700 font-medium">✓</span>
                   <span>USB charging and multiple power outlets</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-600 font-medium">✓</span>
+                  <span className="text-amber-700 font-medium">✓</span>
                   <span>Bookable for business meetings</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-600 font-medium">✓</span>
+                  <span className="text-amber-700 font-medium">✓</span>
                   <span>Video call-friendly (quiet, professional background)</span>
                 </li>
               </ul>
@@ -299,19 +299,19 @@ export default function AmenitiesPage() {
               </p>
               <ul className="space-y-2 text-stone-600">
                 <li className="flex gap-2">
-                  <span className="text-amber-600 font-medium">✓</span>
+                  <span className="text-amber-700 font-medium">✓</span>
                   <span>Self-service washing & drying: RM3 per load</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-600 font-medium">✓</span>
+                  <span className="text-amber-700 font-medium">✓</span>
                   <span>Laundry service: RM15/kg (next-day delivery)</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-600 font-medium">✓</span>
+                  <span className="text-amber-700 font-medium">✓</span>
                   <span>Free iron and ironing board in common area</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-600 font-medium">✓</span>
+                  <span className="text-amber-700 font-medium">✓</span>
                   <span>Daily linen change (weekly duvet covers)</span>
                 </li>
               </ul>
@@ -327,23 +327,23 @@ export default function AmenitiesPage() {
               </p>
               <ul className="space-y-2 text-stone-600">
                 <li className="flex gap-2">
-                  <span className="text-amber-600 font-medium">✓</span>
+                  <span className="text-amber-700 font-medium">✓</span>
                   <span>24/7 access to your pod with personal key card</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-600 font-medium">✓</span>
+                  <span className="text-amber-700 font-medium">✓</span>
                   <span>Individual secure locker in each pod</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-600 font-medium">✓</span>
+                  <span className="text-amber-700 font-medium">✓</span>
                   <span>CCTV surveillance in common areas</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-600 font-medium">✓</span>
+                  <span className="text-amber-700 font-medium">✓</span>
                   <span>24-hour front desk staff</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-600 font-medium">✓</span>
+                  <span className="text-amber-700 font-medium">✓</span>
                   <span>Emergency contact available anytime</span>
                 </li>
               </ul>

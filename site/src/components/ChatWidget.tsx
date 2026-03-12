@@ -275,7 +275,7 @@ export default function ChatWidget() {
               >
                 {msg.content}
               </div>
-              <div className="text-[10px] text-stone-400 mt-1 px-1">
+              <div className="text-[10px] text-stone-500 mt-1 px-1">
                 {new Date(msg.timestamp).toLocaleTimeString([], {
                   hour: '2-digit',
                   minute: '2-digit',
@@ -321,7 +321,7 @@ export default function ChatWidget() {
               flex-1 resize-none text-sm outline-none transition
               border border-stone-200 rounded-xl px-3 py-2
               focus:border-amber-400 focus:ring-1 focus:ring-amber-200
-              disabled:opacity-60
+              disabled:opacity-60 placeholder:text-stone-500
             "
             style={{ lineHeight: '1.4', fontFamily: 'inherit', maxHeight: '96px' }}
             aria-label="Message input"
@@ -353,7 +353,7 @@ export default function ChatWidget() {
         </div>
 
         {/* Footer */}
-        <div className="text-center text-[10px] text-stone-400 py-1.5 bg-white border-t border-stone-50">
+        <div className="text-center text-[10px] text-stone-500 py-1.5 bg-white border-t border-stone-50">
           Powered by Rainbow AI
         </div>
       </div>
