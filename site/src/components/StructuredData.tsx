@@ -12,7 +12,7 @@ export default function StructuredData() {
     "description": "Japanese-style capsule hostel in the heart of Johor Bahru. Affordable, private, and comfortable pods with free WiFi, 24/7 access, hot showers, and personal lockers. Perfect budget accommodation for travelers exploring JB and Singapore.",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Jalan Maju, Taman Pelangi",
+      "streetAddress": "26A Jalan Perang, Taman Pelangi",
       "addressLocality": "Johor Bahru",
       "addressRegion": "Johor",
       "postalCode": "80400",
@@ -20,11 +20,11 @@ export default function StructuredData() {
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 1.4855,
-      "longitude": 103.7594
+      "latitude": 1.48552,
+      "longitude": 103.75940
     },
     "url": "https://pelangicapsulehostel.com",
-    "telephone": "+60123456789",
+    "telephone": "+60127088789",
     "priceRange": "RM35-RM55",
     "currenciesAccepted": "MYR",
     "paymentAccepted": "Cash, Credit Card, Bank Transfer",
@@ -42,7 +42,7 @@ export default function StructuredData() {
       "opens": "00:00",
       "closes": "23:59"
     },
-    "checkinTime": "15:00",
+    "checkinTime": "14:00",
     "checkoutTime": "12:00",
     "amenityFeature": [
       {
@@ -102,7 +102,7 @@ export default function StructuredData() {
     "image": "https://pelangicapsulehostel.com/images/hero-main.webp",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Jalan Maju, Taman Pelangi",
+      "streetAddress": "26A Jalan Perang, Taman Pelangi",
       "addressLocality": "Johor Bahru",
       "addressRegion": "Johor",
       "postalCode": "80400",
@@ -110,11 +110,11 @@ export default function StructuredData() {
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 1.4855,
-      "longitude": 103.7594
+      "latitude": 1.48552,
+      "longitude": 103.75940
     },
     "url": "https://pelangicapsulehostel.com",
-    "telephone": "+60123456789",
+    "telephone": "+60127088789",
     "priceRange": "RM35-RM55"
   };
 

@@ -373,3 +373,48 @@ This user story is for a **Next.js** project, not Frappe/Python. The goal is to 
 
 ## Iteration 11 - Fri, Mar 13, 2026
 Completed: Create custom not-found.tsx (404 page) with hostel branding (ID: US-010)
+## Iteration 2 - Fri, Mar 13, 2026  1:56:00 AM
+Completed: Create custom not-found.tsx (404 page) with hostel branding (ID: US-010) in 3m
+
+
+## Pre-analysis for US-011 (Gemini 2.5 Pro)
+Based on the user story JSON, the request is for a frontend change in a TypeScript file, not a Frappe/Python backend task. Here is the technical brief for the specified work:
+
+**Project:** Pelangi Website (Next.js/TypeScript)
+**Objective:** Correct NAP (Name, Address, Phone) data in the site's structured data component to align with the Google Business Profile.
+
+**File to Modify:**
+*   `site/src/components/StructuredData.tsx`
+
+**Context:**
+This is not a Frappe/Python task. The target file is a React component containing JSON-LD schema definitions for SEO. Two schemas, `hostelSchema` and `localBusinessSchema`, have incorrect, hardcoded values that need to be updated.
+
+**Implementation Plan:**
+1.  Locate the `hostelSchema` and `localBusinessSchema` constant definitions within `StructuredData.tsx`.
+2.  In both schemas, update the `telephone` property to `'+60127088789'`.
+3.  In the `address` object of both schemas, change `streetAddress` to `'26A Jalan Perang, Taman Pelangi'`.
+4.  Update the `geo` object's coordinates to `latitude: 1.48552` and `longitude: 103.75940`.
+5.  Set the `checkinTime` property to `'14:00'`.
+
+**Gotchas & Validation:**
+*   **Consistency is key:** Ensure the NAP data is identical across both `hostelSchema` and `localBusinessSchema`.
+*   **Data Formatting:** Geo-coordinates must have 5 decimal places of precision. The check-in time must be in `HH:MM` format.
+*   **Verification:** After deployment, validate the page URL with the Google Rich Results Test tool to confirm the structured data is correct and error-free.
+
+
+## Iteration N - Story: Fix NAP inconsistency in StructuredData.tsx (wrong phone and address)
+
+### What was implemented
+- `site/src/components/StructuredData.tsx` — fixed both `hostelSchema` and `localBusinessSchema`:
+  - `telephone`: `+60123456789` → `+60127088789`
+  - `streetAddress`: `Jalan Maju, Taman Pelangi` → `26A Jalan Perang, Taman Pelangi`
+  - `geo.latitude`: `1.4855` → `1.48552` (5 decimal precision)
+  - `geo.longitude`: `103.7594` → `103.75940` (5 decimal precision)
+  - `checkinTime`: `15:00` → `14:00`
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Both `hostelSchema` and `localBusinessSchema` in same file share identical address/geo/phone — both must be updated
+
+### Gotchas
+- prd.json must be read/written as utf-8 on Windows (cp1252 default fails on em-dash characters in the file)
