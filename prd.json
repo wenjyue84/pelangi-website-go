@@ -48,7 +48,7 @@
         "All articles have SEO-friendly titles with keywords like 'Johor Bahru', 'JB', 'budget', 'backpacker'"
       ],
       "technicalNotes": [
-        "site/src/data/blog/posts.ts — add all 6 articles",
+        "site/src/data/blog/posts.ts â€” add all 6 articles",
         "Research sources: numbeo.com, hostelworld.com, lonelyplanet.com, timeout.com/kuala-lumpur, thepoortraveler.net",
         "Content must be original rewrites, not copy-paste",
         "Use categories: 'Food & Drink', 'Travel Tips', 'Things To Do', 'Local Life'",
@@ -58,7 +58,7 @@
         "US-001"
       ],
       "estimatedComplexity": "large",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-003",
