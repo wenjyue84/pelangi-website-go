@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -52,6 +53,7 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+          <LanguageSwitcher />
           <Link
             href="/book"
             className="ml-4 px-6 py-2.5 text-sm font-medium rounded-full transition-all duration-300 bg-amber-700 text-white hover:bg-amber-800"
@@ -92,7 +94,10 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <div className="px-4 pt-4 pb-2 border-t border-stone-100 mt-2">
+            <div className="px-6 py-3 border-t border-stone-100 mt-2">
+              <div className="flex items-center justify-center mb-4">
+                <LanguageSwitcher />
+              </div>
               <Link
                 href="/book"
                 className="block w-full text-center bg-amber-700 text-white py-3 rounded-xl font-medium
