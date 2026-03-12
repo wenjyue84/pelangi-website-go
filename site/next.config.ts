@@ -3,12 +3,12 @@ import { withSentryConfig } from "@sentry/nextjs";
 
 const cspHeader = [
   "default-src 'self'",
-  // Next.js injects inline scripts for hydration/routing — 'unsafe-inline' required without nonces
-  "script-src 'self' 'unsafe-inline' https://admin.pelangicapsulehostel.com",
-  // Tailwind CSS-in-JS and component inline styles require 'unsafe-inline'
-  "style-src 'self' 'unsafe-inline'",
-  // next/font/google self-hosts fonts; no external font CDN needed
-  "font-src 'self'",
+  // Next.js injects inline scripts; Turbopack dev mode requires 'unsafe-eval' for HMR
+  `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === 'development' ? " 'unsafe-eval'" : ""} https://admin.pelangicapsulehostel.com https://www.googletagmanager.com`,
+  // Tailwind CSS-in-JS and Google Fonts stylesheet
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  // Self-hosted next/font/google + external Google Fonts CDN fallback
+  "font-src 'self' https://fonts.gstatic.com",
   // Images: self, data URIs, blob URLs, TripCdn (hotel photos), admin proxy
   "img-src 'self' blob: data: https://ak-d.tripcdn.com https://admin.pelangicapsulehostel.com https://img.youtube.com",
   // API calls: same-origin rewrites proxy to admin; admin also whitelisted for direct calls
