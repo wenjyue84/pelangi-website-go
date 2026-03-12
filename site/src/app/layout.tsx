@@ -1,29 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import dynamic from "next/dynamic";
 import StructuredData from "@/components/StructuredData";
-
-// Defer heavy client-only components to reduce initial JS bundle and improve INP
-const ChatWidget = dynamic(() => import("@/components/ChatWidget"), {
-  ssr: false,
-  loading: () => (
-    <div
-      className="fixed bottom-5 right-4 sm:right-6 z-50 w-14 h-14 rounded-full bg-stone-200 animate-pulse"
-      aria-hidden="true"
-    />
-  ),
-});
-
-const MobileBookingBar = dynamic(() => import("@/components/MobileBookingBar"), {
-  ssr: false,
-  loading: () => (
-    <div
-      className="fixed bottom-0 left-0 right-0 z-40 md:hidden h-[68px] bg-white border-t border-stone-200"
-      aria-hidden="true"
-    />
-  ),
-});
+import { ChatWidget, MobileBookingBar } from "@/components/DynamicComponents";
 
 const inter = Inter({ subsets: ["latin"] });
 
