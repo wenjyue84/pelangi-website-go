@@ -123,8 +123,8 @@
         "Schema validates correctly (structure is correct JSON-LD)"
       ],
       "technicalNotes": [
-        "site/src/components/BlogStructuredData.tsx — new component accepting post data",
-        "site/src/app/blog/[slug]/page.tsx — import and render BlogStructuredData",
+        "site/src/components/BlogStructuredData.tsx â€” new component accepting post data",
+        "site/src/app/blog/[slug]/page.tsx â€” import and render BlogStructuredData",
         "BreadcrumbList: Home > Blog > Article Title",
         "Publisher logo URL: https://pelangicapsulehostel.com/images/logo.png"
       ],
@@ -132,7 +132,7 @@
         "US-001"
       ],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-006",
