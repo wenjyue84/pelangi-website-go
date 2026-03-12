@@ -881,3 +881,36 @@ Here is the technical brief for implementing user story US-019.
 ### Gotchas
 - Icon paths in manifest are public URLs (e.g., `/icons/icon-192.png`), not filesystem paths
 - `npx tsc --noEmit` passes cleanly — no type issues with the manifest return type
+## Iteration 13 - Fri, Mar 13, 2026  2:42:46 AM
+Completed: Add web app manifest (manifest.json) for mobile installability (ID: US-019) in 3m
+
+
+## Pre-analysis for US-021 (Gemini 2.5 Pro)
+Here is the technical brief for the development agent.
+
+---
+
+**Technical Brief: US-021 - Social Media Link Integration**
+
+This user story pertains to the **Next.js/React frontend**, not the Frappe/Python backend. All modifications will be in TypeScript (`.tsx`) files.
+
+**1. Files to Modify:**
+*   `site/src/components/Footer.tsx`: To add the new Instagram icon and link, and to correct existing social URLs.
+*   `site/src/components/StructuredData.tsx`: To update the `sameAs` array for SEO with the verified social media URLs.
+
+**2. Frappe DocTypes / Hooks:**
+*   None. This is a frontend-only task.
+
+**3. Implementation Approach:**
+*   In `Footer.tsx`, replicate the existing pattern for social media icons (likely an `<a>` tag wrapping an SVG).
+*   Add a new entry for Instagram using a standard SVG icon.
+*   Update the `href` for the Facebook link to a verified, live URL.
+*   Update the Google link's `href` to `https://maps.app.goo.gl/maLXetUqYS5MtSLD9`.
+*   Ensure all social media `<a>` tags include `target="_blank"` and `rel="noopener noreferrer"`.
+*   In `StructuredData.tsx`, find the `sameAs` array and ensure its URL list matches the final, correct URLs used in the footer.
+
+**4. Edge Cases & Gotchas:**
+*   **URL Verification:** Do not merge without confirming the final, correct Facebook and Instagram URLs. The Google URL is specified in the ticket.
+*   **Icon Consistency:** The new Instagram icon's styling (size, color, hover state) must exactly match the existing Facebook and WhatsApp icons.
+*   **Environment Variables:** Check if social links are hardcoded or if they should be moved to environment variables (`.env.local`) for better management. Prefer environment variables if that's an established pattern in the project.
+

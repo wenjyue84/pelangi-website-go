@@ -23,11 +23,23 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center
-                         hover:bg-amber-600 transition-colors duration-300 cursor-pointer"
+                         hover:bg-blue-600 transition-colors duration-300 cursor-pointer"
                 aria-label="Facebook"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/pelangicapsulehostel"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center
+                         hover:bg-pink-500 transition-colors duration-300 cursor-pointer"
+                aria-label="Instagram"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.953c-1.902 1.953-4.457 3.047-7.521 3.047s-5.619-1.094-7.521-3.047c-1.902-1.953-2.955-4.509-2.955-7.269 0-2.76 1.053-5.316 2.955-7.269C6.381 2.094 8.936 1 12 1c3.064 0 5.619 1.094 7.521 3.047 1.902 1.953 2.955 4.509 2.955 7.269 0 2.76-1.053 5.316-2.955 7.269zm-5.521-12.27c-2.897 0-5.25 2.353-5.25 5.25s2.353 5.25 5.25 5.25 5.25-2.353 5.25-5.25-2.353-5.25-5.25-5.25zm0 8.75c-1.931 0-3.5-1.569-3.5-3.5s1.569-3.5 3.5-3.5 3.5 1.569 3.5 3.5-1.569 3.5-3.5 3.5zm5.555-9.25c.69 0 1.25-.56 1.25-1.25s-.56-1.25-1.25-1.25-1.25.56-1.25 1.25.56 1.25 1.25 1.25z" />
                 </svg>
               </a>
               <a
@@ -43,12 +55,12 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://g.page/pelangicapsulehostel"
+                href="https://maps.app.goo.gl/maLXetUqYS5MtSLD9"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center
                            hover:bg-red-500 transition-colors duration-300 cursor-pointer"
-                aria-label="Google Business"
+                aria-label="Google Maps"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
