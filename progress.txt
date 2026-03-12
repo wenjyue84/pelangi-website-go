@@ -1410,3 +1410,33 @@ Incomplete: Add Instagram social link to Footer and fix social media URLs (ID: U
 ### Gotchas
 - Hydration mismatch avoided by defaulting `consent` state to `"accepted"` (hides banner) during SSR, then reading actual cookie value in useEffect
 - z-index must be higher than MobileBookingBar (z-40) and ChatWidget (z-50) — used z-[60]
+
+
+## Pre-analysis for US-021 (Gemini 2.5 Pro)
+This user story is for a **Next.js/React** frontend, not a Frappe/Python application. The context provided is for the `pelangi-website` project.
+
+Here is the technical brief based on the actual story content:
+
+**Project:** Pelangi Website (Next.js/React)
+**User Story:** US-021
+
+**1. Files to Modify:**
+*   `site/src/components/Footer.tsx`: To add the new icon and update links.
+*   `site/src/components/StructuredData.tsx`: To update the `sameAs` array for SEO.
+
+**2. Involved DocTypes/Hooks:**
+*   None. This is a React component-based change. No Frappe elements are involved.
+
+**3. Implementation Approach:**
+*   In `Footer.tsx`, replicate the `<a>` tag structure used for the Facebook icon to create a new one for Instagram.
+*   Use a standard Instagram SVG icon, ensuring it matches the styling of other social icons.
+*   Update the `href` for the Facebook link and the Google Business link using the URL from the technical notes (`maps.app.goo.gl/...`).
+*   Add the correct `href` for the new Instagram link.
+*   Confirm all social links use `target="_blank"` and `rel="noopener noreferrer"`.
+*   In `StructuredData.tsx`, find the `sameAs` array and update it with the verified URLs for Facebook, Google, and the new Instagram profile.
+
+**4. Edge Cases / Gotchas:**
+*   The primary issue is the user's prompt incorrectly references Frappe/Python. The work is entirely in TypeScript/React.
+*   Verify the final URLs for Facebook and Instagram are correct and live before implementation.
+*   Ensure the new Instagram icon's styling (size, color, hover state) is identical to the existing icons.
+

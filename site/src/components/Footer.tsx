@@ -81,7 +81,7 @@ export default function Footer() {
               {[
                 { href: "/about", label: "About Us" },
                 { href: "/rooms", label: "Rooms" },
-                { href: "/rooms#facilities", label: "Amenities" },
+                { href: "/amenities", label: "Amenities" },
                 { href: "/gallery", label: "Gallery" },
                 { href: "/contact", label: "Location" },
                 { href: "/book", label: "Book Now" },
