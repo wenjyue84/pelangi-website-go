@@ -1357,3 +1357,56 @@ This user story is for a Next.js/TypeScript frontend, not a Frappe/Python applic
 ### Gotchas
 - rtk wrapper for npx fails ("program not found") — use `npx tsc --noEmit` directly
 - prd.json needs `encoding='utf-8'` when reading/writing with Python on Windows (cp1252 codec error otherwise)
+## Iteration 8 - Fri, Mar 13, 2026  3:31:20 AM
+Incomplete: Add Instagram social link to Footer and fix social media URLs (ID: US-021) — attempt 2/3
+
+
+## Pre-analysis for US-021 (Gemini 2.5 Pro)
+**Technical Brief: US-021 - Social Media Link Updates**
+
+**Project Context Correction:** The user story targets a Next.js/React frontend, not a Frappe/Python backend. The implementation will be in TypeScript (`.tsx`), not Python.
+
+**1. Primary Files to Modify:**
+*   `site/src/components/Footer.tsx`: To add the new icon and update link URLs.
+*   `site/src/components/StructuredData.tsx`: To update the `sameAs` array for SEO.
+
+**2. Key Frappe/App-level Components:**
+*   This does not involve Frappe DocTypes. The key components are React components: `Footer` and `StructuredData`.
+
+**3. Recommended Implementation Approach:**
+*   In `Footer.tsx`, locate the social media link list.
+*   Add a new anchor tag (`<a>`) for the Instagram profile. It should wrap an SVG icon, mimicking the existing Facebook and WhatsApp buttons.
+*   Update the `href` for the Facebook link to a verified, live URL.
+*   Update the `href` for the Google Business link to `https://maps.app.goo.gl/maLXetUqYS5MtSLD9`.
+*   Ensure all social media anchor tags have `target="_blank"` and `rel="noopener noreferrer"`.
+*   In `StructuredData.tsx`, find the `sameAs` array and update the URLs to match the new, verified links in the footer.
+
+**4. Edge Cases & Gotchas:**
+*   **URL Verification:** The Facebook and Instagram URLs must be confirmed as live before implementation. Placeholder URLs should not be used in production.
+*   **Icon Styling:** The new Instagram icon button must be visually consistent with the existing social icons.
+*   **SEO Impact:** Failing to update the `sameAs` array in `StructuredData.tsx` will create a mismatch between visible links and machine-readable data, negatively impacting SEO.
+
+
+## Iteration N - Story: Add PDPA/GDPR cookie consent banner for analytics compliance (US-032)
+
+### What was implemented
+- Created `site/src/components/CookieConsent.tsx` — client component with cookie consent banner
+  - Shows on first visit when no consent cookie exists
+  - "Accept All" and "Reject Non-Essential" buttons
+  - Stores consent in `pelangi_cookie_consent` cookie (1-year expiry, SameSite=Lax)
+  - Banner does not re-appear once choice is made
+  - Dispatches `cookie-consent` CustomEvent so future analytics scripts can listen and initialize only on acceptance
+  - Accessible: `role="dialog"`, `aria-label`, `aria-describedby`, focus ring on buttons
+  - Responsive: stacks buttons vertically on mobile, horizontal on desktop
+- Added to `DynamicComponents.tsx` as dynamic import with `ssr: false` (follows existing pattern)
+- Added `<CookieConsent />` to `layout.tsx` alongside existing ChatWidget and MobileBookingBar
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- DynamicComponents.tsx pattern: all client-only components go through `next/dynamic` with `ssr: false`
+- No analytics scripts currently on the site — banner is forward-looking, ready to gate GA/tracking when added
+- Cookie consent CustomEvent pattern allows decoupled analytics initialization
+
+### Gotchas
+- Hydration mismatch avoided by defaulting `consent` state to `"accepted"` (hides banner) during SSR, then reading actual cookie value in useEffect
+- z-index must be higher than MobileBookingBar (z-40) and ChatWidget (z-50) — used z-[60]
