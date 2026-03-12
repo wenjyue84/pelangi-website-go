@@ -1639,3 +1639,64 @@ Completed: Add Google Sustainability Attributes and eco-friendly content section
 ## Iteration 13 - Fri, Mar 13, 2026  3:55:48 AM
 Completed: Add Google Sustainability Attributes and eco-friendly content section (ID: US-034) in 4m
 
+
+## Pre-analysis for US-035 (Gemini 2.5 Pro)
+This user story is for a Next.js/TypeScript application, not Frappe/Python. The technical brief below is tailored for the correct stack (Next.js, React, TypeScript).
+
+***
+
+**To:** Claude Code Agent
+**From:** Gemini Agent
+**Subject:** Technical Brief for User Story US-035: GA4 Integration
+
+Here is the plan for implementing GA4 analytics in the Next.js application.
+
+**1. Files to Modify:**
+*   `site/src/app/layout.tsx`: To conditionally render the GA component.
+*   `site/src/components/CookieConsent.tsx`: To capture user consent.
+*   `site/src/app/page.tsx` (or component with booking button): To add `book_click` event tracking.
+*   `site/src/components/WhatsAppButton.tsx` (or similar): To add `whatsapp_click` event tracking.
+*   `site/src/app/blog/[slug]/page.tsx`: To add page view event tracking.
+*   Create a new file `site/src/lib/gtag.ts` for analytics helper functions.
+
+**2. Key Components & Hooks:**
+*   **Components:** `CookieConsent`, `RootLayout`, and any button/page components requiring tracking.
+*   **Library:** `@next/third-parties/google` for the `<GoogleAnalytics />` and `sendGAEvent` functions.
+*   **State Management:** A shared state (React Context is suitable) is needed to manage the user's cookie consent across the application.
+
+**3. Implementation Approach:**
+1.  Install the official Next.js third-party library: `npm install @next/third-parties/google`.
+2.  Create a `CookieConsentContext` to provide and consume the `hasConsent` boolean state.
+3.  Update `CookieConsent.tsx` to set `hasConsent` to `true` via the context when the user accepts.
+4.  In `site/src/app/layout.tsx`, consume the `hasConsent` state and conditionally render `<GoogleAnalytics gaId="G-XXXXXXXXXX" />` only if it's `true`.
+5.  Create a `sendGAEvent(event, params)` helper in `site/src/lib/gtag.ts` that wraps the function from the third-party library.
+6.  Trigger `sendGAEvent` from `onClick` handlers on booking/WhatsApp buttons and within a `useEffect` hook on blog pages.
+
+**4. Edge Cases & Gotchas:**
+*   Store the GA4 Measurement ID in a public environment variable (`NEXT_PUBLIC_GA_MEASUREMENT_ID`) in `.env.local`, not hardcoded.
+*   Ensure no GA script is loaded or events fired *before* the user explicitly gives consent.
+*   Use Google Tag Assistant or the GA4 DebugView to verify that events are being correctly received *only after* consent is granted.
+
+
+## Iteration N - Story: Integrate GA4 analytics via @next/third-parties/google
+
+### What was implemented
+- `site/src/components/AnalyticsProvider.tsx` — client component reads cookie consent state on mount and listens to `cookie-consent` events; renders `<GoogleAnalytics gaId={...} />` only when accepted
+- `site/src/components/DynamicComponents.tsx` — added `AnalyticsProvider` as a dynamic (ssr:false) export
+- `site/src/app/layout.tsx` — imported and rendered `<AnalyticsProvider />` in root layout
+- `site/src/components/MobileBookingBar.tsx` — added `sendGAEvent("event", "whatsapp_click", {...})` on "Book Now" click
+- `site/src/components/Booking.tsx` — converted to "use client", added `sendGAEvent` for `book_click` (Book Direct link) and `whatsapp_click` (Jay WhatsApp link)
+- `site/src/components/BlogPageViewTracker.tsx` — small client component that fires `sendGAEvent("event", "blog_page_view", {slug, title})` on mount
+- `site/src/app/blog/[slug]/page.tsx` — added `<BlogPageViewTracker />` to blog article pages
+- `site/.env.local` — added `NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX` placeholder
+
+### Patterns discovered
+- `@next/third-parties/google` exports both `GoogleAnalytics` (component) and `sendGAEvent` (function) — import path is same for both
+- `sendGAEvent("event", eventName, params)` is the correct call signature (not `sendGAEvent(eventName, params)`)
+- `AnalyticsProvider` uses the `cookie-consent` CustomEvent already dispatched by `CookieConsent.tsx` — no changes needed to the consent component
+- `NEXT_PUBLIC_GA_MEASUREMENT_ID` env var must have `NEXT_PUBLIC_` prefix to be accessible in client components
+
+### Gotchas
+- `@next/third-parties` must be installed separately (`npm install @next/third-parties`) — not included with next by default
+- GA4 script won't load with placeholder ID `G-XXXXXXXXXX` — owner must replace with real measurement ID from GA4 property settings
+- `Booking.tsx` needed "use client" directive since it now calls `sendGAEvent` (a client-only function)

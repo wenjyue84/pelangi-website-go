@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import StructuredData from "@/components/StructuredData";
-import { ChatWidget, MobileBookingBar, CookieConsent } from "@/components/DynamicComponents";
+import { ChatWidget, MobileBookingBar, CookieConsent, AnalyticsProvider } from "@/components/DynamicComponents";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -103,6 +103,7 @@ export default function RootLayout({
         <MobileBookingBar />
         <ChatWidget />
         <CookieConsent />
+        <AnalyticsProvider />
       </body>
     </html>
   );

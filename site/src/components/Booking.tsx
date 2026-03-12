@@ -1,3 +1,7 @@
+"use client";
+
+import { sendGAEvent } from "@next/third-parties/google";
+
 export default function Booking() {
   const bookingPlatforms = [
     {
@@ -45,6 +49,7 @@ export default function Booking() {
           <div className="mb-10">
             <a
               href="/book"
+              onClick={() => sendGAEvent("event", "book_click", { location: "booking_section" })}
               className="inline-flex items-center gap-3 bg-white text-amber-800 rounded-2xl
                          py-5 px-10 font-semibold text-lg hover:bg-amber-50 transition-all
                          duration-300 hover:-translate-y-1 hover:shadow-xl"
@@ -116,6 +121,7 @@ export default function Booking() {
                 href="https://wa.me/60127088789"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => sendGAEvent("event", "whatsapp_click", { location: "booking_section", contact: "jay" })}
                 className="flex items-center justify-center gap-3 bg-green-500 text-white
                          rounded-xl py-4 px-6 font-medium hover:bg-green-600 transition-colors cursor-pointer"
               >

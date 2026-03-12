@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { sendGAEvent } from '@next/third-parties/google';
 
 export default function MobileBookingBar() {
   const [chatOpen, setChatOpen] = useState(false);
@@ -42,6 +43,7 @@ export default function MobileBookingBar() {
           href="https://wa.me/60127088789?text=Hi!%20I'd%20like%20to%20book%20a%20pod%20at%20Pelangi%20Capsule%20Hostel."
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => sendGAEvent("event", "whatsapp_click", { location: "mobile_booking_bar" })}
           className="flex-shrink-0 inline-flex items-center gap-1.5 bg-green-500 hover:bg-green-600 active:bg-green-700 text-white text-sm font-semibold px-4 py-2.5 rounded-full transition-colors"
           aria-label="Book via WhatsApp - opens WhatsApp chat"
         >

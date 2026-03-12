@@ -26,3 +26,8 @@ export const MobileBookingBar = dynamic(() => import("@/components/MobileBooking
 export const CookieConsent = dynamic(() => import("@/components/CookieConsent"), {
   ssr: false,
 });
+
+export const AnalyticsProvider = dynamic(
+  () => import("@/components/AnalyticsProvider"),
+  { ssr: false }
+);
