@@ -22,7 +22,7 @@ export default function Footer() {
                 href="https://www.facebook.com/pelangicapsulehostel"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center
+                className="min-h-6 min-w-6 w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center
                          hover:bg-blue-600 transition-colors duration-300 cursor-pointer"
                 aria-label="Facebook"
               >
@@ -34,7 +34,7 @@ export default function Footer() {
                 href="https://www.instagram.com/pelangicapsulehostel"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center
+                className="min-h-6 min-w-6 w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center
                          hover:bg-pink-500 transition-colors duration-300 cursor-pointer"
                 aria-label="Instagram"
               >
@@ -46,7 +46,7 @@ export default function Footer() {
                 href="https://wa.me/60127088789"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center
+                className="min-h-6 min-w-6 w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center
                          hover:bg-green-600 transition-colors duration-300 cursor-pointer"
                 aria-label="WhatsApp"
               >
@@ -58,7 +58,7 @@ export default function Footer() {
                 href="https://maps.app.goo.gl/maLXetUqYS5MtSLD9"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center
+                className="min-h-6 min-w-6 w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center
                            hover:bg-red-500 transition-colors duration-300 cursor-pointer"
                 aria-label="Google Maps"
               >
@@ -89,7 +89,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-stone-400 hover:text-white transition-colors duration-200"
+                    className="min-h-6 text-stone-400 hover:text-white transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -119,11 +119,11 @@ export default function Footer() {
                 <svg className="w-5 h-5 text-amber-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <div className="flex flex-col gap-1">
-                  <a href="tel:+60127088789" className="text-stone-400 hover:text-white transition-colors">
+                <div className="flex flex-col gap-2">
+                  <a href="tel:+60127088789" className="min-h-6 text-stone-400 hover:text-white transition-colors">
                     Jay: +60 12-708 8789
                   </a>
-                  <a href="tel:+60167620815" className="text-stone-400 hover:text-white transition-colors">
+                  <a href="tel:+60167620815" className="min-h-6 text-stone-400 hover:text-white transition-colors">
                     Alston: +60 16-762 0815
                   </a>
                 </div>
@@ -132,7 +132,7 @@ export default function Footer() {
                 <svg className="w-5 h-5 text-amber-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href="mailto:pelangicapsule@gmail.com" className="text-stone-400 hover:text-white transition-colors">
+                <a href="mailto:pelangicapsule@gmail.com" className="min-h-6 text-stone-400 hover:text-white transition-colors">
                   pelangicapsule@gmail.com
                 </a>
               </li>

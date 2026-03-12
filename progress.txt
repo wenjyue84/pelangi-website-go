@@ -2212,3 +2212,56 @@ This brief outlines the implementation plan for adding a newsletter signup form 
 ### Gotchas
 - `@media` inside `@layer base` works correctly in Tailwind's PostCSS pipeline
 - No need for `scroll-margin-bottom` on individual elements since the global `scroll-padding-bottom` handles all cases
+## Iteration 11 - Fri, Mar 13, 2026  4:58:12 AM
+Incomplete: Add email newsletter capture form for guest re-marketing (ID: US-048) — attempt 2/3
+
+
+## Pre-analysis for US-048 (Gemini 2.5 Pro)
+This user story is for a **Next.js** application, not Frappe/Python. The technical notes specify using Next.js Server Actions.
+
+**Technical Brief: US-048 Newsletter Signup**
+
+**1. Files to Modify/Create:**
+
+*   **Create `site/src/components/ui/NewsletterForm.tsx`:** A new client-side React component for the form UI (name/email inputs, submit button, privacy note). This keeps the presentation logic separate.
+*   **Create `site/src/app/actions/newsletter.ts`:** A new file to house the Next.js Server Action (`subscribeToNewsletter`) that will handle the form submission and call the Brevo API.
+*   **Modify `site/src/app/blog/page.tsx` (or similar blog index file):** Import and render the new `NewsletterForm` component at the bottom of the page.
+*   **Modify `site/.env.local`:** Add the `BREVO_API_KEY` to store the API secret securely.
+
+**2. Frappe DocTypes/Hooks:**
+
+*   None. This is a Next.js feature.
+
+**3. Implementation Approach:**
+
+1.  **Server Action:** Create an async function `subscribeToNewsletter` in `newsletter.ts` annotated with `"use server"`.
+2.  **API Call:** Inside the action, use `fetch` to send a `POST` request to `https://api.brevo.com/v3/contacts`. The body should include the email, list ID, and any attributes like name. The `api-key` header must be set using the environment variable.
+3.  **Form Component:** In `NewsletterForm.tsx`, use the `useFormState` hook to manage form state (pending, success, error) and display appropriate messages to the user without a full page reload.
+4.  **Consent:** Add a required checkbox for privacy consent to the form. The server action should only proceed if this consent is granted.
+
+**4. Edge Cases & Gotchas:**
+
+*   **API Key Security:** The Brevo API key must only be accessed within the Server Action. It must not be exposed to the client.
+*   **Error Handling:** The server action must gracefully handle API errors from Brevo (e.g., duplicate contact, invalid email format, API downtime) and return a clear error message to the form.
+*   **Validation:** Implement server-side validation on the email and name fields to protect the API endpoint, in addition to client-side validation for better UX.
+*   **CSP:** Using a Server Action correctly avoids adding Brevo to the `script-src` CSP, which is a key benefit mentioned in the story.
+*   **PDPA:** Ensure the privacy text is clear and a consent checkbox is required, as noted in the acceptance criteria.
+
+
+## Iteration - Story: US-045 Audit and remediate touch target sizes for WCAG 2.2 SC 2.5.8
+
+### What was implemented
+- **BlogFilter.tsx**: Added `min-h-6` to category chip buttons ensuring 24px minimum height
+- **LanguageSwitcher.tsx**: Added `min-h-6 min-w-6` to language toggle buttons
+- **Footer.tsx**: Added `min-h-6 min-w-6` to all 4 social media icon links (Facebook, Instagram, WhatsApp, Google Maps)
+- **Footer.tsx**: Increased phone link container gap from `gap-1` (4px) to `gap-2` (8px) for better touch separation
+- **Footer.tsx**: Added `min-h-6` to phone links, email link, and navigation links
+
+### Patterns discovered
+- Footer social icons were already 40×40px (w-10 h-10), well above 24px threshold
+- Star rating icons in Reviews.tsx and Testimonials.tsx are display-only (not interactive), so they don't need touch target fixes
+- BlogFilter chips and LanguageSwitcher buttons have computed heights > 24px from padding, but explicit `min-h-6` makes the intent clear and guards against future changes
+
+### Gotchas
+- WCAG 2.5.8 allows either 24px target size OR 24px offset spacing — both are valid compliance paths
+- Phone links in footer had `gap-1` (4px) between them which could cause accidental taps on mobile

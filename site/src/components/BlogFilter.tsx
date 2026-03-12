@@ -29,7 +29,7 @@ export default function BlogFilter({ posts, activeCategory }: BlogFilterProps) {
             <button
               key={cat}
               onClick={() => setSelected(cat)}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+              className={`min-h-6 px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 isActive
                   ? "bg-amber-600 text-white shadow-sm"
                   : "bg-white text-stone-600 border border-stone-200 hover:border-amber-400 hover:text-amber-700"
