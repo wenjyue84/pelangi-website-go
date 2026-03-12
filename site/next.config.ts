@@ -1,5 +1,29 @@
 import type { NextConfig } from "next";
 
+const cspHeader = [
+  "default-src 'self'",
+  // Next.js injects inline scripts for hydration/routing — 'unsafe-inline' required without nonces
+  "script-src 'self' 'unsafe-inline' https://admin.pelangicapsulehostel.com",
+  // Tailwind CSS-in-JS and component inline styles require 'unsafe-inline'
+  "style-src 'self' 'unsafe-inline'",
+  // next/font/google self-hosts fonts; no external font CDN needed
+  "font-src 'self'",
+  // Images: self, data URIs, blob URLs, TripCdn (hotel photos), admin proxy
+  "img-src 'self' blob: data: https://ak-d.tripcdn.com https://admin.pelangicapsulehostel.com",
+  // API calls: same-origin rewrites proxy to admin; admin also whitelisted for direct calls
+  "connect-src 'self' https://admin.pelangicapsulehostel.com",
+  // Google Maps embeds + YouTube embeds
+  "frame-src https://www.google.com https://www.youtube.com",
+  // Disallow plugins (Flash etc.)
+  "object-src 'none'",
+  // Prevent base-tag injection attacks
+  "base-uri 'self'",
+  // Restrict who can embed this site in an iframe
+  "frame-ancestors 'self'",
+  // Upgrade any accidental HTTP sub-resource requests to HTTPS
+  "upgrade-insecure-requests",
+].join("; ");
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   async headers() {
@@ -17,6 +41,10 @@ const nextConfig: NextConfig = {
           {
             key: "Strict-Transport-Security",
             value: "max-age=63072000; includeSubDomains; preload",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: cspHeader,
           },
         ],
       },

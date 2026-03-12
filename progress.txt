@@ -964,3 +964,49 @@ The goal is to enhance security by adding several HTTP headers to the Next.js ap
 
 ### Gotchas
 - prd.json must be read/written with explicit `encoding='utf-8'` on Windows (default cp1252 fails)
+## Iteration 1 - Fri, Mar 13, 2026  2:59:37 AM
+Completed: Add HTTP security headers to next.config.ts (ID: US-023) in 2m
+
+
+## Pre-analysis for US-025 (Gemini 2.5 Pro)
+Based on the user story, here is a concise technical brief for implementation:
+
+**1. File to Modify:**
+*   `site/src/components/StructuredData.tsx`
+
+**2. DocTypes/Hooks Involved:**
+*   None. This is a frontend-only change within a Next.js component.
+
+**3. Recommended Implementation Approach:**
+1.  In `StructuredData.tsx`, find the `hostelSchema` object.
+2.  Change the `@type` from `"Hostel"` to `"LodgingBusiness"`.
+3.  Update the existing `checkinTime` and `checkoutTime` values to `'T14:00'` and `'T12:00'` respectively, to conform to ISO 8601 Time format.
+4.  Add the `availableLanguage` property as an array with "English" and "Chinese" language objects.
+5.  Add the `petsAllowed` property with a boolean value of `false`.
+6.  Add `numberOfRooms` and set its value to `24`.
+7.  Ensure the `starRating` property is not present in the final schema.
+
+**4. Edge Cases & Gotchas:**
+*   **Schema Type:** Using `LodgingBusiness` is critical, as the `Hostel` type does not formally support all the new properties.
+*   **Time Format:** The 'T' prefix in `checkinTime` and `checkoutTime` is mandatory for ISO 8601 compliance.
+*   **Validation:** After deploying, the generated JSON-LD from the page source must be tested in the Google Rich Results Test tool to confirm validity and eligibility for rich results.
+*   **Data Accuracy:** The number of rooms (24 pods) should be hardcoded as specified.
+
+
+## Iteration N - Story: Implement Content Security Policy (CSP) header (US-024)
+
+### What was implemented
+- Added `cspHeader` constant to `site/next.config.ts` — a joined string of CSP directives
+- Added `Content-Security-Policy` header alongside existing security headers in `headers()` config
+- Directives: `default-src 'self'`, `script-src 'self' 'unsafe-inline' admin`, `style-src 'self' 'unsafe-inline'`, `img-src 'self' blob: data: ak-d.tripcdn.com admin`, `font-src 'self'`, `connect-src 'self' admin`, `frame-src google.com youtube.com`, `object-src 'none'`, `base-uri 'self'`, `frame-ancestors 'self'`, `upgrade-insecure-requests`
+
+### Patterns discovered
+- `next/font/google` self-hosts fonts — no external `fonts.googleapis.com` or `fonts.gstatic.com` whitelisting needed in CSP
+- Next.js without nonces requires `'unsafe-inline'` for both `script-src` and `style-src`
+- Next.js rewrites make admin.pelangicapsulehostel.com appear same-origin to browser, but whitelist in CSP anyway as technical notes recommend
+- `base-uri 'self'` and `object-src 'none'` are good defensive additions even if not in acceptance criteria
+
+### Gotchas
+- `X-Frame-Options: SAMEORIGIN` already present — keep it for older browser compat; `frame-ancestors 'self'` in CSP takes precedence in modern browsers
+- YouTube embeds need `frame-src https://www.youtube.com`; Google Maps embeds need `frame-src https://www.google.com`
+

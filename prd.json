@@ -578,7 +578,7 @@
         "Add HTTP security headers to next.config.ts"
       ],
       "estimatedComplexity": "medium",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-025",
