@@ -85,3 +85,55 @@ Completed: Write 6 SEO-optimised travel blog articles about JB for backpackers (
 ### Gotchas
 - Always verify existing state before assuming work needs to be done
 
+## Iteration 3 - Fri, Mar 13, 2026  1:09:04 AM
+Completed: Write 6 SEO-optimised travel blog articles about JB for backpackers (ID: US-002) in 4m
+
+
+## Pre-analysis for US-005 (Gemini 2.5 Pro)
+Here is the technical brief for user story US-005.
+
+**Subject: Technical Brief for US-005: SEO Structured Data Implementation**
+
+This story requires adding JSON-LD structured data to a Next.js website. The project is TypeScript/React, not Frappe/Python.
+
+**1. Python Files to Modify (Next.js/TSX Equivalents):**
+*   `site/src/app/blog/[slug]/page.tsx`: To render `Article` and `BreadcrumbList` schemas.
+*   `site/src/app/blog/page.tsx`: To render `BreadcrumbList` schema on the blog index.
+*   `site/src/app/page.tsx`: To add `FAQPage` schema for the FAQ section.
+*   `site/src/components/BlogStructuredData.tsx`: A new component to create for generating the schemas.
+
+**2. Frappe DocTypes/Hooks Involved (Next.js Equivalents):**
+*   **Pages (Routes):** `/blog/[slug]`, `/blog`, and the homepage (`/`).
+*   **Components:** A new server component is needed to encapsulate schema generation logic.
+*   **Props:** The component will accept post data (headline, description, date, image) and the current page path.
+
+**3. Recommended Implementation Approach:**
+1.  Create a new component `site/src/components/BlogStructuredData.tsx`.
+2.  This component will accept props for post details and generate `BlogPosting` and `BreadcrumbList` JSON objects.
+3.  It will render a `<script type="application/ld+json">` tag containing the stringified JSON.
+4.  Use this component in `[slug]/page.tsx` (for both schemas) and `blog/page.tsx` (for BreadcrumbList).
+5.  Create a similar, separate component for the `FAQPage` schema and use it on the homepage.
+
+**4. Edge Cases & Gotchas:**
+*   All URLs in the schema (`@id`, `image`, `logo`) **must** be absolute, not relative.
+*   Ensure the post data object passed as props contains all required fields (e.g., `datePublished`, `image`).
+*   Validate the final output using the Google Rich Results Test, as JSON-LD syntax is strict.
+*   The publisher logo URL is provided in the technical notes.
+
+
+## Iteration N - Story: Add Article schema and BreadcrumbList structured data to blog pages (US-005)
+
+### What was implemented
+- `site/src/components/BlogStructuredData.tsx` — new component accepting BlogPost prop
+  - Renders BlogPosting JSON-LD (headline, description, datePublished, author, publisher+logo, image, url, mainEntityOfPage)
+  - Renders BreadcrumbList JSON-LD: Home > Blog > Article Title
+- `site/src/app/blog/[slug]/page.tsx` — imported BlogStructuredData, rendered before <Header>
+- `site/src/app/blog/page.tsx` — added inline BreadcrumbList JSON-LD (Home > Blog) as module-level const + script tag
+
+### Patterns discovered
+- JSON-LD script tags placed directly in JSX as children of <main> work fine in Next.js App Router
+- Existing StructuredData.tsx pattern: inline schema objects + dangerouslySetInnerHTML — followed same approach
+
+### Gotchas
+- blog/page.tsx is a Server Component (no "use client") but uses module-level const for schema — this is fine as it's static data
+- featuredImage paths may be relative (/images/...) — handled by prepending hostname if not absolute

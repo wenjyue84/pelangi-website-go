@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BlogStructuredData from "@/components/BlogStructuredData";
 import { blogPosts, getPostBySlug } from "@/data/blog/posts";
 
 interface Props {
@@ -58,6 +59,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <main className="min-h-screen bg-stone-50">
+      <BlogStructuredData post={post} />
       <Header />
 
       <article className="pt-28 pb-16 container-custom">

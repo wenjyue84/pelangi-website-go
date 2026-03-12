@@ -35,9 +35,32 @@ const sortedPosts = [...blogPosts].sort(
   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
 );
 
+const blogBreadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://pelangicapsulehostel.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://pelangicapsulehostel.com/blog",
+    },
+  ],
+};
+
 export default function BlogPage() {
   return (
     <main className="min-h-screen bg-stone-50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogBreadcrumbSchema) }}
+      />
       <Header />
 
       <div className="pt-28 pb-16 container-custom">
