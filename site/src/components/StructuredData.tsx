@@ -95,7 +95,8 @@ export default function StructuredData() {
     ],
     "sameAs": [
       "https://www.facebook.com/pelangicapsulehostel",
-      "https://www.instagram.com/pelangicapsulehostel"
+      "https://www.instagram.com/pelangicapsulehostel",
+      "https://maps.app.goo.gl/maLXetUqYS5MtSLD9"
     ]
   };
 

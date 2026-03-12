@@ -1440,3 +1440,82 @@ Here is the technical brief based on the actual story content:
 *   Verify the final URLs for Facebook and Instagram are correct and live before implementation.
 *   Ensure the new Instagram icon's styling (size, color, hover state) is identical to the existing icons.
 
+
+## Iteration 4 - Story: Add dedicated /amenities page with full LocationFeatureSpecification schema
+
+### What was implemented
+- Created `/site/src/app/amenities/page.tsx` with full amenities listing page
+- Implemented 9 amenities (WiFi 50+Mbps, Quiet Hours 10PM-8AM, Secure Lockers, Universal Outlets, Co-working Space, Full AC, Fresh Linens, Shared Kitchen 6AM-11PM, Laundry RM3 self-service/RM15 service)
+- Added comprehensive descriptions with caveats and technical details for each amenity
+- Generated LocationFeatureSpecification JSON-LD schema with all 9 amenities for Google rich results
+- Added SEO metadata with target keywords: 'free WiFi hostel JB', 'co-working hostel', 'digital nomad hostel', 'long-stay hostel Malaysia'
+- Updated `/site/src/app/sitemap.ts` to include /amenities route (monthly frequency, 0.8 priority)
+- Modified `/site/src/components/Footer.tsx` to link Amenities to /amenities instead of /rooms#facilities
+- Added "View All Amenities" CTA button on homepage Amenities component linking to /amenities
+- Included expanded sections: Kitchen & Dining, Co-working Space, Laundry Services, Safety & Access with detailed feature lists
+
+### Patterns discovered
+- JSON-LD structured data works well with Next.js generateMetadata for combined SEO optimization
+- LocationFeatureSpecification schema supports both boolean and string values for amenity properties
+- Adding CTA links from component to dedicated pages improves user discoverability
+
+### Gotchas
+- Needed to add Link import to Amenities.tsx component for navigation
+- Multiple Node processes running on system; dev server used port 3004 instead of 3000
+
+### Quality checks
+- TypeScript compilation: PASS (zero errors)
+- Page renders successfully at /amenities
+- LocationFeatureSpecification schema correctly generated with all 9 amenities
+- All acceptance criteria met
+
+## Iteration 4 - Fri, Mar 13, 2026  03:40:00 AM
+Completed: Add dedicated /amenities page with full LocationFeatureSpecification schema (ID: US-033) in 12m
+
+## Iteration 10 - Fri, Mar 13, 2026  3:41:20 AM
+Incomplete: Add Instagram social link to Footer and fix social media URLs (ID: US-021) — attempt 1/3
+
+
+## Pre-analysis for US-021 (Gemini 2.5 Pro)
+Here is a technical brief for the user story, corrected for the actual project stack.
+
+**Subject: Technical Brief for US-021: Add Instagram & Fix Social URLs**
+
+**Project Stack:** Next.js / React / TypeScript
+
+**1. Files to Modify:**
+*   `site/src/components/Footer.tsx`: Primary file for the visual footer component. You will add the Instagram icon and link here, and update existing social media `<a>` tags.
+*   `site/src/components/StructuredData.tsx`: Contains the `sameAs` JSON-LD array for SEO. This must be updated to reflect the new and corrected social media profile URLs.
+
+**2. Implementation Approach:**
+1.  In `Footer.tsx`, locate the rendering logic for the social media icons (Facebook, WhatsApp).
+2.  Add a new icon button for Instagram, replicating the existing component structure and styling.
+3.  Use a standard Instagram SVG icon, ensuring it follows the project's current pattern for assets.
+4.  Update the `href` for the Facebook link and set the Google link to `https://maps.app.goo.gl/maLXetUqYS5MtSLD9`.
+5.  Ensure all social `<a>` tags have `target="_blank"` and `rel="noopener noreferrer"`.
+6.  In `StructuredData.tsx`, add the verified Instagram URL to the `sameAs` array and update the Facebook/Google URLs to match.
+
+**3. Edge Cases & Gotchas:**
+*   **URL Verification:** The acceptance criteria mandate live URLs. You must acquire the final, correct URLs for the hostel's Instagram and Facebook pages before implementation. Do not use placeholders.
+*   **Icon Styling:** The new Instagram icon must be visually consistent (size, hover effects, padding) with the existing icons in the footer.
+*   **SEO Consistency:** Failing to update the `sameAs` array in `StructuredData.tsx` will cause a mismatch between visible links and machine-readable data, failing a key requirement.
+
+
+## Iteration - Story: Add Instagram social link to Footer and fix social media URLs
+
+### What was implemented
+- Fixed Instagram icon SVG in `site/src/components/Footer.tsx` — replaced incorrect circular globe path with standard Instagram rounded-rectangle camera icon (SimpleIcons path)
+- Added Google Maps URL (`https://maps.app.goo.gl/maLXetUqYS5MtSLD9`) to the `sameAs` array in `site/src/components/StructuredData.tsx`
+- All other criteria were already met from previous iteration: Instagram link existed, Facebook URL correct, Google Maps URL in footer, all links `target="_blank" rel="noopener noreferrer"`
+
+### Patterns discovered
+- Previous iteration had added Instagram link but used incorrect circular SVG path — the standard Instagram brand icon uses a rounded-rectangle shape (M12 2.163...)
+- StructuredData sameAs should include all social/map URLs visible in the footer
+
+### Gotchas
+- The Instagram icon was already present in Footer.tsx but with the wrong SVG path (circular design vs standard Instagram camera icon)
+- Google Maps URL was in the footer icon but not in sameAs structured data
+
+### Quality checks
+- TypeScript compilation: PASS (zero errors)
+- All 5 acceptance criteria met
