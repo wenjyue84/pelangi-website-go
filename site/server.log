@@ -21,3 +21,11 @@
  ✓ Ready in 2.1s
  ○ Compiling /amenities ...
  ✓ Compiled /amenities in 3.7s (737 modules)
+ GET /amenities 200 in 4387ms
+ ✓ Compiled in 1121ms (272 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: EPERM: operation not permitted, rename 'C:\Users\Jyue\Documents\1-projects\Software Projects\pelangi-website\site\.next\cache\webpack\server-development\0.pack.gz_' -> 'C:\Users\Jyue\Documents\1-projects\Software Projects\pelangi-website\site\.next\cache\webpack\server-development\0.pack.gz'
+ GET /amenities 200 in 149ms
+ GET /amenities 200 in 135ms
+ GET /amenities 200 in 142ms
+ ✓ Compiled in 306ms (272 modules)
+ ✓ Compiled in 235ms (272 modules)
