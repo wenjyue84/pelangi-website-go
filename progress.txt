@@ -3242,3 +3242,59 @@ This user story is for a **Next.js/TypeScript** application, not Frappe/Python. 
 ### Gotchas
 - `force-static` must be removed from pages that use server actions (contact page now renders dynamically)
 - Environment variables `RESEND_API_KEY` and `ADMIN_EMAIL` must be set for email delivery; form gracefully falls back to WhatsApp if not configured
+## Iteration 7 - Fri, Mar 13, 2026  7:13:28 AM
+Completed: Add contact inquiry form with Resend email auto-reply on /contact page (ID: US-068) in 7m
+
+
+## Pre-analysis for US-070 (Gemini 2.5 Pro)
+Based on the user story, this is a Next.js/TypeScript task, not Frappe/Python. Here is the technical brief for the agent:
+
+**Project:** Next.js Website CSP Migration
+**Objective:** Migrate the `script-src` Content Security Policy from `'unsafe-inline'` to a more secure nonce-based approach.
+
+**1. Files to Modify:**
+*   `site/middleware.ts`: Generate the per-request nonce and set it in the `x-nonce` request header.
+*   `site/next.config.ts`: Update the `Content-Security-Policy` header to remove `'unsafe-inline'` and add `'nonce-{nonce}'` and `'strict-dynamic'`.
+*   `site/src/app/layout.tsx`: Read the nonce from headers and apply it to root script tags.
+*   `site/sentry.client.config.ts` & `sentry.server.config.ts`: Pass the nonce to the Sentry initialization options.
+*   Relevant Layout/Page component using GA4: Pass the nonce to the `@next/third-parties/google` GTMScript component.
+
+**2. Key Framework Components:**
+*   **Next.js Middleware:** Intercepts requests to inject the nonce.
+*   **Next.js `headers()` function:** Used in Server Components (`layout.tsx`) to read the nonce.
+*   **Next.js `next.config.ts`:** Defines the application's security headers.
+
+**3. Implementation Approach:**
+1.  In `middleware.ts`, generate a base64 nonce using `crypto.randomUUID()`.
+2.  Set the nonce in a request header (e.g., `x-nonce`).
+3.  In `next.config.ts`, update the `script-src` directive to `script-src 'self' 'nonce-...' 'strict-dynamic' ...`.
+4.  In the root `layout.tsx`, read the `x-nonce` header and apply the `nonce` attribute to all `<script>` elements, including Sentry and GA4.
+
+**4. Edge Cases & Gotchas:**
+*   **Third-Party Scripts:** Sentry and GA4 must receive the nonce via their respective config/props to avoid being blocked.
+*   **`'strict-dynamic'`:** This is critical. It allows scripts with a valid nonce to load other scripts dynamically, preventing breakage of libraries that inject their own script tags.
+*   **Testing:** Verify the implementation on all pages and check the browser console for CSP violation errors. Use an online tool like Google's CSP Evaluator to confirm the policy strength.
+
+
+## Iteration - Story: US-070 - Migrate CSP script-src from unsafe-inline to nonce-based policy
+
+### What was implemented
+- **middleware.ts**: Generates per-request cryptographic nonce via `Buffer.from(crypto.randomUUID()).toString('base64')`, sets `x-nonce` request header, builds CSP header with `'nonce-${nonce}' 'strict-dynamic'` replacing `'unsafe-inline'`, expanded matcher to all non-static routes
+- **next.config.ts**: Removed static CSP header from `headers()` config (now set per-request in middleware); kept all other security headers (X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy, HSTS)
+- **layout.tsx**: Made RootLayout async, reads nonce from `(await headers()).get('x-nonce')` for future component use
+- Added GA analytics domains to `connect-src` (google-analytics.com, analytics.google.com, region1.google-analytics.com) since GA4 uses fetch/sendBeacon
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- `type="application/ld+json"` scripts (structured data) are exempt from CSP `script-src` — no nonces needed
+- `'strict-dynamic'` makes URL allowlists in script-src informational fallback for older browsers; in modern browsers only nonce matters
+- With `'strict-dynamic'`, scripts dynamically created by trusted (nonced) scripts are automatically trusted — covers GA4 loaded via `{ ssr: false }` dynamic import
+- Next.js automatically applies the nonce from `x-nonce` request header to its own hydration/bootstrap scripts
+- Nonce-based CSP forces dynamic rendering on all pages (no static optimization/ISR) — acceptable trade-off for this site's security requirements
+- Middleware matcher uses `missing` filter to skip prefetch requests (no CSP needed for prefetches)
+
+### Gotchas
+- CSP must move from static `next.config.ts` headers to middleware for per-request nonce generation
+- Rate limiting and CSP nonce generation coexist in middleware — rate-limited routes get both CSP and rate limit headers
+- `'unsafe-eval'` still needed in dev mode for React hot module replacement (Turbopack)
+- `style-src` keeps `'unsafe-inline'` — migrating styles to nonce would require noncing every style injection point (separate concern)

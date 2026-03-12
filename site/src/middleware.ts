@@ -58,52 +58,114 @@ function slidingWindow(
 }
 
 // ---------------------------------------------------------------------------
-// Middleware
+// CSP nonce generation
 // ---------------------------------------------------------------------------
 
-const ROUTES: Array<{ prefix: string; limit: number }> = [
+function buildCspHeader(nonce: string): string {
+  const isDev = process.env.NODE_ENV === "development";
+
+  return [
+    "default-src 'self'",
+    // Nonce-based script-src with strict-dynamic; URL allowlists kept as fallback for older browsers
+    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${isDev ? " 'unsafe-eval'" : ""} https://admin.pelangicapsulehostel.com https://www.googletagmanager.com`,
+    // Tailwind CSS-in-JS and Google Fonts stylesheet
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+    // Self-hosted next/font/google + external Google Fonts CDN fallback
+    "font-src 'self' https://fonts.gstatic.com",
+    // Images: self, data URIs, blob URLs, TripCdn (hotel photos), admin proxy
+    "img-src 'self' blob: data: https://ak-d.tripcdn.com https://admin.pelangicapsulehostel.com https://img.youtube.com",
+    // API calls: same-origin rewrites proxy to admin; admin also whitelisted for direct calls
+    // Sentry DSN ingestion (error reporting); Google Analytics beacon endpoints
+    "connect-src 'self' https://admin.pelangicapsulehostel.com https://*.sentry.io https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com",
+    // Google Maps embeds + YouTube embeds
+    "frame-src https://www.google.com https://www.youtube.com",
+    // Disallow plugins (Flash etc.)
+    "object-src 'none'",
+    // Prevent base-tag injection attacks
+    "base-uri 'self'",
+    // Restrict who can embed this site in an iframe
+    "frame-ancestors 'self'",
+    // Upgrade any accidental HTTP sub-resource requests to HTTPS
+    "upgrade-insecure-requests",
+  ].join("; ");
+}
+
+// ---------------------------------------------------------------------------
+// Rate-limit configuration
+// ---------------------------------------------------------------------------
+
+const RATE_LIMIT_ROUTES: Array<{ prefix: string; limit: number }> = [
   { prefix: "/api/public/", limit: 30 },
   { prefix: "/api/chat/", limit: 20 },
 ];
 
 const WINDOW_MS = 60 * 1000; // 1 minute
 
+// ---------------------------------------------------------------------------
+// Middleware
+// ---------------------------------------------------------------------------
+
 export function middleware(req: NextRequest): NextResponse {
   const { pathname } = req.nextUrl;
 
-  const route = ROUTES.find((r) => pathname.startsWith(r.prefix));
-  if (!route) return NextResponse.next();
+  // Generate a per-request cryptographic nonce
+  const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
+  const cspHeader = buildCspHeader(nonce);
 
-  const ip = getIp(req);
-  const key = `${route.prefix}${ip}`;
-  const { allowed, remaining, reset } = slidingWindow(key, route.limit, WINDOW_MS);
+  // Forward the nonce to server components via a request header
+  const requestHeaders = new Headers(req.headers);
+  requestHeaders.set("x-nonce", nonce);
 
-  const rateLimitHeaders: Record<string, string> = {
-    "X-RateLimit-Limit": route.limit.toString(),
-    "X-RateLimit-Remaining": remaining.toString(),
-    "X-RateLimit-Reset": reset.toString(),
-  };
+  // --- Rate limiting (API routes only) ---
+  const route = RATE_LIMIT_ROUTES.find((r) => pathname.startsWith(r.prefix));
 
-  if (!allowed) {
-    const retryAfter = (reset - Math.floor(Date.now() / 1000)).toString();
-    return new NextResponse("Too Many Requests", {
-      status: 429,
-      headers: {
-        "Content-Type": "text/plain",
-        "Retry-After": retryAfter,
-        ...rateLimitHeaders,
-        "X-RateLimit-Remaining": "0",
-      },
-    });
+  if (route) {
+    const ip = getIp(req);
+    const key = `${route.prefix}${ip}`;
+    const { allowed, remaining, reset } = slidingWindow(key, route.limit, WINDOW_MS);
+
+    const rateLimitHeaders: Record<string, string> = {
+      "X-RateLimit-Limit": route.limit.toString(),
+      "X-RateLimit-Remaining": remaining.toString(),
+      "X-RateLimit-Reset": reset.toString(),
+    };
+
+    if (!allowed) {
+      const retryAfter = (reset - Math.floor(Date.now() / 1000)).toString();
+      return new NextResponse("Too Many Requests", {
+        status: 429,
+        headers: {
+          "Content-Type": "text/plain",
+          "Retry-After": retryAfter,
+          ...rateLimitHeaders,
+          "X-RateLimit-Remaining": "0",
+        },
+      });
+    }
+
+    const res = NextResponse.next({ request: { headers: requestHeaders } });
+    res.headers.set("Content-Security-Policy", cspHeader);
+    for (const [k, v] of Object.entries(rateLimitHeaders)) {
+      res.headers.set(k, v);
+    }
+    return res;
   }
 
-  const res = NextResponse.next();
-  for (const [k, v] of Object.entries(rateLimitHeaders)) {
-    res.headers.set(k, v);
-  }
+  // --- All other routes: set CSP nonce only ---
+  const res = NextResponse.next({ request: { headers: requestHeaders } });
+  res.headers.set("Content-Security-Policy", cspHeader);
   return res;
 }
 
 export const config = {
-  matcher: ["/api/public/:path*", "/api/chat/:path*"],
+  matcher: [
+    // Match all routes except static files, images, and Next.js internals
+    {
+      source: "/((?!_next/static|_next/image|favicon\\.ico).*)",
+      missing: [
+        { type: "header", key: "next-router-prefetch" },
+        { type: "header", key: "purpose", value: "prefetch" },
+      ],
+    },
+  ],
 };
