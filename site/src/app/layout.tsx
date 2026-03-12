@@ -91,6 +91,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Preconnect: Google Fonts (hot path — every page via globals.css @import) */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Preconnect: YouTube embed and Google Maps iframe */}
+        <link rel="preconnect" href="https://www.youtube.com" />
+        <link rel="preconnect" href="https://www.google.com" />
+        {/* DNS-prefetch: Trip.com CDN for review/OTA images (cold path) */}
+        <link rel="dns-prefetch" href="https://ak-d.tripcdn.com" />
+      </head>
       <body className={`${inter.className} pb-16 md:pb-0`}>
         <a
           href="#main-content"
