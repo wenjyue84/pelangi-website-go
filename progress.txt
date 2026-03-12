@@ -834,3 +834,50 @@ This user story is for a **Next.js/TypeScript** project, not Frappe/Python. Here
 
 ## Iteration 12 - Fri, Mar 13, 2026
 Completed: Add Google Search Console verification meta tag to layout.tsx (ID: US-015) in 2m
+## Iteration 12 - Fri, Mar 13, 2026  2:38:53 AM
+Incomplete: Add web app manifest (manifest.json) for mobile installability (ID: US-019) — attempt 2/3
+
+
+## Pre-analysis for US-019 (Gemini 2.5 Pro)
+Here is the technical brief for implementing user story US-019.
+
+**Project:** Next.js App Router (Note: The user story describes a Next.js task, not Frappe/Python).
+
+**1. Files to Create/Modify:**
+*   `site/src/app/manifest.ts`: (Create) This new file will define the web app manifest content.
+*   `site/public/icons/icon-192.png`: (Create) A 192x192px version of the app icon.
+*   `site/public/icons/icon-512.png`: (Create) A 512x512px version of the app icon.
+*   `site/src/app/layout.tsx`: (Verify) Next.js should automatically link the manifest, but verify the `<head>` contains the link.
+
+**2. Framework Conventions Involved:**
+*   This task uses the Next.js App Router's file-based metadata convention.
+*   The `manifest.ts` file is automatically detected by Next.js to generate the `/manifest.json` route.
+
+**3. Recommended Implementation Approach:**
+*   Create the `site/src/app/manifest.ts` file.
+*   Import `MetadataRoute` from `'next'`.
+*   Export a default function `manifest()` that returns a `MetadataRoute.Manifest` object.
+*   Populate the manifest with `name`, `short_name`, `start_url: '/'`, `display: 'standalone'`, and brand colors (`theme_color: '#a68b64'`).
+*   Create the required 192x192 and 512x512 PNG icons and place them in `site/public/icons/`. The manifest's icon paths should be `/icons/icon-192.png`, etc.
+
+**4. Gotchas & Verification:**
+*   Icon paths in the manifest are public URLs, not filesystem paths.
+*   Ensure the brand color `#a68b64` is used for `theme_color`.
+*   After implementation, verify by navigating to `/manifest.json` in the browser to see the output.
+*   The 'Add to Home Screen' prompt behavior depends on browser heuristics (e.g., user engagement) and may not appear immediately.
+
+## Iteration 20 - Story: US-019 - Add web app manifest for mobile installability
+
+### What was implemented
+- `site/src/app/manifest.ts` — Next.js App Router manifest convention exporting `MetadataRoute.Manifest`
+- Manifest includes: name, short_name, description, start_url (/), display (standalone), background_color (#fafaf9), theme_color (#a68b64)
+- Two icon sizes: 192x192 and 512x512 PNG at `site/public/icons/`
+- Icons generated via sharp with brand amber color (#a68b64) background and white serif "P" letter
+
+### Patterns discovered
+- Next.js App Router supports `manifest.ts` file convention — exports a function returning `MetadataRoute.Manifest`
+- `sharp` is already available in the project dependencies for image generation
+
+### Gotchas
+- Icon paths in manifest are public URLs (e.g., `/icons/icon-192.png`), not filesystem paths
+- `npx tsc --noEmit` passes cleanly — no type issues with the manifest return type
