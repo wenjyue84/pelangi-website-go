@@ -625,3 +625,57 @@ This user story requires adding Progressive Web App (PWA) capabilities to the ex
 ### Gotchas
 - Body padding-bottom needed on mobile to prevent fixed bar from covering page footer content
 - ChatWidget button at z-50 floats above the bar at z-40 — no visual conflict
+
+
+## Pre-analysis for US-019 (Gemini 2.5 Pro)
+**Project:** Pelangi Website (Next.js)
+**User Story:** US-019: Add web app manifest for mobile installability
+
+**Technical Brief**
+
+This user story is for a **Next.js** application, not Frappe/Python. The goal is to enable Progressive Web App (PWA) features, allowing users to install the website on their mobile home screens.
+
+**1. File to Create:**
+*   `site/src/app/manifest.ts`: This file will define the web app manifest using Next.js 15's App Router convention.
+
+**2. Implementation Approach:**
+*   Create the `manifest.ts` file and export a default function that returns a `MetadataRoute.Manifest` object.
+*   Populate the manifest with required properties: `name`, `short_name`, `start_url`, `display`, `background_color`, `theme_color`, and `icons`.
+*   The `theme_color` should be set to the brand color, approximately `#a68b64`.
+*   `start_url` should be `'/'` and `display` should be `'standalone'`.
+
+**3. Asset Generation:**
+*   Create two new icon files from the existing `assets/images/logo.png`:
+    *   `site/public/images/icons/icon-192x192.png`
+    *   `site/public/images/icons/icon-512x512.png`
+*   Reference these new icons in the `icons` array within `manifest.ts`.
+
+**4. Verification:**
+*   After implementation, run the development server.
+*   Access `http://localhost:3000/manifest.json` to ensure the JSON is generated correctly.
+*   Test on a physical or emulated mobile device to confirm the "Add to Home Screen" prompt appears.
+
+
+## Iteration 16 - Story: Add canonical URL tags to all inner pages via generateMetadata (US-017)
+
+### What was implemented
+- Added `generateMetadata` export to 4 pages lacking metadata: /about, /gallery, /contact, /check-in
+- Each metadata includes: title, description, and alternates.canonical URL
+- Added canonical URL to /guide page's existing metadata
+- /rooms and /book pages already had canonical URLs (verified)
+- All canonical URLs use consistent base: https://pelangicapsulehostel.com (no trailing slashes)
+- `npm run build` passes with all 28 pages generated successfully
+
+### Patterns discovered
+- Pages with metadata: import `type { Metadata }` from "next"
+- Pattern: `export const metadata: Metadata = { ... }`
+- All page titles follow pattern: "Page Title | Pelangi Capsule Hostel" for inner pages, "Page Title | Pelangi Capsule Hostel JB" for specific pages
+- Canonical URLs are critical for SEO to prevent duplicate content penalties
+
+### Gotchas
+- /guide page already had generateMetadata but was missing the canonical — needed to add to alternates object
+- All pages must use consistent base domain (https://pelangicapsulehostel.com) with no trailing slash
+- Each page title/description should be unique and descriptive
+
+## Iteration 16 - Fri, Mar 13, 2026  2:40 AM
+Completed: Add canonical URL tags to all inner pages via generateMetadata (ID: US-017) in 5m
