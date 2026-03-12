@@ -464,3 +464,63 @@ Here is the technical brief for user story US-012.
 
 ### Gotchas
 - `prd.json` is UTF-8 encoded; Python `open()` must specify `encoding='utf-8'` on Windows (default is cp1252 which fails)
+## Iteration 4 - Fri, Mar 13, 2026  2:02:47 AM
+Completed: Add FAQPage JSON-LD schema to FAQ component (ID: US-012) in 3m
+
+
+## Pre-analysis for US-019 (Gemini 2.5 Pro)
+Here is the technical brief for the Next.js user story.
+
+**Subject: Technical Brief for US-019: Web App Manifest Implementation**
+
+**1. Files to Modify/Create:**
+*   **Create:** `site/src/app/manifest.ts` – This is the core file for defining the manifest.
+*   **Create:** `site/public/icons/icon-192x192.png` – A 192x192 pixel icon.
+*   **Create:** `site/public/icons/icon-512x512.png` – A 512x512 pixel icon.
+
+**2. Framework Hooks/Conventions:**
+*   This task uses a Next.js 15 App Router file-based metadata convention.
+*   The framework will automatically detect `site/src/app/manifest.ts` at build time and generate a `manifest.json` file served from the root.
+
+**3. Recommended Implementation Approach:**
+1.  In `site/src/app/manifest.ts`, import `MetadataRoute` from `'next'`.
+2.  Export a default function `manifest(): MetadataRoute.Manifest`.
+3.  Return a JSON object from this function containing `name`, `short_name`, `start_url: '/'`, `display: 'standalone'`, `background_color: '#ffffff'`, `theme_color: '#a68b64'`.
+4.  Define the `icons` array with paths pointing to the new icons in the `/public` directory (e.g., `{ src: '/icons/icon-192x192.png', sizes: '192x192' }`).
+
+**4. Edge Cases & Gotchas:**
+*   Icon paths in the manifest must be absolute (e.g., `/icons/icon.png`), as they are relative to the public root.
+*   Browsers aggressively cache manifests. Testing changes may require clearing site data or using an incognito window.
+*   iOS does not support the automatic "Add to Home Screen" prompt; users must manually add it via the Share menu. This is expected behavior.
+
+
+## Iteration 5 - Story: Add dynamic OG images for blog posts using next/og ImageResponse (US-013)
+
+### What was implemented
+- Created `site/src/app/blog/[slug]/opengraph-image.tsx` — dynamic OG image generator using Next.js ImageResponse API
+- Exports size (1200x630), contentType ('image/png'), revalidate (3600s = 1h cache)
+- Generates unique image for each blog post with:
+  - Post title (large text, 56px, stone color)
+  - Category badge (amber background, white text)
+  - Formatted publication date and read time
+  - Site branding: "🏝️ Pelangi Capsule Hostel"
+  - Site URL and location footer
+  - Linear gradient background (amber light to white)
+- Uses generateStaticParams() to pre-render all 6 blog post OG images at build time
+- Build output shows: ✓ Generating static pages (28/28), all 6 OG images generated at /blog/[slug]/opengraph-image routes
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- ImageResponse from 'next/og' only supports flexbox CSS (no grid, no external fonts)
+- OG images can be cached (revalidate: 3600) for performance
+- generateStaticParams() ensures all routes are pre-rendered, not dynamic at request time
+- Using emoji (🏝️) in JSX within ImageResponse works fine
+- Date formatting with toLocaleDateString() works in server components
+
+### Gotchas
+- @next/swc version mismatch warning (15.5.7 vs 15.5.11) — non-blocking, Next.js still compiled successfully
+- ImageResponse uses inline styles only (no className, no Tailwind)
+- Only system fonts available; @font/face not supported without workarounds
+## Iteration 5 - Fri, Mar 13, 2026 2:30 AM
+Completed: Add dynamic OG images for blog posts using next/og ImageResponse (ID: US-013) in 5m
+
