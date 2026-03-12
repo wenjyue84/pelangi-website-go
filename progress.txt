@@ -321,3 +321,55 @@ This user story is for a **Next.js/React frontend**, not Frappe/Python. The impl
 ## Iteration 10 - Fri, Mar 13, 2026
 Completed: Create /book page with direct booking + OTA options (ID: US-009)
 
+## Iteration 1 - Fri, Mar 13, 2026  1:52:43 AM
+Completed: Create /book page with direct booking + OTA options (ID: US-009) in 6m
+
+
+## Pre-analysis for US-010 (Gemini 2.5 Pro)
+This user story is for a **Next.js** project, not Frappe/Python. The goal is to create a custom 404 page.
+
+### Technical Brief: Custom 404 Page (US-010)
+
+**1. Files to Modify:**
+*   Create a new file: `site/src/app/not-found.tsx`. This is the only file that needs to be created.
+
+**2. Framework/Components Involved:**
+*   **Next.js App Router:** This is a framework-level file. `not-found.tsx` is a special file convention in the App Router for handling "Not Found" errors.
+*   **`Header` & `Footer` Components:** Import these from `site/src/components/` to maintain consistent layout and navigation.
+*   **Tailwind CSS:** Use existing brand colors (amber, stone) and utility classes for styling.
+
+**3. Implementation Approach:**
+*   Create a standard React functional component in `site/src/app/not-found.tsx`.
+*   Wrap the page content in the existing `Header` and `Footer` components.
+*   Use a `main` element with a `div` inside, centered on the page (`mx-auto`, `flex`, `flex-col`, `items-center`, `justify-center`).
+*   Add a heading (e.g., `h1`) with the specified text: "Looks like this pod is taken!"
+*   Create a navigation section with `<Link>` components from `next/link` pointing to Home (`/`), Rooms (`/rooms`), Book (`/book`), Guide (`/guide`), and Blog (`/blog`).
+*   Include a prominent "Book via WhatsApp" button component or link.
+
+**4. Edge Cases & Gotchas:**
+*   **File Naming:** The file *must* be named `not-found.tsx` and placed in the `src/app` directory. The older `pages/404.tsx` convention does not apply here.
+*   **HTTP Status:** Next.js automatically serves this page with a `404 Not Found` status code. No server-side logic is needed for this.
+*   **SEO:** Next.js also automatically prevents this page from being indexed by search engines. You do not need to add a `<meta name="robots" content="noindex">` tag.
+*   **No Redirects:** Do not implement a programmatic redirect to the homepage. The purpose of this page is to handle the 404 gracefully, as per Google's recommendation.
+
+
+## Iteration 11 - Story: Create custom not-found.tsx (404 page) with hostel branding (US-010)
+
+### What was implemented
+- Created `site/src/app/not-found.tsx` — branded 404 page with:
+  - Large amber "404" heading + friendly "Looks like this pod is taken!" message
+  - WhatsApp booking CTA button (same pre-filled URL as /book page)
+  - Navigation pill links to Home, Rooms, /book, /guide, /blog
+  - Header and Footer for consistent layout
+  - Amber/stone color scheme matching site design
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- `not-found.tsx` in App Router automatically returns HTTP 404 status — no extra config needed
+- No `generateMetadata` needed — Next.js auto-sets noindex for 404 pages
+
+### Gotchas
+- prd.json must be read with `encoding='utf-8'` on Windows due to special characters in content
+
+## Iteration 11 - Fri, Mar 13, 2026
+Completed: Create custom not-found.tsx (404 page) with hostel branding (ID: US-010)
