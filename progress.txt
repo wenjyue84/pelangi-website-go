@@ -1519,3 +1519,54 @@ Here is a technical brief for the user story, corrected for the actual project s
 ### Quality checks
 - TypeScript compilation: PASS (zero errors)
 - All 5 acceptance criteria met
+## Iteration 11 - Fri, Mar 13, 2026  3:46:08 AM
+Completed: Add Instagram social link to Footer and fix social media URLs (ID: US-021) in 4m
+
+
+## Pre-analysis for US-022 (Gemini 2.5 Pro)
+### Technical Brief: US-022 - Blog Category SEO Enhancement
+
+This story is for a **Next.js/React** application, not Frappe/Python. The goal is to add category filtering to the blog and generate static pages for each category to improve SEO.
+
+**Files to Modify/Create:**
+
+*   `site/src/app/blog/page.tsx`: To implement the client-side filtering UI.
+*   `site/src/data/posts.ts`: The source of blog post data and categories.
+*   `site/src/app/blog/category/[category]/page.tsx`: **(New File)** Dynamic route for static category pages.
+*   `site/src/app/sitemap.ts`: To add new category pages to the sitemap for indexing.
+*   Consider a new client component `site/src/components/BlogFilter.tsx` to encapsulate filter logic.
+
+**Implementation Approach:**
+
+1.  **Dynamic Categories:** In `blog/page.tsx`, dynamically derive a unique list of categories from the imported `posts.ts` data.
+2.  **Client-Side Filtering:** Convert `blog/page.tsx` to a client component (`'use client'`) or extract the filtering UI to a dedicated client component. Use `useState` to manage the selected category and filter the displayed posts.
+3.  **Static Page Generation:**
+    *   In `blog/category/[category]/page.tsx`, implement `generateStaticParams` to create a page for each unique category slug (e.g., 'food-drink').
+    *   The page component will receive the category slug via `params`, filter `posts.ts`, and display the relevant articles.
+    *   Implement `generateMetadata` to set unique, SEO-friendly titles/descriptions for each category page.
+4.  **Sitemap Update:** Modify `sitemap.ts` to loop through the unique categories and add each `/blog/category/[slug]` URL to the sitemap.
+
+**Gotchas & Edge Cases:**
+
+*   **Slugification:** Ensure consistent slug generation for categories (e.g., "Food & Drink" -> "food-drink") across filtering, `generateStaticParams`, and linking.
+*   **Data Source:** All category lists must be derived from `posts.ts` to prevent mismatches.
+*   **UI/UX:** The filtering on `/blog` must not trigger a page reload. The category filter UI should be clear and easy to use.
+
+
+## Iteration N - Story: Add blog category filter and tag pages for long-tail SEO (US-022)
+
+### What was implemented
+- Added `categoryToSlug`, `slugToCategory`, `getUniqueCategories` helpers to `posts.ts`
+- Created `site/src/components/BlogFilter.tsx` — client component with category filter buttons + filtered grid
+- Updated `site/src/app/blog/page.tsx` to use `BlogFilter` instead of raw grid (keeps `generateMetadata` server-side)
+- Created `site/src/app/blog/category/[category]/page.tsx` — static category pages with `generateStaticParams` + unique `generateMetadata` per category + breadcrumb schema
+- Updated `sitemap.ts` to include `/blog/category/[slug]` entries for each unique category
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- To add interactivity to a server-component page: extract a `'use client'` sub-component rather than making the whole page client-side — preserves `generateMetadata`
+- Category slugs: `.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '-')` handles special chars like `&` cleanly
+- `slugToCategory` reverse-lookup searches `blogPosts` array — works for static data, no separate map needed
+
+### Gotchas
+- prd.json must be opened with `encoding='utf-8'` on Windows — default cp1252 fails on special chars in the JSON

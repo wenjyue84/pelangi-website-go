@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import BlogCard from "@/components/BlogCard";
+import BlogFilter from "@/components/BlogFilter";
 import { blogPosts } from "@/data/blog/posts";
 
 export const metadata: Metadata = {
@@ -66,7 +66,7 @@ export default function BlogPage() {
       <div className="pt-28 pb-16 container-custom">
         <div className="max-w-5xl mx-auto">
           {/* Page header */}
-          <div className="text-center mb-14">
+          <div className="text-center mb-10">
             <span className="inline-block px-4 py-1.5 text-sm font-medium rounded-full bg-amber-100 text-amber-800 mb-4">
               JB Travel Blog
             </span>
@@ -79,12 +79,8 @@ export default function BlogPage() {
             </p>
           </div>
 
-          {/* Blog grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {sortedPosts.map((post) => (
-              <BlogCard key={post.slug} post={post} />
-            ))}
-          </div>
+          {/* Category filter + blog grid (client component) */}
+          <BlogFilter posts={sortedPosts} />
         </div>
       </div>
 

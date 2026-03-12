@@ -11,6 +11,26 @@ export interface BlogPost {
   featuredImage: string;
 }
 
+/** Converts a category label to a URL-safe slug. e.g. "Food & Drink" → "food-drink" */
+export function categoryToSlug(category: string): string {
+  return category
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+}
+
+/** Converts a category slug back to a display label, or returns null if not found. */
+export function slugToCategory(slug: string): string | null {
+  const found = blogPosts.find((p) => categoryToSlug(p.category) === slug);
+  return found ? found.category : null;
+}
+
+/** All unique categories in the blog. */
+export function getUniqueCategories(): string[] {
+  return [...new Set(blogPosts.map((p) => p.category))];
+}
+
 export const blogPosts: BlogPost[] = [
   {
     slug: "ultimate-jb-food-guide-backpackers",

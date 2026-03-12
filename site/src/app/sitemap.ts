@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { blogPosts } from "@/data/blog/posts";
+import { blogPosts, categoryToSlug, getUniqueCategories } from "@/data/blog/posts";
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = "https://pelangicapsulehostel.com";
@@ -10,6 +10,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: new Date(post.date),
         changeFrequency: "monthly",
         priority: 0.7,
+    }));
+
+    const categoryEntries: MetadataRoute.Sitemap = getUniqueCategories().map((cat) => ({
+        url: `${baseUrl}/blog/category/${categoryToSlug(cat)}`,
+        lastModified,
+        changeFrequency: "weekly",
+        priority: 0.65,
     }));
 
     return [
@@ -73,6 +80,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: "monthly",
             priority: 0.8,
         },
+        ...categoryEntries,
         ...blogPostEntries,
     ];
 }
