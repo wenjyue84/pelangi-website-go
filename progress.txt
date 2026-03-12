@@ -213,3 +213,25 @@ Incomplete: Add 'Singapore Day Trip' teaser section to homepage (ID: US-008) —
 
 ### Gotchas
 - None — straightforward content + Tailwind work
+## Iteration 7 - Fri, Mar 13, 2026  1:23:14 AM
+Incomplete: Add 'Singapore Day Trip' teaser section to homepage (ID: US-008) — attempt 2/3
+
+
+## Iteration 8 - Story: Add JB News & Updates widget on homepage using curated RSS links (US-004)
+
+### What was implemented
+- `site/src/components/JBBuzz.tsx` — new component with two columns:
+  - Left (3/5): 5 curated news cards from Malay Mail, The Star, Visit Johor, Johor Now with title, source, date, description
+  - Right (2/5): 3 latest blog posts using existing BlogCard component
+  - RSS subscribe button linking to /feed.xml
+- `site/src/app/page.tsx` — imported JBBuzz, placed after CommunityEvents and before Teaser section
+- All external links use target="_blank" rel="noopener noreferrer"
+- Design matches stone/amber color scheme with rounded-2xl cards
+
+### Patterns discovered
+- BlogCard component is reusable — import and pass post data directly
+- Curated news is static data (no runtime API calls) — avoids SSR issues
+- Section ordering: CommunityEvents → JBBuzz → Teaser
+
+### Gotchas
+- None — straightforward component creation

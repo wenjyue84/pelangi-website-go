@@ -9,6 +9,7 @@ import Reviews from "@/components/Reviews";
 import LocationMap from "@/components/LocationMap";
 import FAQ from "@/components/FAQ";
 import CommunityEvents from "@/components/CommunityEvents";
+import JBBuzz from "@/components/JBBuzz";
 
 export default function Home() {
   return (
@@ -80,6 +81,9 @@ export default function Home() {
 
       {/* Community Events & Vibe Section */}
       <CommunityEvents />
+
+      {/* JB Buzz - News & Blog Teaser */}
+      <JBBuzz />
 
       {/* Teaser Section */}
       <section className="py-20 bg-white">
