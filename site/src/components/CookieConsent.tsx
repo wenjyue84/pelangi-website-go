@@ -68,9 +68,10 @@ export default function CookieConsent() {
           className="text-sm text-stone-600 md:text-base"
         >
           We use cookies to analyse site traffic and improve your experience. Non-essential
-          cookies (analytics) are only loaded with your consent. By clicking
-          &ldquo;Accept All&rdquo;, you agree to the use of all cookies. You can
-          also reject non-essential cookies. See our{" "}
+          cookies (analytics) are only loaded with your consent. If you subscribe to
+          our newsletter, your email is shared with our email marketing provider (Brevo)
+          under PDPA. By clicking &ldquo;Accept All&rdquo;, you agree to the use of
+          all cookies. You can also reject non-essential cookies. See our{" "}
           <Link
             href="/privacy-policy"
             className="underline text-stone-700 hover:text-stone-900"

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BlogFilter from "@/components/BlogFilter";
+import NewsletterSignupForm from "@/components/NewsletterSignupForm";
 import { blogPosts } from "@/data/blog/posts";
 
 export const metadata: Metadata = {
@@ -81,6 +82,9 @@ export default function BlogPage() {
 
           {/* Category filter + blog grid (client component) */}
           <BlogFilter posts={sortedPosts} />
+
+          {/* Newsletter signup */}
+          <NewsletterSignupForm />
         </div>
       </div>
 

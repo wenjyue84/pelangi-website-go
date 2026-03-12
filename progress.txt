@@ -2784,3 +2784,59 @@ This user story is for a **Next.js** website, not a Frappe/Python application as
 - `rtk` wrapper not available in this environment for tsc — use `npx tsc --noEmit` directly
 - prd.json must be opened with `encoding='utf-8'` in Python due to unicode characters
 
+## Iteration 9 - Fri, Mar 13, 2026  6:06:21 AM
+Incomplete: Add email newsletter capture form for guest re-marketing (ID: US-048) — attempt 2/3
+
+
+## Pre-analysis for US-048 (Gemini 2.5 Pro)
+**To:** Claude Code Agent
+**From:** Gemini CLI Agent
+**Subject:** Technical Brief for US-048: Newsletter Signup Form
+
+This user story concerns a **Next.js** application, not Frappe/Python. The objective is to implement a newsletter signup form on the website's blog page using a Next.js Server Action to communicate with the Brevo (Sendinblue) API.
+
+**1. Files to Modify/Create:**
+
+*   **Create `site/src/app/actions/newsletterActions.ts`:** This new file will contain the Next.js Server Action (`'use server'`) responsible for calling the Brevo API.
+*   **Create `site/src/components/forms/NewsletterSignupForm.tsx`:** A new client-side React component for the form UI, including name/email inputs and submission state handling.
+*   **Modify `site/src/app/blog/page.tsx` (or equivalent blog index):** Import and place the `NewsletterSignupForm` component at the bottom of the page.
+*   **Modify `site/.env.local`:** Add the `BREVO_API_KEY` to store the secret securely.
+
+**2. Frappe DocTypes/Hooks (Next.js Equivalents):**
+
+*   **Server Action:** The core logic will be in a Next.js Server Action, replacing the need for a separate API route.
+*   **Environment Variables:** The Brevo API key will be managed via `process.env` in the server action.
+
+**3. Recommended Implementation Approach:**
+
+1.  In `NewsletterSignupForm.tsx`, build a standard form. Use the `useFormState` hook from React to manage pending, success, and error states returned from the server action.
+2.  Define an async server action in `newsletterActions.ts` that accepts the form data.
+3.  Inside the action, use `fetch` to make a `POST` request to the Brevo API (`https://api.brevo.com/reference/createcontact`).
+4.  Read the API key securely from `process.env.BREVO_API_KEY` within the action.
+5.  Return a JSON object indicating success or failure to the client component.
+
+**4. Edge Cases & Gotchas:**
+
+*   **API Key Security:** The server action is critical as it prevents the `BREVO_API_KEY` from ever being exposed to the browser.
+*   **Error Handling:** The Brevo API will return an error if a contact already exists. The server action must catch this and return a specific, user-friendly message ("You're already subscribed!").
+*   **Validation:** Implement server-side validation on the email address format to ensure data quality.
+*   **PDPA Compliance:** The acceptance criteria mention updating `CookieConsent`. Double-check if a simple privacy note is sufficient or if an explicit "I consent" checkbox is legally required before submitting the form.
+
+
+## Iteration N - Story: Add email newsletter capture form for guest re-marketing
+
+### What was implemented
+- `site/src/app/actions/newsletter.ts` — Server Action calling Brevo /v3/contacts API with BREVO_API_KEY env var
+- `site/src/components/NewsletterSignupForm.tsx` — Client component with useActionState, visible labels (WCAG 1.3.1), name/email fields, privacy note
+- `site/src/app/blog/page.tsx` — Added NewsletterSignupForm at bottom of blog index
+- `site/src/components/CookieConsent.tsx` — Updated privacy text to mention Brevo email marketing under PDPA
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- `useActionState` (React 19 / Next.js 15) replaces old `useFormState` — takes (action, initialState) and returns [state, formAction, isPending]
+- Server Actions in `app/actions/` with "use server" directive work for API proxying (avoids CSP issues with external scripts)
+
+### Gotchas
+- Previous attempts (2 retries) never left code artifacts — failures were likely context/planning issues, not code issues
+- Brevo API returns 400 with "Contact already exist" for duplicates — handled gracefully as success
+- BREVO_API_KEY must be set in .env.local for the server action to work; form shows friendly error if missing
