@@ -107,7 +107,7 @@ export default async function Image({ params }: Props) {
           }}
         >
           <span>📅 {new Date(post.date).toLocaleDateString('en-MY', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
-          <span>⏱️ {post.readTime}</span>
+          <span>⏱️ {post.readingTimeMinutes} min read</span>
         </div>
       </div>
 

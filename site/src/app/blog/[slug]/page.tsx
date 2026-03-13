@@ -119,7 +119,7 @@ export default async function BlogPostPage({ params }: Props) {
               })}
             </span>
             <span>·</span>
-            <span>{post.readTime}</span>
+            <span aria-label={`${post.readingTimeMinutes} minute read`}>{post.readingTimeMinutes} min read</span>
             <span>·</span>
             <ShareButton
               title={post.title}

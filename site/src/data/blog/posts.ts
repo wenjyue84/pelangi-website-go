@@ -7,8 +7,16 @@ export interface BlogPost {
   category: string;
   author: string;
   readTime: string;
+  readingTimeMinutes: number;
   tags: string[];
   featuredImage: string;
+}
+
+/** Compute reading time from HTML content (200 wpm, minimum 1 min). */
+function computeReadingTime(html: string): number {
+  const text = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  const wordCount = text.split(" ").filter(Boolean).length;
+  return Math.max(1, Math.ceil(wordCount / 200));
 }
 
 /** Converts a category label to a URL-safe slug. e.g. "Food & Drink" → "food-drink" */
@@ -31,7 +39,7 @@ export function getUniqueCategories(): string[] {
   return [...new Set(blogPosts.map((p) => p.category))];
 }
 
-export const blogPosts: BlogPost[] = [
+const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
   {
     slug: "ultimate-jb-food-guide-backpackers",
     title: "The Ultimate Johor Bahru Food Guide for Backpackers (2026)",
@@ -371,6 +379,11 @@ export const blogPosts: BlogPost[] = [
 `,
   },
 ];
+
+export const blogPosts: BlogPost[] = rawPosts.map((post) => ({
+  ...post,
+  readingTimeMinutes: computeReadingTime(post.content),
+}));
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);

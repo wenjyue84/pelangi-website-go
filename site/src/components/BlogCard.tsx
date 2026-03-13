@@ -49,7 +49,7 @@ export default function BlogCard({ post }: BlogCardProps) {
                 year: "numeric",
               })}
             </span>
-            <span>{post.readTime}</span>
+            <span aria-label={`${post.readingTimeMinutes} minute read`}>{post.readingTimeMinutes} min read</span>
           </div>
         </div>
       </article>
