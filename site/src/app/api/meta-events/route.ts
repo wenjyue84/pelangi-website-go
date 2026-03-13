@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
+import { deferAfterResponse, logServerEvent } from "@/lib/server-analytics";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -112,6 +113,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  // Read headers BEFORE calling after() — dynamic APIs must not be used inside after()
   const ip =
     request.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
     request.headers.get("x-real-ip") ||
@@ -120,32 +122,35 @@ export async function POST(request: NextRequest) {
 
   const payload = buildServerPayload(body, ip, userAgent);
 
-  try {
-    const response = await fetch(
-      `https://graph.facebook.com/v21.0/${PIXEL_ID}/events?access_token=${ACCESS_TOKEN}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      }
-    );
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error("[meta-capi] API error:", response.status, errorText);
-      return NextResponse.json(
-        { error: "Meta API error" },
-        { status: 502 }
+  // Defer the Facebook API call — runs after the response is sent to the client
+  deferAfterResponse(async () => {
+    try {
+      const response = await fetch(
+        `https://graph.facebook.com/v21.0/${PIXEL_ID}/events?access_token=${ACCESS_TOKEN}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
       );
-    }
 
-    const result = await response.json();
-    return NextResponse.json({ success: true, events_received: result.events_received });
-  } catch (err) {
-    console.error("[meta-capi] Network error:", err);
-    return NextResponse.json(
-      { error: "Failed to send event to Meta" },
-      { status: 502 }
-    );
-  }
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("[meta-capi] API error:", response.status, errorText);
+      }
+    } catch (err) {
+      console.error("[meta-capi] Network error:", err);
+    }
+  });
+
+  // Log the event for server-side analytics
+  logServerEvent({
+    event: body.event_name,
+    path: body.event_source_url,
+    payload: { event_id: body.event_id },
+    timestamp: new Date().toISOString(),
+  });
+
+  // Respond immediately — Facebook API call happens after response is sent
+  return NextResponse.json({ success: true, deferred: true });
 }

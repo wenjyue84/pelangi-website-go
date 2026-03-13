@@ -5901,3 +5901,25 @@ Completed: Verify WCAG 2.2 SC 1.4.4 text resize up to 200% without content loss 
 ### Gotchas
 - yet-another-react-lightbox CSS must be imported in the client component, not in layout
 - The `carousel.finite` option prevents looping which is better UX for a small gallery
+
+## Iteration - Fri, Mar 14, 2026
+Completed: Implement Next.js after() API for deferred analytics and logging (ID: US-138)
+
+### What was implemented
+- `site/src/lib/server-analytics.ts` — utility module with `logPageView()`, `logServerEvent()`, and `deferAfterResponse()` functions, all using Next.js `after()` API
+- `site/src/middleware.ts` — middleware that logs page views via `after()` for all page routes (excludes static assets, API, feeds)
+- Updated `/api/meta-events/route.ts` — Facebook CAPI API call now deferred with `after()`, response returns immediately with `{ success: true, deferred: true }`
+- Updated `/app/actions/contact.ts` — Meta CAPI Contact event and form analytics deferred with `after()`
+- `site/src/__tests__/server-analytics.test.ts` — 6 unit tests mocking `after()` to verify correct payload (all pass)
+- Installed `vitest` as dev dependency for unit testing
+
+### Patterns discovered
+- Pages use `"use cache"` directive, which is incompatible with `after()` — middleware is the correct place for page view logging
+- `vi.hoisted()` is required in vitest when mock factories reference variables defined at the top of the test file
+- `after()` import is from `next/server`, works in Server Components, Server Actions, Route Handlers, and Middleware
+- Headers must be read BEFORE calling `after()` — dynamic APIs (cookies, headers) cannot be used inside the callback
+
+### Gotchas
+- Pre-existing TypeScript errors exist from RouteImpl typed routes (US-125) — these are not caused by this story
+- `"use cache"` and `after()` are mutually exclusive in the same component scope — use middleware or Server Actions instead
+- vitest mock hoisting: `const mockAfter = vi.fn()` fails; use `const mockAfter = vi.hoisted(() => vi.fn())` instead

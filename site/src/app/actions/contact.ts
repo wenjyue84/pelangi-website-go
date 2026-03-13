@@ -2,6 +2,7 @@
 
 import { headers } from "next/headers";
 import crypto from "crypto";
+import { deferAfterResponse, logServerEvent } from "@/lib/server-analytics";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -262,8 +263,17 @@ export async function submitContactForm(
       console.error("[contact-form] Guest auto-reply failed:", guestResult.reason);
     }
 
-    // Fire Meta CAPI Contact event (non-blocking)
-    sendMetaContactEvent(data.email, data.phone).catch(() => {});
+    // Defer Meta CAPI Contact event and logging — runs after response is sent
+    deferAfterResponse(() => {
+      sendMetaContactEvent(data.email, data.phone).catch(() => {});
+    });
+
+    logServerEvent({
+      event: "contact_form_submit",
+      path: "/contact",
+      payload: { name: data.name, hasPhone: !!data.phone, hasCheckIn: !!data.checkIn },
+      timestamp: new Date().toISOString(),
+    });
 
     return {
       success: true,
