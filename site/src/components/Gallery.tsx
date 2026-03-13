@@ -6,6 +6,22 @@ import Image from "next/image";
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [activeModal, setActiveModal] = useState<string | null>(null);
+  const [lightboxImages, setLightboxImages] = useState<string[]>([]);
+
+  const openLightbox = (src: string, images: string[]) => {
+    setLightboxImages(images);
+    setSelectedImage(src);
+  };
+
+  const navigateLightbox = (direction: 'prev' | 'next') => {
+    if (!selectedImage || lightboxImages.length === 0) return;
+    const currentIndex = lightboxImages.indexOf(selectedImage);
+    if (currentIndex === -1) return;
+    const newIndex = direction === 'prev'
+      ? (currentIndex - 1 + lightboxImages.length) % lightboxImages.length
+      : (currentIndex + 1) % lightboxImages.length;
+    setSelectedImage(lightboxImages[newIndex]);
+  };
 
   // Hostel photos - best shots
   const hostelPhotos = [
@@ -82,8 +98,8 @@ export default function Gallery() {
             <button
               onClick={() => scroll('left')}
               className="w-10 h-10 rounded-full bg-white dark:bg-stone-800 shadow-md flex items-center justify-center
-                       hover:bg-stone-50 dark:hover:bg-stone-700 transition-colors cursor-pointer hidden md:flex"
-              aria-label="Scroll left"
+                       hover:bg-stone-50 dark:hover:bg-stone-700 transition-colors cursor-pointer"
+              aria-label="Previous image"
             >
               <svg className="w-5 h-5 text-stone-600 dark:text-stone-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -92,8 +108,8 @@ export default function Gallery() {
             <button
               onClick={() => scroll('right')}
               className="w-10 h-10 rounded-full bg-white dark:bg-stone-800 shadow-md flex items-center justify-center
-                       hover:bg-stone-50 dark:hover:bg-stone-700 transition-colors cursor-pointer hidden md:flex"
-              aria-label="Scroll right"
+                       hover:bg-stone-50 dark:hover:bg-stone-700 transition-colors cursor-pointer"
+              aria-label="Next image"
             >
               <svg className="w-5 h-5 text-stone-600 dark:text-stone-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -134,7 +150,7 @@ export default function Gallery() {
               key={index}
               className="shrink-0 w-72 h-48 md:w-80 md:h-56 relative rounded-2xl overflow-hidden
                        cursor-pointer group snap-start"
-              onClick={() => setSelectedImage(photo.src)}
+              onClick={() => openLightbox(photo.src, hostelPhotos.map(p => p.src))}
             >
               <Image
                 src={photo.src}
@@ -165,7 +181,7 @@ export default function Gallery() {
               key={index}
               className="shrink-0 w-40 h-40 md:w-48 md:h-48 relative rounded-2xl overflow-hidden
                        cursor-pointer group snap-start"
-              onClick={() => setSelectedImage(photo.src)}
+              onClick={() => openLightbox(photo.src, guestPhotos.map(p => p.src))}
             >
               <Image
                 src={photo.src}
@@ -200,7 +216,7 @@ export default function Gallery() {
               key={index}
               className="shrink-0 w-64 md:w-72 relative rounded-2xl overflow-hidden
                        cursor-pointer group snap-start"
-              onClick={() => setSelectedImage(dest.src)}
+              onClick={() => openLightbox(dest.src, destinations.map(d => d.src))}
             >
               <div className="relative h-44 md:h-52">
                 <Image
@@ -262,6 +278,18 @@ export default function Gallery() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
+          {lightboxImages.length > 1 && (
+            <button
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center
+                       text-white hover:bg-white/20 transition-colors cursor-pointer z-10"
+              onClick={(e) => { e.stopPropagation(); navigateLightbox('prev'); }}
+              aria-label="Previous image"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+          )}
           <div className="relative w-full max-w-5xl h-[80vh]">
             <Image
               src={selectedImage}
@@ -271,6 +299,18 @@ export default function Gallery() {
               className="object-contain"
             />
           </div>
+          {lightboxImages.length > 1 && (
+            <button
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center
+                       text-white hover:bg-white/20 transition-colors cursor-pointer z-10"
+              onClick={(e) => { e.stopPropagation(); navigateLightbox('next'); }}
+              aria-label="Next image"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          )}
         </div>
       )}
 
@@ -308,7 +348,7 @@ export default function Gallery() {
                     className="relative aspect-square rounded-xl overflow-hidden cursor-pointer group"
                     onClick={() => {
                       setActiveModal(null);
-                      setSelectedImage(photo.src);
+                      openLightbox(photo.src, guestPhotos.map(p => p.src));
                     }}
                   >
                     <Image
