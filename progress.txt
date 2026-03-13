@@ -4531,3 +4531,25 @@ Incomplete: Register Google Business Profile and connect to Google Hotel free bo
 - Price comparison section totals needed updating to include TTx (RM10) in both OTA and direct columns
 - TTx is per room per night, not per person — important distinction for hostel capsule pods
 - US-103 (critical) was already documented as external/administrative — skipping automatically
+
+
+## Iteration 14 - Story: US-132 - Display MOTAC tourist accommodation registration number and certification badge
+
+### What was implemented
+- Created `site/src/components/MotacBadge.tsx` — reusable component displaying MOTAC registration number with shield icon and verification link; conditionally renders only when `NEXT_PUBLIC_MOTAC_REG_NUMBER` env var is set
+- Updated `site/src/components/Footer.tsx` — added MotacBadge above the bottom bar divider
+- Updated `site/src/components/Location.tsx` — added MOTAC registration card with verification link between the "Nearby Places" section and "Get Directions" button on the contact page
+- Updated `site/src/components/StructuredData.tsx` — added `identifier` property with `@type: PropertyValue` for MOTAC registration to the Hostel JSON-LD schema (conditionally included when env var is set)
+- Added `NEXT_PUBLIC_MOTAC_REG_NUMBER` to `.env.local.example` with documentation
+- Added `NEXT_PUBLIC_MOTAC_REG_NUMBER=MOTAC-REG-PENDING` to `.env.local` as placeholder
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Environment variables with `NEXT_PUBLIC_` prefix are accessible in both server and client components
+- Conditional spread `...(MOTAC_REG_NUMBER ? { identifier: ... } : {})` works cleanly for optional JSON-LD properties
+- Shield icon (checkmark inside shield path) from heroicons works well for certification/registration badges
+
+### Gotchas
+- Actual MOTAC registration number needs to be obtained and set in the environment variable
+- The badge and registration display are conditionally rendered — if env var is empty, nothing shows (graceful degradation)
+- MOTAC verification link goes to the general registered hotel check page since there's no direct deep link for a specific property

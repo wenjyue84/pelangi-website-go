@@ -1,5 +1,6 @@
 import Link from "next/link";
 import LangMs from "@/components/LangMs";
+import MotacBadge from "@/components/MotacBadge";
 
 export default function Footer() {
   return (
@@ -140,6 +141,9 @@ export default function Footer() {
             </ul>
           </div>
         </div>
+
+        {/* MOTAC Registration */}
+        <MotacBadge />
 
         {/* Divider */}
         <div className="h-px bg-stone-800 mb-8" />
