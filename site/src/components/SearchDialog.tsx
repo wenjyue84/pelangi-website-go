@@ -125,11 +125,11 @@ export default function SearchDialog({
         role="dialog"
         aria-label="Site search"
         aria-modal="true"
-        className="relative z-10 w-full max-w-lg mx-4 bg-white rounded-2xl shadow-2xl border border-stone-200 overflow-hidden"
+        className="relative z-10 w-full max-w-lg mx-4 bg-white dark:bg-stone-800 rounded-2xl shadow-2xl border border-stone-200 dark:border-stone-700 overflow-hidden"
         onKeyDown={handleKeyDown}
       >
         {/* Search input */}
-        <div className="flex items-center gap-3 px-4 py-3 border-b border-stone-100">
+        <div className="flex items-center gap-3 px-4 py-3 border-b border-stone-100 dark:border-stone-700">
           <svg className="w-5 h-5 text-stone-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
@@ -142,14 +142,14 @@ export default function SearchDialog({
               setActiveIndex(0);
             }}
             placeholder="Search blog posts and guides..."
-            className="flex-1 text-base text-stone-900 placeholder:text-stone-400 bg-transparent outline-hidden"
+            className="flex-1 text-base text-stone-900 dark:text-stone-100 placeholder:text-stone-400 bg-transparent outline-hidden"
             aria-autocomplete="list"
             aria-controls="search-results"
             aria-activedescendant={
               results.length > 0 ? `search-result-${activeIndex}` : undefined
             }
           />
-          <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 text-xs text-stone-400 bg-stone-100 rounded-sm border border-stone-200 font-mono">
+          <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 text-xs text-stone-400 bg-stone-100 dark:bg-stone-700 rounded-sm border border-stone-200 dark:border-stone-600 font-mono">
             Esc
           </kbd>
         </div>
@@ -173,8 +173,8 @@ export default function SearchDialog({
                   aria-selected={i === activeIndex}
                   className={`px-4 py-3 cursor-pointer transition-colors ${
                     i === activeIndex
-                      ? "bg-amber-50"
-                      : "hover:bg-stone-50"
+                      ? "bg-amber-50 dark:bg-amber-900/20"
+                      : "hover:bg-stone-50 dark:hover:bg-stone-700"
                   }`}
                   onClick={() => navigate(item)}
                   onMouseEnter={() => setActiveIndex(i)}
@@ -189,7 +189,7 @@ export default function SearchDialog({
                     >
                       {item.category}
                     </span>
-                    <span className="text-sm font-medium text-stone-900 line-clamp-1">
+                    <span className="text-sm font-medium text-stone-900 dark:text-stone-100 line-clamp-1">
                       {item.title}
                     </span>
                   </div>
@@ -204,7 +204,7 @@ export default function SearchDialog({
 
         {/* Footer hint */}
         {results.length > 0 && (
-          <div className="px-4 py-2 border-t border-stone-100 flex items-center gap-4 text-[11px] text-stone-400">
+          <div className="px-4 py-2 border-t border-stone-100 dark:border-stone-700 flex items-center gap-4 text-[11px] text-stone-400">
             <span className="flex items-center gap-1">
               <kbd className="px-1 py-0.5 bg-stone-100 rounded-sm border border-stone-200 font-mono text-[10px]">&uarr;</kbd>
               <kbd className="px-1 py-0.5 bg-stone-100 rounded-sm border border-stone-200 font-mono text-[10px]">&darr;</kbd>

@@ -17,7 +17,7 @@ export default function NotFound() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-stone-50">
+      <main className="min-h-screen bg-stone-50 dark:bg-stone-950">
         <div className="pt-28 pb-16 container-custom flex flex-col items-center justify-center text-center">
           {/* Friendly 404 heading */}
           <div className="mb-6">
@@ -26,11 +26,11 @@ export default function NotFound() {
             </span>
           </div>
 
-          <h1 className="font-display text-3xl md:text-4xl font-bold text-stone-800 mb-4">
+          <h1 className="font-display text-3xl md:text-4xl font-bold text-stone-800 dark:text-stone-200 mb-4">
             Looks like this pod is taken!
           </h1>
 
-          <p className="text-stone-600 text-lg mb-10 max-w-md">
+          <p className="text-stone-600 dark:text-stone-400 text-lg mb-10 max-w-md">
             The page you&apos;re looking for doesn&apos;t exist. Let&apos;s get
             you back on track.
           </p>
@@ -55,8 +55,8 @@ export default function NotFound() {
           </a>
 
           {/* Navigation links */}
-          <div className="border-t border-stone-200 pt-8 w-full max-w-md">
-            <p className="text-stone-500 text-sm mb-4 uppercase tracking-wide font-semibold">
+          <div className="border-t border-stone-200 dark:border-stone-700 pt-8 w-full max-w-md">
+            <p className="text-stone-500 dark:text-stone-400 text-sm mb-4 uppercase tracking-wide font-semibold">
               Or browse
             </p>
             <nav className="flex flex-wrap justify-center gap-3">
@@ -64,7 +64,7 @@ export default function NotFound() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="px-4 py-2 rounded-full bg-white border border-stone-200 text-stone-700 hover:border-amber-400 hover:text-amber-600 transition-colors text-sm font-medium shadow-xs"
+                  className="px-4 py-2 rounded-full bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-300 hover:border-amber-400 hover:text-amber-600 transition-colors text-sm font-medium shadow-xs"
                 >
                   {link.label}
                 </Link>

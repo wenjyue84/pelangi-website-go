@@ -2,14 +2,14 @@ import Link from "next/link";
 
 export default function SingaporeTeaser() {
   return (
-    <section className="py-20 bg-linear-to-r from-amber-50 via-amber-100 to-amber-50">
+    <section className="py-20 bg-linear-to-r from-amber-50 via-amber-100 to-amber-50 dark:from-amber-950/30 dark:via-amber-900/20 dark:to-amber-950/30">
       <div className="container-custom">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="font-display text-4xl font-medium mb-4 text-stone-900">
+            <h2 className="font-display text-4xl font-medium mb-4 text-stone-900 dark:text-stone-100">
               Singapore Nearby, JB Rates
             </h2>
-            <p className="text-lg text-stone-700 mb-8">
+            <p className="text-lg text-stone-700 dark:text-stone-300 mb-8">
               Just 30 minutes from the Marina Bay skyline, but with a backpacker&apos;s budget. Day trip to Singapore or base yourself here?
             </p>
           </div>
@@ -17,11 +17,11 @@ export default function SingaporeTeaser() {
           {/* Stats Grid */}
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {/* Distance Card */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-amber-200">
+            <div className="bg-white dark:bg-stone-800 rounded-2xl p-8 shadow-lg border border-amber-200 dark:border-amber-800/50">
               <div className="flex items-center justify-center mb-6">
-                <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center">
+                <div className="w-16 h-16 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center">
                   <svg
-                    className="w-8 h-8 text-amber-700"
+                    className="w-8 h-8 text-amber-700 dark:text-amber-400"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -35,20 +35,20 @@ export default function SingaporeTeaser() {
                   </svg>
                 </div>
               </div>
-              <h3 className="font-display text-2xl font-medium text-stone-900 text-center mb-2">
+              <h3 className="font-display text-2xl font-medium text-stone-900 dark:text-stone-100 text-center mb-2">
                 30 Minutes
               </h3>
-              <p className="text-stone-600 text-center">
+              <p className="text-stone-600 dark:text-stone-400 text-center">
                 To Marina Bay from Taman Pelangi via Causeway
               </p>
             </div>
 
             {/* Cost Comparison Card */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-amber-200">
+            <div className="bg-white dark:bg-stone-800 rounded-2xl p-8 shadow-lg border border-amber-200 dark:border-amber-800/50">
               <div className="flex items-center justify-center mb-6">
-                <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center">
+                <div className="w-16 h-16 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center">
                   <svg
-                    className="w-8 h-8 text-amber-700"
+                    className="w-8 h-8 text-amber-700 dark:text-amber-400"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -62,20 +62,20 @@ export default function SingaporeTeaser() {
                   </svg>
                 </div>
               </div>
-              <h3 className="font-display text-2xl font-medium text-stone-900 text-center mb-2">
+              <h3 className="font-display text-2xl font-medium text-stone-900 dark:text-stone-100 text-center mb-2">
                 70% Less
               </h3>
-              <p className="text-stone-600 text-center">
+              <p className="text-stone-600 dark:text-stone-400 text-center">
                 Save on accommodation vs Singapore hotels
               </p>
             </div>
 
             {/* Overnight Option Card */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-amber-200">
+            <div className="bg-white dark:bg-stone-800 rounded-2xl p-8 shadow-lg border border-amber-200 dark:border-amber-800/50">
               <div className="flex items-center justify-center mb-6">
-                <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center">
+                <div className="w-16 h-16 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center">
                   <svg
-                    className="w-8 h-8 text-amber-700"
+                    className="w-8 h-8 text-amber-700 dark:text-amber-400"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -89,10 +89,10 @@ export default function SingaporeTeaser() {
                   </svg>
                 </div>
               </div>
-              <h3 className="font-display text-2xl font-medium text-stone-900 text-center mb-2">
+              <h3 className="font-display text-2xl font-medium text-stone-900 dark:text-stone-100 text-center mb-2">
                 Flexible
               </h3>
-              <p className="text-stone-600 text-center">
+              <p className="text-stone-600 dark:text-stone-400 text-center">
                 Day trip or stay a week—your choice, your pace
               </p>
             </div>

@@ -9,7 +9,7 @@ export default function ContactForm() {
   return (
     <section
       aria-labelledby="contact-form-heading"
-      className="section-padding bg-stone-50"
+      className="section-padding bg-stone-50 dark:bg-stone-950"
     >
       <div className="container-custom max-w-2xl">
         <p className="section-label">Get in Touch</p>
@@ -19,7 +19,7 @@ export default function ContactForm() {
         >
           Send Us an Inquiry
         </h2>
-        <p className="text-stone-600 mb-10">
+        <p className="text-stone-600 dark:text-stone-400 mb-10">
           Have questions about rooms, rates, or your stay? Fill out the form
           below and we&apos;ll get back to you within 24 hours.
         </p>
@@ -27,9 +27,9 @@ export default function ContactForm() {
         {state?.success ? (
           <div
             role="status"
-            className="rounded-2xl bg-green-50 border border-green-200 p-8 text-center"
+            className="rounded-2xl bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800 p-8 text-center"
           >
-            <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center mx-auto mb-4">
               <svg
                 className="w-8 h-8 text-green-600"
                 fill="none"
@@ -44,10 +44,10 @@ export default function ContactForm() {
                 />
               </svg>
             </div>
-            <p className="text-green-800 text-lg font-medium mb-2">
+            <p className="text-green-800 dark:text-green-300 text-lg font-medium mb-2">
               Inquiry Sent!
             </p>
-            <p className="text-green-700 text-sm">{state.message}</p>
+            <p className="text-green-700 dark:text-green-400 text-sm">{state.message}</p>
           </div>
         ) : (
           <form action={formAction} className="space-y-6">
@@ -68,7 +68,7 @@ export default function ContactForm() {
               <div>
                 <label
                   htmlFor="contact-name"
-                  className="block text-sm font-medium text-stone-700 mb-1.5"
+                  className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5"
                 >
                   Name <span className="text-red-500">*</span>
                 </label>
@@ -79,13 +79,13 @@ export default function ContactForm() {
                   required
                   autoComplete="name"
                   placeholder="Your full name"
-                  className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-sm text-stone-900 placeholder:text-stone-400 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 transition-colors"
+                  className="w-full rounded-xl border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 transition-colors"
                 />
               </div>
               <div>
                 <label
                   htmlFor="contact-email"
-                  className="block text-sm font-medium text-stone-700 mb-1.5"
+                  className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5"
                 >
                   Email <span className="text-red-500">*</span>
                 </label>
@@ -96,7 +96,7 @@ export default function ContactForm() {
                   required
                   autoComplete="email"
                   placeholder="you@example.com"
-                  className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-sm text-stone-900 placeholder:text-stone-400 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 transition-colors"
+                  className="w-full rounded-xl border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 transition-colors"
                 />
               </div>
             </div>
@@ -106,7 +106,7 @@ export default function ContactForm() {
               <div>
                 <label
                   htmlFor="contact-checkin"
-                  className="block text-sm font-medium text-stone-700 mb-1.5"
+                  className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5"
                 >
                   Check-in Date
                 </label>
@@ -115,13 +115,13 @@ export default function ContactForm() {
                   name="checkIn"
                   type="date"
                   autoComplete="off"
-                  className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-sm text-stone-900 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 transition-colors"
+                  className="w-full rounded-xl border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 transition-colors"
                 />
               </div>
               <div>
                 <label
                   htmlFor="contact-checkout"
-                  className="block text-sm font-medium text-stone-700 mb-1.5"
+                  className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5"
                 >
                   Check-out Date
                 </label>
@@ -130,7 +130,7 @@ export default function ContactForm() {
                   name="checkOut"
                   type="date"
                   autoComplete="off"
-                  className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-sm text-stone-900 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 transition-colors"
+                  className="w-full rounded-xl border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 transition-colors"
                 />
               </div>
             </div>
@@ -139,7 +139,7 @@ export default function ContactForm() {
             <div>
               <label
                 htmlFor="contact-guests"
-                className="block text-sm font-medium text-stone-700 mb-1.5"
+                className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5"
               >
                 Number of Guests
               </label>
@@ -150,7 +150,7 @@ export default function ContactForm() {
                 min="1"
                 max="20"
                 placeholder="e.g. 2"
-                className="w-full sm:w-40 rounded-xl border border-stone-300 bg-white px-4 py-3 text-sm text-stone-900 placeholder:text-stone-400 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 transition-colors"
+                className="w-full sm:w-40 rounded-xl border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 transition-colors"
               />
             </div>
 
@@ -158,7 +158,7 @@ export default function ContactForm() {
             <div>
               <label
                 htmlFor="contact-message"
-                className="block text-sm font-medium text-stone-700 mb-1.5"
+                className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5"
               >
                 Message <span className="text-red-500">*</span>
               </label>
@@ -168,13 +168,13 @@ export default function ContactForm() {
                 required
                 rows={5}
                 placeholder="Tell us about your travel plans or any questions you have..."
-                className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-sm text-stone-900 placeholder:text-stone-400 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 transition-colors resize-y"
+                className="w-full rounded-xl border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 transition-colors resize-y"
               />
             </div>
 
             {/* Error message */}
             {state?.message && !state.success && (
-              <p role="alert" className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg p-3">
+              <p role="alert" className="text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-lg p-3">
                 {state.message}
               </p>
             )}

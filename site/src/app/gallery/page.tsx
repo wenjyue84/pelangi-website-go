@@ -83,7 +83,7 @@ const imageGallerySchema = {
 
 export default function GalleryPage() {
     return (
-        <main id="main-content" className="min-h-screen">
+        <main id="main-content" className="min-h-screen bg-stone-50 dark:bg-stone-950">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(imageGallerySchema) }}

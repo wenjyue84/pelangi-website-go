@@ -43,10 +43,10 @@ export default function TableOfContents({ headings }: Props) {
           <a
             href={`#${id}`}
             onClick={() => setIsOpen(false)}
-            className={`block py-1 text-sm leading-snug transition-colors hover:text-amber-700 ${
+            className={`block py-1 text-sm leading-snug transition-colors hover:text-amber-700 dark:hover:text-amber-400 ${
               activeId === id
-                ? "text-amber-700 font-medium"
-                : "text-stone-500"
+                ? "text-amber-700 dark:text-amber-400 font-medium"
+                : "text-stone-500 dark:text-stone-400"
             }`}
           >
             {text}
@@ -59,11 +59,11 @@ export default function TableOfContents({ headings }: Props) {
   return (
     <nav aria-label="Article table of contents">
       {/* Mobile: collapsible accordion */}
-      <div className="lg:hidden border border-stone-200 rounded-xl overflow-hidden bg-white">
+      <div className="lg:hidden border border-stone-200 dark:border-stone-700 rounded-xl overflow-hidden bg-white dark:bg-stone-800">
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full flex items-center justify-between px-4 py-3 text-sm font-semibold text-stone-700 hover:bg-stone-50 transition-colors"
+          className="w-full flex items-center justify-between px-4 py-3 text-sm font-semibold text-stone-700 dark:text-stone-200 hover:bg-stone-50 dark:hover:bg-stone-700 transition-colors"
           aria-expanded={isOpen}
         >
           <span>Table of Contents</span>
@@ -83,7 +83,7 @@ export default function TableOfContents({ headings }: Props) {
           </svg>
         </button>
         {isOpen && (
-          <div className="px-4 pb-4 pt-2 border-t border-stone-100">{items}</div>
+          <div className="px-4 pb-4 pt-2 border-t border-stone-100 dark:border-stone-700">{items}</div>
         )}
       </div>
 

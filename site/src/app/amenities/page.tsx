@@ -160,7 +160,7 @@ export default function AmenitiesPage() {
   };
 
   return (
-    <main id="main-content" className="min-h-screen bg-stone-50">
+    <main id="main-content" className="min-h-screen bg-stone-50 dark:bg-stone-950">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -168,13 +168,13 @@ export default function AmenitiesPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="pt-28 pb-16 bg-linear-to-br from-stone-50 to-amber-50">
+      <section className="pt-28 pb-16 bg-linear-to-br from-stone-50 to-amber-50 dark:from-stone-950 dark:to-stone-900">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <h1 className="font-display text-5xl font-medium mb-6 text-stone-900">
+            <h1 className="font-display text-5xl font-medium mb-6 text-stone-900 dark:text-stone-100">
               Everything You Need
             </h1>
-            <p className="text-lg text-stone-600 mb-6">
+            <p className="text-lg text-stone-600 dark:text-stone-400 mb-6">
               Pelangi Capsule Hostel is equipped with modern amenities designed for digital nomads, long-stay guests, and backpackers. From high-speed WiFi to a dedicated co-working space, we&apos;ve thought of everything to make your stay comfortable and productive.
             </p>
             <div className="flex justify-center gap-4">
@@ -186,7 +186,7 @@ export default function AmenitiesPage() {
               </Link>
               <Link
                 href="/"
-                className="px-8 py-3 bg-white text-amber-700 border border-amber-700 rounded-lg hover:bg-amber-50 transition-colors"
+                className="px-8 py-3 bg-white dark:bg-stone-900 text-amber-700 dark:text-amber-400 border border-amber-700 rounded-lg hover:bg-amber-50 dark:hover:bg-stone-800 transition-colors"
               >
                 Back Home
               </Link>
@@ -202,15 +202,15 @@ export default function AmenitiesPage() {
             {amenities.map((amenity, index) => (
               <div
                 key={index}
-                className="bg-white p-8 rounded-2xl border border-stone-100 shadow-xs hover:shadow-md transition-shadow"
+                className="bg-white dark:bg-stone-900 p-8 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs hover:shadow-md transition-shadow"
               >
-                <div className="w-14 h-14 bg-amber-50 rounded-full flex items-center justify-center text-amber-800 mb-6">
+                <div className="w-14 h-14 bg-amber-50 dark:bg-amber-900/30 rounded-full flex items-center justify-center text-amber-800 dark:text-amber-300 mb-6">
                   {amenity.icon}
                 </div>
-                <h3 className="font-display text-xl font-medium mb-3 text-stone-900">
+                <h3 className="font-display text-xl font-medium mb-3 text-stone-900 dark:text-stone-100">
                   {amenity.label}
                 </h3>
-                <p className="text-stone-600 leading-relaxed">
+                <p className="text-stone-600 dark:text-stone-400 leading-relaxed">
                   {amenity.description}
                 </p>
               </div>
@@ -220,40 +220,40 @@ export default function AmenitiesPage() {
       </section>
 
       {/* Additional Details Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white dark:bg-stone-900">
         <div className="container-custom">
-          <h2 className="font-display text-4xl font-medium mb-12 text-center text-stone-900">
+          <h2 className="font-display text-4xl font-medium mb-12 text-center text-stone-900 dark:text-stone-100">
             Designed for Your Comfort
           </h2>
 
           <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
             {/* Kitchen Details */}
             <div className="space-y-4">
-              <h3 className="font-display text-2xl font-medium text-stone-900">
+              <h3 className="font-display text-2xl font-medium text-stone-900 dark:text-stone-100">
                 Kitchen & Dining
               </h3>
-              <p className="text-stone-600">
+              <p className="text-stone-600 dark:text-stone-400">
                 Our fully-equipped shared kitchen is open daily from 6 AM to 11 PM. Cook meals at your own pace with friends.
               </p>
-              <ul className="space-y-2 text-stone-600">
+              <ul className="space-y-2 text-stone-600 dark:text-stone-400">
                 <li className="flex gap-2">
-                  <span className="text-amber-700 font-medium">✓</span>
+                  <span className="text-amber-700 dark:text-amber-400 font-medium">✓</span>
                   <span>Full-size refrigerator with labeled storage</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-700 font-medium">✓</span>
+                  <span className="text-amber-700 dark:text-amber-400 font-medium">✓</span>
                   <span>Electric stove, oven, and microwave</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-700 font-medium">✓</span>
+                  <span className="text-amber-700 dark:text-amber-400 font-medium">✓</span>
                   <span>Dishwasher and basic cooking utensils</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-700 font-medium">✓</span>
+                  <span className="text-amber-700 dark:text-amber-400 font-medium">✓</span>
                   <span>Common dining area with seating for 20+</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-700 font-medium">✓</span>
+                  <span className="text-amber-700 dark:text-amber-400 font-medium">✓</span>
                   <span>Free spices, oil, and condiments</span>
                 </li>
               </ul>
@@ -261,31 +261,31 @@ export default function AmenitiesPage() {
 
             {/* Co-working Details */}
             <div className="space-y-4">
-              <h3 className="font-display text-2xl font-medium text-stone-900">
+              <h3 className="font-display text-2xl font-medium text-stone-900 dark:text-stone-100">
                 Co-working Space
               </h3>
-              <p className="text-stone-600">
+              <p className="text-stone-600 dark:text-stone-400">
                 Perfect for digital nomads and remote workers. Fast, reliable internet and professional atmosphere.
               </p>
-              <ul className="space-y-2 text-stone-600">
+              <ul className="space-y-2 text-stone-600 dark:text-stone-400">
                 <li className="flex gap-2">
-                  <span className="text-amber-700 font-medium">✓</span>
+                  <span className="text-amber-700 dark:text-amber-400 font-medium">✓</span>
                   <span>Dedicated desk with ergonomic seating</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-700 font-medium">✓</span>
+                  <span className="text-amber-700 dark:text-amber-400 font-medium">✓</span>
                   <span>Gigabit fiber WiFi (50+ Mbps)</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-700 font-medium">✓</span>
+                  <span className="text-amber-700 dark:text-amber-400 font-medium">✓</span>
                   <span>USB charging and multiple power outlets</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-700 font-medium">✓</span>
+                  <span className="text-amber-700 dark:text-amber-400 font-medium">✓</span>
                   <span>Bookable for business meetings</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-700 font-medium">✓</span>
+                  <span className="text-amber-700 dark:text-amber-400 font-medium">✓</span>
                   <span>Video call-friendly (quiet, professional background)</span>
                 </li>
               </ul>
@@ -293,27 +293,27 @@ export default function AmenitiesPage() {
 
             {/* Laundry Details */}
             <div className="space-y-4">
-              <h3 className="font-display text-2xl font-medium text-stone-900">
+              <h3 className="font-display text-2xl font-medium text-stone-900 dark:text-stone-100">
                 Laundry Services
               </h3>
-              <p className="text-stone-600">
+              <p className="text-stone-600 dark:text-stone-400">
                 Keep your clothes fresh and clean during your stay with our convenient laundry options.
               </p>
-              <ul className="space-y-2 text-stone-600">
+              <ul className="space-y-2 text-stone-600 dark:text-stone-400">
                 <li className="flex gap-2">
-                  <span className="text-amber-700 font-medium">✓</span>
+                  <span className="text-amber-700 dark:text-amber-400 font-medium">✓</span>
                   <span>Self-service washing & drying: RM3 per load</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-700 font-medium">✓</span>
+                  <span className="text-amber-700 dark:text-amber-400 font-medium">✓</span>
                   <span>Laundry service: RM15/kg (next-day delivery)</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-700 font-medium">✓</span>
+                  <span className="text-amber-700 dark:text-amber-400 font-medium">✓</span>
                   <span>Free iron and ironing board in common area</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-700 font-medium">✓</span>
+                  <span className="text-amber-700 dark:text-amber-400 font-medium">✓</span>
                   <span>Daily linen change (weekly duvet covers)</span>
                 </li>
               </ul>
@@ -321,31 +321,31 @@ export default function AmenitiesPage() {
 
             {/* Safety & Access */}
             <div className="space-y-4">
-              <h3 className="font-display text-2xl font-medium text-stone-900">
+              <h3 className="font-display text-2xl font-medium text-stone-900 dark:text-stone-100">
                 Safety & Access
               </h3>
-              <p className="text-stone-600">
+              <p className="text-stone-600 dark:text-stone-400">
                 Your safety and peace of mind are our top priorities. 24/7 access with secure lockdown features.
               </p>
-              <ul className="space-y-2 text-stone-600">
+              <ul className="space-y-2 text-stone-600 dark:text-stone-400">
                 <li className="flex gap-2">
-                  <span className="text-amber-700 font-medium">✓</span>
+                  <span className="text-amber-700 dark:text-amber-400 font-medium">✓</span>
                   <span>24/7 access to your pod with personal key card</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-700 font-medium">✓</span>
+                  <span className="text-amber-700 dark:text-amber-400 font-medium">✓</span>
                   <span>Individual secure locker in each pod</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-700 font-medium">✓</span>
+                  <span className="text-amber-700 dark:text-amber-400 font-medium">✓</span>
                   <span>CCTV surveillance in common areas</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-700 font-medium">✓</span>
+                  <span className="text-amber-700 dark:text-amber-400 font-medium">✓</span>
                   <span>24-hour front desk staff</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-amber-700 font-medium">✓</span>
+                  <span className="text-amber-700 dark:text-amber-400 font-medium">✓</span>
                   <span>Emergency contact available anytime</span>
                 </li>
               </ul>
@@ -355,21 +355,21 @@ export default function AmenitiesPage() {
       </section>
 
       {/* Sustainability Section */}
-      <section className="py-20 bg-linear-to-br from-green-50 to-emerald-50">
+      <section className="py-20 bg-linear-to-br from-green-50 to-emerald-50 dark:from-stone-900 dark:to-stone-900">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="font-display text-4xl font-medium mb-6 text-stone-900">
+              <h2 className="font-display text-4xl font-medium mb-6 text-stone-900 dark:text-stone-100">
                 Our Sustainability Commitment
               </h2>
-              <p className="text-lg text-stone-600">
+              <p className="text-lg text-stone-600 dark:text-stone-400">
                 At Pelangi Capsule Hostel, we&apos;re dedicated to minimizing our environmental impact while providing exceptional hospitality. Sustainable travel isn&apos;t just a trend — it&apos;s our responsibility to future generations of travelers exploring Johor Bahru.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 mb-8">
               {/* Eco Practice 1 */}
-              <div className="bg-white p-8 rounded-2xl border border-emerald-100 shadow-xs">
+              <div className="bg-white dark:bg-stone-800 p-8 rounded-2xl border border-emerald-100 dark:border-stone-700 shadow-xs">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 shrink-0">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -377,10 +377,10 @@ export default function AmenitiesPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-display text-xl font-medium text-stone-900 mb-2">
+                    <h3 className="font-display text-xl font-medium text-stone-900 dark:text-stone-100 mb-2">
                       Water Dispensers
                     </h3>
-                    <p className="text-stone-600">
+                    <p className="text-stone-600 dark:text-stone-400">
                       Complimentary refillable water dispensers throughout the hostel reduce single-use plastic bottles. We provide reusable water bottles to guests to further minimize waste.
                     </p>
                   </div>
@@ -388,7 +388,7 @@ export default function AmenitiesPage() {
               </div>
 
               {/* Eco Practice 2 */}
-              <div className="bg-white p-8 rounded-2xl border border-emerald-100 shadow-xs">
+              <div className="bg-white dark:bg-stone-800 p-8 rounded-2xl border border-emerald-100 dark:border-stone-700 shadow-xs">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 shrink-0">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -396,10 +396,10 @@ export default function AmenitiesPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-display text-xl font-medium text-stone-900 mb-2">
+                    <h3 className="font-display text-xl font-medium text-stone-900 dark:text-stone-100 mb-2">
                       Energy-Efficient Lighting
                     </h3>
-                    <p className="text-stone-600">
+                    <p className="text-stone-600 dark:text-stone-400">
                       All capsule pods and common areas are equipped with LED lighting and motion-sensor lighting in restrooms and corridors. This reduces electricity consumption while maintaining comfort.
                     </p>
                   </div>
@@ -407,7 +407,7 @@ export default function AmenitiesPage() {
               </div>
 
               {/* Eco Practice 3 */}
-              <div className="bg-white p-8 rounded-2xl border border-emerald-100 shadow-xs">
+              <div className="bg-white dark:bg-stone-800 p-8 rounded-2xl border border-emerald-100 dark:border-stone-700 shadow-xs">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 shrink-0">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -415,10 +415,10 @@ export default function AmenitiesPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-display text-xl font-medium text-stone-900 mb-2">
+                    <h3 className="font-display text-xl font-medium text-stone-900 dark:text-stone-100 mb-2">
                       Comprehensive Recycling
                     </h3>
-                    <p className="text-stone-600">
+                    <p className="text-stone-600 dark:text-stone-400">
                       Color-coded recycling bins for paper, plastic, glass, and organic waste are available in all common areas and throughout the hostel. Staff ensure proper sorting and disposal with local recycling facilities.
                     </p>
                   </div>
@@ -426,7 +426,7 @@ export default function AmenitiesPage() {
               </div>
 
               {/* Eco Practice 4 */}
-              <div className="bg-white p-8 rounded-2xl border border-emerald-100 shadow-xs">
+              <div className="bg-white dark:bg-stone-800 p-8 rounded-2xl border border-emerald-100 dark:border-stone-700 shadow-xs">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 shrink-0">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -434,10 +434,10 @@ export default function AmenitiesPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-display text-xl font-medium text-stone-900 mb-2">
+                    <h3 className="font-display text-xl font-medium text-stone-900 dark:text-stone-100 mb-2">
                       Eco-Conscious Operations
                     </h3>
-                    <p className="text-stone-600">
+                    <p className="text-stone-600 dark:text-stone-400">
                       We source local and sustainable products whenever possible, use biodegradable cleaning supplies, and prioritize eco-friendly amenities. Our commitment to sustainability is integral to how we operate daily.
                     </p>
                   </div>
@@ -445,8 +445,8 @@ export default function AmenitiesPage() {
               </div>
             </div>
 
-            <div className="bg-white p-8 rounded-2xl border border-emerald-100 text-center">
-              <p className="text-stone-600 text-lg">
+            <div className="bg-white dark:bg-stone-800 p-8 rounded-2xl border border-emerald-100 dark:border-stone-700 text-center">
+              <p className="text-stone-600 dark:text-stone-400 text-lg">
                 By choosing Pelangi Capsule Hostel, you&apos;re supporting sustainable tourism in Johor Bahru. Together, we can make travel more responsible and protect the beautiful destinations we all love to explore.
               </p>
             </div>

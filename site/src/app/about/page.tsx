@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main id="main-content" className="min-h-screen">
+    <main id="main-content" className="min-h-screen bg-stone-50 dark:bg-stone-950">
       <Header />
       <div className="pt-20"> {/* Add padding for fixed header */}
         <About />

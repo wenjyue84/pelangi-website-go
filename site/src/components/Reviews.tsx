@@ -49,7 +49,7 @@ export default function Reviews() {
     }));
 
     return (
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-white dark:bg-stone-900">
             {reviewSchemas.map((schema, index) => (
                 <script
                     key={`review-schema-${index}`}
@@ -59,7 +59,7 @@ export default function Reviews() {
             ))}
             <div className="container-custom">
                 <div className="text-center max-w-2xl mx-auto mb-16">
-                    <h2 className="font-display text-4xl font-medium mb-4 text-stone-900">Guest Love</h2>
+                    <h2 className="font-display text-4xl font-medium mb-4 text-stone-900 dark:text-stone-100">Guest Love</h2>
                     <div className="flex items-center justify-center gap-2 mb-4">
                         <div className="flex text-amber-400">
                             {[...Array(5)].map((_, i) => (
@@ -68,14 +68,14 @@ export default function Reviews() {
                                 </svg>
                             ))}
                         </div>
-                        <span className="text-xl font-bold text-stone-900">4.9/5</span>
-                        <span className="text-stone-500">(500+ Reviews)</span>
+                        <span className="text-xl font-bold text-stone-900 dark:text-stone-100">4.9/5</span>
+                        <span className="text-stone-500 dark:text-stone-400">(500+ Reviews)</span>
                     </div>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-8">
                     {reviews.map((review, index) => (
-                        <div key={index} className="bg-stone-50 p-8 rounded-3xl relative">
+                        <div key={index} className="bg-stone-50 dark:bg-stone-800 p-8 rounded-3xl relative">
                             <div className="flex text-amber-400 mb-4">
                                 {[...Array(review.rating)].map((_, i) => (
                                     <svg key={i} className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -83,13 +83,13 @@ export default function Reviews() {
                                     </svg>
                                 ))}
                             </div>
-                            <p className="text-stone-700 mb-6 italic">&ldquo;{review.text}&rdquo;</p>
+                            <p className="text-stone-700 dark:text-stone-300 mb-6 italic">&ldquo;{review.text}&rdquo;</p>
                             <div className="flex items-center justify-between mt-auto">
                                 <div>
-                                    <h4 className="font-bold text-stone-900">{review.name}</h4>
-                                    <p className="text-sm text-stone-500">{review.country}</p>
+                                    <h4 className="font-bold text-stone-900 dark:text-stone-100">{review.name}</h4>
+                                    <p className="text-sm text-stone-500 dark:text-stone-400">{review.country}</p>
                                 </div>
-                                <div className="text-xs text-stone-500 border border-stone-200 px-2 py-1 rounded-full">
+                                <div className="text-xs text-stone-500 dark:text-stone-400 border border-stone-200 dark:border-stone-600 px-2 py-1 rounded-full">
                                     Verified Guest
                                 </div>
                             </div>

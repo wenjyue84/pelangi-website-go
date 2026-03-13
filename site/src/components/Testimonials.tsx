@@ -55,7 +55,7 @@ export default function Testimonials() {
   }));
 
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-white dark:bg-stone-900">
       {testimonialSchemas.map((schema, index) => (
         <script
           key={`testimonial-schema-${index}`}
@@ -70,7 +70,7 @@ export default function Testimonials() {
           <h2 className="section-heading mb-6">
             What Our Guests Say
           </h2>
-          <p className="text-stone-600 text-lg leading-relaxed">
+          <p className="text-stone-600 dark:text-stone-400 text-lg leading-relaxed">
             Real reviews from travelers who stayed with us.
           </p>
         </div>
@@ -80,15 +80,15 @@ export default function Testimonials() {
           {ratings.map((item, index) => (
             <div
               key={index}
-              className="flex items-center gap-4 bg-stone-50 rounded-2xl px-6 py-4
-                       border border-stone-100 hover:border-stone-200 transition-colors"
+              className="flex items-center gap-4 bg-stone-50 dark:bg-stone-800 rounded-2xl px-6 py-4
+                       border border-stone-100 dark:border-stone-700 hover:border-stone-200 dark:hover:border-stone-600 transition-colors"
             >
-              <span className="font-display text-3xl font-medium text-amber-700">
+              <span className="font-display text-3xl font-medium text-amber-700 dark:text-amber-400">
                 {item.rating}
               </span>
               <div className="text-sm">
-                <div className="font-medium text-stone-800">{item.platform}</div>
-                <div className="text-stone-500">{item.reviews} reviews</div>
+                <div className="font-medium text-stone-800 dark:text-stone-200">{item.platform}</div>
+                <div className="text-stone-500 dark:text-stone-400">{item.reviews} reviews</div>
               </div>
             </div>
           ))}
@@ -99,11 +99,11 @@ export default function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-stone-50 rounded-2xl p-8 border border-stone-100
+              className="bg-stone-50 dark:bg-stone-800 rounded-2xl p-8 border border-stone-100 dark:border-stone-700
                        hover:shadow-md transition-shadow duration-300 relative"
             >
               {/* Quote mark */}
-              <div className="absolute top-6 right-6 text-stone-200">
+              <div className="absolute top-6 right-6 text-stone-200 dark:text-stone-700">
                 <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                 </svg>
@@ -114,7 +114,7 @@ export default function Testimonials() {
                 {[...Array(5)].map((_, i) => (
                   <svg
                     key={i}
-                    className={`w-4 h-4 ${i < testimonial.rating ? 'text-amber-400' : 'text-stone-200'}`}
+                    className={`w-4 h-4 ${i < testimonial.rating ? 'text-amber-400' : 'text-stone-200 dark:text-stone-700'}`}
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
@@ -124,14 +124,14 @@ export default function Testimonials() {
               </div>
 
               {/* Quote */}
-              <p className="text-stone-700 mb-6 leading-relaxed">
+              <p className="text-stone-700 dark:text-stone-300 mb-6 leading-relaxed">
                 &ldquo;{testimonial.quote}&rdquo;
               </p>
 
               {/* Author */}
-              <div className="pt-5 border-t border-stone-200">
-                <div className="font-medium text-stone-900">{testimonial.author}</div>
-                <div className="text-sm text-stone-500">{testimonial.source}</div>
+              <div className="pt-5 border-t border-stone-200 dark:border-stone-700">
+                <div className="font-medium text-stone-900 dark:text-stone-100">{testimonial.author}</div>
+                <div className="text-sm text-stone-500 dark:text-stone-400">{testimonial.source}</div>
               </div>
             </div>
           ))}

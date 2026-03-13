@@ -90,7 +90,7 @@ const otaPlatforms = [
 
 export default function BookPage() {
   return (
-    <main id="main-content" className="min-h-screen bg-stone-50">
+    <main id="main-content" className="min-h-screen bg-stone-50 dark:bg-stone-950">
       <Header />
 
       {/* Hero */}
@@ -137,28 +137,28 @@ export default function BookPage() {
       <section className="py-16 container-custom">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <p className="text-xs font-medium tracking-[0.3em] uppercase text-amber-700 mb-3">
+            <p className="text-xs font-medium tracking-[0.3em] uppercase text-amber-700 dark:text-amber-400 mb-3">
               Transparent Pricing
             </p>
-            <h2 className="font-display text-3xl md:text-4xl font-medium text-stone-900">
+            <h2 className="font-display text-3xl md:text-4xl font-medium text-stone-900 dark:text-stone-100">
               Simple, Honest Rates
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             {/* Nightly */}
-            <div className="bg-white rounded-3xl p-8 shadow-lg border border-stone-100 text-center">
-              <div className="text-xs tracking-widest uppercase text-stone-500 mb-2">Nightly Stay</div>
+            <div className="bg-white dark:bg-stone-900 rounded-3xl p-8 shadow-lg border border-stone-100 dark:border-stone-700 text-center">
+              <div className="text-xs tracking-widest uppercase text-stone-500 dark:text-stone-400 mb-2">Nightly Stay</div>
               <div className="flex items-baseline justify-center gap-1 mb-4">
-                <span className="font-display text-5xl font-medium text-stone-900">RM35</span>
-                <span className="text-stone-500">–</span>
-                <span className="font-display text-5xl font-medium text-stone-900">45</span>
-                <span className="text-stone-500 ml-1">/night</span>
+                <span className="font-display text-5xl font-medium text-stone-900 dark:text-stone-100">RM35</span>
+                <span className="text-stone-500 dark:text-stone-400">–</span>
+                <span className="font-display text-5xl font-medium text-stone-900 dark:text-stone-100">45</span>
+                <span className="text-stone-500 dark:text-stone-400 ml-1">/night</span>
               </div>
-              <p className="text-stone-500 text-sm mb-6">
+              <p className="text-stone-500 dark:text-stone-400 text-sm mb-6">
                 Per person, per night. Price varies by day and season.
               </p>
-              <ul className="text-left space-y-3 text-sm text-stone-600">
+              <ul className="text-left space-y-3 text-sm text-stone-600 dark:text-stone-400">
                 <li className="flex items-center gap-2">
                   <svg className="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                   Private capsule pod with door
@@ -175,19 +175,19 @@ export default function BookPage() {
             </div>
 
             {/* Monthly */}
-            <div className="bg-amber-50 rounded-3xl p-8 shadow-lg border border-amber-200 text-center relative">
+            <div className="bg-amber-50 dark:bg-amber-900/20 rounded-3xl p-8 shadow-lg border border-amber-200 dark:border-amber-700 text-center relative">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-600 text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">
                 Best Value
               </div>
-              <div className="text-xs tracking-widest uppercase text-amber-700 mb-2">Monthly Stay</div>
+              <div className="text-xs tracking-widest uppercase text-amber-700 dark:text-amber-400 mb-2">Monthly Stay</div>
               <div className="flex items-baseline justify-center gap-1 mb-4">
-                <span className="font-display text-5xl font-medium text-stone-900">RM594</span>
-                <span className="text-stone-500 ml-1">/month</span>
+                <span className="font-display text-5xl font-medium text-stone-900 dark:text-stone-100">RM594</span>
+                <span className="text-stone-500 dark:text-stone-400 ml-1">/month</span>
               </div>
-              <p className="text-stone-500 text-sm mb-6">
+              <p className="text-stone-500 dark:text-stone-400 text-sm mb-6">
                 That&apos;s just RM19.80/night — save over 40% vs nightly rate.
               </p>
-              <ul className="text-left space-y-3 text-sm text-stone-600">
+              <ul className="text-left space-y-3 text-sm text-stone-600 dark:text-stone-400">
                 <li className="flex items-center gap-2">
                   <svg className="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                   Everything in nightly stay
@@ -207,13 +207,13 @@ export default function BookPage() {
       </section>
 
       {/* Why Book Direct */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-stone-900">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <p className="text-xs font-medium tracking-[0.3em] uppercase text-amber-700 mb-3">
+            <p className="text-xs font-medium tracking-[0.3em] uppercase text-amber-700 dark:text-amber-400 mb-3">
               Direct Booking Benefits
             </p>
-            <h2 className="font-display text-3xl md:text-4xl font-medium text-stone-900">
+            <h2 className="font-display text-3xl md:text-4xl font-medium text-stone-900 dark:text-stone-100">
               Why Book Direct?
             </h2>
           </div>
@@ -222,39 +222,39 @@ export default function BookPage() {
             {directBenefits.map((benefit, index) => (
               <div
                 key={index}
-                className="bg-stone-50 rounded-2xl p-6 text-center hover:bg-stone-100 transition-colors"
+                className="bg-stone-50 dark:bg-stone-800 rounded-2xl p-6 text-center hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors"
               >
-                <div className="w-14 h-14 rounded-2xl bg-amber-100 flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-7 h-7 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-14 h-14 rounded-2xl bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-7 h-7 text-amber-700 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={benefit.icon} />
                   </svg>
                 </div>
-                <h3 className="font-semibold text-stone-900 mb-2">{benefit.title}</h3>
-                <p className="text-stone-500 text-sm">{benefit.description}</p>
+                <h3 className="font-semibold text-stone-900 dark:text-stone-100 mb-2">{benefit.title}</h3>
+                <p className="text-stone-500 dark:text-stone-400 text-sm">{benefit.description}</p>
               </div>
             ))}
           </div>
 
           {/* OTA vs Direct Savings Comparison Callout */}
-          <div className="mt-12 max-w-3xl mx-auto bg-linear-to-r from-amber-50 to-orange-50 rounded-3xl p-8 border border-amber-200">
-            <p className="text-center text-xs font-medium tracking-[0.3em] uppercase text-amber-700 mb-6">
+          <div className="mt-12 max-w-3xl mx-auto bg-linear-to-r from-amber-50 to-orange-50 dark:from-stone-800 dark:to-stone-800 rounded-3xl p-8 border border-amber-200 dark:border-amber-700">
+            <p className="text-center text-xs font-medium tracking-[0.3em] uppercase text-amber-700 dark:text-amber-400 mb-6">
               Price Comparison
             </p>
-            <h3 className="font-display text-xl font-medium text-stone-900 text-center mb-6">
+            <h3 className="font-display text-xl font-medium text-stone-900 dark:text-stone-100 text-center mb-6">
               Direct vs OTA — What You Actually Pay
             </h3>
             <div className="grid sm:grid-cols-2 gap-4 mb-6">
               {/* OTA column */}
-              <div className="bg-white/70 rounded-2xl p-5 border border-stone-200">
+              <div className="bg-white/70 dark:bg-stone-900/70 rounded-2xl p-5 border border-stone-200 dark:border-stone-700">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-7 h-7 rounded-lg bg-stone-100 flex items-center justify-center">
                     <svg className="w-4 h-4 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-2" />
                     </svg>
                   </div>
-                  <span className="font-medium text-stone-700">Via Booking.com</span>
+                  <span className="font-medium text-stone-700 dark:text-stone-300">Via Booking.com</span>
                 </div>
-                <div className="text-sm text-stone-600 space-y-1">
+                <div className="text-sm text-stone-600 dark:text-stone-400 space-y-1">
                   <div className="flex justify-between">
                     <span>Room rate</span>
                     <span className="font-medium">RM40–48</span>
@@ -263,7 +263,7 @@ export default function BookPage() {
                     <span>Platform service fee</span>
                     <span className="font-medium">+15–20%</span>
                   </div>
-                  <div className="border-t border-stone-200 pt-2 mt-2 flex justify-between font-semibold text-stone-800">
+                  <div className="border-t border-stone-200 dark:border-stone-700 pt-2 mt-2 flex justify-between font-semibold text-stone-800 dark:text-stone-200">
                     <span>You pay</span>
                     <span>~RM46–58/night</span>
                   </div>
@@ -271,7 +271,7 @@ export default function BookPage() {
               </div>
 
               {/* Direct column */}
-              <div className="bg-green-50 rounded-2xl p-5 border border-green-200">
+              <div className="bg-green-50 dark:bg-green-900/20 rounded-2xl p-5 border border-green-200 dark:border-green-800">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-7 h-7 rounded-lg bg-green-100 flex items-center justify-center">
                     <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 24 24">
@@ -280,7 +280,7 @@ export default function BookPage() {
                   </div>
                   <span className="font-medium text-green-800">Direct via WhatsApp</span>
                 </div>
-                <div className="text-sm text-stone-600 space-y-1">
+                <div className="text-sm text-stone-600 dark:text-stone-400 space-y-1">
                   <div className="flex justify-between">
                     <span>Room rate</span>
                     <span className="font-medium">RM35–45</span>
@@ -289,21 +289,21 @@ export default function BookPage() {
                     <span>Platform fee</span>
                     <span className="font-medium">RM0</span>
                   </div>
-                  <div className="border-t border-green-200 pt-2 mt-2 flex justify-between font-semibold text-green-800">
+                  <div className="border-t border-green-200 dark:border-green-800 pt-2 mt-2 flex justify-between font-semibold text-green-800 dark:text-green-300">
                     <span>You pay</span>
                     <span>RM35–45/night</span>
                   </div>
                 </div>
               </div>
             </div>
-            <p className="text-center text-sm text-amber-800 font-medium">
+            <p className="text-center text-sm text-amber-800 dark:text-amber-300 font-medium">
               Save up to <span className="font-bold text-green-700">RM13/night</span> by booking direct — that&apos;s <span className="font-bold text-green-700">RM91/week</span> back in your pocket.
             </p>
           </div>
 
           {/* Trust Badges */}
           <div className="mt-10 max-w-3xl mx-auto">
-            <p className="text-center text-xs font-medium tracking-[0.3em] uppercase text-stone-500 mb-5">
+            <p className="text-center text-xs font-medium tracking-[0.3em] uppercase text-stone-500 dark:text-stone-400 mb-5">
               Trusted &amp; Secure
             </p>
             <div className="flex flex-wrap justify-center gap-4">
@@ -331,14 +331,14 @@ export default function BookPage() {
               ].map((badge, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-3 bg-white rounded-xl px-4 py-3 border border-stone-100 shadow-xs"
+                  className="flex items-center gap-3 bg-white dark:bg-stone-800 rounded-xl px-4 py-3 border border-stone-100 dark:border-stone-700 shadow-xs"
                 >
                   <svg className="w-5 h-5 text-amber-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={badge.icon} />
                   </svg>
                   <div>
-                    <div className="text-xs font-semibold text-stone-800">{badge.label}</div>
-                    <div className="text-xs text-stone-500">{badge.sub}</div>
+                    <div className="text-xs font-semibold text-stone-800 dark:text-stone-200">{badge.label}</div>
+                    <div className="text-xs text-stone-500 dark:text-stone-400">{badge.sub}</div>
                   </div>
                 </div>
               ))}
@@ -366,13 +366,13 @@ export default function BookPage() {
       <section className="py-16 container-custom">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-10">
-            <p className="text-xs font-medium tracking-[0.3em] uppercase text-stone-500 mb-3">
+            <p className="text-xs font-medium tracking-[0.3em] uppercase text-stone-500 dark:text-stone-400 mb-3">
               Also Available On
             </p>
-            <h2 className="font-display text-2xl font-medium text-stone-900">
+            <h2 className="font-display text-2xl font-medium text-stone-900 dark:text-stone-100">
               Prefer a Platform?
             </h2>
-            <p className="text-stone-500 mt-2">
+            <p className="text-stone-500 dark:text-stone-400 mt-2">
               You can also find us on these booking sites.
             </p>
           </div>
@@ -384,7 +384,7 @@ export default function BookPage() {
                 href={platform.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white rounded-2xl p-6 text-center shadow-md border border-stone-100
+                className="bg-white dark:bg-stone-900 rounded-2xl p-6 text-center shadow-md border border-stone-100 dark:border-stone-700
                            hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
               >
                 <div
@@ -393,10 +393,10 @@ export default function BookPage() {
                 >
                   {platform.initial}
                 </div>
-                <div className="font-semibold text-stone-900 group-hover:text-amber-700 transition-colors mb-1">
+                <div className="font-semibold text-stone-900 dark:text-stone-100 group-hover:text-amber-700 transition-colors mb-1">
                   {platform.name}
                 </div>
-                <div className="text-sm text-stone-500">{platform.tagline}</div>
+                <div className="text-sm text-stone-500 dark:text-stone-400">{platform.tagline}</div>
               </a>
             ))}
           </div>
@@ -404,14 +404,14 @@ export default function BookPage() {
       </section>
 
       {/* House Rules */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-stone-900">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-10">
-              <p className="text-xs font-medium tracking-[0.3em] uppercase text-amber-700 mb-3">
+              <p className="text-xs font-medium tracking-[0.3em] uppercase text-amber-700 dark:text-amber-400 mb-3">
                 Good to Know
               </p>
-              <h2 className="font-display text-2xl font-medium text-stone-900">
+              <h2 className="font-display text-2xl font-medium text-stone-900 dark:text-stone-100">
                 House Rules
               </h2>
             </div>
@@ -420,14 +420,14 @@ export default function BookPage() {
               {houseRules.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-4 bg-stone-50 rounded-xl p-4"
+                  className="flex items-center gap-4 bg-stone-50 dark:bg-stone-800 rounded-xl p-4"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center shrink-0">
-                    <svg className="w-5 h-5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center shrink-0">
+                    <svg className="w-5 h-5 text-amber-700 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={item.icon} />
                     </svg>
                   </div>
-                  <span className="text-stone-700 font-medium">{item.rule}</span>
+                  <span className="text-stone-700 dark:text-stone-300 font-medium">{item.rule}</span>
                 </div>
               ))}
             </div>
@@ -436,13 +436,13 @@ export default function BookPage() {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-16 bg-stone-100">
+      <section className="py-16 bg-stone-100 dark:bg-stone-800">
         <div className="container-custom">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="font-display text-2xl font-medium text-stone-900 mb-4">
+            <h2 className="font-display text-2xl font-medium text-stone-900 dark:text-stone-100 mb-4">
               Questions? We&apos;re Here to Help
             </h2>
-            <p className="text-stone-600 mb-8">
+            <p className="text-stone-600 dark:text-stone-400 mb-8">
               Not sure which pod to choose? Need to arrange early check-in? Just ask.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -460,8 +460,8 @@ export default function BookPage() {
               </a>
               <a
                 href="tel:+60127088789"
-                className="inline-flex items-center justify-center gap-2 bg-white text-stone-800
-                           rounded-xl py-4 px-8 font-medium border border-stone-200 hover:bg-stone-50 transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-200
+                           rounded-xl py-4 px-8 font-medium border border-stone-200 dark:border-stone-700 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
@@ -470,12 +470,12 @@ export default function BookPage() {
                 Call +60 12-708 8789
               </a>
             </div>
-            <p className="text-stone-500 text-sm mt-6">
-              <Link href="/rooms" className="text-amber-700 hover:underline">View our rooms</Link>
+            <p className="text-stone-500 dark:text-stone-400 text-sm mt-6">
+              <Link href="/rooms" className="text-amber-700 dark:text-amber-400 hover:underline">View our rooms</Link>
               {" · "}
-              <Link href="/guide" className="text-amber-700 hover:underline">Local guide</Link>
+              <Link href="/guide" className="text-amber-700 dark:text-amber-400 hover:underline">Local guide</Link>
               {" · "}
-              <Link href="/check-in" className="text-amber-700 hover:underline">Check-in info</Link>
+              <Link href="/check-in" className="text-amber-700 dark:text-amber-400 hover:underline">Check-in info</Link>
             </p>
           </div>
         </div>

@@ -70,20 +70,20 @@ const amenities = [
 
 export default function Amenities() {
     return (
-        <section className="py-20 bg-stone-50">
+        <section className="py-20 bg-stone-50 dark:bg-stone-950">
             <div className="container-custom">
                 <div className="text-center max-w-2xl mx-auto mb-16">
-                    <h2 className="font-display text-4xl font-medium mb-4 text-stone-900">Everything you need</h2>
-                    <p className="text-stone-600 text-lg">Designed for the modern traveler. We&apos;ve got the essentials covered so you can focus on exploring.</p>
+                    <h2 className="font-display text-4xl font-medium mb-4 text-stone-900 dark:text-stone-100">Everything you need</h2>
+                    <p className="text-stone-600 dark:text-stone-400 text-lg">Designed for the modern traveler. We&apos;ve got the essentials covered so you can focus on exploring.</p>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     {amenities.map((item, index) => (
-                        <div key={index} className="bg-white p-6 rounded-2xl border border-stone-100 shadow-xs flex flex-col items-center text-center hover:shadow-md transition-shadow">
-                            <div className="w-12 h-12 bg-amber-50 rounded-full flex items-center justify-center text-amber-800 mb-4">
+                        <div key={index} className="bg-white dark:bg-stone-800 p-6 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                            <div className="w-12 h-12 bg-amber-50 dark:bg-amber-900/30 rounded-full flex items-center justify-center text-amber-800 dark:text-amber-400 mb-4">
                                 {item.icon}
                             </div>
-                            <span className="font-medium text-stone-800">{item.label}</span>
+                            <span className="font-medium text-stone-800 dark:text-stone-200">{item.label}</span>
                         </div>
                     ))}
                 </div>

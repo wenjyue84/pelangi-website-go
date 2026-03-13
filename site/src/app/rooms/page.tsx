@@ -152,7 +152,7 @@ const hotelRoomsSchema = [
 
 export default function RoomsPage() {
     return (
-        <main id="main-content" className="min-h-screen">
+        <main id="main-content" className="min-h-screen bg-stone-50 dark:bg-stone-950">
             {hotelRoomsSchema.map((schema, i) => (
                 <script
                     key={i}

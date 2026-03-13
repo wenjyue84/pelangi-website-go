@@ -67,7 +67,7 @@ export default async function BlogPostPage({ params }: Props) {
   const contentWithIds = addHeadingIds(post.content);
 
   return (
-    <main id="main-content" className="min-h-screen bg-stone-50">
+    <main id="main-content" className="min-h-screen bg-stone-50 dark:bg-stone-950">
       <BlogStructuredData post={post} />
       <BlogPageViewTracker slug={post.slug} title={post.title} />
       <Header />
@@ -77,7 +77,7 @@ export default async function BlogPostPage({ params }: Props) {
           {/* Back link */}
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-stone-500 hover:text-amber-700 transition-colors mb-8 text-sm"
+            className="inline-flex items-center gap-2 text-stone-500 hover:text-amber-700 dark:hover:text-amber-400 transition-colors mb-8 text-sm"
           >
             <svg
               className="w-4 h-4"
@@ -96,19 +96,19 @@ export default async function BlogPostPage({ params }: Props) {
           </Link>
 
           {/* Category badge */}
-          <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-amber-100 text-amber-800 mb-4">
+          <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300 mb-4">
             {post.category}
           </span>
 
           {/* Title */}
-          <h1 className="font-display text-3xl md:text-4xl font-medium text-stone-900 mb-4 leading-tight">
+          <h1 className="font-display text-3xl md:text-4xl font-medium text-stone-900 dark:text-stone-100 mb-4 leading-tight">
             {post.title}
           </h1>
 
           {/* Meta */}
-          <div className="flex flex-wrap items-center gap-4 text-sm text-stone-500 mb-8 pb-8 border-b border-stone-200">
+          <div className="flex flex-wrap items-center gap-4 text-sm text-stone-500 dark:text-stone-400 mb-8 pb-8 border-b border-stone-200 dark:border-stone-700">
             <span>
-              By <span className="font-medium text-stone-700">{post.author}</span>
+              By <span className="font-medium text-stone-700 dark:text-stone-300">{post.author}</span>
             </span>
             <span>·</span>
             <span>
@@ -141,19 +141,19 @@ export default async function BlogPostPage({ params }: Props) {
 
               {/* Article body */}
               <div
-                className="prose prose-stone prose-lg max-w-none prose-headings:font-display prose-headings:font-medium prose-a:text-amber-700 prose-strong:text-stone-900"
+                className="prose prose-stone prose-lg max-w-none prose-headings:font-display prose-headings:font-medium prose-a:text-amber-700 prose-strong:text-stone-900 dark:prose-invert dark:prose-a:text-amber-400"
                 dangerouslySetInnerHTML={{ __html: contentWithIds }}
               />
 
               {/* Tags */}
               {post.tags.length > 0 && (
-                <div className="mt-12 pt-8 border-t border-stone-200">
-                  <p className="text-sm font-medium text-stone-500 mb-3">Tags</p>
+                <div className="mt-12 pt-8 border-t border-stone-200 dark:border-stone-700">
+                  <p className="text-sm font-medium text-stone-500 dark:text-stone-400 mb-3">Tags</p>
                   <div className="flex flex-wrap gap-2">
                     {post.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 text-sm rounded-full bg-stone-100 text-stone-600"
+                        className="px-3 py-1 text-sm rounded-full bg-stone-100 text-stone-600 dark:bg-stone-800 dark:text-stone-400"
                       >
                         {tag}
                       </span>

@@ -67,35 +67,35 @@ export default function Gallery() {
       <div id={id} className="mb-16 scroll-mt-24">
         <div className="flex items-end justify-between mb-6 px-4 md:px-0">
           <div>
-            <h3 className="font-display text-2xl md:text-3xl font-medium text-stone-900">{title}</h3>
-            <p className="text-stone-500 text-sm mt-1">{subtitle}</p>
+            <h3 className="font-display text-2xl md:text-3xl font-medium text-stone-900 dark:text-stone-100">{title}</h3>
+            <p className="text-stone-500 dark:text-stone-400 text-sm mt-1">{subtitle}</p>
           </div>
           <div className="flex items-center gap-2">
             {onSeeAll && (
               <button
                 onClick={onSeeAll}
-                className="text-amber-700 hover:text-amber-800 font-medium text-sm mr-4 cursor-pointer"
+                className="text-amber-700 dark:text-amber-400 hover:text-amber-800 dark:hover:text-amber-300 font-medium text-sm mr-4 cursor-pointer"
               >
                 See All →
               </button>
             )}
             <button
               onClick={() => scroll('left')}
-              className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center
-                       hover:bg-stone-50 transition-colors cursor-pointer hidden md:flex"
+              className="w-10 h-10 rounded-full bg-white dark:bg-stone-800 shadow-md flex items-center justify-center
+                       hover:bg-stone-50 dark:hover:bg-stone-700 transition-colors cursor-pointer hidden md:flex"
               aria-label="Scroll left"
             >
-              <svg className="w-5 h-5 text-stone-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-stone-600 dark:text-stone-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
             <button
               onClick={() => scroll('right')}
-              className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center
-                       hover:bg-stone-50 transition-colors cursor-pointer hidden md:flex"
+              className="w-10 h-10 rounded-full bg-white dark:bg-stone-800 shadow-md flex items-center justify-center
+                       hover:bg-stone-50 dark:hover:bg-stone-700 transition-colors cursor-pointer hidden md:flex"
               aria-label="Scroll right"
             >
-              <svg className="w-5 h-5 text-stone-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-stone-600 dark:text-stone-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
@@ -113,13 +113,13 @@ export default function Gallery() {
   };
 
   return (
-    <section id="gallery" className="section-padding bg-stone-50">
+    <section id="gallery" className="section-padding bg-stone-50 dark:bg-stone-950">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14 px-4">
           <p className="section-label">Gallery</p>
           <h2 className="section-heading mb-6">Take a Look Around</h2>
-          <p className="text-stone-600 text-lg leading-relaxed">
+          <p className="text-stone-600 dark:text-stone-400 text-lg leading-relaxed">
             Browse through our hostel, see happy guests, and discover adventures waiting for you.
           </p>
         </div>
@@ -180,12 +180,12 @@ export default function Gallery() {
           {/* See more card */}
           <div
             className="shrink-0 w-40 h-40 md:w-48 md:h-48 relative rounded-2xl overflow-hidden
-                     cursor-pointer group snap-start bg-amber-100 flex items-center justify-center"
+                     cursor-pointer group snap-start bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center"
             onClick={() => setActiveModal('guests')}
           >
             <div className="text-center">
-              <div className="text-3xl font-display font-medium text-amber-700">+{guestPhotos.length - 12}</div>
-              <div className="text-sm text-amber-600 mt-1">more photos</div>
+              <div className="text-3xl font-display font-medium text-amber-700 dark:text-amber-400">+{guestPhotos.length - 12}</div>
+              <div className="text-sm text-amber-600 dark:text-amber-400 mt-1">more photos</div>
             </div>
           </div>
         </ScrollSection>
@@ -229,8 +229,8 @@ export default function Gallery() {
         {/* Video Section */}
         <div className="mt-8 px-4 md:px-0">
           <div className="text-center mb-8">
-            <p className="text-xs tracking-widest uppercase text-stone-500 mb-2">Virtual Tour</p>
-            <h3 className="font-display text-2xl font-medium text-stone-900">
+            <p className="text-xs tracking-widest uppercase text-stone-500 dark:text-stone-400 mb-2">Virtual Tour</p>
+            <h3 className="font-display text-2xl font-medium text-stone-900 dark:text-stone-100">
               Watch Our Check-in Guide
             </h3>
           </div>

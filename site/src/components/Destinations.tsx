@@ -258,7 +258,7 @@ export default function Destinations() {
     : destinations.filter(d => d.category === activeCategory);
 
   return (
-    <section id="destinations" className="section-padding bg-white">
+    <section id="destinations" className="section-padding bg-white dark:bg-stone-900">
       <div className="container-custom">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
@@ -266,7 +266,7 @@ export default function Destinations() {
           <h2 className="section-heading mb-6">
             Your Gateway to Amazing Adventures
           </h2>
-          <p className="text-stone-600 text-lg leading-relaxed">
+          <p className="text-stone-600 dark:text-stone-400 text-lg leading-relaxed">
             Johor Bahru is perfectly positioned for incredible day trips and getaways.
             From pristine islands to world-class Singapore attractions, ancient rainforests
             to UNESCO heritage sites — adventure is always within reach.
@@ -282,7 +282,7 @@ export default function Destinations() {
               className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer
                 ${activeCategory === cat.id
                   ? "bg-amber-700 text-white shadow-md"
-                  : "bg-stone-100 text-stone-600 hover:bg-stone-200"
+                  : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-700"
                 }`}
             >
               {cat.label}
@@ -295,8 +295,8 @@ export default function Destinations() {
           {filteredDestinations.map((dest) => (
             <article
               key={dest.id}
-              className="group bg-white rounded-2xl overflow-hidden shadow-xs hover:shadow-xl
-                       transition-all duration-300 cursor-pointer border border-stone-100"
+              className="group bg-white dark:bg-stone-900 rounded-2xl overflow-hidden shadow-xs hover:shadow-xl
+                       transition-all duration-300 cursor-pointer border border-stone-100 dark:border-stone-700"
               onClick={() => setSelectedDest(dest)}
             >
               {/* Image */}
@@ -309,7 +309,7 @@ export default function Destinations() {
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute top-3 left-3">
-                  <span className="px-3 py-1 bg-white/90 backdrop-blur-xs rounded-full text-xs font-medium text-stone-700">
+                  <span className="px-3 py-1 bg-white/90 dark:bg-stone-900/90 backdrop-blur-xs rounded-full text-xs font-medium text-stone-700 dark:text-stone-300">
                     {dest.category}
                   </span>
                 </div>
@@ -326,17 +326,17 @@ export default function Destinations() {
 
               {/* Content */}
               <div className="p-5">
-                <h3 className="font-display text-xl font-medium text-stone-900 mb-2 group-hover:text-amber-700 transition-colors">
+                <h3 className="font-display text-xl font-medium text-stone-900 dark:text-stone-100 mb-2 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
                   {dest.name}
                 </h3>
-                <p className="text-stone-500 text-sm mb-4 line-clamp-2">
+                <p className="text-stone-500 dark:text-stone-400 text-sm mb-4 line-clamp-2">
                   {dest.description}
                 </p>
 
                 {/* Best For Tags */}
                 <div className="flex flex-wrap gap-1.5">
                   {dest.bestFor.slice(0, 3).map((tag) => (
-                    <span key={tag} className="px-2 py-1 bg-amber-50 text-amber-700 rounded-sm text-xs">
+                    <span key={tag} className="px-2 py-1 bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400 rounded-sm text-xs">
                       {tag}
                     </span>
                   ))}
@@ -348,7 +348,7 @@ export default function Destinations() {
 
         {/* CTA */}
         <div className="text-center mt-12">
-          <p className="text-stone-500 mb-4">
+          <p className="text-stone-500 dark:text-stone-400 mb-4">
             Need help planning your adventures? Our staff can arrange tours and transportation!
           </p>
           <a
@@ -371,7 +371,7 @@ export default function Destinations() {
           onClick={() => setSelectedDest(null)}
         >
           <div
-            className="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto my-8"
+            className="bg-white dark:bg-stone-900 rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto my-8"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header Image */}
@@ -414,10 +414,10 @@ export default function Destinations() {
             <div className="p-6 md:p-8">
               {/* Best For */}
               <div className="mb-6">
-                <h4 className="text-sm font-medium text-stone-500 uppercase tracking-wider mb-3">Best For</h4>
+                <h4 className="text-sm font-medium text-stone-500 dark:text-stone-400 uppercase tracking-wider mb-3">Best For</h4>
                 <div className="flex flex-wrap gap-2">
                   {selectedDest.bestFor.map((tag) => (
-                    <span key={tag} className="px-3 py-1.5 bg-amber-50 text-amber-700 rounded-full text-sm font-medium">
+                    <span key={tag} className="px-3 py-1.5 bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400 rounded-full text-sm font-medium">
                       {tag}
                     </span>
                   ))}
@@ -425,16 +425,16 @@ export default function Destinations() {
               </div>
 
               {/* Description */}
-              <p className="text-stone-600 text-lg leading-relaxed mb-6">
+              <p className="text-stone-600 dark:text-stone-400 text-lg leading-relaxed mb-6">
                 {selectedDest.description}
               </p>
 
               {/* Highlights */}
               <div className="mb-6">
-                <h4 className="text-sm font-medium text-stone-500 uppercase tracking-wider mb-3">Highlights</h4>
+                <h4 className="text-sm font-medium text-stone-500 dark:text-stone-400 uppercase tracking-wider mb-3">Highlights</h4>
                 <ul className="space-y-2">
                   {selectedDest.highlights.map((highlight, i) => (
-                    <li key={i} className="flex items-start gap-3 text-stone-600">
+                    <li key={i} className="flex items-start gap-3 text-stone-600 dark:text-stone-400">
                       <svg className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
@@ -445,29 +445,29 @@ export default function Destinations() {
               </div>
 
               {/* Pro Tip */}
-              <div className="bg-amber-50 rounded-2xl p-5 mb-6">
+              <div className="bg-amber-50 dark:bg-amber-900/20 rounded-2xl p-5 mb-6">
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center shrink-0">
                     <svg className="w-5 h-5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                         d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-amber-900 mb-1">Insider Tip</h4>
-                    <p className="text-amber-800 text-sm leading-relaxed">{selectedDest.proTip}</p>
+                    <h4 className="font-semibold text-amber-900 dark:text-amber-200 mb-1">Insider Tip</h4>
+                    <p className="text-amber-800 dark:text-amber-300 text-sm leading-relaxed">{selectedDest.proTip}</p>
                   </div>
                 </div>
               </div>
 
               {/* Best Time */}
-              <div className="flex items-start gap-3 text-stone-600 mb-8">
+              <div className="flex items-start gap-3 text-stone-600 dark:text-stone-400 mb-8">
                 <svg className="w-5 h-5 text-stone-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                     d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
                 <div>
-                  <span className="font-medium text-stone-700">Best Time to Visit: </span>
+                  <span className="font-medium text-stone-700 dark:text-stone-300">Best Time to Visit: </span>
                   {selectedDest.bestTime}
                 </div>
               </div>
@@ -484,8 +484,8 @@ export default function Destinations() {
                 </a>
                 <button
                   onClick={() => setSelectedDest(null)}
-                  className="px-6 py-3 border border-stone-200 text-stone-600 rounded-full font-medium
-                           hover:bg-stone-50 transition-colors cursor-pointer"
+                  className="px-6 py-3 border border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-400 rounded-full font-medium
+                           hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors cursor-pointer"
                 >
                   Close
                 </button>

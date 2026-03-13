@@ -37,7 +37,7 @@ const videoSchema = {
 
 export default function CheckInPage() {
     return (
-        <main id="main-content" className="min-h-screen">
+        <main id="main-content" className="min-h-screen bg-stone-50 dark:bg-stone-950">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
@@ -49,10 +49,10 @@ export default function CheckInPage() {
                 <div className="max-w-4xl mx-auto">
                     {/* Header */}
                     <div className="text-center mb-12">
-                        <h1 className="font-display text-4xl md:text-5xl font-medium mb-4 text-stone-900">
+                        <h1 className="font-display text-4xl md:text-5xl font-medium mb-4 text-stone-900 dark:text-stone-100">
                             Self Check-in Guide
                         </h1>
-                        <p className="text-xl text-stone-600">
+                        <p className="text-xl text-stone-600 dark:text-stone-400">
                             Welcome to Pelangi Capsule Hostel. Here is how to access your pod.
                         </p>
                     </div>
@@ -67,16 +67,16 @@ export default function CheckInPage() {
 
                     {/* Steps */}
                     <div className="grid md:grid-cols-2 gap-8 mb-16">
-                        <div className="bg-stone-50 p-8 rounded-2xl border border-stone-100">
-                            <h3 className="text-xl font-bold mb-4 text-amber-700">1. Arrival</h3>
-                            <p className="text-stone-700 leading-relaxed">
+                        <div className="bg-stone-50 dark:bg-stone-900 p-8 rounded-2xl border border-stone-100 dark:border-stone-700">
+                            <h3 className="text-xl font-bold mb-4 text-amber-700 dark:text-amber-400">1. Arrival</h3>
+                            <p className="text-stone-700 dark:text-stone-300 leading-relaxed">
                                 When you arrive at <strong>26A Jalan Perang</strong>, look for the door with the Pelangi Capsule Hostel sign.
                                 If the door is locked, please use the doorbell or contact us.
                             </p>
                         </div>
-                        <div className="bg-stone-50 p-8 rounded-2xl border border-stone-100">
-                            <h3 className="text-xl font-bold mb-4 text-amber-700">2. Check-in Times</h3>
-                            <ul className="space-y-2 text-stone-700">
+                        <div className="bg-stone-50 dark:bg-stone-900 p-8 rounded-2xl border border-stone-100 dark:border-stone-700">
+                            <h3 className="text-xl font-bold mb-4 text-amber-700 dark:text-amber-400">2. Check-in Times</h3>
+                            <ul className="space-y-2 text-stone-700 dark:text-stone-300">
                                 <li className="flex justify-between">
                                     <span>Check-in:</span>
                                     <span className="font-medium">From 3:00 PM</span>
@@ -91,7 +91,7 @@ export default function CheckInPage() {
 
                     {/* Quick Actions */}
                     <div className="text-center space-y-4">
-                        <p className="font-medium text-stone-900">Need help getting in?</p>
+                        <p className="font-medium text-stone-900 dark:text-stone-100">Need help getting in?</p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <a
                                 href="https://wa.me/60127088789"
@@ -112,7 +112,7 @@ export default function CheckInPage() {
                             <a
                                 href="https://wa.me/60167052004"
                                 target="_blank"
-                                className="px-8 py-3 bg-white border-2 border-stone-200 text-stone-700 font-medium rounded-full hover:bg-stone-50 transition-colors flex items-center justify-center gap-2"
+                                className="px-8 py-3 bg-white dark:bg-stone-800 border-2 border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-300 font-medium rounded-full hover:bg-stone-50 dark:hover:bg-stone-700 transition-colors flex items-center justify-center gap-2"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"

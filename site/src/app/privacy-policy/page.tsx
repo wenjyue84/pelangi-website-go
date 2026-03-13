@@ -19,22 +19,22 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-stone-50">
+      <main className="min-h-screen bg-stone-50 dark:bg-stone-950">
         <div className="pt-28 pb-16 container-custom">
           <div className="max-w-3xl mx-auto">
             {/* Page Header */}
             <div className="mb-10">
-              <h1 className="font-display text-4xl font-semibold text-stone-900 mb-3">
+              <h1 className="font-display text-4xl font-semibold text-stone-900 dark:text-stone-100 mb-3">
                 Privacy Policy
               </h1>
-              <p className="text-stone-500 text-sm">Last updated: {lastUpdated}</p>
+              <p className="text-stone-500 dark:text-stone-400 text-sm">Last updated: {lastUpdated}</p>
             </div>
 
             {/* Content */}
-            <div className="prose prose-stone prose-lg max-w-none">
+            <div className="prose prose-stone dark:prose-invert prose-lg max-w-none">
               {/* Introduction */}
               <section className="mb-8">
-                <p className="text-stone-700 leading-relaxed">
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed">
                   Pelangi Capsule Hostel (&ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;) is committed to
                   protecting your personal data in accordance with Malaysia&rsquo;s{" "}
                   <strong>Personal Data Protection Act 2010 (PDPA)</strong>, specifically Section 7
@@ -45,13 +45,13 @@ export default function PrivacyPolicyPage() {
 
               {/* Data Controller */}
               <section className="mb-8">
-                <h2 className="font-display text-2xl font-semibold text-stone-800 mb-4">
+                <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
                   1. Data Controller
                 </h2>
-                <p className="text-stone-700 leading-relaxed">
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed">
                   The data controller responsible for your personal data is:
                 </p>
-                <div className="bg-stone-100 rounded-lg p-5 mt-3 text-stone-700">
+                <div className="bg-stone-100 dark:bg-stone-800 rounded-lg p-5 mt-3 text-stone-700 dark:text-stone-300">
                   <p className="font-medium">Pelangi Capsule Hostel</p>
                   <p>26A Jalan Perang, Taman Pelangi</p>
                   <p>80400 Johor Bahru, Johor, Malaysia</p>
@@ -65,13 +65,13 @@ export default function PrivacyPolicyPage() {
 
               {/* Data Collected */}
               <section className="mb-8">
-                <h2 className="font-display text-2xl font-semibold text-stone-800 mb-4">
+                <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
                   2. Personal Data We Collect
                 </h2>
-                <p className="text-stone-700 leading-relaxed mb-3">
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed mb-3">
                   We collect the following categories of personal data:
                 </p>
-                <ul className="list-disc list-inside space-y-2 text-stone-700">
+                <ul className="list-disc list-inside space-y-2 text-stone-700 dark:text-stone-300">
                   <li>
                     <strong>Identity data:</strong> Name, nationality, passport or IC number
                     (collected at check-in as required by Malaysian hospitality regulations)
@@ -104,13 +104,13 @@ export default function PrivacyPolicyPage() {
 
               {/* Purpose */}
               <section className="mb-8">
-                <h2 className="font-display text-2xl font-semibold text-stone-800 mb-4">
+                <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
                   3. Purpose of Processing
                 </h2>
-                <p className="text-stone-700 leading-relaxed mb-3">
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed mb-3">
                   We process your personal data for the following purposes:
                 </p>
-                <ul className="list-disc list-inside space-y-2 text-stone-700">
+                <ul className="list-disc list-inside space-y-2 text-stone-700 dark:text-stone-300">
                   <li>
                     <strong>Booking fulfilment:</strong> Processing reservations, sending confirmation
                     emails, and managing your stay
@@ -140,10 +140,10 @@ export default function PrivacyPolicyPage() {
 
               {/* Legal Basis */}
               <section className="mb-8">
-                <h2 className="font-display text-2xl font-semibold text-stone-800 mb-4">
+                <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
                   4. Legal Basis for Processing
                 </h2>
-                <ul className="list-disc list-inside space-y-2 text-stone-700">
+                <ul className="list-disc list-inside space-y-2 text-stone-700 dark:text-stone-300">
                   <li>
                     <strong>Contract:</strong> Processing necessary to fulfil your booking
                   </li>
@@ -163,22 +163,22 @@ export default function PrivacyPolicyPage() {
 
               {/* Third Parties */}
               <section className="mb-8">
-                <h2 className="font-display text-2xl font-semibold text-stone-800 mb-4">
+                <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
                   5. Third-Party Data Processors
                 </h2>
-                <p className="text-stone-700 leading-relaxed mb-3">
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed mb-3">
                   We use the following third-party services that may process your data on our behalf:
                 </p>
                 <div className="overflow-x-auto">
-                  <table className="w-full text-sm text-stone-700 border border-stone-200 rounded-lg">
-                    <thead className="bg-stone-100">
+                  <table className="w-full text-sm text-stone-700 dark:text-stone-300 border border-stone-200 dark:border-stone-700 rounded-lg">
+                    <thead className="bg-stone-100 dark:bg-stone-800">
                       <tr>
                         <th className="text-left p-3 font-medium">Service</th>
                         <th className="text-left p-3 font-medium">Purpose</th>
                         <th className="text-left p-3 font-medium">Data Shared</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-stone-200">
+                    <tbody className="divide-y divide-stone-200 dark:divide-stone-700">
                       <tr>
                         <td className="p-3 font-medium">Google Analytics 4</td>
                         <td className="p-3">Website analytics</td>
@@ -202,7 +202,7 @@ export default function PrivacyPolicyPage() {
                     </tbody>
                   </table>
                 </div>
-                <p className="text-stone-600 text-sm mt-3">
+                <p className="text-stone-600 dark:text-stone-400 text-sm mt-3">
                   All third-party processors are required to handle your data securely and in
                   compliance with applicable data protection laws.
                 </p>
@@ -210,10 +210,10 @@ export default function PrivacyPolicyPage() {
 
               {/* Data Retention */}
               <section className="mb-8">
-                <h2 className="font-display text-2xl font-semibold text-stone-800 mb-4">
+                <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
                   6. Data Retention
                 </h2>
-                <ul className="list-disc list-inside space-y-2 text-stone-700">
+                <ul className="list-disc list-inside space-y-2 text-stone-700 dark:text-stone-300">
                   <li>
                     <strong>Booking records:</strong> 7 years (required for accounting and tax
                     purposes under Malaysian law)
@@ -238,13 +238,13 @@ export default function PrivacyPolicyPage() {
 
               {/* Your Rights */}
               <section className="mb-8">
-                <h2 className="font-display text-2xl font-semibold text-stone-800 mb-4">
+                <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
                   7. Your Rights
                 </h2>
-                <p className="text-stone-700 leading-relaxed mb-3">
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed mb-3">
                   Under the PDPA 2010, you have the following rights:
                 </p>
-                <ul className="list-disc list-inside space-y-2 text-stone-700">
+                <ul className="list-disc list-inside space-y-2 text-stone-700 dark:text-stone-300">
                   <li>
                     <strong>Right of access:</strong> Request a copy of the personal data we hold
                     about you
@@ -266,7 +266,7 @@ export default function PrivacyPolicyPage() {
                   To exercise any of these rights, please contact us at{" "}
                   <a
                     href="mailto:pelangicapsule@gmail.com"
-                    className="text-amber-700 underline hover:text-amber-800"
+                    className="text-amber-700 dark:text-amber-400 underline hover:text-amber-800 dark:hover:text-amber-300"
                   >
                     pelangicapsule@gmail.com
                   </a>
@@ -276,10 +276,10 @@ export default function PrivacyPolicyPage() {
 
               {/* Cookies */}
               <section className="mb-8">
-                <h2 className="font-display text-2xl font-semibold text-stone-800 mb-4">
+                <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
                   8. Cookies
                 </h2>
-                <p className="text-stone-700 leading-relaxed">
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed">
                   We use essential cookies (required for the website to function) and optional
                   analytics cookies (only with your consent). You can manage your cookie preferences
                   at any time by clearing your browser cookies and revisiting our site to see the
@@ -288,7 +288,7 @@ export default function PrivacyPolicyPage() {
                     href="https://www.allaboutcookies.org"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-amber-700 underline hover:text-amber-800"
+                    className="text-amber-700 dark:text-amber-400 underline hover:text-amber-800 dark:hover:text-amber-300"
                   >
                     allaboutcookies.org
                   </a>
@@ -298,10 +298,10 @@ export default function PrivacyPolicyPage() {
 
               {/* International Transfers */}
               <section className="mb-8">
-                <h2 className="font-display text-2xl font-semibold text-stone-800 mb-4">
+                <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
                   9. International Data Transfers
                 </h2>
-                <p className="text-stone-700 leading-relaxed">
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed">
                   Some of our third-party processors (Google, Sentry, Brevo) may transfer and store
                   your data outside Malaysia. Where this occurs, we ensure appropriate safeguards are
                   in place, including contractual protections and the processor&rsquo;s compliance
@@ -311,10 +311,10 @@ export default function PrivacyPolicyPage() {
 
               {/* Security */}
               <section className="mb-8">
-                <h2 className="font-display text-2xl font-semibold text-stone-800 mb-4">
+                <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
                   10. Data Security
                 </h2>
-                <p className="text-stone-700 leading-relaxed">
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed">
                   We implement appropriate technical and organisational measures to protect your
                   personal data against unauthorised access, disclosure, alteration, or destruction.
                   Our website uses HTTPS encryption for all data in transit. However, no internet
@@ -324,10 +324,10 @@ export default function PrivacyPolicyPage() {
 
               {/* Changes */}
               <section className="mb-8">
-                <h2 className="font-display text-2xl font-semibold text-stone-800 mb-4">
+                <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
                   11. Changes to This Policy
                 </h2>
-                <p className="text-stone-700 leading-relaxed">
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed">
                   We may update this privacy policy from time to time to reflect changes in our
                   practices or applicable law. The &ldquo;Last updated&rdquo; date at the top of this
                   page indicates when the policy was last revised. Continued use of our website after
@@ -337,14 +337,14 @@ export default function PrivacyPolicyPage() {
 
               {/* Contact */}
               <section className="mb-8">
-                <h2 className="font-display text-2xl font-semibold text-stone-800 mb-4">
+                <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
                   12. Contact Us
                 </h2>
-                <p className="text-stone-700 leading-relaxed">
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed">
                   If you have questions, concerns, or complaints about this privacy policy or how we
                   handle your personal data, please contact our Data Protection contact:
                 </p>
-                <div className="bg-stone-100 rounded-lg p-5 mt-3 text-stone-700">
+                <div className="bg-stone-100 dark:bg-stone-800 rounded-lg p-5 mt-3 text-stone-700 dark:text-stone-300">
                   <p className="font-medium">Data Protection Contact</p>
                   <p>Pelangi Capsule Hostel</p>
                   <p>26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru, Johor</p>
@@ -352,7 +352,7 @@ export default function PrivacyPolicyPage() {
                     Email:{" "}
                     <a
                       href="mailto:pelangicapsule@gmail.com"
-                      className="text-amber-700 underline hover:text-amber-800"
+                      className="text-amber-700 dark:text-amber-400 underline hover:text-amber-800 dark:hover:text-amber-300"
                     >
                       pelangicapsule@gmail.com
                     </a>
@@ -366,7 +366,7 @@ export default function PrivacyPolicyPage() {
                     href="https://www.pdp.gov.my"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-amber-700 underline hover:text-amber-800"
+                    className="text-amber-700 dark:text-amber-400 underline hover:text-amber-800 dark:hover:text-amber-300"
                   >
                     www.pdp.gov.my
                   </a>

@@ -30,7 +30,7 @@ export default function LanguageSwitcher() {
   return (
     <div className="flex items-center gap-1 ml-4">
       <nav
-        className="flex gap-1 bg-stone-100 rounded-full p-1"
+        className="flex gap-1 bg-stone-100 dark:bg-stone-800 rounded-full p-1"
         aria-label="Language selector"
       >
         {LANGUAGES.map((lang) => (
@@ -39,8 +39,8 @@ export default function LanguageSwitcher() {
             onClick={() => handleLanguageChange(lang.code)}
             className={`min-h-6 min-w-6 px-3 py-1.5 text-sm font-medium rounded-full transition-all duration-200 ${
               currentLanguage === lang.code
-                ? "bg-white text-stone-900 shadow-xs"
-                : "text-stone-600 hover:text-stone-900"
+                ? "bg-white dark:bg-stone-700 text-stone-900 dark:text-stone-100 shadow-xs"
+                : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200"
             }`}
             aria-pressed={currentLanguage === lang.code}
             aria-label={`Switch to ${lang.label}`}

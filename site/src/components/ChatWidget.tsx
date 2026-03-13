@@ -211,7 +211,7 @@ export default function ChatWidget() {
         className={`
           fixed bottom-24 right-4 sm:right-6 z-50
           w-[calc(100vw-2rem)] sm:w-96
-          shadow-2xl rounded-2xl overflow-hidden flex flex-col bg-white
+          shadow-2xl rounded-2xl overflow-hidden flex flex-col bg-white dark:bg-stone-800
           transition-all duration-300 ease-out origin-bottom-right
           ${isOpen
             ? 'opacity-100 scale-100 pointer-events-auto'
@@ -268,7 +268,7 @@ export default function ChatWidget() {
                   max-w-[82%] px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed wrap-break-word
                   ${msg.role === 'user'
                     ? 'text-white rounded-br-[4px]'
-                    : 'bg-white text-stone-800 rounded-bl-[4px] shadow-xs border border-stone-100'
+                    : 'bg-white dark:bg-stone-700 text-stone-800 dark:text-stone-200 rounded-bl-[4px] shadow-xs border border-stone-100 dark:border-stone-600'
                   }
                 `}
                 style={msg.role === 'user' ? { background: '#a68b64' } : {}}
@@ -287,7 +287,7 @@ export default function ChatWidget() {
           {/* Typing indicator */}
           {sending && (
             <div className="flex items-start" style={{ animation: 'fadeUp 0.2s ease-out' }}>
-              <div className="bg-white rounded-2xl rounded-bl-[4px] shadow-xs border border-stone-100 px-4 py-3">
+              <div className="bg-white dark:bg-stone-700 rounded-2xl rounded-bl-[4px] shadow-xs border border-stone-100 dark:border-stone-600 px-4 py-3">
                 <div className="flex gap-1.5 items-center">
                   {[0, 150, 300].map(delay => (
                     <span
@@ -308,7 +308,7 @@ export default function ChatWidget() {
         </div>
 
         {/* Input area */}
-        <div className="bg-white border-t border-stone-100 px-3 py-2.5 flex gap-2 items-end shrink-0">
+        <div className="bg-white dark:bg-stone-800 border-t border-stone-100 dark:border-stone-700 px-3 py-2.5 flex gap-2 items-end shrink-0">
           <textarea
             ref={inputRef}
             value={input}
@@ -320,7 +320,8 @@ export default function ChatWidget() {
             autoComplete="on"
             className="
               flex-1 resize-none text-sm outline-hidden transition
-              border border-stone-200 rounded-xl px-3 py-2
+              border border-stone-200 dark:border-stone-600 rounded-xl px-3 py-2
+              bg-white dark:bg-stone-700 text-stone-900 dark:text-stone-100
               focus:border-amber-400 focus:ring-1 focus:ring-amber-200
               disabled:opacity-60 placeholder:text-stone-500
             "
@@ -354,7 +355,7 @@ export default function ChatWidget() {
         </div>
 
         {/* Footer */}
-        <div className="text-center text-[10px] text-stone-500 py-1.5 bg-white border-t border-stone-50">
+        <div className="text-center text-[10px] text-stone-500 dark:text-stone-400 py-1.5 bg-white dark:bg-stone-800 border-t border-stone-50 dark:border-stone-700">
           Powered by Rainbow AI
         </div>
       </div>

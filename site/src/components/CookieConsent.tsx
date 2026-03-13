@@ -62,10 +62,10 @@ export default function CookieConsent() {
       aria-describedby="cookie-consent-description"
       className="fixed bottom-0 left-0 right-0 z-60 p-4 md:p-6"
     >
-      <div className="mx-auto max-w-3xl rounded-xl border border-stone-200 bg-white p-4 shadow-xl md:p-6">
+      <div className="mx-auto max-w-3xl rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 p-4 shadow-xl md:p-6">
         <p
           id="cookie-consent-description"
-          className="text-sm text-stone-600 md:text-base"
+          className="text-sm text-stone-600 dark:text-stone-400 md:text-base"
         >
           We use cookies to analyse site traffic and improve your experience. Non-essential
           cookies (analytics) are only loaded with your consent. If you subscribe to
@@ -74,7 +74,7 @@ export default function CookieConsent() {
           all cookies. You can also reject non-essential cookies. See our{" "}
           <Link
             href="/privacy-policy"
-            className="underline text-stone-700 hover:text-stone-900"
+            className="underline text-stone-700 hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
           >
             Privacy Policy
           </Link>{" "}
@@ -84,7 +84,7 @@ export default function CookieConsent() {
         <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:justify-end sm:gap-3">
           <button
             onClick={handleReject}
-            className="rounded-lg border border-stone-300 bg-white px-5 py-2.5 text-sm font-medium text-stone-700 transition-colors hover:bg-stone-50 focus:outline-hidden focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
+            className="rounded-lg border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-700 px-5 py-2.5 text-sm font-medium text-stone-700 dark:text-stone-300 transition-colors hover:bg-stone-50 dark:hover:bg-stone-600 focus:outline-hidden focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
           >
             Reject Non-Essential
           </button>

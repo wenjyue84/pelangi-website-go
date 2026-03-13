@@ -59,17 +59,17 @@ const latestPosts = [...blogPosts]
 
 export default function JBBuzz() {
   return (
-    <section id="jb-buzz" className="py-20 bg-stone-50">
+    <section id="jb-buzz" className="py-20 bg-stone-50 dark:bg-stone-950">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <span className="text-amber-700 font-medium tracking-wider text-sm uppercase mb-2 block">
+          <span className="text-amber-700 dark:text-amber-400 font-medium tracking-wider text-sm uppercase mb-2 block">
             JB Buzz
           </span>
-          <h2 className="font-display text-4xl font-medium mb-4 text-stone-900">
+          <h2 className="font-display text-4xl font-medium mb-4 text-stone-900 dark:text-stone-100">
             News & Updates from Johor Bahru
           </h2>
-          <p className="text-stone-600 text-lg max-w-2xl mx-auto">
+          <p className="text-stone-600 dark:text-stone-400 text-lg max-w-2xl mx-auto">
             Stay in the loop with the latest happenings around JB — from food
             scene updates to transport news and travel tips.
           </p>
@@ -79,12 +79,12 @@ export default function JBBuzz() {
           {/* Left Column: Curated News (3 cols) */}
           <div className="lg:col-span-3">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="font-display text-2xl font-medium text-stone-900">
+              <h3 className="font-display text-2xl font-medium text-stone-900 dark:text-stone-100">
                 What&apos;s Happening in JB
               </h3>
               <Link
                 href="/feed.xml"
-                className="flex items-center gap-2 text-sm font-medium text-amber-700 hover:text-amber-800 transition-colors bg-amber-50 px-4 py-2 rounded-full border border-amber-200"
+                className="flex items-center gap-2 text-sm font-medium text-amber-700 dark:text-amber-400 hover:text-amber-800 dark:hover:text-amber-300 transition-colors bg-amber-50 dark:bg-amber-900/30 px-4 py-2 rounded-full border border-amber-200 dark:border-amber-800"
               >
                 <svg
                   className="w-4 h-4"
@@ -104,10 +104,10 @@ export default function JBBuzz() {
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block bg-white rounded-2xl border border-stone-100 p-5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group"
+                  className="block bg-white dark:bg-stone-800 rounded-2xl border border-stone-100 dark:border-stone-700 p-5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center border border-amber-100">
+                    <div className="shrink-0 w-12 h-12 bg-amber-50 dark:bg-amber-900/30 rounded-xl flex items-center justify-center border border-amber-100 dark:border-amber-800">
                       <span className="text-lg">
                         {item.source === "Malay Mail"
                           ? "📰"
@@ -119,14 +119,14 @@ export default function JBBuzz() {
                       </span>
                     </div>
                     <div className="grow min-w-0">
-                      <h4 className="font-semibold text-stone-900 group-hover:text-amber-700 transition-colors leading-snug mb-1">
+                      <h4 className="font-semibold text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors leading-snug mb-1">
                         {item.title}
                       </h4>
-                      <p className="text-sm text-stone-500 line-clamp-2 mb-2">
+                      <p className="text-sm text-stone-500 dark:text-stone-400 line-clamp-2 mb-2">
                         {item.description}
                       </p>
-                      <div className="flex items-center gap-3 text-xs text-stone-500">
-                        <span className="font-medium text-amber-700">
+                      <div className="flex items-center gap-3 text-xs text-stone-500 dark:text-stone-400">
+                        <span className="font-medium text-amber-700 dark:text-amber-400">
                           {item.source}
                         </span>
                         <span>·</span>
@@ -138,7 +138,7 @@ export default function JBBuzz() {
                           })}
                         </span>
                         <svg
-                          className="w-3.5 h-3.5 ml-auto text-stone-300 group-hover:text-amber-500 transition-colors"
+                          className="w-3.5 h-3.5 ml-auto text-stone-300 dark:text-stone-600 group-hover:text-amber-500 transition-colors"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -161,12 +161,12 @@ export default function JBBuzz() {
           {/* Right Column: Latest Blog Posts (2 cols) */}
           <div className="lg:col-span-2">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="font-display text-2xl font-medium text-stone-900">
+              <h3 className="font-display text-2xl font-medium text-stone-900 dark:text-stone-100">
                 Latest from Our Blog
               </h3>
               <Link
                 href="/blog"
-                className="text-sm font-medium text-amber-700 hover:text-amber-800 transition-colors"
+                className="text-sm font-medium text-amber-700 dark:text-amber-400 hover:text-amber-800 dark:hover:text-amber-300 transition-colors"
               >
                 View all →
               </Link>

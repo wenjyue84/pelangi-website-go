@@ -59,7 +59,7 @@ const blogBreadcrumbSchema = {
 
 export default function BlogPage() {
   return (
-    <main id="main-content" className="min-h-screen bg-stone-50">
+    <main id="main-content" className="min-h-screen bg-stone-50 dark:bg-stone-950">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogBreadcrumbSchema) }}
@@ -70,13 +70,13 @@ export default function BlogPage() {
         <div className="max-w-5xl mx-auto">
           {/* Page header */}
           <div className="text-center mb-10">
-            <span className="inline-block px-4 py-1.5 text-sm font-medium rounded-full bg-amber-100 text-amber-800 mb-4">
+            <span className="inline-block px-4 py-1.5 text-sm font-medium rounded-full bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300 mb-4">
               JB Travel Blog
             </span>
-            <h1 className="font-display text-4xl md:text-5xl font-medium mb-4 text-stone-900">
+            <h1 className="font-display text-4xl md:text-5xl font-medium mb-4 text-stone-900 dark:text-stone-100">
               Guides & Tips for Backpackers
             </h1>
-            <p className="text-xl text-stone-600 max-w-2xl mx-auto">
+            <p className="text-xl text-stone-600 dark:text-stone-400 max-w-2xl mx-auto">
               Local knowledge from our team in Taman Pelangi — food, day trips,
               budget hacks, and everything in between.
             </p>

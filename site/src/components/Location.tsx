@@ -9,7 +9,7 @@ export default function Location() {
   ];
 
   return (
-    <section id="location" className="section-padding bg-white">
+    <section id="location" className="section-padding bg-white dark:bg-stone-900">
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Map */}
@@ -34,10 +34,10 @@ export default function Location() {
             </h2>
 
             {/* Address Card */}
-            <div className="bg-stone-50 rounded-2xl p-6 mb-8 border border-stone-100">
+            <div className="bg-stone-50 dark:bg-stone-800 rounded-2xl p-6 mb-8 border border-stone-100 dark:border-stone-700">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center shrink-0">
-                  <svg className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center shrink-0">
+                  <svg className="w-6 h-6 text-amber-600 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
                       d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
@@ -45,8 +45,8 @@ export default function Location() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-stone-900 mb-2">Address</h3>
-                  <p className="text-stone-600 leading-relaxed">
+                  <h3 className="font-semibold text-stone-900 dark:text-stone-100 mb-2">Address</h3>
+                  <p className="text-stone-600 dark:text-stone-400 leading-relaxed">
                     26A, Jalan Perang,<br />
                     Taman Pelangi,<br />
                     80400 Johor Bahru,<br />
@@ -58,23 +58,23 @@ export default function Location() {
 
             {/* Nearby Places */}
             <div className="mb-8">
-              <h3 className="text-xs tracking-widest uppercase text-stone-500 mb-4">What&apos;s Nearby</h3>
+              <h3 className="text-xs tracking-widest uppercase text-stone-500 dark:text-stone-400 mb-4">What&apos;s Nearby</h3>
               <div className="grid grid-cols-2 gap-3">
                 {nearbyPlaces.map((place, index) => (
                   <div
                     key={index}
-                    className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 border border-stone-100"
+                    className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700"
                   >
-                    <div className="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center shrink-0">
-                      <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                    <div className="w-8 h-8 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center shrink-0">
+                      <svg className="w-4 h-4 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd"
                           d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                           clipRule="evenodd" />
                       </svg>
                     </div>
                     <div className="min-w-0">
-                      <div className="text-sm font-medium text-stone-800 truncate">{place.name}</div>
-                      <div className="text-xs text-stone-500">{place.distance}</div>
+                      <div className="text-sm font-medium text-stone-800 dark:text-stone-200 truncate">{place.name}</div>
+                      <div className="text-xs text-stone-500 dark:text-stone-400">{place.distance}</div>
                     </div>
                   </div>
                 ))}

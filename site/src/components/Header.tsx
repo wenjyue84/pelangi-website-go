@@ -37,7 +37,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white/95 backdrop-blur-md shadow-xs py-3">
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white/95 backdrop-blur-md shadow-xs py-3 dark:bg-stone-900/95 dark:shadow-stone-950/50">
       <nav className="container-custom flex items-center justify-between px-6 md:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
@@ -51,10 +51,10 @@ export default function Header() {
             />
           </div>
           <div className="flex flex-col">
-            <span className="font-display text-xl font-medium tracking-tight transition-colors duration-300 text-stone-900">
+            <span className="font-display text-xl font-medium tracking-tight transition-colors duration-300 text-stone-900 dark:text-stone-100">
               Pelangi
             </span>
-            <span className="text-[10px] font-medium tracking-widest uppercase transition-colors duration-300 text-stone-500">
+            <span className="text-[10px] font-medium tracking-widest uppercase transition-colors duration-300 text-stone-500 dark:text-stone-400">
               Capsule Hostel
             </span>
           </div>
@@ -66,14 +66,14 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full text-stone-600 hover:text-stone-900 hover:bg-stone-100"
+              className="px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full text-stone-600 hover:text-stone-900 hover:bg-stone-100 dark:text-stone-400 dark:hover:text-stone-100 dark:hover:bg-stone-800"
             >
               {link.label}
             </Link>
           ))}
           <button
             onClick={() => setIsSearchOpen(true)}
-            className="p-2 text-stone-500 hover:text-stone-900 hover:bg-stone-100 rounded-full transition-colors"
+            className="p-2 text-stone-500 hover:text-stone-900 hover:bg-stone-100 rounded-full transition-colors dark:text-stone-400 dark:hover:text-stone-100 dark:hover:bg-stone-800"
             aria-label="Search site (Ctrl+K)"
             title="Search (Ctrl+K)"
           >
@@ -93,16 +93,16 @@ export default function Header() {
         {/* Mobile Search + Menu Buttons */}
         <div className="flex items-center gap-1 md:hidden">
           <button
-            className="p-2 rounded-full transition-colors duration-300 text-stone-700 hover:bg-stone-100"
+            className="p-2 rounded-full transition-colors duration-300 text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-800"
             onClick={() => setIsSearchOpen(true)}
             aria-label="Search site"
-          >
+>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </button>
           <button
-            className="p-2 rounded-full transition-colors duration-300 text-stone-700 hover:bg-stone-100"
+            className="p-2 rounded-full transition-colors duration-300 text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-800"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -118,7 +118,7 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         <div
-          className={`absolute top-full left-4 right-4 mt-2 bg-white rounded-2xl shadow-xl md:hidden
+          className={`absolute top-full left-4 right-4 mt-2 bg-white rounded-2xl shadow-xl md:hidden dark:bg-stone-800 dark:shadow-stone-950/50
                      overflow-hidden transition-all duration-300 ${isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
             }`}
         >
@@ -127,13 +127,13 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="block px-6 py-3 text-stone-700 hover:bg-stone-50 hover:text-stone-900 transition-colors"
+                className="block px-6 py-3 text-stone-700 hover:bg-stone-50 hover:text-stone-900 transition-colors dark:text-stone-300 dark:hover:bg-stone-700 dark:hover:text-stone-100"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
-            <div className="px-6 py-3 border-t border-stone-100 mt-2">
+            <div className="px-6 py-3 border-t border-stone-100 mt-2 dark:border-stone-700">
               <div className="flex items-center justify-center mb-4">
                 <LanguageSwitcher />
               </div>

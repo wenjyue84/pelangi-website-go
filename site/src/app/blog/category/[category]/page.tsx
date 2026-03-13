@@ -108,7 +108,7 @@ export default async function CategoryPage({ params }: PageProps) {
   };
 
   return (
-    <main id="main-content" className="min-h-screen bg-stone-50">
+    <main id="main-content" className="min-h-screen bg-stone-50 dark:bg-stone-950">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -118,7 +118,7 @@ export default async function CategoryPage({ params }: PageProps) {
       <div className="pt-28 pb-16 container-custom">
         <div className="max-w-5xl mx-auto">
           {/* Breadcrumb */}
-          <nav aria-label="Breadcrumb" className="mb-8 text-sm text-stone-500">
+          <nav aria-label="Breadcrumb" className="mb-8 text-sm text-stone-500 dark:text-stone-400">
             <ol className="flex items-center gap-2">
               <li>
                 <Link href="/" className="hover:text-amber-700 transition-colors">
@@ -132,19 +132,19 @@ export default async function CategoryPage({ params }: PageProps) {
                 </Link>
               </li>
               <li aria-hidden="true">/</li>
-              <li className="text-stone-800 font-medium">{categoryLabel}</li>
+              <li className="text-stone-800 dark:text-stone-200 font-medium">{categoryLabel}</li>
             </ol>
           </nav>
 
           {/* Page header */}
           <div className="text-center mb-10">
-            <span className="inline-block px-4 py-1.5 text-sm font-medium rounded-full bg-amber-100 text-amber-800 mb-4">
+            <span className="inline-block px-4 py-1.5 text-sm font-medium rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 mb-4">
               {categoryLabel}
             </span>
-            <h1 className="font-display text-4xl md:text-5xl font-medium mb-4 text-stone-900">
+            <h1 className="font-display text-4xl md:text-5xl font-medium mb-4 text-stone-900 dark:text-stone-100">
               {categoryLabel} Articles
             </h1>
-            <p className="text-xl text-stone-600 max-w-2xl mx-auto">
+            <p className="text-xl text-stone-600 dark:text-stone-400 max-w-2xl mx-auto">
               {filteredPosts.length} article{filteredPosts.length !== 1 ? "s" : ""} in
               this category.
             </p>

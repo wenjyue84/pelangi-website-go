@@ -9,16 +9,16 @@ export default function NewsletterSignupForm() {
   return (
     <section
       aria-labelledby="newsletter-heading"
-      className="mt-16 rounded-2xl border border-amber-200 bg-amber-50/50 p-8 md:p-10"
+      className="mt-16 rounded-2xl border border-amber-200 dark:border-amber-800 bg-amber-50/50 dark:bg-amber-950/30 p-8 md:p-10"
     >
       <div className="max-w-xl mx-auto text-center">
         <h2
           id="newsletter-heading"
-          className="font-display text-2xl md:text-3xl font-medium text-stone-900 mb-3"
+          className="font-display text-2xl md:text-3xl font-medium text-stone-900 dark:text-stone-100 mb-3"
         >
           Stay in the Loop
         </h2>
-        <p className="text-stone-600 mb-6">
+        <p className="text-stone-600 dark:text-stone-400 mb-6">
           Get JB travel tips, local food finds, and hostel deals straight to
           your inbox.
         </p>
@@ -26,7 +26,7 @@ export default function NewsletterSignupForm() {
         {state?.success ? (
           <div
             role="status"
-            className="rounded-lg bg-green-50 border border-green-200 p-4 text-green-800 text-sm"
+            className="rounded-lg bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800 p-4 text-green-800 dark:text-green-300 text-sm"
           >
             {state.message}
           </div>
@@ -36,7 +36,7 @@ export default function NewsletterSignupForm() {
               <div className="flex-1">
                 <label
                   htmlFor="newsletter-name"
-                  className="block text-sm font-medium text-stone-700 mb-1 text-left"
+                  className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1 text-left"
                 >
                   First name
                 </label>
@@ -47,13 +47,13 @@ export default function NewsletterSignupForm() {
                   required
                   autoComplete="given-name"
                   placeholder="Your first name"
-                  className="w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-stone-900 placeholder:text-stone-400 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20"
+                  className="w-full rounded-lg border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-2.5 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20"
                 />
               </div>
               <div className="flex-1">
                 <label
                   htmlFor="newsletter-email"
-                  className="block text-sm font-medium text-stone-700 mb-1 text-left"
+                  className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1 text-left"
                 >
                   Email address
                 </label>
@@ -64,13 +64,13 @@ export default function NewsletterSignupForm() {
                   required
                   autoComplete="email"
                   placeholder="you@example.com"
-                  className="w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-stone-900 placeholder:text-stone-400 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20"
+                  className="w-full rounded-lg border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-2.5 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20"
                 />
               </div>
             </div>
 
             {state?.message && !state.success && (
-              <p role="alert" className="text-sm text-red-600">
+              <p role="alert" className="text-sm text-red-600 dark:text-red-400">
                 {state.message}
               </p>
             )}
@@ -83,7 +83,7 @@ export default function NewsletterSignupForm() {
               {isPending ? "Subscribing…" : "Subscribe"}
             </button>
 
-            <p className="text-xs text-stone-500">
+            <p className="text-xs text-stone-500 dark:text-stone-400">
               No spam. Unsubscribe anytime. We respect your privacy under PDPA.
             </p>
           </form>

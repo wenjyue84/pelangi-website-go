@@ -81,17 +81,17 @@ export default function Booking() {
                 href={platform.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white rounded-2xl p-6 text-center hover:shadow-2xl transition-all duration-300
+                className="bg-white dark:bg-stone-800 rounded-2xl p-6 text-center hover:shadow-2xl transition-all duration-300
                          hover:-translate-y-1 group cursor-pointer"
               >
                 <div className={`w-12 h-12 rounded-xl ${platform.color} mx-auto mb-4
                               flex items-center justify-center text-white font-bold text-lg`}>
                   {platform.name.charAt(0)}
                 </div>
-                <div className="font-semibold text-stone-900 group-hover:text-amber-700 transition-colors mb-1">
+                <div className="font-semibold text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors mb-1">
                   {platform.name}
                 </div>
-                <div className="text-sm text-stone-500">{platform.highlight}</div>
+                <div className="text-sm text-stone-500 dark:text-stone-400">{platform.highlight}</div>
               </a>
             ))}
           </div>

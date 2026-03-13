@@ -4059,3 +4059,25 @@ This task involves a global audit and implementation of accessible focus indicat
 *   Unlike `box-shadow` (used by Tailwind's `ring` utility), `outline` is rendered correctly in Windows High Contrast mode. Stick to `outline`.
 *   Custom components (e.g., a `<div role="button">`) must have `tabindex="0"` to be keyboard-focusable and receive the `focus-visible` style.
 
+---
+
+## US-075 - Implement dark mode support with prefers-color-scheme and Tailwind dark: classes
+
+### What was implemented
+- **globals.css**: Added `dark:bg-stone-950 dark:text-stone-200` to body, dark scrollbar styles via `@media (prefers-color-scheme: dark)`, dark selection colors, updated all @utility classes (btn-primary, btn-secondary, card, section-heading, etc.) with dark: variants
+- **All page files**: Added `dark:bg-stone-950` to `<main>` elements across all routes (home, blog, blog/[slug], blog/category/[category], rooms, about, gallery, guide, contact, check-in, book, privacy-policy, error, not-found)
+- **All components**: Applied dark: variants to 25+ components including Header, Footer, Hero, Rooms, Testimonials, Reviews, FAQ, Amenities, Destinations, Location, LocationMap, CommunityEvents, SingaporeTeaser, BlogCard, BlogFilter, JBBuzz, Gallery, TableOfContents, NewsletterSignupForm, ContactForm, SearchDialog, CookieConsent, MobileBookingBar, Booking, ChatWidget, LanguageSwitcher, ShareButton, DynamicComponents
+- **Color mapping**: stone-50→stone-950, white→stone-800/900, text-stone-900→stone-100, text-stone-600→stone-400, amber-700→amber-400, borders stone-100/200→stone-700
+
+### Patterns discovered
+- Tailwind CSS v4 uses `prefers-color-scheme` by default for `dark:` variants — no tailwind.config.ts change needed (no config file exists in v4)
+- `@utility` classes in globals.css need explicit dark: variants; they don't inherit from parent selectors
+- The body rule `dark:bg-stone-950 dark:text-stone-200` in globals.css prevents white flash on dark mode page load
+- Dark scrollbar colors must use `@media (prefers-color-scheme: dark)` with hardcoded hex values since `::-webkit-scrollbar` doesn't support Tailwind's `dark:` variant
+- ChatWidget uses inline styles for branded colors that bypass dark mode — Tailwind `dark:` only applies to Tailwind utilities
+- Components like Facilities.tsx (bg-stone-900) and Footer.tsx (bg-stone-900) are already dark-friendly and need no changes
+- Booking.tsx uses bg-amber-800 which works in both modes; only the white platform cards inside it needed dark variants
+
+### Quality check
+- `npx tsc --noEmit` passes with zero errors
+

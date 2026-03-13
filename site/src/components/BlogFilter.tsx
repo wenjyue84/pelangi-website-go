@@ -32,7 +32,7 @@ export default function BlogFilter({ posts, activeCategory }: BlogFilterProps) {
               className={`min-h-6 px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 isActive
                   ? "bg-amber-600 text-white shadow-xs"
-                  : "bg-white text-stone-600 border border-stone-200 hover:border-amber-400 hover:text-amber-700"
+                  : "bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-400 border border-stone-200 dark:border-stone-700 hover:border-amber-400 dark:hover:border-amber-600 hover:text-amber-700 dark:hover:text-amber-400"
               }`}
               aria-pressed={isActive}
             >
@@ -59,7 +59,7 @@ export default function BlogFilter({ posts, activeCategory }: BlogFilterProps) {
           ))}
         </div>
       ) : (
-        <p className="text-center text-stone-500 py-12">
+        <p className="text-center text-stone-500 dark:text-stone-400 py-12">
           No posts in this category yet.
         </p>
       )}

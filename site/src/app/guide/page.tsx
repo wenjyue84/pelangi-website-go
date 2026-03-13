@@ -152,17 +152,17 @@ export default function GuidePage() {
     ];
 
     return (
-        <main id="main-content" className="min-h-screen bg-stone-50">
+        <main id="main-content" className="min-h-screen bg-stone-50 dark:bg-stone-950">
             <GuideStructuredData />
             <Header />
             <div className="pt-28 pb-16 container-custom">
 
                 {/* Hero */}
                 <div className="text-center mb-16 max-w-4xl mx-auto">
-                    <h1 className="font-display text-4xl md:text-5xl font-medium mb-4 text-stone-900">
+                    <h1 className="font-display text-4xl md:text-5xl font-medium mb-4 text-stone-900 dark:text-stone-100">
                         The Backpacker&apos;s Guide to JB
                     </h1>
-                    <p className="text-xl text-stone-600 max-w-2xl mx-auto">
+                    <p className="text-xl text-stone-600 dark:text-stone-400 max-w-2xl mx-auto">
                         Everything you need to know about Johor Bahru — transport, money,
                         food, day trips, safety, and the apps that make it easy.
                     </p>
@@ -179,10 +179,10 @@ export default function GuidePage() {
 
                     {/* Section 1: Getting Around */}
                     <section id="getting-around" className="mb-16">
-                        <h2 className="font-display text-3xl font-medium mb-2 text-stone-900 flex items-center gap-3">
+                        <h2 className="font-display text-3xl font-medium mb-2 text-stone-900 dark:text-stone-100 flex items-center gap-3">
                             <span>🚗</span> Getting Around JB
                         </h2>
-                        <p className="text-stone-500 mb-8">Typical fares (2026) — always confirm with driver or app</p>
+                        <p className="text-stone-500 dark:text-stone-400 mb-8">Typical fares (2026) — always confirm with driver or app</p>
 
                         <div className="grid md:grid-cols-3 gap-6 mb-8">
                             {[
@@ -225,12 +225,12 @@ export default function GuidePage() {
                             ].map((t) => (
                                 <div key={t.mode} className={`border rounded-2xl p-6 ${t.color}`}>
                                     <div className="flex items-center justify-between mb-4">
-                                        <h3 className="font-bold text-lg text-stone-900">{t.mode}</h3>
+                                        <h3 className="font-bold text-lg text-stone-900 dark:text-stone-100">{t.mode}</h3>
                                         <span className={`text-xs font-semibold px-2 py-1 rounded-full ${t.badge}`}>{t.tag}</span>
                                     </div>
                                     <ul className="space-y-2">
                                         {t.items.map((item) => (
-                                            <li key={item} className="text-sm text-stone-700 flex items-start gap-2">
+                                            <li key={item} className="text-sm text-stone-700 dark:text-stone-300 flex items-start gap-2">
                                                 <span className="mt-0.5 text-stone-500">•</span>
                                                 <span>{item}</span>
                                             </li>
@@ -239,22 +239,22 @@ export default function GuidePage() {
                                 </div>
                             ))}
                         </div>
-                        <p className="text-sm text-stone-500 bg-white border border-stone-100 rounded-xl px-5 py-3">
+                        <p className="text-sm text-stone-500 dark:text-stone-400 bg-white dark:bg-stone-900 border border-stone-100 dark:border-stone-700 rounded-xl px-5 py-3">
                             <strong>Tip:</strong> Avoid unmetered taxis offering fixed fares near the Causeway — they almost always overcharge. Use Grab or ask for the meter.
                         </p>
                     </section>
 
                     {/* Section 2: Money & Currency */}
                     <section id="money" className="mb-16">
-                        <h2 className="font-display text-3xl font-medium mb-2 text-stone-900 flex items-center gap-3">
+                        <h2 className="font-display text-3xl font-medium mb-2 text-stone-900 dark:text-stone-100 flex items-center gap-3">
                             <span>💰</span> Money &amp; Currency
                         </h2>
-                        <p className="text-stone-500 mb-8">MYR is the local currency. Most places accept cash only.</p>
+                        <p className="text-stone-500 dark:text-stone-400 mb-8">MYR is the local currency. Most places accept cash only.</p>
 
                         <div className="grid md:grid-cols-2 gap-6">
-                            <div className="bg-white rounded-2xl border border-stone-100 shadow-xs p-6">
-                                <h3 className="font-bold text-lg text-stone-900 mb-4">Best places to exchange</h3>
-                                <ul className="space-y-3 text-stone-700">
+                            <div className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs p-6">
+                                <h3 className="font-bold text-lg text-stone-900 dark:text-stone-100 mb-4">Best places to exchange</h3>
+                                <ul className="space-y-3 text-stone-700 dark:text-stone-300">
                                     <li className="flex gap-3">
                                         <span className="text-amber-700 font-bold mt-0.5">1.</span>
                                         <div>
@@ -278,8 +278,8 @@ export default function GuidePage() {
                                     </li>
                                 </ul>
                             </div>
-                            <div className="bg-amber-50 rounded-2xl border border-amber-200 p-6">
-                                <h3 className="font-bold text-lg text-stone-900 mb-4">Quick reference rates (approx.)</h3>
+                            <div className="bg-amber-50 dark:bg-amber-900/20 rounded-2xl border border-amber-200 dark:border-amber-700 p-6">
+                                <h3 className="font-bold text-lg text-stone-900 dark:text-stone-100 mb-4">Quick reference rates (approx.)</h3>
                                 <div className="space-y-3 text-sm">
                                     {[
                                         ["SGD 10", "≈ MYR 35"],
@@ -287,35 +287,35 @@ export default function GuidePage() {
                                         ["SGD 100", "≈ MYR 350"],
                                         ["USD 10", "≈ MYR 47"],
                                     ].map(([from, to]) => (
-                                        <div key={from} className="flex justify-between items-center border-b border-amber-200 pb-2 last:border-0 last:pb-0">
-                                            <span className="font-semibold text-stone-700">{from}</span>
-                                            <span className="text-amber-800 font-bold">{to}</span>
+                                        <div key={from} className="flex justify-between items-center border-b border-amber-200 dark:border-amber-700 pb-2 last:border-0 last:pb-0">
+                                            <span className="font-semibold text-stone-700 dark:text-stone-300">{from}</span>
+                                            <span className="text-amber-800 dark:text-amber-300 font-bold">{to}</span>
                                         </div>
                                     ))}
                                 </div>
-                                <p className="text-xs text-stone-500 mt-4">Rates fluctuate daily — check XE Currency app for live rates before exchanging.</p>
+                                <p className="text-xs text-stone-500 dark:text-stone-400 mt-4">Rates fluctuate daily — check XE Currency app for live rates before exchanging.</p>
                             </div>
                         </div>
                     </section>
 
                     {/* Section 3: Singapore Day Trip */}
                     <section id="day-trip" className="mb-16">
-                        <h2 className="font-display text-3xl font-medium mb-2 text-stone-900 flex items-center gap-3">
+                        <h2 className="font-display text-3xl font-medium mb-2 text-stone-900 dark:text-stone-100 flex items-center gap-3">
                             <span>🇸🇬</span> Singapore Day Trip
                         </h2>
-                        <p className="text-stone-500 mb-6">
+                        <p className="text-stone-500 dark:text-stone-400 mb-6">
                             JB is the perfect base for a Singapore day trip — you save 70%+ on accommodation.
                             Read our full guide:{" "}
-                            <Link href="/blog/singapore-to-jb-day-trip-causeway-guide" className="text-amber-700 hover:underline font-medium">
+                            <Link href="/blog/singapore-to-jb-day-trip-causeway-guide" className="text-amber-700 dark:text-amber-400 hover:underline font-medium">
                                 Singapore to JB Day Trip: How to Cross the Causeway →
                             </Link>
                         </p>
 
                         <div className="grid md:grid-cols-2 gap-6">
-                            <div className="bg-white rounded-2xl border border-stone-100 shadow-xs p-6">
-                                <h3 className="font-bold text-lg text-stone-900 mb-1">Causeway (Woodlands)</h3>
+                            <div className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs p-6">
+                                <h3 className="font-bold text-lg text-stone-900 dark:text-stone-100 mb-1">Causeway (Woodlands)</h3>
                                 <p className="text-sm text-amber-700 font-medium mb-4">Open 24 hours</p>
-                                <ul className="space-y-2 text-sm text-stone-700">
+                                <ul className="space-y-2 text-sm text-stone-700 dark:text-stone-300">
                                     <li><strong>Peak congestion:</strong> 7–9am and 5–8pm (weekdays)</li>
                                     <li><strong>Bus CW1:</strong> JB Sentral ↔ Kranji MRT — RM 2.50 / SGD 1</li>
                                     <li><strong>Bus 170:</strong> Larkin → Queen St, Singapore</li>
@@ -323,10 +323,10 @@ export default function GuidePage() {
                                     <li><strong>Walk across:</strong> Possible but not recommended (1.5 km)</li>
                                 </ul>
                             </div>
-                            <div className="bg-white rounded-2xl border border-stone-100 shadow-xs p-6">
-                                <h3 className="font-bold text-lg text-stone-900 mb-1">Second Link (Tuas)</h3>
+                            <div className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs p-6">
+                                <h3 className="font-bold text-lg text-stone-900 dark:text-stone-100 mb-1">Second Link (Tuas)</h3>
                                 <p className="text-sm text-green-700 font-medium mb-4">Less crowded, faster</p>
-                                <ul className="space-y-2 text-sm text-stone-700">
+                                <ul className="space-y-2 text-sm text-stone-700 dark:text-stone-300">
                                     <li><strong>Open:</strong> 24 hours</li>
                                     <li><strong>Best for:</strong> Driving or private car hire</li>
                                     <li><strong>Bus:</strong> CW2 from JB Sentral — RM 3.50</li>
@@ -336,7 +336,7 @@ export default function GuidePage() {
                             </div>
                         </div>
 
-                        <div className="mt-6 bg-blue-50 border border-blue-200 rounded-xl px-5 py-4 text-sm text-stone-700">
+                        <div className="mt-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl px-5 py-4 text-sm text-stone-700 dark:text-stone-300">
                             <strong>Immigration tip:</strong> Have your passport AND any entry cards ready before you reach the counter.
                             Malaysia exit and Singapore entry are separate checkpoints — don&apos;t get off the bus between them.
                             Immigration lines move fast off-peak.
@@ -345,21 +345,21 @@ export default function GuidePage() {
 
                     {/* Section 4: Hawker Centres */}
                     <section id="hawkers" className="mb-16">
-                        <h2 className="font-display text-3xl font-medium mb-2 text-stone-900 flex items-center gap-3">
+                        <h2 className="font-display text-3xl font-medium mb-2 text-stone-900 dark:text-stone-100 flex items-center gap-3">
                             <span>🍜</span> Top Hawker Centres Near Us
                         </h2>
-                        <p className="text-stone-500 mb-6">
+                        <p className="text-stone-500 dark:text-stone-400 mb-6">
                             JB&apos;s street food scene is world-class. Read our deep-dive:{" "}
-                            <Link href="/blog/jb-hawker-centres-street-food-must-visit" className="text-amber-700 hover:underline font-medium">
+                            <Link href="/blog/jb-hawker-centres-street-food-must-visit" className="text-amber-700 dark:text-amber-400 hover:underline font-medium">
                                 JB Street Food Hawker Centres You Must Visit →
                             </Link>
                         </p>
                         <div className="space-y-4">
                             {hawkerCentres.map((h, i) => (
-                                <div key={i} className="bg-white p-6 rounded-2xl border border-stone-100 shadow-xs hover:shadow-md transition-shadow flex flex-col sm:flex-row sm:items-start gap-4">
+                                <div key={i} className="bg-white dark:bg-stone-900 p-6 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs hover:shadow-md transition-shadow flex flex-col sm:flex-row sm:items-start gap-4">
                                     <div className="flex-1">
-                                        <h3 className="font-bold text-lg text-stone-900">{h.name}</h3>
-                                        <p className="text-stone-600 mt-1">{h.desc}</p>
+                                        <h3 className="font-bold text-lg text-stone-900 dark:text-stone-100">{h.name}</h3>
+                                        <p className="text-stone-600 dark:text-stone-400 mt-1">{h.desc}</p>
                                     </div>
                                     <div className="text-right shrink-0">
                                         <p className="text-sm font-medium text-amber-700">{h.dist}</p>
@@ -374,33 +374,33 @@ export default function GuidePage() {
                     <section id="food-shopping" className="mb-16">
                         <div className="grid md:grid-cols-2 gap-12">
                             <div>
-                                <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-amber-700">
+                                <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-amber-700 dark:text-amber-400">
                                     <span className="text-3xl">🍽️</span> Restaurants Near Us
                                 </h2>
                                 <div className="space-y-4">
                                     {eats.map((place, i) => (
-                                        <div key={i} className="bg-white p-5 rounded-2xl border border-stone-100 shadow-xs hover:shadow-md transition-shadow">
-                                            <h3 className="font-bold text-lg text-stone-900">{place.name}</h3>
+                                        <div key={i} className="bg-white dark:bg-stone-900 p-5 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs hover:shadow-md transition-shadow">
+                                            <h3 className="font-bold text-lg text-stone-900 dark:text-stone-100">{place.name}</h3>
                                             <div className="flex gap-3 mb-2">
                                                 <p className="text-sm font-medium text-amber-700">{place.dist}</p>
                                                 <span className="text-stone-400">·</span>
                                                 <p className="text-sm text-stone-500">{place.hours}</p>
                                             </div>
-                                            <p className="text-stone-600 text-sm">{place.desc}</p>
+                                            <p className="text-stone-600 dark:text-stone-400 text-sm">{place.desc}</p>
                                         </div>
                                     ))}
                                 </div>
                             </div>
                             <div>
-                                <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-amber-700">
+                                <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-amber-700 dark:text-amber-400">
                                     <span className="text-3xl">🛍️</span> Shopping &amp; Fun
                                 </h2>
                                 <div className="space-y-4">
                                     {shopping.map((place, i) => (
-                                        <div key={i} className="bg-white p-5 rounded-2xl border border-stone-100 shadow-xs hover:shadow-md transition-shadow">
-                                            <h3 className="font-bold text-lg text-stone-900">{place.name}</h3>
+                                        <div key={i} className="bg-white dark:bg-stone-900 p-5 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs hover:shadow-md transition-shadow">
+                                            <h3 className="font-bold text-lg text-stone-900 dark:text-stone-100">{place.name}</h3>
                                             <p className="text-sm font-medium text-amber-700 mb-2">{place.dist}</p>
-                                            <p className="text-stone-600 text-sm">{place.desc}</p>
+                                            <p className="text-stone-600 dark:text-stone-400 text-sm">{place.desc}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -410,10 +410,10 @@ export default function GuidePage() {
 
                     {/* Section 6: Safety Tips */}
                     <section id="safety" className="mb-16">
-                        <h2 className="font-display text-3xl font-medium mb-2 text-stone-900 flex items-center gap-3">
+                        <h2 className="font-display text-3xl font-medium mb-2 text-stone-900 dark:text-stone-100 flex items-center gap-3">
                             <span>🔒</span> Safety Tips for Backpackers
                         </h2>
-                        <p className="text-stone-500 mb-8">JB is generally safe, but like any city, common sense applies.</p>
+                        <p className="text-stone-500 dark:text-stone-400 mb-8">JB is generally safe, but like any city, common sense applies.</p>
 
                         <div className="grid md:grid-cols-2 gap-6">
                             {[
@@ -458,11 +458,11 @@ export default function GuidePage() {
                                     ],
                                 },
                             ].map((s) => (
-                                <div key={s.category} className={`bg-white rounded-2xl border border-stone-100 shadow-xs p-6 border-l-4 ${s.color}`}>
-                                    <h3 className="font-bold text-lg text-stone-900 mb-4">{s.category}</h3>
+                                <div key={s.category} className={`bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs p-6 border-l-4 ${s.color}`}>
+                                    <h3 className="font-bold text-lg text-stone-900 dark:text-stone-100 mb-4">{s.category}</h3>
                                     <ul className="space-y-2">
                                         {s.tips.map((tip) => (
-                                            <li key={tip} className="text-sm text-stone-700 flex items-start gap-2">
+                                            <li key={tip} className="text-sm text-stone-700 dark:text-stone-300 flex items-start gap-2">
                                                 <span className="text-green-500 mt-0.5">✓</span>
                                                 <span>{tip}</span>
                                             </li>
@@ -475,26 +475,26 @@ export default function GuidePage() {
 
                     {/* Section 7: Useful Apps */}
                     <section id="apps" className="mb-16">
-                        <h2 className="font-display text-3xl font-medium mb-2 text-stone-900 flex items-center gap-3">
+                        <h2 className="font-display text-3xl font-medium mb-2 text-stone-900 dark:text-stone-100 flex items-center gap-3">
                             <span>📱</span> Useful Local Apps
                         </h2>
-                        <p className="text-stone-500 mb-8">Download these before you arrive — some require Malaysian data to set up.</p>
+                        <p className="text-stone-500 dark:text-stone-400 mb-8">Download these before you arrive — some require Malaysian data to set up.</p>
 
                         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
                             {apps.map((app) => (
-                                <div key={app.name} className="bg-white rounded-2xl border border-stone-100 shadow-xs p-5 hover:shadow-md transition-shadow">
+                                <div key={app.name} className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs p-5 hover:shadow-md transition-shadow">
                                     <div className="text-3xl mb-3">{app.icon}</div>
-                                    <h3 className="font-bold text-base text-stone-900 mb-1">{app.name}</h3>
-                                    <p className="text-sm text-stone-600">{app.desc}</p>
+                                    <h3 className="font-bold text-base text-stone-900 dark:text-stone-100 mb-1">{app.name}</h3>
+                                    <p className="text-sm text-stone-600 dark:text-stone-400">{app.desc}</p>
                                 </div>
                             ))}
                         </div>
                     </section>
 
                     {/* CTA */}
-                    <div className="mt-4 text-center bg-amber-50 border border-amber-200 rounded-2xl p-10">
-                        <h3 className="font-display text-2xl font-medium text-stone-900 mb-2">Ready to explore JB?</h3>
-                        <p className="text-stone-600 mb-6">Pelangi Capsule Hostel puts you right in the heart of Taman Pelangi — walking distance to everything on this guide.</p>
+                    <div className="mt-4 text-center bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 rounded-2xl p-10">
+                        <h3 className="font-display text-2xl font-medium text-stone-900 dark:text-stone-100 mb-2">Ready to explore JB?</h3>
+                        <p className="text-stone-600 dark:text-stone-400 mb-6">Pelangi Capsule Hostel puts you right in the heart of Taman Pelangi — walking distance to everything on this guide.</p>
                         <div className="flex flex-wrap justify-center gap-4">
                             <a
                                 href="https://www.google.com/maps/search/restaurants+near+Pelangi+Capsule+Hostel/@1.4862,103.7573,15z"
@@ -504,7 +504,7 @@ export default function GuidePage() {
                             >
                                 Explore on Google Maps
                             </a>
-                            <Link href="/blog" className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-amber-700 text-amber-700 hover:bg-amber-700 hover:text-white transition-colors font-medium">
+                            <Link href="/blog" className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-amber-700 dark:border-amber-500 text-amber-700 dark:text-amber-400 hover:bg-amber-700 hover:text-white transition-colors font-medium">
                                 Read Our JB Blog →
                             </Link>
                         </div>
