@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import StructuredData from "@/components/StructuredData";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ChatWidget, MobileBookingBar, CookieConsent, AnalyticsProvider, ClarityProvider, WebVitalsReporter } from "@/components/DynamicComponents";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -147,6 +148,7 @@ export default async function RootLayout({
         <AnalyticsProvider />
         <ClarityProvider />
         <WebVitalsReporter />
+        <SpeedInsights />
       </body>
     </html>
   );

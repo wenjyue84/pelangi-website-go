@@ -4473,3 +4473,20 @@ Incomplete: Register Google Business Profile and connect to Google Hotel free bo
 - SC 3.1.2 applies to "passages of text" not individual proper nouns — place names like "Johor Bahru" don't need lang attributes
 - NVDA screen reader test and axe-core 'valid-lang' audit require manual verification
 
+
+
+## Iteration 12 - Story: US-099 - Add Vercel Speed Insights for real-user Web Vitals monitoring alongside GA4
+
+### What was implemented
+- Installed `@vercel/speed-insights` package
+- Added `<SpeedInsights />` component from `@vercel/speed-insights/next` to root `layout.tsx`
+- Placed after existing analytics components (AnalyticsProvider, ClarityProvider, WebVitalsReporter)
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- `@vercel/speed-insights/next` exports a component that can be used directly in server components (no "use client" needed)
+- The component is lightweight and designed to complement existing web-vitals reporting without duplication
+
+### Gotchas
+- US-103 (critical) is a manual/external task (Google Business Profile registration) — cannot be implemented via code
+- `rtk` wrapper may not find `tsc` if not globally installed; use `npx tsc` directly as fallback
