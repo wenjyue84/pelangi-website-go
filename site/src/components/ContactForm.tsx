@@ -52,7 +52,7 @@ export default function ContactForm() {
         ) : (
           <form action={formAction} className="space-y-6">
             {/* Honeypot — hidden from real users, filled by bots */}
-            <div className="absolute -left-[9999px]" aria-hidden="true">
+            <div className="absolute -left-[9999px] opacity-0" aria-hidden="true">
               <label htmlFor="website">Website</label>
               <input
                 type="text"

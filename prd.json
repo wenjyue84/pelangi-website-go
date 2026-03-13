@@ -22,13 +22,13 @@
         "/blog/[slug] renders individual article with full HTML content, author, date, tags, and back link",
         "Both pages have generateMetadata with unique title, description, and OG image",
         "TypeScript compiles without errors",
-        "No external database or CMS \u00e2\u20ac\u201d pure static data in /src/data/blog/posts.ts"
+        "No external database or CMS â€” pure static data in /src/data/blog/posts.ts"
       ],
       "technicalNotes": [
-        "site/src/data/blog/posts.ts \u00e2\u20ac\u201d create blog post data array",
-        "site/src/app/blog/page.tsx \u00e2\u20ac\u201d blog listing page",
-        "site/src/app/blog/[slug]/page.tsx \u00e2\u20ac\u201d individual article page",
-        "site/src/components/BlogCard.tsx \u00e2\u20ac\u201d reusable card component",
+        "site/src/data/blog/posts.ts â€” create blog post data array",
+        "site/src/app/blog/page.tsx â€” blog listing page",
+        "site/src/app/blog/[slug]/page.tsx â€” individual article page",
+        "site/src/components/BlogCard.tsx â€” reusable card component",
         "Use Tailwind prose classes for article body typography"
       ],
       "dependencies": [],
@@ -48,7 +48,7 @@
         "All articles have SEO-friendly titles with keywords like 'Johor Bahru', 'JB', 'budget', 'backpacker'"
       ],
       "technicalNotes": [
-        "site/src/data/blog/posts.ts \u00e2\u20ac\u201d add all 6 articles",
+        "site/src/data/blog/posts.ts â€” add all 6 articles",
         "Research sources: numbeo.com, hostelworld.com, lonelyplanet.com, timeout.com/kuala-lumpur, thepoortraveler.net",
         "Content must be original rewrites, not copy-paste",
         "Use categories: 'Food & Drink', 'Travel Tips', 'Things To Do', 'Local Life'",
@@ -73,10 +73,10 @@
         "TypeScript compiles without errors"
       ],
       "technicalNotes": [
-        "site/src/app/feed.xml/route.ts \u00e2\u20ac\u201d Route Handler returning XML",
+        "site/src/app/feed.xml/route.ts â€” Route Handler returning XML",
         "Import posts from /src/data/blog/posts.ts",
         "Use Response with headers {'Content-Type': 'application/xml'}",
-        "site/src/app/layout.tsx \u00e2\u20ac\u201d add RSS link in <head>"
+        "site/src/app/layout.tsx â€” add RSS link in <head>"
       ],
       "dependencies": [
         "US-001"
@@ -88,7 +88,7 @@
       "id": "US-004",
       "title": "Add JB News & Updates widget on homepage using curated RSS links",
       "priority": "medium",
-      "description": "Add a 'JB Buzz' section on the homepage between CommunityEvents and the teaser section. This is a static, curated section (no live API calls at runtime to avoid SSR issues). It should show: (1) a list of 4-5 curated news/blog links from real JB/Malaysia sources like Johor Now, Malay Mail, The Star Johor, and Visit Johor \u00e2\u20ac\u201d shown as stylish news cards with title, source, date, and a short description. (2) An RSS subscribe button linking to /feed.xml. (3) A 'Latest from Our Blog' teaser showing the 3 most recent blog posts. All links open in new tab with rel='noopener noreferrer'.",
+      "description": "Add a 'JB Buzz' section on the homepage between CommunityEvents and the teaser section. This is a static, curated section (no live API calls at runtime to avoid SSR issues). It should show: (1) a list of 4-5 curated news/blog links from real JB/Malaysia sources like Johor Now, Malay Mail, The Star Johor, and Visit Johor â€” shown as stylish news cards with title, source, date, and a short description. (2) An RSS subscribe button linking to /feed.xml. (3) A 'Latest from Our Blog' teaser showing the 3 most recent blog posts. All links open in new tab with rel='noopener noreferrer'.",
       "acceptanceCriteria": [
         "New 'JB Buzz' section visible on homepage with at least 4 curated external news links",
         "Section has 'Latest from Our Blog' showing 3 most recent blog post cards",
@@ -97,8 +97,8 @@
         "Section looks consistent with existing design (stone/amber color scheme, rounded cards)"
       ],
       "technicalNotes": [
-        "site/src/components/JBBuzz.tsx \u00e2\u20ac\u201d new component",
-        "site/src/app/page.tsx \u00e2\u20ac\u201d import and add <JBBuzz /> after <CommunityEvents />",
+        "site/src/components/JBBuzz.tsx â€” new component",
+        "site/src/app/page.tsx â€” import and add <JBBuzz /> after <CommunityEvents />",
         "Curated links: johornow.com, malaymail.com, thestar.com.my, visitjohor.com",
         "Latest blog posts: import from posts.ts and show top 3 by date",
         "Use same card styling as other homepage sections"
@@ -123,8 +123,8 @@
         "Schema validates correctly (structure is correct JSON-LD)"
       ],
       "technicalNotes": [
-        "site/src/components/BlogStructuredData.tsx \u00e2\u20ac\u201d new component accepting post data",
-        "site/src/app/blog/[slug]/page.tsx \u00e2\u20ac\u201d import and render BlogStructuredData",
+        "site/src/components/BlogStructuredData.tsx â€” new component accepting post data",
+        "site/src/app/blog/[slug]/page.tsx â€” import and render BlogStructuredData",
         "BreadcrumbList: Home > Blog > Article Title",
         "Publisher logo URL: https://pelangicapsulehostel.com/images/logo.png"
       ],
@@ -144,10 +144,10 @@
         "/sitemap.xml includes all individual blog post URLs",
         "Each blog post entry has correct slug from posts.ts",
         "TypeScript compiles without errors",
-        "No hardcoded slugs \u00e2\u20ac\u201d all generated dynamically from posts array"
+        "No hardcoded slugs â€” all generated dynamically from posts array"
       ],
       "technicalNotes": [
-        "site/src/app/sitemap.ts \u00e2\u20ac\u201d update to import posts and map to sitemap entries",
+        "site/src/app/sitemap.ts â€” update to import posts and map to sitemap entries",
         "Import: import { posts } from '@/data/blog/posts'",
         "Add /blog and /blog/[slug] entries to the returned array"
       ],
@@ -161,16 +161,16 @@
       "id": "US-007",
       "title": "Enhance /guide page with rich backpacker-focused local content",
       "priority": "medium",
-      "description": "Substantially improve the /guide page (site/src/app/guide/page.tsx) with richer, more lively content for backpackers. Add sections: (1) Getting Around JB \u00e2\u20ac\u201d GrabCar, bus, taxi fares with real prices; (2) Money & Currency \u00e2\u20ac\u201d where to exchange, ATMs near Taman Pelangi; (3) Singapore Day Trip \u00e2\u20ac\u201d Causeway vs Second Link, immigration tips, operating hours; (4) Top Hawker Centers Near Us \u00e2\u20ac\u201d with distance and opening hours; (5) Safety Tips for Backpackers; (6) Useful Local Apps \u00e2\u20ac\u201d Grab, MyRapid, MySejahtera. All with practical, accurate information. Add internal links to /blog articles where relevant.",
+      "description": "Substantially improve the /guide page (site/src/app/guide/page.tsx) with richer, more lively content for backpackers. Add sections: (1) Getting Around JB â€” GrabCar, bus, taxi fares with real prices; (2) Money & Currency â€” where to exchange, ATMs near Taman Pelangi; (3) Singapore Day Trip â€” Causeway vs Second Link, immigration tips, operating hours; (4) Top Hawker Centers Near Us â€” with distance and opening hours; (5) Safety Tips for Backpackers; (6) Useful Local Apps â€” Grab, MyRapid, MySejahtera. All with practical, accurate information. Add internal links to /blog articles where relevant.",
       "acceptanceCriteria": [
         "/guide page has at least 6 content sections as described",
-        "Each section has practical, specific information (prices, distances, hours \u00e2\u20ac\u201d not vague)",
+        "Each section has practical, specific information (prices, distances, hours â€” not vague)",
         "Page has proper metadata with 'Johor Bahru local guide backpacker' keywords",
         "Internal links to 2+ blog articles (once those exist)",
         "Consistent design with rest of site (Tailwind, stone/amber palette)"
       ],
       "technicalNotes": [
-        "site/src/app/guide/page.tsx \u00e2\u20ac\u201d read existing file first, then enhance",
+        "site/src/app/guide/page.tsx â€” read existing file first, then enhance",
         "Add generateMetadata with description targeting 'JB travel guide backpacker' keywords",
         "Currency exchange: Jalan Wong Ah Fook money changers",
         "Causeway: open 24h, busiest 7-9am and 5-8pm",
@@ -195,10 +195,10 @@
         "Responsive design matches rest of site"
       ],
       "technicalNotes": [
-        "site/src/components/SingaporeTeaser.tsx \u00e2\u20ac\u201d new component",
-        "site/src/app/page.tsx \u00e2\u20ac\u201d add <SingaporeTeaser /> between <LocationMap /> and <FAQ />",
+        "site/src/components/SingaporeTeaser.tsx â€” new component",
+        "site/src/app/page.tsx â€” add <SingaporeTeaser /> between <LocationMap /> and <FAQ />",
         "Use amber/warm gradient background to stand out",
-        "Keep it concise \u00e2\u20ac\u201d 3-4 stat/icon cards max"
+        "Keep it concise â€” 3-4 stat/icon cards max"
       ],
       "dependencies": [
         "US-002"
@@ -210,7 +210,7 @@
       "id": "US-009",
       "title": "Create /book page with direct booking + OTA options",
       "priority": "critical",
-      "description": "The /book URL is linked from the homepage dashboard card, footer, Hero CTAs, and multiple components, but no app/book/page.tsx exists \u2014 users hit a 404. Create a dedicated booking page with: (1) direct WhatsApp booking as primary CTA with pre-filled message, (2) direct booking benefits section, (3) Booking.com and Hostelworld links as secondary OTA options, (4) pricing summary (RM35 nightly, RM594 monthly), and (5) house rules summary.",
+      "description": "The /book URL is linked from the homepage dashboard card, footer, Hero CTAs, and multiple components, but no app/book/page.tsx exists — users hit a 404. Create a dedicated booking page with: (1) direct WhatsApp booking as primary CTA with pre-filled message, (2) direct booking benefits section, (3) Booking.com and Hostelworld links as secondary OTA options, (4) pricing summary (RM35 nightly, RM594 monthly), and (5) house rules summary.",
       "acceptanceCriteria": [
         "GET /book returns a 200 page (no 404)",
         "Page has a primary WhatsApp CTA that opens wa.me/60127088789 with a pre-filled booking message",
@@ -233,20 +233,20 @@
       "id": "US-010",
       "title": "Create custom not-found.tsx (404 page) with hostel branding",
       "priority": "high",
-      "description": "No app/not-found.tsx exists; Next.js App Router serves a generic 404. A branded 404 page recovers lost visitors by surfacing key navigation links and a WhatsApp booking CTA. Google recommends soft 404 handling (do not redirect all 404s to homepage) \u2014 a proper not-found.tsx is the correct approach.",
+      "description": "No app/not-found.tsx exists; Next.js App Router serves a generic 404. A branded 404 page recovers lost visitors by surfacing key navigation links and a WhatsApp booking CTA. Google recommends soft 404 handling (do not redirect all 404s to homepage) — a proper not-found.tsx is the correct approach.",
       "acceptanceCriteria": [
         "app/not-found.tsx file exists and renders on any invalid URL",
         "Page has a friendly on-brand message (e.g. 'Looks like this pod is taken!')",
         "Page includes navigation links to: Home, Rooms, /book, /guide, /blog",
         "Page includes a WhatsApp contact CTA",
         "Header and Footer are present for consistent navigation",
-        "Page has proper HTTP 404 status (not 200) \u2014 Next.js App Router not-found.tsx sets this automatically"
+        "Page has proper HTTP 404 status (not 200) — Next.js App Router not-found.tsx sets this automatically"
       ],
       "technicalNotes": [
-        "Create site/src/app/not-found.tsx (not 404.tsx \u2014 App Router convention)",
+        "Create site/src/app/not-found.tsx (not 404.tsx — App Router convention)",
         "Import Header and Footer components",
         "Use amber/stone design consistent with rest of site",
-        "No generateMetadata needed \u2014 Next.js sets noindex automatically for 404 pages"
+        "No generateMetadata needed — Next.js sets noindex automatically for 404 pages"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
@@ -256,7 +256,7 @@
       "id": "US-011",
       "title": "Fix NAP inconsistency in StructuredData.tsx (wrong phone and address)",
       "priority": "high",
-      "description": "StructuredData.tsx contains factually incorrect business data: phone is '+60123456789' (placeholder, not a real number) and street address is 'Jalan Maju, Taman Pelangi' (wrong \u2014 correct is '26A Jalan Perang'). NAP (Name, Address, Phone) must exactly match Google Business Profile for local search trust. These errors could suppress local ranking and confuse map integrations.",
+      "description": "StructuredData.tsx contains factually incorrect business data: phone is '+60123456789' (placeholder, not a real number) and street address is 'Jalan Maju, Taman Pelangi' (wrong — correct is '26A Jalan Perang'). NAP (Name, Address, Phone) must exactly match Google Business Profile for local search trust. These errors could suppress local ranking and confuse map integrations.",
       "acceptanceCriteria": [
         "telephone in Hostel schema is '+60127088789' (Jay's real number from business data)",
         "streetAddress in Hostel schema is '26A Jalan Perang, Taman Pelangi'",
@@ -267,7 +267,7 @@
       ],
       "technicalNotes": [
         "Edit site/src/components/StructuredData.tsx",
-        "Correct phone: +60127088789 (Jay) \u2014 from pelangi-website-plan.md",
+        "Correct phone: +60127088789 (Jay) — from pelangi-website-plan.md",
         "Correct address: 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru",
         "Check-in from plan: 2:00 PM = 14:00 in ISO 8601; current file has 15:00",
         "Validate via: https://search.google.com/test/rich-results after fix"
@@ -317,7 +317,7 @@
         "Export: export const size = { width: 1200, height: 630 } and export const contentType = 'image/png'",
         "Only flexbox CSS supported in ImageResponse (no grid)",
         "Font: use fetch() to load .ttf font or use system font fallback",
-        "Access post data via params.slug \u2014 import posts from data/blog/posts.ts",
+        "Access post data via params.slug — import posts from data/blog/posts.ts",
         "Reference: https://nextjs.org/docs/app/api-reference/file-conventions/opengraph-image"
       ],
       "dependencies": [],
@@ -338,7 +338,7 @@
       ],
       "technicalNotes": [
         "Edit site/src/app/rooms/page.tsx to inject JSON-LD script",
-        "Dual type: '@type': ['HotelRoom', 'Product'] \u2014 both required for pricing rich results",
+        "Dual type: '@type': ['HotelRoom', 'Product'] — both required for pricing rich results",
         "Offer structure: { '@type': 'Offer', 'price': '35', 'priceCurrency': 'MYR', 'businessFunction': 'http://purl.org/goodrelations/v1#LeaseOut' }",
         "containedInPlace: { '@type': 'Hostel', 'name': 'Pelangi Capsule Hostel', 'url': 'https://pelangicapsulehostel.com' }",
         "Reference: https://schema.org/HotelRoom and https://wordlift.io/blog/en/schema-markup-for-hotels-bb-and-resorts-a-complete-guide/"
@@ -359,7 +359,7 @@
         "No TypeScript errors"
       ],
       "technicalNotes": [
-        "Edit site/src/app/layout.tsx \u2014 find the verification: {} object",
+        "Edit site/src/app/layout.tsx — find the verification: {} object",
         "Add: verification: { google: 'YOUR_VERIFICATION_TOKEN' }",
         "Get token from: Google Search Console > Add Property > HTML tag method",
         "After deploy, verify ownership in GSC and submit sitemap.xml",
@@ -398,7 +398,7 @@
       "id": "US-017",
       "title": "Add canonical URL tags to all inner pages via generateMetadata",
       "priority": "medium",
-      "description": "Currently only the homepage has an explicit canonical URL in metadata. Inner pages (/about, /rooms, /gallery, /contact, /check-in, /guide, /book) rely on Next.js auto-generation, which may not produce the exact preferred URL format. Explicit canonical tags on each page prevent duplicate content issues and confirm the preferred URL to Google \u2014 especially important now that blog posts exist with similar content themes.",
+      "description": "Currently only the homepage has an explicit canonical URL in metadata. Inner pages (/about, /rooms, /gallery, /contact, /check-in, /guide, /book) rely on Next.js auto-generation, which may not produce the exact preferred URL format. Explicit canonical tags on each page prevent duplicate content issues and confirm the preferred URL to Google — especially important now that blog posts exist with similar content themes.",
       "acceptanceCriteria": [
         "Each inner page (/about, /rooms, /gallery, /contact, /check-in, /guide, /book) has generateMetadata with alternates.canonical set to the full absolute URL",
         "/blog page and /blog/[slug] pages already have canonical set (verify existing implementation)",
@@ -420,7 +420,7 @@
       "id": "US-018",
       "title": "Add Core Web Vitals optimization: hero image priority and lazy-loading",
       "priority": "medium",
-      "description": "The Hero component (Hero.tsx) likely uses a large banner image that is the Largest Contentful Paint (LCP) element. Without the `priority` prop on the Next.js Image component, the hero image is lazy-loaded, causing LCP scores above 4s on mobile \u2014 a Google ranking signal. Additionally, below-fold images should be explicitly lazy-loaded and sized with the `sizes` attribute to prevent Cumulative Layout Shift (CLS). Target: LCP < 2.5s, CLS < 0.1.",
+      "description": "The Hero component (Hero.tsx) likely uses a large banner image that is the Largest Contentful Paint (LCP) element. Without the `priority` prop on the Next.js Image component, the hero image is lazy-loaded, causing LCP scores above 4s on mobile — a Google ranking signal. Additionally, below-fold images should be explicitly lazy-loaded and sized with the `sizes` attribute to prevent Cumulative Layout Shift (CLS). Target: LCP < 2.5s, CLS < 0.1.",
       "acceptanceCriteria": [
         "Hero image uses <Image priority> prop (no lazy loading on LCP element)",
         "Hero image has explicit width, height, and sizes attribute set",
@@ -467,11 +467,11 @@
       "id": "US-020",
       "title": "Add hreflang tags for EN/ZH-CN multilingual SEO groundwork",
       "priority": "low",
-      "description": "Pelangi Capsule Hostel's primary market includes Singapore and Malaysian Chinese-speaking travelers. The website content doc explicitly calls for EN/ZH support. Even before a full Chinese translation is available, adding hreflang infrastructure (x-default + en) in generateMetadata prevents future SEO migration pain. A Chinese landing page at /zh targeting Singapore Chinese travelers is a second phase. Hreflang is bidirectional \u2014 each language version must reference all others.",
+      "description": "Pelangi Capsule Hostel's primary market includes Singapore and Malaysian Chinese-speaking travelers. The website content doc explicitly calls for EN/ZH support. Even before a full Chinese translation is available, adding hreflang infrastructure (x-default + en) in generateMetadata prevents future SEO migration pain. A Chinese landing page at /zh targeting Singapore Chinese travelers is a second phase. Hreflang is bidirectional — each language version must reference all others.",
       "acceptanceCriteria": [
         "layout.tsx metadata includes alternates.languages with at minimum 'en' and 'x-default' pointing to canonical URL",
         "Code is structured to easily add 'zh-CN': 'https://pelangicapsulehostel.com/zh' when Chinese content is ready",
-        "HTML lang attribute in layout.tsx is 'en' (currently correct \u2014 verify it stays 'en' not 'en-MY')",
+        "HTML lang attribute in layout.tsx is 'en' (currently correct — verify it stays 'en' not 'en-MY')",
         "No TypeScript errors"
       ],
       "technicalNotes": [
@@ -522,7 +522,7 @@
       ],
       "technicalNotes": [
         "Category filter: add 'use client' to blog/page.tsx or extract to a client FilterBar component",
-        "Categories come from posts.ts data \u2014 derive unique categories dynamically",
+        "Categories come from posts.ts data — derive unique categories dynamically",
         "Static category pages: site/src/app/blog/category/[category]/page.tsx with generateStaticParams",
         "generateStaticParams: derive from [...new Set(posts.map(p => p.category.toLowerCase().replace(/ /g, '-')))]",
         "Category pages have their own sitemap entries (update sitemap.ts)"
@@ -607,7 +607,7 @@
       "id": "US-026",
       "title": "Remove or replace first-party AggregateRating in StructuredData.tsx",
       "priority": "high",
-      "description": "The current StructuredData.tsx embeds a hardcoded AggregateRating with ratingValue: '4.9' and ratingCount: '500' directly on the hostel's own website. Google's structured data guidelines explicitly prohibit first-party self-declared reviews for rich result eligibility \u2014 this risks a manual action or loss of star review features in SERPs.",
+      "description": "The current StructuredData.tsx embeds a hardcoded AggregateRating with ratingValue: '4.9' and ratingCount: '500' directly on the hostel's own website. Google's structured data guidelines explicitly prohibit first-party self-declared reviews for rich result eligibility — this risks a manual action or loss of star review features in SERPs.",
       "acceptanceCriteria": [
         "The hardcoded AggregateRating block is removed from the self-hosted Hostel schema OR replaced with a clearly attributed third-party source",
         "If removed, no AggregateRating property exists in any self-hosted schema on the same entity",
@@ -618,7 +618,7 @@
         "Google policy: 'If the entity being reviewed controls the reviews, pages are ineligible for star review features'",
         "Reference: https://developers.google.com/search/docs/appearance/structured-data/review-snippet",
         "Alternative: embed a third-party review widget (Hostelworld, Booking.com) and use their schema",
-        "The Reviews.tsx component currently shows curated hardcoded reviews \u2014 this is UI-only and acceptable"
+        "The Reviews.tsx component currently shows curated hardcoded reviews — this is UI-only and acceptable"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
@@ -694,8 +694,8 @@
       "priority": "medium",
       "description": "Hreflang tags have been added for EN/ZH-CN but there is no visible language switcher for users. Chinese travellers from Singapore and China represent a significant portion of JB hostel guests. A language switcher that sets the NEXT_LOCALE cookie ensures preference persists across sessions and is the prerequisite UI before any translated content can be deployed.",
       "acceptanceCriteria": [
-        "A language switcher (EN | \u4e2d\u6587) is visible in the Header component",
-        "Clicking \u4e2d\u6587 sets NEXT_LOCALE=zh cookie and shows a 'Chinese version coming soon' toast if translations don't exist yet",
+        "A language switcher (EN | 中文) is visible in the Header component",
+        "Clicking 中文 sets NEXT_LOCALE=zh cookie and shows a 'Chinese version coming soon' toast if translations don't exist yet",
         "Clicking EN sets NEXT_LOCALE=en",
         "The current active language is visually indicated",
         "The switcher is accessible: keyboard operable and has aria-label='Language selector'",
@@ -724,7 +724,7 @@
         "Section is mobile-responsive and does not obscure the booking widget CTA on small screens"
       ],
       "technicalNotes": [
-        "The /book route is a rewrite to admin.pelangicapsulehostel.com \u2014 the surrounding page wrapper is rendered by Next.js",
+        "The /book route is a rewrite to admin.pelangicapsulehostel.com — the surrounding page wrapper is rendered by Next.js",
         "Reference: https://spiltmilkwebdesign.com/conversion-rate-optimization-website-ux-for-boutique-hotels-in-2025/"
       ],
       "dependencies": [],
@@ -785,7 +785,7 @@
         "A brief sustainability/eco-friendly section (minimum one paragraph) exists on the About or /amenities page",
         "Content mentions at least 2 verifiable eco practices (e.g. water dispensers to reduce plastic bottles, LED lighting, recycling bins)",
         "Google Business Profile sustainability attributes are documented as an offline task to action",
-        "The website content references the hostel's actual practices \u2014 no fabricated claims",
+        "The website content references the hostel's actual practices — no fabricated claims",
         "Section is linked from the homepage or Footer if standalone"
       ],
       "technicalNotes": [
@@ -809,9 +809,9 @@
         "Google Tag Assistant confirms events are received in debug view"
       ],
       "technicalNotes": [
-        "Use @next/third-parties/google \u2014 official package, no extra bundle weight",
+        "Use @next/third-parties/google — official package, no extra bundle weight",
         "Ref: https://nextjs.org/docs/messages/next-script-for-ga",
-        "CookieConsent.tsx already exists \u2014 wire the consent callback to conditionally render <GoogleAnalytics />",
+        "CookieConsent.tsx already exists — wire the consent callback to conditionally render <GoogleAnalytics />",
         "Measurement ID format: G-XXXXXXXXXX from GA4 property settings"
       ],
       "dependencies": [],
@@ -822,7 +822,7 @@
       "id": "US-036",
       "title": "Add App Router error boundaries: error.tsx and global-error.tsx",
       "priority": "high",
-      "description": "The Next.js App Router requires explicit error.tsx files per route segment for graceful error handling. Currently the site has no error boundaries \u2014 a runtime error on any page results in a blank screen with no user guidance. global-error.tsx is the last-resort fallback that replaces the root layout on catastrophic errors.",
+      "description": "The Next.js App Router requires explicit error.tsx files per route segment for graceful error handling. Currently the site has no error boundaries — a runtime error on any page results in a blank screen with no user guidance. global-error.tsx is the last-resort fallback that replaces the root layout on catastrophic errors.",
       "acceptanceCriteria": [
         "src/app/error.tsx created with a branded fallback UI and a 'Try again' reset button",
         "src/app/global-error.tsx created with its own <html> and <body> tags as required by Next.js",
@@ -842,7 +842,7 @@
     },
     {
       "id": "US-037",
-      "title": "Remove duplicate public/robots.txt \u2014 rely solely on robots.ts",
+      "title": "Remove duplicate public/robots.txt — rely solely on robots.ts",
       "priority": "high",
       "description": "There are two robots files: the dynamic src/app/robots.ts (Next.js App Router convention) and a static public/robots.txt. The static file in /public takes precedence over the dynamically generated one, meaning the App Router robots.ts is silently ignored. This is a technical SEO inconsistency that prevents the sitemap URL from being properly advertised.",
       "acceptanceCriteria": [
@@ -865,7 +865,7 @@
       "id": "US-038",
       "title": "Add image entries to sitemap.ts for gallery and room photos",
       "priority": "medium",
-      "description": "sitemap.ts generates page URLs but contains no image entries. Google's image sitemap extension allows crawlers to discover gallery images, room photos, and hero images \u2014 critical for a hostel whose visual appeal drives bookings. This is especially important since Next.js lazy-loads images that Googlebot may not execute scripts to find.",
+      "description": "sitemap.ts generates page URLs but contains no image entries. Google's image sitemap extension allows crawlers to discover gallery images, room photos, and hero images — critical for a hostel whose visual appeal drives bookings. This is especially important since Next.js lazy-loads images that Googlebot may not execute scripts to find.",
       "acceptanceCriteria": [
         "Gallery page sitemap entry includes an images[] array with all /images/*.webp URLs and descriptive captions",
         "Rooms page entry includes capsule pod images with captions",
@@ -887,7 +887,7 @@
       "id": "US-039",
       "title": "Add VideoObject schema to check-in page for YouTube embed",
       "priority": "medium",
-      "description": "The check-in page embeds a YouTube video but has no VideoObject structured data. Google uses VideoObject schema to generate video rich results and video carousels \u2014 particularly valuable for search queries like 'pelangi hostel check in' or 'capsule hostel JB how to check in', driving qualified traffic from travelers actively planning their stay.",
+      "description": "The check-in page embeds a YouTube video but has no VideoObject structured data. Google uses VideoObject schema to generate video rich results and video carousels — particularly valuable for search queries like 'pelangi hostel check in' or 'capsule hostel JB how to check in', driving qualified traffic from travelers actively planning their stay.",
       "acceptanceCriteria": [
         "VideoObject JSON-LD added to check-in page with name, description, thumbnailUrl, uploadDate, and embedUrl",
         "thumbnailUrl uses a publicly accessible HTTPS URL at least 1200px wide",
@@ -930,7 +930,7 @@
       "id": "US-041",
       "title": "Add ImageGallery and ImageObject schema to Gallery page",
       "priority": "medium",
-      "description": "The /gallery page has no structured data. Adding ImageGallery schema with individual ImageObject entries enables Google Image Search rich results and increases photo discoverability. For a hostel, gallery photos are the primary conversion asset \u2014 surfacing them in image search drives qualified visitors who are visually evaluating accommodation options.",
+      "description": "The /gallery page has no structured data. Adding ImageGallery schema with individual ImageObject entries enables Google Image Search rich results and increases photo discoverability. For a hostel, gallery photos are the primary conversion asset — surfacing them in image search drives qualified visitors who are visually evaluating accommodation options.",
       "acceptanceCriteria": [
         "Gallery page emits ImageGallery JSON-LD containing an array of ImageObject entries",
         "Each ImageObject includes contentUrl, name (descriptive caption), description, and encodingFormat (image/webp)",
@@ -952,7 +952,7 @@
       "id": "US-042",
       "title": "Implement Sentry error monitoring for client, server, and edge",
       "priority": "medium",
-      "description": "Production errors are currently silent \u2014 there is no error monitoring configured. Without Sentry, broken pages go undetected until a guest reports them. For a live hostel booking site, undetected booking form errors or API failures directly cost revenue. Sentry's Next.js SDK instruments client, server, and Edge Runtime with a single setup wizard.",
+      "description": "Production errors are currently silent — there is no error monitoring configured. Without Sentry, broken pages go undetected until a guest reports them. For a live hostel booking site, undetected booking form errors or API failures directly cost revenue. Sentry's Next.js SDK instruments client, server, and Edge Runtime with a single setup wizard.",
       "acceptanceCriteria": [
         "@sentry/nextjs installed and initialised via Sentry wizard (npx @sentry/wizard@latest -i nextjs)",
         "sentry.client.config.ts, sentry.server.config.ts present",
@@ -980,13 +980,13 @@
         "YouTube iframe is not loaded until user clicks the play button",
         "Thumbnail image shown as poster (fetched from YouTube's CDN at build time or statically)",
         "Play button overlay is keyboard-accessible (focusable, activates on Enter/Space)",
-        "Play overlay meets WCAG 2.2 Target Size minimum (\u226524\u00d724px)",
+        "Play overlay meets WCAG 2.2 Target Size minimum (≥24×24px)",
         "After click, iframe loads and autoplays correctly",
         "Lighthouse Performance score maintains or improves vs current baseline"
       ],
       "technicalNotes": [
         "Thumbnail URL: https://img.youtube.com/vi/6Ux11oBZaQQ/hqdefault.jpg",
-        "Pattern: useState(false) \u2192 show poster image with button \u2192 on click setState(true) \u2192 render iframe",
+        "Pattern: useState(false) → show poster image with button → on click setState(true) → render iframe",
         "Mark the poster image as Next.js <Image> with loading='eager' since it IS the LCP for that section",
         "Ref: https://web.dev/third-party-facades/"
       ],
@@ -996,9 +996,9 @@
     },
     {
       "id": "US-044",
-      "title": "Fix WCAG 2.2 SC 2.4.11 \u2014 Focus Not Obscured by sticky MobileBookingBar",
+      "title": "Fix WCAG 2.2 SC 2.4.11 — Focus Not Obscured by sticky MobileBookingBar",
       "priority": "medium",
-      "description": "WCAG 2.2 SC 2.4.11 (Level AA) requires keyboard-focused components are not entirely hidden by sticky UI. The MobileBookingBar is fixed at the viewport bottom. When users tab through footer links, booking CTAs, or cookie consent \u2014 elements near the bottom \u2014 the focused element may be completely hidden behind the bar, blocking keyboard navigation.",
+      "description": "WCAG 2.2 SC 2.4.11 (Level AA) requires keyboard-focused components are not entirely hidden by sticky UI. The MobileBookingBar is fixed at the viewport bottom. When users tab through footer links, booking CTAs, or cookie consent — elements near the bottom — the focused element may be completely hidden behind the bar, blocking keyboard navigation.",
       "acceptanceCriteria": [
         "All focusable elements on every page are at least partially visible when focused, even with MobileBookingBar visible",
         "scroll-padding-bottom CSS applied to html or body matching bar height (~64px) on mobile viewports",
@@ -1020,16 +1020,16 @@
       "id": "US-045",
       "title": "Audit and remediate touch target sizes for WCAG 2.2 SC 2.5.8",
       "priority": "medium",
-      "description": "WCAG 2.2 SC 2.5.8 Target Size (Minimum) at Level AA requires interactive elements to have a minimum target size of 24\u00d724 CSS pixels. The site has several candidates that may fall below this threshold: social media icon links in the Footer, blog category filter chips, and star rating icons. Failing this criterion can trigger legal accessibility complaints in EU (EAA) and US (ADA) contexts.",
+      "description": "WCAG 2.2 SC 2.5.8 Target Size (Minimum) at Level AA requires interactive elements to have a minimum target size of 24×24 CSS pixels. The site has several candidates that may fall below this threshold: social media icon links in the Footer, blog category filter chips, and star rating icons. Failing this criterion can trigger legal accessibility complaints in EU (EAA) and US (ADA) contexts.",
       "acceptanceCriteria": [
-        "All interactive elements have a touch target of at least 24\u00d724px (target size or spacing offset)",
+        "All interactive elements have a touch target of at least 24×24px (target size or spacing offset)",
         "Footer social media icon links have min-h-6 min-w-6 (24px) applied",
         "BlogFilter category chips have min height of 24px",
-        "No clickable element smaller than 24\u00d724px without sufficient spacing to adjacent targets",
-        "DevTools mobile emulation confirms all targets pass the 24\u00d724px threshold"
+        "No clickable element smaller than 24×24px without sufficient spacing to adjacent targets",
+        "DevTools mobile emulation confirms all targets pass the 24×24px threshold"
       ],
       "technicalNotes": [
-        "WCAG 2.2 SC 2.5.8 Level AA: 24\u00d724px minimum target size OR 24px offset spacing around smaller targets",
+        "WCAG 2.2 SC 2.5.8 Level AA: 24×24px minimum target size OR 24px offset spacing around smaller targets",
         "Use Tailwind min-h-6 min-w-6 (= 24px) as the minimum baseline for all interactive elements",
         "Check: Footer social icons, BlogFilter.tsx chips, any icon-only buttons",
         "Ref: https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html"
@@ -1052,7 +1052,7 @@
       ],
       "technicalNotes": [
         "Add via Next.js metadata or directly in layout.tsx <head> using next/head",
-        "Use only 2-3 preconnect hints \u2014 too many compete for connections",
+        "Use only 2-3 preconnect hints — too many compete for connections",
         "Pair preconnect with crossOrigin='anonymous' for font/image origins",
         "Ref: https://web.dev/preconnect-and-dns-prefetch/"
       ],
@@ -1064,7 +1064,7 @@
       "id": "US-047",
       "title": "Verify WCAG 2.2 SC 3.3.8 accessible authentication in booking flow",
       "priority": "medium",
-      "description": "WCAG 2.2 SC 3.3.8 (Accessible Authentication, Minimum \u2014 Level AA) requires authentication and form processes not rely on cognitive tests (e.g., image CAPTCHA) as the only option. The /book page proxies an external SPA from admin.pelangicapsulehostel.com \u2014 this remote booking form must be verified to support password managers, not block paste, and offer accessible auth alternatives if any CAPTCHA is present.",
+      "description": "WCAG 2.2 SC 3.3.8 (Accessible Authentication, Minimum — Level AA) requires authentication and form processes not rely on cognitive tests (e.g., image CAPTCHA) as the only option. The /book page proxies an external SPA from admin.pelangicapsulehostel.com — this remote booking form must be verified to support password managers, not block paste, and offer accessible auth alternatives if any CAPTCHA is present.",
       "acceptanceCriteria": [
         "Booking SPA at /book supports password manager autofill (no autocomplete='off' on credential fields)",
         "No field blocks paste operations (no onPaste preventDefault on any input)",
@@ -1073,8 +1073,8 @@
         "Test with screen reader confirms no authentication barriers in booking flow"
       ],
       "technicalNotes": [
-        "WCAG 2.2 SC 3.3.8 Level AA \u2014 new in WCAG 2.2, referenced in EAA (EU effective 2025) and ADA (US)",
-        "The proxied /book SPA (admin.pelangicapsulehostel.com) must also comply \u2014 coordinate with admin site",
+        "WCAG 2.2 SC 3.3.8 Level AA — new in WCAG 2.2, referenced in EAA (EU effective 2025) and ADA (US)",
+        "The proxied /book SPA (admin.pelangicapsulehostel.com) must also comply — coordinate with admin site",
         "Ensure all <input> elements have appropriate autocomplete attributes",
         "Ref: https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html"
       ],
@@ -1086,7 +1086,7 @@
       "id": "US-048",
       "title": "Add email newsletter capture form for guest re-marketing",
       "priority": "low",
-      "description": "The site has no mechanism to capture visitor emails. Email is a proven re-marketing channel for hospitality \u2014 visitors who don't book immediately can be nurtured via a newsletter (local tips, JB updates, promotions). A lightweight inline signup form placed at the bottom of the blog index converts reader intent into a direct communication channel without requiring OTA commission.",
+      "description": "The site has no mechanism to capture visitor emails. Email is a proven re-marketing channel for hospitality — visitors who don't book immediately can be nurtured via a newsletter (local tips, JB updates, promotions). A lightweight inline signup form placed at the bottom of the blog index converts reader intent into a direct communication channel without requiring OTA commission.",
       "acceptanceCriteria": [
         "Newsletter signup form added to blog index page bottom with name and email fields",
         "Form connects to an email marketing service (Brevo/Mailchimp) via a server action or API route to avoid CSP violations",
@@ -1097,7 +1097,7 @@
       ],
       "technicalNotes": [
         "Brevo (Sendinblue) free tier: 300 emails/day, unlimited contacts",
-        "Use a Next.js Server Action to call Brevo API \u2014 avoids adding external script to CSP",
+        "Use a Next.js Server Action to call Brevo API — avoids adding external script to CSP",
         "PDPA (Malaysia): requires explicit consent before adding to mailing list",
         "Ref: https://developers.brevo.com/reference/createcontact"
       ],
@@ -1120,7 +1120,7 @@
       ],
       "technicalNotes": [
         "Create site/src/app/privacy-policy/page.tsx",
-        "PDPA 2010 Section 7 \u2014 notice and choice principle: https://www.pdp.gov.my/",
+        "PDPA 2010 Section 7 — notice and choice principle: https://www.pdp.gov.my/",
         "Reference GDPR Article 13/14 equivalents for EU visitors already covered by cookie consent",
         "Add link in site/src/components/Footer.tsx and site/src/components/CookieConsent.tsx"
       ],
@@ -1138,7 +1138,7 @@
         "In globals.css, a root-level block sets animation-duration, animation-iteration-count, transition-duration to near-zero and scroll-behavior to auto for reduced motion users",
         "Any JS-driven scroll animation (intersection observers for fade-in) checks `window.matchMedia('(prefers-reduced-motion: reduce)').matches` and skips animations if true",
         "Lighthouse accessibility audit passes with no motion-related flags",
-        "Visual appearance on hover/focus states is preserved \u2014 only motion is removed, not styling"
+        "Visual appearance on hover/focus states is preserved — only motion is removed, not styling"
       ],
       "technicalNotes": [
         "Add to site/src/app/globals.css: @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } }",
@@ -1158,7 +1158,7 @@
         "All normal text (under 18pt / 14pt bold) achieves at least 4.5:1 contrast against its background",
         "All large text and UI component boundaries achieve at least 3:1 contrast",
         "Zero contrast errors reported by axe-core or Lighthouse accessibility audit",
-        "Amber/orange button text is darkened or the button background adjusted to meet 4.5:1 \u2014 amber-500 (#f59e0b on white = 2.26:1) fails and must be replaced",
+        "Amber/orange button text is darkened or the button background adjusted to meet 4.5:1 — amber-500 (#f59e0b on white = 2.26:1) fails and must be replaced",
         "Grey placeholder text in forms meets 4.5:1 (typically requires #767676 or darker on white)"
       ],
       "technicalNotes": [
@@ -1185,7 +1185,7 @@
         "The coordinates match the pin location on Google Maps for the hostel"
       ],
       "technicalNotes": [
-        "Edit site/src/components/StructuredData.tsx \u2014 add geo: { '@type': 'GeoCoordinates', latitude: X.XXXXX, longitude: Y.YYYYY }",
+        "Edit site/src/components/StructuredData.tsx — add geo: { '@type': 'GeoCoordinates', latitude: X.XXXXX, longitude: Y.YYYYY }",
         "Schema.org GeoCoordinates: https://schema.org/GeoCoordinates",
         "Google LocalBusiness structured data docs: https://developers.google.com/search/docs/appearance/structured-data/local-business",
         "Verify coordinates match Google Business Profile pin to avoid NAP inconsistency"
@@ -1373,7 +1373,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-061",
@@ -1381,7 +1381,7 @@
       "priority": "medium",
       "description": "WCAG 2.2 Success Criterion 3.3.7 Redundant Entry (Level A, new in WCAG 2.2) requires that information previously entered by the user in the same process is auto-populated or available for selection, avoiding cognitive burden of re-entering data. Any multi-step booking or enquiry flow on the site must comply with this new baseline Level A requirement.",
       "acceptanceCriteria": [
-        "All forms on the site are audited for fields requesting the same data type more than once (e.g., email + confirm email) \u2014 duplicate-entry fields are either removed or auto-populated",
+        "All forms on the site are audited for fields requesting the same data type more than once (e.g., email + confirm email) — duplicate-entry fields are either removed or auto-populated",
         "If a confirm email field exists in the contact form, it uses browser autocomplete='email' pairing and is justified in a code comment",
         "If the booking flow (proxied admin SPA) has multi-step data re-entry, it is documented as out-of-scope with a ticket raised to the admin team",
         "A WCAG 2.2 SC 3.3.7 compliance note is added to the accessibility section of project documentation",
@@ -1391,7 +1391,7 @@
         "WCAG 2.2 SC 3.3.7 Understanding: https://www.w3.org/WAI/WCAG22/Understanding/redundant-entry.html",
         "Check site/src/app/contact/page.tsx for all form fields",
         "Correct autocomplete attribute values per spec: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill",
-        "The /book route is a proxy \u2014 SC 3.3.7 compliance there is the admin SPA's responsibility"
+        "The /book route is a proxy — SC 3.3.7 compliance there is the admin SPA's responsibility"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
@@ -1401,12 +1401,12 @@
       "id": "US-062",
       "title": "Add CSP violation reporting via report-uri directive to Sentry",
       "priority": "medium",
-      "description": "The Content Security Policy is already implemented in enforce mode, but without a `report-uri` directive, CSP violations are silent \u2014 they block threats but provide no forensic data. Sentry (already installed) provides a dedicated CSP report endpoint. Adding the report-uri directive routes all violation reports into the existing Sentry project, enabling monitoring of injection attempts and misconfigured third-party scripts.",
+      "description": "The Content Security Policy is already implemented in enforce mode, but without a `report-uri` directive, CSP violations are silent — they block threats but provide no forensic data. Sentry (already installed) provides a dedicated CSP report endpoint. Adding the report-uri directive routes all violation reports into the existing Sentry project, enabling monitoring of injection attempts and misconfigured third-party scripts.",
       "acceptanceCriteria": [
         "The CSP header in next.config.ts includes a report-uri directive pointing to the Sentry security endpoint",
         "The Sentry CSP report URI is stored in an environment variable NEXT_PUBLIC_SENTRY_CSP_REPORT_URI or SENTRY_CSP_REPORT_URI rather than hard-coded",
         "Deliberately triggering a CSP violation in a development/staging environment produces a report in Sentry under Security Issues",
-        "Existing CSP enforcement (blocking behaviour) is unaffected \u2014 only reporting is added",
+        "Existing CSP enforcement (blocking behaviour) is unaffected — only reporting is added",
         "Environment variable is documented in .env.example or project README"
       ],
       "technicalNotes": [
@@ -1435,7 +1435,7 @@
         "Edit site/package.json scripts.dev from 'next dev' to 'next dev --turbo'",
         "Next.js 15 Turbopack stable blog: https://nextjs.org/blog/turbopack-for-development-stable",
         "Turbopack docs: https://nextjs.org/docs/architecture/turbopack",
-        "Production build (next build) still uses Webpack \u2014 Turbopack production support is a future release"
+        "Production build (next build) still uses Webpack — Turbopack production support is a future release"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
@@ -1454,7 +1454,7 @@
         "CI build log shows no ESLint 8 EOL warnings"
       ],
       "technicalNotes": [
-        "Run `npx @next/codemod@canary upgrade latest` \u2014 it handles eslint config migration automatically",
+        "Run `npx @next/codemod@canary upgrade latest` — it handles eslint config migration automatically",
         "Next.js 15 ships eslint-config-next compatible with ESLint 9 flat config",
         "Flat config requires ESM import syntax; check all custom plugins for ESLint 9 compatibility",
         "ESLint 8 EOL announcement: https://eslint.org/blog/2024/10/eslint-v8-end-of-life/"
@@ -1489,13 +1489,13 @@
       "id": "US-066",
       "title": "Add Fuse.js client-side site search for blog and guide content",
       "priority": "high",
-      "description": "With 6+ blog articles and a comprehensive guide page, users cannot quickly find specific topics, destinations, or tips. Fuse.js provides fast fuzzy search running entirely in the browser from a pre-built static index \u2014 no backend, no API costs, no privacy concerns. A keyboard-accessible Command Menu (Cmd/Ctrl+K) is the standard pattern for modern site search.",
+      "description": "With 6+ blog articles and a comprehensive guide page, users cannot quickly find specific topics, destinations, or tips. Fuse.js provides fast fuzzy search running entirely in the browser from a pre-built static index — no backend, no API costs, no privacy concerns. A keyboard-accessible Command Menu (Cmd/Ctrl+K) is the standard pattern for modern site search.",
       "acceptanceCriteria": [
         "Search dialog opens via Cmd/Ctrl+K keyboard shortcut and a search icon in Header nav",
         "Results include blog posts and /guide section headings with category labels",
         "Fuzzy matching handles 1-2 character typos (e.g., 'restrant' finds 'restaurant')",
         "Keyboard navigation works: arrow keys to move, Enter to navigate, Escape to close",
-        "Search index pre-built at build time from static data \u2014 zero runtime fetch required",
+        "Search index pre-built at build time from static data — zero runtime fetch required",
         "Empty state message shown when no results match",
         "Search dialog has role='dialog', aria-label='Site search', and focus trap"
       ],
@@ -1527,7 +1527,7 @@
         "Schema.org sameAs documentation: https://schema.org/sameAs",
         "Google uses sameAs for entity disambiguation in the Knowledge Graph",
         "Validate with: https://search.google.com/test/rich-results",
-        "Also add Agoda if the hostel is listed there \u2014 Agoda is dominant in SE Asia"
+        "Also add Agoda if the hostel is listed there — Agoda is dominant in SE Asia"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
@@ -1550,7 +1550,7 @@
       "technicalNotes": [
         "npm install resend",
         "Resend Next.js guide: https://resend.com/docs/send-with-nextjs",
-        "Use Next.js Server Actions for form handling \u2014 no separate API route needed",
+        "Use Next.js Server Actions for form handling — no separate API route needed",
         "Store RESEND_API_KEY and ADMIN_EMAIL as environment variables",
         "Resend free tier: 3,000 emails/month (sufficient for hostel volume)",
         "Log submissions to avoid losing inquiries if email delivery fails"
@@ -1573,7 +1573,7 @@
         "No Chrome DevTools 'preload used within a few seconds of window load' warning"
       ],
       "technicalNotes": [
-        "Add preload link directly in layout.tsx <head> \u2014 Next.js metadata API does not support image preload links",
+        "Add preload link directly in layout.tsx <head> — Next.js metadata API does not support image preload links",
         "Match srcSet breakpoints from Next.js image config: '640w, 750w, 828w, 1080w, 1200w, 1920w'",
         "web.dev preload responsive images: https://web.dev/articles/preload-responsive-images",
         "Ensure the hero-main.webp file exists in /public/images/ and the path matches exactly",
@@ -1587,7 +1587,7 @@
       "id": "US-070",
       "title": "Migrate CSP script-src from unsafe-inline to nonce-based policy",
       "priority": "high",
-      "description": "The current CSP in next.config.ts uses 'unsafe-inline' in script-src (line 7), which allows any inline script to execute regardless of origin \u2014 significantly weakening XSS protection. A nonce-based CSP generates a cryptographic nonce per request, allowing only explicitly nonced inline scripts (Next.js hydration, analytics) while blocking unauthorised injected scripts.",
+      "description": "The current CSP in next.config.ts uses 'unsafe-inline' in script-src (line 7), which allows any inline script to execute regardless of origin — significantly weakening XSS protection. A nonce-based CSP generates a cryptographic nonce per request, allowing only explicitly nonced inline scripts (Next.js hydration, analytics) while blocking unauthorised injected scripts.",
       "acceptanceCriteria": [
         "Per-request cryptographic nonce generated in Next.js middleware and passed via x-nonce request header",
         "'unsafe-inline' removed from script-src; nonce added: \"'nonce-{VALUE}'\"",
@@ -1624,7 +1624,7 @@
       "technicalNotes": [
         "Run `npx @tailwindcss/upgrade` for automated config and class-rename migration",
         "PostCSS config changes: replace `tailwindcss` plugin with `@tailwindcss/postcss`",
-        "Breaking: some utility names renamed (e.g., shadow-sm \u2192 shadow-xs); codemod handles most",
+        "Breaking: some utility names renamed (e.g., shadow-sm → shadow-xs); codemod handles most",
         "Tailwind v4 upgrade guide: https://tailwindcss.com/docs/upgrade-guide"
       ],
       "dependencies": [],
@@ -1664,13 +1664,13 @@
         "Clicking triggers navigator.share({ title, text, url }) on supported browsers",
         "Clipboard copy fallback displayed for browsers without navigator.share support",
         "Success toast notification shown after share or copy completes",
-        "Button requires user gesture (click) \u2014 no auto-share on load",
+        "Button requires user gesture (click) — no auto-share on load",
         "navigator.canShare() checked before calling navigator.share()"
       ],
       "technicalNotes": [
-        "Add 'use client' directive \u2014 Web Share API requires browser context",
+        "Add 'use client' directive — Web Share API requires browser context",
         "Web Share API requires HTTPS (works on localhost for development)",
-        "Browser support: Chrome 89+, Safari 14+, Firefox Android 71+ \u2014 desktop Firefox does not support",
+        "Browser support: Chrome 89+, Safari 14+, Firefox Android 71+ — desktop Firefox does not support",
         "MDN Web Share API: https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share"
       ],
       "dependencies": [],
@@ -1703,7 +1703,7 @@
       "id": "US-075",
       "title": "Implement dark mode support with prefers-color-scheme and Tailwind dark: classes",
       "priority": "medium",
-      "description": "Approximately 65% of mobile users enable dark mode at the OS level. The site has no dark mode support, causing bright white pages for night-time booking \u2014 a common scenario for late travellers. Tailwind's dark: variant (media strategy) provides automatic OS-preference matching with no JavaScript state management required.",
+      "description": "Approximately 65% of mobile users enable dark mode at the OS level. The site has no dark mode support, causing bright white pages for night-time booking — a common scenario for late travellers. Tailwind's dark: variant (media strategy) provides automatic OS-preference matching with no JavaScript state management required.",
       "acceptanceCriteria": [
         "tailwind.config.ts sets darkMode: 'media'",
         "All page backgrounds switch to dark equivalents (dark:bg-stone-900 etc.) in dark mode",
@@ -1713,7 +1713,7 @@
         "All text in dark mode passes WCAG 1.4.3 4.5:1 contrast ratio"
       ],
       "technicalNotes": [
-        "Start with darkMode: 'media' strategy \u2014 requires no toggle state management",
+        "Start with darkMode: 'media' strategy — requires no toggle state management",
         "Add dark background to body in globals.css: @media (prefers-color-scheme: dark) { body { background-color: #1c1917; } }",
         "Test with Chrome DevTools: Rendering > Emulate CSS media > prefers-color-scheme: dark",
         "Images with white backgrounds: add dark:bg-stone-800 to containing divs or use transparent PNGs",
@@ -1762,7 +1762,7 @@
       "technicalNotes": [
         "Schema.org Offer: https://schema.org/Offer",
         "Schema.org AggregateOffer: https://schema.org/AggregateOffer",
-        "Pattern: HotelRoom > makesOffer > Offer \u2014 see existing HotelRoom schema in /rooms page",
+        "Pattern: HotelRoom > makesOffer > Offer — see existing HotelRoom schema in /rooms page",
         "priceValidUntil should be a future date in ISO 8601 format: '2027-01-01'",
         "Required Offer properties for rich results: price, priceCurrency, availability, seller"
       ],
@@ -1785,7 +1785,7 @@
       ],
       "technicalNotes": [
         "Google Sitelinks Searchbox docs: https://developers.google.com/search/docs/appearance/structured-data/sitelinks-searchbox",
-        "WebSite schema is separate from LodgingBusiness \u2014 add as third block in StructuredData.tsx",
+        "WebSite schema is separate from LodgingBusiness — add as third block in StructuredData.tsx",
         "Requires functional /search?q= endpoint (Fuse.js story) for user experience",
         "Google eligibility: site must be prominent (high-authority queries); may take weeks to appear",
         "Validate: https://search.google.com/test/rich-results"
@@ -1800,11 +1800,11 @@
       "id": "US-079",
       "title": "Add estimated reading time to blog post cards and article headers",
       "priority": "low",
-      "description": "Blog cards and article pages show no reading time, giving users no expectation of content length. Industry research shows reading time labels reduce bounce rate by setting expectations. The calculation (word count \u00f7 200 wpm) can be computed at build time from static post body data with zero runtime cost.",
+      "description": "Blog cards and article pages show no reading time, giving users no expectation of content length. Industry research shows reading time labels reduce bounce rate by setting expectations. The calculation (word count ÷ 200 wpm) can be computed at build time from static post body data with zero runtime cost.",
       "acceptanceCriteria": [
         "Reading time displayed on BlogCard component (e.g., '5 min read')",
         "Reading time displayed in blog article page header below the title",
-        "Calculated using Math.ceil(wordCount / 200) \u2014 minimum 1 min displayed",
+        "Calculated using Math.ceil(wordCount / 200) — minimum 1 min displayed",
         "readingTimeMinutes field added to blog post TypeScript data type",
         "Display uses an accessible pattern: <span aria-label='5 minute read'>5 min read</span>"
       ],
@@ -1833,7 +1833,7 @@
       "technicalNotes": [
         "MDN theme-color: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/theme-color",
         "Next.js metadata themeColor API: https://nextjs.org/docs/app/api-reference/functions/generate-metadata#themecolor",
-        "Safari iOS uses apple-mobile-web-app-status-bar-style \u2014 add 'black-translucent' for dark mode",
+        "Safari iOS uses apple-mobile-web-app-status-bar-style — add 'black-translucent' for dark mode",
         "Verify in Chrome DevTools: Application > Manifest > Theme color"
       ],
       "dependencies": [],
@@ -1844,7 +1844,7 @@
       "id": "US-081",
       "title": "Add Bing Webmaster Tools verification and sitemap submission",
       "priority": "low",
-      "description": "The site has Google Search Console configured but no Bing Webmaster Tools account. Bing and DuckDuckGo collectively account for 10-15% of global search traffic. Verification takes under 5 minutes, enables sitemap submission, crawl monitoring, and Bing-specific SEO insights. Bing also powers DuckDuckGo, Ecosia, and Yahoo Search \u2014 one submission covers all.",
+      "description": "The site has Google Search Console configured but no Bing Webmaster Tools account. Bing and DuckDuckGo collectively account for 10-15% of global search traffic. Verification takes under 5 minutes, enables sitemap submission, crawl monitoring, and Bing-specific SEO insights. Bing also powers DuckDuckGo, Ecosia, and Yahoo Search — one submission covers all.",
       "acceptanceCriteria": [
         "Bing Webmaster Tools account created at https://www.bing.com/webmasters/ and site verified",
         "Verification via <meta name='msvalidate.01' content='TOKEN'> in layout.tsx metadata.verification",
@@ -1855,7 +1855,7 @@
       "technicalNotes": [
         "Bing Webmaster Tools: https://www.bing.com/webmasters/",
         "Next.js metadata verification: verification: { other: { 'msvalidate.01': 'YOUR_TOKEN' } }",
-        "Bing can auto-import verified GSC sites \u2014 check for auto-import option first to save time",
+        "Bing can auto-import verified GSC sites — check for auto-import option first to save time",
         "Once verified, submit sitemap via: Sitemaps > Submit Sitemap > enter sitemap URL"
       ],
       "dependencies": [],
@@ -1877,7 +1877,7 @@
       "technicalNotes": [
         "OpenSearch specification: https://developer.mozilla.org/en-US/docs/Web/OpenSearch",
         "Minimum valid descriptor requires: OpenSearchDescription, ShortName, Description, Url elements",
-        "Place at /public/opensearch.xml \u2014 served as a static file at /opensearch.xml",
+        "Place at /public/opensearch.xml — served as a static file at /opensearch.xml",
         "Works best after Fuse.js site search is implemented (dependency)"
       ],
       "dependencies": [
@@ -1900,7 +1900,7 @@
       "technicalNotes": [
         "Schema.org touristType: https://schema.org/touristType",
         "Add as array of string values: 'touristType': ['Backpackers', 'Budget Travelers', 'Solo Travelers']",
-        "No official controlled vocabulary \u2014 use English text matching Google Travel filter taxonomy",
+        "No official controlled vocabulary — use English text matching Google Travel filter taxonomy",
         "One-line addition to hostelSchema object in site/src/components/StructuredData.tsx"
       ],
       "dependencies": [],
@@ -1915,14 +1915,14 @@
       "acceptanceCriteria": [
         "`aggregateRating` with `ratingValue`, `bestRating: 5`, `worstRating: 1`, and `reviewCount` is added to `LodgingBusiness` JSON-LD",
         "`starRating` property is added using the `Rating` type with the hostel's actual category",
-        "Values are sourced from a real review platform (Hostelworld, Google, or Booking.com) \u2014 not fabricated",
+        "Values are sourced from a real review platform (Hostelworld, Google, or Booking.com) — not fabricated",
         "Google Rich Results Test validates the schema without 'unverified' warnings",
         "Rating values are updated at least quarterly via a config constant in `StructuredData.tsx`"
       ],
       "technicalNotes": [
         "Dan Taylor hotel schema guide: https://dantaylor.online/blog/schema-for-hotels-travel-accommodations/",
         "Core Optimisation hotel schema: https://www.coreoptimisation.com/5-types-of-schema-markup-hotels-can-use-to-improve-seo-performance/",
-        "IMPORTANT: aggregateRating must be from independently-submitted reviews \u2014 do not fabricate. Use real Hostelworld/Google ratings."
+        "IMPORTANT: aggregateRating must be from independently-submitted reviews — do not fabricate. Use real Hostelworld/Google ratings."
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
@@ -1942,7 +1942,7 @@
       "technicalNotes": [
         "Add to `next.config.ts` headers array: `{ key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' }`",
         "Arcjet Next.js security checklist: https://blog.arcjet.com/next-js-security-checklist/",
-        "HSTS preload registration: https://hstspreload.org/ \u2014 submit after header is live for 1 week"
+        "HSTS preload registration: https://hstspreload.org/ — submit after header is live for 1 week"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
@@ -1962,7 +1962,7 @@
       "technicalNotes": [
         "Add to `next.config.ts` headers array",
         "Vivasoft Next.js security headers: https://vivasoftltd.com/secure-web-app-using-http-security-headers-next-js/",
-        "Permissions-Policy replaced the older Feature-Policy header \u2014 use the new syntax"
+        "Permissions-Policy replaced the older Feature-Policy header — use the new syntax"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
@@ -1972,7 +1972,7 @@
       "id": "US-087",
       "title": "WCAG 2.2 SC 2.4.13: Audit and enforce minimum focus appearance (2 px ring, 3:1 contrast)",
       "priority": "high",
-      "description": "SC 2.4.13 (AA, new in WCAG 2.2) requires focus indicators to have a minimum enclosed area of `perimeter \u00d7 2 CSS pixels` and a 3:1 contrast ratio between focused and unfocused states. This goes beyond the existing SC 1.4.3 text contrast coverage. A Tailwind `focus-visible:ring-2 focus-visible:ring-offset-2` audit across all interactive elements is needed.",
+      "description": "SC 2.4.13 (AA, new in WCAG 2.2) requires focus indicators to have a minimum enclosed area of `perimeter × 2 CSS pixels` and a 3:1 contrast ratio between focused and unfocused states. This goes beyond the existing SC 1.4.3 text contrast coverage. A Tailwind `focus-visible:ring-2 focus-visible:ring-offset-2` audit across all interactive elements is needed.",
       "acceptanceCriteria": [
         "All focusable elements (links, buttons, inputs, selects) show a visible 2px minimum focus ring",
         "Focus ring color achieves 3:1 contrast ratio against adjacent colors in both light and dark mode",
@@ -1981,7 +1981,7 @@
       ],
       "technicalNotes": [
         "W3C WCAG 2.2 Understanding SC 2.4.13: https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html",
-        "Use CSS `outline` rather than `box-shadow` \u2014 box-shadow is not visible in Windows High Contrast mode",
+        "Use CSS `outline` rather than `box-shadow` — box-shadow is not visible in Windows High Contrast mode",
         "Tailwind: add `focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600` to global interactive element styles"
       ],
       "dependencies": [],
@@ -1992,7 +1992,7 @@
       "id": "US-088",
       "title": "Audit and add correct sizes prop to all responsive next/image instances",
       "priority": "high",
-      "description": "When `sizes` is omitted, Next.js generates a srcset but the browser defaults to 100vw, causing full-width images to download even when displayed at 50% or 33% width (e.g., grid layouts in Gallery and Rooms pages). Correctly authored `sizes` attributes can reduce image payload by 50\u201370% on mobile devices.",
+      "description": "When `sizes` is omitted, Next.js generates a srcset but the browser defaults to 100vw, causing full-width images to download even when displayed at 50% or 33% width (e.g., grid layouts in Gallery and Rooms pages). Correctly authored `sizes` attributes can reduce image payload by 50–70% on mobile devices.",
       "acceptanceCriteria": [
         "Every `<Image>` instance has an explicit `sizes` prop matching its CSS layout breakpoints",
         "Gallery grid images use `sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'`",
@@ -2043,7 +2043,7 @@
       "technicalNotes": [
         "Next.js 15 PPR docs: https://nextjs.org/docs/15/app/getting-started/partial-prerendering",
         "Wrap dynamic components with `<Suspense>` fallback; mark route segment with `export const experimental_ppr = true`",
-        "PPR is production-ready in Next.js 15+ with the incremental flag \u2014 no canary required"
+        "PPR is production-ready in Next.js 15+ with the incremental flag — no canary required"
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
@@ -2058,7 +2058,7 @@
         "A `<script type='speculationrules'>` block is injected in `<head>` with prerender rules for `/book`, `/rooms`, and `/gallery`",
         "Chrome DevTools > Application > Speculation Rules shows the three rules active",
         "Navigation to `/book` from homepage completes in < 100 ms on a mid-range device simulation",
-        "Non-supporting browsers (Firefox, Safari) are unaffected \u2014 rules are ignored gracefully"
+        "Non-supporting browsers (Firefox, Safari) are unaffected — rules are ignored gracefully"
       ],
       "technicalNotes": [
         "MDN Speculation Rules API: https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API",
@@ -2123,7 +2123,7 @@
       "technicalNotes": [
         "Next.js headers config docs: https://nextjs.org/docs/pages/api-reference/config/next-config-js/headers",
         "LogRocket Next.js security headers: https://blog.logrocket.com/using-next-js-security-headers/",
-        "COOP may break `window.opener` usage \u2014 audit any popup-based booking widgets before enabling"
+        "COOP may break `window.opener` usage — audit any popup-based booking widgets before enabling"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
@@ -2136,13 +2136,13 @@
       "description": "SC 2.5.7 (AA, new in WCAG 2.2) requires that any functionality using dragging has an equivalent single-pointer (tap/click) path. The Gallery carousel likely uses swipe gestures without visible prev/next buttons on mobile, failing this criterion. Adding navigation buttons satisfies the requirement and improves usability on assistive pointer devices.",
       "acceptanceCriteria": [
         "Gallery carousel has visible Previous and Next button controls accessible via click/tap",
-        "Swipe gesture continues to work as an enhancement \u2014 not the only navigation method",
+        "Swipe gesture continues to work as an enhancement — not the only navigation method",
         "WCAG Accessibility Checker reports no SC 2.5.7 violations on `/gallery`",
         "Buttons are keyboard-accessible and labelled with `aria-label='Previous image'` / `aria-label='Next image'`"
       ],
       "technicalNotes": [
         "W3C WCAG 2.2 Understanding SC 2.5.7: https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements.html",
-        "Applies to any drag-based interaction \u2014 also check `/guide` page if it has a timeline/slider",
+        "Applies to any drag-based interaction — also check `/guide` page if it has a timeline/slider",
         "Slider/range inputs should also have + / - button alternatives"
       ],
       "dependencies": [],
@@ -2158,12 +2158,12 @@
         "`images.formats: ['image/avif', 'image/webp']` is set in `next.config.ts`",
         "Chrome DevTools Network tab shows `.avif` content-type for images on pages with `next/image`",
         "Safari falls back to `.webp` format",
-        "No visual quality regression \u2014 AVIF quality setting is 75 or above"
+        "No visual quality regression — AVIF quality setting is 75 or above"
       ],
       "technicalNotes": [
         "Next.js image component docs: https://nextjs.org/docs/app/api-reference/components/image#formats",
         "DebugBear Next.js image optimisation: https://www.debugbear.com/blog/nextjs-image-optimization",
-        "AVIF encoding is CPU-intensive at build time \u2014 enable only for production to avoid slowing dev server"
+        "AVIF encoding is CPU-intensive at build time — enable only for production to avoid slowing dev server"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
@@ -2178,7 +2178,7 @@
         "`plaiceholder` package is installed and used at build time to generate `blurDataURL` for all remote images",
         "Hero image and all room card images use `placeholder='blur'` with generated `blurDataURL`",
         "Chrome DevTools shows blur placeholder visible before full image loads on simulated 3G",
-        "No increase in JS bundle size \u2014 plaiceholder runs only at build time (server-side)"
+        "No increase in JS bundle size — plaiceholder runs only at build time (server-side)"
       ],
       "technicalNotes": [
         "plaiceholder docs: https://plaiceholder.co/docs",
@@ -2196,14 +2196,14 @@
       "description": "Hotel websites convert at one-third the rate of OTAs because users lack trust in direct booking prices. A static 'Book Direct = Lowest Rate' badge with a brief price-match guarantee policy above the OTA channel list removes price-comparison hesitancy. This is a content/design story requiring one component addition.",
       "acceptanceCriteria": [
         "A visible 'Best Price Guarantee' badge or callout block appears above the OTA booking links on `/book`",
-        "Badge includes a one-sentence price-match commitment (e.g., 'Find it cheaper elsewhere \u2014 we'll match it')",
+        "Badge includes a one-sentence price-match commitment (e.g., 'Find it cheaper elsewhere — we'll match it')",
         "Badge links to a brief policy explanation (can be a tooltip or inline accordion)",
         "Component is accessible: badge text is readable by screen readers (not icon-only)"
       ],
       "technicalNotes": [
         "Gourmet Marketing hotel conversion: https://www.gourmetmarketing.net/blog/hotel-website-conversion-optimization",
         "Little Hotelier conversion guide: https://www.littlehotelier.com/blog/get-more-bookings/hotel-website-conversion-rate/",
-        "Use a subtle bordered callout (e.g., green border, checkmark icon) \u2014 avoid aggressive styling that looks like a pop-up ad"
+        "Use a subtle bordered callout (e.g., green border, checkmark icon) — avoid aggressive styling that looks like a pop-up ad"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
@@ -2224,7 +2224,7 @@
       "technicalNotes": [
         "Vercel Speed Insights docs: https://vercel.com/docs/speed-insights",
         "Install: `npm install @vercel/speed-insights`",
-        "Import: `import { SpeedInsights } from '@vercel/speed-insights/next'` \u2014 add to layout after existing analytics components"
+        "Import: `import { SpeedInsights } from '@vercel/speed-insights/next'` — add to layout after existing analytics components"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
@@ -2239,12 +2239,12 @@
         "Contact form and newsletter server actions import `after` from `next/server`",
         "Non-user-blocking operations (analytics, Sentry breadcrumbs, secondary email confirmations) are wrapped in `after()`",
         "Form submission TTFB decreases by at least 50 ms in local profiling",
-        "No regression in email delivery \u2014 all Resend calls still complete"
+        "No regression in email delivery — all Resend calls still complete"
       ],
       "technicalNotes": [
         "Next.js 15 blog: https://nextjs.org/blog/next-15",
         "API: `import { after } from 'next/server'; after(() => { /* side effects */ });`",
-        "Only available in Server Actions and Route Handlers \u2014 not Client Components"
+        "Only available in Server Actions and Route Handlers — not Client Components"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
@@ -2254,7 +2254,7 @@
       "id": "US-101",
       "title": "Add Exit Intent overlay on /book page offering early check-in incentive (desktop only)",
       "priority": "low",
-      "description": "Exit-intent interstitials on hotel booking pages recover 5\u201312% of abandoning visitors per industry data. A lightweight `mouseleave` listener on `document.documentElement` triggers a modal with a 'Stay \u2014 we'll throw in early check-in at 11 AM' offer when the cursor moves toward the browser chrome on desktop. No third-party library needed.",
+      "description": "Exit-intent interstitials on hotel booking pages recover 5–12% of abandoning visitors per industry data. A lightweight `mouseleave` listener on `document.documentElement` triggers a modal with a 'Stay — we'll throw in early check-in at 11 AM' offer when the cursor moves toward the browser chrome on desktop. No third-party library needed.",
       "acceptanceCriteria": [
         "Overlay appears once per session when the cursor exits the viewport toward the top (desktop only, `window.innerWidth > 1024`)",
         "Overlay shows offer text and two CTAs: 'Book via WhatsApp' and 'Continue Browsing'",
@@ -2278,9 +2278,9 @@
       "description": "Dynamic social proof signals (viewing activity counters) reduce decision paralysis on hospitality sites. 70% of online bookings happen on mobile where urgency signals accelerate decisions. A seeded counter (based on real GA4 traffic) rendered as a Server Component adds zero client JS overhead.",
       "acceptanceCriteria": [
         "A small counter badge appears in the hero section (e.g., '12 people checked availability today')",
-        "Counter value is server-side rendered \u2014 no client-side fetch on load",
+        "Counter value is server-side rendered — no client-side fetch on load",
         "Value is refreshed at build time from GA4 data or seeded with a realistic static value",
-        "Counter is visually subtle (small text, muted color) \u2014 it does not distract from primary CTA",
+        "Counter is visually subtle (small text, muted color) — it does not distract from primary CTA",
         "Counter is hidden if the value falls below 5 to avoid negative social proof"
       ],
       "technicalNotes": [

@@ -3482,3 +3482,55 @@ This user story is for a Next.js/TypeScript website, not a Frappe/Python applica
 ### Gotchas
 - `package.json` `analyze` script uses `ANALYZE=true` env var inline — works on Linux/Mac CI; Windows may need cross-env
 - Bundle contributor sizes are estimates based on package analysis; run `ANALYZE=true npm run build` to get actual treemap
+## Iteration 1 - Fri, Mar 13, 2026  9:10:57 AM
+Incomplete: Add aggregateRating and starRating to LodgingBusiness schema from real review platform data (ID: US-084) — attempt 1/3
+
+
+## Pre-analysis for US-084 (Gemini 2.5 Pro)
+### Technical Brief for Claude: US-084
+
+**Project Context Correction:** This user story applies to a **Next.js/TypeScript frontend**, not a Frappe/Python backend as initially described. All modifications will be in `.tsx` files.
+
+**1. Files to Modify:**
+*   `site/src/app/amenities/page.tsx`: This is the most likely file, as it already contains the `LodgingBusiness` schema definition.
+*   A new or existing component for structured data (e.g., `src/components/StructuredData.tsx`) might be a better long-term location, but start with `amenities/page.tsx`.
+
+**2. Frappe DocTypes/Hooks:**
+*   None. This is not a Frappe project.
+
+**3. Recommended Implementation Approach:**
+1.  In `site/src/app/amenities/page.tsx`, define a `const` to hold review data sourced from Hostelworld/Google (e.g., `{ ratingValue: 4.8, reviewCount: 1234 }`).
+2.  Locate the existing `LodgingBusiness` JSON-LD object within the component.
+3.  Add the `aggregateRating` property to this JSON-LD object, populating it from the constant.
+    ```json
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "bestRating": "5",
+      "worstRating": "1",
+      "reviewCount": "1234"
+    }
+    ```
+4.  Add the `starRating` property using the `Rating` type as specified in schema.org documentation for hotels.
+
+**4. Edge Cases & Gotchas:**
+*   **Data Authenticity:** The story strongly emphasizes using *real*, verifiable data from a third-party review platform. Do not use placeholder values.
+*   **Validation:** Test the final page URL with the Google Rich Results Test tool to ensure the schema is valid and recognized without warnings.
+*   **Data Types:** Ensure `ratingValue` and `reviewCount` are numbers or strings that correctly parse as numbers in the final JSON output.
+*   **Maintenance:** The current approach requires manual updates to a constant. Implement it cleanly so it can be easily updated quarterly.
+
+
+## Iteration - Story: Add honeypot field to contact form to block spam bot submissions
+
+### What was implemented
+- Honeypot was already 95% implemented from a prior iteration (hidden `website` input field + server-side check in contact action)
+- Added missing `opacity-0` to honeypot div to fully match acceptance criteria styling spec
+- Server-side already returns fake success when honeypot is filled (silent drop)
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Contact form uses React `useActionState` with a server action (`submitContactForm`)
+- Server action returns fake success to bots to avoid revealing detection
+
+### Gotchas
+- Honeypot was mostly done already — only needed opacity-0 addition
