@@ -5392,3 +5392,26 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 - `rtk npx tsc` doesn't work on this system (rtk can't find the program); use `npx tsc` directly
 - RTS Link content uses tentative language since it's under construction (expected end 2026)
 
+
+
+## Iteration 217 - Story: US-103 - Register Google Business Profile and connect to Google Hotel free booking links
+
+### What was implemented
+- NOTHING — this is a business/operations task, not a code task
+
+### Why this cannot be completed in code
+- US-103 requires manually claiming a Google Business Profile at business.google.com
+- Verification involves Google sending a postcard or phone call to the physical property address
+- Connecting to Google Hotel Center requires signing up with a connectivity partner (e.g., Beds24, Cloudbeds)
+- Free booking links only appear after Google verifies the property and a connectivity partner sends live rates
+- None of these steps can be automated through code changes in the website repo
+
+### Recommendation
+- Mark US-103 as a business operations task, not a development task
+- Owner should claim the profile at https://business.google.com/ and follow Google's verification process
+- After verification, sign up with a connectivity partner (Beds24 recommended for small properties)
+- The existing /book page already satisfies the "booking landing page on own domain" criterion
+- Consider moving this story out of the PRD since it's not software development work
+
+### Gotchas
+- This story will be auto-skipped after 3 Ralph retries (by design)
