@@ -1,25 +1,14 @@
 import Image from "next/image";
-import Link from "next/link";
 import LangMs from "@/components/LangMs";
-import capsule4Image from "../../public/images/capsule-4.webp";
-import capsule2Image from "../../public/images/capsule-2.webp";
-import capsule3Image from "../../public/images/capsule-3.webp";
 import pasarMalamImage from "../../public/images/destinations/pasar-malam.jpg";
 import { cacheLife, cacheTag } from "next/cache";
+import RoomsTabsClient from "@/components/RoomsTabsClient";
 
 export default async function Rooms() {
   "use cache";
   cacheLife("days");
   cacheTag("rooms-static");
   cacheTag("rooms");
-  const capsuleFeatures = [
-    { icon: "fan", text: "Personal climate control" },
-    { icon: "light", text: "Adjustable LED lighting" },
-    { icon: "power", text: "USB & power outlets" },
-    { icon: "lock", text: "Privacy sliding door" },
-    { icon: "bed", text: "Premium mattress" },
-    { icon: "locker", text: "Personal locker" },
-  ];
 
   const hostelHighlights = [
     {
@@ -70,133 +59,11 @@ export default async function Rooms() {
           </p>
         </div>
 
-        {/* Main showcase */}
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 mb-16">
-          {/* Image gallery - larger */}
-          <div className="lg:col-span-3 grid sm:grid-cols-2 gap-4">
-            <div className="relative h-64 md:h-72 rounded-2xl overflow-hidden group sm:col-span-2">
-              <Image
-                src={capsule4Image}
-                alt="Modern Japanese-style capsule pod interior at Pelangi Hostel Johor Bahru with personal lighting and privacy curtain"
-                fill
-                sizes="(max-width: 1024px) 100vw, 60vw"
-                quality={80}
-                className="object-cover image-zoom"
-                placeholder="blur"
-                fetchPriority="low"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-stone-900/40 to-transparent" />
-              <div className="absolute bottom-4 left-4 text-white">
-                <div className="text-xs tracking-widest uppercase opacity-70">Featured</div>
-                <div className="text-lg font-medium">Capsule Interior</div>
-              </div>
-            </div>
-            <div className="relative h-48 md:h-56 rounded-2xl overflow-hidden group">
-              <Image
-                src={capsule2Image}
-                alt="Comfortable premium mattress in budget capsule hostel pod in Taman Pelangi JB"
-                fill
-                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 50vw, 30vw"
-                quality={80}
-                className="object-cover image-zoom"
-                placeholder="blur"
-                fetchPriority="low"
-              />
-            </div>
-            <div className="relative h-48 md:h-56 rounded-2xl overflow-hidden group">
-              <Image
-                src={capsule3Image}
-                alt="Capsule pod amenities including USB charging ports and personal ventilation at Pelangi Hostel"
-                fill
-                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 50vw, 30vw"
-                quality={80}
-                className="object-cover image-zoom"
-                placeholder="blur"
-                fetchPriority="low"
-              />
-            </div>
-          </div>
-
-          {/* Pricing card */}
-          <div className="lg:col-span-2">
-            <div className="bg-stone-50 dark:bg-stone-800 rounded-3xl p-8 lg:p-10 h-full flex flex-col">
-              {/* Price */}
-              <div className="mb-8">
-                <div className="text-xs tracking-widest uppercase text-stone-500 dark:text-stone-400 mb-2">Starting from</div>
-                <div className="flex items-baseline gap-2">
-                  <span className="font-display text-5xl font-medium text-stone-900 dark:text-stone-100">RM35</span>
-                  <span className="text-stone-500 dark:text-stone-400">/night</span>
-                </div>
-                <p className="text-sm text-stone-500 dark:text-stone-400 mt-2">
-                  Premium comfort at backpacker prices
-                </p>
-                <div className="flex items-center gap-1.5 mt-3 text-sm text-stone-500 dark:text-stone-400">
-                  <span>+ Service Tax (SST) 8% + Tourism Tax (TTx) RM10/room/night</span>
-                  <a
-                    href="https://www.myttx.customs.gov.my/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Learn more about Malaysia Tourism Tax (TTx)"
-                    className="text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300"
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-
-              {/* Features */}
-              <div className="space-y-4 grow">
-                {capsuleFeatures.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white dark:bg-stone-700 flex items-center justify-center shadow-xs">
-                      <svg className="w-5 h-5 text-amber-600 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
-                          d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <span className="text-stone-700 dark:text-stone-300">{feature.text}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Divider */}
-              <div className="divider my-8" />
-
-              {/* Additional rates */}
-              <div className="space-y-3 mb-8">
-                <div className="flex justify-between text-sm">
-                  <span className="text-stone-500 dark:text-stone-400">Monthly Rate</span>
-                  <span className="font-medium text-stone-800 dark:text-stone-200">RM594/month</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-stone-500 dark:text-stone-400">Service Tax (SST)</span>
-                  <span className="font-medium text-stone-800 dark:text-stone-200">8%</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-stone-500 dark:text-stone-400">Tourism Tax (TTx)</span>
-                  <span className="font-medium text-stone-800 dark:text-stone-200">RM10/room/night</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-stone-500 dark:text-stone-400">Check-in</span>
-                  <span className="font-medium text-stone-800 dark:text-stone-200">3:00 PM</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-stone-500 dark:text-stone-400">Check-out</span>
-                  <span className="font-medium text-stone-800 dark:text-stone-200">12:00 PM</span>
-                </div>
-              </div>
-
-              {/* CTA */}
-              <Link
-                href="#booking"
-                className="btn-primary w-full text-center block"
-              >
-                Book Your Pod Now
-              </Link>
-            </div>
-          </div>
+        {/* Room type tabs — Standard, Premium, Long Stay
+            Uses React 19.2 <Activity> (in RoomsTabsClient) to preserve tab state
+            on the client while SSR-rendering all panels for SEO. */}
+        <div className="mb-16">
+          <RoomsTabsClient />
         </div>
 
         {/* Hostel Highlights Grid */}

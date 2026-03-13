@@ -6529,3 +6529,54 @@ This brief outlines the implementation plan for integrating a Frappe-based syste
 
 ### Gotchas
 - The actual Google Hotels free booking link integration (US-103, US-194) is a separate external task — this story only adds the disclosure/compliance text on the website side
+
+
+## Pre-analysis for US-103 (Gemini 2.5 Pro)
+### Technical Brief for Claude: Analysis of US-103
+
+**Subject: Critical Context Mismatch for User Story US-103**
+
+This technical brief addresses a fundamental misalignment between the user story and the specified Frappe application context (`lhdn_payroll_integration`).
+
+1.  **Python/Frappe Files to Modify:** None. The story describes integrating a hostel with Google's booking services, a task related to hospitality and digital marketing. The `lhdn_payroll_integration` app context pertains to Malaysian payroll and tax processing. There are no logical files or modules in a payroll app that would handle hotel channel management.
+
+2.  **Frappe DocTypes/Hooks Involved:** None within the current app. This story does not concern DocTypes like `Employee`, `Salary Slip`, or `Tax Submission`. If this were a hospitality app, it would involve DocTypes such as `Booking`, `Room`, and `Rate Plan`, and likely API hooks for a channel manager, but these do not exist in the payroll app.
+
+3.  **Recommended Implementation Approach:** The user story describes business process and configuration tasks, not a software development task within the `lhdn_payroll_integration` app. The correct approach is:
+    *   Manually claim and verify the Google Business Profile for the property.
+    *   Subscribe to a third-party connectivity partner service (e.g., Beds24, Cloudbeds) as mentioned in the technical notes.
+    *   Configure that service to link to the property's direct booking webpage.
+    *   No Frappe/Python code is required to fulfill the acceptance criteria.
+
+4.  **Edge Cases & Gotchas:** The primary "gotcha" is the contextual mismatch. Attempting to implement this story within a payroll application is incorrect and will fail. The user's request to prepare a brief for a Frappe/Python implementation is based on a flawed premise. The work is external to the codebase.
+
+
+## Iteration - Story: US-152 - Adopt React 19.2 <Activity> component for room type tabs on /rooms page
+
+### What was implemented
+- Created `site/src/components/RoomsTabsClient.tsx` — 'use client' component with 3 tabs (Standard Pod / Premium Pod / Long Stay)
+  - Each tab panel wrapped in `<Activity mode={activeTab === id ? 'visible' : 'hidden'} name="...">` from React 19.2
+  - Tab navigation uses `role="tablist"`, `role="tab"`, `aria-selected`, `aria-controls` for WCAG-compliant keyboard accessibility
+  - All tab panels receive `role="tabpanel"` + `aria-labelledby` association
+  - Standard Pod: RM35/night, 6 features, existing capsule images
+  - Premium Pod: RM45/night, 7 features, amber accent card
+  - Long Stay (Monthly): RM594/month, 8 features, WhatsApp enquiry CTA
+- Updated `site/src/components/Rooms.tsx` — replaced the monolithic "Main showcase" grid with `<RoomsTabsClient />`
+  - Removed capsule image imports and `capsuleFeatures` array (moved into RoomsTabsClient)
+  - Added `import RoomsTabsClient from "@/components/RoomsTabsClient"`
+  - Hostel Highlights, Night Market, and Why-Choose-Capsule sections unchanged
+- TypeScript compiles with zero errors
+
+### Patterns discovered
+- `<Activity>` is exported from 'react' in 19.2 and typed in `@types/react@^19.0.0` — no extra install needed
+- `ActivityProps` accepts `mode: 'visible' | 'hidden'` and optional `name` for DevTools
+- In SSR, Activity always renders children regardless of mode — all tab content is in the HTML for SEO
+- Client-side, mode="hidden" applies display:none, preserving DOM state (form inputs, scroll position) without remount
+- Image imports work fine in 'use client' components in Next.js — static analysis still resolves the webp imports
+
+### Acceptance criteria met
+- [x] Room type tabs use `<Activity mode={activeTab === id ? 'visible' : 'hidden'}>` for each tab panel
+- [x] Switching tabs does not re-fetch or remount data (Activity preserves DOM — no Suspense fallback on re-show)
+- [x] Form inputs within a hidden Activity tab retain values (display:none, not unmount)
+- [x] Tab switching is visually instant — no Suspense fallback triggered
+- [x] All room tab content is SSR-rendered and accessible to search engine crawlers (Activity renders all children in SSR)
