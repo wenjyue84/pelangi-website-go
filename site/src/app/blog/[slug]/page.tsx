@@ -9,6 +9,7 @@ import TableOfContents from "@/components/TableOfContents";
 import ShareButton from "@/components/ShareButton";
 import { blogPosts, getPostBySlug } from "@/data/blog/posts";
 import { extractHeadings, addHeadingIds } from "@/lib/headings";
+import { annotateMsHtml } from "@/components/LangMs";
 
 export const revalidate = 3600; // ISR: regenerate at most every hour
 
@@ -64,7 +65,7 @@ export default async function BlogPostPage({ params }: Props) {
   }
 
   const headings = extractHeadings(post.content);
-  const contentWithIds = addHeadingIds(post.content);
+  const contentWithIds = annotateMsHtml(addHeadingIds(post.content));
 
   return (
     <main id="main-content" className="min-h-screen bg-stone-50 dark:bg-stone-950">

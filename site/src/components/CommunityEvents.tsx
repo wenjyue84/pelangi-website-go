@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { events as localHolidays, Event } from '@/data/events';
+import { annotateMs } from "@/components/LangMs";
 
 export default function CommunityEvents() {
     const [upcomingHolidays, setUpcomingHolidays] = useState<Event[]>([]);
@@ -93,8 +94,8 @@ export default function CommunityEvents() {
 
                                     {/* Content */}
                                     <div className="grow">
-                                        <h4 className="font-semibold text-stone-900 dark:text-stone-100">{holiday.title}</h4>
-                                        <p className="text-sm text-stone-500 dark:text-stone-400 line-clamp-1">{holiday.description}</p>
+                                        <h4 className="font-semibold text-stone-900 dark:text-stone-100">{annotateMs(holiday.title)}</h4>
+                                        <p className="text-sm text-stone-500 dark:text-stone-400 line-clamp-1">{annotateMs(holiday.description)}</p>
                                     </div>
                                 </div>
                             ))}

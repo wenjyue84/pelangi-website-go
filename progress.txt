@@ -4443,3 +4443,33 @@ Incomplete: Register Google Business Profile and connect to Google Hotel free bo
 - The FAQ accordion was functionally correct but lacked ARIA disclosure pattern attributes (aria-expanded, aria-controls, role="region")
 - Some acceptance criteria (screen reader testing with NVDA/VoiceOver, axe-core audit) require manual verification outside of code changes
 
+## Iteration 12 - Story: US-130 - WCAG 2.2 SC 3.1.2 lang attributes for bilingual Malay/English content
+
+### What was implemented
+- Created `site/src/components/LangMs.tsx` with:
+  - `LangMs` component — wraps children in `<span lang="ms">` for inline JSX use
+  - `annotateMs(text)` — auto-wraps known Malay terms in a string, returns ReactNode for JSX rendering
+  - `annotateMsHtml(html)` — auto-wraps Malay terms in raw HTML strings (for dangerouslySetInnerHTML blog content)
+  - Comprehensive dictionary of 30+ Malay food, cultural, holiday, and place-descriptor terms
+  - Regex sorts by term length descending to avoid partial matches (e.g. "sup tulang merah" before "sup tulang")
+- Applied `LangMs` component to address elements in `Location.tsx` and `Footer.tsx` (Jalan Perang, Taman Pelangi)
+- Applied `LangMs` to Malay terms in `Rooms.tsx` (pasar malam, satay, Taman Pelangi)
+- Applied `annotateMs` to dynamic text rendering in:
+  - `Destinations.tsx` — descriptions, highlights, pro tips, best times
+  - `guide/page.tsx` — hawker centre names and descriptions, restaurant descriptions
+  - `JBBuzz.tsx` — news item descriptions
+  - `CommunityEvents.tsx` — holiday titles and descriptions
+- Applied `annotateMsHtml` to blog post content in `blog/[slug]/page.tsx`
+- Root `<html lang="en">` was already correctly set in `layout.tsx`
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- `annotateMs` works at render time — no need to change data types from string to ReactNode
+- `annotateMsHtml` regex avoids replacing inside HTML tags by matching `(<[^>]*>)|([^<]+)` groups
+- Blog content uses `dangerouslySetInnerHTML` via `addHeadingIds()` pipeline — added `annotateMsHtml` as a post-processing step
+
+### Gotchas
+- Data arrays use plain `string` types for highlights/descriptions — can't embed JSX directly, need `annotateMs` at render time
+- SC 3.1.2 applies to "passages of text" not individual proper nouns — place names like "Johor Bahru" don't need lang attributes
+- NVDA screen reader test and axe-core 'valid-lang' audit require manual verification
+

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { blogPosts } from "@/data/blog/posts";
 import BlogCard from "@/components/BlogCard";
+import { annotateMs } from "@/components/LangMs";
 
 interface CuratedNewsItem {
   title: string;
@@ -123,7 +124,7 @@ export default function JBBuzz() {
                         {item.title}
                       </h4>
                       <p className="text-sm text-stone-500 dark:text-stone-400 line-clamp-2 mb-2">
-                        {item.description}
+                        {annotateMs(item.description)}
                       </p>
                       <div className="flex items-center gap-3 text-xs text-stone-500 dark:text-stone-400">
                         <span className="font-medium text-amber-700 dark:text-amber-400">

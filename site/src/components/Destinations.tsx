@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { annotateMs } from "@/components/LangMs";
 
 interface Destination {
   id: string;
@@ -330,7 +331,7 @@ export default function Destinations() {
                   {dest.name}
                 </h3>
                 <p className="text-stone-500 dark:text-stone-400 text-sm mb-4 line-clamp-2">
-                  {dest.description}
+                  {annotateMs(dest.description)}
                 </p>
 
                 {/* Best For Tags */}
@@ -426,7 +427,7 @@ export default function Destinations() {
 
               {/* Description */}
               <p className="text-stone-600 dark:text-stone-400 text-lg leading-relaxed mb-6">
-                {selectedDest.description}
+                {annotateMs(selectedDest.description)}
               </p>
 
               {/* Highlights */}
@@ -438,7 +439,7 @@ export default function Destinations() {
                       <svg className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      {highlight}
+                      {annotateMs(highlight)}
                     </li>
                   ))}
                 </ul>
@@ -455,7 +456,7 @@ export default function Destinations() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-amber-900 dark:text-amber-200 mb-1">Insider Tip</h4>
-                    <p className="text-amber-800 dark:text-amber-300 text-sm leading-relaxed">{selectedDest.proTip}</p>
+                    <p className="text-amber-800 dark:text-amber-300 text-sm leading-relaxed">{annotateMs(selectedDest.proTip)}</p>
                   </div>
                 </div>
               </div>
@@ -468,7 +469,7 @@ export default function Destinations() {
                 </svg>
                 <div>
                   <span className="font-medium text-stone-700 dark:text-stone-300">Best Time to Visit: </span>
-                  {selectedDest.bestTime}
+                  {annotateMs(selectedDest.bestTime)}
                 </div>
               </div>
 

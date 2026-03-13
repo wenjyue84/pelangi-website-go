@@ -1,4 +1,5 @@
 import Link from "next/link";
+import LangMs from "@/components/LangMs";
 
 export default function Footer() {
   return (
@@ -110,8 +111,8 @@ export default function Footer() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <span className="text-stone-400 leading-relaxed">
-                  26A Jalan Perang,<br />
-                  Taman Pelangi, 80400<br />
+                  26A <LangMs>Jalan Perang</LangMs>,<br />
+                  <LangMs>Taman Pelangi</LangMs>, 80400<br />
                   Johor Bahru, Johor
                 </span>
               </li>

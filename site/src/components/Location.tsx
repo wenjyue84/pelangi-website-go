@@ -1,3 +1,5 @@
+import LangMs from "@/components/LangMs";
+
 export default function Location() {
   const nearbyPlaces = [
     { name: "Pelangi Leisure Mall", distance: "2 min walk", icon: "shopping" },
@@ -47,8 +49,8 @@ export default function Location() {
                 <div>
                   <h3 className="font-semibold text-stone-900 dark:text-stone-100 mb-2">Address</h3>
                   <p className="text-stone-600 dark:text-stone-400 leading-relaxed">
-                    26A, Jalan Perang,<br />
-                    Taman Pelangi,<br />
+                    26A, <LangMs>Jalan Perang</LangMs>,<br />
+                    <LangMs>Taman Pelangi</LangMs>,<br />
                     80400 Johor Bahru,<br />
                     Johor, Malaysia
                   </p>

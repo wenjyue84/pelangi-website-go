@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import GuideStructuredData from "@/components/GuideStructuredData";
 import TableOfContents from "@/components/TableOfContents";
+import { annotateMs } from "@/components/LangMs";
 import type { Heading } from "@/lib/headings";
 
 export const revalidate = 3600; // ISR: regenerate at most every hour
@@ -358,8 +359,8 @@ export default function GuidePage() {
                             {hawkerCentres.map((h, i) => (
                                 <div key={i} className="bg-white dark:bg-stone-900 p-6 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs hover:shadow-md transition-shadow flex flex-col sm:flex-row sm:items-start gap-4">
                                     <div className="flex-1">
-                                        <h3 className="font-bold text-lg text-stone-900 dark:text-stone-100">{h.name}</h3>
-                                        <p className="text-stone-600 dark:text-stone-400 mt-1">{h.desc}</p>
+                                        <h3 className="font-bold text-lg text-stone-900 dark:text-stone-100">{annotateMs(h.name)}</h3>
+                                        <p className="text-stone-600 dark:text-stone-400 mt-1">{annotateMs(h.desc)}</p>
                                     </div>
                                     <div className="text-right shrink-0">
                                         <p className="text-sm font-medium text-amber-700 dark:text-amber-400">{h.dist}</p>
@@ -386,7 +387,7 @@ export default function GuidePage() {
                                                 <span className="text-stone-400">·</span>
                                                 <p className="text-sm text-stone-500">{place.hours}</p>
                                             </div>
-                                            <p className="text-stone-600 dark:text-stone-400 text-sm">{place.desc}</p>
+                                            <p className="text-stone-600 dark:text-stone-400 text-sm">{annotateMs(place.desc)}</p>
                                         </div>
                                     ))}
                                 </div>

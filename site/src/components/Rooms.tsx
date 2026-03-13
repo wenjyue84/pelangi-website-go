@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import LangMs from "@/components/LangMs";
 import capsule4Image from "../../public/images/capsule-4.webp";
 import capsule2Image from "../../public/images/capsule-2.webp";
 import capsule3Image from "../../public/images/capsule-3.webp";
@@ -207,7 +208,7 @@ export default function Rooms() {
               </h3>
               <p className="text-lg text-stone-600 dark:text-stone-400 mb-6">
                 Every <span className="font-semibold text-amber-700 dark:text-amber-400">Tuesday from 4:30 PM</span>,
-                step outside and you&apos;re in the heart of Taman Pelangi&apos;s famous pasar malam.
+                step outside and you&apos;re in the heart of <LangMs>Taman Pelangi</LangMs>&apos;s famous <LangMs>pasar malam</LangMs>.
               </p>
               <div className="space-y-3 text-stone-600 dark:text-stone-400">
                 <div className="flex items-start gap-3">
@@ -220,7 +221,7 @@ export default function Rooms() {
                   <svg className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span><strong>Authentic Malaysian street food</strong> — satay, oyster omelette, claypot rice</span>
+                  <span><strong>Authentic Malaysian street food</strong> — <LangMs>satay</LangMs>, oyster omelette, claypot rice</span>
                 </div>
                 <div className="flex items-start gap-3">
                   <svg className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
@@ -244,7 +245,7 @@ export default function Rooms() {
               />
               <div className="absolute inset-0 bg-linear-to-t from-stone-900/60 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 text-white">
-                <div className="text-sm font-medium">Pasar Malam Taman Pelangi</div>
+                <div className="text-sm font-medium"><LangMs>Pasar Malam Taman Pelangi</LangMs></div>
                 <div className="text-xs opacity-80">Every Tuesday, 4:30 PM - 9 PM</div>
               </div>
             </div>
