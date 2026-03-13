@@ -64,7 +64,21 @@ function setConsentCookie(value: "accepted" | "rejected") {
   document.cookie = `${COOKIE_NAME}=${value}; path=/; max-age=${COOKIE_MAX_AGE}; SameSite=Lax`;
 }
 
+function updateConsentMode(granted: boolean) {
+  if (typeof window !== "undefined" && typeof window.gtag === "function") {
+    window.gtag("consent", "update", {
+      ad_storage: granted ? "granted" : "denied",
+      ad_user_data: granted ? "granted" : "denied",
+      analytics_storage: granted ? "granted" : "denied",
+      ad_personalization: granted ? "granted" : "denied",
+      functionality_storage: granted ? "granted" : "denied",
+      security_storage: "granted",
+    });
+  }
+}
+
 function dispatchConsentEvent(value: "accepted" | "rejected") {
+  updateConsentMode(value === "accepted");
   window.dispatchEvent(
     new CustomEvent("cookie-consent", { detail: { consent: value } })
   );

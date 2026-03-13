@@ -4811,3 +4811,4 @@ US-103 (Google Business Profile registration) is entirely an external platform t
 ### Gotchas
 - Gallery lightbox needed `onClick={(e) => e.stopPropagation()}` on the image container to prevent backdrop click from closing when clicking the image itself
 - `useCallback` needed for `closeLightbox`/`navigateLightbox` to avoid stale closures in keyboard event listeners
+

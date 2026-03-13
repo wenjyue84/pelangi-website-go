@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { Inter, Playfair_Display } from "next/font/google";
+import Script from "next/script";
+import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 import StructuredData from "@/components/StructuredData";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ChatWidget, MobileBookingBar, CookieConsent, AnalyticsProvider, ClarityProvider, WebVitalsReporter, BookingRecoveryBanner } from "@/components/DynamicComponents";
+
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
@@ -100,6 +104,24 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Consent Mode v2: deny all consent parameters before GTM loads */}
+        <Script
+          id="consent-mode-defaults"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){window.dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                ad_storage: 'denied',
+                ad_user_data: 'denied',
+                analytics_storage: 'denied',
+                ad_personalization: 'denied',
+                functionality_storage: 'denied',
+                security_storage: 'granted'
+              });`,
+          }}
+        />
         {/* Theme color: browser toolbar matches page background in light/dark mode */}
         <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#1c1917" media="(prefers-color-scheme: dark)" />
@@ -134,6 +156,7 @@ export default async function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${playfair.variable} pb-16 md:pb-0`}>
+        {GTM_ID && <GoogleTagManager gtmId={GTM_ID} />}
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:z-100 focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-amber-700 focus:text-white focus:rounded-lg focus:font-medium focus:shadow-lg"
