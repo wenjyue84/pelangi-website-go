@@ -33,6 +33,9 @@ const nextConfig: NextConfig = {
   // Typed routes: stable as of Next.js 15.5 (US-153)
   typedRoutes: true,
   experimental: {
+    // View Transitions API for animated soft-navigation between pages (US-126)
+    // Enables useViewTransition() hook and viewTransition prop on <Link>
+    viewTransition: true,
     // Control Client Router Cache TTLs (staleTimes are in seconds)
     staleTimes: {
       dynamic: 30,   // Dynamic pages: cache prefetched links for 30s
