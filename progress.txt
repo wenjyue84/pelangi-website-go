@@ -4442,3 +4442,4 @@ Incomplete: Register Google Business Profile and connect to Google Hotel free bo
 - SC 2.4.6 is about making headings describe "topic or purpose" — poetic/marketing headings like "Guest Love" fail this even though they sound nice visually
 - The FAQ accordion was functionally correct but lacked ARIA disclosure pattern attributes (aria-expanded, aria-controls, role="region")
 - Some acceptance criteria (screen reader testing with NVDA/VoiceOver, axe-core audit) require manual verification outside of code changes
+
