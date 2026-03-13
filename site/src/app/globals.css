@@ -138,10 +138,10 @@
 }
 
 @utility section-heading {
-  /* Section heading - Serif display font */
+  /* Section heading - Serif display font (uses theme --font-display for next/font metric-adjusted fallback) */
   @apply text-3xl md:text-4xl lg:text-5xl font-medium text-stone-900
            leading-tight tracking-tight dark:text-stone-100;
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-display);
 }
 
 @utility body-text {
@@ -174,8 +174,8 @@
 }
 
 @utility font-display {
-  /* Display font utility */
-  font-family: 'Playfair Display', Georgia, serif;
+  /* Display font utility — uses theme variable for next/font metric-adjusted fallback */
+  font-family: var(--font-display);
 }
 
 @utility text-gradient {

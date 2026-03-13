@@ -5494,3 +5494,25 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 
 ### Gotchas
 - None — straightforward refactoring story
+
+
+
+## Iteration - Story: US-199 - Optimise fallback font metrics with size-adjust to prevent CLS on font swap
+
+### What was implemented
+- **globals.css**: Updated `@utility font-display` to use `font-family: var(--font-display)` instead of hardcoded `'Playfair Display', Georgia, serif`
+- **globals.css**: Updated `@utility section-heading` to use `font-family: var(--font-display)` instead of hardcoded font name
+- Both utilities now chain through the Tailwind v4 theme variable `--font-display` → `var(--font-playfair), Georgia, serif` → next/font's metric-adjusted fallback
+
+### Why this matters
+- `next/font/google` with `adjustFontFallback: true` (default) auto-generates `@font-face` fallback declarations with `size-adjust`, `ascent-override`, and `descent-override` matched to the target font
+- The hardcoded `'Playfair Display'` in CSS utilities bypassed this metric-adjusted fallback, causing potential CLS on font swap
+- Now all font references flow through `var(--font-playfair)` which includes the auto-generated metric-matched fallback font
+
+### Patterns discovered
+- In Tailwind v4, `@theme { --font-display: ... }` generates a `font-display` utility, but `@utility font-display` overrides it — need to ensure the @utility version also uses the theme variable
+- `next/font/google` `adjustFontFallback` defaults to `true` — no manual metric calculations needed when fonts are loaded through next/font
+
+### Quality check
+- `npx tsc --noEmit` passes with zero errors
+- `npx next build` completes successfully with no CSS errors
