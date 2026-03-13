@@ -1,450 +1,314 @@
 {
   "stories": [
     {
-      "title": "Upgrade ESLint to v9 with flat config format",
+      "title": "Add image URLs to XML sitemap for Google image indexing",
       "priority": "high",
-      "description": "ESLint v8 reached end-of-life in October 2024 and no longer receives security patches. Next.js 15 added first-class ESLint 9 support with the new flat config format (eslint.config.mjs), replacing .eslintrc* files. Migrating ensures continued security coverage and unlocks the new plugin ecosystem.",
+      "description": "Next.js 15 sitemap.ts natively supports an `images` array on each sitemap entry, which generates the correct `xmlns:image` namespace and `<image:image>` tags required by Google's image sitemap extension. Adding hero images, room photos, and OG images to the sitemap enables Google Images indexing, which drives additional organic traffic for visual traveller queries.",
       "acceptanceCriteria": [
-        "eslint upgraded to ^9.x in package.json devDependencies",
-        "Legacy .eslintrc.* replaced with eslint.config.mjs using flat config format",
-        "next/core-web-vitals and @typescript-eslint rules configured in flat config",
-        "`npm run lint` passes with zero errors and zero deprecation warnings",
-        "CI build log shows no ESLint 8 EOL warnings"
+        "sitemap.ts includes an `images` array for every route that has a representative image (home, rooms, gallery, blog posts)",
+        "Generated sitemap XML validates against Google's image sitemap schema (namespace xmlns:image='http://www.google.com/schemas/sitemap-image/1.1' present)",
+        "Google Search Console shows image sitemap entries parsed without errors after resubmission",
+        "At least the hero image URL is listed for the home route and at least the OG image URL for each blog post route"
       ],
       "technicalNotes": [
-        "Run `npx @next/codemod@canary upgrade latest` — it handles eslint config migration automatically",
-        "Next.js 15 ships eslint-config-next compatible with ESLint 9 flat config",
-        "Flat config requires ESM import syntax; check all custom plugins for ESLint 9 compatibility",
-        "ESLint 8 EOL announcement: https://eslint.org/blog/2024/10/eslint-v8-end-of-life/"
+        "Use the `images` property on each sitemap entry object: `{ url, images: [{ url: absoluteImageUrl }] }`",
+        "Next.js 15 sitemap spec: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap",
+        "Google image sitemap reference: https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "source": "https://eslint.org/blog/2024/10/eslint-v8-end-of-life/"
+      "source": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap"
     },
     {
-      "title": "Upgrade Tailwind CSS from v3 to v4",
-      "priority": "medium",
-      "description": "Tailwind CSS v4 introduces a CSS-first configuration model, built-in cascade layers, and up to 5x faster full builds (100x faster incremental). The new engine eliminates tailwind.config.ts for most setups, using a @theme block in globals.css. This reduces configuration debt and improves HMR performance during development.",
+      "title": "Implement WCAG 2.2 SC 2.5.8 – Target Size Minimum (24×24 CSS px)",
+      "priority": "high",
+      "description": "WCAG 2.2 introduced SC 2.5.8 at Level AA, requiring all interactive targets (buttons, links, form controls) to have a hit area of at least 24×24 CSS pixels or sufficient offset spacing from adjacent targets. This directly benefits mobile users and people with motor disabilities, and is now a baseline requirement for WCAG 2.2 AA conformance.",
       "acceptanceCriteria": [
-        "tailwindcss upgraded to ^4.x with @tailwindcss/postcss plugin",
-        "tailwind.config.ts content migrated to CSS @theme block in globals.css",
-        "@tailwindcss/typography upgraded to v4-compatible version",
-        "All existing Tailwind classes render correctly across all pages",
-        "Build time measured and confirmed to improve vs v3 baseline"
+        "All interactive elements (nav links, buttons, form controls, social icons, close buttons) have a minimum computed hit area of 24×24 CSS pixels verified via DevTools",
+        "Icon-only buttons (WhatsApp FAB, close X, share) are explicitly sized to at least 44×44 CSS px (best practice above the minimum)",
+        "Inline hyperlinks within blog post body text are exempt under the inline-text exception",
+        "Automated axe-core or Lighthouse accessibility scan reports no SC 2.5.8 violations",
+        "Manual test confirms no adjacent targets are closer than 24 CSS px without sufficient target size"
       ],
       "technicalNotes": [
-        "Run `npx @tailwindcss/upgrade` for automated config and class-rename migration",
-        "PostCSS config changes: replace `tailwindcss` plugin with `@tailwindcss/postcss`",
-        "Breaking: some utility names renamed (e.g., shadow-sm → shadow-xs); codemod handles most",
-        "Tailwind v4 upgrade guide: https://tailwindcss.com/docs/upgrade-guide"
+        "Apply `min-width: 24px; min-height: 24px` (or padding equivalent) via Tailwind `p-*` utilities on all button and icon-link components",
+        "The 'spacing' exception allows targets smaller than 24px if there is ≥24px offset from any adjacent target — measure carefully for nav items",
+        "W3C Understanding SC 2.5.8: https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html"
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
-      "source": "https://tailwindcss.com/docs/upgrade-guide"
+      "source": "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html"
     },
     {
-      "title": "Audit and configure explicit cache policies for all Next.js 15 fetch calls",
-      "priority": "high",
-      "description": "Next.js 15 reversed its caching defaults: fetch() requests and GET Route Handlers are now uncached by default (breaking from v14). Any data fetching relying on implicit caching now returns fresh data every request, risking performance regressions. An explicit annotation pass ensures static pages are cached and dynamic pages are correctly tagged.",
-      "acceptanceCriteria": [
-        "All server component fetch() calls have explicit { cache: 'force-cache' } or { next: { revalidate: N } }",
-        "Booking availability and pricing endpoints use { cache: 'no-store' }",
-        "Blog and guide pages use { next: { revalidate: 3600 } } for ISR",
-        "Static pages (about, amenities, rooms) export `const dynamic = 'force-static'`",
-        "No unexpected cache misses or stale data in booking flow after audit"
-      ],
-      "technicalNotes": [
-        "Next.js 15 caching change: https://nextjs.org/blog/next-15#caching-semantics",
-        "Set staleTimes in next.config.ts for Client Router Cache control",
-        "Use `export const revalidate = 86400` at segment level for semi-static pages",
-        "Verify with Chrome DevTools Network tab: static pages should return from cache on repeat visit"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "source": "https://nextjs.org/blog/next-15#caching-semantics"
-    },
-    {
-      "title": "Add Table of Contents component for blog posts and /guide long-form content",
+      "title": "Implement WCAG 2.2 SC 3.2.6 – Consistent Help placement (Level A)",
       "priority": "medium",
-      "description": "Long-form pages (/guide and blog articles) lack navigational structure, forcing users to scroll linearly through content. A sticky Table of Contents with anchor links improves dwell time, satisfies WCAG 2.4.1 (Bypass Blocks), and creates crawlable deep-links that trigger Google's 'jump to' snippets in search results.",
+      "description": "SC 3.2.6 (Level A) requires that any help mechanism present on multiple pages — such as a WhatsApp contact link, phone number, or FAQ link — appears in the same relative order in the page structure across all pages. As a hospitality website with a WhatsApp CTA in the navbar and footer, this criterion is directly applicable and needed for full WCAG 2.2 AA (which includes all Level A) compliance.",
       "acceptanceCriteria": [
-        "TableOfContents component extracts H2/H3 headings and renders them as an anchor-linked list",
-        "Clicking a ToC entry smoothly scrolls to the heading with offset for sticky header height",
-        "Active heading is highlighted in ToC as user scrolls (Intersection Observer API)",
-        "ToC is sticky sidebar on desktop (lg:sticky) and collapsible accordion on mobile",
-        "All heading IDs are slug-formatted (kebab-case) for clean anchor URLs",
-        "Accessible: ToC nav has aria-label='Article table of contents'"
+        "WhatsApp contact link, phone number, or 'Contact Us' mechanism appears in an identical DOM order relative to surrounding navigation/footer elements on every page",
+        "If a Help/FAQ link is present in the header of one page, it appears in the same header position on all pages where it exists",
+        "Audit of all page templates (home, rooms, guide, blog, contact, book) confirms consistent help mechanism placement",
+        "Accessibility statement or audit report documents conformance with SC 3.2.6"
       ],
       "technicalNotes": [
-        "Extract heading data from blog post TypeScript data object at build time, not from DOM",
-        "Use Intersection Observer with rootMargin: '-20% 0% -70% 0%' to track active section",
-        "Apply scroll-margin-top equal to header height (64px) on all h2/h3 elements via globals.css",
-        "Google uses heading anchor links as 'jump to' suggestions in featured snippets"
+        "This does not require adding help on every page — only that where it exists, it is in the same relative position",
+        "Shared layout components (Header, Footer) naturally satisfy this if the help element is always in those components",
+        "W3C Understanding SC 3.2.6: https://www.w3.org/WAI/WCAG22/Understanding/consistent-help.html"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "source": "https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks"
+      "source": "https://www.w3.org/WAI/WCAG22/Understanding/consistent-help.html"
     },
     {
-      "title": "Add estimated reading time to blog post cards and article headers",
+      "title": "Add prefers-reduced-motion support for all CSS/JS animations",
+      "priority": "medium",
+      "description": "Users with vestibular disorders, epilepsy, or ADHD can configure their OS to request reduced motion. The `prefers-reduced-motion: reduce` CSS media query should disable or drastically simplify all decorative transitions, parallax, fade-in scroll animations, and hover effects on the site. This is required for WCAG 2.3.3 (Animation from Interactions, AAA) and is widely considered a baseline accessibility best practice.",
+      "acceptanceCriteria": [
+        "`@media (prefers-reduced-motion: reduce)` CSS block disables all non-essential transitions and animations site-wide",
+        "Scroll-triggered fade-in or slide-in animations are instant (no transition) when reduced motion is active",
+        "Any JavaScript-driven animations (e.g., counters, carousels) check `window.matchMedia('(prefers-reduced-motion: reduce)')` before animating",
+        "Testing with OS accessibility setting 'Reduce Motion' enabled shows no decorative movement",
+        "Essential motion (e.g., loading spinners) is retained but non-decorative transitions are simplified"
+      ],
+      "technicalNotes": [
+        "Add a global CSS rule: `@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }`",
+        "For JS animations use: `const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches`",
+        "React hook approach: https://www.joshwcomeau.com/react/prefers-reduced-motion/",
+        "MDN reference: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"
+    },
+    {
+      "title": "Add Malaysia PDPA-compliant cookie consent banner with explicit opt-in",
+      "priority": "high",
+      "description": "Malaysia's Personal Data Protection (Amendment) Act 2024, effective from January 2025, requires explicit affirmative opt-in consent before setting non-essential cookies (analytics, marketing). Implied consent (continuing to browse) is invalid under the PDPA. The site currently uses analytics without a consent gate, creating legal exposure for a Malaysian-registered business.",
+      "acceptanceCriteria": [
+        "Cookie consent banner appears on first visit before any analytics or non-essential cookies are set",
+        "Banner offers explicit 'Accept', 'Reject', and 'Manage Preferences' options — no pre-ticked boxes",
+        "Google Analytics / Microsoft Clarity scripts only load after user accepts analytics cookies",
+        "User preference is stored in localStorage/cookie and respected across sessions",
+        "Privacy Policy page is updated to describe cookie categories, retention periods, and third-party recipients",
+        "Banner text is available in both English and Chinese (matching existing hreflang)"
+      ],
+      "technicalNotes": [
+        "Use a lightweight library such as `vanilla-cookieconsent` or Next.js-compatible `react-cookie-consent`",
+        "Implement consent-based script loading: wrap GA/Clarity initialization in a consent check",
+        "Malaysia PDPA Amendment Act 2024 in force from 1 January 2025: https://www.aseanbriefing.com/news/malaysia-tightens-data-protection-from-june-2025/",
+        "Cookiebot PDPA overview: https://www.cookiebot.com/en/malaysia-pdpa/"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "source": "https://www.aseanbriefing.com/news/malaysia-tightens-data-protection-from-june-2025/"
+    },
+    {
+      "title": "Add Privacy Policy page with PDPA-required disclosures",
+      "priority": "high",
+      "description": "Malaysia's PDPA requires data controllers to provide a privacy notice accessible from the website disclosing: types of personal data collected, purposes of processing, third-party disclosures, data retention periods, user rights (access, correction, withdrawal), and a contact method for data requests. The Amendment Act 2024 (Phase 3, June 2025) adds mandatory data portability disclosures. The site currently lacks a dedicated privacy policy page.",
+      "acceptanceCriteria": [
+        "A /privacy-policy route exists and is accessible from the footer on every page",
+        "Privacy policy covers: data categories collected, collection purposes, third parties (Google Analytics, Resend, Sentry), retention periods, and Malaysian data subject rights",
+        "A data request contact method (email or form) is provided per PDPA requirements",
+        "Page includes a 'Last Updated' date and is written in plain language",
+        "Footer includes working links to both Privacy Policy and, if applicable, Terms of Service"
+      ],
+      "technicalNotes": [
+        "Required disclosures for Malaysia PDPA: https://malaysia.incorp.asia/guides/pdpa-compliance-malaysia-complete-guide/",
+        "The privacy policy must be accessible before any data collection occurs — link in header or footer is sufficient",
+        "June 2025 PDPA amendment adds data portability rights which should be documented: https://www.dfdl.com/insights/legal-and-tax-updates/malaysia-implementation-of-the-personal-data-protection-amendment-act-2024/"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://malaysia.incorp.asia/guides/pdpa-compliance-malaysia-complete-guide/"
+    },
+    {
+      "title": "Add Cross-Origin-Embedder-Policy and Cross-Origin-Resource-Policy security headers",
+      "priority": "medium",
+      "description": "OWASP 2025 secure headers guidance recommends `Cross-Origin-Embedder-Policy: require-corp` and `Cross-Origin-Resource-Policy: same-origin` to enforce cross-origin isolation, enabling access to high-resolution timers and SharedArrayBuffer while preventing cross-origin data leaks via Spectre-class side-channel attacks. These are distinct from the already-implemented `Cross-Origin-Opener-Policy` header.",
+      "acceptanceCriteria": [
+        "`Cross-Origin-Resource-Policy: same-origin` header present on all page responses (verified via curl or browser DevTools)",
+        "`Cross-Origin-Embedder-Policy: require-corp` header present on HTML page responses",
+        "No third-party embeds (e.g., Google Maps iframes) break due to the COEP restriction — either they are removed, replaced with cross-origin-compatible alternatives, or COEP is set to `credentialless` if needed",
+        "SecurityHeaders.com score is A or A+ after addition",
+        "Vercel deployment headers config in next.config.ts updated"
+      ],
+      "technicalNotes": [
+        "COEP `require-corp` blocks subresources that don't send CORP or CORS headers — audit all third-party scripts/images first",
+        "If Google Maps or other third-party iframes are used, consider `Cross-Origin-Embedder-Policy: credentialless` as a less strict alternative",
+        "OWASP Secure Headers Project: https://owasp.org/www-project-secure-headers/",
+        "MDN CORP: https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cross-Origin_Resource_Policy"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://owasp.org/www-project-secure-headers/"
+    },
+    {
+      "title": "Add TouristTrip schema for featured Johor Bahru itineraries on /guide",
       "priority": "low",
-      "description": "Blog cards and article pages show no reading time, giving users no expectation of content length. Industry research shows reading time labels reduce bounce rate by setting expectations. The calculation (word count ÷ 200 wpm) can be computed at build time from static post body data with zero runtime cost.",
+      "description": "Schema.org's `TouristTrip` type (developed by the W3C Tourism Structured Web Data Community Group) describes complete tourist journeys and itineraries. Adding TouristTrip markup to the JB travel guide page for 'Day trip from Singapore' or '3-day JB itinerary' content could qualify for rich results in travel-intent queries and improve discoverability for itinerary-seeking travellers — the site's primary audience.",
       "acceptanceCriteria": [
-        "Reading time displayed on BlogCard component (e.g., '5 min read')",
-        "Reading time displayed in blog article page header below the title",
-        "Calculated using Math.ceil(wordCount / 200) — minimum 1 min displayed",
-        "readingTimeMinutes field added to blog post TypeScript data type",
-        "Display uses an accessible pattern: <span aria-label='5 minute read'>5 min read</span>"
+        "At least one TouristTrip JSON-LD block added to /guide page describing a named JB itinerary",
+        "Schema includes required properties: `name`, `description`, `itinerary` (ItemList of TouristAttraction), and `touristType`",
+        "Schema validates without errors in Google's Rich Results Test",
+        "TouristTrip `offers` property references the hostel with a price if the trip is bookable",
+        "Schema.org TouristTrip type is used (not a custom type)"
       ],
       "technicalNotes": [
-        "Add computeReadingTime(text: string): number utility function to data layer",
-        "Store pre-computed value in post data object to avoid runtime recalculation",
-        "Average adult reading speed: 200-238 wpm per scientific literature (JSTOR study)",
-        "Medium.com uses ~265 wpm; 200 wpm is conservative and appropriate for travel content"
+        "Schema.org TouristTrip: https://schema.org/TouristTrip",
+        "The `itinerary` property accepts a single `ItemList` of `ListItem` objects each referencing a `TouristAttraction`",
+        "The `touristType` property should use an Audience type value such as `Backpacker` or `BudgetTraveler`",
+        "W3C Tourism Structured Web Data CG: https://www.w3.org/community/tourismdata/"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "source": "https://support.medium.com/hc/en-us/articles/214991667-Read-time"
+      "source": "https://schema.org/TouristTrip"
     },
     {
-      "title": "Add Web Share API native share button to blog post pages",
+      "title": "Add Speakable structured data to key hostel information sections",
+      "priority": "low",
+      "description": "Google's Speakable structured data (beta) marks sections of a page as suitable for text-to-speech playback by Google Assistant. Adding `speakable` with CSS selectors pointing to the hostel name, location, check-in/check-out times, and key amenities sections enables voice search users — particularly travellers making hands-free queries — to hear the most relevant hostel information directly from a Google Assistant response.",
+      "acceptanceCriteria": [
+        "A `speakable` property with `SpeakableSpecification` is added to the LodgingBusiness JSON-LD on the home page",
+        "`cssSelector` values target the hostel tagline, address block, and amenities summary (each section ≤30 seconds of audio when read aloud)",
+        "Markup validated using Google's Rich Results Test (speakable is listed as a test-supported type)",
+        "Targeted sections are written in clear, natural spoken language (no jargon, short sentences)",
+        "The JSON-LD does not reference non-existent CSS selectors — selectors are verified against the rendered DOM"
+      ],
+      "technicalNotes": [
+        "Google Speakable documentation: https://developers.google.com/search/docs/appearance/structured-data/speakable",
+        "Each speakable section should be 20-30 seconds when read aloud (~50-75 words)",
+        "Use `cssSelector` array to target specific DOM IDs or class names rather than XPath for maintainability",
+        "Speakable is currently in beta and limited to news publishers in Google's full rollout, but the markup is accepted and processed"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://developers.google.com/search/docs/appearance/structured-data/speakable"
+    },
+    {
+      "title": "Optimise contact form with React 19 useActionState and optimistic UI",
       "priority": "medium",
-      "description": "Blog posts have no sharing mechanism. The Web Share API enables users to share content to WhatsApp, Telegram, email, or any installed app via the native OS share sheet on mobile. This is the highest-conversion sharing pattern for mobile users (no extra app installs, no redirect). A clipboard copy fallback handles unsupported desktop browsers.",
+      "description": "The current contact form uses a client-side fetch to a Server Action. Migrating to React 19's `useActionState` hook provides built-in pending state management, eliminating the need for manual `useState` for loading/error states. Adding `useOptimistic` for instant success feedback before the Resend API call completes improves perceived performance and reduces booking abandonment.",
       "acceptanceCriteria": [
-        "Share button rendered on each blog post page with accessible label 'Share this article'",
-        "Clicking triggers navigator.share({ title, text, url }) on supported browsers",
-        "Clipboard copy fallback displayed for browsers without navigator.share support",
-        "Success toast notification shown after share or copy completes",
-        "Button requires user gesture (click) — no auto-share on load",
-        "navigator.canShare() checked before calling navigator.share()"
+        "Contact form uses `useActionState` (React 19) instead of manual useState for pending/error/success states",
+        "Submit button shows a spinner and is disabled while the action is pending — driven by `useActionState`'s `isPending` value",
+        "On submission, an optimistic 'Message sent!' confirmation appears immediately via `useOptimistic`, with error recovery if the server action fails",
+        "If server action returns a validation error, field-level error messages are displayed without a full re-render",
+        "TypeScript types are correct for the action state shape"
       ],
       "technicalNotes": [
-        "Add 'use client' directive — Web Share API requires browser context",
-        "Web Share API requires HTTPS (works on localhost for development)",
-        "Browser support: Chrome 89+, Safari 14+, Firefox Android 71+ — desktop Firefox does not support",
-        "MDN Web Share API: https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share"
+        "React 19 `useActionState` docs: https://react.dev/reference/react/useActionState",
+        "`useFormStatus` can be used in a child `SubmitButton` component to read pending state without prop drilling",
+        "Next.js 15 forms guide: https://nextjs.org/docs/app/guides/forms",
+        "The `useOptimistic` hook: https://react.dev/reference/react/useOptimistic"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "source": "https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share"
+      "source": "https://nextjs.org/docs/app/guides/forms"
     },
     {
-      "title": "Add Fuse.js client-side site search for blog and guide content",
-      "priority": "high",
-      "description": "With 6+ blog articles and a comprehensive guide page, users cannot quickly find specific topics, destinations, or tips. Fuse.js provides fast fuzzy search running entirely in the browser from a pre-built static index — no backend, no API costs, no privacy concerns. A keyboard-accessible Command Menu (Cmd/Ctrl+K) is the standard pattern for modern site search.",
-      "acceptanceCriteria": [
-        "Search dialog opens via Cmd/Ctrl+K keyboard shortcut and a search icon in Header nav",
-        "Results include blog posts and /guide section headings with category labels",
-        "Fuzzy matching handles 1-2 character typos (e.g., 'restrant' finds 'restaurant')",
-        "Keyboard navigation works: arrow keys to move, Enter to navigate, Escape to close",
-        "Search index pre-built at build time from static data — zero runtime fetch required",
-        "Empty state message shown when no results match",
-        "Search dialog has role='dialog', aria-label='Site search', and focus trap"
-      ],
-      "technicalNotes": [
-        "npm install fuse.js (3.2 KB gzipped)",
-        "Fuse.js documentation: https://www.fusejs.io/",
-        "Use next/dynamic with ssr: false and loading='lazy' to keep Fuse.js out of initial bundle",
-        "Index fields and weights: title (3), tags (2), excerpt (1)",
-        "Pre-build index: export const searchIndex = buildIndex(blogPosts, guideSections)"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "medium",
-      "source": "https://www.fusejs.io/"
-    },
-    {
-      "title": "Extend sameAs in Hostel schema to include OTA profile URLs",
-      "priority": "high",
-      "description": "The current StructuredData.tsx sameAs array links only to Facebook, Instagram, and Google Maps. Adding Booking.com, Hostelworld, and TripAdvisor profile URLs helps Google's Knowledge Graph resolve Pelangi Capsule Hostel as a single entity across platforms. This cross-platform entity linking strengthens local SEO authority and may trigger or improve the Knowledge Panel in branded searches.",
-      "acceptanceCriteria": [
-        "sameAs array in StructuredData.tsx updated with live Booking.com property URL",
-        "sameAs array includes live Hostelworld property listing URL",
-        "sameAs array includes live TripAdvisor property URL",
-        "All added URLs verified as returning 200 and pointing to the correct property",
-        "Schema validates without errors in Google Rich Results Test"
-      ],
-      "technicalNotes": [
-        "sameAs must point to the canonical OTA property page, not the OTA homepage",
-        "Schema.org sameAs documentation: https://schema.org/sameAs",
-        "Google uses sameAs for entity disambiguation in the Knowledge Graph",
-        "Validate with: https://search.google.com/test/rich-results",
-        "Also add Agoda if the hostel is listed there — Agoda is dominant in SE Asia"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "source": "https://schema.org/sameAs"
-    },
-    {
-      "title": "Add TouristDestination schema for Johor Bahru city on /guide page",
+      "title": "Use next/font with variable font and size-adjust fallback for LCP improvement",
       "priority": "medium",
-      "description": "The /guide page has TouristAttraction schema for individual JB landmarks but lacks a TouristDestination schema marking JB itself as the destination. schema.org TouristDestination (distinct from TouristAttraction) enables Google to categorise the page as a destination guide, linking it to the 'Things to Do' carousel and travel intent queries. The containsPlace array links the city to individual attraction schemas.",
+      "description": "Next.js's `next/font` module automatically self-hosts Google Fonts, eliminating render-blocking external font requests. When configured with a `variable` font (a single file containing all weights), it also generates an optimal `size-adjust` CSS fallback that prevents layout shift (CLS) during font swap. The current setup likely uses static-weight Google Font imports which incur external network requests and potential CLS.",
       "acceptanceCriteria": [
-        "TouristDestination schema added to GuideStructuredData.tsx for Johor Bahru",
-        "Schema includes name, description, url, geo (GeoCoordinates for JB city centre), and containsPlace referencing existing TouristAttraction @ids",
-        "touristType property included with values: 'Backpackers', 'Budget Travelers'",
-        "Schema validated without errors in Google Rich Results Test",
-        "LodgingBusiness schema in StructuredData.tsx links to the TouristDestination via containedInPlace"
+        "All Google Fonts loaded via `next/font/google` with no `<link rel='stylesheet' href='fonts.googleapis.com/...'>`  in rendered HTML",
+        "Font declarations use the `variable` option (e.g., `subsets: ['latin']`, `variable: '--font-inter'`) to load a single variable font file",
+        "No external fonts.googleapis.com or fonts.gstatic.com network requests visible in DevTools Network panel",
+        "CLS score in Lighthouse ≤ 0.1 with font loaded for the first time (cold cache)",
+        "Font CSS custom property (`--font-inter`) is referenced in Tailwind config fontFamily"
       ],
       "technicalNotes": [
-        "Schema.org TouristDestination: https://schema.org/TouristDestination",
-        "JB city centre approximate GeoCoordinates: lat 1.4854, lng 103.7618",
-        "Use containsPlace array referencing @id values of existing TouristAttraction schemas",
-        "Hostel schema update: add containedInPlace: { '@type': 'TouristDestination', '@id': 'https://pelangicapsulehostel.com/guide#jb' }"
+        "Next.js font optimization docs: https://nextjs.org/docs/app/getting-started/fonts",
+        "Variable fonts reduce HTTP requests: one file for all weights vs. separate files per weight",
+        "next/font generates `size-adjust` automatically for the fallback font to prevent CLS",
+        "Self-hosted fonts also improve privacy (no Google tracking requests from user browsers)"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "source": "https://schema.org/TouristDestination"
+      "source": "https://nextjs.org/docs/app/getting-started/fonts"
     },
     {
-      "title": "Implement dark mode support with prefers-color-scheme and Tailwind dark: classes",
+      "title": "Add Referrer-Policy and X-Content-Type-Options security headers",
       "priority": "medium",
-      "description": "Approximately 65% of mobile users enable dark mode at the OS level. The site has no dark mode support, causing bright white pages for night-time booking — a common scenario for late travellers. Tailwind's dark: variant (media strategy) provides automatic OS-preference matching with no JavaScript state management required.",
+      "description": "OWASP Secure Headers Project identifies `Referrer-Policy: strict-origin-when-cross-origin` and `X-Content-Type-Options: nosniff` as required baseline security headers. `X-Content-Type-Options` prevents MIME-sniffing attacks and `Referrer-Policy` controls what URL information is sent to third-party analytics endpoints. Both are absent from the current `next.config.ts` headers configuration based on the existing security header inventory.",
       "acceptanceCriteria": [
-        "tailwind.config.ts sets darkMode: 'media'",
-        "All page backgrounds switch to dark equivalents (dark:bg-stone-900 etc.) in dark mode",
-        "Header, Footer, Hero, Rooms, and all card components have dark: variants for text, borders, and backgrounds",
-        "No white flash on page load in dark mode (background-color set in globals.css body rule)",
-        "prefers-color-scheme: dark tested via Chrome DevTools Rendering panel",
-        "All text in dark mode passes WCAG 1.4.3 4.5:1 contrast ratio"
+        "`X-Content-Type-Options: nosniff` header present on all responses (HTML, JS, CSS, images)",
+        "`Referrer-Policy: strict-origin-when-cross-origin` header present on all HTML page responses",
+        "SecurityHeaders.com scan reports A or A+ rating after addition",
+        "curl -I on production URL shows both headers present",
+        "No existing functionality broken — analytics still receives origin information for same-origin navigations"
       ],
       "technicalNotes": [
-        "Start with darkMode: 'media' strategy — requires no toggle state management",
-        "Add dark background to body in globals.css: @media (prefers-color-scheme: dark) { body { background-color: #1c1917; } }",
-        "Test with Chrome DevTools: Rendering > Emulate CSS media > prefers-color-scheme: dark",
-        "Images with white backgrounds: add dark:bg-stone-800 to containing divs or use transparent PNGs",
-        "Tailwind dark mode docs: https://tailwindcss.com/docs/dark-mode"
+        "Add both to the `headers()` array in next.config.ts under the `source: '/(.*)'` pattern",
+        "`strict-origin-when-cross-origin` sends full URL for same-origin, only origin for cross-origin, nothing for downgrade (HTTPS→HTTP)",
+        "OWASP HTTP Security Headers Cheat Sheet: https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html",
+        "`X-Content-Type-Options` should apply to all routes including API routes and static assets"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html"
+    },
+    {
+      "title": "Register Google Business Profile and connect to Google Hotel free booking links",
+      "priority": "critical",
+      "description": "Google Hotel free booking links allow accommodation properties to appear in Google Search hotel results at zero cost per click. This requires a verified Google Business Profile linked to the property and a connectivity partner (or the new direct rate-sharing beta) to send real-time availability. For a hostel without an OTA manager, this is the highest-ROI distribution channel improvement available.",
+      "acceptanceCriteria": [
+        "Google Business Profile for Pelangi Capsule Hostel is claimed and fully verified with correct name, address, phone, and website URL",
+        "Business Profile shows live reviews, photos, amenities, and correct check-in/check-out hours",
+        "Property is connected to Google Hotel Center via a connectivity partner (e.g., Cloudbeds, Beds24) or the direct Google rate-sharing feature",
+        "Free booking links appear in Google Search for the property name query pointing to the direct booking page",
+        "Booking landing page URL matches the property's own domain (not an OTA link)"
+      ],
+      "technicalNotes": [
+        "Google Hotel free booking links getting started: https://travel.google/partners/hotels/get-started/",
+        "Free booking links have zero cost-per-click unlike Hotel Ads",
+        "Beds24, Cloudbeds, and Little Hotelier are connectivity partners that support small properties without full PMS",
+        "The booking landing page must be on the property's own domain — the existing /book page qualifies"
       ],
       "dependencies": [],
       "estimatedComplexity": "large",
-      "source": "https://web.dev/articles/prefers-color-scheme"
+      "source": "https://travel.google/partners/hotels/get-started/"
     },
     {
-      "title": "Add theme-color meta tags for browser UI colour in light and dark mode",
-      "priority": "low",
-      "description": "The site's manifest.ts exists but layout.tsx is missing <meta name='theme-color'> tags. These control the mobile browser toolbar and address bar colour in Chrome Android and Safari iOS 15+, creating a more native PWA-like experience. Separate light/dark values via the media attribute ensure the toolbar matches the page background in each colour scheme.",
-      "acceptanceCriteria": [
-        "layout.tsx metadata includes themeColor with two entries: light (#fafaf9) and dark (#1c1917)",
-        "Using Next.js metadata API array form: themeColor: [{ color: '#fafaf9', media: '(prefers-color-scheme: light)' }, { color: '#1c1917', media: '(prefers-color-scheme: dark)' }]",
-        "manifest.ts theme_color updated to match the light theme-color value",
-        "Chrome Android toolbar colour verified to match page background via DevTools mobile emulation",
-        "No duplicate theme-color meta tags in rendered HTML"
-      ],
-      "technicalNotes": [
-        "MDN theme-color: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/theme-color",
-        "Next.js metadata themeColor API: https://nextjs.org/docs/app/api-reference/functions/generate-metadata#themecolor",
-        "Safari iOS uses apple-mobile-web-app-status-bar-style — add 'black-translucent' for dark mode",
-        "Verify in Chrome DevTools: Application > Manifest > Theme color"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "source": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/theme-color"
-    },
-    {
-      "title": "Add contact inquiry form with Resend email auto-reply on /contact page",
+      "title": "Implement INP optimisation: defer non-critical third-party scripts",
       "priority": "high",
-      "description": "The /contact page currently renders only a Location map component with no inquiry form. Potential guests must manually compose WhatsApp or email messages, increasing friction and drop-off. A structured form with check-in/out dates, number of guests, and message, plus an automated acknowledgment email via Resend, reduces friction and reassures guests their inquiry was received.",
+      "description": "Interaction to Next Paint (INP) replaced FID as a Core Web Vital in March 2024. The primary INP threat on this site is third-party script main-thread contention — analytics, chat widgets, and tracking scripts that execute synchronously during user interactions. Using `next/script` with `strategy='lazyOnload'` for non-critical scripts and the Scheduler API (`scheduler.postTask`) for deferred work improves INP below the 200ms 'good' threshold.",
       "acceptanceCriteria": [
-        "Contact form with fields: name (required), email (required), check-in date, check-out date, number of guests, message (required)",
-        "Client-side validation with accessible error messages on all required fields",
-        "Server Action sends inquiry details to hostel admin email on submission",
-        "Acknowledgment email auto-sent to guest confirming receipt within 2 seconds",
-        "Auto-reply includes: hostel name, direct booking link, WhatsApp number, expected response time (24h)",
-        "Honeypot hidden field rejects bot submissions server-side",
-        "Rate limiting: max 3 form submissions per IP per hour"
+        "All non-critical third-party scripts (analytics, Clarity, chat) use `<Script strategy='lazyOnload'>` via next/script",
+        "INP measured by web-vitals v4 in the field is ≤ 200ms (good) for P75 across Chrome UX Report",
+        "No long tasks (>50ms) attributable to third-party scripts visible in Lighthouse 'Avoid long main-thread tasks' audit",
+        "Lighthouse Performance score does not regress after script deferral",
+        "web-vitals attribution data logged to analytics identifies the specific interaction with highest INP"
       ],
       "technicalNotes": [
-        "npm install resend",
-        "Resend Next.js guide: https://resend.com/docs/send-with-nextjs",
-        "Use Next.js Server Actions for form handling — no separate API route needed",
-        "Store RESEND_API_KEY and ADMIN_EMAIL as environment variables",
-        "Resend free tier: 3,000 emails/month (sufficient for hostel volume)",
-        "Log submissions to avoid losing inquiries if email delivery fails"
+        "Next.js Script strategies: `beforeInteractive` (critical), `afterInteractive` (default), `lazyOnload` (lowest priority), `worker` (Partytown)",
+        "web.dev INP optimization guide: https://web.dev/articles/optimize-inp",
+        "Use Chrome DevTools Performance panel to identify long tasks triggered by interactions",
+        "The Scheduler API (`scheduler.postTask`) enables yield-based task chunking for long event handlers: https://web.dev/articles/scheduler-yield"
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
-      "source": "https://resend.com/docs/send-with-nextjs"
+      "source": "https://web.dev/articles/optimize-inp"
     },
     {
-      "title": "Integrate Microsoft Clarity for heatmap and session recording analytics",
-      "priority": "medium",
-      "description": "The site has GA4 page-view metrics but no behavioural analytics (heatmaps, scroll depth, session recordings). Microsoft Clarity is a free tool revealing where guests drop off in the booking funnel, which CTAs are ignored, and how far users scroll. It is GDPR-compliant by default (no PII stored), integrates with GA4, and has no monthly session limits.",
-      "acceptanceCriteria": [
-        "Clarity script loaded asynchronously via Next.js Script component with strategy='afterInteractive'",
-        "NEXT_PUBLIC_CLARITY_PROJECT_ID environment variable used for the project ID",
-        "Clarity only initialises after cookie consent is granted (integrates with existing CookieConsent.tsx)",
-        "Heatmap data visible in Clarity dashboard within 24 hours of first session",
-        "Input masking verified in Clarity settings: all form fields masked (no PII recorded)",
-        "Clarity linked to GA4 property for combined segment analysis"
-      ],
-      "technicalNotes": [
-        "Clarity setup: https://clarity.microsoft.com/setup",
-        "Add to AnalyticsProvider.tsx or create a separate ClarityProvider component",
-        "Clarity snippet: (function(c,l,a,r,i,t,y){ c[a]=c[a]||function(){...} })('clarity','script','CLARITY_PROJECT_ID',...)",
-        "Clarity automatically masks input fields and credit card numbers by default",
-        "Free tier: unlimited sessions, unlimited recordings, 12-month data retention"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "source": "https://clarity.microsoft.com/"
-    },
-    {
-      "title": "Add <link rel='preload'> for LCP hero image in layout <head>",
-      "priority": "high",
-      "description": "The hero image is the LCP element and determines Core Web Vitals scores. While next/image priority=true sets fetchpriority='high' at render time, adding an explicit <link rel='preload'> in the document <head> triggers browser preloading before React hydrates, potentially improving LCP by 200-500ms on slow connections by starting the download earlier in the network waterfall.",
-      "acceptanceCriteria": [
-        "<link rel='preload' as='image' href='/images/hero-main.webp' type='image/webp'> added to layout.tsx <head>",
-        "imageSrcSet attribute on preload link matches Next.js Image srcset breakpoints",
-        "imageSizes='100vw' matches hero image usage",
-        "Chrome DevTools Network tab shows hero image download starting in first 1-2 waterfall requests",
-        "Lighthouse 'Preload Largest Contentful Paint image' opportunity resolves",
-        "No Chrome DevTools 'preload used within a few seconds of window load' warning"
-      ],
-      "technicalNotes": [
-        "Add preload link directly in layout.tsx <head> — Next.js metadata API does not support image preload links",
-        "Match srcSet breakpoints from Next.js image config: '640w, 750w, 828w, 1080w, 1200w, 1920w'",
-        "web.dev preload responsive images: https://web.dev/articles/preload-responsive-images",
-        "Ensure the hero-main.webp file exists in /public/images/ and the path matches exactly",
-        "Test: Lighthouse > Opportunities > 'Preload Largest Contentful Paint image' should disappear"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "source": "https://web.dev/articles/preload-responsive-images"
-    },
-    {
-      "title": "Add Bing Webmaster Tools verification and sitemap submission",
+      "title": "Add accessibility statement page documenting WCAG 2.2 AA conformance",
       "priority": "low",
-      "description": "The site has Google Search Console configured but no Bing Webmaster Tools account. Bing and DuckDuckGo collectively account for 10-15% of global search traffic. Verification takes under 5 minutes, enables sitemap submission, crawl monitoring, and Bing-specific SEO insights. Bing also powers DuckDuckGo, Ecosia, and Yahoo Search — one submission covers all.",
+      "description": "An accessibility statement is the recommended way to document a site's WCAG conformance level, known limitations, and contact method for users who experience barriers. While not legally mandated for private Malaysian businesses under PDPA, it is a best practice recommended by W3C WAI and is increasingly expected by international travellers — especially those from the EU or UK where accessibility statements are legally required for public sector and many private sites.",
       "acceptanceCriteria": [
-        "Bing Webmaster Tools account created at https://www.bing.com/webmasters/ and site verified",
-        "Verification via <meta name='msvalidate.01' content='TOKEN'> in layout.tsx metadata.verification",
-        "Sitemap URL (https://pelangicapsulehostel.com/sitemap.xml) submitted to Bing",
-        "Bing crawl report shows pages indexed within 7 days of submission",
-        "No crawl errors reported in Bing Webmaster Tools dashboard"
+        "An /accessibility route exists and is linked from the site footer",
+        "Page states the conformance target (WCAG 2.2 Level AA) and date of last assessment",
+        "Page lists any known non-conformances with brief descriptions and planned remediation timelines",
+        "A contact method (email) is provided for users to report accessibility barriers",
+        "Page is written in plain English and does not itself have accessibility issues"
       ],
       "technicalNotes": [
-        "Bing Webmaster Tools: https://www.bing.com/webmasters/",
-        "Next.js metadata verification: verification: { other: { 'msvalidate.01': 'YOUR_TOKEN' } }",
-        "Bing can auto-import verified GSC sites — check for auto-import option first to save time",
-        "Once verified, submit sitemap via: Sitemaps > Submit Sitemap > enter sitemap URL"
+        "W3C WAI accessibility statement generator: https://www.w3.org/WAI/planning/statements/",
+        "Template includes sections: conformance status, technical specifications, known limitations, feedback contact",
+        "The statement should be updated whenever a significant accessibility audit is performed",
+        "Linking from footer ensures consistent help mechanism (SC 3.2.6 compliance for the contact method)"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "source": "https://www.bing.com/webmasters/about"
-    },
-    {
-      "title": "Add OpenSearch XML descriptor for browser address bar site search",
-      "priority": "low",
-      "description": "Firefox and Chrome support OpenSearch 1.1, allowing users to add a site's search as a browser search engine after visiting a page with a valid opensearch.xml descriptor. This provides a low-friction re-engagement path: returning guests can search the hostel site directly from the browser address bar without navigating to the homepage first.",
-      "acceptanceCriteria": [
-        "/public/opensearch.xml created with valid OpenSearch 1.1 specification",
-        "Descriptor includes ShortName ('Pelangi Hostel'), Description, and Url template with {searchTerms} parameter",
-        "<link rel='search' type='application/opensearchdescription+xml' title='Pelangi Hostel' href='/opensearch.xml'> added to layout.tsx <head>",
-        "Firefox address bar shows 'Search Pelangi Hostel' option when site is focused",
-        "Search URL template points to the site search route: /search?q={searchTerms}"
-      ],
-      "technicalNotes": [
-        "OpenSearch specification: https://developer.mozilla.org/en-US/docs/Web/OpenSearch",
-        "Minimum valid descriptor requires: OpenSearchDescription, ShortName, Description, Url elements",
-        "Place at /public/opensearch.xml — served as a static file at /opensearch.xml",
-        "Works best after Fuse.js site search is implemented (dependency)"
-      ],
-      "dependencies": [
-        "Add Fuse.js client-side site search for blog and guide content"
-      ],
-      "estimatedComplexity": "small",
-      "source": "https://developer.mozilla.org/en-US/docs/Web/OpenSearch"
-    },
-    {
-      "title": "Add schema.org Offer markup for hostel room rates on /rooms page",
-      "priority": "medium",
-      "description": "The /rooms page displays room types and pricing but has no Offer schema markup. Adding schema.org Offer (with price, priceCurrency, and availability) on each room type enables Google to display pricing rich results (e.g., 'From RM35/night') in search snippets. The HotelRoom > makesOffer > Offer pattern is the recommended combination per Google's hotel structured data guide.",
-      "acceptanceCriteria": [
-        "Each room type in rooms data has a corresponding Offer schema with price, priceCurrency: 'MYR', availability: 'https://schema.org/InStock'",
-        "AggregateOffer added to LodgingBusiness schema with lowPrice: '35', highPrice: '55', priceCurrency: 'MYR'",
-        "Offer.seller references the hostel LodgingBusiness @id",
-        "Offer.priceValidUntil set to one year from current date",
-        "Schema validated without critical errors in Google Rich Results Test"
-      ],
-      "technicalNotes": [
-        "Schema.org Offer: https://schema.org/Offer",
-        "Schema.org AggregateOffer: https://schema.org/AggregateOffer",
-        "Pattern: HotelRoom > makesOffer > Offer — see existing HotelRoom schema in /rooms page",
-        "priceValidUntil should be a future date in ISO 8601 format: '2027-01-01'",
-        "Required Offer properties for rich results: price, priceCurrency, availability, seller"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "source": "https://schema.org/Offer"
-    },
-    {
-      "title": "Migrate CSP script-src from unsafe-inline to nonce-based policy",
-      "priority": "high",
-      "description": "The current CSP in next.config.ts uses 'unsafe-inline' in script-src (line 7), which allows any inline script to execute regardless of origin — significantly weakening XSS protection. A nonce-based CSP generates a cryptographic nonce per request, allowing only explicitly nonced inline scripts (Next.js hydration, analytics) while blocking unauthorised injected scripts.",
-      "acceptanceCriteria": [
-        "Per-request cryptographic nonce generated in Next.js middleware and passed via x-nonce request header",
-        "'unsafe-inline' removed from script-src; nonce added: \"'nonce-{VALUE}'\"",
-        "Next.js layout.tsx reads nonce from headers() and applies it to inline script tags",
-        "Sentry inline scripts receive the nonce attribute via Sentry's nonce configuration option",
-        "GA4 / @next/third-parties scripts receive the nonce",
-        "No CSP violation errors in browser console on any page after migration",
-        "Mozilla Observatory score improves to A or higher for script-src policy"
-      ],
-      "technicalNotes": [
-        "Next.js nonce-based CSP guide: https://nextjs.org/docs/app/building-your-application/configuring/content-security-policy",
-        "Generate nonce: Buffer.from(crypto.randomUUID()).toString('base64') in middleware.ts",
-        "Set nonce in middleware: requestHeaders.set('x-nonce', nonce)",
-        "Read in layout.tsx server component: const nonce = (await headers()).get('x-nonce') ?? ''",
-        "Add 'strict-dynamic' to allow dynamically-loaded trusted scripts alongside nonce",
-        "Test with: https://csp-evaluator.withgoogle.com/"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "large",
-      "source": "https://nextjs.org/docs/app/building-your-application/configuring/content-security-policy"
-    },
-    {
-      "title": "Add touristType property to Hostel schema for traveler segment targeting",
-      "priority": "low",
-      "description": "Schema.org's touristType property on LodgingBusiness signals target traveler segments to search engines. Adding explicit values (Backpackers, Budget Travelers, Solo Travelers) helps Google surface Pelangi in Google Travel searches filtered by traveler type. This is a low-effort one-line schema addition that improves relevance in long-tail queries like 'best hostels for backpackers JB'.",
-      "acceptanceCriteria": [
-        "touristType property added to Hostel schema in StructuredData.tsx",
-        "Values include: 'Backpackers', 'Budget Travelers', 'Solo Travelers', 'Digital Nomads'",
-        "Schema validated without errors in Rich Results Test",
-        "Property also added to any Accommodation schemas on /rooms page if present"
-      ],
-      "technicalNotes": [
-        "Schema.org touristType: https://schema.org/touristType",
-        "Add as array of string values: 'touristType': ['Backpackers', 'Budget Travelers', 'Solo Travelers']",
-        "No official controlled vocabulary — use English text matching Google Travel filter taxonomy",
-        "One-line addition to hostelSchema object in site/src/components/StructuredData.tsx"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "source": "https://schema.org/touristType"
-    },
-    {
-      "title": "Add WebSite schema with SearchAction for Google Sitelinks Searchbox",
-      "priority": "medium",
-      "description": "Google can display an inline search box directly in SERP results for sites with WebSite schema and a SearchAction (Sitelinks Searchbox). When users search for 'Pelangi Capsule Hostel', they can search the site from Google without visiting first. This reduces the click-and-bounce pattern and increases engagement for navigational queries.",
-      "acceptanceCriteria": [
-        "WebSite schema with SearchAction added to StructuredData.tsx as a separate schema block",
-        "target.urlTemplate: 'https://pelangicapsulehostel.com/search?q={search_term_string}'",
-        "query-input: 'required name=search_term_string'",
-        "WebSite schema includes url: 'https://pelangicapsulehostel.com' and name: 'Pelangi Capsule Hostel'",
-        "Schema validated in Rich Results Test without errors",
-        "Submission via Google Search Console URL Inspection to expedite crawl"
-      ],
-      "technicalNotes": [
-        "Google Sitelinks Searchbox docs: https://developers.google.com/search/docs/appearance/structured-data/sitelinks-searchbox",
-        "WebSite schema is separate from LodgingBusiness — add as third block in StructuredData.tsx",
-        "Requires functional /search?q= endpoint (Fuse.js story) for user experience",
-        "Google eligibility: site must be prominent (high-authority queries); may take weeks to appear",
-        "Validate: https://search.google.com/test/rich-results"
-      ],
-      "dependencies": [
-        "Add Fuse.js client-side site search for blog and guide content"
-      ],
-      "estimatedComplexity": "small",
-      "source": "https://developers.google.com/search/docs/appearance/structured-data/sitelinks-searchbox"
+      "source": "https://www.w3.org/WAI/planning/statements/"
     }
   ]
 }

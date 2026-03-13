@@ -1721,7 +1721,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "large",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-076",
@@ -1768,7 +1768,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-078",
@@ -1794,7 +1794,7 @@
         "Add Fuse.js client-side site search for blog and guide content"
       ],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-079",
@@ -1816,7 +1816,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-080",
@@ -1838,7 +1838,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-081",
@@ -1884,7 +1884,7 @@
         "Add Fuse.js client-side site search for blog and guide content"
       ],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-083",
@@ -1905,7 +1905,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-084",
@@ -2006,7 +2006,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-089",
@@ -2027,7 +2027,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-090",
@@ -2067,7 +2067,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-092",
@@ -2087,7 +2087,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-093",
@@ -2107,7 +2107,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-094",
@@ -2127,7 +2127,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-095",
@@ -2147,7 +2147,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-096",
@@ -2167,7 +2167,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-097",
@@ -2207,7 +2207,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-099",
@@ -2287,6 +2287,222 @@
         "Spilt Milk Web Design boutique hotel CRO: https://spiltmilkwebdesign.com/conversion-rate-optimization-website-ux-for-boutique-hotels-in-2025/",
         "Cvent hotel website conversions: https://www.cvent.com/en/blog/hospitality/hotel-website-conversions",
         "Use Next.js revalidation (`revalidate: 3600`) for hourly refresh without full rebuild"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-103",
+      "title": "Register Google Business Profile and connect to Google Hotel free booking links",
+      "priority": "critical",
+      "description": "Google Hotel free booking links allow accommodation properties to appear in Google Search hotel results at zero cost per click. This requires a verified Google Business Profile linked to the property and a connectivity partner (or the new direct rate-sharing beta) to send real-time availability. For a hostel without an OTA manager, this is the highest-ROI distribution channel improvement available.",
+      "acceptanceCriteria": [
+        "Google Business Profile for Pelangi Capsule Hostel is claimed and fully verified with correct name, address, phone, and website URL",
+        "Business Profile shows live reviews, photos, amenities, and correct check-in/check-out hours",
+        "Property is connected to Google Hotel Center via a connectivity partner (e.g., Cloudbeds, Beds24) or the direct Google rate-sharing feature",
+        "Free booking links appear in Google Search for the property name query pointing to the direct booking page",
+        "Booking landing page URL matches the property's own domain (not an OTA link)"
+      ],
+      "technicalNotes": [
+        "Google Hotel free booking links getting started: https://travel.google/partners/hotels/get-started/",
+        "Free booking links have zero cost-per-click unlike Hotel Ads",
+        "Beds24, Cloudbeds, and Little Hotelier are connectivity partners that support small properties without full PMS",
+        "The booking landing page must be on the property's own domain — the existing /book page qualifies"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "large",
+      "passes": false
+    },
+    {
+      "id": "US-104",
+      "title": "Add image URLs to XML sitemap for Google image indexing",
+      "priority": "high",
+      "description": "Next.js 15 sitemap.ts natively supports an `images` array on each sitemap entry, which generates the correct `xmlns:image` namespace and `<image:image>` tags required by Google's image sitemap extension. Adding hero images, room photos, and OG images to the sitemap enables Google Images indexing, which drives additional organic traffic for visual traveller queries.",
+      "acceptanceCriteria": [
+        "sitemap.ts includes an `images` array for every route that has a representative image (home, rooms, gallery, blog posts)",
+        "Generated sitemap XML validates against Google's image sitemap schema (namespace xmlns:image='http://www.google.com/schemas/sitemap-image/1.1' present)",
+        "Google Search Console shows image sitemap entries parsed without errors after resubmission",
+        "At least the hero image URL is listed for the home route and at least the OG image URL for each blog post route"
+      ],
+      "technicalNotes": [
+        "Use the `images` property on each sitemap entry object: `{ url, images: [{ url: absoluteImageUrl }] }`",
+        "Next.js 15 sitemap spec: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap",
+        "Google image sitemap reference: https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": true
+    },
+    {
+      "id": "US-105",
+      "title": "Implement WCAG 2.2 SC 2.5.8 – Target Size Minimum (24×24 CSS px)",
+      "priority": "high",
+      "description": "WCAG 2.2 introduced SC 2.5.8 at Level AA, requiring all interactive targets (buttons, links, form controls) to have a hit area of at least 24×24 CSS pixels or sufficient offset spacing from adjacent targets. This directly benefits mobile users and people with motor disabilities, and is now a baseline requirement for WCAG 2.2 AA conformance.",
+      "acceptanceCriteria": [
+        "All interactive elements (nav links, buttons, form controls, social icons, close buttons) have a minimum computed hit area of 24×24 CSS pixels verified via DevTools",
+        "Icon-only buttons (WhatsApp FAB, close X, share) are explicitly sized to at least 44×44 CSS px (best practice above the minimum)",
+        "Inline hyperlinks within blog post body text are exempt under the inline-text exception",
+        "Automated axe-core or Lighthouse accessibility scan reports no SC 2.5.8 violations",
+        "Manual test confirms no adjacent targets are closer than 24 CSS px without sufficient target size"
+      ],
+      "technicalNotes": [
+        "Apply `min-width: 24px; min-height: 24px` (or padding equivalent) via Tailwind `p-*` utilities on all button and icon-link components",
+        "The 'spacing' exception allows targets smaller than 24px if there is ≥24px offset from any adjacent target — measure carefully for nav items",
+        "W3C Understanding SC 2.5.8: https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-106",
+      "title": "Add Malaysia PDPA-compliant cookie consent banner with explicit opt-in",
+      "priority": "high",
+      "description": "Malaysia's Personal Data Protection (Amendment) Act 2024, effective from January 2025, requires explicit affirmative opt-in consent before setting non-essential cookies (analytics, marketing). Implied consent (continuing to browse) is invalid under the PDPA. The site currently uses analytics without a consent gate, creating legal exposure for a Malaysian-registered business.",
+      "acceptanceCriteria": [
+        "Cookie consent banner appears on first visit before any analytics or non-essential cookies are set",
+        "Banner offers explicit 'Accept', 'Reject', and 'Manage Preferences' options — no pre-ticked boxes",
+        "Google Analytics / Microsoft Clarity scripts only load after user accepts analytics cookies",
+        "User preference is stored in localStorage/cookie and respected across sessions",
+        "Privacy Policy page is updated to describe cookie categories, retention periods, and third-party recipients",
+        "Banner text is available in both English and Chinese (matching existing hreflang)"
+      ],
+      "technicalNotes": [
+        "Use a lightweight library such as `vanilla-cookieconsent` or Next.js-compatible `react-cookie-consent`",
+        "Implement consent-based script loading: wrap GA/Clarity initialization in a consent check",
+        "Malaysia PDPA Amendment Act 2024 in force from 1 January 2025: https://www.aseanbriefing.com/news/malaysia-tightens-data-protection-from-june-2025/",
+        "Cookiebot PDPA overview: https://www.cookiebot.com/en/malaysia-pdpa/"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-107",
+      "title": "Implement INP optimisation: defer non-critical third-party scripts",
+      "priority": "high",
+      "description": "Interaction to Next Paint (INP) replaced FID as a Core Web Vital in March 2024. The primary INP threat on this site is third-party script main-thread contention — analytics, chat widgets, and tracking scripts that execute synchronously during user interactions. Using `next/script` with `strategy='lazyOnload'` for non-critical scripts and the Scheduler API (`scheduler.postTask`) for deferred work improves INP below the 200ms 'good' threshold.",
+      "acceptanceCriteria": [
+        "All non-critical third-party scripts (analytics, Clarity, chat) use `<Script strategy='lazyOnload'>` via next/script",
+        "INP measured by web-vitals v4 in the field is ≤ 200ms (good) for P75 across Chrome UX Report",
+        "No long tasks (>50ms) attributable to third-party scripts visible in Lighthouse 'Avoid long main-thread tasks' audit",
+        "Lighthouse Performance score does not regress after script deferral",
+        "web-vitals attribution data logged to analytics identifies the specific interaction with highest INP"
+      ],
+      "technicalNotes": [
+        "Next.js Script strategies: `beforeInteractive` (critical), `afterInteractive` (default), `lazyOnload` (lowest priority), `worker` (Partytown)",
+        "web.dev INP optimization guide: https://web.dev/articles/optimize-inp",
+        "Use Chrome DevTools Performance panel to identify long tasks triggered by interactions",
+        "The Scheduler API (`scheduler.postTask`) enables yield-based task chunking for long event handlers: https://web.dev/articles/scheduler-yield"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-108",
+      "title": "Implement WCAG 2.2 SC 3.2.6 – Consistent Help placement (Level A)",
+      "priority": "medium",
+      "description": "SC 3.2.6 (Level A) requires that any help mechanism present on multiple pages — such as a WhatsApp contact link, phone number, or FAQ link — appears in the same relative order in the page structure across all pages. As a hospitality website with a WhatsApp CTA in the navbar and footer, this criterion is directly applicable and needed for full WCAG 2.2 AA (which includes all Level A) compliance.",
+      "acceptanceCriteria": [
+        "WhatsApp contact link, phone number, or 'Contact Us' mechanism appears in an identical DOM order relative to surrounding navigation/footer elements on every page",
+        "If a Help/FAQ link is present in the header of one page, it appears in the same header position on all pages where it exists",
+        "Audit of all page templates (home, rooms, guide, blog, contact, book) confirms consistent help mechanism placement",
+        "Accessibility statement or audit report documents conformance with SC 3.2.6"
+      ],
+      "technicalNotes": [
+        "This does not require adding help on every page — only that where it exists, it is in the same relative position",
+        "Shared layout components (Header, Footer) naturally satisfy this if the help element is always in those components",
+        "W3C Understanding SC 3.2.6: https://www.w3.org/WAI/WCAG22/Understanding/consistent-help.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": true
+    },
+    {
+      "id": "US-109",
+      "title": "Optimise contact form with React 19 useActionState and optimistic UI",
+      "priority": "medium",
+      "description": "The current contact form uses a client-side fetch to a Server Action. Migrating to React 19's `useActionState` hook provides built-in pending state management, eliminating the need for manual `useState` for loading/error states. Adding `useOptimistic` for instant success feedback before the Resend API call completes improves perceived performance and reduces booking abandonment.",
+      "acceptanceCriteria": [
+        "Contact form uses `useActionState` (React 19) instead of manual useState for pending/error/success states",
+        "Submit button shows a spinner and is disabled while the action is pending — driven by `useActionState`'s `isPending` value",
+        "On submission, an optimistic 'Message sent!' confirmation appears immediately via `useOptimistic`, with error recovery if the server action fails",
+        "If server action returns a validation error, field-level error messages are displayed without a full re-render",
+        "TypeScript types are correct for the action state shape"
+      ],
+      "technicalNotes": [
+        "React 19 `useActionState` docs: https://react.dev/reference/react/useActionState",
+        "`useFormStatus` can be used in a child `SubmitButton` component to read pending state without prop drilling",
+        "Next.js 15 forms guide: https://nextjs.org/docs/app/guides/forms",
+        "The `useOptimistic` hook: https://react.dev/reference/react/useOptimistic"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-110",
+      "title": "Use next/font with variable font and size-adjust fallback for LCP improvement",
+      "priority": "medium",
+      "description": "Next.js's `next/font` module automatically self-hosts Google Fonts, eliminating render-blocking external font requests. When configured with a `variable` font (a single file containing all weights), it also generates an optimal `size-adjust` CSS fallback that prevents layout shift (CLS) during font swap. The current setup likely uses static-weight Google Font imports which incur external network requests and potential CLS.",
+      "acceptanceCriteria": [
+        "All Google Fonts loaded via `next/font/google` with no `<link rel='stylesheet' href='fonts.googleapis.com/...'>`  in rendered HTML",
+        "Font declarations use the `variable` option (e.g., `subsets: ['latin']`, `variable: '--font-inter'`) to load a single variable font file",
+        "No external fonts.googleapis.com or fonts.gstatic.com network requests visible in DevTools Network panel",
+        "CLS score in Lighthouse ≤ 0.1 with font loaded for the first time (cold cache)",
+        "Font CSS custom property (`--font-inter`) is referenced in Tailwind config fontFamily"
+      ],
+      "technicalNotes": [
+        "Next.js font optimization docs: https://nextjs.org/docs/app/getting-started/fonts",
+        "Variable fonts reduce HTTP requests: one file for all weights vs. separate files per weight",
+        "next/font generates `size-adjust` automatically for the fallback font to prevent CLS",
+        "Self-hosted fonts also improve privacy (no Google tracking requests from user browsers)"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": true
+    },
+    {
+      "id": "US-111",
+      "title": "Add Speakable structured data to key hostel information sections",
+      "priority": "low",
+      "description": "Google's Speakable structured data (beta) marks sections of a page as suitable for text-to-speech playback by Google Assistant. Adding `speakable` with CSS selectors pointing to the hostel name, location, check-in/check-out times, and key amenities sections enables voice search users — particularly travellers making hands-free queries — to hear the most relevant hostel information directly from a Google Assistant response.",
+      "acceptanceCriteria": [
+        "A `speakable` property with `SpeakableSpecification` is added to the LodgingBusiness JSON-LD on the home page",
+        "`cssSelector` values target the hostel tagline, address block, and amenities summary (each section ≤30 seconds of audio when read aloud)",
+        "Markup validated using Google's Rich Results Test (speakable is listed as a test-supported type)",
+        "Targeted sections are written in clear, natural spoken language (no jargon, short sentences)",
+        "The JSON-LD does not reference non-existent CSS selectors — selectors are verified against the rendered DOM"
+      ],
+      "technicalNotes": [
+        "Google Speakable documentation: https://developers.google.com/search/docs/appearance/structured-data/speakable",
+        "Each speakable section should be 20-30 seconds when read aloud (~50-75 words)",
+        "Use `cssSelector` array to target specific DOM IDs or class names rather than XPath for maintainability",
+        "Speakable is currently in beta and limited to news publishers in Google's full rollout, but the markup is accepted and processed"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-112",
+      "title": "Add accessibility statement page documenting WCAG 2.2 AA conformance",
+      "priority": "low",
+      "description": "An accessibility statement is the recommended way to document a site's WCAG conformance level, known limitations, and contact method for users who experience barriers. While not legally mandated for private Malaysian businesses under PDPA, it is a best practice recommended by W3C WAI and is increasingly expected by international travellers — especially those from the EU or UK where accessibility statements are legally required for public sector and many private sites.",
+      "acceptanceCriteria": [
+        "An /accessibility route exists and is linked from the site footer",
+        "Page states the conformance target (WCAG 2.2 Level AA) and date of last assessment",
+        "Page lists any known non-conformances with brief descriptions and planned remediation timelines",
+        "A contact method (email) is provided for users to report accessibility barriers",
+        "Page is written in plain English and does not itself have accessibility issues"
+      ],
+      "technicalNotes": [
+        "W3C WAI accessibility statement generator: https://www.w3.org/WAI/planning/statements/",
+        "Template includes sections: conformance status, technical specifications, known limitations, feedback contact",
+        "The statement should be updated whenever a significant accessibility audit is performed",
+        "Linking from footer ensures consistent help mechanism (SC 3.2.6 compliance for the contact method)"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
