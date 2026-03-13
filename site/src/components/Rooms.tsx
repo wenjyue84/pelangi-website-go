@@ -11,6 +11,7 @@ export default async function Rooms() {
   "use cache";
   cacheLife("days");
   cacheTag("rooms-static");
+  cacheTag("rooms");
   const capsuleFeatures = [
     { icon: "fan", text: "Personal climate control" },
     { icon: "light", text: "Adjustable LED lighting" },
