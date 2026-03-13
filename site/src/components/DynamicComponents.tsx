@@ -49,3 +49,8 @@ export const PauseAnimationsButton = dynamic(
   () => import("@/components/PauseAnimationsButton"),
   { ssr: false }
 );
+
+export const TikTokPixelProvider = dynamic(
+  () => import("@/components/TikTokPixelProvider"),
+  { ssr: false }
+);

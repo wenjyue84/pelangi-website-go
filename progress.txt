@@ -7143,3 +7143,90 @@ Completed: Add JSON Feed 1.1 at /feed.json for blog content syndication (ID: US-
 ### Gotchas
 - `typedRoutes: true` in next.config.ts causes TS error when passing computed string to Link `href`; fix with `as Route` cast
 - `site/src/app/shared/` was previously untracked — needed explicit `git add` of the directory
+## Iteration 23 - Sat, Mar 14, 2026  3:01:50 AM
+Incomplete: Integrate Google Free Hotel Booking Links via connectivity partner (ID: US-194) — attempt 1/3
+
+
+## Pre-analysis for US-194 (Gemini 2.5 Pro)
+This user story describes integrating a hotel booking system with Google, which is unrelated to the `lhdn_payroll_integration` app or the Frappe framework. The story is for a public-facing website, likely the `pelangi-website` Next.js project. The following technical brief is based on implementing this within a standard web/backend system, as a Python/Frappe approach is not applicable here.
+
+**Technical Brief: US-194 Google FBL Integration**
+
+1.  **Primary Files/Modules to Modify:**
+    *   `booking_service.py` / `ari_provider.py`: A new Python module to handle the logic for fetching Availability, Rates, and Inventory (ARI) from the primary booking engine or database.
+    *   `api/endpoints.py`: A new API endpoint (e.g., `/api/v1/google/ari`) will need to be created. This endpoint will be called by the connectivity partner (Pull model) to fetch live ARI data.
+    *   `controllers/booking_page.py`: The controller handling the direct booking page may need modification to properly attribute and process incoming traffic from Google FBL.
+    *   `settings.py` / `config.py`: To store API keys and endpoint URLs for the chosen connectivity partner.
+
+2.  **Frappe DocTypes / Hooks Involved:**
+    *   This story does not map to Frappe DocTypes. It's an external integration. The equivalent "data types" would be Pydantic or dataclass models for `Room`, `RatePlan`, `Availability`.
+    *   No Frappe hooks are directly involved. The integration point is a new, custom REST API endpoint, not the Frappe framework's hook system.
+
+3.  **Recommended Implementation Approach:**
+    *   Choose a connectivity partner that supports a "Pull" or "Pull with Hints" ARI model.
+    *   Implement a public, stateless API endpoint that returns ARI data in the XML or JSON format specified by the partner.
+    *   This endpoint must query the live state of the property's inventory. Implement robust caching (e.g., Redis) on this endpoint to manage high-frequency polling from the partner without overloading the database.
+    *   The booking URL given to the partner should contain parameters for check-in/out dates, occupancy, and room ID, allowing your website to pre-fill the booking form.
+
+4.  **Edge Cases & Gotchas:**
+    *   **Price Accuracy is Critical:** The price returned by the ARI endpoint *must* be the final, bookable price, including all taxes and fees. Google will de-list you for discrepancies.
+    *   **Data Consistency:** Ensure the property data (name, address, phone) in your system, the partner's system, and your Google Business Profile are identical to ensure a successful match.
+    *   **Authentication:** The ARI endpoint should be secured via a shared secret/API key in the request header to prevent unauthorized access.
+    *   **Performance:** The ARI endpoint must be fast and highly available. Slow response times can lead to being dropped by the partner's feed.
+
+
+## Pre-analysis for US-194 (Gemini 2.5 Pro)
+Here is the technical brief for implementing the Google Free Booking Links user story.
+
+**Subject: Technical Brief for US-194: Google FBL Integration**
+
+This brief outlines the Frappe/Python implementation for integrating Google's Free Booking Links via a connectivity partner, to be built within the `lhdn_payroll_integration` app. The strategy is to create a new, self-contained module for this hospitality-focused functionality.
+
+**1. Python Files to Modify/Create:**
+*   **New File:** `lhdn_payroll_integration/integrations/ari_connector.py`. This will contain the core logic for communicating with the partner's ARI (Availability, Rates, Inventory) API.
+*   **Modify File:** `lhdn_payroll_integration/hooks.py`. Add a `scheduler_events` entry to trigger frequent ARI data syncs (e.g., every 30 minutes) to maintain price accuracy with Google.
+*   **New/Modify File:** `lhdn_payroll_integration/api.py`. A new `@frappe.whitelist()` endpoint will be needed here to receive booking data from the website's front-end and create `Booking` documents.
+
+**2. Frappe DocTypes & Hooks:**
+*   **DocTypes (New):**
+    *   `Hotel Partner Settings` (Singleton): To securely store the partner's API key, account ID, and endpoints.
+    *   `Room Type`: To manage inventory types (e.g., "Female Pod", "Mixed Pod").
+    *   `Booking`: To store details for reservations made via the direct booking link.
+*   **Hooks (Modify):**
+    *   `scheduler_events`: To automate the ARI synchronization job.
+
+**3. Recommended Implementation Approach:**
+1.  Begin by creating the `Hotel Partner Settings` DocType to hold API credentials.
+2.  In `ari_connector.py`, implement functions to pull rates/availability from the partner and/or push updates from Frappe.
+3.  Schedule the sync function from `ari_connector.py` to run via `hooks.py`.
+4.  Develop the whitelisted `api.py` endpoint to handle new booking submissions from the website.
+
+**4. Edge Cases & Gotchas:**
+*   **Price Accuracy:** Google requires near-perfect price and availability matching. The sync job must be robust, frequent, and have extensive logging to diagnose any discrepancies.
+*   **Transactional Integrity:** A new booking must immediately trigger an inventory update to prevent overbooking.
+*   **App Context:** Since hospitality logic is being added to a payroll app, ensure all new DocTypes and server scripts are placed in a distinct custom module to keep the domains cleanly separated.
+
+
+## Iteration - Sat, Mar 14, 2026
+Incomplete: Integrate Google Free Hotel Booking Links via connectivity partner (ID: US-194) — attempt 2/3
+
+### Why this story cannot be implemented in code
+US-194 requires external service registrations that are impossible to complete programmatically:
+1. Register with Google Hotel Center (requires Google account + business verification)
+2. Subscribe to a connectivity partner (Beds24, Cloudbeds, SiteMinder — requires payment + account setup)
+3. Configure two-way ARI sync (requires partner account credentials + booking engine integration)
+4. Verify price accuracy score in Hotel Center dashboard (external Google UI)
+5. Match Google Business Profile to Hotel Center property (external Google UI)
+
+All 5 acceptance criteria require external service interactions, not code changes.
+
+### Recommendation
+This is a business process task, not a software implementation task. Owner should:
+- Sign up for Beds24 (budget option) at beds24.com
+- Connect to Google Hotel Center via the Beds24 partner interface
+- Ensure the booking page URL on this website is set as the direct booking link
+- Mark this story as passes: true after completing the external setup
+
+## Iteration 24 - Sat, Mar 14, 2026  3:06:20 AM
+Incomplete: Integrate Google Free Hotel Booking Links via connectivity partner (ID: US-194) — attempt 2/3
+
