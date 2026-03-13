@@ -5592,3 +5592,21 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 
 ### Gotchas
 - None — clean audit pass
+
+
+## Iteration 19 - Story: US-212 WCAG 2.1 SC 2.5.2 – Up-event activation audit
+
+### What was implemented
+- Full audit of all 52 source files with interactive elements (234 occurrences)
+- Confirmed zero `onMouseDown`, `onPointerDown`, or `onTouchStart` handlers in the codebase
+- Confirmed zero `addEventListener('mousedown'/'pointerdown')` calls
+- All interactive elements use standard HTML `<button>`, `<a>`, and React `onClick` which fire on pointer-up by default
+- Only `addEventListener('keydown')` calls found (4 instances) — for keyboard nav (ESC close, tab trapping), not pointer events
+- SC 2.5.2 conformance verified — no code changes needed
+
+### Patterns discovered
+- React `onClick` fires on the native `click` event which is a pointer-up event — satisfies SC 2.5.2 by default
+- The codebase consistently uses semantic HTML elements for interactions
+
+### Gotchas
+- None — clean audit pass, no code changes required
