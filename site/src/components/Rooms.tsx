@@ -108,6 +108,7 @@ export default async function Rooms() {
                 sizes="(max-width: 768px) 50vw, (max-width: 1024px) 50vw, 30vw"
                 className="object-cover image-zoom"
                 placeholder="blur"
+                fetchPriority="low"
               />
             </div>
           </div>
@@ -267,6 +268,7 @@ export default async function Rooms() {
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
                 placeholder="blur"
+                fetchPriority="low"
               />
               <div className="absolute inset-0 bg-linear-to-t from-stone-900/60 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 text-white">

@@ -6086,3 +6086,30 @@ Completed: Implement Next.js after() API for deferred analytics and logging (ID:
 
 ### Gotchas
 - The @serwist/next Turbopack and @sentry/nextjs deprecation warnings are unrelated cosmetic warnings — they don't indicate priority prop issues
+
+
+## Iteration N - Story: Migrate next/image priority prop to preload + fetchPriority (US-227)
+
+### What was implemented
+- `site/src/components/Rooms.tsx` — Added `fetchPriority="low"` to 3 below-fold images:
+  - `capsule2Image` (grid thumbnail, below hero)
+  - `capsule3Image` (grid thumbnail, below hero)
+  - `pasarMalamImage` (night market section, deep below fold)
+- No `priority` prop found anywhere in codebase — already migrated in prior iteration
+- Hero.tsx already had `preload={true} fetchPriority="high"` — only 1 high-priority image per viewport ✓
+
+### Patterns discovered
+- Rooms.tsx uses `capsule4Image` with `fetchPriority="low"` (pre-existing, set in prior iteration)
+- About.tsx `fetchPriority="low"` was already present (prior iteration)
+- Gallery/Destinations/PhotoGallery images: use browser default (lazy) — no contention risk
+- `npx tsc --noEmit` runs cleanly from `site/` directory (not project root)
+
+### Gotchas
+- Linter/formatter ran after Edit and reverted 2 of 3 changes — had to re-apply capsule3Image and pasarMalamImage
+- Use `python -c` with `encoding='utf-8'` when reading/writing prd.json on Windows (CP1252 default fails)
+
+### Acceptance criteria met
+- [x] All `<Image priority>` usages replaced (none existed — already done)
+- [x] Below-fold images explicitly set `fetchPriority="low"` (Rooms.tsx: 3 images added)
+- [x] Only one image per page viewport has `fetchPriority="high"` (Hero only)
+- [x] tsc --noEmit passes with zero errors
