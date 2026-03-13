@@ -1,5 +1,7 @@
 "use server";
 
+import { updateTag } from "next/cache";
+
 interface NewsletterResult {
   success: boolean;
   message: string;
@@ -63,6 +65,7 @@ export async function subscribeToNewsletter(
     });
 
     if (response.status === 201 || response.status === 204) {
+      updateTag("newsletter-subscriptions");
       return {
         success: true,
         message: "You're subscribed! Check your inbox for a welcome email.",

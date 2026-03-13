@@ -1,6 +1,7 @@
 "use server";
 
 import { headers } from "next/headers";
+import { updateTag } from "next/cache";
 import crypto from "crypto";
 import { deferAfterResponse, logServerEvent } from "@/lib/server-analytics";
 
@@ -262,6 +263,9 @@ export async function submitContactForm(
     if (guestResult.status === "rejected") {
       console.error("[contact-form] Guest auto-reply failed:", guestResult.reason);
     }
+
+    // Surface the new submission state immediately for this user (read-your-writes)
+    updateTag("contact-submissions");
 
     // Defer Meta CAPI Contact event and logging — runs after response is sent
     deferAfterResponse(() => {
