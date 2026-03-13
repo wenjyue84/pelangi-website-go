@@ -5107,3 +5107,20 @@ US-103 (Google Business Profile registration) is entirely an external platform t
 - The form ref must be preserved across the review step to use `new FormData(formRef.current)` on confirm
 - Client errors and server errors need to be merged for display, but client errors should clear when showing review
 - Date inputs use type="date" so format errors are rare, but date range validation (past dates, out-of-order) is still needed
+
+## Iteration 17 - Story: US-185 - Add Security.txt file at /.well-known/security.txt
+
+### What was implemented
+- `site/src/app/.well-known/security.txt/route.ts` — Next.js route handler serving RFC 9116 security.txt
+- Includes Contact (email + WhatsApp), Expires (2027-03-13), Preferred-Languages (en, ms), Canonical URL
+- Served with Content-Type: text/plain and CDN caching headers
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Route handlers in this project follow the same pattern: export GET(), return new Response() with Content-Type and Cache-Control headers
+- `.well-known` directory works as a Next.js route segment (folder-based routing)
+
+### Gotchas
+- RTK (rtk npx tsc) failed to find tsc binary — use `npx tsc` directly as fallback
+- Expires field should be updated annually (set to 2027-03-13)
+
