@@ -245,6 +245,23 @@
     scroll-margin-top: 5rem; /* 80px = 64px header + 16px breathing room */
   }
 
+  /* US-204: text-wrap: balance prevents awkward single-word orphans on headings.
+     Progressive enhancement — unsupported browsers silently fall back to default wrap.
+     Chrome 114+, Edge 114+, Firefox 121+, Safari 17.4+ */
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  /* US-204: text-wrap: pretty reduces orphan words in body paragraphs.
+     Uses a lookahead algorithm to avoid lonely single words on the final line.
+     Progressive enhancement — no visual change in unsupported browsers.
+     Chrome 117+, Edge 117+ */
+  p {
+    text-wrap: pretty;
+  }
+
   /* WCAG 2.2 SC 2.4.11 — prevent MobileBookingBar from obscuring focused elements */
   @media (max-width: 767px) {
     html {

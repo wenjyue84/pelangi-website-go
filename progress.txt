@@ -5968,3 +5968,29 @@ Completed: Implement Next.js after() API for deferred analytics and logging (ID:
 ### Gotchas
 - Removing unused imports (`BOOK_NOW_LABEL`, `BOOK_NOW_ARIA`) from Header.tsx prevents TS unused import warnings
 - The spinner `<svg>` must have `aria-hidden="true"` to avoid screen readers announcing it
+
+
+## Iteration - Story: US-204 - Implement CSS text-wrap: balance and pretty for headings and body copy
+
+### What was implemented
+- Added `text-wrap: balance` to `h1, h2, h3` in the `@layer base` block of `site/src/app/globals.css`
+- Added `text-wrap: pretty` to `p` in the `@layer base` block of `site/src/app/globals.css`
+- Both rules placed after the existing h2/h3 scroll-margin-top rule for logical grouping
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- CSS `text-wrap` values are progressive enhancements — no `@supports` guard needed; unsupported browsers silently ignore unknown property values
+- `text-wrap: balance` support: Chrome 114+, Edge 114+, Firefox 121+, Safari 17.4+
+- `text-wrap: pretty` support: Chrome 117+, Edge 117+ (Firefox/Safari pending)
+- Both values have no effect on CLS since they affect text layout only at initial paint (no reflow after hydration)
+- Tailwind v4 with `@import 'tailwindcss'` supports multiple `@layer base` blocks; adding rules to existing block is cleaner
+
+### Acceptance criteria met
+- [x] All h1, h2, h3 have text-wrap: balance in global base stylesheet
+- [x] Body paragraphs (p) have text-wrap: pretty applied
+- [x] Progressive enhancement — unsupported browsers render with default wrap behaviour
+- [x] No CLS impact — text-wrap affects initial paint only, no reflow after load
+- [x] tsc --noEmit passes with zero errors
+
+### Gotchas
+- No gotchas — this is a pure CSS change with no TypeScript involvement
