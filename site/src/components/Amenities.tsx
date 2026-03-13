@@ -77,7 +77,7 @@ export default function Amenities() {
                     <p className="text-stone-600 dark:text-stone-400 text-lg">Designed for the modern traveler. We&apos;ve got the essentials covered so you can focus on exploring.</p>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
                     {amenities.map((item, index) => (
                         <div key={index} className="bg-white dark:bg-stone-800 p-6 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs flex flex-col items-center text-center hover:shadow-md transition-shadow">
                             <div className="w-12 h-12 bg-amber-50 dark:bg-amber-900/30 rounded-full flex items-center justify-center text-amber-800 dark:text-amber-400 mb-4">

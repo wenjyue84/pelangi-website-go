@@ -63,8 +63,8 @@ export default function Rooms() {
         {/* Main showcase */}
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 mb-16">
           {/* Image gallery - larger */}
-          <div className="lg:col-span-3 grid grid-cols-2 gap-4">
-            <div className="relative h-64 md:h-72 rounded-2xl overflow-hidden group col-span-2">
+          <div className="lg:col-span-3 grid sm:grid-cols-2 gap-4">
+            <div className="relative h-64 md:h-72 rounded-2xl overflow-hidden group sm:col-span-2">
               <Image
                 src="/images/capsule-4.webp"
                 alt="Modern Japanese-style capsule pod interior at Pelangi Hostel Johor Bahru with personal lighting and privacy curtain"

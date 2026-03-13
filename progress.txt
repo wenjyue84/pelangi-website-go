@@ -4368,3 +4368,26 @@ Incomplete: Register Google Business Profile and connect to Google Hotel free bo
 - US-103 (Google Business Profile) is an external platform task, not implementable through code — future iterations should skip it
 - PPR requires Next.js 15+ with the incremental flag — no canary needed
 - All content in these pages is currently static data, but the Suspense boundaries are set up for when dynamic content (e.g., live reviews API, real-time availability) is added
+
+
+## Iteration 12 - Story: US-114 - Implement WCAG 2.1 SC 1.4.10 – Reflow at 320 CSS Pixels
+
+### What was implemented
+- `About.tsx` — stats grid: reduced gap to `gap-4 sm:gap-8`, font size to `text-2xl sm:text-3xl md:text-4xl` for 320px fit
+- `Location.tsx` — nearby places: changed `grid grid-cols-2` to `grid sm:grid-cols-2` so it stacks to 1-col at 320px
+- `CommunityEvents.tsx` — vibe grid: changed `grid grid-cols-2` to `grid sm:grid-cols-2`, `col-span-2` to `sm:col-span-2`
+- `Rooms.tsx` — capsule image grid: changed `grid grid-cols-2` to `grid sm:grid-cols-2`, `col-span-2` to `sm:col-span-2`
+- `Amenities.tsx` — amenities grid: changed `grid grid-cols-2 md:grid-cols-4` to `grid sm:grid-cols-2 md:grid-cols-4`
+- `globals.css` — added `.prose table { display: block; overflow-x: auto }` for blog content table reflow
+- Privacy policy tables already had `overflow-x-auto` wrappers — no changes needed
+- Header already collapses to hamburger at md breakpoint — verified functional at 320px
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Most grids properly use `sm:` / `md:` / `lg:` responsive prefixes, but a few used bare `grid-cols-2/3` which forced multi-column at all widths
+- Privacy policy page was already well-handled with `overflow-x-auto` wrappers on tables
+- Blog prose tables needed CSS-level fix since HTML is rendered via `dangerouslySetInnerHTML`
+
+### Gotchas
+- `col-span-2` must also be made responsive (`sm:col-span-2`) when the grid itself becomes single-column — otherwise it still spans 2 columns in a 1-col grid (no visual issue but semantically cleaner)
+- Gallery modal `grid-cols-2` for thumbnails is acceptable per WCAG — small square images in explicit scroll regions are exempt

@@ -33,7 +33,7 @@ export default function CommunityEvents() {
                         </div>
 
                         {/* Vibe Grid */}
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid sm:grid-cols-2 gap-4">
                             <div className="bg-stone-100 dark:bg-stone-800 rounded-2xl p-6 h-48 flex items-center justify-center relative overflow-hidden group">
                                 <div className="absolute inset-0 bg-linear-to-br from-amber-100 to-orange-50 dark:from-amber-900/30 dark:to-orange-900/20 opacity-50"></div>
                                 <div className="relative z-10 text-center">
@@ -48,7 +48,7 @@ export default function CommunityEvents() {
                                     <span className="font-medium text-stone-800 dark:text-stone-200">Live Moments</span>
                                 </div>
                             </div>
-                            <div className="bg-stone-100 dark:bg-stone-800 rounded-2xl p-6 h-48 flex items-center justify-center relative overflow-hidden group col-span-2">
+                            <div className="bg-stone-100 dark:bg-stone-800 rounded-2xl p-6 h-48 flex items-center justify-center relative overflow-hidden group sm:col-span-2">
                                 <div className="absolute inset-0 bg-linear-to-br from-emerald-100 to-green-50 dark:from-emerald-900/30 dark:to-green-900/20 opacity-50"></div>
                                 <div className="relative z-10 text-center flex items-center gap-4 justify-center">
                                     <div className="text-center">

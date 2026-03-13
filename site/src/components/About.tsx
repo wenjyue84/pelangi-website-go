@@ -52,14 +52,14 @@ export default function About() {
             <div className="divider my-10" />
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-8">
+            <div className="grid grid-cols-3 gap-4 sm:gap-8">
               {[
                 { value: "20", label: "Capsule Pods" },
                 { value: "8.2", label: "Guest Rating" },
                 { value: "2000+", label: "Happy Guests" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
-                  <div className="font-display text-3xl md:text-4xl font-medium text-amber-700 dark:text-amber-400">
+                  <div className="font-display text-2xl sm:text-3xl md:text-4xl font-medium text-amber-700 dark:text-amber-400">
                     {stat.value}
                   </div>
                   <div className="text-xs tracking-wider uppercase text-stone-500 dark:text-stone-400 mt-2">

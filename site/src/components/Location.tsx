@@ -59,7 +59,7 @@ export default function Location() {
             {/* Nearby Places */}
             <div className="mb-8">
               <h3 className="text-xs tracking-widest uppercase text-stone-500 dark:text-stone-400 mb-4">What&apos;s Nearby</h3>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid sm:grid-cols-2 gap-3">
                 {nearbyPlaces.map((place, index) => (
                   <div
                     key={index}
