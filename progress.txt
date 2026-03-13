@@ -6580,3 +6580,63 @@ This technical brief addresses a fundamental misalignment between the user story
 - [x] Form inputs within a hidden Activity tab retain values (display:none, not unmount)
 - [x] Tab switching is visually instant — no Suspense fallback triggered
 - [x] All room tab content is SSR-rendered and accessible to search engine crawlers (Activity renders all children in SSR)
+
+
+## Pre-analysis for US-103 (Gemini 2.5 Pro)
+This user story is a business and marketing integration task, not a software development task within the Frappe/Python environment. The description is about connecting a hostel to Google's booking services, which doesn't involve the `lhdn_payroll_integration` app.
+
+Here is a technical brief clarifying the approach.
+
+**Subject: Technical Brief for US-103: Google Hotel Integration**
+
+1.  **File Modifications:**
+    *   None. This task does not involve modifying any Python files or Frappe framework code. The work is done outside the codebase in third-party web portals.
+
+2.  **Frappe DocTypes / Hooks:**
+    *   None. This story is unrelated to any Frappe DocTypes or hooks. It concerns Google Business Profile and a third-party channel manager.
+
+3.  **Recommended Implementation Approach:**
+    *   This is a manual configuration and integration task, not a coding task.
+    *   **Step 1:** Claim and fully verify the "Pelangi Capsule Hostel" profile on Google Business Profile (business.google.com).
+    *   **Step 2:** Select and subscribe to a "Connectivity Partner" service (e.g., Beds24, Cloudbeds) as mentioned in the technical notes.
+    *   **Step 3:** Configure the hostel's rates, availability, and booking rules within the chosen partner's system.
+    *   **Step 4:** Use the partner's dashboard to activate the channel connection to Google Hotel Center, providing them with the direct booking page URL from the hostel's website.
+
+4.  **Edge Cases & Gotchas:**
+    *   **Scope Mismatch:** The primary gotcha is that this is not a Frappe/Python development task. Do not attempt to find relevant files in the codebase.
+    *   **Data Consistency:** The hostel's Name, Address, and Phone (NAP) must be identical across the Google profile, the partner system, and the website to ensure Google can match them.
+    *   **Third-Party Dependency:** The process is entirely dependent on Google's verification process and the functionality of the chosen connectivity partner.
+
+
+
+## Iteration 23 - Story: US-233 - Adopt CSS @property for type-safe, animatable design tokens
+
+### What was implemented
+- Added 2 `@property` declarations at the top of `globals.css`:
+  - `--gradient-angle` (`<angle>`, initial `135deg`) — enables smooth gradient angle interpolation
+  - `--divider-progress` (`<percentage>`, initial `50%`) — enables animatable gradient midpoint
+- Updated `text-gradient` utility to use `var(--gradient-angle, 135deg)` for animatable gradient direction
+- Created new `text-gradient-shimmer` utility with `gradient-shimmer` keyframes that rotates `--gradient-angle` 135° → 225° → 135°
+- Updated `divider` utility to use `var(--divider-progress, 50%)` for animatable gradient midpoint
+- Created `divider-sweep` keyframes and `.divider-animated` class for sweep animation
+- Added `prefers-reduced-motion: reduce` override to disable animations
+- All values include CSS `var()` fallbacks for browsers without `@property` support
+
+### Acceptance criteria met
+- [x] 2 design tokens declared via `@property` with `syntax`, `initial-value`, `inherits`
+- [x] `gradient-shimmer` keyframes animation targets `--gradient-angle` registered property
+- [x] Chrome 85+, Firefox 128+, Safari 17.2+ support (spec compliant)
+- [x] Static fallback via `var()` default values — unsupported browsers render static gradient
+- [x] No JavaScript runtime required — pure CSS
+
+### Files changed
+- `site/src/app/globals.css` — @property declarations, updated text-gradient/divider utilities, new keyframes
+
+### Patterns discovered
+- `@property` doesn't need `@supports` guard — browsers that don't support it simply ignore the rule and treat custom properties as untyped strings; the `var()` fallback ensures static rendering
+- Tailwind CSS v4 `@utility` blocks work fine with raw CSS property declarations alongside `@apply`
+- The existing global `prefers-reduced-motion` rule at line 373 already kills all animation durations, but per-class overrides provide defense-in-depth
+
+### Gotchas
+- Build fails on unrelated `STRIPE_SECRET_KEY` missing env var (pre-existing, not from this story)
+- `@property` initial-value must be computationally independent — no `var()` references allowed in `initial-value`

@@ -2,6 +2,27 @@
 
 @plugin "@tailwindcss/typography";
 
+/* ============================================================
+   CSS @property — Type-safe, animatable design tokens (US-233)
+   Registered custom properties can be interpolated by the browser
+   because their syntax is known (angle, percentage, etc.).
+   Browsers without @property support treat these as untyped
+   custom properties — static fallback values still render correctly,
+   only the animation is lost (progressive enhancement).
+   Chrome 85+, Firefox 128+, Safari 17.2+.
+   ============================================================ */
+@property --gradient-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 135deg;
+}
+
+@property --divider-progress {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 50%;
+}
+
 @theme {
   --color-primary-50: #faf8f5;
   --color-primary-100: #f5f0e8;
@@ -163,8 +184,25 @@
 }
 
 @utility divider {
-  /* Divider */
-  @apply h-px bg-linear-to-r from-transparent via-stone-200 to-transparent dark:via-stone-700;
+  /* Divider — uses @property --divider-progress for animatable gradient midpoint */
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-stone-200, #e7e5e4) var(--divider-progress, 50%),
+    transparent
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  .divider {
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-stone-700, #44403c) var(--divider-progress, 50%),
+      transparent
+    );
+  }
 }
 
 @utility icon-box {
@@ -179,8 +217,22 @@
 }
 
 @utility text-gradient {
-  /* Text gradient */
-  @apply bg-linear-to-r from-amber-700 to-orange-600 bg-clip-text text-transparent;
+  /* Text gradient — uses @property --gradient-angle for animatable direction */
+  background: linear-gradient(var(--gradient-angle, 135deg), #b45309, #ea580c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility text-gradient-shimmer {
+  /* Animated shimmer variant — rotates gradient angle via @property token */
+  background: linear-gradient(var(--gradient-angle, 135deg), #b45309, #ea580c, #b45309);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-shimmer 4s ease-in-out infinite;
 }
 
 @utility image-zoom {
@@ -459,6 +511,42 @@
     .body-text {
       color: var(--color-stone-300, #d6d3d1);
     }
+  }
+}
+
+/* ============================================================
+   @property-powered keyframe animations (US-233)
+   These animations target @property-registered custom properties,
+   enabling smooth interpolation that would otherwise be impossible
+   with untyped CSS variables.
+   ============================================================ */
+
+/* Rotates gradient angle 135° → 225° → 135° for a subtle shimmer */
+@keyframes gradient-shimmer {
+  0%   { --gradient-angle: 135deg; }
+  50%  { --gradient-angle: 225deg; }
+  100% { --gradient-angle: 135deg; }
+}
+
+/* Sweeps divider gradient midpoint from left to center to right */
+@keyframes divider-sweep {
+  0%   { --divider-progress: 20%; }
+  50%  { --divider-progress: 80%; }
+  100% { --divider-progress: 50%; }
+}
+
+/* Utility class to apply the sweep animation to a divider */
+.divider-animated {
+  animation: divider-sweep 2s ease-in-out forwards;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .text-gradient-shimmer {
+    animation: none;
+  }
+  .divider-animated {
+    animation: none;
   }
 }
 
