@@ -319,10 +319,10 @@ export default function ChatWidget() {
             disabled={sending}
             autoComplete="on"
             className="
-              flex-1 resize-none text-sm outline-hidden transition
+              flex-1 resize-none text-sm transition
               border border-stone-200 dark:border-stone-600 rounded-xl px-3 py-2
               bg-white dark:bg-stone-700 text-stone-900 dark:text-stone-100
-              focus:border-amber-400 focus:ring-1 focus:ring-amber-200
+              focus-visible:border-amber-400
               disabled:opacity-60 placeholder:text-stone-500
             "
             style={{ lineHeight: '1.4', fontFamily: 'inherit', maxHeight: '96px' }}
@@ -368,7 +368,7 @@ export default function ChatWidget() {
           w-14 h-14 rounded-full shadow-xl
           flex items-center justify-center
           transition-all duration-200 hover:scale-110 active:scale-95
-          focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-amber-400
+          focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700
         "
         style={{ background: 'linear-gradient(135deg, #a68b64 0%, #715d47 100%)' }}
         aria-label={isOpen ? 'Close chat' : 'Open chat'}

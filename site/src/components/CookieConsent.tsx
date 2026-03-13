@@ -84,13 +84,13 @@ export default function CookieConsent() {
         <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:justify-end sm:gap-3">
           <button
             onClick={handleReject}
-            className="rounded-lg border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-700 px-5 py-2.5 text-sm font-medium text-stone-700 dark:text-stone-300 transition-colors hover:bg-stone-50 dark:hover:bg-stone-600 focus:outline-hidden focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
+            className="rounded-lg border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-700 px-5 py-2.5 text-sm font-medium text-stone-700 dark:text-stone-300 transition-colors hover:bg-stone-50 dark:hover:bg-stone-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
           >
             Reject Non-Essential
           </button>
           <button
             onClick={handleAccept}
-            className="rounded-lg bg-amber-700 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-amber-800 focus:outline-hidden focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
+            className="rounded-lg bg-amber-700 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-amber-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
           >
             Accept All
           </button>

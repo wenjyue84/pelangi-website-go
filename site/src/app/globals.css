@@ -105,7 +105,9 @@
            py-3.5 px-8 rounded-full transition-all duration-300
            shadow-xs hover:shadow-md cursor-pointer
            tracking-wide text-sm uppercase
-           dark:bg-stone-200 dark:text-stone-900 dark:hover:bg-stone-100;
+           focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700
+           dark:bg-stone-200 dark:text-stone-900 dark:hover:bg-stone-100
+           dark:focus-visible:outline-amber-400;
 }
 
 @utility btn-secondary {
@@ -115,7 +117,9 @@
            border border-stone-300 hover:border-stone-400
            transition-all duration-300 cursor-pointer
            tracking-wide text-sm uppercase
-           dark:text-stone-300 dark:border-stone-600 dark:hover:bg-stone-800 dark:hover:border-stone-500;
+           focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700
+           dark:text-stone-300 dark:border-stone-600 dark:hover:bg-stone-800 dark:hover:border-stone-500
+           dark:focus-visible:outline-amber-400;
 }
 
 @utility section-padding {
@@ -231,6 +235,19 @@
   @media (max-width: 767px) {
     html {
       scroll-padding-bottom: 4rem; /* matches ~64px MobileBookingBar height */
+    }
+  }
+
+  /* WCAG 2.2 SC 2.4.13 — Focus Appearance: 2px outline, ≥ 3:1 contrast */
+  /* Uses CSS outline (not box-shadow) for Windows High Contrast Mode visibility */
+  :focus-visible {
+    outline: 2px solid var(--color-amber-700, #b45309);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :focus-visible {
+      outline-color: var(--color-amber-400, #fbbf24);
     }
   }
 

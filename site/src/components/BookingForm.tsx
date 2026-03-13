@@ -54,7 +54,7 @@ export default function BookingForm() {
             onChange={(e) => setRoomType(e.target.value)}
             className="w-full rounded-xl border border-stone-200 dark:border-stone-600 bg-stone-50 dark:bg-stone-800
                        text-stone-900 dark:text-stone-100 px-4 py-3 text-sm
-                       focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                       focus-visible:border-amber-500"
           >
             <option value="Capsule Pod">Capsule Pod — RM35–45/night</option>
             <option value="Monthly Capsule Pod">Monthly Capsule Pod — RM594/month</option>
@@ -80,7 +80,7 @@ export default function BookingForm() {
             }}
             className="w-full rounded-xl border border-stone-200 dark:border-stone-600 bg-stone-50 dark:bg-stone-800
                        text-stone-900 dark:text-stone-100 px-4 py-3 text-sm
-                       focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                       focus-visible:border-amber-500"
           />
         </div>
 
@@ -100,7 +100,7 @@ export default function BookingForm() {
             onChange={(e) => setCheckOut(e.target.value)}
             className="w-full rounded-xl border border-stone-200 dark:border-stone-600 bg-stone-50 dark:bg-stone-800
                        text-stone-900 dark:text-stone-100 px-4 py-3 text-sm
-                       focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                       focus-visible:border-amber-500"
           />
         </div>
       </div>

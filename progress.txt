@@ -4081,3 +4081,24 @@ This task involves a global audit and implementation of accessible focus indicat
 ### Quality check
 - `npx tsc --noEmit` passes with zero errors
 
+
+## Iteration - Story: US-087 WCAG 2.2 SC 2.4.13 Focus Appearance
+
+### What was implemented
+- Added global `:focus-visible` outline styles in `globals.css` `@layer base` — 2px solid amber-700 (light) / amber-400 (dark), offset 2px
+- Uses CSS `outline` (not `box-shadow`/`ring`) for Windows High Contrast Mode compatibility
+- Added explicit `focus-visible:outline-*` to `btn-primary` and `btn-secondary` custom utilities
+- Updated 5 components (BookingForm, ContactForm, NewsletterSignupForm, CookieConsent, ChatWidget) from `focus:ring-*` to `focus-visible:` + removed `outline-hidden`/`outline-none` that suppressed outlines
+- Inputs now use `focus-visible:border-amber-500` for border enhancement + global outline for the main focus indicator
+
+### Patterns discovered
+- Tailwind v4 `outline-hidden` sets `outline: 2px solid transparent` which overrides `@layer base` rules — must remove it for global focus to work
+- `focus:` fires on mouse click too; `focus-visible:` is keyboard-only — better UX
+- Global `:focus-visible` in `@layer base` is the most maintainable approach — catches all interactive elements including Header/Footer links that had zero focus styles
+
+### Gotchas
+- Pre-existing ESLint errors in WebVitalsReporter.tsx, CookieConsent.tsx, ShareButton.tsx cause `next build` to fail — unrelated to this story
+- SearchDialog.tsx has `outline-hidden` on nested input inside dialog container — left as-is since dialog provides visual frame
+
+### Quality check
+- `npx tsc --noEmit` passes with zero errors
