@@ -5691,3 +5691,24 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 ### Gotchas
 - `@supports (animation-timeline: view())` is essential — without it, browsers that support `animation` but not scroll timelines would run the keyframe as a one-shot time-based animation (elements flash in on load)
 - Destinations is a `"use client"` component but the CSS class works fine regardless of RSC vs client boundary
+
+
+## Iteration - Story: US-203 - Add Visit Malaysia 2026 campaign landing page with structured event data
+
+### What was implemented
+- `site/src/app/visit-malaysia-2026/page.tsx` — Full campaign landing page with SEO metadata, 5 sections (Why JB, Attractions, RTS Link, Rates, Getting Here), TableOfContents sidebar
+- `site/src/components/VisitMalaysia2026StructuredData.tsx` — Event schema for campaign rates (validFrom/validThrough 2026), 5 TouristAttraction schemas (City Square, Glass Temple, Danga Bay, Sultan Abu Bakar Mosque, Taman Pelangi Night Market), breadcrumb schema
+- `site/src/components/Hero.tsx` — Added Visit Malaysia 2026 campaign badge linking to /visit-malaysia-2026, animated with pulse dot
+- `site/src/app/sitemap.ts` — Added /visit-malaysia-2026 entry with priority 0.85
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Campaign/landing pages follow the same pattern as /guide: Header + Footer + container-custom + ToC sidebar
+- US-103 (Google Business Profile) is an external business task, not implementable via code — skipped to next implementable story
+- Structured data components use separate JSON-LD script tags for each schema entity (not combined)
+- Hero component uses animate-fade-in and animate-slide-up CSS classes for entrance animations
+
+### Gotchas
+- The Hero component imports Link from next/link but used it inline; needed to ensure Link was already imported (it was)
+- Event schema requires validFrom/validThrough on Offers for campaign rates, not just on the Event itself
+- TouristAttraction schema uses array type `["TouristAttraction", "Place"]` for dual typing

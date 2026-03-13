@@ -117,6 +117,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.8,
         },
         {
+            url: `${baseUrl}/visit-malaysia-2026`,
+            lastModified,
+            changeFrequency: "monthly",
+            priority: 0.85,
+        },
+        {
             url: `${baseUrl}/sitemap-html`,
             lastModified,
             changeFrequency: "monthly",
