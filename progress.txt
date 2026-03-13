@@ -5391,3 +5391,4 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 ### Gotchas
 - `rtk npx tsc` doesn't work on this system (rtk can't find the program); use `npx tsc` directly
 - RTS Link content uses tentative language since it's under construction (expected end 2026)
+
