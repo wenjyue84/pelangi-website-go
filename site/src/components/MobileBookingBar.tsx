@@ -56,7 +56,7 @@ export default function MobileBookingBar() {
           rel="noopener noreferrer"
           onClick={() => sendGAEvent("event", "whatsapp_click", { location: "mobile_booking_bar" })}
           className="shrink-0 inline-flex items-center gap-1.5 bg-green-500 hover:bg-green-600 active:bg-green-700 text-white text-sm font-semibold px-4 py-2.5 rounded-full transition-colors"
-          aria-label="Book via WhatsApp - opens WhatsApp chat"
+          aria-label="Book Now via WhatsApp"
         >
           Book Now
         </a>

@@ -77,7 +77,7 @@ export default function Booking() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline hover:text-amber-200"
-                aria-label="Learn more about Malaysia Tourism Tax"
+                aria-label="(info) – Learn more about Malaysia Tourism Tax"
               >
                 (info)
               </a>

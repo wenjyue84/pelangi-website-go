@@ -4651,3 +4651,28 @@ Incomplete: Register Google Business Profile and connect to Google Hotel free bo
 - Banner uses `role="status"` with `aria-live="polite"` for screen reader announcement — does not interrupt assistive technology
 - On mobile, banner is positioned at `bottom-20` to clear the MobileBookingBar; on desktop at `bottom-6`
 - Only roomType/checkIn/checkOut/savedAt stored in sessionStorage — no personal data (name, email, phone) ever touches storage
+
+
+## Iteration - Thu, Mar 13, 2026
+Completed: Implement WCAG 2.1 SC 2.5.3 – Label in Name for icon buttons (ID: US-120)
+
+### What was implemented
+- **MobileBookingBar.tsx:59** — Fixed SC 2.5.3 violation: visible text "Book Now" was not in aria-label "Book via WhatsApp - opens WhatsApp chat". Changed to "Book Now via WhatsApp"
+- **Booking.tsx:80** — Fixed SC 2.5.3 violation: visible text "(info)" was not in aria-label "Learn more about Malaysia Tourism Tax". Changed to "(info) – Learn more about Malaysia Tourism Tax"
+- **Header.tsx:107** — Improved menu toggle: static "Toggle menu" → dynamic "Open menu"/"Close menu" with `aria-expanded` attribute
+- **Footer.tsx** — Enhanced icon-only social links: "Facebook" → "Visit us on Facebook", "Instagram" → "Follow us on Instagram", "WhatsApp" → "Chat on WhatsApp", "Google Maps" → "Find us on Google Maps"
+
+### Full audit results (no violation)
+- ShareButton: visible "Share", aria-label "Share this article" — contains visible text ✓
+- book/page.tsx: visible "Book via WhatsApp", aria-label "Book via WhatsApp" — exact match ✓
+- BookingRecoveryBanner: visible "Dismiss", aria-label "Dismiss booking reminder" — contains visible text ✓
+- All icon-only buttons (Gallery prev/next/close, ChatWidget close/send/toggle, Header search, YouTube facade) — SC 2.5.3 N/A for icon-only, labels are descriptive ✓
+- LanguageSwitcher: visible "EN"/"中文", aria-label "Switch to EN"/"Switch to 中文" — contains visible text ✓
+
+### Patterns discovered
+- SC 2.5.3 only applies to interactive elements with visible text labels, not icon-only buttons
+- The key test: would a voice input user saying the visible text activate the control? If aria-label doesn't contain the visible text, speech input fails
+- CookieConsent toggle uses role="switch" with aria-label matching its label text — correct pattern
+
+### Gotchas
+- MobileBookingBar outer div uses role="banner" which is semantically incorrect (banner = site header), but fixing that is out of scope for SC 2.5.3

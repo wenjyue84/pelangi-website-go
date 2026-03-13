@@ -104,7 +104,8 @@ export default function Header() {
           <button
             className="p-2 rounded-full transition-colors duration-300 text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-800"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isMenuOpen ? (
