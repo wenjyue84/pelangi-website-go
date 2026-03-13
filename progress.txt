@@ -5647,3 +5647,24 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 
 ### Gotchas
 - Must keep structured data prices in sync with displayed prices if they ever change
+
+
+## Iteration 225 - Story: US-215 - Mobile booking conversion optimisations: trust badges and price comparison widget
+
+### What was implemented
+- Created `site/src/components/HeroTrustBadges.tsx` — client component with 3 trust signal pill badges + compact price comparison line
+- Trust signals: (1) "8.4/10 Booking.com" star rating, (2) "500+ guests hosted" counter, (3) "Best Price Guarantee" shield badge
+- Price comparison: "From RM35/night direct | RM56+ on OTAs | Save up to RM13"
+- Placed in hero section of `/book/page.tsx` right below WhatsApp CTA — above the fold on 390px mobile
+- GA4 analytics: IntersectionObserver fires `trust_badges_impression` on viewport entry; click tracking fires `trust_badge_click` with badge name
+- Booking flow is 1 tap on mobile (tap WhatsApp CTA in hero)
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Hero section on 390px mobile has ~328px spare below trust badges — plenty of room above fold
+- Used `bg-white/15 backdrop-blur-sm` for glassmorphism pill badges that work on the amber gradient hero
+- dataLayer push pattern matches existing `gtm-ecommerce.ts` convention
+
+### Gotchas
+- Trust badges use `cursor-default` buttons (not links) since they're informational — click tracking works but doesn't navigate
+- Price comparison uses hardcoded values matching existing OTA comparison section below — keep in sync if prices change

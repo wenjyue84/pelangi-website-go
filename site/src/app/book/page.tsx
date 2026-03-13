@@ -5,6 +5,7 @@ import BookingForm from "@/components/BookingForm";
 import TrustSignals from "@/components/TrustSignals";
 import BookEcommerceTracker from "@/components/BookEcommerceTracker";
 import DuitNowPayment from "@/components/DuitNowPayment";
+import HeroTrustBadges from "@/components/HeroTrustBadges";
 import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Book a Pod | Pelangi Capsule Hostel JB — From RM35/night",
@@ -158,6 +159,9 @@ export default function BookPage() {
           <p className="text-amber-300 text-sm mt-4">
             Replies within minutes during 8 AM – 10 PM
           </p>
+
+          {/* Mobile-first trust signals & price comparison — above the fold */}
+          <HeroTrustBadges />
         </div>
       </section>
 
