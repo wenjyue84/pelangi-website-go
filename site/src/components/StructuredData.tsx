@@ -135,6 +135,12 @@ export default function StructuredData() {
     "starRating": {
       "@type": "Rating",
       "ratingValue": "1"
+    },
+    "makesOffer": {
+      "@type": "AggregateOffer",
+      "lowPrice": "35",
+      "highPrice": "55",
+      "priceCurrency": "MYR"
     }
   };
 

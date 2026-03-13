@@ -36,6 +36,18 @@ const containedInPlace = {
     url: "https://pelangicapsulehostel.com",
 };
 
+const seller = {
+    "@type": "Hostel",
+    "@id": "https://pelangicapsulehostel.com/#hostel",
+    name: "Pelangi Capsule Hostel",
+};
+
+const priceValidUntil = new Date(
+    new Date().getFullYear() + 1,
+    new Date().getMonth(),
+    new Date().getDate()
+).toISOString().split("T")[0];
+
 const hotelRoomsSchema = [
     {
         "@context": "https://schema.org",
@@ -66,6 +78,9 @@ const hotelRoomsSchema = [
                 "@type": "Offer",
                 price: "35",
                 priceCurrency: "MYR",
+                availability: "https://schema.org/InStock",
+                seller,
+                priceValidUntil,
                 businessFunction: "http://purl.org/goodrelations/v1#LeaseOut",
                 description: "Nightly rate",
                 unitCode: "DAY",
@@ -85,6 +100,9 @@ const hotelRoomsSchema = [
                 "@type": "Offer",
                 price: "594",
                 priceCurrency: "MYR",
+                availability: "https://schema.org/InStock",
+                seller,
+                priceValidUntil,
                 businessFunction: "http://purl.org/goodrelations/v1#LeaseOut",
                 description: "Monthly rate",
                 unitCode: "MON",
@@ -131,6 +149,9 @@ const hotelRoomsSchema = [
                 "@type": "Offer",
                 price: "45",
                 priceCurrency: "MYR",
+                availability: "https://schema.org/InStock",
+                seller,
+                priceValidUntil,
                 businessFunction: "http://purl.org/goodrelations/v1#LeaseOut",
                 description: "Nightly rate",
                 unitCode: "DAY",
