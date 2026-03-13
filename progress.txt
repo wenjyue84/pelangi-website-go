@@ -5148,3 +5148,22 @@ US-103 (Google Business Profile registration) is entirely an external platform t
 
 ### Gotchas
 - `rtk npx tsc` still fails — use `npx tsc --noEmit` directly
+
+
+## Iteration 17 - Story: US-183 - Implement WCAG 2.2 SC 2.4.5 – Multiple Ways: add HTML sitemap page
+
+### What was implemented
+- `site/src/app/sitemap-html/page.tsx` — HTML sitemap page with all public routes organized into sections (Main Pages, Guest Information, Blog, Blog Articles, Legal & Policies)
+- Programmatically generates blog and category links from `@/data/blog/posts` — stays in sync with XML sitemap
+- Added sitemap link to footer between Terms & Conditions and tagline
+- Added `/sitemap-html` entry to `sitemap.ts` XML sitemap
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Using `<nav aria-label="Sitemap">` wraps the sitemap content for accessibility
+- The route is `/sitemap-html` to avoid collision with `sitemap.ts` which generates `/sitemap.xml`
+- Footer bottom bar uses `text-xs text-stone-500` with `·` dot separators for legal/utility links
+
+### Gotchas
+- Route must NOT be `/sitemap` as that would conflict with the Next.js `sitemap.ts` convention
+- PRD technical notes suggest `app/sitemap-page/page.tsx` but `/sitemap-html` is cleaner as a URL

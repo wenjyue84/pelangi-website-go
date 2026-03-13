@@ -169,6 +169,13 @@ export default function Footer() {
               Terms &amp; Conditions
             </Link>
             <span className="text-stone-700 text-xs">·</span>
+            <Link
+              href="/sitemap-html"
+              className="min-h-6 inline-flex items-center text-xs text-stone-500 hover:text-stone-300 transition-colors duration-200"
+            >
+              Sitemap
+            </Link>
+            <span className="text-stone-700 text-xs">·</span>
             <p className="text-xs text-stone-600">
               Japanese-inspired accommodation in Johor Bahru
             </p>
