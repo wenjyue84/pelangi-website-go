@@ -5415,3 +5415,36 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 
 ### Gotchas
 - This story will be auto-skipped after 3 Ralph retries (by design)
+
+
+## Iteration - Story: US-201 - Add CSS forced-colors and prefers-contrast media query support
+
+### What was implemented
+- **globals.css**: Added `@media (forced-colors: active)` block with overrides for:
+  - `btn-primary`: explicit border + ButtonFace/ButtonText system colors, Highlight on hover
+  - `btn-secondary`: explicit border + system colors, Highlight on hover
+  - `.card`: border using CanvasText for visibility
+  - `.icon-box`: border for background-dependent icon containers
+  - Amber badges (`[class*="rounded-full"][class*="bg-amber"]`): border so pill badges remain visible
+  - Icon-only buttons (`:has(> svg:only-child)`): border for close/nav buttons
+  - `.divider`: forced to CanvasText background
+  - Form inputs/textarea/select: explicit ButtonText border
+  - Links: system LinkText color
+  - Focus indicators: Highlight outline color
+- **globals.css**: Added `@media (prefers-contrast: more)` block with:
+  - Form inputs: 2px border with stone-700 color
+  - Cards: 2px stone-400 border (stone-500 in dark mode)
+  - Dividers: 2px height, full opacity
+  - Badges: 1px amber-700 border
+  - Icon boxes: 1px amber-600 border
+  - Section labels: font-weight 600
+  - Body text: stone-700 (stone-300 in dark) for stronger contrast
+
+### Patterns discovered
+- The existing focus indicator already uses CSS `outline` (not `box-shadow`), which is natively preserved in forced-colors mode — only needed to set outline-color to Highlight
+- `forced-color-adjust: none` is needed on elements where we explicitly manage colors in forced-colors mode (buttons, badges)
+- `:has()` pseudo-class works well for targeting icon-only buttons without adding extra CSS classes
+
+### Quality check
+- `npx tsc --noEmit` passes with zero errors
+- `npx next build` completes successfully with no CSS errors

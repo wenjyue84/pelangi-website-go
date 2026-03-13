@@ -296,6 +296,141 @@
   }
 }
 
+/* ============================================================
+   Forced Colors (Windows High Contrast Mode)
+   Ensures all custom-styled interactive elements remain visible
+   when the OS overrides author colors.
+   ============================================================ */
+@media (forced-colors: active) {
+  /* Primary buttons: add explicit border so they remain distinguishable */
+  .btn-primary {
+    border: 2px solid ButtonText;
+    background: ButtonFace;
+    color: ButtonText;
+    forced-color-adjust: none;
+  }
+
+  .btn-primary:hover {
+    background: Highlight;
+    color: HighlightText;
+    border-color: Highlight;
+  }
+
+  /* Secondary buttons: ensure border stays visible */
+  .btn-secondary {
+    border: 2px solid ButtonText;
+    color: ButtonText;
+  }
+
+  .btn-secondary:hover {
+    background: Highlight;
+    color: HighlightText;
+    border-color: Highlight;
+  }
+
+  /* Cards: ensure visible boundary */
+  .card {
+    border: 1px solid CanvasText;
+  }
+
+  /* Icon boxes: add border for visibility without background */
+  .icon-box {
+    border: 1px solid CanvasText;
+  }
+
+  /* Badges (category pills, status indicators): add border so they don't disappear */
+  [class*="rounded-full"][class*="bg-amber"] {
+    border: 1px solid CanvasText;
+    forced-color-adjust: none;
+  }
+
+  /* Focus indicators: ensure outline uses system highlight color */
+  :focus-visible {
+    outline-color: Highlight;
+  }
+
+  /* Icon-only buttons (close, nav arrows): add border for visibility */
+  button:has(> svg:only-child),
+  [role="button"]:has(> svg:only-child) {
+    border: 1px solid ButtonText;
+  }
+
+  /* Dividers: ensure visible in forced-colors */
+  .divider {
+    background: CanvasText;
+  }
+
+  /* Form inputs and textareas: explicit border */
+  input,
+  textarea,
+  select {
+    border: 1px solid ButtonText;
+  }
+
+  /* Links: use system link color */
+  a {
+    color: LinkText;
+  }
+}
+
+/* ============================================================
+   Increased Contrast (macOS "Increase contrast" / Windows)
+   Strengthens borders and text contrast for users who opted in.
+   ============================================================ */
+@media (prefers-contrast: more) {
+  /* Form inputs: thicker, darker borders */
+  input,
+  textarea,
+  select {
+    border-width: 2px;
+    border-color: var(--color-stone-700, #44403c);
+  }
+
+  /* Cards: stronger border for visual separation */
+  .card {
+    border-width: 2px;
+    border-color: var(--color-stone-400, #a8a29e);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .card {
+      border-color: var(--color-stone-500, #78716c);
+    }
+  }
+
+  /* Dividers: more visible */
+  .divider {
+    height: 2px;
+    opacity: 1;
+  }
+
+  /* Badges: stronger borders */
+  [class*="rounded-full"][class*="bg-amber"] {
+    border: 1px solid var(--color-amber-700, #b45309);
+  }
+
+  /* Icon boxes: add border */
+  .icon-box {
+    border: 1px solid var(--color-amber-600, #d97706);
+  }
+
+  /* Section labels and small text: slightly bolder */
+  .section-label {
+    font-weight: 600;
+  }
+
+  /* Body text: increase contrast */
+  .body-text {
+    color: var(--color-stone-700, #44403c);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .body-text {
+      color: var(--color-stone-300, #d6d3d1);
+    }
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
