@@ -5254,3 +5254,29 @@ US-103 (Google Business Profile registration) is entirely an external platform t
 - `eslint-config-next`, `@next/bundle-analyzer`, `@next/third-parties` were already at ^16.x in devDependencies
 - Turbopack warns about multiple lockfiles (root + site/) — can silence with `turbopack.root` config if needed
 - Removing `force-static` from routes changes them to `ƒ (Dynamic)` in build output — they were already static content, just no longer explicitly forced
+
+## Iteration (skipped) - Story: US-103 - Register Google Business Profile and connect to Google Hotel free booking links
+
+### Status: CANNOT IMPLEMENT VIA CODE — External operations task
+
+### Why this cannot be completed by Ralph
+US-103 requires external actions that cannot be done through code changes:
+1. **Claim & verify Google Business Profile** — requires Google admin console, physical mail/phone verification for the property address
+2. **Set up connectivity partner** (Cloudbeds, Beds24, Little Hotelier) — requires purchasing/signing up for a PMS service and configuring rate/availability feeds
+3. **Connect to Google Hotel Center** — requires the connectivity partner to push real-time availability data
+4. **Free booking links appearing in Google Search** — depends on Google indexing after steps 1-3 are complete
+
+### What IS already in place (code-side)
+- The /book page exists on the property's own domain (pelangicapsulehostel.com) — satisfies the "booking landing page URL matches property's own domain" criterion
+- LodgingBusiness structured data is present with correct NAP (name, address, phone)
+- The site has proper SEO metadata and schema.org markup
+
+### Recommendation
+This story should be handled as a **manual operations task** by the property owner:
+1. Go to https://business.google.com and claim Pelangi Capsule Hostel
+2. Complete verification (Google will mail a postcard or call the business number)
+3. Sign up for a connectivity partner (Beds24 recommended for small properties)
+4. The connectivity partner handles the Google Hotel Center integration automatically
+
+Leaving `passes: false` — this story will be auto-skipped after 3 retry attempts.
+
