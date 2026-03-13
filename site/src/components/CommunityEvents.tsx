@@ -35,21 +35,21 @@ export default function CommunityEvents() {
 
                         {/* Vibe Grid */}
                         <div className="grid sm:grid-cols-2 gap-4">
-                            <div className="bg-stone-100 dark:bg-stone-800 rounded-2xl p-6 h-48 flex items-center justify-center relative overflow-hidden group">
+                            <div className="bg-stone-100 dark:bg-stone-800 rounded-2xl p-6 min-h-48 flex items-center justify-center relative overflow-hidden group">
                                 <div className="absolute inset-0 bg-linear-to-br from-amber-100 to-orange-50 dark:from-amber-900/30 dark:to-orange-900/20 opacity-50"></div>
                                 <div className="relative z-10 text-center">
                                     <span className="text-4xl mb-2 block">🤝</span>
                                     <span className="font-medium text-stone-800 dark:text-stone-200">Make Friends</span>
                                 </div>
                             </div>
-                            <div className="bg-stone-100 dark:bg-stone-800 rounded-2xl p-6 h-48 flex items-center justify-center relative overflow-hidden group">
+                            <div className="bg-stone-100 dark:bg-stone-800 rounded-2xl p-6 min-h-48 flex items-center justify-center relative overflow-hidden group">
                                 <div className="absolute inset-0 bg-linear-to-br from-blue-100 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/20 opacity-50"></div>
                                 <div className="relative z-10 text-center">
                                     <span className="text-4xl mb-2 block">🎸</span>
                                     <span className="font-medium text-stone-800 dark:text-stone-200">Live Moments</span>
                                 </div>
                             </div>
-                            <div className="bg-stone-100 dark:bg-stone-800 rounded-2xl p-6 h-48 flex items-center justify-center relative overflow-hidden group sm:col-span-2">
+                            <div className="bg-stone-100 dark:bg-stone-800 rounded-2xl p-6 min-h-48 flex items-center justify-center relative overflow-hidden group sm:col-span-2">
                                 <div className="absolute inset-0 bg-linear-to-br from-emerald-100 to-green-50 dark:from-emerald-900/30 dark:to-green-900/20 opacity-50"></div>
                                 <div className="relative z-10 text-center flex items-center gap-4 justify-center">
                                     <div className="text-center">

@@ -5794,3 +5794,31 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 - `PerformanceLongAnimationFrameTiming` and `PerformanceScriptTiming` interfaces must be declared locally — they are not in lib.dom.d.ts in TypeScript 5.7
 - `buffered: true` is essential — otherwise frames that occur before observer registration are missed
 - Chrome 123+ only; `supportedEntryTypes` guard prevents runtime errors in other browsers
+
+
+## Iteration - Sat, Mar 14, 2026
+Completed: Verify WCAG 2.2 SC 1.4.4 text resize up to 200% without content loss (ID: US-137)
+
+### What was implemented
+- **FAQ.tsx**: Increased `max-h-96` (384px) to `max-h-[50rem]` (800px) on FAQ answer containers to prevent text clipping at 200% zoom
+- **CommunityEvents.tsx**: Changed `h-48` (fixed 192px) to `min-h-48` on three vibe cards containing text, allowing them to grow when text enlarges
+- **globals.css**: Added `overflow-x: hidden` on `html` element to prevent horizontal scrollbar at 200% zoom
+- **e2e/text-resize.spec.ts**: New Playwright test suite — tests 6 pages at 200% CSS zoom for:
+  - No horizontal scrollbar (scrollWidth <= clientWidth)
+  - All interactive elements (buttons, links, inputs) remain visible with non-zero bounding boxes
+- `npx tsc --noEmit` passes with zero errors
+
+### Audit findings
+- Image containers with fixed heights (h-52 on Facilities, h-48 on Destinations, h-64/h-72/h-80 on Rooms, h-[400px] on Location/LocationMap) are NOT issues — they contain images, not text
+- `line-clamp-*` and `truncate` on card excerpts (BlogCard, Destinations, JBBuzz, MobileBookingBar) are acceptable UI patterns
+- SearchDialog `max-h-80` with `overflow-y-auto` is correct — scroll, not clip
+- Destinations modal `max-h-[90vh]` with `overflow-y-auto` is correct
+
+### Patterns discovered
+- Tailwind's `min-h-48` is the correct replacement for `h-48` on text containers — maintains visual baseline while allowing growth
+- `overflow-x: hidden` on `html` is the standard approach to prevent zoom-induced horizontal scroll
+- CSS zoom property (`document.documentElement.style.zoom = "2"`) is the Playwright-compatible way to simulate browser zoom
+
+### Gotchas
+- `max-h-96` (24rem/384px) is far too small for FAQ answers at 200% zoom — a single paragraph can exceed this at 2x text size
+- Don't confuse image containers (h-* is correct) with text containers (need min-h-* instead)

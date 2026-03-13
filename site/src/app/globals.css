@@ -220,9 +220,22 @@
   }
 }
 
+/* CSS Container Query utilities — US-219
+   @supports guard ensures older browsers without CQ support silently ignore
+   container-type and fall back to Tailwind viewport breakpoints (sm:, md:, lg:).
+   Container query units (cqi, cqw) are used here for adaptive label sizing. */
+@supports (container-type: inline-size) {
+  .card-label-cq {
+    /* cqi = 1% of container inline (width) — scales label relative to card width */
+    font-size: clamp(0.75rem, 4.5cqi, 0.875rem);
+    line-height: 1.4;
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden; /* WCAG 2.2 SC 1.4.4 — prevent horizontal scrollbar at 200% zoom */
   }
 
   /* Offset sticky header (64px) when scrolling to heading anchors */

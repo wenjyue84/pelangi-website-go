@@ -123,7 +123,7 @@ export default function FAQ() {
                                 </span>
                             </button>
 
-                            <div id={`faq-answer-${index}`} role="region" aria-labelledby={`faq-question-${index}`} className={`px-6 overflow-hidden transition-all duration-300 ${openIndex === index ? 'max-h-96 pb-6 opacity-100' : 'max-h-0 opacity-0'}`}>
+                            <div id={`faq-answer-${index}`} role="region" aria-labelledby={`faq-question-${index}`} className={`px-6 overflow-hidden transition-all duration-300 ${openIndex === index ? 'max-h-[50rem] pb-6 opacity-100' : 'max-h-0 opacity-0'}`}>
                                 <p className="text-stone-600 dark:text-stone-400">{faq.answer}</p>
                             </div>
                         </div>
