@@ -5537,3 +5537,4 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 ### Gotchas
 - `serwist` and `@serwist/next` packages were already in package.json (added by prior iteration) but integration wasn't wired up
 - `sw.ts` triple-slash `/// <reference no-default-lib="true" />` + `/// <reference lib="webworker" />` breaks DOM types project-wide if not excluded from tsconfig
+
