@@ -146,6 +146,57 @@ export default function Footer() {
         {/* MOTAC Registration */}
         <MotacBadge />
 
+        {/* CPETTR 2024 Mandatory Trader Disclosure */}
+        <div className="mb-8 py-6 px-6 bg-stone-800/50 rounded-2xl border border-stone-700/50">
+          <p className="text-xs font-medium tracking-widest uppercase text-stone-500 mb-4">
+            <span lang="ms">Maklumat Peniaga</span> / Trader Information
+          </p>
+          <div className="grid sm:grid-cols-2 gap-4 text-sm text-stone-400">
+            <div>
+              <p className="text-stone-300 font-medium">Pelangi Capsule Hostel</p>
+              <p>26A <LangMs>Jalan Perang</LangMs>, <LangMs>Taman Pelangi</LangMs></p>
+              <p>80400 Johor Bahru, Johor, Malaysia</p>
+            </div>
+            <div>
+              <p>
+                <span className="text-stone-500">Email:</span>{" "}
+                <a href="mailto:pelangicapsule@gmail.com" className="hover:text-white transition-colors">
+                  pelangicapsule@gmail.com
+                </a>
+              </p>
+              <p>
+                <span className="text-stone-500">Tel:</span>{" "}
+                <a href="tel:+60127088789" className="hover:text-white transition-colors">
+                  +60 12-708 8789
+                </a>
+              </p>
+              <p>
+                <span className="text-stone-500">Web:</span>{" "}
+                pelangicapsulehostel.com
+              </p>
+            </div>
+          </div>
+          <div className="mt-4 pt-4 border-t border-stone-700/50 text-xs text-stone-500">
+            <p lang="ms">
+              Didedahkan mengikut Peraturan-Peraturan Perlindungan Pengguna
+              (Urus Niaga Perdagangan Elektronik) 2024.
+            </p>
+            <p className="mt-1">
+              Disclosed pursuant to the Consumer Protection (Electronic Trade
+              Transaction) Regulations 2024.
+            </p>
+            <p className="mt-2">
+              <Link
+                href="/ms/terma"
+                className="min-h-6 inline-flex items-center text-amber-400 hover:text-amber-300 transition-colors"
+                lang="ms"
+              >
+                Terma &amp; Syarat (Bahasa Malaysia)
+              </Link>
+            </p>
+          </div>
+        </div>
+
         {/* Divider */}
         <div className="h-px bg-stone-800 mb-8" />
 
@@ -154,7 +205,7 @@ export default function Footer() {
           <p className="text-sm text-stone-500">
             © {new Date().getFullYear()} Pelangi Capsule Hostel. All rights reserved.
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-4">
             <Link
               href="/privacy-policy"
               className="min-h-6 inline-flex items-center text-xs text-stone-500 hover:text-stone-300 transition-colors duration-200"
@@ -170,15 +221,19 @@ export default function Footer() {
             </Link>
             <span className="text-stone-700 text-xs">·</span>
             <Link
+              href="/ms/terma"
+              className="min-h-6 inline-flex items-center text-xs text-stone-500 hover:text-stone-300 transition-colors duration-200"
+              lang="ms"
+            >
+              Terma &amp; Syarat
+            </Link>
+            <span className="text-stone-700 text-xs">·</span>
+            <Link
               href="/sitemap-html"
               className="min-h-6 inline-flex items-center text-xs text-stone-500 hover:text-stone-300 transition-colors duration-200"
             >
               Sitemap
             </Link>
-            <span className="text-stone-700 text-xs">·</span>
-            <p className="text-xs text-stone-600">
-              Japanese-inspired accommodation in Johor Bahru
-            </p>
           </div>
         </div>
       </div>

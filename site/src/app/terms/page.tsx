@@ -14,6 +14,10 @@ export const metadata: Metadata = {
     "Read the Terms and Conditions for Pelangi Capsule Hostel — booking policy, cancellation and refund policy, house rules, liability, and governing law under Malaysian law.",
   alternates: {
     canonical: "https://pelangicapsulehostel.com/terms",
+    languages: {
+      en: "https://pelangicapsulehostel.com/terms",
+      ms: "https://pelangicapsulehostel.com/ms/terma",
+    },
   },
 };
 
@@ -46,6 +50,18 @@ export default function TermsPage() {
           <div className="max-w-3xl mx-auto">
             {/* Page Header */}
             <div className="mb-10">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="inline-flex items-center px-3 py-1 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 text-xs font-medium">
+                  English
+                </span>
+                <Link
+                  href="/ms/terma"
+                  className="text-xs text-stone-500 hover:text-stone-700 dark:hover:text-stone-300 transition-colors"
+                  lang="ms"
+                >
+                  Versi Bahasa Malaysia &rarr;
+                </Link>
+              </div>
               <h1 className="font-display text-4xl font-semibold text-stone-900 dark:text-stone-100 mb-3">
                 Terms and Conditions
               </h1>

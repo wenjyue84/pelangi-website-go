@@ -50,6 +50,7 @@ export const metadata: Metadata = {
     canonical: "https://pelangicapsulehostel.com",
     languages: {
       "en": "https://pelangicapsulehostel.com",
+      "ms": "https://pelangicapsulehostel.com/ms/terma",
       "x-default": "https://pelangicapsulehostel.com",
       // "zh-CN": "https://pelangicapsulehostel.com/zh", // Enable when Chinese translation is ready
     },

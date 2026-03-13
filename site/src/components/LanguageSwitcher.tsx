@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { setLanguagePreference } from "@/app/actions/language";
 
 const LANGUAGES = [
   { code: "en", label: "EN" },
+  { code: "ms", label: "BM", href: "/ms/terma" },
   { code: "zh", label: "中文" },
 ];
 
@@ -12,12 +14,20 @@ export default function LanguageSwitcher() {
   const [currentLanguage, setCurrentLanguage] = useState("en");
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
+  const router = useRouter();
 
   const handleLanguageChange = async (langCode: string) => {
     setCurrentLanguage(langCode);
 
     // Set the cookie
     await setLanguagePreference(langCode);
+
+    // Navigate to BM content page
+    const lang = LANGUAGES.find((l) => l.code === langCode);
+    if (lang && "href" in lang && lang.href) {
+      router.push(lang.href);
+      return;
+    }
 
     // Show toast for Chinese language
     if (langCode === "zh") {

@@ -4259,6 +4259,418 @@
       "dependencies": [],
       "estimatedComplexity": "small",
       "passes": false
+    },
+    {
+      "id": "US-191",
+      "title": "Comply with Malaysia CPETTR 2024 — mandatory Bahasa Malaysia disclosure",
+      "priority": "critical",
+      "description": "The Consumer Protection (Electronic Trade Transaction) Regulations 2024 came into force on 25 December 2024 and require all information shown to Malaysian consumers in online trade transactions to be available in Bahasa Malaysia. This includes pricing, descriptions, terms and conditions, and mandatory trader identity disclosures (name, address, registration, contact). Non-compliance exposes the business to enforcement under the Consumer Protection Act 1999.",
+      "acceptanceCriteria": [
+        "All price displays, room descriptions, booking terms, cancellation policy, and contact details are available in Bahasa Malaysia on the website",
+        "A Bahasa Malaysia toggle or dedicated BM version serves the required content (can be the same page with i18n)",
+        "Mandatory trader disclosures present in site footer or About page: legal business name, SSM registration number (if applicable), address, email, phone",
+        "Cancellation and refund policy page available in Bahasa Malaysia with all required ETT Regulation fields",
+        "Legal review sign-off confirming CPETTR 2024 Schedule compliance"
+      ],
+      "technicalNotes": [
+        "CPETTR 2024 came into force 25 December 2024, revoking the 2012 regulations",
+        "Language requirement: all mandatory disclosure fields must be in Bahasa Malaysia; other languages permitted additionally",
+        "Mandatory fields: trader name, website, email, address, description, price, shipping (if applicable), payment methods, T&Cs, safety certificates (if applicable)",
+        "Reference: https://www.kiizen.com.my/consumer-protection-electronic-trade-transaction-regulations-2024/",
+        "Legal reference: Consumer Protection (Electronic Trade Transaction) Regulations 2024"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": true
+    },
+    {
+      "id": "US-192",
+      "title": "Implement Next.js 16 'use cache' directive with cacheTag/cacheLife",
+      "priority": "high",
+      "description": "Next.js 16 ships an explicit opt-in caching model via the 'use cache' directive, replacing the implicit and often surprising caching behaviour of Next.js 14/15. Pages, Server Components, and data-fetch functions can be annotated with 'use cache', cacheLife('hours' | 'days' | 'max'), and cacheTag('tag-name'), enabling fine-grained on-demand revalidation via revalidateTag/updateTag in Server Actions. This directly reduces TTFB for room-listing and homepage routes while keeping dynamic pricing fresh.",
+      "acceptanceCriteria": [
+        "Room listing and home page Server Components annotated with 'use cache' and cacheLife('hours')",
+        "Each cached route tagged with cacheTag (e.g., 'rooms', 'homepage', 'availability')",
+        "Server Action or API route calls revalidateTag when room data is updated via the admin webhook",
+        "Vercel cache hit rate shows >80% for annotated routes in the Vercel dashboard",
+        "No stale data appears after revalidation in smoke tests (data fresh within 10 s of mutation)"
+      ],
+      "technicalNotes": [
+        "Next.js 16 requires opting in to PPR and 'use cache' via next.config.ts experimental flags",
+        "revalidateTag(tag, profile) now takes a cacheLife profile as the second argument",
+        "proxy.ts replaces middleware.ts; migrate any middleware that handles caching headers",
+        "Official docs: https://nextjs.org/docs/app/getting-started/cache-components",
+        "Migration guide: https://nextjs.org/docs/app/guides/upgrading/version-16"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-193",
+      "title": "Migrate middleware.ts to proxy.ts (Next.js 16 network boundary)",
+      "priority": "high",
+      "description": "Next.js 16 renames middleware.ts to proxy.ts and moves it to the Node.js runtime, making the app's network boundary explicit and dropping Edge Runtime support from this layer. Any existing rate-limiting, redirect, or header-injection logic in middleware.ts must be migrated to proxy.ts before deploying to Next.js 16 to avoid silent failures.",
+      "acceptanceCriteria": [
+        "middleware.ts renamed to proxy.ts and exported function renamed from middleware to proxy",
+        "All existing redirect rules (www-to-root, trailing-slash) continue to work after migration",
+        "Rate-limiting and security header logic moved to proxy.ts and verified in integration tests",
+        "Vercel deployment logs show no middleware-related build warnings",
+        "The codemod `npx @next/codemod@latest middleware-to-proxy` has been run and reviewed"
+      ],
+      "technicalNotes": [
+        "Run the official codemod: npx @next/codemod@latest middleware-to-proxy",
+        "Edge runtime is NOT available in proxy.ts; remove any 'edge' runtime config",
+        "Reference: https://nextjs.org/docs/messages/middleware-to-proxy",
+        "Auth0 blog on auth changes: https://auth0.com/blog/whats-new-nextjs-16/"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-194",
+      "title": "Integrate Google Free Hotel Booking Links via connectivity partner",
+      "priority": "high",
+      "description": "Google Free Booking Links (FBL) allow hotels and hostels to appear directly in Google Hotel Search, Maps, and Travel with live rates and a direct-to-website booking link — at zero commission. Pelangi requires connection through an approved Google connectivity partner (e.g., Cloudbeds, Beds24, or RoomRaccoon) that synchronises ARI (Availability, Rates, Inventory) with Google Hotel Center. This dramatically reduces OTA dependency for Singapore–JB cross-border travellers searching on Google.",
+      "acceptanceCriteria": [
+        "Property is connected to Google Hotel Center via an approved connectivity partner",
+        "Live rates and availability feed is verified and shows 'Excellent' price accuracy score in Hotel Center",
+        "Direct booking link appears in Google Hotel Search results for 'hostel johor bahru' search queries",
+        "Booking page URL in Google takes users directly to the hostel's own booking flow (not an OTA)",
+        "Google Business Profile listing is matched to the Hotel Center property (name, address, phone, website consistent)"
+      ],
+      "technicalNotes": [
+        "Google requires 'Excellent' price accuracy before FBL can go live; validate via Hotel Center",
+        "Connectivity partners: Cloudbeds, Beds24, SiteMinder, RoomRaccoon — choose one with a Hostel tier",
+        "ARI feed types: Pull API (fetches live from booking engine) or push-based depending on partner",
+        "Price accuracy policy tightened September 22, 2025: inaccurate prices actively removed from FBL",
+        "Official guide: https://support.google.com/hotelprices/answer/10472393"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "large",
+      "passes": false
+    },
+    {
+      "id": "US-195",
+      "title": "Add Google AI Overviews optimisation: structured Q&A and entity signals",
+      "priority": "high",
+      "description": "Google AI Overviews now appear in 85%+ of searches and predominantly cite top-10 organic results. For hospitality queries ('best hostel johor bahru', 'cheap hostel near CIQ'), being cited in an AI Overview dramatically increases brand visibility. Optimisation requires concise factual paragraphs, structured FAQ/HowTo schema, authoritative entity signals (consistent NAP, linked Google Business Profile), and first-hand experience signals (owner responses to reviews, detailed amenity descriptions).",
+      "acceptanceCriteria": [
+        "Homepage and rooms pages contain at least one concise factual paragraph answering the top 3 queries identified in GSC (e.g., 'Is Pelangi Capsule near CIQ?', 'What is the dorm price?')",
+        "FAQ schema is present on the FAQ page and answers at least 10 questions matching common search intent",
+        "NAP (Name, Address, Phone) is identical across the website, Google Business Profile, and all OTA listings",
+        "Owner responses to Google Reviews are present for all reviews in the past 90 days",
+        "GSC AI Overview impressions report (when available) shows the domain appearing in at least 1 AI Overview within 60 days of implementation"
+      ],
+      "technicalNotes": [
+        "Google documentation on AI features for websites: https://developers.google.com/search/docs/appearance/ai-features",
+        "99.5% of AI Overview citations come from top-10 organic results — core SEO remains the foundation",
+        "Use clear, scannable prose with direct answers in the first sentence of each paragraph",
+        "Entity disambiguation: ensure Organization schema includes sameAs links to GBP, Facebook, Booking.com",
+        "Google Search Central blog on E-E-A-T for hospitality: https://seosherpa.com/google-ai-search-guidelines/"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-196",
+      "title": "Integrate channel manager for live OTA availability synchronisation",
+      "priority": "high",
+      "description": "Without a channel manager, Pelangi's rates and availability on Booking.com, Agoda, and Hostelworld are updated manually, risking overbookings and rate parity violations. A cloud-based channel manager (e.g., Beds24, Cloudbeds, or SiteMinder) synchronises ARI across all OTAs in real time and can power the website's own availability widget. This is also a prerequisite for Google Free Booking Links (which require a connectivity partner).",
+      "acceptanceCriteria": [
+        "Channel manager account configured with Booking.com, Agoda, and Hostelworld connections",
+        "Two-way ARI sync is live: manual bookings on the website close availability on all OTAs within 2 minutes",
+        "Website availability calendar / date-picker pulls live inventory from the channel manager API",
+        "Zero overbooking incidents in the 30-day period following go-live",
+        "Channel manager is an approved Google Hotel Center connectivity partner (required for Google FBL story)"
+      ],
+      "technicalNotes": [
+        "Agoda channel manager XML connection: https://e4jconnect.com/booking-channels/agoda",
+        "Agoda Onboarding API for connectivity partners: https://www.agodaconnectivity.com/documentation/onboarding-api",
+        "Recommended for small hostels: Beds24 (budget), Cloudbeds (mid-range), SiteMinder (enterprise)",
+        "AltexSoft hotel API guide: https://www.altexsoft.com/blog/hotel-api/",
+        "This story is a dependency for the Google Free Booking Links story"
+      ],
+      "dependencies": [
+        "Integrate Google Free Hotel Booking Links via connectivity partner"
+      ],
+      "estimatedComplexity": "large",
+      "passes": false
+    },
+    {
+      "id": "US-197",
+      "title": "Implement CSS cross-document View Transitions (@view-transition)",
+      "priority": "medium",
+      "description": "CSS View Transitions Level 2 introduces the @view-transition at-rule, allowing MPA pages to opt into smooth animated transitions between same-origin navigations using pure CSS — no JavaScript required. As of late 2025 this is supported in Chrome 126+, Edge 126+, and Firefox 144+, covering the vast majority of visitors. Applying subtle fade or slide transitions between the home, rooms, and gallery pages creates a native-app feel that improves perceived performance.",
+      "acceptanceCriteria": [
+        "@view-transition { navigation: auto; } present in global CSS and active for same-origin navigations",
+        "Transition plays without flash for home → rooms → gallery navigation paths in Chrome and Firefox",
+        "prefers-reduced-motion media query disables or reduces the transition animation",
+        "Lighthouse performance score unaffected (transition does not delay FCP or LCP)",
+        "Safari gracefully degrades (no transition, no layout error) since cross-document support is pending"
+      ],
+      "technicalNotes": [
+        "Level 2 spec: https://drafts.csswg.org/css-view-transitions-2/",
+        "Chrome guide: https://developer.chrome.com/docs/web-platform/view-transitions/cross-document",
+        "Firefox 144 ships support (October 2025); wrap in @supports for progressive enhancement",
+        "Use ::view-transition-old and ::view-transition-new pseudo-elements to customise animation per route",
+        "Next.js App Router soft-navigations use the JS View Transitions API; @view-transition targets hard navigations"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-198",
+      "title": "Add Long Animation Frames (LoAF) monitoring for INP diagnosis",
+      "priority": "medium",
+      "description": "The Long Animation Frames API (LoAF), shipping from Chrome 123+, supersedes the Long Tasks API and provides detailed per-frame timing — including script attribution, render time, and style/layout time — that is directly correlated with poor INP scores. Adding LoAF observation to the existing RUM pipeline allows precise identification of which components or third-party scripts are causing janky UI updates that degrade INP beyond the 200 ms threshold.",
+      "acceptanceCriteria": [
+        "A PerformanceObserver with type 'long-animation-frame' is registered in instrumentation-client.ts or a shared analytics module",
+        "Frames exceeding 100 ms are captured and logged to the analytics backend (GA4 custom event or Sentry) with script attribution data",
+        "Dashboard (Sentry or custom) shows LoAF count, worst offending scripts, and trend over 7-day rolling window",
+        "No new long animation frames introduced by site's own JavaScript (only third-party scripts may appear in the log)",
+        "PerformanceLongAnimationFrameTiming.scripts[] attribution data is included in the beacon payload"
+      ],
+      "technicalNotes": [
+        "API: PerformanceObserver entryTypes: ['long-animation-frame'] — available Chrome 123+",
+        "MDN reference: https://developer.mozilla.org/en-US/docs/Web/API/Performance_API/Long_animation_frame_timing",
+        "Chrome guide: https://developer.chrome.com/docs/web-platform/long-animation-frames",
+        "LoAF threshold is 50 ms (a frame that blocks rendering for >50 ms is flagged)",
+        "Use navigator.sendBeacon or fetch keepalive for the reporting beacon to avoid blocking page unload"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-199",
+      "title": "Optimise fallback font metrics with size-adjust to prevent CLS on font swap",
+      "priority": "medium",
+      "description": "When a web font loads with font-display: swap the fallback-to-custom-font substitution can cause a measurable Cumulative Layout Shift if the two fonts have different x-height, ascent, or advance widths. CSS @font-face descriptors (size-adjust, ascent-override, descent-override, line-gap-override) allow the fallback font to be metrically matched to the custom font, eliminating the reflow. Next.js's next/font already generates these overrides automatically; this story ensures any manually declared custom fonts receive the same treatment.",
+      "acceptanceCriteria": [
+        "All manually declared @font-face rules that use font-display: swap include size-adjust, ascent-override, and descent-override values matched to the target font",
+        "CLS score in Lighthouse lab test is 0.000 for the homepage after font load simulation",
+        "No visible text-block reflow observed in WebPageTest filmstrip when font swaps occur",
+        "The fallback font family chosen is a system font (Arial, Georgia, or system-ui) to minimise initial layout deviation"
+      ],
+      "technicalNotes": [
+        "Tool to calculate override values: https://www.industrialempathy.com/perfect-ish-font-fallback/",
+        "Next.js next/font generates these automatically — only manually declared fonts need this treatment",
+        "CSS size-adjust MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/size-adjust",
+        "Chrome DevTools guide: https://developer.chrome.com/blog/framework-tools-font-fallback",
+        "Supported in all major browsers: Chrome 92+, Firefox 92+, Safari 17+"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-200",
+      "title": "Add JB-Singapore RTS Link and MyNIISe QR border crossing info page",
+      "priority": "medium",
+      "description": "The Johor Bahru–Singapore RTS Link (rapid transit system) is launching by end-2026 with a 5-minute crossing from Woodlands North MRT to Bukit Chagar, plus the MyNIISe QR-code immigration system is now live at JB checkpoints. Pelangi Capsule's primary market is Singaporeans crossing the JB border. A dedicated /getting-here or /location page section covering RTS Link ticketing, MyNIISe QR setup, and DuitNow-PayNow cross-border payments will capture high-intent informational searches and improve time-on-site.",
+      "acceptanceCriteria": [
+        "A 'Getting Here' section on the /location page (or standalone /getting-here route) covers: CIQ by bus/car, Kotaraya coach terminal, RTS Link (with estimated launch date and station map), and taxi/Grab options",
+        "MyNIISe QR code immigration process is explained with a step-by-step guide targeting Singaporean travellers",
+        "DuitNow–PayNow QR cross-border payment is mentioned as an accepted payment method for Singaporean guests",
+        "Page includes TouristAttraction schema for Johor Bahru CIQ and RTS Link Bukit Chagar station as nearby attractions",
+        "Page ranks within top 5 for 'hostel near CIQ johor bahru' query within 90 days"
+      ],
+      "technicalNotes": [
+        "RTS Link expected passenger operations end-2026; use tentative language and update as official dates confirmed",
+        "MyNIISe QR system guide: https://thesmartlocal.com/read/jb-qr-code/",
+        "DuitNow-PayNow interoperability reference: https://www.obliqueasia.com/cross-border-payments-and-qr-interoperability-southeast-asias-quiet-revolution/",
+        "Add LocalBusiness schema with hasMap property pointing to Google Maps embed",
+        "JB RTS Link official info: https://theindependent.sg/johor-bahru-singapore-rts-link-5-minute-crossing"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-201",
+      "title": "Add CSS forced-colors and prefers-contrast media query support",
+      "priority": "medium",
+      "description": "Windows High Contrast Mode and other forced-color environments override author styles, which can break custom-styled buttons, badges, and icon-only elements by making them invisible. The forced-colors media query allows targeted overrides using CSS system color keywords. prefers-contrast: more targets users who have enabled 'Increase Contrast' in macOS or Windows, allowing enhanced border and text contrast that improves WCAG 1.4.3 and 1.4.11 compliance in those environments.",
+      "acceptanceCriteria": [
+        "@media (forced-colors: active) overrides are present for custom buttons, badges, focus indicators, and icon-only elements using CSS system color keywords (ButtonText, Highlight, etc.)",
+        "Manual test in Windows High Contrast Black and White themes shows all interactive elements remain visible and distinguishable",
+        "@media (prefers-contrast: more) rules increase border width/opacity on form inputs and cards",
+        "Automated axe-core scan passes in forced-colors simulation mode (Chrome DevTools emulation)",
+        "No WCAG 1.4.11 Non-text Contrast failures in High Contrast mode"
+      ],
+      "technicalNotes": [
+        "Use CSS system color keywords in forced-colors overrides: ButtonText, ButtonFace, Highlight, HighlightText, Canvas, CanvasText",
+        "forced-colors MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/forced-colors",
+        "Emulate in Chrome DevTools: Rendering tab > Emulate CSS media feature forced-colors",
+        "prefers-contrast MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-contrast",
+        "Supported: Chrome 89+, Firefox 89+, Safari 15.4+"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-202",
+      "title": "Add Google Search Console Search Insights and branded vs non-branded filter",
+      "priority": "medium",
+      "description": "Google Search Console's 2025 updates introduced Search Console Insights (combining GSC + GA4 data) and a Branded vs Non-Branded Queries filter in the Performance report. Setting up the GA4 integration and configuring the brand query filter allows the team to separate direct brand searches from organic discovery traffic — essential for measuring the ROI of Visit Malaysia 2026 promotional campaigns and OTA displacement strategy.",
+      "acceptanceCriteria": [
+        "GA4 property is linked to Google Search Console via the 'Associations' section in GA4",
+        "Search Console Insights report is accessible and shows content performance data merged with GA4",
+        "Branded query filter is configured in GSC Performance report to separate 'pelangi' and 'pelangi capsule' queries from non-branded traffic",
+        "Monthly report template created in Looker Studio showing: non-branded impression trend, click-through rate, and top non-branded queries",
+        "AI-powered configuration feature in Performance report is tested for at least 3 analysis queries"
+      ],
+      "technicalNotes": [
+        "GSC + GA4 integration: link via GA4 > Admin > Search Console Links",
+        "Branded filter: GSC Performance > Queries filter > Does not contain 'pelangi'",
+        "New AI-powered configuration announced December 2025: https://developers.google.com/search/blog/2025/12/ai-powered-configuration",
+        "Search Console Insights blog: https://developers.google.com/search/blog/2025/06/search-console-insights",
+        "Looker Studio GSC connector: https://lookerstudio.google.com/datasources/create"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-203",
+      "title": "Add Visit Malaysia 2026 campaign landing page with structured event data",
+      "priority": "medium",
+      "description": "Malaysia's national Visit Malaysia Year 2026 campaign (target: 35.6 million visitors, RM147.1 billion revenue) and Visit Johor 2026 run concurrently. A dedicated campaign landing page targeting Singaporean travellers using the RTS Link and JB-SG cross-border tourism momentum can capture high-intent traffic. The page should use Event schema for any limited-time promotions and TouristAttraction schema for nearby Johor Bahru sights, aligned with Google's rich result types.",
+      "acceptanceCriteria": [
+        "A /visit-malaysia-2026 or /johor-bahru-travel-guide page is live before June 2026",
+        "Page includes Event schema for any promotional rates or special packages tied to the campaign period",
+        "TouristAttraction schema covers at least 5 nearby JB attractions (e.g., Johor Bahru City Square, Arulmigu Sri Rajakaliamman, Danga Bay)",
+        "Page targets at least 3 high-volume queries: 'hostel johor bahru 2026', 'singapore to johor bahru hostel', 'visit johor 2026 accommodation'",
+        "Page is linked from the homepage hero section with a Campaign badge during the campaign period (Jan–Dec 2026)"
+      ],
+      "technicalNotes": [
+        "Visit Malaysia 2026 official: https://malaysia.alilmitravel.com/2026/03/02/reimagining-hospitality-a-digital-and-sustainable-pathway-for-visit-malaysia-year-2026/",
+        "Visit Johor 2026: https://visitjohor2026.my/",
+        "Event schema for promotions: use validFrom/validThrough + offers.price for campaign pricing",
+        "TouristAttraction schema: https://schema.org/TouristAttraction",
+        "Target keyword cluster: 'johor bahru hostel 2026', 'jb rts link accommodation', 'best hostel near ciq'"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-204",
+      "title": "Implement CSS text-wrap: balance and pretty for headings and body copy",
+      "priority": "low",
+      "description": "CSS text-wrap: balance eliminates awkward single-word last lines on headings by balancing character counts across lines; text-wrap: pretty reduces orphan words in body paragraphs. Both values are progressive enhancements (unsupported browsers silently ignore them) and are now supported in Chrome 117+, Edge 117+, and Safari 18+. Applying them to all h1–h3 elements and prose paragraphs improves visual polish with zero performance cost.",
+      "acceptanceCriteria": [
+        "All h1, h2, h3 elements have text-wrap: balance applied globally in the base stylesheet",
+        "Body prose paragraphs have text-wrap: pretty applied",
+        "Visual regression screenshots show no layout breakage in Chrome, Firefox, and Safari",
+        "No negative impact on CLS (Cumulative Layout Shift) score — text-wrap does not trigger reflow after initial paint",
+        "Browsers that do not support these values render correctly using the default wrap behaviour"
+      ],
+      "technicalNotes": [
+        "text-wrap: balance is limited to 6 lines (Chromium) / 10 lines (Firefox) to constrain computation cost",
+        "text-wrap: pretty not yet supported in Firefox as of September 2025 — graceful degradation applies",
+        "Browser support for balance: ~88% globally; use as progressive enhancement with no @supports guard needed",
+        "Reference: https://developer.chrome.com/docs/css-ui/css-text-wrap-balance",
+        "WebKit blog: https://webkit.org/blog/16547/better-typography-with-text-wrap-pretty/"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-205",
+      "title": "Add PWA App Badge API for unread booking inquiry notifications",
+      "priority": "low",
+      "description": "The Badging API (navigator.setAppBadge) allows an installed PWA to show a numeric badge on its home screen icon — similar to native app notification badges — without requiring a disruptive push notification. When a new booking inquiry or WhatsApp message arrives, the badge count increments, giving staff a non-intrusive signal. The API is supported in Chrome, Edge, and Safari on installed PWAs.",
+      "acceptanceCriteria": [
+        "navigator.setAppBadge(count) is called when a new booking inquiry is received (via push message or polling)",
+        "navigator.clearAppBadge() is called when the staff user opens and reads all pending inquiries",
+        "Badge displays correctly on the PWA home screen icon on Android (Chrome) and iOS (Safari) when the app is installed",
+        "Graceful degradation: badge API calls are wrapped in feature detection (if ('setAppBadge' in navigator))",
+        "Badge count does not exceed actual unread count (no stale badge after read)"
+      ],
+      "technicalNotes": [
+        "Badging API MDN: https://developer.mozilla.org/en-US/docs/Web/API/Badging_API",
+        "Chrome capability guide: https://developer.chrome.com/docs/capabilities/web-apis/badging-api",
+        "On Android, Chrome automatically shows a badge when there is an unread notification — manual setAppBadge may be redundant; test both flows",
+        "Requires HTTPS and the app to be installed (in standalone/fullscreen display mode)",
+        "Combine with the existing Web Push notification flow for maximum reliability"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-206",
+      "title": "Implement WCAG 2.2 SC 2.4.12 Focus Not Obscured (Enhanced) – Level AAA",
+      "priority": "low",
+      "description": "WCAG 2.2 SC 2.4.12 (Level AAA) extends the Level AA requirement by requiring that NO part of the keyboard focus indicator is hidden by author-created content — not just the minimum threshold required by 2.4.11. While AAA is optional, achieving it signals a strong accessibility commitment on the Accessibility Statement page and prevents fully-obscured focus issues with sticky navbars, chat widgets, or cookie banners.",
+      "acceptanceCriteria": [
+        "Manual keyboard tab-through of the entire page with sticky header, cookie banner, and WhatsApp FAB all visible simultaneously shows no focus indicator fully obscured",
+        "CSS ensures focused elements scroll into view clear of any sticky/fixed UI (scroll-padding-top accounts for fixed header height)",
+        "Axe-core or Deque manual test report documents zero focus-obscured failures",
+        "Accessibility Statement page updated to claim WCAG 2.2 SC 2.4.12 AAA compliance"
+      ],
+      "technicalNotes": [
+        "SC 2.4.11 (AA) allows partial obscuring; SC 2.4.12 (AAA) requires the entire focus indicator to be visible",
+        "Common fix: scroll-padding-top: var(--header-height) on the :root element",
+        "Also ensure z-index of focused interactive elements > z-index of sticky overlays when focused",
+        "W3C WAI new-in-22: https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/",
+        "TestParty implementation guide: https://testparty.ai/blog/wcag-22-new-success-criteria"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-207",
+      "title": "Add CSS @layer cascade layers for design token organisation",
+      "priority": "low",
+      "description": "As the stylesheet grows with Tailwind utilities, custom components, and third-party widget overrides, specificity conflicts become harder to manage. CSS @layer defines an explicit cascade order (reset < base < tokens < components < utilities < overrides) that makes it predictable which rule wins. This is a refactoring story with no visible user-facing change but significantly reduces debugging time for future development iterations.",
+      "acceptanceCriteria": [
+        "@layer declaration order defined in the root CSS entry point: reset, base, tokens, components, utilities, overrides",
+        "All custom component styles (hero, room card, booking bar) placed in the components layer",
+        "Third-party widget overrides (WhatsApp chat, cookie banner) placed in the overrides layer",
+        "No existing visual appearance changes after migration (pixel-diff screenshot comparison passes)",
+        "Tailwind CSS utilities continue to work correctly within the layer hierarchy"
+      ],
+      "technicalNotes": [
+        "Tailwind v4 uses @layer internally — ensure Tailwind layers are declared before custom component layers",
+        "@layer guide: https://developer.mozilla.org/en-US/docs/Web/CSS/@layer",
+        "Supported in all major browsers since 2022: Chrome 99+, Firefox 97+, Safari 15.4+",
+        "Cascade Layers guide: https://design.dev/guides/css-cascade-layers/",
+        "CSS Tricks complete guide: https://css-tricks.com/css-cascade-layers/"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-208",
+      "title": "Implement Next.js 16 DevTools MCP server for development debugging",
+      "priority": "low",
+      "description": "Next.js 16 ships a built-in MCP (Model Context Protocol) server at http://localhost:3000/_next/mcp that exposes live application state — errors, logs, page metadata, Server Actions — to AI coding agents. Enabling and configuring the next-devtools-mcp package in the project's .claude/mcp-config (or equivalent) allows Claude Code to introspect running server state during development without manual context gathering.",
+      "acceptanceCriteria": [
+        "next-devtools-mcp package added to devDependencies and configured in the project's MCP configuration",
+        "AI agent can successfully call get_errors, get_logs, get_page_metadata via the MCP server in development",
+        "MCP server is NOT accessible in production builds (guarded by NODE_ENV !== 'production')",
+        "Documentation note added to CLAUDE.md or .spiral/DEV_NOTES.md explaining how to use the MCP during development"
+      ],
+      "technicalNotes": [
+        "Next.js 16 MCP server auto-starts at http://localhost:3000/_next/mcp when dev server runs",
+        "GitHub repo: https://github.com/vercel/next-devtools-mcp",
+        "Next.js docs: https://nextjs.org/docs/app/guides/mcp",
+        "Available tools: get_errors, get_logs, get_page_metadata, get_project_metadata, get_server_action_by_id",
+        "Blog: https://nextjs.org/blog/agentic-future"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
     }
   ]
 }
