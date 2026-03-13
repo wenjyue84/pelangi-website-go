@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Rooms from "@/components/Rooms";
 import Facilities from "@/components/Facilities";
 import RoomsEcommerceTracker from "@/components/RoomsEcommerceTracker";
+import PhotoGallery from "@/components/PhotoGallery";
 export const metadata: Metadata = {
     title: "Capsule Pod Rooms | Pelangi Capsule Hostel JB",
     description:
@@ -191,6 +192,8 @@ export default async function RoomsPage() {
             <Header />
             <div className="pt-20">
                 <Rooms />
+
+                <PhotoGallery />
 
                 {/* AI Overviews: concise factual paragraph for pod price and feature queries */}
                 <section className="py-16 bg-stone-50 dark:bg-stone-950">

@@ -5874,3 +5874,30 @@ Completed: Verify WCAG 2.2 SC 1.4.4 text resize up to 200% without content loss 
 
 ### Gotchas
 - Pre-existing typedRoutes TS errors exist in Header, Footer, SearchDialog, etc. — unrelated to structured data changes
+
+
+## Iteration - Story: US-124 - Add per-room accessible photo lightbox gallery
+
+### What was implemented
+- `site/src/data/gallery.ts` — GalleryImage interface, category definitions, 16 categorised photos (pod, bathroom, common-area, amenity, exterior)
+- `site/src/components/PhotoGallery.tsx` — Client component with category filter tabs, responsive grid, keyboard-navigable lightbox (yet-another-react-lightbox), Intersection Observer lazy init, skeleton placeholder before visible
+- Integrated into `site/src/app/rooms/page.tsx` between Rooms section and pricing FAQ
+- Installed `yet-another-react-lightbox` with Zoom and Counter plugins
+- `npx tsc --noEmit` passes with zero new errors (pre-existing errors in sitemap-html/SearchDialog unrelated)
+
+### Acceptance criteria met
+- [x] 16 images covering pod, bathroom, common area, amenities, exterior categories
+- [x] Keyboard navigable: arrow keys to cycle, Escape to close, focus-visible outlines on all interactive elements
+- [x] Images served via next/image with `sizes` attribute and lazy loading
+- [x] All images have descriptive alt text; lightbox has labelled close/next/prev buttons; focus management via library
+- [x] Gallery uses Intersection Observer to lazy-initialise when scrolled into view (200px rootMargin)
+- [x] Hero/page images load before gallery JS since gallery is deferred with 'use client' + IO
+
+### Patterns discovered
+- `yet-another-react-lightbox` requires CSS imports for styles.css and plugin CSS files
+- Library handles focus trap internally; no custom focus trap needed
+- Counter and Zoom plugins are tree-shakeable separate imports
+
+### Gotchas
+- yet-another-react-lightbox CSS must be imported in the client component, not in layout
+- The `carousel.finite` option prevents looping which is better UX for a small gallery

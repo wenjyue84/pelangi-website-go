@@ -23,7 +23,8 @@
     "react-dom": "^19.2.0",
     "resend": "^6.9.3",
     "serwist": "^9.5.6",
-    "web-vitals": "^4.2.4"
+    "web-vitals": "^4.2.4",
+    "yet-another-react-lightbox": "^3.29.1"
   },
   "size-limit": [
     {
