@@ -2982,7 +2982,7 @@
         "Display Malaysia Tourism Tax (TTx) RM10/room/night transparently on booking flow"
       ],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-135",

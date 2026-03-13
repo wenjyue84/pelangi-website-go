@@ -4553,3 +4553,25 @@ Incomplete: Register Google Business Profile and connect to Google Hotel free bo
 - Actual MOTAC registration number needs to be obtained and set in the environment variable
 - The badge and registration display are conditionally rendered — if env var is empty, nothing shows (graceful degradation)
 - MOTAC verification link goes to the general registered hotel check page since there's no direct deep link for a specific property
+
+## Iteration - Story: US-134 - Add trust signals: SSL badge, no-hidden-fees statement, and TTx disclosure
+
+### What was implemented
+- Created `site/src/components/TrustSignals.tsx` — server-rendered component with three trust signals:
+  1. **SSL Secured** badge with padlock icon and "256-bit encrypted connection" text
+  2. **No Hidden Fees** badge with explicit TTx (RM10/room/night) disclosure and "No booking fees, no service charges, no surprises"
+  3. **Best Price Guarantee** badge with shield icon and OTA price match commitment
+- Added fee transparency summary footer: "Total cost = Room rate + TTx RM10/room/night. No booking fees. No cleaning fees. No service charges." with link to TTx info
+- Integrated `TrustSignals` into `/book` page between pricing cards and booking form — visible near the pricing display
+- All text uses stone-900/stone-600 on white backgrounds (well above 4.5:1 contrast ratio for WCAG 1.4.3 AA)
+- Component is a server component (no "use client") — rendered server-side for search engine crawlers
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- The book page already had a "Trust Badges" section with Verified Property, Secure Payment, Real Human Support, 10+ Years Hosting
+- The new TrustSignals component focuses on the specific trust barriers: SSL security, fee transparency, and price guarantee
+- Placement after pricing cards ensures visibility near pricing display
+
+### Gotchas
+- The existing "Best Price Guarantee" callout (separate section) remains — TrustSignals provides a summary version near pricing
+- Trust signals on mobile at 375px: the 3-column grid stacks to single column, ensuring all signals are visible above the fold after pricing

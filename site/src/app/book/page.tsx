@@ -2,6 +2,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BookingForm from "@/components/BookingForm";
+import TrustSignals from "@/components/TrustSignals";
 import type { Metadata } from "next";
 
 export const dynamic = 'force-static';
@@ -259,6 +260,9 @@ export default function BookPage() {
               </ul>
             </div>
           </div>
+
+          {/* Trust Signals */}
+          <TrustSignals />
 
           {/* Booking Form */}
           <div className="mt-12 max-w-md mx-auto">
