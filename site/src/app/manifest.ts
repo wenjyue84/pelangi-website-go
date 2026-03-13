@@ -1,6 +1,12 @@
 import type { MetadataRoute } from "next";
 
-export default function manifest(): MetadataRoute.Manifest {
+export default function manifest(): MetadataRoute.Manifest & {
+  share_target?: {
+    action: string;
+    method: string;
+    params: { title: string; text: string; url: string };
+  };
+} {
   return {
     name: "Pelangi Capsule Hostel",
     short_name: "Pelangi",
@@ -51,5 +57,15 @@ export default function manifest(): MetadataRoute.Manifest {
         label: "Pelangi Capsule Hostel — Home page on desktop",
       },
     ],
+    // PWA Share Target — allows the installed PWA to receive shared links (US-142)
+    share_target: {
+      action: "/shared",
+      method: "GET",
+      params: {
+        title: "title",
+        text: "text",
+        url: "url",
+      },
+    },
   };
 }

@@ -7,6 +7,7 @@ import RoomCardSkeleton from "@/components/RoomCardSkeleton";
 import Facilities from "@/components/Facilities";
 import RoomsEcommerceTracker from "@/components/RoomsEcommerceTracker";
 import PhotoGallery from "@/components/PhotoGallery";
+import ShareButton from "@/components/ShareButton";
 export const metadata: Metadata = {
     title: "Capsule Pod Rooms | Pelangi Capsule Hostel JB",
     description:
@@ -197,9 +198,16 @@ export default async function RoomsPage() {
                 {/* AI Overviews: concise factual paragraph for pod price and feature queries */}
                 <section className="py-16 bg-stone-50 dark:bg-stone-950">
                     <div className="container-custom max-w-3xl">
-                        <h2 className="font-display text-3xl font-medium mb-6 text-stone-900 dark:text-stone-100">
-                            Capsule Pod Pricing &amp; Features
-                        </h2>
+                        <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
+                            <h2 className="font-display text-3xl font-medium text-stone-900 dark:text-stone-100">
+                                Capsule Pod Pricing &amp; Features
+                            </h2>
+                            <ShareButton
+                                title="Capsule Pod Rooms | Pelangi Capsule Hostel JB"
+                                text="Private capsule pods from RM35/night in Taman Pelangi, Johor Bahru."
+                                url="https://pelangicapsulehostel.com/rooms"
+                            />
+                        </div>
                         <div className="text-lg text-stone-700 dark:text-stone-300 leading-relaxed space-y-4">
                             <p>
                                 Pelangi Capsule Hostel offers two pod types in Taman Pelangi, Johor Bahru. Standard Capsule Pods start from RM35 per night and Premium Capsule Pods from RM45 per night. Monthly long-stay rates begin at RM594 per month. All rates are subject to Malaysia Service Tax (SST) at 8% and Tourism Tax (TTx) of RM10 per room per night for non-Malaysian guests as mandated by the Royal Malaysian Customs Department. Tax rates are subject to change per Malaysian government regulation.

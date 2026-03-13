@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import GettingHereStructuredData from "@/components/GettingHereStructuredData";
 import TableOfContents from "@/components/TableOfContents";
+import ShareButton from "@/components/ShareButton";
 import type { Heading } from "@/lib/headings";
 
 export const metadata: Metadata = {
@@ -91,11 +92,16 @@ export default function GettingHerePage() {
           <h1 className="font-display text-4xl md:text-5xl font-medium mb-4 text-stone-900 dark:text-stone-100">
             Singapore to Johor Bahru
           </h1>
-          <p className="text-xl text-stone-600 dark:text-stone-400 max-w-2xl mx-auto">
+          <p className="text-xl text-stone-600 dark:text-stone-400 max-w-2xl mx-auto mb-6">
             Everything Singaporean travellers need to know about crossing the
             border, the upcoming RTS Link, MyNIISe QR immigration, and getting
             to Pelangi Capsule Hostel.
           </p>
+          <ShareButton
+            title="Getting Here — JB Border Crossing & RTS Link | Pelangi Capsule Hostel"
+            text="Complete guide to reaching Pelangi Capsule Hostel from Singapore — CIQ, RTS Link, and transport options."
+            url="https://pelangicapsulehostel.com/getting-here"
+          />
         </div>
 
         {/* Two-column layout */}
