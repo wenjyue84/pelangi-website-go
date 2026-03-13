@@ -4260,3 +4260,6 @@ Incomplete: Register Google Business Profile and connect to Google Hotel free bo
 ### Gotchas
 - US-103 (critical) is a business/operations task (Google Business Profile registration), not a code story — cannot be implemented through code changes
 - WebVitalsReporter previously gated all metric reporting on `window.gtag` existence, meaning with `lazyOnload` it would have missed early metrics. The dataLayer queue approach fixes this.
+## Iteration 11 - Fri, Mar 13, 2026 12:28:01 PM
+Incomplete: Register Google Business Profile and connect to Google Hotel free booking links (ID: US-103) — attempt 2/3
+

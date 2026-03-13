@@ -1,0 +1,425 @@
+{
+  "stories": [
+    {
+      "title": "Migrate middleware.ts to proxy.ts for Next.js 16 compatibility",
+      "priority": "high",
+      "description": "Next.js 16 replaces middleware.ts with proxy.ts to clarify the network boundary. The middleware.ts file is deprecated in Next.js 16 and will be removed in a future version. Migrating now prevents a breaking change on the next major upgrade and makes the app's request-interception boundary explicit.",
+      "acceptanceCriteria": [
+        "File renamed from middleware.ts to proxy.ts and default export renamed to `proxy`",
+        "All existing middleware logic (security headers, locale detection, auth checks) works identically after rename",
+        "No deprecation warnings appear in `next dev` or `next build` output for middleware",
+        "proxy.ts is configured with `runtime: 'nodejs'` (Node.js runtime is now stable and is the target for proxy.ts)"
+      ],
+      "technicalNotes": [
+        "Next.js 16 docs: proxy.ts runs on Node.js runtime by default, not Edge runtime",
+        "The old middleware.ts is still functional in Next.js 16 but deprecated — rename is straightforward",
+        "Source: https://nextjs.org/blog/next-16#proxyts-formerly-middlewarets",
+        "Upgrade guide: https://nextjs.org/docs/app/guides/upgrading/version-16"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://nextjs.org/blog/next-16"
+    },
+    {
+      "title": "Enable React Compiler for automatic memoization in Next.js 16",
+      "priority": "medium",
+      "description": "The React Compiler reached stable status in Next.js 16 with React Compiler 1.0. It automatically memoizes components, hooks, and helper functions, eliminating the need for manual useMemo/useCallback calls. For a content-rich hostel site with image galleries and pricing tables, this reduces unnecessary re-renders and improves INP.",
+      "acceptanceCriteria": [
+        "`reactCompiler: true` set in next.config.ts and `babel-plugin-react-compiler@latest` installed",
+        "React Compiler successfully transforms components without errors (confirmed via `next build` output)",
+        "No regression in existing component behaviour (unit tests pass)",
+        "React DevTools shows memoized components in the component tree where the compiler applied optimisations",
+        "INP measured via web-vitals does not regress after enabling the compiler"
+      ],
+      "technicalNotes": [
+        "Install: `npm install babel-plugin-react-compiler@latest`",
+        "Add `reactCompiler: true` to next.config.ts (no longer under `experimental`)",
+        "The compiler relies on Babel so expect slightly longer compile times in development",
+        "Source: https://nextjs.org/blog/next-16#react-compiler-support-stable"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://nextjs.org/blog/next-16"
+    },
+    {
+      "title": "Adopt Next.js 16 Cache Components ('use cache' directive)",
+      "priority": "medium",
+      "description": "Next.js 16 introduces the `\"use cache\"` directive as an explicit, opt-in caching model replacing the previous implicit ISR/fetch caching. For a hostel website with mostly static content (room descriptions, amenities, FAQ) but some dynamic sections (availability, pricing), Cache Components lets you cache exactly the right granularity and pair `cacheLife` profiles with `revalidateTag`/`updateTag` for precise invalidation.",
+      "acceptanceCriteria": [
+        "`cacheComponents: true` enabled in next.config.ts",
+        "Static server components (RoomCard, AmenitiesList, FAQSection) annotated with `'use cache'` and appropriate `cacheLife` profile",
+        "Dynamic sections (availability widget, live pricing) remain un-cached (no `'use cache'` directive)",
+        "Cache hit/miss behaviour verified: first load fetches data, subsequent loads serve from cache",
+        "`revalidateTag` or `updateTag` called correctly when content is updated via CMS webhook"
+      ],
+      "technicalNotes": [
+        "Enable with `cacheComponents: true` in next.config.ts",
+        "Use `cacheLife('days')` for room descriptions, `cacheLife('hours')` for blog posts",
+        "`updateTag()` is Server Actions-only and provides read-your-writes semantics",
+        "`revalidateTag(tag, 'max')` now requires a cacheLife profile as second argument (Next.js 16 breaking change)",
+        "Source: https://nextjs.org/docs/app/getting-started/cache-components"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "source": "https://nextjs.org/docs/app/api-reference/directives/use-cache"
+    },
+    {
+      "title": "Implement WCAG 2.2 SC 1.4.11 – Non-Text Contrast for UI Components",
+      "priority": "high",
+      "description": "WCAG 2.2 SC 1.4.11 (Level AA) requires that the visual boundaries and state indicators of all interactive UI components (form inputs, buttons, checkboxes, focus rings, date-picker calendar cells) have a contrast ratio of at least 3:1 against adjacent colours. This is distinct from text contrast (SC 1.4.3) and covers borders, icons, and graphical UI elements.",
+      "acceptanceCriteria": [
+        "All form input borders (contact form, date picker, search) have ≥3:1 contrast against their background",
+        "Button outlines/fills (primary CTA, secondary, ghost) have ≥3:1 contrast against adjacent colours",
+        "Focus ring (custom or browser-default) has ≥3:1 contrast against adjacent background (also required by SC 2.4.11)",
+        "Icon-only buttons (WhatsApp FAB, share, close) have ≥3:1 contrast for the icon shape against its background",
+        "Automated axe-core scan reports zero SC 1.4.11 violations",
+        "Manual verification with Colour Contrast Analyser tool on all interactive component states"
+      ],
+      "technicalNotes": [
+        "Check: form input border colour, checkbox/radio border, toggle track, calendar day cell borders",
+        "Tailwind: review `border-gray-*` values — gray-300 (#D1D5DB) on white fails 3:1; gray-400 (#9CA3AF) on white passes",
+        "W3C reference: https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://www.w3.org/TR/WCAG22/#non-text-contrast"
+    },
+    {
+      "title": "Implement WCAG 2.2 SC 1.4.12 – Text Spacing Overrides",
+      "priority": "medium",
+      "description": "WCAG 2.2 SC 1.4.12 (Level AA) requires that no content or functionality is lost when users override CSS text spacing: line height ≥1.5×font-size, paragraph spacing ≥2×font-size, letter spacing ≥0.12×font-size, word spacing ≥0.16×font-size. Hostel guests with dyslexia or low vision often apply browser extensions that inject exactly these overrides.",
+      "acceptanceCriteria": [
+        "A bookmarklet or browser extension applying WCAG 1.4.12 spacing overrides is applied to the live site without any text being clipped, truncated, or hidden",
+        "Navigation menus remain fully readable and usable under the spacing overrides",
+        "Room card titles, descriptions, and CTAs do not overflow their containers",
+        "Blog post body text, headings, and code blocks reflow correctly",
+        "No `overflow: hidden` on text containers with fixed heights that would clip overflowed text"
+      ],
+      "technicalNotes": [
+        "Use the WCAG 1.4.12 bookmarklet (https://www.html5accessibility.com/tests/tsbookmarklet.html) for manual testing",
+        "Common failure patterns: `line-clamp` combined with reduced line-height, fixed-height card bodies",
+        "Tailwind: prefer `min-h` over `h` for text containers; use `overflow-visible` or `overflow-auto`",
+        "W3C reference: https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://www.w3.org/TR/WCAG22/#text-spacing"
+    },
+    {
+      "title": "Implement WCAG 2.2 SC 1.4.10 – Reflow at 320 CSS Pixels",
+      "priority": "high",
+      "description": "WCAG 2.2 SC 1.4.10 (Level AA) requires content to be fully usable at a viewport equivalent to 320 CSS pixels wide without horizontal scrolling, to accommodate users who zoom to 400% on a 1280px-wide screen. Tables, images, fixed-width elements, and horizontal carousels are the most common failure points on hostel websites.",
+      "acceptanceCriteria": [
+        "Setting browser zoom to 400% on a 1280px viewport (effective width = 320 CSS px) results in no horizontal scrollbar on any page",
+        "Room pricing tables reflow to a single-column layout at 320px effective width",
+        "Gallery/photo carousel allows horizontal scrolling only within its explicit scroll region, not the full page",
+        "Navigation menu collapses to a hamburger at 320px and is fully functional",
+        "All form fields, labels, and CTAs remain visible and usable at 320px effective width"
+      ],
+      "technicalNotes": [
+        "Test by zooming to 400% in Chrome/Firefox DevTools on a 1280px-wide window",
+        "Common failures: `min-width` on containers, `white-space: nowrap` outside scroll regions, fixed-pixel tables",
+        "Tailwind: ensure responsive breakpoints cover down to `sm:` (640px) but test at 320px explicit effective width",
+        "W3C reference: https://www.w3.org/WAI/WCAG22/Understanding/reflow.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://www.w3.org/TR/WCAG22/#reflow"
+    },
+    {
+      "title": "Implement WCAG 2.2 SC 1.4.13 – Content on Hover or Focus",
+      "priority": "medium",
+      "description": "WCAG 2.2 SC 1.4.13 (Level AA) requires that content revealed on pointer hover or keyboard focus (tooltips, dropdown menus, popover amenity details) is: dismissable without moving focus, hoverable (pointer can move over it without it disappearing), and persistent until the user moves away. Hostel sites commonly show room amenity tooltips and price breakdown popovers that fail this criterion.",
+      "acceptanceCriteria": [
+        "All tooltips (amenity icons, info badges) remain visible when the pointer moves from the trigger onto the tooltip itself",
+        "All popovers/tooltips can be dismissed by pressing Escape without moving pointer or focus",
+        "Tooltips remain visible until the user moves focus or pointer away (no auto-dismiss timer shorter than 5 seconds)",
+        "Keyboard focus triggers the same tooltip/popover as pointer hover",
+        "Tested on: amenity icon tooltips, any price breakdown popovers, nav dropdown menus"
+      ],
+      "technicalNotes": [
+        "Radix UI Tooltip already handles hover/focus and hoverable-content by default — verify configuration is not overriding defaults",
+        "Key CSS pattern: wrap tooltip trigger + tooltip in a container so pointer can move between them",
+        "W3C reference: https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://www.w3.org/TR/WCAG22/#content-on-hover-or-focus"
+    },
+    {
+      "title": "Implement WCAG 2.2 SC 1.3.4 – Orientation Lock Prevention",
+      "priority": "medium",
+      "description": "WCAG 2.2 SC 1.3.4 (Level AA) prohibits locking content to portrait or landscape orientation unless a specific orientation is essential. Hostel websites that use `orientation: portrait` in CSS or meta viewport lock tags prevent users who have their phone mounted sideways (e.g. wheelchair users) from viewing content. This also affects room gallery slideshows and virtual tour iframes.",
+      "acceptanceCriteria": [
+        "No CSS `@media (orientation: portrait)` or `(orientation: landscape)` rules hide or disable critical content",
+        "No JavaScript `screen.orientation.lock()` call in the codebase",
+        "Site renders correctly in both portrait and landscape on a real mobile device",
+        "Photo gallery and any iframe embeds (maps, virtual tour) work in both orientations",
+        "Automated axe-core scan returns no orientation-related violations"
+      ],
+      "technicalNotes": [
+        "Audit CSS for orientation media queries that set `display:none` or `visibility:hidden`",
+        "Virtual tour iframes (if added later) must not call `screen.orientation.lock()`",
+        "W3C reference: https://www.w3.org/WAI/WCAG22/Understanding/orientation.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://www.w3.org/TR/WCAG22/#orientation"
+    },
+    {
+      "title": "Implement WCAG 2.2 SC 1.3.5 – Identify Input Purpose via autocomplete",
+      "priority": "high",
+      "description": "WCAG 2.2 SC 1.3.5 (Level AA) requires that input fields collecting personal information programmatically expose their purpose via the HTML autocomplete attribute, enabling browsers and assistive technology to pre-fill or annotate fields. The contact form (name, email, phone) and newsletter capture form are the primary targets on the hostel website.",
+      "acceptanceCriteria": [
+        "Contact form fields have correct autocomplete values: `name` → `autocomplete=\"name\"`, `email` → `autocomplete=\"email\"`, `tel` → `autocomplete=\"tel\"`, message textarea → `autocomplete=\"off\"`",
+        "Newsletter email field has `autocomplete=\"email\"`",
+        "Any future booking form (first name, last name, number of guests) has `autocomplete=\"given-name\"`, `autocomplete=\"family-name\"` etc.",
+        "Automated axe-core scan reports no SC 1.3.5 violations",
+        "Browser autofill correctly pre-fills the contact form using saved browser profile data"
+      ],
+      "technicalNotes": [
+        "Full list of valid autocomplete values: https://html.spec.whatwg.org/multipage/form-elements.html#autofill",
+        "W3C reference: https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html",
+        "This also improves UX for mobile users relying on autofill"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://www.w3.org/TR/WCAG22/#identify-input-purpose"
+    },
+    {
+      "title": "Implement WCAG 2.2 SC 4.1.3 – Status Messages via ARIA Live Regions",
+      "priority": "medium",
+      "description": "WCAG 2.2 SC 4.1.3 (Level AA) requires that status messages (form submission success/error, availability messages, loading indicators) be programmatically determinable via role or ARIA property so they can be announced by screen readers without receiving focus. The contact form result, newsletter subscription confirmation, and any future availability query result are primary targets.",
+      "acceptanceCriteria": [
+        "Contact form success message is rendered in an element with `role=\"status\"` or `aria-live=\"polite\"` and announced by NVDA/VoiceOver without requiring focus movement",
+        "Contact form error messages are announced immediately via `aria-live=\"assertive\"` or `role=\"alert\"`",
+        "Newsletter subscription confirmation is announced by screen reader without focus change",
+        "Loading spinners include `role=\"status\"` with `aria-label=\"Loading\"` or equivalent",
+        "Tested with NVDA+Chrome and VoiceOver+Safari confirming announcements"
+      ],
+      "technicalNotes": [
+        "Use `role=\"status\"` for polite messages (success, info), `role=\"alert\"` for urgent messages (errors)",
+        "React pattern: render the live region container in the DOM on initial load (even when empty); update its text content to trigger announcement",
+        "W3C reference: https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://www.w3.org/TR/WCAG22/#status-messages"
+    },
+    {
+      "title": "Implement WCAG 2.2 SC 2.5.3 – Label in Name for icon buttons",
+      "priority": "medium",
+      "description": "WCAG 2.2 SC 2.5.3 (Level AA) requires that for UI components with visible text labels, the accessible name includes the visible text (or starts with it). Icon-only buttons that use aria-label must match or contain the visible text. Relevant instances include the WhatsApp sticky bar, share button, and any labelled icon buttons in the navigation.",
+      "acceptanceCriteria": [
+        "Any icon button that shows a visible text label (e.g. 'Book Now', 'Share') has an accessible name that contains that exact visible text",
+        "Icon-only buttons (no visible text) have descriptive aria-label values that clearly convey their purpose",
+        "No mismatch between button visible text and aria-label (e.g. visible label 'Contact' with aria-label 'Send message' would fail)",
+        "Automated axe-core scan reports no SC 2.5.3 violations",
+        "Verified with browser accessibility tree inspector"
+      ],
+      "technicalNotes": [
+        "Common failure: `<button aria-label=\"WhatsApp Chat\"><WhatsAppIcon/> Chat on WhatsApp</button>` — aria-label must contain 'Chat on WhatsApp' or be removed in favour of aria-labelledby",
+        "W3C reference: https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://www.w3.org/TR/WCAG22/#label-in-name"
+    },
+    {
+      "title": "Add offline support via Service Worker for PWA installability",
+      "priority": "medium",
+      "description": "The web app manifest is already in place but Chrome requires a registered Service Worker intercepting fetch requests for the PWA install prompt to fire. Adding a minimal service worker with a cache-first strategy for static assets and a network-first strategy for pages enables both the install prompt and graceful offline fallback — critical for travellers on unreliable hostel Wi-Fi.",
+      "acceptanceCriteria": [
+        "Chrome DevTools Application > Manifest panel shows 'Installable' status with no errors",
+        "beforeinstallprompt event fires (confirmed via DevTools console log)",
+        "Navigating to the site offline shows a custom offline page (not the browser's default error page)",
+        "Static assets (fonts, CSS, logo) load from cache when offline",
+        "Lighthouse PWA audit score is 100 (all PWA checks pass)",
+        "Service worker registered on first visit confirmed in DevTools > Application > Service Workers"
+      ],
+      "technicalNotes": [
+        "Use next-pwa (https://github.com/shadowwalker/next-pwa) or Workbox GenerateSW for Next.js 15/16 App Router",
+        "Cache strategy: CacheFirst for static assets (/static/, fonts, images), NetworkFirst for HTML pages",
+        "Create /app/offline/page.tsx as the offline fallback route",
+        "Ensure service worker scope covers `/` (set `scope: '/'` in manifest)",
+        "Chrome installability criteria: https://web.dev/articles/install-criteria"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "source": "https://web.dev/articles/install-criteria"
+    },
+    {
+      "title": "Add VacationRental structured data with geo-coordinates and occupancy",
+      "priority": "medium",
+      "description": "Google Search supports VacationRental rich results which display property images, ratings, and location in search. The schema requires a minimum of 8 property photos, geographic coordinates with 5+ decimal places, and an occupancy value. This is distinct from the existing LodgingBusiness schema and targets travellers searching for short-term accommodation in Johor Bahru.",
+      "acceptanceCriteria": [
+        "A `VacationRental` JSON-LD block is present on the home page (or a dedicated property page)",
+        "Schema includes: `identifier`, `name`, `latitude`/`longitude` (5+ decimal places), `containsPlace.occupancy.value` (max guest count), at least 8 `image` URLs",
+        "Schema validates without errors in Google Rich Results Test",
+        "At least one bedroom image, one bathroom image, and one common area image are included in the image array",
+        "`checkinTime` and `checkoutTime` in ISO 8601 format are included",
+        "`aggregateRating` block references the same rating data used in LodgingBusiness schema"
+      ],
+      "technicalNotes": [
+        "VacationRental is a subtype of LodgingBusiness — can be added alongside existing LodgingBusiness schema or replace it",
+        "Google's VacationRental program requires Hotel Center connection for full rich result eligibility, but the schema markup itself improves entity understanding regardless",
+        "Google reference: https://developers.google.com/search/docs/appearance/structured-data/vacation-rental",
+        "Lat/long for Pelangi Capsule Hostel in Johor Bahru must be obtained from Google Maps (use 5+ decimal places)"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://developers.google.com/search/docs/appearance/structured-data/vacation-rental"
+    },
+    {
+      "title": "Enable typed routes for compile-time link safety (Next.js 15.5+)",
+      "priority": "low",
+      "description": "Next.js 15.5 stabilised typed routes, which generate TypeScript types for all app routes at build time. Every `<Link href>` and `router.push()` call becomes type-checked, catching broken internal links before they reach production. This is particularly valuable as the hostel site grows (new room pages, blog posts, event pages).",
+      "acceptanceCriteria": [
+        "`typedRoutes: true` set in next.config.ts",
+        "`next typegen` runs without errors and produces valid type definitions",
+        "TypeScript compiler (`tsc --noEmit`) reports type errors for any `<Link href=\"/invalid-route\">`",
+        "Existing valid `<Link>` hrefs all type-check correctly with no false positives",
+        "CI pipeline runs `next typegen && tsc --noEmit` to catch broken links on every PR"
+      ],
+      "technicalNotes": [
+        "Enable in next.config.ts: `typedRoutes: true` (was experimental in 15.x, stable in 15.5)",
+        "Works with both Webpack and Turbopack build systems",
+        "Run `next typegen [directory]` for CI type checking without building",
+        "Source: https://nextjs.org/blog/next-15-5#typed-routes-stable"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://nextjs.org/blog/next-15-5"
+    },
+    {
+      "title": "Implement View Transitions API for page navigation animations",
+      "priority": "low",
+      "description": "React 19.2 (bundled with Next.js 16) ships the `<ViewTransition>` component which leverages the native browser View Transitions API for smooth, animated page transitions. For a hostel website, this creates polished cross-fade or slide animations when navigating between room pages, the gallery, and the blog — improving perceived performance and brand feel.",
+      "acceptanceCriteria": [
+        "`experimental.viewTransition: true` enabled in next.config.ts",
+        "Navigation between room detail pages shows a cross-fade or slide transition animation",
+        "Navigation between blog post pages shows a smooth transition",
+        "Transitions respect `prefers-reduced-motion` (no animation when reduced motion is preferred)",
+        "Works correctly in Chrome 111+, Edge 111+, Safari 16.4+ (browsers supported by Next.js 16)",
+        "No layout shift or flash of unstyled content during transitions"
+      ],
+      "technicalNotes": [
+        "Import `{ ViewTransition } from 'react'` — no separate package needed",
+        "Set `experimental.viewTransition: true` in next.config.ts (not stable for production yet as of Next.js 16.1.6)",
+        "Add `::view-transition-old` / `::view-transition-new` CSS rules for custom animations",
+        "Pair with `@media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; } }`",
+        "Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/viewTransition"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "source": "https://nextjs.org/docs/app/api-reference/config/next-config-js/viewTransition"
+    },
+    {
+      "title": "Add Biome linter/formatter as ESLint replacement (Next.js 15.5+)",
+      "priority": "low",
+      "description": "Next.js 15.5 deprecated `next lint` and introduced Biome as a fast alternative to ESLint. Biome is 10-100x faster than ESLint, handles both linting and formatting in a single tool, and is fully supported by Next.js 15.5+ project scaffolding. Migrating reduces CI lint time and eliminates the ESLint/Prettier dual-tool setup.",
+      "acceptanceCriteria": [
+        "Biome is installed and configured with `biome.json` including Next.js and React rules",
+        "`package.json` scripts updated: `\"lint\": \"biome check\"` and `\"format\": \"biome format --write\"`",
+        "Biome reports zero errors on the current codebase",
+        "ESLint configuration and Prettier configuration are removed (or left only as a migration reference)",
+        "CI pipeline uses `biome check` instead of `next lint`",
+        "VS Code Biome extension installed and configured as the default formatter"
+      ],
+      "technicalNotes": [
+        "Migration codemod: `npx @next/codemod@latest next-lint-to-eslint-cli .` (migrates scripts)",
+        "Biome Next.js config reference: https://biomejs.dev/recipes/nextjs/",
+        "Note: `next build` no longer runs linting automatically in Next.js 16 — CI must run lint explicitly",
+        "Source: https://nextjs.org/blog/next-15-5#next-lint-deprecation"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://nextjs.org/blog/next-15-5"
+    },
+    {
+      "title": "Implement React 19 useOptimistic for instant WhatsApp inquiry feedback",
+      "priority": "low",
+      "description": "React 19's `useOptimistic` hook allows an action's optimistic result to be shown immediately while the async operation is still in flight. Applied to the contact form or a WhatsApp inquiry tracker, it eliminates the perceived latency of form submissions — showing 'Message sent!' instantly and rolling back if the server action fails. This directly reduces booking abandonment from impatient users.",
+      "acceptanceCriteria": [
+        "Contact form uses `useOptimistic` to show a success state immediately on submit, before the Resend server action resolves",
+        "If the server action fails, the optimistic state is rolled back and an error message is shown",
+        "The optimistic success message is visually distinct from the confirmed success message",
+        "Screen reader announces the optimistic state change via an `aria-live` region (satisfying SC 4.1.3)",
+        "No regression in existing contact form validation or honeypot logic"
+      ],
+      "technicalNotes": [
+        "React 19 docs: https://react.dev/reference/react/useOptimistic",
+        "Pair with `useActionState` for form state management",
+        "The optimistic state is automatically discarded and replaced with the real state once the server action resolves",
+        "Source: https://react.dev/blog/2024/12/05/react-19"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://react.dev/blog/2024/12/05/react-19"
+    },
+    {
+      "title": "Implement next/image images.qualities config for Next.js 16 compliance",
+      "priority": "medium",
+      "description": "Next.js 16 restricts the `quality` prop on `<Image>` to only values listed in the `images.qualities` config (defaulting to `[75]`). Any `<Image quality={90}>` or `<Image quality={100}>` currently on the site will silently be coerced to 75 on upgrade. Explicitly declaring the allowed qualities prevents unexpected quality downgrades on hero images and OG image renders.",
+      "acceptanceCriteria": [
+        "Codebase audit identifies all `<Image quality={...}>` usages",
+        "`images.qualities` array in next.config.ts includes all quality values used across the codebase",
+        "Hero images and room gallery images use the correct quality value (e.g. 85 or 90) listed in `images.qualities`",
+        "`next build` produces no deprecation warnings related to image quality",
+        "Visual regression test confirms hero images are not noticeably degraded after the change"
+      ],
+      "technicalNotes": [
+        "Next.js 16 breaking change: `images.qualities` defaults to `[75]`; add `images.qualities: [75, 85, 90, 100]` to preserve existing quality values",
+        "Also audit `images.minimumCacheTTL` — Next.js 16 changes default from 60s to 4 hours (14400s)",
+        "Source: https://nextjs.org/blog/next-16#breaking-changes-and-other-updates"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://nextjs.org/blog/next-16"
+    },
+    {
+      "title": "Add live chat / AI chatbot widget for 24/7 guest inquiry support",
+      "priority": "medium",
+      "description": "Research shows that deploying a live chat or AI chatbot on a hotel website can rescue hesitant bookers by answering FAQs (check-in time, parking, dorm vs private room) in real time without requiring WhatsApp initiation. For Pelangi Capsule, a lightweight widget (Tawk.to free tier or a custom React 19 AI chat component) can answer the top 10 pre-booking questions and surface the direct booking CTA at the right moment.",
+      "acceptanceCriteria": [
+        "A chat widget is visible on all pages (home, rooms, contact) without obscuring page content on mobile",
+        "Widget answers at least 5 predefined FAQs (check-in time, dorm types, parking, location, pricing) correctly",
+        "Widget loads lazily (does not block LCP or degrade CWV scores)",
+        "Widget is keyboard-navigable and screen-reader accessible (satisfies WCAG 2.1 Level AA)",
+        "Widget does not fire until user has been on page for at least 10 seconds (avoiding immediate pop-ups)",
+        "Chat transcripts are optionally logged for hostel staff review"
+      ],
+      "technicalNotes": [
+        "Option A: Tawk.to (free, lightweight, loads via third-party script — load lazily after LCP)",
+        "Option B: Custom React Server Component + OpenAI or Anthropic API for AI-powered FAQ responses",
+        "Lazy-load the widget script using Next.js `<Script strategy=\"lazyOnload\">`",
+        "Source: https://www.travelboommarketing.com/blog/high-converting-hotel-website-increases-conversions"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "source": "https://www.travelboommarketing.com/blog/high-converting-hotel-website-increases-conversions"
+    },
+    {
+      "title": "Add structured 360-degree virtual tour or photo gallery with room-level navigation",
+      "priority": "medium",
+      "description": "Immersive visual content (virtual tours, high-resolution photo slideshows with room-specific galleries) is cited as one of the top conversion drivers for boutique accommodation websites. Travellers who can inspect the dorm, private room, bathroom, and common areas in detail before booking show significantly higher booking confidence. A dedicated room gallery with thumbnails and a lightbox viewer addresses this directly.",
+      "acceptanceCriteria": [
+        "Each room type page has a dedicated photo gallery with at least 6 images covering: bed/bunk, room overview, bathroom, window/view, storage, common area",
+        "Gallery is navigable via keyboard (arrow keys to cycle images, Escape to close lightbox)",
+        "Gallery images are optimised via next/image with AVIF/WebP and correct `sizes` attribute",
+        "A 360-degree virtual tour embed (Google Street View, Matterport, or equivalent) is present on at least one room page OR the home page",
+        "Gallery satisfies WCAG: all images have descriptive alt text, lightbox has focus trap, close button is keyboard accessible",
+        "Gallery does not degrade LCP — hero image loads before gallery is initialised"
+      ],
+      "technicalNotes": [
+        "For lightbox: use a lightweight accessible library (e.g. yet-another-react-lightbox) or build with Radix UI Dialog",
+        "For 360 tour: embed Google Street View Business View iframe (free with Google Business Profile) or Matterport",
+        "Use Intersection Observer to lazy-initialise the gallery below the fold",
+        "Source: https://www.travelboommarketing.com/blog/high-converting-hotel-website-increases-conversions"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "source": "https://www.travelboommarketing.com/blog/high-converting-hotel-website-increases-conversions"
+    }
+  ]
+}
