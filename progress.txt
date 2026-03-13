@@ -6989,3 +6989,23 @@ This brief outlines the implementation plan within the Frappe framework. The use
 *   **Data Consistency:** Ensure the hostel's name, address, and phone number are identical across Frappe, the partner's system, Google Business Profile, and Google Hotel Center.
 *   **Landing Page URL:** The booking page must be able to handle URL parameters for check-in/check-out dates passed from Google to provide a seamless user experience.
 
+
+## Iteration - Story: Add Exit Intent overlay on /book page (US-101)
+
+### What was implemented
+- Created `site/src/components/ExitIntentOverlay.tsx` — Client Component
+- mouseleave event on document.documentElement, triggers when clientY < 5 (cursor exits toward browser chrome)
+- Desktop-only: window.innerWidth > 1024 check in useEffect
+- Once per session: sessionStorage.setItem(SESSION_KEY, "1")
+- Two CTAs: "Book via WhatsApp" (WhatsApp with early check-in message) and "Continue Browsing"
+- Keyboard accessible: Escape key dismisses, aria-modal/role="dialog", focus moves to overlay on open
+- position:fixed with Tailwind animate-in/fade-in for CLS-safe transition
+- Added to book/page.tsx after <BookEcommerceTracker />
+
+### Patterns discovered
+- /book page is a Server Component — Client Components are added as leaf nodes
+- Tailwind animate-in/zoom-in-95 available (tailwindcss-animate already installed)
+
+### Gotchas
+- Must check window.innerWidth inside useEffect (not at module level) — SSR safety
+- sessionStorage also only available in useEffect, not at module level

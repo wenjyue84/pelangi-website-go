@@ -7,6 +7,7 @@ import BookEcommerceTracker from "@/components/BookEcommerceTracker";
 import DuitNowPayment from "@/components/DuitNowPayment";
 import FpxPaymentForm from "@/components/FpxPaymentForm";
 import HeroTrustBadges from "@/components/HeroTrustBadges";
+import ExitIntentOverlay from "@/components/ExitIntentOverlay";
 import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Book a Pod | Pelangi Capsule Hostel JB — From RM35/night",
@@ -636,6 +637,7 @@ export default function BookPage() {
 
       <Footer />
       <BookEcommerceTracker />
+      <ExitIntentOverlay />
     </main>
   );
 }
