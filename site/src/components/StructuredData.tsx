@@ -166,12 +166,72 @@ export default function StructuredData() {
       "@type": "Rating",
       "ratingValue": "1"
     },
-    "makesOffer": {
-      "@type": "AggregateOffer",
-      "lowPrice": "35",
-      "highPrice": "55",
-      "priceCurrency": "MYR"
-    },
+    "makesOffer": [
+      {
+        "@type": "Offer",
+        "name": "Standard Capsule Pod — Nightly",
+        "price": "35",
+        "priceCurrency": "MYR",
+        "availability": "https://schema.org/InStock",
+        "url": "https://pelangicapsulehostel.com/book",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "35",
+          "priceCurrency": "MYR",
+          "unitText": "night",
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "DAY"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Premium Capsule Pod — Nightly",
+        "price": "45",
+        "priceCurrency": "MYR",
+        "availability": "https://schema.org/InStock",
+        "url": "https://pelangicapsulehostel.com/book",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "45",
+          "priceCurrency": "MYR",
+          "unitText": "night",
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "DAY"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Standard Capsule Pod — Monthly",
+        "price": "594",
+        "priceCurrency": "MYR",
+        "availability": "https://schema.org/InStock",
+        "url": "https://pelangicapsulehostel.com/book",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "594",
+          "priceCurrency": "MYR",
+          "unitText": "month",
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "MON"
+          }
+        }
+      },
+      {
+        "@type": "AggregateOffer",
+        "lowPrice": "35",
+        "highPrice": "594",
+        "priceCurrency": "MYR",
+        "offerCount": 3
+      }
+    ],
     ...(MOTAC_REG_NUMBER ? {
       "identifier": {
         "@type": "PropertyValue",

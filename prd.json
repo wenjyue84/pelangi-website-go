@@ -4777,7 +4777,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-214",
@@ -4801,7 +4801,7 @@
         "LodgingBusiness schema already implemented"
       ],
       "estimatedComplexity": "medium",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-215",

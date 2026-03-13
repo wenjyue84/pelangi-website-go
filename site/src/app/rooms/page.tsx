@@ -57,6 +57,8 @@ const hotelRoomsSchema = [
         url: "https://pelangicapsulehostel.com/rooms",
         image: "https://pelangicapsulehostel.com/images/capsule-4.webp",
         containedInPlace,
+        checkinTime: "T14:00:00",
+        checkoutTime: "T12:00:00",
         occupancy: {
             "@type": "QuantitativeValue",
             minValue: 1,
@@ -128,6 +130,8 @@ const hotelRoomsSchema = [
         url: "https://pelangicapsulehostel.com/rooms",
         image: "https://pelangicapsulehostel.com/images/capsule-2.webp",
         containedInPlace,
+        checkinTime: "T14:00:00",
+        checkoutTime: "T12:00:00",
         occupancy: {
             "@type": "QuantitativeValue",
             minValue: 1,

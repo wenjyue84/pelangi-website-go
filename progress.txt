@@ -5610,3 +5610,40 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 
 ### Gotchas
 - None — clean audit pass, no code changes required
+
+## Iteration 19b - Story: US-213 WCAG 2.0 SC 3.2.3 – Consistent navigation order audit
+
+### What was implemented
+- Audited Header.tsx: single `navLinks` array (7 items) rendered identically in desktop and mobile views
+- Audited Footer.tsx: static navigation array (6 items) consistent across all pages
+- Confirmed only ONE layout.tsx exists (root) — no page-specific layout overrides
+- Confirmed no CSS `order` property reordering nav items
+- `navLinks` is only defined in Header.tsx — no page-specific nav overrides anywhere
+- SC 3.2.3 conformance verified — architecture inherently satisfies this criterion
+
+### Patterns discovered
+- Next.js App Router shared layout pattern naturally satisfies SC 3.2.3
+- Header nav order: About → Rooms → Destinations → Gallery → Community → Location → Check-in Guide
+- Footer nav order: About Us → Rooms → Amenities → Gallery → Location → Book Now
+
+### Gotchas
+- None — single shared layout ensures consistent navigation by design
+
+## Iteration 19c - Story: US-214 Hotel Price structured data for Google Hotel Price Accuracy
+
+### What was implemented
+- Added `checkinTime: "T14:00:00"` and `checkoutTime: "T12:00:00"` to both HotelRoom schemas in `rooms/page.tsx`
+- Enhanced `makesOffer` in `StructuredData.tsx` Hostel schema from single `AggregateOffer` to array with:
+  - Standard Capsule Pod nightly Offer (RM35) with `UnitPriceSpecification`
+  - Premium Capsule Pod nightly Offer (RM45) with `UnitPriceSpecification`
+  - Standard Capsule Pod monthly Offer (RM594) with `UnitPriceSpecification`
+  - AggregateOffer summary (lowPrice: 35, highPrice: 594)
+- All structured data prices exactly match displayed prices on page (RM35, RM45, RM594)
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- `makesOffer` accepts an array of Offers — Google recommends individual Offers for price accuracy validation
+- HotelRoom type supports `checkinTime`/`checkoutTime` directly (inherited from LodgingBusiness)
+
+### Gotchas
+- Must keep structured data prices in sync with displayed prices if they ever change
