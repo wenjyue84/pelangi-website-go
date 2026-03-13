@@ -184,10 +184,11 @@
 }
 
 @utility image-zoom {
-  /* Smooth image zoom on hover */
+  /* Smooth image zoom on hover and focus (WCAG 2.1 SC 1.4.13 parity) */
   @apply transition-transform duration-700 ease-out;
 
-  .group:hover & {
+  .group:hover &,
+  .group:focus-within & {
     @apply scale-105;
   }
 }

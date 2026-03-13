@@ -5448,3 +5448,27 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 ### Quality check
 - `npx tsc --noEmit` passes with zero errors
 - `npx next build` completes successfully with no CSS errors
+
+
+## Iteration - Story: US-118 - Implement WCAG 2.1 SC 1.4.13 – Content on Hover or Focus
+
+### What was implemented
+- **Gallery.tsx**: Added `group-focus-within:opacity-100` to hostel photo overlay gradient and text description so they appear on keyboard focus, not just pointer hover
+- **globals.css**: Updated `image-zoom` utility to trigger on `.group:focus-within` in addition to `.group:hover`, ensuring image scale effects have focus parity
+
+### Audit findings
+- No custom tooltip or popover components exist in the codebase — no Radix UI Tooltip, no CSS `:hover` content rules
+- `title="Search (Ctrl+K)"` in Header.tsx is a native browser tooltip (exempt from SC 1.4.13)
+- All `group-hover` usage outside Gallery overlays are decorative style changes (color shifts, scale transforms) on always-visible content — not additional content revealed on hover
+- FAQ accordion, LanguageSwitcher, ShareButton are all click-triggered (not hover/focus-triggered) — not in scope for SC 1.4.13
+- Gallery overlays satisfy **hoverable** (overlay covers entire card, stays while pointer is anywhere on card) and **persistent** (no auto-dismiss timer) requirements already
+- **Dismissable** exception applies: overlay text is supplementary info already available via `alt` attribute
+
+### Patterns discovered
+- Tailwind v4 supports `group-focus-within:` variant natively — no plugin needed
+- The `image-zoom` utility in globals.css uses nested `.group:hover &` syntax, which can be extended with `.group:focus-within &` for focus parity
+
+### Quality check
+- `npx tsc --noEmit` passes with zero errors
+- `npx next build` completes successfully
+
