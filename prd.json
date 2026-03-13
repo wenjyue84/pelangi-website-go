@@ -4017,6 +4017,248 @@
       "dependencies": [],
       "estimatedComplexity": "small",
       "passes": false
+    },
+    {
+      "id": "US-179",
+      "title": "Implement WCAG 2.2 SC 2.4.7 – Focus Visible on all interactive elements",
+      "priority": "high",
+      "description": "Every keyboard-focusable element must have a visible focus indicator. Tailwind's default Preflight resets outlines, and many components use outline-none or focus:ring-0 without a custom visible replacement, silently failing SC 2.4.7 (Level AA).",
+      "acceptanceCriteria": [
+        "No element has outline:none or focus:ring-0 without a replacement visible indicator",
+        "Focus ring meets 3:1 contrast ratio against adjacent colours",
+        "Global :focus-visible CSS rule defined in globals.css as a fallback",
+        "Keyboard navigation test (Tab key through entire site) shows visible focus at every stop"
+      ],
+      "technicalNotes": [
+        "Use :focus-visible pseudo-class to avoid showing rings on mouse clicks",
+        "Tailwind: add ring-2 ring-offset-2 to focus-visible variants in tailwind.config",
+        "Reference: https://www.w3.org/TR/WCAG22/#focus-visible"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-180",
+      "title": "Implement WCAG 2.2 SC 3.3.3 + 3.3.4 – Error Suggestion and Error Prevention on booking flow",
+      "priority": "high",
+      "description": "SC 3.3.3 (AA) requires that input errors be accompanied by a suggested correction when possible. SC 3.3.4 (AA) requires that legal/financial submissions be reviewable, confirmable, or reversible. The booking/contact forms currently lack both a review step and specific error suggestions.",
+      "acceptanceCriteria": [
+        "Date picker errors show a suggestion: 'Please enter a date in DD/MM/YYYY format'",
+        "Phone number field errors show a corrected format example",
+        "Booking form has a summary/review step before final submission",
+        "Email field error suggests '@' if missing: 'Did you mean name@example.com?'"
+      ],
+      "technicalNotes": [
+        "Use React Hook Form with Zod resolver — Zod error messages can be customised per field",
+        "Review step can be a confirmation modal before final POST",
+        "Reference: https://www.w3.org/TR/WCAG22/#error-suggestion"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-181",
+      "title": "Add Content-Type and X-Content-Type-Options: nosniff security header",
+      "priority": "high",
+      "description": "X-Content-Type-Options: nosniff prevents MIME type sniffing attacks where browsers interpret responses differently from declared Content-Type. This is an OWASP-recommended baseline security header that complements the existing CSP and HSTS headers already in place.",
+      "acceptanceCriteria": [
+        "X-Content-Type-Options: nosniff header present on all HTTP responses including API routes",
+        "Content-Type is explicitly set on all API route responses",
+        "Mozilla Observatory score improves to A or above after header addition",
+        "Header visible in browser DevTools Network tab for all page requests"
+      ],
+      "technicalNotes": [
+        "Add to next.config.ts headers() array alongside existing security headers",
+        "Reference: https://owasp.org/www-project-secure-headers/",
+        "OWASP ASVS V14.4.1 requires this header"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": true
+    },
+    {
+      "id": "US-182",
+      "title": "Fix WCAG 2.2 SC 2.4.4 – Link Purpose for generic CTA labels",
+      "priority": "medium",
+      "description": "Links labelled 'Read more', 'Book Now', 'Learn more', or 'Click here' without surrounding context fail SC 2.4.4 (Level A). Screen reader users navigating by links hear these labels in isolation and cannot determine destination.",
+      "acceptanceCriteria": [
+        "All 'Read more' links include aria-label or aria-labelledby with article/section title",
+        "All 'Book Now' CTAs specify destination context (e.g. aria-label='Book Now — Mixed Dorm Room')",
+        "Automated link-text audit using axe-core passes with zero 'link-name' violations",
+        "Manual screen reader test confirms each link is unambiguous out of context"
+      ],
+      "technicalNotes": [
+        "Prefer visually-hidden <span> text inside the <a> tag over aria-label for maintainability",
+        "Reference: https://www.w3.org/TR/WCAG22/#link-purpose-in-context"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-183",
+      "title": "Implement WCAG 2.2 SC 2.4.5 – Multiple Ways: add HTML sitemap page",
+      "priority": "medium",
+      "description": "SC 2.4.5 (Level AA) requires at least two ways to locate a page within a set of pages. An HTML sitemap page satisfies this alongside the existing navigation menu. This is separate from the XML sitemap.ts file already in place.",
+      "acceptanceCriteria": [
+        "A /sitemap page exists listing all public pages with descriptive anchor text",
+        "The sitemap page is linked from the site footer",
+        "Page is crawlable and not blocked by robots.txt",
+        "All pages listed match the routes in sitemap.ts"
+      ],
+      "technicalNotes": [
+        "Create app/sitemap-page/page.tsx (not to be confused with sitemap.ts XML sitemap)",
+        "Programmatically generate from the same route list used by sitemap.ts",
+        "Reference: https://www.w3.org/TR/WCAG22/#multiple-ways"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-184",
+      "title": "Audit and replace images of text with CSS text for WCAG 2.2 SC 1.4.5",
+      "priority": "medium",
+      "description": "SC 1.4.5 (Level AA) prohibits using images of text where CSS can achieve the same visual presentation, except for logotypes. Promotional banners, room-feature badges, and sale callouts often contain rasterised text that fails this criterion.",
+      "acceptanceCriteria": [
+        "Audit identifies all <img> and background-image assets containing text",
+        "All identified images are replaced with CSS/HTML equivalents or confirmed as logotypes",
+        "New promotional banner components use CSS text with Tailwind for styling",
+        "axe-core passes with zero image-alt false positives after replacement"
+      ],
+      "technicalNotes": [
+        "Use browser DevTools accessibility tree audit to identify images with embedded text",
+        "SVG with embedded <text> elements is permissible — ensure text is selectable",
+        "Reference: https://www.w3.org/TR/WCAG22/#images-of-text"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-185",
+      "title": "Add Security.txt file at /.well-known/security.txt for responsible disclosure",
+      "priority": "medium",
+      "description": "RFC 9116 (May 2022) standardises security.txt at /.well-known/security.txt for disclosing a vulnerability reporting contact. This is an OWASP best practice and increasingly required by enterprise security audits. It protects the hostel website from undisclosed vulnerabilities.",
+      "acceptanceCriteria": [
+        "GET /.well-known/security.txt returns a valid security.txt file",
+        "File includes Contact, Expires, and Preferred-Languages fields",
+        "File is served with Content-Type: text/plain",
+        "Expires field is set 12 months from creation and renewed annually",
+        "securitytxt.org validator passes with no errors"
+      ],
+      "technicalNotes": [
+        "Create app/.well-known/security.txt/route.ts as a Next.js route handler",
+        "RFC 9116: https://www.rfc-editor.org/rfc/rfc9116",
+        "Validate at: https://securitytxt.org"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-186",
+      "title": "Add Google Hotel free booking link rate parity disclosure on /book page",
+      "priority": "medium",
+      "description": "Google Hotel free booking links (already planned) require rate parity compliance. Google Hotels policy requires that the direct booking rate must not exceed OTA prices. Adding a rate parity statement and audit process ensures the hostel remains eligible for Google Hotel free booking links.",
+      "acceptanceCriteria": [
+        "/book page includes a 'Best Rate Guarantee' statement with disclosure text",
+        "Displayed rates equal or are lower than major OTA listings (Booking.com, Hostelworld)",
+        "Rate parity audit documented in README with last-checked date",
+        "Google Hotels free booking link shows the same price as direct booking"
+      ],
+      "technicalNotes": [
+        "Reference: https://support.google.com/hotelprices/answer/9049005",
+        "Combine with 'Book Direct = Best Price' trust badge story already in PRD",
+        "Rate parity is a prerequisite for Google Hotel Center free booking link eligibility"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-187",
+      "title": "Add CSS native scroll-driven carousel using ::scroll-button() and ::scroll-marker",
+      "priority": "low",
+      "description": "Chrome 135+ (March 2025) ships native CSS carousels via ::scroll-button() and ::scroll-marker pseudo-elements. These provide automatic ARIA button roles, keyboard handling, and reduced JavaScript dependency. The gallery and room-photo sliders can be refactored to use this zero-JS approach.",
+      "acceptanceCriteria": [
+        "Gallery carousel uses scroll-snap CSS with ::scroll-button() for prev/next controls",
+        "::scroll-marker group provides keyboard-accessible dot indicators",
+        "Fallback for non-supporting browsers degrades to scrollable overflow without JS errors",
+        "@supports query wraps the new pseudo-element declarations",
+        "Lighthouse reports no layout shift (CLS=0) from carousel on load"
+      ],
+      "technicalNotes": [
+        "Chrome 135+ required; use @supports (selector(::scroll-button(*))) guard",
+        "Reference: https://developer.chrome.com/blog/carousels-with-css",
+        "Companion spec: https://drafts.csswg.org/css-overflow-5/#scroll-marker-group"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-188",
+      "title": "Adopt CSS appearance: base-select for styled native <select> elements",
+      "priority": "low",
+      "description": "Chrome 130+ (Interop 2025) ships appearance: base-select, allowing the native <select> element to be fully styled with CSS while retaining built-in accessibility semantics. This eliminates the need for custom Radix UI Select components in simple dropdowns, reducing bundle size.",
+      "acceptanceCriteria": [
+        "Language switcher and any filter dropdowns use <select> with appearance: base-select where custom Select was used",
+        "Styled select matches brand design system (border-radius, colours, font)",
+        "@supports (appearance: base-select) guard ensures progressive enhancement",
+        "No regression in WCAG 4.1.2 — native select retains keyboard and screen reader support"
+      ],
+      "technicalNotes": [
+        "Reference: https://developer.chrome.com/blog/a-customizable-select",
+        "Polyfill not needed — fallback to system select is acceptable",
+        "Works in Chrome 130+, Safari TP, Firefox Nightly as of 2025"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-189",
+      "title": "Use <dialog closedby='any'> for light-dismiss modals without JavaScript",
+      "priority": "low",
+      "description": "Chrome 133+ adds the closedby attribute to the native <dialog> element, enabling backdrop-click dismiss declaratively without JavaScript event listeners. Reduces bundle size and improves accessibility reliability for cookie consent, gallery lightbox, and booking modals.",
+      "acceptanceCriteria": [
+        "Cookie consent, gallery lightbox, and booking confirmation modals use <dialog closedby='any'>",
+        "Escape key closes all dialogs without additional JS handler",
+        "Clicking backdrop closes dialogs where closedby='any' is set",
+        "Progressive enhancement: feature detection used for graceful fallback",
+        "Screen readers announce dialog correctly via native dialog role"
+      ],
+      "technicalNotes": [
+        "Reference: https://developer.chrome.com/blog/dialog-closedby",
+        "Combine with ::backdrop CSS for branded overlay",
+        "Remove duplicate JS click-outside listeners after migration"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-190",
+      "title": "Add SiteNavigationElement schema to main navigation for Google Sitelinks",
+      "priority": "low",
+      "description": "Google Search supports schema.org SiteNavigationElement to understand a site's primary navigation structure. Adding this to the main navigation helps Google understand site hierarchy and can improve Sitelinks display in SERPs for branded searches.",
+      "acceptanceCriteria": [
+        "JSON-LD script in layout.tsx includes SiteNavigationElement for all primary nav items",
+        "Each item has @type: SiteNavigationElement, name, and url properties",
+        "Rich Results Test validates the schema without errors",
+        "Navigation items in schema match exactly the visible nav links"
+      ],
+      "technicalNotes": [
+        "Reference: https://schema.org/SiteNavigationElement",
+        "Use ItemList wrapping SiteNavigationElement for ordered nav",
+        "Combine with existing WebSite SearchAction schema in the same JSON-LD block"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
     }
   ]
 }

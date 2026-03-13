@@ -147,6 +147,7 @@ export function middleware(req: NextRequest): NextResponse {
         status: 429,
         headers: {
           "Content-Type": "text/plain",
+          "X-Content-Type-Options": "nosniff",
           "Retry-After": retryAfter,
           ...rateLimitHeaders,
           "X-RateLimit-Remaining": "0",

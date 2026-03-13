@@ -5041,3 +5041,18 @@ US-103 (Google Business Profile registration) is entirely an external platform t
 - Speakable is still in Google beta and primarily for news publishers, but the markup is accepted and processed for all sites
 - CSS selectors must reference IDs that actually exist in the rendered DOM — easy to miss if component structure changes
 
+
+## Iteration 16 - Story: US-181 - Add Content-Type and X-Content-Type-Options: nosniff security header
+
+### What was implemented
+- Verified `X-Content-Type-Options: nosniff` already present in `site/next.config.ts` headers() for all routes via `source: "/(.*)"` pattern
+- Verified all 5 route handlers (feed.xml, image-sitemap.xml, api/meta-events, llms.txt, llms-full.txt) explicitly set Content-Type
+- Fixed edge case: the 429 rate-limit response in `site/src/middleware.ts` was a direct `NextResponse` that bypasses the `next.config.ts` headers pipeline — added `X-Content-Type-Options: nosniff` directly to its headers
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- `next.config.ts` `headers()` applies to all routes served through the normal Next.js pipeline, but direct `NextResponse` returns from middleware bypass these configured headers
+- When middleware returns early (e.g., 429 Too Many Requests), security headers must be set explicitly on that response
+
+### Gotchas
+- The story was 95% already implemented — the header existed in next.config.ts from project setup. The only gap was the middleware 429 response bypassing the headers pipeline.
