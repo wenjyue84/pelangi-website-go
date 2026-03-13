@@ -59,7 +59,7 @@ export default function Reviews() {
             ))}
             <div className="container-custom">
                 <div className="text-center max-w-2xl mx-auto mb-16">
-                    <h2 className="font-display text-4xl font-medium mb-4 text-stone-900 dark:text-stone-100">Guest Love</h2>
+                    <h2 className="font-display text-4xl font-medium mb-4 text-stone-900 dark:text-stone-100">Guest Reviews</h2>
                     <div className="flex items-center justify-center gap-2 mb-4">
                         <div className="flex text-amber-400">
                             {[...Array(5)].map((_, i) => (

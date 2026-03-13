@@ -134,7 +134,7 @@ export default function Gallery() {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14 px-4">
           <p className="section-label">Gallery</p>
-          <h2 className="section-heading mb-6">Take a Look Around</h2>
+          <h2 className="section-heading mb-6">Photo Gallery</h2>
           <p className="text-stone-600 dark:text-stone-400 text-lg leading-relaxed">
             Browse through our hostel, see happy guests, and discover adventures waiting for you.
           </p>
@@ -172,7 +172,7 @@ export default function Gallery() {
         {/* Section 2: Happy Guests */}
         <ScrollSection
           id="community"
-          title="Happy Guests"
+          title="Guest Photos"
           subtitle="Real moments from our community"
           onSeeAll={() => setActiveModal('guests')}
         >
@@ -324,14 +324,14 @@ export default function Gallery() {
             <div className="max-w-6xl mx-auto">
               <div className="flex items-center justify-between mb-8 sticky top-0 bg-stone-900/80 backdrop-blur-xs py-4 -mx-4 px-4">
                 <div>
-                  <h3 className="text-2xl font-display font-medium text-white">Happy Guests</h3>
+                  <h3 className="text-2xl font-display font-medium text-white">Guest Photos</h3>
                   <p className="text-stone-400 text-sm">{guestPhotos.length} photos from our community</p>
                 </div>
                 <button
                   className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center
                            text-white hover:bg-white/20 transition-colors cursor-pointer"
                   onClick={() => setActiveModal(null)}
-                  aria-label="Close"
+                  aria-label="Close guest photos gallery"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />

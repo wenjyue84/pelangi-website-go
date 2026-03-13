@@ -59,7 +59,7 @@ export default function Facilities() {
             Amenities
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-medium mb-6">
-            Everything You Need
+            Facilities &amp; Services
           </h2>
           <p className="text-stone-300 text-lg leading-relaxed">
             We provide all the essential amenities to make your stay comfortable and convenient.

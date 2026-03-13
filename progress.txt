@@ -4408,3 +4408,37 @@ Incomplete: Register Google Business Profile and connect to Google Hotel free bo
 ### Gotchas
 - Import paths must use `../../public/images/...` relative to the component file (not `@/` alias, since public is outside `src/`)
 - No bundle size increase — blur data is inlined at build time in the HTML as a tiny base64 string, not shipped as JS
+
+
+## Iteration - Story: US-129 - Implement WCAG 2.2 SC 2.4.6 descriptive headings and form labels
+
+### What was implemented
+- Audited all h1-h6 headings across 30+ tsx files (pages and components)
+- Audited all form controls (input, select, textarea, button) for label associations
+- Fixed 7 generic/vague headings to be descriptive of their section topic:
+  - Reviews.tsx: "Guest Love" → "Guest Reviews"
+  - FAQ.tsx: "Common Questions" → "Frequently Asked Questions"
+  - Amenities.tsx: "Everything you need" → "Hostel Amenities"
+  - Facilities.tsx: "Everything You Need" → "Facilities & Services"
+  - CommunityEvents.tsx: "More than just a place to sleep" → "Community & Events"
+  - Gallery.tsx: "Take a Look Around" → "Photo Gallery"
+  - Gallery.tsx: "Happy Guests" → "Guest Photos" (both ScrollSection title and modal heading)
+- Enhanced FAQ accordion with proper ARIA attributes:
+  - Added `aria-expanded` to toggle buttons
+  - Added `aria-controls` linking buttons to answer panels
+  - Added `id` on buttons for `aria-labelledby` references
+  - Added `role="region"` and `aria-labelledby` on answer panels
+  - Added `aria-hidden="true"` to decorative chevron icon
+- Improved Gallery modal close button: "Close" → "Close guest photos gallery"
+- Form controls audit: all inputs already had proper `<label htmlFor>` or `aria-label` — no changes needed
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- All form controls in the codebase already follow strong accessibility patterns (label associations, ARIA live regions, keyboard support)
+- Headings were mostly descriptive; the main issue was marketing-style poetic headings that don't convey section topic to screen reader heading-list navigation
+- "Everything You Need" appeared in both Amenities.tsx and Facilities.tsx — duplicate heading text resolved by giving each a unique descriptive name
+
+### Gotchas
+- SC 2.4.6 is about making headings describe "topic or purpose" — poetic/marketing headings like "Guest Love" fail this even though they sound nice visually
+- The FAQ accordion was functionally correct but lacked ARIA disclosure pattern attributes (aria-expanded, aria-controls, role="region")
+- Some acceptance criteria (screen reader testing with NVDA/VoiceOver, axe-core audit) require manual verification outside of code changes

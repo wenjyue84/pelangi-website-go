@@ -73,7 +73,7 @@ export default function Amenities() {
         <section className="py-20 bg-stone-50 dark:bg-stone-950">
             <div className="container-custom">
                 <div className="text-center max-w-2xl mx-auto mb-16">
-                    <h2 className="font-display text-4xl font-medium mb-4 text-stone-900 dark:text-stone-100">Everything you need</h2>
+                    <h2 className="font-display text-4xl font-medium mb-4 text-stone-900 dark:text-stone-100">Hostel Amenities</h2>
                     <p className="text-stone-600 dark:text-stone-400 text-lg">Designed for the modern traveler. We&apos;ve got the essentials covered so you can focus on exploring.</p>
                 </div>
 

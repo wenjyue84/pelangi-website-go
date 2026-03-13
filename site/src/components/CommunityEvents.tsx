@@ -24,7 +24,7 @@ export default function CommunityEvents() {
                     <div>
                         <div className="mb-8">
                             <span className="text-amber-600 dark:text-amber-400 font-medium tracking-wider text-sm uppercase mb-2 block">The Vibe</span>
-                            <h2 className="font-display text-4xl font-medium mb-6 text-stone-900 dark:text-stone-100">More than just a place to sleep</h2>
+                            <h2 className="font-display text-4xl font-medium mb-6 text-stone-900 dark:text-stone-100">Community &amp; Events</h2>
                             <p className="text-stone-600 dark:text-stone-400 text-lg mb-6">
                                 At Pelangi, we believe travel is about connection. Our common areas are designed to spark conversations,
                                 and our weekly events bring everyone together. Whether you&apos;re a solo traveler or with a group,
