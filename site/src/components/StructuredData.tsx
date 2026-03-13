@@ -144,6 +144,54 @@ export default function StructuredData() {
     }
   };
 
+  const vacationRentalSchema = {
+    "@context": "https://schema.org",
+    "@type": "VacationRental",
+    "@id": "https://pelangicapsulehostel.com/#vacation-rental",
+    "identifier": "pelangi-capsule-hostel-jb",
+    "name": "Pelangi Capsule Hostel",
+    "description": "Japanese-style capsule hostel in the heart of Johor Bahru. Affordable, private, and comfortable pods with free WiFi, 24/7 access, hot showers, and personal lockers.",
+    "url": "https://pelangicapsulehostel.com",
+    "telephone": "+60127088789",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "26A Jalan Perang, Taman Pelangi",
+      "addressLocality": "Johor Bahru",
+      "addressRegion": "Johor",
+      "postalCode": "80400",
+      "addressCountry": "MY"
+    },
+    "latitude": 1.48552,
+    "longitude": 103.75940,
+    "occupancy": {
+      "@type": "QuantitativeValue",
+      "value": 24
+    },
+    "checkinTime": "T14:00:00",
+    "checkoutTime": "T12:00:00",
+    "image": [
+      "https://pelangicapsulehostel.com/images/capsule-1.webp",
+      "https://pelangicapsulehostel.com/images/capsule-2.webp",
+      "https://pelangicapsulehostel.com/images/capsule-3.webp",
+      "https://pelangicapsulehostel.com/images/capsule-4.webp",
+      "https://pelangicapsulehostel.com/images/toilet.jpg",
+      "https://pelangicapsulehostel.com/images/sink.jpg",
+      "https://pelangicapsulehostel.com/images/living-room.jpeg",
+      "https://pelangicapsulehostel.com/images/facility-1.webp",
+      "https://pelangicapsulehostel.com/images/facility-2.webp",
+      "https://pelangicapsulehostel.com/images/exterior-1.webp",
+      "https://pelangicapsulehostel.com/images/entrance.jpeg"
+    ],
+    "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "Free WiFi", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Air Conditioning", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Hot Shower", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Personal Lockers", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Shared Kitchen", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Laundry Facilities", "value": true }
+    ]
+  };
+
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -200,6 +248,10 @@ export default function StructuredData() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(hostelSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(vacationRentalSchema) }}
       />
       <script
         type="application/ld+json"

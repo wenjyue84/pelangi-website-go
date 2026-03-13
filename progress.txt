@@ -4307,3 +4307,23 @@ Incomplete: Register Google Business Profile and connect to Google Hotel free bo
 ### Gotchas
 - PRD technical notes referenced gray palette but project uses stone palette — different hex values
 - Be careful with `replace_all` on `border-stone-200` — some instances are decorative (dialog containers, message bubbles) not interactive component borders
+
+
+## Iteration 11 - Story: US-122 - Add VacationRental structured data for Google property rich results
+
+### What was implemented
+- Added `VacationRental` JSON-LD schema to `site/src/components/StructuredData.tsx`
+- Schema includes: `identifier`, `name`, `latitude`/`longitude` (5 decimal places), `occupancy.value` (24 max guests)
+- 11 property images included (capsule-1 through capsule-4, toilet, sink, living-room, facility-1/2, exterior-1, entrance) — covers bedroom, bathroom, and common area
+- `checkinTime` and `checkoutTime` in ISO 8601 format (T14:00:00 / T12:00:00)
+- `amenityFeature` array with 6 key amenities
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- VacationRental is a sibling type to LodgingBusiness in schema.org — both can coexist in JSON-LD on the same page
+- `latitude`/`longitude` at root level (not nested in `geo`) per Google VacationRental spec
+- `occupancy` uses `QuantitativeValue` type with `value` property
+
+### Gotchas
+- Google VacationRental requires Hotel Center connection for full rich result eligibility — the structured data alone enables the schema but full rich results need the Hotel Center setup (covered by US-103)
+- Coordinates reused from existing hostelSchema `geo` block (1.48552, 103.75940) — 5 decimal places as required
