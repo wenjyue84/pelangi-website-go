@@ -35,5 +35,21 @@ export default function manifest(): MetadataRoute.Manifest {
         purpose: "maskable",
       },
     ],
+    screenshots: [
+      {
+        src: "/images/screenshots/screenshot-narrow.webp",
+        sizes: "1080x2400",
+        type: "image/webp",
+        form_factor: "narrow",
+        label: "Pelangi Capsule Hostel — Home page on mobile",
+      },
+      {
+        src: "/images/screenshots/screenshot-wide.webp",
+        sizes: "2560x1600",
+        type: "image/webp",
+        form_factor: "wide",
+        label: "Pelangi Capsule Hostel — Home page on desktop",
+      },
+    ],
   };
 }

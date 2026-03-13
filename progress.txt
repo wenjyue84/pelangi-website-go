@@ -5750,3 +5750,22 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 ### Gotchas
 - Must use unique keyframe names (`vt-fade-out`/`vt-fade-in`) to avoid colliding with existing `fadeIn` keyframe defined in the @theme block
 - `@view-transition` is not `@supports`-guarded because unsupporting browsers simply ignore the unknown at-rule (no fallback needed)
+
+
+## Iteration - Story: US-218 - Upgrade PWA manifest with screenshots and description for enhanced install dialog
+
+### What was implemented
+- Captured high-DPI screenshots of the live site using Chrome DevTools at 3x DPR (mobile) and 2x DPR (desktop)
+- Created `site/public/images/screenshots/screenshot-narrow.webp` (1080x2400, 153KB) for mobile form factor
+- Created `site/public/images/screenshots/screenshot-wide.webp` (2560x1600, 100KB) for desktop form factor
+- Updated `site/src/app/manifest.ts` to include `screenshots` array with both narrow and wide entries
+- `description` field was already present in the manifest — no change needed
+
+### Patterns discovered
+- Next.js `MetadataRoute.Manifest` type includes full `screenshots` support with `form_factor`, `label`, `platform`, `sizes`, and `type` fields
+- Chrome DevTools MCP `emulate` viewport accepts `deviceScaleFactor` as the third parameter in the format `WxHxDPR` — using DPR 3 for mobile gives 1080x2400 from a 360x800 viewport
+- WebP format is recommended for PWA screenshots — keeps file sizes small while maintaining quality
+
+### Gotchas
+- Screenshots at default DPR (1x) result in small pixel dimensions (412x915) that are below the recommended 1080x1920 for narrow form factor — must explicitly set higher DPR
+- `rtk npx tsc` doesn't work in this environment — use `npx tsc --noEmit` directly
