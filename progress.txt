@@ -5516,3 +5516,24 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 ### Quality check
 - `npx tsc --noEmit` passes with zero errors
 - `npx next build` completes successfully with no CSS errors
+
+
+## Iteration - Fri, Mar 13, 2026 - Story: US-121 Add Service Worker offline fallback to complete PWA installability
+
+### What was implemented
+- Integrated `@serwist/next` (`withSerwistInit`) into `site/next.config.ts` as outermost config wrapper
+- SW source: `site/src/app/sw.ts` — Serwist with CacheFirst static assets, NetworkFirst pages, `/~offline` fallback
+- Offline page: `site/src/app/~offline/page.tsx` — branded page with hostel contact info for offline travellers
+- Excluded `src/app/sw.ts` from main `tsconfig.json` to prevent webworker types leaking into DOM code
+- Added `public/sw.js` and `public/sw.js.map` to `.gitignore` (build outputs)
+- Removed redundant `serwist.config.js` and `src/app/serwist.ts` (config now in next.config.ts, auto-registration default)
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- `withSerwistInit` default `register: true` handles automatic SW registration — no layout changes needed
+- SW source file must be excluded from main tsconfig to avoid `/// <reference lib="webworker" />` leaking `WorkerNavigator` types
+- Config wrapper order: `withSerwist(withBundleAnalyzer(withSentryConfig(nextConfig, sentryOpts)))` — serwist outermost
+
+### Gotchas
+- `serwist` and `@serwist/next` packages were already in package.json (added by prior iteration) but integration wasn't wired up
+- `sw.ts` triple-slash `/// <reference no-default-lib="true" />` + `/// <reference lib="webworker" />` breaks DOM types project-wide if not excluded from tsconfig

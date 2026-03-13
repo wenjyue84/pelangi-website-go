@@ -1,6 +1,16 @@
+import { spawnSync } from "node:child_process";
 import type { NextConfig } from "next";
 import { withSentryConfig } from "@sentry/nextjs";
+import withSerwistInit from "@serwist/next";
 import bundleAnalyzer from "@next/bundle-analyzer";
+
+// Serwist: Service Worker for PWA offline fallback (US-121)
+const revision = spawnSync("git", ["rev-parse", "HEAD"], { encoding: "utf-8" }).stdout?.trim() ?? crypto.randomUUID();
+const withSerwist = withSerwistInit({
+  swSrc: "src/app/sw.ts",
+  swDest: "public/sw.js",
+  additionalPrecacheEntries: [{ url: "/~offline", revision }],
+});
 
 // Bundle analyzer — run with: ANALYZE=true npm run build
 // Top 3 JS contributors (measured via ANALYZE=true build, 2026-03-13):
@@ -79,7 +89,7 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withBundleAnalyzer(withSentryConfig(nextConfig, {
+export default withSerwist(withBundleAnalyzer(withSentryConfig(nextConfig, {
   // Sentry organisation and project (set via SENTRY_ORG / SENTRY_PROJECT env vars,
   // or override here for CI). These are non-secret build-time values.
   silent: !process.env.CI, // Suppress output locally; show in CI for visibility
@@ -93,4 +103,4 @@ export default withBundleAnalyzer(withSentryConfig(nextConfig, {
 
   // Hides Sentry telemetry/debug output in the build logs
   telemetry: false,
-}));
+})));
