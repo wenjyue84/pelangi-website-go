@@ -3948,3 +3948,71 @@ This user story is for a Next.js/TypeScript project, not Frappe/Python. The task
 ### Gotchas
 - TouristDestination is distinct from TouristAttraction — it represents a city/region, not a single place
 - containedInPlace on the hostel only needs the @type and @id reference, not the full schema
+
+
+## Pre-analysis for US-084 (Gemini 2.5 Pro)
+This user story describes a frontend change for a React/Next.js application, not a Frappe/Python one. The implementation will involve editing `.tsx` files to modify the JSON-LD structured data.
+
+Here is the technical brief based on the actual project context:
+
+**Project:** Pelangi Website (Next.js/React)
+**User Story:** US-084: Add Aggregate/Star Rating to LodgingBusiness Schema
+
+**1. Files to Modify:**
+*   `site/src/components/StructuredData.tsx`: This is the primary target. It likely contains the existing `LodgingBusiness` JSON-LD schema definition that needs to be updated.
+*   `site/src/lib/constants.ts` (or create it): A new constant should be added here to store the review data (e.g., `HOSTELWORLD_RATING`), making it easy to update quarterly as required.
+
+**2. Key Components & Data Structures:**
+*   **Component:** `StructuredData`: The React component responsible for rendering the `<script type="application/ld+json">` tag in the site's `<head>`.
+*   **Data Structure:** The `LodgingBusiness` JSON object within `StructuredData.tsx` must be modified to include two new properties: `aggregateRating` and `starRating`.
+
+**3. Recommended Implementation Approach:**
+1.  Define a new exported constant in `site/src/lib/constants.ts`, for example:
+    ```typescript
+    export const REAL_REVIEWS = {
+      ratingValue: "4.7", // As of Q1 2026
+      reviewCount: "1834" // As of Q1 2026
+    };
+    ```
+2.  In `StructuredData.tsx`, import this constant.
+3.  Modify the `LodgingBusiness` schema object to add the `aggregateRating` and `starRating` properties, populating them from the imported constant.
+    ```javascript
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": REAL_REVIEWS.ratingValue,
+      "bestRating": "5",
+      "worstRating": "1",
+      "reviewCount": REAL_REVIEWS.reviewCount
+    },
+    "starRating": {
+      "@type": "Rating",
+      "ratingValue": "1" // Or the hostel's official star category
+    }
+    ```
+
+**4. Edge Cases & Gotchas:**
+*   **Data Types:** Ensure `ratingValue` and `reviewCount` are passed as strings or numbers as required by the schema validator. Google's validator is flexible, but consistency is key.
+*   **`starRating` vs. `aggregateRating`:** `aggregateRating` reflects customer reviews. `starRating` typically represents the official classification of the hotel (e.g., 1-star, 2-star). The story is slightly ambiguous; clarify if `starRating.ratingValue` should be the same as the aggregate or a different, official value.
+*   **Validation:** Do not consider the task complete until the updated schema is tested and passes in the Google Rich Results Test without warnings.
+*   **Manual Updates:** The process for quarterly updates is manual. The implementation should simply make changing the constants in `site/src/lib/constants.ts` the only step required.
+
+
+## Iteration 9 - Story: US-084 Add aggregateRating and starRating to LodgingBusiness schema
+
+### What was implemented
+- Created `site/src/lib/constants.ts` with `HOSTELWORLD_RATING` constant (ratingValue: "3.3", bestRating: "10", worstRating: "0", reviewCount: 21) sourced from Hostelworld Q1 2026
+- Added `aggregateRating` (AggregateRating type) to hostelSchema in `StructuredData.tsx` referencing the constant
+- Added `starRating` (Rating type, ratingValue: "1") to hostelSchema — represents budget/1-star property classification
+- Imported `HOSTELWORLD_RATING` from `@/lib/constants` in `StructuredData.tsx`
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Real Hostelworld rating fetched via WebFetch: 3.3/10 from 21 reviews (Q1 2026)
+- `starRating` in LodgingBusiness schema = official property classification (1-5 stars), NOT review rating — budget hostel = 1 star
+- `aggregateRating` scale must match `bestRating`/`worstRating` — Hostelworld uses 0-10 scale
+- Create `site/src/lib/constants.ts` for project-wide constants (previously only `headings.ts` existed)
+
+### Gotchas
+- prd.json must be read/written with `encoding='utf-8'` (Windows default cp1252 fails on special chars)
+- Hostelworld URL in sameAs confirmed as correct listing page (3.3/10, 21 reviews fetched successfully)
+- Previous attempts (2x) likely failed because fetching real platform data was not attempted via WebFetch

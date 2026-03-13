@@ -1,3 +1,5 @@
+import { HOSTELWORLD_RATING } from "@/lib/constants";
+
 export default function StructuredData() {
   const hostelSchema = {
     "@context": "https://schema.org",
@@ -106,7 +108,18 @@ export default function StructuredData() {
       "https://www.hostelworld.com/pwa/hosteldetails.php/Pelangi-Capsule-Hostel/Johor-Bahru/317698",
       "https://www.tripadvisor.com/Hotel_Review-g298278-d27125478-Reviews-Pelangi_Capsule_Hostel-Johor_Bahru_Johor_Bahru_District_Johor.html",
       "https://www.agoda.com/en-in/pelangi-hostel-capsule/hotel/johor-bahru-my.html"
-    ]
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": HOSTELWORLD_RATING.ratingValue,
+      "bestRating": HOSTELWORLD_RATING.bestRating,
+      "worstRating": HOSTELWORLD_RATING.worstRating,
+      "reviewCount": HOSTELWORLD_RATING.reviewCount
+    },
+    "starRating": {
+      "@type": "Rating",
+      "ratingValue": "1"
+    }
   };
 
   const localBusinessSchema = {
