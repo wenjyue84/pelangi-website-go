@@ -11,7 +11,8 @@ export default function Hero() {
           src={heroImage}
           alt="Pelangi Capsule Hostel - Affordable Japanese-style pod accommodation in Johor Bahru near Singapore"
           fill
-          priority
+          preload={true}
+          fetchPriority="high"
           sizes="100vw"
           className="object-cover"
           placeholder="blur"

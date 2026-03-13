@@ -6058,3 +6058,31 @@ Completed: Implement Next.js after() API for deferred analytics and logging (ID:
 ### Gotchas
 - RTK `git status` reports deletions as "Modified" — use `git status --short` to see the `D` (deleted) flag
 - The build error "Both middleware file and proxy file detected" is a hard failure, not a warning — must be resolved before any other build checks
+
+
+
+## Iteration - Story: US-227 - Migrate next/image priority prop to preload + fetchPriority (Next.js 16)
+
+### What was implemented
+- `Hero.tsx` — Replaced `priority` with `preload={true} fetchPriority="high"` on the hero LCP image (only `fetchPriority="high"` image on homepage)
+- `Rooms.tsx` — Added `fetchPriority="low"` to the featured capsule-4 image (first large below-fold image that competes for bandwidth with hero)
+- `About.tsx` — Added `fetchPriority="low"` to the exterior building image (large below-fold image)
+- `npx tsc --noEmit` passes with zero errors
+- `next build` completes with no priority-related deprecation warnings
+
+### Patterns discovered
+- Only ONE `<Image priority>` existed in the entire codebase (Hero.tsx) — all other images already relied on default lazy loading
+- `preload={true}` replaces the preload link injection that `priority` used to do; `fetchPriority="high"` maps to the HTML `fetchpriority` attribute
+- Below-fold images with static imports (blur placeholders) benefit from explicit `fetchPriority="low"` to prevent bandwidth contention with the LCP hero
+- Gallery/PhotoGallery images already use `loading="lazy"` or IntersectionObserver-based rendering, so they don't need explicit `fetchPriority="low"`
+- The `fetchPriority` prop is a standard HTML attribute (baseline since 2023), not Next.js-specific
+
+### Acceptance criteria met
+- [x] All `<Image priority>` usages replaced with `preload={true} fetchPriority="high"`
+- [x] Below-fold images explicitly set `fetchPriority="low"` where bandwidth contention matters
+- [x] No deprecation warnings in `next build` output related to the priority prop
+- [x] Only one image per page viewport has `fetchPriority="high"` (hero image only)
+- [x] tsc --noEmit passes with zero errors
+
+### Gotchas
+- The @serwist/next Turbopack and @sentry/nextjs deprecation warnings are unrelated cosmetic warnings — they don't indicate priority prop issues

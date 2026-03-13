@@ -15,6 +15,7 @@ export default function About() {
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover image-zoom"
+                fetchPriority="low"
               />
             </div>
             {/* Floating badge */}
