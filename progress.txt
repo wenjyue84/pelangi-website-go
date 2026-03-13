@@ -3707,3 +3707,78 @@ This user story is for a Next.js/TypeScript project, not a Frappe/Python one. Th
 - The automated upgrade tool creates `@utility group { ... }` which conflicts with Tailwind's built-in `group` utility — must be manually removed
 - `@tailwindcss/typography@0.5.19` works with v4 but needs `@plugin "@tailwindcss/typography"` in CSS (upgrade tool doesn't add this)
 - Pre-existing ESLint errors in SearchDialog.tsx and WebVitalsReporter.tsx cause `next build` lint step to fail (not related to Tailwind upgrade — compilation itself succeeds)
+## Iteration 5 - Fri, Mar 13, 2026  9:34:36 AM
+Incomplete: Add aggregateRating and starRating to LodgingBusiness schema from real review platform data (ID: US-084) — attempt 2/3
+
+
+## Pre-analysis for US-084 (Gemini 2.5 Pro)
+This user story is for a Next.js/TypeScript project, not a Frappe/Python one. The implementation will involve modifying React components and JSON-LD structured data.
+
+### Technical Brief: US-084 LodgingBusiness Schema Enhancement
+
+**1. Python Files to Modify:**
+This is a TypeScript/React task. The primary file to modify will be where the JSON-LD structured data is generated.
+- `site/src/components/StructuredData.tsx` (or a similarly named component/utility responsible for generating SEO metadata).
+- `site/src/components/Reviews.tsx` may be updated to consume and display the new rating values for UI consistency.
+
+**2. Frappe DocTypes / Hooks Involved:**
+Not applicable. The key entities are:
+- **React Components:** `StructuredData.tsx`, `Reviews.tsx`.
+- **JSON-LD Schema:** `LodgingBusiness`.
+- **Schema.org Types:** `AggregateRating`, `Rating`.
+
+**3. Recommended Implementation Approach:**
+1.  Define a configuration constant inside `site/src/components/StructuredData.tsx` to store the review data sourced from a real platform (e.g., Hostelworld).
+    ```typescript
+    const REAL_REVIEW_DATA = {
+      ratingValue: 4.7, // Example from Hostelworld
+      reviewCount: 3105 // Example from Hostelworld
+    };
+    ```
+2.  Locate the existing `LodgingBusiness` schema object within the component.
+3.  Add the `aggregateRating` property to it, referencing the constant.
+    ```json
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": REAL_REVIEW_DATA.ratingValue,
+      "reviewCount": REAL_REVIEW_DATA.reviewCount,
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+    ```
+4.  Add the `starRating` property, which can re-use the `ratingValue`.
+    ```json
+    "starRating": {
+        "@type": "Rating",
+        "ratingValue": REAL_REVIEW_DATA.ratingValue
+    }
+    ```
+5.  Ensure the component correctly embeds the updated JSON-LD script into the page's `<head>`.
+
+**4. Edge Cases & Gotchas:**
+-   **Data Authenticity:** The acceptance criteria demand using real, verifiable review data from an independent platform. Do not fabricate these numbers.
+-   **Validation:** The implementation is not complete until the output has been successfully validated with the Google Rich Results Test, ensuring no "unverified" warnings appear.
+-   **Data Types:** `ratingValue` and `reviewCount` must be treated as numbers in the JSON output.
+-   **Quarterly Updates:** The chosen implementation should make it simple for a non-developer to update the `REAL_REVIEW_DATA` constant each quarter as required.
+
+
+## Iteration - Story: US-085 - Add HSTS header (already implemented)
+
+### What was implemented
+- HSTS header was already present in `site/next.config.ts` line 38-40 with correct value: `max-age=63072000; includeSubDomains; preload`
+- Applied to all routes via `source: "/(.*)"` pattern
+- No code changes needed — marked as passes: true
+
+## Iteration - Story: US-086 - Add Permissions-Policy header to disable unused browser APIs
+
+### What was implemented
+- Updated `Permissions-Policy` header in `site/next.config.ts` from `camera=(), microphone=(), geolocation=()` to `camera=(), microphone=(), geolocation=(), payment=(), usb=(), fullscreen=(self)`
+- Added `payment=()`, `usb=()` to block unused APIs, `fullscreen=(self)` to allow same-origin fullscreen (needed for YouTube facade)
+- Applied to all routes via `source: "/(.*)"` pattern
+
+### Patterns discovered
+- Google Maps embeds use server-side embed API (`/maps/embed`), not `navigator.geolocation` — so `geolocation=()` doesn't affect map iframes
+- YouTube facade uses `allowfullscreen` — `fullscreen=(self)` permits this since it's same-origin
+
+### Gotchas
+- `fullscreen=()` (deny all) would break YouTube iframe fullscreen — must use `fullscreen=(self)`
