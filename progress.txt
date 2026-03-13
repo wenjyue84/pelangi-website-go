@@ -5002,3 +5002,41 @@ US-103 (Google Business Profile registration) is entirely an external platform t
 - Apple Touch Icon must have solid (non-transparent) background — iOS renders white on transparent
 - Maskable icons should NOT have rounded corners — the OS applies its own mask shape
 - ICO format embeds PNG data blocks with a custom header — generated programmatically with Buffer manipulation
+
+
+
+## Iteration 199 - Story: US-155 - Add DuitNow QR payment section to /book and /contact pages
+
+### What was implemented
+- Validated existing `DuitNowPayment` component already met all acceptance criteria
+- Component was implemented in a prior iteration but not marked as `passes: true`
+- Verified: full variant on /book page with Payment Methods section, compact variant on /contact page
+- Supported banks (Maybank, CIMB, RHB, etc.) and e-wallets (Touch 'n Go, Boost, GrabPay, etc.) displayed
+- Text fallback for accessibility present alongside QR placeholder
+
+### Patterns discovered
+- Components can be implemented but not marked complete if the iteration ran out of context — always check existing code before implementing
+
+### Gotchas
+- QR code placeholder shows "Coming Soon" — actual DuitNow QR image from bank still needs to be provided
+
+
+## Iteration 200 - Story: US-111 - Add Speakable structured data to key hostel information sections
+
+### What was implemented
+- Added `speakable` property with `SpeakableSpecification` to `hostelSchema` in `site/src/components/StructuredData.tsx`
+- Added `id="speakable-tagline"` to Hero subtitle paragraph in `Hero.tsx`
+- Added `id="speakable-location"` to LocationMap description container in `LocationMap.tsx`
+- Added `id="speakable-amenities"` to Amenities heading block in `Amenities.tsx`
+- All three CSS selectors (`#speakable-tagline`, `#speakable-location`, `#speakable-amenities`) target real DOM elements
+- Each speakable section is under 75 words (~20-60 words each), within the 20-30 second audio target
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Speakable uses `SpeakableSpecification` type with `cssSelector` array — cleaner than XPath for React apps
+- Speakable goes inside the main entity schema (Hostel), not as a separate JSON-LD block
+- Content targeted for speakable should be short, natural sentences — no jargon
+
+### Gotchas
+- Speakable is still in Google beta and primarily for news publishers, but the markup is accepted and processed for all sites
+- CSS selectors must reference IDs that actually exist in the rendered DOM — easy to miss if component structure changes

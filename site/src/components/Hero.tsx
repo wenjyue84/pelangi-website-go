@@ -35,7 +35,7 @@ export default function Hero() {
         </h1>
 
         {/* Subtitle */}
-        <p className="text-lg md:text-xl text-stone-200 mb-10 max-w-xl mx-auto leading-relaxed animate-fade-in delay-200">
+        <p id="speakable-tagline" className="text-lg md:text-xl text-stone-200 mb-10 max-w-xl mx-auto leading-relaxed animate-fade-in delay-200">
           Modern capsule hostel in the heart of Taman Pelangi.
           Privacy, comfort, and connection — all in one place.
         </p>

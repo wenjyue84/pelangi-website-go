@@ -17,7 +17,7 @@ export default function LocationMap() {
                             title="Pelangi Capsule Hostel Location"
                         ></iframe>
                     </div>
-                    <div className="order-1 md:order-2">
+                    <div id="speakable-location" className="order-1 md:order-2">
                         <h2 className="font-display text-4xl font-medium mb-6 text-stone-900 dark:text-stone-100">Right in the heart of Pelangi</h2>
                         <p className="text-stone-600 dark:text-stone-400 text-lg mb-6">
                             We are perfectly located for exploring. Walking distance to the best local hawker stalls, hip cafes, and night market.

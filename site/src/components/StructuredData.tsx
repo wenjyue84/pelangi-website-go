@@ -115,6 +115,14 @@ export default function StructuredData() {
         "value": true
       }
     ],
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [
+        "#speakable-tagline",
+        "#speakable-location",
+        "#speakable-amenities"
+      ]
+    },
     "touristType": ["Backpackers", "Budget Travelers", "Solo Travelers", "Digital Nomads"],
     "containedInPlace": {
       "@type": "TouristDestination",
