@@ -5856,3 +5856,21 @@ Completed: Verify WCAG 2.2 SC 1.4.4 text resize up to 200% without content loss 
 
 ### Gotchas
 - prd.json must be read/written with utf-8 encoding explicitly on Windows due to non-ASCII characters
+
+
+
+## Iteration - Story: US-190 - Add SiteNavigationElement schema to main navigation for Google Sitelinks
+
+### What was implemented
+- Added `siteNavigationSchema` JSON-LD object to `site/src/components/StructuredData.tsx` using `@graph` array with 6 `SiteNavigationElement` entries
+- Navigation items match visible Header nav links: About, Rooms, Gallery, Location, Check-in Guide, Book Now
+- Excluded hash-based nav items (/#destinations, /#community) as they point to page sections, not standalone pages
+- Added corresponding `<script type="application/ld+json">` tag to the StructuredData component output
+- Pre-existing TS errors (typedRoutes from US-125) confirmed — no new errors introduced
+
+### Patterns discovered
+- `@graph` wrapper is the correct way to group multiple SiteNavigationElement entries in a single JSON-LD block
+- Hash fragment links (#destinations, #community) should be excluded from SiteNavigationElement — they're not separate pages
+
+### Gotchas
+- Pre-existing typedRoutes TS errors exist in Header, Footer, SearchDialog, etc. — unrelated to structured data changes

@@ -344,6 +344,42 @@ export default function StructuredData() {
     ]
   };
 
+  const siteNavigationSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SiteNavigationElement",
+        "name": "About",
+        "url": "https://pelangicapsulehostel.com/about"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "name": "Rooms",
+        "url": "https://pelangicapsulehostel.com/rooms"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "name": "Gallery",
+        "url": "https://pelangicapsulehostel.com/gallery"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "name": "Location",
+        "url": "https://pelangicapsulehostel.com/contact"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "name": "Check-in Guide",
+        "url": "https://pelangicapsulehostel.com/check-in"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "name": "Book Now",
+        "url": "https://pelangicapsulehostel.com/book"
+      }
+    ]
+  };
+
   return (
     <>
       <script
@@ -365,6 +401,10 @@ export default function StructuredData() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(siteNavigationSchema) }}
       />
     </>
   );
