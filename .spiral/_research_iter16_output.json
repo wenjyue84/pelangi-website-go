@@ -1,0 +1,374 @@
+{
+  "stories": [
+    {
+      "title": "Implement WCAG 2.2 SC 4.1.2 – Name, Role, Value for all interactive components",
+      "priority": "high",
+      "description": "WCAG 2.2 SC 4.1.2 (Level AA) requires that every interactive UI component (buttons, links, form inputs, custom widgets, modal dialogs) exposes its name, role, and current state to assistive technology via correct ARIA semantics or native HTML. For a hostel website this applies to: room availability toggles, booking date pickers, modal dialogs, accordion FAQ sections, and custom carousel controls.",
+      "acceptanceCriteria": [
+        "All custom interactive elements (accordion, date picker, dialog, carousel navigation) have explicit ARIA roles and states (aria-expanded, aria-selected, aria-haspopup, aria-modal)",
+        "All form inputs have associated <label> elements (or aria-label / aria-labelledby) with matching `for`/`id` pairs",
+        "All image buttons have descriptive aria-label values conveying their action, not just 'button'",
+        "Automated axe-core scan reports zero SC 4.1.2 violations",
+        "Manual verification using browser accessibility tree inspector confirms correct name/role/state on accordion, modal, and carousel components"
+      ],
+      "technicalNotes": [
+        "Check custom components built with Radix UI — these usually handle 4.1.2 correctly, but verify any non-Radix custom widgets",
+        "Modal/dialog: must have role='dialog', aria-modal='true', aria-labelledby referencing the dialog heading",
+        "Accordion: trigger buttons must use aria-expanded and aria-controls pointing to the panel id",
+        "W3C reference: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "source": "https://www.w3.org/TR/WCAG22/#name-role-value"
+    },
+    {
+      "title": "Implement WCAG 2.2 SC 2.4.7 – Focus Visible for all keyboard-interactive elements",
+      "priority": "high",
+      "description": "WCAG 2.2 SC 2.4.7 (Level AA) requires that any keyboard-operable interface has a visible keyboard focus indicator. Many Tailwind-based hostel sites suppress the browser's default focus ring with `outline-none` or `focus:outline-none` to remove the 'ugly' blue ring without providing an accessible replacement. This blocks keyboard-only users and screen reader users from knowing which element has focus.",
+      "acceptanceCriteria": [
+        "No `outline-none` or `focus:outline-none` Tailwind classes applied to interactive elements without a visible replacement focus style",
+        "All links, buttons, form controls, and custom interactive elements show a clearly visible focus indicator when tabbed to",
+        "Focus indicator has at least 3:1 contrast ratio against the adjacent background (also required by SC 2.4.11)",
+        "Focus indicator is visible in all browser themes (light, dark) and on all background colours used on the site",
+        "Automated axe-core scan reports zero SC 2.4.7 violations",
+        "Manual tab-key navigation through all interactive elements on home, rooms, book, and contact pages confirms visible focus on every stop"
+      ],
+      "technicalNotes": [
+        "Tailwind recommended pattern: use `focus-visible:ring-2 focus-visible:ring-primary-500` instead of suppressing outline",
+        "Tailwind global: add `*:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }` in globals.css as a baseline",
+        "SC 2.4.7 (Level AA) requires visible focus; SC 2.4.11 (Level AA, already in scope) requires focus not be fully obscured; SC 2.4.13 (Level AAA) adds size requirements",
+        "W3C reference: https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://www.w3.org/TR/WCAG22/#focus-visible"
+    },
+    {
+      "title": "Implement WCAG 2.2 SC 2.4.4 – Link Purpose (In Context) for all navigation links",
+      "priority": "medium",
+      "description": "WCAG 2.2 SC 2.4.4 (Level A) requires that the purpose of each link can be determined from the link text alone, or from the link text combined with its surrounding programmatic context. Hostel websites commonly use generic link text like 'Read more', 'Click here', or 'Book' without context, making screen reader link-list navigation meaningless for visually impaired users.",
+      "acceptanceCriteria": [
+        "No links use exclusively generic text ('Read more', 'Click here', 'here', 'Learn more') without accessible context",
+        "Blog post card 'Read more' links include sr-only text specifying the article title (e.g. 'Read more about [article title]')",
+        "Room booking CTAs specify which room type (e.g. 'Book Mixed Dorm' not just 'Book Now')",
+        "Footer social media icon links have descriptive aria-label values (e.g. 'Visit Pelangi Capsule on Instagram')",
+        "Automated axe-core scan reports zero SC 2.4.4 violations",
+        "Screen reader link list (NVDA Insert+F7) shows meaningful link descriptions for all links"
+      ],
+      "technicalNotes": [
+        "Pattern for 'Read more' links: <a href='/blog/slug'>Read more <span class='sr-only'>about [article title]</span></a>",
+        "Alternative: use aria-label='Read more about [article title]' on the link — but visible text must be contained within the accessible name (SC 2.5.3)",
+        "W3C reference: https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html",
+        "ACT Rule: https://www.w3.org/WAI/standards-guidelines/act/rules/5effbb/proposed/"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://www.w3.org/TR/WCAG22/#link-purpose-in-context"
+    },
+    {
+      "title": "Implement WCAG 2.2 SC 3.3.3 and 3.3.4 – Error Suggestion and Error Prevention for forms",
+      "priority": "high",
+      "description": "WCAG 2.2 SC 3.3.3 (Level AA) requires that when an input error is detected, the system provides suggestions for correction. SC 3.3.4 (Level AA) requires that for pages causing legal or financial commitments, the user can review, correct, and confirm before finalising. The hostel contact form, booking form, and any future payment pages are all in scope.",
+      "acceptanceCriteria": [
+        "Contact form: when email field contains an invalid format, the error message explains the correct format (e.g. 'Enter a valid email address like name@example.com')",
+        "Contact form: when required fields are empty, the error message identifies which field and what is required",
+        "Error messages appear adjacent to the relevant field (not only at the top of the form) and are linked via aria-describedby",
+        "Any future booking/payment form includes a review step allowing the user to verify their name, dates, and total price before confirming",
+        "On the booking confirmation step, a clearly labeled 'Go back and edit' option is available",
+        "Automated axe-core scan reports zero SC 3.3.3 violations (error suggestions accessible)"
+      ],
+      "technicalNotes": [
+        "SC 3.3.3 (Error Suggestion, AA): provide specific, actionable error messages not just 'Invalid input'",
+        "SC 3.3.4 (Error Prevention, AA): for financial transactions, provide a review step or ability to undo/correct before final submission",
+        "Link error messages to inputs: <input aria-describedby='email-error'> + <p id='email-error'>...</p>",
+        "W3C reference 3.3.3: https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion.html",
+        "W3C reference 3.3.4: https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://www.w3.org/TR/WCAG22/#error-suggestion"
+    },
+    {
+      "title": "Implement WCAG 2.2 SC 2.4.5 – Multiple Ways to find pages across the site",
+      "priority": "medium",
+      "description": "WCAG 2.2 SC 2.4.5 (Level AA) requires that there is more than one way to locate a web page within a set of pages (except where the page is a step in a process). Hostel websites must provide at least two of: a site search, a sitemap page, related links between pages, or a table of contents. A site search or linked sitemap page satisfies this criterion.",
+      "acceptanceCriteria": [
+        "At least two page-finding mechanisms are present: e.g. navigation menu + site search OR navigation menu + HTML sitemap page",
+        "If a site search is implemented, the search input is reachable via keyboard and the search results page is accessible",
+        "If a sitemap page (/sitemap or /all-pages) is implemented, it lists all primary pages with working links",
+        "The chosen mechanisms are consistent across all pages (not present on some pages and absent on others)",
+        "Accessibility statement documents which SC 2.4.5 mechanisms are provided"
+      ],
+      "technicalNotes": [
+        "Simplest implementation: add a sitemap.html page (/sitemap-page) listing all routes with anchor links — takes ~30 minutes",
+        "Alternative: add a search widget using Next.js App Router search params + a pre-built search index (Pagefind or Flexsearch)",
+        "W3C reference: https://www.w3.org/WAI/WCAG22/Understanding/multiple-ways.html",
+        "Exception: pages that are part of a process (e.g. step 2 of a booking flow) are exempt"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://www.w3.org/TR/WCAG22/#multiple-ways"
+    },
+    {
+      "title": "Implement WCAG 2.2 SC 1.4.5 – Images of Text: replace decorative text images with CSS",
+      "priority": "medium",
+      "description": "WCAG 2.2 SC 1.4.5 (Level AA) prohibits using images of text where CSS text can achieve the same visual presentation (except for logotypes). Hostel sites commonly render promotional banners, amenity labels, or price badges as rasterised images with embedded text, which prevents users from resizing, recolouring, or reading the text with assistive technology.",
+      "acceptanceCriteria": [
+        "Audit of all <img> elements identifies any that contain text content (promotional banners, price badges, amenity labels)",
+        "Any identified text-in-image instances are replaced with CSS-styled HTML text with equivalent visual appearance",
+        "Logo/brand mark is exempt (logotype exception) but its alt text accurately describes the mark",
+        "Any social proof badges or MOTAC certification images that contain text have accurate alt text as a fallback",
+        "Automated axe-core scan reports zero SC 1.4.5 violations"
+      ],
+      "technicalNotes": [
+        "Common failure pattern: promotional banner created as a flat JPG in Canva with embedded text — replace with a CSS overlay card",
+        "Logotype exception: the site logo image is always exempt from SC 1.4.5",
+        "Alt text on unavoidable text images must verbatim reproduce the text in the image",
+        "W3C reference: https://www.w3.org/WAI/WCAG22/Understanding/images-of-text.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://www.w3.org/TR/WCAG22/#images-of-text"
+    },
+    {
+      "title": "Add BreadcrumbList structured data to all inner pages for rich search results",
+      "priority": "medium",
+      "description": "Google Search supports BreadcrumbList rich results which display the page's position in the site hierarchy directly in search result snippets (e.g. 'pelangi-capsule.com > Rooms > Mixed Dorm'). This improves click-through rate by giving users instant navigation context, and strengthens Google's understanding of the site's information architecture. The structured data applies to all inner pages (rooms, blog posts, guides, amenities).",
+      "acceptanceCriteria": [
+        "All inner pages (room pages, blog posts, /amenities, /guide, /location, /contact, /book) include a BreadcrumbList JSON-LD block",
+        "Each BreadcrumbList has at least two ListItems: the root (home) and the current page",
+        "Blog post pages have three levels: Home > Blog > [Post Title]",
+        "BreadcrumbList validates without errors in Google Rich Results Test",
+        "Google Search Console shows BreadcrumbList rich results detected after reindexing",
+        "The `item` URL in each ListItem matches the canonical URL of the corresponding page"
+      ],
+      "technicalNotes": [
+        "Implement as a JSON-LD <script> block in each layout or page component using Next.js metadata or a shared BreadcrumbJsonLd helper component",
+        "Required properties per ListItem: position (integer), name (string), item (URL — can be omitted for the final/current item)",
+        "Google breadcrumb docs: https://developers.google.com/search/docs/appearance/structured-data/breadcrumb",
+        "schema.org type: https://schema.org/BreadcrumbList"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://developers.google.com/search/docs/appearance/structured-data/breadcrumb"
+    },
+    {
+      "title": "Add FAQPage structured data for hostel FAQ sections",
+      "priority": "medium",
+      "description": "Google supports FAQPage rich results for well-known government and health sites only as of 2023, but FAQPage schema still improves Google's entity understanding and may appear in AI-generated search summaries (SGE/AI Overviews). Implementing FAQPage on the /amenities, /book, and /guide pages improves the site's eligibility for AI Overview citations, which is critical for answer engine optimisation (AEO) targeting travellers asking 'is Pelangi Capsule Hostel good?' or 'what is included in Johor Bahru hostel'.",
+      "acceptanceCriteria": [
+        "FAQPage JSON-LD block added to pages with FAQ sections (/amenities, /book, /guide, home page)",
+        "Each Question entity includes a name (the question text) and an acceptedAnswer.text (the answer text)",
+        "FAQ content in the JSON-LD matches the visible on-page content (no hidden or misleading Q&A)",
+        "Schema validates in Google Rich Results Test (note: rich result preview may not show for non-authoritative sites, but validation must pass)",
+        "At least 5 FAQ items covering: check-in/check-out times, dorm vs private room, parking, nearby attractions, booking process"
+      ],
+      "technicalNotes": [
+        "FAQPage rich results are restricted to government/health sites since Aug 2023 — but schema still benefits AI Overview inclusion and Bing",
+        "Google reference: https://developers.google.com/search/docs/appearance/structured-data/faqpage",
+        "schema.org type: https://schema.org/FAQPage",
+        "Also benefits Bing Webmaster and SGE/AI Overview citations for hospitality queries"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://developers.google.com/search/docs/appearance/structured-data/faqpage"
+    },
+    {
+      "title": "Implement Malaysia Tourism Tax (TTx) DPSP disclosure and compliance",
+      "priority": "high",
+      "description": "Malaysia's Tourism Tax Act 2017 and Public Ruling No. 01/2025 (effective 1 December 2025) require accommodation operators and Digital Platform Service Providers (DPSPs) to collect and remit RM10/room/night TTx from foreign guests. The hostel website must clearly disclose TTx applicability, show the rate at the point of booking, and ensure the booking engine correctly applies TTx to foreign-passport guest reservations.",
+      "acceptanceCriteria": [
+        "A Tourism Tax disclosure is visible on the /book page and pricing sections: 'Tourism Tax (TTx) of RM10 per room per night applies to foreign passport holders'",
+        "If the site includes a booking widget, TTx is shown as a separate line item in the price breakdown for non-Malaysian guests",
+        "A link to the official MyTTx guidance (https://www.myttx.customs.gov.my/) or the hostel's tax registration details is accessible from the /terms or /pricing pages",
+        "The /privacy-policy or /terms page documents the hostel's TTx registration status and operator obligations",
+        "Malaysian citizens and permanent residents are correctly identified as exempt from TTx in any booking flow documentation"
+      ],
+      "technicalNotes": [
+        "Public Ruling No. 01/2025 replaces TTx Policy No. 2/2023 from 1 December 2025 — update any references to the older policy",
+        "TTx registration: operators must register via www.myttx.customs.gov.my within 30 days of operation and remit monthly",
+        "DPSPs (online booking platforms integrated with the site) have separate registration obligations from the accommodation operator",
+        "Official guidance: https://www.myttx.customs.gov.my/legislation-guides-forms/",
+        "Rate: RM10.00 per room per night, foreign passport holders only"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://www.myttx.customs.gov.my/"
+    },
+    {
+      "title": "Implement CSS native carousel with ::scroll-button and ::scroll-marker pseudo-elements",
+      "priority": "low",
+      "description": "Chrome 135+ (March 2025) shipped the `::scroll-button()` and `::scroll-marker` pseudo-elements, enabling fully browser-native, accessible carousels without any JavaScript. The browser auto-generates ARIA roles, tab order, and disables buttons at scroll boundaries. For the hostel gallery and room photo slideshow, replacing a JavaScript carousel library with the CSS native approach reduces bundle size and eliminates JS-based ARIA management.",
+      "acceptanceCriteria": [
+        "Gallery/photo carousel uses scroll-snap-type, ::scroll-button(inline-start) / ::scroll-button(inline-end) for prev/next navigation, and ::scroll-marker for dot indicators",
+        "Carousel previous/next buttons are automatically disabled by the browser when at the start/end of scroll",
+        "Carousel is fully keyboard-navigable (tab to buttons, arrow keys between markers)",
+        "Progressive enhancement: falls back gracefully to a scrollable strip in browsers that don't support ::scroll-button (Firefox, Safari)",
+        "Existing JavaScript carousel library is removed and its bundle weight eliminated",
+        "Scroll markers provide accessible names (via data-* attributes or aria-label on scroll-marker elements)"
+      ],
+      "technicalNotes": [
+        "::scroll-button() requires Chrome 135+ — use @supports for progressive enhancement",
+        "Accessibility caveat: scroll markers currently have no native way to provide accessible names — use aria-label on the ::scroll-marker source elements and monitor the spec for updates",
+        "Chrome blog: https://developer.chrome.com/blog/carousels-with-css",
+        "Accessible carousel guide: https://developer.chrome.com/blog/accessible-carousel",
+        "MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Overflow/Carousels"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "source": "https://developer.chrome.com/blog/carousels-with-css"
+    },
+    {
+      "title": "Style native <select> elements using appearance: base-select and custom picker",
+      "priority": "low",
+      "description": "Chrome 130+ (2025) introduced `appearance: base-select` which unlocks full CSS styling of native `<select>` elements, including custom `::picker(select)` pseudo-elements for the dropdown. Previously, custom-styled dropdowns required JavaScript-heavy Radix UI Select or Headless UI components. For hostel booking forms (room type selector, guest count), using native `<select>` with CSS styling improves accessibility and reduces JavaScript bundle weight.",
+      "acceptanceCriteria": [
+        "Room type and guest count dropdowns use native <select> elements styled with `appearance: base-select`",
+        "Dropdowns are visually consistent with the site design system (colours, border radius, typography)",
+        "Progressive enhancement: fallback to browser-default <select> styling in Firefox/Safari that don't yet support appearance: base-select",
+        "Native <select> accessibility (keyboard navigation, screen reader support) is preserved",
+        "Radix UI Select dependency is removed from components where native <select> now suffices, reducing bundle size"
+      ],
+      "technicalNotes": [
+        "Feature: `appearance: base-select` on the <select> element + `::picker(select)` for dropdown container + `::picker-icon` for the chevron",
+        "Baseline support: Chrome 130+; Firefox and Safari support is pending as of early 2026",
+        "Progressive enhancement via @supports: @supports (appearance: base-select) { select { appearance: base-select; } }",
+        "Google I/O 2025 announcement: https://developer.chrome.com/blog/new-in-web-ui-io-2025-recap",
+        "MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/appearance"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://developer.chrome.com/blog/new-in-web-ui-io-2025-recap"
+    },
+    {
+      "title": "Adopt CSS Anchor Positioning for tooltips and popover amenity details",
+      "priority": "low",
+      "description": "CSS Anchor Positioning (Chrome 125+, Interop 2025) allows elements to be declaratively tethered to an anchor element, with automatic repositioning when near screen edges. For the hostel amenities page and room detail pages, replacing JavaScript-positioned tooltips (showing amenity descriptions, price breakdowns) with CSS anchor-positioned popovers eliminates a class of JavaScript logic and ensures correct positioning on all screen sizes.",
+      "acceptanceCriteria": [
+        "Amenity icon tooltips on the /amenities page use CSS anchor positioning (anchor-name, position-anchor, position-area)",
+        "Tooltip automatically repositions to avoid viewport overflow (using position-try-fallbacks)",
+        "Progressive enhancement: JavaScript-positioned fallback for Firefox/Safari that don't support anchor positioning",
+        "Tooltips satisfy WCAG SC 1.4.13 (Content on Hover or Focus): hoverable, dismissable via Escape, persistent",
+        "Existing JavaScript tooltip positioning logic is removed from affected components"
+      ],
+      "technicalNotes": [
+        "CSS: `.trigger { anchor-name: --tooltip-anchor; }` + `.tooltip { position: absolute; position-anchor: --tooltip-anchor; position-area: bottom span-left; }`",
+        "Use `position-try-fallbacks: flip-block, flip-inline` for automatic edge-avoidance",
+        "Pairs well with the Popover API for automatic light-dismiss and top-layer rendering",
+        "Chrome blog: https://developer.chrome.com/blog/anchor-positioning-api",
+        "MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning/Using",
+        "Interop 2025 focus area: https://web.dev/blog/interop-2025"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "source": "https://developer.chrome.com/blog/anchor-positioning-api"
+    },
+    {
+      "title": "Implement Next.js 16.1 Bundle Analyzer for production bundle optimisation",
+      "priority": "medium",
+      "description": "Next.js 16.1 ships an experimental bundle analyzer (`next experimental-analyze`) that works with Turbopack and provides an interactive treemap of all production bundles — by route, module, and import chain. For the hostel site, this identifies oversized third-party dependencies (analytics scripts, booking widgets, icon libraries) that inflate client-side JavaScript and degrade LCP and INP.",
+      "acceptanceCriteria": [
+        "`next experimental-analyze` runs successfully and opens the interactive bundle analyzer UI",
+        "All page bundles have been reviewed and any module >50KB has a documented justification or is replaced with a lighter alternative",
+        "The home page client-side JavaScript bundle is documented (current size and post-analysis target)",
+        "At least one concrete optimisation (lazy import, dynamic import, lighter library) is identified and implemented based on the analysis",
+        "Bundle sizes are tracked in CI using a budget (e.g. via bundlesize or Next.js built-in size limit config)"
+      ],
+      "technicalNotes": [
+        "Command: `next experimental-analyze` (requires Next.js 16.1+)",
+        "The analyzer shows server and client bundle views separately, and traces import chains across server-to-client component boundaries",
+        "Next.js 16.1 blog: https://nextjs.org/blog/next-16-1#nextjs-bundle-analyzer-experimental",
+        "GitHub discussion for feedback: https://github.com/vercel/next.js/discussions/86731"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://nextjs.org/blog/next-16-1"
+    },
+    {
+      "title": "Enable `next dev --inspect` for Node.js debugger integration",
+      "priority": "low",
+      "description": "Next.js 16.1 adds native support for `next dev --inspect` which attaches the Node.js inspector only to the process running application code (not all spawned processes). This enables full breakpoint debugging of Server Components, Server Actions, and API routes in VS Code's Node.js debugger — previously requiring the awkward `NODE_OPTIONS=--inspect` workaround which attached to all processes.",
+      "acceptanceCriteria": [
+        "`next dev --inspect` starts the dev server with the Node.js inspector active on the correct port (9229 by default)",
+        "VS Code's Node.js debugger can attach to the process and hit breakpoints in Server Components and Server Actions",
+        "The `.vscode/launch.json` configuration is updated to use `next dev --inspect` as the debug command",
+        "Breakpoints in route handlers (app/api/) are hit correctly during debugging sessions",
+        "Documentation for the debug configuration is added to the project README or .claude/notes"
+      ],
+      "technicalNotes": [
+        "Command: `next dev --inspect` — attaches inspector only to the user code process",
+        "VS Code launch.json: add an 'Attach to Node' configuration targeting port 9229",
+        "Previous workaround `NODE_OPTIONS=--inspect next dev` attached to all processes including Turbopack workers — now fixed",
+        "Next.js 16.1 blog: https://nextjs.org/blog/next-16-1#easier-debugging-with-next-dev---inspect"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://nextjs.org/blog/next-16-1"
+    },
+    {
+      "title": "Implement Next.js 16 Enhanced Routing with layout deduplication awareness",
+      "priority": "medium",
+      "description": "Next.js 16 completely rewrote the routing and navigation system introducing layout deduplication (shared layouts are downloaded once across all prefetched links) and incremental prefetching (only uncached segments are prefetched). For a hostel site with 50+ room and blog links on the home page, this can dramatically reduce prefetch payload. However, the new behaviour changes prefetch cache semantics and may surface edge cases in custom navigation logic.",
+      "acceptanceCriteria": [
+        "Network DevTools on the home page shows shared layout (RootLayout, main navigation) downloaded once per session, not per Link hover",
+        "Prefetch requests are incremental: hovering over 10 room links results in 10 unique data-only prefetches, not 10 full-page downloads",
+        "Any custom `router.prefetch()` or `router.push()` calls work correctly with the new prefetch cache behaviour",
+        "Navigation between room pages does not cause a full page reload (only the page segment is replaced)",
+        "No regression in page transition speed compared to Next.js 15 (measured via WebPageTest navigations)"
+      ],
+      "technicalNotes": [
+        "Next.js 16 routing change: layout deduplication + incremental prefetching are enabled by default with no config required",
+        "Trade-off: more individual prefetch requests, but significantly lower total transfer size — acceptable for hostel use case",
+        "If increased request count causes server issues, contact Vercel — they are working on data chunk inlining optimisations",
+        "Next.js 16 blog: https://nextjs.org/blog/next-16#enhanced-routing-and-navigation",
+        "Upgrade guide: https://nextjs.org/docs/app/guides/upgrading/version-16"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://nextjs.org/blog/next-16"
+    },
+    {
+      "title": "Implement React 19.2 SSR Suspense boundary batching and resume APIs",
+      "priority": "low",
+      "description": "React 19.2 (shipped with Next.js 16) introduces batched reveals of server-rendered Suspense boundaries — content that streams in close together is now revealed as a group rather than individually, enabling coordinated View Transition animations and reducing cumulative layout shift from sequential Suspense reveals. The new `resumeToPipeableStream` and `resumeAndPrerender` APIs under `react-dom/server` and `react-dom/static` also enable partial prerendering resume on edge functions.",
+      "acceptanceCriteria": [
+        "Streaming server-rendered pages (using Suspense and dynamic() imports) show grouped reveals where multiple Suspense boundaries resolve close together",
+        "No regression in streaming behaviour: pages with Suspense boundaries still stream correctly and don't block the initial HTML flush",
+        "If View Transitions are enabled (separate story), Suspense boundary animations run in batched groups rather than chained one-by-one",
+        "Test with React 19.2 Canary (included in Next.js 16) confirms no Suspense-related hydration errors in browser console"
+      ],
+      "technicalNotes": [
+        "React 19.2 blog: https://react.dev/blog/2025/10/01/react-19-2",
+        "New APIs: `react-dom/server` exports `resume`, `resumeToPipeableStream`; `react-dom/static` exports `resumeAndPrerender`, `resumeAndPrerenderToNodeStream`",
+        "These APIs enable the PPR (Partial Prerendering) resume flow used internally by Next.js 16 Cache Components",
+        "No direct code changes required for Suspense batching — it is a runtime behaviour change; just verify no regressions"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://react.dev/blog/2025/10/01/react-19-2"
+    },
+    {
+      "title": "Add <dialog> element with closedby='any' for light-dismiss modal behaviour",
+      "priority": "low",
+      "description": "Chrome 133+ (2025) added the `closedby` attribute to the HTML `<dialog>` element, enabling native light-dismiss (close by clicking outside or pressing Escape) without any JavaScript event listeners. Previously this required manual `click` event listeners on the backdrop or a JavaScript library. For hostel modals (photo lightbox, booking details popup, cookie consent dialog), adopting native `closedby='any'` simplifies the component and guarantees correct accessibility behaviour.",
+      "acceptanceCriteria": [
+        "At least one modal dialog on the site (photo lightbox, info popup) uses the native <dialog> element with closedby='any'",
+        "Dialog closes when user clicks outside the dialog area (light dismiss) — no JavaScript event listener required",
+        "Dialog closes when user presses Escape",
+        "Focus is correctly returned to the triggering element when the dialog closes",
+        "Progressive enhancement: dialog falls back to the standard <dialog> without closedby in Firefox/Safari (manual Escape handling via JS remains for those browsers)",
+        "Dialog satisfies WCAG SC 4.1.2: role='dialog', aria-modal='true', aria-labelledby referencing dialog heading"
+      ],
+      "technicalNotes": [
+        "HTML: <dialog closedby='any'>...</dialog> — the 'any' value enables light-dismiss by click-outside",
+        "Browser support: Chrome 133+; Firefox and Safari pending as of early 2026",
+        "@supports check or feature detection needed for progressive enhancement",
+        "Chrome I/O 2025 blog: https://developer.chrome.com/blog/new-in-web-ui-io-2025-recap",
+        "MDN closedby: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#closedby"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "source": "https://developer.chrome.com/blog/new-in-web-ui-io-2025-recap"
+    }
+  ]
+}

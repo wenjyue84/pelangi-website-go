@@ -5185,3 +5185,4 @@ US-103 (Google Business Profile registration) is entirely an external platform t
 ### Gotchas
 - Must validate `REVALIDATE_SECRET` exists before checking header — return 500 if not configured to avoid silent security bypass
 - Path must be validated to start with `/` to prevent misuse
+
