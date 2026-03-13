@@ -6038,3 +6038,23 @@ Completed: Implement Next.js after() API for deferred analytics and logging (ID:
 - Build error "Both middleware file and proxy file are detected" is the most likely blocker for Next.js 16 migration
 - When merging middleware into proxy, remember to bring over ALL deferred side-effects (page view logging, etc.)
 - The @serwist/next Turbopack warning and @sentry/nextjs deprecation warnings are cosmetic — they don't block the build
+
+
+
+## Iteration - Story: US-226 - Await all async params, cookies(), and headers() accesses (Next.js 16)
+
+### What was implemented
+- Verified all `params` usages were already properly awaited: `blog/[slug]/page.tsx`, `blog/category/[category]/page.tsx`, `blog/[slug]/opengraph-image.tsx` — all use `const { ... } = await params`
+- Verified `cookies()` in `actions/language.ts` and `headers()` in `actions/contact.ts` are already awaited
+- Fixed the critical build blocker: `middleware.ts` was deleted and its page view logging was already merged into `proxy.ts` (Next.js 16 renames middleware → proxy)
+- `npm run build` completes successfully — "ƒ Proxy (Middleware)" confirms proxy.ts is correctly detected
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- In Next.js 16, `src/middleware.ts` is renamed to `src/proxy.ts` — having both causes a hard build error
+- All `params`, `cookies()`, `headers()` were already made async by the `@next/codemod` run in a prior iteration
+- `PageProps<'/path/[slug]'>` from `next typegen` already types params as `Promise<{slug: string}>`
+
+### Gotchas
+- RTK `git status` reports deletions as "Modified" — use `git status --short` to see the `D` (deleted) flag
+- The build error "Both middleware file and proxy file detected" is a hard failure, not a warning — must be resolved before any other build checks
