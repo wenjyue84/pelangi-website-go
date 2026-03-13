@@ -7118,3 +7118,28 @@ Completed: Add JSON Feed 1.1 at /feed.json for blog content syndication (ID: US-
 
 ### Gotchas
 - rtk wrapper doesn't work with npx — use npx directly for tsc checks
+
+
+## Iteration 275 - Story: Web Share API share button with PWA share_target (US-142)
+
+### What was implemented
+- `site/src/components/ShareButton.tsx` — client component with Web Share API + clipboard fallback
+  - Feature detects `navigator.share` (not UA sniff); uses `navigator.clipboard.writeText` as fallback
+  - `navigator.canShare()` guard before calling `navigator.share()`
+  - `AbortError` ignored (user cancelled share)
+  - Visual toast + `aria-live="polite"` sr-only region for screen reader announcements
+- `site/src/app/shared/page.tsx` — share_target handler at /shared
+  - Reads `title`, `text`, `url` from searchParams (async, Next.js 15 pattern)
+  - robots: index: false to prevent indexing
+  - Internal URL extraction strips the hostel domain to produce a valid Next.js route
+- `site/src/app/manifest.ts` — added `share_target` entry with action `/shared`, method `GET`
+- `site/src/app/rooms/page.tsx` — ShareButton added to pricing/features section header
+- `site/src/app/getting-here/page.tsx` — ShareButton added below hero paragraph
+
+### Patterns discovered
+- TypeScript typed routes (`typedRoutes: true`) requires `import type { Route } from 'next'` and `href={val as Route}` for dynamic string hrefs
+- Existing pattern in `sitemap-html/page.tsx` and `BookNowCTA.tsx` uses `as Route` cast
+
+### Gotchas
+- `typedRoutes: true` in next.config.ts causes TS error when passing computed string to Link `href`; fix with `as Route` cast
+- `site/src/app/shared/` was previously untracked — needed explicit `git add` of the directory
