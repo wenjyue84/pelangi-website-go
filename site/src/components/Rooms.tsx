@@ -130,7 +130,7 @@ export default async function Rooms() {
                   Premium comfort at backpacker prices
                 </p>
                 <div className="flex items-center gap-1.5 mt-3 text-sm text-stone-500 dark:text-stone-400">
-                  <span>+ Tourism Tax (TTx): RM10/room/night</span>
+                  <span>+ Service Tax (SST) 8% + Tourism Tax (TTx) RM10/room/night</span>
                   <a
                     href="https://www.myttx.customs.gov.my/"
                     target="_blank"
@@ -168,6 +168,10 @@ export default async function Rooms() {
                 <div className="flex justify-between text-sm">
                   <span className="text-stone-500 dark:text-stone-400">Monthly Rate</span>
                   <span className="font-medium text-stone-800 dark:text-stone-200">RM594/month</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-stone-500 dark:text-stone-400">Service Tax (SST)</span>
+                  <span className="font-medium text-stone-800 dark:text-stone-200">8%</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-stone-500 dark:text-stone-400">Tourism Tax (TTx)</span>

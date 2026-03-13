@@ -78,17 +78,17 @@ const hotelRoomsSchema = [
         offers: [
             {
                 "@type": "Offer",
-                price: "35",
+                price: "37.80",
                 priceCurrency: "MYR",
                 availability: "https://schema.org/InStock",
                 seller,
                 priceValidUntil,
                 businessFunction: "http://purl.org/goodrelations/v1#LeaseOut",
-                description: "Nightly rate",
+                description: "Nightly rate inclusive of SST 8%",
                 unitCode: "DAY",
                 priceSpecification: {
                     "@type": "UnitPriceSpecification",
-                    price: "35",
+                    price: "37.80",
                     priceCurrency: "MYR",
                     unitText: "night",
                     referenceQuantity: {
@@ -100,17 +100,17 @@ const hotelRoomsSchema = [
             },
             {
                 "@type": "Offer",
-                price: "594",
+                price: "641.52",
                 priceCurrency: "MYR",
                 availability: "https://schema.org/InStock",
                 seller,
                 priceValidUntil,
                 businessFunction: "http://purl.org/goodrelations/v1#LeaseOut",
-                description: "Monthly rate",
+                description: "Monthly rate inclusive of SST 8%",
                 unitCode: "MON",
                 priceSpecification: {
                     "@type": "UnitPriceSpecification",
-                    price: "594",
+                    price: "641.52",
                     priceCurrency: "MYR",
                     unitText: "month",
                     referenceQuantity: {
@@ -151,17 +151,17 @@ const hotelRoomsSchema = [
         offers: [
             {
                 "@type": "Offer",
-                price: "45",
+                price: "48.60",
                 priceCurrency: "MYR",
                 availability: "https://schema.org/InStock",
                 seller,
                 priceValidUntil,
                 businessFunction: "http://purl.org/goodrelations/v1#LeaseOut",
-                description: "Nightly rate",
+                description: "Nightly rate inclusive of SST 8%",
                 unitCode: "DAY",
                 priceSpecification: {
                     "@type": "UnitPriceSpecification",
-                    price: "45",
+                    price: "48.60",
                     priceCurrency: "MYR",
                     unitText: "night",
                     referenceQuantity: {
@@ -203,7 +203,7 @@ export default async function RoomsPage() {
                         </h2>
                         <div className="text-lg text-stone-700 dark:text-stone-300 leading-relaxed space-y-4">
                             <p>
-                                Pelangi Capsule Hostel offers two pod types in Taman Pelangi, Johor Bahru. Standard Capsule Pods start from RM35 per night and Premium Capsule Pods from RM45 per night. Monthly long-stay rates begin at RM594 per month. All rates are subject to Malaysia Tourism Tax (TTx) of RM10 per room per night as mandated by the Royal Malaysian Customs Department.
+                                Pelangi Capsule Hostel offers two pod types in Taman Pelangi, Johor Bahru. Standard Capsule Pods start from RM35 per night and Premium Capsule Pods from RM45 per night. Monthly long-stay rates begin at RM594 per month. All rates are subject to Malaysia Service Tax (SST) at 8% and Tourism Tax (TTx) of RM10 per room per night for non-Malaysian guests as mandated by the Royal Malaysian Customs Department. Tax rates are subject to change per Malaysian government regulation.
                             </p>
                             <p>
                                 Every pod includes a lockable sliding privacy door, personal climate control (fan and air-conditioning), adjustable LED lighting, USB and power outlets, a premium mattress, and a personal locker. Shared facilities include free high-speed WiFi, hot showers, a fully equipped kitchen, a water dispenser, laundry facilities, and luggage storage. The hostel operates 24/7 with self-check-in access and CCTV security throughout the property.

@@ -6138,3 +6138,22 @@ Completed: Implement Next.js after() API for deferred analytics and logging (ID:
 
 ### Gotchas
 - `minimumCacheTTL` default changed from 60s → 14400s (4h) in NJ16 — could delay image updates if not explicitly set
+
+
+## Iteration N - Story: Disclose Malaysia Service Tax (SST 8%) on accommodation booking pages
+
+### What was implemented
+- `site/src/components/Rooms.tsx` — Added SST 8% to pricing card tag line and separate row in rates table
+- `site/src/app/book/page.tsx` — Added SST 8% to both nightly and monthly pricing cards; added SST line items to OTA vs Direct price comparison table; updated footer disclaimer to mention SST; updated lodgingReservationSchema totalPrice to RM37.80 (SST-inclusive)
+- `site/src/app/rooms/page.tsx` — Updated all Schema.org Offer prices to SST-inclusive totals (RM35→RM37.80, RM45→RM48.60, RM594→RM641.52); updated "Capsule Pod Pricing & Features" text to mention SST; added legal disclaimer about tax rates subject to change
+- `site/src/app/contact/page.tsx` — Added tax disclosure paragraph below DuitNowPayment
+
+### Patterns discovered
+- Hooks appear to revert edits on first attempt (timing issue); re-applying edits works
+- Project uses Python base (not uv) for prd.json manipulation — use encoding='utf-8'
+
+### Gotchas
+- File watcher/hook may revert first Edit attempt; always verify with grep before moving on
+- prd.json has UTF-8 characters — must use encoding='utf-8' in Python open()
+- Schema prices should reflect SST-inclusive total (base × 1.08), but TTx excluded (foreign guests only, variable)
+
