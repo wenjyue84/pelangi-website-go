@@ -4327,3 +4327,24 @@ Incomplete: Register Google Business Profile and connect to Google Hotel free bo
 ### Gotchas
 - Google VacationRental requires Hotel Center connection for full rich result eligibility — the structured data alone enables the schema but full rich results need the Hotel Center setup (covered by US-103)
 - Coordinates reused from existing hostelSchema `geo` block (1.48552, 103.75940) — 5 decimal places as required
+
+
+## Iteration 11 - Story: US-139 - Implement schema.org HowTo markup for self-check-in process
+
+### What was implemented
+- Enhanced `site/src/app/check-in/page.tsx` with 6 detailed step-by-step check-in instructions (was 2 sparse steps)
+- Added JSON-LD HowTo schema with name, description, estimatedCost (RM0), totalTime (PT5M), and 6 HowToStep items
+- Each step has an anchor ID for deep-linking (used in schema `url` property)
+- Steps rendered as an ordered list with numbered badges for clear visual hierarchy
+- Added check-in/check-out times section and time/cost/schedule metadata badges in header
+- Kept existing VideoObject schema intact; HowTo schema references the video via `video` property
+- Page already linked in Header nav and sitemap.ts — no changes needed there
+- `aria-hidden="true"` added to decorative SVG icons for accessibility
+
+### Patterns discovered
+- Existing check-in page already had VideoObject JSON-LD — multiple schema types coexist via separate `<script type="application/ld+json">` tags
+- Steps data defined as a const array and shared between HTML rendering and schema generation to keep them in sync
+
+### Gotchas
+- HowTo `estimatedCost` requires `MonetaryAmount` type with `currency` and `value` — not a plain string
+- `totalTime` must be ISO 8601 duration format (e.g., "PT5M")
