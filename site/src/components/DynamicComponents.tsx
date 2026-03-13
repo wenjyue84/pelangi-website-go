@@ -41,3 +41,8 @@ export const WebVitalsReporter = dynamic(
   () => import("@/components/WebVitalsReporter"),
   { ssr: false }
 );
+
+export const BookingRecoveryBanner = dynamic(
+  () => import("@/components/BookingRecoveryBanner"),
+  { ssr: false }
+);

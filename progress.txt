@@ -4626,3 +4626,28 @@ Incomplete: Register Google Business Profile and connect to Google Hotel free bo
 - The T&C page had no existing bilingual content — this is the first section with dual-language text
 - US-103 (Google Business Profile) is critical priority but is an external platform task, not code-implementable
 
+
+
+## Iteration 30 - Story: US-133 - Implement booking abandonment recovery via sessionStorage re-engagement prompt
+
+### What was implemented
+- Created `site/src/components/BookingRecoveryBanner.tsx` — client component that detects existing booking draft in sessionStorage and shows a non-blocking toast banner with "Resume Booking" CTA
+- Banner appears on all pages EXCEPT `/book` (where BookingForm already restores the draft), after 800ms delay for non-intrusive UX
+- Uses existing `useBookingDraft()` hook for sessionStorage state (draft data + dismissal flag)
+- Dismiss button sets `pelangi_booking_draft_dismissed=true` in sessionStorage — banner won't reappear for the session
+- Added to `DynamicComponents.tsx` as lazy-loaded (ssr: false) and mounted in `layout.tsx` between MobileBookingBar and ChatWidget
+- Installed `@playwright/test` as devDependency
+- Created `site/playwright.config.ts` with basic config (localhost:3000, webServer integration)
+- Created `site/e2e/booking-recovery.spec.ts` with 4 tests: draft save verification, banner appearance on navigation, dismissal persistence, and no-personal-data validation
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Existing `useBookingDraft()` hook already had full sessionStorage persistence and dismissal state — no modifications needed
+- `usePathname()` from `next/navigation` used to exclude banner from `/book` page
+- Toast z-index z-50 sits between MobileBookingBar (z-40) and CookieConsent (z-60) per established z-stack
+- The `animate-fade-in` class from globals.css provides smooth entry animation
+
+### Gotchas
+- Banner uses `role="status"` with `aria-live="polite"` for screen reader announcement — does not interrupt assistive technology
+- On mobile, banner is positioned at `bottom-20` to clear the MobileBookingBar; on desktop at `bottom-6`
+- Only roomType/checkIn/checkOut/savedAt stored in sessionStorage — no personal data (name, email, phone) ever touches storage

@@ -2959,7 +2959,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-134",
@@ -3617,6 +3617,404 @@
       "dependencies": [
         "Upgrade to Next.js 16 and resolve all breaking changes"
       ],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-163",
+      "title": "Implement Google Tag Manager with Consent Mode v2",
+      "priority": "high",
+      "description": "Install GTM with Consent Mode v2 so all six consent parameters (ad_storage, ad_user_data, analytics_storage, ad_personalization, functionality_storage, personalization_storage) are correctly signalled before any Google tags fire. Required since March 2024 for Google Ads conversion tracking to function with EU/international visitors. Enables the marketing team to manage tags without code deploys.",
+      "acceptanceCriteria": [
+        "GTM container script loaded in layout.tsx using @next/third-parties/google GoogleTagManager component",
+        "Consent Mode v2 default state is set to 'denied' before GTM loads via a gtag.js dataLayer push in a beforeInteractive script",
+        "All six consent parameters are initialised: ad_storage, ad_user_data, analytics_storage, ad_personalization, functionality_storage, security_storage",
+        "Consent state is updated to 'granted' upon PDPA cookie consent banner acceptance",
+        "GTM Consent Overview in GTM UI shows all tags are consent-aware",
+        "Verified in Google Tag Assistant that no Google tags fire before consent is granted"
+      ],
+      "technicalNotes": [
+        "Load GTM using @next/third-parties/google GoogleTagManager with lazyOnload strategy",
+        "Initialise default consent state in a <Script strategy='beforeInteractive'> block",
+        "gtag('consent', 'default', { ad_storage: 'denied', ... }) must execute before GTM container",
+        "Update consent on banner accept: gtag('consent', 'update', { ad_storage: 'granted', ... })",
+        "Reference: https://developers.google.com/tag-platform/security/guides/consent"
+      ],
+      "dependencies": [
+        "Integrate GA4 analytics via @next/third-parties/google",
+        "Add Malaysia PDPA-compliant cookie consent banner with explicit opt-in"
+      ],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-164",
+      "title": "Implement Facebook Conversions API (CAPI) for server-side event tracking",
+      "priority": "high",
+      "description": "Add a Next.js Route Handler that sends key booking-intent events (PageView, ViewContent on room pages, Contact on form submission) directly to the Meta Conversions API server-side. Server-side tracking bypasses browser ad blockers and iOS 14+ restrictions, significantly improving Facebook/Instagram Ads attribution accuracy for retargeting campaigns targeting international backpackers.",
+      "acceptanceCriteria": [
+        "POST /api/meta-events Route Handler implemented and sends events to Meta Conversions API v21.0",
+        "Events tracked: PageView, ViewContent (room page), Contact (inquiry form submit)",
+        "Each event has a unique event_id that matches the corresponding browser-side Pixel event for deduplication",
+        "User data fields (email, phone) are SHA-256 hashed before transmission per Meta requirements",
+        "FACEBOOK_PIXEL_ID and FACEBOOK_ACCESS_TOKEN stored as Vercel environment variables",
+        "Meta Events Manager Test Events Tool confirms events arrive and deduplicate correctly"
+      ],
+      "technicalNotes": [
+        "Use Meta Marketing API v21.0 endpoint: POST https://graph.facebook.com/v21.0/{pixel-id}/events",
+        "Required payload: data[].event_name, data[].event_time (Unix timestamp), data[].event_source_url, data[].action_source='website'",
+        "Hash user data: crypto.createHash('sha256').update(email.trim().toLowerCase()).digest('hex')",
+        "Browser-side Pixel is still needed alongside CAPI — use the same event_id for deduplication",
+        "Reference: https://developers.facebook.com/docs/marketing-api/conversions-api/"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-165",
+      "title": "WCAG 2.1 SC 2.1.1 – Keyboard: ensure all functionality is keyboard operable",
+      "priority": "high",
+      "description": "Audit all interactive functionality to ensure it can be operated entirely via keyboard without requiring specific timing. Custom components using div/span (image gallery carousel, mobile drawer nav, room tabs) must receive tabindex, role, and keyboard event handlers. This is WCAG 2.1 Level A — failing this makes the site completely unusable for keyboard-only users including many people with motor disabilities.",
+      "acceptanceCriteria": [
+        "All navigation menus, dropdowns, and mobile drawer can be opened/closed using Enter, Space, and Escape keys",
+        "Gallery carousel supports Left/Right Arrow key navigation between images",
+        "Room type tabs on /rooms support Arrow Left/Right key navigation per ARIA tab pattern",
+        "Any custom <div role='button'> or interactive span elements handle keydown Enter and Space events",
+        "WCAG 2.1.2 No Keyboard Trap satisfied: pressing Escape or Shift+Tab can always exit any modal or overlay",
+        "Full keyboard navigation path tested manually with Tab, Shift+Tab, Enter, Space, and Arrow keys"
+      ],
+      "technicalNotes": [
+        "Non-native interactive elements need: tabindex='0', appropriate ARIA role, onKeyDown handler for Enter/Space",
+        "Modals must implement focus trap: keep Tab/Shift+Tab within the modal, restore focus to trigger element on close",
+        "Use @radix-ui/react primitives (included in shadcn/ui) — they have keyboard interaction built-in per ARIA APG",
+        "ARIA keyboard patterns reference: https://www.w3.org/WAI/ARIA/apg/patterns/",
+        "Reference: https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-166",
+      "title": "Add axe-core automated accessibility testing in CI/CD pipeline",
+      "priority": "high",
+      "description": "Integrate @axe-core/playwright into the Playwright test suite and run it as a GitHub Actions CI step on every pull request. axe-core catches approximately 57% of WCAG issues automatically including missing alt text, invalid ARIA attributes, colour contrast failures, and missing form labels — preventing accessibility regressions from reaching production undetected.",
+      "acceptanceCriteria": [
+        "Playwright test file e2e/accessibility.spec.ts runs axe analysis on /, /rooms, /book, /contact, /blog, and /guide pages",
+        "GitHub Actions CI step runs Playwright accessibility tests on every PR and blocks merge on WCAG A/AA violations",
+        "Test scope targets WCAG 2.1 Level A and AA rules: tags ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']",
+        "Any axe violations result in a failed test with the violation description, element selector, impact level, and help URL logged",
+        "Accessibility violations are reported in the GitHub Actions summary panel as a readable table"
+      ],
+      "technicalNotes": [
+        "Install: npm install --save-dev @axe-core/playwright",
+        "Usage: const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa']).analyze()",
+        "Assert: expect(results.violations).toEqual([])",
+        "Note: @axe-core/react does NOT support React 18+ — use @axe-core/playwright exclusively",
+        "Reference: https://github.com/dequelabs/axe-core, https://playwright.dev/docs/accessibility-testing"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-167",
+      "title": "Implement Stripe FPX online banking for direct booking deposit payment",
+      "priority": "high",
+      "description": "Add a Stripe FPX payment flow to the /book page allowing Malaysian guests to pay a booking deposit directly via online banking (Maybank, CIMB, RHB, etc.) without leaving the site. Direct payment reduces dependency on OTA commissions and increases conversion for guests who prefer local banking over credit cards. FPX is the dominant online payment method in Malaysia.",
+      "acceptanceCriteria": [
+        "Stripe account configured for Malaysia (MYR) with FPX payment method enabled",
+        "POST /api/create-payment-intent Route Handler creates a Stripe PaymentIntent with payment_method_types: ['fpx']",
+        "Stripe Elements FPX bank selector renders on /book page below the direct booking form",
+        "Webhook handler at POST /api/stripe-webhook processes payment_intent.succeeded to confirm and log the booking",
+        "Payment confirmation page displays booking reference, amount paid, and check-in details",
+        "STRIPE_SECRET_KEY, STRIPE_PUBLISHABLE_KEY, and STRIPE_WEBHOOK_SECRET stored as Vercel env vars",
+        "End-to-end flow tested in Stripe test mode with test bank credentials before production deploy"
+      ],
+      "technicalNotes": [
+        "FPX is available only for MYR Stripe accounts — verify Stripe dashboard country is set to Malaysia",
+        "PaymentIntent: stripe.paymentIntents.create({ amount, currency: 'myr', payment_method_types: ['fpx'] })",
+        "Use Stripe Elements: loadStripe from @stripe/stripe-js + <PaymentElement> from @stripe/react-stripe-js",
+        "Webhook: stripe.webhooks.constructEvent(body, sig, STRIPE_WEBHOOK_SECRET) then handle payment_intent.succeeded",
+        "FPX refunds: supported up to 60 days, async, ~7 business days processing time",
+        "Reference: https://docs.stripe.com/payments/fpx/accept-a-payment"
+      ],
+      "dependencies": [
+        "Add 'Book Direct' benefits section to /book page for conversion uplift"
+      ],
+      "estimatedComplexity": "large",
+      "passes": false
+    },
+    {
+      "id": "US-168",
+      "title": "WCAG 2.1 SC 3.3.1 – Error Identification on all form inputs",
+      "priority": "high",
+      "description": "Ensure all form validation errors (contact form, newsletter signup, booking form) are identified in text and describe the item in error, satisfying WCAG 2.1 SC 3.3.1 Level A. Currently many forms may only use a red border to indicate errors (colour-only indication fails SC 1.4.1) without descriptive error messages that are accessible to screen reader users.",
+      "acceptanceCriteria": [
+        "When a form field contains an error, a descriptive text message is displayed adjacent to the field",
+        "Error messages are specific: 'Please enter a valid email address' not generic 'Invalid input'",
+        "Each error message is associated with its input via aria-describedby pointing to the error element's id",
+        "Error message containers have role='alert' or are in an aria-live='polite' region for screen reader announcement",
+        "axe-core CI scan reports zero 'label' or 'aria-required-attr' violations on all form pages"
+      ],
+      "technicalNotes": [
+        "React Hook Form + Zod pattern: errors.email?.message rendered in <p id='email-error' aria-live='polite'>",
+        "Field markup: <input aria-describedby='email-error' aria-invalid={!!errors.email} />",
+        "shadcn/ui FormMessage component wraps this pattern correctly and can be used directly",
+        "Reference: https://www.w3.org/WAI/WCAG21/Understanding/error-identification.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-169",
+      "title": "Add GA4 Enhanced Ecommerce events for booking funnel analysis",
+      "priority": "high",
+      "description": "Implement GA4 Enhanced Ecommerce event tracking (view_item, select_item, begin_checkout, generate_lead) throughout the booking funnel so conversion drop-off points can be identified by room type and traffic source. Basic GA4 page view integration misses funnel-level data — without ecommerce events it is impossible to know which room pages convert best or at which step guests abandon the booking flow.",
+      "acceptanceCriteria": [
+        "view_item event fires on /rooms/[slug] with item_id (room slug), item_name, item_category ('accommodation'), price (MYR), and currency: 'MYR'",
+        "select_item event fires when a specific room type card is clicked from the /rooms listing page",
+        "begin_checkout event fires when guest clicks 'Book Now' or expands the booking options section on /book",
+        "generate_lead event fires on contact form submission with lead_source custom parameter",
+        "Events visible in GA4 > Reports > Engagement > Events within 24 hours",
+        "GTM dataLayer.push pattern used so marketing team can manage event parameters without code changes"
+      ],
+      "technicalNotes": [
+        "Push to GTM dataLayer: window.dataLayer.push({ ecommerce: null }); window.dataLayer.push({ event: 'view_item', ecommerce: { items: [{ item_id, item_name, item_category, price, currency: 'MYR' }] } })",
+        "Always clear ecommerce object before each push to prevent data carryover between events",
+        "GA4 Enhanced Ecommerce schema: https://developers.google.com/analytics/devguides/collection/ga4/ecommerce",
+        "Item price should be a numeric value in MYR (no currency symbol or formatting)"
+      ],
+      "dependencies": [
+        "Integrate GA4 analytics via @next/third-parties/google",
+        "Implement Google Tag Manager with Consent Mode v2"
+      ],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-170",
+      "title": "Add llms.txt file for AI crawler content guidance",
+      "priority": "medium",
+      "description": "Create an /llms.txt file at the site root following the llmstxt.org specification so AI agents (ChatGPT, Claude, Perplexity) can accurately understand Pelangi's services, location, pricing, and booking procedures. Without this, AI-generated answers about the hostel may be inaccurate or outdated. This is an emerging SEO requirement for the AI search era.",
+      "acceptanceCriteria": [
+        "GET /llms.txt returns 200 with Content-Type: text/plain and a valid Markdown body",
+        "File includes an H1 heading with site name, a blockquote summary, and H2 sections for Services, Location, Booking, and Contact",
+        "Optional /llms-full.txt provides expanded detail about rooms, amenities, and local area",
+        "<link rel='alternate' type='text/plain' href='/llms.txt'> is present in layout <head>",
+        "File is accessible to all crawlers (not blocked by robots.txt)"
+      ],
+      "technicalNotes": [
+        "Serve via a Next.js Route Handler at app/llms.txt/route.ts returning plain text",
+        "Or place a static llms.txt in the public/ directory for simplest implementation",
+        "Spec: https://llmstxt.org/ — only H1 heading is mandatory, rest is recommended",
+        "Companion /llms-full.txt can include all blog post URLs, room descriptions, FAQ answers"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-171",
+      "title": "Add TikTok Pixel and Events API for Gen Z audience analytics",
+      "priority": "medium",
+      "description": "Install TikTok Pixel browser-side and implement a server-side TikTok Events API Route Handler for dual-signal tracking. TikTok is the primary discovery channel for Gen Z and millennial backpackers (18-30 demographic) researching Malaysia travel. Server-side Events API ensures signal reliability despite ad blockers, improving attribution for TikTok Ads campaigns targeting Malaysian-bound travellers.",
+      "acceptanceCriteria": [
+        "TikTok Pixel base code loaded via Next.js <Script strategy='lazyOnload'> in layout.tsx",
+        "POST /api/tiktok-events Route Handler implemented sending events to TikTok Events API v1.3",
+        "Events tracked: ViewContent (room pages), Contact (form submission), Search (blog/guide search if applicable)",
+        "User data (email, phone) is SHA-256 hashed before transmission",
+        "Deduplication: matching event_id used across browser pixel and Events API",
+        "TikTok Events Manager shows events arriving with 90%+ match rate"
+      ],
+      "technicalNotes": [
+        "Events API endpoint: POST https://business-api.tiktok.com/open_api/v1.3/event/track/",
+        "Required headers: Access-Token (from TikTok Business Manager), Content-Type: application/json",
+        "Payload: pixel_code, event, event_id, timestamp (ISO 8601), context.page.url, properties.query, user (hashed fields)",
+        "Browser pixel + Events API pair is called 'Signal Reliability' in TikTok Ads documentation",
+        "Reference: https://ads.tiktok.com/help/article/events-api"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-172",
+      "title": "Implement Cloudflare Turnstile CAPTCHA on all public forms",
+      "priority": "medium",
+      "description": "Replace the existing honeypot-only bot protection on the contact and newsletter forms with Cloudflare Turnstile, a privacy-friendly CAPTCHA alternative that does not set cookies and passes PDPA/GDPR without consent. Turnstile uses non-interactive challenges (invisible to legitimate users) while blocking bots effectively — better UX than reCAPTCHA v2's checkbox and no Google data sharing.",
+      "acceptanceCriteria": [
+        "Turnstile widget renders on the contact form and newsletter signup form",
+        "Server-side validation of Turnstile token in Route Handler before processing form submission",
+        "Forms reject submissions with invalid or missing Turnstile tokens with a 403 response",
+        "TURNSTILE_SECRET_KEY stored as Vercel environment variable (never exposed client-side)",
+        "Turnstile widget loads lazily (only when the user interacts with the form) to avoid blocking LCP",
+        "Honeypot field is retained alongside Turnstile as a defence-in-depth layer"
+      ],
+      "technicalNotes": [
+        "Add Turnstile widget script: <Script src='https://challenges.cloudflare.com/turnstile/v0/api.js' strategy='lazyOnload'>",
+        "Widget markup: <div class='cf-turnstile' data-sitekey='YOUR_SITE_KEY' data-callback='onTurnstileSuccess'>",
+        "Server validation: POST https://challenges.cloudflare.com/turnstile/v0/siteverify with { secret, response: token }",
+        "Cloudflare Turnstile free tier supports unlimited domains and verifications",
+        "Reference: https://developers.cloudflare.com/turnstile/"
+      ],
+      "dependencies": [
+        "Add honeypot field to contact form to block spam bot submissions"
+      ],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-173",
+      "title": "Implement A/B testing with Vercel Feature Flags and Edge Config",
+      "priority": "medium",
+      "description": "Set up Vercel Feature Flags using Edge Config to run server-side A/B tests on the /book page hero CTA and room card layouts without client-side flicker or layout shift. Edge Config reads are under 1ms p99 globally, making flags safe to evaluate in Next.js Middleware. Start with a CTA copy test to measure booking conversion impact scientifically.",
+      "acceptanceCriteria": [
+        "Vercel Edge Config store created and connected to the project",
+        "@vercel/edge-config and @vercel/flags packages installed",
+        "A/B flag defined for /book page primary CTA copy (e.g., 'Book Now' vs 'Check Availability' vs 'Get Best Price Direct')",
+        "Flag evaluated in Next.js Middleware and variant cookie set before page render — zero layout shift",
+        "GA4 custom dimension records which variant each session received for statistical analysis",
+        "Vercel Flags UI in dashboard shows flag status, rollout percentage, and per-user override capability"
+      ],
+      "technicalNotes": [
+        "Install: npm install @vercel/edge-config @vercel/flags",
+        "Read flag in middleware.ts: import { get } from '@vercel/edge-config'; const variant = await get('cta-variant')",
+        "Pass variant via x-variant response header or cookie to Server Component for conditional rendering",
+        "Flags as Code pattern: define flag types in flags.ts, resolve server-side only to prevent client exposure",
+        "Reference: https://vercel.com/docs/feature-flags, https://vercel.com/docs/edge-config"
+      ],
+      "dependencies": [
+        "Integrate GA4 analytics via @next/third-parties/google"
+      ],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-174",
+      "title": "Add complete favicon and Apple Touch Icon set for all platforms",
+      "priority": "medium",
+      "description": "Generate and deploy a full icon set covering all modern platforms: Apple Touch Icon (180×180 for iOS home screen), Android maskable icon (512×512 with safe zone), Windows tile icon (270×270), and an SVG favicon for modern browsers. Without a proper Apple Touch Icon, iOS users adding the site to their home screen see a generic screenshot rather than a branded icon, reducing PWA discoverability.",
+      "acceptanceCriteria": [
+        "<link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png'> present in layout <head>",
+        "Web app manifest references icon entries for 192×192 (standard) and 512×512 (maskable purpose) PNG",
+        "SVG favicon at /favicon.svg with <link rel='icon' type='image/svg+xml' href='/favicon.svg'>",
+        "ICO fallback favicon.ico present in public/ for legacy browser support",
+        "Apple Touch Icon has no transparent background (iOS renders white on transparent — use solid background)",
+        "Maskable icon has main content within 80% safe area for Android adaptive icon cropping",
+        "All icons use the hostel's brand colours and are recognisable at 16×16px"
+      ],
+      "technicalNotes": [
+        "Generate icon set from a 512×512 source using realfavicongenerator.net or sharp.js",
+        "In Next.js App Router: place favicon.ico and apple-touch-icon.png in the app/ directory for auto-detection",
+        "Or use Next.js metadata API: export const metadata = { icons: { apple: '/apple-touch-icon.png', icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }] } }",
+        "Reference: https://developer.mozilla.org/en-US/docs/Web/Manifest/icons"
+      ],
+      "dependencies": [
+        "Add web app manifest (manifest.json) for mobile installability"
+      ],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-175",
+      "title": "Add WhatsApp Business Platform Cloud API for booking confirmation notifications",
+      "priority": "medium",
+      "description": "Integrate the WhatsApp Business Platform (Cloud API) to send automated template messages to guests after inquiry submission or deposit payment. Unlike the existing wa.me deep-link (outbound only), this enables programmatic outbound notifications: guests receive a WhatsApp message with booking confirmation, check-in instructions, and hostel location link. First 1,000 business-initiated conversations per month are free.",
+      "acceptanceCriteria": [
+        "Meta for Developers app configured with WhatsApp Business Cloud API and a verified business phone number",
+        "POST /api/whatsapp-notify Route Handler sends an approved WhatsApp template message after contact form submission",
+        "Template message includes: guest name, booking reference (or inquiry ID), hostel address, and check-in contact link",
+        "Template registered and approved in Meta Business Manager before any sending",
+        "WHATSAPP_TOKEN and WHATSAPP_PHONE_NUMBER_ID stored as Vercel environment variables",
+        "GET /api/whatsapp-webhook handles Meta's hub.challenge verification handshake"
+      ],
+      "technicalNotes": [
+        "Cloud API send message endpoint: POST https://graph.facebook.com/v21.0/{phone_number_id}/messages",
+        "Required body: { messaging_product: 'whatsapp', to: '+60XXXXXXXXXX', type: 'template', template: { name: 'booking_confirmation', language: { code: 'en' }, components: [...] } }",
+        "Free tier: first 1,000 business-initiated conversations per month; subsequent conversations ~$0.0735 USD per conversation (MY pricing)",
+        "Webhook GET verification: respond with parseInt(hub.challenge) when hub.verify_token === WHATSAPP_WEBHOOK_VERIFY_TOKEN",
+        "Reference: https://developers.facebook.com/docs/whatsapp/cloud-api/get-started"
+      ],
+      "dependencies": [
+        "Add contact inquiry form with Resend email auto-reply on /contact page"
+      ],
+      "estimatedComplexity": "large",
+      "passes": false
+    },
+    {
+      "id": "US-176",
+      "title": "Automate structured data validation in CI with schema.org validator",
+      "priority": "medium",
+      "description": "Add a CI step that validates all JSON-LD structured data against schema.org schemas before production deploy, catching type errors, missing required properties, and invalid enum values before they reach Google's crawlers. Currently structured data is written manually and only verified ad-hoc via Google Rich Results Test — a CI check prevents silent regressions when schema files are edited.",
+      "acceptanceCriteria": [
+        "CI step runs structured data validation as part of the GitHub Actions build workflow",
+        "Validation covers: LodgingBusiness, BlogPosting, FAQPage, BreadcrumbList, HowTo, and Event schema types",
+        "Build fails if any JSON-LD block contains schema.org type errors, unknown properties, or missing required fields",
+        "Validation output is reported in GitHub Actions summary with page URL, schema type, and specific error for each violation",
+        "CI step runs on push to main and on all PRs that modify any StructuredData component or schema data file"
+      ],
+      "technicalNotes": [
+        "Use 'structured-data-testing-tool' npm package for offline validation without external API calls: npm install -D structured-data-testing-tool",
+        "Run: npx sdtt --url https://staging-url.vercel.app --schema LodgingBusiness --schema BlogPosting",
+        "Alternative for local validation: use 'schema-dts' TypeScript types to catch type errors at compile time",
+        "For post-deploy validation, the Google Search Console URL Inspection API can be called from CI to check live pages",
+        "Reference: https://developers.google.com/search/docs/appearance/structured-data"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-177",
+      "title": "Add JSON Feed 1.1 at /feed.json for blog content syndication",
+      "priority": "low",
+      "description": "Expose a /feed.json endpoint following JSON Feed v1.1 specification as a modern JSON alternative to the existing RSS/Atom feeds. JSON Feed is natively consumable by JavaScript apps, AI agents, and modern feed readers without XML parsing overhead. Enables hostel blog content (JB travel tips, events, promotions) to be syndicated to modern platforms and aggregators.",
+      "acceptanceCriteria": [
+        "GET /feed.json returns 200 with Content-Type: application/feed+json",
+        "Response includes required fields: version (https://jsonfeed.org/version/1.1), title, items array",
+        "Each item includes: id, url, title, content_html, date_published, authors array, and language",
+        "Top-level language field set to 'en' with per-item override for Malay/Chinese content if applicable",
+        "<link rel='alternate' type='application/feed+json' title='Pelangi Blog' href='/feed.json'> added to layout <head>",
+        "Feed includes all published blog posts newest-first with full content_html"
+      ],
+      "technicalNotes": [
+        "Implement as Next.js Route Handler at app/feed.json/route.ts",
+        "Return NextResponse with headers: { 'Content-Type': 'application/feed+json; charset=utf-8' }",
+        "Reuse blog post data source from existing blog TypeScript data files",
+        "JSON Feed 1.1 spec: https://www.jsonfeed.org/2020/08/07/json-feed-version.html",
+        "Coexists with existing RSS at /feed.xml — both can be present simultaneously"
+      ],
+      "dependencies": [
+        "Create blog system with static TypeScript data",
+        "Add RSS/Atom feed at /feed.xml for the blog"
+      ],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-178",
+      "title": "Add CSS print stylesheet for booking confirmation and receipt pages",
+      "priority": "low",
+      "description": "Add @media print CSS rules to the booking confirmation and /book pages so guests can print or save-as-PDF a clean, readable booking record. Without print styles, navigation, cookie banners, chat widgets, and booking CTAs clutter the printed output, making the page unusable as a physical or PDF booking reference that guests may need for customs, visa applications, or accommodation proof.",
+      "acceptanceCriteria": [
+        "@media print CSS hides navigation, footer, cookie banner, chat widget, sticky booking bar, and all CTAs",
+        "Booking reference number, dates, room type, price, and hostel full address/contact details are clearly visible when printed",
+        "All text renders in black (#000) on white (#fff) in print mode — no coloured backgrounds consume ink",
+        "Body font size is at least 12pt for readability on A4 paper",
+        "Page breaks are avoided within booking summary blocks using page-break-inside: avoid",
+        "Print preview in Chrome shows a clean, professional 1-page booking confirmation"
+      ],
+      "technicalNotes": [
+        "Add @media print rules to a global CSS file or a dedicated print.css imported in layout.tsx",
+        "Hide elements: @media print { nav, footer, .cookie-banner, .chat-widget { display: none !important; } }",
+        "Force monochrome: @media print { * { color: #000 !important; background: transparent !important; } }",
+        "Tailwind print: variant — className='print:hidden' for elements to hide, className='print:block' for print-only elements",
+        "Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/print"
+      ],
+      "dependencies": [],
       "estimatedComplexity": "small",
       "passes": false
     }
