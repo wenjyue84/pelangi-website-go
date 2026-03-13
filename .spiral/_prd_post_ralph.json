@@ -4420,7 +4420,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-198",
@@ -4557,7 +4557,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-204",
@@ -4667,6 +4667,386 @@
         "Next.js docs: https://nextjs.org/docs/app/guides/mcp",
         "Available tools: get_errors, get_logs, get_page_metadata, get_project_metadata, get_server_action_by_id",
         "Blog: https://nextjs.org/blog/agentic-future"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-209",
+      "title": "Implement WCAG 2.0 SC 3.1.1 – Declare human language of every page via lang attribute",
+      "priority": "critical",
+      "description": "SC 3.1.1 (Level A) requires the default human language of each web page to be programmatically determinable. This is achieved by setting the correct `lang` attribute on the root `<html>` element. Without it, screen readers load incorrect pronunciation rules and browsers may render text incorrectly. This is a fundamental Level A criterion and a prerequisite for any WCAG 2.x conformance claim.",
+      "acceptanceCriteria": [
+        "The root layout sets lang='en' (or 'en-MY' for Malaysian English) on the <html> element via Next.js root layout metadata or RootLayout htmlProps",
+        "Pages with substantial Malay-language content sections use lang='ms' on the containing element via the HTML lang attribute on a wrapper element",
+        "Automated axe-core, Lighthouse, and WAVE scans report no missing/invalid language attribute",
+        "Validated using W3C Markup Validation Service — no 'Missing lang attribute' error",
+        "Screen reader test (NVDA + Chrome) correctly pronounces English content with English voice"
+      ],
+      "technicalNotes": [
+        "In Next.js App Router, set the lang attribute in the root layout: <html lang='en'>...</html> inside app/layout.tsx",
+        "For i18n (if hreflang is already implemented), ensure each locale layout passes the correct lang value",
+        "W3C Understanding SC 3.1.1: https://www.w3.org/WAI/WCAG22/Understanding/language-of-page.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": true
+    },
+    {
+      "id": "US-210",
+      "title": "Malaysia PDPA 2024 – Publish Data Protection Officer contact on website",
+      "priority": "critical",
+      "description": "The Personal Data Protection (Amendment) Act 2024 (in force 1 January 2025, DPO requirement effective June 2025) requires data controllers who meet the threshold (20,000+ data subjects processed, or sensitive personal data for 10,000+) to appoint a Data Protection Officer and publish a designated DPO contact email on their website or public channels. Even where the threshold is not met, publishing a DPO or privacy contact is strongly recommended for compliance posture and guest trust.",
+      "acceptanceCriteria": [
+        "Privacy Policy page includes a clearly labelled 'Data Protection Officer' or 'Privacy Contact' section with a dedicated email address",
+        "The DPO contact email is also referenced in the cookie consent banner's 'Learn More' or privacy link",
+        "The contact detail is findable within two clicks from the homepage",
+        "If threshold obligations apply, a formal DPO appointment is registered with the PDPC Commissioner as required by the amendment",
+        "Privacy Policy page is updated to reference the PDPA Amendment 2024 and 72-hour breach notification obligation"
+      ],
+      "technicalNotes": [
+        "PDPA Amendment 2024 in force: https://www.transatlanticlaw.com/content/malaysia-update-countdown-to-compliance-personal-data-protection-amendment-act-2024-in-force-1st-january-2025/",
+        "DPO guideline issued 25 February 2025 by PDPC: https://privacymatters.dlapiper.com/2025/03/malaysia-guidelines-issued-on-data-breach-notification-and-data-protection-officer-appointment/",
+        "Add a privacy@pelangicapsulehostel.com mailbox or forward and link it in both /privacy-policy and the cookie banner"
+      ],
+      "dependencies": [
+        "privacy-policy page already exists"
+      ],
+      "estimatedComplexity": "small",
+      "passes": true
+    },
+    {
+      "id": "US-211",
+      "title": "Implement WCAG 2.1 SC 1.3.4 – Restrict content to a single display orientation",
+      "priority": "high",
+      "description": "SC 1.3.4 (Level AA) requires that content does not restrict its view and operation to a single display orientation — either portrait or landscape — unless a specific orientation is essential. Locking orientation breaks access for users with mounted devices (e.g., a wheelchair tablet holder) and violates WCAG 2.2 AA conformance. The hostel site must not force portrait-only CSS on any page.",
+      "acceptanceCriteria": [
+        "No CSS media query, JavaScript API call, or manifest orientation value locks the page to portrait-only or landscape-only mode",
+        "All key pages (home, rooms, booking, gallery) are fully usable in both portrait and landscape orientations on a real or emulated mobile device",
+        "The web app manifest.json 'orientation' field is set to 'any' or omitted (not 'portrait' or 'landscape')",
+        "Screen Orientation API is not called to lock orientation unless inside a proven essential use case (none expected for this site)",
+        "Automated accessibility scan reports no SC 1.3.4 violations"
+      ],
+      "technicalNotes": [
+        "Check manifest.json 'orientation' field — Next.js PWA templates sometimes default to 'portrait'",
+        "Audit CSS for any CSS classes applied only via @media (orientation: portrait) that hide critical navigation or booking CTAs",
+        "W3C Understanding SC 1.3.4: https://www.w3.org/WAI/WCAG22/Understanding/orientation.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": true
+    },
+    {
+      "id": "US-212",
+      "title": "Implement WCAG 2.1 SC 2.5.2 – Up-event activation for all pointer-triggered actions",
+      "priority": "high",
+      "description": "SC 2.5.2 (Level A) requires that single-pointer functionality does not execute on the down-event unless essential, so users can abort accidental activations by moving the pointer away before releasing. This applies to any custom button, card click, or drag-and-drop component on the hostel site. Using standard HTML button elements and native click handlers naturally satisfies this criterion.",
+      "acceptanceCriteria": [
+        "All custom interactive components (booking CTAs, gallery cards, nav links) trigger their action on pointerup/mouseup or click, not on pointerdown/mousedown",
+        "No onMouseDown or onPointerDown handler initiates navigation or booking flows without an onMouseUp cancellation path",
+        "Standard HTML anchor and button elements are used wherever possible (these satisfy SC 2.5.2 by default)",
+        "Manual test confirms that pressing and holding a button, then dragging off before release, does not trigger the action",
+        "Accessibility audit documents SC 2.5.2 conformance"
+      ],
+      "technicalNotes": [
+        "Replace any onMouseDown/onPointerDown event handlers on interactive components with onClick (which fires on up-event)",
+        "W3C Understanding SC 2.5.2: https://www.w3.org/WAI/WCAG21/Understanding/pointer-cancellation.html",
+        "Deque University reference: https://dequeuniversity.com/resources/wcag2.1/2.5.2-pointer-cancellation"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": true
+    },
+    {
+      "id": "US-213",
+      "title": "Implement WCAG 2.0 SC 3.2.3 – Consistent navigation order across all pages",
+      "priority": "high",
+      "description": "SC 3.2.3 (Level AA) requires that navigational mechanisms repeated across pages appear in the same relative order each time. This means the header nav, footer nav, and persistent sidebar (if any) must maintain identical item order on every page. Users with cognitive disabilities, low vision, and screen reader users rely on positional memory to locate navigation quickly.",
+      "acceptanceCriteria": [
+        "Header navigation items appear in an identical sequence on every page of the site (home, rooms, booking, blog, contact, etc.)",
+        "Footer navigation links maintain the same relative order across all page templates",
+        "No page-specific reordering of the primary nav is introduced (e.g., a blog page nav that demotes the Rooms link)",
+        "Visual order and DOM order are consistent across pages — CSS reordering via 'order' property does not vary between pages",
+        "Manual audit of five or more distinct page templates confirms identical navigation order"
+      ],
+      "technicalNotes": [
+        "Since Next.js App Router uses a shared root layout with a single Header and Footer component, this is typically satisfied by default — audit is the main task",
+        "If any page uses a custom layout that overrides or reorders nav items, refactor to use the shared component",
+        "W3C Understanding SC 3.2.3: https://www.w3.org/WAI/WCAG22/Understanding/consistent-navigation.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": true
+    },
+    {
+      "id": "US-214",
+      "title": "Add Hotel Price structured data for Google Hotel Price Accuracy validation",
+      "priority": "high",
+      "description": "Google's Hotel Price Structured Data format allows hostel websites to annotate room pricing on booking/rooms pages so Google's systems can validate price accuracy (requiring 98-100% match between markup and displayed price). Implementing this unlocks price accuracy signals for Google Hotel Ads free booking links, improves eligibility for rich results, and prevents price mismatch penalties that can demote hotel listings in Google Travel search.",
+      "acceptanceCriteria": [
+        "Each room/dorm type page includes JSON-LD with @type: 'LodgingReservation' or 'Offer' containing priceSpecification with the current advertised price in MYR",
+        "The structured data price exactly matches the price displayed to the user on the same page at all times (no stale cached markup)",
+        "Google Rich Results Test validates the hotel price markup without errors",
+        "Check-in and check-out time are specified in LodgingReservation offers using ISO 8601 time format",
+        "makesOffer is correctly nested under the LodgingBusiness entity already in the schema"
+      ],
+      "technicalNotes": [
+        "Google Hotel Price Structured Data reference: https://developers.google.com/hotels/hotel-prices/structured-data/hotel-price-structured-data",
+        "Google requires 98-100% price accuracy: https://support.google.com/hotelprices/answer/14739390",
+        "Build price into the existing LodgingBusiness JSON-LD component — do not create a separate isolated script tag",
+        "Use dynamic server-side rendering for price values to prevent stale markup if pricing changes"
+      ],
+      "dependencies": [
+        "LodgingBusiness schema already implemented"
+      ],
+      "estimatedComplexity": "medium",
+      "passes": true
+    },
+    {
+      "id": "US-215",
+      "title": "Implement mobile booking conversion optimisations: trust badges and price comparison widget",
+      "priority": "high",
+      "description": "Industry benchmarks show hotel website conversion rates average below 2%, while high-intent sources like Google Hotel Ads convert at 4.17%. Research shows that authentic trust elements (recent reviews, awards, certifications) and a price-comparison widget showing the site's price vs. OTA prices are among the highest-ROI conversion improvements for boutique hostel sites. Over 70% of hostel website traffic is mobile, making mobile-first booking flow optimisation directly revenue-impacting.",
+      "acceptanceCriteria": [
+        "Booking CTA pages display at least three trust signals in visible positions: (1) number of recent bookings or guests served, (2) review score from Google/Booking.com with source attribution, (3) a 'Best Price Guarantee' or 'Book Direct & Save' badge",
+        "A price comparison table or callout shows the hostel's direct rate vs. typical OTA markup (e.g., 'Book here from RM65/night | Booking.com from RM72/night')",
+        "All trust elements and the booking CTA are above the fold on a 390px-wide mobile viewport",
+        "Booking flow from landing page to WhatsApp/Hostelworld handoff is completable in ≤3 taps on mobile",
+        "A/B test or analytics event tracking is in place to measure CTR uplift from trust badges"
+      ],
+      "technicalNotes": [
+        "Hotel Conversion Rate Benchmarks 2026: https://www.roomstay.io/blog/optimising-hotel-average-conversion-rate",
+        "Boutique Hotel UX study 2025: https://spiltmilkwebdesign.com/conversion-rate-optimization-website-ux-for-boutique-hotels-in-2025/",
+        "Price comparison widget can be implemented as a simple static React component with hardcoded or CMS-driven price comparison data — no third-party service required",
+        "Trust badge micro-copy: 'No booking fees · Instant confirmation · Best price guaranteed'"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": true
+    },
+    {
+      "id": "US-216",
+      "title": "Malaysia Online Safety Act 2025 – Add safety reporting mechanism for user-submitted content",
+      "priority": "medium",
+      "description": "Malaysia's Online Safety Act 2025 (Act 866) came into force 1 January 2026 and requires application service providers and content access service providers to provide tools for users to report harmful content and to publish safety guidelines. If the hostel website collects reviews, comments, or user-generated content (e.g., a guestbook or blog comment system), a visible 'Report harmful content' mechanism and a published safety/content policy page is required to avoid penalties of up to RM 10 million.",
+      "acceptanceCriteria": [
+        "If any user-generated content (reviews, comments) is hosted on the site, a 'Report Content' link or button is visible adjacent to each piece of UGC",
+        "A Content Safety / Community Guidelines page (or section in Terms & Conditions) is published describing what constitutes harmful content and how reports are processed",
+        "A designated contact (email or form) for safety reports is published and accessible within two clicks from any page with UGC",
+        "If the site does not host UGC (reviews embedded via third-party widgets only), document this in the Terms & Conditions to clarify platform scope",
+        "Legal review confirms whether the site falls under CASP or ASP category under the Online Safety Act 2025"
+      ],
+      "technicalNotes": [
+        "Online Safety Act 2025 enforcement began January 2026: https://www.malaysianwireless.com/2026/01/mcmc-enforcing-online-safety-act-platforms/",
+        "Act text and key takeaways: https://www.lexology.com/library/detail.aspx?g=64ccdf47-1b26-4a22-86ed-d14f731176e4",
+        "If the hostel only embeds Google Reviews or Booking.com reviews via iframe/API, the UGC liability may fall on those platforms — clarify scope first"
+      ],
+      "dependencies": [
+        "terms-and-conditions page"
+      ],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-217",
+      "title": "Add CSS scroll-driven animations for section reveals (baseline widely available)",
+      "priority": "medium",
+      "description": "CSS scroll-driven animations (animation-timeline: scroll() and view()) reached cross-browser baseline in 2025 with full support in Chrome, Firefox, and Safari. They run on the compositor thread, avoiding main-thread jank that JavaScript IntersectionObserver-based reveal libraries introduce. Adding subtle fade-in/slide-in reveals to amenity cards, testimonials, and photo sections improves visual polish with no JavaScript weight.",
+      "acceptanceCriteria": [
+        "At least three distinct section types (e.g., amenity cards, testimonial cards, photo grid) use CSS scroll-driven view() animations for entry reveals",
+        "Animations are wrapped in @media (prefers-reduced-motion: no-preference) so users with reduced-motion preference see no animation",
+        "No JavaScript IntersectionObserver or third-party animation library (AOS, GSAP) is used for these reveals — pure CSS only",
+        "Animations do not cause CLS (no layout shifts from animation start state); elements are pre-positioned with opacity/transform only",
+        "Performance trace in DevTools confirms animations run on the compositor thread with no main-thread paint"
+      ],
+      "technicalNotes": [
+        "Use animation-timeline: view() with animation-range: entry 0% entry 30% for card reveals",
+        "Chrome DevTools: https://developer.chrome.com/blog/view-transitions-in-2025",
+        "MDN scroll-driven animations: https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline",
+        "Baseline status confirmed: https://web.dev/blog/web-platform-09-2025"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": true
+    },
+    {
+      "id": "US-218",
+      "title": "Upgrade PWA manifest with screenshots and description for enhanced install dialog",
+      "priority": "medium",
+      "description": "Chrome on Android (and increasingly other browsers) upgrades the PWA install prompt from a minimal 'Add to home screen' bar to a full app-store-style install dialog when the manifest includes screenshots and description fields. This richer dialog significantly increases install acceptance rates and is documented by Google as a best practice for PWA discoverability. The fields screenshots and description are not yet in the manifest.json.",
+      "acceptanceCriteria": [
+        "manifest.json includes a 'description' field with a concise 1-2 sentence description of the hostel website",
+        "manifest.json includes a 'screenshots' array with at least two screenshots (minimum 1080×1920 px for narrow/mobile, optional 1280×800 for wide) using form_factor: 'narrow' and 'wide'",
+        "On Chrome for Android, the install prompt displays the full app-store-style dialog (not the mini bottom bar) — verified by DevTools > Application > Manifest",
+        "Screenshot images are served from the /public directory, referenced with absolute URLs, and optimised as WebP",
+        "The PWA install prompt continues to satisfy all existing installability criteria (icons, start_url, display, etc.)"
+      ],
+      "technicalNotes": [
+        "Google installation prompt enhanced dialog: https://web.dev/learn/pwa/installation-prompt",
+        "Required screenshot dimensions for 'narrow' form_factor: minimum 320x640, recommended 1080x1920",
+        "PWA Web Almanac 2025 data: https://almanac.httparchive.org/en/2025/pwa",
+        "Service workers are no longer required for Chrome/Edge install eligibility — manifest alone is sufficient as of 2025"
+      ],
+      "dependencies": [
+        "manifest.json already exists"
+      ],
+      "estimatedComplexity": "small",
+      "passes": true
+    },
+    {
+      "id": "US-219",
+      "title": "Implement CSS container queries for responsive room card component",
+      "priority": "medium",
+      "description": "CSS container queries became Baseline Widely Available in August 2025, enabling components to respond to their parent container's size rather than the viewport. Room cards and amenity cards are currently responsive to the viewport via Tailwind breakpoints, but when placed in a sidebar vs. full-width grid they need different layouts. Container queries enable truly reusable components that adapt to their placement context, improving both maintainability and visual quality.",
+      "acceptanceCriteria": [
+        "RoomCard, AmenityCard, and at least one other card component use @container queries instead of @media viewport queries for their internal layout breakpoints",
+        "Each card's parent wrapper has container-type: inline-size declared",
+        "Cards laid out in a 2-column grid display correctly; the same card component placed in a single-column sidebar also displays correctly without separate CSS classes",
+        "Container units (cqi, cqw) are used for font sizing or spacing inside at least one component",
+        "@supports (container-type: inline-size) guard is present; a Tailwind breakpoint fallback works for older browsers",
+        "Visual regression test (Playwright screenshot) confirms correct rendering in both 2-column and 1-column contexts"
+      ],
+      "technicalNotes": [
+        "Tailwind CSS v4 has first-class @container support via the @container utility",
+        "MDN container queries: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Containment/Container_queries",
+        "web.dev baseline announcement: https://web.dev/blog/baseline-digest-aug-2025",
+        "Baseline Widely Available — safe to use without @supports fallback, but add it for robustness"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-220",
+      "title": "Implement Next.js 16.1 Turbopack filesystem caching for faster local dev builds",
+      "priority": "medium",
+      "description": "Next.js 16.1 (December 2025) introduced Turbopack filesystem caching for development, delivering 50%+ faster cold-start rebuild times by persisting the compilation cache across restarts. This improves developer velocity significantly on the hostel website project, which has growing page count and schema components. Enabling it requires opting in via next.config.ts.",
+      "acceptanceCriteria": [
+        "next.config.ts enables Turbopack filesystem caching via the experimental.turbopackPersistentCaching flag (or stable API when available)",
+        "Cold-start dev server time (npm run dev after cache clear) is measured before and after — improvement of at least 30% documented",
+        "Hot reload time for a typical page (home page with schema components) is measured and confirmed ≤2s",
+        "No build errors or cache invalidation issues occur after config changes or dependency updates",
+        "The .next/cache directory is excluded from version control but preserved between dev sessions"
+      ],
+      "technicalNotes": [
+        "Next.js 16.1 announcement: https://nextjs.org/blog/next-16-1",
+        "Turbopack filesystem caching opt-in: https://nextjs.org/docs/app/api-reference/turbopack",
+        "StaticMania review of 16.1: https://staticmania.com/blog/next.js-16.1-review",
+        "Install size is 20MB smaller in 16.1 due to simplified Turbopack caching layer — also upgrade if not already on 16.1"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-221",
+      "title": "Use CSS contrast-color() for automatic accessible text on dynamic background colours",
+      "priority": "low",
+      "description": "The CSS contrast-color() function (shipping in Safari and Firefox 2025, Interop 2026 focus area) automatically selects black or white text based on which provides greater contrast against a given background colour variable. For a hostel site with a colour-theming system or dynamic category badges (room type labels, availability indicators), this eliminates manual contrast testing for generated colours and enforces WCAG 1.4.3 compliance by construction.",
+      "acceptanceCriteria": [
+        "Dynamic colour elements (room type badges, availability pills, promo banners) use color: contrast-color(var(--badge-bg)) to automatically pick readable text colour",
+        "@supports (color: contrast-color(red)) is used to wrap the rule; a hardcoded high-contrast fallback is provided for unsupported browsers",
+        "Visual test in Safari 18+ and Firefox 140+ confirms text is always black or white as appropriate against each badge colour",
+        "No hardcoded light/dark text class needs to be manually added when a new badge colour is introduced",
+        "Lighthouse accessibility score is maintained at 95+ with no new colour-contrast violations"
+      ],
+      "technicalNotes": [
+        "MDN reference: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/contrast-color",
+        "WebKit blog on contrast-color(): https://webkit.org/blog/16929/contrast-color/",
+        "Note: contrast-color() only returns black or white — suitable for badge text, not for arbitrary design accent colours",
+        "Interop 2026 focus area: https://web.dev/blog/interop-2026"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-222",
+      "title": "Implement CSS Custom Highlight API for in-page search result highlighting",
+      "priority": "low",
+      "description": "The CSS Custom Highlight API (cross-browser baseline as of Firefox 140, June 2025) allows programmatic highlighting of arbitrary text ranges via ::highlight() pseudo-elements without DOM mutation. This is ideal for enhancing the existing Fuse.js-powered in-page search: instead of wrapping matched characters in <mark> span elements (which causes layout thrash and ARIA issues), use the Highlight API for zero-DOM-mutation, performance-optimised match highlighting.",
+      "acceptanceCriteria": [
+        "In-page search (Fuse.js) highlights matched text using CSS.highlights.set() and ::highlight(search-result) rather than injecting <mark> or <span> elements into the DOM",
+        "@supports (CSS: highlights) guard is present; existing <mark>-based highlighting is the fallback for unsupported browsers",
+        "Highlighted text is visually distinct (background colour + sufficient contrast) and announced to screen readers via aria-label on the search result count",
+        "Performance profiling shows no layout recalculation triggered by highlight updates during search input",
+        "Manual test in Chrome, Firefox 140+, and Safari 17.2+ confirms highlights appear and clear correctly"
+      ],
+      "technicalNotes": [
+        "MDN CSS Custom Highlight API: https://developer.mozilla.org/en-US/docs/Web/API/CSS_Custom_Highlight_API",
+        "Firefox 140 shipped support June 2025 — Firefox limitation: does not support text-decoration or text-shadow on ::highlight()",
+        "FreeCodeCamp tutorial: https://www.freecodecamp.org/news/how-to-programmatically-highlight-text-with-the-css-custom-highlight-api"
+      ],
+      "dependencies": [
+        "in-page search with Fuse.js already implemented"
+      ],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-223",
+      "title": "Add LodgingReservation action schema to enable Gmail reservation cards for confirmed bookings",
+      "priority": "low",
+      "description": "Google's Gmail structured data for Hotel Reservations allows booking confirmation emails to render as rich reservation cards in Gmail, showing check-in/check-out dates, room name, and address in a visual card that users can access directly from their inbox. This is a distinct schema type (schema.org/LodgingReservation embedded in email HTML) from the website's JSON-LD schema, and is triggered by the transactional emails sent after booking confirmation via Resend.",
+      "acceptanceCriteria": [
+        "Booking confirmation email HTML sent via Resend includes a JSON-LD <script type='application/ld+json'> block with @type: LodgingReservation",
+        "Required fields are present: reservationId, reservationStatus, checkinDate, checkoutDate, underName (guest), reservationFor (LodgingBusiness with name, address, telephone)",
+        "Test email sent to a Gmail account displays the reservation card in the inbox (Action envelope icon visible)",
+        "The confirmation email passes Google's Email Markup Tester at https://www.google.com/webmasters/markup-tester/",
+        "reservationStatus is dynamically set to 'https://schema.org/ReservationConfirmed' for confirmation emails"
+      ],
+      "technicalNotes": [
+        "Google Hotel Reservation Gmail reference: https://developers.google.com/workspace/gmail/markup/reference/hotel-reservation",
+        "Schema.org LodgingReservation type: https://schema.org/LodgingReservation",
+        "This schema goes in the email template (Resend React Email component), not in the website pages",
+        "Gmail requires the sending domain to be registered with Google for Actions in Inbox — register at https://developers.google.com/gmail/markup/registering-with-google"
+      ],
+      "dependencies": [
+        "contact form with Resend already implemented"
+      ],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-224",
+      "title": "Add CSS media pseudo-classes for audio/video player state styling",
+      "priority": "low",
+      "description": "CSS media state pseudo-classes (:playing, :paused, :muted, :buffering, :stalled) are an Interop 2026 focus area, enabling CSS-only styling of media player states without JavaScript event listeners. If the hostel site includes a promotional video (e.g., on the homepage hero or a tour video), these pseudo-classes can provide immediate visual feedback on play/pause state via CSS alone, reducing JavaScript event wiring.",
+      "acceptanceCriteria": [
+        "Any <video> or <audio> element on the site has a visible play/pause indicator that uses :playing and :paused pseudo-classes for its visual state",
+        "@supports selector(:playing) is used as a feature guard; JavaScript-based class toggling is the fallback",
+        "The :muted pseudo-class styles a muted icon indicator on auto-playing muted hero videos",
+        "No additional JavaScript event listeners (play, pause, volumechange) are needed for the CSS-driven state indicators",
+        "Manual test in Chrome and Safari confirms correct pseudo-class activation on play/pause interaction"
+      ],
+      "technicalNotes": [
+        "Interop 2026 focus area: https://web.dev/blog/interop-2026",
+        "MDN :playing pseudo-class: https://developer.mozilla.org/en-US/docs/Web/CSS/:playing",
+        "Browser support is currently Chrome-only for most; @supports guard is essential",
+        "Only applicable if the site includes a native HTML <video> element — not applicable to YouTube/Vimeo iframes"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-225",
+      "title": "Add CSS attr() type-safe attribute bindings for dynamic data display",
+      "priority": "low",
+      "description": "Interop 2026 focuses on expanding CSS attr() beyond pseudo-element content to support typed attribute values (numbers, colours, lengths) in most CSS properties. This enables data-driven styling patterns — e.g., a room card's occupancy indicator bar width or an availability meter driven purely by a data-* attribute without JavaScript style manipulation. This reduces JavaScript for purely presentational state changes.",
+      "acceptanceCriteria": [
+        "At least one component (e.g., an occupancy progress bar or a rating star fill) uses typed CSS attr() — e.g., width: attr(data-fill %, 0%) — for its visual state",
+        "@supports (width: attr(data-x %)) is used as a feature guard; a JavaScript/inline-style fallback is provided",
+        "The data attribute value is set from the server-rendered props in the React component, not by client JavaScript at runtime",
+        "No layout shifts occur when the attribute-driven CSS value is applied",
+        "Manual test in Chrome 135+ and Safari 18+ confirms typed attr() works; fallback confirmed in Firefox if support is not yet shipped"
+      ],
+      "technicalNotes": [
+        "Interop 2026 CSS attr() focus area: https://web.dev/blog/interop-2026",
+        "Current support: typed attr() is behind a flag in some browsers; @supports guard is mandatory",
+        "MDN CSS attr(): https://developer.mozilla.org/en-US/docs/Web/CSS/attr",
+        "Use sparingly — only for genuinely data-driven presentational properties, not for logic that belongs in JS"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",

@@ -5769,3 +5769,4 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 ### Gotchas
 - Screenshots at default DPR (1x) result in small pixel dimensions (412x915) that are below the recommended 1080x1920 for narrow form factor — must explicitly set higher DPR
 - `rtk npx tsc` doesn't work in this environment — use `npx tsc --noEmit` directly
+
