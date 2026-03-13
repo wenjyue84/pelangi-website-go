@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
-import { Inter } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import StructuredData from "@/components/StructuredData";
 import { ChatWidget, MobileBookingBar, CookieConsent, AnalyticsProvider, WebVitalsReporter } from "@/components/DynamicComponents";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 
 // TODO: Create OG image at /images/og-image.jpg (1200x630px) for optimal social sharing
 // Recommended: Feature hero image with "Pelangi Capsule Hostel" branding and "From RM35/night" text
@@ -101,9 +102,6 @@ export default async function RootLayout({
         {/* Theme color: browser toolbar matches page background in light/dark mode */}
         <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#1c1917" media="(prefers-color-scheme: dark)" />
-        {/* Preconnect: Google Fonts (hot path — every page via globals.css @import) */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* Preconnect: YouTube embed and Google Maps iframe */}
         <link rel="preconnect" href="https://www.youtube.com" />
         <link rel="preconnect" href="https://www.google.com" />
@@ -132,7 +130,7 @@ export default async function RootLayout({
           imageSizes="100vw"
         />
       </head>
-      <body className={`${inter.className} pb-16 md:pb-0`}>
+      <body className={`${inter.variable} ${playfair.variable} pb-16 md:pb-0`}>
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:z-100 focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-amber-700 focus:text-white focus:rounded-lg focus:font-medium focus:shadow-lg"
