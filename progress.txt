@@ -5302,3 +5302,23 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 ### Gotchas
 - AC3 about "Contact form Server Action uses updateTag()" is not applicable — the contact form doesn't invalidate cache
 - Verify existing state before assuming work needs to be done (pattern from US-002 iteration)
+
+
+## Iteration 20 - Story: US-193 - Migrate middleware.ts to proxy.ts (Next.js 16 network boundary)
+
+### What was implemented
+- **Verification-only** — all code changes were already completed in US-145 (Next.js 16 upgrade)
+- AC1: `middleware.ts` deleted, `proxy.ts` exists with `export function proxy(req)` and correct `config.matcher`
+- AC2: No www-to-root or trailing-slash redirect rules existed in the original middleware — URL rewrites live in `next.config.ts`
+- AC3: Rate-limiting (sliding window, lines 108-164) and CSP nonce generation (lines 64-102) are fully implemented in `proxy.ts`
+- AC4: Build output confirmed "ƒ Proxy (Middleware)" active during US-145 build verification
+- AC5: Manual migration functionally equivalent to `@next/codemod middleware-to-proxy` — reviewed and verified
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- The proxy.ts was already prepared before the US-145 upgrade iteration — the migration was planned ahead
+- The project never had www-to-root or trailing-slash redirects — only API/asset rewrites in next.config.ts
+
+### Gotchas
+- AC2 mentions redirect rules that don't exist in this project — verify before assuming work is needed
+- The codemod AC is satisfied by manual migration if the result is functionally equivalent
