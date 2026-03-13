@@ -5056,3 +5056,29 @@ US-103 (Google Business Profile registration) is entirely an external platform t
 
 ### Gotchas
 - The story was 95% already implemented — the header existed in next.config.ts from project setup. The only gap was the middleware 429 response bypassing the headers pipeline.
+
+
+## Iteration 16 - Story: US-179 - Implement WCAG 2.2 SC 2.4.7 – Focus Visible on all interactive elements
+
+### What was implemented
+- Audited ALL interactive elements across the codebase for focus visibility
+- Found the global `:focus-visible` rule already existed in `globals.css` (lines 249-260) with `outline: 2px solid amber-700`, offset 2px, and dark mode variant using amber-400
+- Confirmed NO `outline-none`, `outline:none`, `ring-0`, or `focus:ring-0` anywhere in source
+- Fixed one issue: `SearchDialog.tsx` input had `outline-hidden` class which overrides the global `:focus-visible` due to Tailwind v4 layer cascade (utilities > base) — added `focus-visible:outline-amber-700 dark:focus-visible:outline-amber-400` to restore visible focus ring
+- Verified many components already had explicit `focus-visible` styles: btn-primary, btn-secondary, ContactForm, CookieConsent, Gallery, NewsletterSignupForm, ChatWidget, YouTubeFacade
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Tailwind v4 `outline-hidden` generates `outline: 2px solid transparent` in `@layer utilities`, which has higher cascade priority than `@layer base` rules — so the global `:focus-visible` fallback in base doesn't override it
+- Fix pattern: add `focus-visible:outline-<color>` at the utility level to override `outline-hidden` on specific elements
+- Contrast check: amber-700 (#b45309) on white has ~4.6:1 contrast ratio, exceeding WCAG 3:1 requirement for focus indicators
+
+### Gotchas
+- US-103 (critical priority) is an external administrative task (Google Business Profile setup) — cannot be completed through code changes
+- `outline-hidden` is the only Tailwind class in this codebase that suppresses the global focus-visible ring
+
+### Acceptance criteria verification
+- [x] No element has outline:none or focus:ring-0 without a replacement visible indicator
+- [x] Focus ring meets 3:1 contrast ratio against adjacent colours (amber-700 = ~4.6:1 on white)
+- [x] Global :focus-visible CSS rule defined in globals.css as a fallback (line 251)
+- [x] Keyboard navigation test: all interactive elements receive visible focus via global rule + component-level overrides

@@ -144,7 +144,7 @@ export default function SearchDialog({
               setActiveIndex(0);
             }}
             placeholder="Search blog posts and guides..."
-            className="flex-1 text-base text-stone-900 dark:text-stone-100 placeholder:text-stone-400 bg-transparent outline-hidden"
+            className="flex-1 text-base text-stone-900 dark:text-stone-100 placeholder:text-stone-400 bg-transparent outline-hidden focus-visible:outline-amber-700 dark:focus-visible:outline-amber-400"
             aria-autocomplete="list"
             aria-controls="search-results"
             aria-activedescendant={
