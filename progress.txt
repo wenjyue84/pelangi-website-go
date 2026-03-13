@@ -4625,3 +4625,4 @@ Incomplete: Register Google Business Profile and connect to Google Hotel free bo
 ### Gotchas
 - The T&C page had no existing bilingual content — this is the first section with dual-language text
 - US-103 (Google Business Profile) is critical priority but is an external platform task, not code-implementable
+

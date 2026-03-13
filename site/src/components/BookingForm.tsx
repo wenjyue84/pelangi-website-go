@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useBookingDraft } from "@/hooks/useBookingDraft";
 
 const WHATSAPP_NUMBER = "60127088789";
 
@@ -17,9 +18,28 @@ function buildWhatsAppUrl(checkIn: string, checkOut: string, roomType: string): 
 }
 
 export default function BookingForm() {
+  const { draft, saveDraft } = useBookingDraft();
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [roomType, setRoomType] = useState("Capsule Pod");
+
+  // Restore from draft on mount (if returning to /book with a saved draft)
+  useEffect(() => {
+    if (draft) {
+      if (draft.roomType) setRoomType(draft.roomType);
+      if (draft.checkIn) setCheckIn(draft.checkIn);
+      if (draft.checkOut) setCheckOut(draft.checkOut);
+    }
+    // Only restore once on mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Save draft whenever form fields change
+  useEffect(() => {
+    if (roomType || checkIn || checkOut) {
+      saveDraft({ roomType, checkIn, checkOut });
+    }
+  }, [roomType, checkIn, checkOut, saveDraft]);
 
   const whatsappUrl = buildWhatsAppUrl(checkIn, checkOut, roomType);
 

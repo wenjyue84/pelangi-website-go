@@ -2228,7 +2228,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-100",
@@ -2896,7 +2896,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-131",
@@ -2917,7 +2917,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-132",
@@ -2938,7 +2938,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-133",
@@ -2982,7 +2982,7 @@
         "Display Malaysia Tourism Tax (TTx) RM10/room/night transparently on booking flow"
       ],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-135",
@@ -3003,7 +3003,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-136",
@@ -3192,6 +3192,432 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-145",
+      "title": "Upgrade to Next.js 16 and resolve all breaking changes",
+      "priority": "high",
+      "description": "Next.js 16 is the current stable major version. It makes Turbopack the default bundler, fully removes synchronous access to cookies()/headers()/params/searchParams, renames middleware.ts to proxy.ts, removes the experimental.ppr flag in favour of cacheComponents, and requires explicit default.js for all parallel route slots. All breaking changes must be resolved for the site to build on Next.js 16.",
+      "acceptanceCriteria": [
+        "next@16, react@19.2, react-dom@19.2 installed and site builds without errors",
+        "All cookies(), headers(), draftMode(), params, searchParams calls are awaited (async)",
+        "middleware.ts renamed to proxy.ts, exported function renamed to proxy, runtime set to nodejs",
+        "experimental.ppr removed from next.config.ts (replaced by cacheComponents)",
+        "experimental.turbopack moved to top-level turbopack key",
+        "All parallel route @slots have a default.js file",
+        "next typegen run and PageProps/LayoutProps/RouteContext helpers adopted in all route files",
+        "next build --turbopack succeeds with no webpack-specific config errors"
+      ],
+      "technicalNotes": [
+        "Use the automated codemod: npx @next/codemod@canary upgrade latest",
+        "Parallel routes default.js requirement: create app/@modal/default.tsx returning null or calling notFound()",
+        "revalidateTag() now requires a cacheLife profile as second arg: revalidateTag('tag', 'max')",
+        "unstable_cacheLife and unstable_cacheTag imports updated to cacheLife and cacheTag",
+        "Node.js minimum bumped to 20.9.0 LTS — verify hosting environment",
+        "TypeScript minimum bumped to 5.1.0"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "large",
+      "passes": false
+    },
+    {
+      "id": "US-146",
+      "title": "Migrate revalidateTag calls to Next.js 16 two-argument signature",
+      "priority": "high",
+      "description": "Next.js 16 changes the revalidateTag() signature to require a cacheLife profile as the second argument. The single-argument form is deprecated and will be removed. Additionally, two new Server Actions-only APIs are introduced: updateTag() provides read-your-writes semantics and refresh() refreshes the client router without touching the cache. Existing ISR webhook handlers using the old single-argument form must be updated.",
+      "acceptanceCriteria": [
+        "All revalidateTag() calls include a cacheLife profile as the second argument (e.g., revalidateTag('rooms', 'max'))",
+        "ISR webhook route handler (/api/revalidate) updated to use new signature",
+        "Contact form Server Action uses updateTag() instead of revalidateTag() for immediate UI reflection",
+        "No deprecation warnings for revalidateTag in next build output",
+        "unstable_cacheLife and unstable_cacheTag imports updated to cacheLife and cacheTag from 'next/cache'"
+      ],
+      "technicalNotes": [
+        "revalidateTag(tag, 'max') — use 'max' profile for SWR behaviour on static content",
+        "updateTag(tag) — Server Actions only; provides read-your-writes (expire + refresh in same request)",
+        "refresh() — Server Actions only; refreshes router without touching cache",
+        "Migration: revalidateTag('blog-posts') → revalidateTag('blog-posts', 'max')",
+        "Source: https://nextjs.org/docs/app/guides/upgrading/version-16#caching-apis"
+      ],
+      "dependencies": [
+        "Upgrade to Next.js 16 and resolve all breaking changes"
+      ],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-147",
+      "title": "Implement scheduler.yield() for INP optimisation on long JavaScript tasks",
+      "priority": "high",
+      "description": "The Scheduler API's yield() method is the current recommended technique for breaking up long JavaScript tasks (>50ms) that block the main thread and cause high INP. Unlike setTimeout(0) which deprioritises continuation, scheduler.yield() resumes execution at the same priority. Key targets: gallery filter/sort interaction, room availability check, and analytics batching on booking button click.",
+      "acceptanceCriteria": [
+        "INP measured via web-vitals v4 in development does not exceed 200ms for gallery filter interactions",
+        "Long task profiling in Chrome DevTools shows no tasks exceeding 200ms during booking button click",
+        "scheduler.yield() fallback implemented for browsers without Scheduler API support",
+        "Gallery filter interaction: validate → yield → sort → yield → render pipeline implemented",
+        "No visible jank during gallery sort on mid-range Android device simulation in DevTools"
+      ],
+      "technicalNotes": [
+        "Polyfill pattern: const yieldToMain = () => globalThis.scheduler?.yield?.() ?? new Promise(r => setTimeout(r, 0))",
+        "Place yields between phases: user-visible work first, then yield, then background work",
+        "Do NOT use isInputPending() — web.dev now recommends against it as it can return false incorrectly",
+        "scheduler.postTask() for explicit priority control: 'user-blocking', 'user-visible', 'background'",
+        "Source: https://web.dev/articles/optimize-long-tasks"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-148",
+      "title": "Add Malaysia Tourism Tax MyTTx Public Ruling No. 01/2025 compliance disclosure",
+      "priority": "high",
+      "description": "Public Ruling No. 01/2025 (effective 1 December 2025) replaced the previous DPSP grace period for tourism tax collection. Under this ruling, the hostel must clearly disclose the RM10/room/night Tourism Tax before booking confirmation, and if the booking platform processes bookings for other properties it must register as a DPSP with RMCD. This story covers the legal compliance page and MyTTx registration status disclosure.",
+      "acceptanceCriteria": [
+        "A 'Tourism Tax' section added to the T&C page or FAQ explaining the RM10/room/night rate and legal basis",
+        "Booking flow shows Tourism Tax as a line item before confirmation (not hidden in total)",
+        "If the booking system processes bookings for other properties, DPSP registration number is disclosed",
+        "The page references MyTTx (myttx.customs.gov.my) as the official tax authority",
+        "Tax disclosure text is available in both English and Bahasa Malaysia"
+      ],
+      "technicalNotes": [
+        "Public Ruling No. 01/2025 effective 1 December 2025 supersedes the DPSP grace period",
+        "Single-property direct booking sites collecting TTx directly must register as a taxable person with RMCD",
+        "If using Booking.com/Agoda as the booking engine, the DPSP handles TTx — disclose this in the booking flow",
+        "MyTTx portal: https://www.myttx.customs.gov.my/",
+        "Non-compliance can result in RMCD audit and fines; distinct from existing RM10 UI display story"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": true
+    },
+    {
+      "id": "US-149",
+      "title": "Create dedicated /location page for Google Business Profile 2026 local SEO requirements",
+      "priority": "high",
+      "description": "Google 2026 local SEO requirements mandate that GBP profile links must point to a location-specific page (not the home page) with that location's contact information, photos, and local content. A dedicated /location page with embedded Google Maps, local area content, transport directions, and location-specific schema would satisfy these requirements and improve local pack visibility.",
+      "acceptanceCriteria": [
+        "A /location page exists with the hostel's full address, phone, check-in times, and local area content",
+        "GBP profile URL field updated to point to this location-specific page",
+        "Page includes an embedded Google Maps iframe or static map image with the hostel's location pinned",
+        "Page includes transport directions: from JB Sentral, from CIQ (Customs/Immigration), from Larkin Bus Terminal",
+        "LodgingBusiness JSON-LD with full address and GeoCoordinates included on the page",
+        "Page is linked from the main navigation footer (not orphaned)"
+      ],
+      "technicalNotes": [
+        "Google 2026: GBP links must point to the specific branch page, not the chain/root domain",
+        "Page must have geolocation-relevant content to pass Google's AI validation of listing authenticity",
+        "sameAs in LodgingBusiness schema should reference the GBP URL — update to match new location page",
+        "Google Maps embed is fine for display; use GeoCoordinates in JSON-LD for machine-readable coordinates",
+        "Source: https://lithiumseo.com/the-2026-roadmap-to-launching-a-google-business-profile-a-step-by-step-guide-for-approval/"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": true
+    },
+    {
+      "id": "US-150",
+      "title": "Add instrumentation-client.ts for early frontend observability initialisation",
+      "priority": "medium",
+      "description": "Next.js 15.3 introduced instrumentation-client.js|ts, which runs before any frontend application code starts executing. This is the correct place to initialise Sentry, GA4, Clarity, and web-vitals tracking so that errors and metrics captured during framework initialisation are not missed. Currently tools are likely initialised inside components or layout, missing the earliest lifecycle events.",
+      "acceptanceCriteria": [
+        "An instrumentation-client.ts file exists at the project root (same level as app/)",
+        "Sentry.init() call moved to instrumentation-client.ts (replaces layout.tsx or component-level initialisation)",
+        "web-vitals onINP/onLCP/onCLS reporting initialised in instrumentation-client.ts",
+        "Microsoft Clarity initialisation moved to instrumentation-client.ts",
+        "No duplicate initialisation in layout.tsx or other component files",
+        "Verified: Sentry captures an error thrown during initial page hydration"
+      ],
+      "technicalNotes": [
+        "File must be placed at the project root (same level as app/), not inside app/",
+        "This file runs before React hydration — do not import React or use JSX here",
+        "window.addEventListener('error') for global error capture can go here",
+        "Source: https://nextjs.org/blog/next-15-3#client-instrumentation-hook"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-151",
+      "title": "Implement useLinkStatus and onNavigate navigation hooks for per-link loading UX",
+      "priority": "medium",
+      "description": "Next.js 15.3 introduced useLinkStatus (returns a pending boolean while navigation is in progress, modelled after useFormStatus) and onNavigate (fires only during SPA client-side navigations, supports preventDefault() for navigation guards). These enable per-link loading spinners on the 'Book Now' CTA and analytics tracking limited to actual page transitions rather than all clicks.",
+      "acceptanceCriteria": [
+        "The primary 'Book Now' CTA uses useLinkStatus to show a loading spinner while /book page is loading",
+        "Navigation timing events (route change start/end) are tracked via onNavigate on main nav links",
+        "useLinkStatus is wrapped inside a <Link> descendant component (not at the Link level itself)",
+        "No loading spinner shown for external links (onNavigate does not fire for external navigations)",
+        "Verified: spinner appears for slow routes with artificial delay in development"
+      ],
+      "technicalNotes": [
+        "useLinkStatus import: import { useLinkStatus } from 'next/link'",
+        "The component using useLinkStatus must be a child of the <Link> component, not a sibling",
+        "onNavigate prop on <Link> fires for SPA navigations; preventDefault() can cancel the navigation",
+        "Source: https://nextjs.org/blog/next-15-3#navigation-hooks"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-152",
+      "title": "Adopt React 19.2 <Activity> component for room type tabs on /rooms page",
+      "priority": "medium",
+      "description": "React 19.2 introduces the <Activity> component, which hides content with display:none while preserving DOM state and cleaning up Effects. This is ideal for the room type tabs on /rooms — switching between dorm/private/capsule tabs without losing scroll position or pre-fetched data — and for pre-rendering the /book page in hidden mode so it is instantly ready when a user clicks 'Book Now'.",
+      "acceptanceCriteria": [
+        "Room type tabs on /rooms use <Activity mode={activeTab === 'dorm' ? 'visible' : 'hidden'}> to preserve tab state between switches",
+        "Switching between room tabs does not re-fetch or remount data (confirmed via React DevTools)",
+        "Any form inputs within a hidden Activity tab retain their values when the tab is shown again",
+        "Performance: switching tabs is visually instant (no Suspense fallback on re-show)",
+        "No regressions: all room tab content is still accessible to search engine crawlers (SSR renders all tabs)"
+      ],
+      "technicalNotes": [
+        "Activity is in React 19.2, bundled with Next.js 16 App Router by default",
+        "import { Activity } from 'react' (no separate install needed)",
+        "Hidden Activity boundaries still SSR-render their content for SEO; display:none is client-side only",
+        "Effects inside hidden Activity boundaries are cleaned up — avoid side effects that should persist while hidden",
+        "Source: https://react.dev/reference/react/Activity"
+      ],
+      "dependencies": [
+        "Upgrade to Next.js 16 and resolve all breaking changes"
+      ],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-153",
+      "title": "Add next typegen CI step and adopt PageProps/LayoutProps route type helpers",
+      "priority": "medium",
+      "description": "Next.js 15.5 stabilised typed routes and introduced globally available PageProps<'/path'>, LayoutProps<'/path'>, and RouteContext helpers generated by next typegen. These replace manual Promise<{params: {slug: string}}> type definitions, automatically cover parallel route slots, and enable running tsc --noEmit in CI without first running next build.",
+      "acceptanceCriteria": [
+        "next typegen command added to CI pipeline (runs before tsc --noEmit)",
+        "All page.tsx files use PageProps<'/route-path'> instead of manually typed props",
+        "All layout.tsx files use LayoutProps<'/route-path'> for correct parallel route slot typing",
+        "All route.ts files use RouteContext<'/route-path'> for typed params",
+        "tsc --noEmit passes in CI after next typegen runs",
+        "typedRoutes: true set in next.config.ts (stable as of 15.5, no longer experimental)"
+      ],
+      "technicalNotes": [
+        "next typegen was introduced in Next.js 15.5 and works with both Webpack and Turbopack",
+        "typedRoutes: true is now stable (no longer under experimental) as of 15.5",
+        "Generated types are global — no import required for PageProps/LayoutProps/RouteContext",
+        "Run: next typegen && tsc --noEmit in CI",
+        "Source: https://nextjs.org/blog/next-15-5#typescript-improvements"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-154",
+      "title": "Add paymentAccepted, currenciesAccepted, priceRange, and tourBookingPage to LodgingBusiness schema",
+      "priority": "medium",
+      "description": "The existing LodgingBusiness JSON-LD schema is missing several LocalBusiness properties that Google uses for rich results and entity understanding: paymentAccepted (cash, DuitNow QR, credit card), currenciesAccepted (MYR), priceRange ($), tourBookingPage (URL for /book), and hasMap (Google Maps URL). These standard schema.org properties help Google's Knowledge Panel and hotel search display accurate information.",
+      "acceptanceCriteria": [
+        "LodgingBusiness JSON-LD includes paymentAccepted: 'Cash, DuitNow QR, Credit Card'",
+        "LodgingBusiness JSON-LD includes currenciesAccepted: 'MYR'",
+        "LodgingBusiness JSON-LD includes priceRange: '$'",
+        "LodgingBusiness JSON-LD includes tourBookingPage pointing to /book",
+        "LodgingBusiness JSON-LD includes hasMap pointing to Google Maps URL for the hostel",
+        "Schema validates without warnings in Google Rich Results Test and Schema.org validator"
+      ],
+      "technicalNotes": [
+        "paymentAccepted and currenciesAccepted are schema.org/LocalBusiness properties inherited by LodgingBusiness",
+        "tourBookingPage: https://schema.org/tourBookingPage — URL of the booking page",
+        "hasMap: https://schema.org/hasMap — URL of a map showing the property location",
+        "DuitNow QR is Malaysia's national QR payment standard — relevant for local search accuracy",
+        "Source: https://schema.org/LodgingBusiness"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-155",
+      "title": "Add DuitNow QR payment section to /book and /contact pages",
+      "priority": "medium",
+      "description": "DuitNow QR is Malaysia's national interoperable QR payment standard, supported by all major Malaysian banks and e-wallets (Maybank, CIMB, Touch 'n Go, Boost, GrabPay). Prominently displaying DuitNow QR on the /book and /contact pages increases local guest conversions, particularly for domestic travellers who expect QR payments. This covers the UI: a scannable DuitNow QR code image, acceptance logos, and clear instructions.",
+      "acceptanceCriteria": [
+        "A DuitNow QR code image for the hostel is displayed on the /book page in a 'Payment Methods' section",
+        "DuitNow QR is listed alongside other accepted payment methods (cash, credit card)",
+        "The QR code section includes a caption explaining it works with all Malaysian banks and major e-wallets",
+        "QR image has descriptive alt text and is not relied upon as sole payment information (text fallback present)",
+        "DuitNow logo and participating bank/e-wallet logos displayed for trust signalling"
+      ],
+      "technicalNotes": [
+        "DuitNow QR is issued by PayNet (Malaysia's national payment network)",
+        "Merchants register with their bank to receive a static QR code for fixed-amount or payment-to-merchant",
+        "Static QR image can be embedded directly as next/image with appropriate sizes",
+        "DuitNow QR is supported by 40+ banks and e-wallets",
+        "Source: https://www.duitnow.my/DuitNow-QR/"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-156",
+      "title": "Implement AI search optimisation (AEO) with expanded FAQ and conversational content",
+      "priority": "medium",
+      "description": "Over 50% of travellers now use AI-powered planners (ChatGPT, Perplexity, Google AI Overviews) to research accommodation. AI search relies on well-structured, factual, conversational content rather than keyword density. The hostel needs expanded FAQ content using natural-language questions that AI assistants would ask, and entity-rich prose that answers traveller questions in complete sentences.",
+      "acceptanceCriteria": [
+        "FAQ section contains at least 15 natural-language Q&A pairs covering: price, location, check-in process, nearby attractions, transport from Singapore, payment methods, WiFi, breakfast, dormitory vs private rooms",
+        "Each FAQ answer is written in complete, self-contained sentences suitable for AI extraction (no 'see above' references)",
+        "FAQPage JSON-LD updated to include all new Q&A pairs",
+        "Key factual information (address, check-in times, price range) appears in the first paragraph of relevant sections",
+        "Speakable structured data references the FAQ section and hostel description section",
+        "Content tested against Perplexity AI and Google AI Overview for 'hostels in johor bahru' queries"
+      ],
+      "technicalNotes": [
+        "AI search favours: factual completeness, entity richness (names, addresses, prices), conversational phrasing, structured Q&A",
+        "Google AI Overviews appear in ~30% of travel queries — schema markup signals credibility to AI models",
+        "Perplexity and ChatGPT crawl via Bing and Common Crawl — ensure Bing Webmaster indexing is active",
+        "Entity-rich content: mention 'Johor Bahru', 'JB', 'Larkin', 'CIQ', 'Singapore day trip' explicitly in content",
+        "Source: https://www.mylighthouse.com/resources/blog/guide-optimize-hotel-website-for-ai-search"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-157",
+      "title": "Audit and document WCAG 2.2 SC 1.4.2 Audio Control compliance policy",
+      "priority": "medium",
+      "description": "WCAG 2.2 SC 1.4.2 (Level A) requires that any audio playing automatically for more than 3 seconds must be pausable or stoppable by the user. This story establishes a verified audit and documents the policy to prevent future additions (e.g., a lobby ambience video) from violating SC 1.4.2 without a control mechanism, and confirms the YouTube facade implementation satisfies this criterion.",
+      "acceptanceCriteria": [
+        "Audit of all pages confirms no audio plays automatically for more than 3 seconds without user initiation",
+        "Any video embeds (YouTube facade, future virtual tour) confirmed to have audio muted by default or a pause control visible within 3 seconds of page load",
+        "A documented policy in the accessibility statement prohibits future auto-playing audio without controls",
+        "YouTube facade implementation confirmed as compliant (defers iframe until user click — no auto-play)",
+        "Accessibility statement updated to include SC 1.4.2 Audio Control in the WCAG 2.2 AA compliance list"
+      ],
+      "technicalNotes": [
+        "SC 1.4.2 is Level A — it is mandatory for WCAG 2.2 AA conformance",
+        "The YouTube facade pattern (already implemented) defers the iframe until user click — this approach complies by default",
+        "Any future background-music feature would need a visible, keyboard-accessible pause button",
+        "W3C reference: https://www.w3.org/WAI/WCAG22/Understanding/audio-control.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-158",
+      "title": "Fix Next.js 16 scroll-behavior breaking change with data-scroll-behavior attribute",
+      "priority": "medium",
+      "description": "Next.js 16 removes automatic smooth scroll override during SPA navigations. If the site uses scroll-behavior: smooth globally (a common Tailwind pattern via the scroll-smooth class), each navigation will smooth-scroll the full page height rather than instantly resetting scroll position, which feels slow and disorienting. The opt-in to the previous behaviour is adding data-scroll-behavior='smooth' to the <html> element in layout.tsx.",
+      "acceptanceCriteria": [
+        "CSS audit performed: confirm whether scroll-behavior: smooth is set globally on html or body",
+        "If smooth scrolling is in use: data-scroll-behavior=\"smooth\" added to <html> in app/layout.tsx",
+        "Manual test: clicking a <Link> navigates to the new page with instant scroll reset (not a slow smooth scroll across the full page)",
+        "In-page anchor links (e.g., #faq, #amenities) still use smooth scrolling",
+        "No regression in scroll position on back/forward navigation"
+      ],
+      "technicalNotes": [
+        "Next.js 16 change: no longer overrides scroll-behavior during navigation unless data-scroll-behavior=\"smooth\" is on <html>",
+        "Tailwind's scroll-smooth class sets scroll-behavior: smooth on the element",
+        "Check app/layout.tsx for className containing 'scroll-smooth'",
+        "Source: https://nextjs.org/docs/app/guides/upgrading/version-16#scroll-behavior-override"
+      ],
+      "dependencies": [
+        "Upgrade to Next.js 16 and resolve all breaking changes"
+      ],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-159",
+      "title": "Add Pinterest Rich Pins metadata for room and blog pages",
+      "priority": "low",
+      "description": "Next.js 15.3 added explicit support for Pinterest Rich Pins metadata. Pinterest is a significant discovery channel for travel and accommodation, particularly for visual content like hostel room photos and local attraction guides. Rich Pins pull structured data (price, title, description) from the page and surface it in Pinterest search, driving referral traffic from travellers planning Malaysia trips.",
+      "acceptanceCriteria": [
+        "Room pages include Pinterest Product Rich Pin meta tags: og:price:amount, og:price:currency, product:price:amount, product:price:currency",
+        "Blog/guide pages include correct og:article:published_time in ISO 8601 format",
+        "Pinterest Rich Pin validator (https://developers.pinterest.com/tools/url-debugger/) passes for a room page URL",
+        "Pinterest domain verification completed via meta tag or DNS TXT record",
+        "No regression in existing OpenGraph tags"
+      ],
+      "technicalNotes": [
+        "Pinterest Rich Pin types relevant: Product (room pages), Article (blog pages), Place (hostel location)",
+        "Product Rich Pin minimum requirements: og:price:amount, og:price:currency",
+        "Next.js 15.3 added Pinterest Rich Pins support — check next.config.ts for config option",
+        "Source: https://nextjs.org/blog/next-15-3 (Pinterest Rich Pins feature item)",
+        "Pinterest developer docs: https://developers.pinterest.com/docs/rich-pins/overview/"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-160",
+      "title": "Enable Turbopack file system caching for faster development cold starts",
+      "priority": "low",
+      "description": "Next.js 16 introduces experimental Turbopack file system caching for development, storing compiler artifacts on disk between dev server restarts. This significantly reduces cold-start compile times for subsequent dev sessions, particularly beneficial in CI preview deployments where next dev may be started frequently. It is a one-line config change with no code impact and is trivially reversible.",
+      "acceptanceCriteria": [
+        "experimental.turbopackFileSystemCacheForDev: true added to next.config.ts",
+        "Second next dev startup measurably faster than cold start (measured via terminal output timestamps)",
+        "No stale cache issues observed during development (content changes reflected after save)",
+        ".next/cache directory excluded from git (already in .gitignore as .next/)"
+      ],
+      "technicalNotes": [
+        "Config: experimental: { turbopackFileSystemCacheForDev: true } in next.config.ts",
+        "Dev output now goes to .next/dev/ (separate from .next/ build output — new in Next.js 16)",
+        "If stale cache issues occur: delete .next/cache directory to force rebuild",
+        "Source: https://nextjs.org/blog/next-16#turbopack-file-system-caching-beta"
+      ],
+      "dependencies": [
+        "Upgrade to Next.js 16 and resolve all breaking changes"
+      ],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-161",
+      "title": "Implement React 19.2 useEffectEvent for stable analytics event handlers",
+      "priority": "low",
+      "description": "React 19.2 introduces useEffectEvent, which extracts non-reactive logic from Effects into stable callbacks that always read the latest props/state without causing the Effect to re-run. This eliminates the pattern of adding analytics/logging callbacks to useEffect dependency arrays, which forces re-subscriptions on every render. Primary use case: booking widget analytics tracking should use useEffectEvent so the function always has the latest session state without re-subscribing.",
+      "acceptanceCriteria": [
+        "At least one useEffect that currently has an analytics/logging function in its dependency array is refactored to use useEffectEvent",
+        "The Effect does not re-run when only the analytics function identity changes (confirmed via React DevTools Profiler)",
+        "ESLint react-hooks/exhaustive-deps rule does not flag the Effect as missing the extracted event",
+        "TypeScript types are correct (useEffectEvent is typed as a stable callback reference)"
+      ],
+      "technicalNotes": [
+        "useEffectEvent is available in React 19.2, included with Next.js 16",
+        "import { useEffectEvent } from 'react'",
+        "Effect Events are NOT stable across renders — do not pass them to other components or hooks as props",
+        "eslint-plugin-react-hooks v6 (included with Next.js 16) understands useEffectEvent",
+        "Source: https://react.dev/reference/react/useEffectEvent"
+      ],
+      "dependencies": [
+        "Upgrade to Next.js 16 and resolve all breaking changes"
+      ],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-162",
+      "title": "Add React 19.2 cacheSignal() for Server Component fetch cleanup",
+      "priority": "low",
+      "description": "React 19.2 introduces cacheSignal() for Server Components, providing an AbortSignal that fires when the cache() entry's lifetime ends. This allows in-flight fetch requests to be aborted when the cached result will no longer be used (e.g., when cache is invalidated mid-request). For server-side data fetching (room availability, pricing from external APIs), cacheSignal ensures abandoned fetches don't hold open connections unnecessarily.",
+      "acceptanceCriteria": [
+        "At least one cache() function wrapping an external fetch uses cacheSignal() to pass an abort signal",
+        "Fetch requests are aborted when the cache entry is invalidated (verified via network tab — no hung requests)",
+        "No TypeScript errors when using cacheSignal() (requires React 19.2 types from Next.js 16)",
+        "Server Component rendering is not regressed (same data fetched correctly)"
+      ],
+      "technicalNotes": [
+        "cacheSignal() is Server Components only — not usable in Client Components or Route Handlers",
+        "Pattern: const dedupedFetch = cache((url) => fetch(url, { signal: cacheSignal() }))",
+        "React 19.2 feature, available with Next.js 16",
+        "Source: https://react.dev/reference/react/cache#caching-with-a-signal"
+      ],
+      "dependencies": [
+        "Upgrade to Next.js 16 and resolve all breaking changes"
+      ],
+      "estimatedComplexity": "small",
       "passes": false
     }
   ]
