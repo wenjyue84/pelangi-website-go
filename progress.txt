@@ -5571,3 +5571,24 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 - Story was marked "critical" priority but is not implementable through code
 - Future iterations should not attempt this story
 
+
+
+## Iteration 20 - Story: US-211 - WCAG 2.1 SC 1.3.4 Orientation
+
+### What was implemented
+- Audited entire `site/src/` for orientation locks: no `@media (orientation:...)` CSS, no Screen Orientation API calls, no `onMouseDown`/`onPointerDown` handlers
+- Added explicit `orientation: "any"` to `site/src/app/manifest.ts` PWA manifest (was omitted, defaulting to any — now explicitly declared for audit clarity)
+- Confirmed all pages use shared Header/Footer via root layout — no page-specific orientation-dependent hiding
+
+### Audit results
+- manifest.ts: ✅ `orientation: "any"` set explicitly
+- CSS: ✅ No orientation media queries found anywhere in src/
+- JavaScript: ✅ No Screen Orientation API usage
+- Components: ✅ All use standard `<a>` and `<button>` elements with `onClick` (also pre-validates US-212)
+
+### Patterns discovered
+- The codebase was already SC 1.3.4 compliant by default — no orientation restrictions existed
+- Also confirmed SC 2.5.2 compliance: no `onMouseDown`/`onPointerDown` handlers in src/
+
+### Gotchas
+- None — clean audit pass

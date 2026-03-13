@@ -8,6 +8,7 @@ export default function manifest(): MetadataRoute.Manifest {
       "Japanese-style capsule accommodation in Johor Bahru from RM35/night. Free WiFi, 24/7 access, hot showers.",
     start_url: "/",
     display: "standalone",
+    orientation: "any",
     background_color: "#fafaf9",
     theme_color: "#fafaf9",
     icons: [
