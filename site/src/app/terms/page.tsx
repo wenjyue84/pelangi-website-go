@@ -184,10 +184,110 @@ export default function TermsPage() {
                 </ul>
               </section>
 
-              {/* 5. House Rules */}
+              {/* 5. Tourism Tax (TTx) */}
               <section className="mb-8">
                 <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
-                  5. House Rules
+                  5. Tourism Tax (TTx) / Cukai Pelancongan
+                </h2>
+                <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg p-5 mb-4">
+                  <p className="text-stone-800 dark:text-stone-200 font-medium mb-2">
+                    Malaysia Tourism Tax: RM10 per room per night
+                  </p>
+                  <p className="text-stone-600 dark:text-stone-400 text-sm">
+                    Cukai Pelancongan Malaysia: RM10 setiap bilik setiap malam
+                  </p>
+                </div>
+                <ul className="list-disc list-inside space-y-2 text-stone-700 dark:text-stone-300">
+                  <li>
+                    The <strong>Malaysia Tourism Tax (TTx)</strong> is a government-mandated
+                    charge under the{" "}
+                    <strong>Tourism Tax Act 2017</strong> and the{" "}
+                    <strong>
+                      MyTTx Public Ruling No. 01/2025
+                    </strong>{" "}
+                    (effective 1 December 2025), administered by the Royal Malaysian Customs
+                    Department (RMCD).
+                  </li>
+                  <li>
+                    TTx is charged at <strong>RM10 per room per night</strong> and applies
+                    to all foreign tourists staying at registered accommodation premises in
+                    Malaysia. Malaysian citizens and permanent residents are exempt.
+                  </li>
+                  <li>
+                    The Tourism Tax is <strong>displayed as a separate line item</strong> in
+                    our booking flow and is not hidden within the room rate. The total cost
+                    shown before booking confirmation includes: Room Rate + TTx (RM10/room/night).
+                  </li>
+                  <li>
+                    For bookings made through third-party platforms (Agoda, Booking.com,
+                    Hostelworld), the platform&rsquo;s appointed Digital Platform Service
+                    Provider (DPSP) collects and remits TTx on the operator&rsquo;s behalf
+                    in accordance with RMCD regulations.
+                  </li>
+                  <li>
+                    For direct bookings, Pelangi Capsule Hostel collects TTx directly as a
+                    registered taxable person with RMCD, and remits the tax accordingly.
+                  </li>
+                  <li>
+                    For official information, refer to the{" "}
+                    <a
+                      href="https://www.myttx.customs.gov.my/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-amber-700 dark:text-amber-400 underline hover:text-amber-800 dark:hover:text-amber-300"
+                    >
+                      MyTTx Portal (myttx.customs.gov.my)
+                    </a>
+                    , the official tax authority for Malaysia Tourism Tax.
+                  </li>
+                </ul>
+
+                {/* Bahasa Malaysia version */}
+                <div className="mt-6 pt-6 border-t border-stone-200 dark:border-stone-700">
+                  <p className="text-sm font-medium text-stone-500 dark:text-stone-400 uppercase tracking-wider mb-3">
+                    Bahasa Malaysia
+                  </p>
+                  <ul className="list-disc list-inside space-y-2 text-stone-600 dark:text-stone-400 text-sm">
+                    <li>
+                      <strong>Cukai Pelancongan Malaysia (TTx)</strong> adalah caj yang
+                      diwajibkan oleh kerajaan di bawah{" "}
+                      <strong>Akta Cukai Pelancongan 2017</strong> dan{" "}
+                      <strong>Ketetapan Umum MyTTx No. 01/2025</strong>{" "}
+                      (berkuat kuasa 1 Disember 2025), ditadbir oleh Jabatan Kastam
+                      Diraja Malaysia (JKDM).
+                    </li>
+                    <li>
+                      Cukai ini dikenakan pada kadar{" "}
+                      <strong>RM10 setiap bilik setiap malam</strong> dan terpakai
+                      kepada semua pelancong asing yang menginap di premis penginapan
+                      berdaftar di Malaysia. Warganegara Malaysia dan penduduk tetap
+                      dikecualikan.
+                    </li>
+                    <li>
+                      Cukai Pelancongan dipaparkan sebagai{" "}
+                      <strong>item berasingan</strong> dalam aliran tempahan kami dan
+                      tidak tersembunyi dalam kadar bilik.
+                    </li>
+                    <li>
+                      Untuk maklumat rasmi, sila rujuk{" "}
+                      <a
+                        href="https://www.myttx.customs.gov.my/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-amber-700 dark:text-amber-400 underline hover:text-amber-800 dark:hover:text-amber-300"
+                      >
+                        Portal MyTTx (myttx.customs.gov.my)
+                      </a>
+                      .
+                    </li>
+                  </ul>
+                </div>
+              </section>
+
+              {/* 6. House Rules */}
+              <section className="mb-8">
+                <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
+                  6. House Rules
                 </h2>
                 <p className="text-stone-700 dark:text-stone-300 leading-relaxed mb-3">
                   All guests must observe the following rules during their stay:
@@ -227,10 +327,10 @@ export default function TermsPage() {
                 </ul>
               </section>
 
-              {/* 6. Liability */}
+              {/* 7. Liability */}
               <section className="mb-8">
                 <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
-                  6. Liability
+                  7. Liability
                 </h2>
                 <ul className="list-disc list-inside space-y-2 text-stone-700 dark:text-stone-300">
                   <li>
@@ -255,10 +355,10 @@ export default function TermsPage() {
                 </ul>
               </section>
 
-              {/* 7. Privacy */}
+              {/* 8. Privacy */}
               <section className="mb-8">
                 <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
-                  7. Privacy and Data Protection
+                  8. Privacy and Data Protection
                 </h2>
                 <p className="text-stone-700 dark:text-stone-300 leading-relaxed">
                   We collect and process personal data in accordance with Malaysia&rsquo;s
@@ -274,10 +374,10 @@ export default function TermsPage() {
                 </p>
               </section>
 
-              {/* 8. Intellectual Property */}
+              {/* 9. Intellectual Property */}
               <section className="mb-8">
                 <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
-                  8. Intellectual Property
+                  9. Intellectual Property
                 </h2>
                 <p className="text-stone-700 dark:text-stone-300 leading-relaxed">
                   All content on this website — including text, images, logos, and design —
@@ -287,10 +387,10 @@ export default function TermsPage() {
                 </p>
               </section>
 
-              {/* 9. Governing Law */}
+              {/* 10. Governing Law */}
               <section className="mb-8">
                 <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
-                  9. Governing Law
+                  10. Governing Law
                 </h2>
                 <p className="text-stone-700 dark:text-stone-300 leading-relaxed">
                   These Terms are governed by and construed in accordance with the laws of
@@ -300,10 +400,10 @@ export default function TermsPage() {
                 </p>
               </section>
 
-              {/* 10. Changes */}
+              {/* 11. Changes */}
               <section className="mb-8">
                 <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
-                  10. Changes to These Terms
+                  11. Changes to These Terms
                 </h2>
                 <p className="text-stone-700 dark:text-stone-300 leading-relaxed">
                   We reserve the right to update or modify these Terms at any time. Changes
@@ -313,10 +413,10 @@ export default function TermsPage() {
                 </p>
               </section>
 
-              {/* 11. Contact */}
+              {/* 12. Contact */}
               <section className="mb-8">
                 <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
-                  11. Contact Us
+                  12. Contact Us
                 </h2>
                 <p className="text-stone-700 dark:text-stone-300 leading-relaxed mb-3">
                   If you have questions about these Terms, please contact us:

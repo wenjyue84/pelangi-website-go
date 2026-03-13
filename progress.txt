@@ -4601,3 +4601,27 @@ Incomplete: Register Google Business Profile and connect to Google Hotel free bo
 ### Gotchas
 - The Google Maps embed URL uses the same embed as the existing Location component — may need updating with actual Place ID if GBP is claimed
 - GBP profile URL field needs to be manually updated to point to /location (external action, not code)
+
+
+## Iteration 29 - Story: US-148 - Add Malaysia Tourism Tax MyTTx Public Ruling No. 01/2025 compliance disclosure
+
+### What was implemented
+- Added dedicated "Section 5. Tourism Tax (TTx) / Cukai Pelancongan" to the T&C page (`site/src/app/terms/page.tsx`)
+- Section includes:
+  - Highlighted callout box with RM10/room/night rate in English and Bahasa Malaysia
+  - Legal basis: Tourism Tax Act 2017 + MyTTx Public Ruling No. 01/2025 (effective 1 December 2025)
+  - Explanation that TTx is shown as a separate line item (not hidden in room rate)
+  - DPSP disclosure: OTA platforms collect/remit TTx via their DPSP; direct bookings collected by hostel as registered taxable person
+  - Link to official MyTTx portal (myttx.customs.gov.my)
+  - Full Bahasa Malaysia translation of all key disclosures
+- Renumbered existing sections 5-11 to 6-12 to accommodate the new section
+- Verified booking flow (/book page) already shows TTx as a separate line item in pricing cards (US-131 was already complete)
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- The T&C page used sequential numbered sections — inserting a new section requires renumbering all subsequent sections
+- Bilingual content uses a border-t divider with a "Bahasa Malaysia" label to visually separate the two languages
+
+### Gotchas
+- The T&C page had no existing bilingual content — this is the first section with dual-language text
+- US-103 (Google Business Profile) is critical priority but is an external platform task, not code-implementable
