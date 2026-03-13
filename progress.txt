@@ -6831,3 +6831,106 @@ Incomplete: Integrate Google Free Hotel Booking Links via connectivity partner (
 - Real deployment requires: `TURNSTILE_SECRET_KEY` and `NEXT_PUBLIC_TURNSTILE_SITE_KEY` Vercel env vars
 - Turnstile is MYR-agnostic (global CDN) — no region setup needed
 - Stash conflict: `git stash --` stashes everything; always use `git stash push -- <pathspec>`
+## Iteration 21 - Sat, Mar 14, 2026  2:41:13 AM
+Incomplete: Integrate Google Free Hotel Booking Links via connectivity partner (ID: US-194) — attempt 2/3
+
+
+## Pre-analysis for US-194 (Gemini 2.5 Pro)
+This user story is for a hotel/hospitality integration, not a payroll system. The target app should be a Property Management System (PMS) or hospitality app, *not* `lhdn_payroll_integration`.
+
+Assuming a hypothetical `frappe_pms` app, here is the technical brief for the Claude agent:
+
+**Project:** Google Free Booking Links (FBL) Integration
+**App:** `frappe_pms` (Hypothetical PMS App)
+
+**1. Python Files to Modify:**
+
+*   **`frappe_pms/hooks.py`**:
+    *   Add `doc_events` for `Booking`, `Room Rate`, and `Room` to trigger real-time ARI (Availability, Rates, Inventory) updates on save/submit/cancel.
+    *   Add `scheduler_events` for a daily full ARI sync to ensure data consistency.
+*   **`frappe_pms/integrations/google_fbl_connector.py` (New File)**:
+    *   This will contain the core logic to communicate with the chosen connectivity partner's API (e.g., Beds24, Cloudbeds).
+    *   Implement functions for authentication, pushing ARI updates, and handling API responses/errors.
+*   **`frappe_pms/api.py` or a new background job file**:
+    *   Define the function that is triggered by hooks to queue and process ARI updates (e.g., `update_ari_for_google`).
+    *   Define the scheduled function for the full daily sync (e.g., `daily_full_ari_sync`).
+
+**2. Frappe DocTypes & Hooks:**
+
+*   **`Google FBL Settings` (New Singleton DocType)**:
+    *   To store API credentials, the chosen connectivity partner, property ID, and other configuration.
+*   **`Booking` (Existing DocType)**:
+    *   The `on_submit` and `on_cancel` hooks are critical. They must trigger an availability update for the specific room and dates.
+*   **`Room Rate` / `Rate Plan` (Existing DocTypes)**:
+    *   The `on_update` hook must trigger a rate update.
+*   **`Room` (Existing DocType)**:
+    *   Changes to room status (e.g., "Out of Order") must trigger availability updates.
+
+**3. Recommended Implementation Approach:**
+
+1.  Choose a connectivity partner and create the `Google FBL Settings` DocType to store their API credentials.
+2.  Build the `google_fbl_connector.py` module to handle the API specifics (authentication, payload formatting for ARI messages).
+3.  Use Frappe's background jobs (`enqueue`) for all API calls to avoid blocking the UI and to handle retries.
+4.  Implement `doc_events` hooks on `Booking`, `Room Rate`, etc., to call the background job with the relevant data for incremental, real-time updates.
+5.  Create a scheduled job (`scheduler_events`) that runs nightly to push a complete ARI snapshot for the next 365 days, ensuring consistency and preventing data drift.
+
+**4. Edge Cases & Gotchas:**
+
+*   **Price Accuracy is Paramount**: The price sent to Google *must exactly* match the final price on the booking page, including all taxes and fees. Discrepancies will get the listing removed.
+*   **API Rate Limiting**: Implement exponential backoff for API calls to the partner.
+*   **Data Mapping**: Carefully map internal room types and rate codes to the partner's required format. This is a common failure point.
+*   **Booking Source**: The website controller must be able to recognize traffic coming from Google FBL (likely via URL parameters) to attribute bookings correctly.
+
+
+## Pre-analysis for US-194 (Gemini 2.5 Pro)
+This user story is for a web/e-commerce integration, not a Frappe/Python task. The context has been adjusted for a web project.
+
+**Technical Brief: US-194 Google Free Booking Links (FBL) Integration**
+
+**1. Primary Files/Areas for Modification:**
+This is an external integration task, not a major coding feature. The focus is on configuration and verification, with minimal code changes.
+- **Booking Page:** The connectivity partner will need a stable, deep-linkable URL to your booking engine. This likely resides within `site/src/app/`. The page must be able to accept check-in/out dates and guest count from URL parameters.
+- **Structured Data:** Enhance SEO by adding `Hotel` and `Offer` (for rates) `schema.org` JSON-LD snippets. This would likely be implemented in the main page layout (`site/src/app/layout.tsx` or similar) and the booking page itself.
+- **Environment Variables:** The booking engine URL for the partner should be stored as an environment variable (e.g., in `.env.local`).
+- **Analytics:** Potentially modify `site/src/instrumentation.ts` or analytics hooks to track referrals from Google FBL for performance measurement.
+
+**2. Involved Systems & Hooks (External):**
+- **Connectivity Partner:** The core of the task. A third-party service like Beds24, Cloudbeds, or SiteMinder that acts as the bridge between your inventory and Google.
+- **Google Hotel Center:** The platform where you link your partner, monitor the ARI feed's health, and verify price accuracy.
+- **Google Business Profile:** Must be claimed, verified, and linked to the Hotel Center account. Data consistency is critical.
+
+**3. Recommended Implementation Approach:**
+1.  Choose a Google-approved connectivity partner that syncs ARI (Availability, Rates, Inventory).
+2.  Configure the partner with your hostel's room types, rates, and live availability.
+3.  In Google Hotel Center, connect the partner as your official source for rates and availability.
+4.  Provide the partner with the direct "Landing Page" URL for your website's booking engine.
+5.  Use Google's Price Accuracy Policy Validator and test booking links to ensure they land on the correct page with the correct price. The feed will not go live until Google verifies "Excellent" accuracy.
+
+**4. Edge Cases & Gotchas:**
+- **Price Accuracy:** Google is extremely strict. The price shown on Google *must* match the price on your landing page exactly. Any discrepancy (e.g., from taxes or fees not disclosed upfront) will cause the feed to be disabled.
+- **Data Consistency:** The hostel's name, address, and phone number must be identical across your website, Google Business Profile, and the connectivity partner to ensure a successful match.
+- **Deep Linking:** The link provided to the partner must go directly to the booking process, not the homepage. A poor user experience will lower conversion and may impact ranking.
+- **ARI Feed Type:** Clarify if the partner uses a PULL (Google fetches from partner) or PUSH (partner sends updates to Google) API, as this affects how quickly inventory changes are reflected.
+
+
+## Iteration - Story: US-184 - Audit and replace images of text with CSS text for WCAG 2.2 SC 1.4.5
+
+### What was implemented
+- Comprehensive audit of all 20+ components using `<img>`, `<Image>`, `background-image`, and SVG
+- Verified all text in the site is rendered as HTML/CSS, not baked into image files
+- No banner, badge, promo, or sale images with text exist in the public/images directory
+- Logo image in Header.tsx confirmed as logotype (exempt under SC 1.4.5)
+- All trust badges (HeroTrustBadges, MotacBadge), promotional banners (BookingRecoveryBanner), category labels, price overlays, and feature badges use HTML text with Tailwind CSS
+- All SVG elements are icons only (no text content), properly marked with aria-hidden="true"
+- CSS background-image in Facilities.tsx is a geometric SVG pattern with no text
+
+### Audit result
+- **WCAG 2.2 SC 1.4.5 Status: COMPLIANT** — No remediation required
+- All acceptance criteria met: audit complete, no images-of-text found, all promotional elements use CSS text
+
+### Patterns discovered
+- The codebase consistently uses HTML text overlaid on images rather than baking text into images — good pattern
+- SVG icons consistently use aria-hidden="true" across all components
+
+### Gotchas
+- None — the codebase was already well-structured for accessibility
