@@ -296,7 +296,7 @@ export default function Destinations() {
           {filteredDestinations.map((dest) => (
             <article
               key={dest.id}
-              className="group bg-white dark:bg-stone-900 rounded-2xl overflow-hidden shadow-xs hover:shadow-xl
+              className="scroll-reveal group bg-white dark:bg-stone-900 rounded-2xl overflow-hidden shadow-xs hover:shadow-xl
                        transition-all duration-300 cursor-pointer border border-stone-100 dark:border-stone-700"
               onClick={() => setSelectedDest(dest)}
             >

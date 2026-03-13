@@ -5668,3 +5668,26 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 ### Gotchas
 - Trust badges use `cursor-default` buttons (not links) since they're informational — click tracking works but doesn't navigate
 - Price comparison uses hardcoded values matching existing OTA comparison section below — keep in sync if prices change
+
+
+## Iteration 226 - Story: US-217 - CSS scroll-driven animations for section reveals
+
+### What was implemented
+- Added `scroll-reveal` CSS class to `site/src/app/globals.css` using `animation-timeline: view()` with `animation-range: entry 0% entry 30%`
+- Keyframe `scroll-fade-in-up`: animates `opacity: 0 → 1` and `translateY(1.5rem) → 0` — compositor-only properties, zero CLS
+- Gated behind `@supports (animation-timeline: view())` so unsupporting browsers show content normally (no fallback animation)
+- Wrapped inside `@media (prefers-reduced-motion: no-preference)` — users with reduced-motion preference see no animation
+- Applied `scroll-reveal` class to 3 distinct section types:
+  1. Amenity cards (`site/src/components/Amenities.tsx`) — 8 cards in 4-col grid
+  2. Review/testimonial cards (`site/src/components/Reviews.tsx`) — 3 cards in 3-col grid
+  3. Destination cards (`site/src/components/Destinations.tsx`) — 12 cards in 3-col grid
+- No JavaScript IntersectionObserver or third-party animation library used — pure CSS only
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Existing `@media (prefers-reduced-motion: reduce)` in globals.css already kills all animations, but AC specifically requires `no-preference` gate — both are now present
+- `animation-fill-mode: both` ensures elements hidden before entry range and visible after — elements already in viewport on load show normally
+
+### Gotchas
+- `@supports (animation-timeline: view())` is essential — without it, browsers that support `animation` but not scroll timelines would run the keyframe as a one-shot time-based animation (elements flash in on load)
+- Destinations is a `"use client"` component but the CSS class works fine regardless of RSC vs client boundary

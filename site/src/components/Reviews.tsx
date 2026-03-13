@@ -75,7 +75,7 @@ export default function Reviews() {
 
                 <div className="grid md:grid-cols-3 gap-8">
                     {reviews.map((review, index) => (
-                        <div key={index} className="bg-stone-50 dark:bg-stone-800 p-8 rounded-3xl relative">
+                        <div key={index} className="scroll-reveal bg-stone-50 dark:bg-stone-800 p-8 rounded-3xl relative">
                             <div className="flex text-amber-400 mb-4">
                                 {[...Array(review.rating)].map((_, i) => (
                                     <svg key={i} className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
