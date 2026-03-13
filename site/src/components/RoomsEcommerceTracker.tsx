@@ -1,0 +1,43 @@
+"use client";
+
+import { useEffect, useCallback } from "react";
+import { trackViewItem, trackSelectItem } from "@/lib/gtm-ecommerce";
+
+const ROOM_ITEMS = [
+  {
+    item_id: "standard-capsule-pod",
+    item_name: "Standard Capsule Pod",
+    item_category: "accommodation",
+    price: 35,
+    currency: "MYR",
+  },
+  {
+    item_id: "premium-capsule-pod",
+    item_name: "Premium Capsule Pod",
+    item_category: "accommodation",
+    price: 45,
+    currency: "MYR",
+  },
+] as const;
+
+export default function RoomsEcommerceTracker() {
+  const handleClick = useCallback((e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+    // "Book Your Pod Now" CTA links to #booking
+    const link = target.closest("a[href='#booking'], .btn-primary");
+    if (link) {
+      trackSelectItem(ROOM_ITEMS[0], "Rooms Page");
+    }
+  }, []);
+
+  useEffect(() => {
+    for (const item of ROOM_ITEMS) {
+      trackViewItem(item);
+    }
+
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
+  }, [handleClick]);
+
+  return null;
+}

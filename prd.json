@@ -3645,7 +3645,7 @@
         "Add Malaysia PDPA-compliant cookie consent banner with explicit opt-in"
       ],
       "estimatedComplexity": "medium",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-164",
@@ -3792,7 +3792,7 @@
         "Implement Google Tag Manager with Consent Mode v2"
       ],
       "estimatedComplexity": "medium",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-170",

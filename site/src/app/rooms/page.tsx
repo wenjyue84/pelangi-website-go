@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Rooms from "@/components/Rooms";
 import Facilities from "@/components/Facilities";
+import RoomsEcommerceTracker from "@/components/RoomsEcommerceTracker";
 
 export const dynamic = 'force-static';
 
@@ -187,6 +188,7 @@ export default function RoomsPage() {
                 <Facilities />
             </div>
             <Footer />
+            <RoomsEcommerceTracker />
         </main>
     );
 }

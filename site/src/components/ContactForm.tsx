@@ -1,8 +1,9 @@
 "use client";
 
-import { useActionState, useOptimistic } from "react";
+import { useActionState, useOptimistic, useEffect, useRef } from "react";
 import Link from "next/link";
 import { submitContactForm, type ContactFormResult } from "@/app/actions/contact";
+import { trackGenerateLead } from "@/lib/gtm-ecommerce";
 
 export default function ContactForm() {
   const [state, formAction, isPending] = useActionState(submitContactForm, null);
@@ -10,6 +11,14 @@ export default function ContactForm() {
     state,
     () => ({ success: true, message: "Message sent! We'll respond within 24 hours." })
   );
+  const leadTracked = useRef(false);
+
+  useEffect(() => {
+    if (state?.success && !leadTracked.current) {
+      leadTracked.current = true;
+      trackGenerateLead("contact_form");
+    }
+  }, [state]);
 
   async function handleSubmit(formData: FormData) {
     addOptimistic();
