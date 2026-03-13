@@ -5950,3 +5950,21 @@ Completed: Implement Next.js after() API for deferred analytics and logging (ID:
 - `typedRoutes: true` is now top-level in NextConfig (not under `experimental`) since Next.js 15.5
 - The `.next/types/**/*.ts` is already included in `tsconfig.json` — no tsconfig changes needed
 - PageProps is globally declared (no import needed) — TypeScript finds it via `.next/types/routes.d.ts`
+
+
+## Iteration - Story: US-151 - useLinkStatus and onNavigate navigation hooks
+
+### What was implemented
+- `site/src/components/BookNowCTA.tsx` — New reusable "Book Now" Link component using `useLinkStatus` from `next/link` to show a CSS `animate-spin` SVG spinner while the /book page loads; inner `BookNowInner` component holds the hook (must be a child of `<Link>`)
+- `site/src/components/Header.tsx` — Replaced both desktop and mobile "Book Now" `<Link>` elements with `<BookNowCTA>`; added `onNavigate` prop to all 7 nav links pushing `{ event: "nav_click", nav_href }` to `window.dataLayer` for GA4 SPA navigation tracking
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- `useLinkStatus` must be used in a component that is a **descendant** of `<Link>` — not at the `<Link>` level itself
+- `onNavigate` fires ONLY for SPA client-side navigations — does NOT fire for external links; no guard needed
+- `useLinkStatus` is exported from `next/link` alongside the default `Link` export (named export)
+- Import: `import Link, { useLinkStatus } from "next/link"`
+
+### Gotchas
+- Removing unused imports (`BOOK_NOW_LABEL`, `BOOK_NOW_ARIA`) from Header.tsx prevents TS unused import warnings
+- The spinner `<svg>` must have `aria-hidden="true"` to avoid screen readers announcing it

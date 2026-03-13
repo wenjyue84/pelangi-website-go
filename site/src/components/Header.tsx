@@ -6,12 +6,18 @@ import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import LanguageSwitcher from "./LanguageSwitcher";
+import BookNowCTA from "./BookNowCTA";
 import {
-  BOOK_NOW_LABEL,
-  BOOK_NOW_ARIA,
   SEARCH_ARIA,
   SEARCH_ARIA_DESKTOP,
 } from "@/lib/ui-labels";
+
+function pushNavEvent(href: string) {
+  if (typeof window === "undefined") return;
+  const w = window as unknown as { dataLayer: Record<string, unknown>[] };
+  w.dataLayer = w.dataLayer || [];
+  w.dataLayer.push({ event: "nav_click", nav_href: href });
+}
 
 const SearchDialog = dynamic(() => import("./SearchDialog"), { ssr: false });
 
@@ -77,6 +83,7 @@ export default function Header() {
               key={link.href}
               href={link.href as Route}
               className="px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full text-stone-600 hover:text-stone-900 hover:bg-stone-100 dark:text-stone-400 dark:hover:text-stone-100 dark:hover:bg-stone-800"
+              onNavigate={() => pushNavEvent(link.href)}
             >
               {link.label}
             </Link>
@@ -92,13 +99,7 @@ export default function Header() {
             </svg>
           </button>
           <LanguageSwitcher />
-          <Link
-            href="/book"
-            className="ml-4 px-6 py-2.5 text-sm font-medium rounded-full transition-all duration-300 bg-amber-700 text-white hover:bg-amber-800"
-            aria-label={BOOK_NOW_ARIA}
-          >
-            {BOOK_NOW_LABEL}
-          </Link>
+          <BookNowCTA className="ml-4 px-6 py-2.5 text-sm font-medium rounded-full transition-all duration-300 bg-amber-700 text-white hover:bg-amber-800" />
         </div>
 
         {/* Mobile Search + Menu Buttons */}
@@ -141,6 +142,7 @@ export default function Header() {
                 href={link.href as Route}
                 className="block px-6 py-3 text-stone-700 hover:bg-stone-50 hover:text-stone-900 transition-colors dark:text-stone-300 dark:hover:bg-stone-700 dark:hover:text-stone-100"
                 onClick={() => setIsMenuOpen(false)}
+                onNavigate={() => pushNavEvent(link.href)}
               >
                 {link.label}
               </Link>
@@ -149,15 +151,10 @@ export default function Header() {
               <div className="flex items-center justify-center mb-4">
                 <LanguageSwitcher />
               </div>
-              <Link
-                href="/book"
-                className="block w-full text-center bg-amber-700 text-white py-3 rounded-xl font-medium
-                         hover:bg-amber-800 transition-colors"
+              <BookNowCTA
+                className="block w-full text-center bg-amber-700 text-white py-3 rounded-xl font-medium hover:bg-amber-800 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
-                aria-label={BOOK_NOW_ARIA}
-              >
-                {BOOK_NOW_LABEL}
-              </Link>
+              />
             </div>
           </div>
         </div>
