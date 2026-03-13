@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import { BOOK_NOW_LABEL, BOOK_NOW_ARIA } from "@/lib/ui-labels";
 export const metadata: Metadata = {
   title: "Hostel Amenities | Free WiFi, Co-working Space & More",
   description: "Discover Pelangi Capsule Hostel amenities: high-speed WiFi for digital nomads, dedicated co-working space, 24/7 access, secure lockers, shared kitchen, laundry facilities, and more. Perfect for long-stay backpackers in Johor Bahru.",
@@ -183,9 +184,9 @@ export default function AmenitiesPage() {
               <Link
                 href="/book"
                 className="px-8 py-3 bg-amber-700 text-white rounded-lg hover:bg-amber-800 transition-colors"
-                aria-label="Book Now — Reserve your stay at Pelangi Capsule Hostel"
+                aria-label={BOOK_NOW_ARIA}
               >
-                Book Now
+                {BOOK_NOW_LABEL}
               </Link>
               <Link
                 href="/"

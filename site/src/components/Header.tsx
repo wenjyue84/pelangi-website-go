@@ -5,6 +5,12 @@ import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import LanguageSwitcher from "./LanguageSwitcher";
+import {
+  BOOK_NOW_LABEL,
+  BOOK_NOW_ARIA,
+  SEARCH_ARIA,
+  SEARCH_ARIA_DESKTOP,
+} from "@/lib/ui-labels";
 
 const SearchDialog = dynamic(() => import("./SearchDialog"), { ssr: false });
 
@@ -77,7 +83,7 @@ export default function Header() {
           <button
             onClick={() => setIsSearchOpen(true)}
             className="p-2 text-stone-500 hover:text-stone-900 hover:bg-stone-100 rounded-full transition-colors dark:text-stone-400 dark:hover:text-stone-100 dark:hover:bg-stone-800"
-            aria-label="Search site (Ctrl+K)"
+            aria-label={SEARCH_ARIA_DESKTOP}
             title="Search (Ctrl+K)"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -88,9 +94,9 @@ export default function Header() {
           <Link
             href="/book"
             className="ml-4 px-6 py-2.5 text-sm font-medium rounded-full transition-all duration-300 bg-amber-700 text-white hover:bg-amber-800"
-            aria-label="Book Now — Reserve your stay at Pelangi Capsule Hostel"
+            aria-label={BOOK_NOW_ARIA}
           >
-            Book Now
+            {BOOK_NOW_LABEL}
           </Link>
         </div>
 
@@ -99,7 +105,7 @@ export default function Header() {
           <button
             className="p-2 rounded-full transition-colors duration-300 text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-800"
             onClick={() => setIsSearchOpen(true)}
-            aria-label="Search site"
+            aria-label={SEARCH_ARIA}
 >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -147,9 +153,9 @@ export default function Header() {
                 className="block w-full text-center bg-amber-700 text-white py-3 rounded-xl font-medium
                          hover:bg-amber-800 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
-                aria-label="Book Now — Reserve your stay at Pelangi Capsule Hostel"
+                aria-label={BOOK_NOW_ARIA}
               >
-                Book Now
+                {BOOK_NOW_LABEL}
               </Link>
             </div>
           </div>

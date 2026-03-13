@@ -5472,3 +5472,25 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 - `npx tsc --noEmit` passes with zero errors
 - `npx next build` completes successfully
 
+
+
+## Iteration - Story: US-136 - Enforce WCAG 2.2 SC 3.2.4 consistent identification of repeated UI components
+
+### What was implemented
+- Created `site/src/lib/ui-labels.ts` — canonical labels for all repeated interactive elements (Book Now, WhatsApp, Search, Social links, Mobile booking bar)
+- Updated `site/src/components/Header.tsx` — imports and uses BOOK_NOW_LABEL, BOOK_NOW_ARIA, SEARCH_ARIA, SEARCH_ARIA_DESKTOP
+- Updated `site/src/components/Footer.tsx` — imports and uses BOOK_NOW_LABEL, BOOK_NOW_ARIA, WHATSAPP_ARIA, FACEBOOK_ARIA, INSTAGRAM_ARIA, GOOGLE_MAPS_ARIA; fixed inconsistent shorter aria-label "Book Now — Reserve your stay" → canonical form
+- Updated `site/src/components/MobileBookingBar.tsx` — imports and uses BOOK_NOW_LABEL, BOOK_NOW_ARIA, MOBILE_BOOKING_BAR_ARIA; fixed inconsistent "Book Now via WhatsApp" and "Book via WhatsApp" → canonical forms
+- Updated `site/src/app/amenities/page.tsx` — both Book Now CTAs now use canonical labels from ui-labels.ts
+
+### Inconsistencies fixed
+- Footer "Book Now" had shorter aria-label "Book Now — Reserve your stay" vs full "Book Now — Reserve your stay at Pelangi Capsule Hostel"
+- MobileBookingBar banner had "Book via WhatsApp" and button had "Book Now via WhatsApp" — both now use canonical labels
+- All repeated elements now derive labels from single source of truth in ui-labels.ts
+
+### Patterns discovered
+- Footer uses a link array with optional ariaLabel property via object spread — works with imported constants
+- MobileBookingBar is a client component — imports from @/lib work fine
+
+### Gotchas
+- None — straightforward refactoring story

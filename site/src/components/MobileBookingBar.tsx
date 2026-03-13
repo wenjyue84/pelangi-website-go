@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { sendGAEvent } from '@next/third-parties/google';
+import { BOOK_NOW_LABEL, BOOK_NOW_ARIA, MOBILE_BOOKING_BAR_ARIA } from '@/lib/ui-labels';
 
 const DEFAULT_WHATSAPP_URL =
   "https://wa.me/60127088789?text=Hi!%20I'd%20like%20to%20book%20a%20pod%20at%20Pelangi%20Capsule%20Hostel.";
@@ -31,7 +32,7 @@ export default function MobileBookingBar() {
     <div
       className="fixed bottom-0 left-0 right-0 z-40 md:hidden"
       role="banner"
-      aria-label="Book via WhatsApp"
+      aria-label={MOBILE_BOOKING_BAR_ARIA}
     >
       <div className="bg-white dark:bg-stone-900 border-t border-stone-200 dark:border-stone-700 shadow-[0_-2px_10px_rgba(0,0,0,0.08)] dark:shadow-[0_-2px_10px_rgba(0,0,0,0.3)] px-4 py-3 flex items-center justify-between gap-3">
         {/* WhatsApp icon + text */}
@@ -56,9 +57,9 @@ export default function MobileBookingBar() {
           rel="noopener noreferrer"
           onClick={() => sendGAEvent("event", "whatsapp_click", { location: "mobile_booking_bar" })}
           className="shrink-0 inline-flex items-center gap-1.5 bg-green-500 hover:bg-green-600 active:bg-green-700 text-white text-sm font-semibold px-4 py-2.5 rounded-full transition-colors"
-          aria-label="Book Now via WhatsApp"
+          aria-label={BOOK_NOW_ARIA}
         >
-          Book Now
+          {BOOK_NOW_LABEL}
         </a>
       </div>
     </div>
