@@ -66,24 +66,26 @@ export default function Facilities() {
           </p>
         </div>
 
-        {/* Facilities Grid */}
+        {/* Facilities Grid — each cell is a container so card internals adapt
+            to their own width (container queries); sm:/lg: remain for column count */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {facilities.map((facility, index) => (
-            <div
-              key={index}
-              className="bg-white/5 backdrop-blur-xs rounded-2xl p-7
-                       border border-white/10 hover:border-white/20
-                       hover:bg-white/10 transition-all duration-300 cursor-pointer group"
-            >
-              <div className="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center
-                            text-amber-300 mb-5 group-hover:bg-amber-500/30 transition-colors">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
-                    d={iconPaths[facility.icon]} />
-                </svg>
+            <div key={index} className="@container">
+              <div
+                className="bg-white/5 backdrop-blur-xs rounded-2xl p-5 @[240px]:p-7
+                         border border-white/10 hover:border-white/20
+                         hover:bg-white/10 transition-all duration-300 cursor-pointer group"
+              >
+                <div className="w-10 h-10 @[240px]:w-12 @[240px]:h-12 rounded-xl bg-amber-500/20 flex items-center justify-center
+                              text-amber-300 mb-4 @[240px]:mb-5 group-hover:bg-amber-500/30 transition-colors">
+                  <svg className="w-5 h-5 @[240px]:w-6 @[240px]:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
+                      d={iconPaths[facility.icon]} />
+                  </svg>
+                </div>
+                <h3 className="text-base @[240px]:text-lg font-semibold mb-2 text-white">{facility.title}</h3>
+                <p className="text-stone-400 text-xs @[240px]:text-sm leading-relaxed">{facility.description}</p>
               </div>
-              <h3 className="text-lg font-semibold mb-2 text-white">{facility.title}</h3>
-              <p className="text-stone-400 text-sm leading-relaxed">{facility.description}</p>
             </div>
           ))}
         </div>

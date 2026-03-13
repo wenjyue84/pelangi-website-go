@@ -189,19 +189,20 @@ export default function Rooms() {
           <h3 className="font-display text-2xl font-medium text-stone-900 dark:text-stone-100 text-center mb-10">
             Everything You Need, Nothing You Don&apos;t
           </h3>
+          {/* Grid uses viewport breakpoints for column count; each cell is a container
+              so internal card layout adapts to its own available width (container queries) */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {hostelHighlights.map((highlight, index) => (
-              <div
-                key={index}
-                className="bg-stone-50 dark:bg-stone-800 rounded-2xl p-6 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors group"
-              >
-                <div className="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mb-4 group-hover:bg-amber-200 transition-colors">
-                  <svg className="w-6 h-6 text-amber-700 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={highlight.icon} />
-                  </svg>
+              <div key={index} className="@container">
+                <div className="bg-stone-50 dark:bg-stone-800 rounded-2xl p-4 @[240px]:p-6 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors group">
+                  <div className="w-10 h-10 @[240px]:w-12 @[240px]:h-12 rounded-xl bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mb-3 @[240px]:mb-4 group-hover:bg-amber-200 transition-colors">
+                    <svg className="w-5 h-5 @[240px]:w-6 @[240px]:h-6 text-amber-700 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={highlight.icon} />
+                    </svg>
+                  </div>
+                  <h4 className="font-semibold text-stone-900 dark:text-stone-100 mb-2 text-sm @[240px]:text-base">{highlight.title}</h4>
+                  <p className="text-stone-500 dark:text-stone-400 text-xs @[240px]:text-sm">{highlight.description}</p>
                 </div>
-                <h4 className="font-semibold text-stone-900 dark:text-stone-100 mb-2">{highlight.title}</h4>
-                <p className="text-stone-500 dark:text-stone-400 text-sm">{highlight.description}</p>
               </div>
             ))}
           </div>

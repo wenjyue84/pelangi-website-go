@@ -5822,3 +5822,23 @@ Completed: Verify WCAG 2.2 SC 1.4.4 text resize up to 200% without content loss 
 ### Gotchas
 - `max-h-96` (24rem/384px) is far too small for FAQ answers at 200% zoom — a single paragraph can exceed this at 2x text size
 - Don't confuse image containers (h-* is correct) with text containers (need min-h-* instead)
+
+## Iteration 20 - Story: US-219 - CSS container queries for responsive room card component
+
+### What was implemented
+- `site/src/app/globals.css` — Added `@supports (container-type: inline-size)` guard with `.card-label-cq` utility using `cqi` container units for adaptive font sizing (`clamp(0.75rem, 4.5cqi, 0.875rem)`)
+- `site/src/components/Rooms.tsx` — Hostel Highlights grid: wrapped each card in `@container`; internal layout uses `@[240px]:p-6`, `@[240px]:w-12`, `@[240px]:text-base` container query breakpoints
+- `site/src/components/Amenities.tsx` — Amenity cards: each wrapped in `@container`; uses `@[160px]:p-6`, `@[160px]:w-12`, `@[160px]:mb-4`; label uses `.card-label-cq` (cqi units)
+- `site/src/components/Facilities.tsx` — Facilities cards: each wrapped in `@container`; uses `@[240px]:p-7`, `@[240px]:w-12`, `@[240px]:text-lg` container query breakpoints
+
+### Patterns discovered
+- Tailwind CSS v4 has built-in container query support: `@container` class = `container-type: inline-size`; children use `@[size]:` arbitrary variants (e.g., `@[240px]:p-6`)
+- Grid column count still uses viewport breakpoints (`sm:grid-cols-2 lg:grid-cols-3`); container queries only control internal card layout
+- Container units (`cqi`, `cqw`) must be written in custom CSS (globals.css) — Tailwind v4 has no built-in cqi/cqw utilities
+- `@supports (container-type: inline-size)` guard in globals.css ensures older browsers fall back to Tailwind viewport classes silently
+- `npx tsc --noEmit` passes with zero errors
+
+### Gotchas
+- prd.json encoding is UTF-8 — must open with `encoding='utf-8'` in Python
+- No tailwind.config.ts at root — Tailwind v4 uses CSS-only config via `@theme` in globals.css
+
