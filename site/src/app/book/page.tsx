@@ -89,9 +89,36 @@ const otaPlatforms = [
   },
 ];
 
+const lodgingReservationSchema = {
+  "@context": "https://schema.org",
+  "@type": "LodgingReservation",
+  "reservationStatus": "https://schema.org/ReservationPending",
+  "reservationFor": {
+    "@type": "LodgingBusiness",
+    "@id": "https://pelangicapsulehostel.com/#hostel",
+    "name": "Pelangi Capsule Hostel",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "26A Jalan Perang, Taman Pelangi",
+      "addressLocality": "Johor Bahru",
+      "addressRegion": "Johor",
+      "postalCode": "80400",
+      "addressCountry": "MY",
+    },
+  },
+  "checkinTime": "T14:00:00",
+  "checkoutTime": "T12:00:00",
+  "totalPrice": "35",
+  "priceCurrency": "MYR",
+};
+
 export default function BookPage() {
   return (
     <main id="main-content" className="min-h-screen bg-stone-50 dark:bg-stone-950">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(lodgingReservationSchema) }}
+      />
       <Header />
 
       {/* Hero */}
