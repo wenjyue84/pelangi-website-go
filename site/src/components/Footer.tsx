@@ -157,6 +157,13 @@ export default function Footer() {
               Privacy Policy
             </Link>
             <span className="text-stone-700 text-xs">·</span>
+            <Link
+              href="/terms"
+              className="min-h-6 inline-flex items-center text-xs text-stone-500 hover:text-stone-300 transition-colors duration-200"
+            >
+              Terms &amp; Conditions
+            </Link>
+            <span className="text-stone-700 text-xs">·</span>
             <p className="text-xs text-stone-600">
               Japanese-inspired accommodation in Johor Bahru
             </p>

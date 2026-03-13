@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
+import Link from "next/link";
 import { submitContactForm } from "@/app/actions/contact";
 
 export default function ContactForm() {
@@ -204,6 +205,31 @@ export default function ContactForm() {
                 {state.message}
               </p>
             )}
+
+            {/* Terms & Conditions agreement */}
+            <div className="flex items-start gap-3">
+              <input
+                id="contact-terms"
+                name="terms"
+                type="checkbox"
+                required
+                className="mt-1 h-4 w-4 rounded border-stone-400 dark:border-stone-600 text-amber-700 focus:ring-amber-500 accent-amber-700"
+              />
+              <label
+                htmlFor="contact-terms"
+                className="text-sm text-stone-600 dark:text-stone-400"
+              >
+                I agree to the{" "}
+                <Link
+                  href="/terms"
+                  target="_blank"
+                  className="text-amber-700 dark:text-amber-400 underline hover:text-amber-800 dark:hover:text-amber-300"
+                >
+                  Terms and Conditions
+                </Link>{" "}
+                <span className="text-red-500">*</span>
+              </label>
+            </div>
 
             {/* Submit */}
             <button

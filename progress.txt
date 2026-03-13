@@ -4490,3 +4490,23 @@ Incomplete: Register Google Business Profile and connect to Google Hotel free bo
 ### Gotchas
 - US-103 (critical) is a manual/external task (Google Business Profile registration) — cannot be implemented via code
 - `rtk` wrapper may not find `tsc` if not globally installed; use `npx tsc` directly as fallback
+
+
+## Iteration 12 - Story: US-135 - Add Terms and Conditions page covering booking, cancellation, and liability
+
+### What was implemented
+- `site/src/app/terms/page.tsx` — Full T&C page with 11 sections: Booking Policy, Check-in/Check-out, Cancellation & Refund, Payment, House Rules, Liability, Privacy (links to privacy-policy), Intellectual Property, Governing Law (Malaysia), Changes, Contact
+- WebPage JSON-LD schema with datePublished and dateModified properties
+- Effective date and Last Updated timestamps displayed at page top
+- Footer updated with Terms & Conditions link next to Privacy Policy
+- ContactForm updated with required "I agree to the Terms and Conditions" checkbox (with link) before submit button
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Privacy policy page pattern reused: same layout (Header, max-w-3xl, prose classes, Footer), same dark mode support
+- The checkbox uses HTML `required` attribute for native form validation — no JS state needed since form uses `useActionState`
+- Footer bottom bar uses dot separator pattern between links
+
+### Gotchas
+- US-103 (critical) is a business operations task (Google Business Profile registration) — cannot be implemented through code changes. Left as passes: false for manual resolution.
+- ContactForm uses server action via `useActionState` — the T&C checkbox `required` attribute works natively with form validation without needing a controlled React state
