@@ -4737,3 +4737,23 @@ Completed: Implement scheduler.yield() for INP optimisation on long JavaScript t
 ### Gotchas
 - `globalThis.scheduler` causes TS7017 in strict mode — use ambient `declare var` instead
 - BlogFilter previously computed `visible` inline during render; refactored to `useState` so the yield pipeline can set it asynchronously
+
+
+## Iteration - Story: US-166 Add axe-core automated accessibility testing in CI/CD pipeline
+
+### What was implemented
+- Installed `@axe-core/playwright` as devDependency
+- Created `site/e2e/accessibility.spec.ts` — runs axe analysis on /, /rooms, /book, /contact, /blog, /guide pages with WCAG 2.1 A/AA tags
+- Violations are logged as a readable table with rule ID, impact, description, element selectors, and help URL
+- Created `.github/workflows/accessibility.yml` — CI workflow runs on every PR to master/main
+- CI builds production app, starts server, runs Playwright accessibility tests, generates GitHub Actions summary report
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Existing Playwright config uses `http://localhost:3000` as baseURL with `npm run dev` webServer
+- CI workflow pattern from lighthouse.yml: build production, start server, wait-on, then run tests
+- @axe-core/playwright uses `new AxeBuilder({ page })` pattern with `.withTags()` for WCAG rule selection
+
+### Gotchas
+- `rtk` wrapper for tsc doesn't work (program not found) — use `npx tsc` directly
+- axe-core results.violations[].nodes[].target is an array — need `.join(", ")` for readable output
