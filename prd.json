@@ -2615,7 +2615,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-118",
@@ -5047,6 +5047,357 @@
         "Current support: typed attr() is behind a flag in some browsers; @supports guard is mandatory",
         "MDN CSS attr(): https://developer.mozilla.org/en-US/docs/Web/CSS/attr",
         "Use sparingly — only for genuinely data-driven presentational properties, not for logic that belongs in JS"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-226",
+      "title": "Await all async params, cookies(), and headers() accesses (Next.js 16)",
+      "priority": "critical",
+      "description": "Next.js 16 removes synchronous access to `params`, `searchParams`, `cookies()`, `headers()`, and `draftMode()`. Any page, layout, or route handler using these synchronously throws a runtime error after the upgrade. This must be resolved before or alongside the Next.js 16 migration to prevent broken pages across the site.",
+      "acceptanceCriteria": [
+        "All `params` and `searchParams` destructuring prefixed with `await` throughout the app",
+        "All `cookies()`, `headers()`, `draftMode()` call sites are `await`ed",
+        "`npx @next/codemod@canary upgrade latest` codemod run and residual TypeScript errors fixed manually",
+        "`next build` completes without type errors or runtime warnings related to async params",
+        "Metadata image route `params` argument verified as async where applicable"
+      ],
+      "technicalNotes": [
+        "Run `npx @next/codemod@canary upgrade latest` first — handles most cases mechanically",
+        "TypeScript 5+ (required by Next.js 16) flags remaining sync usages as type errors",
+        "Conditional or spread-style param access (`{ ...params }`) may not be caught by codemod — audit manually",
+        "Reference: https://nextjs.org/docs/app/guides/upgrading/version-16"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-227",
+      "title": "Migrate next/image priority prop to preload + fetchPriority (Next.js 16)",
+      "priority": "high",
+      "description": "Next.js 16 deprecates the boolean `priority` prop on `<Image>` in favour of explicit `preload` and `fetchPriority` props that map directly to HTML fetch priority standards. The hero image is the LCP element; continuing to use the deprecated prop will generate build warnings and eventually fail in a future Next.js version.",
+      "acceptanceCriteria": [
+        "All `<Image priority>` usages replaced with `preload={true} fetchPriority=\"high\"`",
+        "Below-fold images explicitly set `fetchPriority=\"low\"` where bandwidth contention matters",
+        "No deprecation warnings appear in `next build` output related to the priority prop",
+        "PageSpeed Insights LCP score on homepage does not regress after migration",
+        "Only one image per page viewport has `fetchPriority=\"high\"` to avoid contention"
+      ],
+      "technicalNotes": [
+        "Run `npx @next/codemod@canary upgrade latest` for mechanical rename",
+        "Verify manually for conditional usage like `priority={isHero}` — codemod may miss these",
+        "`fetchPriority` is a standard HTML attribute (baseline widely available since 2023)",
+        "Reference: https://nextjs.org/docs/app/api-reference/components/image#priority"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-228",
+      "title": "Audit and fix next/image quality, imageSizes, and minimumCacheTTL defaults (Next.js 16)",
+      "priority": "high",
+      "description": "Next.js 16 silently changed three `images` configuration defaults: `minimumCacheTTL` increased from 60s to 4 hours, `imageSizes` dropped the `16` breakpoint, and `qualities` changed to `[75]` only. Any `<Image quality={90}>` usage is now silently coerced to `75` unless that value is declared in `images.qualities`, causing unexpected visual quality regressions on hero and room photos.",
+      "acceptanceCriteria": [
+        "`next.config.ts` explicitly declares `images.qualities` covering all values used across the codebase",
+        "All `<Image quality={n}>` usages audited; values outside the declared `qualities` array are corrected",
+        "Hero and room images visually verified at intended quality after production build",
+        "`images.minimumCacheTTL` set to an intentional value with rationale documented in config comments",
+        "`images.domains` (deprecated) fully migrated to `images.remotePatterns`"
+      ],
+      "technicalNotes": [
+        "Grep for `quality={` and cross-reference with `images.qualities` in next.config.ts",
+        "`imageSizes` default is now `[48, 64, 96, 128, 256, 384]` — the `16` value was removed; add it back if tiny icons rely on it",
+        "If any icons/avatars relied on the 16px breakpoint, add `16` back to `images.imageSizes`",
+        "Reference: https://nextjs.org/docs/app/api-reference/components/image#qualities"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-229",
+      "title": "Implement updateTag() and refresh() Server Actions for booking state freshness",
+      "priority": "high",
+      "description": "Next.js 16 introduces `updateTag()` (read-your-writes: surfaces a user's own change immediately from cache) and `refresh()` (fetches fresh uncached dynamic data without touching the cache). Without these, booking confirmation pages and enquiry acknowledgements show stale data, eroding guest trust. The existing `revalidateTag()` single-argument call is also deprecated in Next.js 16 and must be updated.",
+      "acceptanceCriteria": [
+        "`updateTag()` called in the contact/enquiry Server Action after successful submission to surface the new state immediately",
+        "`refresh()` used for any component polling dynamic availability data to fetch fresh results without full cache bust",
+        "All `revalidateTag()` calls updated to the Next.js 16 two-argument form: `revalidateTag(tag, cacheProfile)`",
+        "User sees updated submission confirmation without manual page refresh",
+        "No `revalidateTag` single-argument deprecation warnings in `next build` output"
+      ],
+      "technicalNotes": [
+        "`updateTag()` is Server Actions-only — cannot be called from route handlers or middleware",
+        "`refresh()` is distinct from `revalidatePath()`: it fetches uncached dynamic data, not cached data",
+        "The two-argument `revalidateTag(tag, 'max')` signature was introduced in Next.js 16 — single-arg is deprecated",
+        "Reference: https://nextjs.org/docs/app/api-reference/functions/updateTag"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-230",
+      "title": "Audit and fix WCAG 2.1 SC 4.1.2 Name, Role, Value for all interactive elements",
+      "priority": "high",
+      "description": "SC 4.1.2 (Level A) requires every interactive element to have a programmatically determinable name, role, and state. Custom buttons, icon-only controls, gallery navigation arrows, and booking CTAs are common failure points. This is the single most frequently violated WCAG criterion globally and a Level A requirement — non-compliance constitutes a complete accessibility failure at WCAG 2.1 AA level.",
+      "acceptanceCriteria": [
+        "axe DevTools full-page scan reports zero SC 4.1.2 violations across all pages",
+        "All icon-only buttons have an accessible name via `aria-label` or visually hidden text",
+        "No non-semantic `<div role='button'>` where a native `<button>` is feasible",
+        "Accessibility tree in browser DevTools confirms correct name, role, and state for every control",
+        "Screen reader smoke test (NVDA + Chrome): all booking, gallery, and nav controls are identifiable and operable"
+      ],
+      "technicalNotes": [
+        "Priority elements to audit: lightbox close/prev/next, mobile nav hamburger, room filter chips, WhatsApp FAB",
+        "Run `npx axe-cli <url>` to catch regressions in CI",
+        "Prefer native HTML semantics over ARIA role overrides — `<button>` not `<div role='button'>`",
+        "Reference: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-231",
+      "title": "Disclose Malaysia Service Tax (SST 8%) on accommodation booking pages",
+      "priority": "high",
+      "description": "Malaysia's Service Tax (SST) rate increased from 6% to 8% in March 2024 and applies to accommodation services separately from the Tourism Tax (TTx RM10/room/night). Many hostel booking pages only disclose TTx. Failing to show SST upfront violates the Consumer Protection Act 1999 (mandatory price disclosure) and creates booking abandonment when guests see unexpected charges at checkout.",
+      "acceptanceCriteria": [
+        "All pricing displays on /book, /rooms, and /contact explicitly show SST 8% as a separate line item",
+        "SST label clearly identifies it as 'Service Tax (SST) 8%' to distinguish from TTx",
+        "Minimum price breakdown reads: 'Room Rate + SST 8% + Tourism Tax RM10/room/night (foreign guests)'",
+        "Schema.org `Offer` markup updated so that `price` reflects the total inclusive price, with `priceCurrency: 'MYR'`",
+        "Legal disclaimer notes that tax rates are subject to change per Malaysian government regulation"
+      ],
+      "technicalNotes": [
+        "SST 8% covers hotel and accommodation services — distinct from TTx which is a flat RM10/room/night for non-citizen/non-PR guests",
+        "Malaysia SST Act 2018 (amended 2024): https://mysst.customs.gov.my/",
+        "SST applies to businesses with annual turnover exceeding RM500k in taxable services",
+        "Reference: https://mysst.customs.gov.my/ | https://www.hasilnet.org.my/sst/"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-232",
+      "title": "Implement HTTP 103 Early Hints for critical resource preloading on Vercel",
+      "priority": "medium",
+      "description": "HTTP 103 Early Hints allows the server to send `Link: preload` and `Link: preconnect` headers before the full HTML response, letting browsers start fetching the hero image and fonts while the server finishes rendering. Vercel supports Early Hints natively for Next.js App Router. For a hostel site with a large LCP hero image and third-party fonts, Early Hints can reduce perceived load time by 200–500ms on first visit.",
+      "acceptanceCriteria": [
+        "Early Hints verified as enabled for the Vercel deployment (default in recent Next.js + Vercel)",
+        "Chrome DevTools Network tab shows a `103` status response before the `200` HTML response on first load",
+        "WebPageTest trace confirms hero image preload begins before HTML download completes",
+        "LCP measured in PageSpeed Insights does not regress; lab measurement ideally improves",
+        "Preloaded resources in `<head>` match the Early Hints `Link` headers (no mismatch that wastes a preload)"
+      ],
+      "technicalNotes": [
+        "Next.js App Router automatically generates Early Hints from `<link rel='preload'>` tags in `<head>`",
+        "Vercel Edge Network delivers the 103 response — enabled automatically for production deployments",
+        "Works best for stable, large resources (hero images, web fonts) — not for frequently changing assets",
+        "Reference: https://vercel.com/docs/edge-network/early-hints | https://developer.chrome.com/blog/early-hints"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-233",
+      "title": "Adopt CSS @property for type-safe, animatable design tokens",
+      "priority": "medium",
+      "description": "CSS `@property` (Baseline Newly Available, 2025) enables typed custom properties with initial values and smooth animation support for values previously unanimatable — gradients, color stops, numeric values. For a hostel website, this unlocks animated gradient hero backgrounds and smooth brand colour transitions in pure CSS without JavaScript animation libraries.",
+      "acceptanceCriteria": [
+        "At least 2 design tokens declared via `@property` with `syntax`, `initial-value`, and `inherits` fields",
+        "At least one CSS transition or `@keyframes` animation targets an `@property`-registered variable",
+        "Animation renders correctly in Chrome, Firefox 128+, and Safari 17.2+",
+        "A static fallback ensures graceful degradation in older browsers without `@property` support",
+        "No JavaScript runtime required for the registered-property animations"
+      ],
+      "technicalNotes": [
+        "`@property` reached Baseline Newly Available in 2025 — Firefox 128 was the final browser to ship full support",
+        "Declare in a global `.css` file imported by the root layout",
+        "Compatible with Tailwind CSS 4 — use `@property` alongside utility classes",
+        "Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/@property | https://web.dev/articles/at-property"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-234",
+      "title": "Implement WCAG 2.1 SC 2.2.2 Pause/Stop/Hide for auto-advancing animated content",
+      "priority": "medium",
+      "description": "SC 2.2.2 (Level A) requires that any content that moves, blinks, or auto-updates for more than 5 seconds must provide a mechanism to pause, stop, or hide it. This is separate from respecting `prefers-reduced-motion` — it requires a visible UI control users can activate regardless of OS settings. Hero carousels, scrolling announcements, and animated social proof counters are common failure points.",
+      "acceptanceCriteria": [
+        "Any auto-playing carousel, scrolling marquee, or animated counter running >5 seconds has a visible pause/stop button",
+        "Pause control is visible without keyboard navigation and operable by mouse, touch, and keyboard",
+        "Paused state is visually indicated and persists until user explicitly resumes",
+        "Manual test: activating the pause button stops all movement; activating resume restores it",
+        "axe DevTools scan confirms no SC 2.2.2 violations"
+      ],
+      "technicalNotes": [
+        "Distinct from `prefers-reduced-motion` — SC 2.2.2 requires an in-page control, not just a CSS media query response",
+        "Hero image auto-advance carousels are a primary failure point on hospitality websites",
+        "Animated number counters (e.g., 'guests viewed recently') must also be stoppable if they update continuously",
+        "Reference: https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-235",
+      "title": "Audit and fix WCAG 2.1 SC 1.3.2 Meaningful Sequence in visual layout",
+      "priority": "medium",
+      "description": "SC 1.3.2 (Level A) requires that when reading sequence affects meaning, the correct sequence must be programmatically determinable. CSS Grid and Flexbox `order` properties can produce visual orderings that differ from DOM order, causing screen readers to present content in a confusing sequence — a common issue in room card grids and multi-column booking page layouts.",
+      "acceptanceCriteria": [
+        "All CSS `order` property usages audited — none change the logical reading sequence of content-bearing elements",
+        "DOM order of room cards, feature lists, and booking form fields matches the intended visual reading order",
+        "Screen reader linear navigation through the page produces a logical content flow",
+        "axe DevTools check for CSS order-related meaningful sequence violations passes",
+        "Visual regression screenshots confirm layout unchanged after any DOM reordering"
+      ],
+      "technicalNotes": [
+        "Grep for `order:`, `flex-direction: row-reverse`, and `flex-direction: column-reverse` — these are common culprits",
+        "Also check `float: right` patterns where DOM and visual position differ",
+        "Use browser accessibility tree (Chrome DevTools > Accessibility > Full page) to verify reading order",
+        "Reference: https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-236",
+      "title": "Add Subresource Integrity (SRI) hashes for all third-party CDN scripts",
+      "priority": "medium",
+      "description": "Subresource Integrity (SRI) ensures that externally hosted scripts and stylesheets have not been tampered with by a CDN compromise or man-in-the-middle attack. SRI is an OWASP-recommended defence and complements the existing CSP. It is especially relevant for a hostel site handling enquiry forms and payment information.",
+      "acceptanceCriteria": [
+        "All third-party `<script src='...'>` and `<link rel='stylesheet' href='...'>` tags include `integrity` and `crossorigin` attributes",
+        "SRI hashes use `sha384` or `sha512` algorithm",
+        "Browser console shows no SRI integrity failures in development or production",
+        "Process documented for updating hashes when third-party CDN resources change version",
+        "Google Fonts served via `next/font` (self-hosted) instead — eliminates SRI maintenance for font CDN"
+      ],
+      "technicalNotes": [
+        "Generate hashes: `openssl dgst -sha384 -binary resource.js | openssl base64 -A` or use srihash.com",
+        "Next.js `<Script>` component does not natively support `integrity` — use custom `<script>` in layout head for third-party scripts requiring SRI",
+        "Self-hosting fonts via `next/font` eliminates the Google Fonts CDN SRI maintenance burden entirely",
+        "Reference: https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity | https://cheatsheetseries.owasp.org/cheatsheets/Third_Party_Javascript_Management_Cheat_Sheet.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-237",
+      "title": "Adopt CSS @scope for component-level style isolation",
+      "priority": "low",
+      "description": "CSS `@scope` (Baseline Newly Available, 2025–2026) provides true selector scoping in native CSS, eliminating naming-collision risk for complex components without CSS Modules or CSS-in-JS overhead. On a Tailwind-heavy project, `@scope` fills the gap for component-specific overrides that do not map cleanly to utility classes and currently require specificity hacks or `!important`.",
+      "acceptanceCriteria": [
+        "At least one complex UI component (e.g., room card, booking widget) uses `@scope` for bespoke styles",
+        "Scoped styles do not leak to sibling or parent components — verified via DOM inspection",
+        "Tailwind utility classes outside `@scope` blocks continue to apply normally",
+        "Cross-browser render verified in Chrome, Firefox 128+, and Safari 17.4+",
+        "No CSS specificity conflicts introduced by the scoped rules"
+      ],
+      "technicalNotes": [
+        "`@scope (.component) { :scope .child { } }` — scoping root is the selector in parentheses",
+        "`@scope` reached Baseline Newly Available in 2025 after Firefox 128 shipped support",
+        "Pairs well with Tailwind CSS 4 which uses CSS cascade layers internally",
+        "Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/@scope"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-238",
+      "title": "Add RSS auto-discovery <link> tag in HTML head for blog feed",
+      "priority": "low",
+      "description": "The RSS feed at `/feed.xml` exists, but browsers and feed aggregators discover it via a `<link rel='alternate' type='application/rss+xml'>` tag in the HTML `<head>` — a separate requirement from the feed file itself. Without the discovery link, readers using Feedly, Inoreader, or browser extensions cannot auto-detect the feed, reducing subscription rates and content syndication reach.",
+      "acceptanceCriteria": [
+        "Root layout `<head>` contains `<link rel='alternate' type='application/rss+xml' title='Pelangi Capsule Hostel Blog' href='/feed.xml'>`",
+        "Feed reader browser extensions (e.g., Feedbro, RSS Feed Reader) auto-detect the feed when visiting the site",
+        "The `href` resolves to a valid, parseable RSS/Atom document",
+        "No duplicate discovery links on inner pages — root layout only"
+      ],
+      "technicalNotes": [
+        "Add via Next.js `metadata` in root `layout.tsx`: `alternates: { types: { 'application/rss+xml': '/feed.xml' } }`",
+        "Next.js 15+ generates the `<link>` tag automatically from the `alternates.types` metadata key",
+        "Also add `application/atom+xml` type if an Atom feed exists alongside the RSS feed",
+        "Reference: https://nextjs.org/docs/app/api-reference/functions/generate-metadata#alternates"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-239",
+      "title": "Implement Background Sync API for resilient offline enquiry form submission",
+      "priority": "low",
+      "description": "The Background Sync API allows form submissions that fail due to network loss to be automatically retried when connectivity is restored, without requiring the user to resubmit. For a hostel where prospective guests on mobile near JB customs are on unstable 3G connections, a silently failed enquiry form is a lost booking. Background Sync prevents this drop-off transparently.",
+      "acceptanceCriteria": [
+        "Contact/enquiry form submission failures on a disconnected device are queued via a registered service worker sync event",
+        "When connectivity is restored, the service worker automatically retries the POST request without user action",
+        "User sees a 'We'll send your message when you're back online' indicator when submitting offline",
+        "Sync confirmation (success/failure after retry) surfaced via a toast notification or ARIA live region",
+        "Tested in Chrome mobile DevTools with offline mode toggled mid-submission"
+      ],
+      "technicalNotes": [
+        "Background Sync API is available in Chrome, Edge, and Opera — not Safari; use graceful fallback for unsupported browsers",
+        "Register sync in service worker: `self.addEventListener('sync', event => { if (event.tag === 'contact-form') { /* retry */ } })`",
+        "Store failed submissions in IndexedDB for the service worker to read on retry",
+        "Extend existing PWA service worker — do not replace it; reference: https://developer.chrome.com/docs/workbox/modules/workbox-background-sync"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-240",
+      "title": "Implement adaptive loading via navigator.connection.saveData and effectiveType",
+      "priority": "low",
+      "description": "The Network Information API exposes `navigator.connection.saveData` (Data Saver mode) and `effectiveType` ('2g', '3g', '4g'). Budget travellers crossing from Singapore often browse on limited mobile data. Serving full-resolution gallery images and autoplay video to Data Saver users increases bounce rates and costs guests money. Adaptive loading respects these signals for a better, cost-conscious experience.",
+      "acceptanceCriteria": [
+        "Gallery images served at reduced resolution when `navigator.connection.saveData === true`",
+        "Autoplay video and non-essential animations disabled for `effectiveType === '2g'` or `saveData === true`",
+        "No visual degradation for users on 4G/WiFi — adaptive logic only activates under low-bandwidth signals",
+        "Feature-detected safely — component renders normally if Network Information API is unsupported (Safari, Firefox)",
+        "A visible 'Load full quality' button offered to Data Saver users who opt in"
+      ],
+      "technicalNotes": [
+        "Network Information API is supported in Chrome, Edge, and Opera — feature-detect with `if ('connection' in navigator)`",
+        "React hook pattern: `const { saveData, effectiveType } = useNetworkInformation()` (use a custom hook wrapping navigator.connection)",
+        "For Next.js: read in a Client Component, pass as props to image/video components to select quality level",
+        "Reference: https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation | https://web.dev/articles/adaptive-loading-with-service-workers"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-241",
+      "title": "Add Open Graph video metadata for hostel promotional video content",
+      "priority": "low",
+      "description": "Pages featuring a YouTube embed (e.g., check-in walkthrough, hostel tour) can be enriched with Open Graph video tags (`og:video`, `og:video:type`, `og:video:width`, `og:video:height`). Facebook, WhatsApp, and LinkedIn display a playable video preview when the page is shared, dramatically increasing engagement compared to a static image — especially effective for backpacker Facebook groups and travel WhatsApp communities.",
+      "acceptanceCriteria": [
+        "Pages with embedded promotional video include `og:video` meta tag pointing to the video URL",
+        "`og:video:type` set to the correct MIME type for the embed format",
+        "`og:video:width` and `og:video:height` set to match actual video dimensions",
+        "Facebook Sharing Debugger confirms video preview renders when the page URL is scraped",
+        "WhatsApp link preview tested — video thumbnail shown on supported clients"
+      ],
+      "technicalNotes": [
+        "Next.js `generateMetadata` supports `openGraph.videos` array in App Router",
+        "For YouTube: use the YouTube video page URL as `og:video`; Facebook's crawler handles YouTube URLs specially",
+        "Alternatively, host a short `.mp4` clip directly on the domain for maximum cross-platform support",
+        "Reference: https://ogp.me/#type_video | https://nextjs.org/docs/app/api-reference/functions/generate-metadata#opengraph"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",

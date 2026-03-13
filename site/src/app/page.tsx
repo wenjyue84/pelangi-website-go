@@ -10,7 +10,7 @@ import Destinations from "@/components/Destinations";
 import Amenities from "@/components/Amenities";
 import Reviews from "@/components/Reviews";
 import LocationMap from "@/components/LocationMap";
-import FAQ from "@/components/FAQ";
+import FAQSection from "@/components/FAQSection";
 import CommunityEvents from "@/components/CommunityEvents";
 import CommunityEventsStructuredData from "@/components/CommunityEventsStructuredData";
 import JBBuzz from "@/components/JBBuzz";
@@ -168,7 +168,7 @@ export default async function Home() {
       </section>
 
       {/* FAQ Section */}
-      <FAQ />
+      <FAQSection />
 
       {/* Destinations Section */}
       <Destinations />

@@ -5994,3 +5994,25 @@ Completed: Implement Next.js after() API for deferred analytics and logging (ID:
 
 ### Gotchas
 - No gotchas — this is a pure CSS change with no TypeScript involvement
+
+
+## Iteration - Story: US-117 - Adopt 'use cache' directive for explicit data caching
+
+### What was implemented
+- `Amenities.tsx` — Made async, added `"use cache"` + `cacheLife("days")` + `cacheTag("amenities")` — static hostel amenities list, cache profile 'days' since amenity info rarely changes
+- `Rooms.tsx` — Made async, added `"use cache"` + `cacheLife("days")` + `cacheTag("rooms-static")` — static room showcase with hardcoded pricing/features, cache profile 'days'
+- Created `FAQSection.tsx` — Server Component wrapper with `"use cache"` + `cacheLife("days")` + `cacheTag("faq")` that renders the `<FAQ />` client accordion; enables independent FAQ cache invalidation
+- Updated `app/page.tsx` — Replaced `import FAQ` with `import FAQSection`, and `<FAQ />` with `<FAQSection />`
+- `tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- `cacheComponents: true` in next.config.ts (Next.js 16) is the stable equivalent of `experimental: { dynamicIO: true }` (Next.js 15). US-192 already set this. US-117's config requirement was already satisfied.
+- `"use cache"` can be placed as the FIRST statement inside an async Server Component function body (after `function() {`), followed by `cacheLife()` and `cacheTag()` calls — same pattern as page.tsx and rooms/page.tsx
+- Client Components (`'use client'`) CANNOT use `"use cache"`. Wrap them in a thin Server Component (FAQSection pattern) to get server-side cache for the RSC payload.
+- `cacheTag('amenities')` allows targeted invalidation via `POST /api/revalidate { tag: 'amenities' }` without busting the whole homepage cache
+- Import quote style matters: the original Rooms.tsx uses double quotes; Node.js string replacement must match exactly
+- Windows CRLF: normalize with `.replace(/\r\n/g, '\n')` before string matching in Node.js patches
+
+### Gotchas
+- Node.js replacement strings must match exact quote style (single vs double quotes) in the source file
+- Python json.load() without encoding='utf-8' fails on Windows cp1252 for non-ASCII chars — use Node.js for prd.json updates

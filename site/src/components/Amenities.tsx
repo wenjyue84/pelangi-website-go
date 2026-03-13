@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { cacheLife, cacheTag } from 'next/cache';
 
 const amenities = [
     {
@@ -68,7 +69,10 @@ const amenities = [
     }
 ];
 
-export default function Amenities() {
+export default async function Amenities() {
+  "use cache";
+  cacheLife("days");
+  cacheTag("amenities");
     return (
         <section className="py-20 bg-stone-50 dark:bg-stone-950">
             <div className="container-custom">

@@ -5,8 +5,12 @@ import capsule4Image from "../../public/images/capsule-4.webp";
 import capsule2Image from "../../public/images/capsule-2.webp";
 import capsule3Image from "../../public/images/capsule-3.webp";
 import pasarMalamImage from "../../public/images/destinations/pasar-malam.jpg";
+import { cacheLife, cacheTag } from "next/cache";
 
-export default function Rooms() {
+export default async function Rooms() {
+  "use cache";
+  cacheLife("days");
+  cacheTag("rooms-static");
   const capsuleFeatures = [
     { icon: "fan", text: "Personal climate control" },
     { icon: "light", text: "Adjustable LED lighting" },
