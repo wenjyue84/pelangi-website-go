@@ -245,6 +245,13 @@ export default function Footer() {
             >
               Sitemap
             </Link>
+            <span className="text-stone-700 text-xs">·</span>
+            <Link
+              href="/accessibility"
+              className="min-h-6 inline-flex items-center text-xs text-stone-500 hover:text-stone-300 transition-colors duration-200"
+            >
+              Accessibility
+            </Link>
           </div>
         </div>
       </div>

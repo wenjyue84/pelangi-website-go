@@ -5842,3 +5842,17 @@ Completed: Verify WCAG 2.2 SC 1.4.4 text resize up to 200% without content loss 
 - prd.json encoding is UTF-8 — must open with `encoding='utf-8'` in Python
 - No tailwind.config.ts at root — Tailwind v4 uses CSS-only config via `@theme` in globals.css
 
+
+
+## Iteration - Story: US-112 - Add accessibility statement page documenting WCAG 2.2 AA conformance
+
+### What was implemented
+- `site/src/app/accessibility/page.tsx` — Full accessibility statement page with WCAG 2.2 AA conformance target, known limitations table, feedback contact, assessment approach
+- `site/src/components/Footer.tsx` — Added "Accessibility" link to the bottom bar alongside existing Privacy Policy, Terms, and Sitemap links
+
+### Patterns discovered
+- Footer bottom bar links use `text-xs text-stone-500` with dot separators between them
+- Legal/policy pages follow a consistent pattern: Header + main with pt-28 pb-16 container-custom + prose content + Footer
+
+### Gotchas
+- prd.json must be read/written with utf-8 encoding explicitly on Windows due to non-ASCII characters
