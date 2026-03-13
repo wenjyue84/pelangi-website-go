@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import heroImage from "../../public/images/hero-final.png";
 
 export default function Hero() {
   return (
@@ -7,12 +8,13 @@ export default function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero-final.png"
+          src={heroImage}
           alt="Pelangi Capsule Hostel - Affordable Japanese-style pod accommodation in Johor Bahru near Singapore"
           fill
           priority
           sizes="100vw"
           className="object-cover"
+          placeholder="blur"
         />
         {/* Elegant overlay gradient */}
         <div className="absolute inset-0 bg-linear-to-b from-stone-900/70 via-stone-900/50 to-stone-900/80" />

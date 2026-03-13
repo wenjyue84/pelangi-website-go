@@ -1,5 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import capsule4Image from "../../public/images/capsule-4.webp";
+import capsule2Image from "../../public/images/capsule-2.webp";
+import capsule3Image from "../../public/images/capsule-3.webp";
+import pasarMalamImage from "../../public/images/destinations/pasar-malam.jpg";
 
 export default function Rooms() {
   const capsuleFeatures = [
@@ -66,11 +70,12 @@ export default function Rooms() {
           <div className="lg:col-span-3 grid sm:grid-cols-2 gap-4">
             <div className="relative h-64 md:h-72 rounded-2xl overflow-hidden group sm:col-span-2">
               <Image
-                src="/images/capsule-4.webp"
+                src={capsule4Image}
                 alt="Modern Japanese-style capsule pod interior at Pelangi Hostel Johor Bahru with personal lighting and privacy curtain"
                 fill
                 sizes="(max-width: 1024px) 100vw, 60vw"
                 className="object-cover image-zoom"
+                placeholder="blur"
               />
               <div className="absolute inset-0 bg-linear-to-t from-stone-900/40 to-transparent" />
               <div className="absolute bottom-4 left-4 text-white">
@@ -80,20 +85,22 @@ export default function Rooms() {
             </div>
             <div className="relative h-48 md:h-56 rounded-2xl overflow-hidden group">
               <Image
-                src="/images/capsule-2.webp"
+                src={capsule2Image}
                 alt="Comfortable premium mattress in budget capsule hostel pod in Taman Pelangi JB"
                 fill
                 sizes="(max-width: 768px) 50vw, (max-width: 1024px) 50vw, 30vw"
                 className="object-cover image-zoom"
+                placeholder="blur"
               />
             </div>
             <div className="relative h-48 md:h-56 rounded-2xl overflow-hidden group">
               <Image
-                src="/images/capsule-3.webp"
+                src={capsule3Image}
                 alt="Capsule pod amenities including USB charging ports and personal ventilation at Pelangi Hostel"
                 fill
                 sizes="(max-width: 768px) 50vw, (max-width: 1024px) 50vw, 30vw"
                 className="object-cover image-zoom"
+                placeholder="blur"
               />
             </div>
           </div>
@@ -228,11 +235,12 @@ export default function Rooms() {
             </div>
             <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/destinations/pasar-malam.jpg"
+                src={pasarMalamImage}
                 alt="Taman Pelangi Pasar Malam night market with street food stalls near Pelangi Capsule Hostel"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
+                placeholder="blur"
               />
               <div className="absolute inset-0 bg-linear-to-t from-stone-900/60 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 text-white">

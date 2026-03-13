@@ -4391,3 +4391,20 @@ Incomplete: Register Google Business Profile and connect to Google Hotel free bo
 ### Gotchas
 - `col-span-2` must also be made responsive (`sm:col-span-2`) when the grid itself becomes single-column — otherwise it still spans 2 columns in a 1-col grid (no visual issue but semantically cleaner)
 - Gallery modal `grid-cols-2` for thumbnails is acceptable per WCAG — small square images in explicit scroll regions are exempt
+
+
+## Iteration - Story: US-097 - Add blurDataURL placeholder to hero and room images
+
+### What was implemented
+- `Hero.tsx` — static import for `hero-final.png`, added `placeholder="blur"` to Image component
+- `Rooms.tsx` — static imports for `capsule-4.webp`, `capsule-2.webp`, `capsule-3.webp`, `pasar-malam.jpg`, added `placeholder="blur"` to all 4 Image components
+- Used Next.js static imports instead of `plaiceholder` package — static imports auto-generate `blurDataURL` at build time for local images (zero extra dependencies)
+
+### Patterns discovered
+- All images in this project are local (`public/` folder), not remote URLs
+- For local images, Next.js static imports are the idiomatic way to get blur placeholders — no need for `plaiceholder` which is designed for remote/dynamic images
+- Static imports with `fill` prop work correctly — Next.js uses the import for blur data while `fill` controls layout
+
+### Gotchas
+- Import paths must use `../../public/images/...` relative to the component file (not `@/` alias, since public is outside `src/`)
+- No bundle size increase — blur data is inlined at build time in the HTML as a tiny base64 string, not shipped as JS
