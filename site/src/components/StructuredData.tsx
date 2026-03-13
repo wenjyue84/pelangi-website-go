@@ -128,14 +128,32 @@ export default function StructuredData() {
       "@type": "TouristDestination",
       "@id": "https://pelangicapsulehostel.com/guide#jb"
     },
+    "email": "pelangicapsulehostel@gmail.com",
     "sameAs": [
+      "https://www.google.com/maps/place/Pelangi+Capsule+Hostel/@1.48552,103.7594",
       "https://www.facebook.com/pelangicapsulehostel",
       "https://www.instagram.com/pelangicapsulehostel",
       "https://maps.app.goo.gl/maLXetUqYS5MtSLD9",
       "https://www.booking.com/hotel/my/pelangi-hostel-capsule.html",
       "https://www.hostelworld.com/pwa/hosteldetails.php/Pelangi-Capsule-Hostel/Johor-Bahru/317698",
       "https://www.tripadvisor.com/Hotel_Review-g298278-d27125478-Reviews-Pelangi_Capsule_Hostel-Johor_Bahru_Johor_Bahru_District_Johor.html",
-      "https://www.agoda.com/en-in/pelangi-hostel-capsule/hotel/johor-bahru-my.html"
+      "https://www.agoda.com/en-in/pelangi-hostel-capsule/hotel/johor-bahru-my.html",
+      "https://www.trip.com/hotels/johor-bahru-hotel-detail-108654203/pelangi-hostel-capsule/"
+    ],
+    "areaServed": {
+      "@type": "City",
+      "name": "Johor Bahru",
+      "containedInPlace": {
+        "@type": "AdministrativeArea",
+        "name": "Johor, Malaysia"
+      }
+    },
+    "slogan": "Japanese-style capsule pods with Malaysian hospitality",
+    "knowsAbout": [
+      "Capsule accommodation",
+      "Budget travel in Johor Bahru",
+      "Singapore-Malaysia border crossing",
+      "Taman Pelangi neighbourhood"
     ],
     "aggregateRating": {
       "@type": "AggregateRating",

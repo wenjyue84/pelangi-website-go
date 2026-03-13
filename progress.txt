@@ -5206,3 +5206,22 @@ US-103 (Google Business Profile registration) is entirely an external platform t
 - CPETTR 2024 requires mandatory trader identity fields (name, address, email, phone, website, description, price, payment methods, T&C) all available in BM — not just a language toggle
 - The LanguageSwitcher `LANGUAGES` array needed a `href` property for navigation-based language options vs toast-based ones
 - AC5 (legal review sign-off) cannot be implemented in code — documented in compliance notice on BM page
+
+
+
+## Iteration 18 - Story: US-195 - Add Google AI Overviews optimisation: structured Q&A and entity signals
+
+### What was implemented
+- `site/src/app/page.tsx` — Added "About Pelangi Capsule Hostel" section with 3 concise factual Q&A paragraphs targeting top search queries: "Is Pelangi Capsule near CIQ?", "How much does a capsule pod cost?", "Why is Pelangi Capsule one of the best hostels in JB?" — each with direct-answer first sentences optimised for AI Overview citation
+- `site/src/app/rooms/page.tsx` — Added "Capsule Pod Pricing & Features" factual section between Rooms and Facilities components with pricing, TTx info, and amenity summary
+- `site/src/components/StructuredData.tsx` — Enhanced Hostel schema entity signals: added `email`, Google Maps canonical URL and Trip.com to `sameAs`, added `areaServed` (City: Johor Bahru), `slogan`, and `knowsAbout` array for entity disambiguation
+- FAQ schema already had 17 questions (AC2 satisfied pre-existing)
+- NAP (Name, Address, Phone) audit confirmed consistency across all pages (AC3 satisfied pre-existing)
+- `npx tsc --noEmit` — zero new errors (2 pre-existing from US-145/US-146)
+
+### Patterns discovered
+- Homepage `speakable` CSS selectors (`#speakable-tagline`, `#speakable-location`, `#speakable-amenities`) were already defined in StructuredData.tsx — the new Q&A section headings reuse these IDs for Google Assistant voice answer eligibility
+- `sameAs` array in StructuredData.tsx is the canonical place for entity disambiguation links
+
+### Gotchas
+- AC4 (owner responses to Google Reviews) and AC5 (GSC AI Overview impressions) are external/measurement criteria that cannot be implemented in code — they require manual Google Business Profile management and 60-day observation period

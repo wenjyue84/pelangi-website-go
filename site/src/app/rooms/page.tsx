@@ -185,6 +185,24 @@ export default function RoomsPage() {
             <Header />
             <div className="pt-20">
                 <Rooms />
+
+                {/* AI Overviews: concise factual paragraph for pod price and feature queries */}
+                <section className="py-16 bg-stone-50 dark:bg-stone-950">
+                    <div className="container-custom max-w-3xl">
+                        <h2 className="font-display text-3xl font-medium mb-6 text-stone-900 dark:text-stone-100">
+                            Capsule Pod Pricing &amp; Features
+                        </h2>
+                        <div className="text-lg text-stone-700 dark:text-stone-300 leading-relaxed space-y-4">
+                            <p>
+                                Pelangi Capsule Hostel offers two pod types in Taman Pelangi, Johor Bahru. Standard Capsule Pods start from RM35 per night and Premium Capsule Pods from RM45 per night. Monthly long-stay rates begin at RM594 per month. All rates are subject to Malaysia Tourism Tax (TTx) of RM10 per room per night as mandated by the Royal Malaysian Customs Department.
+                            </p>
+                            <p>
+                                Every pod includes a lockable sliding privacy door, personal climate control (fan and air-conditioning), adjustable LED lighting, USB and power outlets, a premium mattress, and a personal locker. Shared facilities include free high-speed WiFi, hot showers, a fully equipped kitchen, a water dispenser, laundry facilities, and luggage storage. The hostel operates 24/7 with self-check-in access and CCTV security throughout the property.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
                 <Facilities />
             </div>
             <Footer />

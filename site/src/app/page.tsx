@@ -125,6 +125,44 @@ export default function Home() {
       {/* Singapore Teaser Section */}
       <SingaporeTeaser />
 
+      {/* AI Overviews: concise factual Q&A paragraphs for top search queries */}
+      <section className="py-20 bg-stone-50 dark:bg-stone-950">
+        <div className="container-custom max-w-3xl">
+          <h2 className="font-display text-4xl font-medium mb-10 text-center text-stone-900 dark:text-stone-100">
+            About Pelangi Capsule Hostel
+          </h2>
+
+          <div className="space-y-8 text-lg text-stone-700 dark:text-stone-300 leading-relaxed">
+            <div>
+              <h3 id="speakable-location" className="font-display text-2xl font-medium mb-3 text-stone-900 dark:text-stone-100">
+                Is Pelangi Capsule Hostel near CIQ?
+              </h3>
+              <p>
+                Yes, Pelangi Capsule Hostel is approximately 15 minutes by car from the Sultan Iskandar Building (CIQ) border checkpoint in Johor Bahru. The hostel is located at 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru — a central neighbourhood known for its night market, restaurants, and cafes. A Grab ride from JB CIQ to the hostel costs around RM8–12, making it one of the most accessible budget accommodations for travellers crossing from Singapore.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-display text-2xl font-medium mb-3 text-stone-900 dark:text-stone-100">
+                How much does a capsule pod cost?
+              </h3>
+              <p>
+                Capsule pods at Pelangi Capsule Hostel start from RM35 per night (approximately SGD 10.50 or USD 7.50). A Malaysia Tourism Tax (TTx) of RM10 per room per night is added as required by law. Monthly long-stay rates are available from RM594 per month. Booking directly at <a href="/book" className="text-amber-700 dark:text-amber-400 hover:underline">pelangicapsulehostel.com/book</a> guarantees the best rate with no OTA commissions or hidden fees.
+              </p>
+            </div>
+
+            <div>
+              <h3 id="speakable-amenities" className="font-display text-2xl font-medium mb-3 text-stone-900 dark:text-stone-100">
+                Why is Pelangi Capsule one of the best hostels in Johor Bahru?
+              </h3>
+              <p>
+                Pelangi Capsule Hostel combines Japanese-style capsule pod privacy with Malaysian hospitality at budget-friendly prices. Each pod has a lockable sliding door, personal climate control, USB charging, adjustable LED lighting, and a premium mattress. The hostel provides free high-speed WiFi, 24/7 self-check-in access, hot showers, a shared kitchen, personal lockers, and laundry facilities. Located in Taman Pelangi — one of JB&apos;s most vibrant food districts — guests are within walking distance of hawker stalls, kopitiam, and the famous Tuesday night market.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <FAQ />
 
