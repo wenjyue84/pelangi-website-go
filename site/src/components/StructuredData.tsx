@@ -94,6 +94,10 @@ export default function StructuredData() {
         "value": true
       }
     ],
+    "containedInPlace": {
+      "@type": "TouristDestination",
+      "@id": "https://pelangicapsulehostel.com/guide#jb"
+    },
     "sameAs": [
       "https://www.facebook.com/pelangicapsulehostel",
       "https://www.instagram.com/pelangicapsulehostel",

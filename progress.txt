@@ -3906,3 +3906,45 @@ This user story is for a **Next.js/TypeScript** web project, not a Frappe/Python
 - Web Share API only works on HTTPS (or localhost for dev) — no special handling needed
 - Must check `navigator.canShare()` before calling `navigator.share()` per spec
 - AbortError is thrown when user cancels the share sheet — should be silently ignored
+## Iteration 8 - Fri, Mar 13, 2026  9:51:51 AM
+Incomplete: Add aggregateRating and starRating to LodgingBusiness schema from real review platform data (ID: US-084) — attempt 2/3
+
+
+## Pre-analysis for US-084 (Gemini 2.5 Pro)
+This user story is for a Next.js/TypeScript project, not Frappe/Python. The task is to add `aggregateRating` and `starRating` JSON-LD schema to improve SEO.
+
+**Technical Brief for US-084**
+
+1.  **File to Modify:**
+    *   The primary file will be `site/src/components/StructuredData.tsx`, which manages the JSON-LD schemas.
+
+2.  **DocTypes / Hooks:**
+    *   None. This is a frontend-only change within the React/Next.js application. No backend (Frappe/Python) modifications are needed.
+
+3.  **Implementation Approach:**
+    *   In `StructuredData.tsx`, define a constant object holding the latest review data (e.g., `const currentRating = { ratingValue: '4.7', reviewCount: '1234' }`).
+    *   Source these values from a real platform like Hostelworld or Google as specified.
+    *   Locate the `LodgingBusiness` schema object within the returned JSON-LD script tag.
+    *   Add the `aggregateRating` property to this object, mapping it to an `AggregateRating` schema that includes `ratingValue`, `reviewCount`, `bestRating: "5"`, and `worstRating: "1"`.
+    *   Add the `starRating` property, mapping it to a `Rating` schema with the appropriate `ratingValue`.
+
+4.  **Gotchas & Validation:**
+    *   **Data Source:** The values *must* be from a real, verifiable review platform, not fabricated. The constant makes quarterly updates simple.
+    *   **Validation:** After implementing, copy the page's final HTML source and validate it using the Google Rich Results Test to ensure there are no errors.
+    *   **Schema Types:** Ensure you use the correct schema types: `AggregateRating` for the overall score and `Rating` for the star rating.
+
+
+## Iteration - Story: US-074 Add TouristDestination schema for Johor Bahru city on /guide page
+
+### What was implemented
+- Added `@id` properties to all 6 existing TouristAttraction schemas in `GuideStructuredData.tsx`
+- Added TouristDestination schema for Johor Bahru with name, description, url, geo (1.4854, 103.7618), touristType (Backpackers, Budget Travelers), and containsPlace referencing all attraction @ids
+- Added `containedInPlace` linking hostel schema in `StructuredData.tsx` to the TouristDestination via `@id: guide#jb`
+
+### Patterns discovered
+- Schema @id values use hash fragments on the page URL (e.g., `/guide#city-square`)
+- containsPlace can dynamically map from the attractions array to avoid duplication
+
+### Gotchas
+- TouristDestination is distinct from TouristAttraction — it represents a city/region, not a single place
+- containedInPlace on the hostel only needs the @type and @id reference, not the full schema

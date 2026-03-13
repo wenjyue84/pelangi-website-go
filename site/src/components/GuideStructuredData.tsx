@@ -3,6 +3,7 @@ export default function GuideStructuredData() {
     {
       "@context": "https://schema.org",
       "@type": ["TouristAttraction", "Place"],
+      "@id": "https://pelangicapsulehostel.com/guide#city-square",
       "name": "Johor Bahru City Square",
       "description":
         "Major shopping mall in the heart of JB city centre, connected to JB Sentral and the CIQ Customs Immigration complex. Popular with backpackers for affordable shopping, food courts, and money changers.",
@@ -24,6 +25,7 @@ export default function GuideStructuredData() {
     {
       "@context": "https://schema.org",
       "@type": ["TouristAttraction", "Place"],
+      "@id": "https://pelangicapsulehostel.com/guide#danga-bay",
       "name": "Danga Bay",
       "description":
         "Waterfront leisure park along the Straits of Johor with panoramic views of Singapore. Features a night market, seafood restaurants, cycling paths, and themed gardens — a must-visit sunset spot for backpackers.",
@@ -45,6 +47,7 @@ export default function GuideStructuredData() {
     {
       "@context": "https://schema.org",
       "@type": ["TouristAttraction", "Place"],
+      "@id": "https://pelangicapsulehostel.com/guide#ksl-city-mall",
       "name": "KSL City Mall",
       "description":
         "Popular lifestyle mall in Johor Bahru with massage parlors, salons, cinemas, and dining options. Located about 8 minutes by car from Pelangi Capsule Hostel.",
@@ -66,6 +69,7 @@ export default function GuideStructuredData() {
     {
       "@context": "https://schema.org",
       "@type": ["TouristAttraction", "Place"],
+      "@id": "https://pelangicapsulehostel.com/guide#mariamman-temple",
       "name": "Arulmigu Raja Mariamman Temple",
       "description":
         "Historic Hindu temple in JB city centre, one of the oldest temples in Johor Bahru. Known for its ornate gopuram tower and vibrant Dravidian architecture — a cultural landmark worth visiting.",
@@ -87,6 +91,7 @@ export default function GuideStructuredData() {
     {
       "@context": "https://schema.org",
       "@type": ["TouristAttraction", "Place"],
+      "@id": "https://pelangicapsulehostel.com/guide#old-chinese-temple",
       "name": "Johor Bahru Old Chinese Temple",
       "description":
         "Over 150-year-old Chinese temple in the heart of JB, dedicated to five Chinese deities. A nationally important cultural and heritage site, especially during the annual Chingay parade procession.",
@@ -108,6 +113,7 @@ export default function GuideStructuredData() {
     {
       "@context": "https://schema.org",
       "@type": ["TouristAttraction", "Place"],
+      "@id": "https://pelangicapsulehostel.com/guide#yahya-awal-hawker",
       "name": "Jalan Yahya Awal Hawker Centre",
       "description":
         "One of JB's most beloved hawker spots for backpackers — famous for char kway teow, laksa, and cendol. Located a 12-minute walk from Pelangi Capsule Hostel in Taman Pelangi.",
@@ -127,6 +133,26 @@ export default function GuideStructuredData() {
       "url": "https://pelangicapsulehostel.com/guide#hawkers",
     },
   ];
+
+  const touristDestinationSchema = {
+    "@context": "https://schema.org",
+    "@type": "TouristDestination",
+    "@id": "https://pelangicapsulehostel.com/guide#jb",
+    "name": "Johor Bahru",
+    "description":
+      "Johor Bahru is a vibrant Malaysian city at the southern tip of Peninsular Malaysia, directly connected to Singapore via the Causeway. Popular with backpackers and budget travelers for its affordable food, rich cultural heritage, and proximity to Singapore.",
+    "url": "https://pelangicapsulehostel.com/guide",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 1.4854,
+      "longitude": 103.7618,
+    },
+    "touristType": ["Backpackers", "Budget Travelers"],
+    "containsPlace": attractions.map((a) => ({
+      "@type": "TouristAttraction",
+      "@id": a["@id"],
+    })),
+  };
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -156,6 +182,12 @@ export default function GuideStructuredData() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(attraction) }}
         />
       ))}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(touristDestinationSchema),
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
