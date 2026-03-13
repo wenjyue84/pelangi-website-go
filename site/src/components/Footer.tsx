@@ -86,12 +86,13 @@ export default function Footer() {
                 { href: "/amenities", label: "Amenities" },
                 { href: "/gallery", label: "Gallery" },
                 { href: "/location", label: "Location" },
-                { href: "/book", label: "Book Now" },
+                { href: "/book", label: "Book Now", ariaLabel: "Book Now — Reserve your stay" },
               ].map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
                     className="min-h-6 text-stone-400 hover:text-white transition-colors duration-200"
+                    {...('ariaLabel' in link && { 'aria-label': link.ariaLabel })}
                   >
                     {link.label}
                   </Link>

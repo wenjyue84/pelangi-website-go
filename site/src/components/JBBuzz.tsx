@@ -168,6 +168,7 @@ export default function JBBuzz() {
               <Link
                 href="/blog"
                 className="text-sm font-medium text-amber-700 dark:text-amber-400 hover:text-amber-800 dark:hover:text-amber-300 transition-colors"
+                aria-label="View all blog articles"
               >
                 View all →
               </Link>

@@ -5124,3 +5124,27 @@ US-103 (Google Business Profile registration) is entirely an external platform t
 - RTK (rtk npx tsc) failed to find tsc binary — use `npx tsc` directly as fallback
 - Expires field should be updated annually (set to 2027-03-13)
 
+
+
+## Iteration 17 - Story: US-182 - Fix WCAG 2.2 SC 2.4.4 Link Purpose for generic CTA labels
+
+### What was implemented
+- `Header.tsx` — Added `aria-label="Book Now — Reserve your stay at Pelangi Capsule Hostel"` to both desktop (line 91) and mobile (line 149) "Book Now" links
+- `Footer.tsx` — Added `ariaLabel` property to "Book Now" nav link data and spread it as `aria-label` in the Link component
+- `amenities/page.tsx` — Added aria-labels to both "Book Now" CTAs (hero section line 190, CTA section line 476)
+- `book/page.tsx` — Added `aria-label="Learn more about Malaysia Tourism Tax (TTx)"` to the inline "Learn more" link (line 379)
+- `JBBuzz.tsx` — Added `aria-label="View all blog articles"` to the "View all →" link (line 172)
+
+### Already compliant (no changes needed)
+- `MobileBookingBar.tsx` — already had `aria-label="Book Now via WhatsApp"`
+- `Booking.tsx`, `Rooms.tsx`, `book/page.tsx:195/238` — already had descriptive aria-labels for TTx info links
+- `Gallery.tsx` — already had dynamic aria-labels on all interactive elements
+- `page.tsx` home page "Book Now" — wrapped in a card Link whose accessible name includes "Book Your Stay" heading
+- `book/page.tsx:438` — "Book Now on WhatsApp" is self-descriptive
+
+### Patterns discovered
+- Footer nav links use inline array with `.map()` — extending with optional properties requires spread pattern `{...('ariaLabel' in link && { 'aria-label': link.ariaLabel })}`
+- Many TTx info icon links already had aria-labels from earlier WCAG iterations
+
+### Gotchas
+- `rtk npx tsc` still fails — use `npx tsc --noEmit` directly

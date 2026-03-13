@@ -376,7 +376,7 @@ export default function BookPage() {
             </p>
             <p className="text-center text-xs text-stone-500 dark:text-stone-400 mt-2">
               All prices exclude Tourism Tax (TTx) of RM10/room/night, required by Malaysian law.{" "}
-              <a href="https://www.myttx.customs.gov.my/" target="_blank" rel="noopener noreferrer" className="text-amber-600 dark:text-amber-400 hover:underline">Learn more</a>
+              <a href="https://www.myttx.customs.gov.my/" target="_blank" rel="noopener noreferrer" className="text-amber-600 dark:text-amber-400 hover:underline" aria-label="Learn more about Malaysia Tourism Tax (TTx)">Learn more</a>
             </p>
           </div>
 

@@ -186,6 +186,7 @@ export default function AmenitiesPage() {
               <Link
                 href="/book"
                 className="px-8 py-3 bg-amber-700 text-white rounded-lg hover:bg-amber-800 transition-colors"
+                aria-label="Book Now — Reserve your stay at Pelangi Capsule Hostel"
               >
                 Book Now
               </Link>
@@ -472,6 +473,7 @@ export default function AmenitiesPage() {
             <Link
               href="/book"
               className="px-8 py-3 bg-white text-amber-700 rounded-lg hover:bg-amber-50 transition-colors font-medium"
+              aria-label="Book Now — Reserve your stay at Pelangi Capsule Hostel"
             >
               Book Now
             </Link>

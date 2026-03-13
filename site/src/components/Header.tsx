@@ -88,6 +88,7 @@ export default function Header() {
           <Link
             href="/book"
             className="ml-4 px-6 py-2.5 text-sm font-medium rounded-full transition-all duration-300 bg-amber-700 text-white hover:bg-amber-800"
+            aria-label="Book Now — Reserve your stay at Pelangi Capsule Hostel"
           >
             Book Now
           </Link>
@@ -146,6 +147,7 @@ export default function Header() {
                 className="block w-full text-center bg-amber-700 text-white py-3 rounded-xl font-medium
                          hover:bg-amber-800 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
+                aria-label="Book Now — Reserve your stay at Pelangi Capsule Hostel"
               >
                 Book Now
               </Link>
