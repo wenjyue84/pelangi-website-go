@@ -323,7 +323,7 @@ export default function ChatWidget() {
             autoComplete="on"
             className="
               flex-1 resize-none text-sm transition
-              border border-stone-200 dark:border-stone-600 rounded-xl px-3 py-2
+              border border-stone-500 dark:border-stone-600 rounded-xl px-3 py-2
               bg-white dark:bg-stone-700 text-stone-900 dark:text-stone-100
               focus-visible:border-amber-400
               disabled:opacity-60 placeholder:text-stone-500

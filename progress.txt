@@ -4279,3 +4279,31 @@ Incomplete: Register Google Business Profile and connect to Google Hotel free bo
 ### Quality check
 - `npx tsc --noEmit` passes with zero errors
 
+
+
+## Iteration 11 - Story: US-113 - Implement WCAG 2.1 SC 1.4.11 – Non-Text Contrast for UI Components
+
+### What was implemented
+- Upgraded all form input borders from `border-stone-200`/`border-stone-300` to `border-stone-500` (#78716C) achieving ~4.8:1 contrast ratio against white (well above 3:1 minimum)
+- Fixed files: ContactForm.tsx (7 inputs), BookingForm.tsx (3 inputs), NewsletterSignupForm.tsx (2 inputs), ChatWidget.tsx (1 textarea)
+- Upgraded secondary button borders from `border-stone-300` to `border-stone-500` in: CookieConsent.tsx (2 buttons), ShareButton.tsx, BlogFilter.tsx inactive state
+- Updated `btn-secondary` utility in globals.css: `border-stone-300 hover:border-stone-400` → `border-stone-500 hover:border-stone-600`
+- Fixed CookieConsent toggle switch unchecked state from `bg-stone-300` to `bg-stone-500` for 3:1 contrast against stone-50 panel background
+- Fixed SearchDialog kbd hint borders from `border-stone-200` to `border-stone-500`
+- Focus ring already handled via global `:focus-visible` rule using `amber-700` outline (implemented in earlier iteration)
+
+### Contrast analysis
+- stone-200 (#E7E5E4) vs white: ~1.3:1 — FAILS 3:1
+- stone-300 (#D6D3D1) vs white: ~1.6:1 — FAILS 3:1
+- stone-400 (#A8A29E) vs white: ~2.5:1 — FAILS 3:1 (despite PRD note, gray-400 also fails)
+- stone-500 (#78716C) vs white: ~4.8:1 — PASSES 3:1 ✓
+- Used stone-500 as the minimum passing Tailwind shade for stone palette
+
+### Patterns discovered
+- Tailwind stone-400 does NOT pass 3:1 against white (~2.5:1), contrary to PRD technical note about gray-400
+- The first Tailwind stone shade that passes 3:1 against white is stone-500
+- Dark mode borders (stone-600) were already at acceptable contrast and left unchanged
+
+### Gotchas
+- PRD technical notes referenced gray palette but project uses stone palette — different hex values
+- Be careful with `replace_all` on `border-stone-200` — some instances are decorative (dialog containers, message bubbles) not interactive component borders

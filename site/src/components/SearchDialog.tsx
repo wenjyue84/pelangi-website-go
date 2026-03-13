@@ -149,7 +149,7 @@ export default function SearchDialog({
               results.length > 0 ? `search-result-${activeIndex}` : undefined
             }
           />
-          <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 text-xs text-stone-400 bg-stone-100 dark:bg-stone-700 rounded-sm border border-stone-200 dark:border-stone-600 font-mono">
+          <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 text-xs text-stone-500 bg-stone-100 dark:bg-stone-700 rounded-sm border border-stone-500 dark:border-stone-600 font-mono">
             Esc
           </kbd>
         </div>
@@ -206,16 +206,16 @@ export default function SearchDialog({
         {results.length > 0 && (
           <div className="px-4 py-2 border-t border-stone-100 dark:border-stone-700 flex items-center gap-4 text-[11px] text-stone-400">
             <span className="flex items-center gap-1">
-              <kbd className="px-1 py-0.5 bg-stone-100 rounded-sm border border-stone-200 font-mono text-[10px]">&uarr;</kbd>
-              <kbd className="px-1 py-0.5 bg-stone-100 rounded-sm border border-stone-200 font-mono text-[10px]">&darr;</kbd>
+              <kbd className="px-1 py-0.5 bg-stone-100 rounded-sm border border-stone-500 font-mono text-[10px]">&uarr;</kbd>
+              <kbd className="px-1 py-0.5 bg-stone-100 rounded-sm border border-stone-500 font-mono text-[10px]">&darr;</kbd>
               navigate
             </span>
             <span className="flex items-center gap-1">
-              <kbd className="px-1 py-0.5 bg-stone-100 rounded-sm border border-stone-200 font-mono text-[10px]">&crarr;</kbd>
+              <kbd className="px-1 py-0.5 bg-stone-100 rounded-sm border border-stone-500 font-mono text-[10px]">&crarr;</kbd>
               open
             </span>
             <span className="flex items-center gap-1">
-              <kbd className="px-1 py-0.5 bg-stone-100 rounded-sm border border-stone-200 font-mono text-[10px]">esc</kbd>
+              <kbd className="px-1 py-0.5 bg-stone-100 rounded-sm border border-stone-500 font-mono text-[10px]">esc</kbd>
               close
             </span>
           </div>

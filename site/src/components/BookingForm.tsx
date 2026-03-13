@@ -52,7 +52,7 @@ export default function BookingForm() {
             id="room-type"
             value={roomType}
             onChange={(e) => setRoomType(e.target.value)}
-            className="w-full rounded-xl border border-stone-200 dark:border-stone-600 bg-stone-50 dark:bg-stone-800
+            className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-stone-50 dark:bg-stone-800
                        text-stone-900 dark:text-stone-100 px-4 py-3 text-sm
                        focus-visible:border-amber-500"
           >
@@ -78,7 +78,7 @@ export default function BookingForm() {
               setCheckIn(e.target.value);
               if (checkOut && e.target.value > checkOut) setCheckOut("");
             }}
-            className="w-full rounded-xl border border-stone-200 dark:border-stone-600 bg-stone-50 dark:bg-stone-800
+            className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-stone-50 dark:bg-stone-800
                        text-stone-900 dark:text-stone-100 px-4 py-3 text-sm
                        focus-visible:border-amber-500"
           />
@@ -98,7 +98,7 @@ export default function BookingForm() {
             value={checkOut}
             min={checkIn || today}
             onChange={(e) => setCheckOut(e.target.value)}
-            className="w-full rounded-xl border border-stone-200 dark:border-stone-600 bg-stone-50 dark:bg-stone-800
+            className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-stone-50 dark:bg-stone-800
                        text-stone-900 dark:text-stone-100 px-4 py-3 text-sm
                        focus-visible:border-amber-500"
           />

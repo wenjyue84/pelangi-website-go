@@ -174,7 +174,7 @@ export default function CookieConsent() {
                 className={`relative shrink-0 inline-flex h-6 w-11 items-center rounded-full transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700 ${
                   analyticsChecked
                     ? "bg-amber-700"
-                    : "bg-stone-300 dark:bg-stone-600"
+                    : "bg-stone-500 dark:bg-stone-600"
                 }`}
               >
                 <span
@@ -199,13 +199,13 @@ export default function CookieConsent() {
           <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:justify-end sm:gap-3">
             <button
               onClick={() => setShowPrefs(true)}
-              className="rounded-lg border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-700 px-5 py-2.5 text-sm font-medium text-stone-700 dark:text-stone-300 transition-colors hover:bg-stone-50 dark:hover:bg-stone-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
+              className="rounded-lg border border-stone-500 dark:border-stone-600 bg-white dark:bg-stone-700 px-5 py-2.5 text-sm font-medium text-stone-700 dark:text-stone-300 transition-colors hover:bg-stone-50 dark:hover:bg-stone-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
             >
               {t.manage}
             </button>
             <button
               onClick={handleReject}
-              className="rounded-lg border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-700 px-5 py-2.5 text-sm font-medium text-stone-700 dark:text-stone-300 transition-colors hover:bg-stone-50 dark:hover:bg-stone-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
+              className="rounded-lg border border-stone-500 dark:border-stone-600 bg-white dark:bg-stone-700 px-5 py-2.5 text-sm font-medium text-stone-700 dark:text-stone-300 transition-colors hover:bg-stone-50 dark:hover:bg-stone-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
             >
               {t.rejectAll}
             </button>

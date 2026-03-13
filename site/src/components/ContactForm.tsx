@@ -87,7 +87,7 @@ export default function ContactForm() {
                   required
                   autoComplete="name"
                   placeholder="Your full name"
-                  className="w-full rounded-xl border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors"
+                  className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors"
                 />
               </div>
               <div>
@@ -104,7 +104,7 @@ export default function ContactForm() {
                   required
                   autoComplete="email"
                   placeholder="you@example.com"
-                  className="w-full rounded-xl border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors"
+                  className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors"
                 />
               </div>
             </div>
@@ -123,7 +123,7 @@ export default function ContactForm() {
                 type="tel"
                 autoComplete="tel"
                 placeholder="+60 12-345 6789"
-                className="w-full rounded-xl border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors"
+                className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors"
               />
             </div>
 
@@ -141,7 +141,7 @@ export default function ContactForm() {
                   name="checkIn"
                   type="date"
                   autoComplete="off"
-                  className="w-full rounded-xl border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 focus-visible:border-amber-500 transition-colors"
+                  className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 focus-visible:border-amber-500 transition-colors"
                 />
               </div>
               <div>
@@ -156,7 +156,7 @@ export default function ContactForm() {
                   name="checkOut"
                   type="date"
                   autoComplete="off"
-                  className="w-full rounded-xl border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 focus-visible:border-amber-500 transition-colors"
+                  className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 focus-visible:border-amber-500 transition-colors"
                 />
               </div>
             </div>
@@ -176,7 +176,7 @@ export default function ContactForm() {
                 min="1"
                 max="20"
                 placeholder="e.g. 2"
-                className="w-full sm:w-40 rounded-xl border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors"
+                className="w-full sm:w-40 rounded-xl border border-stone-500 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors"
               />
             </div>
 
@@ -194,7 +194,7 @@ export default function ContactForm() {
                 required
                 rows={5}
                 placeholder="Tell us about your travel plans or any questions you have..."
-                className="w-full rounded-xl border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors resize-y"
+                className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors resize-y"
               />
             </div>
 

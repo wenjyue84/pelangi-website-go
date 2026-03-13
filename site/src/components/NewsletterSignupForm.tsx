@@ -55,7 +55,7 @@ export default function NewsletterSignupForm() {
                   required
                   autoComplete="given-name"
                   placeholder="Your first name"
-                  className="w-full rounded-lg border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-2.5 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500"
+                  className="w-full rounded-lg border border-stone-500 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-2.5 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500"
                 />
               </div>
               <div className="flex-1">
@@ -72,7 +72,7 @@ export default function NewsletterSignupForm() {
                   required
                   autoComplete="email"
                   placeholder="you@example.com"
-                  className="w-full rounded-lg border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-2.5 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500"
+                  className="w-full rounded-lg border border-stone-500 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-2.5 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500"
                 />
               </div>
             </div>
