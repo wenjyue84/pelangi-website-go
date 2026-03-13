@@ -2593,7 +2593,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-117",
@@ -3337,7 +3337,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-151",
@@ -3432,7 +3432,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-155",
@@ -3479,7 +3479,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-157",
@@ -3645,7 +3645,7 @@
         "Add Malaysia PDPA-compliant cookie consent banner with explicit opt-in"
       ],
       "estimatedComplexity": "medium",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-164",
@@ -3669,7 +3669,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-165",
@@ -3792,7 +3792,7 @@
         "Implement Google Tag Manager with Consent Mode v2"
       ],
       "estimatedComplexity": "medium",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-170",
@@ -3814,7 +3814,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-171",

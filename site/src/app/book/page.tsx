@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import BookingForm from "@/components/BookingForm";
 import TrustSignals from "@/components/TrustSignals";
 import BookEcommerceTracker from "@/components/BookEcommerceTracker";
+import DuitNowPayment from "@/components/DuitNowPayment";
 import type { Metadata } from "next";
 
 export const dynamic = 'force-static';
@@ -458,6 +459,9 @@ export default function BookPage() {
           </div>
         </div>
       </section>
+
+      {/* Payment Methods & DuitNow QR */}
+      <DuitNowPayment />
 
       {/* OTA Platforms */}
       <section className="py-16 container-custom">

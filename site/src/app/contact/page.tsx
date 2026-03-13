@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Location from "@/components/Location";
 import ContactForm from "@/components/ContactForm";
+import DuitNowPayment from "@/components/DuitNowPayment";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ export default function ContactPage() {
             <Header />
             <div className="pt-20">
                 <ContactForm />
+                <DuitNowPayment compact />
                 <Location />
             </div>
             <Footer />
