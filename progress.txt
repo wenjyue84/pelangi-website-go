@@ -3367,3 +3367,118 @@ This user story is for a Next.js/TypeScript frontend, not a Frappe/Python applic
 ## Iteration 9 - Fri, Mar 13, 2026  7:26:53 AM
 Incomplete: Add estimated reading time to blog post cards and article headers (ID: US-079) — attempt 1/3
 
+
+## Pre-analysis for US-084 (Gemini 2.5 Pro)
+This user story is for a Next.js/React frontend, not a Frappe/Python application. The technical brief has been adjusted accordingly for the `pelangi-website` project.
+
+### Technical Brief: US-084 - LodgingBusiness Schema Enhancement
+
+**1. Files to Modify:**
+
+*   **`site/src/components/StructuredData.tsx`**: This is the primary target. It likely contains the existing `LodgingBusiness` JSON-LD schema definition and is where the new `aggregateRating` and `starRating` properties should be added.
+*   **`site/src/config/site.ts` (or similar)**: A configuration file is the best place to store the rating values (e.g., `ratingValue`, `reviewCount`) so they can be easily updated quarterly as required.
+*   **`site/src/app/layout.tsx`**: Verify how `StructuredData.tsx` is imported and rendered to ensure the schema is applied globally or on the correct pages.
+
+**2. Frappe DocTypes / Hooks Involved:**
+
+*   None. This is a frontend task involving React components and JSON-LD, not a Frappe backend implementation.
+
+**3. Recommended Implementation Approach:**
+
+1.  **Define Constants:** In a central config file (e.g., `site/src/config/site.ts`), add the review data from a source like Hostelworld or Google. Example:
+    ```typescript
+    export const siteReviews = {
+      ratingValue: 4.8,
+      reviewCount: 1234,
+      starRating: "4-star" // Or appropriate category
+    };
+    ```
+2.  **Update `StructuredData.tsx`:** Import the constants and inject the `aggregateRating` and `starRating` properties into the `LodgingBusiness` schema object.
+    ```javascript
+    // Inside the LodgingBusiness JSON object
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": siteReviews.ratingValue,
+      "bestRating": 5,
+      "worstRating": 1,
+      "reviewCount": siteReviews.reviewCount
+    },
+    "starRating": {
+       "@type": "Rating",
+       "ratingValue": siteReviews.starRating
+    },
+    ```
+3.  **Validation:** After implementation, copy the generated JSON-LD from the page source and paste it into the Google Rich Results Test to validate the schema and check for warnings.
+
+**4. Edge Cases & Gotchas:**
+
+*   **Data Source:** The acceptance criteria demand using a *real* review platform. Do not use placeholder or fabricated numbers.
+*   **Schema Nesting:** Ensure `aggregateRating` and `starRating` are correctly nested within the main `LodgingBusiness` entity. Incorrect placement will cause validation to fail.
+*   **Data Type:** `ratingValue` and `reviewCount` should be numbers, not strings.
+*   **Verification:** Google might still show "unverified" warnings if the reviews aren't crawlable on the page itself. While the story focuses on the schema, linking to the source review page (e.g., your Hostelworld profile) within the schema using `sameAs` could help.
+
+
+## Pre-analysis for US-084 (Gemini 2.5 Pro)
+This user story is for a Next.js/TypeScript website, not a Frappe/Python application. The goal is to enhance the `LodgingBusiness` JSON-LD schema for SEO.
+
+**Technical Brief for US-084:**
+
+**1. Files to Modify:**
+*   `site/src/components/StructuredData.tsx`: This is the primary file. It likely contains the existing `LodgingBusiness` schema definition where the new properties will be added.
+*   `site/src/app/layout.tsx` or `site/src/app/page.tsx`: Verify this is where `<StructuredData />` is rendered to ensure it's on the correct pages.
+*   `site/src/components/Reviews.tsx`: While the main change is in the schema, you might need to visually align the displayed reviews with the new structured data.
+
+**2. Frappe DocTypes / Hooks Involved:**
+*   None. This is a Next.js/React project. The relevant concepts are React components and JSON-LD schema.
+
+**3. Recommended Implementation Approach:**
+1.  In `site/src/components/StructuredData.tsx`, create a `const` object to hold the current, real-world rating data (e.g., from Hostelworld or Google).
+    ```typescript
+    const currentRating = {
+      ratingValue: "4.8", // Example value
+      reviewCount: "1234", // Example value
+      starCategory: "5"    // Example, if it's a 5-star system
+    };
+    ```
+2.  Locate the `LodgingBusiness` JSON object within the component.
+3.  Add the `aggregateRating` property, populating it from the `currentRating` constant. Ensure `bestRating` and `worstRating` are included.
+    ```json
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": currentRating.ratingValue,
+      "bestRating": "5",
+      "worstRating": "1",
+      "reviewCount": currentRating.reviewCount
+    }
+    ```
+4.  Add the `starRating` property using the `Rating` type.
+    ```json
+    "starRating": {
+      "@type": "Rating",
+      "ratingValue": currentRating.starCategory
+    }
+    ```
+
+**4. Edge Cases & Gotchas:**
+*   **Data Source:** The acceptance criteria demand using *real* review data. Do not fabricate it. The values should be easily updatable via the constant defined in step 1.
+*   **Data Types:** JSON-LD is sensitive to data types. Ensure that values like `ratingValue` and `reviewCount` are formatted as strings, as is common practice, but verify with the Google Rich Results Test.
+*   **Validation:** After implementation, copy the generated JSON-LD from the browser's view-source and paste it into the [Google Rich Results Test](https://search.google.com/test/rich-results) to ensure it's valid and free of warnings.
+
+
+## Iteration - Story: Add @next/bundle-analyzer and enforce 250 KB initial JS budget per route
+
+### What was implemented
+- Installed `@next/bundle-analyzer` and `size-limit` + `@size-limit/file` as devDependencies
+- `next.config.ts`: imported `bundleAnalyzer`, created `withBundleAnalyzer({ enabled: process.env.ANALYZE === "true" })`, wrapped export with `withBundleAnalyzer(withSentryConfig(...))` 
+- Added comment block documenting top 3 JS bundle contributors and Sentry tree-shaking verification
+- `package.json`: added `analyze` and `size` scripts; added `size-limit` config array (250 kB budget on `.next/static/chunks/*.js`)
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- `@next/bundle-analyzer` exports a default function — use `import bundleAnalyzer from "@next/bundle-analyzer"` (ESM default import)
+- Wrap order: `withBundleAnalyzer(withSentryConfig(nextConfig, sentryOptions))` — outer = analyzer, inner = Sentry
+- `size-limit` with `@size-limit/file` checks gzip size of matched files; glob `.next/static/chunks/*.js` captures all split chunks
+
+### Gotchas
+- `package.json` `analyze` script uses `ANALYZE=true` env var inline — works on Linux/Mac CI; Windows may need cross-env
+- Bundle contributor sizes are estimates based on package analysis; run `ANALYZE=true npm run build` to get actual treemap
