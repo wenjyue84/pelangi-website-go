@@ -57,13 +57,25 @@ export default function ChatWidget() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, sending]);
 
-  // ─── Focus input when opened + notify other components ─────────────
+  // ─── Focus input when opened + notify other components + Escape ─────
   useEffect(() => {
     window.dispatchEvent(new CustomEvent('chatwidget-toggle', { detail: isOpen }));
     if (isOpen) {
       setHasUnread(false);
       setTimeout(() => inputRef.current?.focus(), 120);
     }
+  }, [isOpen]);
+
+  // ─── Escape key to close chat panel ─────────────────────────────────
+  useEffect(() => {
+    if (!isOpen) return;
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
   }, [isOpen]);
 
   // ─── Persist history ───────────────────────────────────────────────
@@ -219,6 +231,9 @@ export default function ChatWidget() {
           }
         `}
         style={{ maxHeight: 'min(540px, calc(100dvh - 110px))' }}
+        role="dialog"
+        aria-label="Chat with Rainbow AI assistant"
+        aria-modal="true"
         aria-hidden={!isOpen}
       >
         {/* Header */}

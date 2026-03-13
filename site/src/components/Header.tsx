@@ -14,17 +14,20 @@ export default function Header() {
 
   const closeSearch = useCallback(() => setIsSearchOpen(false), []);
 
-  // Cmd/Ctrl+K keyboard shortcut
+  // Cmd/Ctrl+K keyboard shortcut + Escape to close mobile nav
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
         setIsSearchOpen((prev) => !prev);
       }
+      if (e.key === "Escape" && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
     }
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [isMenuOpen]);
 
   const navLinks = [
     { href: "/about", label: "About" },

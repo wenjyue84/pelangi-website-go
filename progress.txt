@@ -4777,3 +4777,37 @@ Completed: Implement scheduler.yield() for INP optimisation on long JavaScript t
 
 ### Gotchas
 - `useOptimistic<ContactFormResult | null>` with a reducer arg causes TS2554 because TypeScript picks the first (1-arg) overload. Must use `useOptimistic<ContactFormResult | null, void>` to select the 2-arg overload.
+
+
+## Iteration - Story: US-165 WCAG 2.1 SC 2.1.1 Keyboard: ensure all functionality is keyboard operable
+
+### Note on US-103
+US-103 (Google Business Profile registration) is entirely an external platform task — no code changes needed. The /book page already has proper structured data, canonical URLs, and LodgingBusiness schema. Skipped as non-implementable via code.
+
+### What was implemented
+- **Header.tsx**: Added Escape key handler to close mobile navigation drawer
+- **Gallery.tsx** (major rewrite for keyboard accessibility):
+  - Added `role="button"`, `tabIndex={0}`, and `onKeyDown` (Enter/Space) to all clickable `<div>` photo items (hostel photos, guest photos, "see more" card, destination cards)
+  - Added `focus-visible:outline` styles to all interactive photo items
+  - Added Arrow Left/Right key navigation in lightbox
+  - Added Escape key to close lightbox and guests modal
+  - Added `role="dialog"`, `aria-label`, and `aria-modal="true"` to lightbox and guests modal
+  - Added focus management: focus moves to close button on open, returns to trigger element on close
+  - Created reusable `handleActivate()` helper for Enter/Space keyboard activation on div-based buttons
+- **ChatWidget.tsx**: Added Escape key to close chat panel; added `role="dialog"`, `aria-label`, `aria-modal="true"` to chat panel
+- **Rooms.tsx**: Removed misleading `cursor-pointer` from non-interactive hostel highlight items
+
+### Components audited and already compliant
+- **SearchDialog**: Already has focus trap, Escape, Arrow keys, `role="dialog"`, `aria-modal`
+- **FAQ**: Uses native `<button>` with `aria-expanded`, `aria-controls`
+- **CookieConsent**: Uses native `<button>`, `role="switch"` with `aria-checked`, `role="dialog"`
+- **LanguageSwitcher**: Uses native `<button>` with `aria-pressed`
+- **BlogFilter**: Uses native `<button>` with `aria-pressed`
+
+### Patterns discovered
+- Reusable `handleActivate()` pattern: returns `{ onClick, onKeyDown }` for making any div keyboard-operable
+- Focus management pattern: store `triggerRef` before opening modal, restore focus on close
+
+### Gotchas
+- Gallery lightbox needed `onClick={(e) => e.stopPropagation()}` on the image container to prevent backdrop click from closing when clicking the image itself
+- `useCallback` needed for `closeLightbox`/`navigateLightbox` to avoid stale closures in keyboard event listeners

@@ -193,7 +193,7 @@ export default function Rooms() {
             {hostelHighlights.map((highlight, index) => (
               <div
                 key={index}
-                className="bg-stone-50 dark:bg-stone-800 rounded-2xl p-6 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors group cursor-pointer"
+                className="bg-stone-50 dark:bg-stone-800 rounded-2xl p-6 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors group"
               >
                 <div className="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mb-4 group-hover:bg-amber-200 transition-colors">
                   <svg className="w-6 h-6 text-amber-700 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">

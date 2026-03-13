@@ -1,27 +1,91 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
+
+function handleActivate(callback: () => void) {
+  return {
+    onClick: callback,
+    onKeyDown: (e: React.KeyboardEvent) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        callback();
+      }
+    },
+  };
+}
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [activeModal, setActiveModal] = useState<string | null>(null);
   const [lightboxImages, setLightboxImages] = useState<string[]>([]);
+  const lightboxCloseRef = useRef<HTMLButtonElement>(null);
+  const modalCloseRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
 
   const openLightbox = (src: string, images: string[]) => {
+    triggerRef.current = document.activeElement as HTMLElement;
     setLightboxImages(images);
     setSelectedImage(src);
   };
 
-  const navigateLightbox = (direction: 'prev' | 'next') => {
-    if (!selectedImage || lightboxImages.length === 0) return;
-    const currentIndex = lightboxImages.indexOf(selectedImage);
-    if (currentIndex === -1) return;
-    const newIndex = direction === 'prev'
-      ? (currentIndex - 1 + lightboxImages.length) % lightboxImages.length
-      : (currentIndex + 1) % lightboxImages.length;
-    setSelectedImage(lightboxImages[newIndex]);
-  };
+  const closeLightbox = useCallback(() => {
+    setSelectedImage(null);
+    setLightboxImages([]);
+    triggerRef.current?.focus();
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setActiveModal(null);
+    triggerRef.current?.focus();
+  }, []);
+
+  const navigateLightbox = useCallback((direction: 'prev' | 'next') => {
+    setSelectedImage((prev) => {
+      if (!prev || lightboxImages.length === 0) return prev;
+      const currentIndex = lightboxImages.indexOf(prev);
+      if (currentIndex === -1) return prev;
+      const newIndex = direction === 'prev'
+        ? (currentIndex - 1 + lightboxImages.length) % lightboxImages.length
+        : (currentIndex + 1) % lightboxImages.length;
+      return lightboxImages[newIndex];
+    });
+  }, [lightboxImages]);
+
+  // Lightbox keyboard: Escape, ArrowLeft, ArrowRight
+  useEffect(() => {
+    if (!selectedImage) return;
+    // Focus close button when lightbox opens
+    lightboxCloseRef.current?.focus();
+
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        closeLightbox();
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        navigateLightbox('prev');
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        navigateLightbox('next');
+      }
+    }
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [selectedImage, closeLightbox, navigateLightbox]);
+
+  // Modal keyboard: Escape to close
+  useEffect(() => {
+    if (!activeModal) return;
+    modalCloseRef.current?.focus();
+
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    }
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [activeModal, closeModal]);
 
   // Hostel photos - best shots
   const hostelPhotos = [
@@ -148,9 +212,12 @@ export default function Gallery() {
           {hostelPhotos.map((photo, index) => (
             <div
               key={index}
+              role="button"
+              tabIndex={0}
+              aria-label={`View photo: ${photo.alt}`}
               className="shrink-0 w-72 h-48 md:w-80 md:h-56 relative rounded-2xl overflow-hidden
-                       cursor-pointer group snap-start"
-              onClick={() => openLightbox(photo.src, hostelPhotos.map(p => p.src))}
+                       cursor-pointer group snap-start focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
+              {...handleActivate(() => openLightbox(photo.src, hostelPhotos.map(p => p.src)))}
             >
               <Image
                 src={photo.src}
@@ -174,14 +241,17 @@ export default function Gallery() {
           id="community"
           title="Guest Photos"
           subtitle="Real moments from our community"
-          onSeeAll={() => setActiveModal('guests')}
+          onSeeAll={() => { triggerRef.current = document.activeElement as HTMLElement; setActiveModal('guests'); }}
         >
           {guestPhotos.slice(0, 12).map((photo, index) => (
             <div
               key={index}
+              role="button"
+              tabIndex={0}
+              aria-label={`View guest photo ${index + 1}`}
               className="shrink-0 w-40 h-40 md:w-48 md:h-48 relative rounded-2xl overflow-hidden
-                       cursor-pointer group snap-start"
-              onClick={() => openLightbox(photo.src, guestPhotos.map(p => p.src))}
+                       cursor-pointer group snap-start focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
+              {...handleActivate(() => openLightbox(photo.src, guestPhotos.map(p => p.src)))}
             >
               <Image
                 src={photo.src}
@@ -195,9 +265,13 @@ export default function Gallery() {
           ))}
           {/* See more card */}
           <div
+            role="button"
+            tabIndex={0}
+            aria-label={`View all ${guestPhotos.length} guest photos`}
             className="shrink-0 w-40 h-40 md:w-48 md:h-48 relative rounded-2xl overflow-hidden
-                     cursor-pointer group snap-start bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center"
-            onClick={() => setActiveModal('guests')}
+                     cursor-pointer group snap-start bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center
+                     focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
+            {...handleActivate(() => { triggerRef.current = document.activeElement as HTMLElement; setActiveModal('guests'); })}
           >
             <div className="text-center">
               <div className="text-3xl font-display font-medium text-amber-700 dark:text-amber-400">+{guestPhotos.length - 12}</div>
@@ -214,9 +288,12 @@ export default function Gallery() {
           {destinations.map((dest, index) => (
             <div
               key={index}
+              role="button"
+              tabIndex={0}
+              aria-label={`View photo: ${dest.name}`}
               className="shrink-0 w-64 md:w-72 relative rounded-2xl overflow-hidden
-                       cursor-pointer group snap-start"
-              onClick={() => openLightbox(dest.src, destinations.map(d => d.src))}
+                       cursor-pointer group snap-start focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
+              {...handleActivate(() => openLightbox(dest.src, destinations.map(d => d.src)))}
             >
               <div className="relative h-44 md:h-52">
                 <Image
@@ -265,14 +342,18 @@ export default function Gallery() {
       {/* Lightbox */}
       {selectedImage && (
         <div
+          role="dialog"
+          aria-label="Image lightbox"
+          aria-modal="true"
           className="fixed inset-0 z-50 bg-stone-900/95 backdrop-blur-xs flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
+          onClick={() => closeLightbox()}
         >
           <button
+            ref={lightboxCloseRef}
             className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center
                      text-white hover:bg-white/20 transition-colors cursor-pointer"
-            onClick={() => setSelectedImage(null)}
-            aria-label="Close gallery"
+            onClick={() => closeLightbox()}
+            aria-label="Close lightbox (Escape)"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
@@ -283,14 +364,14 @@ export default function Gallery() {
               className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center
                        text-white hover:bg-white/20 transition-colors cursor-pointer z-10"
               onClick={(e) => { e.stopPropagation(); navigateLightbox('prev'); }}
-              aria-label="Previous image"
+              aria-label="Previous image (Left arrow)"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
           )}
-          <div className="relative w-full max-w-5xl h-[80vh]">
+          <div className="relative w-full max-w-5xl h-[80vh]" onClick={(e) => e.stopPropagation()}>
             <Image
               src={selectedImage}
               alt="Pelangi Capsule Hostel Johor Bahru - Gallery photo view"
@@ -304,7 +385,7 @@ export default function Gallery() {
               className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center
                        text-white hover:bg-white/20 transition-colors cursor-pointer z-10"
               onClick={(e) => { e.stopPropagation(); navigateLightbox('next'); }}
-              aria-label="Next image"
+              aria-label="Next image (Right arrow)"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -317,8 +398,11 @@ export default function Gallery() {
       {/* All Guests Modal */}
       {activeModal === 'guests' && (
         <div
+          role="dialog"
+          aria-label="All guest photos"
+          aria-modal="true"
           className="fixed inset-0 z-50 bg-stone-900/95 backdrop-blur-xs overflow-y-auto"
-          onClick={() => setActiveModal(null)}
+          onClick={() => closeModal()}
         >
           <div className="min-h-screen p-4 md:p-8">
             <div className="max-w-6xl mx-auto">
@@ -328,10 +412,11 @@ export default function Gallery() {
                   <p className="text-stone-400 text-sm">{guestPhotos.length} photos from our community</p>
                 </div>
                 <button
+                  ref={modalCloseRef}
                   className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center
                            text-white hover:bg-white/20 transition-colors cursor-pointer"
-                  onClick={() => setActiveModal(null)}
-                  aria-label="Close guest photos gallery"
+                  onClick={() => closeModal()}
+                  aria-label="Close guest photos gallery (Escape)"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
@@ -345,11 +430,15 @@ export default function Gallery() {
                 {guestPhotos.map((photo, index) => (
                   <div
                     key={index}
-                    className="relative aspect-square rounded-xl overflow-hidden cursor-pointer group"
-                    onClick={() => {
-                      setActiveModal(null);
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`View guest photo ${index + 1}`}
+                    className="relative aspect-square rounded-xl overflow-hidden cursor-pointer group
+                             focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
+                    {...handleActivate(() => {
+                      closeModal();
                       openLightbox(photo.src, guestPhotos.map(p => p.src));
-                    }}
+                    })}
                   >
                     <Image
                       src={photo.src}
