@@ -3,15 +3,26 @@
 import { useState, useEffect } from 'react';
 import { sendGAEvent } from '@next/third-parties/google';
 
+const DEFAULT_WHATSAPP_URL =
+  "https://wa.me/60127088789?text=Hi!%20I'd%20like%20to%20book%20a%20pod%20at%20Pelangi%20Capsule%20Hostel.";
+
 export default function MobileBookingBar() {
   const [chatOpen, setChatOpen] = useState(false);
+  const [bookingUrl, setBookingUrl] = useState(DEFAULT_WHATSAPP_URL);
 
   useEffect(() => {
-    const handler = (e: Event) => {
+    const chatHandler = (e: Event) => {
       setChatOpen((e as CustomEvent<boolean>).detail);
     };
-    window.addEventListener('chatwidget-toggle', handler);
-    return () => window.removeEventListener('chatwidget-toggle', handler);
+    const bookingHandler = (e: Event) => {
+      setBookingUrl((e as CustomEvent<string>).detail);
+    };
+    window.addEventListener('chatwidget-toggle', chatHandler);
+    window.addEventListener('booking-link-update', bookingHandler);
+    return () => {
+      window.removeEventListener('chatwidget-toggle', chatHandler);
+      window.removeEventListener('booking-link-update', bookingHandler);
+    };
   }, []);
 
   if (chatOpen) return null;
@@ -40,7 +51,7 @@ export default function MobileBookingBar() {
 
         {/* CTA button */}
         <a
-          href="https://wa.me/60127088789?text=Hi!%20I'd%20like%20to%20book%20a%20pod%20at%20Pelangi%20Capsule%20Hostel."
+          href={bookingUrl}
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => sendGAEvent("event", "whatsapp_click", { location: "mobile_booking_bar" })}

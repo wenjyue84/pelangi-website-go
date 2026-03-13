@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BookingForm from "@/components/BookingForm";
 import type { Metadata } from "next";
 
 export const dynamic = 'force-static';
@@ -202,6 +203,11 @@ export default function BookPage() {
                 </li>
               </ul>
             </div>
+          </div>
+
+          {/* Booking Form */}
+          <div className="mt-12 max-w-md mx-auto">
+            <BookingForm />
           </div>
         </div>
       </section>
