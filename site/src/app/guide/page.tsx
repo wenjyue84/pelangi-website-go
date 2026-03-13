@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import GuideStructuredData from "@/components/GuideStructuredData";
+import TableOfContents from "@/components/TableOfContents";
+import type { Heading } from "@/lib/headings";
 
 export const revalidate = 3600; // ISR: regenerate at most every hour
 
@@ -139,47 +141,41 @@ export default function GuidePage() {
         },
     ];
 
+    const guideHeadings: Heading[] = [
+        { id: "getting-around", text: "Getting Around JB", level: 2 },
+        { id: "money", text: "Money & Currency", level: 2 },
+        { id: "day-trip", text: "Singapore Day Trip", level: 2 },
+        { id: "hawkers", text: "Top Hawker Centres Near Us", level: 2 },
+        { id: "food-shopping", text: "Food & Shopping", level: 2 },
+        { id: "safety", text: "Safety Tips for Backpackers", level: 2 },
+        { id: "apps", text: "Useful Local Apps", level: 2 },
+    ];
+
     return (
         <main id="main-content" className="min-h-screen bg-stone-50">
             <GuideStructuredData />
             <Header />
             <div className="pt-28 pb-16 container-custom">
-                <div className="max-w-4xl mx-auto">
 
-                    {/* Hero */}
-                    <div className="text-center mb-16">
-                        <h1 className="font-display text-4xl md:text-5xl font-medium mb-4 text-stone-900">
-                            The Backpacker&apos;s Guide to JB
-                        </h1>
-                        <p className="text-xl text-stone-600 max-w-2xl mx-auto">
-                            Everything you need to know about Johor Bahru — transport, money,
-                            food, day trips, safety, and the apps that make it easy.
-                        </p>
-                    </div>
+                {/* Hero */}
+                <div className="text-center mb-16 max-w-4xl mx-auto">
+                    <h1 className="font-display text-4xl md:text-5xl font-medium mb-4 text-stone-900">
+                        The Backpacker&apos;s Guide to JB
+                    </h1>
+                    <p className="text-xl text-stone-600 max-w-2xl mx-auto">
+                        Everything you need to know about Johor Bahru — transport, money,
+                        food, day trips, safety, and the apps that make it easy.
+                    </p>
+                </div>
 
-                    {/* Quick Nav */}
-                    <nav className="bg-white border border-stone-200 rounded-2xl p-6 mb-16 shadow-xs">
-                        <p className="text-sm font-semibold text-stone-500 uppercase tracking-wider mb-4">Jump to section</p>
-                        <div className="flex flex-wrap gap-3 text-sm">
-                            {[
-                                ["#getting-around", "🚗 Getting Around"],
-                                ["#money", "💰 Money & Currency"],
-                                ["#day-trip", "🇸🇬 Singapore Day Trip"],
-                                ["#hawkers", "🍜 Hawker Centres"],
-                                ["#food-shopping", "🛍️ Food & Shopping"],
-                                ["#safety", "🔒 Safety Tips"],
-                                ["#apps", "📱 Useful Apps"],
-                            ].map(([href, label]) => (
-                                <a
-                                    key={href}
-                                    href={href}
-                                    className="px-4 py-2 bg-stone-100 hover:bg-amber-100 text-stone-700 hover:text-amber-800 rounded-full transition-colors font-medium"
-                                >
-                                    {label}
-                                </a>
-                            ))}
+                {/* Two-column layout: content + ToC sidebar */}
+                <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_256px] lg:gap-12 max-w-5xl mx-auto">
+                    <div className="min-w-0">
+
+                        {/* Mobile ToC (collapsible) */}
+                        <div className="mb-12">
+                            <TableOfContents headings={guideHeadings} />
                         </div>
-                    </nav>
 
                     {/* Section 1: Getting Around */}
                     <section id="getting-around" className="mb-16">
@@ -514,7 +510,16 @@ export default function GuidePage() {
                         </div>
                     </div>
 
-                </div>
+                    </div>{/* end content column */}
+
+                    {/* Desktop ToC sidebar */}
+                    <aside className="hidden lg:block">
+                        <div className="sticky top-24">
+                            <TableOfContents headings={guideHeadings} />
+                        </div>
+                    </aside>
+
+                </div>{/* end two-column grid */}
             </div>
             <Footer />
         </main>

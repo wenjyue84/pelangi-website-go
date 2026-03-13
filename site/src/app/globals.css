@@ -220,6 +220,13 @@ layer(base);
     scroll-behavior: smooth;
   }
 
+  /* Offset sticky header (64px) when scrolling to heading anchors */
+  h2,
+  h3,
+  section[id] {
+    scroll-margin-top: 5rem; /* 80px = 64px header + 16px breathing room */
+  }
+
   /* WCAG 2.2 SC 2.4.11 — prevent MobileBookingBar from obscuring focused elements */
   @media (max-width: 767px) {
     html {

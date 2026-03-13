@@ -3782,3 +3782,51 @@ Not applicable. The key entities are:
 
 ### Gotchas
 - `fullscreen=()` (deny all) would break YouTube iframe fullscreen — must use `fullscreen=(self)`
+
+
+## Pre-analysis for US-084 (Gemini 2.5 Pro)
+This user story is for a **Next.js/TypeScript** project, not Frappe/Python. The goal is to add `aggregateRating` structured data to the `LodgingBusiness` JSON-LD schema to improve SEO.
+
+**Technical Brief for Implementation:**
+
+**1. Files to Modify:**
+*   `site/src/components/StructuredData.tsx`: This is the most likely candidate for defining and generating the JSON-LD schema. The `LodgingBusiness` schema definition should be located here.
+*   `site/src/config/hostel.ts` (or similar config file): A configuration file is the best place to store the rating values (rating, review count) so they can be easily updated.
+*   `site/src/components/Reviews.tsx`: May require minor updates to visually render the star rating based on the new structured data source, ensuring consistency.
+
+**2. Involved Entities (Not Frappe DocTypes):**
+*   **Component:** `StructuredData.tsx` will contain the core logic.
+*   **JSON-LD Schema:** You will be modifying the `LodgingBusiness` object.
+*   **Next.js App Router/Pages:** The `StructuredData` component is likely rendered in the main layout file (`site/src/app/layout.tsx`).
+
+**3. Recommended Approach:**
+1.  Define the latest rating data (e.g., `RATING_VALUE: 4.5`, `REVIEW_COUNT: 512`) as constants in a central configuration file.
+2.  In `StructuredData.tsx`, import these constants.
+3.  Locate the `LodgingBusiness` JSON-LD script object.
+4.  Add the `aggregateRating` property to it, creating a new object that includes `ratingValue`, `reviewCount`, and fixed values for `bestRating: "5"` and `worstRating: "1"`.
+5.  Validate the implementation by copying the generated JSON-LD from the page source and pasting it into the Google Rich Results Test tool.
+
+**4. Edge Cases & Gotchas:**
+*   The story mentions `starRating`. This property is not a standard part of the `LodgingBusiness` schema. The likely intent was for the `aggregateRating` to enable star snippets in search results, not to use a literal `starRating` field. Stick to implementing `aggregateRating`.
+*   The acceptance criteria require sourcing values from a real platform. Ensure the constants used are from Hostelworld, Google, or a similar reputable source as specified.
+*   Ensure all rating-related values are numbers or strings as per the schema.org specification to avoid validation errors.
+
+
+## Iteration - Story: US-072 - Add Table of Contents component for blog posts and /guide long-form content
+
+### What was implemented
+- `site/src/lib/headings.ts` — `extractHeadings()` parses H2/H3 from HTML strings at build time; `addHeadingIds()` injects id attributes; `toSlug()` converts text to kebab-case
+- `site/src/components/TableOfContents.tsx` — 'use client' component with Intersection Observer (rootMargin: '-20% 0% -70% 0%'), sticky desktop sidebar, collapsible accordion on mobile, aria-label="Article table of contents"
+- `site/src/app/blog/[slug]/page.tsx` — restructured to lg:grid two-column layout (content + 256px ToC sidebar); headings extracted and IDs injected server-side
+- `site/src/app/guide/page.tsx` — replaced Quick Nav with TableOfContents; added two-column grid layout; guide headings hardcoded to match existing section IDs
+- `site/src/app/globals.css` — added scroll-margin-top: 5rem to h2, h3, section[id] in @layer base
+
+### Patterns discovered
+- Guide page uses section[id] for anchors (not h2 ids) — observer can target section elements directly by passing section IDs in the headings array
+- Blog post content is HTML strings → build-time parsing with extractHeadings()/addHeadingIds() avoids DOM dependency
+- Mobile: `lg:hidden` wrapper around ToC shows collapsible; desktop `hidden lg:block` sidebar always visible — single component handles both
+
+### Gotchas
+- Duplicate ID would occur if both section[id] and h2 used the same id — keep id on section only for guide page; use h2 ids for blog posts
+- scroll-margin-top must also cover section[id] for guide page anchors, not just h2/h3
+- `npx tsc --noEmit` passes with zero errors
