@@ -103,6 +103,20 @@ export default async function RootLayout({
         <link rel="preconnect" href="https://www.google.com" />
         {/* DNS-prefetch: Trip.com CDN for review/OTA images (cold path) */}
         <link rel="dns-prefetch" href="https://ak-d.tripcdn.com" />
+        {/* Speculation Rules: prerender high-conversion pages on hover (Chrome/Edge only, ignored by others) */}
+        <script
+          type="speculationrules"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              prerender: [
+                {
+                  urls: ["/book", "/rooms", "/gallery"],
+                  eagerness: "moderate",
+                },
+              ],
+            }),
+          }}
+        />
         {/* Preload LCP hero image — srcset matches Next.js Image optimization breakpoints */}
         <link
           rel="preload"
