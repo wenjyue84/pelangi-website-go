@@ -1794,7 +1794,7 @@
         "Add Fuse.js client-side site search for blog and guide content"
       ],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-079",
