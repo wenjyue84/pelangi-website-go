@@ -6016,3 +6016,25 @@ Completed: Implement Next.js after() API for deferred analytics and logging (ID:
 ### Gotchas
 - Node.js replacement strings must match exact quote style (single vs double quotes) in the source file
 - Python json.load() without encoding='utf-8' fails on Windows cp1252 for non-ASCII chars — use Node.js for prd.json updates
+
+
+## Iteration 22 - Story: US-226 - Await all async params, cookies(), and headers() accesses (Next.js 16)
+
+### What was implemented
+- Audited ALL `params`, `searchParams`, `cookies()`, `headers()`, and `draftMode()` usages across the entire app
+- All async APIs were already properly `await`ed (params in blog routes, cookies in language.ts, headers in contact.ts)
+- The real blocker was `middleware.ts` and `proxy.ts` coexisting — Next.js 16 renames middleware to proxy
+- Merged page view logging from `middleware.ts` into `proxy.ts` and deleted `middleware.ts`
+- `npx tsc --noEmit` passes with zero errors
+- `next build` completes successfully (55 static pages generated)
+
+### Patterns discovered
+- Next.js 16 renames `middleware.ts` to `proxy.ts` — having both files causes a build error
+- The proxy function signature is `export function proxy(req: NextRequest): NextResponse` (same as old middleware)
+- `proxy.ts` matcher config uses the new object syntax with `source` + `missing` headers
+- Route handlers that use `request.headers.get()` directly (not `headers()` from next/headers) don't need changes
+
+### Gotchas
+- Build error "Both middleware file and proxy file are detected" is the most likely blocker for Next.js 16 migration
+- When merging middleware into proxy, remember to bring over ALL deferred side-effects (page view logging, etc.)
+- The @serwist/next Turbopack warning and @sentry/nextjs deprecation warnings are cosmetic — they don't block the build

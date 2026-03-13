@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { logPageView } from "@/lib/server-analytics";
 
 // ---------------------------------------------------------------------------
 // In-memory sliding window rate limiter
@@ -118,6 +119,15 @@ const WINDOW_MS = 60 * 1000; // 1 minute
 
 export function proxy(req: NextRequest): NextResponse {
   const { pathname } = req.nextUrl;
+
+  // --- Deferred page view logging (read headers before deferring) ---
+  const userAgent = req.headers.get("user-agent") ?? "";
+  const ip =
+    req.headers.get("x-forwarded-for")?.split(",")[0].trim() ??
+    req.headers.get("x-real-ip") ??
+    "0.0.0.0";
+  const referrer = req.headers.get("referer") ?? "";
+  logPageView({ path: pathname, userAgent, ip, referrer, timestamp: new Date().toISOString() });
 
   // Generate a per-request cryptographic nonce
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
