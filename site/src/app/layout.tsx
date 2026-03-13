@@ -130,6 +130,8 @@ export default async function RootLayout({
         <link rel="preconnect" href="https://www.google.com" />
         {/* OpenSearch: enables browser address bar search */}
         <link rel="search" type="application/opensearchdescription+xml" title="Pelangi Hostel" href="/opensearch.xml" />
+        {/* llms.txt: AI crawler content guidance */}
+        <link rel="alternate" type="text/plain" href="/llms.txt" />
         {/* DNS-prefetch: Trip.com CDN for review/OTA images (cold path) */}
         <link rel="dns-prefetch" href="https://ak-d.tripcdn.com" />
         {/* Speculation Rules: prerender high-conversion pages on hover (Chrome/Edge only, ignored by others) */}
