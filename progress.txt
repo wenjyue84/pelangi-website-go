@@ -6689,3 +6689,77 @@ This user story is a business/marketing task, not a software development task fo
 - [x] Screen reader linear navigation produces logical content flow (address/directions before map)
 - [x] Visual layout unchanged — desktop still shows Map left, Content right via responsive order classes
 - [x] No regression in TypeScript — tsc --noEmit passes with 0 errors
+
+
+## Pre-analysis for US-103 (Gemini 2.5 Pro)
+Based on the provided user story, there is a fundamental disconnect. The story **US-103** describes a business and digital marketing task, not a software development task within a Frappe/Python application. The goal is to configure and integrate external third-party services (Google Business Profile, a hotel connectivity partner), not to modify the `lhdn_payroll_integration` app.
+
+Therefore, no Python files or Frappe DocTypes are involved. The following is a strategic brief outlining the actual steps required to achieve the story's objective.
+
+***
+
+**Technical Brief for US-103: Google Hotel Integration**
+
+This user story is a business process and service integration task, not a Frappe development task. The `lhdn_payroll_integration` app is not relevant.
+
+**1. Involved Systems (External):**
+*   Google Business Profile (formerly Google My Business)
+*   Google Hotel Center
+*   A third-party "Connectivity Partner" (e.g., Beds24, Cloudbeds)
+*   The property's direct booking website (the landing page)
+
+**2. Python Files / Frappe DocTypes to Modify:**
+*   None. This implementation occurs entirely outside of the Frappe framework.
+
+**3. Recommended Implementation Approach:**
+1.  **Google Business Profile (GBP) Setup:**
+    *   Claim and verify the "Pelangi Capsule Hostel" profile on Google. This involves providing a physical address, phone number, and website, and completing Google's verification process (often by mail).
+    *   Populate the profile completely: high-quality photos, amenities, business hours, and accurate check-in/out times.
+2.  **Select Connectivity Partner:**
+    *   Choose and subscribe to a service like Beds24 or Cloudbeds. These partners are authorized to push rate and availability data to Google.
+3.  **Configure Partner:**
+    *   Set up the property, room types, pricing, and real-time availability within the chosen partner's platform.
+    *   In the partner's settings, specify the direct booking URL for your website's booking page.
+4.  **Connect to Google Hotel Center:**
+    *   Follow the connectivity partner's instructions to authorize the connection to your Google Hotel Center account. This links your rates and availability to your GBP listing.
+
+**4. Edge Cases & Gotchas:**
+*   **Verification Delays:** Google's business verification can be slow and may require receiving a postcard with a code at the physical address.
+*   **Partner Costs:** Connectivity partners are subscription-based services with recurring monthly fees.
+*   **URL Integrity:** The booking landing page URL given to the partner *must* be the final, direct booking page on your domain. Any redirects or use of OTA links will violate Google's policy for free booking links.
+*   **Data Sync:** Ensure the partner is correctly syncing availability in real-time to avoid overbooking or showing no availability.
+
+
+
+## Iteration 24 - Story: US-103 - Register Google Business Profile and connect to Google Hotel free booking links
+
+### What was implemented (code-side preparation)
+- Enhanced `StructuredData.tsx` — Changed `@type: "Hostel"` to `@type: ["Hostel", "Hotel", "LodgingBusiness"]` for broader Google Hotels entity matching
+- Added `potentialAction: ReserveAction` to hostel schema with URL template accepting `checkin`, `checkout`, `guests` params — signals to Google that direct booking is available
+- Created `site/src/app/book/google/route.ts` — Google Hotel free booking link landing route that:
+  - Accepts Google Hotel Center URL params (`checkin`, `checkout`, `guests`, `hotel_id`)
+  - Forwards params to `/book` page for form pre-fill
+  - Adds UTM tags (`utm_source=google_hotels`, `utm_medium=free_booking_link`, `utm_campaign=hotel_center`) for analytics attribution
+  - Uses 307 redirect to preserve HTTP method
+- Updated `BookingForm.tsx` — Added `useSearchParams()` to pre-fill check-in/check-out dates from URL params (Google Hotels traffic takes priority over saved drafts)
+
+### Acceptance criteria analysis
+- AC1 (GBP claimed/verified): External task — requires manual Google Business Profile registration at business.google.com
+- AC2 (Profile shows reviews/photos): External task — configure within GBP dashboard
+- AC3 (Connected to Google Hotel Center): External task — requires connectivity partner (Beds24/Cloudbeds) or direct rate-sharing beta
+- AC4 (Free booking links appear): Result of AC1-AC3 completion + code-side preparation (this iteration)
+- AC5 (Booking landing page on own domain): ✅ Already met — /book page exists, now enhanced with /book/google landing route
+
+### Files changed
+- `site/src/components/StructuredData.tsx` — Hotel type + ReserveAction
+- `site/src/app/book/google/route.ts` — NEW: Google Hotels landing route
+- `site/src/components/BookingForm.tsx` — URL search params pre-fill
+
+### Patterns discovered
+- Next.js typed routes cause `redirect()` from `next/navigation` to reject dynamic paths — use `NextResponse.redirect()` instead for route handlers
+- `useSearchParams()` from `next/navigation` works in client components and reads URL params at mount time
+- Google Hotel free booking links send traffic with `checkin`, `checkout`, `guests` query params
+
+### Gotchas
+- The external steps (GBP registration, connectivity partner setup) are prerequisites for the free booking links to actually appear — the code changes prepare the site but don't fulfill the external requirements
+- NAP (Name, Address, Phone) consistency across GBP, website, and OTA listings is critical for Google to match the property

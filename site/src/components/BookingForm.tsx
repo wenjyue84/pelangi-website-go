@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { useBookingDraft } from "@/hooks/useBookingDraft";
 
 const WHATSAPP_NUMBER = "60127088789";
@@ -44,15 +45,23 @@ function validateBookingDates(checkIn: string, checkOut: string): Record<string,
 
 export default function BookingForm() {
   const { draft, saveDraft } = useBookingDraft();
+  const searchParams = useSearchParams();
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [roomType, setRoomType] = useState("Capsule Pod");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [showReview, setShowReview] = useState(false);
 
-  // Restore from draft on mount
+  // Pre-fill from URL params (Google Hotels traffic) or restore from draft
   useEffect(() => {
-    if (draft) {
+    const urlCheckin = searchParams.get("checkin");
+    const urlCheckout = searchParams.get("checkout");
+
+    if (urlCheckin || urlCheckout) {
+      // URL params take priority (e.g. Google Hotel free booking links)
+      if (urlCheckin) setCheckIn(urlCheckin);
+      if (urlCheckout) setCheckOut(urlCheckout);
+    } else if (draft) {
       if (draft.roomType) setRoomType(draft.roomType);
       if (draft.checkIn) setCheckIn(draft.checkIn);
       if (draft.checkOut) setCheckOut(draft.checkOut);

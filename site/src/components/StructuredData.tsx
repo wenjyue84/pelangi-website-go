@@ -5,7 +5,7 @@ const MOTAC_REG_NUMBER = process.env.NEXT_PUBLIC_MOTAC_REG_NUMBER || "";
 export default function StructuredData() {
   const hostelSchema = {
     "@context": "https://schema.org",
-    "@type": "Hostel",
+    "@type": ["Hostel", "Hotel", "LodgingBusiness"],
     "@id": "https://pelangicapsulehostel.com/#hostel",
     "name": "Pelangi Capsule Hostel",
     "image": [
@@ -232,6 +232,21 @@ export default function StructuredData() {
         "offerCount": 3
       }
     ],
+    "potentialAction": {
+      "@type": "ReserveAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://pelangicapsulehostel.com/book?checkin={checkin_date}&checkout={checkout_date}&guests={num_guests}",
+        "actionPlatform": [
+          "https://schema.org/DesktopWebPlatform",
+          "https://schema.org/MobileWebPlatform"
+        ]
+      },
+      "result": {
+        "@type": "LodgingReservation",
+        "name": "Pod Reservation"
+      }
+    },
     ...(MOTAC_REG_NUMBER ? {
       "identifier": {
         "@type": "PropertyValue",
