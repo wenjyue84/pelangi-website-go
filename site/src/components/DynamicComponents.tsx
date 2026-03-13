@@ -32,15 +32,8 @@ export const AnalyticsProvider = dynamic(
   { ssr: false }
 );
 
-export const ClarityProvider = dynamic(
-  () => import("@/components/ClarityProvider"),
-  { ssr: false }
-);
-
-export const WebVitalsReporter = dynamic(
-  () => import("@/components/WebVitalsReporter"),
-  { ssr: false }
-);
+// ClarityProvider and WebVitalsReporter moved to src/instrumentation-client.ts
+// (Next.js 15.3+ client instrumentation hook — runs before React hydration)
 
 export const BookingRecoveryBanner = dynamic(
   () => import("@/components/BookingRecoveryBanner"),

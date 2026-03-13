@@ -4953,3 +4953,27 @@ US-103 (Google Business Profile registration) is entirely an external platform t
 ### Gotchas
 - The old FAQ had incorrect address (31 Jalan Trus instead of 26A Jalan Perang), incorrect check-out (11 AM instead of 12 PM), and incorrect starting price (RM55 instead of RM35)
 - Speakable structured data (acceptance criterion #5) is tracked separately in US-111 — not implemented here to avoid scope creep
+
+
+## Iteration - Story: US-150 - Add instrumentation-client.ts for early frontend observability initialisation
+
+### What was implemented
+- Created `site/src/instrumentation-client.ts` — Next.js 15.3+ client instrumentation hook that runs before React hydration
+- Moved Sentry.init() from `sentry.client.config.ts` to `instrumentation-client.ts` (earlier execution, catches hydration errors)
+- Moved web-vitals reporting (onINP, onLCP, onCLS → GA4) from `WebVitalsReporter.tsx` component to `instrumentation-client.ts` (no longer needs useEffect / React lifecycle)
+- Moved Microsoft Clarity initialisation from `ClarityProvider.tsx` component to `instrumentation-client.ts` with consent-gating via cookie check + event listener
+- Emptied `sentry.client.config.ts` (kept file for @sentry/nextjs withSentryConfig build-time compatibility)
+- Removed `ClarityProvider` and `WebVitalsReporter` from layout.tsx rendering and DynamicComponents.tsx exports
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- `instrumentation-client.ts` goes in `src/` directory (same level as `app/`) for App Router projects with src directory
+- No React/JSX allowed in instrumentation-client.ts — runs before framework
+- `sentry.client.config.ts` must remain as file (even if empty) because `withSentryConfig` in next.config.ts expects it for source-map upload
+- Consent-gating in instrumentation-client.ts: check `document.cookie` directly + listen for custom `cookie-consent` event
+- `NEXT_PUBLIC_*` env vars work in instrumentation-client.ts (inlined at build time)
+
+### Gotchas
+- Double Sentry.init() would occur if both sentry.client.config.ts AND instrumentation-client.ts call it — must empty the old file
+- web-vitals `sendToGA` works without gtag being loaded yet because it queues into `window.dataLayer`
+- Clarity init needs a guard (`__clarityInit` flag) to prevent re-initialisation if consent event fires multiple times
