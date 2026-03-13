@@ -133,3 +133,75 @@ window.addEventListener("cookie-consent", (e: Event) => {
     initClarity();
   }
 });
+
+// ---------------------------------------------------------------------------
+// 4. Long Animation Frames (LoAF) — INP diagnosis (US-198)
+// ---------------------------------------------------------------------------
+// Captures frames >= 100 ms and reports script attribution to GA4 + Sentry.
+// Chrome 123+; silently skipped in unsupporting browsers.
+// Threshold: 100 ms per acceptance criteria (spec default is 50 ms).
+// ---------------------------------------------------------------------------
+
+// TypeScript types for LoAF API (not yet in lib.dom.d.ts as of TS 5.7)
+interface PerformanceScriptTiming {
+  startTime: number;
+  duration: number;
+  invoker: string;
+  invokerType: string;
+  pauseDuration: number;
+  sourceURL: string;
+  sourceFunctionName: string;
+  sourceCharPosition: number;
+}
+
+interface PerformanceLongAnimationFrameTiming extends PerformanceEntry {
+  renderStart: number;
+  styleAndLayoutStart: number;
+  firstUIEventTimestamp: number;
+  blockingDuration: number;
+  scripts: PerformanceScriptTiming[];
+}
+
+const LOAF_THRESHOLD_MS = 100;
+
+if (
+  typeof PerformanceObserver !== "undefined" &&
+  PerformanceObserver.supportedEntryTypes?.includes("long-animation-frame")
+) {
+  const loafObserver = new PerformanceObserver((list) => {
+    for (const entry of list.getEntries()) {
+      const loaf = entry as PerformanceLongAnimationFrameTiming;
+      if (loaf.duration < LOAF_THRESHOLD_MS) continue;
+
+      // Find the longest-running script for attribution
+      const topScript = loaf.scripts.reduce<PerformanceScriptTiming | null>(
+        (worst, s) => (worst === null || s.duration > worst.duration ? s : worst),
+        null
+      );
+
+      const payload: Record<string, string | number> = {
+        loaf_duration: Math.round(loaf.duration),
+        loaf_blocking_duration: Math.round(loaf.blockingDuration),
+        loaf_render_start: Math.round(loaf.renderStart),
+        loaf_script_count: loaf.scripts.length,
+        loaf_top_script_invoker: topScript?.invoker ?? "",
+        loaf_top_script_invoker_type: topScript?.invokerType ?? "",
+        loaf_top_script_duration: topScript ? Math.round(topScript.duration) : 0,
+        loaf_top_script_source: topScript?.sourceURL ?? "",
+      };
+
+      // Send to GA4 for dashboard tracking
+      sendToGA({ metric_name: "LoAF", ...payload });
+
+      // Send to Sentry as a breadcrumb for error correlation
+      Sentry.addBreadcrumb({
+        category: "performance",
+        message: `LoAF ${Math.round(loaf.duration)}ms — ${topScript?.invoker ?? "unknown"}`,
+        level: loaf.duration >= 200 ? "warning" : "info",
+        data: payload as Record<string, unknown>,
+      });
+    }
+  });
+
+  loafObserver.observe({ type: "long-animation-frame", buffered: true });
+}

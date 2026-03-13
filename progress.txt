@@ -5770,3 +5770,27 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 - Screenshots at default DPR (1x) result in small pixel dimensions (412x915) that are below the recommended 1080x1920 for narrow form factor — must explicitly set higher DPR
 - `rtk npx tsc` doesn't work in this environment — use `npx tsc --noEmit` directly
 
+
+## Iteration - Story: US-198 - Add Long Animation Frames (LoAF) monitoring for INP diagnosis
+
+### What was implemented
+- Added LoAF PerformanceObserver section (section 4) to `site/src/instrumentation-client.ts`
+- Custom TypeScript interfaces `PerformanceLongAnimationFrameTiming` and `PerformanceScriptTiming` declared (not yet in TS 5.7 lib.dom.d.ts)
+- PerformanceObserver registered for `long-animation-frame` entry type with `buffered: true` to capture frames before observer registration
+- Threshold: 100 ms per acceptance criteria (spec default is 50 ms)
+- For each qualifying frame: identifies the longest-running script for attribution (invoker, invokerType, sourceURL, duration)
+- Reports to GA4 via `sendToGA({ metric_name: "LoAF", ...payload })` — 8 fields including loaf_duration, loaf_blocking_duration, loaf_script_count, top script attribution
+- Reports to Sentry via `Sentry.addBreadcrumb()` — level "warning" for frames >=200ms, "info" for 100-199ms
+- Feature-detected via `PerformanceObserver.supportedEntryTypes.includes("long-animation-frame")` — silently skipped in Firefox/Safari
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- `instrumentation-client.ts` is the correct place for client-side performance observers (runs before React hydration)
+- `sendToGA` helper is already defined in instrumentation-client.ts — can be reused for LoAF events
+- `Sentry` is imported at the top — `Sentry.addBreadcrumb()` available for non-error performance signals
+- LoAF entries have a `scripts[]` array; finding worst offender via `.reduce()` gives actionable attribution
+
+### Gotchas
+- `PerformanceLongAnimationFrameTiming` and `PerformanceScriptTiming` interfaces must be declared locally — they are not in lib.dom.d.ts in TypeScript 5.7
+- `buffered: true` is essential — otherwise frames that occur before observer registration are missed
+- Chrome 123+ only; `supportedEntryTypes` guard prevents runtime errors in other browsers
