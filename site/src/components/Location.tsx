@@ -16,22 +16,8 @@ export default function Location() {
     <section id="location" className="section-padding bg-white dark:bg-stone-900">
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Map */}
-          <div className="relative h-[400px] lg:h-full min-h-[450px] rounded-3xl overflow-hidden shadow-2xl order-2 lg:order-1">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.4044839447424!2d103.7573!3d1.4862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da6c15f34a1b2d%3A0x1234567890abcdef!2s26a%20Jalan%20Perang%2C%20Taman%20Pelangi%2C%2080400%20Johor%20Bahru%2C%20Johor!5e0!3m2!1sen!2smy!4v1234567890"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="absolute inset-0"
-            />
-          </div>
-
-          {/* Content */}
-          <div className="order-1 lg:order-2">
+          {/* Content — DOM-first for screen reader logical sequence (WCAG SC 1.3.2) */}
+          <div className="lg:order-2">
             <p className="section-label">Location</p>
             <h2 className="section-heading mb-8">
               Find Us in<br />Taman Pelangi
@@ -129,6 +115,21 @@ export default function Location() {
               </svg>
               Get Directions
             </a>
+          </div>
+
+          {/* Map — DOM-second (supplementary visual); visually first on desktop via lg:order-1 */}
+          <div className="relative h-[400px] lg:h-full min-h-[450px] rounded-3xl overflow-hidden shadow-2xl lg:order-1">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.4044839447424!2d103.7573!3d1.4862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da6c15f34a1b2d%3A0x1234567890abcdef!2s26a%20Jalan%20Perang%2C%20Taman%20Pelangi%2C%2080400%20Johor%20Bahru%2C%20Johor!5e0!3m2!1sen!2smy!4v1234567890"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="absolute inset-0"
+              title="Pelangi Capsule Hostel map — 26A Jalan Perang, Taman Pelangi, Johor Bahru"
+            />
           </div>
         </div>
       </div>

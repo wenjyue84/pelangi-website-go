@@ -5,19 +5,8 @@ export default function LocationMap() {
         <section className="py-20 bg-stone-50 dark:bg-stone-950">
             <div className="container-custom">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
-                    <div className="order-2 md:order-1 h-[400px] w-full rounded-3xl overflow-hidden shadow-xl border-4 border-white dark:border-stone-700">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1796.7!2d103.764!3d1.493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMsKwMjknMzQuOCJOIDEwM8KwNDUnNTAuNCJF!5e0!3m2!1sen!2smy!4v1625000000000!5m2!1sen!2smy"
-                            width="100%"
-                            height="100%"
-                            style={{ border: 0 }}
-                            allowFullScreen={true}
-                            loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade"
-                            title="Pelangi Capsule Hostel Location"
-                        ></iframe>
-                    </div>
-                    <div id="speakable-location" className="order-1 md:order-2">
+                    {/* Content — DOM-first for screen reader logical sequence (WCAG SC 1.3.2) */}
+                <div id="speakable-location" className="md:order-2">
                         <h2 className="font-display text-4xl font-medium mb-6 text-stone-900 dark:text-stone-100">Right in the heart of Pelangi</h2>
                         <p className="text-stone-600 dark:text-stone-400 text-lg mb-6">
                             We are perfectly located for exploring. Walking distance to the best local hawker stalls, hip cafes, and night market.
@@ -46,6 +35,20 @@ export default function LocationMap() {
                             Get Directions
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                         </a>
+                    </div>
+
+                    {/* Map — DOM-second (supplementary visual); visually first on desktop via md:order-1 */}
+                    <div className="md:order-1 h-[400px] w-full rounded-3xl overflow-hidden shadow-xl border-4 border-white dark:border-stone-700">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1796.7!2d103.764!3d1.493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMsKwMjknMzQuOCJOIDEwM8KwNDUnNTAuNCJF!5e0!3m2!1sen!2smy!4v1625000000000!5m2!1sen!2smy"
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0 }}
+                            allowFullScreen={true}
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            title="Pelangi Capsule Hostel Location"
+                        ></iframe>
                     </div>
                 </div>
             </div>
