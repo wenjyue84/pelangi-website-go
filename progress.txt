@@ -4719,3 +4719,21 @@ Completed: Implement WCAG 2.1 SC 2.5.3 – Label in Name for icon buttons (ID: U
 - The `cc_load_policy=1` param only works if captions are actually uploaded to the YouTube video — ensure YouTube Studio has captions enabled for video 6Ux11oBZaQQ
 - The WebVTT file in /public/captions/ serves as version-controlled documentation; actual caption delivery is via YouTube's caption system for embeds
 - If native HTML5 `<video>` elements are added in the future, use `<track kind="captions" src="/captions/<slug>-en.vtt" srclang="en" label="English" default>` element
+
+
+## Iteration - Thu, Mar 13, 2026
+Completed: Implement scheduler.yield() for INP optimisation on long JavaScript tasks (ID: US-147)
+
+### What was implemented
+- `site/src/lib/yield-to-main.ts` — utility exporting `yieldToMain()` that uses `scheduler.yield()` with `setTimeout(0)` fallback
+- `site/src/scheduler.d.ts` — TypeScript type declarations for the Scheduler API
+- `site/src/components/BlogFilter.tsx` — refactored to validate → yield → filter → yield → render pipeline using `useTransition` + `yieldToMain()`
+- `site/src/components/Booking.tsx` — booking button and WhatsApp click handlers now yield before dispatching GA analytics events
+
+### Patterns discovered
+- `scheduler` global var needs `declare var scheduler: Scheduler | undefined` in a `.d.ts`, NOT `globalThis.scheduler` augmentation (TS strict mode rejects the latter)
+- `useTransition` pairs well with `yieldToMain()` — yield between phases, then wrap state update in `startTransition` for non-blocking render
+
+### Gotchas
+- `globalThis.scheduler` causes TS7017 in strict mode — use ambient `declare var` instead
+- BlogFilter previously computed `visible` inline during render; refactored to `useState` so the yield pipeline can set it asynchronously
