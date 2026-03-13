@@ -5923,3 +5923,4 @@ Completed: Implement Next.js after() API for deferred analytics and logging (ID:
 - Pre-existing TypeScript errors exist from RouteImpl typed routes (US-125) — these are not caused by this story
 - `"use cache"` and `after()` are mutually exclusive in the same component scope — use middleware or Server Actions instead
 - vitest mock hoisting: `const mockAfter = vi.fn()` fails; use `const mockAfter = vi.hoisted(() => vi.fn())` instead
+
