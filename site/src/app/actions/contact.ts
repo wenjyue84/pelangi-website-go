@@ -50,6 +50,7 @@ function checkRateLimit(ip: string): boolean {
 function buildAdminEmailHtml(data: {
   name: string;
   email: string;
+  phone: string;
   checkIn: string;
   checkOut: string;
   guests: string;
@@ -61,6 +62,7 @@ function buildAdminEmailHtml(data: {
   <table style="width: 100%; border-collapse: collapse;">
     <tr><td style="padding: 8px 0; color: #78716c; width: 120px;">Name</td><td style="padding: 8px 0; color: #1c1917;">${data.name}</td></tr>
     <tr><td style="padding: 8px 0; color: #78716c;">Email</td><td style="padding: 8px 0; color: #1c1917;"><a href="mailto:${data.email}">${data.email}</a></td></tr>
+    ${data.phone ? `<tr><td style="padding: 8px 0; color: #78716c;">Phone</td><td style="padding: 8px 0; color: #1c1917;"><a href="tel:${data.phone}">${data.phone}</a></td></tr>` : ""}
     ${data.checkIn ? `<tr><td style="padding: 8px 0; color: #78716c;">Check-in</td><td style="padding: 8px 0; color: #1c1917;">${data.checkIn}</td></tr>` : ""}
     ${data.checkOut ? `<tr><td style="padding: 8px 0; color: #78716c;">Check-out</td><td style="padding: 8px 0; color: #1c1917;">${data.checkOut}</td></tr>` : ""}
     ${data.guests ? `<tr><td style="padding: 8px 0; color: #78716c;">Guests</td><td style="padding: 8px 0; color: #1c1917;">${data.guests}</td></tr>` : ""}
@@ -113,6 +115,7 @@ export async function submitContactForm(
   // --- Extract fields ---
   const name = formData.get("name");
   const email = formData.get("email");
+  const phone = formData.get("phone");
   const checkIn = formData.get("checkIn");
   const checkOut = formData.get("checkOut");
   const guests = formData.get("guests");
@@ -148,6 +151,7 @@ export async function submitContactForm(
   const data = {
     name: name.trim(),
     email: email.trim().toLowerCase(),
+    phone: typeof phone === "string" ? phone.trim() : "",
     checkIn: typeof checkIn === "string" ? checkIn.trim() : "",
     checkOut: typeof checkOut === "string" ? checkOut.trim() : "",
     guests: typeof guests === "string" ? guests.trim() : "",

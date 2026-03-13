@@ -101,6 +101,24 @@ export default function ContactForm() {
               </div>
             </div>
 
+            {/* Phone */}
+            <div>
+              <label
+                htmlFor="contact-phone"
+                className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5"
+              >
+                Phone
+              </label>
+              <input
+                id="contact-phone"
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                placeholder="+60 12-345 6789"
+                className="w-full rounded-xl border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors"
+              />
+            </div>
+
             {/* Check-in / Check-out row — distinct data types, no redundant entry (WCAG 2.2 SC 3.3.7) */}
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
