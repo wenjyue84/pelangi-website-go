@@ -1351,7 +1351,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-060",
@@ -1373,7 +1373,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-061",
@@ -1395,7 +1395,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-062",
@@ -1417,7 +1417,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-063",
@@ -1629,7 +1629,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-072",
@@ -1652,7 +1652,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-073",
@@ -1675,7 +1675,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-074",
@@ -1697,7 +1697,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-075",
@@ -1902,6 +1902,391 @@
         "Add as array of string values: 'touristType': ['Backpackers', 'Budget Travelers', 'Solo Travelers']",
         "No official controlled vocabulary — use English text matching Google Travel filter taxonomy",
         "One-line addition to hostelSchema object in site/src/components/StructuredData.tsx"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-084",
+      "title": "Add aggregateRating and starRating to LodgingBusiness schema from real review platform data",
+      "priority": "high",
+      "description": "The existing `Reviews.tsx` component renders testimonials visually but they are not linked to structured data. Adding `aggregateRating` with `ratingValue` and `reviewCount` sourced from Hostelworld or Booking.com, plus `starRating` (the `Rating` entity), enables star display in SERPs and increases click-through rate by up to 35% per hospitality SEO studies.",
+      "acceptanceCriteria": [
+        "`aggregateRating` with `ratingValue`, `bestRating: 5`, `worstRating: 1`, and `reviewCount` is added to `LodgingBusiness` JSON-LD",
+        "`starRating` property is added using the `Rating` type with the hostel's actual category",
+        "Values are sourced from a real review platform (Hostelworld, Google, or Booking.com) — not fabricated",
+        "Google Rich Results Test validates the schema without 'unverified' warnings",
+        "Rating values are updated at least quarterly via a config constant in `StructuredData.tsx`"
+      ],
+      "technicalNotes": [
+        "Dan Taylor hotel schema guide: https://dantaylor.online/blog/schema-for-hotels-travel-accommodations/",
+        "Core Optimisation hotel schema: https://www.coreoptimisation.com/5-types-of-schema-markup-hotels-can-use-to-improve-seo-performance/",
+        "IMPORTANT: aggregateRating must be from independently-submitted reviews — do not fabricate. Use real Hostelworld/Google ratings."
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": true
+    },
+    {
+      "id": "US-085",
+      "title": "Add Strict-Transport-Security (HSTS) header with includeSubDomains and preload directive",
+      "priority": "high",
+      "description": "The site is deployed on Vercel (always HTTPS) but HSTS is not enforced at the HTTP header level. Without HSTS, first-visit HTTP requests are vulnerable to SSL-stripping downgrade attacks. A `max-age=63072000; includeSubDomains; preload` value qualifies the domain for the HSTS preload list, providing browser-enforced HTTPS permanently.",
+      "acceptanceCriteria": [
+        "`Strict-Transport-Security: max-age=63072000; includeSubDomains; preload` header is returned on all responses",
+        "SecurityHeaders.com scan for pelangicapsulehostel.com shows A rating for HSTS",
+        "HSTS preload eligibility check at hstspreload.org returns 'Eligible'",
+        "No HTTP-to-HTTPS redirect loop occurs on Vercel deployment"
+      ],
+      "technicalNotes": [
+        "Add to `next.config.ts` headers array: `{ key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' }`",
+        "Arcjet Next.js security checklist: https://blog.arcjet.com/next-js-security-checklist/",
+        "HSTS preload registration: https://hstspreload.org/ — submit after header is live for 1 week"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": true
+    },
+    {
+      "id": "US-086",
+      "title": "Add Permissions-Policy header to disable unused browser APIs",
+      "priority": "high",
+      "description": "The site handles CSP but has no `Permissions-Policy` header. This header prevents embedded iframes or injected third-party scripts from silently accessing device APIs. Explicitly disabling camera, microphone, geolocation, and payment reduces the attack surface for XSS-based API abuse.",
+      "acceptanceCriteria": [
+        "`Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), fullscreen=(self)` header is present on all responses",
+        "SecurityHeaders.com scan shows no warning for Permissions-Policy",
+        "Google Maps embed (if present) still functions",
+        "No browser console errors related to blocked permissions on any page"
+      ],
+      "technicalNotes": [
+        "Add to `next.config.ts` headers array",
+        "Vivasoft Next.js security headers: https://vivasoftltd.com/secure-web-app-using-http-security-headers-next-js/",
+        "Permissions-Policy replaced the older Feature-Policy header — use the new syntax"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": true
+    },
+    {
+      "id": "US-087",
+      "title": "WCAG 2.2 SC 2.4.13: Audit and enforce minimum focus appearance (2 px ring, 3:1 contrast)",
+      "priority": "high",
+      "description": "SC 2.4.13 (AA, new in WCAG 2.2) requires focus indicators to have a minimum enclosed area of `perimeter × 2 CSS pixels` and a 3:1 contrast ratio between focused and unfocused states. This goes beyond the existing SC 1.4.3 text contrast coverage. A Tailwind `focus-visible:ring-2 focus-visible:ring-offset-2` audit across all interactive elements is needed.",
+      "acceptanceCriteria": [
+        "All focusable elements (links, buttons, inputs, selects) show a visible 2px minimum focus ring",
+        "Focus ring color achieves 3:1 contrast ratio against adjacent colors in both light and dark mode",
+        "Tailwind config defines a consistent `ring-color` and `ring-offset-color` applied via `focus-visible:` variant globally",
+        "Axe DevTools accessibility scan shows no SC 2.4.13 violations on any page"
+      ],
+      "technicalNotes": [
+        "W3C WCAG 2.2 Understanding SC 2.4.13: https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html",
+        "Use CSS `outline` rather than `box-shadow` — box-shadow is not visible in Windows High Contrast mode",
+        "Tailwind: add `focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600` to global interactive element styles"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-088",
+      "title": "Audit and add correct sizes prop to all responsive next/image instances",
+      "priority": "high",
+      "description": "When `sizes` is omitted, Next.js generates a srcset but the browser defaults to 100vw, causing full-width images to download even when displayed at 50% or 33% width (e.g., grid layouts in Gallery and Rooms pages). Correctly authored `sizes` attributes can reduce image payload by 50–70% on mobile devices.",
+      "acceptanceCriteria": [
+        "Every `<Image>` instance has an explicit `sizes` prop matching its CSS layout breakpoints",
+        "Gallery grid images use `sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'`",
+        "Room card images use `sizes='(max-width: 768px) 100vw, 50vw'`",
+        "Lighthouse image audit shows no 'Properly size images' warning"
+      ],
+      "technicalNotes": [
+        "Blazity Next.js image component guide: https://blazity.com/blog/next-js-image-component",
+        "Next.js image sizes docs: https://nextjs.org/docs/app/api-reference/components/image#sizes",
+        "Use browser DevTools Network tab to verify actual image size downloaded vs displayed size"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-089",
+      "title": "Generate pre-filled WhatsApp wa.me deep-link from date-picker on /book page",
+      "priority": "high",
+      "description": "The existing `MobileBookingBar.tsx` has a static WhatsApp link without a pre-filled message. Generating a `wa.me` deep-link URL dynamically from selected check-in/check-out dates and room type converts the bar from a passive link into an active booking funnel, reducing friction and booking abandonment.",
+      "acceptanceCriteria": [
+        "WhatsApp CTA on `/book` generates a `wa.me/60XXXXXXXXX?text=...` URL with URL-encoded check-in date, check-out date, and selected room type",
+        "Message template reads: 'Hi Pelangi Capsule! I'd like to book [Room Type] from [Check-in] to [Check-out].'",
+        "When no dates are selected, the link falls back to a generic inquiry message",
+        "Link opens WhatsApp app (mobile) or WhatsApp Web (desktop) with the pre-filled message",
+        "Mobile Booking Bar also uses the same dynamic link"
+      ],
+      "technicalNotes": [
+        "wa.me format: `https://wa.me/<number>?text=<URL-encoded-message>`",
+        "SiteMinder hotel conversion: https://www.siteminder.com/r/hotel-conversion/",
+        "Phone number must be in full international format without `+` or spaces (e.g., `60123456789`)"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-090",
+      "title": "Enable Partial Pre-rendering (PPR) with incremental mode on Home and Gallery pages",
+      "priority": "medium",
+      "description": "Next.js 15 ships PPR as an opt-in via `ppr: 'incremental'` in `next.config.ts`. Static shells (hero image, above-fold content) are served instantly while dynamic holes (testimonials, availability counters) stream asynchronously. The Home and Gallery pages mix static and potentially dynamic content and are ideal candidates.",
+      "acceptanceCriteria": [
+        "`experimental.ppr: 'incremental'` is set in `next.config.ts`",
+        "Home page (`/`) and Gallery page (`/gallery`) export `experimental_ppr = true`",
+        "Lighthouse TTI does not regress vs baseline on both pages",
+        "Dynamic sections render within 200 ms after static shell is painted"
+      ],
+      "technicalNotes": [
+        "Next.js 15 PPR docs: https://nextjs.org/docs/15/app/getting-started/partial-prerendering",
+        "Wrap dynamic components with `<Suspense>` fallback; mark route segment with `export const experimental_ppr = true`",
+        "PPR is production-ready in Next.js 15+ with the incremental flag — no canary required"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-091",
+      "title": "Add Speculation Rules API script for instant page transitions to /book, /rooms, /gallery",
+      "priority": "medium",
+      "description": "Inject a `<script type='speculationrules'>` block via a React Server Component or `next/script` instructing Chrome and Edge to prerender the three highest-conversion pages when the user is likely to navigate there. This eliminates navigation latency on the critical booking funnel with zero changes to existing route code.",
+      "acceptanceCriteria": [
+        "A `<script type='speculationrules'>` block is injected in `<head>` with prerender rules for `/book`, `/rooms`, and `/gallery`",
+        "Chrome DevTools > Application > Speculation Rules shows the three rules active",
+        "Navigation to `/book` from homepage completes in < 100 ms on a mid-range device simulation",
+        "Non-supporting browsers (Firefox, Safari) are unaffected — rules are ignored gracefully"
+      ],
+      "technicalNotes": [
+        "MDN Speculation Rules API: https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API",
+        "Use `eagerness: 'moderate'` to trigger on hover, avoiding wasteful prerendering",
+        "Add via `next/script` with `strategy='beforeInteractive'` or inline in root `layout.tsx` `<head>`"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-092",
+      "title": "Add LodgingReservation schema with ReservationStatusType to /book confirmation state",
+      "priority": "medium",
+      "description": "`LodgingReservation` is a schema.org type designed for booking confirmation pages and emails. Annotating the `/book` page post-confirmation state with `checkinTime`, `checkoutTime`, `reservationFor`, and `underName` enables rich results in Gmail booking confirmations and Google knowledge panel integration. This is distinct from existing `LodgingBusiness` / `HotelRoom` coverage.",
+      "acceptanceCriteria": [
+        "`LodgingReservation` JSON-LD is conditionally rendered after a successful booking action",
+        "Includes `reservationStatus: 'https://schema.org/ReservationConfirmed'`",
+        "Includes `checkinTime`, `checkoutTime`, `totalPrice`, `priceCurrency`, and `reservationFor` pointing to the `LodgingBusiness` entity",
+        "Google Rich Results Test validates the markup without errors"
+      ],
+      "technicalNotes": [
+        "schema.org LodgingReservation: https://schema.org/LodgingReservation",
+        "schema.org hotels reference: https://schema.org/docs/hotels.html",
+        "Render as a Server Component so markup is in the initial HTML, not client-side injected"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-093",
+      "title": "Add amenityFeature (LocationFeatureSpecification) array to LodgingBusiness schema",
+      "priority": "medium",
+      "description": "The existing `LodgingBusiness` schema in `StructuredData.tsx` likely lacks `amenityFeature`, which lists individual property features like Free WiFi, Air Conditioning, Locker Storage, and Shared Bathroom with `value: true`. Google uses this for hospitality knowledge panels and OTA comparison surfaces.",
+      "acceptanceCriteria": [
+        "`amenityFeature` array is added to `LodgingBusiness` JSON-LD in `StructuredData.tsx`",
+        "At least 10 features are listed using `LocationFeatureSpecification` with `name` and `value: true/false`",
+        "Features include: Free WiFi, Air Conditioning, Locker Storage, Hot Shower, 24-hour Reception, Shared Kitchen, Luggage Storage, Laundry Facilities",
+        "schema.org validator reports no errors"
+      ],
+      "technicalNotes": [
+        "schema.org LocationFeatureSpecification: https://schema.org/LocationFeatureSpecification",
+        "schemantra LodgingBusiness generator: https://schemantra.com/schema_list/LodgingBusiness",
+        "Format: `{ '@type': 'LocationFeatureSpecification', name: 'Free WiFi', value: true }`"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-094",
+      "title": "Add Cross-Origin-Opener-Policy and Referrer-Policy security headers",
+      "priority": "medium",
+      "description": "`Cross-Origin-Opener-Policy: same-origin` prevents cross-origin window references that enable Spectre-class side-channel attacks. `Referrer-Policy: strict-origin-when-cross-origin` limits referrer leakage when users navigate from the hostel site to OTA booking partners. These are one-line additions to `next.config.ts` that complete the recommended Next.js security header set.",
+      "acceptanceCriteria": [
+        "`Cross-Origin-Opener-Policy: same-origin` header is present on all page responses",
+        "`Referrer-Policy: strict-origin-when-cross-origin` header is present on all responses",
+        "SecurityHeaders.com shows A+ grade after all security header stories are complete",
+        "OTA booking links still open in new tab correctly"
+      ],
+      "technicalNotes": [
+        "Next.js headers config docs: https://nextjs.org/docs/pages/api-reference/config/next-config-js/headers",
+        "LogRocket Next.js security headers: https://blog.logrocket.com/using-next-js-security-headers/",
+        "COOP may break `window.opener` usage — audit any popup-based booking widgets before enabling"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-095",
+      "title": "WCAG 2.2 SC 2.5.7: Add single-pointer alternatives for all drag/swipe interactions in Gallery carousel",
+      "priority": "medium",
+      "description": "SC 2.5.7 (AA, new in WCAG 2.2) requires that any functionality using dragging has an equivalent single-pointer (tap/click) path. The Gallery carousel likely uses swipe gestures without visible prev/next buttons on mobile, failing this criterion. Adding navigation buttons satisfies the requirement and improves usability on assistive pointer devices.",
+      "acceptanceCriteria": [
+        "Gallery carousel has visible Previous and Next button controls accessible via click/tap",
+        "Swipe gesture continues to work as an enhancement — not the only navigation method",
+        "WCAG Accessibility Checker reports no SC 2.5.7 violations on `/gallery`",
+        "Buttons are keyboard-accessible and labelled with `aria-label='Previous image'` / `aria-label='Next image'`"
+      ],
+      "technicalNotes": [
+        "W3C WCAG 2.2 Understanding SC 2.5.7: https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements.html",
+        "Applies to any drag-based interaction — also check `/guide` page if it has a timeline/slider",
+        "Slider/range inputs should also have + / - button alternatives"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-096",
+      "title": "Enable AVIF format priority in next.config.ts image formats array",
+      "priority": "medium",
+      "description": "AVIF compresses 20% smaller than WebP at equivalent quality and is now supported in all modern browsers (Chrome, Firefox, Safari 16+). Next.js 15's default `formats` config only includes WebP. Setting `formats: ['image/avif', 'image/webp']` in `next.config.ts` enables AVIF serving for supporting browsers with WebP as fallback, reducing image payload across the site.",
+      "acceptanceCriteria": [
+        "`images.formats: ['image/avif', 'image/webp']` is set in `next.config.ts`",
+        "Chrome DevTools Network tab shows `.avif` content-type for images on pages with `next/image`",
+        "Safari falls back to `.webp` format",
+        "No visual quality regression — AVIF quality setting is 75 or above"
+      ],
+      "technicalNotes": [
+        "Next.js image component docs: https://nextjs.org/docs/app/api-reference/components/image#formats",
+        "DebugBear Next.js image optimisation: https://www.debugbear.com/blog/nextjs-image-optimization",
+        "AVIF encoding is CPU-intensive at build time — enable only for production to avoid slowing dev server"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-097",
+      "title": "Add blurDataURL placeholder to remote hero and room images using plaiceholder",
+      "priority": "medium",
+      "description": "Remote images in `Hero.tsx` and `Rooms.tsx` show a grey box during load (no placeholder), causing perceived CLS. Using `plaiceholder` at build time to generate base64 blur hashes enables `placeholder='blur'` on `next/image`, providing a smooth low-resolution-to-full-resolution transition that improves perceived performance and LCP UX.",
+      "acceptanceCriteria": [
+        "`plaiceholder` package is installed and used at build time to generate `blurDataURL` for all remote images",
+        "Hero image and all room card images use `placeholder='blur'` with generated `blurDataURL`",
+        "Chrome DevTools shows blur placeholder visible before full image loads on simulated 3G",
+        "No increase in JS bundle size — plaiceholder runs only at build time (server-side)"
+      ],
+      "technicalNotes": [
+        "plaiceholder docs: https://plaiceholder.co/docs",
+        "Next.js image placeholder docs: https://nextjs.org/docs/app/api-reference/components/image#placeholder",
+        "For remote images, fetch and process at build time in a data layer or generateStaticParams"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-098",
+      "title": "Add 'Book Direct = Best Price' trust badge to /book page above OTA channel list",
+      "priority": "medium",
+      "description": "Hotel websites convert at one-third the rate of OTAs because users lack trust in direct booking prices. A static 'Book Direct = Lowest Rate' badge with a brief price-match guarantee policy above the OTA channel list removes price-comparison hesitancy. This is a content/design story requiring one component addition.",
+      "acceptanceCriteria": [
+        "A visible 'Best Price Guarantee' badge or callout block appears above the OTA booking links on `/book`",
+        "Badge includes a one-sentence price-match commitment (e.g., 'Find it cheaper elsewhere — we'll match it')",
+        "Badge links to a brief policy explanation (can be a tooltip or inline accordion)",
+        "Component is accessible: badge text is readable by screen readers (not icon-only)"
+      ],
+      "technicalNotes": [
+        "Gourmet Marketing hotel conversion: https://www.gourmetmarketing.net/blog/hotel-website-conversion-optimization",
+        "Little Hotelier conversion guide: https://www.littlehotelier.com/blog/get-more-bookings/hotel-website-conversion-rate/",
+        "Use a subtle bordered callout (e.g., green border, checkmark icon) — avoid aggressive styling that looks like a pop-up ad"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-099",
+      "title": "Add Vercel Speed Insights for real-user Web Vitals monitoring alongside GA4",
+      "priority": "medium",
+      "description": "Vercel Speed Insights (`@vercel/speed-insights`) collects real-user Core Web Vitals on a per-route basis directly integrated into the Vercel dashboard. Unlike GA4, it provides p75 percentile breakdowns per page path without sampling bias and requires a single line of code. This complements (not replaces) the existing GA4 + web-vitals v4 setup.",
+      "acceptanceCriteria": [
+        "`@vercel/speed-insights` package is installed",
+        "`<SpeedInsights />` component is added to root `layout.tsx`",
+        "Vercel dashboard shows Web Vitals data for at least 3 routes after 24 hours of traffic",
+        "No duplicate web-vitals reporting that could inflate GA4 event counts",
+        "Component does not cause hydration errors in development"
+      ],
+      "technicalNotes": [
+        "Vercel Speed Insights docs: https://vercel.com/docs/speed-insights",
+        "Install: `npm install @vercel/speed-insights`",
+        "Import: `import { SpeedInsights } from '@vercel/speed-insights/next'` — add to layout after existing analytics components"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-100",
+      "title": "Wrap non-blocking side-effects in Server Actions with after() for reduced TTFB",
+      "priority": "low",
+      "description": "Next.js 15 stabilised the `after()` API, which defers work until after the response has been streamed to the client. The contact form and newsletter server actions currently run Sentry breadcrumbs and email confirmations synchronously, increasing TTFB. Moving these to `after()` lets the response finish before the side-effects execute.",
+      "acceptanceCriteria": [
+        "Contact form and newsletter server actions import `after` from `next/server`",
+        "Non-user-blocking operations (analytics, Sentry breadcrumbs, secondary email confirmations) are wrapped in `after()`",
+        "Form submission TTFB decreases by at least 50 ms in local profiling",
+        "No regression in email delivery — all Resend calls still complete"
+      ],
+      "technicalNotes": [
+        "Next.js 15 blog: https://nextjs.org/blog/next-15",
+        "API: `import { after } from 'next/server'; after(() => { /* side effects */ });`",
+        "Only available in Server Actions and Route Handlers — not Client Components"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-101",
+      "title": "Add Exit Intent overlay on /book page offering early check-in incentive (desktop only)",
+      "priority": "low",
+      "description": "Exit-intent interstitials on hotel booking pages recover 5–12% of abandoning visitors per industry data. A lightweight `mouseleave` listener on `document.documentElement` triggers a modal with a 'Stay — we'll throw in early check-in at 11 AM' offer when the cursor moves toward the browser chrome on desktop. No third-party library needed.",
+      "acceptanceCriteria": [
+        "Overlay appears once per session when the cursor exits the viewport toward the top (desktop only, `window.innerWidth > 1024`)",
+        "Overlay shows offer text and two CTAs: 'Book via WhatsApp' and 'Continue Browsing'",
+        "Overlay does not appear on mobile or tablet breakpoints",
+        "Overlay is shown at most once per session (sessionStorage flag prevents repeat triggers)",
+        "Overlay is keyboard-accessible and dismissible via Escape key"
+      ],
+      "technicalNotes": [
+        "Implementation: `document.addEventListener('mouseleave', handler)` where handler checks `event.clientY < 5`",
+        "SEMROI hotel CRO: https://semroi.net/hotel-websites-cro/",
+        "Use `position: fixed` with `opacity` transition to avoid CLS penalty"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-102",
+      "title": "Add social proof 'X guests viewed this hostel recently' counter to Home page hero",
+      "priority": "low",
+      "description": "Dynamic social proof signals (viewing activity counters) reduce decision paralysis on hospitality sites. 70% of online bookings happen on mobile where urgency signals accelerate decisions. A seeded counter (based on real GA4 traffic) rendered as a Server Component adds zero client JS overhead.",
+      "acceptanceCriteria": [
+        "A small counter badge appears in the hero section (e.g., '12 people checked availability today')",
+        "Counter value is server-side rendered — no client-side fetch on load",
+        "Value is refreshed at build time from GA4 data or seeded with a realistic static value",
+        "Counter is visually subtle (small text, muted color) — it does not distract from primary CTA",
+        "Counter is hidden if the value falls below 5 to avoid negative social proof"
+      ],
+      "technicalNotes": [
+        "Spilt Milk Web Design boutique hotel CRO: https://spiltmilkwebdesign.com/conversion-rate-optimization-website-ux-for-boutique-hotels-in-2025/",
+        "Cvent hotel website conversions: https://www.cvent.com/en/blog/hospitality/hotel-website-conversions",
+        "Use Next.js revalidation (`revalidate: 3600`) for hourly refresh without full rebuild"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",

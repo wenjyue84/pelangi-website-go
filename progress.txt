@@ -4016,3 +4016,46 @@ Here is the technical brief based on the actual project context:
 - prd.json must be read/written with `encoding='utf-8'` (Windows default cp1252 fails on special chars)
 - Hostelworld URL in sameAs confirmed as correct listing page (3.3/10, 21 reviews fetched successfully)
 - Previous attempts (2x) likely failed because fetching real platform data was not attempted via WebFetch
+## Iteration 10 - Fri, Mar 13, 2026 10:01:39 AM
+Completed: Add aggregateRating and starRating to LodgingBusiness schema from real review platform data (ID: US-084) in 5m
+
+
+## Pre-analysis for US-087 (Gemini 2.5 Pro)
+This user story is for a frontend web accessibility task, not a Frappe/Python one. The context provided in the story (WCAG, Tailwind CSS, focus rings) and the project's file structure (Next.js, PostCSS) confirm this.
+
+Here is the technical brief for a web developer working on this Next.js/Tailwind project.
+
+---
+
+**Technical Brief: US-087 WCAG 2.2 Focus Appearance**
+
+This task involves a global audit and implementation of accessible focus indicators as required by the new WCAG 2.2 SC 2.4.13.
+
+**1. Files to Modify:**
+*   `tailwind.config.mjs`: To define a dedicated, reusable color for the focus indicator in the `theme.extend.colors` section.
+*   `src/app/globals.css` (or equivalent global stylesheet): To apply a base, site-wide style for `focus-visible` on all interactive elements (`a`, `button`, `input`, `select`, etc.) using the `@layer base` directive.
+*   Component Files (`src/components/**/*.tsx`): For auditing custom or complex interactive components that may not inherit the global style correctly.
+
+**2. Key Architectural Elements:**
+*   **Global CSS:** The primary mechanism for applying a consistent, global style.
+*   **Tailwind Theme:** The central source of truth for design tokens like the focus color, ensuring consistency and easier maintenance.
+
+**3. Recommended Implementation:**
+1.  In `tailwind.config.mjs`, add a specific color for focus rings (e.g., `focus-blue: '#3b82f6'`).
+2.  In your global CSS file, apply a default style using the `focus-visible` variant and CSS `outline`.
+    ```css
+    @tailwind base;
+    @layer base {
+      a, button, input, select, textarea, [tabindex]:not([tabindex='-1']) {
+        @apply rounded-sm focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-blue;
+      }
+    }
+    ```
+3.  Use `outline` as specified in the technical notes. It is more robust for accessibility than Tailwind's `ring` utility, which uses `box-shadow`.
+4.  Manually audit pages and run Axe DevTools to find elements that don't receive the style.
+
+**4. Edge Cases & Gotchas:**
+*   The focus indicator color must have a 3:1 contrast ratio against the adjacent background in both light and dark modes.
+*   Unlike `box-shadow` (used by Tailwind's `ring` utility), `outline` is rendered correctly in Windows High Contrast mode. Stick to `outline`.
+*   Custom components (e.g., a `<div role="button">`) must have `tabindex="0"` to be keyboard-focusable and receive the `focus-visible` style.
+
