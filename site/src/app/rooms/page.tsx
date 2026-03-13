@@ -1,8 +1,10 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { cacheLife, cacheTag } from "next/cache";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Rooms from "@/components/Rooms";
+import RoomCardSkeleton from "@/components/RoomCardSkeleton";
 import Facilities from "@/components/Facilities";
 import RoomsEcommerceTracker from "@/components/RoomsEcommerceTracker";
 import PhotoGallery from "@/components/PhotoGallery";
@@ -191,7 +193,9 @@ export default async function RoomsPage() {
             ))}
             <Header />
             <div className="pt-20">
-                <Rooms />
+                <Suspense fallback={<RoomCardSkeleton />}>
+                    <Rooms />
+                </Suspense>
 
                 <PhotoGallery />
 

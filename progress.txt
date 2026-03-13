@@ -6360,3 +6360,83 @@ This brief covers the implementation of Google Hotel free booking links.
 - [x] Gallery YouTube embed confirmed compliant (no autoplay=1 in src)
 - [x] Documented policy prohibiting future auto-playing audio without controls
 - [x] Accessibility statement updated with SC 1.4.2 in WCAG 2.2 AA compliance list
+
+
+## Pre-analysis for US-103 (Gemini 2.5 Pro)
+### Technical Brief for Claude: Google Hotels Integration via Frappe
+
+**Analysis:** The user story (US-103) describes integrating a property with Google Hotel's free booking links. However, the specified Frappe app is `lhdn_payroll_integration`, which is for Malaysian payroll/tax. This is a fundamental mismatch. The implementation should not happen in the payroll app.
+
+This brief proceeds by assuming the user's *intent* is to build a new Frappe integration for Google Hotels, likely in a new custom app or by extending the core Hospitality module.
+
+**1. Python Files to Modify:**
+*   **`[custom_app]/api.py` or `hooks.py`:** Create new `@frappe.whitelist()` API endpoints here. These endpoints will serve availability, rates, and inventory (ARI) data to Google and receive booking requests.
+*   **`[custom_app]/[custom_app]/doctype/hotel_room_reservation/hotel_room_reservation.py`:** Use the controller hooks (`on_submit`, `on_cancel`) in this file to trigger real-time availability updates to prevent overbooking.
+*   **`[custom_app]/connectors/google_hotels.py`:** A new file to contain the core logic for mapping Frappe data to the Google ARI XML format and handling API communication.
+
+**2. Frappe DocTypes & Hooks Involved:**
+*   **DocTypes:** `Hotel Room`, `Hotel Room Reservation`, `Property` (or a custom `Hostel` DocType), `Tax`, and potentially a new `Google Hotel Rate Plan` DocType. A `Google Hotels Settings` singleton DocType will be needed for API keys and endpoint configuration.
+*   **Hooks (`hooks.py`):** `doc_events` for `Hotel Room Reservation` to ensure real-time sync.
+
+**3. Recommended Implementation Approach:**
+1.  Create a new custom Frappe app (e.g., `hotel_connector`).
+2.  Implement a `Google Hotels Settings` DocType for credentials.
+3.  Develop Python methods to query Frappe's `Hotel Room` and `Hotel Room Reservation` DocTypes to determine real-time room availability and pricing.
+4.  Create a whitelisted API endpoint that returns availability data formatted as a Google Hotel Center ARI (XML) feed.
+5.  Create a second whitelisted endpoint to serve as the booking landing page URL, which accepts booking parameters from Google, creates a `Hotel Room Reservation`, and redirects to a confirmation/payment page.
+
+**4. Edge Cases & Gotchas:**
+*   **Real-time Availability:** The biggest challenge. A new booking in Frappe *must* immediately make that room unavailable via the Google API. Failure leads to overbooking.
+*   **Complex Pricing:** The system must handle variations in rates (weekend vs. weekday, seasonal, promotions).
+*   **Google API Certification:** Google's API is complex and has a strict partner certification process before listings go live. This is not a simple plug-and-play operation.
+*   **Authentication:** The endpoints must be secured, likely via a token or IP-based whitelist specified by Google.
+
+
+## Pre-analysis for US-103 (Gemini 2.5 Pro)
+This technical brief is for a Frappe/Python implementation based on the provided user story.
+
+**Warning on Application Context:** The user story describes a Google Hotel booking integration, which is functionally unrelated to the specified `lhdn_payroll_integration` app (a payroll system). The following plan assumes this feature will be built within a new or existing Frappe **hospitality/booking app**, as implementing it in the payroll app is not viable.
+
+---
+
+**Technical Brief for Google Hotel Free Booking Links Integration**
+
+1.  **Primary Python Files to Modify:**
+    *   `[booking_app]/api/ari.py`: A new file to house the Availability, Rates, and Inventory (ARI) API endpoints required by Google.
+    *   `[booking_app]/doctype/booking/booking.py`: Modify to ensure real-time inventory updates upon booking creation/cancellation.
+    *   `[booking_app]/hooks.py`: To register scheduler events for caching or API routes if needed.
+
+2.  **Frappe DocTypes & Hooks:**
+    *   **Core DocTypes:** `Booking`, `Room`, `Property`, `Rate Plan`.
+    *   **New DocTypes:** A singleton `Google Hotel Settings` DocType is recommended for storing partner credentials, API endpoints, and property IDs.
+    *   **Hooks:** A daily `scheduler_event` could pre-calculate and cache room availability to ensure the API endpoints respond within Google's strict time limits.
+
+3.  **Recommended Implementation Approach:**
+    *   Implement whitelisted (`@frappe.whitelist()`) methods in `ari.py` that return availability and rates according to Google's Hotel Center API specification (likely in XML format).
+    *   These methods will query the `Booking` and `Room` DocTypes in real-time to calculate current inventory for given date ranges.
+    *   The website's booking page (`/book`) must be enhanced to parse URL parameters (check-in/out dates, guest count) passed by Google's link.
+
+4.  **Edge Cases & Gotchas:**
+    *   **API Performance:** Google ARI queries have very low timeouts (<2s). The Frappe ORM queries must be highly optimized or rely on a cached data model.
+    *   **Transactional Integrity:** Race conditions between API availability checks and new user bookings could cause overbookings. Use database transactions (`frappe.db.commit()`) carefully.
+    *   **Rate & Tax Accuracy:** The rates and taxes returned by the API must exactly match what's shown on the final booking page to avoid penalties from Google.
+
+
+## Iteration - Fri, Mar 14, 2026
+Completed: Build Suspense-streaming skeleton UI for room availability section (ID: US-141)
+
+### What was implemented
+- Created `site/src/components/RoomCardSkeleton.tsx` — skeleton fallback matching exact Rooms layout
+  - Matches header, image gallery (lg:grid-cols-5 with col-span-3 + col-span-2), pricing card, highlights grid (sm:grid-cols-2 lg:grid-cols-3), night market feature, and "Why choose capsule" sections
+  - Uses `animate-pulse` with `aria-busy="true"` and `aria-label` for accessibility
+  - Same heights (h-64/h-72, h-48/h-56), same column counts, same border radius to prevent CLS
+- Updated `site/src/app/rooms/page.tsx` — wrapped `<Rooms />` in `<Suspense fallback={<RoomCardSkeleton />}>`
+- TypeScript compiles with zero errors
+
+### Patterns discovered
+- Rooms component already uses `"use cache"` with `cacheLife("days")` — Suspense enables HTML streaming of cached content
+- Page-level `"use cache"` with `cacheLife("hours")` wraps the outer shell
+
+### Gotchas
+- Skeleton must match exact grid structure (lg:grid-cols-5 with col-span-3/col-span-2) to prevent CLS during swap
+- `animate-pulse` is sufficient for skeleton animation — no need for shimmer gradients
