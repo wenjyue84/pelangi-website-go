@@ -5349,3 +5349,24 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 - The `<Suspense>` wrapper around `{children}` in root layout is essential for PPR — without it, dynamic layouts block page streaming
 - `'use cache'` requires the function to be `async` (all docs examples use async functions)
 - `export const metadata` (static) is compatible with `'use cache'` in the same page — no conflict
+
+
+
+## Iteration 21 - Story: US-158 - Fix Next.js 16 scroll-behavior breaking change with data-scroll-behavior attribute
+
+### What was implemented
+- `site/src/app/layout.tsx` — Added `data-scroll-behavior="smooth"` to the `<html>` element
+- CSS audit confirmed: `scroll-behavior: smooth` is set on `html` in `globals.css` (line 224), plus `prefers-reduced-motion` override sets `scroll-behavior: auto !important`
+- The `data-scroll-behavior="smooth"` attribute tells Next.js 16 to temporarily override scroll-behavior to `auto` during SPA navigations, preventing slow smooth-scroll across full page height on route changes
+- In-page anchor links (e.g., #faq, #amenities) still use smooth scrolling via the CSS rule
+- Back/forward navigation unaffected — Next.js handles scroll restoration separately
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- The project uses CSS `scroll-behavior: smooth` on `html` directly (not Tailwind's `scroll-smooth` class), but the fix is the same: add `data-scroll-behavior="smooth"` to the `<html>` element
+- The `data-scroll-behavior` attribute is a Next.js 16 specific feature — it's a data attribute, not a standard HTML attribute
+- This is a one-line fix with high UX impact — without it, every `<Link>` navigation smooth-scrolls the entire page height
+
+### Gotchas
+- This is strictly a Next.js 16 breaking change — only applies if `scroll-behavior: smooth` is set globally
+- The attribute value must be "smooth" (matching the CSS value) — not a boolean

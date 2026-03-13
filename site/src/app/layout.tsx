@@ -101,7 +101,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <head>
         {/* Consent Mode v2: deny all consent parameters before GTM loads */}
         <Script

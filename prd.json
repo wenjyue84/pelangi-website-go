@@ -3525,7 +3525,7 @@
         "Upgrade to Next.js 16 and resolve all breaking changes"
       ],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-159",
