@@ -1,11 +1,20 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useOptimistic } from "react";
 import Link from "next/link";
-import { submitContactForm } from "@/app/actions/contact";
+import { submitContactForm, type ContactFormResult } from "@/app/actions/contact";
 
 export default function ContactForm() {
   const [state, formAction, isPending] = useActionState(submitContactForm, null);
+  const [optimisticState, addOptimistic] = useOptimistic<ContactFormResult | null, void>(
+    state,
+    () => ({ success: true, message: "Message sent! We'll respond within 24 hours." })
+  );
+
+  async function handleSubmit(formData: FormData) {
+    addOptimistic();
+    await formAction(formData);
+  }
 
   return (
     <section
@@ -27,14 +36,14 @@ export default function ContactForm() {
 
         {/* Persistent live regions — always in DOM so screen readers detect changes */}
         <div role="status" aria-live="polite" className="sr-only">
-          {state?.success ? `Inquiry Sent! ${state.message}` : ''}
+          {optimisticState?.success ? `Inquiry Sent! ${optimisticState.message}` : ''}
           {isPending ? 'Sending your inquiry…' : ''}
         </div>
         <div role="alert" aria-live="assertive" className="sr-only">
-          {state?.message && !state.success ? state.message : ''}
+          {optimisticState?.message && !optimisticState.success ? optimisticState.message : ''}
         </div>
 
-        {state?.success ? (
+        {optimisticState?.success ? (
           <div
             className="rounded-2xl bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800 p-8 text-center"
           >
@@ -56,10 +65,10 @@ export default function ContactForm() {
             <p className="text-green-800 dark:text-green-300 text-lg font-medium mb-2">
               Inquiry Sent!
             </p>
-            <p className="text-green-700 dark:text-green-400 text-sm">{state.message}</p>
+            <p className="text-green-700 dark:text-green-400 text-sm">{optimisticState.message}</p>
           </div>
         ) : (
-          <form action={formAction} className="space-y-6">
+          <form action={handleSubmit} className="space-y-6">
             {/* Honeypot — hidden from real users, filled by bots */}
             <div className="absolute -left-[9999px] opacity-0" aria-hidden="true">
               <label htmlFor="website">Website</label>
@@ -87,15 +96,15 @@ export default function ContactForm() {
                   type="text"
                   required
                   aria-required="true"
-                  aria-invalid={!!state?.fieldErrors?.name}
-                  aria-describedby={state?.fieldErrors?.name ? "contact-name-error" : undefined}
+                  aria-invalid={!!optimisticState?.fieldErrors?.name}
+                  aria-describedby={optimisticState?.fieldErrors?.name ? "contact-name-error" : undefined}
                   autoComplete="name"
                   placeholder="Your full name"
-                  className={`w-full rounded-xl border bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors ${state?.fieldErrors?.name ? "border-red-500 dark:border-red-400" : "border-stone-500 dark:border-stone-600"}`}
+                  className={`w-full rounded-xl border bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors ${optimisticState?.fieldErrors?.name ? "border-red-500 dark:border-red-400" : "border-stone-500 dark:border-stone-600"}`}
                 />
-                {state?.fieldErrors?.name && (
+                {optimisticState?.fieldErrors?.name && (
                   <p id="contact-name-error" role="alert" className="mt-1 text-sm text-red-600 dark:text-red-400">
-                    {state.fieldErrors.name}
+                    {optimisticState.fieldErrors.name}
                   </p>
                 )}
               </div>
@@ -112,15 +121,15 @@ export default function ContactForm() {
                   type="email"
                   required
                   aria-required="true"
-                  aria-invalid={!!state?.fieldErrors?.email}
-                  aria-describedby={state?.fieldErrors?.email ? "contact-email-error" : undefined}
+                  aria-invalid={!!optimisticState?.fieldErrors?.email}
+                  aria-describedby={optimisticState?.fieldErrors?.email ? "contact-email-error" : undefined}
                   autoComplete="email"
                   placeholder="you@example.com"
-                  className={`w-full rounded-xl border bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors ${state?.fieldErrors?.email ? "border-red-500 dark:border-red-400" : "border-stone-500 dark:border-stone-600"}`}
+                  className={`w-full rounded-xl border bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors ${optimisticState?.fieldErrors?.email ? "border-red-500 dark:border-red-400" : "border-stone-500 dark:border-stone-600"}`}
                 />
-                {state?.fieldErrors?.email && (
+                {optimisticState?.fieldErrors?.email && (
                   <p id="contact-email-error" role="alert" className="mt-1 text-sm text-red-600 dark:text-red-400">
-                    {state.fieldErrors.email}
+                    {optimisticState.fieldErrors.email}
                   </p>
                 )}
               </div>
@@ -210,23 +219,23 @@ export default function ContactForm() {
                 name="message"
                 required
                 aria-required="true"
-                aria-invalid={!!state?.fieldErrors?.message}
-                aria-describedby={state?.fieldErrors?.message ? "contact-message-error" : undefined}
+                aria-invalid={!!optimisticState?.fieldErrors?.message}
+                aria-describedby={optimisticState?.fieldErrors?.message ? "contact-message-error" : undefined}
                 rows={5}
                 placeholder="Tell us about your travel plans or any questions you have..."
-                className={`w-full rounded-xl border bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors resize-y ${state?.fieldErrors?.message ? "border-red-500 dark:border-red-400" : "border-stone-500 dark:border-stone-600"}`}
+                className={`w-full rounded-xl border bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors resize-y ${optimisticState?.fieldErrors?.message ? "border-red-500 dark:border-red-400" : "border-stone-500 dark:border-stone-600"}`}
               />
-              {state?.fieldErrors?.message && (
+              {optimisticState?.fieldErrors?.message && (
                 <p id="contact-message-error" role="alert" className="mt-1 text-sm text-red-600 dark:text-red-400">
-                  {state.fieldErrors.message}
+                  {optimisticState.fieldErrors.message}
                 </p>
               )}
             </div>
 
             {/* Error summary (visual — announcement handled by persistent live region above) */}
-            {state?.message && !state.success && !state.fieldErrors && (
+            {optimisticState?.message && !optimisticState.success && !optimisticState.fieldErrors && (
               <p className="text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-lg p-3">
-                {state.message}
+                {optimisticState.message}
               </p>
             )}
 
@@ -260,8 +269,14 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={isPending}
-              className="w-full sm:w-auto rounded-xl bg-amber-700 px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-amber-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-amber-700 px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-amber-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700 disabled:opacity-50 disabled:cursor-not-allowed"
             >
+              {isPending && (
+                <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+              )}
               {isPending ? "Sending..." : "Send Inquiry"}
             </button>
           </form>

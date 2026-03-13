@@ -4757,3 +4757,23 @@ Completed: Implement scheduler.yield() for INP optimisation on long JavaScript t
 ### Gotchas
 - `rtk` wrapper for tsc doesn't work (program not found) — use `npx tsc` directly
 - axe-core results.violations[].nodes[].target is an array — need `.join(", ")` for readable output
+
+
+## Iteration - Story: US-109 - Optimise contact form with React 19 useActionState and optimistic UI
+
+### What was implemented
+- Added `useOptimistic` import and hook to `ContactForm.tsx` for instant success feedback
+- Created `handleSubmit` wrapper that calls `addOptimistic()` before dispatching the server action
+- Replaced all `state?.` display references with `optimisticState?.` so the optimistic success message renders immediately on submit
+- Changed `<form action={formAction}>` to `<form action={handleSubmit}>` to trigger optimistic update
+- Added spinner SVG with `animate-spin` to submit button alongside "Sending..." text
+- Changed button to `inline-flex items-center justify-center gap-2` for spinner+text layout
+- Form already had `useActionState`, field-level errors, and proper TypeScript types from previous work
+
+### Patterns discovered
+- `useOptimistic` with two type args `<State, Action>` is needed when providing a reducer; single type arg matches the 1-arg overload only
+- Using `void` as the Action type lets you call `addOptimistic()` with no argument
+- The optimistic state automatically reverts to real state when the server action completes — if server returns an error, the error UI replaces the optimistic success
+
+### Gotchas
+- `useOptimistic<ContactFormResult | null>` with a reducer arg causes TS2554 because TypeScript picks the first (1-arg) overload. Must use `useOptimistic<ContactFormResult | null, void>` to select the 2-arg overload.
