@@ -252,34 +252,36 @@ export async function submitContactForm(
     const { Resend } = await import("resend");
     const resend = new Resend(resendApiKey);
 
-    // Send both emails concurrently
-    const [adminResult, guestResult] = await Promise.allSettled([
-      resend.emails.send({
-        from: "Pelangi Capsule Hostel <noreply@pelangicapsulehostel.com>",
-        to: adminEmail,
-        subject: `New inquiry from ${data.name}`,
-        html: buildAdminEmailHtml(data),
-        replyTo: data.email,
-      }),
-      resend.emails.send({
-        from: "Pelangi Capsule Hostel <noreply@pelangicapsulehostel.com>",
-        to: data.email,
-        subject: "We received your inquiry — Pelangi Capsule Hostel",
-        html: buildGuestAutoReplyHtml(data.name),
-      }),
-    ]);
+    // Send admin notification email (blocking — must succeed before returning success)
+    const adminResult = await resend.emails.send({
+      from: "Pelangi Capsule Hostel <noreply@pelangicapsulehostel.com>",
+      to: adminEmail,
+      subject: `New inquiry from ${data.name}`,
+      html: buildAdminEmailHtml(data),
+      replyTo: data.email,
+    });
 
-    // Log any failures but still return success if admin email went through
-    if (adminResult.status === "rejected") {
-      console.error("[contact-form] Admin email failed:", adminResult.reason);
+    if (adminResult.error) {
+      console.error("[contact-form] Admin email failed:", adminResult.error);
       return {
         success: false,
         message: "Something went wrong. Please try again or WhatsApp us at +60 12-708 8789.",
       };
     }
-    if (guestResult.status === "rejected") {
-      console.error("[contact-form] Guest auto-reply failed:", guestResult.reason);
-    }
+
+    // Defer guest auto-reply — non-critical, runs after response is sent to client (US-100)
+    deferAfterResponse(async () => {
+      try {
+        await resend.emails.send({
+          from: "Pelangi Capsule Hostel <noreply@pelangicapsulehostel.com>",
+          to: data.email,
+          subject: "We received your inquiry — Pelangi Capsule Hostel",
+          html: buildGuestAutoReplyHtml(data.name),
+        });
+      } catch (err) {
+        console.error("[contact-form] Guest auto-reply failed:", err);
+      }
+    });
 
     // Surface the new submission state immediately for this user (read-your-writes)
     updateTag("contact-submissions");

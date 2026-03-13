@@ -6934,3 +6934,58 @@ This is an external integration task, not a major coding feature. The focus is o
 
 ### Gotchas
 - None — the codebase was already well-structured for accessibility
+
+
+## Iteration - Story: Enable typedRoutes for compile-time link type-safety (US-125)
+
+### What was implemented
+- Already implemented in a previous iteration (typedRoutes: true at top level of next.config.ts)
+- Verified tsc --noEmit passes with zero errors
+- Marked passes: true after verification
+
+## Iteration - Story: Wrap non-blocking side-effects in Server Actions with after() (US-100)
+
+### What was implemented
+- `contact.ts`: Refactored from `Promise.allSettled([adminEmail, guestEmail])` to send admin email synchronously (blocking) and guest auto-reply via `deferAfterResponse()` (runs after response is sent)
+- `newsletter.ts`: Added `logServerEvent` import from `@/lib/server-analytics` and deferred analytics call after successful Brevo subscription
+
+### Patterns discovered
+- `server-analytics.ts` already wraps `after()` in helper functions (`deferAfterResponse`, `logServerEvent`)
+- Resend v2 API returns `{ data, error }` object — check `adminResult.error` not `adminResult.status`
+- `after()` callbacks capture closure variables, so Resend instance can be reused after response
+
+### Gotchas
+- The old code used `Promise.allSettled` which doesn't distinguish status via `.status` on the result object in Resend v2 — needed to check `adminResult.error` instead
+
+## Pre-analysis for US-194 (Gemini 2.5 Pro)
+Here is the technical brief for implementing the Google Free Booking Links user story.
+
+**Subject: Technical Brief for US-194: Google Free Hotel Booking Links Integration**
+
+This brief outlines the implementation plan within the Frappe framework. The user story's mention of `lhdn_payroll_integration` is being disregarded as it contradicts the project's context (`pelangi-website`) and the story's actual content.
+
+**1. Python Files to Modify:**
+
+*   **`[custom_app]/google_integration/doctype/google_fbl_settings/google_fbl_settings.py`**: For server-side validation or logic related to the new settings DocType.
+*   **`[custom_app]/google_integration/api.py`**: To create a new whitelisted API endpoint (e.g., `get_ari_data`). This endpoint will be called by the connectivity partner (if they use a PULL model) to fetch Availability, Rates, and Inventory (ARI) from your Frappe system.
+
+**2. Frappe DocTypes & Hooks:**
+
+*   **New DocType (Singleton):** Create a "Google FBL Settings" DocType. It should be a Singleton to hold global configuration.
+    *   **Fields:** `Connectivity Partner` (Select: Cloudbeds, Beds24, etc.), `API Key` (Password), `Property ID`, `Enabled` (Checkbox).
+*   **Hooks (`hooks.py`):** No specific scheduler hooks are needed initially, as the connectivity partner will manage the sync schedule with Google. The primary "hook" is the new API endpoint.
+
+**3. Recommended Implementation Approach:**
+
+1.  Select a connectivity partner (e.g., Beds24) and set up the Pelangi property on their platform.
+2.  Implement the `Google FBL Settings` DocType in Frappe to store credentials.
+3.  Expose a secure, whitelisted REST API endpoint that returns ARI data in the format required by the partner. The partner will poll this endpoint.
+4.  Configure the booking link URL in the partner's dashboard to point directly to the website's booking page (e.g., `https://pelangihostel.com/book?checkin=[CI]&checkout=[CO]`).
+5.  Use the Google Hotel Center to link the partner feed and verify the property match with the Google Business Profile.
+
+**4. Edge Cases & Gotchas:**
+
+*   **Price Accuracy:** This is critical. The price returned by the ARI feed must exactly match the final price on the booking page (including all taxes/fees). Google will delist the link for inaccuracies.
+*   **Data Consistency:** Ensure the hostel's name, address, and phone number are identical across Frappe, the partner's system, Google Business Profile, and Google Hotel Center.
+*   **Landing Page URL:** The booking page must be able to handle URL parameters for check-in/check-out dates passed from Google to provide a seamless user experience.
+

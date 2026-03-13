@@ -2,6 +2,7 @@
 
 import { updateTag } from "next/cache";
 import { verifyTurnstileToken } from "@/lib/turnstile";
+import { logServerEvent } from "@/lib/server-analytics";
 
 interface NewsletterResult {
   success: boolean;
@@ -83,6 +84,12 @@ export async function subscribeToNewsletter(
 
     if (response.status === 201 || response.status === 204) {
       updateTag("newsletter-subscriptions");
+      // Defer analytics logging — runs after response is sent to client (US-100)
+      logServerEvent({
+        event: "newsletter_subscribe",
+        path: "/",
+        timestamp: new Date().toISOString(),
+      });
       return {
         success: true,
         message: "You're subscribed! Check your inbox for a welcome email.",
