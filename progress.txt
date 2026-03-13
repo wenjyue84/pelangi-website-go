@@ -5280,3 +5280,25 @@ This story should be handled as a **manual operations task** by the property own
 
 Leaving `passes: false` — this story will be auto-skipped after 3 retry attempts.
 
+
+
+
+## Iteration 20 - Story: US-146 - Migrate revalidateTag calls to Next.js 16 two-argument signature
+
+### What was implemented
+- **Verification-only iteration** — all code changes were already completed in US-145 (Next.js 16 upgrade)
+- AC1: Only one `revalidateTag()` call exists in `api/revalidate/route.ts:83`, already using `revalidateTag(tag, 'max')` two-argument signature
+- AC2: ISR webhook route handler was updated during US-145 implementation
+- AC3: N/A — Contact form Server Action (`actions/contact.ts`) does not perform any cache invalidation; it sends emails via Resend. No `revalidateTag` to migrate to `updateTag`.
+- AC4: The two-argument signature `revalidateTag(tag, 'max')` is the non-deprecated form in Next.js 16
+- AC5: No `unstable_cacheLife` or `unstable_cacheTag` imports exist anywhere in the codebase — nothing to migrate
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- US-145 (Next.js 16 upgrade) already handled the revalidateTag migration as part of the broader upgrade
+- The contact form Server Action is a pure email-sending action with no cache involvement
+- Only one location in the entire codebase calls revalidateTag: the ISR webhook route handler
+
+### Gotchas
+- AC3 about "Contact form Server Action uses updateTag()" is not applicable — the contact form doesn't invalidate cache
+- Verify existing state before assuming work needs to be done (pattern from US-002 iteration)
