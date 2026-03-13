@@ -1,9 +1,10 @@
+import { Suspense } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Gallery from "@/components/Gallery";
 import type { Metadata } from "next";
 
-export const dynamic = 'force-static';
+export const experimental_ppr = true;
 
 export const metadata: Metadata = {
     title: "Gallery | Pelangi Capsule Hostel Johor Bahru",
@@ -90,7 +91,9 @@ export default function GalleryPage() {
             />
             <Header />
             <div className="pt-20">
-                <Gallery />
+                <Suspense fallback={<div className="container-custom py-16"><div className="h-96 w-full animate-pulse bg-stone-100 dark:bg-stone-800 rounded-xl" /></div>}>
+                    <Gallery />
+                </Suspense>
             </div>
             <Footer />
         </main>

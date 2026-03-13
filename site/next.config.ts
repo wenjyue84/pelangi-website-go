@@ -16,6 +16,8 @@ const withBundleAnalyzer = bundleAnalyzer({
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   experimental: {
+    // Partial Pre-rendering: static shell served instantly, dynamic holes stream via Suspense
+    ppr: 'incremental',
     // Control Client Router Cache TTLs (Next.js 15 — staleTimes are in seconds)
     staleTimes: {
       dynamic: 30,   // Dynamic pages: cache prefetched links for 30s

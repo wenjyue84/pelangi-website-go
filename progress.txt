@@ -4348,3 +4348,23 @@ Incomplete: Register Google Business Profile and connect to Google Hotel free bo
 ### Gotchas
 - HowTo `estimatedCost` requires `MonetaryAmount` type with `currency` and `value` — not a plain string
 - `totalTime` must be ISO 8601 duration format (e.g., "PT5M")
+
+
+## Iteration 11 - Story: US-090 - Enable Partial Pre-rendering (PPR) with incremental mode
+
+### What was implemented
+- `site/next.config.ts` — Added `experimental.ppr: 'incremental'` to enable PPR pipeline
+- `site/src/app/page.tsx` — Replaced `export const dynamic = 'force-static'` with `export const experimental_ppr = true`; wrapped Reviews, Amenities, CommunityEvents, and JBBuzz in `<Suspense>` boundaries with skeleton fallbacks for streaming
+- `site/src/app/gallery/page.tsx` — Replaced `export const dynamic = 'force-static'` with `export const experimental_ppr = true`; wrapped Gallery component in `<Suspense>` with skeleton fallback
+- Added `SectionSkeleton` helper component in Home page for consistent loading states
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- PPR replaces `force-static` — the static shell (Header, Hero, quick access cards) is pre-rendered, while Suspense-wrapped sections stream as dynamic holes
+- `experimental_ppr = true` is a per-route opt-in when `ppr: 'incremental'` is set in next.config.ts
+- Client components (like CommunityEvents with `"use client"`) benefit from Suspense boundaries since their JS hydration can happen independently
+
+### Gotchas
+- US-103 (Google Business Profile) is an external platform task, not implementable through code — future iterations should skip it
+- PPR requires Next.js 15+ with the incremental flag — no canary needed
+- All content in these pages is currently static data, but the Suspense boundaries are set up for when dynamic content (e.g., live reviews API, real-time availability) is added

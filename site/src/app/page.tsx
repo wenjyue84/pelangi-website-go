@@ -1,8 +1,10 @@
+import { Suspense } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-export const dynamic = 'force-static';
+export const experimental_ppr = true;
+
 import Hero from "@/components/Hero";
 import Destinations from "@/components/Destinations";
 import Amenities from "@/components/Amenities";
@@ -13,6 +15,12 @@ import CommunityEvents from "@/components/CommunityEvents";
 import CommunityEventsStructuredData from "@/components/CommunityEventsStructuredData";
 import JBBuzz from "@/components/JBBuzz";
 import SingaporeTeaser from "@/components/SingaporeTeaser";
+
+function SectionSkeleton({ height = "h-64" }: { height?: string }) {
+  return (
+    <div className={`${height} w-full animate-pulse bg-stone-100 dark:bg-stone-800 rounded-xl`} />
+  );
+}
 
 export default function Home() {
   return (
@@ -76,18 +84,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Reviews Section */}
-      <Reviews />
+      {/* Reviews Section — streamed via PPR Suspense boundary */}
+      <Suspense fallback={<div className="py-20 bg-white dark:bg-stone-900 container-custom"><SectionSkeleton height="h-80" /></div>}>
+        <Reviews />
+      </Suspense>
 
       {/* Amenities Section */}
-      <Amenities />
+      <Suspense fallback={<div className="py-20 container-custom"><SectionSkeleton height="h-96" /></div>}>
+        <Amenities />
+      </Suspense>
 
-      {/* Community Events & Vibe Section */}
+      {/* Community Events & Vibe Section — streamed via PPR Suspense boundary */}
       <CommunityEventsStructuredData />
-      <CommunityEvents />
+      <Suspense fallback={<div className="py-20 bg-white dark:bg-stone-900 container-custom"><SectionSkeleton height="h-96" /></div>}>
+        <CommunityEvents />
+      </Suspense>
 
-      {/* JB Buzz - News & Blog Teaser */}
-      <JBBuzz />
+      {/* JB Buzz - News & Blog Teaser — streamed via PPR Suspense boundary */}
+      <Suspense fallback={<div className="py-20 bg-stone-50 dark:bg-stone-950 container-custom"><SectionSkeleton height="h-96" /></div>}>
+        <JBBuzz />
+      </Suspense>
 
       {/* Teaser Section */}
       <section className="py-20 bg-white dark:bg-stone-900">
