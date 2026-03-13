@@ -83,6 +83,9 @@ export const metadata: Metadata = {
     // Replace with actual token from Google Search Console > Add Property > HTML tag method
     google: "REPLACE_WITH_GSC_VERIFICATION_TOKEN",
   },
+  other: {
+    "apple-mobile-web-app-status-bar-style": "black-translucent",
+  },
 };
 
 export default async function RootLayout({
@@ -95,6 +98,9 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Theme color: browser toolbar matches page background in light/dark mode */}
+        <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#1c1917" media="(prefers-color-scheme: dark)" />
         {/* Preconnect: Google Fonts (hot path — every page via globals.css @import) */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
