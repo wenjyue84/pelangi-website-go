@@ -85,7 +85,7 @@ export default function Footer() {
                 { href: "/rooms", label: "Rooms" },
                 { href: "/amenities", label: "Amenities" },
                 { href: "/gallery", label: "Gallery" },
-                { href: "/contact", label: "Location" },
+                { href: "/location", label: "Location" },
                 { href: "/book", label: "Book Now" },
               ].map((link) => (
                 <li key={link.label}>

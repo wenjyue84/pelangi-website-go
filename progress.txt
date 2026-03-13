@@ -4575,3 +4575,29 @@ Incomplete: Register Google Business Profile and connect to Google Hotel free bo
 ### Gotchas
 - The existing "Best Price Guarantee" callout (separate section) remains — TrustSignals provides a summary version near pricing
 - Trust signals on mobile at 375px: the 3-column grid stacks to single column, ensuring all signals are visible above the fold after pricing
+
+
+## Iteration 28 - Story: US-149 - Create dedicated /location page for Google Business Profile 2026 local SEO requirements
+
+### What was implemented
+- `site/src/app/location/page.tsx` — Full /location page with:
+  - Hero section with intro text about Taman Pelangi location
+  - Embedded Google Maps iframe with hostel pinned
+  - Contact details card: full address, two phone numbers, email
+  - Check-in (2 PM) / check-out (12 PM) times displayed prominently
+  - Transport directions from 4 hubs: JB Sentral, CIQ Border, Larkin Bus Terminal, Senai Airport
+  - "What's Nearby" section with 6 local attractions (Pelangi Leisure Mall, Jalan Tan Hiok Nee, KSL City, etc.)
+  - Quick Facts section with travel times from key locations
+  - LodgingBusiness JSON-LD with full address, GeoCoordinates, hasMap, tourBookingPage, sameAs
+- Updated `Footer.tsx` — "Location" nav link now points to `/location` instead of `/contact`
+- Updated `sitemap.ts` — Added `/location` entry with priority 0.8
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- The footer already had a "Location" label pointing to /contact — natural redirect point
+- LodgingBusiness schema supports `tourBookingPage` for linking to the booking page directly
+- `hasMap` property in schema.org links the Google Maps URL for machine-readable map reference
+
+### Gotchas
+- The Google Maps embed URL uses the same embed as the existing Location component — may need updating with actual Place ID if GBP is claimed
+- GBP profile URL field needs to be manually updated to point to /location (external action, not code)
