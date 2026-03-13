@@ -94,8 +94,24 @@ export default function StructuredData() {
         "@type": "LocationFeatureSpecification",
         "name": "Water Dispenser",
         "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Luggage Storage",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Laundry Facilities",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "24-hour Reception",
+        "value": true
       }
     ],
+    "touristType": ["Backpackers", "Budget Travelers", "Solo Travelers", "Digital Nomads"],
     "containedInPlace": {
       "@type": "TouristDestination",
       "@id": "https://pelangicapsulehostel.com/guide#jb"
