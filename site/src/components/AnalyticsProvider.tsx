@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 
 const COOKIE_NAME = "pelangi_cookie_consent";
 const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
@@ -32,5 +32,24 @@ export default function AnalyticsProvider() {
 
   if (!consented || !GA_ID) return null;
 
-  return <GoogleAnalytics gaId={GA_ID} />;
+  return (
+    <>
+      <Script
+        id="_next-ga-init"
+        strategy="lazyOnload"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');`,
+        }}
+      />
+      <Script
+        id="_next-ga"
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+      />
+    </>
+  );
 }
