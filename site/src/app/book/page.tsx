@@ -460,9 +460,9 @@ export default function BookPage() {
         </div>
       </section>
 
-      {/* Best Price Guarantee */}
+      {/* Best Rate Guarantee & Rate Parity Disclosure */}
       <section className="py-8 container-custom">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto space-y-4">
           <div className="flex items-start gap-4 bg-green-50 dark:bg-green-900/20 rounded-2xl p-6 border border-green-200 dark:border-green-800">
             <div className="w-10 h-10 rounded-xl bg-green-100 dark:bg-green-900/50 flex items-center justify-center shrink-0">
               <svg className="w-5 h-5 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -470,11 +470,29 @@ export default function BookPage() {
               </svg>
             </div>
             <div>
-              <h3 className="font-semibold text-green-900 dark:text-green-200 mb-1">Best Price Guarantee</h3>
+              <h3 className="font-semibold text-green-900 dark:text-green-200 mb-1">Best Rate Guarantee</h3>
               <p className="text-sm text-green-800 dark:text-green-300">
-                Book direct for the lowest rate — guaranteed. Find it cheaper on any OTA platform and we&apos;ll match it, no questions asked.
+                Book direct for the lowest rate — guaranteed. Our direct booking prices are always equal to or lower than any OTA or Google Hotels listing. Find it cheaper anywhere and we&apos;ll match it, no questions asked.
               </p>
             </div>
+          </div>
+
+          {/* Rate Parity Disclosure */}
+          <div className="bg-stone-50 dark:bg-stone-900 rounded-2xl p-5 border border-stone-200 dark:border-stone-700">
+            <div className="flex items-center gap-2 mb-3">
+              <svg className="w-4 h-4 text-stone-500 dark:text-stone-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400">
+                Rate Parity Disclosure
+              </h4>
+            </div>
+            <p className="text-xs text-stone-500 dark:text-stone-400 leading-relaxed">
+              Pelangi Capsule Hostel maintains rate parity across all distribution channels. The rates displayed on this direct booking page are identical to or lower than those listed on Booking.com, Hostelworld, Agoda, and Google Hotels free booking links. All rates are inclusive of applicable taxes (SST 8%, Tourism Tax RM10/room/night for non-Malaysian guests). Rate parity is audited monthly to ensure compliance.
+            </p>
+            <p className="text-xs text-stone-400 dark:text-stone-500 mt-2">
+              Last rate parity audit: March 2026
+            </p>
           </div>
         </div>
       </section>

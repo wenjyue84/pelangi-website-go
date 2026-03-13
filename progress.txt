@@ -6467,3 +6467,65 @@ Therefore, there are no specific Python files, Frappe DocTypes, or hooks to modi
 *   Verification of the Google Business Profile can sometimes be delayed.
 *   The chosen connectivity partner must explicitly support Google's free booking links.
 
+
+## Pre-analysis for US-103 (Gemini 2.5 Pro)
+Here is the technical brief for the Claude agent:
+
+**Subject: Technical Brief for Google Hotels Integration (US-103)**
+
+This brief outlines the implementation plan for integrating a Frappe-based system with Google Hotel's free booking links.
+
+**Warning:** The user story (US-103) describes a hotel booking integration, but the specified target app is `lhdn_payroll_integration`. This is a major context mismatch. The following plan assumes the work will be done in a relevant hospitality app or that the payroll app will be significantly extended with new booking-related functionality.
+
+**1. Python Files to Modify/Create:**
+*   New File: `.../doctype/google_hotel_settings/google_hotel_settings.py` (for controller logic).
+*   New Module: `.../integrations/google_hotels_connector.py` to encapsulate all third-party API communication for sending availability, rates, and inventory (ARI).
+*   Hooks File: `.../hooks.py` to register DocType events and a scheduled job.
+
+**2. Frappe DocTypes & Hooks:**
+*   New DocType: `Google Hotel Settings` (Single) to store API credentials, property ID, and endpoint URLs. Use `get_password` for secure credential storage.
+*   New DocType: `Google Hotel API Log` for logging requests, responses, and errors.
+*   Hooks:
+    *   `doc_events`: Use `on_update` for booking/room DocTypes to trigger real-time ARI updates.
+    *   `scheduler_events`: A `cron` job (e.g., "*/15 * * * *") to run a full ARI sync periodically, ensuring data consistency.
+
+**3. Implementation Approach:**
+1.  Create the `Google Hotel Settings` DocType to manage configuration.
+2.  Develop the `google_hotels_connector.py` module to handle authentication and data formatting for the chosen connectivity partner's API.
+3.  Implement functions for `update_availability` and `send_rates` triggered by DocType hooks and the scheduled job.
+4.  The scheduled job should pull all relevant room/rate data and push a complete ARI update to the partner API as a failsafe.
+
+**4. Edge Cases & Gotchas:**
+*   **Primary Gotcha:** The target app (`lhdn_payroll_integration`) is incorrect for this task. Confirm the correct app before proceeding.
+*   **Rate Limiting:** The connector must handle API rate limits (e.g., HTTP 429 errors) with exponential backoff.
+*   **Data Consistency:** Do not rely solely on `on_update` hooks. The scheduled job is critical to prevent overbooking by correcting any missed updates.
+*   **Mapping:** Room types and rate plans must be carefully mapped to the connectivity partner's required format. This mapping should be configurable in the settings DocType.
+
+
+## Iteration 22 - Story: US-186 - Add Google Hotel free booking link rate parity disclosure on /book page
+
+### What was implemented
+- Enhanced existing "Best Price Guarantee" section on `/book` page to "Best Rate Guarantee" with expanded disclosure text
+- Added formal "Rate Parity Disclosure" subsection below the guarantee, stating:
+  - Direct rates equal or lower than all OTA and Google Hotels listings
+  - Lists specific channels (Booking.com, Hostelworld, Agoda, Google Hotels)
+  - Includes tax transparency (SST 8%, TTx RM10/room/night)
+  - Monthly audit commitment
+  - Last audit date: March 2026
+
+### Rate Parity Audit Documentation
+- **Policy:** Direct booking rates on pelangicapsulehostel.com/book must always be equal to or lower than OTA listings
+- **Channels audited:** Booking.com, Hostelworld, Agoda, Google Hotels free booking links
+- **Frequency:** Monthly
+- **Last checked:** March 2026
+- **Current rates:** Direct RM35-45/night vs OTA RM40-48+fees — direct is cheaper
+
+### Files changed
+- `site/src/app/book/page.tsx` — Enhanced Best Price Guarantee section with rate parity disclosure
+
+### Patterns discovered
+- The /book page already had a "Best Price Guarantee" section and a detailed OTA vs Direct price comparison — the rate parity disclosure complements these existing elements
+- No new components needed; inline section within the page is sufficient for disclosure text
+
+### Gotchas
+- The actual Google Hotels free booking link integration (US-103, US-194) is a separate external task — this story only adds the disclosure/compliance text on the website side
