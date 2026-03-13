@@ -6157,3 +6157,39 @@ Completed: Implement Next.js after() API for deferred analytics and logging (ID:
 - prd.json has UTF-8 characters — must use encoding='utf-8' in Python open()
 - Schema prices should reflect SST-inclusive total (base × 1.08), but TTx excluded (foreign guests only, variable)
 
+
+
+
+## Iteration - Story: US-123 - Add live chat widget for 24/7 guest pre-booking inquiry support
+
+### What was implemented
+- Replaced API-dependent ChatWidget with a self-contained FAQ chat widget (zero third-party dependencies)
+- Added 12 FAQ entries covering: check-in/out times, pricing, location, room types, WiFi, Singapore travel, parking, payment methods, towels/toiletries, breakfast, safety, and monthly stays
+- Added keyword-based FAQ matching (`matchFaq()`) that scores user input against FAQ keywords by match length
+- Added 5 quick FAQ suggestion chips shown after greeting: Check-in times, Pricing & rates, Location, Room types, Parking
+- Added 10-second delay (`DELAY_MS = 10_000`) before chat button appears — returns `null` until timer fires
+- Chat button positioned at `bottom-20` on mobile (above MobileBookingBar) and `bottom-5` on desktop
+- Chat panel anchored with inline `bottom: calc(5rem + 8px)` to avoid overlapping the floating button
+- Session history persisted in `sessionStorage` (key: `chatwidget_history`) — chips hidden on return visits
+- WhatsApp fallback link in footer for questions the FAQ can't answer
+- Kept all existing a11y features: Escape to close, aria-label, aria-modal, keyboard navigation, focus management
+- `npx tsc --noEmit` passes with zero errors
+- `next build` completes successfully
+
+### Patterns discovered
+- Previous ChatWidget called `/api/chat/pelangi/message` which doesn't exist as a route in this project — was a dead integration
+- `DynamicComponents.tsx` already lazy-loads ChatWidget with `dynamic(() => import(...), { ssr: false })` — no changes needed there
+- MobileBookingBar listens for `chatwidget-toggle` CustomEvent and hides when chat is open — kept this integration
+- The FAQ data mirrors `FAQ.tsx` content but is simplified for chat context (shorter answers, keyword-indexed)
+
+### Gotchas
+- Linter/formatter hook reverted first Write attempt — had to re-apply
+- Unicode em-dashes and en-dashes need `\u2014` / `\u2013` escape in template literals to avoid encoding issues
+
+### Acceptance criteria met
+- [x] Chat widget visible on all pages (layout.tsx) without obscuring mobile content (positioned above MobileBookingBar)
+- [x] Widget answers 5+ predefined FAQs correctly (check-in time, pricing, room types, parking, location + 7 more)
+- [x] Widget loads lazily via `dynamic()` with `ssr: false` — does not block LCP
+- [x] Widget is keyboard-navigable (Enter to send, Escape to close) and screen-reader accessible (aria-label, aria-modal, dialog role)
+- [x] Widget fires only after user has been on page for 10+ seconds (DELAY_MS = 10_000)
+- [x] No third-party scripts — pure React component (Option B from technical notes)
