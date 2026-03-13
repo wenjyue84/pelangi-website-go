@@ -6780,3 +6780,28 @@ This user story is a business process and service integration task, not a Frappe
 ## Iteration 20 - Sat, Mar 14, 2026  2:28:32 AM
 Completed: Register Google Business Profile and connect to Google Hotel free booking links (ID: US-103) in 4m
 
+
+## Iteration 23 - Story: Implement Stripe FPX online banking for direct booking deposit payment (US-167)
+
+### What was implemented
+- `site/src/components/FpxPaymentForm.tsx` — Two-step client component: (1) collect guest/booking details, (2) Stripe Elements with PaymentElement for FPX bank selector
+- `site/src/components/PaymentStatus.tsx` — Client component that reads Stripe redirect params (`payment_intent_client_secret`) and displays payment status (success/processing/failed) with booking details
+- `site/src/app/book/confirmation/page.tsx` — Payment confirmation page with status display, booking reference, next steps (email receipt, WhatsApp confirmation, check-in info), and CTA links
+- Updated `site/src/app/book/page.tsx` — Added FPX payment form below BookingForm with "or pay deposit online" divider
+- Updated `site/src/components/DuitNowPayment.tsx` — Added "Online Banking (FPX)" payment method card to the 4-column grid
+- Updated `site/.env.local.example` — Added NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY, STRIPE_SECRET_KEY, and STRIPE_WEBHOOK_SECRET documentation
+- Pre-existing backend: `/api/create-payment-intent` (FPX PaymentIntent), `/api/stripe-webhook` (payment_intent.succeeded handler), `lib/stripe.ts` (Stripe client)
+
+### Patterns discovered
+- Stripe.js client `PaymentIntent` type does not expose `metadata` — need `(paymentIntent as unknown as { metadata?: Record<string, string> }).metadata` cast
+- `Elements` provider with `mode: "payment"` uses deferred intent creation pattern (create PaymentIntent at submit time, not at render time)
+- FPX redirects user to bank's auth page then back to `return_url` with `payment_intent_client_secret` query param
+
+### Gotchas
+- Linter auto-removes unused imports — must add both import AND usage in the same edit pass, or the linter strips the import
+- NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY must be set for client-side Stripe.js to load; without it, `loadStripe(undefined)` silently fails
+- FPX is MYR-only — Stripe account must be configured for Malaysia; amount is in sen (cents), not ringgit
+- `paymentMethodTypes: ["fpx"]` in Elements options restricts the PaymentElement to only show FPX bank selector
+
+## Iteration 23 - Fri, Mar 14, 2026  3:XX:XX AM
+Completed: Implement Stripe FPX online banking for direct booking deposit payment (ID: US-167)

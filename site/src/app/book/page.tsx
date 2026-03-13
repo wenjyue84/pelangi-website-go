@@ -5,6 +5,7 @@ import BookingForm from "@/components/BookingForm";
 import TrustSignals from "@/components/TrustSignals";
 import BookEcommerceTracker from "@/components/BookEcommerceTracker";
 import DuitNowPayment from "@/components/DuitNowPayment";
+import FpxPaymentForm from "@/components/FpxPaymentForm";
 import HeroTrustBadges from "@/components/HeroTrustBadges";
 import type { Metadata } from "next";
 export const metadata: Metadata = {
@@ -280,6 +281,20 @@ export default function BookPage() {
           {/* Booking Form */}
           <div className="mt-12 max-w-md mx-auto">
             <BookingForm />
+          </div>
+
+          {/* Or divider */}
+          <div className="mt-10 flex items-center gap-4 max-w-md mx-auto">
+            <div className="flex-1 border-t border-stone-200 dark:border-stone-700" />
+            <span className="text-xs font-medium text-stone-400 dark:text-stone-500 uppercase tracking-wider">
+              or pay deposit online
+            </span>
+            <div className="flex-1 border-t border-stone-200 dark:border-stone-700" />
+          </div>
+
+          {/* FPX Online Banking Payment */}
+          <div className="mt-8 max-w-md mx-auto">
+            <FpxPaymentForm />
           </div>
         </div>
       </section>
