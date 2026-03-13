@@ -4978,3 +4978,27 @@ US-103 (Google Business Profile registration) is entirely an external platform t
 - web-vitals `sendToGA` works without gtag being loaded yet because it queues into `window.dataLayer`
 - Clarity init needs a guard (`__clarityInit` flag) to prevent re-initialisation if consent event fires multiple times
 
+
+
+## Iteration 198 - Story: US-174 - Add complete favicon and Apple Touch Icon set for all platforms
+
+### What was implemented
+- `site/public/favicon.svg` — SVG favicon with "P" on #a68b64 brand background, rounded corners
+- `site/src/app/apple-icon.png` — 180×180 Apple Touch Icon (resized from icon-512.png, solid background)
+- `site/src/app/favicon.ico` — ICO fallback with 16×16 and 32×32 PNG layers for legacy browsers
+- `site/public/icons/icon-512-maskable.png` — 512×512 maskable icon with "P" in 80% safe zone
+- `site/public/icons/icon-192-maskable.png` — 192×192 maskable icon with safe zone padding
+- `site/public/favicon-16x16.png` and `favicon-32x32.png` — size-specific PNG favicons
+- Updated `site/src/app/layout.tsx` — added `<link rel="icon" type="image/svg+xml" href="/favicon.svg">` in head
+- Updated `site/src/app/manifest.ts` — added maskable icon entries (192 and 512) with `purpose: "maskable"`
+
+### Patterns discovered
+- Next.js App Router auto-detects `favicon.ico`, `icon.png`, and `apple-icon.png` in the `app/` directory
+- SVG favicons have no file-based convention — must be added as manual `<link>` in head
+- Maskable icons need content within 80% safe area (10% padding each side) for Android adaptive icon cropping
+- sharp is available in the project's node_modules (from Next.js dependency chain)
+
+### Gotchas
+- Apple Touch Icon must have solid (non-transparent) background — iOS renders white on transparent
+- Maskable icons should NOT have rounded corners — the OS applies its own mask shape
+- ICO format embeds PNG data blocks with a custom header — generated programmatically with Buffer manipulation

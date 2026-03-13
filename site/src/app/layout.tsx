@@ -132,6 +132,8 @@ export default async function RootLayout({
         <link rel="search" type="application/opensearchdescription+xml" title="Pelangi Hostel" href="/opensearch.xml" />
         {/* llms.txt: AI crawler content guidance */}
         <link rel="alternate" type="text/plain" href="/llms.txt" />
+        {/* SVG favicon: sharp rendering on modern browsers, ICO/PNG fallbacks auto-detected from app/ */}
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         {/* DNS-prefetch: Trip.com CDN for review/OTA images (cold path) */}
         <link rel="dns-prefetch" href="https://ak-d.tripcdn.com" />
         {/* Speculation Rules: prerender high-conversion pages on hover (Chrome/Edge only, ignored by others) */}

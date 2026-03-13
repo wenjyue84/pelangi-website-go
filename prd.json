@@ -3916,7 +3916,7 @@
         "Add web app manifest (manifest.json) for mobile installability"
       ],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-175",
