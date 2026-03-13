@@ -6306,3 +6306,57 @@ Completed: Implement updateTag() and refresh() Server Actions for booking state 
 - [x] All `revalidateTag()` calls use the Next.js 16 two-argument form (`revalidateTag(tag, 'max')`)
 - [x] User sees updated submission confirmation without manual page refresh
 - [x] No `revalidateTag` single-argument deprecation warnings
+
+
+## Pre-analysis for US-103 (Gemini 2.5 Pro)
+**Subject: Technical Brief for US-103: Google Hotel Integration**
+
+This brief covers the implementation of Google Hotel free booking links.
+
+**Correction:** The user story describes a hotel booking integration. The target app should be a hospitality/booking application, **not** `lhdn_payroll_integration`, which appears to be for payroll. The following analysis assumes the correct hospitality app context.
+
+**1. Python Files to Modify:**
+*   No files within `lhdn_payroll_integration` are applicable.
+*   In a hospitality app, create a new file for the integration API, e.g., `[app_name]/api/google_hotels.py`.
+*   Modify controller logic for existing booking/availability DocTypes to ensure real-time consistency, e.g., `[app_name]/doctype/booking/booking.py`.
+
+**2. Frappe DocTypes & Hooks:**
+*   **DocTypes:** The integration will primarily read from `Room`, `Rate Plan`, and a new or existing `Availability` DocType. It will create `Booking` documents.
+*   **Hooks:** A new whitelisted REST API endpoint (`@frappe.whitelist(allow_guest=True)`) is the central hook required. This endpoint will expose availability, rates, and inventory to the connectivity partner.
+
+**3. Implementation Approach:**
+*   The primary strategy is to use a third-party connectivity partner (e.g., Beds24), not a direct build against Google's API.
+*   Implement a REST API endpoint that returns availability, rates, and restrictions (ARI) in the format specified by the chosen partner.
+*   This API will query the Frappe DocTypes for real-time data.
+*   The `/book` page must be configured to parse URL parameters from the Google booking link to pre-fill reservation details.
+
+**4. Edge Cases & Gotchas:**
+*   **Real-time Sync:** Availability data must be updated atomically on every booking/cancellation to prevent overbooking.
+*   **API Schema:** The API must strictly conform to the schema required by the connectivity partner (e.g., OTA standards).
+*   **Prerequisites:** The Google Business Profile verification and connectivity partner setup are business tasks that must be completed before technical work can be validated.
+
+
+
+## Iteration - Story: US-157 - Audit and document WCAG 2.2 SC 1.4.2 Audio Control compliance
+
+### What was implemented
+- Audited all pages for auto-playing audio — none found
+- Confirmed `YouTubeFacade` (`check-in` page) defers iframe until user click — SC 1.4.2 compliant
+- Confirmed `Gallery.tsx` inline YouTube iframe has no `autoplay=1` in src URL — compliant
+- Confirmed Google Maps iframes produce no audio
+- Added "WCAG 2.2 AA Compliance" table to `/accessibility` page listing 7 implemented criteria including SC 1.4.2
+- Added "Audio Control Policy (SC 1.4.2)" section to `/accessibility` page with:
+  - Green audit result box documenting specific findings for each embed
+  - Amber policy box prohibiting future auto-playing audio without visible controls
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Gallery.tsx uses inline iframe (no facade) but no autoplay — the `allow="autoplay"` attribute only grants permission, doesn't trigger autoplay
+- YouTubeFacade sets `autoplay: "1"` in its URL params only AFTER user clicks — correct SC 1.4.2 implementation
+
+### Acceptance criteria met
+- [x] Audit confirms no audio plays automatically on any page
+- [x] YouTube facade confirmed compliant (defers iframe until user click)
+- [x] Gallery YouTube embed confirmed compliant (no autoplay=1 in src)
+- [x] Documented policy prohibiting future auto-playing audio without controls
+- [x] Accessibility statement updated with SC 1.4.2 in WCAG 2.2 AA compliance list

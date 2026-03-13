@@ -225,6 +225,131 @@ export default function AccessibilityPage() {
                 </p>
               </section>
 
+              {/* WCAG 2.2 AA Compliance */}
+              <section className="mb-8">
+                <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
+                  WCAG 2.2 AA Compliance
+                </h2>
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed mb-4">
+                  The following WCAG 2.2 success criteria have been verified as
+                  implemented on this website:
+                </p>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm text-stone-700 dark:text-stone-300 border border-stone-200 dark:border-stone-700 rounded-lg">
+                    <thead className="bg-stone-100 dark:bg-stone-800">
+                      <tr>
+                        <th className="text-left p-3 font-medium">SC</th>
+                        <th className="text-left p-3 font-medium">Criterion</th>
+                        <th className="text-left p-3 font-medium">Level</th>
+                        <th className="text-left p-3 font-medium">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-stone-200 dark:divide-stone-700">
+                      <tr>
+                        <td className="p-3 font-mono text-xs">1.4.2</td>
+                        <td className="p-3">Audio Control</td>
+                        <td className="p-3">A</td>
+                        <td className="p-3 text-green-700 dark:text-green-400 font-medium">Compliant</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 font-mono text-xs">1.4.3</td>
+                        <td className="p-3">Contrast (Minimum)</td>
+                        <td className="p-3">AA</td>
+                        <td className="p-3 text-green-700 dark:text-green-400 font-medium">Compliant</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 font-mono text-xs">1.4.5</td>
+                        <td className="p-3">Images of Text</td>
+                        <td className="p-3">AA</td>
+                        <td className="p-3 text-green-700 dark:text-green-400 font-medium">Compliant</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 font-mono text-xs">2.1.1</td>
+                        <td className="p-3">Keyboard</td>
+                        <td className="p-3">A</td>
+                        <td className="p-3 text-green-700 dark:text-green-400 font-medium">Compliant</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 font-mono text-xs">2.4.7</td>
+                        <td className="p-3">Focus Visible</td>
+                        <td className="p-3">AA</td>
+                        <td className="p-3 text-green-700 dark:text-green-400 font-medium">Compliant</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 font-mono text-xs">3.3.1</td>
+                        <td className="p-3">Error Identification</td>
+                        <td className="p-3">A</td>
+                        <td className="p-3 text-green-700 dark:text-green-400 font-medium">Compliant</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 font-mono text-xs">4.1.2</td>
+                        <td className="p-3">Name, Role, Value</td>
+                        <td className="p-3">A</td>
+                        <td className="p-3 text-green-700 dark:text-green-400 font-medium">Compliant</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              {/* SC 1.4.2 Audio Control Policy */}
+              <section className="mb-8">
+                <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
+                  Audio Control Policy (SC 1.4.2)
+                </h2>
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed mb-3">
+                  WCAG 2.2 SC 1.4.2 (Level A) requires that any audio playing
+                  automatically for more than 3 seconds must be pausable,
+                  stoppable, or have its volume controllable independently of
+                  the system volume.
+                </p>
+                <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-5 mb-4">
+                  <p className="font-medium text-green-800 dark:text-green-300 mb-2">
+                    Audit result: Fully compliant
+                  </p>
+                  <ul className="list-disc list-inside space-y-2 text-stone-700 dark:text-stone-300 text-sm">
+                    <li>
+                      No audio or video plays automatically on any page.
+                    </li>
+                    <li>
+                      The YouTube check-in guide on the{" "}
+                      <strong>/check-in</strong> page uses a click-to-play
+                      facade: the iframe is not loaded until the user explicitly
+                      clicks the play button. No audio plays without user
+                      initiation.
+                    </li>
+                    <li>
+                      The embedded YouTube video on the{" "}
+                      <strong>/gallery</strong> page does not include{" "}
+                      <code className="bg-stone-200 dark:bg-stone-700 px-1 rounded text-xs">
+                        autoplay=1
+                      </code>{" "}
+                      in its source URL. Audio only plays after the user
+                      presses the play control within the iframe.
+                    </li>
+                    <li>
+                      Google Maps embeds on the <strong>/location</strong> and{" "}
+                      <strong>/getting-here</strong> pages do not produce any
+                      audio.
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-5">
+                  <p className="font-medium text-amber-800 dark:text-amber-300 mb-2">
+                    Policy: Future audio content
+                  </p>
+                  <p className="text-stone-700 dark:text-stone-300 text-sm">
+                    Any future addition of auto-playing audio or video — such as
+                    lobby ambience, promotional clips, or virtual tours — must
+                    provide a visible pause or stop control within 3 seconds of
+                    page load, or must be muted by default with the user able to
+                    unmute. Auto-playing audio that cannot be controlled by the
+                    user is prohibited. All video or audio content must be
+                    reviewed against SC 1.4.2 before deployment.
+                  </p>
+                </div>
+              </section>
+
               {/* Assessment Approach */}
               <section className="mb-8">
                 <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
