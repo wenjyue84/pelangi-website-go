@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: new Date(post.date),
         changeFrequency: "monthly",
         priority: 0.7,
+        images: [`${baseUrl}${post.featuredImage}`],
     }));
 
     const categoryEntries: MetadataRoute.Sitemap = getUniqueCategories().map((cat) => ({
@@ -25,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified,
             changeFrequency: "weekly",
             priority: 1.0,
-            images: [`${baseUrl}/images/hero-main.webp`],
+            images: [`${baseUrl}/images/hero-final.png`],
         },
         {
             url: `${baseUrl}/book`,
@@ -50,7 +51,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified,
             changeFrequency: "monthly",
             priority: 0.8,
-            images: [`${baseUrl}/images/exterior-1.webp`],
+            images: [`${baseUrl}/images/exterior.JPG`],
         },
         {
             url: `${baseUrl}/gallery`,
