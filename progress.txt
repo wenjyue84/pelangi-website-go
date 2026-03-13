@@ -5167,3 +5167,21 @@ US-103 (Google Business Profile registration) is entirely an external platform t
 ### Gotchas
 - Route must NOT be `/sitemap` as that would conflict with the Next.js `sitemap.ts` convention
 - PRD technical notes suggest `app/sitemap-page/page.tsx` but `/sitemap-html` is cleaner as a URL
+
+
+## Iteration - Story: Implement on-demand ISR revalidation webhook for content updates
+
+### What was implemented
+- `site/src/app/api/revalidate/route.ts` — POST Route Handler with secret-based auth, supports both `path` (revalidatePath) and `tag` (revalidateTag) in discriminated body shape
+- Updated `site/.env.local.example` with `REVALIDATE_SECRET` variable and instructions
+- `docs/revalidation.md` — full endpoint documentation with curl examples and CMS webhook setup guide
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Existing API routes follow pattern: `site/src/app/api/<name>/route.ts`
+- Route Handlers use `NextRequest`/`NextResponse` from `next/server`
+- Secret-based auth via header is the standard pattern (consistent with meta-events route)
+
+### Gotchas
+- Must validate `REVALIDATE_SECRET` exists before checking header — return 500 if not configured to avoid silent security bypass
+- Path must be validated to start with `/` to prevent misuse
