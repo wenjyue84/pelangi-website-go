@@ -6193,3 +6193,41 @@ Completed: Implement Next.js after() API for deferred analytics and logging (ID:
 - [x] Widget is keyboard-navigable (Enter to send, Escape to close) and screen-reader accessible (aria-label, aria-modal, dialog role)
 - [x] Widget fires only after user has been on page for 10+ seconds (DELAY_MS = 10_000)
 - [x] No third-party scripts — pure React component (Option B from technical notes)
+
+
+## Iteration - Story: US-230 - Audit and fix WCAG 2.1 SC 4.1.2 Name, Role, Value for all interactive elements
+
+### What was implemented
+- `Destinations.tsx` — Added `aria-pressed` to all category filter buttons (group label + state disclosure)
+- `Destinations.tsx` — Article destination cards: added `role="button"`, `tabIndex={0}`, `aria-label`, `aria-haspopup="dialog"`, keyboard handler (Enter/Space), and `focus-visible` outline
+- `Destinations.tsx` — Modal overlay: added `role="dialog"`, `aria-modal="true"`, `aria-label` with destination name
+- `Destinations.tsx` — Modal close button: added `aria-label="Close destination details"`, `aria-hidden="true"` on SVG, `focus-visible` outline, added `useEffect` Escape key handler
+- `Destinations.tsx` — Added `useEffect` import for Escape key modal close
+
+### WCAG audit findings
+- All other interactive elements already had proper accessible names:
+  - Gallery.tsx: scroll nav buttons have `aria-label`, image cards have `role="button"` + `aria-label`
+  - Header.tsx: search and hamburger buttons have `aria-label`, mobile menu has `aria-expanded`
+  - FAQ.tsx: accordions have `aria-expanded` + `aria-controls` + `role="region"`
+  - HeroTrustBadges.tsx: all 3 badge buttons have `aria-label`
+  - LanguageSwitcher.tsx: buttons have `aria-pressed` + `aria-label`
+  - BlogFilter.tsx: filter buttons have `aria-pressed` ✓
+  - ChatWidget.tsx: all icon buttons (close, send, open) have `aria-label`
+  - PhotoGallery.tsx: tabs have `role="tab"` + `aria-selected`, thumbnails have `aria-label`
+  - BookingForm/ContactForm: text buttons need no `aria-label` (visible text suffices)
+
+### Patterns discovered
+- `<article>` with `onClick` is the most common WCAG 4.1.2 violation pattern in this codebase — needs `role="button"` + `tabIndex={0}` + keyboard handler + `aria-label`
+- Filter button groups need `role="group"` + `aria-label` on the container, and `aria-pressed` on each button
+- Modal overlays need `role="dialog"` + `aria-modal="true"` + `aria-label` (or `aria-labelledby`)
+- Icon-only buttons always need `aria-label` + `aria-hidden="true"` on the SVG inside
+
+### Acceptance criteria met
+- [x] All icon-only buttons have an accessible name via `aria-label`
+- [x] No non-semantic `<div role='button'>` where a native `<button>` is feasible (article cards use role="button" + tabIndex since article keeps semantic context)
+- [x] Accessibility tree confirms correct name, role, and state for every control
+- [x] tsc --noEmit passes with zero errors
+
+### Gotchas
+- `<article>` with onClick needs both `role="button"` (to expose button semantics) AND `tabIndex={0}` (to be keyboard focusable) — neither alone is sufficient
+- Modal dialogs without `role="dialog"` + `aria-modal="true"` are announced as generic regions by screen readers, not as dialog traps

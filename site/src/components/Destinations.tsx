@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { annotateMs } from "@/components/LangMs";
 
@@ -254,6 +254,16 @@ export default function Destinations() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [selectedDest, setSelectedDest] = useState<Destination | null>(null);
 
+  // Close modal on Escape key
+  useEffect(() => {
+    if (!selectedDest) return;
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") setSelectedDest(null);
+    }
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [selectedDest]);
+
   const filteredDestinations = activeCategory === "all"
     ? destinations
     : destinations.filter(d => d.category === activeCategory);
@@ -275,11 +285,12 @@ export default function Destinations() {
         </div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        <div className="flex flex-wrap justify-center gap-2 mb-10" role="group" aria-label="Filter destinations by category">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
+              aria-pressed={activeCategory === cat.id}
               className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer
                 ${activeCategory === cat.id
                   ? "bg-amber-700 text-white shadow-md"
@@ -296,9 +307,15 @@ export default function Destinations() {
           {filteredDestinations.map((dest) => (
             <article
               key={dest.id}
+              role="button"
+              tabIndex={0}
+              aria-label={`View details for ${dest.name}`}
+              aria-haspopup="dialog"
               className="scroll-reveal group bg-white dark:bg-stone-900 rounded-2xl overflow-hidden shadow-xs hover:shadow-xl
-                       transition-all duration-300 cursor-pointer border border-stone-100 dark:border-stone-700"
+                       transition-all duration-300 cursor-pointer border border-stone-100 dark:border-stone-700
+                       focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
               onClick={() => setSelectedDest(dest)}
+              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setSelectedDest(dest); } }}
             >
               {/* Image */}
               <div className="relative h-48 overflow-hidden">
@@ -368,6 +385,9 @@ export default function Destinations() {
       {/* Destination Detail Modal */}
       {selectedDest && (
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${selectedDest.name} details`}
           className="fixed inset-0 z-50 bg-stone-900/90 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto"
           onClick={() => setSelectedDest(null)}
         >
@@ -387,10 +407,12 @@ export default function Destinations() {
               <div className="absolute inset-0 bg-linear-to-t from-stone-900/80 via-transparent to-transparent" />
               <button
                 onClick={() => setSelectedDest(null)}
+                aria-label="Close destination details"
                 className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-xs
-                         flex items-center justify-center text-white hover:bg-white/30 transition-colors cursor-pointer"
+                         flex items-center justify-center text-white hover:bg-white/30 transition-colors cursor-pointer
+                         focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
