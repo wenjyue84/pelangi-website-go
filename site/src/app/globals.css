@@ -238,6 +238,14 @@
     }
   }
 
+  /* WCAG 2.2 SC 2.5.8 — Target Size Minimum: 24×24 CSS px for all interactive elements */
+  /* Inline text links inside .prose are exempt per the inline-text exception */
+  button,
+  [role="button"] {
+    min-height: 1.5rem; /* 24px */
+    min-width: 1.5rem; /* 24px */
+  }
+
   /* WCAG 2.2 SC 2.4.13 — Focus Appearance: 2px outline, ≥ 3:1 contrast */
   /* Uses CSS outline (not box-shadow) for Windows High Contrast Mode visibility */
   :focus-visible {

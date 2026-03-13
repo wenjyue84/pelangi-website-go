@@ -90,14 +90,14 @@ export default function Gallery() {
             {onSeeAll && (
               <button
                 onClick={onSeeAll}
-                className="text-amber-700 dark:text-amber-400 hover:text-amber-800 dark:hover:text-amber-300 font-medium text-sm mr-4 cursor-pointer"
+                className="min-h-6 inline-flex items-center text-amber-700 dark:text-amber-400 hover:text-amber-800 dark:hover:text-amber-300 font-medium text-sm mr-4 cursor-pointer"
               >
                 See All →
               </button>
             )}
             <button
               onClick={() => scroll('left')}
-              className="w-10 h-10 rounded-full bg-white dark:bg-stone-800 shadow-md flex items-center justify-center
+              className="w-11 h-11 rounded-full bg-white dark:bg-stone-800 shadow-md flex items-center justify-center
                        hover:bg-stone-50 dark:hover:bg-stone-700 transition-colors cursor-pointer"
               aria-label="Previous image"
             >
@@ -107,7 +107,7 @@ export default function Gallery() {
             </button>
             <button
               onClick={() => scroll('right')}
-              className="w-10 h-10 rounded-full bg-white dark:bg-stone-800 shadow-md flex items-center justify-center
+              className="w-11 h-11 rounded-full bg-white dark:bg-stone-800 shadow-md flex items-center justify-center
                        hover:bg-stone-50 dark:hover:bg-stone-700 transition-colors cursor-pointer"
               aria-label="Next image"
             >

@@ -240,7 +240,7 @@ export default function ChatWidget() {
           </div>
           <button
             onClick={() => setIsOpen(false)}
-            className="text-white/70 hover:text-white p-1 rounded-lg transition shrink-0"
+            className="w-11 h-11 flex items-center justify-center text-white/70 hover:text-white rounded-lg transition shrink-0"
             aria-label="Close chat"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -332,7 +332,7 @@ export default function ChatWidget() {
             onClick={sendMessage}
             disabled={!canSend}
             className="
-              w-9 h-9 rounded-full flex items-center justify-center shrink-0
+              w-11 h-11 rounded-full flex items-center justify-center shrink-0
               transition hover:brightness-110 active:scale-95
               disabled:opacity-40 disabled:cursor-not-allowed
             "

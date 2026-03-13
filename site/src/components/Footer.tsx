@@ -151,7 +151,7 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             <Link
               href="/privacy-policy"
-              className="text-xs text-stone-500 hover:text-stone-300 transition-colors duration-200"
+              className="min-h-6 inline-flex items-center text-xs text-stone-500 hover:text-stone-300 transition-colors duration-200"
             >
               Privacy Policy
             </Link>
