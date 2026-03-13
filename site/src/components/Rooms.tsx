@@ -72,7 +72,7 @@ export default function Rooms() {
                 sizes="(max-width: 1024px) 100vw, 60vw"
                 className="object-cover image-zoom"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-stone-900/40 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-stone-900/40 to-transparent" />
               <div className="absolute bottom-4 left-4 text-white">
                 <div className="text-xs tracking-widest uppercase opacity-70">Featured</div>
                 <div className="text-lg font-medium">Capsule Interior</div>
@@ -114,10 +114,10 @@ export default function Rooms() {
               </div>
 
               {/* Features */}
-              <div className="space-y-4 flex-grow">
+              <div className="space-y-4 grow">
                 {capsuleFeatures.map((feature, index) => (
                   <div key={index} className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-sm">
+                    <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-xs">
                       <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
                           d="M5 13l4 4L19 7" />
@@ -182,7 +182,7 @@ export default function Rooms() {
         </div>
 
         {/* Night Market Feature - Unique Selling Point */}
-        <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+        <div className="bg-linear-to-br from-amber-50 to-orange-50 rounded-3xl p-8 md:p-12 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-amber-100 rounded-full -translate-y-1/2 translate-x-1/2 opacity-50" />
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-orange-100 rounded-full translate-y-1/2 -translate-x-1/2 opacity-50" />
 
@@ -204,19 +204,19 @@ export default function Rooms() {
               </p>
               <div className="space-y-3 text-stone-600">
                 <div className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span><strong>500+ meters</strong> of food stalls right in front of hostel</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span><strong>Authentic Malaysian street food</strong> — satay, oyster omelette, claypot rice</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span><strong>Local prices</strong> — eat like a local, pay like a local</span>
@@ -234,7 +234,7 @@ export default function Rooms() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-stone-900/60 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 text-white">
                 <div className="text-sm font-medium">Pasar Malam Taman Pelangi</div>
                 <div className="text-xs opacity-80">Every Tuesday, 4:30 PM - 9 PM</div>
@@ -250,7 +250,7 @@ export default function Rooms() {
           </h3>
           <div className="grid sm:grid-cols-2 gap-6 text-left">
             <div className="flex gap-4">
-              <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center shrink-0">
                 <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -261,7 +261,7 @@ export default function Rooms() {
               </div>
             </div>
             <div className="flex gap-4">
-              <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
                 <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -272,7 +272,7 @@ export default function Rooms() {
               </div>
             </div>
             <div className="flex gap-4">
-              <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center shrink-0">
                 <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
@@ -283,7 +283,7 @@ export default function Rooms() {
               </div>
             </div>
             <div className="flex gap-4">
-              <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center shrink-0">
                 <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>

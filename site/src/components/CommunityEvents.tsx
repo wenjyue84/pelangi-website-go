@@ -35,21 +35,21 @@ export default function CommunityEvents() {
                         {/* Vibe Grid */}
                         <div className="grid grid-cols-2 gap-4">
                             <div className="bg-stone-100 rounded-2xl p-6 h-48 flex items-center justify-center relative overflow-hidden group">
-                                <div className="absolute inset-0 bg-gradient-to-br from-amber-100 to-orange-50 opacity-50"></div>
+                                <div className="absolute inset-0 bg-linear-to-br from-amber-100 to-orange-50 opacity-50"></div>
                                 <div className="relative z-10 text-center">
                                     <span className="text-4xl mb-2 block">🤝</span>
                                     <span className="font-medium text-stone-800">Make Friends</span>
                                 </div>
                             </div>
                             <div className="bg-stone-100 rounded-2xl p-6 h-48 flex items-center justify-center relative overflow-hidden group">
-                                <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-indigo-50 opacity-50"></div>
+                                <div className="absolute inset-0 bg-linear-to-br from-blue-100 to-indigo-50 opacity-50"></div>
                                 <div className="relative z-10 text-center">
                                     <span className="text-4xl mb-2 block">🎸</span>
                                     <span className="font-medium text-stone-800">Live Moments</span>
                                 </div>
                             </div>
                             <div className="bg-stone-100 rounded-2xl p-6 h-48 flex items-center justify-center relative overflow-hidden group col-span-2">
-                                <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 to-green-50 opacity-50"></div>
+                                <div className="absolute inset-0 bg-linear-to-br from-emerald-100 to-green-50 opacity-50"></div>
                                 <div className="relative z-10 text-center flex items-center gap-4 justify-center">
                                     <div className="text-center">
                                         <span className="text-4xl mb-2 block">🌱</span>
@@ -65,7 +65,7 @@ export default function CommunityEvents() {
                     </div>
 
                     {/* Right Column: Upcoming Public Holidays */}
-                    <div className="bg-gradient-to-br from-red-50 to-orange-50 rounded-3xl p-8 border border-red-100 shadow-sm relative overflow-hidden">
+                    <div className="bg-linear-to-br from-red-50 to-orange-50 rounded-3xl p-8 border border-red-100 shadow-xs relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-amber-100 rounded-full blur-3xl -mr-16 -mt-16 opacity-60 pointer-events-none"></div>
 
                         <div className="flex items-center justify-between mb-8 relative z-10">
@@ -73,16 +73,16 @@ export default function CommunityEvents() {
                                 <h3 className="font-display text-2xl font-medium text-stone-900">Malaysia Public Holidays</h3>
                                 <p className="text-sm text-stone-500 mt-1">Plan your trip around these dates</p>
                             </div>
-                            <span className="bg-white border border-red-200 px-3 py-1 rounded-full text-xs font-bold text-red-600 shadow-sm">
+                            <span className="bg-white border border-red-200 px-3 py-1 rounded-full text-xs font-bold text-red-600 shadow-xs">
                                 2026
                             </span>
                         </div>
 
                         <div className="space-y-3 relative z-10">
                             {upcomingHolidays.map((holiday) => (
-                                <div key={holiday.id} className="bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-white/50 flex gap-4 hover:shadow-md transition-shadow group">
+                                <div key={holiday.id} className="bg-white/80 backdrop-blur-xs p-4 rounded-xl border border-white/50 flex gap-4 hover:shadow-md transition-shadow group">
                                     {/* Date Box */}
-                                    <div className="flex-shrink-0 w-14 h-14 bg-red-100 rounded-lg flex flex-col items-center justify-center text-center border border-red-200">
+                                    <div className="shrink-0 w-14 h-14 bg-red-100 rounded-lg flex flex-col items-center justify-center text-center border border-red-200">
                                         <span className="text-[10px] font-bold uppercase tracking-wide text-red-500">
                                             {new Date(holiday.date).toLocaleDateString('en-US', { month: 'short' })}
                                         </span>
@@ -92,7 +92,7 @@ export default function CommunityEvents() {
                                     </div>
 
                                     {/* Content */}
-                                    <div className="flex-grow">
+                                    <div className="grow">
                                         <h4 className="font-semibold text-stone-900">{holiday.title}</h4>
                                         <p className="text-sm text-stone-500 line-clamp-1">{holiday.description}</p>
                                     </div>

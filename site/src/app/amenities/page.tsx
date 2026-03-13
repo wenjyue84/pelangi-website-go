@@ -168,7 +168,7 @@ export default function AmenitiesPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="pt-28 pb-16 bg-gradient-to-br from-stone-50 to-amber-50">
+      <section className="pt-28 pb-16 bg-linear-to-br from-stone-50 to-amber-50">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h1 className="font-display text-5xl font-medium mb-6 text-stone-900">
@@ -202,7 +202,7 @@ export default function AmenitiesPage() {
             {amenities.map((amenity, index) => (
               <div
                 key={index}
-                className="bg-white p-8 rounded-2xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow"
+                className="bg-white p-8 rounded-2xl border border-stone-100 shadow-xs hover:shadow-md transition-shadow"
               >
                 <div className="w-14 h-14 bg-amber-50 rounded-full flex items-center justify-center text-amber-800 mb-6">
                   {amenity.icon}
@@ -355,7 +355,7 @@ export default function AmenitiesPage() {
       </section>
 
       {/* Sustainability Section */}
-      <section className="py-20 bg-gradient-to-br from-green-50 to-emerald-50">
+      <section className="py-20 bg-linear-to-br from-green-50 to-emerald-50">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
@@ -369,9 +369,9 @@ export default function AmenitiesPage() {
 
             <div className="grid md:grid-cols-2 gap-8 mb-8">
               {/* Eco Practice 1 */}
-              <div className="bg-white p-8 rounded-2xl border border-emerald-100 shadow-sm">
+              <div className="bg-white p-8 rounded-2xl border border-emerald-100 shadow-xs">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 flex-shrink-0">
+                  <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 shrink-0">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v12m8-8a8 8 0 11-16 0 8 8 0 0116 0z" />
                     </svg>
@@ -388,9 +388,9 @@ export default function AmenitiesPage() {
               </div>
 
               {/* Eco Practice 2 */}
-              <div className="bg-white p-8 rounded-2xl border border-emerald-100 shadow-sm">
+              <div className="bg-white p-8 rounded-2xl border border-emerald-100 shadow-xs">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 flex-shrink-0">
+                  <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 shrink-0">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
@@ -407,9 +407,9 @@ export default function AmenitiesPage() {
               </div>
 
               {/* Eco Practice 3 */}
-              <div className="bg-white p-8 rounded-2xl border border-emerald-100 shadow-sm">
+              <div className="bg-white p-8 rounded-2xl border border-emerald-100 shadow-xs">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 flex-shrink-0">
+                  <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 shrink-0">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m0 0l8 4m-8-4v10l8 4v-10m0 0l8 4m-8-4v10m0 0l-8-4m8 4l8-4" />
                     </svg>
@@ -426,9 +426,9 @@ export default function AmenitiesPage() {
               </div>
 
               {/* Eco Practice 4 */}
-              <div className="bg-white p-8 rounded-2xl border border-emerald-100 shadow-sm">
+              <div className="bg-white p-8 rounded-2xl border border-emerald-100 shadow-xs">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 flex-shrink-0">
+                  <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 shrink-0">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>

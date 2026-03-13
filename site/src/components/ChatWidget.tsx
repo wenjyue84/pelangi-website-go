@@ -223,10 +223,10 @@ export default function ChatWidget() {
       >
         {/* Header */}
         <div
-          className="flex items-center gap-3 px-4 py-3 text-white flex-shrink-0"
+          className="flex items-center gap-3 px-4 py-3 text-white shrink-0"
           style={{ background: 'linear-gradient(135deg, #a68b64 0%, #715d47 100%)' }}
         >
-          <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-xl flex-shrink-0">
+          <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-xl shrink-0">
             🏨
           </div>
           <div className="flex-1 min-w-0">
@@ -240,7 +240,7 @@ export default function ChatWidget() {
           </div>
           <button
             onClick={() => setIsOpen(false)}
-            className="text-white/70 hover:text-white p-1 rounded-lg transition flex-shrink-0"
+            className="text-white/70 hover:text-white p-1 rounded-lg transition shrink-0"
             aria-label="Close chat"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -265,10 +265,10 @@ export default function ChatWidget() {
               )}
               <div
                 className={`
-                  max-w-[82%] px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed break-words
+                  max-w-[82%] px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed wrap-break-word
                   ${msg.role === 'user'
                     ? 'text-white rounded-br-[4px]'
-                    : 'bg-white text-stone-800 rounded-bl-[4px] shadow-sm border border-stone-100'
+                    : 'bg-white text-stone-800 rounded-bl-[4px] shadow-xs border border-stone-100'
                   }
                 `}
                 style={msg.role === 'user' ? { background: '#a68b64' } : {}}
@@ -287,7 +287,7 @@ export default function ChatWidget() {
           {/* Typing indicator */}
           {sending && (
             <div className="flex items-start" style={{ animation: 'fadeUp 0.2s ease-out' }}>
-              <div className="bg-white rounded-2xl rounded-bl-[4px] shadow-sm border border-stone-100 px-4 py-3">
+              <div className="bg-white rounded-2xl rounded-bl-[4px] shadow-xs border border-stone-100 px-4 py-3">
                 <div className="flex gap-1.5 items-center">
                   {[0, 150, 300].map(delay => (
                     <span
@@ -308,7 +308,7 @@ export default function ChatWidget() {
         </div>
 
         {/* Input area */}
-        <div className="bg-white border-t border-stone-100 px-3 py-2.5 flex gap-2 items-end flex-shrink-0">
+        <div className="bg-white border-t border-stone-100 px-3 py-2.5 flex gap-2 items-end shrink-0">
           <textarea
             ref={inputRef}
             value={input}
@@ -319,7 +319,7 @@ export default function ChatWidget() {
             disabled={sending}
             autoComplete="on"
             className="
-              flex-1 resize-none text-sm outline-none transition
+              flex-1 resize-none text-sm outline-hidden transition
               border border-stone-200 rounded-xl px-3 py-2
               focus:border-amber-400 focus:ring-1 focus:ring-amber-200
               disabled:opacity-60 placeholder:text-stone-500
@@ -331,7 +331,7 @@ export default function ChatWidget() {
             onClick={sendMessage}
             disabled={!canSend}
             className="
-              w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0
+              w-9 h-9 rounded-full flex items-center justify-center shrink-0
               transition hover:brightness-110 active:scale-95
               disabled:opacity-40 disabled:cursor-not-allowed
             "
@@ -367,7 +367,7 @@ export default function ChatWidget() {
           w-14 h-14 rounded-full shadow-xl
           flex items-center justify-center
           transition-all duration-200 hover:scale-110 active:scale-95
-          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-400
+          focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-amber-400
         "
         style={{ background: 'linear-gradient(135deg, #a68b64 0%, #715d47 100%)' }}
         aria-label={isOpen ? 'Close chat' : 'Open chat'}

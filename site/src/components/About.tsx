@@ -7,7 +7,7 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           {/* Image with elegant frame */}
           <div className="relative group">
-            <div className="absolute -inset-4 bg-gradient-to-br from-amber-100 to-orange-100 rounded-3xl opacity-60" />
+            <div className="absolute -inset-4 bg-linear-to-br from-amber-100 to-orange-100 rounded-3xl opacity-60" />
             <div className="relative h-[450px] md:h-[550px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/images/exterior.JPG"

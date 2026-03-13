@@ -158,7 +158,7 @@ export default function GuidePage() {
                     </div>
 
                     {/* Quick Nav */}
-                    <nav className="bg-white border border-stone-200 rounded-2xl p-6 mb-16 shadow-sm">
+                    <nav className="bg-white border border-stone-200 rounded-2xl p-6 mb-16 shadow-xs">
                         <p className="text-sm font-semibold text-stone-500 uppercase tracking-wider mb-4">Jump to section</p>
                         <div className="flex flex-wrap gap-3 text-sm">
                             {[
@@ -256,7 +256,7 @@ export default function GuidePage() {
                         <p className="text-stone-500 mb-8">MYR is the local currency. Most places accept cash only.</p>
 
                         <div className="grid md:grid-cols-2 gap-6">
-                            <div className="bg-white rounded-2xl border border-stone-100 shadow-sm p-6">
+                            <div className="bg-white rounded-2xl border border-stone-100 shadow-xs p-6">
                                 <h3 className="font-bold text-lg text-stone-900 mb-4">Best places to exchange</h3>
                                 <ul className="space-y-3 text-stone-700">
                                     <li className="flex gap-3">
@@ -316,7 +316,7 @@ export default function GuidePage() {
                         </p>
 
                         <div className="grid md:grid-cols-2 gap-6">
-                            <div className="bg-white rounded-2xl border border-stone-100 shadow-sm p-6">
+                            <div className="bg-white rounded-2xl border border-stone-100 shadow-xs p-6">
                                 <h3 className="font-bold text-lg text-stone-900 mb-1">Causeway (Woodlands)</h3>
                                 <p className="text-sm text-amber-700 font-medium mb-4">Open 24 hours</p>
                                 <ul className="space-y-2 text-sm text-stone-700">
@@ -327,7 +327,7 @@ export default function GuidePage() {
                                     <li><strong>Walk across:</strong> Possible but not recommended (1.5 km)</li>
                                 </ul>
                             </div>
-                            <div className="bg-white rounded-2xl border border-stone-100 shadow-sm p-6">
+                            <div className="bg-white rounded-2xl border border-stone-100 shadow-xs p-6">
                                 <h3 className="font-bold text-lg text-stone-900 mb-1">Second Link (Tuas)</h3>
                                 <p className="text-sm text-green-700 font-medium mb-4">Less crowded, faster</p>
                                 <ul className="space-y-2 text-sm text-stone-700">
@@ -360,7 +360,7 @@ export default function GuidePage() {
                         </p>
                         <div className="space-y-4">
                             {hawkerCentres.map((h, i) => (
-                                <div key={i} className="bg-white p-6 rounded-2xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow flex flex-col sm:flex-row sm:items-start gap-4">
+                                <div key={i} className="bg-white p-6 rounded-2xl border border-stone-100 shadow-xs hover:shadow-md transition-shadow flex flex-col sm:flex-row sm:items-start gap-4">
                                     <div className="flex-1">
                                         <h3 className="font-bold text-lg text-stone-900">{h.name}</h3>
                                         <p className="text-stone-600 mt-1">{h.desc}</p>
@@ -383,7 +383,7 @@ export default function GuidePage() {
                                 </h2>
                                 <div className="space-y-4">
                                     {eats.map((place, i) => (
-                                        <div key={i} className="bg-white p-5 rounded-2xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow">
+                                        <div key={i} className="bg-white p-5 rounded-2xl border border-stone-100 shadow-xs hover:shadow-md transition-shadow">
                                             <h3 className="font-bold text-lg text-stone-900">{place.name}</h3>
                                             <div className="flex gap-3 mb-2">
                                                 <p className="text-sm font-medium text-amber-700">{place.dist}</p>
@@ -401,7 +401,7 @@ export default function GuidePage() {
                                 </h2>
                                 <div className="space-y-4">
                                     {shopping.map((place, i) => (
-                                        <div key={i} className="bg-white p-5 rounded-2xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow">
+                                        <div key={i} className="bg-white p-5 rounded-2xl border border-stone-100 shadow-xs hover:shadow-md transition-shadow">
                                             <h3 className="font-bold text-lg text-stone-900">{place.name}</h3>
                                             <p className="text-sm font-medium text-amber-700 mb-2">{place.dist}</p>
                                             <p className="text-stone-600 text-sm">{place.desc}</p>
@@ -462,7 +462,7 @@ export default function GuidePage() {
                                     ],
                                 },
                             ].map((s) => (
-                                <div key={s.category} className={`bg-white rounded-2xl border border-stone-100 shadow-sm p-6 border-l-4 ${s.color}`}>
+                                <div key={s.category} className={`bg-white rounded-2xl border border-stone-100 shadow-xs p-6 border-l-4 ${s.color}`}>
                                     <h3 className="font-bold text-lg text-stone-900 mb-4">{s.category}</h3>
                                     <ul className="space-y-2">
                                         {s.tips.map((tip) => (
@@ -486,7 +486,7 @@ export default function GuidePage() {
 
                         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
                             {apps.map((app) => (
-                                <div key={app.name} className="bg-white rounded-2xl border border-stone-100 shadow-sm p-5 hover:shadow-md transition-shadow">
+                                <div key={app.name} className="bg-white rounded-2xl border border-stone-100 shadow-xs p-5 hover:shadow-md transition-shadow">
                                     <div className="text-3xl mb-3">{app.icon}</div>
                                     <h3 className="font-bold text-base text-stone-900 mb-1">{app.name}</h3>
                                     <p className="text-sm text-stone-600">{app.desc}</p>

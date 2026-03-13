@@ -70,7 +70,7 @@ export default function Booking() {
               <span className="font-display text-6xl md:text-7xl font-medium text-white">RM35</span>
               <span className="text-amber-300 text-sm">/night</span>
             </div>
-            <div className="mt-3 h-px w-24 bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
+            <div className="mt-3 h-px w-24 bg-linear-to-r from-transparent via-amber-400 to-transparent" />
           </div>
 
           {/* Booking Platforms */}
@@ -97,7 +97,7 @@ export default function Booking() {
           </div>
 
           {/* Direct Contact */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-white/10">
+          <div className="bg-white/10 backdrop-blur-xs rounded-3xl p-8 md:p-10 border border-white/10">
             <h3 className="text-xs tracking-widest uppercase text-amber-300 mb-6">
               Or Contact Us Directly
             </h3>

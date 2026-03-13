@@ -3641,3 +3641,69 @@ Here is the technical brief based on the user story and project files.
 - `SENTRY_CSP_REPORT_URI` does NOT need the `NEXT_PUBLIC_` prefix — middleware runs server-side
 - `report-uri` is the legacy directive; newer `report-to` (Reporting API v1) is supported by Sentry but `report-uri` has broader browser support and simpler setup
 
+## Iteration 4 - Fri, Mar 13, 2026  9:23:07 AM
+Incomplete: Add aggregateRating and starRating to LodgingBusiness schema from real review platform data (ID: US-084) — attempt 1/3
+
+
+## Pre-analysis for US-084 (Gemini 2.5 Pro)
+This user story is for a Next.js/TypeScript project, not a Frappe/Python one. The following technical brief is based on the JSON content and the project's file structure.
+
+**Subject:** Technical Brief for US-084: LodgingBusiness Schema Enhancement
+
+**1. Files to Modify:**
+*   `site/src/components/StructuredData.tsx`: Primary target. This file likely generates the `LodgingBusiness` JSON-LD schema.
+*   `site/src/data/config.ts` (or create `site/src/data/ratings.ts`): A new or existing constants file to store and manage the review data as specified.
+*   `site/src/components/Reviews.tsx`: Review for context, but no changes are expected as it only handles visual display.
+
+**2. Involved Components & Schemas:**
+*   **Component:** `StructuredData.tsx` will be modified to enhance the JSON-LD script.
+*   **Schema:** The existing `LodgingBusiness` schema.
+*   **New Schema Types:** `AggregateRating` and `Rating` types from schema.org will be nested within `LodgingBusiness`.
+
+**3. Implementation Approach:**
+1.  In a data/config file, define a constant holding the real-world rating data (e.g., `const hostelworldRating = { ratingValue: 4.7, reviewCount: 1590 };`).
+2.  Import this constant into `StructuredData.tsx`.
+3.  Inside the `LodgingBusiness` schema object, add an `aggregateRating` property.
+4.  Populate it with: `{"@type": "AggregateRating", "ratingValue": hostelworldRating.ratingValue, "bestRating": "5", "worstRating": "1", "reviewCount": hostelworldRating.reviewCount}`.
+5.  Also add the `starRating` property using the `Rating` type, as requested.
+
+**4. Edge Cases & Gotchas:**
+*   **Data Source:** Per the user story, rating values must be from a real, independent review platform (e.g., Hostelworld, Google) and not fabricated.
+*   **Validation:** Use the Google Rich Results Test to validate the schema post-implementation. Ensure no "unverified" warnings appear.
+*   **Data Types:** Ensure `ratingValue` and `reviewCount` are rendered as numbers in the final JSON-LD, not strings.
+*   **Quarterly Updates:** The constant-based approach facilitates the required quarterly updates. A code comment should be added to remind developers of this process.
+
+
+## Iteration 63 - Story: US-071 - Upgrade Tailwind CSS from v3 to v4
+
+### What was implemented
+- Upgraded `tailwindcss` from v3.4.17 to v4.2.1
+- Installed `@tailwindcss/postcss@4.2.1` as the new PostCSS plugin
+- Removed `autoprefixer` (built into v4)
+- Deleted `tailwind.config.ts` — migrated all config to CSS `@theme` block in `globals.css`
+- Migrated all custom colors (primary, accent, sand), fonts, animations, keyframes to CSS custom properties in `@theme {}`
+- Replaced `@tailwind base/components/utilities` with `@import 'tailwindcss'`
+- Converted `@layer components` custom classes to `@utility` blocks (v4 syntax)
+- Added `@plugin "@tailwindcss/typography"` for v4-compatible plugin loading
+- Updated PostCSS config to use `@tailwindcss/postcss` instead of `tailwindcss` + `autoprefixer`
+- Removed conflicting `@utility group` block that would override Tailwind's built-in group utility
+- Applied class renames across 24 source files (82 occurrences):
+  - `shadow-sm` → `shadow-xs`
+  - `outline-none` → `outline-hidden`
+  - `backdrop-blur-sm` → `backdrop-blur-xs`
+  - `rounded` (bare) → `rounded-sm`
+  - `bg-gradient-to-r` → `bg-linear-to-r`
+- `npx tsc --noEmit` passes with zero errors
+- `next build` compiles successfully in 18.8s
+
+### Patterns discovered
+- `npx @tailwindcss/upgrade@latest --force` handles most migration automatically (config, CSS, class renames in templates)
+- v4 uses `@utility` blocks instead of `@layer components` / `@layer utilities` for custom utilities
+- v4 uses `@plugin` directive in CSS instead of `require()` in JS config for plugin loading
+- Google Fonts `@import url()` gets `layer(base)` appended for cascade layer assignment
+- `@theme {}` block uses CSS custom property naming: `--color-*`, `--font-*`, `--text-*`, `--tracking-*`, `--animate-*`
+
+### Gotchas
+- The automated upgrade tool creates `@utility group { ... }` which conflicts with Tailwind's built-in `group` utility — must be manually removed
+- `@tailwindcss/typography@0.5.19` works with v4 but needs `@plugin "@tailwindcss/typography"` in CSS (upgrade tool doesn't add this)
+- Pre-existing ESLint errors in SearchDialog.tsx and WebVitalsReporter.tsx cause `next build` lint step to fail (not related to Tailwind upgrade — compilation itself succeeds)

@@ -47,7 +47,7 @@ export default function NewsletterSignupForm() {
                   required
                   autoComplete="given-name"
                   placeholder="Your first name"
-                  className="w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-stone-900 placeholder:text-stone-400 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
+                  className="w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-stone-900 placeholder:text-stone-400 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20"
                 />
               </div>
               <div className="flex-1">
@@ -64,7 +64,7 @@ export default function NewsletterSignupForm() {
                   required
                   autoComplete="email"
                   placeholder="you@example.com"
-                  className="w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-stone-900 placeholder:text-stone-400 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
+                  className="w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-stone-900 placeholder:text-stone-400 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20"
                 />
               </div>
             </div>
@@ -78,7 +78,7 @@ export default function NewsletterSignupForm() {
             <button
               type="submit"
               disabled={isPending}
-              className="w-full sm:w-auto rounded-lg bg-amber-700 px-8 py-2.5 text-sm font-medium text-white transition-colors hover:bg-amber-800 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full sm:w-auto rounded-lg bg-amber-700 px-8 py-2.5 text-sm font-medium text-white transition-colors hover:bg-amber-800 focus:outline-hidden focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isPending ? "Subscribing…" : "Subscribe"}
             </button>

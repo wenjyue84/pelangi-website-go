@@ -64,7 +64,7 @@ export default function NotFound() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="px-4 py-2 rounded-full bg-white border border-stone-200 text-stone-700 hover:border-amber-400 hover:text-amber-600 transition-colors text-sm font-medium shadow-sm"
+                  className="px-4 py-2 rounded-full bg-white border border-stone-200 text-stone-700 hover:border-amber-400 hover:text-amber-600 transition-colors text-sm font-medium shadow-xs"
                 >
                   {link.label}
                 </Link>

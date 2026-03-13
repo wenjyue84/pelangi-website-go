@@ -111,13 +111,13 @@ export default function SearchDialog({
 
   return (
     <div
-      className="fixed inset-0 z-[60] flex items-start justify-center pt-[15vh]"
+      className="fixed inset-0 z-60 flex items-start justify-center pt-[15vh]"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
       {/* Backdrop */}
-      <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" aria-hidden="true" />
+      <div className="fixed inset-0 bg-black/40 backdrop-blur-xs" aria-hidden="true" />
 
       {/* Dialog */}
       <div
@@ -142,14 +142,14 @@ export default function SearchDialog({
               setActiveIndex(0);
             }}
             placeholder="Search blog posts and guides..."
-            className="flex-1 text-base text-stone-900 placeholder:text-stone-400 bg-transparent outline-none"
+            className="flex-1 text-base text-stone-900 placeholder:text-stone-400 bg-transparent outline-hidden"
             aria-autocomplete="list"
             aria-controls="search-results"
             aria-activedescendant={
               results.length > 0 ? `search-result-${activeIndex}` : undefined
             }
           />
-          <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 text-xs text-stone-400 bg-stone-100 rounded border border-stone-200 font-mono">
+          <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 text-xs text-stone-400 bg-stone-100 rounded-sm border border-stone-200 font-mono">
             Esc
           </kbd>
         </div>
@@ -206,16 +206,16 @@ export default function SearchDialog({
         {results.length > 0 && (
           <div className="px-4 py-2 border-t border-stone-100 flex items-center gap-4 text-[11px] text-stone-400">
             <span className="flex items-center gap-1">
-              <kbd className="px-1 py-0.5 bg-stone-100 rounded border border-stone-200 font-mono text-[10px]">&uarr;</kbd>
-              <kbd className="px-1 py-0.5 bg-stone-100 rounded border border-stone-200 font-mono text-[10px]">&darr;</kbd>
+              <kbd className="px-1 py-0.5 bg-stone-100 rounded-sm border border-stone-200 font-mono text-[10px]">&uarr;</kbd>
+              <kbd className="px-1 py-0.5 bg-stone-100 rounded-sm border border-stone-200 font-mono text-[10px]">&darr;</kbd>
               navigate
             </span>
             <span className="flex items-center gap-1">
-              <kbd className="px-1 py-0.5 bg-stone-100 rounded border border-stone-200 font-mono text-[10px]">&crarr;</kbd>
+              <kbd className="px-1 py-0.5 bg-stone-100 rounded-sm border border-stone-200 font-mono text-[10px]">&crarr;</kbd>
               open
             </span>
             <span className="flex items-center gap-1">
-              <kbd className="px-1 py-0.5 bg-stone-100 rounded border border-stone-200 font-mono text-[10px]">esc</kbd>
+              <kbd className="px-1 py-0.5 bg-stone-100 rounded-sm border border-stone-200 font-mono text-[10px]">esc</kbd>
               close
             </span>
           </div>

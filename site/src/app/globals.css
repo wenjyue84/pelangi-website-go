@@ -1,8 +1,219 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap')
+layer(base);
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-primary-50: #faf8f5;
+  --color-primary-100: #f5f0e8;
+  --color-primary-200: #e8ddd0;
+  --color-primary-300: #d4c4ad;
+  --color-primary-400: #bda685;
+  --color-primary-500: #a68b64;
+  --color-primary-600: #8b7355;
+  --color-primary-700: #715d47;
+  --color-primary-800: #5c4c3c;
+  --color-primary-900: #4a3f33;
+
+  --color-accent-50: #fdf8f6;
+  --color-accent-100: #f9ede8;
+  --color-accent-200: #f4dcd3;
+  --color-accent-300: #ecc4b5;
+  --color-accent-400: #e0a48d;
+  --color-accent-500: #d4846a;
+  --color-accent-600: #c26a4f;
+  --color-accent-700: #a25540;
+  --color-accent-800: #864738;
+  --color-accent-900: #6e3d31;
+
+  --color-sand-50: #fafaf9;
+  --color-sand-100: #f5f5f4;
+  --color-sand-200: #e7e5e4;
+  --color-sand-300: #d6d3d1;
+  --color-sand-400: #a8a29e;
+  --color-sand-500: #78716c;
+  --color-sand-600: #57534e;
+  --color-sand-700: #44403c;
+  --color-sand-800: #292524;
+  --color-sand-900: #1c1917;
+
+  --font-sans: Inter, system-ui, sans-serif;
+  --font-display: Playfair Display, Georgia, serif;
+
+  --text-2xs: 0.65rem;
+  --text-2xs--line-height: 1rem;
+
+  --tracking-widest: 0.2em;
+
+  --animate-fade-in: fadeIn 0.6s ease-out forwards;
+  --animate-slide-up: slideUp 0.6s ease-out forwards;
+  --animate-scale-in: scaleIn 0.4s ease-out forwards;
+
+  --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+  --background-image-noise: url('/images/noise.png');
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes slideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes scaleIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility btn-primary {
+  /* Primary Button - Warm, sophisticated */
+  @apply bg-stone-700 hover:bg-stone-800 text-white font-medium
+           py-3.5 px-8 rounded-full transition-all duration-300
+           shadow-xs hover:shadow-md cursor-pointer
+           tracking-wide text-sm uppercase;
+}
+
+@utility btn-secondary {
+  /* Secondary Button - Minimal outline */
+  @apply bg-transparent hover:bg-stone-100 text-stone-700
+           font-medium py-3.5 px-8 rounded-full
+           border border-stone-300 hover:border-stone-400
+           transition-all duration-300 cursor-pointer
+           tracking-wide text-sm uppercase;
+}
+
+@utility section-padding {
+  /* Section spacing - More breathing room */
+  @apply py-20 md:py-28 lg:py-32 px-6 md:px-8;
+}
+
+@utility container-custom {
+  /* Container */
+  @apply max-w-6xl mx-auto;
+}
+
+@utility section-label {
+  /* Section label - Elegant uppercase */
+  @apply text-xs font-medium tracking-widest uppercase text-amber-700 mb-4;
+}
+
+@utility section-heading {
+  /* Section heading - Serif display font */
+  @apply text-3xl md:text-4xl lg:text-5xl font-medium text-stone-900
+           leading-tight tracking-tight;
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+@utility body-text {
+  /* Body text */
+  @apply text-stone-600 leading-relaxed;
+}
+
+@utility card {
+  /* Card with subtle hover */
+  @apply bg-white rounded-2xl p-6 md:p-8
+           shadow-xs hover:shadow-md transition-shadow duration-300
+           border border-stone-100;
+}
+
+@utility image-frame {
+  /* Image container with elegant corners */
+  @apply rounded-2xl overflow-hidden shadow-lg;
+}
+
+@utility divider {
+  /* Divider */
+  @apply h-px bg-linear-to-r from-transparent via-stone-200 to-transparent;
+}
+
+@utility icon-box {
+  /* Feature icon container */
+  @apply w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center
+           text-amber-700;
+}
+
+@utility font-display {
+  /* Display font utility */
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+@utility text-gradient {
+  /* Text gradient */
+  @apply bg-linear-to-r from-amber-700 to-orange-600 bg-clip-text text-transparent;
+}
+
+@utility image-zoom {
+  /* Smooth image zoom on hover */
+  @apply transition-transform duration-700 ease-out;
+
+  .group:hover & {
+    @apply scale-105;
+  }
+}
+
+@utility delay-100 {
+  /* Fade in animation delays */
+  animation-delay: 100ms;
+}
+
+@utility delay-200 {
+  animation-delay: 200ms;
+}
+
+@utility delay-300 {
+  animation-delay: 300ms;
+}
+
+@utility delay-400 {
+  animation-delay: 400ms;
+}
+
+@utility scrollbar-hide {
+  /* Hide scrollbar for horizontal scroll sections */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
 
 @layer base {
   html {
@@ -25,112 +236,6 @@
   ::selection {
     background-color: #e8ddd0;
     color: #4a3f33;
-  }
-}
-
-@layer components {
-  /* Primary Button - Warm, sophisticated */
-  .btn-primary {
-    @apply bg-stone-700 hover:bg-stone-800 text-white font-medium
-           py-3.5 px-8 rounded-full transition-all duration-300
-           shadow-sm hover:shadow-md cursor-pointer
-           tracking-wide text-sm uppercase;
-  }
-
-  /* Secondary Button - Minimal outline */
-  .btn-secondary {
-    @apply bg-transparent hover:bg-stone-100 text-stone-700
-           font-medium py-3.5 px-8 rounded-full
-           border border-stone-300 hover:border-stone-400
-           transition-all duration-300 cursor-pointer
-           tracking-wide text-sm uppercase;
-  }
-
-  /* Section spacing - More breathing room */
-  .section-padding {
-    @apply py-20 md:py-28 lg:py-32 px-6 md:px-8;
-  }
-
-  /* Container */
-  .container-custom {
-    @apply max-w-6xl mx-auto;
-  }
-
-  /* Section label - Elegant uppercase */
-  .section-label {
-    @apply text-xs font-medium tracking-widest uppercase text-amber-700 mb-4;
-  }
-
-  /* Section heading - Serif display font */
-  .section-heading {
-    @apply text-3xl md:text-4xl lg:text-5xl font-medium text-stone-900
-           leading-tight tracking-tight;
-    font-family: 'Playfair Display', Georgia, serif;
-  }
-
-  /* Body text */
-  .body-text {
-    @apply text-stone-600 leading-relaxed;
-  }
-
-  /* Card with subtle hover */
-  .card {
-    @apply bg-white rounded-2xl p-6 md:p-8
-           shadow-sm hover:shadow-md transition-shadow duration-300
-           border border-stone-100;
-  }
-
-  /* Image container with elegant corners */
-  .image-frame {
-    @apply rounded-2xl overflow-hidden shadow-lg;
-  }
-
-  /* Divider */
-  .divider {
-    @apply h-px bg-gradient-to-r from-transparent via-stone-200 to-transparent;
-  }
-
-  /* Feature icon container */
-  .icon-box {
-    @apply w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center
-           text-amber-700;
-  }
-}
-
-@layer utilities {
-  /* Display font utility */
-  .font-display {
-    font-family: 'Playfair Display', Georgia, serif;
-  }
-
-  /* Text gradient */
-  .text-gradient {
-    @apply bg-gradient-to-r from-amber-700 to-orange-600 bg-clip-text text-transparent;
-  }
-
-  /* Smooth image zoom on hover */
-  .image-zoom {
-    @apply transition-transform duration-700 ease-out;
-  }
-
-  .group:hover .image-zoom {
-    @apply scale-105;
-  }
-
-  /* Fade in animation delays */
-  .delay-100 { animation-delay: 100ms; }
-  .delay-200 { animation-delay: 200ms; }
-  .delay-300 { animation-delay: 300ms; }
-  .delay-400 { animation-delay: 400ms; }
-
-  /* Hide scrollbar for horizontal scroll sections */
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
   }
 }
 

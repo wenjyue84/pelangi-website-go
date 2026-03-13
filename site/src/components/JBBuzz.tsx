@@ -107,7 +107,7 @@ export default function JBBuzz() {
                   className="block bg-white rounded-2xl border border-stone-100 p-5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center border border-amber-100">
+                    <div className="shrink-0 w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center border border-amber-100">
                       <span className="text-lg">
                         {item.source === "Malay Mail"
                           ? "📰"
@@ -118,7 +118,7 @@ export default function JBBuzz() {
                           : "📍"}
                       </span>
                     </div>
-                    <div className="flex-grow min-w-0">
+                    <div className="grow min-w-0">
                       <h4 className="font-semibold text-stone-900 group-hover:text-amber-700 transition-colors leading-snug mb-1">
                         {item.title}
                       </h4>

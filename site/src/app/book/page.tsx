@@ -94,7 +94,7 @@ export default function BookPage() {
       <Header />
 
       {/* Hero */}
-      <section className="pt-28 pb-16 bg-gradient-to-b from-amber-800 to-amber-900 text-white relative overflow-hidden">
+      <section className="pt-28 pb-16 bg-linear-to-b from-amber-800 to-amber-900 text-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-96 h-96 bg-amber-700/50 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-600/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
@@ -160,15 +160,15 @@ export default function BookPage() {
               </p>
               <ul className="text-left space-y-3 text-sm text-stone-600">
                 <li className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                  <svg className="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                   Private capsule pod with door
                 </li>
                 <li className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                  <svg className="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                   Free WiFi, A/C, personal locker
                 </li>
                 <li className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                  <svg className="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                   Shared kitchen & laundry access
                 </li>
               </ul>
@@ -189,15 +189,15 @@ export default function BookPage() {
               </p>
               <ul className="text-left space-y-3 text-sm text-stone-600">
                 <li className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                  <svg className="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                   Everything in nightly stay
                 </li>
                 <li className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                  <svg className="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                   Ideal for remote workers & digital nomads
                 </li>
                 <li className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                  <svg className="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                   Flexible start date
                 </li>
               </ul>
@@ -236,7 +236,7 @@ export default function BookPage() {
           </div>
 
           {/* OTA vs Direct Savings Comparison Callout */}
-          <div className="mt-12 max-w-3xl mx-auto bg-gradient-to-r from-amber-50 to-orange-50 rounded-3xl p-8 border border-amber-200">
+          <div className="mt-12 max-w-3xl mx-auto bg-linear-to-r from-amber-50 to-orange-50 rounded-3xl p-8 border border-amber-200">
             <p className="text-center text-xs font-medium tracking-[0.3em] uppercase text-amber-700 mb-6">
               Price Comparison
             </p>
@@ -331,9 +331,9 @@ export default function BookPage() {
               ].map((badge, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-3 bg-white rounded-xl px-4 py-3 border border-stone-100 shadow-sm"
+                  className="flex items-center gap-3 bg-white rounded-xl px-4 py-3 border border-stone-100 shadow-xs"
                 >
-                  <svg className="w-5 h-5 text-amber-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-amber-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={badge.icon} />
                   </svg>
                   <div>
@@ -422,7 +422,7 @@ export default function BookPage() {
                   key={index}
                   className="flex items-center gap-4 bg-stone-50 rounded-xl p-4"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center shrink-0">
                     <svg className="w-5 h-5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={item.icon} />
                     </svg>

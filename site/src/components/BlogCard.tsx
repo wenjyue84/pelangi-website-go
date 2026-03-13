@@ -8,9 +8,9 @@ interface BlogCardProps {
 export default function BlogCard({ post }: BlogCardProps) {
   return (
     <Link href={`/blog/${post.slug}`} className="group block">
-      <article className="bg-white rounded-2xl border border-stone-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 overflow-hidden h-full">
+      <article className="bg-white rounded-2xl border border-stone-100 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 overflow-hidden h-full">
         {/* Featured image placeholder */}
-        <div className="w-full h-48 bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center">
+        <div className="w-full h-48 bg-linear-to-br from-amber-100 to-orange-100 flex items-center justify-center">
           <span className="text-4xl">
             {post.category === "Food & Drink"
               ? "🍜"

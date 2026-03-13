@@ -79,7 +79,7 @@ export default function Amenities() {
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     {amenities.map((item, index) => (
-                        <div key={index} className="bg-white p-6 rounded-2xl border border-stone-100 shadow-sm flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                        <div key={index} className="bg-white p-6 rounded-2xl border border-stone-100 shadow-xs flex flex-col items-center text-center hover:shadow-md transition-shadow">
                             <div className="w-12 h-12 bg-amber-50 rounded-full flex items-center justify-center text-amber-800 mb-4">
                                 {item.icon}
                             </div>

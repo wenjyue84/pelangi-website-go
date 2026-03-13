@@ -60,7 +60,7 @@ export default function CookieConsent() {
       role="dialog"
       aria-label="Cookie consent"
       aria-describedby="cookie-consent-description"
-      className="fixed bottom-0 left-0 right-0 z-[60] p-4 md:p-6"
+      className="fixed bottom-0 left-0 right-0 z-60 p-4 md:p-6"
     >
       <div className="mx-auto max-w-3xl rounded-xl border border-stone-200 bg-white p-4 shadow-xl md:p-6">
         <p
@@ -84,13 +84,13 @@ export default function CookieConsent() {
         <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:justify-end sm:gap-3">
           <button
             onClick={handleReject}
-            className="rounded-lg border border-stone-300 bg-white px-5 py-2.5 text-sm font-medium text-stone-700 transition-colors hover:bg-stone-50 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
+            className="rounded-lg border border-stone-300 bg-white px-5 py-2.5 text-sm font-medium text-stone-700 transition-colors hover:bg-stone-50 focus:outline-hidden focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
           >
             Reject Non-Essential
           </button>
           <button
             onClick={handleAccept}
-            className="rounded-lg bg-amber-700 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-amber-800 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
+            className="rounded-lg bg-amber-700 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-amber-800 focus:outline-hidden focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
           >
             Accept All
           </button>

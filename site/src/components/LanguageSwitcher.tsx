@@ -39,7 +39,7 @@ export default function LanguageSwitcher() {
             onClick={() => handleLanguageChange(lang.code)}
             className={`min-h-6 min-w-6 px-3 py-1.5 text-sm font-medium rounded-full transition-all duration-200 ${
               currentLanguage === lang.code
-                ? "bg-white text-stone-900 shadow-sm"
+                ? "bg-white text-stone-900 shadow-xs"
                 : "text-stone-600 hover:text-stone-900"
             }`}
             aria-pressed={currentLanguage === lang.code}
@@ -52,7 +52,7 @@ export default function LanguageSwitcher() {
 
       {/* Toast notification */}
       {showToast && (
-        <div className="fixed bottom-24 md:bottom-6 left-4 right-4 md:left-auto md:right-6 z-[60] max-w-sm animate-fade-in">
+        <div className="fixed bottom-24 md:bottom-6 left-4 right-4 md:left-auto md:right-6 z-60 max-w-sm animate-fade-in">
           <div className="bg-stone-900 text-white px-4 py-3 rounded-lg shadow-lg text-sm">
             {toastMessage}
           </div>

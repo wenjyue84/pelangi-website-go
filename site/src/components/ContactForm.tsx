@@ -79,7 +79,7 @@ export default function ContactForm() {
                   required
                   autoComplete="name"
                   placeholder="Your full name"
-                  className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-sm text-stone-900 placeholder:text-stone-400 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 transition-colors"
+                  className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-sm text-stone-900 placeholder:text-stone-400 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 transition-colors"
                 />
               </div>
               <div>
@@ -96,7 +96,7 @@ export default function ContactForm() {
                   required
                   autoComplete="email"
                   placeholder="you@example.com"
-                  className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-sm text-stone-900 placeholder:text-stone-400 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 transition-colors"
+                  className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-sm text-stone-900 placeholder:text-stone-400 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 transition-colors"
                 />
               </div>
             </div>
@@ -115,7 +115,7 @@ export default function ContactForm() {
                   name="checkIn"
                   type="date"
                   autoComplete="off"
-                  className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-sm text-stone-900 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 transition-colors"
+                  className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-sm text-stone-900 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 transition-colors"
                 />
               </div>
               <div>
@@ -130,7 +130,7 @@ export default function ContactForm() {
                   name="checkOut"
                   type="date"
                   autoComplete="off"
-                  className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-sm text-stone-900 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 transition-colors"
+                  className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-sm text-stone-900 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 transition-colors"
                 />
               </div>
             </div>
@@ -150,7 +150,7 @@ export default function ContactForm() {
                 min="1"
                 max="20"
                 placeholder="e.g. 2"
-                className="w-full sm:w-40 rounded-xl border border-stone-300 bg-white px-4 py-3 text-sm text-stone-900 placeholder:text-stone-400 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 transition-colors"
+                className="w-full sm:w-40 rounded-xl border border-stone-300 bg-white px-4 py-3 text-sm text-stone-900 placeholder:text-stone-400 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 transition-colors"
               />
             </div>
 
@@ -168,7 +168,7 @@ export default function ContactForm() {
                 required
                 rows={5}
                 placeholder="Tell us about your travel plans or any questions you have..."
-                className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-sm text-stone-900 placeholder:text-stone-400 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 transition-colors resize-y"
+                className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-sm text-stone-900 placeholder:text-stone-400 focus:border-amber-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 transition-colors resize-y"
               />
             </div>
 
@@ -183,7 +183,7 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={isPending}
-              className="w-full sm:w-auto rounded-xl bg-amber-700 px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-amber-800 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full sm:w-auto rounded-xl bg-amber-700 px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-amber-800 focus:outline-hidden focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isPending ? "Sending..." : "Send Inquiry"}
             </button>

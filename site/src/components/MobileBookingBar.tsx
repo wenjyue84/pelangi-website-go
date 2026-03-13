@@ -26,7 +26,7 @@ export default function MobileBookingBar() {
         {/* WhatsApp icon + text */}
         <div className="flex items-center gap-2.5 min-w-0">
           <svg
-            className="w-7 h-7 flex-shrink-0 text-green-500"
+            className="w-7 h-7 shrink-0 text-green-500"
             viewBox="0 0 24 24"
             fill="currentColor"
             aria-hidden="true"
@@ -44,7 +44,7 @@ export default function MobileBookingBar() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => sendGAEvent("event", "whatsapp_click", { location: "mobile_booking_bar" })}
-          className="flex-shrink-0 inline-flex items-center gap-1.5 bg-green-500 hover:bg-green-600 active:bg-green-700 text-white text-sm font-semibold px-4 py-2.5 rounded-full transition-colors"
+          className="shrink-0 inline-flex items-center gap-1.5 bg-green-500 hover:bg-green-600 active:bg-green-700 text-white text-sm font-semibold px-4 py-2.5 rounded-full transition-colors"
           aria-label="Book via WhatsApp - opens WhatsApp chat"
         >
           Book Now

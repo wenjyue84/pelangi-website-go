@@ -31,7 +31,7 @@ export default function BlogFilter({ posts, activeCategory }: BlogFilterProps) {
               onClick={() => setSelected(cat)}
               className={`min-h-6 px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 isActive
-                  ? "bg-amber-600 text-white shadow-sm"
+                  ? "bg-amber-600 text-white shadow-xs"
                   : "bg-white text-stone-600 border border-stone-200 hover:border-amber-400 hover:text-amber-700"
               }`}
               aria-pressed={isActive}

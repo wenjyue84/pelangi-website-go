@@ -15,7 +15,7 @@ export default function Hero() {
           className="object-cover"
         />
         {/* Elegant overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-stone-900/70 via-stone-900/50 to-stone-900/80" />
+        <div className="absolute inset-0 bg-linear-to-b from-stone-900/70 via-stone-900/50 to-stone-900/80" />
       </div>
 
       {/* Content */}
@@ -45,7 +45,7 @@ export default function Hero() {
             <span className="font-display text-5xl md:text-6xl font-medium text-white">RM35</span>
             <span className="text-sm text-stone-400 font-medium">/night</span>
           </div>
-          <div className="mt-2 h-px w-20 bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
+          <div className="mt-2 h-px w-20 bg-linear-to-r from-transparent via-amber-400 to-transparent" />
         </div>
 
         {/* CTAs */}

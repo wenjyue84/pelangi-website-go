@@ -132,7 +132,7 @@ export default function Gallery() {
           {hostelPhotos.map((photo, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-72 h-48 md:w-80 md:h-56 relative rounded-2xl overflow-hidden
+              className="shrink-0 w-72 h-48 md:w-80 md:h-56 relative rounded-2xl overflow-hidden
                        cursor-pointer group snap-start"
               onClick={() => setSelectedImage(photo.src)}
             >
@@ -143,7 +143,7 @@ export default function Gallery() {
                 sizes="(max-width: 768px) 288px, 320px"
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent
+              <div className="absolute inset-0 bg-linear-to-t from-stone-900/60 via-transparent to-transparent
                             opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="absolute bottom-3 left-3 text-white opacity-0 group-hover:opacity-100
                             transition-opacity duration-300">
@@ -163,7 +163,7 @@ export default function Gallery() {
           {guestPhotos.slice(0, 12).map((photo, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-40 h-40 md:w-48 md:h-48 relative rounded-2xl overflow-hidden
+              className="shrink-0 w-40 h-40 md:w-48 md:h-48 relative rounded-2xl overflow-hidden
                        cursor-pointer group snap-start"
               onClick={() => setSelectedImage(photo.src)}
             >
@@ -179,7 +179,7 @@ export default function Gallery() {
           ))}
           {/* See more card */}
           <div
-            className="flex-shrink-0 w-40 h-40 md:w-48 md:h-48 relative rounded-2xl overflow-hidden
+            className="shrink-0 w-40 h-40 md:w-48 md:h-48 relative rounded-2xl overflow-hidden
                      cursor-pointer group snap-start bg-amber-100 flex items-center justify-center"
             onClick={() => setActiveModal('guests')}
           >
@@ -198,7 +198,7 @@ export default function Gallery() {
           {destinations.map((dest, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-64 md:w-72 relative rounded-2xl overflow-hidden
+              className="shrink-0 w-64 md:w-72 relative rounded-2xl overflow-hidden
                        cursor-pointer group snap-start"
               onClick={() => setSelectedImage(dest.src)}
             >
@@ -210,7 +210,7 @@ export default function Gallery() {
                   sizes="(max-width: 768px) 256px, 288px"
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/20 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-stone-900/80 via-stone-900/20 to-transparent" />
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
                 <h4 className="font-semibold text-lg">{dest.name}</h4>
@@ -249,7 +249,7 @@ export default function Gallery() {
       {/* Lightbox */}
       {selectedImage && (
         <div
-          className="fixed inset-0 z-50 bg-stone-900/95 backdrop-blur-sm flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-stone-900/95 backdrop-blur-xs flex items-center justify-center p-4"
           onClick={() => setSelectedImage(null)}
         >
           <button
@@ -277,12 +277,12 @@ export default function Gallery() {
       {/* All Guests Modal */}
       {activeModal === 'guests' && (
         <div
-          className="fixed inset-0 z-50 bg-stone-900/95 backdrop-blur-sm overflow-y-auto"
+          className="fixed inset-0 z-50 bg-stone-900/95 backdrop-blur-xs overflow-y-auto"
           onClick={() => setActiveModal(null)}
         >
           <div className="min-h-screen p-4 md:p-8">
             <div className="max-w-6xl mx-auto">
-              <div className="flex items-center justify-between mb-8 sticky top-0 bg-stone-900/80 backdrop-blur-sm py-4 -mx-4 px-4">
+              <div className="flex items-center justify-between mb-8 sticky top-0 bg-stone-900/80 backdrop-blur-xs py-4 -mx-4 px-4">
                 <div>
                   <h3 className="text-2xl font-display font-medium text-white">Happy Guests</h3>
                   <p className="text-stone-400 text-sm">{guestPhotos.length} photos from our community</p>

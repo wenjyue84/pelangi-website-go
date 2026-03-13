@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function SingaporeTeaser() {
   return (
-    <section className="py-20 bg-gradient-to-r from-amber-50 via-amber-100 to-amber-50">
+    <section className="py-20 bg-linear-to-r from-amber-50 via-amber-100 to-amber-50">
       <div className="container-custom">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
