@@ -2813,6 +2813,386 @@
       "dependencies": [],
       "estimatedComplexity": "medium",
       "passes": false
+    },
+    {
+      "id": "US-127",
+      "title": "Update privacy policy for PDPA 2024 Amendment: breach notification and DPO",
+      "priority": "critical",
+      "description": "Malaysia's Personal Data Protection (Amendment) Act 2024 came into force on 1 January 2025 and introduced mandatory data breach notification: operators must notify the PDP Commissioner within 72 hours of a breach and notify affected data subjects within 7 days. The hostel's privacy policy must be updated to disclose this obligation and name a Data Protection Officer contact. Non-compliance carries fines up to RM250,000.",
+      "acceptanceCriteria": [
+        "The Privacy Policy page is updated to include a 'Data Breach Notification' section describing the 72-hour Commissioner notification and 7-day data-subject notification obligations",
+        "The policy references the Personal Data Protection (Amendment) Act 2024 and links to the official PDP Commissioner site",
+        "An internal /docs/incident-response.md file documents the step-by-step breach notification procedure for the site operator",
+        "A Data Protection Officer (DPO) contact email is published on the privacy policy page per PDPA 2024 DPO requirement",
+        "The updated privacy policy is dated with an effective date of 1 January 2025 or later"
+      ],
+      "technicalNotes": [
+        "PDPA Amendment Act 2024 official information: https://www.pdp.gov.my/",
+        "Key amendment details: mandatory 72-hour breach notification to Commissioner, 7-day notification to affected data subjects, mandatory DPO designation",
+        "DPO Guidelines were gazetted 25 February 2025 — DPO must be registered with the PDP Commissioner; include registration details if available"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": true
+    },
+    {
+      "id": "US-128",
+      "title": "Add WCAG 2.2 SC 1.2.2 captions to all prerecorded video content",
+      "priority": "high",
+      "description": "SC 1.2.2 (Level A) requires captions for all prerecorded audio in synchronized media. The hostel likely has or will publish promotional videos, room tours, or testimonial clips. Without captions, deaf or hard-of-hearing visitors cannot access the audio content, and the site fails the lowest WCAG conformance tier.",
+      "acceptanceCriteria": [
+        "Every prerecorded video with audio on the site has accurate, synchronised captions in WebVTT format",
+        "Captions include not only dialogue but sound effects and speaker identification where content-relevant",
+        "Video player exposes a CC button to toggle captions on/off, with the toggle state persisted in localStorage",
+        "Automated axe-core audit reports zero SC 1.2.2 violations",
+        "At least one manual test confirms captions render correctly in Chrome, Firefox, and Safari"
+      ],
+      "technicalNotes": [
+        "Use the native HTML5 <track kind='captions'> element with a .vtt file hosted alongside the video asset",
+        "For YouTube embeds, enable CC parameter (?cc_load_policy=1) in the iframe src",
+        "Caption files should be version-controlled in /public/captions/ with naming convention <video-slug>-en.vtt"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-129",
+      "title": "Implement WCAG 2.2 SC 2.4.6 descriptive headings and form labels",
+      "priority": "high",
+      "description": "SC 2.4.6 (Level AA) requires that headings and labels describe topic or purpose — they must be genuinely descriptive, not generic placeholders like 'Section 1' or 'Details'. A hostel site with room listings, booking forms, and FAQ sections is at risk of vague headings that impede navigation for screen reader users who browse by heading list.",
+      "acceptanceCriteria": [
+        "Automated heading-list audit (axe-core + manual screen reader sweep) confirms every h1-h6 uniquely describes its section's purpose",
+        "No heading text is generic (e.g., 'More', 'Info', 'Details') without qualifying context",
+        "Every form control has an associated label or aria-label whose text describes the input's expected value",
+        "Lighthouse accessibility score does not regress after changes",
+        "Two native screen reader tests (NVDA+Chrome, VoiceOver+Safari) confirm heading navigation is logical"
+      ],
+      "technicalNotes": [
+        "Audit current headings with the WAVE browser extension and export a report as the acceptance baseline",
+        "Use eslint-plugin-jsx-a11y rule label-has-associated-control to catch missing labels at build time",
+        "Document the heading hierarchy in /docs/heading-map.md and update it whenever new page sections are added"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-130",
+      "title": "Ensure WCAG 2.2 SC 3.1.2 lang attributes for bilingual Malay/English content",
+      "priority": "high",
+      "description": "SC 3.1.2 (Level AA) requires the lang attribute to be set on every passage of text that differs from the page's primary language. The Pelangi Capsule Hostel website mixes Bahasa Melayu phrases, place names, and cultural terms with English content. Without correct lang attributes, screen readers mispronounce foreign-language passages, degrading the experience for Malay-speaking visitors using assistive technology.",
+      "acceptanceCriteria": [
+        "The root html element carries lang='en' (or 'ms' if Malay is the primary language)",
+        "Every Malay-language passage embedded within English pages is wrapped in an element with lang='ms'",
+        "Every English passage within a Malay-primary page is annotated with lang='en'",
+        "NVDA+Chrome screen reader test confirms Malay passages switch to a Malay TTS voice or do not mispronounce proper nouns",
+        "axe-core audit reports zero 'valid-lang' violations"
+      ],
+      "technicalNotes": [
+        "Next.js App Router supports i18n locale via next.config.ts i18n.defaultLocale — set 'en' or 'ms' as appropriate",
+        "For inline multilingual snippets in JSX, wrap with a LangSpan React component that renders span with lang attribute",
+        "ISO 639-1 codes: 'ms' for Malay, 'zh' for Chinese (if Chinese text appears for the significant Chinese tourist demographic)"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-131",
+      "title": "Display Malaysia Tourism Tax (TTx) RM10/room/night transparently on booking flow",
+      "priority": "high",
+      "description": "The Malaysian Tourism Tax (TTx) of RM10 per room per night applies to accommodation operators under the Tourism Tax Act 2017. Royal Malaysian Customs Department guidelines require operators to display TTx separately on invoices and inform guests of the charge. The hostel website's pricing sections and booking confirmation messages must show TTx as a distinct line item to ensure compliance and prevent guest disputes.",
+      "acceptanceCriteria": [
+        "All room pricing displays on the website show TTx as a separate line item: 'Tourism Tax (TTx): RM10/room/night'",
+        "A tooltip or info icon adjacent to the TTx line links to the official MyTTx explanation page",
+        "The pricing section passes a visual regression test confirming the TTx line is always visible at desktop and mobile breakpoints",
+        "Booking confirmation email (via Resend) includes TTx as a distinct line in the cost breakdown",
+        "A Malaysian TTx FAQ entry is added to the site's FAQ section explaining what the tax is and that it is required by law"
+      ],
+      "technicalNotes": [
+        "TTx rate is RM10 per room per night as of 2024 per the Tourism Tax Act 2017",
+        "For offline bookings (direct website enquiries), the hostel is responsible for collecting and remitting TTx to MyTTx — digital platforms handle their own remittance",
+        "Official MyTTx portal: https://www.myttx.customs.gov.my/ — link to it from the tooltip for full transparency"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-132",
+      "title": "Display MOTAC tourist accommodation registration number and certification badge",
+      "priority": "high",
+      "description": "Malaysian law (Tourism Industry Act 1992) requires tourist accommodation premises to be registered with the Ministry of Tourism, Arts and Culture (MOTAC) before operating. Displaying the MOTAC registration number and certification badge on the hostel website builds trust with international travellers, satisfies legal transparency requirements, and can improve search ranking signals for authenticity.",
+      "acceptanceCriteria": [
+        "The hostel's MOTAC registration number is displayed in the website footer and on the About/Contact page",
+        "The official MOTAC registered accommodation badge image is displayed alongside the registration number",
+        "A link to the MOTAC registered hotel verification page allows guests to independently verify registration",
+        "The registration number is included in the LodgingBusiness JSON-LD schema as an identifier property",
+        "A visual regression test confirms the badge and registration number appear at both mobile and desktop breakpoints"
+      ],
+      "technicalNotes": [
+        "MOTAC registration check: https://www.motac.gov.my/en/check/registered-hotel",
+        "Add as an identifier property on the LodgingBusiness JSON-LD: { '@type': 'PropertyValue', 'name': 'MOTAC Registration', 'value': '<number>' }",
+        "Store the registration number in an environment variable NEXT_PUBLIC_MOTAC_REG_NUMBER so it can be updated without a code change"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-133",
+      "title": "Implement booking abandonment recovery via sessionStorage re-engagement prompt",
+      "priority": "high",
+      "description": "Industry data shows 80%+ of hotel website visitors abandon the booking flow before completing an enquiry. Persisting the user's selected room, dates, and guest count in sessionStorage and presenting a re-engagement prompt ('Continue where you left off?') on return visits within the same session recovers a significant share of abandoned intent without requiring email capture or cookies, keeping the implementation PDPA-compliant.",
+      "acceptanceCriteria": [
+        "When a user selects a room and begins a booking enquiry, their selection (room type, dates, guest count) is serialised to sessionStorage under the key 'pelangi_booking_draft'",
+        "On any page load within the same session, if a draft exists, a non-blocking toast or banner appears: 'Continue your booking for [Room Name]?' with a CTA to resume",
+        "The re-engagement prompt can be permanently dismissed for the session by clicking 'Dismiss' — it does not reappear",
+        "No personal data (name, email, phone) is stored in sessionStorage — only room selection metadata",
+        "A Playwright test verifies: (1) draft is saved on room selection, (2) prompt appears on home page navigation, (3) prompt is absent after dismissal"
+      ],
+      "technicalNotes": [
+        "sessionStorage is cleared when the browser tab is closed — this is intentional for privacy; do not use localStorage for booking drafts without explicit user consent",
+        "Implement as a client-side React hook useBookingDraft() that reads/writes sessionStorage and exposes draft state and clearDraft()",
+        "The re-engagement toast should use the existing ARIA live region to announce itself to screen readers"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-134",
+      "title": "Add trust signals: SSL badge, no-hidden-fees statement, and TTx disclosure",
+      "priority": "high",
+      "description": "Conversion research shows that 52% of travellers abandon bookings due to a poor digital trust experience. Adding visible trust signals — an SSL/HTTPS badge, a 'No Hidden Fees' declaration with TTx itemised, and a 'Best Price Guarantee' statement — addresses the primary trust barriers for first-time visitors, particularly international travellers unfamiliar with the property.",
+      "acceptanceCriteria": [
+        "A 'Secure Booking' badge (padlock icon + 'SSL Secured' text) appears in the booking/contact section",
+        "A 'No Hidden Fees' statement with TTx and any applicable service charges listed explicitly is visible near the pricing display",
+        "The trust signals section passes a colour contrast audit (WCAG 1.4.3 AA) — all text meets 4.5:1 ratio",
+        "Trust signals are rendered server-side (not behind JS) so they are visible to search engine crawlers",
+        "User testing or heuristic review confirms trust signals are visible above the fold on mobile (375px viewport)"
+      ],
+      "technicalNotes": [
+        "SSL badge: use an SVG padlock icon from the existing icon library — do not use third-party badge images that load external scripts",
+        "The 'No Hidden Fees' copy must reference TTx (RM10/room/night) and any cleaning or booking fees explicitly",
+        "Consider adding AggregateRating from a verified review platform as an additional trust signal"
+      ],
+      "dependencies": [
+        "Display Malaysia Tourism Tax (TTx) RM10/room/night transparently on booking flow"
+      ],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-135",
+      "title": "Add Terms and Conditions page covering booking, cancellation, and liability",
+      "priority": "high",
+      "description": "The hostel website lacks a Terms and Conditions page, creating legal exposure for booking disputes, liability claims, and cancellation policy disagreements. A T&C page protects the business by clearly stating booking terms, cancellation and refund policy, house rules, check-in/check-out times, liability limitations, and governing law (Malaysia). It is also required by Agoda/Booking.com partner agreements.",
+      "acceptanceCriteria": [
+        "A /terms page exists with clearly written sections: Booking Policy, Cancellation and Refund Policy, House Rules, Liability, Governing Law (Malaysia)",
+        "The page is linked from the site footer and from the booking/contact flow",
+        "A checkbox 'I agree to the Terms and Conditions' (with link) is added to the contact/enquiry form before submission",
+        "The T&C page includes the effective date and a 'Last Updated' timestamp",
+        "WebPage JSON-LD schema with dateModified property is added to the /terms page"
+      ],
+      "technicalNotes": [
+        "Malaysian Consumer Protection Act 1999 applies to online transactions — ensure cancellation policy complies",
+        "Link to the privacy policy from the T&C page for a complete legal framework",
+        "The checkbox for T&C agreement should be a controlled React component that blocks form submission until checked"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-136",
+      "title": "Enforce WCAG 2.2 SC 3.2.4 consistent identification of repeated UI components",
+      "priority": "medium",
+      "description": "SC 3.2.4 (Level AA) requires that components with the same functionality across multiple pages are identified consistently — the same icon, label, and ARIA role every time. On a hostel site, components such as the 'Book Now' CTA button, the WhatsApp contact link, the search field, and navigation landmarks must never switch labels or icons across pages, as this breaks predictability for assistive technology users.",
+      "acceptanceCriteria": [
+        "A component inventory lists every repeated interactive element with its canonical label, icon, and ARIA role",
+        "Automated check (custom ESLint rule or Playwright snapshot test) flags any deviation from the canonical label",
+        "The 'Book Now' button, WhatsApp CTA, and search icon have identical accessible names on every page where they appear",
+        "No regression found in a manual screen reader audit after the consistency pass",
+        "Storybook stories for each repeated component document the expected label as the single source of truth"
+      ],
+      "technicalNotes": [
+        "Create a constants file /lib/ui-labels.ts that exports all canonical button and link labels, then import from it in every component",
+        "Use Playwright's accessibility snapshot tests to assert that key element accessible names match the canonical constant across all routes",
+        "Document the inventory in /docs/component-labels.md — update it whenever a new repeated component is added"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-137",
+      "title": "Verify WCAG 2.2 SC 1.4.4 text resize up to 200% without content loss",
+      "priority": "medium",
+      "description": "SC 1.4.4 (Level AA) requires that text can be resized up to 200% via browser zoom or OS settings without loss of content or functionality. Hostel websites with fixed-pixel font sizes, overflow-hidden containers, or absolutely-positioned overlapping elements frequently fail this criterion. All text on every page must remain readable, non-truncated, and fully operable at 200% zoom.",
+      "acceptanceCriteria": [
+        "Every page is tested at 200% browser zoom with no text clipped, overlapping, or hidden behind other elements",
+        "All interactive controls (buttons, links, form fields) remain clickable and visible at 200% zoom",
+        "No CSS property uses pixel-fixed height containers that clip text (min-height preferred over height)",
+        "Automated Playwright test zooms to 200% and asserts no horizontal scrollbar appears on any breakpoint",
+        "Lighthouse accessibility score does not regress"
+      ],
+      "technicalNotes": [
+        "Audit all CSS for fixed height values on text containers — replace with min-height or remove where unnecessary",
+        "Use relative units (rem/em) for all font-size, line-height, and spacing declarations — no px for text sizing",
+        "Playwright browser context can set deviceScaleFactor to simulate zoom; combine with page.evaluate to check for scrollWidth > clientWidth"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-138",
+      "title": "Implement Next.js after() API for deferred analytics and logging",
+      "priority": "medium",
+      "description": "Next.js 15.1 stabilised the after() API, which schedules non-blocking work after the HTTP response has been sent. For the hostel site, page view logging, search query recording, and booking-intent analytics can be deferred using after() so they never add latency to the user-facing response. This improves TTFB and keeps server actions fast.",
+      "acceptanceCriteria": [
+        "Page view logging and search query persistence are moved inside after() callbacks in relevant Server Components and Route Handlers",
+        "TTFB measured via Vercel Analytics does not regress after the migration (baseline captured before deployment)",
+        "after() callbacks execute even when the response ends in an error (confirmed by intentionally throwing in a test route)",
+        "No dynamic API (cookies, headers) is called inside after() callbacks — confirmed by TypeScript linting",
+        "Unit tests mock after() to assert it is called with the correct payload on each tracked event"
+      ],
+      "technicalNotes": [
+        "Import after from 'next/server': import { after } from 'next/server'",
+        "after() is available in Server Components, Server Actions, Route Handlers, and Middleware — do not call it in Client Components",
+        "Avoid calling cookies() or headers() inside after() callbacks; read request data before calling after() and close over the values"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-139",
+      "title": "Implement schema.org HowTo markup for self-check-in process",
+      "priority": "medium",
+      "description": "A HowTo schema on the Check-In Instructions page enables Google to display step-by-step rich results in search, and allows voice assistants to read out the check-in procedure to guests who ask. This is especially valuable for late-arriving international guests who search for instructions on arrival at Pelangi Capsule Hostel.",
+      "acceptanceCriteria": [
+        "A /check-in page (or equivalent) exists with step-by-step check-in instructions rendered as visible HTML",
+        "JSON-LD HowTo schema is added with name, description, estimatedCost, totalTime, and at least 4 HowToStep items",
+        "Each HowToStep includes name, text, and optionally an image URL pointing to a step illustration",
+        "Google Rich Results Test validates the HowTo markup without warnings",
+        "The page is linked from the site navigation and sitemap"
+      ],
+      "technicalNotes": [
+        "HowTo spec: https://schema.org/HowTo — key properties: name, description, step (array of HowToStep), estimatedCost, totalTime",
+        "HowToStep properties: name (short title), text (full instruction), url (anchor link to the step on the page), image",
+        "Implement as a reusable HowToSchema server component that accepts a steps prop, rendering the JSON-LD in a script tag in the page head"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-140",
+      "title": "Implement on-demand ISR revalidation webhook for content updates",
+      "priority": "medium",
+      "description": "Next.js supports on-demand ISR via revalidatePath() and revalidateTag() called from a secured Route Handler. Room availability, pricing, or promotional content should trigger instant cache invalidation via a webhook endpoint rather than waiting for time-based revalidation intervals — ensuring guests always see current information.",
+      "acceptanceCriteria": [
+        "A Route Handler at /api/revalidate accepts POST requests with a secret token header and a path or tag body parameter",
+        "Requests without the correct REVALIDATE_SECRET environment variable value return 401 Unauthorized",
+        "Calling the endpoint with a valid secret and path triggers revalidatePath() and returns { revalidated: true, path }",
+        "An end-to-end test (Playwright or curl) confirms that after calling the endpoint, the next page request returns updated content",
+        "The endpoint is documented in /docs/revalidation.md with example curl commands for CMS webhook configuration"
+      ],
+      "technicalNotes": [
+        "Official guide: https://nextjs.org/docs/app/guides/incremental-static-regeneration",
+        "Store the secret in .env.local as REVALIDATE_SECRET and reference it via process.env — never hard-code",
+        "Support both revalidatePath (for specific routes) and revalidateTag (for tagged fetch calls) in the same endpoint via a discriminated body shape"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-141",
+      "title": "Build Suspense-streaming skeleton UI for room availability section",
+      "priority": "medium",
+      "description": "The room availability section currently blocks the entire page render while fetching dynamic data. Wrapping it in a React Suspense boundary with a skeleton fallback enables HTML streaming: the page shell is sent immediately, the skeleton is shown while availability data loads, and React hydrates the section when data arrives. This measurably improves LCP and perceived performance for the most conversion-critical page section.",
+      "acceptanceCriteria": [
+        "The room availability section is wrapped in a Suspense boundary with a RoomCardSkeleton fallback",
+        "The skeleton matches the layout of the actual room card (same height, same column count) to prevent layout shift",
+        "LCP is measured before and after via Vercel Speed Insights; LCP must not regress and ideally improves by 200ms+",
+        "CLS (Cumulative Layout Shift) score remains 0 or improves — skeleton prevents layout shift on data load",
+        "Playwright test with a network throttle (Slow 3G) confirms the skeleton is visible before the data resolves"
+      ],
+      "technicalNotes": [
+        "Next.js Suspense streaming guide: https://nextjs.org/docs/app/getting-started/server-and-client-components",
+        "The data-fetching async component must be a Server Component for streaming to work — do not add 'use client' to it",
+        "Use loading.tsx as a Suspense boundary at the route level for full-page loading states; use inline Suspense for section-level streaming"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
+    },
+    {
+      "id": "US-142",
+      "title": "Add Web Share API share button with PWA share_target manifest entry",
+      "priority": "low",
+      "description": "The Web Share API (navigator.share) allows users to share hostel pages (room listings, location, promotions) to messaging apps, email, or social media via the native OS share sheet. Adding a share_target entry to the PWA manifest also allows the installed hostel PWA to receive shared content — useful for guests sharing booking links.",
+      "acceptanceCriteria": [
+        "A 'Share this page' button is present on room listing and location pages, triggering navigator.share with title, text, and url populated from page metadata",
+        "The button renders a fallback copy-to-clipboard interaction when navigator.share is not available (feature detected, not UA sniffed)",
+        "The PWA manifest includes a share_target entry with action, method: 'GET', and params mapping title, text, and url",
+        "A shared URL received via share_target is handled by a route at /shared that displays the received content gracefully",
+        "Manual test on Android Chrome confirms the native share sheet opens with the correct hostel page details"
+      ],
+      "technicalNotes": [
+        "Check support with if (navigator.share) before calling navigator.share(); use navigator.clipboard.writeText() as fallback",
+        "share_target manifest entry spec: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest/Reference/share_target",
+        "The share_target action route must return a valid response; implement as an App Router route at app/shared/page.tsx reading URL search params"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-143",
+      "title": "Apply CSS @starting-style for GPU-accelerated entry animations",
+      "priority": "low",
+      "description": "CSS @starting-style (Baseline August 2024, supported in all major engines since Firefox 129) enables declarative entry animations for elements transitioning from display:none or entering the top layer without JavaScript. Room card reveals, modal dialogues, and the cookie consent banner can use @starting-style for smooth fade/slide-in animations that respect prefers-reduced-motion and require zero JavaScript.",
+      "acceptanceCriteria": [
+        "Room cards, modal overlays, and the cookie consent banner use @starting-style + transition instead of JavaScript-driven animation libraries for their entry animation",
+        "All entry animations are paired with a @media (prefers-reduced-motion: reduce) override that disables or minimises motion",
+        "Animations use only transform and opacity to remain on the GPU compositor thread (no layout-triggering properties)",
+        "Lighthouse Performance score does not regress (no new render-blocking resources introduced)",
+        "Manual test in Firefox 129+, Chrome 125+, and Safari 17.4+ confirms animations render correctly"
+      ],
+      "technicalNotes": [
+        "@starting-style MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@starting-style",
+        "Pair with transition-behavior: allow-discrete to animate discrete properties like display and visibility",
+        "Pattern: .card { opacity: 1; transition: opacity 0.3s; } @starting-style { .card { opacity: 0; } }"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-144",
+      "title": "Replace JavaScript tooltip positioning with CSS Popover API and Anchor Positioning",
+      "priority": "low",
+      "description": "The HTML Popover API (Baseline 2024) provides built-in keyboard navigation, Escape-key dismissal, focus management, and top-layer rendering without JavaScript. CSS Anchor Positioning (Chrome 125+) replaces Popper.js-style JavaScript tethering. Migrating hostel site tooltips and info-popovers to these native APIs reduces JS bundle size and provides accessible behaviour for free.",
+      "acceptanceCriteria": [
+        "All tooltip and informational popover components use the popover HTML attribute and popovertarget button attribute instead of JavaScript show/hide logic",
+        "Popovers are tethered to their trigger using CSS anchor-name and position-anchor properties, not JavaScript position calculation",
+        "Keyboard test confirms: Tab reaches trigger, Enter/Space opens popover, Escape closes and returns focus to trigger, Tab navigates within popover",
+        "axe-core audit reports no new violations introduced by the migration",
+        "Bundle size (tracked in next build output) decreases by at least 2 KB after removing any Popper.js or equivalent dependency"
+      ],
+      "technicalNotes": [
+        "Popover API: https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using — use popover='auto' for light-dismiss behaviour",
+        "CSS Anchor Positioning: https://developer.chrome.com/docs/css-ui/anchor-positioning-api — assign anchor-name on trigger, position-anchor on popover",
+        "Add @supports guard for browsers without anchor positioning; fall back to CSS position: absolute with manual offset"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false
     }
   ]
 }

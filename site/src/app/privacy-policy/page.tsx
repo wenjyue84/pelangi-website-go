@@ -387,10 +387,55 @@ export default function PrivacyPolicyPage() {
                 </p>
               </section>
 
+              {/* Data Breach Notification */}
+              <section className="mb-8">
+                <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
+                  11. Data Breach Notification
+                </h2>
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed mb-3">
+                  Under the{" "}
+                  <strong>Personal Data Protection (Amendment) Act 2024</strong>, which came into
+                  force on 1 January 2025, we are legally required to notify relevant parties in the
+                  event of a personal data breach:
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-stone-700 dark:text-stone-300 mb-4">
+                  <li>
+                    <strong>Commissioner notification:</strong> We will notify the{" "}
+                    <strong>Personal Data Protection Commissioner</strong> within{" "}
+                    <strong>72 hours</strong> of becoming aware of a data breach that poses a risk of
+                    significant harm to data subjects.
+                  </li>
+                  <li>
+                    <strong>Data subject notification:</strong> We will notify affected individuals
+                    within <strong>7 days</strong> of the breach notification to the Commissioner,
+                    informing you of the nature of the breach, the data involved, and the steps we are
+                    taking to mitigate any harm.
+                  </li>
+                </ul>
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed mb-3">
+                  A data breach includes any unauthorised access, collection, use, disclosure, copying,
+                  modification, disposal, or similar action involving your personal data that compromises
+                  its security, confidentiality, or integrity.
+                </p>
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed">
+                  For more information about your rights under the PDPA and the 2024 Amendment, visit
+                  the{" "}
+                  <a
+                    href="https://www.pdp.gov.my"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-amber-700 dark:text-amber-400 underline hover:text-amber-800 dark:hover:text-amber-300"
+                  >
+                    Department of Personal Data Protection (JPDP)
+                  </a>
+                  .
+                </p>
+              </section>
+
               {/* Changes */}
               <section className="mb-8">
                 <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
-                  11. Changes to This Policy
+                  12. Changes to This Policy
                 </h2>
                 <p className="text-stone-700 dark:text-stone-300 leading-relaxed">
                   We may update this privacy policy from time to time to reflect changes in our
@@ -400,26 +445,33 @@ export default function PrivacyPolicyPage() {
                 </p>
               </section>
 
-              {/* Contact */}
+              {/* Contact & DPO */}
               <section className="mb-8">
                 <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
-                  12. Contact Us
+                  13. Data Protection Officer &amp; Contact
                 </h2>
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed mb-3">
+                  In accordance with the{" "}
+                  <strong>Personal Data Protection (Amendment) Act 2024</strong> requirement for
+                  mandatory Data Protection Officer (DPO) designation, we have appointed a DPO to
+                  oversee our data protection practices.
+                </p>
                 <p className="text-stone-700 dark:text-stone-300 leading-relaxed">
-                  If you have questions, concerns, or complaints about this privacy policy or how we
-                  handle your personal data, please contact our Data Protection contact:
+                  If you have questions, concerns, or complaints about this privacy policy, how we
+                  handle your personal data, or wish to exercise your rights as a data subject,
+                  please contact our Data Protection Officer:
                 </p>
                 <div className="bg-stone-100 dark:bg-stone-800 rounded-lg p-5 mt-3 text-stone-700 dark:text-stone-300">
-                  <p className="font-medium">Data Protection Contact</p>
+                  <p className="font-medium">Data Protection Officer (DPO)</p>
                   <p>Pelangi Capsule Hostel</p>
                   <p>26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru, Johor</p>
                   <p className="mt-2">
                     Email:{" "}
                     <a
-                      href="mailto:pelangicapsule@gmail.com"
+                      href="mailto:dpo@pelangicapsulehostel.com"
                       className="text-amber-700 dark:text-amber-400 underline hover:text-amber-800 dark:hover:text-amber-300"
                     >
-                      pelangicapsule@gmail.com
+                      dpo@pelangicapsulehostel.com
                     </a>
                   </p>
                   <p>Phone: +60 12-708 8789</p>

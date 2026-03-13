@@ -4263,3 +4263,18 @@ Incomplete: Register Google Business Profile and connect to Google Hotel free bo
 ## Iteration 11 - Fri, Mar 13, 2026 12:28:01 PM
 Incomplete: Register Google Business Profile and connect to Google Hotel free booking links (ID: US-103) — attempt 2/3
 
+
+## Iteration - Story: US-127 Update privacy policy for PDPA 2024 Amendment: breach notification and DPO
+
+### What was implemented
+- **privacy-policy/page.tsx**: Added new Section 11 "Data Breach Notification" describing 72-hour Commissioner notification and 7-day data subject notification obligations under PDPA 2024 Amendment, with link to JPDP at pdp.gov.my
+- **privacy-policy/page.tsx**: Renamed Section 12 from "Contact Us" to "Data Protection Officer & Contact" (Section 13 after renumbering), formally designating a DPO per PDPA 2024 requirement with dedicated email dpo@pelangicapsulehostel.com
+- **privacy-policy/page.tsx**: Renumbered sections 11-12 to 12-13 to accommodate the new breach notification section
+- **docs/incident-response.md**: Created comprehensive internal breach notification procedure document with 6-step response workflow, timeline table (72h Commissioner / 7d data subject), notification template, record-keeping requirements, and penalty information
+
+### Patterns discovered
+- Privacy policy page follows same pattern as other pages: Header + main + Footer, prose-stone styling
+- The page already referenced PDPA 2024 Amendment in the introduction — just needed the specific breach notification and DPO sections
+
+### Quality check
+- `npx tsc --noEmit` passes with zero errors
