@@ -4930,3 +4930,26 @@ US-103 (Google Business Profile registration) is entirely an external platform t
 ### Gotchas
 - US-103 (Google Business Profile) is an operational task, not code-implementable — skipped to next implementable story.
 - llms.txt is not blocked by robots.txt (robots.ts allows all of `/`).
+
+
+## Iteration - Story: US-156 - Implement AI search optimisation (AEO) with expanded FAQ and conversational content
+
+### What was implemented
+- Expanded FAQ from 9 to 18 natural-language Q&A pairs in `site/src/components/FAQ.tsx`
+- Topics now covered: check-in/out, pricing, location, Singapore transport, WiFi, capsule vs dormitory, towels/toiletries, luggage storage, payment methods, breakfast, safety/security, nearby attractions, monthly stays, quiet policy, advance booking, MOTAC registration, Tourism Tax, Senai Airport transport
+- Every answer is written in complete, self-contained sentences suitable for AI extraction (no "see above" references)
+- Key factual info (address, check-in times, price range) appears in the first sentences of relevant answers
+- Entity-rich content: mentions "Johor Bahru", "JB", "Taman Pelangi", "CIQ", "Singapore", "Senai Airport", "Woodlands", "DuitNow", "MOTAC" explicitly
+- FAQPage JSON-LD auto-updates because it's generated from the faqs array
+- Updated `llms-full.txt` FAQ section to match all 18 Q&A pairs
+- Fixed data inconsistencies: wrong address (Jalan Trus → Jalan Perang), wrong check-out time (11 AM → 12 PM), wrong price (RM55 → RM35)
+- Increased max-h on FAQ answer panel from max-h-48 to max-h-96 for longer answers
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- FAQ component auto-generates FAQPage JSON-LD from the faqs array — adding items automatically updates structured data
+- llms-full.txt mirrors FAQ content and must be kept in sync manually
+
+### Gotchas
+- The old FAQ had incorrect address (31 Jalan Trus instead of 26A Jalan Perang), incorrect check-out (11 AM instead of 12 PM), and incorrect starting price (RM55 instead of RM35)
+- Speakable structured data (acceptance criterion #5) is tracked separately in US-111 — not implemented here to avoid scope creep
