@@ -3,7 +3,7 @@ import { headers } from "next/headers";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import StructuredData from "@/components/StructuredData";
-import { ChatWidget, MobileBookingBar, CookieConsent, AnalyticsProvider, WebVitalsReporter } from "@/components/DynamicComponents";
+import { ChatWidget, MobileBookingBar, CookieConsent, AnalyticsProvider, ClarityProvider, WebVitalsReporter } from "@/components/DynamicComponents";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
@@ -145,6 +145,7 @@ export default async function RootLayout({
         <ChatWidget />
         <CookieConsent />
         <AnalyticsProvider />
+        <ClarityProvider />
         <WebVitalsReporter />
       </body>
     </html>

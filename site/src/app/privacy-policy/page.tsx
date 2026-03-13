@@ -7,7 +7,7 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = {
   title: "Privacy Policy | Pelangi Capsule Hostel",
   description:
-    "Learn how Pelangi Capsule Hostel collects, uses, and protects your personal data in accordance with Malaysia's Personal Data Protection Act 2010 (PDPA).",
+    "Learn how Pelangi Capsule Hostel collects, uses, and protects your personal data in accordance with Malaysia's Personal Data Protection Act 2010 (PDPA) and the 2024 Amendment Act.",
   alternates: {
     canonical: "https://pelangicapsulehostel.com/privacy-policy",
   },
@@ -37,8 +37,9 @@ export default function PrivacyPolicyPage() {
                 <p className="text-stone-700 dark:text-stone-300 leading-relaxed">
                   Pelangi Capsule Hostel (&ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;) is committed to
                   protecting your personal data in accordance with Malaysia&rsquo;s{" "}
-                  <strong>Personal Data Protection Act 2010 (PDPA)</strong>, specifically Section 7
-                  which requires us to provide you with this privacy notice. This policy explains what
+                  <strong>Personal Data Protection Act 2010 (PDPA)</strong> and the{" "}
+                  <strong>Personal Data Protection (Amendment) Act 2024</strong>, specifically
+                  Section 7 which requires us to provide you with this privacy notice. This policy explains what
                   personal data we collect, how we use it, and your rights as a data subject.
                 </p>
               </section>
@@ -185,6 +186,11 @@ export default function PrivacyPolicyPage() {
                         <td className="p-3">IP address, device/browser data, pages visited</td>
                       </tr>
                       <tr>
+                        <td className="p-3 font-medium">Microsoft Clarity</td>
+                        <td className="p-3">Heatmaps &amp; session recordings</td>
+                        <td className="p-3">IP address, device/browser data, click and scroll behaviour</td>
+                      </tr>
+                      <tr>
                         <td className="p-3 font-medium">Sentry</td>
                         <td className="p-3">Error monitoring</td>
                         <td className="p-3">IP address, browser data, error context</td>
@@ -227,8 +233,10 @@ export default function PrivacyPolicyPage() {
                     consent
                   </li>
                   <li>
-                    <strong>Analytics data:</strong> 14 months (Google Analytics default, adjusted in
-                    our GA4 settings)
+                    <strong>Analytics data (Google Analytics):</strong> 14 months (GA4 setting)
+                  </li>
+                  <li>
+                    <strong>Analytics data (Microsoft Clarity):</strong> 12 months
                   </li>
                   <li>
                     <strong>Cookie consent records:</strong> 12 months
@@ -279,11 +287,68 @@ export default function PrivacyPolicyPage() {
                 <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
                   8. Cookies
                 </h2>
-                <p className="text-stone-700 dark:text-stone-300 leading-relaxed">
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed mb-4">
                   We use essential cookies (required for the website to function) and optional
-                  analytics cookies (only with your consent). You can manage your cookie preferences
-                  at any time by clearing your browser cookies and revisiting our site to see the
-                  consent banner again. For more information about how cookies work, visit{" "}
+                  analytics cookies (only with your explicit consent). Under Malaysia&rsquo;s
+                  Personal Data Protection (Amendment) Act 2024, non-essential cookies are not
+                  loaded until you actively opt in via our cookie consent banner. No boxes are
+                  pre-ticked.
+                </p>
+
+                <h3 className="font-display text-xl font-semibold text-stone-800 dark:text-stone-200 mb-3">
+                  Cookie Categories
+                </h3>
+                <div className="overflow-x-auto mb-4">
+                  <table className="w-full text-sm text-stone-700 dark:text-stone-300 border border-stone-200 dark:border-stone-700 rounded-lg">
+                    <thead className="bg-stone-100 dark:bg-stone-800">
+                      <tr>
+                        <th className="text-left p-3 font-medium">Cookie Name</th>
+                        <th className="text-left p-3 font-medium">Category</th>
+                        <th className="text-left p-3 font-medium">Purpose</th>
+                        <th className="text-left p-3 font-medium">Retention</th>
+                        <th className="text-left p-3 font-medium">Third Party</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-stone-200 dark:divide-stone-700">
+                      <tr>
+                        <td className="p-3 font-mono text-xs">NEXT_LOCALE</td>
+                        <td className="p-3">Essential</td>
+                        <td className="p-3">Stores your language preference (EN / 中文)</td>
+                        <td className="p-3">1 year</td>
+                        <td className="p-3">None (first-party)</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 font-mono text-xs">pelangi_cookie_consent</td>
+                        <td className="p-3">Essential</td>
+                        <td className="p-3">Records your cookie consent choice</td>
+                        <td className="p-3">1 year</td>
+                        <td className="p-3">None (first-party)</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 font-mono text-xs">_ga, _ga_*</td>
+                        <td className="p-3">Analytics</td>
+                        <td className="p-3">Google Analytics 4 &mdash; page views, traffic sources, user journeys</td>
+                        <td className="p-3">Up to 14 months</td>
+                        <td className="p-3">Google LLC (USA)</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 font-mono text-xs">_clck, _clsk</td>
+                        <td className="p-3">Analytics</td>
+                        <td className="p-3">Microsoft Clarity &mdash; heatmaps, session recordings, scroll depth</td>
+                        <td className="p-3">Up to 12 months</td>
+                        <td className="p-3">Microsoft Corporation (USA)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed mb-2">
+                  You can manage your cookie preferences at any time via the &ldquo;Manage
+                  Preferences&rdquo; button on the cookie consent banner, or by clearing your
+                  browser cookies and revisiting our site.
+                </p>
+                <p className="text-stone-600 dark:text-stone-400 text-sm">
+                  For more information about how cookies work, visit{" "}
                   <a
                     href="https://www.allaboutcookies.org"
                     target="_blank"

@@ -4152,3 +4152,28 @@ Incomplete: Register Google Business Profile and connect to Google Hotel free bo
 ### Gotchas
 - Clarity snippet uses IIFE with compressed variable names — the `dangerouslySetInnerHTML` approach keeps it as a single inline script
 - `rtk npx` not working for tsc — use `npx` directly
+
+
+## Iteration 10 - Story: US-106 - Add Malaysia PDPA-compliant cookie consent banner with explicit opt-in
+
+### What was implemented
+- **CookieConsent.tsx** — Full rewrite with three buttons: Accept All, Reject Non-Essential, Manage Preferences
+  - Manage Preferences panel shows Essential (always on) and Analytics (toggle, NOT pre-ticked)
+  - Bilingual EN/ZH support — reads NEXT_LOCALE cookie to auto-detect language
+  - Uses aria role="switch" for analytics toggle, proper focus-visible outlines
+  - Dispatches custom `cookie-consent` event so AnalyticsProvider/ClarityProvider react
+- **ClarityProvider** — Added to DynamicComponents.tsx and layout.tsx (was orphaned, not wired up)
+- **Privacy Policy** — Section 8 expanded with full cookie categories table:
+  - Cookie name, category (Essential/Analytics), purpose, retention period, third-party recipient
+  - Microsoft Clarity added to third-party processors table (section 5)
+  - Analytics data retention split into GA (14 months) and Clarity (12 months) in section 6
+  - PDPA 2024 Amendment Act referenced in introduction and metadata description
+
+### Patterns discovered
+- ClarityProvider component existed but was not exported from DynamicComponents or used in layout.tsx
+- Language detection via NEXT_LOCALE cookie matches existing LanguageSwitcher pattern
+- Cookie consent uses custom event bus pattern for cross-component consent propagation
+
+### Gotchas
+- RTK not available in this shell environment — use npx/npm directly
+- ClarityProvider was already consent-gated internally, just needed to be included in the render tree

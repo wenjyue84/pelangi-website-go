@@ -32,6 +32,11 @@ export const AnalyticsProvider = dynamic(
   { ssr: false }
 );
 
+export const ClarityProvider = dynamic(
+  () => import("@/components/ClarityProvider"),
+  { ssr: false }
+);
+
 export const WebVitalsReporter = dynamic(
   () => import("@/components/WebVitalsReporter"),
   { ssr: false }
