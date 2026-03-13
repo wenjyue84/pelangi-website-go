@@ -4510,3 +4510,24 @@ Incomplete: Register Google Business Profile and connect to Google Hotel free bo
 ### Gotchas
 - US-103 (critical) is a business operations task (Google Business Profile registration) — cannot be implemented through code changes. Left as passes: false for manual resolution.
 - ContactForm uses server action via `useActionState` — the T&C checkbox `required` attribute works natively with form validation without needing a controlled React state
+
+
+## Iteration 13 - Story: US-131 - Display Malaysia Tourism Tax (TTx) RM10/room/night transparently on booking flow
+
+### What was implemented
+- `site/src/components/Rooms.tsx` — Added TTx line item below main price with info icon linking to MyTTx portal; added TTx row in additional rates section
+- `site/src/app/book/page.tsx` — Added TTx line in both nightly and monthly pricing cards with info icon; added TTx row in OTA vs Direct price comparison for both columns; updated total prices to include TTx; added footnote about TTx below comparison
+- `site/src/components/Booking.tsx` — Added TTx note below the RM35/night price highlight on homepage
+- `site/src/components/MobileBookingBar.tsx` — Updated price text to "From RM35/night +TTx"
+- `site/src/components/FAQ.tsx` — Added new FAQ entry explaining Malaysia Tourism Tax (TTx) with reference to official MyTTx portal
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- No Resend email integration exists — booking is entirely WhatsApp-based, so AC4 (booking confirmation email) is N/A
+- Info icon tooltip pattern: inline SVG with `aria-label` on the link for accessibility
+- FAQ array automatically feeds into FAQPage structured data schema via `faqSchema`
+
+### Gotchas
+- Price comparison section totals needed updating to include TTx (RM10) in both OTA and direct columns
+- TTx is per room per night, not per person — important distinction for hostel capsule pods
+- US-103 (critical) was already documented as external/administrative — skipping automatically

@@ -183,6 +183,20 @@ export default function BookPage() {
                 <span className="font-display text-5xl font-medium text-stone-900 dark:text-stone-100">45</span>
                 <span className="text-stone-500 dark:text-stone-400 ml-1">/night</span>
               </div>
+              <div className="flex items-center justify-center gap-1.5 text-sm text-stone-500 dark:text-stone-400 mb-2">
+                <span>+ Tourism Tax (TTx): RM10/room/night</span>
+                <a
+                  href="https://www.myttx.customs.gov.my/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Learn more about Malaysia Tourism Tax (TTx)"
+                  className="text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </a>
+              </div>
               <p className="text-stone-500 dark:text-stone-400 text-sm mb-6">
                 Per person, per night. Price varies by day and season.
               </p>
@@ -211,6 +225,20 @@ export default function BookPage() {
               <div className="flex items-baseline justify-center gap-1 mb-4">
                 <span className="font-display text-5xl font-medium text-stone-900 dark:text-stone-100">RM594</span>
                 <span className="text-stone-500 dark:text-stone-400 ml-1">/month</span>
+              </div>
+              <div className="flex items-center justify-center gap-1.5 text-sm text-stone-500 dark:text-stone-400 mb-2">
+                <span>+ Tourism Tax (TTx): RM10/room/night</span>
+                <a
+                  href="https://www.myttx.customs.gov.my/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Learn more about Malaysia Tourism Tax (TTx)"
+                  className="text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </a>
               </div>
               <p className="text-stone-500 dark:text-stone-400 text-sm mb-6">
                 That&apos;s just RM19.80/night — save over 40% vs nightly rate.
@@ -296,9 +324,13 @@ export default function BookPage() {
                     <span>Platform service fee</span>
                     <span className="font-medium">+15–20%</span>
                   </div>
+                  <div className="flex justify-between">
+                    <span>Tourism Tax (TTx)</span>
+                    <span className="font-medium">RM10</span>
+                  </div>
                   <div className="border-t border-stone-200 dark:border-stone-700 pt-2 mt-2 flex justify-between font-semibold text-stone-800 dark:text-stone-200">
                     <span>You pay</span>
-                    <span>~RM46–58/night</span>
+                    <span>~RM56–68/night</span>
                   </div>
                 </div>
               </div>
@@ -322,15 +354,23 @@ export default function BookPage() {
                     <span>Platform fee</span>
                     <span className="font-medium">RM0</span>
                   </div>
+                  <div className="flex justify-between">
+                    <span>Tourism Tax (TTx)</span>
+                    <span className="font-medium">RM10</span>
+                  </div>
                   <div className="border-t border-green-200 dark:border-green-800 pt-2 mt-2 flex justify-between font-semibold text-green-800 dark:text-green-300">
                     <span>You pay</span>
-                    <span>RM35–45/night</span>
+                    <span>RM45–55/night</span>
                   </div>
                 </div>
               </div>
             </div>
             <p className="text-center text-sm text-amber-800 dark:text-amber-300 font-medium">
               Save up to <span className="font-bold text-green-700">RM13/night</span> by booking direct — that&apos;s <span className="font-bold text-green-700">RM91/week</span> back in your pocket.
+            </p>
+            <p className="text-center text-xs text-stone-500 dark:text-stone-400 mt-2">
+              All prices exclude Tourism Tax (TTx) of RM10/room/night, required by Malaysian law.{" "}
+              <a href="https://www.myttx.customs.gov.my/" target="_blank" rel="noopener noreferrer" className="text-amber-600 dark:text-amber-400 hover:underline">Learn more</a>
             </p>
           </div>
 

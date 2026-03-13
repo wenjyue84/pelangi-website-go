@@ -33,6 +33,10 @@ const faqs = [
     {
         question: "Is it quiet? Can I work there?",
         answer: "We have a strict quiet policy in the sleeping pods area ensuring a good night's rest. For working, we have a designated common area with high-speed WiFi."
+    },
+    {
+        question: "What is the Malaysia Tourism Tax (TTx)?",
+        answer: "The Tourism Tax (TTx) of RM10 per room per night is a government-mandated charge under the Tourism Tax Act 2017. It applies to all accommodation premises in Malaysia and is collected on behalf of the Royal Malaysian Customs Department. This tax is separate from the room rate and will be added to your bill. For more details, visit the official MyTTx portal at myttx.customs.gov.my."
     }
 ];
 

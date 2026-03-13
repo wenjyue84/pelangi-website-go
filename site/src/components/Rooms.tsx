@@ -119,6 +119,20 @@ export default function Rooms() {
                 <p className="text-sm text-stone-500 dark:text-stone-400 mt-2">
                   Premium comfort at backpacker prices
                 </p>
+                <div className="flex items-center gap-1.5 mt-3 text-sm text-stone-500 dark:text-stone-400">
+                  <span>+ Tourism Tax (TTx): RM10/room/night</span>
+                  <a
+                    href="https://www.myttx.customs.gov.my/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Learn more about Malaysia Tourism Tax (TTx)"
+                    className="text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </a>
+                </div>
               </div>
 
               {/* Features */}
@@ -144,6 +158,10 @@ export default function Rooms() {
                 <div className="flex justify-between text-sm">
                   <span className="text-stone-500 dark:text-stone-400">Monthly Rate</span>
                   <span className="font-medium text-stone-800 dark:text-stone-200">RM594/month</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-stone-500 dark:text-stone-400">Tourism Tax (TTx)</span>
+                  <span className="font-medium text-stone-800 dark:text-stone-200">RM10/room/night</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-stone-500 dark:text-stone-400">Check-in</span>

@@ -70,6 +70,18 @@ export default function Booking() {
               <span className="font-display text-6xl md:text-7xl font-medium text-white">RM35</span>
               <span className="text-amber-300 text-sm">/night</span>
             </div>
+            <p className="text-amber-300/80 text-sm mt-2">
+              + Tourism Tax (TTx): RM10/room/night{" "}
+              <a
+                href="https://www.myttx.customs.gov.my/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-amber-200"
+                aria-label="Learn more about Malaysia Tourism Tax"
+              >
+                (info)
+              </a>
+            </p>
             <div className="mt-3 h-px w-24 bg-linear-to-r from-transparent via-amber-400 to-transparent" />
           </div>
 
