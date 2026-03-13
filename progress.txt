@@ -4840,3 +4840,29 @@ US-103 (Google Business Profile registration) is entirely an external platform t
 ### Gotchas
 - `declare global { interface Window { dataLayer } }` conflicts with existing GTM type declarations — use `as unknown as { dataLayer }` cast instead
 - Always clear ecommerce object before each push (`{ ecommerce: null }`) to prevent data carryover between events
+
+
+## Iteration N - Story: US-164 - Implement Facebook Conversions API (CAPI) for server-side event tracking
+
+### What was implemented
+- `site/src/app/api/meta-events/route.ts` — POST Route Handler that receives events from the client, SHA-256 hashes user data (email, phone), and forwards to Meta Conversions API v21.0
+- `site/src/lib/meta-capi.ts` — Client-side helpers: `sendMetaEvent()` (fire-and-forget to route handler), `firePixelEvent()` (browser Pixel with eventID), `trackMetaEvent()` (combined CAPI + Pixel with shared event_id for deduplication)
+- `site/src/components/MetaPixelProvider.tsx` — Consent-aware Meta Pixel script loader (follows same pattern as AnalyticsProvider)
+- Added `MetaPixelProvider` to `DynamicComponents.tsx` and `layout.tsx`
+- Added server-side Meta CAPI Contact event in `actions/contact.ts` (fires after successful email send)
+- Added client-side Contact event in `ContactForm.tsx` (for browser Pixel dedup)
+- Added ViewContent event in `RoomsEcommerceTracker.tsx` for room page views
+- Events tracked: PageView (via Pixel on load), ViewContent (room page), Contact (form submission — both server + client side)
+- All events include event_id for CAPI ↔ Pixel deduplication
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- The project uses consent-aware analytics loading via custom event `cookie-consent` — same pattern reused for MetaPixelProvider
+- Server actions can fire non-blocking CAPI events with `.catch(() => {})` so analytics never block the user flow
+- Environment variables needed: `FACEBOOK_PIXEL_ID`, `FACEBOOK_ACCESS_TOKEN` (server-side), `NEXT_PUBLIC_FACEBOOK_PIXEL_ID` (client-side Pixel)
+
+### Gotchas
+- Meta requires phone numbers to be stripped to digits-only before SHA-256 hashing
+- The fbq() global must be typed via `window as unknown as { fbq }` cast to avoid TS errors
+- `keepalive: true` on the fetch call ensures CAPI events complete even during page navigation
+- Route handler silently succeeds when PIXEL_ID/ACCESS_TOKEN not configured — avoids breaking dev/staging environments

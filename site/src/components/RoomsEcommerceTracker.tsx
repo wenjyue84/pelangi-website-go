@@ -2,6 +2,7 @@
 
 import { useEffect, useCallback } from "react";
 import { trackViewItem, trackSelectItem } from "@/lib/gtm-ecommerce";
+import { trackMetaEvent } from "@/lib/meta-capi";
 
 const ROOM_ITEMS = [
   {
@@ -34,6 +35,17 @@ export default function RoomsEcommerceTracker() {
     for (const item of ROOM_ITEMS) {
       trackViewItem(item);
     }
+
+    // Meta CAPI ViewContent event for room page
+    trackMetaEvent("ViewContent", {
+      customData: {
+        content_name: "Capsule Pod Rooms",
+        content_category: "accommodation",
+        content_ids: ROOM_ITEMS.map((r) => r.item_id),
+        currency: "MYR",
+        value: 35,
+      },
+    });
 
     document.addEventListener("click", handleClick);
     return () => document.removeEventListener("click", handleClick);

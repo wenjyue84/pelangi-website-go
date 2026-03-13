@@ -4,6 +4,7 @@ import { useActionState, useOptimistic, useEffect, useRef } from "react";
 import Link from "next/link";
 import { submitContactForm, type ContactFormResult } from "@/app/actions/contact";
 import { trackGenerateLead } from "@/lib/gtm-ecommerce";
+import { trackMetaEvent } from "@/lib/meta-capi";
 
 export default function ContactForm() {
   const [state, formAction, isPending] = useActionState(submitContactForm, null);
@@ -17,6 +18,8 @@ export default function ContactForm() {
     if (state?.success && !leadTracked.current) {
       leadTracked.current = true;
       trackGenerateLead("contact_form");
+      // Fire client-side Meta CAPI Contact event (server-side already fired in the action)
+      trackMetaEvent("Contact");
     }
   }, [state]);
 

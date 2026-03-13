@@ -46,3 +46,8 @@ export const BookingRecoveryBanner = dynamic(
   () => import("@/components/BookingRecoveryBanner"),
   { ssr: false }
 );
+
+export const MetaPixelProvider = dynamic(
+  () => import("@/components/MetaPixelProvider"),
+  { ssr: false }
+);

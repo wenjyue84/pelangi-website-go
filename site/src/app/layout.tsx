@@ -6,7 +6,7 @@ import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 import StructuredData from "@/components/StructuredData";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { ChatWidget, MobileBookingBar, CookieConsent, AnalyticsProvider, ClarityProvider, WebVitalsReporter, BookingRecoveryBanner } from "@/components/DynamicComponents";
+import { ChatWidget, MobileBookingBar, CookieConsent, AnalyticsProvider, ClarityProvider, WebVitalsReporter, BookingRecoveryBanner, MetaPixelProvider } from "@/components/DynamicComponents";
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "";
 
@@ -170,6 +170,7 @@ export default async function RootLayout({
         <ChatWidget />
         <CookieConsent />
         <AnalyticsProvider />
+        <MetaPixelProvider />
         <ClarityProvider />
         <WebVitalsReporter />
         <SpeedInsights />

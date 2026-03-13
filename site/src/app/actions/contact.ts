@@ -1,6 +1,7 @@
 "use server";
 
 import { headers } from "next/headers";
+import crypto from "crypto";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -222,6 +223,9 @@ export async function submitContactForm(
       console.error("[contact-form] Guest auto-reply failed:", guestResult.reason);
     }
 
+    // Fire Meta CAPI Contact event (non-blocking)
+    sendMetaContactEvent(data.email, data.phone).catch(() => {});
+
     return {
       success: true,
       message:
@@ -232,5 +236,53 @@ export async function submitContactForm(
       success: false,
       message: "Something went wrong. Please try again or WhatsApp us at +60 12-708 8789.",
     };
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Meta CAPI — server-side Contact event
+// ---------------------------------------------------------------------------
+
+function sha256(value: string): string {
+  return crypto.createHash("sha256").update(value.trim().toLowerCase()).digest("hex");
+}
+
+async function sendMetaContactEvent(email: string, phone: string): Promise<void> {
+  const pixelId = process.env.FACEBOOK_PIXEL_ID;
+  const accessToken = process.env.FACEBOOK_ACCESS_TOKEN;
+  if (!pixelId || !accessToken) return;
+
+  const userData: Record<string, string> = {};
+  if (email) userData.em = sha256(email);
+  if (phone) {
+    const digits = phone.replace(/\D/g, "");
+    if (digits.length > 0) userData.ph = sha256(digits);
+  }
+
+  const payload = {
+    data: [
+      {
+        event_name: "Contact",
+        event_time: Math.floor(Date.now() / 1000),
+        event_id: crypto.randomUUID(),
+        event_source_url: "https://pelangicapsulehostel.com/contact",
+        action_source: "website",
+        user_data: userData,
+      },
+    ],
+  };
+
+  const response = await fetch(
+    `https://graph.facebook.com/v21.0/${pixelId}/events?access_token=${accessToken}`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }
+  );
+
+  if (!response.ok) {
+    const text = await response.text();
+    console.error("[meta-capi] Contact event failed:", response.status, text);
   }
 }
