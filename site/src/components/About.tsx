@@ -14,6 +14,7 @@ export default function About() {
                 alt="Pelangi Capsule Hostel building"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
+                quality={80}
                 className="object-cover image-zoom"
                 fetchPriority="low"
               />

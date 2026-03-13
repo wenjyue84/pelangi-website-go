@@ -6113,3 +6113,28 @@ Completed: Implement Next.js after() API for deferred analytics and logging (ID:
 - [x] Below-fold images explicitly set `fetchPriority="low"` (Rooms.tsx: 3 images added)
 - [x] Only one image per page viewport has `fetchPriority="high"` (Hero only)
 - [x] tsc --noEmit passes with zero errors
+
+
+## Iteration - Story: Audit and fix next/image quality, imageSizes, and minimumCacheTTL defaults (US-228)
+
+### What was implemented
+- `next.config.ts`: Added `images.qualities: [75, 80, 85]` to explicitly declare all quality tiers used
+- `next.config.ts`: Added `images.minimumCacheTTL: 3600` (1 hour) with rationale comment
+- `Hero.tsx`: Added `quality={85}` — full-viewport hero image deserves highest quality
+- `Rooms.tsx`: Added `quality={80}` to 3 room showcase images (capsule-4, capsule-2, capsule-3)
+- `About.tsx`: Added `quality={80}` to exterior building photo
+- Gallery, Facilities, Destinations images left at default 75 (smaller thumbnails/cards where compression is acceptable)
+- Confirmed no `images.domains` usage (already migrated to `remotePatterns`)
+- No `imageSizes: 16` needed (smallest images are 160px+ gallery thumbnails)
+
+### Audit findings
+- Zero `quality` props existed before this change — all images used NJ16 default of 75
+- `images.domains` was never used (already on `remotePatterns`) ✓
+- No tiny 16px images exist, so the removed `imageSizes: 16` breakpoint is irrelevant
+
+### Patterns discovered
+- Next.js 16 `qualities` array acts as an allowlist — values not listed are coerced silently
+- Hero/showcase images benefit from quality 80-85; gallery thumbnails are fine at 75
+
+### Gotchas
+- `minimumCacheTTL` default changed from 60s → 14400s (4h) in NJ16 — could delay image updates if not explicitly set

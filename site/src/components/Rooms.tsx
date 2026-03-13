@@ -79,6 +79,7 @@ export default async function Rooms() {
                 alt="Modern Japanese-style capsule pod interior at Pelangi Hostel Johor Bahru with personal lighting and privacy curtain"
                 fill
                 sizes="(max-width: 1024px) 100vw, 60vw"
+                quality={80}
                 className="object-cover image-zoom"
                 placeholder="blur"
                 fetchPriority="low"
@@ -95,6 +96,7 @@ export default async function Rooms() {
                 alt="Comfortable premium mattress in budget capsule hostel pod in Taman Pelangi JB"
                 fill
                 sizes="(max-width: 768px) 50vw, (max-width: 1024px) 50vw, 30vw"
+                quality={80}
                 className="object-cover image-zoom"
                 placeholder="blur"
                 fetchPriority="low"
@@ -106,6 +108,7 @@ export default async function Rooms() {
                 alt="Capsule pod amenities including USB charging ports and personal ventilation at Pelangi Hostel"
                 fill
                 sizes="(max-width: 768px) 50vw, (max-width: 1024px) 50vw, 30vw"
+                quality={80}
                 className="object-cover image-zoom"
                 placeholder="blur"
                 fetchPriority="low"

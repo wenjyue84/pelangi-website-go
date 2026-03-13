@@ -14,6 +14,7 @@ export default function Hero() {
           preload={true}
           fetchPriority="high"
           sizes="100vw"
+          quality={85}
           className="object-cover"
           placeholder="blur"
         />

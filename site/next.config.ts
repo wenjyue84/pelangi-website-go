@@ -63,6 +63,15 @@ const nextConfig: NextConfig = {
   },
   images: {
     formats: ['image/avif', 'image/webp'],
+    // Next.js 16 changed qualities default to [75] — any <Image quality={n}>
+    // not listed here is silently coerced to the nearest value. Declare all
+    // quality tiers used across the codebase. (US-228)
+    qualities: [75, 80, 85],
+    // Next.js 16 increased minimumCacheTTL from 60s to 14400s (4h).
+    // 1 hour is a good balance: long enough to avoid redundant re-optimisation
+    // during traffic spikes, short enough to pick up image replacements
+    // (e.g. updated room photos) within a reasonable window. (US-228)
+    minimumCacheTTL: 3600,
     remotePatterns: [
       {
         protocol: 'https',
