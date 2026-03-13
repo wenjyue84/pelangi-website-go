@@ -7035,3 +7035,86 @@ This brief outlines the implementation plan within the Frappe framework. The use
 - `animation-play-state: paused` is the correct CSS property — it pauses mid-animation without resetting
 - Button positioned at `bottom-20 left-4` on mobile (above MobileBookingBar), `md:bottom-4` on desktop
 - Must use `!important` to override Tailwind utility classes that set animation properties
+## Iteration 22 - Sat, Mar 14, 2026  2:55:52 AM
+Incomplete: Integrate Google Free Hotel Booking Links via connectivity partner (ID: US-194) — attempt 1/3
+
+## Iteration 6 - Sat, Mar 14, 2026  2:56:23 AM
+Incomplete: Integrate Google Free Hotel Booking Links via connectivity partner (ID: US-194) — attempt 2/3
+
+
+## Pre-analysis for US-194 (Gemini 2.5 Pro)
+This user story outlines a business integration, not a software development task within Frappe. It involves configuring a third-party "connectivity partner" to sync the hostel's booking information with Google. No Python code or Frappe DocType modifications are required.
+
+**Project:** US-194: Google Free Booking Links Integration
+**Prepared for:** Claude Code Agent
+
+**Technical Brief**
+
+This is a business-level integration task focused on third-party service configuration, not direct code implementation in Frappe.
+
+*   **Python Files to Modify:** None. The work involves configuring an external SaaS "connectivity partner," not writing Python code.
+
+*   **Frappe DocTypes/Hooks:** None. The integration point is between the hostel's existing booking system (likely part of the Next.js website) and a channel manager (the connectivity partner), which then feeds data to Google. Frappe is not involved in this workflow.
+
+*   **Recommended Implementation Approach:**
+    1.  **Select Partner:** Choose a Google-approved connectivity partner (e.g., Beds24, Cloudbeds) that offers a plan suitable for a single hostel.
+    2.  **Configure ARI Feed:** Connect the partner to the hostel's source of truth for Availability, Rates, and Inventory (ARI). This is likely the booking engine on the main website.
+    3.  **Link Google Services:** The partner will syndicate the ARI feed to a Google Hotel Center account.
+    4.  **Verify Google Business Profile:** Ensure the hostel's Google Business Profile name, address, and website URL are identical to the data in Hotel Center. The URL must be a deep link directly to the booking page.
+    5.  **Test & Monitor:** Use the Google Hotel Center dashboard to validate a high price-accuracy score. Confirm the direct booking link appears correctly in Google search results.
+
+*   **Edge Cases & Gotchas:**
+    *   **Price Accuracy is Critical:** Google will delist properties if the price shown in search results does not exactly match the price on the landing page.
+    *   **Data Consistency:** Mismatched property name or address between Google Business Profile and the partner's feed is a common reason for failure.
+    *   **Partner Limitations:** Ensure the chosen partner can provide the specific deep link required by Google, not a link to their own portal.
+
+
+## Pre-analysis for US-194 (Gemini 2.5 Pro)
+Here is the technical brief for implementing the Google FBL user story in a Frappe/Python environment.
+
+***
+
+**Technical Brief: Google FBL Integration (US-194)**
+
+This brief outlines the implementation strategy for integrating Google Free Booking Links within a Frappe/Python application.
+
+1.  **Python Files to Modify:**
+    *   Create a new file: `[app_name]/integrations/ari_connector.py`. This will house the client logic for the chosen connectivity partner's API (e.g., Beds24, Cloudbeds) to handle ARI (Availability, Rates, Inventory) pushes.
+    *   Modify DocType controller files (`booking.py`, `room.py`) to call the `ari_connector` on data changes.
+    *   Create `[app_name]/jobs/ari_sync.py` for a scheduled job to perform full data reconciliation.
+
+2.  **Frappe DocTypes & Hooks:**
+    *   **DocTypes:**
+        *   A new `Hotel Settings` or similar Singleton DocType is needed to store the connectivity partner's API credentials and Google Hotel Center ID.
+        *   The system will interact with `Booking`, `Room`, and `Rate Plan` DocTypes as the source of truth for ARI data.
+        *   A new `ARI Sync Log` DocType should be created to log all outgoing API calls and partner responses for debugging price accuracy.
+    *   **Hooks (`hooks.py`):**
+        *   `on_submit` for `Booking`: Trigger a real-time inventory reduction via the `ari_connector`.
+        *   `on_cancel` for `Booking`: Trigger an inventory increase.
+        *   `scheduler_events`: Define a nightly or hourly background job to run a full ARI sync from `ari_sync.py`.
+
+3.  **Implementation Approach:**
+    *   The `ari_connector.py` client will abstract all communication with the partner, handling authentication and formatting data into the required XML or JSON structure.
+    *   DocType hooks will provide real-time updates for high-frequency events like bookings.
+    *   A scheduled `frappe.enqueue` job will ensure data consistency by periodically pushing a complete snapshot of all rooms, rates, and availability, mitigating any missed real-time triggers.
+
+4.  **Edge Cases & Gotchas:**
+    *   **Context Mismatch:** The user story describes a hotel system, but the target app is `lhdn_payroll_integration`. This feature belongs in a dedicated "Hotel" or "Bookings" custom app, not a payroll module.
+    *   **Price Accuracy:** Google strictly enforces price accuracy. The connector must precisely handle all taxes, fees, and currency conversions. The `ARI Sync Log` is critical for auditing.
+    *   **API Rate Limiting:** The `ari_connector` must include robust error handling, exponential backoff, and retry logic to manage the partner API's rate limits.
+
+
+## Iteration - Fri, Mar 14, 2026
+Completed: Add JSON Feed 1.1 at /feed.json for blog content syndication (ID: US-177)
+
+### What was implemented
+- `site/src/app/feed.json/route.ts` — JSON Feed v1.1 route handler returning all blog posts
+- Added `application/feed+json` to `alternates.types` in layout.tsx metadata
+- Added `<link rel="alternate" type="application/feed+json">` tag in layout.tsx `<head>`
+
+### Patterns discovered
+- JSON Feed route follows same pattern as existing `feed.xml/route.ts` — import blogPosts, sort by date, return Response with appropriate Content-Type
+- Pre-existing TS error in `shared/page.tsx` (Link type mismatch) — unrelated to this story
+
+### Gotchas
+- rtk wrapper doesn't work with npx — use npx directly for tsc checks

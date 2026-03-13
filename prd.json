@@ -3992,7 +3992,7 @@
         "Add RSS/Atom feed at /feed.xml for the blog"
       ],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-178",
