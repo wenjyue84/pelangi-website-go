@@ -58,7 +58,7 @@ export default function PrivacyPolicyPage() {
                   <p className="mt-2">Email: pelangicapsule@gmail.com</p>
                   <p>Phone: +60 12-708 8789</p>
                 </div>
-                <p className="text-stone-700 leading-relaxed mt-3">
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed mt-3">
                   We process personal data as a registered business under Malaysian law.
                 </p>
               </section>
@@ -262,7 +262,7 @@ export default function PrivacyPolicyPage() {
                     your data in certain circumstances
                   </li>
                 </ul>
-                <p className="text-stone-700 leading-relaxed mt-3">
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed mt-3">
                   To exercise any of these rights, please contact us at{" "}
                   <a
                     href="mailto:pelangicapsule@gmail.com"
@@ -359,7 +359,7 @@ export default function PrivacyPolicyPage() {
                   </p>
                   <p>Phone: +60 12-708 8789</p>
                 </div>
-                <p className="text-stone-700 leading-relaxed mt-3">
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed mt-3">
                   You also have the right to lodge a complaint with Malaysia&rsquo;s{" "}
                   <strong>Department of Personal Data Protection (JPDP)</strong> at{" "}
                   <a

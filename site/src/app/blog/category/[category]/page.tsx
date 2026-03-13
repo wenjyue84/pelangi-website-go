@@ -121,13 +121,13 @@ export default async function CategoryPage({ params }: PageProps) {
           <nav aria-label="Breadcrumb" className="mb-8 text-sm text-stone-500 dark:text-stone-400">
             <ol className="flex items-center gap-2">
               <li>
-                <Link href="/" className="hover:text-amber-700 transition-colors">
+                <Link href="/" className="hover:text-amber-700 dark:hover:text-amber-400 transition-colors">
                   Home
                 </Link>
               </li>
               <li aria-hidden="true">/</li>
               <li>
-                <Link href="/blog" className="hover:text-amber-700 transition-colors">
+                <Link href="/blog" className="hover:text-amber-700 dark:hover:text-amber-400 transition-colors">
                   Blog
                 </Link>
               </li>
@@ -157,7 +157,7 @@ export default async function CategoryPage({ params }: PageProps) {
           <div className="mt-12 text-center">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-amber-700 hover:text-amber-900 font-medium transition-colors"
+              className="inline-flex items-center gap-2 text-amber-700 dark:text-amber-400 hover:text-amber-900 dark:hover:text-amber-300 font-medium transition-colors"
             >
               ← View all articles
             </Link>

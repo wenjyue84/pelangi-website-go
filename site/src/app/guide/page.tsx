@@ -256,21 +256,21 @@ export default function GuidePage() {
                                 <h3 className="font-bold text-lg text-stone-900 dark:text-stone-100 mb-4">Best places to exchange</h3>
                                 <ul className="space-y-3 text-stone-700 dark:text-stone-300">
                                     <li className="flex gap-3">
-                                        <span className="text-amber-700 font-bold mt-0.5">1.</span>
+                                        <span className="text-amber-700 dark:text-amber-400 font-bold mt-0.5">1.</span>
                                         <div>
                                             <strong>Jalan Wong Ah Fook money changers</strong>
                                             <p className="text-sm text-stone-500">Best SGD/MYR rates in JB. Multiple competing stalls — compare a few before exchanging. ~10 min from us by Grab.</p>
                                         </div>
                                     </li>
                                     <li className="flex gap-3">
-                                        <span className="text-amber-700 font-bold mt-0.5">2.</span>
+                                        <span className="text-amber-700 dark:text-amber-400 font-bold mt-0.5">2.</span>
                                         <div>
                                             <strong>JB Sentral / CIQ Complex</strong>
                                             <p className="text-sm text-stone-500">Convenient if arriving from Singapore, but rates are slightly worse than street changers.</p>
                                         </div>
                                     </li>
                                     <li className="flex gap-3">
-                                        <span className="text-amber-700 font-bold mt-0.5">3.</span>
+                                        <span className="text-amber-700 dark:text-amber-400 font-bold mt-0.5">3.</span>
                                         <div>
                                             <strong>ATMs (Maybank, CIMB, RHB)</strong>
                                             <p className="text-sm text-stone-500">Available at Pelangi Leisure Mall (10 min walk). Use Visa/Mastercard; your bank&apos;s foreign fee typically applies.</p>
@@ -314,7 +314,7 @@ export default function GuidePage() {
                         <div className="grid md:grid-cols-2 gap-6">
                             <div className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs p-6">
                                 <h3 className="font-bold text-lg text-stone-900 dark:text-stone-100 mb-1">Causeway (Woodlands)</h3>
-                                <p className="text-sm text-amber-700 font-medium mb-4">Open 24 hours</p>
+                                <p className="text-sm text-amber-700 dark:text-amber-400 font-medium mb-4">Open 24 hours</p>
                                 <ul className="space-y-2 text-sm text-stone-700 dark:text-stone-300">
                                     <li><strong>Peak congestion:</strong> 7–9am and 5–8pm (weekdays)</li>
                                     <li><strong>Bus CW1:</strong> JB Sentral ↔ Kranji MRT — RM 2.50 / SGD 1</li>
@@ -325,7 +325,7 @@ export default function GuidePage() {
                             </div>
                             <div className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs p-6">
                                 <h3 className="font-bold text-lg text-stone-900 dark:text-stone-100 mb-1">Second Link (Tuas)</h3>
-                                <p className="text-sm text-green-700 font-medium mb-4">Less crowded, faster</p>
+                                <p className="text-sm text-green-700 dark:text-green-400 font-medium mb-4">Less crowded, faster</p>
                                 <ul className="space-y-2 text-sm text-stone-700 dark:text-stone-300">
                                     <li><strong>Open:</strong> 24 hours</li>
                                     <li><strong>Best for:</strong> Driving or private car hire</li>
@@ -362,7 +362,7 @@ export default function GuidePage() {
                                         <p className="text-stone-600 dark:text-stone-400 mt-1">{h.desc}</p>
                                     </div>
                                     <div className="text-right shrink-0">
-                                        <p className="text-sm font-medium text-amber-700">{h.dist}</p>
+                                        <p className="text-sm font-medium text-amber-700 dark:text-amber-400">{h.dist}</p>
                                         <p className="text-xs text-stone-500 mt-1">{h.hours}</p>
                                     </div>
                                 </div>
@@ -382,7 +382,7 @@ export default function GuidePage() {
                                         <div key={i} className="bg-white dark:bg-stone-900 p-5 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs hover:shadow-md transition-shadow">
                                             <h3 className="font-bold text-lg text-stone-900 dark:text-stone-100">{place.name}</h3>
                                             <div className="flex gap-3 mb-2">
-                                                <p className="text-sm font-medium text-amber-700">{place.dist}</p>
+                                                <p className="text-sm font-medium text-amber-700 dark:text-amber-400">{place.dist}</p>
                                                 <span className="text-stone-400">·</span>
                                                 <p className="text-sm text-stone-500">{place.hours}</p>
                                             </div>
