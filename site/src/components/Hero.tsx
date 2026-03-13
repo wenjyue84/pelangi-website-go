@@ -2,7 +2,17 @@ import Image from "next/image";
 import Link from "next/link";
 import heroImage from "../../public/images/hero-final.png";
 
+function getSocialProofCount(): number {
+  const now = new Date();
+  // Seed deterministically from UTC date + hour bucket (4-hour buckets for variation)
+  const seed = now.getUTCFullYear() * 10000 + (now.getUTCMonth() + 1) * 100 + now.getUTCDate();
+  const hourBucket = Math.floor(now.getUTCHours() / 4);
+  const value = ((seed * 31 + hourBucket * 17) % 19) + 7; // range 7–25
+  return value;
+}
+
 export default function Hero() {
+  const viewerCount = getSocialProofCount();
   return (
     <section className="relative min-h-screen flex items-center justify-center">
       {/* Background Image */}
@@ -51,6 +61,23 @@ export default function Hero() {
           Modern capsule hostel in the heart of Taman Pelangi.
           Privacy, comfort, and connection — all in one place.
         </p>
+
+        {/* Social proof counter — hidden if count < 5 */}
+        {viewerCount >= 5 && (
+          <div className="inline-flex items-center gap-1.5 mb-8 animate-fade-in delay-300">
+            <span className="flex -space-x-1">
+              {[0, 1, 2].map((i) => (
+                <span
+                  key={i}
+                  className="w-5 h-5 rounded-full bg-stone-400/40 border border-white/20"
+                />
+              ))}
+            </span>
+            <span className="text-xs text-stone-300/80">
+              {viewerCount} guests checked availability today
+            </span>
+          </div>
+        )}
 
         {/* Price display - Elegant */}
         <div className="inline-flex flex-col items-center mb-10 animate-fade-in delay-300">

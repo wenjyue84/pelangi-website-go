@@ -6763,3 +6763,17 @@ This user story is a business process and service integration task, not a Frappe
 ### Gotchas
 - The external steps (GBP registration, connectivity partner setup) are prerequisites for the free booking links to actually appear — the code changes prepare the site but don't fulfill the external requirements
 - NAP (Name, Address, Phone) consistency across GBP, website, and OTA listings is critical for Google to match the property
+
+## Iteration 22 - Story: Add social proof counter to Home hero (US-102)
+
+### What was implemented
+- Added `getSocialProofCount()` function to `Hero.tsx` — deterministic seed from UTC date + 4-hour bucket, returns int in range 7–25
+- Added subtle counter badge in Hero section between subtitle and price display
+- Badge shows "{count} guests checked availability today" with stacked avatar dots
+- Hidden when count < 5 via conditional render
+
+### Patterns discovered
+- Hero.tsx is a Server Component (no "use client") — pure server-side logic is fine inline
+
+### Gotchas
+- Range arithmetic: `(seed % 19) + 7` gives 7–25 deterministically per 4-hour window
