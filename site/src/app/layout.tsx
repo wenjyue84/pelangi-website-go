@@ -105,6 +105,8 @@ export default async function RootLayout({
         {/* Preconnect: YouTube embed and Google Maps iframe */}
         <link rel="preconnect" href="https://www.youtube.com" />
         <link rel="preconnect" href="https://www.google.com" />
+        {/* OpenSearch: enables browser address bar search */}
+        <link rel="search" type="application/opensearchdescription+xml" title="Pelangi Hostel" href="/opensearch.xml" />
         {/* DNS-prefetch: Trip.com CDN for review/OTA images (cold path) */}
         <link rel="dns-prefetch" href="https://ak-d.tripcdn.com" />
         {/* Speculation Rules: prerender high-conversion pages on hover (Chrome/Edge only, ignored by others) */}
