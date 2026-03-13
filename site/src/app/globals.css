@@ -380,6 +380,18 @@
 }
 
 /* ============================================================
+   WCAG 2.1 SC 2.2.2 — In-page pause control
+   Pauses all continuous animations when the user activates the
+   PauseAnimationsButton. This is separate from prefers-reduced-motion
+   which only responds to the OS-level preference.
+   ============================================================ */
+html.animations-paused *,
+html.animations-paused *::before,
+html.animations-paused *::after {
+  animation-play-state: paused !important;
+}
+
+/* ============================================================
    Forced Colors (Windows High Contrast Mode)
    Ensures all custom-styled interactive elements remain visible
    when the OS overrides author colors.

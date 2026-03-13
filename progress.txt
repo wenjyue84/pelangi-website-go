@@ -7009,3 +7009,29 @@ This brief outlines the implementation plan within the Frappe framework. The use
 ### Gotchas
 - Must check window.innerWidth inside useEffect (not at module level) — SSR safety
 - sessionStorage also only available in useEffect, not at module level
+
+## Iteration 274 - Story: WCAG 2.1 SC 2.2.2 Pause/Stop/Hide for auto-advancing animated content (US-234)
+
+### What was implemented
+- `site/src/components/PauseAnimationsButton.tsx` — client component with pause/play toggle button
+  - Fixed position bottom-left (avoids ChatWidget bottom-right), z-50
+  - Adds/removes `animations-paused` class on `<html>` element
+  - Persists preference to localStorage
+  - Keyboard-accessible with `aria-pressed` and `aria-label`
+  - Visual pause/play icon with text label
+- `site/src/app/globals.css` — added `html.animations-paused` rule that sets `animation-play-state: paused !important` on all elements
+- `site/src/components/DynamicComponents.tsx` — added dynamic export for PauseAnimationsButton (ssr: false)
+- `site/src/app/layout.tsx` — included PauseAnimationsButton in body
+
+### Also verified
+- US-100 (after() for Server Actions) was already fully implemented — marked as passes: true
+
+### Patterns discovered
+- Continuous animations in the codebase: `animate-pulse` (Hero red dot, scroll indicator), `animate-bounce` (scroll indicator), `gradient-shimmer` (text effect)
+- Loading skeletons and spinners are transient — they don't trigger SC 2.2.2 requirements
+- The site already had `prefers-reduced-motion: reduce` CSS but SC 2.2.2 specifically requires an in-page control
+
+### Gotchas
+- `animation-play-state: paused` is the correct CSS property — it pauses mid-animation without resetting
+- Button positioned at `bottom-20 left-4` on mobile (above MobileBookingBar), `md:bottom-4` on desktop
+- Must use `!important` to override Tailwind utility classes that set animation properties

@@ -44,3 +44,8 @@ export const MetaPixelProvider = dynamic(
   () => import("@/components/MetaPixelProvider"),
   { ssr: false }
 );
+
+export const PauseAnimationsButton = dynamic(
+  () => import("@/components/PauseAnimationsButton"),
+  { ssr: false }
+);
