@@ -5551,3 +5551,23 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 ### Gotchas
 - US-209 was already fully implemented from prior iterations — just needed verification and marking
 - US-210 privacy policy content was complete; only the cookie consent banner reference was missing
+
+## Iteration 224 - Story: US-103 - Register Google Business Profile (SKIPPED - External Task)
+
+### What was implemented
+- Nothing — this story cannot be completed through code. All 5 acceptance criteria require external platform actions:
+  1. Claiming/verifying Google Business Profile — requires login to Google Business
+  2. Configuring profile with reviews, photos, amenities — Google dashboard
+  3. Connecting to Google Hotel Center via connectivity partner (Cloudbeds/Beds24) — requires vendor signup
+  4. Free booking links appearing in Google Search — depends on Google's indexing
+  5. Booking landing page URL on property domain — already satisfied (/book page exists)
+
+### Blocker
+- This is an **administrative/external task**, not a code implementation task
+- Must be completed manually by the property owner through Google Business Profile dashboard
+- Left `passes: false` — outer loop will skip after 3 failed attempts
+
+### Gotchas
+- Story was marked "critical" priority but is not implementable through code
+- Future iterations should not attempt this story
+
