@@ -4866,3 +4866,22 @@ US-103 (Google Business Profile registration) is entirely an external platform t
 - The fbq() global must be typed via `window as unknown as { fbq }` cast to avoid TS errors
 - `keepalive: true` on the fetch call ensures CAPI events complete even during page navigation
 - Route handler silently succeeds when PIXEL_ID/ACCESS_TOKEN not configured — avoids breaking dev/staging environments
+
+
+## Iteration 15 - Story: US-154 - Add paymentAccepted, currenciesAccepted, priceRange, and tourBookingPage to LodgingBusiness schema
+
+### What was implemented
+- Updated `site/src/components/StructuredData.tsx` Hostel schema: `paymentAccepted` → "Cash, DuitNow QR, Credit Card", `priceRange` → "$", added `tourBookingPage` and `hasMap`
+- Updated `site/src/components/StructuredData.tsx` LocalBusiness schema: added `currenciesAccepted`, `paymentAccepted`, `tourBookingPage`, `hasMap`, updated `priceRange` → "$"
+- Updated `site/src/app/amenities/page.tsx` LodgingBusiness schema: added all 5 missing properties
+- Updated `site/src/app/location/page.tsx` LodgingBusiness schema: updated `paymentAccepted` to include DuitNow QR, updated `priceRange` → "$"
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Structured data is spread across multiple files: main `StructuredData.tsx` component + per-page schemas in amenities, location, book pages
+- The Google Maps short URL `https://maps.app.goo.gl/maLXetUqYS5MtSLD9` is already used in `sameAs` arrays — reused for `hasMap`
+- Location page already had `tourBookingPage` and `hasMap` — other schemas were lagging behind
+
+### Gotchas
+- `paymentAccepted` was inconsistent across schemas ("Bank Transfer" vs "DuitNow" vs nothing) — standardised to "Cash, DuitNow QR, Credit Card"
+- `priceRange` changed from "RM35-RM55" to "$" (Google's standard budget indicator) — specific pricing is in `makesOffer`

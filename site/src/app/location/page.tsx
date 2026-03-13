@@ -146,9 +146,9 @@ export default function LocationPage() {
     telephone: "+60127088789",
     email: "pelangicapsule@gmail.com",
     image: "https://pelangicapsulehostel.com/images/exterior-1.webp",
-    priceRange: "RM35-RM55",
+    priceRange: "$",
     currenciesAccepted: "MYR",
-    paymentAccepted: "Cash, Credit Card, Bank Transfer, DuitNow",
+    paymentAccepted: "Cash, DuitNow QR, Credit Card",
     checkinTime: "T14:00:00",
     checkoutTime: "T12:00:00",
     address: {

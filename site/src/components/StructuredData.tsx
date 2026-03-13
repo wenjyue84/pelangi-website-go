@@ -30,9 +30,11 @@ export default function StructuredData() {
     },
     "url": "https://pelangicapsulehostel.com",
     "telephone": "+60127088789",
-    "priceRange": "RM35-RM55",
+    "priceRange": "$",
     "currenciesAccepted": "MYR",
-    "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+    "paymentAccepted": "Cash, DuitNow QR, Credit Card",
+    "tourBookingPage": "https://pelangicapsulehostel.com/book",
+    "hasMap": "https://maps.app.goo.gl/maLXetUqYS5MtSLD9",
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": [
@@ -221,7 +223,11 @@ export default function StructuredData() {
     },
     "url": "https://pelangicapsulehostel.com",
     "telephone": "+60127088789",
-    "priceRange": "RM35-RM55"
+    "priceRange": "$",
+    "currenciesAccepted": "MYR",
+    "paymentAccepted": "Cash, DuitNow QR, Credit Card",
+    "tourBookingPage": "https://pelangicapsulehostel.com/book",
+    "hasMap": "https://maps.app.goo.gl/maLXetUqYS5MtSLD9"
   };
 
   const webSiteSchema = {

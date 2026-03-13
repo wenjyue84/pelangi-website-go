@@ -157,6 +157,11 @@ export default function AmenitiesPage() {
       addressCountry: "MY",
     },
     amenityFeature: amenityFeatures,
+    priceRange: "$",
+    currenciesAccepted: "MYR",
+    paymentAccepted: "Cash, DuitNow QR, Credit Card",
+    tourBookingPage: "https://pelangicapsulehostel.com/book",
+    hasMap: "https://maps.app.goo.gl/maLXetUqYS5MtSLD9",
   };
 
   return (
