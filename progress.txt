@@ -3534,3 +3534,68 @@ Incomplete: Add aggregateRating and starRating to LodgingBusiness schema from re
 
 ### Gotchas
 - Honeypot was mostly done already — only needed opacity-0 addition
+## Iteration 2 - Fri, Mar 13, 2026  9:14:22 AM
+Incomplete: Add aggregateRating and starRating to LodgingBusiness schema from real review platform data (ID: US-084) — attempt 2/3
+
+
+## Pre-analysis for US-084 (Gemini 2.5 Pro)
+This user story is for a Next.js/TypeScript project, not Frappe/Python. The context mentions `.tsx` files and JSON-LD, which are characteristic of a modern web frontend. The following technical brief is adjusted accordingly.
+
+---
+
+### **Technical Brief for US-084**
+
+**Objective:** Integrate `aggregateRating` and `starRating` schema.org properties into the `LodgingBusiness` JSON-LD structured data using real review platform metrics.
+
+**1. Files to Modify:**
+*   **`site/src/components/StructuredData.tsx`**: This is the primary file. It likely contains the existing `LodgingBusiness` JSON-LD object that needs to be augmented.
+*   **`site/src/lib/constants.ts` (or similar config file)**: A good practice would be to store the rating values (`ratingValue`, `reviewCount`) here, as the acceptance criteria mentions updating them via a "config constant".
+
+**2. Key Components & Data Structures:**
+*   **Component:** `StructuredData` is the key component responsible for rendering the `<script type="application/ld+json">` tag in the page's `<head>`.
+*   **Data Structure:** The implementation will expand the existing JavaScript object that defines the `LodgingBusiness` schema, likely defined within the `StructuredData` component.
+
+**3. Recommended Implementation Approach:**
+1.  Define a constant, `LODGING_REVIEW_DATA`, in a config file to store the latest review metrics from a source like Hostelworld or Google (e.g., `{ ratingValue: "4.7", reviewCount: "582" }`).
+2.  In `StructuredData.tsx`, import this constant.
+3.  Add the `aggregateRating` key to the `LodgingBusiness` schema object, constructing the `AggregateRating` type as specified in the acceptance criteria.
+4.  For `starRating`, verify the hostel's official star classification. If one exists, add the `starRating` property with a `Rating` type. If the hostel has no official rating, omit this property entirely to avoid providing inaccurate data.
+
+    ```javascript
+    // Inside the LodgingBusiness schema object in StructuredData.tsx
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": LODGING_REVIEW_DATA.ratingValue,
+      "bestRating": "5",
+      "worstRating": "1",
+      "reviewCount": LODGING_REVIEW_DATA.reviewCount
+    },
+    // Only include starRating if an official classification exists
+    "starRating": {
+        "@type": "Rating",
+        "ratingValue": "3" // Example for a 3-star rated property
+    },
+    ```
+
+**4. Edge Cases & Gotchas:**
+*   **`starRating` Applicability:** Hostels typically lack an official star rating. Do not invent one. Using review scores for `starRating` is incorrect and could be penalized. Confirm if an official rating exists before implementing.
+*   **Data Freshness:** The hardcoded review data should be accompanied by a code comment indicating its source (e.g., Google Reviews) and the date it was last checked, to facilitate the required quarterly updates.
+*   **Validation is Crucial:** After implementation, the page must be tested with the Google Rich Results Test to ensure the schema is valid and renders as expected without any warnings.
+
+
+## Iteration - Story: WCAG 2.2 SC 3.3.7 Redundant Entry Audit (US-061)
+
+### What was implemented
+- Audited all 4 form components: ContactForm, NewsletterSignupForm, ChatWidget, SearchDialog
+- Added `autoComplete="off"` to date fields in ContactForm (check-in/check-out are booking-specific, should not autofill)
+- Added WCAG SC 3.3.7 code comment on the date row for future maintainers
+- Created `ACCESSIBILITY.md` at project root with full audit results, field-by-field compliance table, and out-of-scope documentation for /book proxy
+- No redundant entry violations found — all forms are single-step with unique fields
+
+### Patterns discovered
+- Site has 4 form components: ContactForm, NewsletterSignupForm, ChatWidget, SearchDialog
+- All forms are single-step (no multi-step wizards), making them inherently SC 3.3.7 compliant
+- /book page has no form — only WhatsApp/OTA external links
+
+### Gotchas
+- Date inputs (check-in/check-out) should use `autoComplete="off"` since they're booking-specific dates, not personal data the browser should remember

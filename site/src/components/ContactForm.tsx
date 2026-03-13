@@ -101,7 +101,7 @@ export default function ContactForm() {
               </div>
             </div>
 
-            {/* Check-in / Check-out row */}
+            {/* Check-in / Check-out row — distinct data types, no redundant entry (WCAG 2.2 SC 3.3.7) */}
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
                 <label
@@ -114,6 +114,7 @@ export default function ContactForm() {
                   id="contact-checkin"
                   name="checkIn"
                   type="date"
+                  autoComplete="off"
                   className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-sm text-stone-900 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 transition-colors"
                 />
               </div>
@@ -128,6 +129,7 @@ export default function ContactForm() {
                   id="contact-checkout"
                   name="checkOut"
                   type="date"
+                  autoComplete="off"
                   className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-sm text-stone-900 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 transition-colors"
                 />
               </div>
