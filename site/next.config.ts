@@ -18,6 +18,8 @@ const nextConfig: NextConfig = {
   experimental: {
     // Partial Pre-rendering: static shell served instantly, dynamic holes stream via Suspense
     ppr: 'incremental',
+    // React Compiler: automatic memoization of components, hooks, and helpers (eliminates manual useMemo/useCallback)
+    reactCompiler: true,
     // Control Client Router Cache TTLs (Next.js 15 — staleTimes are in seconds)
     staleTimes: {
       dynamic: 30,   // Dynamic pages: cache prefetched links for 30s

@@ -18,6 +18,15 @@ export default function ShareButton({ title, text, url }: ShareButtonProps) {
     setTimeout(() => setShowToast(false), 2500);
   }, []);
 
+  const fallbackCopy = useCallback(async (copyUrl: string) => {
+    try {
+      await navigator.clipboard.writeText(copyUrl);
+      showNotification("Link copied to clipboard!");
+    } catch {
+      showNotification("Could not copy link");
+    }
+  }, [showNotification]);
+
   const handleShare = useCallback(async () => {
     const shareData = { title, text, url };
 
@@ -38,16 +47,7 @@ export default function ShareButton({ title, text, url }: ShareButtonProps) {
     } else {
       await fallbackCopy(url);
     }
-  }, [title, text, url, showNotification]);
-
-  async function fallbackCopy(copyUrl: string) {
-    try {
-      await navigator.clipboard.writeText(copyUrl);
-      showNotification("Link copied to clipboard!");
-    } catch {
-      showNotification("Could not copy link");
-    }
-  }
+  }, [title, text, url, showNotification, fallbackCopy]);
 
   return (
     <div className="relative inline-block">

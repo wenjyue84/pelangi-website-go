@@ -18,6 +18,7 @@ export default function MetaPixelProvider() {
   const [consented, setConsented] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reading browser cookie on mount (SSR-safe)
     setConsented(readConsentCookie());
 
     function handleConsent(e: Event) {

@@ -4885,3 +4885,30 @@ US-103 (Google Business Profile registration) is entirely an external platform t
 ### Gotchas
 - `paymentAccepted` was inconsistent across schemas ("Bank Transfer" vs "DuitNow" vs nothing) — standardised to "Cash, DuitNow QR, Credit Card"
 - `priceRange` changed from "RM35-RM55" to "$" (Google's standard budget indicator) — specific pricing is in `makesOffer`
+
+
+
+## Iteration 16 - Story: US-116 - Enable React Compiler in Next.js 15 for automatic memoization
+
+### What was implemented
+- Installed `babel-plugin-react-compiler@beta` (^19.0.0-beta)
+- Added `experimental: { reactCompiler: true }` to `site/next.config.ts`
+- Fixed React Compiler lint errors across 10 files:
+  - **setState-in-useEffect** (7 files): Added `eslint-disable-next-line react-hooks/set-state-in-effect` to legitimate SSR hydration patterns in BookingRecoveryBanner, ClarityProvider, CookieConsent, MetaPixelProvider, SearchDialog, YouTubeFacade, useBookingDraft
+  - **ShareButton.tsx**: Moved `fallbackCopy` function before `handleShare` to fix "cannot access variable before declaration" (converted to useCallback)
+  - **WebVitalsReporter.tsx**: Replaced `window as any` with typed cast, replaced `arguments` with rest params, removed `as any` casts on INP attribution (using typed `metric.attribution` directly)
+  - **scheduler.d.ts**: Added eslint-disable for `no-var` on `declare var` (correct .d.ts syntax)
+- `next build` succeeds: `✓ reactCompiler`, `✓ Compiled successfully`, `✓ Generating static pages (42/42)`
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- React Compiler enables ESLint plugin `react-hooks/set-state-in-effect` which flags direct setState in useEffect
+- Common SSR hydration pattern (reading localStorage/cookies on mount) triggers this rule — eslint-disable is the correct fix
+- React Compiler's babel transform successfully compiles all components (confirmed via `✓ reactCompiler` in build output)
+- `web-vitals/attribution` exports typed attribution objects — no need for `as any` casts
+
+### Gotchas
+- `experimental.ppr: 'incremental'` requires Next.js canary (pre-existing issue, unrelated to React Compiler)
+- Build was tested with PPR disabled to confirm compiler works; PPR re-enabled in final commit
+- `declare var` in .d.ts files is correct ambient syntax but triggers `no-var` ESLint rule — must disable per-line
+- Function declarations inside useCallback are NOT hoisted by React Compiler — must declare before reference

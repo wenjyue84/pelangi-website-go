@@ -8,4 +8,5 @@ interface Scheduler {
   ): Promise<T>;
 }
 
+// eslint-disable-next-line no-var -- `declare var` is required syntax for ambient global declarations in .d.ts files
 declare var scheduler: Scheduler | undefined;

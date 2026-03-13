@@ -21,6 +21,7 @@ export default function YouTubeFacade({ videoId, title }: YouTubeFacadeProps) {
     const [captionsEnabled, setCaptionsEnabled] = useState(true);
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- reading localStorage on mount (SSR-safe)
         setCaptionsEnabled(getCaptionsPreference());
     }, []);
 

@@ -12,6 +12,7 @@ export default function BookingRecoveryBanner() {
   // Show banner after a short delay so it doesn't flash on /book navigation
   useEffect(() => {
     if (!draft || dismissed || pathname === "/book") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- conditional reset based on deps
       setVisible(false);
       return;
     }
