@@ -380,7 +380,7 @@ export default function Destinations() {
                 src={selectedDest.image}
                 alt={selectedDest.name}
                 fill
-                sizes="(max-width: 768px) 100vw, 600px"
+                sizes="(max-width: 768px) 100vw, 768px"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-linear-to-t from-stone-900/80 via-transparent to-transparent" />

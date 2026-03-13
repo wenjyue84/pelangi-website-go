@@ -100,7 +100,7 @@ export default function Facilities() {
                 src={img.src}
                 alt={img.alt}
                 fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover image-zoom"
               />
               <div className="absolute inset-0 bg-stone-900/20 group-hover:bg-stone-900/10 transition-colors" />

@@ -231,7 +231,7 @@ export default function Rooms() {
                 src="/images/destinations/pasar-malam.jpg"
                 alt="Taman Pelangi Pasar Malam night market with street food stalls near Pelangi Capsule Hostel"
                 fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-linear-to-t from-stone-900/60 via-transparent to-transparent" />
