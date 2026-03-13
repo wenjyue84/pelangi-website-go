@@ -6440,3 +6440,30 @@ Completed: Build Suspense-streaming skeleton UI for room availability section (I
 ### Gotchas
 - Skeleton must match exact grid structure (lg:grid-cols-5 with col-span-3/col-span-2) to prevent CLS during swap
 - `animate-pulse` is sufficient for skeleton animation — no need for shimmer gradients
+
+
+## Pre-analysis for US-103 (Gemini 2.5 Pro)
+This user story (US-103) describes a business/marketing task, not a software development task within the Frappe framework. It involves configuring external services (Google Business Profile) and integrating with a third-party connectivity partner (like Cloudbeds or Beds24), rather than writing Python code in the `lhdn_payroll_integration` app.
+
+Therefore, there are no specific Python files, Frappe DocTypes, or hooks to modify. The implementation does not involve Frappe/ERPNext code.
+
+**Technical Brief:**
+
+**Objective:** Connect the property to Google Hotel's free booking links.
+
+**Analysis:** This is an external integration and configuration task, not a Frappe development task. The user story requires setting up a Google Business Profile and using a "connectivity partner" to sync rates and availability.
+
+**Implementation Approach:**
+1.  **Google Business Profile:** Claim and verify the "Pelangi Capsule Hostel" profile on Google. Ensure all business information (address, phone, URL, photos, amenities) is complete and accurate.
+2.  **Connectivity Partner Selection:** Choose and subscribe to a service like Beds24 or Cloudbeds. These partners are pre-integrated with Google Hotel Center.
+3.  **Partner Configuration:** Configure the selected partner with the hostel's room types, rates, and real-time availability.
+4.  **Google Hotel Center Link:** Follow the connectivity partner's instructions to link their service to the Google Hotel Center account associated with the Google Business Profile.
+5.  **Landing Page:** Ensure the booking link provided to the partner points to the property's direct booking page (`/book`).
+
+**Key Files/DocTypes:** None. This work is performed outside the Frappe codebase.
+
+**Gotchas:**
+*   The booking landing page must be on the property's own domain, as specified.
+*   Verification of the Google Business Profile can sometimes be delayed.
+*   The chosen connectivity partner must explicitly support Google's free booking links.
+
