@@ -64,7 +64,7 @@ function slidingWindow(
 function buildCspHeader(nonce: string): string {
   const isDev = process.env.NODE_ENV === "development";
 
-  return [
+  const directives = [
     "default-src 'self'",
     // Nonce-based script-src with strict-dynamic; URL allowlists kept as fallback for older browsers
     `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${isDev ? " 'unsafe-eval'" : ""} https://admin.pelangicapsulehostel.com https://www.googletagmanager.com`,
@@ -87,7 +87,18 @@ function buildCspHeader(nonce: string): string {
     "frame-ancestors 'self'",
     // Upgrade any accidental HTTP sub-resource requests to HTTPS
     "upgrade-insecure-requests",
-  ].join("; ");
+  ];
+
+  // CSP violation reporting: routes violations to Sentry Security Issues.
+  // Set SENTRY_CSP_REPORT_URI in environment variables.
+  // Format: https://o<org>.ingest.sentry.io/api/<project>/security/?sentry_key=<key>
+  // See: https://docs.sentry.io/product/security-policy-reporting/
+  const reportUri = process.env.SENTRY_CSP_REPORT_URI;
+  if (reportUri) {
+    directives.push(`report-uri ${reportUri}`);
+  }
+
+  return directives.join("; ");
 }
 
 // ---------------------------------------------------------------------------

@@ -3599,3 +3599,45 @@ This user story is for a Next.js/TypeScript project, not Frappe/Python. The cont
 
 ### Gotchas
 - Date inputs (check-in/check-out) should use `autoComplete="off"` since they're booking-specific dates, not personal data the browser should remember
+
+
+## Pre-analysis for US-084 (Gemini 2.5 Pro)
+Here is the technical brief based on the user story and project files.
+
+### **Technical Brief: US-084 - LodgingBusiness Schema Enhancement**
+
+**1. Files to Modify:**
+*   `site/src/components/StructuredData.tsx`: This is the primary file for modification. It likely contains the existing `LodgingBusiness` JSON-LD schema definition.
+*   `site/src/data/constants.ts` (or similar): A new configuration constant holding the rating values should be added here or created if a suitable file doesn't exist, to keep data separate from logic per the acceptance criteria.
+
+**2. Involved DocTypes/Hooks (Translated to Next.js/React):**
+*   **Component:** `StructuredData.tsx` is the React component responsible for rendering the JSON-LD script tag.
+*   **Data Structure:** The `LodgingBusiness` object within this component needs to be extended.
+
+**3. Recommended Implementation Approach:**
+*   Define a new constant object (e.g., `LODGING_AGGREGATE_RATING`) in a data or constants file. This object will store the latest, real-world review data (e.g., `{ platform: "Google", ratingValue: "4.8", reviewCount: 531 }`).
+*   In `StructuredData.tsx`, import this constant.
+*   Modify the `LodgingBusiness` JSON object to include the `aggregateRating` property. This property should be an object containing `ratingValue`, `reviewCount`, `bestRating: "5"`, and `worstRating: "1"`.
+*   Add the `starRating` property. Based on schema best practices, this typically refers to the official classification (e.g., "3" for a 3-star hotel), not user ratings. For a hostel, this may be omitted if no official star rating exists.
+
+**4. Edge Cases & Gotchas:**
+*   **Data Authenticity:** The rating and review counts MUST be sourced from a real, verifiable platform like Google or Hostelworld, as specified. Do not use placeholder or fabricated numbers.
+*   **`starRating` vs. `aggregateRating`:** Be careful not to confuse the two. `starRating` is for the business's official classification, while `aggregateRating` summarizes user reviews. The user story's mention of using the `Rating` type for `starRating` is unconventional; `starRating` is typically a simple number or text value. Clarify this if possible, otherwise implement `aggregateRating` which is the core requirement for SERP stars.
+*   **Validation:** After implementation, the page's URL must be validated with the Google Rich Results Test to ensure there are no errors and that the `aggregateRating` is correctly recognized.
+
+
+## Iteration - Story: Add CSP violation reporting via report-uri directive to Sentry (US-062)
+
+### What was implemented
+- `site/src/middleware.ts`: Added conditional `report-uri` directive to `buildCspHeader()` — reads `SENTRY_CSP_REPORT_URI` env var; only appended when set, so existing CSP enforcement is fully unaffected when unset
+- `site/.env.local.example`: Documented `SENTRY_CSP_REPORT_URI` with format, how to find it in Sentry dashboard, and note that leaving it unset disables reporting without affecting enforcement
+- No changes to next.config.ts (CSP is set per-request in middleware, not via headers())
+
+### Patterns discovered
+- CSP is built in `buildCspHeader()` in middleware.ts — this is the single source of truth for CSP directives
+- Env vars accessed in middleware via `process.env` at runtime (not build-time `NEXT_PUBLIC_` prefix needed since middleware runs server-side)
+
+### Gotchas
+- `SENTRY_CSP_REPORT_URI` does NOT need the `NEXT_PUBLIC_` prefix — middleware runs server-side
+- `report-uri` is the legacy directive; newer `report-to` (Reporting API v1) is supported by Sentry but `report-uri` has broader browser support and simpler setup
+
