@@ -9,6 +9,11 @@ import { headers } from "next/headers";
 export interface ContactFormResult {
   success: boolean;
   message: string;
+  fieldErrors?: {
+    name?: string;
+    email?: string;
+    message?: string;
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -121,15 +126,25 @@ export async function submitContactForm(
   const guests = formData.get("guests");
   const message = formData.get("message");
 
-  // --- Server-side validation ---
+  // --- Server-side validation (per-field for WCAG 2.1 SC 3.3.1) ---
+  const fieldErrors: NonNullable<ContactFormResult["fieldErrors"]> = {};
+
   if (!name || typeof name !== "string" || name.trim().length === 0) {
-    return { success: false, message: "Please enter your name." };
+    fieldErrors.name = "Please enter your full name.";
   }
   if (!email || typeof email !== "string" || !email.includes("@")) {
-    return { success: false, message: "Please enter a valid email address." };
+    fieldErrors.email = "Please enter a valid email address (e.g. you@example.com).";
   }
   if (!message || typeof message !== "string" || message.trim().length === 0) {
-    return { success: false, message: "Please enter a message." };
+    fieldErrors.message = "Please enter a message describing your inquiry.";
+  }
+
+  if (Object.keys(fieldErrors).length > 0) {
+    return {
+      success: false,
+      message: "Please correct the errors below.",
+      fieldErrors,
+    };
   }
 
   // --- Rate limiting ---
@@ -147,15 +162,15 @@ export async function submitContactForm(
     };
   }
 
-  // --- Sanitize data ---
+  // --- Sanitize data (safe to cast — validation above guarantees strings) ---
   const data = {
-    name: name.trim(),
-    email: email.trim().toLowerCase(),
+    name: (name as string).trim(),
+    email: (email as string).trim().toLowerCase(),
     phone: typeof phone === "string" ? phone.trim() : "",
     checkIn: typeof checkIn === "string" ? checkIn.trim() : "",
     checkOut: typeof checkOut === "string" ? checkOut.trim() : "",
     guests: typeof guests === "string" ? guests.trim() : "",
-    message: message.trim(),
+    message: (message as string).trim(),
   };
 
   // --- Log submission (before email to avoid data loss) ---

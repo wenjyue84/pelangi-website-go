@@ -3,6 +3,10 @@
 interface NewsletterResult {
   success: boolean;
   message: string;
+  fieldErrors?: {
+    name?: string;
+    email?: string;
+  };
 }
 
 export async function subscribeToNewsletter(
@@ -12,13 +16,22 @@ export async function subscribeToNewsletter(
   const email = formData.get("email");
   const name = formData.get("name");
 
-  // Server-side validation
-  if (!email || typeof email !== "string" || !email.includes("@")) {
-    return { success: false, message: "Please enter a valid email address." };
-  }
+  // Server-side validation (per-field for WCAG 2.1 SC 3.3.1)
+  const fieldErrors: NonNullable<NewsletterResult["fieldErrors"]> = {};
 
   if (!name || typeof name !== "string" || name.trim().length === 0) {
-    return { success: false, message: "Please enter your name." };
+    fieldErrors.name = "Please enter your first name.";
+  }
+  if (!email || typeof email !== "string" || !email.includes("@")) {
+    fieldErrors.email = "Please enter a valid email address (e.g. you@example.com).";
+  }
+
+  if (Object.keys(fieldErrors).length > 0) {
+    return {
+      success: false,
+      message: "Please correct the errors below.",
+      fieldErrors,
+    };
   }
 
   const apiKey = process.env.BREVO_API_KEY;
@@ -41,9 +54,9 @@ export async function subscribeToNewsletter(
         "api-key": apiKey,
       },
       body: JSON.stringify({
-        email: email.trim().toLowerCase(),
+        email: (email as string).trim().toLowerCase(),
         attributes: {
-          FIRSTNAME: name.trim(),
+          FIRSTNAME: (name as string).trim(),
         },
         updateEnabled: true,
       }),

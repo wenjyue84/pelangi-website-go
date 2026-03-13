@@ -86,10 +86,18 @@ export default function ContactForm() {
                   name="name"
                   type="text"
                   required
+                  aria-required="true"
+                  aria-invalid={!!state?.fieldErrors?.name}
+                  aria-describedby={state?.fieldErrors?.name ? "contact-name-error" : undefined}
                   autoComplete="name"
                   placeholder="Your full name"
-                  className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors"
+                  className={`w-full rounded-xl border bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors ${state?.fieldErrors?.name ? "border-red-500 dark:border-red-400" : "border-stone-500 dark:border-stone-600"}`}
                 />
+                {state?.fieldErrors?.name && (
+                  <p id="contact-name-error" role="alert" className="mt-1 text-sm text-red-600 dark:text-red-400">
+                    {state.fieldErrors.name}
+                  </p>
+                )}
               </div>
               <div>
                 <label
@@ -103,10 +111,18 @@ export default function ContactForm() {
                   name="email"
                   type="email"
                   required
+                  aria-required="true"
+                  aria-invalid={!!state?.fieldErrors?.email}
+                  aria-describedby={state?.fieldErrors?.email ? "contact-email-error" : undefined}
                   autoComplete="email"
                   placeholder="you@example.com"
-                  className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors"
+                  className={`w-full rounded-xl border bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors ${state?.fieldErrors?.email ? "border-red-500 dark:border-red-400" : "border-stone-500 dark:border-stone-600"}`}
                 />
+                {state?.fieldErrors?.email && (
+                  <p id="contact-email-error" role="alert" className="mt-1 text-sm text-red-600 dark:text-red-400">
+                    {state.fieldErrors.email}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -193,14 +209,22 @@ export default function ContactForm() {
                 id="contact-message"
                 name="message"
                 required
+                aria-required="true"
+                aria-invalid={!!state?.fieldErrors?.message}
+                aria-describedby={state?.fieldErrors?.message ? "contact-message-error" : undefined}
                 rows={5}
                 placeholder="Tell us about your travel plans or any questions you have..."
-                className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors resize-y"
+                className={`w-full rounded-xl border bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors resize-y ${state?.fieldErrors?.message ? "border-red-500 dark:border-red-400" : "border-stone-500 dark:border-stone-600"}`}
               />
+              {state?.fieldErrors?.message && (
+                <p id="contact-message-error" role="alert" className="mt-1 text-sm text-red-600 dark:text-red-400">
+                  {state.fieldErrors.message}
+                </p>
+              )}
             </div>
 
-            {/* Error message (visual — announcement handled by persistent live region above) */}
-            {state?.message && !state.success && (
+            {/* Error summary (visual — announcement handled by persistent live region above) */}
+            {state?.message && !state.success && !state.fieldErrors && (
               <p className="text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-lg p-3">
                 {state.message}
               </p>
@@ -213,6 +237,7 @@ export default function ContactForm() {
                 name="terms"
                 type="checkbox"
                 required
+                aria-required="true"
                 className="mt-1 h-4 w-4 rounded border-stone-400 dark:border-stone-600 text-amber-700 focus:ring-amber-500 accent-amber-700"
               />
               <label

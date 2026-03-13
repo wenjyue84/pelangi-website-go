@@ -4676,3 +4676,23 @@ Completed: Implement WCAG 2.1 SC 2.5.3 – Label in Name for icon buttons (ID: U
 
 ### Gotchas
 - MobileBookingBar outer div uses role="banner" which is semantically incorrect (banner = site header), but fixing that is out of scope for SC 2.5.3
+
+
+## Iteration 13 - Story: WCAG 2.1 SC 3.3.1 – Error Identification on all form inputs
+
+### What was implemented
+- `site/src/app/actions/contact.ts` — Added `fieldErrors` to `ContactFormResult` interface; validation now returns per-field error messages (name, email, message) instead of a single generic message
+- `site/src/app/actions/newsletter.ts` — Added `fieldErrors` to `NewsletterResult`; same per-field validation pattern
+- `site/src/components/ContactForm.tsx` — Added `aria-required="true"` to all required fields (name, email, message, terms checkbox); added `aria-invalid` and `aria-describedby` linking each input to its error; per-field error `<p>` elements with `role="alert"` and unique IDs; red border on invalid fields
+- `site/src/components/NewsletterSignupForm.tsx` — Same WCAG 3.3.1 pattern applied to name and email fields; added required indicator `*` to labels
+- General error messages now only show for non-field errors (rate limit, server errors) — field validation errors display inline
+
+### Patterns discovered
+- Server actions using `useActionState` can return structured `fieldErrors` alongside `message` for per-field validation
+- When switching from early-return validation to collected-errors pattern, TypeScript needs explicit casts since type narrowing no longer applies after the validation block
+- The `role="alert"` on error elements provides immediate screen reader announcement without needing a separate `aria-live` region per field
+
+### Gotchas
+- Changing from early-return validation to collected field errors breaks TypeScript narrowing — the variables remain `FormDataEntryValue | null` after the validation block, requiring `(name as string).trim()` casts
+- Booking.tsx is not a form — it's a link-based component, so no WCAG 3.3.1 changes needed there
+- US-103 (Google Business Profile) is entirely an external/operational task and cannot be implemented through code changes
