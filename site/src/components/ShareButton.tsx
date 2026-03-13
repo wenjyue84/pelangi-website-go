@@ -73,11 +73,14 @@ export default function ShareButton({ title, text, url }: ShareButtonProps) {
         Share
       </button>
 
-      {/* Toast notification */}
+      {/* Persistent live region for screen reader announcement */}
+      <div role="status" aria-live="polite" className="sr-only">
+        {showToast ? toastMessage : ''}
+      </div>
+
+      {/* Visual toast notification */}
       {showToast && (
         <div
-          role="status"
-          aria-live="polite"
           className="absolute left-1/2 -translate-x-1/2 -top-12 whitespace-nowrap px-4 py-2 bg-stone-900 text-white text-sm rounded-lg shadow-lg animate-fade-in"
         >
           {toastMessage}

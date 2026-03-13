@@ -24,9 +24,17 @@ export default function ContactForm() {
           below and we&apos;ll get back to you within 24 hours.
         </p>
 
+        {/* Persistent live regions — always in DOM so screen readers detect changes */}
+        <div role="status" aria-live="polite" className="sr-only">
+          {state?.success ? `Inquiry Sent! ${state.message}` : ''}
+          {isPending ? 'Sending your inquiry…' : ''}
+        </div>
+        <div role="alert" aria-live="assertive" className="sr-only">
+          {state?.message && !state.success ? state.message : ''}
+        </div>
+
         {state?.success ? (
           <div
-            role="status"
             className="rounded-2xl bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800 p-8 text-center"
           >
             <div className="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center mx-auto mb-4">
@@ -190,9 +198,9 @@ export default function ContactForm() {
               />
             </div>
 
-            {/* Error message */}
+            {/* Error message (visual — announcement handled by persistent live region above) */}
             {state?.message && !state.success && (
-              <p role="alert" className="text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-lg p-3">
+              <p className="text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-lg p-3">
                 {state.message}
               </p>
             )}

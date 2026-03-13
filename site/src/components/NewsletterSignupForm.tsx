@@ -23,9 +23,17 @@ export default function NewsletterSignupForm() {
           your inbox.
         </p>
 
+        {/* Persistent live regions — always in DOM so screen readers detect changes */}
+        <div role="status" aria-live="polite" className="sr-only">
+          {state?.success ? state.message : ''}
+          {isPending ? 'Subscribing to newsletter…' : ''}
+        </div>
+        <div role="alert" aria-live="assertive" className="sr-only">
+          {state?.message && !state.success ? state.message : ''}
+        </div>
+
         {state?.success ? (
           <div
-            role="status"
             className="rounded-lg bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800 p-4 text-green-800 dark:text-green-300 text-sm"
           >
             {state.message}
@@ -69,8 +77,9 @@ export default function NewsletterSignupForm() {
               </div>
             </div>
 
+            {/* Error — announcement handled by persistent live region above */}
             {state?.message && !state.success && (
-              <p role="alert" className="text-sm text-red-600 dark:text-red-400">
+              <p className="text-sm text-red-600 dark:text-red-400">
                 {state.message}
               </p>
             )}

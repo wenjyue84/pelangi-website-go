@@ -285,6 +285,9 @@ export default function ChatWidget() {
           ))}
 
           {/* Typing indicator */}
+          <div role="status" aria-live="polite" className="sr-only">
+            {sending ? 'Rainbow is typing a reply…' : ''}
+          </div>
           {sending && (
             <div className="flex items-start" style={{ animation: 'fadeUp 0.2s ease-out' }}>
               <div className="bg-white dark:bg-stone-700 rounded-2xl rounded-bl-[4px] shadow-xs border border-stone-100 dark:border-stone-600 px-4 py-3">
