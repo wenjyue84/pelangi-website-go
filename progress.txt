@@ -5924,3 +5924,29 @@ Completed: Implement Next.js after() API for deferred analytics and logging (ID:
 - `"use cache"` and `after()` are mutually exclusive in the same component scope — use middleware or Server Actions instead
 - vitest mock hoisting: `const mockAfter = vi.fn()` fails; use `const mockAfter = vi.hoisted(() => vi.fn())` instead
 
+
+## Iteration N - Story: US-153 - Add next typegen CI step and adopt PageProps/LayoutProps route type helpers
+
+### What was implemented
+- Added `typedRoutes: true` to `site/next.config.ts` (stable as of Next.js 15.5, no longer under experimental)
+- Ran `next typegen` to generate `.next/types/routes.d.ts` with globally available `PageProps<T>`, `LayoutProps<T>`, `RouteContext<T>` helpers
+- Updated `blog/[slug]/page.tsx`: removed manual `interface Props`, now uses `PageProps<'/blog/[slug]'>`
+- Updated `blog/category/[category]/page.tsx`: removed manual `interface PageProps`, now uses `PageProps<'/blog/category/[category]'>`
+- Added `import type { Route } from 'next'` + `as Route` casts to 6 components with dynamic Link hrefs or router.push calls
+- Created `.github/workflows/typecheck.yml` CI workflow: `next typegen && tsc --noEmit`
+- `tsc --noEmit` passes with 0 errors
+
+### Patterns discovered
+- Files are modified by an external process (likely VS Code/Cursor auto-formatter or watcher) after Edit tool writes — Edit/Write tools may not persist on Windows if IDE has file watchers
+- Workaround: use Bash + Node.js `fs.readFileSync/writeFileSync` for reliable file writes
+- Apply all patches + run tsc in a SINGLE Bash command to prevent external reversion mid-execution
+- Make patches idempotent: check `content.includes(from) && !content.includes(to)` before replacing
+- `Route` type from `next` = `RouteImpl<T>` which includes StaticRoutes, hash-only strings, URLs with protocols, and template literal DynamicRoutes
+- Dynamic template strings like `` `/blog/${string}` `` do NOT satisfy `Route` directly — use `as Route` at the Link usage point, keep interface as `string`
+- CRLF line endings on Windows: normalize to LF before string matching in Node.js scripts
+
+### Gotchas
+- Windows CRLF: `\n` patterns fail to match Windows files — must normalize `\r\n` → `\n` before string matching
+- `typedRoutes: true` is now top-level in NextConfig (not under `experimental`) since Next.js 15.5
+- The `.next/types/**/*.ts` is already included in `tsconfig.json` — no tsconfig changes needed
+- PageProps is globally declared (no import needed) — TypeScript finds it via `.next/types/routes.d.ts`
