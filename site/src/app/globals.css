@@ -459,6 +459,44 @@
   }
 }
 
+/* ============================================================
+   Cross-document View Transitions (US-197)
+   Opts same-origin hard navigations into a smooth cross-fade
+   via CSS View Transitions Level 2 (@view-transition at-rule).
+   Chrome 126+, Edge 126+, Firefox 144+.
+   Safari degrades gracefully — no transition, no error.
+   Soft navigations (Next.js <Link>) use the JS API separately;
+   this covers direct URL entry, back/forward, and external links.
+   ============================================================ */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: 200ms ease-out both vt-fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 200ms ease-out both vt-fade-in;
+}
+
+@keyframes vt-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes vt-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Disable view transitions when user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

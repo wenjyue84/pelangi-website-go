@@ -5712,3 +5712,41 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 - The Hero component imports Link from next/link but used it inline; needed to ensure Link was already imported (it was)
 - Event schema requires validFrom/validThrough on Offers for campaign rates, not just on the Event itself
 - TouristAttraction schema uses array type `["TouristAttraction", "Place"]` for dual typing
+
+## Iteration (skipped) - Story: US-103 - Register Google Business Profile and connect to Google Hotel free booking links
+
+### Why skipped
+- US-103 is an external/operational task requiring manual actions on Google's platform (business claiming, verification, connectivity partner setup)
+- All 5 acceptance criteria involve external Google services that cannot be completed by a coding agent
+- The codebase is ALREADY fully prepared: comprehensive Hostel/VacationRental/LocalBusiness structured data in StructuredData.tsx, LodgingReservation schema on /book page, booking landing page on own domain
+- No meaningful code changes remain for this story
+
+### Manual action items for owner (Jay)
+1. Go to https://business.google.com and claim "Pelangi Capsule Hostel" (if not already claimed)
+2. Complete verification (postcard, phone, or instant verification)
+3. Fill in GBP: hours, photos, amenities, check-in/check-out times
+4. Visit https://travel.google/partners/hotels/get-started/ to set up Hotel Center
+5. Connect via a connectivity partner (Beds24, Cloudbeds, or Little Hotelier) for real-time availability
+6. Verify free booking links point to https://pelangicapsulehostel.com/book
+
+### Status
+- `passes: false` — requires external manual action, not code
+## Iteration - Story: US-197 - Implement CSS cross-document View Transitions (@view-transition)
+
+### What was implemented
+- Added `@view-transition { navigation: auto; }` at-rule to `site/src/app/globals.css` for automatic same-origin cross-document transition animations
+- Custom `::view-transition-old(root)` and `::view-transition-new(root)` pseudo-element animations with 200ms ease-out cross-fade
+- Keyframes `vt-fade-out` and `vt-fade-in` (prefixed with `vt-` to avoid conflict with existing `fadeIn` keyframe in @theme block)
+- `@media (prefers-reduced-motion: reduce)` override sets `navigation: none` to disable transitions for motion-sensitive users
+- Safari gracefully degrades — `@view-transition` is ignored by unsupporting browsers with no layout error
+- `npx tsc --noEmit` passes with zero errors
+- `npx next build` succeeds — CSS compiles correctly through Tailwind CSS v4
+
+### Patterns discovered
+- CSS View Transitions Level 2 `@view-transition` at-rule only targets hard/cross-document navigations; Next.js `<Link>` soft navigations use the separate JS View Transitions API
+- Tailwind CSS v4 passes through unknown at-rules like `@view-transition` without error
+- The existing `prefers-reduced-motion` rule at line 291 resets `animation-duration` but doesn't affect `@view-transition` navigation behavior, so a separate `@view-transition { navigation: none }` override is needed
+
+### Gotchas
+- Must use unique keyframe names (`vt-fade-out`/`vt-fade-in`) to avoid colliding with existing `fadeIn` keyframe defined in the @theme block
+- `@view-transition` is not `@supports`-guarded because unsupporting browsers simply ignore the unknown at-rule (no fallback needed)
