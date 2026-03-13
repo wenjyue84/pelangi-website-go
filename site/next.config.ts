@@ -15,12 +15,12 @@ const withBundleAnalyzer = bundleAnalyzer({
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // React Compiler: automatic memoization (top-level in Next.js 16)
+  reactCompiler: true,
+  // Note: cacheComponents (replaces experimental.ppr) requires all dynamic data access
+  // wrapped in <Suspense> boundaries — adopt incrementally in US-192
   experimental: {
-    // Partial Pre-rendering: static shell served instantly, dynamic holes stream via Suspense
-    ppr: 'incremental',
-    // React Compiler: automatic memoization of components, hooks, and helpers (eliminates manual useMemo/useCallback)
-    reactCompiler: true,
-    // Control Client Router Cache TTLs (Next.js 15 — staleTimes are in seconds)
+    // Control Client Router Cache TTLs (staleTimes are in seconds)
     staleTimes: {
       dynamic: 30,   // Dynamic pages: cache prefetched links for 30s
       static: 180,   // Static pages: cache prefetched links for 3 min
@@ -43,7 +43,7 @@ const nextConfig: NextConfig = {
             key: "Strict-Transport-Security",
             value: "max-age=63072000; includeSubDomains; preload",
           },
-          // CSP is now set per-request in middleware.ts (nonce-based policy)
+          // CSP is now set per-request in proxy.ts (nonce-based policy)
         ],
       },
     ];

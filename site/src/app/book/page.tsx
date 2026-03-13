@@ -6,9 +6,6 @@ import TrustSignals from "@/components/TrustSignals";
 import BookEcommerceTracker from "@/components/BookEcommerceTracker";
 import DuitNowPayment from "@/components/DuitNowPayment";
 import type { Metadata } from "next";
-
-export const dynamic = 'force-static';
-
 export const metadata: Metadata = {
   title: "Book a Pod | Pelangi Capsule Hostel JB — From RM35/night",
   description:

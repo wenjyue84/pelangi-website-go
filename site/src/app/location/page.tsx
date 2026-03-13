@@ -2,9 +2,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LangMs from "@/components/LangMs";
 import type { Metadata } from "next";
-
-export const dynamic = "force-static";
-
 export const metadata: Metadata = {
   title: "Location & Directions | Pelangi Capsule Hostel Johor Bahru",
   description:

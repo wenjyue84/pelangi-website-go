@@ -5225,3 +5225,32 @@ US-103 (Google Business Profile registration) is entirely an external platform t
 
 ### Gotchas
 - AC4 (owner responses to Google Reviews) and AC5 (GSC AI Overview impressions) are external/measurement criteria that cannot be implemented in code — they require manual Google Business Profile management and 60-day observation period
+
+
+
+## Iteration 19 - Story: US-145 - Upgrade to Next.js 16 and resolve all breaking changes
+
+### What was implemented
+- `package.json` — Bumped `next` from `^15.1.0` → `^16.1.6`, `react`/`react-dom` from `^19.0.0` → `^19.2.0`
+- `next.config.ts` — Moved `experimental.ppr` (removed) and `experimental.reactCompiler` → top-level `reactCompiler: true`; kept `staleTimes` in `experimental`; updated CSP comment to reference `proxy.ts`
+- Deleted `src/middleware.ts` — `src/proxy.ts` was already prepared with `export function proxy()` and correct config
+- Removed `export const experimental_ppr = true` from `page.tsx` (home) and `gallery/page.tsx`
+- Removed `export const dynamic = 'force-static'` from 10 page files (incompatible with Next.js 16)
+- Removed `export const revalidate = 3600` from 4 page files (blog, blog/[slug], blog/category/[category], guide)
+- Updated `revalidateTag(tag)` → `revalidateTag(tag, 'max')` in `api/revalidate/route.ts` (Next.js 16 two-arg signature)
+- Fixed `Footer.tsx` — Moved `new Date().getFullYear()` to module-level `CURRENT_YEAR` constant to avoid dynamic Date() during Server Component render
+- `npx tsc --noEmit` — zero errors
+- `next build` — succeeds with all 49 pages generated, Turbopack default, proxy active
+
+### Patterns discovered
+- Next.js 16 `cacheComponents: true` (replacement for PPR) requires ALL dynamic data access wrapped in `<Suspense>` boundaries — this is a separate migration effort (US-192)
+- Route segment configs (`dynamic`, `revalidate`) are incompatible with `cacheComponents` — safe to remove without cacheComponents since Next.js 16 handles caching differently
+- `new Date()` during Server Component render is flagged as "uncached data access" in Cache Components mode — use module-level constants instead
+- Build output now shows `ƒ Proxy (Middleware)` confirming proxy.ts is active
+- Sentry warns about deprecated `disableLogger` (use `webpack.treeshake.removeDebugLogging` in future) and needs `onRouterTransitionStart` export in instrumentation-client.ts
+
+### Gotchas
+- `cacheComponents` is NOT required for Next.js 16 — it's opt-in, but it's the replacement for PPR. Leave for US-192.
+- `eslint-config-next`, `@next/bundle-analyzer`, `@next/third-parties` were already at ^16.x in devDependencies
+- Turbopack warns about multiple lockfiles (root + site/) — can silence with `turbopack.root` config if needed
+- Removing `force-static` from routes changes them to `ƒ (Dynamic)` in build output — they were already static content, just no longer explicitly forced

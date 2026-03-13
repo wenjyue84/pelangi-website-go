@@ -6,9 +6,6 @@ import GuideStructuredData from "@/components/GuideStructuredData";
 import TableOfContents from "@/components/TableOfContents";
 import { annotateMs } from "@/components/LangMs";
 import type { Heading } from "@/lib/headings";
-
-export const revalidate = 3600; // ISR: regenerate at most every hour
-
 export const metadata: Metadata = {
     title: "Johor Bahru Backpacker Guide 2026 | Pelangi Capsule Hostel",
     description:

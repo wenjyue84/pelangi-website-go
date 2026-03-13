@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-
-export const dynamic = "force-static";
-
 const effectiveDate = "13 March 2026";
 const lastUpdated = "13 March 2026";
 

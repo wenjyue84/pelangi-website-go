@@ -80,7 +80,7 @@ export async function POST(request: NextRequest) {
   }
 
   if (tag) {
-    revalidateTag(tag);
+    revalidateTag(tag, 'max');
     result.tag = tag;
   }
 

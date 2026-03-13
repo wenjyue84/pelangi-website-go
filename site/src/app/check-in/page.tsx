@@ -2,9 +2,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import YouTubeFacade from "@/components/YouTubeFacade";
 import type { Metadata } from "next";
-
-export const dynamic = 'force-static';
-
 export const metadata: Metadata = {
     title: "Self Check-in Guide | Pelangi Capsule Hostel",
     description: "Step-by-step self check-in guide for Pelangi Capsule Hostel in Johor Bahru. Learn how to arrive, access the building, find your pod, and settle in — takes about 5 minutes.",

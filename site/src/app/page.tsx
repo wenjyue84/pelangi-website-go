@@ -3,7 +3,6 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-export const experimental_ppr = true;
 
 import Hero from "@/components/Hero";
 import Destinations from "@/components/Destinations";

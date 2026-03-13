@@ -10,9 +10,6 @@ import ShareButton from "@/components/ShareButton";
 import { blogPosts, getPostBySlug } from "@/data/blog/posts";
 import { extractHeadings, addHeadingIds } from "@/lib/headings";
 import { annotateMsHtml } from "@/components/LangMs";
-
-export const revalidate = 3600; // ISR: regenerate at most every hour
-
 interface Props {
   params: Promise<{ slug: string }>;
 }

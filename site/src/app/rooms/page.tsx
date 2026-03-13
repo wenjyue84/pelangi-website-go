@@ -4,9 +4,6 @@ import Footer from "@/components/Footer";
 import Rooms from "@/components/Rooms";
 import Facilities from "@/components/Facilities";
 import RoomsEcommerceTracker from "@/components/RoomsEcommerceTracker";
-
-export const dynamic = 'force-static';
-
 export const metadata: Metadata = {
     title: "Capsule Pod Rooms | Pelangi Capsule Hostel JB",
     description:

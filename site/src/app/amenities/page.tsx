@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-
-export const dynamic = 'force-static';
-
 export const metadata: Metadata = {
   title: "Hostel Amenities | Free WiFi, Co-working Space & More",
   description: "Discover Pelangi Capsule Hostel amenities: high-speed WiFi for digital nomads, dedicated co-working space, 24/7 access, secure lockers, shared kitchen, laundry facilities, and more. Perfect for long-stay backpackers in Johor Bahru.",

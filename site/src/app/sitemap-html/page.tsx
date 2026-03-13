@@ -3,9 +3,6 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { blogPosts, getUniqueCategories, categoryToSlug } from "@/data/blog/posts";
-
-export const dynamic = "force-static";
-
 export const metadata: Metadata = {
   title: "Sitemap | Pelangi Capsule Hostel",
   description:

@@ -2,6 +2,9 @@ import Link from "next/link";
 import LangMs from "@/components/LangMs";
 import MotacBadge from "@/components/MotacBadge";
 
+// Computed at module evaluation (build time) — avoids dynamic Date() during Server Component render
+const CURRENT_YEAR = new Date().getFullYear();
+
 export default function Footer() {
   return (
     <footer className="bg-stone-900 text-stone-300">
@@ -203,7 +206,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-stone-500">
-            © {new Date().getFullYear()} Pelangi Capsule Hostel. All rights reserved.
+            © {CURRENT_YEAR} Pelangi Capsule Hostel. All rights reserved.
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <Link

@@ -4,7 +4,6 @@ import Footer from "@/components/Footer";
 import Gallery from "@/components/Gallery";
 import type { Metadata } from "next";
 
-export const experimental_ppr = true;
 
 export const metadata: Metadata = {
     title: "Gallery | Pelangi Capsule Hostel Johor Bahru",
