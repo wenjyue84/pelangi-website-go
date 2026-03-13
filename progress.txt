@@ -5370,3 +5370,24 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 ### Gotchas
 - This is strictly a Next.js 16 breaking change — only applies if `scroll-behavior: smooth` is set globally
 - The attribute value must be "smooth" (matching the CSS value) — not a boolean
+
+
+## Iteration 216 - Story: US-200 - Add JB-Singapore RTS Link and MyNIISe QR border crossing info page
+
+### What was implemented
+- `site/src/app/getting-here/page.tsx` — Full page with 6 sections: Border Crossing, RTS Link, MyNIISe QR, Transport Options, DuitNow-PayNow, Quick Reference
+- `site/src/components/GettingHereStructuredData.tsx` — TouristAttraction schema for CIQ, RTS Link Bukit Chagar, JB Sentral, Senai Airport + BreadcrumbList
+- `site/src/data/search-index.ts` — Added 5 "Getting Here" search entries + new category type
+- `site/src/app/sitemap.ts` — Added /getting-here at priority 0.8
+- `site/src/app/sitemap-html/page.tsx` — Added to Guest Information section
+- Page follows existing pattern: Header + Footer, TableOfContents sidebar, section-label/section-heading classes
+- SEO keywords target: "hostel near CIQ johor bahru", "JB RTS Link accommodation", "MyNIISe QR immigration JB"
+
+### Patterns discovered
+- SearchItem category is a string union type — needed to extend with "Getting Here"
+- SearchDialog renders category dynamically (no hardcoded filter), so new categories just work
+- Guide page and Getting Here share similar two-column layout with ToC sidebar pattern
+
+### Gotchas
+- `rtk npx tsc` doesn't work on this system (rtk can't find the program); use `npx tsc` directly
+- RTS Link content uses tentative language since it's under construction (expected end 2026)

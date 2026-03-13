@@ -38,6 +38,7 @@ export default function SitemapHtmlPage() {
       heading: "Guest Information",
       links: [
         { href: "/check-in", label: "Online Check-in" },
+        { href: "/getting-here", label: "Getting Here — Border Crossing & RTS Link" },
         { href: "/guide", label: "Guest Guide" },
       ],
     },

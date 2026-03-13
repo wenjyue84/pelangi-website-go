@@ -4,7 +4,7 @@ export interface SearchItem {
   title: string;
   excerpt: string;
   url: string;
-  category: "Blog" | "Guide";
+  category: "Blog" | "Guide" | "Getting Here";
   tags: string[];
 }
 
@@ -68,6 +68,50 @@ const guideSections: SearchItem[] = [
   },
 ];
 
+/** Getting Here page sections for search indexing. */
+const gettingHereSections: SearchItem[] = [
+  {
+    title: "Border Crossing from Singapore",
+    excerpt:
+      "Causeway and Second Link crossings from Singapore to Johor Bahru — buses CW1/CW2, Grab fares, peak hours, and immigration tips.",
+    url: "/getting-here#border-crossing",
+    category: "Getting Here",
+    tags: ["singapore", "causeway", "border", "ciq", "immigration", "bus"],
+  },
+  {
+    title: "JB–Singapore RTS Link",
+    excerpt:
+      "The upcoming Rapid Transit System Link connecting Bukit Chagar JB to Woodlands North MRT in ~5 minutes. Expected end 2026.",
+    url: "/getting-here#rts-link",
+    category: "Getting Here",
+    tags: ["rts-link", "train", "bukit-chagar", "woodlands", "mrt"],
+  },
+  {
+    title: "MyNIISe QR Immigration",
+    excerpt:
+      "Step-by-step guide to setting up Malaysia's MyNIISe QR code for faster border clearance at JB CIQ checkpoints.",
+    url: "/getting-here#myniise-qr",
+    category: "Getting Here",
+    tags: ["myniise", "qr", "immigration", "digital", "border"],
+  },
+  {
+    title: "Transport to Pelangi Hostel",
+    excerpt:
+      "How to get from CIQ, JB Sentral, RTS Link Bukit Chagar, Larkin Terminal, and Senai Airport to Pelangi Capsule Hostel.",
+    url: "/getting-here#transport-options",
+    category: "Getting Here",
+    tags: ["transport", "grab", "bus", "taxi", "airport", "directions"],
+  },
+  {
+    title: "DuitNow–PayNow Cross-Border Payments",
+    excerpt:
+      "Pay in Malaysia using your Singapore bank app via DuitNow–PayNow QR interoperability — no cash exchange needed.",
+    url: "/getting-here#duitnow-paynow",
+    category: "Getting Here",
+    tags: ["duitnow", "paynow", "payment", "qr", "singapore", "cross-border"],
+  },
+];
+
 /** Combined search index built from blog posts and guide sections. */
 export const searchIndex: SearchItem[] = [
   ...blogPosts.map((post) => ({
@@ -78,4 +122,5 @@ export const searchIndex: SearchItem[] = [
     tags: post.tags,
   })),
   ...guideSections,
+  ...gettingHereSections,
 ];
