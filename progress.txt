@@ -3830,3 +3830,79 @@ This user story is for a **Next.js/TypeScript** project, not Frappe/Python. The 
 - Duplicate ID would occur if both section[id] and h2 used the same id — keep id on section only for guide page; use h2 ids for blog posts
 - scroll-margin-top must also cover section[id] for guide page anchors, not just h2/h3
 - `npx tsc --noEmit` passes with zero errors
+## Iteration 7 - Fri, Mar 13, 2026  9:48:14 AM
+Incomplete: Add aggregateRating and starRating to LodgingBusiness schema from real review platform data (ID: US-084) — attempt 1/3
+
+
+## Pre-analysis for US-084 (Gemini 2.5 Pro)
+This user story is for a **Next.js/TypeScript** web project, not a Frappe/Python application as stated in the prompt. The following technical brief is based on the Next.js project structure and the user story's content.
+
+***
+
+**Technical Brief: US-084 - Implement LodgingBusiness Schema Ratings**
+
+**1. Primary Files for Modification:**
+
+*   `site/src/components/StructuredData.tsx`: This is the most likely candidate for generating the `LodgingBusiness` JSON-LD script. The core logic for adding `aggregateRating` will go here.
+*   `site/src/lib/constants.ts` (or a similar config file): Create or modify this to store the raw rating data (value, count) so it can be easily updated quarterly as required.
+
+**2. Key Frappe/Frontend Entities:**
+
+*   **Component:** `StructuredData.tsx` is the central component.
+*   **Schema Type:** `LodgingBusiness` JSON-LD.
+*   **New Properties:** `aggregateRating` and `starRating`.
+
+**3. Recommended Implementation Approach:**
+
+1.  **Data Storage:** In a constants file, define an object for the review data.
+    ```typescript
+    // e.g., in site/src/lib/constants.ts
+    export const REVIEW_DATA = {
+      ratingValue: "4.7", // From Google/Hostelworld
+      reviewCount: "590", // From the same platform
+    };
+    ```
+2.  **Schema Enhancement:** In `StructuredData.tsx`, import `REVIEW_DATA` and expand the `LodgingBusiness` schema object.
+    ```javascript
+    // Inside the JSON-LD script generation
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": REVIEW_DATA.ratingValue,
+      "bestRating": "5",
+      "worstRating": "1",
+      "reviewCount": REVIEW_DATA.reviewCount
+    },
+    // The starRating property is for hotel category (e.g., 3-star), not reviews.
+    // The user story seems to conflate this. We will omit it to avoid schema errors,
+    // as aggregateRating is the correct property for this goal.
+    ```
+
+**4. Edge Cases & Gotchas:**
+
+*   **Source of Truth:** Ratings MUST be from an independent source (Google, Hostelworld) as per the user story. Do not invent them.
+*   **`starRating` vs. `aggregateRating`:** The story mentions `starRating`, but this is for hotel classification (e.g., "5-star hotel"), not user review scores. Implementing it with a review score is semantically incorrect and may cause schema validation warnings. The primary goal is met by `aggregateRating`.
+*   **Validation:** The final HTML output must be validated with the Google Rich Results Test to ensure it's error-free and recognized correctly.
+*   **Data Types:** Ensure all values in the final JSON-LD are strings as per schema best practices.
+
+
+## Iteration 20 - Story: US-073 Add Web Share API native share button to blog post pages
+
+### What was implemented
+- `site/src/components/ShareButton.tsx` — client component with `'use client'` directive
+  - Uses `navigator.share()` with `navigator.canShare()` check on supported browsers
+  - Falls back to `navigator.clipboard.writeText()` for unsupported browsers (desktop Firefox, etc.)
+  - Shows toast notification on successful share or copy
+  - Handles AbortError gracefully (user cancelled share)
+  - Accessible: `aria-label="Share this article"`, toast uses `role="status"` + `aria-live="polite"`
+- Integrated ShareButton into `site/src/app/blog/[slug]/page.tsx` in the meta/byline area
+- Passes `title`, `text` (excerpt), and canonical `url` as props
+- Uses existing `animate-fade-in` animation from globals.css for toast
+
+### Patterns discovered
+- `animate-fade-in` is already defined as a CSS variable in globals.css (Tailwind v4 style)
+- Blog post meta section uses flex-wrap with dot separators — ShareButton fits naturally inline
+
+### Gotchas
+- Web Share API only works on HTTPS (or localhost for dev) — no special handling needed
+- Must check `navigator.canShare()` before calling `navigator.share()` per spec
+- AbortError is thrown when user cancels the share sheet — should be silently ignored

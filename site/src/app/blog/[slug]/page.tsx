@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import BlogStructuredData from "@/components/BlogStructuredData";
 import BlogPageViewTracker from "@/components/BlogPageViewTracker";
 import TableOfContents from "@/components/TableOfContents";
+import ShareButton from "@/components/ShareButton";
 import { blogPosts, getPostBySlug } from "@/data/blog/posts";
 import { extractHeadings, addHeadingIds } from "@/lib/headings";
 
@@ -119,6 +120,12 @@ export default async function BlogPostPage({ params }: Props) {
             </span>
             <span>·</span>
             <span>{post.readTime}</span>
+            <span>·</span>
+            <ShareButton
+              title={post.title}
+              text={post.excerpt}
+              url={`https://pelangicapsulehostel.com/blog/${post.slug}`}
+            />
           </div>
 
           {/* Two-column layout: content + ToC sidebar */}
