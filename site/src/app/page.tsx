@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { cacheLife, cacheTag } from "next/cache";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -21,7 +22,11 @@ function SectionSkeleton({ height = "h-64" }: { height?: string }) {
   );
 }
 
-export default function Home() {
+export default async function Home() {
+  "use cache";
+  cacheLife("hours");
+  cacheTag("homepage");
+
   return (
     <main id="main-content" className="min-h-screen bg-stone-50 dark:bg-stone-950">
       <Header />

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
+import { Suspense } from "react";
 import { Inter, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import { GoogleTagManager } from "@next/third-parties/google";
@@ -95,13 +95,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const nonce = (await headers()).get("x-nonce") ?? "";
-
   return (
     <html lang="en">
       <head>
@@ -169,7 +167,7 @@ export default async function RootLayout({
           Skip to main content
         </a>
         <StructuredData />
-        {children}
+        <Suspense>{children}</Suspense>
         <MobileBookingBar />
         <BookingRecoveryBanner />
         <ChatWidget />

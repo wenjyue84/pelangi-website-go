@@ -5322,3 +5322,30 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 ### Gotchas
 - AC2 mentions redirect rules that don't exist in this project — verify before assuming work is needed
 - The codemod AC is satisfied by manual migration if the result is functionally equivalent
+
+
+## Iteration 20 - Story: US-192 - Implement Next.js 16 'use cache' directive with cacheTag/cacheLife
+
+### What was implemented
+- `next.config.ts` — Added `cacheComponents: true` to enable explicit opt-in caching model
+- `site/src/app/page.tsx` (homepage) — Added `'use cache'`, `cacheLife('hours')`, `cacheTag('homepage')`, made function async
+- `site/src/app/rooms/page.tsx` (rooms) — Added `'use cache'`, `cacheLife('hours')`, `cacheTag('rooms')`, made function async
+- `site/src/app/layout.tsx` — Removed unused `headers()` import and `nonce` variable (dead code causing all pages to be dynamic under cacheComponents), added `<Suspense>` wrapper around `{children}` for PPR streaming, changed from async to sync function
+- Build output confirms: homepage shows `1h revalidate, 1d expire`; rooms shows `1h revalidate, 1d expire`
+- ISR webhook at `/api/revalidate` already supports `revalidateTag(tag, 'max')` for on-demand invalidation
+- All 51 pages build successfully; no regressions
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- `cacheComponents: true` is a top-level config option (not experimental) in Next.js 16
+- When cacheComponents is enabled, ANY `headers()`/`cookies()`/`connection()` call outside `<Suspense>` causes "Uncached data accessed outside of <Suspense>" build error for ALL routes sharing that layout
+- The root layout's unused `headers()` call for CSP nonce was dead code — the `nonce` variable was retrieved but never passed to any JSX element. Removing it fixed all 51 pages.
+- Blog slug pages automatically became `◐ (Partial Prerender)` with cacheComponents — PPR is activated
+- `cacheLife('hours')` maps to: revalidate 1h, expire 1d (stale-while-revalidate pattern)
+
+### Gotchas
+- `cacheComponents: true` has a blast radius — it changes the caching model for ALL routes, not just the ones you annotate
+- Dead `headers()` calls in layouts are silent without cacheComponents but become build-breaking errors with it
+- The `<Suspense>` wrapper around `{children}` in root layout is essential for PPR — without it, dynamic layouts block page streaming
+- `'use cache'` requires the function to be `async` (all docs examples use async functions)
+- `export const metadata` (static) is compatible with `'use cache'` in the same page — no conflict

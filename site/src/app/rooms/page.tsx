@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { cacheLife, cacheTag } from "next/cache";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Rooms from "@/components/Rooms";
@@ -169,7 +170,11 @@ const hotelRoomsSchema = [
     },
 ];
 
-export default function RoomsPage() {
+export default async function RoomsPage() {
+    "use cache";
+    cacheLife("hours");
+    cacheTag("rooms");
+
     return (
         <main id="main-content" className="min-h-screen bg-stone-50 dark:bg-stone-950">
             {hotelRoomsSchema.map((schema, i) => (

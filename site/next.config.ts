@@ -17,8 +17,9 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   // React Compiler: automatic memoization (top-level in Next.js 16)
   reactCompiler: true,
-  // Note: cacheComponents (replaces experimental.ppr) requires all dynamic data access
-  // wrapped in <Suspense> boundaries — adopt incrementally in US-192
+  // Cache Components: explicit opt-in caching via 'use cache' directive (US-192)
+  // Replaces implicit caching; pages use cacheLife/cacheTag for fine-grained control
+  cacheComponents: true,
   experimental: {
     // Control Client Router Cache TTLs (staleTimes are in seconds)
     staleTimes: {
