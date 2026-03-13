@@ -1,10 +1,13 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useRef, useState } from "react";
 import { subscribeToNewsletter } from "@/app/actions/newsletter";
+import TurnstileWidget from "@/components/TurnstileWidget";
 
 export default function NewsletterSignupForm() {
   const [state, formAction, isPending] = useActionState(subscribeToNewsletter, null);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
 
   return (
     <section
@@ -39,7 +42,7 @@ export default function NewsletterSignupForm() {
             {state.message}
           </div>
         ) : (
-          <form action={formAction} className="space-y-4">
+          <form ref={formRef} action={formAction} className="space-y-4">
             <div className="flex flex-col gap-4 sm:flex-row sm:gap-3">
               <div className="flex-1">
                 <label
@@ -99,6 +102,19 @@ export default function NewsletterSignupForm() {
                 {state.message}
               </p>
             )}
+
+            {/* Cloudflare Turnstile CAPTCHA — lazy-loads on first interaction */}
+            <div className="flex justify-center">
+              <div>
+                <TurnstileWidget
+                  formRef={formRef}
+                  onVerify={(token) => setTurnstileToken(token)}
+                  onExpire={() => setTurnstileToken("")}
+                />
+                {/* Hidden input so Server Action receives the token via FormData */}
+                <input type="hidden" name="cf-turnstile-response" value={turnstileToken} />
+              </div>
+            </div>
 
             <button
               type="submit"

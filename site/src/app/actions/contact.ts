@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import { updateTag } from "next/cache";
 import crypto from "crypto";
 import { deferAfterResponse, logServerEvent } from "@/lib/server-analytics";
+import { verifyTurnstileToken } from "@/lib/turnstile";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -121,6 +122,22 @@ export async function submitContactForm(
   if (honeypot) {
     // Bot detected — return fake success to not reveal detection
     return { success: true, message: "Thank you! We'll be in touch soon." };
+  }
+
+  // --- Cloudflare Turnstile verification ---
+  const turnstileToken = formData.get("cf-turnstile-response");
+  if (!turnstileToken || typeof turnstileToken !== "string") {
+    return {
+      success: false,
+      message: "Please complete the security check before submitting.",
+    };
+  }
+  const isTurnstileValid = await verifyTurnstileToken(turnstileToken);
+  if (!isTurnstileValid) {
+    return {
+      success: false,
+      message: "Security check failed. Please refresh the page and try again.",
+    };
   }
 
   // --- Extract fields ---

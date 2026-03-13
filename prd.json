@@ -3864,7 +3864,7 @@
         "Add honeypot field to contact form to block spam bot submissions"
       ],
       "estimatedComplexity": "small",
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-173",

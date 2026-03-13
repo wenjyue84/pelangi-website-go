@@ -5,6 +5,7 @@ import Link from "next/link";
 import { submitContactForm, type ContactFormResult } from "@/app/actions/contact";
 import { trackGenerateLead } from "@/lib/gtm-ecommerce";
 import { trackMetaEvent } from "@/lib/meta-capi";
+import TurnstileWidget from "@/components/TurnstileWidget";
 
 /** SC 3.3.3: Client-side validation with specific error suggestions */
 function validateEmail(email: string): string | null {
@@ -73,6 +74,7 @@ export default function ContactForm() {
   // SC 3.3.4: Review step state — user must review before final submission
   const [reviewData, setReviewData] = useState<ReviewData | null>(null);
   const [clientErrors, setClientErrors] = useState<Record<string, string>>({});
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
 
   useEffect(() => {
     if (state?.success && !leadTracked.current) {
@@ -112,6 +114,10 @@ export default function ContactForm() {
     if (dateErrors.checkOut) errors.checkOut = dateErrors.checkOut;
     if (!message.trim()) errors.message = "Please enter a message describing your inquiry.";
 
+    if (!turnstileToken) {
+      errors.turnstile = "Please complete the security check.";
+    }
+
     if (Object.keys(errors).length > 0) {
       setClientErrors(errors);
       return;
@@ -131,7 +137,7 @@ export default function ContactForm() {
   }
 
   // Merge server and client errors for display
-  const displayErrors = reviewData ? {} : {
+  const displayErrors: Record<string, string | undefined> = reviewData ? {} : {
     ...clientErrors,
     ...(optimisticState?.fieldErrors ?? {}),
   };
@@ -469,6 +475,29 @@ export default function ContactForm() {
                 {optimisticState.message}
               </p>
             )}
+
+            {/* Cloudflare Turnstile CAPTCHA — lazy-loads on first interaction */}
+            <div>
+              <TurnstileWidget
+                formRef={formRef}
+                onVerify={(token) => {
+                  setTurnstileToken(token);
+                  setClientErrors((prev) => {
+                    const next = { ...prev };
+                    delete next.turnstile;
+                    return next;
+                  });
+                }}
+                onExpire={() => setTurnstileToken("")}
+              />
+              {/* Hidden input so Server Action receives the token via FormData */}
+              <input type="hidden" name="cf-turnstile-response" value={turnstileToken} />
+              {displayErrors.turnstile && (
+                <p role="alert" className="mt-1 text-sm text-red-600 dark:text-red-400">
+                  {displayErrors.turnstile}
+                </p>
+              )}
+            </div>
 
             {/* Terms & Conditions agreement */}
             <div className="flex items-start gap-3">

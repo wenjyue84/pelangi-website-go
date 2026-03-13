@@ -1,6 +1,7 @@
 "use server";
 
 import { updateTag } from "next/cache";
+import { verifyTurnstileToken } from "@/lib/turnstile";
 
 interface NewsletterResult {
   success: boolean;
@@ -17,6 +18,22 @@ export async function subscribeToNewsletter(
 ): Promise<NewsletterResult> {
   const email = formData.get("email");
   const name = formData.get("name");
+
+  // --- Cloudflare Turnstile verification ---
+  const turnstileToken = formData.get("cf-turnstile-response");
+  if (!turnstileToken || typeof turnstileToken !== "string") {
+    return {
+      success: false,
+      message: "Please complete the security check before submitting.",
+    };
+  }
+  const isTurnstileValid = await verifyTurnstileToken(turnstileToken);
+  if (!isTurnstileValid) {
+    return {
+      success: false,
+      message: "Security check failed. Please refresh the page and try again.",
+    };
+  }
 
   // Server-side validation (per-field for WCAG 2.1 SC 3.3.1)
   const fieldErrors: NonNullable<NewsletterResult["fieldErrors"]> = {};
