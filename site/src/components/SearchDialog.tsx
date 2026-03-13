@@ -1,5 +1,6 @@
 "use client";
 
+import type { Route } from "next";
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import Fuse from "fuse.js";
 import { useRouter } from "next/navigation";
@@ -56,7 +57,7 @@ export default function SearchDialog({
   const navigate = useCallback(
     (item: SearchItem) => {
       onClose();
-      router.push(item.url);
+      router.push(item.url as Route);
     },
     [onClose, router]
   );

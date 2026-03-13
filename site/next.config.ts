@@ -30,6 +30,8 @@ const nextConfig: NextConfig = {
   // Cache Components: explicit opt-in caching via 'use cache' directive (US-192)
   // Replaces implicit caching; pages use cacheLife/cacheTag for fine-grained control
   cacheComponents: true,
+  // Typed routes: stable as of Next.js 15.5 (US-153)
+  typedRoutes: true,
   experimental: {
     // Control Client Router Cache TTLs (staleTimes are in seconds)
     staleTimes: {

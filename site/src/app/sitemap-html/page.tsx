@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Route } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -93,7 +93,7 @@ export default function SitemapHtmlPage() {
                     {section.links.map((link) => (
                       <li key={link.href}>
                         <Link
-                          href={link.href}
+                          href={link.href as Route}
                           className="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200"
                         >
                           {link.label}

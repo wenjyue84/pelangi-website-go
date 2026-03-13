@@ -10,16 +10,13 @@ import {
   slugToCategory,
   getUniqueCategories,
 } from "@/data/blog/posts";
-interface PageProps {
-  params: Promise<{ category: string }>;
-}
 
 export async function generateStaticParams() {
   const categories = getUniqueCategories();
   return categories.map((cat) => ({ category: categoryToSlug(cat) }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps<'/blog/category/[category]'>): Promise<Metadata> {
   const { category: slug } = await params;
   const categoryLabel = slugToCategory(slug);
 
@@ -67,7 +64,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function CategoryPage({ params }: PageProps) {
+export default async function CategoryPage({ params }: PageProps<'/blog/category/[category]'>) {
   const { category: slug } = await params;
   const categoryLabel = slugToCategory(slug);
 

@@ -10,15 +10,12 @@ import ShareButton from "@/components/ShareButton";
 import { blogPosts, getPostBySlug } from "@/data/blog/posts";
 import { extractHeadings, addHeadingIds } from "@/lib/headings";
 import { annotateMsHtml } from "@/components/LangMs";
-interface Props {
-  params: Promise<{ slug: string }>;
-}
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps<'/blog/[slug]'>): Promise<Metadata> {
   const { slug } = await params;
   const post = getPostBySlug(slug);
 
@@ -53,7 +50,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function BlogPostPage({ params }: Props) {
+export default async function BlogPostPage({ params }: PageProps<'/blog/[slug]'>) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
 

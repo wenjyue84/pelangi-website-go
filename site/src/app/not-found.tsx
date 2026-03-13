@@ -1,3 +1,4 @@
+import type { Route } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -5,7 +6,7 @@ import Footer from "@/components/Footer";
 const WHATSAPP_URL =
   "https://wa.me/60127088789?text=Hi%20Pelangi%20Capsule%20Hostel!%20I'd%20like%20to%20book%20a%20pod.%20Please%20confirm%20availability%20for%20[dates].";
 
-const NAV_LINKS = [
+const NAV_LINKS: { href: Route; label: string }[] = [
   { href: "/", label: "Home" },
   { href: "/rooms", label: "Rooms" },
   { href: "/book", label: "Book" },

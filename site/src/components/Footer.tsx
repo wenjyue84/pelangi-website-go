@@ -1,3 +1,4 @@
+import type { Route } from "next";
 import Link from "next/link";
 import LangMs from "@/components/LangMs";
 import MotacBadge from "@/components/MotacBadge";
@@ -91,14 +92,15 @@ export default function Footer() {
               Navigation
             </h4>
             <ul className="space-y-3">
-              {[
+              {([
+
                 { href: "/about", label: "About Us" },
                 { href: "/rooms", label: "Rooms" },
                 { href: "/amenities", label: "Amenities" },
                 { href: "/gallery", label: "Gallery" },
                 { href: "/location", label: "Location" },
                 { href: "/book", label: BOOK_NOW_LABEL, ariaLabel: BOOK_NOW_ARIA },
-              ].map((link) => (
+              ] as { href: Route; label: string; ariaLabel?: string }[]).map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}

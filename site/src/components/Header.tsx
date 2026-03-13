@@ -1,5 +1,6 @@
 "use client";
 
+import type { Route } from "next";
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -74,7 +75,7 @@ export default function Header() {
           {navLinks.map((link) => (
             <Link
               key={link.href}
-              href={link.href}
+              href={link.href as Route}
               className="px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full text-stone-600 hover:text-stone-900 hover:bg-stone-100 dark:text-stone-400 dark:hover:text-stone-100 dark:hover:bg-stone-800"
             >
               {link.label}
@@ -137,7 +138,7 @@ export default function Header() {
             {navLinks.map((link) => (
               <Link
                 key={link.href}
-                href={link.href}
+                href={link.href as Route}
                 className="block px-6 py-3 text-stone-700 hover:bg-stone-50 hover:text-stone-900 transition-colors dark:text-stone-300 dark:hover:bg-stone-700 dark:hover:text-stone-100"
                 onClick={() => setIsMenuOpen(false)}
               >

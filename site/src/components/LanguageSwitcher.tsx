@@ -1,5 +1,6 @@
 "use client";
 
+import type { Route } from "next";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { setLanguagePreference } from "@/app/actions/language";
@@ -25,7 +26,7 @@ export default function LanguageSwitcher() {
     // Navigate to BM content page
     const lang = LANGUAGES.find((l) => l.code === langCode);
     if (lang && "href" in lang && lang.href) {
-      router.push(lang.href);
+      router.push(lang.href as Route);
       return;
     }
 
