@@ -13,6 +13,9 @@ export interface ContactFormResult {
   fieldErrors?: {
     name?: string;
     email?: string;
+    phone?: string;
+    checkIn?: string;
+    checkOut?: string;
     message?: string;
   };
 }
@@ -127,15 +130,51 @@ export async function submitContactForm(
   const guests = formData.get("guests");
   const message = formData.get("message");
 
-  // --- Server-side validation (per-field for WCAG 2.1 SC 3.3.1) ---
+  // --- Server-side validation (per-field for WCAG 2.1 SC 3.3.1 + 2.2 SC 3.3.3) ---
   const fieldErrors: NonNullable<ContactFormResult["fieldErrors"]> = {};
 
   if (!name || typeof name !== "string" || name.trim().length === 0) {
     fieldErrors.name = "Please enter your full name.";
   }
+
+  // SC 3.3.3: Suggest correction when '@' is missing
   if (!email || typeof email !== "string" || !email.includes("@")) {
-    fieldErrors.email = "Please enter a valid email address (e.g. you@example.com).";
+    if (email && typeof email === "string" && !email.includes("@")) {
+      fieldErrors.email = `It looks like '@' is missing. Did you mean ${email.trim()}@gmail.com?`;
+    } else {
+      fieldErrors.email = "Please enter a valid email address (e.g. you@example.com).";
+    }
   }
+
+  // SC 3.3.3: Phone format suggestion
+  if (phone && typeof phone === "string" && phone.trim().length > 0) {
+    const digits = phone.toString().replace(/\D/g, "");
+    if (digits.length < 8 || digits.length > 15) {
+      fieldErrors.phone = "Please enter a valid phone number with country code (e.g. +60 12-345 6789).";
+    }
+  }
+
+  // SC 3.3.3: Date validation with suggestions
+  if (checkIn && typeof checkIn === "string" && checkIn.trim().length > 0) {
+    const checkInDate = new Date(checkIn.toString());
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    if (isNaN(checkInDate.getTime())) {
+      fieldErrors.checkIn = "Please enter a valid check-in date in YYYY-MM-DD format (e.g. 2026-04-01).";
+    } else if (checkInDate < today) {
+      fieldErrors.checkIn = "Check-in date cannot be in the past. Please select today or a future date.";
+    }
+  }
+  if (checkOut && typeof checkOut === "string" && checkOut.trim().length > 0) {
+    const checkOutDate = new Date(checkOut.toString());
+    const checkInDate = checkIn ? new Date(checkIn.toString()) : null;
+    if (isNaN(checkOutDate.getTime())) {
+      fieldErrors.checkOut = "Please enter a valid check-out date in YYYY-MM-DD format (e.g. 2026-04-03).";
+    } else if (checkInDate && !isNaN(checkInDate.getTime()) && checkOutDate <= checkInDate) {
+      fieldErrors.checkOut = "Check-out date must be after your check-in date.";
+    }
+  }
+
   if (!message || typeof message !== "string" || message.trim().length === 0) {
     fieldErrors.message = "Please enter a message describing your inquiry.";
   }

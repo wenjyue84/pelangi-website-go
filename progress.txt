@@ -5082,3 +5082,28 @@ US-103 (Google Business Profile registration) is entirely an external platform t
 - [x] Focus ring meets 3:1 contrast ratio against adjacent colours (amber-700 = ~4.6:1 on white)
 - [x] Global :focus-visible CSS rule defined in globals.css as a fallback (line 251)
 - [x] Keyboard navigation test: all interactive elements receive visible focus via global rule + component-level overrides
+
+
+## Iteration 16 - Story: Implement WCAG 2.2 SC 3.3.3 + 3.3.4 – Error Suggestion and Error Prevention on booking flow (US-180)
+
+### What was implemented
+- **ContactForm.tsx**: Added review/confirmation step (SC 3.3.4) — user sees all data in a summary before final submission with Edit/Confirm buttons
+- **ContactForm.tsx**: Added client-side validation with specific error suggestions (SC 3.3.3) — email '@' missing detection, phone format suggestion, date range validation
+- **ContactForm.tsx**: Added hint text below email, phone, date fields for format guidance
+- **BookingForm.tsx**: Added date validation with error suggestions (past date, checkout before checkin)
+- **BookingForm.tsx**: Added review/confirmation step when dates are selected — shows booking details before opening WhatsApp
+- **contact.ts server action**: Extended fieldErrors type with phone, checkIn, checkOut fields
+- **contact.ts server action**: Enhanced email validation to detect missing '@' and suggest correction (e.g. "Did you mean user@gmail.com?")
+- **contact.ts server action**: Added phone format validation with example suggestion
+- **contact.ts server action**: Added date range validation (past dates, checkout before checkin)
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- ContactForm uses `useActionState` + `useOptimistic` from React 19 — the review step works by intercepting `onSubmit`, validating client-side, then calling formAction only on confirm
+- BookingForm is a WhatsApp link builder (no server action) — review step shows details + message preview before window.open
+- Both forms now follow SC 3.3.4 pattern: validate → review → confirm → submit
+
+### Gotchas
+- The form ref must be preserved across the review step to use `new FormData(formRef.current)` on confirm
+- Client errors and server errors need to be merged for display, but client errors should clear when showing review
+- Date inputs use type="date" so format errors are rare, but date range validation (past dates, out-of-order) is still needed
