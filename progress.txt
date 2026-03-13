@@ -5538,3 +5538,16 @@ Leaving `passes: false` — this story will be auto-skipped after 3 retry attemp
 - `serwist` and `@serwist/next` packages were already in package.json (added by prior iteration) but integration wasn't wired up
 - `sw.ts` triple-slash `/// <reference no-default-lib="true" />` + `/// <reference lib="webworker" />` breaks DOM types project-wide if not excluded from tsconfig
 
+
+## Iteration 223 - Story: US-209 & US-210 - WCAG lang attribute & PDPA DPO contact
+
+### What was implemented
+- **US-209** (WCAG 2.0 SC 3.1.1): Already implemented — root layout has `lang="en"` on `<html>`, `/ms/terma` page has `lang="ms"` on `<main>`, and `LangMs.tsx` component wraps inline Malay terms. Marked as passes.
+- **US-210** (PDPA 2024 DPO): Privacy policy already had Section 13 "Data Protection Officer & Contact" with `dpo@pelangicapsulehostel.com`, breach notification section, and PDPA Amendment 2024 references. Added DPO contact email reference to cookie consent banner description (both EN and ZH). Marked as passes.
+
+### Patterns discovered
+- Cookie consent component has bilingual copy (EN/ZH) in a `COPY` constant — both languages must be updated together
+
+### Gotchas
+- US-209 was already fully implemented from prior iterations — just needed verification and marking
+- US-210 privacy policy content was complete; only the cookie consent banner reference was missing

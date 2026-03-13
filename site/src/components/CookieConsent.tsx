@@ -15,6 +15,7 @@ const COPY = {
       "We use cookies to analyse site traffic and improve your experience. Non-essential cookies (analytics) are only loaded with your explicit consent, as required by Malaysia\u2019s Personal Data Protection (Amendment) Act 2024. No boxes are pre-ticked.",
     newsletter:
       "If you subscribe to our newsletter, your email is shared with our email marketing provider (Brevo) under PDPA.",
+    dpoContact: "For privacy concerns, contact our Data Protection Officer at dpo@pelangicapsulehostel.com.",
     privacyLink: "Privacy Policy",
     acceptAll: "Accept All",
     rejectAll: "Reject Non-Essential",
@@ -33,6 +34,7 @@ const COPY = {
       "\u6211\u4eec\u4f7f\u7528Cookie\u6765\u5206\u6790\u7f51\u7ad9\u6d41\u91cf\u5e76\u6539\u5584\u60a8\u7684\u4f53\u9a8c\u3002\u6839\u636e\u9a6c\u6765\u897f\u4e9a2024\u5e74\u300a\u4e2a\u4eba\u6570\u636e\u4fdd\u62a4\uff08\u4fee\u6b63\uff09\u6cd5\u4ee4\u300b\uff0c\u975e\u5fc5\u8981Cookie\uff08\u5206\u6790\uff09\u4ec5\u5728\u60a8\u660e\u786e\u540c\u610f\u540e\u52a0\u8f7d\u3002\u6ca1\u6709\u9884\u52fe\u9009\u7684\u590d\u9009\u6846\u3002",
     newsletter:
       "\u5982\u679c\u60a8\u8ba2\u9605\u6211\u4eec\u7684\u7535\u5b50\u901a\u8baf\uff0c\u60a8\u7684\u7535\u5b50\u90ae\u4ef6\u5c06\u6839\u636ePDPA\u4e0e\u6211\u4eec\u7684\u90ae\u4ef6\u8425\u9500\u63d0\u4f9b\u5546\uff08Brevo\uff09\u5171\u4eab\u3002",
+    dpoContact: "\u5982\u6709\u9690\u79c1\u7591\u8651\uff0c\u8bf7\u8054\u7cfb\u6570\u636e\u4fdd\u62a4\u5b98\uff1adpo@pelangicapsulehostel.com\u3002",
     privacyLink: "\u9690\u79c1\u653f\u7b56",
     acceptAll: "\u63a5\u53d7\u5168\u90e8",
     rejectAll: "\u62d2\u7edd\u975e\u5fc5\u8981",
@@ -146,6 +148,7 @@ export default function CookieConsent() {
         >
           {t.description}{" "}
           {t.newsletter}{" "}
+          {t.dpoContact}{" "}
           <Link
             href="/privacy-policy"
             className="underline text-stone-700 hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
