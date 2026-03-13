@@ -4696,3 +4696,26 @@ Completed: Implement WCAG 2.1 SC 2.5.3 – Label in Name for icon buttons (ID: U
 - Changing from early-return validation to collected field errors breaks TypeScript narrowing — the variables remain `FormDataEntryValue | null` after the validation block, requiring `(name as string).trim()` casts
 - Booking.tsx is not a form — it's a link-based component, so no WCAG 3.3.1 changes needed there
 - US-103 (Google Business Profile) is entirely an external/operational task and cannot be implemented through code changes
+
+
+
+## Iteration 14 - Story: US-128 - Add WCAG 2.2 SC 1.2.2 captions to all prerecorded video content
+
+### What was implemented
+- **YouTubeFacade.tsx** — Added `cc_load_policy=1` and `cc_lang_pref=en` URL params to YouTube embed iframe to force captions on by default
+- **YouTubeFacade.tsx** — Added localStorage-persisted caption preference toggle (`pelangi_captions_enabled` key). CC toggle button with `aria-pressed` state shown on video facade before play
+- **YouTubeFacade.tsx** — Wrapped facade content in a container div to layer the CC toggle button over the thumbnail
+- **Gallery.tsx:255** — Added `?cc_load_policy=1&cc_lang_pref=en` to the direct YouTube iframe embed
+- **public/captions/check-in-guide-en.vtt** — Created WebVTT caption file for the check-in guide video (6Ux11oBZaQQ) following `<video-slug>-en.vtt` naming convention
+- `npx tsc --noEmit` passes with zero errors
+
+### Patterns discovered
+- Site has exactly one YouTube video (6Ux11oBZaQQ) embedded in two places: YouTubeFacade on /check-in and direct iframe in Gallery
+- YouTube embed params `cc_load_policy=1` forces captions on; `cc_lang_pref=en` sets preferred language
+- YouTube's built-in CC button handles toggle during playback; the custom CC toggle controls the initial load policy
+- axe-core cannot audit inside YouTube iframes, so SC 1.2.2 compliance for embeds relies on YouTube's caption system
+
+### Gotchas
+- The `cc_load_policy=1` param only works if captions are actually uploaded to the YouTube video — ensure YouTube Studio has captions enabled for video 6Ux11oBZaQQ
+- The WebVTT file in /public/captions/ serves as version-controlled documentation; actual caption delivery is via YouTube's caption system for embeds
+- If native HTML5 `<video>` elements are added in the future, use `<track kind="captions" src="/captions/<slug>-en.vtt" srclang="en" label="English" default>` element

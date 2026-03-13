@@ -252,7 +252,7 @@ export default function Gallery() {
           </div>
           <div className="relative max-w-3xl mx-auto aspect-video rounded-2xl overflow-hidden shadow-2xl">
             <iframe
-              src="https://www.youtube.com/embed/6Ux11oBZaQQ"
+              src="https://www.youtube.com/embed/6Ux11oBZaQQ?cc_load_policy=1&cc_lang_pref=en"
               title="Pelangi Capsule Hostel Check-in Guide"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
