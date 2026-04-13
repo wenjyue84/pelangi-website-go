@@ -1,2 +1,4 @@
 timestamp	spiral_iter	ralph_iter	story_id	story_title	status	duration_sec	model	retry_num	commit_sha	run_id	cache_hit	cache_read_tokens	cache_creation_tokens	review_tokens	wall_seconds	user_cpu_s	sys_cpu_s	peak_rss_kb	batch_id	decompose_secs	impl_secs	verify_secs	retry_escalation_count	failure_root_cause	failed_files	scope_tag	error_signature
 2026-04-13T18:29:54Z	1	1	US-245	Blog post: Visa Run from Singapore to JB — Step-by-Step Guide 2026	reject	355	haiku	1		69dd34342c1f	false	0	0	0	0	0	0	0		0	0	0	0				
+2026-04-13T18:36:34Z	1	2	US-194	Integrate Google Free Hotel Booking Links via connectivity partner	keep	356	opus
+opus	2	4bc2b8877ba4dc6193a65e27229fa4b14ae3f052	69dd34342c1f	false	0	0	0	0	0	0	0		0	0	0	0				

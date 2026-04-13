@@ -1,0 +1,9 @@
+[
+  {
+    "story_id": "US-245",
+    "timestamp": "20260413T183852Z",
+    "exit_code": 124,
+    "worker_id": "sequential",
+    "crash_file": "US-245_20260413T183852Z.txt"
+  }
+]

@@ -7282,3 +7282,34 @@ Completed: Integrate Google Free Hotel Booking Links via connectivity partner (I
 ### Gotchas
 - Previous attempts failed by declaring story impossible as code. The ARI endpoint IS the code-side enablement
 - Room data was hardcoded across StructuredData.tsx — now centralized in data/rooms.ts
+## Iteration 2 - Tue, Apr 14, 2026  2:36:34 AM
+Completed: Integrate Google Free Hotel Booking Links via connectivity partner (ID: US-194) in 5m
+
+
+## Pre-analysis for US-245 (Gemini 2.5 Pro)
+This is a content creation task for a **Next.js/TypeScript** website, not a Frappe/Python application. The technical brief below has been adjusted accordingly.
+
+---
+
+**Technical Brief: US-245 Visa Run Blog Post**
+
+1.  **File to Modify:**
+    *   `site/src/data/blog/posts.ts`: This file contains an array of post objects. Add a new object for this blog post here.
+
+2.  **DocTypes / Data Structures:**
+    *   No Frappe DocTypes are involved.
+    *   You will be working with the TypeScript interface for a blog post, implicitly defined by the existing objects in `posts.ts`. The new post object must match this structure.
+
+3.  **Implementation Approach:**
+    *   Append a new JavaScript object to the `posts` array in the specified file.
+    *   The object's `content` property should be a template literal containing the blog post's HTML.
+    *   **Content:** Write a 400-600 word guide on the Singapore-to-JB visa run.
+    *   **HTML Requirements:** Include an HTML checklist (`<ul>`/`<ol>`) of what to bring.
+    *   **Links:** Embed a CTA link to `/book` and internal links to `/getting-here` and `/rooms`.
+    *   **Metadata:** Set `slug` to `'visa-run-singapore-johor-bahru-guide'`, `category` to `'Travel Tips'`, `readTime` to `'7 min read'`, and `date` to `'2026-04-14'`.
+
+4.  **Edge Cases & Gotchas:**
+    *   The entire HTML `content` string must be under 6000 characters. Be concise.
+    *   The final changes must pass the build check (`npm run build` in the `site` directory).
+    *   Ensure all keys in the new post object match the existing post objects' structure precisely.
+
