@@ -1,68 +1,6 @@
 {
   "stories": [
     {
-      "title": "Add /visa-run resource hub page with FAQPage schema",
-      "priority": "medium",
-      "description": "Create a dedicated /visa-run page for visitors extending stay visas, featuring FAQ section, step-by-step border-crossing guide, and FAQPage JSON-LD schema for Google search result enhancements.",
-      "acceptanceCriteria": [
-        "FAQ accordion with 6+ Q&A pairs covering visa rules, timing, border crossing locations, transport costs, and logistics",
-        "Step-by-step visual guide showing JB→Singapore→JB route (3-5 steps with estimated timings and cost breakdown)",
-        "FAQPage JSON-LD schema with mainEntity array containing Question/Answer pairs for Google rich results",
-        "Internal links to related blog posts (Singapore work pass guide, JB accommodation, transport without car) placed contextually"
-      ],
-      "technicalNotes": [
-        "File to create: site/app/visa-run/page.tsx (RSC page with Accordion component from shadcn/ui for FAQs)",
-        "File to create: site/app/visa-run/data.ts (export visaRunFAQs array and borderGuide steps with timings)",
-        "File to edit: site/lib/structured-data.ts (add generateFAQPageSchema(faqItems) function for JSON-LD)",
-        "File to edit: site/app/sitemap.ts (add /visa-run route with priority 0.8)",
-        "Test command: npx vitest run 'site/lib/__tests__/structured-data.test.ts' -t FAQPage"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "site/app/visa-run/page.tsx",
-        "site/app/visa-run/data.ts",
-        "site/lib/structured-data.ts",
-        "site/app/sitemap.ts",
-        "site/lib/__tests__/structured-data.test.ts"
-      ],
-      "_source": "ai-example",
-      "passes": false
-    },
-    {
-      "title": "Build /singapore-jobs resource hub for Malaysian job seekers",
-      "priority": "medium",
-      "description": "Create /singapore-jobs landing page targeting Malaysians seeking employment in Singapore, featuring work pass comparison table, job-seeker FAQ with schema, and cross-links to related blog content.",
-      "acceptanceCriteria": [
-        "Comparison table displaying Singapore work pass types (EP, S Pass, PEP, WP) with eligibility, salary thresholds, and validity",
-        "FAQ section with 8+ job-seeker questions (salary expectations, application timeline, costs, requirements, visa runs allowed)",
-        "FAQPage JSON-LD schema with mainEntity array for Google search result FAQ snippets",
-        "Internal links to blog posts (How to Find Jobs in Singapore, Singapore Work Pass Guide, Visa Run) placed in context"
-      ],
-      "technicalNotes": [
-        "File to create: site/app/singapore-jobs/page.tsx (RSC page with work pass Table component and FAQ Accordion)",
-        "File to create: site/app/singapore-jobs/data.ts (export workPassTypes and jobSeekerFAQs arrays)",
-        "File to edit: site/lib/structured-data.ts (add generateJobSeekerFAQSchema(faqItems) for FAQPage JSON-LD)",
-        "File to edit: site/app/sitemap.ts (add /singapore-jobs with priority 0.9)",
-        "Test command: npx vitest run 'site/lib/__tests__/structured-data.test.ts' -t 'FAQPage.*job'"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "site/app/singapore-jobs/page.tsx",
-        "site/app/singapore-jobs/data.ts",
-        "site/lib/structured-data.ts",
-        "site/app/sitemap.ts",
-        "site/lib/__tests__/structured-data.test.ts"
-      ],
-      "_source": "ai-example",
-      "passes": false
-    },
-    {
       "title": "[E2E Test] Create blog system with static TypeScript data",
       "priority": "medium",
       "description": "Write end-to-end user flow test for the feature in US-001. Story description: Build a blog system using Next.js App Router. Blog posts are stored as TypeScript objects in /src/data/blog/posts.ts. Each post has: slug, title, excerpt, content (HTML string), date, category, author, readTime, tags, and featured image path. Create /app/blog/page.tsx (listing with cards) and /app/blog/[slug]/page.tsx (article page with full content). Both pages must have proper metadata (title, description, OG tags). Add a BlogCard component at /src/components/BlogCard.tsx.",
@@ -2005,6 +1943,31 @@
       "_forStoryId": "US-243"
     },
     {
+      "title": "[Regression Test] Blog post: Living in JB Working in Singapore — Cross-Border Commuter Guide 2026",
+      "priority": "medium",
+      "description": "Write regression test to guard against future breakage of US-244. Story description: Blog post for Malaysians commuting JB to Singapore. CIQ crossings, Causeway Link/SBS buses, monthly cost breakdown, peak hour tips, Pelangi as base for new arrivals.",
+      "acceptanceCriteria": [
+        "Regression test covers core observable behaviour of US-244",
+        "Test would reliably fail if the US-244 feature were removed or broken"
+      ],
+      "technicalNotes": [
+        "Source files from US-244: site/src/data/blog/posts.ts",
+        "Run: uv run pytest tests/ -k us_244 -v"
+      ],
+      "dependencies": [
+        "US-244"
+      ],
+      "estimatedComplexity": "medium",
+      "tags": [
+        "regression",
+        "auto-generated"
+      ],
+      "source": "",
+      "_source": "test-story",
+      "_testType": "regression",
+      "_forStoryId": "US-244"
+    },
+    {
       "title": "[Regression Test] Blog post: Visa Run from Singapore to JB — Step-by-Step Guide 2026",
       "priority": "medium",
       "description": "Write regression test to guard against future breakage of US-245. Story description: Blog post for Singapore tourists/expats doing visa runs to JB. What a visa run is, who needs one, step-by-step process, what to do in JB, overnight stay at Pelangi.",
@@ -2028,6 +1991,32 @@
       "_source": "test-story",
       "_testType": "regression",
       "_forStoryId": "US-245"
+    },
+    {
+      "title": "[E2E Test] New page: /visa-run — Dedicated Visa Run Resource Hub with FAQPage + HowTo Schema",
+      "priority": "medium",
+      "description": "Write end-to-end user flow test for the feature in US-246. Story description: Create site/src/app/visa-run/page.tsx as a resource hub with FAQPage and HowTo JSON-LD schemas, Header/Footer components, CTA to /book. Update sitemap.ts with /visa-run entry.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-246",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Source files from US-246: site/src/app/visa-run/page.tsx, site/src/app/sitemap.ts",
+        "Run: uv run pytest tests/ -k us_246 -v"
+      ],
+      "dependencies": [
+        "US-246"
+      ],
+      "estimatedComplexity": "medium",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ],
+      "source": "",
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-246"
     }
   ]
 }

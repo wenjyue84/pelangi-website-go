@@ -1787,6 +1787,29 @@
       ]
     },
     {
+      "title": "[Regression Test] Blog post: Living in JB Working in Singapore \u2014 Cross-Border Commuter Guide 2026",
+      "description": "Write regression test to guard against future breakage of US-244. Story description: Blog post for Malaysians commuting JB to Singapore. CIQ crossings, Causeway Link/SBS buses, monthly cost breakdown, peak hour tips, Pelangi as base for new arrivals.",
+      "acceptanceCriteria": [
+        "Regression test covers core observable behaviour of US-244",
+        "Test would reliably fail if the US-244 feature were removed or broken"
+      ],
+      "technicalNotes": [
+        "Source files from US-244: site/src/data/blog/posts.ts",
+        "Run: uv run pytest tests/ -k us_244 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-244"
+      ],
+      "_source": "test-story",
+      "_testType": "regression",
+      "_forStoryId": "US-244",
+      "tags": [
+        "regression",
+        "auto-generated"
+      ]
+    },
+    {
       "title": "[Regression Test] Blog post: Visa Run from Singapore to JB \u2014 Step-by-Step Guide 2026",
       "description": "Write regression test to guard against future breakage of US-245. Story description: Blog post for Singapore tourists/expats doing visa runs to JB. What a visa run is, who needs one, step-by-step process, what to do in JB, overnight stay at Pelangi.",
       "acceptanceCriteria": [
@@ -1806,6 +1829,30 @@
       "_forStoryId": "US-245",
       "tags": [
         "regression",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] New page: /visa-run \u2014 Dedicated Visa Run Resource Hub with FAQPage + HowTo Schema",
+      "description": "Write end-to-end user flow test for the feature in US-246. Story description: Create site/src/app/visa-run/page.tsx as a resource hub with FAQPage and HowTo JSON-LD schemas, Header/Footer components, CTA to /book. Update sitemap.ts with /visa-run entry.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-246",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Source files from US-246: site/src/app/visa-run/page.tsx, site/src/app/sitemap.ts",
+        "Run: uv run pytest tests/ -k us_246 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-246"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-246",
+      "tags": [
+        "e2e",
         "auto-generated"
       ]
     }

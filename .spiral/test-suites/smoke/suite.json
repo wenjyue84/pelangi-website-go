@@ -2731,6 +2731,32 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[smoke] Blog post: Living in JB Working in Singapore — Cross-Border Commuter Guide 2026",
+      "description": "Auto-generated smoke test from US-244",
+      "from_story": "US-244",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-211",
+      "created_ts": "2026-04-13T20:50:26Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
+    },
+    {
+      "title": "[smoke] New page: /visa-run — Dedicated Visa Run Resource Hub with FAQPage + HowTo Schema",
+      "description": "Auto-generated smoke test from US-246",
+      "from_story": "US-246",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-212",
+      "created_ts": "2026-04-13T20:50:26Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }

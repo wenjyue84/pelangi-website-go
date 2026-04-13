@@ -1,9 +1,3 @@
 {
-  "weak_overlaps": [
-    {
-      "story_a": "US-246",
-      "story_b": "US-254",
-      "jaccard_score": 0.3333
-    }
-  ]
+  "weak_overlaps": []
 }

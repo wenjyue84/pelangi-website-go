@@ -5568,7 +5568,8 @@
         "reductionPct": 0,
         "contextWindow": 10
       },
-      "_passedCommit": "e56c92d9b511b6adcd22108355dccb2587ddc129"
+      "_passedCommit": "e56c92d9b511b6adcd22108355dccb2587ddc129",
+      "_scopeCreep": true
     },
     {
       "id": "US-247",
@@ -5596,7 +5597,7 @@
       "technicalNotes": [
         "Keep content HTML under 6000 characters"
       ],
-      "passes": false,
+      "passes": true,
       "model": "haiku",
       "last_attempted": "2026-04-13T20:47:09Z"
     },
