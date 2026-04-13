@@ -317,3 +317,4 @@ opus"}
 {"ts":"2026-04-13T21:41:22Z","event":"phase_timeout","run_id":"69dd34342c1f","level":"INFO","phase":"I","story_id":"US-262","iteration":14,"duration_ms":900000,"timeout_s":900,"trace_id":"f1b7af3bac05b0aabab002f21e2e7ef3","span_id":"4ba0fbdd8122224a"}
 {"ts":"2026-04-13T21:41:25Z","event":"plan_cache_store","run_id":"69dd34342c1f","level":"INFO","story_id":"US-262","plan_key":"2a2fc1619ae4a0366496eed498bb117b40fc387a2832cb5f9c9a92affedeca71","trace_id":"f1b7af3bac05b0aabab002f21e2e7ef3","span_id":"4ba0fbdd8122224a"}
 {"ts":"2026-04-13T21:41:26Z","event":"plugin_hook","run_id":"69dd34342c1f","level":"INFO","plugin":"notify-slack","hook":"post-story","type":"POST","exit_code":0,"duration_s":1,"trace_id":"f1b7af3bac05b0aabab002f21e2e7ef3","span_id":"4ba0fbdd8122224a"}
+{"ts":"2026-04-13T21:56:14Z","event":"plan_cache_miss","story_id":"US-081"}

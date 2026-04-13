@@ -88,8 +88,13 @@ export const metadata: Metadata = {
     images: ["/images/og-image.png"],
   },
   verification: {
-    // Replace with actual token from Google Search Console > Add Property > HTML tag method
-    google: "REPLACE_WITH_GSC_VERIFICATION_TOKEN",
+    // Google Search Console — Replace with actual token from Add Property > HTML tag method
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION_TOKEN,
+    // Bing Webmaster Tools — Add token from Bing Webmaster Tools > Verify ownership > HTML tag method
+    // Once added here, Bing can auto-import GSC verification or use manual verification
+    other: process.env.NEXT_PUBLIC_BING_VERIFICATION_TOKEN
+      ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_VERIFICATION_TOKEN }
+      : undefined,
   },
   other: {
     "apple-mobile-web-app-status-bar-style": "black-translucent",

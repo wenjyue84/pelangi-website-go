@@ -1858,7 +1858,7 @@
       "estimatedComplexity": "small",
       "passes": false,
       "model": "haiku",
-      "last_attempted": "2026-04-13T21:40:06Z"
+      "last_attempted": "2026-04-13T21:56:10Z"
     },
     {
       "id": "US-082",
@@ -3819,7 +3819,11 @@
       "dependencies": [],
       "estimatedComplexity": "medium",
       "passes": false,
-      "model": "haiku"
+      "model": "haiku",
+      "_failureReason": "oversized_diff: produced 7472 lines but limit is 500. Keep total insertions+deletions under 500 lines.",
+      "_antiPatterns": [
+        "oversized_diff: produced 7472 lines but limit is 500. Keep total insertions+deletions under 500 lines."
+      ]
     },
     {
       "id": "US-172",
