@@ -1,6 +1,33 @@
 {
   "stories": [
     {
+      "title": "Add dynamic Open Graph images for blog posts using next/og",
+      "priority": "high",
+      "description": "Create API endpoint generating shareable OG images for blog posts with hostel branding and post title, improving social sharing CTR and SERP appearance.",
+      "acceptanceCriteria": [
+        "GET /api/og?title=Visa%20Run%20Guide&slug=visa-run-guide-2026 returns 1200x630px PNG with post title and Pelangi logo overlay",
+        "app/blog/[slug]/layout.tsx generateMetadata() includes og:image pointing to /api/og?title=X&slug=Y",
+        "Image generation completes under 500ms for all existing blog posts"
+      ],
+      "technicalNotes": [
+        "File to create: app/api/og/route.tsx using @vercel/og ImageResponse with Tailwind classes",
+        "File to modify: app/blog/[slug]/layout.tsx to add og:image in generateMetadata for social previews",
+        "Test command: curl 'http://localhost:3000/api/og?title=Test&slug=test-post' -o test.png && file test.png",
+        "Verify dimensions: npx sharp test.png or use identify command (ImageMagick)"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "app/api/og/route.tsx",
+        "app/blog/[slug]/layout.tsx",
+        "package.json"
+      ],
+      "_source": "ai-example",
+      "passes": false
+    },
+    {
       "title": "[E2E Test] Create blog system with static TypeScript data",
       "priority": "medium",
       "description": "Write end-to-end user flow test for the feature in US-001. Story description: Build a blog system using Next.js App Router. Blog posts are stored as TypeScript objects in /src/data/blog/posts.ts. Each post has: slug, title, excerpt, content (HTML string), date, category, author, readTime, tags, and featured image path. Create /app/blog/page.tsx (listing with cards) and /app/blog/[slug]/page.tsx (article page with full content). Both pages must have proper metadata (title, description, OG tags). Add a BlogCard component at /src/components/BlogCard.tsx.",
@@ -2017,6 +2044,31 @@
       "_source": "test-story",
       "_testType": "e2e",
       "_forStoryId": "US-246"
+    },
+    {
+      "title": "[Regression Test] Blog post: How to Register as a Foodpanda Delivery Rider in Malaysia (2026)",
+      "priority": "medium",
+      "description": "Write regression test to guard against future breakage of US-247. Story description: Step-by-step guide for Malaysians to work as Foodpanda delivery riders as temp income while waiting for Singapore work pass. Vehicle requirements, registration, earnings RM20-50/hour.",
+      "acceptanceCriteria": [
+        "Regression test covers core observable behaviour of US-247",
+        "Test would reliably fail if the US-247 feature were removed or broken"
+      ],
+      "technicalNotes": [
+        "Source files from US-247: site/src/data/blog/posts.ts",
+        "Run: uv run pytest tests/ -k us_247 -v"
+      ],
+      "dependencies": [
+        "US-247"
+      ],
+      "estimatedComplexity": "medium",
+      "tags": [
+        "regression",
+        "auto-generated"
+      ],
+      "source": "",
+      "_source": "test-story",
+      "_testType": "regression",
+      "_forStoryId": "US-247"
     }
   ]
 }

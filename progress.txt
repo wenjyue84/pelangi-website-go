@@ -468,3 +468,35 @@ Here is the technical brief for implementing the story within its actual context
 *   **Date Formatting:** Ensure the date string '2026-04-14' matches the format used by other posts in the array to avoid parsing errors.
 *   **Build Failures:** The `npm run build` command can fail due to TypeScript type errors, linting violations, or syntax errors. It must be run to validate the changes.
 
+
+## Pre-analysis for US-249 (Gemini 2.5 Pro)
+Based on the provided JSON for user story US-249, the task is to create a new blog post for a website, not to implement a feature in a Frappe/Python application. The technical brief below is based on the actual content of the story.
+
+***
+
+**Technical Brief for US-249: Create Gig Economy Blog Post**
+
+This story involves adding new content to the Pelangi website's blog. All modifications will be within the frontend TypeScript files.
+
+*   **Primary File to Modify:**
+    *   `site/src/data/blog/posts.ts`: A new blog post object must be appended to the array of posts.
+
+*   **Involved Components:**
+    *   This change affects the data layer of the blog. No Frappe DocTypes or Python hooks are relevant.
+
+*   **Implementation Approach:**
+    1.  Define a new constant object for the blog post.
+    2.  Populate its properties according to the acceptance criteria:
+        *   `slug`: `gig-jobs-malaysia-waiting-singapore-work-pass`
+        *   `category`: `Career & Work`
+        *   `date`: `2026-04-14`
+        *   `readTime`: `9 min read`
+        *   `title`: `5 Gig Jobs for Malaysians Waiting for Singapore Work Approval`
+        *   `content`: HTML content describing 5 gig jobs (Foodpanda, Lalamove, Grab, etc.) with earnings, pros, and cons.
+    3.  Add the new object to the main exported array within the `posts.ts` file.
+
+*   **Edge Cases / Gotchas:**
+    *   The HTML for the post `content` must not exceed 8000 characters.
+    *   The introduction must specifically mention "Pelangi guests."
+    *   Final verification requires running `npm run build` to ensure no build errors are introduced.
+

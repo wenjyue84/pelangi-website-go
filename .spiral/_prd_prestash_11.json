@@ -4473,6 +4473,28 @@
       "passes": true
     },
     {
+      "id": "US-216",
+      "title": "Malaysia Online Safety Act 2025 – Add safety reporting mechanism for user-submitted content",
+      "priority": "medium",
+      "description": "Malaysia's Online Safety Act 2025 (Act 866) came into force 1 January 2026 and requires application service providers and content access service providers to provide tools for users to report harmful content and to publish safety guidelines. If the hostel website collects reviews, comments, or user-generated content (e.g., a guestbook or blog comment system), a visible 'Report harmful content' mechanism and a published safety/content policy page is required to avoid penalties of up to RM 10 million.",
+      "acceptanceCriteria": [
+        "If any user-generated content (reviews, comments) is hosted on the site, a 'Report Content' link or button is visible adjacent to each piece of UGC",
+        "A Content Safety / Community Guidelines page (or section in Terms & Conditions) is published describing what constitutes harmful content and how reports are processed",
+        "A designated contact (email or form) for safety reports is published and accessible within two clicks from any page with UGC",
+        "If the site does not host UGC (reviews embedded via third-party widgets only), document this in the Terms & Conditions to clarify platform scope",
+        "Legal review confirms whether the site falls under CASP or ASP category under the Online Safety Act 2025"
+      ],
+      "technicalNotes": [
+        "Online Safety Act 2025 enforcement began January 2026: https://www.malaysianwireless.com/2026/01/mcmc-enforcing-online-safety-act-platforms/",
+        "Act text and key takeaways: https://www.lexology.com/library/detail.aspx?g=64ccdf47-1b26-4a22-86ed-d14f731176e4",
+        "If the hostel only embeds Google Reviews or Booking.com reviews via iframe/API, the UGC liability may fall on those platforms — clarify scope first"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
       "id": "US-217",
       "title": "Add CSS scroll-driven animations for section reveals (baseline widely available)",
       "priority": "medium",
@@ -4936,9 +4958,10 @@
       "technicalNotes": [
         "Keep content HTML under 6000 characters"
       ],
-      "passes": false,
+      "passes": true,
       "model": "haiku",
-      "last_attempted": "2026-04-13T20:47:09Z"
+      "last_attempted": "2026-04-13T20:47:09Z",
+      "_scopeCreep": true
     },
     {
       "id": "US-249",

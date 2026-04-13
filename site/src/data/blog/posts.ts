@@ -687,6 +687,69 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 <p>Ready to cross the Causeway? <a href="/rooms">Book a stay at Pelangi Capsule</a> as your first base, and start your cross-border career today.</p>
 `,
   },
+  {
+    slug: "gig-jobs-malaysia-waiting-singapore-work-pass",
+    title: "5 Gig Jobs for Malaysians Waiting for Singapore Work Approval",
+    excerpt:
+      "Stuck in the work pass waiting period? Make money while you wait. Foodpanda, Lalamove, Grab, and more—5 flexible gig economy jobs in Malaysia with realistic earnings.",
+    date: "2026-04-14",
+    category: "Career & Work",
+    author: "Pelangi Team",
+    readTime: "9 min read",
+    tags: ["gig-economy", "malaysia", "work", "freelance", "income", "job-seeker"],
+    featuredImage: "/images/blog/gig-jobs.jpg",
+    content: `
+<h2>Making Money While You Wait</h2>
+<p>Singapore work pass approvals take 4–12 weeks. Pelangi guests often ask: how do I earn during this gap? The answer: Malaysia's gig economy. You can earn RM1,500–4,000/month with zero commitment. Here are 5 proven gig jobs for your transition.</p>
+
+<h2>1. Foodpanda Delivery Rider — RM1,800–3,500/month</h2>
+<p><strong>What:</strong> Deliver food via motorbike, flexible shifts, work 4–12 hours anytime.</p>
+<p><strong>Requirements:</strong> Malaysian IC, motorcycle license, own motorbike, Foodpanda app. Age 18+. Background check is instant (10 minutes).</p>
+<p><strong>Earnings:</strong> RM5–8 per delivery + tips. Peak hours (lunch 11am–2pm, dinner 6–9pm): RM80–120/day. Part-time: RM1,500–2,500/month. Full-time: RM3,000–3,500/month.</p>
+<p><strong>Pros:</strong> Instant signup, daily payouts, complete schedule control, stay active. Popular with expats in transition.</p>
+<p><strong>Cons:</strong> Weather-dependent, traffic stress, no benefits, rating-sensitive, fatigue from long hours.</p>
+
+<h2>2. Lalamove Driver — RM2,000–3,800/month</h2>
+<p><strong>What:</strong> Deliver parcels and documents across city, less frequent than food delivery but higher pay per trip.</p>
+<p><strong>Requirements:</strong> Malaysian IC, driving license, own car or motorbike, insurance. Age 18+. Vetting takes 2–3 days.</p>
+<p><strong>Earnings:</strong> RM8–15 per delivery (distance-based). Corporate deadlines (end-month): RM20–30 per delivery. Part-time: RM1,800–2,500/month. Full-time: RM3,000–3,800/month.</p>
+<p><strong>Pros:</strong> Higher per-delivery rate, less traffic pressure (packages don't spoil), flexible shifts, same-day payout.</p>
+<p><strong>Cons:</strong> Fewer orders than food delivery, vehicle damage liability, parking costs, less suitable for motorbikes.</p>
+
+<h2>3. Grab Ride or GrabFood — RM2,500–4,200/month</h2>
+<p><strong>What:</strong> GrabCar (passenger rides) or GrabFood (delivery). Grab's bigger ecosystem = more orders.</p>
+<p><strong>Requirements:</strong> Malaysian IC, driving license (5+ years for GrabCar), own vehicle, car insurance. Age 21+ for rides, 18+ for food.</p>
+<p><strong>Earnings:</strong> GrabCar: RM3–25 per ride. GrabFood: RM6–12 per delivery. Average 10–15 rides/day = RM80–150/day. Surge pricing (Friday evening, weekends) = 1.5–2x multiplier. Part-time: RM2,000–3,000/month. Full-time: RM3,500–4,200/month.</p>
+<p><strong>Pros:</strong> Strong brand trust, transparent pay, surge pricing rewards peak work, high volume keeps you busy.</p>
+<p><strong>Cons:</strong> GrabCar needs 5-year license, passenger interaction risks (safety at night), fuel costs high, wear-and-tear on car, cancellations hurt earnings.</p>
+
+<h2>4. Part-Time F&B / Cafe Work — RM1,500–2,500/month</h2>
+<p><strong>What:</strong> Barista, bartender, waiter, kitchen help. Flexible shift work, common for gap periods.</p>
+<p><strong>Requirements:</strong> Work visa or Malaysian employment rights, punctuality, basic English for customer roles.</p>
+<p><strong>Earnings:</strong> RM8–12/hour + tips. 3–4 shifts/week, 6–8 hours = RM1,500–2,500/month. High-end bars: RM15–20/hour + 10% service split.</p>
+<p><strong>Pros:</strong> Predictable hourly pay, tips add 20–30%, meals included, social environment, structured schedule.</p>
+<p><strong>Cons:</strong> Fixed shifts (less flexible), standing fatigue, early/late hours, customer service stress.</p>
+
+<h2>5. Online Freelancing — RM1,200–5,000+/month</h2>
+<p><strong>What:</strong> Virtual assistant, content writing, social media, graphic design, coding, translation. Laptop-based, any time.</p>
+<p><strong>Requirements:</strong> Laptop, stable internet, relevant skills, portfolio, Upwork/Fiverr/Freelancer account.</p>
+<p><strong>Earnings:</strong> Entry (RM5–10/hr): RM1,200–2,000/month. Mid (RM15–30/hr): RM2,500–4,000/month. Expert (RM30–100/hr+): RM4,000–8,000+/month. Ramp-up takes 2–3 months as reviews build.</p>
+<p><strong>Pros:</strong> Location-independent, work your pace, scale by reputation, no commute, leverage existing skills.</p>
+<p><strong>Cons:</strong> Slow start, platform competition, time-zone issues with Western clients, payment delays (30-day holds), self-discipline needed.</p>
+
+<h2>Combining Gigs for Max Income</h2>
+<p>Smart approach: deliver food 5–6 hours/day (RM400–600) + freelance 3–4 hours evenings (RM150–300) = RM550–900/day. Pair active gigs (delivery, rides) with remote work. During slow hours (2–5pm), do freelance projects.</p>
+
+<h2>Tax and Legal</h2>
+<p>Gig income is generally taxable. Keep earnings records. Check your work visa terms—S Pass and Employment Pass typically allow gig work outside your primary job. Confirm with your employer before starting.</p>
+
+<h2>Pelangi Guests & Gap-Filling</h2>
+<p>Many guests stay with us during that 4–12 week limbo. Those who pick up gig work report three wins: (1) funding relocation costs, (2) staying mentally active, (3) natural downtime when returning to Pelangi. Several guests deliver Foodpanda and work from our common areas.</p>
+
+<h2>Next Steps</h2>
+<p>Choose a gig: Foodpanda for ease, freelancing for scalability, F&B for social connection. <a href="/rooms">Book a stay at Pelangi Capsule</a> as your base while you earn and prepare for Singapore.</p>
+`,
+  },
 ];
 
 export const blogPosts: BlogPost[] = rawPosts.map((post) => ({

@@ -2757,6 +2757,19 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[smoke] Blog post: How to Register as a Foodpanda Delivery Rider in Malaysia (2026)",
+      "description": "Auto-generated smoke test from US-247",
+      "from_story": "US-247",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-213",
+      "created_ts": "2026-04-13T20:55:21Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }

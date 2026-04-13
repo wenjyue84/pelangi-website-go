@@ -1,71 +1,74 @@
 [
   {
-    "title": "Create blog post Zod schema for metadata validation",
+    "title": "Implement /feed.xml RSS feed generator for blog posts",
+    "priority": "high",
+    "description": "Create RSS/Atom feed endpoint that publishes all blog posts for feed readers and content aggregators, enabling feed-based distribution and long-tail SEO.",
+    "acceptanceCriteria": [
+      "GET /feed.xml returns valid RSS 2.0 XML with proper Content-Type: application/rss+xml header",
+      "Feed includes all blog posts from lib/blog/blog-data.ts with title, description, link, pubDate, and guid",
+      "Each post link points to canonical URL (e.g., https://pelangimanager.com/blog/visa-run-guide-2026)"
+    ],
+    "technicalNotes": [
+      "File to create: app/feed.xml/route.ts using Next.js dynamic route with ResponseCache headers",
+      "File to create: lib/blog/feed-generator.ts exporting generateRSSFeed(posts: Post[]): string",
+      "Test command: curl http://localhost:3000/feed.xml | head -20 to verify XML declaration and channel elements",
+      "Validation: npx rss-validator at feedvalidator.org or use xmllint --format to check structure"
+    ],
+    "filesTouch": [
+      "app/feed.xml/route.ts",
+      "lib/blog/feed-generator.ts",
+      "lib/blog/blog-data.ts"
+    ],
+    "estimatedComplexity": "small",
+    "_source": "ai-example",
+    "passes": false,
+    "dependencies": []
+  },
+  {
+    "title": "Add dynamic Open Graph images for blog posts using next/og",
+    "priority": "high",
+    "description": "Create API endpoint generating shareable OG images for blog posts with hostel branding and post title, improving social sharing CTR and SERP appearance.",
+    "acceptanceCriteria": [
+      "GET /api/og?title=Visa%20Run%20Guide&slug=visa-run-guide-2026 returns 1200x630px PNG with post title and Pelangi logo overlay",
+      "app/blog/[slug]/layout.tsx generateMetadata() includes og:image pointing to /api/og?title=X&slug=Y",
+      "Image generation completes under 500ms for all existing blog posts"
+    ],
+    "technicalNotes": [
+      "File to create: app/api/og/route.tsx using @vercel/og ImageResponse with Tailwind classes",
+      "File to modify: app/blog/[slug]/layout.tsx to add og:image in generateMetadata for social previews",
+      "Test command: curl 'http://localhost:3000/api/og?title=Test&slug=test-post' -o test.png && file test.png",
+      "Verify dimensions: npx sharp test.png or use identify command (ImageMagick)"
+    ],
+    "filesTouch": [
+      "app/api/og/route.tsx",
+      "app/blog/[slug]/layout.tsx",
+      "package.json"
+    ],
+    "estimatedComplexity": "small",
+    "_source": "ai-example",
+    "passes": false,
+    "dependencies": []
+  },
+  {
+    "title": "Create blog category landing pages for long-tail SEO targeting",
     "priority": "medium",
-    "description": "Define TypeScript interfaces and Zod validation schema for blog post metadata. Ensures all blog posts have required fields (title, date, slug, featured_image, tags, category) at compile time. Integrates validation into build process to prevent incomplete posts from being deployed.",
+    "description": "Add category field to blog data model and create /blog/category/[slug] landing pages targeting long-tail keywords (e.g., jobs, travel, visas) with category-specific schema markup.",
     "acceptanceCriteria": [
-      "BlogPost interface defined in lib/blog-types.ts with required fields: slug, title, date, featured_image, excerpt, tags (array), category, author",
-      "Zod schema created in lib/blog-validation.ts; validateBlogPost() function exported and used during build to check all blog data",
-      "Build fails with clear error message if any blog post in site/content/blog/*.ts violates schema"
+      "Blog post type includes categories: string[] field (e.g., ['jobs', 'visa', 'guide'])",
+      "/blog/category/jobs lists all job-related posts with CategoryCollectionPage schema",
+      "getStaticParams() prebuilds all category pages during npm run build with zero dynamic routes"
     ],
     "technicalNotes": [
-      "Files to create: lib/blog-types.ts (interfaces), lib/blog-validation.ts (Zod schema and validate function)",
-      "Test command: npm run build && npm run test -- lib/blog-validation.ts -v",
-      "Integration point: import { validateBlogPost } from 'lib/blog-validation' into build script and validate each getAllBlogPosts() entry"
+      "File to modify: lib/blog/blog-data.ts to add categories field to Post type definition",
+      "File to create: app/blog/category/[slug]/page.tsx with getStaticParams() for all unique categories",
+      "File to create: lib/blog/get-posts-by-category.ts function filterPostsByCategory(slug: string)",
+      "Test command: npm run build && ls -la .next/server/app/blog/category/ to verify prerendered files"
     ],
     "filesTouch": [
-      "lib/blog-types.ts",
-      "lib/blog-validation.ts",
-      "scripts/build-validate-blog.ts"
-    ],
-    "estimatedComplexity": "small",
-    "_source": "ai-example",
-    "passes": false,
-    "dependencies": []
-  },
-  {
-    "title": "Implement /api/blog/posts JSON endpoint for blog discovery",
-    "priority": "high",
-    "description": "Create HTTP API endpoint that returns all blog posts with metadata as JSON. Enables external widgets, search integrations, and RSS generators to discover blog content programmatically. Supports pagination and total count.",
-    "acceptanceCriteria": [
-      "GET /api/blog/posts returns { posts: BlogPost[], total: number, page: number } with limit=10 default and offset=0 default",
-      "Each post object includes: slug, title, date, excerpt, featured_image, category, tags array",
-      "Query params: ?limit=20&offset=40 for pagination; response headers include 'Cache-Control: public, max-age=3600' and 'Access-Control-Allow-Origin: *'"
-    ],
-    "technicalNotes": [
-      "Files to create: app/api/blog/posts/route.ts (GET handler), lib/get-all-blog-posts.ts (refactored helper)",
-      "Test command: npm run test -- app/api/blog/posts/__tests__/route.test.ts -v",
-      "Fetch from all blog post files in site/content/blog/, sort by date descending, slice by offset and limit"
-    ],
-    "filesTouch": [
-      "app/api/blog/posts/route.ts",
-      "lib/get-all-blog-posts.ts",
-      "app/api/blog/posts/__tests__/route.test.ts"
-    ],
-    "estimatedComplexity": "small",
-    "_source": "ai-example",
-    "passes": false,
-    "dependencies": []
-  },
-  {
-    "title": "Build JB News widget with curated RSS feed integration",
-    "priority": "high",
-    "description": "Create homepage widget that fetches latest articles from curated RSS feeds (tourism boards, local news, travel blogs). Displays 5 most recent items with title, date, source name, and external link. Caches results with 30-minute staleTime.",
-    "acceptanceCriteria": [
-      "JBNewsWidget component renders on home page with 5 latest items from configured RSS sources (Tourism Johor, Malaysia Tourism Board, Backpacker RSS feeds)",
-      "Each item displays title, source name, publication date, and external link in new tab; responsive 1-column mobile, 5-item row desktop",
-      "Results cached via React Query with 30-minute staleTime; graceful error handling shows fallback message if fetch fails"
-    ],
-    "technicalNotes": [
-      "Files to create: components/JBNewsWidget.tsx (React component), lib/fetch-news-feeds.ts (fetch helper), lib/news-feed-sources.ts (RSS URLs config)",
-      "Test command: npm run test -- components/JBNewsWidget.tsx -v",
-      "Parse RSS using xml2js or DOMParser; use native fetch() in server component or async component. Install: npm install xml2js"
-    ],
-    "filesTouch": [
-      "components/JBNewsWidget.tsx",
-      "lib/fetch-news-feeds.ts",
-      "lib/news-feed-sources.ts",
-      "app/page.tsx"
+      "lib/blog/blog-data.ts",
+      "app/blog/category/[slug]/page.tsx",
+      "app/blog/category/[slug]/layout.tsx",
+      "lib/blog/get-posts-by-category.ts"
     ],
     "estimatedComplexity": "medium",
     "_source": "ai-example",
@@ -73,22 +76,23 @@
     "dependencies": []
   },
   {
-    "title": "Create related blog posts suggestion component with tag-based matching",
-    "priority": "medium",
-    "description": "Build React component that displays 3\u20134 blog posts related to the current article, matched by shared tags and category. Rendered at end of blog article. Uses tag overlap scoring to rank relevance.",
+    "title": "Add Article JSON-LD schema to all blog post pages",
+    "priority": "high",
+    "description": "Inject Article schema into blog post layout with author, datePublished, dateModified, and breadcrumbList for enhanced SERP rich snippets and knowledge graph integration.",
     "acceptanceCriteria": [
-      "RelatedBlogPosts component accepts currentPostSlug prop and displays 3\u20134 related posts sorted by number of shared tags (descending); excludes current post from results",
-      "Each suggestion shows post title, publication date, featured_image thumbnail (200\u00d7150 px), and clickable link to /blog/[slug]",
-      "Component renders as Tailwind grid: 4 columns on desktop, 2 columns on tablet, 1 column on mobile"
+      "Blog post renders two schemas: Article with author.name, datePublished, image (og:image), and BreadcrumbList",
+      "BreadcrumbList includes /blog \u2192 /blog/category/[category] \u2192 /blog/[slug] with proper itemListElement structure",
+      "All blog posts pass Google's Rich Results Test with 0 critical schema errors"
     ],
     "technicalNotes": [
-      "Files to create: components/RelatedBlogPosts.tsx (Client Component), lib/find-similar-posts.ts (scoring function)",
-      "Test command: npm run test -- components/RelatedBlogPosts.tsx lib/find-similar-posts.ts -v",
-      "findSimilarPosts(currentSlug, allBlogPosts, limit=4) returns array of posts ranked by tag.filter(t => currentPost.tags.includes(t)).length descending"
+      "File to create: lib/structured-data/article-schema.ts exporting generateArticleSchema(post: Post, baseUrl: string)",
+      "File to modify: app/blog/[slug]/layout.tsx to inject Article schema in layout metadata",
+      "Test command: curl http://localhost:3000/blog/visa-run-guide-2026 | grep -o '<script type=\"application/ld+json\"' | wc -l",
+      "Validate: npx schema-org-validator --url http://localhost:3000/blog/visa-run-guide-2026 --strict"
     ],
     "filesTouch": [
-      "components/RelatedBlogPosts.tsx",
-      "lib/find-similar-posts.ts",
+      "lib/structured-data/article-schema.ts",
+      "app/blog/[slug]/layout.tsx",
       "app/blog/[slug]/page.tsx"
     ],
     "estimatedComplexity": "small",
@@ -97,23 +101,26 @@
     "dependencies": []
   },
   {
-    "title": "Extend RSS feed with image enclosure support for blog posts",
+    "title": "Build JB News & Updates homepage widget with RSS feed parsing",
     "priority": "medium",
-    "description": "Modify RSS feed generation to include <enclosure> element for each blog post's featured_image. Enables RSS readers to display post thumbnails inline. Validates enclosure URLs resolve and sets correct MIME types.",
+    "description": "Create reusable homepage widget fetching 3\u20135 latest news items from curated JB tourism/travel RSS feeds with fallback static content for reliability.",
     "acceptanceCriteria": [
-      "Each <item> in RSS feed includes <enclosure url='featured_image_url' length='bytes' type='image/jpeg|image/png|image/webp' /> element",
-      "Enclosure length fetched via HEAD request to featured_image URL; MIME type determined by file extension (.jpg\u2192image/jpeg, .png\u2192image/png, .webp\u2192image/webp)",
-      "Feed validates against RSS 2.0 schema using RSS validator; all enclosure URLs must return HTTP 200"
+      "NewsWidget component displays on homepage below hero with title 'JB News & Updates'",
+      "Fetches and parses RSS feeds from 2\u20133 sources (e.g., JB tourism board, travel blogs) with 5s timeout",
+      "If all feeds timeout, renders fallback static news array without breaking page render"
     ],
     "technicalNotes": [
-      "Files to modify: app/api/blog/feed.xml/route.ts (add enclosure generation), create lib/rss-enclosure.ts (helper for MIME type and size)",
-      "Test command: npm run test -- app/api/blog/feed.xml/__tests__/route.test.ts -v",
-      "For each blog post, call getImageMimeType(featured_image) and await getImageContentLength(featured_image) before adding <enclosure/> to RSS item"
+      "File to create: components/home/NewsWidget.tsx React component with suspense boundary",
+      "File to create: lib/rss/feed-parser.ts exporting fetchRSSFeed(url: string): Promise<NewsItem[]>",
+      "File to modify: app/page.tsx to include <NewsWidget /> with Suspense fallback",
+      "Test command: npm run dev && curl http://localhost:3000 | grep -A 10 'JB News & Updates'",
+      "Build test: npm run build to ensure server-side RSS parsing doesn't exceed function timeout"
     ],
     "filesTouch": [
-      "app/api/blog/feed.xml/route.ts",
-      "lib/rss-enclosure.ts",
-      "app/api/blog/feed.xml/__tests__/route.test.ts"
+      "components/home/NewsWidget.tsx",
+      "lib/rss/feed-parser.ts",
+      "app/page.tsx",
+      "package.json"
     ],
     "estimatedComplexity": "small",
     "_source": "ai-example",
