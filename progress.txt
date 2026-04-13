@@ -1,3 +1,46 @@
+## Iteration US-243 - Mon, Apr 14, 2026
+
+Completed: Blog post - Singapore Work Pass Guide for Malaysians (ID: US-243)
+
+### What was implemented
+- **Blog post** (`site/src/data/blog/posts.ts`):
+  - Added new blog post object with slug `singapore-work-pass-guide-malaysians`
+  - Category: "Career & Work", date: "2026-04-14", readTime: "12 min read"
+  - Comprehensive HTML comparison table of 3 Singapore work pass types:
+    - Employment Pass (EP): Minimum salary SGD 5,000/month
+    - S Pass: Minimum salary SGD 3,150/month
+    - Work Permit: No fixed minimum, sector-specific
+  - 5 Q&A items in FAQ section covering common questions:
+    - Diploma vs EP eligibility
+    - Salary negotiation strategy
+    - Family dependencies policies
+    - Actual processing timelines
+    - Job changing mid-pass restrictions
+  - Additional sections on red flags, individual pass details, and next steps
+
+### Patterns discovered
+- Blog posts are stored as static TypeScript objects in `rawPosts` array
+- Reading time is auto-computed from word count (200 wpm baseline)
+- HTML content is embedded as template literals in TypeScript strings
+- Blog metadata includes slug, title, excerpt, date, category, author, readTime, tags, featuredImage
+
+### Gotchas
+- Content HTML must stay under 8000 characters for performance
+- All blog post fields are required; missing fields cause TypeScript compilation errors
+- Category must match existing categories or create new ones (checked against unique set)
+
+### Test results
+- Content size: 6,066 characters (well under 8,000 limit)
+- TypeScript compilation: ✓ passes (npx tsc --noEmit)
+- Next.js build: ✓ succeeds (67 static pages including new blog post)
+- Blog post accessible via /blog/singapore-work-pass-guide-malaysians slug
+- All acceptance criteria met:
+  - ✓ Slug and category correct
+  - ✓ Comparison table with all 3 pass types and salary minimums
+  - ✓ FAQ section with 5 Q&As (exceeds 3 required)
+  - ✓ ReadTime '12 min read', date '2026-04-14'
+  - ✓ npm run build passes
+
 ## Iteration US-196 - Fri, Apr 14, 2026
 
 Completed: Integrate channel manager for live OTA availability synchronisation (ID: US-196)

@@ -4723,7 +4723,7 @@
       "technicalNotes": [
         "Keep content HTML under 8000 characters"
       ],
-      "passes": false,
+      "passes": true,
       "model": "haiku",
       "last_attempted": "2026-04-13T19:55:51Z"
     },
