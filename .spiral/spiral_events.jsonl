@@ -308,3 +308,6 @@ opus"}
 {"ts":"2026-04-13T21:22:06Z","event":"phase_start","run_id":"69dd34342c1f","level":"INFO","phase":"G","iteration":13,"trace_id":"f1b7af3bac05b0aabab002f21e2e7ef3","span_id":"4ba0fbdd8122224a"}
 {"ts":"2026-04-13T21:22:08Z","event":"phase_start","run_id":"69dd34342c1f","level":"INFO","phase":"I","iteration":13,"trace_id":"f1b7af3bac05b0aabab002f21e2e7ef3","span_id":"4ba0fbdd8122224a"}
 {"ts":"2026-04-13T21:22:10Z","event":"idempotency_skip","run_id":"69dd34342c1f","level":"INFO","story_id":"US-254","commit_sha":"5017508786538f37a12e00eb606b8cbe853fdf0f","iteration":13,"trace_id":"f1b7af3bac05b0aabab002f21e2e7ef3","span_id":"4ba0fbdd8122224a"}
+{"ts":"2026-04-13T21:33:11Z","event":"plan_cache_miss","story_id":"US-262"}
+{"ts":"2026-04-13T21:33:12Z","event":"anti_pattern_injected","story_id":"US-262","retry":1,"count":1}
+{"ts":"2026-04-13T21:39:17Z","event":"cost_update","story_id":"US-262","tokens_input":2573,"tokens_output":11100,"estimated_usd":0.284703}
