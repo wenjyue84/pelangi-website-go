@@ -628,3 +628,58 @@ Completed: Create /singapore-jobs resource hub with FAQPage schema and job seeke
 ## Iteration 1 - Tue, Apr 14, 2026  5:56:09 AM
 FAILED diff-guard: Add TikTok Pixel and Events API for Gen Z audience analytics (ID: US-171) — 7472 lines > 500 limit — attempt 1/3
 
+
+## Pre-analysis for US-171 (Gemini 2.5 Pro)
+This user story is for a **Next.js/TypeScript** application, not Frappe/Python. The technical brief has been adjusted accordingly.
+
+Here is the technical brief for implementing the TikTok Pixel and Events API:
+
+### **Technical Brief: US-171 TikTok Integration**
+
+**1. Python/Frappe Files to Modify:**
+This is a Next.js/TypeScript story. No Frappe/Python files are involved. The key files are within the `site/` directory.
+
+*   **`site/app/layout.tsx`**: To add the main TikTok Pixel script using `next/script`.
+*   **`site/app/api/tiktok-events/route.ts` (New File)**: To create the server-side Events API handler.
+*   **`site/lib/tiktok.ts` (New File)**: A helper module for client-side event tracking and sending data to our backend.
+*   Component Files: Files related to room/product pages (`ViewContent`), contact forms (`Contact`), and search functionality (`Search`) need to be modified to trigger tracking events.
+
+**2. Frappe DocTypes/Hooks:**
+No Frappe DocTypes or hooks are involved. The implementation uses a Next.js API Route (`/api/tiktok-events`) and client-side event triggers.
+
+**3. Implementation Approach:**
+1.  **Layout (`layout.tsx`)**: Embed the TikTok Pixel base code using `<Script strategy='lazyOnload'>` to load it non-blockingly.
+2.  **API Route (`/api/tiktok-events/route.ts`)**:
+    *   Create a `POST` handler that receives event data (`event`, `event_id`, user data, etc.) from the client.
+    *   Retrieve the `TIKTOK_ACCESS_TOKEN` and `PIKTOK_PIXEL_CODE` from environment variables.
+    *   Use the Node.js `crypto` library to SHA-256 hash user data (email, phone).
+    *   Construct the event payload and `POST` it to the TikTok Events API (`https://business-api.tiktok.com/open_api/v1.3/event/track/`).
+3.  **Client-Side Helper (`lib/tiktok.ts`)**:
+    *   Create a function that generates a unique `event_id`.
+    *   This function will first trigger the browser-side event (`window.ttq.track(...)`).
+    *   Immediately after, it will `POST` the same event data (with the same `event_id`) to our `/api/tiktok-events` endpoint.
+4.  **Component Integration**: In the relevant components (e.g., on a room page `useEffect` or on a form `onSubmit`), call the client-side helper with the appropriate event name and properties.
+
+**4. Edge Cases & Gotchas:**
+*   **Secrets**: `TIKTOK_ACCESS_TOKEN` and `PIKTOK_PIXEL_CODE` must be stored securely in `.env.local` and not be exposed client-side.
+*   **Deduplication**: The `event_id` must be generated once per user action and used for *both* the client-side pixel call and the server-side API call. This is critical for achieving a high match rate.
+*   **Hashing**: All personally identifiable information (PII) like email and phone numbers must be hashed on the server-side in the API route before being sent to TikTok. Do not perform hashing on the client.
+*   **Timestamp**: Ensure the `timestamp` is in ISO 8601 format as required by the TikTok API.
+
+
+## Iteration 2 - Tue, Apr 14, 2026  (Attempt 2)
+Completed: Add TikTok Pixel and Events API for Gen Z audience analytics (ID: US-171)
+
+### What was implemented
+- No new files needed — full implementation already committed in iter 22 (d7580bf)
+- Verified existing: site/src/app/api/tiktok-events/route.ts (Events API v1.3, SHA-256 hashing, event_id deduplication)
+- Verified existing: site/src/components/TikTokPixelProvider.tsx (lazyOnload Script, dual-signal, ViewContent/Contact/Search)
+- Verified: layout.tsx already imports TikTokPixelProvider via DynamicComponents
+
+### Patterns discovered
+- Previous attempt generated 7472-line diff by re-creating files that were already committed from iter 22
+- Always check git log for the specific files BEFORE writing new code to avoid re-implementing
+
+### Gotchas
+- The TikTok integration was already fully implemented; only prd.json needed updating
+- Build passes clean; all 5 code-verifiable acceptance criteria are satisfied

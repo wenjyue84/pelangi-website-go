@@ -1,0 +1,7 @@
+# SPIRAL Crash Report
+# Story:     US-171
+# Worker:    sequential
+# Exit Code: 124
+# Timestamp: 20260413T222058Z
+# ─────────────────────────────────────────
+

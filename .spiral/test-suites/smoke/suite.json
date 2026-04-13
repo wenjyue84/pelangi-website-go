@@ -2796,6 +2796,45 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[smoke] Add Bing Webmaster Tools verification and sitemap submission",
+      "description": "Auto-generated smoke test from US-081",
+      "from_story": "US-081",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-216",
+      "created_ts": "2026-04-13T22:01:34Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
+    },
+    {
+      "title": "[smoke] New page: /singapore-jobs — Malaysian Job Seekers Resource Hub with FAQ Schema",
+      "description": "Auto-generated smoke test from US-254",
+      "from_story": "US-254",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-217",
+      "created_ts": "2026-04-13T22:01:35Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
+    },
+    {
+      "title": "[smoke] Create /singapore-jobs resource hub with FAQPage schema and job seeker CTAs",
+      "description": "Auto-generated smoke test from US-262",
+      "from_story": "US-262",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-218",
+      "created_ts": "2026-04-13T22:01:35Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }

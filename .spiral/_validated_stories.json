@@ -1,33 +1,6 @@
 {
   "stories": [
     {
-      "title": "Add BreadcrumbList JSON-LD schema generator for blog post pages",
-      "priority": "medium",
-      "description": "Create a reusable schema utility that generates valid BreadcrumbList JSON-LD for blog post pages with correct itemid URLs and position hierarchy (Home > Blog > Category > Post Title).",
-      "acceptanceCriteria": [
-        "Blog post layout includes <script type=\"application/ld+json\"> with @type: BreadcrumbList containing exactly 4 itemListElement objects: Home, Blog, Category, and Post Title with matching position values 1-4",
-        "Each breadcrumb itemListElement has position (number), name (string), and itemid (full absolute URL); itemid URLs must match actual Next.js route paths for category and post slug",
-        "Schema validates with zero errors in Google Rich Results Test for BreadcrumbList structure and required properties"
-      ],
-      "technicalNotes": [
-        "File to create: lib/schema/breadcrumb-list.ts (export function generateBreadcrumbList(postTitle: string, category: string, slug: string): BreadcrumbListSchema)",
-        "File to modify: app/blog/[slug]/layout.tsx (call generateBreadcrumbList in generateMetadata, pass result to <Script> in layout.tsx with strategy=\"beforeInteractive\")",
-        "Test command: npm run test -- tests/lib/schema/breadcrumb-list.test.ts (assert itemListElement.length === 4, each has position 1-4, itemid is absolute URL with domain)"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "lib/schema/breadcrumb-list.ts",
-        "app/blog/[slug]/layout.tsx",
-        "lib/blog/types.ts",
-        "tests/lib/schema/breadcrumb-list.test.ts"
-      ],
-      "_source": "ai-example",
-      "passes": false
-    },
-    {
       "title": "[E2E Test] Create blog system with static TypeScript data",
       "priority": "medium",
       "description": "Write end-to-end user flow test for the feature in US-001. Story description: Build a blog system using Next.js App Router. Blog posts are stored as TypeScript objects in /src/data/blog/posts.ts. Each post has: slug, title, excerpt, content (HTML string), date, category, author, readTime, tags, and featured image path. Create /app/blog/page.tsx (listing with cards) and /app/blog/[slug]/page.tsx (article page with full content). Both pages must have proper metadata (title, description, OG tags). Add a BlogCard component at /src/components/BlogCard.tsx.",
@@ -2120,6 +2093,57 @@
       "_source": "test-story",
       "_testType": "e2e",
       "_forStoryId": "US-250"
+    },
+    {
+      "title": "[E2E Test] New page: /singapore-jobs — Malaysian Job Seekers Resource Hub with FAQ Schema",
+      "priority": "medium",
+      "description": "Write end-to-end user flow test for the feature in US-254. Story description: Create site/src/app/singapore-jobs/page.tsx with FAQPage JSON-LD, work pass types overview, links to job blog posts, CTA to book. Update sitemap.ts.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-254",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Source files from US-254: site/src/app/singapore-jobs/page.tsx, site/src/app/sitemap.ts",
+        "Run: uv run pytest tests/ -k us_254 -v"
+      ],
+      "dependencies": [
+        "US-254"
+      ],
+      "estimatedComplexity": "medium",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ],
+      "source": "",
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-254"
+    },
+    {
+      "title": "[E2E Test] Create /singapore-jobs resource hub with FAQPage schema and job seeker CTAs",
+      "priority": "medium",
+      "description": "Write end-to-end user flow test for the feature in US-262. Story description: Build landing page for Malaysian job seekers at /singapore-jobs with job type overview, work pass comparison table, and FAQ section with FAQPage JSON-LD schema covering permit types, salary expectations, visa sponsorship, and relocation. Include prominent hostel booking CTA.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-262",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_262 -v"
+      ],
+      "dependencies": [
+        "US-262"
+      ],
+      "estimatedComplexity": "medium",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ],
+      "source": "",
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-262"
     }
   ]
 }

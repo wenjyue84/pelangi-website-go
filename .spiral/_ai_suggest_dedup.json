@@ -1,23 +1,24 @@
 {
   "stories": [
     {
-      "title": "Add Atom 1.0 RSS feed endpoint at /api/feed/atom.xml for blog content syndication",
+      "title": "Write 'JB Shopping Guide: Budget Hauls & Bargaining Tips' Blog Post with Product Schema",
       "priority": "high",
-      "description": "Create an Atom 1.0 XML feed endpoint that aggregates all published blog posts with proper XML structure, ISO 8601 timestamps, and feed metadata for RSS readers and search engines.",
+      "description": "Create a detailed shopping guide for backpackers visiting Johor Bahru, covering night markets (Pasar Tun Dr. Ismail), malls (Aeon), and street markets with specific store names, item prices, bargaining tips, and opening hours. Publish at /blog/jb-shopping-guide with Product schema markup for recommended items and LocalBusiness schema for shops. Target long-tail keywords: 'cheap shopping JB', 'JB markets for backpackers'.",
       "acceptanceCriteria": [
-        "GET /api/feed/atom.xml returns HTTP 200 with Content-Type: application/atom+xml; charset=utf-8 header",
-        "Each blog post entry includes <title>, <link>, <summary>, <published>, <updated>, <author name>, and <category term> tags with correct values from blog post metadata",
-        "Feed includes <updated> timestamp reflecting the most recent blog post publication date; feed <id> and <link> elements are present with correct self and alternate href values"
+        "Blog post renders at /blog/jb-shopping-guide with h2 sections for each market type, store listings with prices and hours",
+        "Product schema markup embeds for 5+ recommended items (e.g., batik shirts, local snacks) with price, currency, and store name",
+        "Post includes LocalBusiness schema for 3+ key shopping venues with address, phone, openingHoursSpecification"
       ],
       "technicalNotes": [
-        "File to create: app/api/feed/atom.xml/route.ts (import blog posts from lib/blog/posts.ts, format Atom XML response using template string or xml builder)",
-        "Import BlogPost type from lib/blog/types.ts; validate output structure against Atom specification",
-        "Test command: npm run test -- tests/api/feed-atom.test.ts (assert Content-Type header, XML parse success, entry count matches post count, ISO 8601 dates)"
+        "File to create: site/content/blog/jb-shopping-guide.mdx with front matter (tags: [shopping, jb, budget])",
+        "File to update: site/lib/schema.ts \u2014 add generateProductSchema() for items with price and priceCurrency fields",
+        "File to update: site/lib/schema.ts \u2014 LocalBusiness schema generation with openingHoursSpecification",
+        "Test command: npm run build && npm run test -- schema.test.ts (validate Product and LocalBusiness schemas)"
       ],
       "filesTouch": [
-        "app/api/feed/atom.xml/route.ts",
-        "lib/blog/types.ts",
-        "tests/api/feed-atom.test.ts"
+        "site/content/blog/jb-shopping-guide.mdx",
+        "site/lib/schema.ts",
+        "tests/schema.test.ts"
       ],
       "estimatedComplexity": "small",
       "_source": "ai-example",
@@ -25,49 +26,27 @@
       "dependencies": []
     },
     {
-      "title": "Add BreadcrumbList JSON-LD schema generator for blog post pages",
+      "title": "Add Blog Post Author Profiles with Byline Cards and Person Schema Markup",
       "priority": "medium",
-      "description": "Create a reusable schema utility that generates valid BreadcrumbList JSON-LD for blog post pages with correct itemid URLs and position hierarchy (Home > Blog > Category > Post Title).",
+      "description": "Implement author profile metadata and byline cards that display at the top and bottom of blog posts. Each author has a profile page at /blog/authors/[slug] with bio, avatar, social links, and list of published posts. Add Person schema markup to bylines and author pages for E-E-A-T authority signals. Support multiple authors per post for collaborative content.",
       "acceptanceCriteria": [
-        "Blog post layout includes <script type=\"application/ld+json\"> with @type: BreadcrumbList containing exactly 4 itemListElement objects: Home, Blog, Category, and Post Title with matching position values 1-4",
-        "Each breadcrumb itemListElement has position (number), name (string), and itemid (full absolute URL); itemid URLs must match actual Next.js route paths for category and post slug",
-        "Schema validates with zero errors in Google Rich Results Test for BreadcrumbList structure and required properties"
+        "Blog post header displays author card with avatar, name, bio excerpt, and clickable author profile link; Person schema embeds name, url, image, sameAs fields",
+        "Author profile page /blog/authors/jad-tan shows full bio, photo, social links (LinkedIn, Twitter), and lists all 5+ posts authored by that person",
+        "Post footer includes author card with 'Follow' link to author profile; schema generates sameAs array from social media links"
       ],
       "technicalNotes": [
-        "File to create: lib/schema/breadcrumb-list.ts (export function generateBreadcrumbList(postTitle: string, category: string, slug: string): BreadcrumbListSchema)",
-        "File to modify: app/blog/[slug]/layout.tsx (call generateBreadcrumbList in generateMetadata, pass result to <Script> in layout.tsx with strategy=\"beforeInteractive\")",
-        "Test command: npm run test -- tests/lib/schema/breadcrumb-list.test.ts (assert itemListElement.length === 4, each has position 1-4, itemid is absolute URL with domain)"
+        "File to create: site/app/(main)/blog/authors/[slug]/page.tsx with dynamic author routing",
+        "File to create: site/components/AuthorCard.tsx (reusable byline component with schema props)",
+        "File to update: site/lib/blog.ts \u2014 add getAuthorPosts(authorId: string) and generateAuthorPageData(slug: string)",
+        "File to update: site/lib/schema.ts \u2014 add generatePersonSchema(author: Author) with sameAs generation",
+        "Test command: npm run test -- AuthorCard.test.tsx && npm run build (component rendering, schema validation)"
       ],
       "filesTouch": [
-        "lib/schema/breadcrumb-list.ts",
-        "app/blog/[slug]/layout.tsx",
-        "lib/blog/types.ts",
-        "tests/lib/schema/breadcrumb-list.test.ts"
-      ],
-      "estimatedComplexity": "small",
-      "_source": "ai-example",
-      "passes": false,
-      "dependencies": []
-    },
-    {
-      "title": "Build /blog index page with category filter tabs and reading time estimates",
-      "priority": "high",
-      "description": "Create a blog listing page that displays all published posts in reverse chronological order with client-side category filtering via URL query params, tab-based navigation, and estimated reading time on each card.",
-      "acceptanceCriteria": [
-        "/blog page renders grid of blog post cards; each card displays: title, 100-char excerpt, publication date (formatted), category badge, author name, and reading time estimate (e.g., '5 min read')",
-        "Category filter tabs above post list; clicking a tab filters posts and updates URL to ?category=transport; 'All Posts' tab resets filter; tab state persists across page reload",
-        "Reading time calculated as Math.ceil(wordCount / 200); each post object must have wordCount property in lib/blog/posts.ts; reading time appears on card footer below publication date"
-      ],
-      "technicalNotes": [
-        "File to create: app/blog/page.tsx (client component with useState for active category, useMemo to filter posts, useSearchParams to read ?category from URL)",
-        "File to modify: lib/blog/posts.ts (ensure each BlogPost object includes wordCount: number property; export function getCategoriesFromPosts(): string[])",
-        "Test command: npm run test -- tests/components/blog-index.test.tsx (assert card count on initial load, card count after filter click, reading time formula correctness, URL param update)"
-      ],
-      "filesTouch": [
-        "app/blog/page.tsx",
-        "lib/blog/posts.ts",
-        "lib/blog/types.ts",
-        "tests/components/blog-index.test.tsx"
+        "site/app/(main)/blog/authors/[slug]/page.tsx",
+        "site/components/AuthorCard.tsx",
+        "site/lib/blog.ts",
+        "site/lib/schema.ts",
+        "tests/AuthorCard.test.tsx"
       ],
       "estimatedComplexity": "medium",
       "_source": "ai-example",
@@ -75,24 +54,27 @@
       "dependencies": []
     },
     {
-      "title": "Implement dynamic OG image generation for blog posts using next/og API",
-      "priority": "medium",
-      "description": "Create an API route handler that generates branded Open Graph preview images for blog posts dynamically using next/og ImageResponse, featuring post title, excerpt, category badge, and hostel branding.",
+      "title": "Implement Blog Post Series Pages with SeriesCollection Schema and Cross-Linking",
+      "priority": "high",
+      "description": "Organize blog posts into content series (e.g., 'Malaysia Work Series' for Foodpanda/Lalamove/Gig Jobs, 'JB Travel Series' for itineraries/transport/shopping). Create dynamic series landing pages at /blog/series/[series-slug] that display all posts in the series with reading order, SeriesCollection schema, and breadcrumbs. Auto-populate series navigation widgets in post headers/footers. Update sitemap.ts to include series URLs.",
       "acceptanceCriteria": [
-        "GET /api/og/blog?slug=post-slug-here returns PNG image with dimensions 1200x630px, Content-Type: image/png, and proper Cache-Control headers; image includes hostel logo, post title (truncated to 60 chars), excerpt (first 80 chars), category badge, and publication date",
-        "Blog post layout includes <meta property=\"og:image\" content=\"https://domain.com/api/og/blog?slug=slug-here\"> in <head>; also includes og:image:width=\"1200\" and og:image:height=\"630\" meta tags via generateMetadata export",
-        "Invalid or missing slug parameter returns 404 response; slug validation against allowlist of published blog post slugs from lib/blog/posts.ts"
+        "Navigate to /blog/series/malaysia-work and see all 5 job/gig economy posts in reading order with progress indicators (e.g., '2 of 5')",
+        "Series page renders SeriesCollection schema with hasPart array linking to all Article objects in correct order",
+        "Blog post header/footer displays series navigation: 'Part 2 of 5' badge and 'Previous: Foodpanda' / 'Next: 5 Gig Jobs' links"
       ],
       "technicalNotes": [
-        "File to create: app/api/og/blog/route.ts (import { ImageResponse } from 'next/og'; GET handler accepts slug query param; fetch blog post from getBlogPosts(); render JSX to ImageResponse with Tailwind/CSS styling)",
-        "File to modify: app/blog/[slug]/layout.tsx (export generateMetadata function adding og:image, og:image:width, og:image:height meta tags; construct full URL with next/navigation baseURL utility)",
-        "Test command: npm run test -- tests/api/og-blog.test.ts (assert response image/png type, assert 404 on invalid slug, assert image dimensions); manual: curl 'http://localhost:3000/api/og/blog?slug=test-post' > test.png && file test.png"
+        "File to create: site/app/(main)/blog/series/[series-slug]/page.tsx with dynamic series routing",
+        "File to update: site/lib/blog.ts \u2014 add getSeriesPosts(seriesId: string) and getSeriesMetadata(seriesId: string)",
+        "File to update: site/lib/schema.ts \u2014 add generateSeriesCollectionSchema(series: Series, posts: Post[])",
+        "File to update: site/sitemap.ts \u2014 include /blog/series/* routes in sitemap generation",
+        "Test command: npm run test -- blog-series.test.ts (routing, series ordering, schema validation)"
       ],
       "filesTouch": [
-        "app/api/og/blog/route.ts",
-        "app/blog/[slug]/layout.tsx",
-        "lib/blog/posts.ts",
-        "tests/api/og-blog.test.ts"
+        "site/app/(main)/blog/series/[series-slug]/page.tsx",
+        "site/lib/blog.ts",
+        "site/lib/schema.ts",
+        "site/sitemap.ts",
+        "tests/blog-series.test.ts"
       ],
       "estimatedComplexity": "medium",
       "_source": "ai-example",
@@ -100,24 +82,54 @@
       "dependencies": []
     },
     {
-      "title": "Update sitemap.ts to automatically include all published blog posts with lastModified dates",
-      "priority": "high",
-      "description": "Modify the sitemap route handler to dynamically aggregate all published blog post URLs with correct lastModified (publication date), changeFrequency, and priority values for SEO indexing.",
+      "title": "Add Native Blog Post Comments System with Honeypot Spam Protection",
+      "priority": "medium",
+      "description": "Implement a native comment system for blog posts (no third-party Disqus) with form validation, honeypot anti-spam field, and moderation queue. Comments display below each post with author name, avatar, timestamp, and content. Moderators review pending comments before publishing. Store comments in database with soft-delete for retention. Add Comment and CommentAction schema markup for Google rich results.",
       "acceptanceCriteria": [
-        "GET /sitemap.xml returns valid XML with all blog post URLs in format: https://pelangi-capsule.com/blog/post-slug with <lastmod> set to ISO 8601 blog post publishedDate, <changefreq>weekly</changefreq>, <priority>0.7</priority>",
-        "Sitemap includes static routes (home: priority 1.0, /blog: 0.8, /guide: 0.7, /rooms: 0.8, /amenities: 0.7, /faq: 0.6) before dynamic blog post entries, all with lastmod timestamps",
-        "Blog post count in XML matches getBlogPosts().length; test assertion: xmllint --xpath 'count(//url)' sitemap.xml === (8 + blog post count)"
+        "Blog post footer displays comment form with name, email, website (optional), and comment textarea; form includes hidden honeypot field 'url' that triggers rejection if filled",
+        "Submitted comments appear in moderation queue; moderators approve/reject via admin panel; approved comments display with author name and timestamp",
+        "Post page renders CommentAction schema for approved comments with author, text, dateCreated, and parentItem reference to Article"
       ],
       "technicalNotes": [
-        "File to modify: app/sitemap.ts (import getBlogPosts from lib/blog/posts.ts; add blog post entries via Array.map((post) => ({ url: `/blog/${post.slug}`, lastModified: post.publishedDate, changeFrequency: 'weekly', priority: 0.7 })))",
-        "Helper function: lib/sitemap/format-entries.ts (export function formatBlogPostEntries(posts: BlogPost[]): MetadataRoute.Sitemap[]) to reduce app/sitemap.ts complexity",
-        "Test command: npm run build && npm run test -- tests/app/sitemap.test.ts (assert XML validity, assert blog post count in XML, assert lastmod ISO format, assert priority values)"
+        "File to create: site/components/CommentForm.tsx (form with honeypot validation and client-side error handling)",
+        "File to create: site/app/api/comments/route.ts (POST endpoint validating honeypot, returning 400 if filled)",
+        "File to update: site/lib/schema.ts \u2014 add generateCommentActionSchema(comment: Comment) with required fields",
+        "File to update: site/app/(main)/blog/[slug]/page.tsx \u2014 integrate comment form and display approved comments",
+        "Test command: npm run test -- CommentForm.test.tsx && npm run test -- comments-api.test.ts (honeypot validation, spam rejection)"
       ],
       "filesTouch": [
-        "app/sitemap.ts",
-        "lib/sitemap/format-entries.ts",
-        "lib/blog/posts.ts",
-        "tests/app/sitemap.test.ts"
+        "site/components/CommentForm.tsx",
+        "site/app/api/comments/route.ts",
+        "site/lib/schema.ts",
+        "site/app/(main)/blog/[slug]/page.tsx",
+        "tests/CommentForm.test.tsx",
+        "tests/comments-api.test.ts"
+      ],
+      "estimatedComplexity": "medium",
+      "_source": "ai-example",
+      "passes": false,
+      "dependencies": []
+    },
+    {
+      "title": "Add Blog Post Difficulty & Duration Tags for Travel Guide Filtering",
+      "priority": "high",
+      "description": "Extend blog post front matter to include metadata tags for travel guides: difficulty (Easy/Medium/Hard), duration (30min/1day/3days), and activity type (Shopping/Nightlife/Cultural). Create a blog sidebar filter UI allowing readers to view posts matching selected difficulty and duration. Update blog index page to show filtered post cards. Implement URL query params for sharing filtered views (e.g., /blog?difficulty=easy&duration=1day).",
+      "acceptanceCriteria": [
+        "Blog post front matter includes difficulty: 'easy', duration: '1day', activity: ['shopping', 'food'] tags; posts render with visible tags on cards",
+        "Blog sidebar displays filter checkboxes for difficulty levels and durations; clicking filters updates URL params and displayed posts in real-time",
+        "Shareable filter link /blog?difficulty=easy&duration=30min filters correctly; page title updates to 'Easy Activities (30 min)'"
+      ],
+      "technicalNotes": [
+        "File to update: site/lib/blog.ts \u2014 add parsePostMetadata() to extract difficulty, duration, and activity tags from front matter",
+        "File to create: site/components/BlogFilterSidebar.tsx with checkbox controls, useRouter to update query params",
+        "File to update: site/app/(main)/blog/page.tsx \u2014 implement useSearchParams() to read filters, call getFilteredPosts(params)",
+        "Test command: npm run test -- blog-filters.test.ts (filter logic, query param parsing, card filtering)"
+      ],
+      "filesTouch": [
+        "site/lib/blog.ts",
+        "site/components/BlogFilterSidebar.tsx",
+        "site/app/(main)/blog/page.tsx",
+        "tests/blog-filters.test.ts"
       ],
       "estimatedComplexity": "small",
       "_source": "ai-example",
