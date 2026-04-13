@@ -15,5 +15,15 @@ SPIRAL_GEMINI_ANNOTATE_PROMPT=""
 SPIRAL_FIRECRAWL_ENABLED=0
 SPIRAL_GITNEXUS_REPO=""
 
+# Auto-archive passed stories when prd.json exceeds this many total stories
+SPIRAL_AUTO_ARCHIVE_THRESHOLD=300
+
+# Memory watchdog disabled (Windows compatibility)
+SPIRAL_MEMORY_WATCHDOG=0
+
+# Story cost limits
+SPIRAL_STORY_COST_HARD_USD=10.00
+SPIRAL_STORY_COST_WARN_USD=5.00
+
 # Workers: 1 (sequential to avoid merge conflicts in Next.js files)
 # Override at launch with --ralph-workers if needed
