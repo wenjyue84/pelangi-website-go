@@ -5458,7 +5458,8 @@
         "Keep content HTML under 8000 characters"
       ],
       "passes": true,
-      "model": "haiku"
+      "model": "haiku",
+      "_scopeCreep": true
     },
     {
       "id": "US-244",
@@ -5488,7 +5489,7 @@
       "technicalNotes": [
         "Keep content HTML under 8000 characters"
       ],
-      "passes": false,
+      "passes": true,
       "model": "haiku"
     },
     {

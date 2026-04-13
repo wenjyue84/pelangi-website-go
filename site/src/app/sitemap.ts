@@ -123,6 +123,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.85,
         },
         {
+            url: `${baseUrl}/visa-run`,
+            lastModified,
+            changeFrequency: "monthly",
+            priority: 0.85,
+        },
+        {
             url: `${baseUrl}/sitemap-html`,
             lastModified,
             changeFrequency: "monthly",

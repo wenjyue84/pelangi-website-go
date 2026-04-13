@@ -341,3 +341,39 @@ Based on the user story JSON for **US-244**, there is a mismatch with the reques
 *   **Validation:** Run `npm run build` locally after adding the post to ensure it doesn't break the build process, as required by the acceptance criteria.
 *   **Data Consistency:** Ensure the format for `date`, `readTime`, and other fields exactly matches the format of other posts in the `posts.ts` file.
 
+## Iteration 2 - Tue, Apr 14, 2026  4:26:41 AM
+Completed: Blog post: Living in JB Working in Singapore — Cross-Border Commuter Guide 2026 (ID: US-244) in 4m
+
+
+## Pre-analysis for US-246 (Gemini 2.5 Pro)
+This user story is for a Next.js/TypeScript project, not Frappe/Python. Here is the technical brief based on the provided JSON:
+
+**Project:** Next.js Website (pelangi-website)
+**User Story:** US-246: New page: /visa-run
+
+**1. Files to Modify:**
+*   **Create:** `site/src/app/visa-run/page.tsx`
+*   **Modify:** `site/src/app/sitemap.ts`
+
+**2. Framework/Concepts Involved:**
+*   Next.js App Router: Creating a new route segment.
+*   React Server Component: The new page will be a Server Component.
+*   Next.js Metadata API: To set the page `<title>`.
+*   JSON-LD Schema: `FAQPage` and `HowTo` schemas for SEO.
+*   Shared Components: Importing `Header` and `Footer`.
+
+**3. Implementation Approach:**
+1.  Create `site/src/app/visa-run/page.tsx`.
+2.  Define the page's `metadata` object for the title.
+3.  Build the page component, importing and rendering `<Header />` and `<Footer />`.
+4.  Add a `<script type="application/ld+json">` tag containing a valid `FAQPage` schema with 5 placeholder questions and answers about Singapore-JB visa runs.
+5.  Add a second `<script type="application/ld+json">` tag for the `HowTo` schema, detailing a 5-step process for a visa run.
+6.  Include a clear Call-to-Action (CTA) button or link pointing to `/book`.
+7.  Edit `site/src/app/sitemap.ts` to add an entry for `/visa-run` with a `priority` of `0.85`.
+
+**4. Gotchas & Edge Cases:**
+*   Ensure the JSON-LD content is valid and passes schema validation tools.
+*   The content for the FAQ and How-To steps must be generated, as it's not in the story. It should be relevant and high-quality.
+*   Verify the correct import path for the `<Footer />` component, as it may differ from the `<Header />` path.
+*   The final implementation must pass `npm run build` without errors.
+

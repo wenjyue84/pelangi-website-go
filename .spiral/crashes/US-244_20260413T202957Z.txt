@@ -1,0 +1,10 @@
+# SPIRAL Crash Report
+# Story:     US-244
+# Worker:    sequential
+# Exit Code: 124
+# Timestamp: 20260413T202957Z
+# ─────────────────────────────────────────
+
+warning: in the working copy of '.spiral/spiral_events.jsonl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'progress.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'results.tsv', LF will be replaced by CRLF the next time Git touches it
