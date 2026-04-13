@@ -5428,7 +5428,8 @@
         "Use concise paragraphs, avoid padding"
       ],
       "passes": true,
-      "model": "haiku"
+      "model": "haiku",
+      "_scopeCreep": true
     },
     {
       "id": "US-243",
@@ -5456,7 +5457,7 @@
       "technicalNotes": [
         "Keep content HTML under 8000 characters"
       ],
-      "passes": false,
+      "passes": true,
       "model": "haiku"
     },
     {

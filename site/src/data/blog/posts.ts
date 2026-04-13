@@ -547,6 +547,146 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 <p>Identify your profile (degree? experience? target salary?) and apply strategically. EP is fastest and most flexible; push for it if degree-eligible. S Pass is realistic for experienced non-graduates. Start applications 12 weeks before desired start date. The Singapore salary premium (3–5x your Malaysia salary) justifies the bureaucracy. Move intentionally, understand your visa category, and cross the Causeway ready to thrive.</p>
 `,
   },
+  {
+    slug: "jb-singapore-commuter-guide-2026",
+    title: "Living in Johor Bahru, Working in Singapore: The Commuter's Guide 2026",
+    excerpt:
+      "Cross the Causeway daily and save money. Everything Malaysians need to know about commuting from JB to Singapore: bus options, CIQ crossings, costs, and why it works.",
+    date: "2026-04-14",
+    category: "Career & Work",
+    author: "Pelangi Team",
+    readTime: "8 min read",
+    tags: ["johor-bahru", "singapore", "commuter", "work", "malaysia", "cross-border", "cost-of-living"],
+    featuredImage: "/images/blog/jb-singapore-commuter.jpg",
+    content: `
+<h2>The Commuter Advantage</h2>
+<p>Thousands of Malaysians cross the Causeway every weekday to work in Singapore. Why? A Singapore salary (SGD4,000–8,000/month) combined with Johor Bahru living costs (RM2,500–3,500/month for rent, food, transport) creates a savings rate impossible in either country alone. For Malaysian professionals earning SGD5,000 as an <a href="singapore-work-pass-guide-malaysians">Employment Pass holder</a>, living in JB while working in Singapore means saving SGD2,000–3,000 monthly.</p>
+<p>This guide covers everything: bus options, CIQ checkpoint crossings, monthly budgets, peak-hour strategies, and why <a href="/rooms">Pelangi Capsule Hostel</a> works as a base while you settle in.</p>
+
+<h2>Getting Across: Your Bus Options</h2>
+<p>Five daily shuttle services cross the Causeway. Most commuters use two: <strong>Causeway Link</strong> and <strong>SBS Transit</strong>. Both operate modern, air-conditioned coaches with WiFi.</p>
+<table border="1" cellpadding="8" cellspacing="0" style="width:100%; margin:16px 0; border-collapse:collapse;">
+<tr style="background:#f5f5f5;">
+<th><strong>Service</strong></th>
+<th><strong>Route</strong></th>
+<th><strong>Price (single)</strong></th>
+<th><strong>Duration</strong></th>
+<th><strong>Frequency</strong></th>
+</tr>
+<tr>
+<td><strong>Causeway Link (CW)</strong></td>
+<td>JB Sentral → Singapore (multiple endpoints)</td>
+<td>RM5–6 / SGD2–2.50</td>
+<td>40–60 min</td>
+<td>Every 5–15 min</td>
+</tr>
+<tr>
+<td><strong>SBS Transit</strong></td>
+<td>Larkin Sentral → Singapore</td>
+<td>RM3–4 / SGD1.50</td>
+<td>45–75 min</td>
+<td>Every 10–20 min</td>
+</tr>
+<tr>
+<td><strong>Sunrays Express</strong></td>
+<td>JB CIQ → Woodlands</td>
+<td>RM5 / SGD2</td>
+<td>50–70 min</td>
+<td>Hourly</td>
+</tr>
+<tr>
+<td><strong>Premium (Intercity)</strong></td>
+<td>JB → Singapore downtown</td>
+<td>RM8–12 / SGD4–5</td>
+<td>35–50 min</td>
+<td>Hourly</td>
+</tr>
+<tr>
+<td><strong>Personal vehicle</strong></td>
+<td>Johor Bahru → Singapore (own car)</td>
+<td>RM30–50 (toll + petrol)</td>
+<td>30–45 min</td>
+<td>Own schedule</td>
+</tr>
+</table>
+<p><strong>Pro tip:</strong> Causeway Link and SBS are cheapest and most frequent. Buy monthly passes for RM60–80 (saves 20% vs daily tickets). Causeway Link passes sold at JB Sentral; SBS through their Larkin Sentral office.</p>
+
+<h2>The CIQ Process: What to Expect</h2>
+<p>CIQ = Customs, Immigration, Quarantine. You pass through Malaysia's exit, then Singapore's entry. On buses, this takes 20–40 minutes depending on traffic and checkpoint congestion.</p>
+<p><strong>Your documents:</strong> Passport, employment pass or work visa. Keep them accessible. Officers rarely question commuters; the process is routine. You'll join a queue, present documents, answer standard questions ("Where do you work?" "How long?"), and proceed.</p>
+<p><strong>Peak hour advice:</strong> Early crossings (before 7:30am) and evening returns (after 6pm) face longer queues. Mid-morning crossings (9–11am) and mid-afternoon (2–4pm) are significantly quieter. If your work schedule allows, shift crossing time. 30 minutes saved daily equals 2.5 hours weekly.</p>
+
+<h2>Monthly Budget: JB Living, Singapore Salary</h2>
+<p>Here's a realistic monthly breakdown for a single commuter earning SGD5,500/month (typical Employment Pass salary):</p>
+<table border="1" cellpadding="8" cellspacing="0" style="width:100%; margin:16px 0; border-collapse:collapse;">
+<tr style="background:#f5f5f5;">
+<th><strong>Expense</strong></th>
+<th><strong>Amount (SGD)</strong></th>
+<th><strong>Amount (RM)</strong></th>
+<th><strong>Notes</strong></th>
+</tr>
+<tr>
+<td><strong>Rent (shared HDB, JB)</strong></td>
+<td>SGD400–600</td>
+<td>RM1,200–1,800</td>
+<td>Budget shared room or low-cost private flat in Taman Pelangi area</td>
+</tr>
+<tr>
+<td><strong>Transport (bus + local)</strong></td>
+<td>SGD80–120</td>
+<td>RM240–360</td>
+<td>Monthly Causeway Link + local JB transport</td>
+</tr>
+<tr>
+<td><strong>Food (breakfast + lunch + dinner)</strong></td>
+<td>SGD250–350</td>
+<td>RM750–1,050</td>
+<td>Mix of hawker (RM5–8) and occasional restaurants</td>
+</tr>
+<tr>
+<td><strong>Utilities (electric, water, WiFi)</strong></td>
+<td>SGD40–60</td>
+<td>RM120–180</td>
+<td>Shared utilities in rented unit</td>
+</tr>
+<tr>
+<td><strong>Phone + mobile data</strong></td>
+<td>SGD15–25</td>
+<td>RM45–75</td>
+<td>Digi or Maxis unlimited plan</td>
+</tr>
+<tr>
+<td><strong>Sundries (laundry, toiletries, misc)</strong></td>
+<td>SGD50–80</td>
+<td>RM150–240</td>
+<td>Varies by lifestyle</td>
+</tr>
+<tr style="background:#f5f5f5;"><td><strong>TOTAL MONTHLY</strong></td><td><strong>SGD835–1,235</strong></td><td><strong>RM2,505–3,705</strong></td><td><strong>Leaves SGD4,265–4,665 savings monthly</strong></td>
+</tr>
+</table>
+<p>At this spending level, a SGD5,500 earner saves <strong>SGD50,000–56,000 annually</strong>. That funds a down payment, business startup, or career transition. Living in JB while earning Singapore salary is genuinely wealth-building.</p>
+
+<h2>Tips for Smooth Commuting</h2>
+<ul>
+<li><strong>Leave early:</strong> Causeway delays happen. Plan 15 minutes buffer. Early arrival is stress-free; late arrival jeopardizes your job.</li>
+<li><strong>Use the Causeway Link app:</strong> Real-time bus tracking, seat booking, monthly pass management. Available on iOS and Android.</li>
+<li><strong>Join commuter groups:</strong> Facebook groups like "JB to Singapore Commuters" share traffic updates, carpool opportunities, and tips from experienced commuters.</li>
+<li><strong>Keep documents accessible:</strong> Passport in a small pouch, not buried in your bag. Officers see documents instantly; delays flag you.</li>
+<li><strong>Stay offline during crossings:</strong> Use this time to read, sleep, or mental reset. An hour daily saved to yourself accumulates quickly.</li>
+</ul>
+
+<h2>Why JB as Your Base</h2>
+<p><a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi is purpose-built for this lifestyle. Japanese-style capsules (RM35–50/night for monthly stays), hot showers, lockers, and high-speed WiFi. The neighbourhood has hawker centres, banks, and transport hubs. For the first 1–3 months while you arrange permanent housing, Pelangi provides stable, affordable base with a community of fellow commuters and relocators.</p>
+
+<h2>Long-term Housing Strategy</h2>
+<p>Once you've secured your job and work pass, apartment hunting shifts from monthly stays to 12-month leases. <a href="/getting-here">Getting to Pelangi from the Causeway</a> is 10–15 minutes by Grab, so proximity to the hostel signals good transport connections for future housing. Target neighbourhoods: Taman Pelangi, Danga Bay, Larkin. Monthly rents: RM800–1,500 for 1-bedroom private flats in these areas.</p>
+
+<h2>Making the Commute Sustainable</h2>
+<p>Daily commuting is sustainable, not glamorous. The Causeway is reliable. Weather delays (rare) add 10–15 minutes. Strikes or roadwork (annual) are predictable and avoidable. Most commuters find the rhythm within 2 weeks. The financial upside — SGD50,000+ annual savings — justifies the daily 1.5-hour round trip.</p>
+
+<p>Ready to cross the Causeway? <a href="/rooms">Book a stay at Pelangi Capsule</a> as your first base, and start your cross-border career today.</p>
+`,
+  },
 ];
 
 export const blogPosts: BlogPost[] = rawPosts.map((post) => ({

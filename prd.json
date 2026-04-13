@@ -1837,6 +1837,29 @@
       "passes": true
     },
     {
+      "id": "US-081",
+      "title": "Add Bing Webmaster Tools verification and sitemap submission",
+      "priority": "low",
+      "description": "The site has Google Search Console configured but no Bing Webmaster Tools account. Bing and DuckDuckGo collectively account for 10-15% of global search traffic. Verification takes under 5 minutes, enables sitemap submission, crawl monitoring, and Bing-specific SEO insights. Bing also powers DuckDuckGo, Ecosia, and Yahoo Search — one submission covers all.",
+      "acceptanceCriteria": [
+        "Bing Webmaster Tools account created at https://www.bing.com/webmasters/ and site verified",
+        "Verification via <meta name='msvalidate.01' content='TOKEN'> in layout.tsx metadata.verification",
+        "Sitemap URL (https://pelangicapsulehostel.com/sitemap.xml) submitted to Bing",
+        "Bing crawl report shows pages indexed within 7 days of submission",
+        "No crawl errors reported in Bing Webmaster Tools dashboard"
+      ],
+      "technicalNotes": [
+        "Bing Webmaster Tools: https://www.bing.com/webmasters/",
+        "Next.js metadata verification: verification: { other: { 'msvalidate.01': 'YOUR_TOKEN' } }",
+        "Bing can auto-import verified GSC sites — check for auto-import option first to save time",
+        "Once verified, submit sitemap via: Sitemaps > Submit Sitemap > enter sitemap URL"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
       "id": "US-082",
       "title": "Add OpenSearch XML descriptor for browser address bar site search",
       "priority": "low",
@@ -3123,6 +3146,50 @@
       "passes": true
     },
     {
+      "id": "US-143",
+      "title": "Apply CSS @starting-style for GPU-accelerated entry animations",
+      "priority": "low",
+      "description": "CSS @starting-style (Baseline August 2024, supported in all major engines since Firefox 129) enables declarative entry animations for elements transitioning from display:none or entering the top layer without JavaScript. Room card reveals, modal dialogues, and the cookie consent banner can use @starting-style for smooth fade/slide-in animations that respect prefers-reduced-motion and require zero JavaScript.",
+      "acceptanceCriteria": [
+        "Room cards, modal overlays, and the cookie consent banner use @starting-style + transition instead of JavaScript-driven animation libraries for their entry animation",
+        "All entry animations are paired with a @media (prefers-reduced-motion: reduce) override that disables or minimises motion",
+        "Animations use only transform and opacity to remain on the GPU compositor thread (no layout-triggering properties)",
+        "Lighthouse Performance score does not regress (no new render-blocking resources introduced)",
+        "Manual test in Firefox 129+, Chrome 125+, and Safari 17.4+ confirms animations render correctly"
+      ],
+      "technicalNotes": [
+        "@starting-style MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@starting-style",
+        "Pair with transition-behavior: allow-discrete to animate discrete properties like display and visibility",
+        "Pattern: .card { opacity: 1; transition: opacity 0.3s; } @starting-style { .card { opacity: 0; } }"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-144",
+      "title": "Replace JavaScript tooltip positioning with CSS Popover API and Anchor Positioning",
+      "priority": "low",
+      "description": "The HTML Popover API (Baseline 2024) provides built-in keyboard navigation, Escape-key dismissal, focus management, and top-layer rendering without JavaScript. CSS Anchor Positioning (Chrome 125+) replaces Popper.js-style JavaScript tethering. Migrating hostel site tooltips and info-popovers to these native APIs reduces JS bundle size and provides accessible behaviour for free.",
+      "acceptanceCriteria": [
+        "All tooltip and informational popover components use the popover HTML attribute and popovertarget button attribute instead of JavaScript show/hide logic",
+        "Popovers are tethered to their trigger using CSS anchor-name and position-anchor properties, not JavaScript position calculation",
+        "Keyboard test confirms: Tab reaches trigger, Enter/Space opens popover, Escape closes and returns focus to trigger, Tab navigates within popover",
+        "axe-core audit reports no new violations introduced by the migration",
+        "Bundle size (tracked in next build output) decreases by at least 2 KB after removing any Popper.js or equivalent dependency"
+      ],
+      "technicalNotes": [
+        "Popover API: https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using — use popover='auto' for light-dismiss behaviour",
+        "CSS Anchor Positioning: https://developer.chrome.com/docs/css-ui/anchor-positioning-api — assign anchor-name on trigger, position-anchor on popover",
+        "Add @supports guard for browsers without anchor positioning; fall back to CSS position: absolute with manual offset"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false,
+      "model": "sonnet"
+    },
+    {
       "id": "US-145",
       "title": "Upgrade to Next.js 16 and resolve all breaking changes",
       "priority": "high",
@@ -3450,6 +3517,97 @@
       "passes": true
     },
     {
+      "id": "US-159",
+      "title": "Add Pinterest Rich Pins metadata for room and blog pages",
+      "priority": "low",
+      "description": "Next.js 15.3 added explicit support for Pinterest Rich Pins metadata. Pinterest is a significant discovery channel for travel and accommodation, particularly for visual content like hostel room photos and local attraction guides. Rich Pins pull structured data (price, title, description) from the page and surface it in Pinterest search, driving referral traffic from travellers planning Malaysia trips.",
+      "acceptanceCriteria": [
+        "Room pages include Pinterest Product Rich Pin meta tags: og:price:amount, og:price:currency, product:price:amount, product:price:currency",
+        "Blog/guide pages include correct og:article:published_time in ISO 8601 format",
+        "Pinterest Rich Pin validator (https://developers.pinterest.com/tools/url-debugger/) passes for a room page URL",
+        "Pinterest domain verification completed via meta tag or DNS TXT record",
+        "No regression in existing OpenGraph tags"
+      ],
+      "technicalNotes": [
+        "Pinterest Rich Pin types relevant: Product (room pages), Article (blog pages), Place (hostel location)",
+        "Product Rich Pin minimum requirements: og:price:amount, og:price:currency",
+        "Next.js 15.3 added Pinterest Rich Pins support — check next.config.ts for config option",
+        "Source: https://nextjs.org/blog/next-15-3 (Pinterest Rich Pins feature item)",
+        "Pinterest developer docs: https://developers.pinterest.com/docs/rich-pins/overview/"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-160",
+      "title": "Enable Turbopack file system caching for faster development cold starts",
+      "priority": "low",
+      "description": "Next.js 16 introduces experimental Turbopack file system caching for development, storing compiler artifacts on disk between dev server restarts. This significantly reduces cold-start compile times for subsequent dev sessions, particularly beneficial in CI preview deployments where next dev may be started frequently. It is a one-line config change with no code impact and is trivially reversible.",
+      "acceptanceCriteria": [
+        "experimental.turbopackFileSystemCacheForDev: true added to next.config.ts",
+        "Second next dev startup measurably faster than cold start (measured via terminal output timestamps)",
+        "No stale cache issues observed during development (content changes reflected after save)",
+        ".next/cache directory excluded from git (already in .gitignore as .next/)"
+      ],
+      "technicalNotes": [
+        "Config: experimental: { turbopackFileSystemCacheForDev: true } in next.config.ts",
+        "Dev output now goes to .next/dev/ (separate from .next/ build output — new in Next.js 16)",
+        "If stale cache issues occur: delete .next/cache directory to force rebuild",
+        "Source: https://nextjs.org/blog/next-16#turbopack-file-system-caching-beta"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-161",
+      "title": "Implement React 19.2 useEffectEvent for stable analytics event handlers",
+      "priority": "low",
+      "description": "React 19.2 introduces useEffectEvent, which extracts non-reactive logic from Effects into stable callbacks that always read the latest props/state without causing the Effect to re-run. This eliminates the pattern of adding analytics/logging callbacks to useEffect dependency arrays, which forces re-subscriptions on every render. Primary use case: booking widget analytics tracking should use useEffectEvent so the function always has the latest session state without re-subscribing.",
+      "acceptanceCriteria": [
+        "At least one useEffect that currently has an analytics/logging function in its dependency array is refactored to use useEffectEvent",
+        "The Effect does not re-run when only the analytics function identity changes (confirmed via React DevTools Profiler)",
+        "ESLint react-hooks/exhaustive-deps rule does not flag the Effect as missing the extracted event",
+        "TypeScript types are correct (useEffectEvent is typed as a stable callback reference)"
+      ],
+      "technicalNotes": [
+        "useEffectEvent is available in React 19.2, included with Next.js 16",
+        "import { useEffectEvent } from 'react'",
+        "Effect Events are NOT stable across renders — do not pass them to other components or hooks as props",
+        "eslint-plugin-react-hooks v6 (included with Next.js 16) understands useEffectEvent",
+        "Source: https://react.dev/reference/react/useEffectEvent"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-162",
+      "title": "Add React 19.2 cacheSignal() for Server Component fetch cleanup",
+      "priority": "low",
+      "description": "React 19.2 introduces cacheSignal() for Server Components, providing an AbortSignal that fires when the cache() entry's lifetime ends. This allows in-flight fetch requests to be aborted when the cached result will no longer be used (e.g., when cache is invalidated mid-request). For server-side data fetching (room availability, pricing from external APIs), cacheSignal ensures abandoned fetches don't hold open connections unnecessarily.",
+      "acceptanceCriteria": [
+        "At least one cache() function wrapping an external fetch uses cacheSignal() to pass an abort signal",
+        "Fetch requests are aborted when the cache entry is invalidated (verified via network tab — no hung requests)",
+        "No TypeScript errors when using cacheSignal() (requires React 19.2 types from Next.js 16)",
+        "Server Component rendering is not regressed (same data fetched correctly)"
+      ],
+      "technicalNotes": [
+        "cacheSignal() is Server Components only — not usable in Client Components or Route Handlers",
+        "Pattern: const dedupedFetch = cache((url) => fetch(url, { signal: cacheSignal() }))",
+        "React 19.2 feature, available with Next.js 16",
+        "Source: https://react.dev/reference/react/cache#caching-with-a-signal"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
       "id": "US-163",
       "title": "Implement Google Tag Manager with Consent Mode v2",
       "priority": "high",
@@ -3736,6 +3894,55 @@
       "passes": true
     },
     {
+      "id": "US-175",
+      "title": "Add WhatsApp Business Platform Cloud API for booking confirmation notifications",
+      "priority": "medium",
+      "description": "Integrate the WhatsApp Business Platform (Cloud API) to send automated template messages to guests after inquiry submission or deposit payment. Unlike the existing wa.me deep-link (outbound only), this enables programmatic outbound notifications: guests receive a WhatsApp message with booking confirmation, check-in instructions, and hostel location link. First 1,000 business-initiated conversations per month are free.",
+      "acceptanceCriteria": [
+        "Meta for Developers app configured with WhatsApp Business Cloud API and a verified business phone number",
+        "POST /api/whatsapp-notify Route Handler sends an approved WhatsApp template message after contact form submission",
+        "Template message includes: guest name, booking reference (or inquiry ID), hostel address, and check-in contact link",
+        "Template registered and approved in Meta Business Manager before any sending",
+        "WHATSAPP_TOKEN and WHATSAPP_PHONE_NUMBER_ID stored as Vercel environment variables",
+        "GET /api/whatsapp-webhook handles Meta's hub.challenge verification handshake"
+      ],
+      "technicalNotes": [
+        "Cloud API send message endpoint: POST https://graph.facebook.com/v21.0/{phone_number_id}/messages",
+        "Required body: { messaging_product: 'whatsapp', to: '+60XXXXXXXXXX', type: 'template', template: { name: 'booking_confirmation', language: { code: 'en' }, components: [...] } }",
+        "Free tier: first 1,000 business-initiated conversations per month; subsequent conversations ~$0.0735 USD per conversation (MY pricing)",
+        "Webhook GET verification: respond with parseInt(hub.challenge) when hub.verify_token === WHATSAPP_WEBHOOK_VERIFY_TOKEN",
+        "Reference: https://developers.facebook.com/docs/whatsapp/cloud-api/get-started"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "large",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-176",
+      "title": "Automate structured data validation in CI with schema.org validator",
+      "priority": "medium",
+      "description": "Add a CI step that validates all JSON-LD structured data against schema.org schemas before production deploy, catching type errors, missing required properties, and invalid enum values before they reach Google's crawlers. Currently structured data is written manually and only verified ad-hoc via Google Rich Results Test — a CI check prevents silent regressions when schema files are edited.",
+      "acceptanceCriteria": [
+        "CI step runs structured data validation as part of the GitHub Actions build workflow",
+        "Validation covers: LodgingBusiness, BlogPosting, FAQPage, BreadcrumbList, HowTo, and Event schema types",
+        "Build fails if any JSON-LD block contains schema.org type errors, unknown properties, or missing required fields",
+        "Validation output is reported in GitHub Actions summary with page URL, schema type, and specific error for each violation",
+        "CI step runs on push to main and on all PRs that modify any StructuredData component or schema data file"
+      ],
+      "technicalNotes": [
+        "Use 'structured-data-testing-tool' npm package for offline validation without external API calls: npm install -D structured-data-testing-tool",
+        "Run: npx sdtt --url https://staging-url.vercel.app --schema LodgingBusiness --schema BlogPosting",
+        "Alternative for local validation: use 'schema-dts' TypeScript types to catch type errors at compile time",
+        "For post-deploy validation, the Google Search Console URL Inspection API can be called from CI to check live pages",
+        "Reference: https://developers.google.com/search/docs/appearance/structured-data"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false,
+      "model": "sonnet"
+    },
+    {
       "id": "US-177",
       "title": "Add JSON Feed 1.1 at /feed.json for blog content syndication",
       "priority": "low",
@@ -3758,6 +3965,31 @@
       "dependencies": [],
       "estimatedComplexity": "small",
       "passes": true
+    },
+    {
+      "id": "US-178",
+      "title": "Add CSS print stylesheet for booking confirmation and receipt pages",
+      "priority": "low",
+      "description": "Add @media print CSS rules to the booking confirmation and /book pages so guests can print or save-as-PDF a clean, readable booking record. Without print styles, navigation, cookie banners, chat widgets, and booking CTAs clutter the printed output, making the page unusable as a physical or PDF booking reference that guests may need for customs, visa applications, or accommodation proof.",
+      "acceptanceCriteria": [
+        "@media print CSS hides navigation, footer, cookie banner, chat widget, sticky booking bar, and all CTAs",
+        "Booking reference number, dates, room type, price, and hostel full address/contact details are clearly visible when printed",
+        "All text renders in black (#000) on white (#fff) in print mode — no coloured backgrounds consume ink",
+        "Body font size is at least 12pt for readability on A4 paper",
+        "Page breaks are avoided within booking summary blocks using page-break-inside: avoid",
+        "Print preview in Chrome shows a clean, professional 1-page booking confirmation"
+      ],
+      "technicalNotes": [
+        "Add @media print rules to a global CSS file or a dedicated print.css imported in layout.tsx",
+        "Hide elements: @media print { nav, footer, .cookie-banner, .chat-widget { display: none !important; } }",
+        "Force monochrome: @media print { * { color: #000 !important; background: transparent !important; } }",
+        "Tailwind print: variant — className='print:hidden' for elements to hide, className='print:block' for print-only elements",
+        "Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/print"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
     },
     {
       "id": "US-179",
@@ -3918,6 +4150,71 @@
       "dependencies": [],
       "estimatedComplexity": "small",
       "passes": true
+    },
+    {
+      "id": "US-187",
+      "title": "Add CSS native scroll-driven carousel using ::scroll-button() and ::scroll-marker",
+      "priority": "low",
+      "description": "Chrome 135+ (March 2025) ships native CSS carousels via ::scroll-button() and ::scroll-marker pseudo-elements. These provide automatic ARIA button roles, keyboard handling, and reduced JavaScript dependency. The gallery and room-photo sliders can be refactored to use this zero-JS approach.",
+      "acceptanceCriteria": [
+        "Gallery carousel uses scroll-snap CSS with ::scroll-button() for prev/next controls",
+        "::scroll-marker group provides keyboard-accessible dot indicators",
+        "Fallback for non-supporting browsers degrades to scrollable overflow without JS errors",
+        "@supports query wraps the new pseudo-element declarations",
+        "Lighthouse reports no layout shift (CLS=0) from carousel on load"
+      ],
+      "technicalNotes": [
+        "Chrome 135+ required; use @supports (selector(::scroll-button(*))) guard",
+        "Reference: https://developer.chrome.com/blog/carousels-with-css",
+        "Companion spec: https://drafts.csswg.org/css-overflow-5/#scroll-marker-group"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-188",
+      "title": "Adopt CSS appearance: base-select for styled native <select> elements",
+      "priority": "low",
+      "description": "Chrome 130+ (Interop 2025) ships appearance: base-select, allowing the native <select> element to be fully styled with CSS while retaining built-in accessibility semantics. This eliminates the need for custom Radix UI Select components in simple dropdowns, reducing bundle size.",
+      "acceptanceCriteria": [
+        "Language switcher and any filter dropdowns use <select> with appearance: base-select where custom Select was used",
+        "Styled select matches brand design system (border-radius, colours, font)",
+        "@supports (appearance: base-select) guard ensures progressive enhancement",
+        "No regression in WCAG 4.1.2 — native select retains keyboard and screen reader support"
+      ],
+      "technicalNotes": [
+        "Reference: https://developer.chrome.com/blog/a-customizable-select",
+        "Polyfill not needed — fallback to system select is acceptable",
+        "Works in Chrome 130+, Safari TP, Firefox Nightly as of 2025"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-189",
+      "title": "Use <dialog closedby='any'> for light-dismiss modals without JavaScript",
+      "priority": "low",
+      "description": "Chrome 133+ adds the closedby attribute to the native <dialog> element, enabling backdrop-click dismiss declaratively without JavaScript event listeners. Reduces bundle size and improves accessibility reliability for cookie consent, gallery lightbox, and booking modals.",
+      "acceptanceCriteria": [
+        "Cookie consent, gallery lightbox, and booking confirmation modals use <dialog closedby='any'>",
+        "Escape key closes all dialogs without additional JS handler",
+        "Clicking backdrop closes dialogs where closedby='any' is set",
+        "Progressive enhancement: feature detection used for graceful fallback",
+        "Screen readers announce dialog correctly via native dialog role"
+      ],
+      "technicalNotes": [
+        "Reference: https://developer.chrome.com/blog/dialog-closedby",
+        "Combine with ::backdrop CSS for branded overlay",
+        "Remove duplicate JS click-outside listeners after migration"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
     },
     {
       "id": "US-190",
@@ -4205,6 +4502,30 @@
       "passes": true
     },
     {
+      "id": "US-202",
+      "title": "Add Google Search Console Search Insights and branded vs non-branded filter",
+      "priority": "medium",
+      "description": "Google Search Console's 2025 updates introduced Search Console Insights (combining GSC + GA4 data) and a Branded vs Non-Branded Queries filter in the Performance report. Setting up the GA4 integration and configuring the brand query filter allows the team to separate direct brand searches from organic discovery traffic — essential for measuring the ROI of Visit Malaysia 2026 promotional campaigns and OTA displacement strategy.",
+      "acceptanceCriteria": [
+        "GA4 property is linked to Google Search Console via the 'Associations' section in GA4",
+        "Search Console Insights report is accessible and shows content performance data merged with GA4",
+        "Branded query filter is configured in GSC Performance report to separate 'pelangi' and 'pelangi capsule' queries from non-branded traffic",
+        "Monthly report template created in Looker Studio showing: non-branded impression trend, click-through rate, and top non-branded queries",
+        "AI-powered configuration feature in Performance report is tested for at least 3 analysis queries"
+      ],
+      "technicalNotes": [
+        "GSC + GA4 integration: link via GA4 > Admin > Search Console Links",
+        "Branded filter: GSC Performance > Queries filter > Does not contain 'pelangi'",
+        "New AI-powered configuration announced December 2025: https://developers.google.com/search/blog/2025/12/ai-powered-configuration",
+        "Search Console Insights blog: https://developers.google.com/search/blog/2025/06/search-console-insights",
+        "Looker Studio GSC connector: https://lookerstudio.google.com/datasources/create"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
       "id": "US-203",
       "title": "Add Visit Malaysia 2026 campaign landing page with structured event data",
       "priority": "medium",
@@ -4249,6 +4570,100 @@
       "dependencies": [],
       "estimatedComplexity": "small",
       "passes": true
+    },
+    {
+      "id": "US-205",
+      "title": "Add PWA App Badge API for unread booking inquiry notifications",
+      "priority": "low",
+      "description": "The Badging API (navigator.setAppBadge) allows an installed PWA to show a numeric badge on its home screen icon — similar to native app notification badges — without requiring a disruptive push notification. When a new booking inquiry or WhatsApp message arrives, the badge count increments, giving staff a non-intrusive signal. The API is supported in Chrome, Edge, and Safari on installed PWAs.",
+      "acceptanceCriteria": [
+        "navigator.setAppBadge(count) is called when a new booking inquiry is received (via push message or polling)",
+        "navigator.clearAppBadge() is called when the staff user opens and reads all pending inquiries",
+        "Badge displays correctly on the PWA home screen icon on Android (Chrome) and iOS (Safari) when the app is installed",
+        "Graceful degradation: badge API calls are wrapped in feature detection (if ('setAppBadge' in navigator))",
+        "Badge count does not exceed actual unread count (no stale badge after read)"
+      ],
+      "technicalNotes": [
+        "Badging API MDN: https://developer.mozilla.org/en-US/docs/Web/API/Badging_API",
+        "Chrome capability guide: https://developer.chrome.com/docs/capabilities/web-apis/badging-api",
+        "On Android, Chrome automatically shows a badge when there is an unread notification — manual setAppBadge may be redundant; test both flows",
+        "Requires HTTPS and the app to be installed (in standalone/fullscreen display mode)",
+        "Combine with the existing Web Push notification flow for maximum reliability"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-206",
+      "title": "Implement WCAG 2.2 SC 2.4.12 Focus Not Obscured (Enhanced) – Level AAA",
+      "priority": "low",
+      "description": "WCAG 2.2 SC 2.4.12 (Level AAA) extends the Level AA requirement by requiring that NO part of the keyboard focus indicator is hidden by author-created content — not just the minimum threshold required by 2.4.11. While AAA is optional, achieving it signals a strong accessibility commitment on the Accessibility Statement page and prevents fully-obscured focus issues with sticky navbars, chat widgets, or cookie banners.",
+      "acceptanceCriteria": [
+        "Manual keyboard tab-through of the entire page with sticky header, cookie banner, and WhatsApp FAB all visible simultaneously shows no focus indicator fully obscured",
+        "CSS ensures focused elements scroll into view clear of any sticky/fixed UI (scroll-padding-top accounts for fixed header height)",
+        "Axe-core or Deque manual test report documents zero focus-obscured failures",
+        "Accessibility Statement page updated to claim WCAG 2.2 SC 2.4.12 AAA compliance"
+      ],
+      "technicalNotes": [
+        "SC 2.4.11 (AA) allows partial obscuring; SC 2.4.12 (AAA) requires the entire focus indicator to be visible",
+        "Common fix: scroll-padding-top: var(--header-height) on the :root element",
+        "Also ensure z-index of focused interactive elements > z-index of sticky overlays when focused",
+        "W3C WAI new-in-22: https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/",
+        "TestParty implementation guide: https://testparty.ai/blog/wcag-22-new-success-criteria"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-207",
+      "title": "Add CSS @layer cascade layers for design token organisation",
+      "priority": "low",
+      "description": "As the stylesheet grows with Tailwind utilities, custom components, and third-party widget overrides, specificity conflicts become harder to manage. CSS @layer defines an explicit cascade order (reset < base < tokens < components < utilities < overrides) that makes it predictable which rule wins. This is a refactoring story with no visible user-facing change but significantly reduces debugging time for future development iterations.",
+      "acceptanceCriteria": [
+        "@layer declaration order defined in the root CSS entry point: reset, base, tokens, components, utilities, overrides",
+        "All custom component styles (hero, room card, booking bar) placed in the components layer",
+        "Third-party widget overrides (WhatsApp chat, cookie banner) placed in the overrides layer",
+        "No existing visual appearance changes after migration (pixel-diff screenshot comparison passes)",
+        "Tailwind CSS utilities continue to work correctly within the layer hierarchy"
+      ],
+      "technicalNotes": [
+        "Tailwind v4 uses @layer internally — ensure Tailwind layers are declared before custom component layers",
+        "@layer guide: https://developer.mozilla.org/en-US/docs/Web/CSS/@layer",
+        "Supported in all major browsers since 2022: Chrome 99+, Firefox 97+, Safari 15.4+",
+        "Cascade Layers guide: https://design.dev/guides/css-cascade-layers/",
+        "CSS Tricks complete guide: https://css-tricks.com/css-cascade-layers/"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false,
+      "model": "sonnet"
+    },
+    {
+      "id": "US-208",
+      "title": "Implement Next.js 16 DevTools MCP server for development debugging",
+      "priority": "low",
+      "description": "Next.js 16 ships a built-in MCP (Model Context Protocol) server at http://localhost:3000/_next/mcp that exposes live application state — errors, logs, page metadata, Server Actions — to AI coding agents. Enabling and configuring the next-devtools-mcp package in the project's .claude/mcp-config (or equivalent) allows Claude Code to introspect running server state during development without manual context gathering.",
+      "acceptanceCriteria": [
+        "next-devtools-mcp package added to devDependencies and configured in the project's MCP configuration",
+        "AI agent can successfully call get_errors, get_logs, get_page_metadata via the MCP server in development",
+        "MCP server is NOT accessible in production builds (guarded by NODE_ENV !== 'production')",
+        "Documentation note added to CLAUDE.md or .spiral/DEV_NOTES.md explaining how to use the MCP during development"
+      ],
+      "technicalNotes": [
+        "Next.js 16 MCP server auto-starts at http://localhost:3000/_next/mcp when dev server runs",
+        "GitHub repo: https://github.com/vercel/next-devtools-mcp",
+        "Next.js docs: https://nextjs.org/docs/app/guides/mcp",
+        "Available tools: get_errors, get_logs, get_page_metadata, get_project_metadata, get_server_action_by_id",
+        "Blog: https://nextjs.org/blog/agentic-future"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
     },
     {
       "id": "US-209",
@@ -4400,6 +4815,28 @@
       "passes": true
     },
     {
+      "id": "US-216",
+      "title": "Malaysia Online Safety Act 2025 – Add safety reporting mechanism for user-submitted content",
+      "priority": "medium",
+      "description": "Malaysia's Online Safety Act 2025 (Act 866) came into force 1 January 2026 and requires application service providers and content access service providers to provide tools for users to report harmful content and to publish safety guidelines. If the hostel website collects reviews, comments, or user-generated content (e.g., a guestbook or blog comment system), a visible 'Report harmful content' mechanism and a published safety/content policy page is required to avoid penalties of up to RM 10 million.",
+      "acceptanceCriteria": [
+        "If any user-generated content (reviews, comments) is hosted on the site, a 'Report Content' link or button is visible adjacent to each piece of UGC",
+        "A Content Safety / Community Guidelines page (or section in Terms & Conditions) is published describing what constitutes harmful content and how reports are processed",
+        "A designated contact (email or form) for safety reports is published and accessible within two clicks from any page with UGC",
+        "If the site does not host UGC (reviews embedded via third-party widgets only), document this in the Terms & Conditions to clarify platform scope",
+        "Legal review confirms whether the site falls under CASP or ASP category under the Online Safety Act 2025"
+      ],
+      "technicalNotes": [
+        "Online Safety Act 2025 enforcement began January 2026: https://www.malaysianwireless.com/2026/01/mcmc-enforcing-online-safety-act-platforms/",
+        "Act text and key takeaways: https://www.lexology.com/library/detail.aspx?g=64ccdf47-1b26-4a22-86ed-d14f731176e4",
+        "If the hostel only embeds Google Reviews or Booking.com reviews via iframe/API, the UGC liability may fall on those platforms — clarify scope first"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
       "id": "US-217",
       "title": "Add CSS scroll-driven animations for section reveals (baseline widely available)",
       "priority": "medium",
@@ -4465,6 +4902,143 @@
       "dependencies": [],
       "estimatedComplexity": "medium",
       "passes": true
+    },
+    {
+      "id": "US-220",
+      "title": "Implement Next.js 16.1 Turbopack filesystem caching for faster local dev builds",
+      "priority": "medium",
+      "description": "Next.js 16.1 (December 2025) introduced Turbopack filesystem caching for development, delivering 50%+ faster cold-start rebuild times by persisting the compilation cache across restarts. This improves developer velocity significantly on the hostel website project, which has growing page count and schema components. Enabling it requires opting in via next.config.ts.",
+      "acceptanceCriteria": [
+        "next.config.ts enables Turbopack filesystem caching via the experimental.turbopackPersistentCaching flag (or stable API when available)",
+        "Cold-start dev server time (npm run dev after cache clear) is measured before and after — improvement of at least 30% documented",
+        "Hot reload time for a typical page (home page with schema components) is measured and confirmed ≤2s",
+        "No build errors or cache invalidation issues occur after config changes or dependency updates",
+        "The .next/cache directory is excluded from version control but preserved between dev sessions"
+      ],
+      "technicalNotes": [
+        "Next.js 16.1 announcement: https://nextjs.org/blog/next-16-1",
+        "Turbopack filesystem caching opt-in: https://nextjs.org/docs/app/api-reference/turbopack",
+        "StaticMania review of 16.1: https://staticmania.com/blog/next.js-16.1-review",
+        "Install size is 20MB smaller in 16.1 due to simplified Turbopack caching layer — also upgrade if not already on 16.1"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "sonnet"
+    },
+    {
+      "id": "US-221",
+      "title": "Use CSS contrast-color() for automatic accessible text on dynamic background colours",
+      "priority": "low",
+      "description": "The CSS contrast-color() function (shipping in Safari and Firefox 2025, Interop 2026 focus area) automatically selects black or white text based on which provides greater contrast against a given background colour variable. For a hostel site with a colour-theming system or dynamic category badges (room type labels, availability indicators), this eliminates manual contrast testing for generated colours and enforces WCAG 1.4.3 compliance by construction.",
+      "acceptanceCriteria": [
+        "Dynamic colour elements (room type badges, availability pills, promo banners) use color: contrast-color(var(--badge-bg)) to automatically pick readable text colour",
+        "@supports (color: contrast-color(red)) is used to wrap the rule; a hardcoded high-contrast fallback is provided for unsupported browsers",
+        "Visual test in Safari 18+ and Firefox 140+ confirms text is always black or white as appropriate against each badge colour",
+        "No hardcoded light/dark text class needs to be manually added when a new badge colour is introduced",
+        "Lighthouse accessibility score is maintained at 95+ with no new colour-contrast violations"
+      ],
+      "technicalNotes": [
+        "MDN reference: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/contrast-color",
+        "WebKit blog on contrast-color(): https://webkit.org/blog/16929/contrast-color/",
+        "Note: contrast-color() only returns black or white — suitable for badge text, not for arbitrary design accent colours",
+        "Interop 2026 focus area: https://web.dev/blog/interop-2026"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-222",
+      "title": "Implement CSS Custom Highlight API for in-page search result highlighting",
+      "priority": "low",
+      "description": "The CSS Custom Highlight API (cross-browser baseline as of Firefox 140, June 2025) allows programmatic highlighting of arbitrary text ranges via ::highlight() pseudo-elements without DOM mutation. This is ideal for enhancing the existing Fuse.js-powered in-page search: instead of wrapping matched characters in <mark> span elements (which causes layout thrash and ARIA issues), use the Highlight API for zero-DOM-mutation, performance-optimised match highlighting.",
+      "acceptanceCriteria": [
+        "In-page search (Fuse.js) highlights matched text using CSS.highlights.set() and ::highlight(search-result) rather than injecting <mark> or <span> elements into the DOM",
+        "@supports (CSS: highlights) guard is present; existing <mark>-based highlighting is the fallback for unsupported browsers",
+        "Highlighted text is visually distinct (background colour + sufficient contrast) and announced to screen readers via aria-label on the search result count",
+        "Performance profiling shows no layout recalculation triggered by highlight updates during search input",
+        "Manual test in Chrome, Firefox 140+, and Safari 17.2+ confirms highlights appear and clear correctly"
+      ],
+      "technicalNotes": [
+        "MDN CSS Custom Highlight API: https://developer.mozilla.org/en-US/docs/Web/API/CSS_Custom_Highlight_API",
+        "Firefox 140 shipped support June 2025 — Firefox limitation: does not support text-decoration or text-shadow on ::highlight()",
+        "FreeCodeCamp tutorial: https://www.freecodecamp.org/news/how-to-programmatically-highlight-text-with-the-css-custom-highlight-api"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-223",
+      "title": "Add LodgingReservation action schema to enable Gmail reservation cards for confirmed bookings",
+      "priority": "low",
+      "description": "Google's Gmail structured data for Hotel Reservations allows booking confirmation emails to render as rich reservation cards in Gmail, showing check-in/check-out dates, room name, and address in a visual card that users can access directly from their inbox. This is a distinct schema type (schema.org/LodgingReservation embedded in email HTML) from the website's JSON-LD schema, and is triggered by the transactional emails sent after booking confirmation via Resend.",
+      "acceptanceCriteria": [
+        "Booking confirmation email HTML sent via Resend includes a JSON-LD <script type='application/ld+json'> block with @type: LodgingReservation",
+        "Required fields are present: reservationId, reservationStatus, checkinDate, checkoutDate, underName (guest), reservationFor (LodgingBusiness with name, address, telephone)",
+        "Test email sent to a Gmail account displays the reservation card in the inbox (Action envelope icon visible)",
+        "The confirmation email passes Google's Email Markup Tester at https://www.google.com/webmasters/markup-tester/",
+        "reservationStatus is dynamically set to 'https://schema.org/ReservationConfirmed' for confirmation emails"
+      ],
+      "technicalNotes": [
+        "Google Hotel Reservation Gmail reference: https://developers.google.com/workspace/gmail/markup/reference/hotel-reservation",
+        "Schema.org LodgingReservation type: https://schema.org/LodgingReservation",
+        "This schema goes in the email template (Resend React Email component), not in the website pages",
+        "Gmail requires the sending domain to be registered with Google for Actions in Inbox — register at https://developers.google.com/gmail/markup/registering-with-google"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false,
+      "model": "sonnet"
+    },
+    {
+      "id": "US-224",
+      "title": "Add CSS media pseudo-classes for audio/video player state styling",
+      "priority": "low",
+      "description": "CSS media state pseudo-classes (:playing, :paused, :muted, :buffering, :stalled) are an Interop 2026 focus area, enabling CSS-only styling of media player states without JavaScript event listeners. If the hostel site includes a promotional video (e.g., on the homepage hero or a tour video), these pseudo-classes can provide immediate visual feedback on play/pause state via CSS alone, reducing JavaScript event wiring.",
+      "acceptanceCriteria": [
+        "Any <video> or <audio> element on the site has a visible play/pause indicator that uses :playing and :paused pseudo-classes for its visual state",
+        "@supports selector(:playing) is used as a feature guard; JavaScript-based class toggling is the fallback",
+        "The :muted pseudo-class styles a muted icon indicator on auto-playing muted hero videos",
+        "No additional JavaScript event listeners (play, pause, volumechange) are needed for the CSS-driven state indicators",
+        "Manual test in Chrome and Safari confirms correct pseudo-class activation on play/pause interaction"
+      ],
+      "technicalNotes": [
+        "Interop 2026 focus area: https://web.dev/blog/interop-2026",
+        "MDN :playing pseudo-class: https://developer.mozilla.org/en-US/docs/Web/CSS/:playing",
+        "Browser support is currently Chrome-only for most; @supports guard is essential",
+        "Only applicable if the site includes a native HTML <video> element — not applicable to YouTube/Vimeo iframes"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-225",
+      "title": "Add CSS attr() type-safe attribute bindings for dynamic data display",
+      "priority": "low",
+      "description": "Interop 2026 focuses on expanding CSS attr() beyond pseudo-element content to support typed attribute values (numbers, colours, lengths) in most CSS properties. This enables data-driven styling patterns — e.g., a room card's occupancy indicator bar width or an availability meter driven purely by a data-* attribute without JavaScript style manipulation. This reduces JavaScript for purely presentational state changes.",
+      "acceptanceCriteria": [
+        "At least one component (e.g., an occupancy progress bar or a rating star fill) uses typed CSS attr() — e.g., width: attr(data-fill %, 0%) — for its visual state",
+        "@supports (width: attr(data-x %)) is used as a feature guard; a JavaScript/inline-style fallback is provided",
+        "The data attribute value is set from the server-rendered props in the React component, not by client JavaScript at runtime",
+        "No layout shifts occur when the attribute-driven CSS value is applied",
+        "Manual test in Chrome 135+ and Safari 18+ confirms typed attr() works; fallback confirmed in Firefox if support is not yet shipped"
+      ],
+      "technicalNotes": [
+        "Interop 2026 CSS attr() focus area: https://web.dev/blog/interop-2026",
+        "Current support: typed attr() is behind a flag in some browsers; @supports guard is mandatory",
+        "MDN CSS attr(): https://developer.mozilla.org/en-US/docs/Web/CSS/attr",
+        "Use sparingly — only for genuinely data-driven presentational properties, not for logic that belongs in JS"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
     },
     {
       "id": "US-226",
@@ -4599,6 +5173,29 @@
       "passes": true
     },
     {
+      "id": "US-232",
+      "title": "Implement HTTP 103 Early Hints for critical resource preloading on Vercel",
+      "priority": "medium",
+      "description": "HTTP 103 Early Hints allows the server to send `Link: preload` and `Link: preconnect` headers before the full HTML response, letting browsers start fetching the hero image and fonts while the server finishes rendering. Vercel supports Early Hints natively for Next.js App Router. For a hostel site with a large LCP hero image and third-party fonts, Early Hints can reduce perceived load time by 200–500ms on first visit.",
+      "acceptanceCriteria": [
+        "Early Hints verified as enabled for the Vercel deployment (default in recent Next.js + Vercel)",
+        "Chrome DevTools Network tab shows a `103` status response before the `200` HTML response on first load",
+        "WebPageTest trace confirms hero image preload begins before HTML download completes",
+        "LCP measured in PageSpeed Insights does not regress; lab measurement ideally improves",
+        "Preloaded resources in `<head>` match the Early Hints `Link` headers (no mismatch that wastes a preload)"
+      ],
+      "technicalNotes": [
+        "Next.js App Router automatically generates Early Hints from `<link rel='preload'>` tags in `<head>`",
+        "Vercel Edge Network delivers the 103 response — enabled automatically for production deployments",
+        "Works best for stable, large resources (hero images, web fonts) — not for frequently changing assets",
+        "Reference: https://vercel.com/docs/edge-network/early-hints | https://developer.chrome.com/blog/early-hints"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
       "id": "US-233",
       "title": "Adopt CSS @property for type-safe, animatable design tokens",
       "priority": "medium",
@@ -4665,6 +5262,143 @@
       "passes": true
     },
     {
+      "id": "US-236",
+      "title": "Add Subresource Integrity (SRI) hashes for all third-party CDN scripts",
+      "priority": "medium",
+      "description": "Subresource Integrity (SRI) ensures that externally hosted scripts and stylesheets have not been tampered with by a CDN compromise or man-in-the-middle attack. SRI is an OWASP-recommended defence and complements the existing CSP. It is especially relevant for a hostel site handling enquiry forms and payment information.",
+      "acceptanceCriteria": [
+        "All third-party `<script src='...'>` and `<link rel='stylesheet' href='...'>` tags include `integrity` and `crossorigin` attributes",
+        "SRI hashes use `sha384` or `sha512` algorithm",
+        "Browser console shows no SRI integrity failures in development or production",
+        "Process documented for updating hashes when third-party CDN resources change version",
+        "Google Fonts served via `next/font` (self-hosted) instead — eliminates SRI maintenance for font CDN"
+      ],
+      "technicalNotes": [
+        "Generate hashes: `openssl dgst -sha384 -binary resource.js | openssl base64 -A` or use srihash.com",
+        "Next.js `<Script>` component does not natively support `integrity` — use custom `<script>` in layout head for third-party scripts requiring SRI",
+        "Self-hosting fonts via `next/font` eliminates the Google Fonts CDN SRI maintenance burden entirely",
+        "Reference: https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity | https://cheatsheetseries.owasp.org/cheatsheets/Third_Party_Javascript_Management_Cheat_Sheet.html"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-237",
+      "title": "Adopt CSS @scope for component-level style isolation",
+      "priority": "low",
+      "description": "CSS `@scope` (Baseline Newly Available, 2025–2026) provides true selector scoping in native CSS, eliminating naming-collision risk for complex components without CSS Modules or CSS-in-JS overhead. On a Tailwind-heavy project, `@scope` fills the gap for component-specific overrides that do not map cleanly to utility classes and currently require specificity hacks or `!important`.",
+      "acceptanceCriteria": [
+        "At least one complex UI component (e.g., room card, booking widget) uses `@scope` for bespoke styles",
+        "Scoped styles do not leak to sibling or parent components — verified via DOM inspection",
+        "Tailwind utility classes outside `@scope` blocks continue to apply normally",
+        "Cross-browser render verified in Chrome, Firefox 128+, and Safari 17.4+",
+        "No CSS specificity conflicts introduced by the scoped rules"
+      ],
+      "technicalNotes": [
+        "`@scope (.component) { :scope .child { } }` — scoping root is the selector in parentheses",
+        "`@scope` reached Baseline Newly Available in 2025 after Firefox 128 shipped support",
+        "Pairs well with Tailwind CSS 4 which uses CSS cascade layers internally",
+        "Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/@scope"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-238",
+      "title": "Add RSS auto-discovery <link> tag in HTML head for blog feed",
+      "priority": "low",
+      "description": "The RSS feed at `/feed.xml` exists, but browsers and feed aggregators discover it via a `<link rel='alternate' type='application/rss+xml'>` tag in the HTML `<head>` — a separate requirement from the feed file itself. Without the discovery link, readers using Feedly, Inoreader, or browser extensions cannot auto-detect the feed, reducing subscription rates and content syndication reach.",
+      "acceptanceCriteria": [
+        "Root layout `<head>` contains `<link rel='alternate' type='application/rss+xml' title='Pelangi Capsule Hostel Blog' href='/feed.xml'>`",
+        "Feed reader browser extensions (e.g., Feedbro, RSS Feed Reader) auto-detect the feed when visiting the site",
+        "The `href` resolves to a valid, parseable RSS/Atom document",
+        "No duplicate discovery links on inner pages — root layout only"
+      ],
+      "technicalNotes": [
+        "Add via Next.js `metadata` in root `layout.tsx`: `alternates: { types: { 'application/rss+xml': '/feed.xml' } }`",
+        "Next.js 15+ generates the `<link>` tag automatically from the `alternates.types` metadata key",
+        "Also add `application/atom+xml` type if an Atom feed exists alongside the RSS feed",
+        "Reference: https://nextjs.org/docs/app/api-reference/functions/generate-metadata#alternates"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-239",
+      "title": "Implement Background Sync API for resilient offline enquiry form submission",
+      "priority": "low",
+      "description": "The Background Sync API allows form submissions that fail due to network loss to be automatically retried when connectivity is restored, without requiring the user to resubmit. For a hostel where prospective guests on mobile near JB customs are on unstable 3G connections, a silently failed enquiry form is a lost booking. Background Sync prevents this drop-off transparently.",
+      "acceptanceCriteria": [
+        "Contact/enquiry form submission failures on a disconnected device are queued via a registered service worker sync event",
+        "When connectivity is restored, the service worker automatically retries the POST request without user action",
+        "User sees a 'We'll send your message when you're back online' indicator when submitting offline",
+        "Sync confirmation (success/failure after retry) surfaced via a toast notification or ARIA live region",
+        "Tested in Chrome mobile DevTools with offline mode toggled mid-submission"
+      ],
+      "technicalNotes": [
+        "Background Sync API is available in Chrome, Edge, and Opera — not Safari; use graceful fallback for unsupported browsers",
+        "Register sync in service worker: `self.addEventListener('sync', event => { if (event.tag === 'contact-form') { /* retry */ } })`",
+        "Store failed submissions in IndexedDB for the service worker to read on retry",
+        "Extend existing PWA service worker — do not replace it; reference: https://developer.chrome.com/docs/workbox/modules/workbox-background-sync"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-240",
+      "title": "Implement adaptive loading via navigator.connection.saveData and effectiveType",
+      "priority": "low",
+      "description": "The Network Information API exposes `navigator.connection.saveData` (Data Saver mode) and `effectiveType` ('2g', '3g', '4g'). Budget travellers crossing from Singapore often browse on limited mobile data. Serving full-resolution gallery images and autoplay video to Data Saver users increases bounce rates and costs guests money. Adaptive loading respects these signals for a better, cost-conscious experience.",
+      "acceptanceCriteria": [
+        "Gallery images served at reduced resolution when `navigator.connection.saveData === true`",
+        "Autoplay video and non-essential animations disabled for `effectiveType === '2g'` or `saveData === true`",
+        "No visual degradation for users on 4G/WiFi — adaptive logic only activates under low-bandwidth signals",
+        "Feature-detected safely — component renders normally if Network Information API is unsupported (Safari, Firefox)",
+        "A visible 'Load full quality' button offered to Data Saver users who opt in"
+      ],
+      "technicalNotes": [
+        "Network Information API is supported in Chrome, Edge, and Opera — feature-detect with `if ('connection' in navigator)`",
+        "React hook pattern: `const { saveData, effectiveType } = useNetworkInformation()` (use a custom hook wrapping navigator.connection)",
+        "For Next.js: read in a Client Component, pass as props to image/video components to select quality level",
+        "Reference: https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation | https://web.dev/articles/adaptive-loading-with-service-workers"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-241",
+      "title": "Add Open Graph video metadata for hostel promotional video content",
+      "priority": "low",
+      "description": "Pages featuring a YouTube embed (e.g., check-in walkthrough, hostel tour) can be enriched with Open Graph video tags (`og:video`, `og:video:type`, `og:video:width`, `og:video:height`). Facebook, WhatsApp, and LinkedIn display a playable video preview when the page is shared, dramatically increasing engagement compared to a static image — especially effective for backpacker Facebook groups and travel WhatsApp communities.",
+      "acceptanceCriteria": [
+        "Pages with embedded promotional video include `og:video` meta tag pointing to the video URL",
+        "`og:video:type` set to the correct MIME type for the embed format",
+        "`og:video:width` and `og:video:height` set to match actual video dimensions",
+        "Facebook Sharing Debugger confirms video preview renders when the page URL is scraped",
+        "WhatsApp link preview tested — video thumbnail shown on supported clients"
+      ],
+      "technicalNotes": [
+        "Next.js `generateMetadata` supports `openGraph.videos` array in App Router",
+        "For YouTube: use the YouTube video page URL as `og:video`; Facebook's crawler handles YouTube URLs specially",
+        "Alternatively, host a short `.mp4` clip directly on the domain for maximum cross-platform support",
+        "Reference: https://ogp.me/#type_video | https://nextjs.org/docs/app/api-reference/functions/generate-metadata#opengraph"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
       "id": "US-242",
       "title": "Blog post: How Malaysians Can Find Jobs in Singapore (2026 Guide)",
       "description": "Add a comprehensive SEO-optimised blog post on how Malaysians can find jobs in Singapore, covering job portals, recruitment agencies, networking, work pass eligibility, and step-by-step tips.",
@@ -4724,11 +5458,7 @@
         "Keep content HTML under 8000 characters"
       ],
       "passes": true,
-      "model": "haiku",
-      "last_attempted": "2026-04-13T19:55:51Z",
-      "_phaseI": {
-        "diagnosisBlock": "## Current State\nThe pelangi-website repo has a Next.js blog system stored in `site/src/data/blog/posts.ts`. Each blog post is a TypeScript object with metadata (slug, title, date, category, author, readTime) and HTML content. The `readingTimeMinutes` field is computed automatically from word count.\n\n## Problem Identified\nUS-243 requires adding a blog post about Singapore Work Passes for Malaysians with a comparison table (EP, S Pass, Work Permit) and FAQ section, all under 8000 characters.\n\n## Planned Changes\n1. Add new blog post object to `rawPosts` array in `site/src/data/blog/posts.ts` with:\n   - slug: \"singapore-work-pass-guide-malaysians\"\n   - category: \"Career & Work\"\n   - date: \"2026-04-14\"\n   - readTime: \"12 min read\"\n   - content: HTML with comparison table (3 pass types with salary minimums) and FAQ (3+ Q&As)\n2. Verify HTML content is under 8000 characters\n3. Run `npm run build` to validate\n\n<plan>\n{\n  \"files_to_create\": [],\n  \"files_to_modify\": [\"site/src/data/blog/posts.ts\"],\n  \"functions_to_add\": [],\n  \"estimated_loc\": 60\n}\n</plan>\n\nNow let me implement the blog post:\nLet me check the exact formatting around the closing bracket:\nNow let me verify the content size and run the build:\nLet me check the content length by reading what we just added:\nPerfect! Content is 6,066 characters (under 8,000 limit). Now let's run the build:\nExcellent! The build passed. Let me verify the TypeScript compilation:\nPerfect! TypeScript check passed with no errors. Let me verify the acceptance criteria one more time by checking the blog posts file contains all required fields:\nExcellent! All acceptance criteria verified:\n- ✅ Slug: `singapore-work-pass-guide-malaysians`\n- ✅ Category: `Career & Work`\n- ✅ Date: `2026-04-14`\n- ✅ ReadTime: `12 min read`\n- ✅ Comparison table with 3 pass types (EP: S$5000, S Pass: S$3150, Work Permit)\n- ✅ FAQ section with 5 Q&As\n- ✅ Content: 6,066 characters (< 8,000)\n- ✅ Build passes\n- ✅ TypeScript check passes\n\nLet me commit:\nNow let me mark the story as complete in prd.json:\nPerfect! Now let me update progress.txt to document the completion:\n## Summary"
-      }
+      "model": "haiku"
     },
     {
       "id": "US-244",
@@ -4854,6 +5584,34 @@
       "model": "haiku"
     },
     {
+      "id": "US-248",
+      "title": "Blog post: Lalamove Driver Guide Malaysia — Earn Flexible Income in JB",
+      "description": "Guide to sign up as Lalamove driver in JB. Vehicle types, registration, earnings RM25-80/job, flexibility benefits, comparison with Foodpanda/Grab.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "gig-economy"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'lalamove-driver-malaysia-jb-guide', category 'Career & Work'",
+        "Registration steps",
+        "readTime '5 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 5000 characters"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
       "id": "US-249",
       "title": "Blog post: 5 Gig Jobs for Malaysians Waiting for Singapore Work Approval",
       "description": "5 gig economy jobs in JB while waiting for Singapore work pass: Foodpanda, Lalamove, Grab, part-time F&B, online freelancing. Each with requirements, earnings, pros/cons.",
@@ -4914,6 +5672,96 @@
       "model": "haiku"
     },
     {
+      "id": "US-251",
+      "title": "Blog post: Getting Around JB Without a Car — Transport Guide for Backpackers",
+      "description": "JB transport guide: Grab RM5-15, Rapid JB buses, walking from Taman Pelangi, Singapore bus crossing. Price comparison table Grab vs Bus vs Taxi.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "backpacker",
+        "tourist",
+        "transport"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'getting-around-johor-bahru-no-car-guide', category 'Travel Tips'",
+        "Price comparison table",
+        "readTime '5 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 5000 characters"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-252",
+      "title": "Blog post: JB Shopping Guide — Where to Find Cheap Deals in Johor Bahru",
+      "description": "Shopping guide: AEON Tebrau, Paradigm Mall, Pelangi Leisure Mall, KSL City, Larkin wet market, Pasar Malam. What to buy, price comparison JB vs Singapore.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "backpacker",
+        "tourist",
+        "shopping"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'jb-shopping-guide-cheap-deals', category 'Things To Do'",
+        "Price comparison section",
+        "readTime '6 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 5000 characters"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-253",
+      "title": "Blog post: 5 Easy Day Trips from Johor Bahru Under 2 Hours (2026)",
+      "description": "5 day trips from JB: Singapore (30min), Desaru Coast (1hr), Kota Tinggi Waterfalls (45min), Kukup (1hr), Gunung Pulai (30min). Transport, cost, highlights each.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "backpacker",
+        "tourist",
+        "day-trips"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'day-trips-from-johor-bahru', category 'Travel Tips'",
+        "5 destinations covered",
+        "readTime '7 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 5000 characters"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
       "id": "US-254",
       "title": "New page: /singapore-jobs — Malaysian Job Seekers Resource Hub with FAQ Schema",
       "description": "Create site/src/app/singapore-jobs/page.tsx with FAQPage JSON-LD, work pass types overview, links to job blog posts, CTA to book. Update sitemap.ts.",
@@ -4940,6 +5788,191 @@
         "sitemap.ts /singapore-jobs priority 0.8",
         "Header/Footer components used",
         "npm run build passes"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-255",
+      "title": "Add BreadcrumbList JSON-LD schema to blog post pages",
+      "description": "Add BreadcrumbList to site/src/app/blog/[slug]/page.tsx: Home > Blog > Category > Post Title, dynamically generated from post data.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "geo",
+        "seo",
+        "schema",
+        "structured-data"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/app/blog/[slug]/page.tsx"
+      ],
+      "acceptanceCriteria": [
+        "BreadcrumbList JSON-LD in blog [slug] page",
+        "4-level breadcrumb with URLs",
+        "Valid JSON",
+        "npm run build passes"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-256",
+      "title": "Update llms.txt with job seeker, visa run, and gig economy content sections",
+      "description": "Update site/src/app/llms.txt/route.ts to add sections for: Malaysian job seekers, visa run content, gig economy guides. Add /visa-run and /singapore-jobs to Site Pages.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "geo",
+        "seo",
+        "llms-txt"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/app/llms.txt/route.ts"
+      ],
+      "acceptanceCriteria": [
+        "Job seeker content section added",
+        "Visa run section added",
+        "Site Pages updated with /visa-run and /singapore-jobs",
+        "npm run build passes"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-257",
+      "title": "Add FAQ schema to /faq page and expand with job seeker questions",
+      "description": "Add FAQPage JSON-LD to site/src/app/faq/page.tsx. New Q&As: luggage storage while working SG, weekly rates, distance to JB Sentral, ironing facilities.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "geo",
+        "seo",
+        "schema",
+        "faq"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/app/faq/page.tsx"
+      ],
+      "acceptanceCriteria": [
+        "FAQPage JSON-LD in /faq page with 6+ Q&A pairs",
+        "New job-seeker FAQ entries displayed",
+        "Valid JSON-LD",
+        "npm run build passes"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-258",
+      "title": "Add Malaysian workers resource section to /guide page",
+      "description": "Add 'For Malaysians Working In or Near Singapore' section to site/src/app/guide/page.tsx with links to /singapore-jobs, /visa-run, commuter guide, gig jobs posts.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "geo",
+        "seo",
+        "internal-linking"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/app/guide/page.tsx"
+      ],
+      "acceptanceCriteria": [
+        "New section on /guide page with 4+ descriptive links",
+        "Tailwind styled (card or bordered section)",
+        "npm run build passes"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-259",
+      "title": "Blog post: JB Night Markets and Weekend Bazaars — Complete Guide 2026",
+      "description": "JB night markets guide: Kempas, Larkin, Taman Pelangi pasar malam, AEON weekend bazaar. Days/hours, what to find, price range, transport from hostel.",
+      "priority": "low",
+      "estimatedComplexity": "small",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "backpacker",
+        "tourist"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'jb-night-markets-weekend-bazaars-guide', category 'Things To Do'",
+        "4+ night markets covered",
+        "readTime '6 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 5000 characters"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-260",
+      "title": "Blog post: JB Cultural Sites Guide — Glass Temple and Beyond",
+      "description": "Cultural tourism: Arulmigu Sri Rajakaaliamman Glass Temple (RM3), JB Old Chinese Temple, Sultan Abu Bakar Mosque, Bangunan Sultan Ibrahim. Hours, admission, distance from hostel.",
+      "priority": "low",
+      "estimatedComplexity": "small",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "backpacker",
+        "tourist",
+        "culture"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'jb-cultural-sites-glass-temple-guide', category 'Things To Do'",
+        "4 sites with hours/admission",
+        "Distance from hostel noted",
+        "readTime '6 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 5000 characters"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-261",
+      "title": "Blog post: JB vs KL — Why Johor Bahru is Better for Budget Travellers",
+      "description": "Comparison post JB vs KL: cost, Singapore proximity, job seeker angle, tourist attractions. HTML comparison table on 5+ metrics.",
+      "priority": "low",
+      "estimatedComplexity": "small",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "comparison"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'johor-bahru-vs-kuala-lumpur-budget-travellers', category 'Travel Tips'",
+        "HTML comparison table 5+ metrics",
+        "readTime '7 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 5000 characters"
       ],
       "passes": false,
       "model": "haiku"
