@@ -1878,6 +1878,29 @@
         "regression",
         "auto-generated"
       ]
+    },
+    {
+      "title": "[Regression Test] Blog post: 5 Gig Jobs for Malaysians Waiting for Singapore Work Approval",
+      "description": "Write regression test to guard against future breakage of US-249. Story description: 5 gig economy jobs in JB while waiting for Singapore work pass: Foodpanda, Lalamove, Grab, part-time F&B, online freelancing. Each with requirements, earnings, pros/cons.",
+      "acceptanceCriteria": [
+        "Regression test covers core observable behaviour of US-249",
+        "Test would reliably fail if the US-249 feature were removed or broken"
+      ],
+      "technicalNotes": [
+        "Source files from US-249: site/src/data/blog/posts.ts",
+        "Run: uv run pytest tests/ -k us_249 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-249"
+      ],
+      "_source": "test-story",
+      "_testType": "regression",
+      "_forStoryId": "US-249",
+      "tags": [
+        "regression",
+        "auto-generated"
+      ]
     }
   ]
 }

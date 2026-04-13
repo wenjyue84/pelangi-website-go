@@ -2770,6 +2770,19 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[smoke] Blog post: 5 Gig Jobs for Malaysians Waiting for Singapore Work Approval",
+      "description": "Auto-generated smoke test from US-249",
+      "from_story": "US-249",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-214",
+      "created_ts": "2026-04-13T21:14:34Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }

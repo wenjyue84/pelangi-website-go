@@ -1,23 +1,21 @@
 [
   {
-    "title": "Implement /feed.xml RSS feed generator for blog posts",
+    "title": "Write Blog Post: 3-Day JB Backpacker Itinerary Under RM250 (2026)",
     "priority": "high",
-    "description": "Create RSS/Atom feed endpoint that publishes all blog posts for feed readers and content aggregators, enabling feed-based distribution and long-tail SEO.",
+    "description": "Create a detailed, budget-conscious 3-day itinerary for backpackers visiting Johor Bahru, including accommodation, food, and activities all under RM250 total budget. Include real pricing, transport tips, and local recommendations.",
     "acceptanceCriteria": [
-      "GET /feed.xml returns valid RSS 2.0 XML with proper Content-Type: application/rss+xml header",
-      "Feed includes all blog posts from lib/blog/blog-data.ts with title, description, link, pubDate, and guid",
-      "Each post link points to canonical URL (e.g., https://pelangimanager.com/blog/visa-run-guide-2026)"
+      "Blog post file created at site/src/content/blog/3-day-jb-itinerary.tsx with frontmatter: title, slug, date, author, tags, featuredImage",
+      "Itinerary structured with Day 1/2/3 sections and HowTo JSON-LD sub-schema (step-by-step breakdown)",
+      "Post appears in /blog list view with excerpt, reading time estimate, and featured image thumbnail"
     ],
     "technicalNotes": [
-      "File to create: app/feed.xml/route.ts using Next.js dynamic route with ResponseCache headers",
-      "File to create: lib/blog/feed-generator.ts exporting generateRSSFeed(posts: Post[]): string",
-      "Test command: curl http://localhost:3000/feed.xml | head -20 to verify XML declaration and channel elements",
-      "Validation: npx rss-validator at feedvalidator.org or use xmllint --format to check structure"
+      "File to create: site/src/content/blog/3-day-jb-itinerary.tsx using existing blog post template",
+      "Reuse BlogPostLayout component and existing frontmatter pattern from adjacent blog posts",
+      "Test command: npx next build && curl http://localhost:3000/blog/3-day-jb-itinerary | grep -i 'itinerary'"
     ],
     "filesTouch": [
-      "app/feed.xml/route.ts",
-      "lib/blog/feed-generator.ts",
-      "lib/blog/blog-data.ts"
+      "site/src/content/blog/3-day-jb-itinerary.tsx",
+      "site/public/images/blog/jb-itinerary-hero.jpg"
     ],
     "estimatedComplexity": "small",
     "_source": "ai-example",
@@ -25,75 +23,21 @@
     "dependencies": []
   },
   {
-    "title": "Add dynamic Open Graph images for blog posts using next/og",
-    "priority": "high",
-    "description": "Create API endpoint generating shareable OG images for blog posts with hostel branding and post title, improving social sharing CTR and SERP appearance.",
-    "acceptanceCriteria": [
-      "GET /api/og?title=Visa%20Run%20Guide&slug=visa-run-guide-2026 returns 1200x630px PNG with post title and Pelangi logo overlay",
-      "app/blog/[slug]/layout.tsx generateMetadata() includes og:image pointing to /api/og?title=X&slug=Y",
-      "Image generation completes under 500ms for all existing blog posts"
-    ],
-    "technicalNotes": [
-      "File to create: app/api/og/route.tsx using @vercel/og ImageResponse with Tailwind classes",
-      "File to modify: app/blog/[slug]/layout.tsx to add og:image in generateMetadata for social previews",
-      "Test command: curl 'http://localhost:3000/api/og?title=Test&slug=test-post' -o test.png && file test.png",
-      "Verify dimensions: npx sharp test.png or use identify command (ImageMagick)"
-    ],
-    "filesTouch": [
-      "app/api/og/route.tsx",
-      "app/blog/[slug]/layout.tsx",
-      "package.json"
-    ],
-    "estimatedComplexity": "small",
-    "_source": "ai-example",
-    "passes": false,
-    "dependencies": []
-  },
-  {
-    "title": "Create blog category landing pages for long-tail SEO targeting",
+    "title": "Add llms.txt File for AI Crawler Content Guidance",
     "priority": "medium",
-    "description": "Add category field to blog data model and create /blog/category/[slug] landing pages targeting long-tail keywords (e.g., jobs, travel, visas) with category-specific schema markup.",
+    "description": "Create a machine-readable /llms.txt file following AI crawler conventions (llms.txt spec). Include sections for blog content, Malaysia-Singapore job seeker resources, hostel booking, and visa run guides to improve visibility to Google AI Overviews, ChatGPT web search, and Perplexity.",
     "acceptanceCriteria": [
-      "Blog post type includes categories: string[] field (e.g., ['jobs', 'visa', 'guide'])",
-      "/blog/category/jobs lists all job-related posts with CategoryCollectionPage schema",
-      "getStaticParams() prebuilds all category pages during npm run build with zero dynamic routes"
+      "File created at site/public/llms.txt with plaintext [About], [Blog], [Jobs], [Hostel], [Guides] sections",
+      "Each section contains brief description and links to related pages (/blog, /singapore-jobs, /visa-run, /rooms)",
+      "File served with Cache-Control: public, max-age=86400 header and valid UTF-8 encoding"
     ],
     "technicalNotes": [
-      "File to modify: lib/blog/blog-data.ts to add categories field to Post type definition",
-      "File to create: app/blog/category/[slug]/page.tsx with getStaticParams() for all unique categories",
-      "File to create: lib/blog/get-posts-by-category.ts function filterPostsByCategory(slug: string)",
-      "Test command: npm run build && ls -la .next/server/app/blog/category/ to verify prerendered files"
+      "File to create: site/public/llms.txt (plaintext, not .md or .json)",
+      "Sections: [About] Pelangi Capsule Hostel JB, [Blog] Travel guides, [Jobs] Malaysia-Singapore work, [Hostel] Booking & rooms, [Guides] Visa, transport, shopping",
+      "Test command: curl http://localhost:3000/llms.txt | grep -E '\\[About\\]|\\[Blog\\]'"
     ],
     "filesTouch": [
-      "lib/blog/blog-data.ts",
-      "app/blog/category/[slug]/page.tsx",
-      "app/blog/category/[slug]/layout.tsx",
-      "lib/blog/get-posts-by-category.ts"
-    ],
-    "estimatedComplexity": "medium",
-    "_source": "ai-example",
-    "passes": false,
-    "dependencies": []
-  },
-  {
-    "title": "Add Article JSON-LD schema to all blog post pages",
-    "priority": "high",
-    "description": "Inject Article schema into blog post layout with author, datePublished, dateModified, and breadcrumbList for enhanced SERP rich snippets and knowledge graph integration.",
-    "acceptanceCriteria": [
-      "Blog post renders two schemas: Article with author.name, datePublished, image (og:image), and BreadcrumbList",
-      "BreadcrumbList includes /blog \u2192 /blog/category/[category] \u2192 /blog/[slug] with proper itemListElement structure",
-      "All blog posts pass Google's Rich Results Test with 0 critical schema errors"
-    ],
-    "technicalNotes": [
-      "File to create: lib/structured-data/article-schema.ts exporting generateArticleSchema(post: Post, baseUrl: string)",
-      "File to modify: app/blog/[slug]/layout.tsx to inject Article schema in layout metadata",
-      "Test command: curl http://localhost:3000/blog/visa-run-guide-2026 | grep -o '<script type=\"application/ld+json\"' | wc -l",
-      "Validate: npx schema-org-validator --url http://localhost:3000/blog/visa-run-guide-2026 --strict"
-    ],
-    "filesTouch": [
-      "lib/structured-data/article-schema.ts",
-      "app/blog/[slug]/layout.tsx",
-      "app/blog/[slug]/page.tsx"
+      "site/public/llms.txt"
     ],
     "estimatedComplexity": "small",
     "_source": "ai-example",
@@ -101,26 +45,71 @@
     "dependencies": []
   },
   {
-    "title": "Build JB News & Updates homepage widget with RSS feed parsing",
-    "priority": "medium",
-    "description": "Create reusable homepage widget fetching 3\u20135 latest news items from curated JB tourism/travel RSS feeds with fallback static content for reliability.",
+    "title": "Create /singapore-jobs Resource Hub Page with FAQPage Schema",
+    "priority": "high",
+    "description": "Build a dedicated /singapore-jobs page serving Malaysian job seekers with FAQ JSON-LD schema containing 8-10 questions about work passes, visa runs, cross-border commuting, and gig economy. Include internal links to related blog posts (work pass guide, visa run, gig jobs).",
     "acceptanceCriteria": [
-      "NewsWidget component displays on homepage below hero with title 'JB News & Updates'",
-      "Fetches and parses RSS feeds from 2\u20133 sources (e.g., JB tourism board, travel blogs) with 5s timeout",
-      "If all feeds timeout, renders fallback static news array without breaking page render"
+      "Page renders at /singapore-jobs with hero section, FAQ accordion component, and hostel booking CTA button",
+      "FAQPage JSON-LD schema embedded with mainEntity type FAQPage, containing at least 8 question-answer pairs",
+      "FAQ section uses reusable <Accordion> component; each item has Question heading (h3) and Answer text"
     ],
     "technicalNotes": [
-      "File to create: components/home/NewsWidget.tsx React component with suspense boundary",
-      "File to create: lib/rss/feed-parser.ts exporting fetchRSSFeed(url: string): Promise<NewsItem[]>",
-      "File to modify: app/page.tsx to include <NewsWidget /> with Suspense fallback",
-      "Test command: npm run dev && curl http://localhost:3000 | grep -A 10 'JB News & Updates'",
-      "Build test: npm run build to ensure server-side RSS parsing doesn't exceed function timeout"
+      "File to create: site/src/app/singapore-jobs/page.tsx (App Router, use generateMetadata for title/description)",
+      "Add FAQPage schema via <script type='application/ld+json'> with 8 questions: work pass types, visa run length, remote work legality, gig jobs, cross-border commute time, accommodation for job seekers, salary expectations, renewal procedures",
+      "Test command: curl http://localhost:3000/singapore-jobs | grep -c '\"mainEntity\"' && npx next build --no-lint"
     ],
     "filesTouch": [
-      "components/home/NewsWidget.tsx",
-      "lib/rss/feed-parser.ts",
-      "app/page.tsx",
-      "package.json"
+      "site/src/app/singapore-jobs/page.tsx",
+      "site/src/components/FAQAccordion.tsx"
+    ],
+    "estimatedComplexity": "small",
+    "_source": "ai-example",
+    "passes": false,
+    "dependencies": []
+  },
+  {
+    "title": "Add Cloudflare Turnstile CAPTCHA to Public Forms",
+    "priority": "medium",
+    "description": "Integrate Cloudflare Turnstile (managed CAPTCHA) into all public-facing forms (contact, booking, newsletter). Validate tokens server-side before processing. Include graceful fallback if widget fails to load.",
+    "acceptanceCriteria": [
+      "Turnstile widget renders on /contact and /book form pages immediately above submit button with theme auto",
+      "Form submission calls server action that validates token via Turnstile API before processing (reject on invalid/expired token)",
+      "Fallback: if Turnstile fails to load, form shows warning but allows submission for manual review queue"
+    ],
+    "technicalNotes": [
+      "File to edit: site/src/components/ContactForm.tsx (import @react-turnstile/react, add <Turnstile ref={ref} />, capture onSuccess callback)",
+      "File to edit: site/src/app/api/contact/route.ts (validate token: fetch('https://challenges.cloudflare.com/turnstile/validate', { secret, response: token }))",
+      "Test command: npm test -- src/__tests__/forms.test.tsx --grep Turnstile && npx next build"
+    ],
+    "filesTouch": [
+      "site/src/components/ContactForm.tsx",
+      "site/src/app/api/contact/route.ts",
+      "site/.env.local"
+    ],
+    "estimatedComplexity": "small",
+    "_source": "ai-example",
+    "passes": false,
+    "dependencies": []
+  },
+  {
+    "title": "Implement TikTok Pixel and Event Tracking for Gen Z Analytics",
+    "priority": "medium",
+    "description": "Add TikTok Pixel tracking to measure Gen Z hostel bookings and engagement. Fire events: PageView (auto), ViewContent (blog/room pages), Purchase (booking confirm) with value, currency, and item details.",
+    "acceptanceCriteria": [
+      "TikTok Pixel script loads on all pages; PageView event fires on each route navigation automatically",
+      "Purchase event fires on booking confirmation with value, currency: 'MYR', content_id (roomId), and content_type: 'product'",
+      "Pixel ID and events appear in TikTok Events Manager dashboard within 24 hours of first booking"
+    ],
+    "technicalNotes": [
+      "File to edit: site/src/app/layout.tsx (add <script async src='https://analytics.tiktok.com/i18n/pixel/config/GTK{PIXEL_ID}.js'></script> or use next/third-parties)",
+      "File to create: site/src/lib/analytics-tiktok.ts (export trackTikTokPurchase(roomId, price) that calls window.ttk?.track('Purchase', { value, currency, content_id }))",
+      "Test command: npm run dev && open browser console, check for ttk pixel fire on /book page and booking form submit"
+    ],
+    "filesTouch": [
+      "site/src/app/layout.tsx",
+      "site/src/lib/analytics-tiktok.ts",
+      "site/src/app/api/booking/confirm/route.ts",
+      "site/.env.local"
     ],
     "estimatedComplexity": "small",
     "_source": "ai-example",
