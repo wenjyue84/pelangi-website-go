@@ -120,7 +120,7 @@ export default function SearchDialog({
       }}
     >
       {/* Backdrop */}
-      <div className="fixed inset-0 bg-black/40 backdrop-blur-xs" aria-hidden="true" />
+      <div className="fixed inset-0 bg-black/40 backdrop-blur-xs entry-fade" aria-hidden="true" />
 
       {/* Dialog */}
       <div
@@ -128,7 +128,7 @@ export default function SearchDialog({
         role="dialog"
         aria-label="Site search"
         aria-modal="true"
-        className="relative z-10 w-full max-w-lg mx-4 bg-white dark:bg-stone-800 rounded-2xl shadow-2xl border border-stone-200 dark:border-stone-700 overflow-hidden"
+        className="relative z-10 w-full max-w-lg mx-4 bg-white dark:bg-stone-800 rounded-2xl shadow-2xl border border-stone-200 dark:border-stone-700 overflow-hidden entry-zoom-in"
         onKeyDown={handleKeyDown}
       >
         {/* Search input */}

@@ -57,14 +57,12 @@ export default function ExitIntentOverlay() {
       ref={overlayRef}
       tabIndex={-1}
       className="fixed inset-0 z-50 flex items-center justify-center p-4
-                 bg-stone-900/60 backdrop-blur-sm
-                 animate-in fade-in duration-200"
+                 bg-stone-900/60 backdrop-blur-sm entry-fade"
       onClick={(e) => {
         if (e.target === e.currentTarget) setVisible(false);
       }}
     >
-      <div className="bg-white dark:bg-stone-900 rounded-3xl shadow-2xl max-w-md w-full p-8 relative
-                      animate-in zoom-in-95 duration-200">
+      <div className="bg-white dark:bg-stone-900 rounded-3xl shadow-2xl max-w-md w-full p-8 relative entry-zoom-in">
         {/* Close button */}
         <button
           type="button"

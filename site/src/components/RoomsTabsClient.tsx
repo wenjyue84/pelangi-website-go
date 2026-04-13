@@ -167,7 +167,7 @@ export default function RoomsTabsClient() {
           </div>
 
           {/* Pricing card */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 entry-zoom-in">
             <div className="bg-stone-50 dark:bg-stone-800 rounded-3xl p-8 lg:p-10 h-full flex flex-col">
               <div className="mb-8">
                 <div className="text-xs tracking-widest uppercase text-stone-500 dark:text-stone-400 mb-2">
@@ -344,7 +344,7 @@ export default function RoomsTabsClient() {
           </div>
 
           {/* Pricing card */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 entry-zoom-in">
             <div className="bg-stone-50 dark:bg-stone-800 rounded-3xl p-8 lg:p-10 h-full flex flex-col">
               <div className="mb-8">
                 <div className="text-xs tracking-widest uppercase text-stone-500 dark:text-stone-400 mb-2">

@@ -139,7 +139,10 @@ export default function CookieConsent() {
       role="dialog"
       aria-label="Cookie consent"
       aria-describedby="cookie-consent-description"
-      className="fixed bottom-0 left-0 right-0 z-60 p-4 md:p-6"
+      className="fixed bottom-0 left-0 right-0 z-60 p-4 md:p-6 entry-fade-up"
+      style={{
+        transitionBehavior: 'allow-discrete',
+      } as React.CSSProperties}
     >
       <div className="mx-auto max-w-3xl rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 p-4 shadow-xl md:p-6">
         <p
