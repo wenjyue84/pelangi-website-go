@@ -1,1 +1,0 @@
-Implement story **US-243** ("Blog post: Singapore Work Pass Guide for Malaysians (EP vs S Pass vs WP)") from prd.json now. This is the story assigned to you by the SPIRAL orchestrator — do NOT pick a different story. Read prd.json for the full details of US-243, read progress.txt for codebase context, then implement US-243 only.
