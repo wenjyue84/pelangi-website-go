@@ -378,6 +378,71 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 <p>For more ideas on what to see and do in JB, check our comprehensive <a href="/guide">JB Backpacker's Guide</a>. Ready to explore the real Johor Bahru? <a href="/book">Book a capsule at Pelangi</a> and start discovering what the guidebooks won't tell you.</p>
 `,
   },
+  {
+    slug: "how-malaysians-find-jobs-singapore-2026",
+    title: "How Malaysians Can Find Jobs in Singapore (2026 Guide)",
+    excerpt:
+      "Step-by-step guide for Malaysian job seekers: job portals, work passes, salary expectations, and interview tips for landing a Singapore role.",
+    date: "2026-04-14",
+    category: "Career & Work",
+    author: "Pelangi Team",
+    readTime: "10 min read",
+    tags: ["singapore", "jobs", "career", "work-pass", "malaysia", "job-search"],
+    featuredImage: "/images/blog/singapore-jobs-guide.jpg",
+    content: `
+<h2>Why Malaysians Move to Singapore</h2>
+<p>Singapore attracts Malaysian professionals seeking higher salaries. A RM6,000 earner might earn SGD6,500 (RM24,000)—a massive jump. The economy, institutions, and international companies create opportunities unavailable in Malaysia. Securing a role requires strategy, timing, and understanding visa rules.</p>
+
+<h2>Understanding Singapore Work Passes</h2>
+<p>Singapore issues three main work passes for foreigners. <strong>Employment Pass (EP)</strong> is for professionals and managers earning SGD3,600+ monthly with recognised qualifications. <strong>S Pass</strong> targets skilled workers earning SGD2,500–3,600 with technical expertise or credentials or certifications. <strong>Work Permit</strong> is for semi-skilled and unskilled workers in manufacturing, construction, and service sectors.</p>
+<p>Your employer must sponsor your visa—you cannot apply independently. After job offer, your sponsor submits the application to MOM (Ministry of Manpower). Processing takes 2–4 weeks. Once approved, you have 30 days to enter Singapore. Total timeline from application to starting work: typically 4–6 weeks. Plan accordingly. Most Malaysians aim for EP or S Pass.</p>
+
+<h2>Step 1: Choose the Right Job Portals</h2>
+<p>Don't apply blindly everywhere. Malaysians have five proven platforms. Set your LinkedIn profile to indicate visa sponsorship required—recruiters filter by this. Update your profile with your Malaysian location but indicate "open to relocation to Singapore." Many recruiters search specifically for Malaysian talent.</p>
+<ol>
+<li><strong>LinkedIn Singapore:</strong> Filter by location Singapore, set visa sponsorship required. Recruiters actively headhunt here. Direct applications bypass gatekeeping. Tailor each cover note mentioning your interest in Singapore and timeline.</li>
+<li><strong>JobStreet Singapore:</strong> Malaysia's dominant job portal dominates Singapore too. Search "Work Visa Sponsorship: Yes" for 5,000+ roles monthly. Save job alerts; new roles appear daily.</li>
+<li><strong>MyCareersFuture:</strong> Singapore's official government-backed portal with 20,000+ live listings. Updated daily, zero spam, zero recruiter nonsense. Most reputable employers post here first.</li>
+<li><strong>Glassdoor Singapore:</strong> Research company culture, salaries, interview experiences, and manager reviews before applying. Read Malaysian employee reviews specifically—they often describe visa sponsorship processes.</li>
+<li><strong>Angel List & TechJobs:</strong> Startups offer better relocation packages and visa certainty than traditional corporates. Smaller companies move faster on hiring too.</li>
+</ol>
+
+<h2>Step 2: Engage Recruitment Agencies</h2>
+<p>Agencies fast-track Malaysia-to-Singapore placements and negotiate salaries. Legitimate agencies never charge you—employer pays commission. Top names: <strong>Michael Page Singapore, Randstad, PageGroup, Morgan McKinley</strong>. Ask: "How many Malaysians placed in 12 months?" and "What's your visa timeline?" They handle housing, transportation, visa coordination. A good recruiter saves you RM2,000–5,000 in salary gains. Avoid upfront-fee agencies—they're scams.</p>
+
+<h2>Step 3: Know Salary Reality</h2>
+<p><strong>Entry-level (0–2yrs):</strong> SGD3,500–4,500 monthly. <strong>Mid-career (2–5yrs):</strong> SGD5,500–8,500. <strong>Senior (5+yrs):</strong> SGD12,000–20,000+. Living costs: rent SGD1,000–1,500 for shared HDB flats, transport SGD150/month, food SGD500–800. Net savings: SGD2,000–6,000/month after expenses. Always negotiate before accepting—Singapore expects it. Lowball offers set your ceiling for years. Most employers offer SGD500–800 housing allowance. Ask explicitly. Your first Singapore salary is foundational.</p>
+
+<h2>Step 4: Master Interview Execution</h2>
+<p>Singapore interviews follow a 2–3 round structure: HR screening (30 min), technical assessment (60–90 min), senior manager interview (45 min). Dress business formal. Arrive 10 minutes early. Research the company's Singapore operations, not just global operations.</p>
+<p>Address visa sponsorship proactively: "I understand Singapore's visa timelines and can support documentation immediately." This signals professionalism and reduces employer hesitation. Technical interviews are rigorous—prepare live coding, case studies, or design problems. Practice mock interviews with colleagues. Anticipate salary questions and have your range ready. Singapore candidates expect you to negotiate—silence signals weakness.</p>
+
+<h2>Step 5: Get Your Timeline Right</h2>
+<p>Apply 8–12 weeks before your ideal start date. Visa processing is 2–4 weeks post-offer. Your Malaysian employer requires 30 days notice. Timeline: Apply week 1 → Interviews weeks 2–4 → Offer week 4–5 → Give notice week 5 → Visa processing weeks 5–9 → Start Singapore week 12. This buffer prevents conflicts. Some companies are slower; international tech firms move fastest (2–3 week hiring cycles). Local firms take 6–8 weeks. Ask recruiters for their average hiring timeline.</p>
+
+<h2>Accommodation Strategy</h2>
+<p>HDB flats (Housing Development Board—Singapore's public housing) are your best value: SGD1,000–1,500/month for a shared room. Private condominiums cost SGD1,800–3,000. For your first month, use <strong>HeyStay, Airbnb, PropertyGuru</strong> while apartment hunting. Once hired, contact your company's HR for corporate housing programs—many large employers have partner blocks with discounts.</p>
+<p>If job-hunting while based in Malaysia, <a href="/rooms">stay at Pelangi Capsule in Johor Bahru</a>—just 20 minutes from the Causeway—at RM50–80 per night. You can interview in Singapore daily while keeping accommodation costs low.</p>
+
+<h2>Optimize Application Materials</h2>
+<p>Highlight transferable skills: leadership, languages, cross-cultural experience. Singapore values multilingual candidates. Tailor cover letters—mention Singapore specifically, not generic templates. LinkedIn is your digital resume. Get recommendations. Set headline to "Role Title | Open to Singapore Relocation". Emphasize any English, Mandarin, or Tamil skills—multinational firms value them.</p>
+
+<h2>Common Mistakes Malaysian Job Seekers Make</h2>
+<ul>
+<li>Applying to roles requiring 3+ years experience when you have 1.5. Auto-rejection before visa sponsorship is even considered.</li>
+<li>Falsifying qualifications or experience. Singapore employers verify credentials rigorously with universities and past employers. Visa rejection follows immediately.</li>
+<li>Ignoring Glassdoor reviews. Visa sponsorship doesn't guarantee a healthy workplace. Bad companies exist everywhere.</li>
+<li>Renegotiating salary after receiving a verbal offer. Once visa processing initiates, you've lost all leverage. Lock salary before saying yes.</li>
+<li>Ignoring relocation costs. Factor SGD2,000–3,000 for deposits, airfare, and setup. Some sponsors offer relocation allowances—ask.</li>
+</ul>
+
+<h2>Resources & Support</h2>
+<p><strong>Ministry of Manpower (MOM):</strong> mom.gov.sg—official visa requirements, forms, processing status. Read Employment Pass and S Pass guides thoroughly. <strong>Expats in Singapore communities:</strong> Reddit's r/singapore and Facebook groups have active Malaysians answering relocation questions daily.</p>
+
+<h2>Making Your Move</h2>
+<p>Cross-border job hunting is achievable with clear strategy. Start applications 10 weeks ahead. Use LinkedIn and MyCareersFuture daily. Engage reputable agencies. Understand visa timelines and requirements. The salary premium is substantial—expect 3–5x growth. The process is bureaucratic but predictable. Many Malaysians hesitate due to visa complexity; educated candidates succeed. Move intentionally, and you'll cross the Causeway as a prepared professional ready to thrive in Singapore's economy.</p>
+`,
+  },
 ];
 
 export const blogPosts: BlogPost[] = rawPosts.map((post) => ({

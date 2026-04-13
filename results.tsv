@@ -2,3 +2,4 @@ timestamp	spiral_iter	ralph_iter	story_id	story_title	status	duration_sec	model	
 2026-04-13T18:29:54Z	1	1	US-245	Blog post: Visa Run from Singapore to JB — Step-by-Step Guide 2026	reject	355	haiku	1		69dd34342c1f	false	0	0	0	0	0	0	0		0	0	0	0				
 2026-04-13T18:36:34Z	1	2	US-194	Integrate Google Free Hotel Booking Links via connectivity partner	keep	356	opus
 opus	2	4bc2b8877ba4dc6193a65e27229fa4b14ae3f052	69dd34342c1f	false	0	0	0	0	0	0	0		0	0	0	0				
+2026-04-13T19:40:40Z	5	1	US-196	Integrate channel manager for live OTA availability synchronisation	keep	612	haiku	0	158c1073617fac1f7efc975fccc8811625bc7396	69dd34342c1f	false	0	0	0	0	0	0	0		0	0	0	0				

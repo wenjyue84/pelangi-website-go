@@ -4382,8 +4382,9 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "large",
-      "passes": false,
-      "model": "haiku"
+      "passes": true,
+      "model": "haiku",
+      "last_attempted": "2026-04-13T19:01:43Z"
     },
     {
       "id": "US-197",
@@ -5973,6 +5974,29 @@
       ],
       "passes": false,
       "model": "haiku"
+    },
+    {
+      "id": "US-262",
+      "title": "Create /singapore-jobs resource hub with FAQPage schema and job seeker CTAs",
+      "priority": "high",
+      "description": "Build landing page for Malaysian job seekers at /singapore-jobs with job type overview, work pass comparison table, and FAQ section with FAQPage JSON-LD schema covering permit types, salary expectations, visa sponsorship, and relocation. Include prominent hostel booking CTA.",
+      "acceptanceCriteria": [
+        "Page created at site/src/app/singapore-jobs/page.tsx with sections: job overview, work pass table (EP/S Pass/WP comparison), FAQ accordion, and internal links to related blog posts about jobs and passes",
+        "FAQPage JSON-LD schema implemented with 8+ FAQ items (pairs of mainEntity questions and acceptedAnswer) covering work permits, salary, visa sponsorship, and job search resources",
+        "Booking CTA component with text '🏨 Interview Stay Package' and WhatsApp pre-fill link for hostel inquiry; verified with npm run build && npm run lint"
+      ],
+      "technicalNotes": [
+        "File to create: site/src/app/singapore-jobs/page.tsx (~120 lines page component with FAQ section)",
+        "File to update: site/src/lib/structured-data.ts (add generateFAQPage(title, faqItems) helper function)",
+        "File to create: site/src/components/faq/FaqAccordion.tsx (~80 lines reusable accordion component)",
+        "File to update: site/src/app/sitemap.ts (add /singapore-jobs URL)",
+        "Test command: npm run build && npm run lint && curl -s http://localhost:3000/singapore-jobs | grep 'FAQPage'"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false,
+      "_source": "ai-example",
+      "model": "sonnet"
     }
   ]
 }

@@ -1,0 +1,11 @@
+{
+  "story_id": "US-196",
+  "story_title": "Integrate channel manager for live OTA availability synchronisation",
+  "key_source": "integrate|channel|manager|large|",
+  "stored_ts": 1776109661.801805,
+  "plan": {
+    "story_id": "US-196",
+    "duration_s": 1200,
+    "model": "unknown"
+  }
+}
