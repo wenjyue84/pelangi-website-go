@@ -2835,6 +2835,32 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[smoke] Apply CSS @starting-style for GPU-accelerated entry animations",
+      "description": "Auto-generated smoke test from US-143",
+      "from_story": "US-143",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-219",
+      "created_ts": "2026-04-13T23:50:13Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
+    },
+    {
+      "title": "[smoke] Add TikTok Pixel and Events API for Gen Z audience analytics",
+      "description": "Auto-generated smoke test from US-171",
+      "from_story": "US-171",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-220",
+      "created_ts": "2026-04-13T23:50:14Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }

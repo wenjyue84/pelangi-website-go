@@ -1,0 +1,1 @@
+src/components/TurnstileWidget.tsx(15,27): error TS2307: Cannot find module '@marsidev/react-turnstile' or its corresponding type declarations.

@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-04-13T23:50:12.917719Z",
+  "exit_code": 2,
+  "summary": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "total": 0
+  }
+}

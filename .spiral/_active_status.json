@@ -1,8 +1,6 @@
 {
-  "phase": "I",
-  "iteration": 16,
-  "started_at": 1776117955,
-  "pct_done": 60,
-  "story_id": "US-171",
-  "story_title": "Add TikTok Pixel and Events API for Gen Z audience analytics"
+  "phase": "C",
+  "iteration": 20,
+  "started_at": 1776124216,
+  "pct_done": 95
 }
