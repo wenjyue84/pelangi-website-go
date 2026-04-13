@@ -1,3 +1,40 @@
+## Iteration US-249 - Mon, Apr 14, 2026
+
+Completed: Blog post - 5 Gig Jobs for Malaysians Waiting for Singapore Work Approval (ID: US-249)
+
+### What was implemented
+- **Blog post** (`site/src/data/blog/posts.ts`):
+  - Added new blog post object with slug `gig-jobs-malaysia-waiting-singapore-work-pass`
+  - Category: "Career & Work", date: "2026-04-14", readTime: "9 min read"
+  - 5 gig economy job options with earnings estimates:
+    - Foodpanda Delivery Rider: RM1,800–3,500/month
+    - Lalamove Driver: RM2,000–3,800/month
+    - Grab Ride/GrabFood Driver: RM2,500–4,200/month
+    - Part-time F&B/Cafe Work: RM1,500–2,500/month
+    - Online Freelancing: RM1,200–5,000+/month
+  - Each job includes: requirements, earnings breakdown, pros, and cons
+  - Sections on combining gigs, tax/legal notes, Pelangi guest relevance
+  - Internal links to `/rooms` (Pelangi Capsule)
+  - Intro references Pelangi guests in work pass waiting period
+
+### Patterns discovered
+- Blog post HTML content needs careful optimization to stay under 8000 character limit
+- Initial draft (8191 chars) required condensing descriptions by ~35% to fit limit
+- Final optimized content: 5315 characters (well within limit)
+- Consistent format: metadata + HTML content with proper spacing and paragraph structure
+
+### Test results
+- Content size: 5315 characters (under 8000 limit) ✓
+- TypeScript compilation: ✓ passes (npx tsc --noEmit)
+- Next.js build: ✓ succeeds (all static pages generated)
+- All internal links present: `/rooms` (2 times) ✓
+- All acceptance criteria met:
+  - ✓ Slug 'gig-jobs-malaysia-waiting-singapore-work-pass', category 'Career & Work'
+  - ✓ 5 gig job options with earnings estimates
+  - ✓ Intro references Pelangi guests
+  - ✓ readTime '9 min read', date '2026-04-14'
+  - ✓ npm run build passes
+
 ## Iteration US-244 - Mon, Apr 14, 2026
 
 Completed: Blog post - Living in JB Working in Singapore — Cross-Border Commuter Guide 2026 (ID: US-244)

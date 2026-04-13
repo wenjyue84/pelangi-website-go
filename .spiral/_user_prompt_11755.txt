@@ -1,1 +1,0 @@
-Implement story **US-249** ("Blog post: 5 Gig Jobs for Malaysians Waiting for Singapore Work Approval") from prd.json now. This is the story assigned to you by the SPIRAL orchestrator — do NOT pick a different story. Read prd.json for the full details of US-249, read progress.txt for codebase context, then implement US-249 only.
