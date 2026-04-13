@@ -1,0 +1,46 @@
+{
+  "iteration": 5,
+  "timestamp": "2026-04-13T19:50:15.712312+00:00",
+  "summary": {
+    "0_retries": {
+      "count": 206,
+      "avg_ac_count": 5.1,
+      "avg_description_length": 377.0,
+      "common_tags": [],
+      "common_file_patterns": []
+    },
+    "1_retry": {
+      "count": 2,
+      "avg_ac_count": 5.5,
+      "avg_description_length": 234.5,
+      "common_tags": [
+        "content",
+        "geo",
+        "seo",
+        "visa-run"
+      ],
+      "common_file_patterns": [
+        "site"
+      ]
+    },
+    "2_retries": {
+      "count": 0,
+      "avg_ac_count": 0.0,
+      "avg_description_length": 0.0,
+      "common_tags": [],
+      "common_file_patterns": []
+    },
+    "3plus_retries": {
+      "count": 0,
+      "avg_ac_count": 0.0,
+      "avg_description_length": 0.0,
+      "common_tags": [],
+      "common_file_patterns": []
+    }
+  },
+  "insights": {
+    "total_analyzed": 208,
+    "easy_count": 208,
+    "hard_count": 0
+  }
+}

@@ -1,27 +1,27 @@
 {
   "stories": [
     {
-      "title": "Write 'How Malaysians Can Find Jobs in Singapore' blog post with Article + BreadcrumbList schema",
+      "title": "Write Blog Post: 'Getting Around JB Without a Car — Transport Guide for Backpackers'",
       "priority": "high",
-      "description": "Create comprehensive blog post targeting Malaysian job seekers covering Singapore employment options, work permit types (EP/S Pass/WP), job search platforms, and salary expectations. Include Article JSON-LD schema, BreadcrumbList, and internal links to /singapore-jobs hub page.",
+      "description": "Publish original SEO-optimized travel article targeting backpackers with practical JB transport tips (buses, trains, taxis, ride-sharing). Article should include Article JSON-LD schema, internal links to /guide and /book pages, and estimated reading time. Drives long-tail search traffic for 'how to get around JB' and 'JB public transport for tourists'.",
       "acceptanceCriteria": [
-        "Blog post file created at site/src/content/blog/malaysia-singapore-jobs.ts with title, slug, publishedDate, wordCount, excerpt, and content sections; post added to blog manifest",
-        "Post includes Article JSON-LD with headline, author, datePublished, image, wordCount, and BreadcrumbList schema with proper URL hierarchy rendered via StructuredData",
-        "Internal links present to /singapore-jobs resource hub and at least 3 related blog posts about Singapore work passes and job resources"
+        "Blog post renders at /blog/jb-transport-guide with Article schema containing articleBody, author, datePublished, headline, and mainEntityOfPage",
+        "Post includes minimum 1500 words covering JB transport modes (buses, LRT, taxis, Grab), pricing examples, and day-trip logistics",
+        "Post appears in /feed.xml RSS feed with correct publication date, excerpt, and canonical URL"
       ],
       "technicalNotes": [
-        "File to create: site/src/content/blog/malaysia-singapore-jobs.ts (TypeScript post with metadata and content structure ~100 lines)",
-        "File to update: site/src/lib/blog.ts (register post in getAllBlogPosts() function)",
-        "File to update: site/src/app/sitemap.ts (add post URL to blog section)",
-        "Test command: npm run build && npm run lint && grep 'malaysia-singapore-jobs' site/dist/sitemap.xml"
+        "Create: site/src/content/blog/jb-transport-guide.mdx with frontmatter (title, date, author, description, tags)",
+        "Update: site/src/data/blogPosts.ts to register post with excerpt and featured status",
+        "Update: site/src/app/sitemap.ts to include /blog/jb-transport-guide in URL list",
+        "Test command: rtk curl http://localhost:3000/blog/jb-transport-guide | grep -q '\"@type\":\"Article\"' && rtk curl http://localhost:3000/feed.xml | grep -q 'jb-transport-guide'"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "site/src/content/blog/malaysia-singapore-jobs.ts",
-        "site/src/lib/blog.ts",
+        "site/src/content/blog/jb-transport-guide.mdx",
+        "site/src/data/blogPosts.ts",
         "site/src/app/sitemap.ts"
       ],
       "_source": "ai-example",
@@ -29,65 +29,117 @@
       "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
     },
     {
-      "title": "Implement blog category filtering UI with dynamic /blog/category/[category] routes",
+      "title": "Add BreadcrumbList JSON-LD Schema to Blog Post Template",
       "priority": "high",
-      "description": "Add categories array to blog post type, create BlogCategoryFilter component for blog listing page, build dynamic category landing pages with meta descriptions, and update sitemap.ts to include category page URLs for long-tail SEO.",
+      "description": "Enhance structured data on all blog posts by implementing BreadcrumbList schema (Home > Blog > Article Title). This improves Google Search rich results and breadcrumb navigation UX. Schema must include position, name, and item URL for each breadcrumb level.",
       "acceptanceCriteria": [
-        "BlogCategoryFilter component created at site/src/components/blog/BlogCategoryFilter.tsx that renders category buttons and filters blog list; blog post type updated to include optional categories: string[]",
-        "Dynamic route created at site/src/app/blog/category/[category]/page.tsx that generates static pages for each category with meta description including category name and post count",
-        "Sitemap.ts updated with category page entries generated from unique categories across all blog posts; verified with npm run build && grep 'blog/category' site/dist/sitemap.xml"
+        "BreadcrumbList JSON-LD renders in <head> of every blog post page with correct hierarchy: home (position 1) > blog listing (position 2) > current post title (position 3)",
+        "Breadcrumb itemListElement includes valid @id URLs for each level matching canonical URLs",
+        "Schema validates against schema.org BreadcrumbList without errors"
       ],
       "technicalNotes": [
-        "File to create: site/src/components/blog/BlogCategoryFilter.tsx (~80 lines React component)",
-        "File to update: site/src/lib/blog-types.ts (add categories?: string[] field to BlogPost interface)",
-        "File to create: site/src/app/blog/category/[category]/page.tsx (~100 lines dynamic page with generateStaticParams)",
-        "File to update: site/src/app/sitemap.ts (add category route generation)",
-        "Test command: npm run build && npm run lint && test $(grep -c 'blog/category' site/dist/sitemap.xml) -gt 5"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "medium",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "site/src/components/blog/BlogCategoryFilter.tsx",
-        "site/src/lib/blog-types.ts",
-        "site/src/app/blog/category/[category]/page.tsx",
-        "site/src/app/sitemap.ts",
-        "site/src/app/blog/page.tsx"
-      ],
-      "_source": "ai-example",
-      "passes": false,
-      "_rejection_reason": "too_simple: only 1 measurable ACs -- specify test commands, file paths, or numeric thresholds"
-    },
-    {
-      "title": "Write '3-Day JB Backpacker Itinerary Under RM250' blog post with attraction links and reading time",
-      "priority": "medium",
-      "description": "Publish detailed 3-day budget itinerary for backpackers in Johor Bahru with daily breakdown (accommodation RM40/night, meals RM30/day, activities RM50), local restaurant recommendations, transport tips, and internal links to /guide page attractions. Include Article schema and readingTime metadata.",
-      "acceptanceCriteria": [
-        "Blog post created at site/src/content/blog/jb-backpacker-itinerary.ts with metadata: publishedDate, wordCount (~2000), readingTime calculated, categories: ['travel', 'budget'], and cost breakdown table in content",
-        "Post includes Article JSON-LD schema with headline, author, datePublished, image, wordCount, and BreadcrumbList schema rendered correctly",
-        "Internal links present to /guide page sections, JB Shopping Guide blog post, and accommodation page; post appears in blog listing with reading time badge"
-      ],
-      "technicalNotes": [
-        "File to create: site/src/content/blog/jb-backpacker-itinerary.ts (TypeScript post structure ~100 lines with content sections)",
-        "File to update: site/src/lib/blog.ts (ensure readingTime utility calculates ~9 min estimate for 2000 words)",
-        "File to update: site/src/app/sitemap.ts (add post URL to blog section)",
-        "Image to create: site/public/images/blog/jb-backpacker-hero.jpg (1200x630px, <100KB)",
-        "Test command: npm run build && npm run lint && node -e \"const p = require('./dist/server/blog.js').getBlogPost('jb-backpacker-itinerary'); console.log(p.readingTime);\""
+        "Create function: site/src/lib/schema.ts - generateBreadcrumbList(pathname: string, title: string) returning JSON-LD object",
+        "Update: site/src/app/blog/[slug]/page.tsx to call breadcrumb generator in metadata() and inject into StructuredData component",
+        "Test command: rtk npm run build && rtk curl http://localhost:3000/blog/jb-transport-guide | grep -o '\"BreadcrumbList\"' && npm run test -- site/src/lib/schema.test.ts"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "site/src/content/blog/jb-backpacker-itinerary.ts",
-        "site/src/lib/blog.ts",
-        "site/src/app/sitemap.ts",
-        "site/public/images/blog/jb-backpacker-hero.jpg"
+        "site/src/lib/schema.ts",
+        "site/src/app/blog/[slug]/page.tsx",
+        "site/src/components/StructuredData.tsx",
+        "site/src/lib/schema.test.ts"
       ],
       "_source": "ai-example",
       "passes": false,
       "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
+    },
+    {
+      "title": "Add RSS Auto-discovery Link to HTML Head",
+      "priority": "medium",
+      "description": "Enable RSS feed auto-discovery by adding <link rel='alternate' type='application/rss+xml'> tag to the HTML <head>. Allows RSS readers and browsers to detect /feed.xml endpoint automatically. Single-line addition with high SEO and usability impact.",
+      "acceptanceCriteria": [
+        "HTML <head> contains <link rel='alternate' type='application/rss+xml' href='/feed.xml' title='Pelangi Blog Feed'> on all pages",
+        "RSS readers (Feedly, Pocket, etc.) auto-detect feed via standard discovery mechanism",
+        "No HTTP errors when accessing /feed.xml; Content-Type header is 'application/rss+xml'"
+      ],
+      "technicalNotes": [
+        "Update: site/src/app/layout.tsx - add <link> tag in <head> section within RootLayout component",
+        "Verify: site/src/app/feed.xml/route.ts (or similar) returns correct Content-Type header",
+        "Test command: rtk curl -I http://localhost:3000/feed.xml | grep 'Content-Type: application/rss' && rtk curl http://localhost:3000 | grep 'rel.*alternate.*rss'"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "site/src/app/layout.tsx",
+        "site/src/app/feed.xml/route.ts"
+      ],
+      "_source": "ai-example",
+      "passes": false,
+      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
+    },
+    {
+      "title": "Create 'JB News & Updates' RSS Widget Component for Homepage",
+      "priority": "medium",
+      "description": "Build reusable React component that fetches from 3-5 curated Malaysian news RSS sources (e.g., Malay Mail, The Star, Bernama) and displays latest JB-related headlines on homepage. Component should include error boundaries, loading state, and cache news for 1 hour to avoid excessive feed polling.",
+      "acceptanceCriteria": [
+        "JBNewsWidget component renders 5-8 latest headlines from curated RSS feeds with title, summary excerpt, and publish date",
+        "Component displays 'Loading news...' skeleton during fetch and gracefully shows 'News unavailable' if feed fetch fails (no error thrown)",
+        "News items are cached for 60 minutes; subsequent renders within cache window reuse data without re-fetching"
+      ],
+      "technicalNotes": [
+        "Create: site/src/components/JBNewsWidget.tsx - React component with useState/useEffect for RSS fetching, or use Server Component with fetch()",
+        "Create: site/src/lib/rss.ts - parseRSSFeed(feedUrl: string) function that extracts title, link, pubDate, description from RSS XML",
+        "Update: site/src/app/page.tsx to import and render JBNewsWidget in appropriate section (e.g., below hero or before footer)",
+        "Test command: npm run test -- site/src/lib/rss.test.ts && npm run test -- site/src/components/JBNewsWidget.test.tsx"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "site/src/components/JBNewsWidget.tsx",
+        "site/src/lib/rss.ts",
+        "site/src/app/page.tsx",
+        "site/src/lib/rss.test.ts",
+        "site/src/components/JBNewsWidget.test.tsx"
+      ],
+      "_source": "ai-example",
+      "passes": false,
+      "_rejection_reason": "too_simple: only 1 measurable ACs -- specify test commands, file paths, or numeric thresholds"
+    },
+    {
+      "title": "Write Blog Post: 'JB Shopping Guide — Where to Find Cheap Deals in Johor Bahru'",
+      "priority": "high",
+      "description": "Publish comprehensive SEO-targeted guide for budget-conscious travelers shopping in JB. Cover specific locations (City Square, Aeon, Imago, street markets), store types, bargaining tips, and estimated price ranges for common items. Target long-tail keywords like 'cheap shopping in JB', 'JB bargain hunting', 'JB souvenir prices'.",
+      "acceptanceCriteria": [
+        "Blog post published at /blog/jb-shopping-guide with minimum 1500 words, 4-6 internal links to /guide and /amenities, and H2/H3 structure (Shopping Malls, Bazaars, Souvenir Tips, Money-Saving Hacks)",
+        "Post includes Article schema with correct articleBody, wordCount, articleSection, and hasPart for subsections",
+        "Post appears in blog listing page (/blog) with excerpt, thumbnail, and reading time estimate"
+      ],
+      "technicalNotes": [
+        "Create: site/src/content/blog/jb-shopping-guide.mdx with frontmatter: title, date, author, description, keywords (shopping, bargains, JB), featured=true",
+        "Update: site/src/data/blogPosts.ts with new post entry including slug, excerpt, and thumbnail image path",
+        "Add thumbnail: site/public/images/blog/jb-shopping-guide-thumb.jpg (800x450px)",
+        "Test command: rtk npm run build && rtk npm run test -- site/src/data/blogPosts.test.ts && rtk curl http://localhost:3000/blog | grep -q 'jb-shopping-guide'"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "site/src/content/blog/jb-shopping-guide.mdx",
+        "site/src/data/blogPosts.ts",
+        "site/public/images/blog/jb-shopping-guide-thumb.jpg",
+        "site/src/app/sitemap.ts"
+      ],
+      "_source": "ai-example",
+      "passes": false,
+      "_rejection_reason": "too_simple: only 1 measurable ACs -- specify test commands, file paths, or numeric thresholds"
     }
   ]
 }

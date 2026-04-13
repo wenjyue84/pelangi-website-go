@@ -4384,7 +4384,8 @@
       "estimatedComplexity": "large",
       "passes": true,
       "model": "haiku",
-      "last_attempted": "2026-04-13T19:01:43Z"
+      "last_attempted": "2026-04-13T19:01:43Z",
+      "_scopeCreep": true
     },
     {
       "id": "US-197",
@@ -5426,7 +5427,7 @@
         "IMPORTANT: Keep content HTML string under 8000 characters to avoid diff-guard rejection",
         "Use concise paragraphs, avoid padding"
       ],
-      "passes": false,
+      "passes": true,
       "model": "haiku"
     },
     {

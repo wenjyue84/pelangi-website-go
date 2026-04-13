@@ -1465,6 +1465,29 @@
     ]
   },
   {
+    "title": "[Integration Test] Integrate channel manager for live OTA availability synchronisation",
+    "description": "Write integration tests for the feature implemented in US-196. Story description: Without a channel manager, Pelangi's rates and availability on Booking.com, Agoda, and Hostelworld are updated manually, risking overbookings and rate parity violations. A cloud-based channel manager (e.g., Beds24, Cloudbeds, or SiteMinder) synchronises ARI across all OTAs in real time and can power the website's own availability widget. This is also a prerequisite for Google Free Booking Links (which require a connectivity partner).",
+    "acceptanceCriteria": [
+      "Integration tests exist covering the core behaviour of US-196",
+      "Tests cover the happy path and at least one error/edge case",
+      "Tests run without requiring external services or manual setup"
+    ],
+    "technicalNotes": [
+      "Run: uv run pytest tests/ -k us_196 -v"
+    ],
+    "priority": "high",
+    "dependencies": [
+      "US-196"
+    ],
+    "_source": "test-story",
+    "_testType": "integration",
+    "_forStoryId": "US-196",
+    "tags": [
+      "integration",
+      "auto-generated"
+    ]
+  },
+  {
     "title": "[E2E Test] Add JB-Singapore RTS Link and MyNIISe QR border crossing info page",
     "description": "Write end-to-end user flow test for the feature in US-200. Story description: The Johor Bahru\u2013Singapore RTS Link (rapid transit system) is launching by end-2026 with a 5-minute crossing from Woodlands North MRT to Bukit Chagar, plus the MyNIISe QR-code immigration system is now live at JB checkpoints. Pelangi Capsule's primary market is Singaporeans crossing the JB border. A dedicated /getting-here or /location page section covering RTS Link ticketing, MyNIISe QR setup, and DuitNow-PayNow cross-border payments will capture high-intent informational searches and improve time-on-site.",
     "acceptanceCriteria": [

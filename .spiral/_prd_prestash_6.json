@@ -3638,6 +3638,31 @@
       "passes": true
     },
     {
+      "id": "US-171",
+      "title": "Add TikTok Pixel and Events API for Gen Z audience analytics",
+      "priority": "medium",
+      "description": "Install TikTok Pixel browser-side and implement a server-side TikTok Events API Route Handler for dual-signal tracking. TikTok is the primary discovery channel for Gen Z and millennial backpackers (18-30 demographic) researching Malaysia travel. Server-side Events API ensures signal reliability despite ad blockers, improving attribution for TikTok Ads campaigns targeting Malaysian-bound travellers.",
+      "acceptanceCriteria": [
+        "TikTok Pixel base code loaded via Next.js <Script strategy='lazyOnload'> in layout.tsx",
+        "POST /api/tiktok-events Route Handler implemented sending events to TikTok Events API v1.3",
+        "Events tracked: ViewContent (room pages), Contact (form submission), Search (blog/guide search if applicable)",
+        "User data (email, phone) is SHA-256 hashed before transmission",
+        "Deduplication: matching event_id used across browser pixel and Events API",
+        "TikTok Events Manager shows events arriving with 90%+ match rate"
+      ],
+      "technicalNotes": [
+        "Events API endpoint: POST https://business-api.tiktok.com/open_api/v1.3/event/track/",
+        "Required headers: Access-Token (from TikTok Business Manager), Content-Type: application/json",
+        "Payload: pixel_code, event, event_id, timestamp (ISO 8601), context.page.url, properties.query, user (hashed fields)",
+        "Browser pixel + Events API pair is called 'Signal Reliability' in TikTok Ads documentation",
+        "Reference: https://ads.tiktok.com/help/article/events-api"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
       "id": "US-172",
       "title": "Implement Cloudflare Turnstile CAPTCHA on all public forms",
       "priority": "medium",
@@ -4035,9 +4060,10 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "large",
-      "passes": false,
+      "passes": true,
       "model": "haiku",
-      "last_attempted": "2026-04-13T19:01:43Z"
+      "last_attempted": "2026-04-13T19:01:43Z",
+      "_scopeCreep": true
     },
     {
       "id": "US-197",

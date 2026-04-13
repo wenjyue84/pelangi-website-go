@@ -235,6 +235,19 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[security] Integrate channel manager for live OTA availability synchronisation",
+      "description": "Auto-generated security test from US-196",
+      "from_story": "US-196",
+      "command": "",
+      "priority": "high",
+      "id": "security-019",
+      "created_ts": "2026-04-13T19:48:23Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }
