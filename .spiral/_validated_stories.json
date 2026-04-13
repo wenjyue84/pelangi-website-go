@@ -1,6 +1,33 @@
 {
   "stories": [
     {
+      "title": "Create /singapore-jobs resource hub with FAQPage schema and job seeker CTAs",
+      "priority": "medium",
+      "description": "Build a dedicated /singapore-jobs page targeting Malaysians seeking work in Singapore. Include FAQ section with job visa types (EP, S Pass, Work Permit), accommodation CTAs, and FAQPage JSON-LD schema for Google rich results. Cross-link to /guide and /book pages.",
+      "acceptanceCriteria": [
+        "Page includes FAQPage JSON-LD schema in page head with minimum 8 Q&A pairs about Singapore job visa types, processing timelines, and cost",
+        "Page displays 'Book your visa run accommodation' and 'Check our guide' CTAs that link to /book and /guide with utm_source=singapore-jobs",
+        "Page has title 'Jobs in Singapore for Malaysians | Pelangi Capsule' and meta description targeting 'Singapore work pass, work permit Malaysia' keywords"
+      ],
+      "technicalNotes": [
+        "File to create: app/singapore-jobs/page.tsx — Next.js page component with SEO metadata and FAQ section (~120 lines)",
+        "File to create: lib/singapore-jobs-faq.ts — export FAQ data structure as const singaporeJobsFAQ: FAQItem[] (~80 lines)",
+        "File to update: lib/structured-data.ts — add generateFAQPageSchema(faqs: FAQItem[]) function",
+        "Test command: npm test lib/structured-data.test.ts -t 'FAQPage' -v (validate schema.org compliance)"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "app/singapore-jobs/page.tsx",
+        "lib/singapore-jobs-faq.ts",
+        "lib/structured-data.ts"
+      ],
+      "_source": "ai-example",
+      "passes": false
+    },
+    {
       "title": "[E2E Test] Create blog system with static TypeScript data",
       "priority": "medium",
       "description": "Write end-to-end user flow test for the feature in US-001. Story description: Build a blog system using Next.js App Router. Blog posts are stored as TypeScript objects in /src/data/blog/posts.ts. Each post has: slug, title, excerpt, content (HTML string), date, category, author, readTime, tags, and featured image path. Create /app/blog/page.tsx (listing with cards) and /app/blog/[slug]/page.tsx (article page with full content). Both pages must have proper metadata (title, description, OG tags). Add a BlogCard component at /src/components/BlogCard.tsx.",
@@ -1890,6 +1917,31 @@
       "_source": "test-story",
       "_testType": "e2e",
       "_forStoryId": "US-234"
+    },
+    {
+      "title": "[Regression Test] Blog post: How Malaysians Can Find Jobs in Singapore (2026 Guide)",
+      "priority": "medium",
+      "description": "Write regression test to guard against future breakage of US-242. Story description: Add a comprehensive SEO-optimised blog post on how Malaysians can find jobs in Singapore, covering job portals, recruitment agencies, networking, work pass eligibility, and step-by-step tips.",
+      "acceptanceCriteria": [
+        "Regression test covers core observable behaviour of US-242",
+        "Test would reliably fail if the US-242 feature were removed or broken"
+      ],
+      "technicalNotes": [
+        "Source files from US-242: site/src/data/blog/posts.ts",
+        "Run: uv run pytest tests/ -k us_242 -v"
+      ],
+      "dependencies": [
+        "US-242"
+      ],
+      "estimatedComplexity": "medium",
+      "tags": [
+        "regression",
+        "auto-generated"
+      ],
+      "source": "",
+      "_source": "test-story",
+      "_testType": "regression",
+      "_forStoryId": "US-242"
     },
     {
       "title": "[Regression Test] Blog post: Visa Run from Singapore to JB — Step-by-Step Guide 2026",

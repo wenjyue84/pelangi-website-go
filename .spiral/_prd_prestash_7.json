@@ -3687,6 +3687,31 @@
       "passes": true
     },
     {
+      "id": "US-173",
+      "title": "Implement A/B testing with Vercel Feature Flags and Edge Config",
+      "priority": "medium",
+      "description": "Set up Vercel Feature Flags using Edge Config to run server-side A/B tests on the /book page hero CTA and room card layouts without client-side flicker or layout shift. Edge Config reads are under 1ms p99 globally, making flags safe to evaluate in Next.js Middleware. Start with a CTA copy test to measure booking conversion impact scientifically.",
+      "acceptanceCriteria": [
+        "Vercel Edge Config store created and connected to the project",
+        "@vercel/edge-config and @vercel/flags packages installed",
+        "A/B flag defined for /book page primary CTA copy (e.g., 'Book Now' vs 'Check Availability' vs 'Get Best Price Direct')",
+        "Flag evaluated in Next.js Middleware and variant cookie set before page render — zero layout shift",
+        "GA4 custom dimension records which variant each session received for statistical analysis",
+        "Vercel Flags UI in dashboard shows flag status, rollout percentage, and per-user override capability"
+      ],
+      "technicalNotes": [
+        "Install: npm install @vercel/edge-config @vercel/flags",
+        "Read flag in middleware.ts: import { get } from '@vercel/edge-config'; const variant = await get('cta-variant')",
+        "Pass variant via x-variant response header or cookie to Server Component for conditional rendering",
+        "Flags as Code pattern: define flag types in flags.ts, resolve server-side only to prevent client exposure",
+        "Reference: https://vercel.com/docs/feature-flags, https://vercel.com/docs/edge-config"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
       "id": "US-174",
       "title": "Add complete favicon and Apple Touch Icon set for all platforms",
       "priority": "medium",
@@ -4668,8 +4693,9 @@
         "IMPORTANT: Keep content HTML string under 8000 characters to avoid diff-guard rejection",
         "Use concise paragraphs, avoid padding"
       ],
-      "passes": false,
-      "model": "haiku"
+      "passes": true,
+      "model": "haiku",
+      "_scopeCreep": true
     },
     {
       "id": "US-243",

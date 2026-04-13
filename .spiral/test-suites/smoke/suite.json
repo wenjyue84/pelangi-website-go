@@ -2705,6 +2705,19 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[smoke] Blog post: How Malaysians Can Find Jobs in Singapore (2026 Guide)",
+      "description": "Auto-generated smoke test from US-242",
+      "from_story": "US-242",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-209",
+      "created_ts": "2026-04-13T19:52:24Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }

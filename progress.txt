@@ -136,3 +136,28 @@ This technical brief is for User Story US-242.
 *   **Build Verification:** The `npm run build` step is non-negotiable and must pass. Any TypeScript or linting error will fail the task.
 *   **Static Data:** Ensure correct TypeScript syntax for the new object and its properties, including correctly referencing the imported author object.
 
+
+## Pre-analysis for US-243 (Gemini 2.5 Pro)
+**Subject: Technical Brief for US-243: Singapore Work Pass Guide Blog Post**
+
+**Note:** The user story points to a TypeScript/Next.js project (`site/src/data/blog/posts.ts`, `npm run build`), not a Frappe/Python application. This brief is tailored to the specified files.
+
+**1. Primary File for Modification:**
+*   `site/src/data/blog/posts.ts`: A new blog post object needs to be created and added to the main exported array in this file.
+
+**2. Key Data Structures / Types:**
+*   The new object must conform to the existing `Post` data structure (or a similar TypeScript interface) used within `posts.ts`.
+*   This involves fields like `slug`, `title`, `content`, `category`, `readTime`, and `date`.
+
+**3. Recommended Implementation Approach:**
+*   Define a new constant containing the blog post's content as an HTML string.
+*   This HTML string must feature a `<table>` to compare EP, S Pass, and Work Permit, incorporating the salary minimums from the story description.
+*   The HTML should also include a dedicated section for an FAQ with at least 3 Q&As.
+*   Construct the new post object using the metadata from the acceptance criteria (slug, category, readTime, date) and reference the HTML content string.
+*   Add this new object to the posts collection.
+
+**4. Edge Cases & Verification:**
+*   **Constraint:** The HTML content string must be kept under 8000 characters.
+*   **Syntax:** Ensure proper escaping for quotes and special characters within the TypeScript template literal for the HTML.
+*   **Validation:** After adding the post, run `npm run build` from the `site/` directory to ensure no build errors are introduced.
+

@@ -443,6 +443,110 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 <p>Cross-border job hunting is achievable with clear strategy. Start applications 10 weeks ahead. Use LinkedIn and MyCareersFuture daily. Engage reputable agencies. Understand visa timelines and requirements. The salary premium is substantial—expect 3–5x growth. The process is bureaucratic but predictable. Many Malaysians hesitate due to visa complexity; educated candidates succeed. Move intentionally, and you'll cross the Causeway as a prepared professional ready to thrive in Singapore's economy.</p>
 `,
   },
+  {
+    slug: "singapore-work-pass-guide-malaysians",
+    title: "Singapore Work Pass Guide for Malaysians: EP vs S Pass vs Work Permit",
+    excerpt:
+      "Understand the three main Singapore work pass types for Malaysians: Employment Pass, S Pass, and Work Permit. Compare salary minimums, eligibility, and which visa suits your career stage.",
+    date: "2026-04-14",
+    category: "Career & Work",
+    author: "Pelangi Team",
+    readTime: "12 min read",
+    tags: ["singapore", "work-pass", "career", "expat", "malaysia", "employment-pass", "visa"],
+    featuredImage: "/images/blog/singapore-work-pass-guide.jpg",
+    content: `
+<h2>Singapore's Work Visa System Explained</h2>
+<p>Malaysia is Singapore's top source of migrant workers, accounting for 30% of foreign labour. The Ministry of Manpower (MOM) manages work passes under three main categories: Employment Pass (EP), S Pass, and Work Permit. Each serves a different skill level and salary band. Understanding which pass you qualify for is critical before job hunting.</p>
+
+<h2>Quick Comparison: EP vs S Pass vs Work Permit</h2>
+<table border="1" cellpadding="8" cellspacing="0" style="width:100%; margin:16px 0; border-collapse:collapse;">
+<tr style="background:#f5f5f5;">
+<th><strong>Feature</strong></th>
+<th><strong>Employment Pass (EP)</strong></th>
+<th><strong>S Pass</strong></th>
+<th><strong>Work Permit</strong></th>
+</tr>
+<tr>
+<td><strong>Minimum Salary</strong></td>
+<td>SGD 5,000/month</td>
+<td>SGD 3,150/month</td>
+<td>No fixed minimum</td>
+</tr>
+<tr>
+<td><strong>Target Profile</strong></td>
+<td>Degree-holders, senior roles</td>
+<td>Diploma or 5yrs experience</td>
+<td>Semi-skilled, unskilled labour</td>
+</tr>
+<tr>
+<td><strong>Processing Time</strong></td>
+<td>1-4 weeks</td>
+<td>2-8 weeks</td>
+<td>1-2 weeks</td>
+</tr>
+<tr>
+<td><strong>Validity</strong></td>
+<td>Up to 3 years</td>
+<td>Up to 2 years</td>
+<td>Up to 2 years</td>
+</tr>
+<tr>
+<td><strong>Family Dependents</strong></td>
+<td>Yes (spouse + kids)</td>
+<td>Limited (with approval)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Sector Restrictions</strong></td>
+<td>All sectors</td>
+<td>Most sectors (some restricted)</td>
+<td>Only specified sectors</td>
+</tr>
+</table>
+
+<h2>Employment Pass (EP): For Professionals</h2>
+<p><strong>Who qualifies:</strong> Degree-holders, managers, specialists. Minimum salary SGD5,000/month. No work experience requirement, but higher salary expectation if experienced.</p>
+<p><strong>Employer responsibilities:</strong> Employer files with MOM using standard form. They bear sponsorship costs (typically SGD500–1,500). Processing takes 1–4 weeks. No quota limits; approved applications are processed first-in-first-out.</p>
+<p><strong>Best for:</strong> Fresh graduates from prestigious universities, tech professionals, finance roles, engineering, and management positions. If you have a degree, aim for EP—it's the most stable and flexible pass.</p>
+
+<h2>S Pass: The Middle Ground</h2>
+<p><strong>Who qualifies:</strong> Diploma holders or those with 5+ years relevant work experience. Minimum salary SGD3,150/month. Evaluated on skill level, proven experience, and salary competitiveness.</p>
+<p><strong>Processing:</strong> 2–8 weeks, slower than EP because MOM evaluates local job market impact. There are annual quotas; applications processed when quota available. This pass is popular with mid-career Malaysians.</p>
+<p><strong>Best for:</strong> Technicians, supervisors, mid-level specialists without university degrees. If you have strong experience but no degree, S Pass is realistic and widely available.</p>
+
+<h2>Work Permit: For Specific Sectors</h2>
+<p><strong>Who qualifies:</strong> Semi-skilled and unskilled workers in approved sectors: construction, marine, food, healthcare, domestic work. No degree required; employers must show they cannot fill role locally.</p>
+<p><strong>Restrictions:</strong> Highly sector-specific. Work Permits are not portable across employers. Processing is fastest (1–2 weeks) but quotas vary by sector and are tightly managed.</p>
+<p><strong>Best for:</strong> Hospitality workers, construction labourers, healthcare aides, cleaners. If you lack formal qualifications, Work Permit is the entry point.</p>
+
+<h2>FAQ: Your Singapore Work Pass Questions Answered</h2>
+
+<h3>Q: I have a diploma but 8 years experience. Can I get an EP?</h3>
+<p><strong>A:</strong> Unlikely. MOM policy requires degree for EP unless you're a rare specialist (e.g., executive chef with global recognition). With 8 years experience, your S Pass is stronger. Some borderline cases where MOM approves EP anyway—always try, worst case is rejection. Your employer can reapply as S Pass.</p>
+
+<h3>Q: What salary should I negotiate for?</h3>
+<p><strong>A:</strong> EP minimum is SGD5,000; most employers offer SGD5,500–8,000 for mid-career (3–5 years). S Pass starts at SGD3,150 but realistic offers are SGD3,800–5,500. Never go below the MOM minimum—visa will be rejected. Always negotiate above minimum; accepting SGD5,000 EP sets your ceiling for 3 years until next renewal.</p>
+
+<h3>Q: Can I bring my family on a Work Permit?</h3>
+<p><strong>A:</strong> No. Work Permits are non-family passes. EP allows spouse + dependent children (usually up to age 22). S Pass dependents require separate approval, rarely granted. If family is priority, aim for EP. If you're Work Permit, your family stays in Malaysia.</p>
+
+<h3>Q: How long does visa processing actually take?</h3>
+<p><strong>A:</strong> MOM publishes "1–4 weeks" for EP but reality varies. Straightforward cases (degree verified, salary clear, employer reputable) process in 7–10 days. Complicated cases (foreign degree, education verification delays, conflicting documents) take 3–4 weeks. S Pass slower: 2–8 weeks. Always assume 4 weeks and plan accordingly. Ask your employer's HR for their average—top companies have precedent and process faster.</p>
+
+<h3>Q: Can I change jobs mid-pass?</h3>
+<p><strong>A:</strong> EP: Yes, new employer files for transfer. Salary can drop but not below MOM minimum. Entire transfer takes 1–2 weeks. S Pass: Yes, with same restrictions. Work Permit: No—strictly employer-locked. Changing jobs on Work Permit requires new application, often rejected if different sector.</p>
+
+<h2>Red Flags to Avoid</h2>
+<ul>
+<li><strong>Underpaying offers:</strong> "We'll sponsor at SGD3,500 for EP." Reject immediately—MOM will reject it anyway, wasting 3 weeks.</li>
+<li><strong>Vague timelines:</strong> "Processing usually takes 2 weeks." Push back—get written commitment on timeline.</li>
+<li><strong>Company never sponsored Malaysians:</strong> High rejection risk. Ask HR for past sponsorship success rate. First-time sponsors have slower processing.</li>
+</ul>
+
+<h2>Your Next Move</h2>
+<p>Identify your profile (degree? experience? target salary?) and apply strategically. EP is fastest and most flexible; push for it if degree-eligible. S Pass is realistic for experienced non-graduates. Start applications 12 weeks before desired start date. The Singapore salary premium (3–5x your Malaysia salary) justifies the bureaucracy. Move intentionally, understand your visa category, and cross the Causeway ready to thrive.</p>
+`,
+  },
 ];
 
 export const blogPosts: BlogPost[] = rawPosts.map((post) => ({
