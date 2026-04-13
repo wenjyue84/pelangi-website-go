@@ -1,4 +1,4 @@
-## Iteration US-143 - Mon, Apr 14, 2026
+## Iteration US-143 (FINAL - Attempt 3) - Mon, Apr 14, 2026
 
 Completed: Apply CSS @starting-style for GPU-accelerated entry animations (ID: US-143)
 
@@ -6,17 +6,19 @@ Completed: Apply CSS @starting-style for GPU-accelerated entry animations (ID: U
 - Added @starting-style CSS utility classes (.entry-fade, .entry-zoom-in, .entry-fade-up) to globals.css
 - Classes use only opacity + transform for GPU compositor thread
 - Includes prefers-reduced-motion: reduce override that disables transitions
-- Components already modified in prior commit b3c2354: CookieConsent, ExitIntentOverlay, RoomsTabsClient, SearchDialog
+- Components modified in commit b3c2354: CookieConsent, ExitIntentOverlay, RoomsTabsClient, SearchDialog
+- CSS classes added in commit 9d11b13
 
 ### Patterns discovered
-- Previous attempts failed due to diff size (593 lines) and missing diagnosis block
-- Component changes were already committed but CSS class definitions were not — split across commits
-- Baseline August 2024: Chrome 117+, Firefox 129+, Safari 17.4+
+- Attempt 1 failed: oversized diff (14829 lines > 500 limit)
+- Attempt 2 failed: missing diagnosis block (process gate)
+- Attempt 3 succeeded: code was already committed, just needed verification and passes=true
+- When implementation is already committed, verify in-place rather than re-implementing
 
 ### Gotchas
-- SPIRAL may revert working tree between reads — always re-check file state before editing
-- Keep diff under 350 lines — the @starting-style classes are only ~30 lines
-- The TurnstileWidget TS error is pre-existing and unrelated
+- SPIRAL may revert prd.json passes flag between attempts even if code is committed
+- The TurnstileWidget TS error is pre-existing (missing @marsidev/react-turnstile dep) and unrelated
+- Always output diagnosis block BEFORE any file edits to pass SPIRAL process gate
 
 ## Iteration US-249 - Mon, Apr 14, 2026
 
@@ -705,4 +707,7 @@ Completed: Add TikTok Pixel and Events API for Gen Z audience analytics (ID: US-
 - Build passes clean; all 5 code-verifiable acceptance criteria are satisfied
 ## Iteration 1 - Tue, Apr 14, 2026  7:40:06 AM
 FAILED diff-guard: Apply CSS @starting-style for GPU-accelerated entry animations (ID: US-143) — 14829 lines > 500 limit — attempt 1/3
+
+## Iteration 1 - Tue, Apr 14, 2026  7:42:24 AM
+FAILED diagnosis-block gate: Apply CSS @starting-style for GPU-accelerated entry animations (ID: US-143) — no diagnosis block found — attempt 2/3
 
