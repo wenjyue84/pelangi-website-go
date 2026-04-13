@@ -1,3 +1,23 @@
+## Iteration US-143 - Mon, Apr 14, 2026
+
+Completed: Apply CSS @starting-style for GPU-accelerated entry animations (ID: US-143)
+
+### What was implemented
+- Added @starting-style CSS utility classes (.entry-fade, .entry-zoom-in, .entry-fade-up) to globals.css
+- Classes use only opacity + transform for GPU compositor thread
+- Includes prefers-reduced-motion: reduce override that disables transitions
+- Components already modified in prior commit b3c2354: CookieConsent, ExitIntentOverlay, RoomsTabsClient, SearchDialog
+
+### Patterns discovered
+- Previous attempts failed due to diff size (593 lines) and missing diagnosis block
+- Component changes were already committed but CSS class definitions were not — split across commits
+- Baseline August 2024: Chrome 117+, Firefox 129+, Safari 17.4+
+
+### Gotchas
+- SPIRAL may revert working tree between reads — always re-check file state before editing
+- Keep diff under 350 lines — the @starting-style classes are only ~30 lines
+- The TurnstileWidget TS error is pre-existing and unrelated
+
 ## Iteration US-249 - Mon, Apr 14, 2026
 
 Completed: Blog post - 5 Gig Jobs for Malaysians Waiting for Singapore Work Approval (ID: US-249)
@@ -683,3 +703,6 @@ Completed: Add TikTok Pixel and Events API for Gen Z audience analytics (ID: US-
 ### Gotchas
 - The TikTok integration was already fully implemented; only prd.json needed updating
 - Build passes clean; all 5 code-verifiable acceptance criteria are satisfied
+## Iteration 1 - Tue, Apr 14, 2026  7:40:06 AM
+FAILED diff-guard: Apply CSS @starting-style for GPU-accelerated entry animations (ID: US-143) — 14829 lines > 500 limit — attempt 1/3
+
