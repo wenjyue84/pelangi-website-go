@@ -537,3 +537,37 @@ This story involves adding new content to the Pelangi website's blog. All modifi
     *   The introduction must specifically mention "Pelangi guests."
     *   Final verification requires running `npm run build` to ensure no build errors are introduced.
 
+## Iteration 1 - Tue, Apr 14, 2026  5:10:46 AM
+Completed: Blog post: 5 Gig Jobs for Malaysians Waiting for Singapore Work Approval (ID: US-249) in 8m
+
+
+## Pre-analysis for US-250 (Gemini 2.5 Pro)
+This user story is for a website blog, not a Frappe/Python application. The implementation is in TypeScript.
+
+**Technical Brief for US-250: New Blog Post**
+
+1.  **File to Modify:**
+    *   `site/src/data/blog/posts.ts`: This file likely contains an array of blog post objects. A new post object needs to be added to this array.
+
+2.  **Frappe DocTypes / Data Structures:**
+    *   Not applicable. The relevant structure is the TypeScript interface/type for a blog post object defined or used within `posts.ts`. The new object must conform to this existing data structure.
+
+3.  **Implementation Approach:**
+    *   Define a new constant object for the post, following the structure of existing posts in the file.
+    *   Set the properties:
+        *   `slug`: `'3-day-jb-backpacker-itinerary-rm250'`
+        *   `category`: `'Backpacker Tips'`
+        *   `readTime`: `'8 min read'`
+        *   `date`: `'2026-04-14'`
+        *   `title`: `'Blog post: 3-Day JB Backpacker Itinerary Under RM250 (2026)'`
+    *   For the main content/body property, create a multi-line string containing the day-by-day itinerary in HTML.
+    *   This HTML must include a `<table>` to present the budget breakdown (Accommodation, Food, Transport).
+    *   The mention of "Pelangi" must be an anchor tag linking to `/book` (e.g., `<a href="/book">Pelangi</a>`).
+    *   Add this new post object to the main exported array in the file.
+
+4.  **Edge Cases & Gotchas:**
+    *   The HTML content for the post body must be less than 7000 characters.
+    *   Ensure the new object is added correctly to the exported array, maintaining correct syntax.
+    *   Verify the final implementation by running `npm run build` within the `site/` directory to catch any type or build errors.
+    *   Match the date format precisely with other entries.
+

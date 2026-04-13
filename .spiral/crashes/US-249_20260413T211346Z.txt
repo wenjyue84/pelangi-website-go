@@ -1,0 +1,8 @@
+# SPIRAL Crash Report
+# Story:     US-249
+# Worker:    sequential
+# Exit Code: 124
+# Timestamp: 20260413T211346Z
+# ─────────────────────────────────────────
+
+warning: in the working copy of '.spiral/spiral_events.jsonl', LF will be replaced by CRLF the next time Git touches it

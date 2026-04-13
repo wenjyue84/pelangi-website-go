@@ -5599,7 +5599,8 @@
       ],
       "passes": true,
       "model": "haiku",
-      "last_attempted": "2026-04-13T20:47:09Z"
+      "last_attempted": "2026-04-13T20:47:09Z",
+      "_scopeCreep": true
     },
     {
       "id": "US-248",
@@ -5656,7 +5657,7 @@
       "technicalNotes": [
         "Keep content HTML under 8000 characters"
       ],
-      "passes": false,
+      "passes": true,
       "model": "haiku"
     },
     {

@@ -750,6 +750,86 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 <p>Choose a gig: Foodpanda for ease, freelancing for scalability, F&B for social connection. <a href="/rooms">Book a stay at Pelangi Capsule</a> as your base while you earn and prepare for Singapore.</p>
 `,
   },
+  {
+    slug: "3-day-jb-backpacker-itinerary-rm250",
+    title: "3-Day JB Backpacker Itinerary Under RM250 (2026)",
+    excerpt:
+      "A complete 3-day itinerary for JB on a tight budget: RM35/night hostel, RM25/day food, RM10/day transport. Day-by-day breakdown with best food spots and activities.",
+    date: "2026-04-14",
+    category: "Backpacker Tips",
+    author: "Pelangi Team",
+    readTime: "8 min read",
+    tags: ["johor-bahru", "backpacker", "budget-travel", "itinerary", "malaysia", "hostel"],
+    featuredImage: "/images/blog/jb-backpacker-itinerary.jpg",
+    content: `
+<h2>The RM250 Challenge: Is It Possible?</h2>
+<p>Three days in Johor Bahru for under RM250 total? Yes. This includes accommodation, all meals, transport, and activities. Here's the day-by-day breakdown that proves it.</p>
+
+<h2>Day 1: Arrival & City Orientation</h2>
+<p><strong>Morning (9am–12pm):</strong> Arrive at JB Sentral station. Walk or take local bus (RM2) to <a href="/book">Pelangi Capsule Hostel</a>. Check in early (RM35/night), drop bags, freshen up. Cost: RM2 transport.</p>
+<p><strong>Afternoon (1pm–5pm):</strong> Lunch at Sik Bao Sin hawker centre—mixed rice with 3 items, RM6. Walk around Taman Pelangi neighbourhood (free). Visit the traditional Chinese temple nearby (free entry). Coffee at local kopitiam, RM3.</p>
+<p><strong>Evening (6pm–10pm):</strong> Dinner at Taman Sentosa night market—satay skewers (5 sticks, RM3), lok-lok (RM4), teh tarik (RM2). Return to hostel. Total Day 1: RM55.</p>
+
+<h2>Day 2: Food & Culture Deep Dive</h2>
+<p><strong>Morning (8am–11am):</strong> Breakfast—roti canai + teh tarik at mamak, RM5. Grab to nearby Johor Art Gallery or street art walk (free/RM5 entry). Visit local market, RM3 (exploratory snacks).</p>
+<p><strong>Afternoon (12pm–4pm):</strong> Lunch at laksa stall, RM7 (laksa Johor specialty). Rest at hostel or visit free museum. Explore the Waterfront area by foot (free). Snack—martabak + juice, RM5.</p>
+<p><strong>Evening (6pm–10pm):</strong> Dinner at San Low Seafood restaurant—dry-fried bee hoon (small portion), RM12. Dessert: ice kacang at hawker, RM2. Chat with other backpackers at hostel common area (free). Total Day 2: RM59.</p>
+
+<h2>Day 3: Last Day Exploration & Departure</h2>
+<p><strong>Morning (8am–12pm):</strong> Breakfast—nasi lemak from stall, RM4. Visit Sultan Abu Bakar Museum or local mosque (RM5 entry or free). Shopping at Jaya Jusco mall (window shopping free, maybe grab a snack). Coffee, RM2.</p>
+<p><strong>Afternoon (1pm–4pm):</strong> Lunch—chicken rice or mixed rice, RM6. Relax at hostel or visit one last hawker spot. Pack and checkout by 4pm.</p>
+<p><strong>Evening (5pm+):</strong> Budget buffer for transport to airport/station (RM10–15). Total Day 3: RM27.</p>
+
+<h2>The Budget Breakdown</h2>
+<table border="1" cellpadding="10" cellspacing="0" style="width:100%; margin:15px 0; border-collapse:collapse;">
+  <tr style="background-color:#f0f0f0;">
+    <th style="text-align:left; padding:10px;">Category</th>
+    <th style="text-align:center; padding:10px;">Per Night/Day</th>
+    <th style="text-align:center; padding:10px;">3 Days Total</th>
+  </tr>
+  <tr>
+    <td style="padding:10px;"><strong>Accommodation</strong> (Pelangi Capsule Hostel)</td>
+    <td style="text-align:center; padding:10px;">RM35</td>
+    <td style="text-align:center; padding:10px;">RM105</td>
+  </tr>
+  <tr style="background-color:#fafafa;">
+    <td style="padding:10px;"><strong>Food</strong> (Breakfast + Lunch + Dinner + Snacks)</td>
+    <td style="text-align:center; padding:10px;">RM25</td>
+    <td style="text-align:center; padding:10px;">RM75</td>
+  </tr>
+  <tr>
+    <td style="padding:10px;"><strong>Transport</strong> (Local buses, Grab rides)</td>
+    <td style="text-align:center; padding:10px;">RM10</td>
+    <td style="text-align:center; padding:10px;">RM30</td>
+  </tr>
+  <tr>
+    <td style="padding:10px;"><strong>Activities & Misc</strong> (Museum, snacks, buffer)</td>
+    <td style="text-align:center; padding:10px;">RM15</td>
+    <td style="text-align:center; padding:10px;">RM35</td>
+  </tr>
+  <tr style="background-color:#e8f5e9;">
+    <td style="padding:10px;"><strong>TOTAL</strong></td>
+    <td style="text-align:center; padding:10px;">—</td>
+    <td style="text-align:center; padding:10px;"><strong>RM245</strong></td>
+  </tr>
+</table>
+
+<h2>Money-Saving Tips</h2>
+<ul>
+  <li><strong>Accommodation:</strong> <a href="/book">Pelangi Capsule offers dorm beds at RM35/night</a>—one of the best value hostels in JB.</li>
+  <li><strong>Food:</strong> Stick to hawker centres and night markets. Avoid tourist restaurants.</li>
+  <li><strong>Transport:</strong> Use local buses (RM2–3 per trip) instead of Grab. Walk when possible.</li>
+  <li><strong>Activities:</strong> Free walking tours, street art exploration, and mosque visits cost nothing.</li>
+  <li><strong>Meals:</strong> Eat breakfast early (cheaper) and largest meal at lunch (peak competition = better value).</li>
+</ul>
+
+<h2>What Makes RM250 Possible</h2>
+<p>JB's strength is hawker-centre pricing and no tourist markup. A hawker lunch (RM6–8) would cost SGD12–15 in Singapore—triple the price. Budget-hostel accommodation at RM35/night is rare anywhere else. Combine these and RM250 becomes comfortable, not miserable.</p>
+
+<h2>Ready for Your RM250 Adventure?</h2>
+<p><a href="/book">Book your stay at Pelangi Capsule Hostel</a> and start your three-day JB backpacking journey. It's affordable, authentic, and memorable.</p>
+`,
+  },
 ];
 
 export const blogPosts: BlogPost[] = rawPosts.map((post) => ({
