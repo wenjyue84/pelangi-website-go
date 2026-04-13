@@ -59,3 +59,4 @@ opus"}
 {"ts":"2026-04-13T19:27:29Z","event":"phase_end","run_id":"69dd34342c1f","level":"INFO","phase":"M","iteration":5,"model":"haiku","trace_id":"f1b7af3bac05b0aabab002f21e2e7ef3","span_id":"4ba0fbdd8122224a"}
 {"ts":"2026-04-13T19:27:33Z","event":"phase_start","run_id":"69dd34342c1f","level":"INFO","phase":"G","iteration":5,"trace_id":"f1b7af3bac05b0aabab002f21e2e7ef3","span_id":"4ba0fbdd8122224a"}
 {"ts":"2026-04-13T19:27:34Z","event":"phase_start","run_id":"69dd34342c1f","level":"INFO","phase":"I","iteration":5,"trace_id":"f1b7af3bac05b0aabab002f21e2e7ef3","span_id":"4ba0fbdd8122224a"}
+{"ts":"2026-04-13T19:37:53Z","event":"cost_update","story_id":"US-196","tokens_input":1972,"tokens_output":16840,"estimated_usd":1.024551}
