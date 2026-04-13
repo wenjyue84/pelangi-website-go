@@ -1,0 +1,11 @@
+{
+  "story_id": "US-262",
+  "story_title": "Create /singapore-jobs resource hub with FAQPage schema and job seeker CTAs",
+  "key_source": "ai-example|create|/singapore-jobs|resource|medium|",
+  "stored_ts": 1776116485.418078,
+  "plan": {
+    "story_id": "US-262",
+    "duration_s": 900,
+    "model": "unknown"
+  }
+}

@@ -622,3 +622,6 @@ Completed: Create /singapore-jobs resource hub with FAQPage schema and job seeke
 ### Gotchas
 - Previous attempt produced 6609 lines — kept this attempt to 170 lines by using concise FAQ answers and following existing page patterns
 - No structured-data.ts file exists despite technical notes suggesting one; inline schema is the codebase pattern
+## Iteration 2 - Tue, Apr 14, 2026  5:40:05 AM
+Completed: Create /singapore-jobs resource hub with FAQPage schema and job seeker CTAs (ID: US-262) in 7m
+
