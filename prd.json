@@ -3167,7 +3167,11 @@
       "estimatedComplexity": "small",
       "passes": true,
       "model": "haiku",
-      "last_attempted": "2026-04-13T23:22:51Z"
+      "last_attempted": "2026-04-13T23:40:07Z",
+      "_failureReason": null,
+      "_antiPatterns": [
+        "oversized_diff: produced 14829 lines but limit is 500. Keep total insertions+deletions under 500 lines."
+      ]
     },
     {
       "id": "US-144",

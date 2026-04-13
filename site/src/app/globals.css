@@ -563,6 +563,36 @@ html.animations-paused *::after {
 }
 
 /* ============================================================
+   CSS @starting-style entry animations (US-143)
+   Declarative fade/slide-in for elements entering the DOM.
+   Baseline August 2024: Chrome 117+, Firefox 129+, Safari 17.4+.
+   Uses only opacity + transform (GPU compositor thread, no layout).
+   ============================================================ */
+.entry-fade {
+  opacity: 1;
+  transition: opacity 0.3s ease-out;
+  @starting-style { opacity: 0; }
+}
+
+.entry-zoom-in {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+  @starting-style { opacity: 0; transform: scale(0.95); }
+}
+
+.entry-fade-up {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  @starting-style { opacity: 0; transform: translateY(1rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entry-fade, .entry-zoom-in, .entry-fade-up { transition: none; }
+}
+
+/* ============================================================
    Scroll-driven section reveal animations (US-217)
    Uses animation-timeline: view() for compositor-thread reveals.
    Only opacity + transform — no layout shifts, no main-thread paint.
