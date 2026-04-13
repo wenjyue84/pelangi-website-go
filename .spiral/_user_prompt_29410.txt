@@ -1,0 +1,1 @@
+Implement story **US-244** ("Blog post: Living in JB Working in Singapore — Cross-Border Commuter Guide 2026") from prd.json now. This is the story assigned to you by the SPIRAL orchestrator — do NOT pick a different story. Read prd.json for the full details of US-244, read progress.txt for codebase context, then implement US-244 only.

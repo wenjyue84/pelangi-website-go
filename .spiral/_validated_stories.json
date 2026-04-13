@@ -1,28 +1,63 @@
 {
   "stories": [
     {
-      "title": "Create /singapore-jobs resource hub with FAQPage schema and job seeker CTAs",
+      "title": "Add /visa-run resource hub page with FAQPage schema",
       "priority": "medium",
-      "description": "Build a dedicated /singapore-jobs page targeting Malaysians seeking work in Singapore. Include FAQ section with job visa types (EP, S Pass, Work Permit), accommodation CTAs, and FAQPage JSON-LD schema for Google rich results. Cross-link to /guide and /book pages.",
+      "description": "Create a dedicated /visa-run page for visitors extending stay visas, featuring FAQ section, step-by-step border-crossing guide, and FAQPage JSON-LD schema for Google search result enhancements.",
       "acceptanceCriteria": [
-        "Page includes FAQPage JSON-LD schema in page head with minimum 8 Q&A pairs about Singapore job visa types, processing timelines, and cost",
-        "Page displays 'Book your visa run accommodation' and 'Check our guide' CTAs that link to /book and /guide with utm_source=singapore-jobs",
-        "Page has title 'Jobs in Singapore for Malaysians | Pelangi Capsule' and meta description targeting 'Singapore work pass, work permit Malaysia' keywords"
+        "FAQ accordion with 6+ Q&A pairs covering visa rules, timing, border crossing locations, transport costs, and logistics",
+        "Step-by-step visual guide showing JB→Singapore→JB route (3-5 steps with estimated timings and cost breakdown)",
+        "FAQPage JSON-LD schema with mainEntity array containing Question/Answer pairs for Google rich results",
+        "Internal links to related blog posts (Singapore work pass guide, JB accommodation, transport without car) placed contextually"
       ],
       "technicalNotes": [
-        "File to create: app/singapore-jobs/page.tsx — Next.js page component with SEO metadata and FAQ section (~120 lines)",
-        "File to create: lib/singapore-jobs-faq.ts — export FAQ data structure as const singaporeJobsFAQ: FAQItem[] (~80 lines)",
-        "File to update: lib/structured-data.ts — add generateFAQPageSchema(faqs: FAQItem[]) function",
-        "Test command: npm test lib/structured-data.test.ts -t 'FAQPage' -v (validate schema.org compliance)"
+        "File to create: site/app/visa-run/page.tsx (RSC page with Accordion component from shadcn/ui for FAQs)",
+        "File to create: site/app/visa-run/data.ts (export visaRunFAQs array and borderGuide steps with timings)",
+        "File to edit: site/lib/structured-data.ts (add generateFAQPageSchema(faqItems) function for JSON-LD)",
+        "File to edit: site/app/sitemap.ts (add /visa-run route with priority 0.8)",
+        "Test command: npx vitest run 'site/lib/__tests__/structured-data.test.ts' -t FAQPage"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "app/singapore-jobs/page.tsx",
-        "lib/singapore-jobs-faq.ts",
-        "lib/structured-data.ts"
+        "site/app/visa-run/page.tsx",
+        "site/app/visa-run/data.ts",
+        "site/lib/structured-data.ts",
+        "site/app/sitemap.ts",
+        "site/lib/__tests__/structured-data.test.ts"
+      ],
+      "_source": "ai-example",
+      "passes": false
+    },
+    {
+      "title": "Build /singapore-jobs resource hub for Malaysian job seekers",
+      "priority": "medium",
+      "description": "Create /singapore-jobs landing page targeting Malaysians seeking employment in Singapore, featuring work pass comparison table, job-seeker FAQ with schema, and cross-links to related blog content.",
+      "acceptanceCriteria": [
+        "Comparison table displaying Singapore work pass types (EP, S Pass, PEP, WP) with eligibility, salary thresholds, and validity",
+        "FAQ section with 8+ job-seeker questions (salary expectations, application timeline, costs, requirements, visa runs allowed)",
+        "FAQPage JSON-LD schema with mainEntity array for Google search result FAQ snippets",
+        "Internal links to blog posts (How to Find Jobs in Singapore, Singapore Work Pass Guide, Visa Run) placed in context"
+      ],
+      "technicalNotes": [
+        "File to create: site/app/singapore-jobs/page.tsx (RSC page with work pass Table component and FAQ Accordion)",
+        "File to create: site/app/singapore-jobs/data.ts (export workPassTypes and jobSeekerFAQs arrays)",
+        "File to edit: site/lib/structured-data.ts (add generateJobSeekerFAQSchema(faqItems) for FAQPage JSON-LD)",
+        "File to edit: site/app/sitemap.ts (add /singapore-jobs with priority 0.9)",
+        "Test command: npx vitest run 'site/lib/__tests__/structured-data.test.ts' -t 'FAQPage.*job'"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "site/app/singapore-jobs/page.tsx",
+        "site/app/singapore-jobs/data.ts",
+        "site/lib/structured-data.ts",
+        "site/app/sitemap.ts",
+        "site/lib/__tests__/structured-data.test.ts"
       ],
       "_source": "ai-example",
       "passes": false
@@ -1942,6 +1977,32 @@
       "_source": "test-story",
       "_testType": "regression",
       "_forStoryId": "US-242"
+    },
+    {
+      "title": "[E2E Test] Blog post: Singapore Work Pass Guide for Malaysians (EP vs S Pass vs WP)",
+      "priority": "medium",
+      "description": "Write end-to-end user flow test for the feature in US-243. Story description: Add a blog post comparing EP (min S$5000), S Pass (min S$3150), and Work Permit for Malaysian readers, with HTML comparison table and FAQ section.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-243",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Source files from US-243: site/src/data/blog/posts.ts",
+        "Run: uv run pytest tests/ -k us_243 -v"
+      ],
+      "dependencies": [
+        "US-243"
+      ],
+      "estimatedComplexity": "medium",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ],
+      "source": "",
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-243"
     },
     {
       "title": "[Regression Test] Blog post: Visa Run from Singapore to JB — Step-by-Step Guide 2026",

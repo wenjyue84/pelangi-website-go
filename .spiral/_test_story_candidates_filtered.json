@@ -1762,6 +1762,30 @@
     ]
   },
   {
+    "title": "[E2E Test] Blog post: Singapore Work Pass Guide for Malaysians (EP vs S Pass vs WP)",
+    "description": "Write end-to-end user flow test for the feature in US-243. Story description: Add a blog post comparing EP (min S$5000), S Pass (min S$3150), and Work Permit for Malaysian readers, with HTML comparison table and FAQ section.",
+    "acceptanceCriteria": [
+      "E2E test covers the user flow introduced by US-243",
+      "Test navigates to relevant page(s) and asserts on visible state",
+      "Test passes in headless browser (Playwright/Cypress/similar)"
+    ],
+    "technicalNotes": [
+      "Source files from US-243: site/src/data/blog/posts.ts",
+      "Run: uv run pytest tests/ -k us_243 -v"
+    ],
+    "priority": "medium",
+    "dependencies": [
+      "US-243"
+    ],
+    "_source": "test-story",
+    "_testType": "e2e",
+    "_forStoryId": "US-243",
+    "tags": [
+      "e2e",
+      "auto-generated"
+    ]
+  },
+  {
     "title": "[Regression Test] Blog post: Visa Run from Singapore to JB \u2014 Step-by-Step Guide 2026",
     "description": "Write regression test to guard against future breakage of US-245. Story description: Blog post for Singapore tourists/expats doing visa runs to JB. What a visa run is, who needs one, step-by-step process, what to do in JB, overnight stay at Pelangi.",
     "acceptanceCriteria": [

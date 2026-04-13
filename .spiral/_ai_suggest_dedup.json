@@ -1,22 +1,23 @@
 {
   "stories": [
     {
-      "title": "Generate RSS/Atom feed at /feed.xml for blog content distribution",
+      "title": "Add dynamic OG image generation for blog posts using next/og",
       "priority": "high",
-      "description": "Create an RSS/Atom XML feed at /feed.xml that automatically publishes blog posts with metadata (title, description, author, date, link). Enable external readers and aggregators to subscribe to new blog content.",
+      "description": "Generate dynamic Open Graph images for blog posts using Next.js ImageResponse API. Each blog post will have a unique OG image with title, date, and author, improving social media click-through rates for blog discovery.",
       "acceptanceCriteria": [
-        "GET /feed.xml returns valid RSS 2.0 XML with Content-Type: application/rss+xml header",
-        "Each <item> includes <title>, <link>, <pubDate>, <description>, and <guid> from published blog posts in reverse chronological order",
-        "Feed includes <lastBuildDate> that updates when blog posts change, and <channel> metadata with hostel name and description"
+        "OG image generated dynamically with blog post title, publication date, and author name",
+        "og:image meta tag present in BlogPostLayout with correct URL pointing to /_og route",
+        "Image dimensions 1200\u00d7630 px with readable text contrast (WCAG AA) on colored background",
+        "OG image regenerates when blog post frontmatter updates (uses revalidateTag)"
       ],
       "technicalNotes": [
-        "File to create: app/feed.xml/route.ts \u2014 RSS route handler using rss package (~80 lines)",
-        "File to update: lib/blog.ts \u2014 ensure getBlogPosts() returns pubDate, slug, excerpt, and author",
-        "Test command: curl http://localhost:3000/feed.xml | xmllint --noout - (validate XML structure)"
+        "File to edit: site/app/blog/_og/route.tsx (new ImageResponse handler accepting slug and returning PNG)",
+        "File to edit: site/app/blog/[slug]/layout.tsx (update generateMetadata to add og:image meta tag with dynamic URL)",
+        "Test command: curl -I 'http://localhost:3000/blog/_og?slug=singapore-work-pass' | grep -i 'content-type: image'"
       ],
       "filesTouch": [
-        "app/feed.xml/route.ts",
-        "lib/blog.ts"
+        "site/app/blog/_og/route.tsx",
+        "site/app/blog/[slug]/layout.tsx"
       ],
       "estimatedComplexity": "small",
       "_source": "ai-example",
@@ -24,24 +25,26 @@
       "dependencies": []
     },
     {
-      "title": "Add JB News & Updates widget to homepage with curated RSS feed integration",
+      "title": "Implement JB News & Updates RSS widget on homepage",
       "priority": "high",
-      "description": "Create a homepage widget that fetches and displays 3-4 latest items from curated JB tourism, news, and event RSS feeds (e.g., Johor State Tourism, TimeOut KL JB events). Cache results for 6 hours to avoid hitting external feeds too frequently.",
+      "description": "Add a React Server Component homepage widget that fetches and displays 3-5 curated RSS feed items from JB tourism boards and local event sources, refreshing hourly with graceful error fallback.",
       "acceptanceCriteria": [
-        "HomeNewsWidget component displays 3-4 recent news items with title, date, source name, and clickable link",
-        "RSS feed URLs are configurable in environment variables and validated on page load; invalid URLs are skipped silently",
-        "Component falls back gracefully if any feed fetch fails \u2014 shows cached data from previous fetch or empty 'No news available' state"
+        "Widget fetches from 3+ RSS sources (JB tourism, local events, travel blogs) with 5-second timeout",
+        "Displays up to 5 most recent feed items with title, publication date, and source name linking to original",
+        "Feed data cached for 1 hour to minimize external requests and improve homepage load time",
+        "If RSS fetch fails, widget displays cached items or fallback message without breaking page render"
       ],
       "technicalNotes": [
-        "File to create: lib/rss-fetcher.ts \u2014 RSS parser using fast-xml-parser package (~100 lines)",
-        "File to create: components/HomeNewsWidget.tsx \u2014 React component with SWR data fetching (~80 lines)",
-        "File to update: app/page.tsx \u2014 add <HomeNewsWidget /> to hero section",
-        "Test command: npm test components/HomeNewsWidget.test.tsx -v (mock fetch, verify rendering)"
+        "File to create: site/lib/rss-fetcher.ts (async function fetchRSSFeeds returning array of { title, date, source, url } objects)",
+        "File to create: site/app/components/JBNewsWidget.tsx (RSC component using fetchRSSFeeds with revalidateTag caching)",
+        "File to edit: site/app/page.tsx (add <JBNewsWidget /> below testimonials section)",
+        "Test command: npx vitest run 'site/app/components/__tests__/JBNewsWidget.test.tsx' -t 'displays recent items'"
       ],
       "filesTouch": [
-        "lib/rss-fetcher.ts",
-        "components/HomeNewsWidget.tsx",
-        "app/page.tsx"
+        "site/lib/rss-fetcher.ts",
+        "site/app/components/JBNewsWidget.tsx",
+        "site/app/page.tsx",
+        "site/app/components/__tests__/JBNewsWidget.test.tsx"
       ],
       "estimatedComplexity": "medium",
       "_source": "ai-example",
@@ -49,24 +52,26 @@
       "dependencies": []
     },
     {
-      "title": "Create dynamic blog tag pages at /blog/tags/[tag] for long-tail keyword SEO",
-      "priority": "medium",
-      "description": "Generate dynamic tag pages at /blog/tags/[tag] that list all blog posts with a specific tag. Extract tags from blog post frontmatter and auto-generate pages with proper breadcrumbs, metadata, and internal linking. Add tag cloud to blog list for navigation.",
+      "title": "Create /rooms page with HotelRoom schema and Offer pricing",
+      "priority": "high",
+      "description": "Build a dedicated /rooms page showcasing all hostel room types with photos, amenities, pricing, and HotelRoom JSON-LD schema with Offer markup for improved Google Hotel search visibility.",
       "acceptanceCriteria": [
-        "Tag page at /blog/tags/backpacker displays all posts tagged 'backpacker' with meta description, title, and BreadcrumbList schema",
-        "Each blog post frontmatter includes tags array (e.g., tags: ['backpacker', 'budget', 'singapore']); getTags() returns unique list",
-        "Blog post cards show clickable tags that link to /blog/tags/[tag]; tag pages show 'Back to Blog' and related tags links"
+        "Page displays all room types (dorm 4-bed, dorm 6-bed, private single, double, family) with 3+ images each",
+        "HotelRoom JSON-LD schema includes Offer with price (MYR), priceCurrency, availability, and booking URL",
+        "Each room card shows amenities (A/C, WiFi, shared bathroom) and accessibility features (wheelchair accessible)",
+        "Room pricing matches current booking system; schema validates against schema.org HotelRoom and Offer types"
       ],
       "technicalNotes": [
-        "File to create: app/blog/tags/[tag]/page.tsx \u2014 dynamic route with generateStaticParams (~70 lines)",
-        "File to update: lib/blog.ts \u2014 add getTags() and getPostsByTag(tag: string) functions (~50 lines total)",
-        "File to update: components/BlogPostCard.tsx \u2014 display and link tags",
-        "Test command: npm test lib/blog.test.ts -t 'getPostsByTag' -v (verify post filtering by tag)"
+        "File to create: site/app/rooms/data.ts (export roomTypes array with id, name, price, images, amenities, accessibility)",
+        "File to create: site/app/rooms/page.tsx (RSC page rendering room grid using shadcn Card component)",
+        "File to edit: site/lib/structured-data.ts (add generateHotelRoomSchema(room, priceRange) function returning JSON-LD)",
+        "Test command: npx vitest run 'site/lib/__tests__/structured-data.test.ts' -t HotelRoom"
       ],
       "filesTouch": [
-        "app/blog/tags/[tag]/page.tsx",
-        "lib/blog.ts",
-        "components/BlogPostCard.tsx"
+        "site/app/rooms/data.ts",
+        "site/app/rooms/page.tsx",
+        "site/lib/structured-data.ts",
+        "site/lib/__tests__/structured-data.test.ts"
       ],
       "estimatedComplexity": "medium",
       "_source": "ai-example",
@@ -74,47 +79,57 @@
       "dependencies": []
     },
     {
-      "title": "Generate dynamic Open Graph images for blog posts using Next.js ImageResponse",
+      "title": "Add /visa-run resource hub page with FAQPage schema",
       "priority": "medium",
-      "description": "Create dynamic Open Graph images for blog posts using Next.js @vercel/og that display post title, author, publication date, and hostel branding. Improves social media preview appearance and click-through rates on Twitter, Facebook, LinkedIn.",
+      "description": "Create a dedicated /visa-run page for visitors extending stay visas, featuring FAQ section, step-by-step border-crossing guide, and FAQPage JSON-LD schema for Google search result enhancements.",
       "acceptanceCriteria": [
-        "GET /blog/[slug]/opengraph-image returns a 1200\u00d7630px PNG image with post title, author name, publication date, and hostel logo overlaid",
-        "og:image meta tag in blog post page head correctly references /blog/[slug]/opengraph-image; og:image:width=1200 and og:image:height=630",
-        "Image generation completes in <1s and can be cached for 1 week (Cache-Control: max-age=604800)"
+        "FAQ accordion with 6+ Q&A pairs covering visa rules, timing, border crossing locations, transport costs, and logistics",
+        "Step-by-step visual guide showing JB\u2192Singapore\u2192JB route (3-5 steps with estimated timings and cost breakdown)",
+        "FAQPage JSON-LD schema with mainEntity array containing Question/Answer pairs for Google rich results",
+        "Internal links to related blog posts (Singapore work pass guide, JB accommodation, transport without car) placed contextually"
       ],
       "technicalNotes": [
-        "File to create: app/blog/[slug]/opengraph-image.tsx \u2014 ImageResponse component (~80 lines)",
-        "File to update: app/blog/[slug]/page.tsx \u2014 add generateMetadata() with og:image metadata object",
-        "Test command: npm run build && curl http://localhost:3000/blog/sample-post/opengraph-image -I (verify Content-Type: image/png)"
+        "File to create: site/app/visa-run/page.tsx (RSC page with Accordion component from shadcn/ui for FAQs)",
+        "File to create: site/app/visa-run/data.ts (export visaRunFAQs array and borderGuide steps with timings)",
+        "File to edit: site/lib/structured-data.ts (add generateFAQPageSchema(faqItems) function for JSON-LD)",
+        "File to edit: site/app/sitemap.ts (add /visa-run route with priority 0.8)",
+        "Test command: npx vitest run 'site/lib/__tests__/structured-data.test.ts' -t FAQPage"
       ],
       "filesTouch": [
-        "app/blog/[slug]/opengraph-image.tsx",
-        "app/blog/[slug]/page.tsx"
+        "site/app/visa-run/page.tsx",
+        "site/app/visa-run/data.ts",
+        "site/lib/structured-data.ts",
+        "site/app/sitemap.ts",
+        "site/lib/__tests__/structured-data.test.ts"
       ],
-      "estimatedComplexity": "medium",
+      "estimatedComplexity": "small",
       "_source": "ai-example",
       "passes": false,
       "dependencies": []
     },
     {
-      "title": "Create /singapore-jobs resource hub with FAQPage schema and job seeker CTAs",
+      "title": "Build /singapore-jobs resource hub for Malaysian job seekers",
       "priority": "medium",
-      "description": "Build a dedicated /singapore-jobs page targeting Malaysians seeking work in Singapore. Include FAQ section with job visa types (EP, S Pass, Work Permit), accommodation CTAs, and FAQPage JSON-LD schema for Google rich results. Cross-link to /guide and /book pages.",
+      "description": "Create /singapore-jobs landing page targeting Malaysians seeking employment in Singapore, featuring work pass comparison table, job-seeker FAQ with schema, and cross-links to related blog content.",
       "acceptanceCriteria": [
-        "Page includes FAQPage JSON-LD schema in page head with minimum 8 Q&A pairs about Singapore job visa types, processing timelines, and cost",
-        "Page displays 'Book your visa run accommodation' and 'Check our guide' CTAs that link to /book and /guide with utm_source=singapore-jobs",
-        "Page has title 'Jobs in Singapore for Malaysians | Pelangi Capsule' and meta description targeting 'Singapore work pass, work permit Malaysia' keywords"
+        "Comparison table displaying Singapore work pass types (EP, S Pass, PEP, WP) with eligibility, salary thresholds, and validity",
+        "FAQ section with 8+ job-seeker questions (salary expectations, application timeline, costs, requirements, visa runs allowed)",
+        "FAQPage JSON-LD schema with mainEntity array for Google search result FAQ snippets",
+        "Internal links to blog posts (How to Find Jobs in Singapore, Singapore Work Pass Guide, Visa Run) placed in context"
       ],
       "technicalNotes": [
-        "File to create: app/singapore-jobs/page.tsx \u2014 Next.js page component with SEO metadata and FAQ section (~120 lines)",
-        "File to create: lib/singapore-jobs-faq.ts \u2014 export FAQ data structure as const singaporeJobsFAQ: FAQItem[] (~80 lines)",
-        "File to update: lib/structured-data.ts \u2014 add generateFAQPageSchema(faqs: FAQItem[]) function",
-        "Test command: npm test lib/structured-data.test.ts -t 'FAQPage' -v (validate schema.org compliance)"
+        "File to create: site/app/singapore-jobs/page.tsx (RSC page with work pass Table component and FAQ Accordion)",
+        "File to create: site/app/singapore-jobs/data.ts (export workPassTypes and jobSeekerFAQs arrays)",
+        "File to edit: site/lib/structured-data.ts (add generateJobSeekerFAQSchema(faqItems) for FAQPage JSON-LD)",
+        "File to edit: site/app/sitemap.ts (add /singapore-jobs with priority 0.9)",
+        "Test command: npx vitest run 'site/lib/__tests__/structured-data.test.ts' -t 'FAQPage.*job'"
       ],
       "filesTouch": [
-        "app/singapore-jobs/page.tsx",
-        "lib/singapore-jobs-faq.ts",
-        "lib/structured-data.ts"
+        "site/app/singapore-jobs/page.tsx",
+        "site/app/singapore-jobs/data.ts",
+        "site/lib/structured-data.ts",
+        "site/app/sitemap.ts",
+        "site/lib/__tests__/structured-data.test.ts"
       ],
       "estimatedComplexity": "small",
       "_source": "ai-example",
