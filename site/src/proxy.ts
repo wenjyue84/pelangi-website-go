@@ -59,50 +59,6 @@ function slidingWindow(
 }
 
 // ---------------------------------------------------------------------------
-// CSP nonce generation
-// ---------------------------------------------------------------------------
-
-function buildCspHeader(nonce: string): string {
-  const isDev = process.env.NODE_ENV === "development";
-
-  const directives = [
-    "default-src 'self'",
-    // Nonce-based script-src with strict-dynamic; URL allowlists kept as fallback for older browsers
-    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${isDev ? " 'unsafe-eval'" : ""} https://admin.pelangicapsulehostel.com https://www.googletagmanager.com`,
-    // Tailwind CSS-in-JS and Google Fonts stylesheet
-    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-    // Self-hosted next/font/google + external Google Fonts CDN fallback
-    "font-src 'self' https://fonts.gstatic.com",
-    // Images: self, data URIs, blob URLs, TripCdn (hotel photos), admin proxy
-    "img-src 'self' blob: data: https://ak-d.tripcdn.com https://admin.pelangicapsulehostel.com https://img.youtube.com",
-    // API calls: same-origin rewrites proxy to admin; admin also whitelisted for direct calls
-    // Sentry DSN ingestion (error reporting); Google Analytics beacon endpoints
-    "connect-src 'self' https://admin.pelangicapsulehostel.com https://*.sentry.io https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com",
-    // Google Maps embeds + YouTube embeds
-    "frame-src https://www.google.com https://www.youtube.com",
-    // Disallow plugins (Flash etc.)
-    "object-src 'none'",
-    // Prevent base-tag injection attacks
-    "base-uri 'self'",
-    // Restrict who can embed this site in an iframe
-    "frame-ancestors 'self'",
-    // Upgrade any accidental HTTP sub-resource requests to HTTPS
-    "upgrade-insecure-requests",
-  ];
-
-  // CSP violation reporting: routes violations to Sentry Security Issues.
-  // Set SENTRY_CSP_REPORT_URI in environment variables.
-  // Format: https://o<org>.ingest.sentry.io/api/<project>/security/?sentry_key=<key>
-  // See: https://docs.sentry.io/product/security-policy-reporting/
-  const reportUri = process.env.SENTRY_CSP_REPORT_URI;
-  if (reportUri) {
-    directives.push(`report-uri ${reportUri}`);
-  }
-
-  return directives.join("; ");
-}
-
-// ---------------------------------------------------------------------------
 // Rate-limit configuration
 // ---------------------------------------------------------------------------
 
@@ -128,14 +84,6 @@ export function proxy(req: NextRequest): NextResponse {
     "0.0.0.0";
   const referrer = req.headers.get("referer") ?? "";
   logPageView({ path: pathname, userAgent, ip, referrer, timestamp: new Date().toISOString() });
-
-  // Generate a per-request cryptographic nonce
-  const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
-  const cspHeader = buildCspHeader(nonce);
-
-  // Forward the nonce to server components via a request header
-  const requestHeaders = new Headers(req.headers);
-  requestHeaders.set("x-nonce", nonce);
 
   // --- Rate limiting (API routes only) ---
   const route = RATE_LIMIT_ROUTES.find((r) => pathname.startsWith(r.prefix));
@@ -165,18 +113,14 @@ export function proxy(req: NextRequest): NextResponse {
       });
     }
 
-    const res = NextResponse.next({ request: { headers: requestHeaders } });
-    res.headers.set("Content-Security-Policy", cspHeader);
+    const res = NextResponse.next();
     for (const [k, v] of Object.entries(rateLimitHeaders)) {
       res.headers.set(k, v);
     }
     return res;
   }
 
-  // --- All other routes: set CSP nonce only ---
-  const res = NextResponse.next({ request: { headers: requestHeaders } });
-  res.headers.set("Content-Security-Policy", cspHeader);
-  return res;
+  return NextResponse.next();
 }
 
 export const config = {
