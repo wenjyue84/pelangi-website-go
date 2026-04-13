@@ -5689,7 +5689,8 @@
         "Keep content HTML under 7000 characters"
       ],
       "passes": true,
-      "model": "haiku"
+      "model": "haiku",
+      "_scopeCreep": true
     },
     {
       "id": "US-251",
@@ -5809,7 +5810,7 @@
         "Header/Footer components used",
         "npm run build passes"
       ],
-      "passes": false,
+      "passes": true,
       "model": "haiku"
     },
     {

@@ -5657,8 +5657,9 @@
       "technicalNotes": [
         "Keep content HTML under 8000 characters"
       ],
-      "passes": false,
-      "model": "haiku"
+      "passes": true,
+      "model": "haiku",
+      "_scopeCreep": true
     },
     {
       "id": "US-250",
@@ -5687,8 +5688,9 @@
       "technicalNotes": [
         "Keep content HTML under 7000 characters"
       ],
-      "passes": false,
-      "model": "haiku"
+      "passes": true,
+      "model": "haiku",
+      "_scopeCreep": true
     },
     {
       "id": "US-251",

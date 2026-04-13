@@ -1,6 +1,33 @@
 {
   "stories": [
     {
+      "title": "Add BreadcrumbList JSON-LD schema generator for blog post pages",
+      "priority": "medium",
+      "description": "Create a reusable schema utility that generates valid BreadcrumbList JSON-LD for blog post pages with correct itemid URLs and position hierarchy (Home > Blog > Category > Post Title).",
+      "acceptanceCriteria": [
+        "Blog post layout includes <script type=\"application/ld+json\"> with @type: BreadcrumbList containing exactly 4 itemListElement objects: Home, Blog, Category, and Post Title with matching position values 1-4",
+        "Each breadcrumb itemListElement has position (number), name (string), and itemid (full absolute URL); itemid URLs must match actual Next.js route paths for category and post slug",
+        "Schema validates with zero errors in Google Rich Results Test for BreadcrumbList structure and required properties"
+      ],
+      "technicalNotes": [
+        "File to create: lib/schema/breadcrumb-list.ts (export function generateBreadcrumbList(postTitle: string, category: string, slug: string): BreadcrumbListSchema)",
+        "File to modify: app/blog/[slug]/layout.tsx (call generateBreadcrumbList in generateMetadata, pass result to <Script> in layout.tsx with strategy=\"beforeInteractive\")",
+        "Test command: npm run test -- tests/lib/schema/breadcrumb-list.test.ts (assert itemListElement.length === 4, each has position 1-4, itemid is absolute URL with domain)"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "lib/schema/breadcrumb-list.ts",
+        "app/blog/[slug]/layout.tsx",
+        "lib/blog/types.ts",
+        "tests/lib/schema/breadcrumb-list.test.ts"
+      ],
+      "_source": "ai-example",
+      "passes": false
+    },
+    {
       "title": "[E2E Test] Create blog system with static TypeScript data",
       "priority": "medium",
       "description": "Write end-to-end user flow test for the feature in US-001. Story description: Build a blog system using Next.js App Router. Blog posts are stored as TypeScript objects in /src/data/blog/posts.ts. Each post has: slug, title, excerpt, content (HTML string), date, category, author, readTime, tags, and featured image path. Create /app/blog/page.tsx (listing with cards) and /app/blog/[slug]/page.tsx (article page with full content). Both pages must have proper metadata (title, description, OG tags). Add a BlogCard component at /src/components/BlogCard.tsx.",
@@ -2067,6 +2094,32 @@
       "_source": "test-story",
       "_testType": "regression",
       "_forStoryId": "US-249"
+    },
+    {
+      "title": "[E2E Test] Blog post: 3-Day JB Backpacker Itinerary Under RM250 (2026)",
+      "priority": "medium",
+      "description": "Write end-to-end user flow test for the feature in US-250. Story description: Day-by-day budget itinerary: accommodation Pelangi RM35/night, food RM25/day, transport RM10/day. Day 1/2/3 morning/afternoon/evening. Budget HTML table.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-250",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Source files from US-250: site/src/data/blog/posts.ts",
+        "Run: uv run pytest tests/ -k us_250 -v"
+      ],
+      "dependencies": [
+        "US-250"
+      ],
+      "estimatedComplexity": "medium",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ],
+      "source": "",
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-250"
     }
   ]
 }

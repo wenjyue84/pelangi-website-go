@@ -4717,6 +4717,29 @@
       "passes": true
     },
     {
+      "id": "US-232",
+      "title": "Implement HTTP 103 Early Hints for critical resource preloading on Vercel",
+      "priority": "medium",
+      "description": "HTTP 103 Early Hints allows the server to send `Link: preload` and `Link: preconnect` headers before the full HTML response, letting browsers start fetching the hero image and fonts while the server finishes rendering. Vercel supports Early Hints natively for Next.js App Router. For a hostel site with a large LCP hero image and third-party fonts, Early Hints can reduce perceived load time by 200–500ms on first visit.",
+      "acceptanceCriteria": [
+        "Early Hints verified as enabled for the Vercel deployment (default in recent Next.js + Vercel)",
+        "Chrome DevTools Network tab shows a `103` status response before the `200` HTML response on first load",
+        "WebPageTest trace confirms hero image preload begins before HTML download completes",
+        "LCP measured in PageSpeed Insights does not regress; lab measurement ideally improves",
+        "Preloaded resources in `<head>` match the Early Hints `Link` headers (no mismatch that wastes a preload)"
+      ],
+      "technicalNotes": [
+        "Next.js App Router automatically generates Early Hints from `<link rel='preload'>` tags in `<head>`",
+        "Vercel Edge Network delivers the 103 response — enabled automatically for production deployments",
+        "Works best for stable, large resources (hero images, web fonts) — not for frequently changing assets",
+        "Reference: https://vercel.com/docs/edge-network/early-hints | https://developer.chrome.com/blog/early-hints"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
       "id": "US-233",
       "title": "Adopt CSS @property for type-safe, animatable design tokens",
       "priority": "medium",
@@ -5044,8 +5067,9 @@
       "technicalNotes": [
         "Keep content HTML under 7000 characters"
       ],
-      "passes": false,
-      "model": "haiku"
+      "passes": true,
+      "model": "haiku",
+      "_scopeCreep": true
     },
     {
       "id": "US-254",

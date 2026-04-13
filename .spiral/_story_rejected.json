@@ -1,132 +1,111 @@
 {
   "stories": [
     {
-      "title": "Write Blog Post: 3-Day JB Backpacker Itinerary Under RM250 (2026)",
+      "title": "Add Atom 1.0 RSS feed endpoint at /api/feed/atom.xml for blog content syndication",
       "priority": "high",
-      "description": "Create a detailed, budget-conscious 3-day itinerary for backpackers visiting Johor Bahru, including accommodation, food, and activities all under RM250 total budget. Include real pricing, transport tips, and local recommendations.",
+      "description": "Create an Atom 1.0 XML feed endpoint that aggregates all published blog posts with proper XML structure, ISO 8601 timestamps, and feed metadata for RSS readers and search engines.",
       "acceptanceCriteria": [
-        "Blog post file created at site/src/content/blog/3-day-jb-itinerary.tsx with frontmatter: title, slug, date, author, tags, featuredImage",
-        "Itinerary structured with Day 1/2/3 sections and HowTo JSON-LD sub-schema (step-by-step breakdown)",
-        "Post appears in /blog list view with excerpt, reading time estimate, and featured image thumbnail"
+        "GET /api/feed/atom.xml returns HTTP 200 with Content-Type: application/atom+xml; charset=utf-8 header",
+        "Each blog post entry includes <title>, <link>, <summary>, <published>, <updated>, <author name>, and <category term> tags with correct values from blog post metadata",
+        "Feed includes <updated> timestamp reflecting the most recent blog post publication date; feed <id> and <link> elements are present with correct self and alternate href values"
       ],
       "technicalNotes": [
-        "File to create: site/src/content/blog/3-day-jb-itinerary.tsx using existing blog post template",
-        "Reuse BlogPostLayout component and existing frontmatter pattern from adjacent blog posts",
-        "Test command: npx next build && curl http://localhost:3000/blog/3-day-jb-itinerary | grep -i 'itinerary'"
+        "File to create: app/api/feed/atom.xml/route.ts (import blog posts from lib/blog/posts.ts, format Atom XML response using template string or xml builder)",
+        "Import BlogPost type from lib/blog/types.ts; validate output structure against Atom specification",
+        "Test command: npm run test -- tests/api/feed-atom.test.ts (assert Content-Type header, XML parse success, entry count matches post count, ISO 8601 dates)"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "site/src/content/blog/3-day-jb-itinerary.tsx",
-        "site/public/images/blog/jb-itinerary-hero.jpg"
-      ],
-      "_source": "ai-example",
-      "passes": false,
-      "_rejection_reason": "too_simple: only 1 measurable ACs -- specify test commands, file paths, or numeric thresholds"
-    },
-    {
-      "title": "Add llms.txt File for AI Crawler Content Guidance",
-      "priority": "medium",
-      "description": "Create a machine-readable /llms.txt file following AI crawler conventions (llms.txt spec). Include sections for blog content, Malaysia-Singapore job seeker resources, hostel booking, and visa run guides to improve visibility to Google AI Overviews, ChatGPT web search, and Perplexity.",
-      "acceptanceCriteria": [
-        "File created at site/public/llms.txt with plaintext [About], [Blog], [Jobs], [Hostel], [Guides] sections",
-        "Each section contains brief description and links to related pages (/blog, /singapore-jobs, /visa-run, /rooms)",
-        "File served with Cache-Control: public, max-age=86400 header and valid UTF-8 encoding"
-      ],
-      "technicalNotes": [
-        "File to create: site/public/llms.txt (plaintext, not .md or .json)",
-        "Sections: [About] Pelangi Capsule Hostel JB, [Blog] Travel guides, [Jobs] Malaysia-Singapore work, [Hostel] Booking & rooms, [Guides] Visa, transport, shopping",
-        "Test command: curl http://localhost:3000/llms.txt | grep -E '\\[About\\]|\\[Blog\\]'"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "site/public/llms.txt"
-      ],
-      "_source": "ai-example",
-      "passes": false,
-      "_rejection_reason": "too_simple: only 1 measurable ACs -- specify test commands, file paths, or numeric thresholds"
-    },
-    {
-      "title": "Create /singapore-jobs Resource Hub Page with FAQPage Schema",
-      "priority": "high",
-      "description": "Build a dedicated /singapore-jobs page serving Malaysian job seekers with FAQ JSON-LD schema containing 8-10 questions about work passes, visa runs, cross-border commuting, and gig economy. Include internal links to related blog posts (work pass guide, visa run, gig jobs).",
-      "acceptanceCriteria": [
-        "Page renders at /singapore-jobs with hero section, FAQ accordion component, and hostel booking CTA button",
-        "FAQPage JSON-LD schema embedded with mainEntity type FAQPage, containing at least 8 question-answer pairs",
-        "FAQ section uses reusable <Accordion> component; each item has Question heading (h3) and Answer text"
-      ],
-      "technicalNotes": [
-        "File to create: site/src/app/singapore-jobs/page.tsx (App Router, use generateMetadata for title/description)",
-        "Add FAQPage schema via <script type='application/ld+json'> with 8 questions: work pass types, visa run length, remote work legality, gig jobs, cross-border commute time, accommodation for job seekers, salary expectations, renewal procedures",
-        "Test command: curl http://localhost:3000/singapore-jobs | grep -c '\"mainEntity\"' && npx next build --no-lint"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "site/src/app/singapore-jobs/page.tsx",
-        "site/src/components/FAQAccordion.tsx"
+        "app/api/feed/atom.xml/route.ts",
+        "lib/blog/types.ts",
+        "tests/api/feed-atom.test.ts"
       ],
       "_source": "ai-example",
       "passes": false,
       "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
     },
     {
-      "title": "Add Cloudflare Turnstile CAPTCHA to Public Forms",
-      "priority": "medium",
-      "description": "Integrate Cloudflare Turnstile (managed CAPTCHA) into all public-facing forms (contact, booking, newsletter). Validate tokens server-side before processing. Include graceful fallback if widget fails to load.",
+      "title": "Build /blog index page with category filter tabs and reading time estimates",
+      "priority": "high",
+      "description": "Create a blog listing page that displays all published posts in reverse chronological order with client-side category filtering via URL query params, tab-based navigation, and estimated reading time on each card.",
       "acceptanceCriteria": [
-        "Turnstile widget renders on /contact and /book form pages immediately above submit button with theme auto",
-        "Form submission calls server action that validates token via Turnstile API before processing (reject on invalid/expired token)",
-        "Fallback: if Turnstile fails to load, form shows warning but allows submission for manual review queue"
+        "/blog page renders grid of blog post cards; each card displays: title, 100-char excerpt, publication date (formatted), category badge, author name, and reading time estimate (e.g., '5 min read')",
+        "Category filter tabs above post list; clicking a tab filters posts and updates URL to ?category=transport; 'All Posts' tab resets filter; tab state persists across page reload",
+        "Reading time calculated as Math.ceil(wordCount / 200); each post object must have wordCount property in lib/blog/posts.ts; reading time appears on card footer below publication date"
       ],
       "technicalNotes": [
-        "File to edit: site/src/components/ContactForm.tsx (import @react-turnstile/react, add <Turnstile ref={ref} />, capture onSuccess callback)",
-        "File to edit: site/src/app/api/contact/route.ts (validate token: fetch('https://challenges.cloudflare.com/turnstile/validate', { secret, response: token }))",
-        "Test command: npm test -- src/__tests__/forms.test.tsx --grep Turnstile && npx next build"
+        "File to create: app/blog/page.tsx (client component with useState for active category, useMemo to filter posts, useSearchParams to read ?category from URL)",
+        "File to modify: lib/blog/posts.ts (ensure each BlogPost object includes wordCount: number property; export function getCategoriesFromPosts(): string[])",
+        "Test command: npm run test -- tests/components/blog-index.test.tsx (assert card count on initial load, card count after filter click, reading time formula correctness, URL param update)"
       ],
       "dependencies": [],
-      "estimatedComplexity": "small",
+      "estimatedComplexity": "medium",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "site/src/components/ContactForm.tsx",
-        "site/src/app/api/contact/route.ts",
-        "site/.env.local"
+        "app/blog/page.tsx",
+        "lib/blog/posts.ts",
+        "lib/blog/types.ts",
+        "tests/components/blog-index.test.tsx"
       ],
       "_source": "ai-example",
       "passes": false,
       "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
     },
     {
-      "title": "Implement TikTok Pixel and Event Tracking for Gen Z Analytics",
+      "title": "Implement dynamic OG image generation for blog posts using next/og API",
       "priority": "medium",
-      "description": "Add TikTok Pixel tracking to measure Gen Z hostel bookings and engagement. Fire events: PageView (auto), ViewContent (blog/room pages), Purchase (booking confirm) with value, currency, and item details.",
+      "description": "Create an API route handler that generates branded Open Graph preview images for blog posts dynamically using next/og ImageResponse, featuring post title, excerpt, category badge, and hostel branding.",
       "acceptanceCriteria": [
-        "TikTok Pixel script loads on all pages; PageView event fires on each route navigation automatically",
-        "Purchase event fires on booking confirmation with value, currency: 'MYR', content_id (roomId), and content_type: 'product'",
-        "Pixel ID and events appear in TikTok Events Manager dashboard within 24 hours of first booking"
+        "GET /api/og/blog?slug=post-slug-here returns PNG image with dimensions 1200x630px, Content-Type: image/png, and proper Cache-Control headers; image includes hostel logo, post title (truncated to 60 chars), excerpt (first 80 chars), category badge, and publication date",
+        "Blog post layout includes <meta property=\"og:image\" content=\"https://domain.com/api/og/blog?slug=slug-here\"> in <head>; also includes og:image:width=\"1200\" and og:image:height=\"630\" meta tags via generateMetadata export",
+        "Invalid or missing slug parameter returns 404 response; slug validation against allowlist of published blog post slugs from lib/blog/posts.ts"
       ],
       "technicalNotes": [
-        "File to edit: site/src/app/layout.tsx (add <script async src='https://analytics.tiktok.com/i18n/pixel/config/GTK{PIXEL_ID}.js'></script> or use next/third-parties)",
-        "File to create: site/src/lib/analytics-tiktok.ts (export trackTikTokPurchase(roomId, price) that calls window.ttk?.track('Purchase', { value, currency, content_id }))",
-        "Test command: npm run dev && open browser console, check for ttk pixel fire on /book page and booking form submit"
+        "File to create: app/api/og/blog/route.ts (import { ImageResponse } from 'next/og'; GET handler accepts slug query param; fetch blog post from getBlogPosts(); render JSX to ImageResponse with Tailwind/CSS styling)",
+        "File to modify: app/blog/[slug]/layout.tsx (export generateMetadata function adding og:image, og:image:width, og:image:height meta tags; construct full URL with next/navigation baseURL utility)",
+        "Test command: npm run test -- tests/api/og-blog.test.ts (assert response image/png type, assert 404 on invalid slug, assert image dimensions); manual: curl 'http://localhost:3000/api/og/blog?slug=test-post' > test.png && file test.png"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "app/api/og/blog/route.ts",
+        "app/blog/[slug]/layout.tsx",
+        "lib/blog/posts.ts",
+        "tests/api/og-blog.test.ts"
+      ],
+      "_source": "ai-example",
+      "passes": false,
+      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
+    },
+    {
+      "title": "Update sitemap.ts to automatically include all published blog posts with lastModified dates",
+      "priority": "high",
+      "description": "Modify the sitemap route handler to dynamically aggregate all published blog post URLs with correct lastModified (publication date), changeFrequency, and priority values for SEO indexing.",
+      "acceptanceCriteria": [
+        "GET /sitemap.xml returns valid XML with all blog post URLs in format: https://pelangi-capsule.com/blog/post-slug with <lastmod> set to ISO 8601 blog post publishedDate, <changefreq>weekly</changefreq>, <priority>0.7</priority>",
+        "Sitemap includes static routes (home: priority 1.0, /blog: 0.8, /guide: 0.7, /rooms: 0.8, /amenities: 0.7, /faq: 0.6) before dynamic blog post entries, all with lastmod timestamps",
+        "Blog post count in XML matches getBlogPosts().length; test assertion: xmllint --xpath 'count(//url)' sitemap.xml === (8 + blog post count)"
+      ],
+      "technicalNotes": [
+        "File to modify: app/sitemap.ts (import getBlogPosts from lib/blog/posts.ts; add blog post entries via Array.map((post) => ({ url: `/blog/${post.slug}`, lastModified: post.publishedDate, changeFrequency: 'weekly', priority: 0.7 })))",
+        "Helper function: lib/sitemap/format-entries.ts (export function formatBlogPostEntries(posts: BlogPost[]): MetadataRoute.Sitemap[]) to reduce app/sitemap.ts complexity",
+        "Test command: npm run build && npm run test -- tests/app/sitemap.test.ts (assert XML validity, assert blog post count in XML, assert lastmod ISO format, assert priority values)"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "site/src/app/layout.tsx",
-        "site/src/lib/analytics-tiktok.ts",
-        "site/src/app/api/booking/confirm/route.ts",
-        "site/.env.local"
+        "app/sitemap.ts",
+        "lib/sitemap/format-entries.ts",
+        "lib/blog/posts.ts",
+        "tests/app/sitemap.test.ts"
       ],
       "_source": "ai-example",
       "passes": false,

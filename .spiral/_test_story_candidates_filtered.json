@@ -1900,5 +1900,29 @@
       "regression",
       "auto-generated"
     ]
+  },
+  {
+    "title": "[E2E Test] Blog post: 3-Day JB Backpacker Itinerary Under RM250 (2026)",
+    "description": "Write end-to-end user flow test for the feature in US-250. Story description: Day-by-day budget itinerary: accommodation Pelangi RM35/night, food RM25/day, transport RM10/day. Day 1/2/3 morning/afternoon/evening. Budget HTML table.",
+    "acceptanceCriteria": [
+      "E2E test covers the user flow introduced by US-250",
+      "Test navigates to relevant page(s) and asserts on visible state",
+      "Test passes in headless browser (Playwright/Cypress/similar)"
+    ],
+    "technicalNotes": [
+      "Source files from US-250: site/src/data/blog/posts.ts",
+      "Run: uv run pytest tests/ -k us_250 -v"
+    ],
+    "priority": "medium",
+    "dependencies": [
+      "US-250"
+    ],
+    "_source": "test-story",
+    "_testType": "e2e",
+    "_forStoryId": "US-250",
+    "tags": [
+      "e2e",
+      "auto-generated"
+    ]
   }
 ]
