@@ -1,0 +1,7 @@
+error: the argument '--output <OUTPUT>' cannot be used multiple times
+
+Usage: spiral-core.exe synthesize [OPTIONS]
+
+For more information, try '--help'.
+  [Phase T] WARNING: Test synthesis exited with status 2 — continuing with partial/empty output
+  [T] Test synthesis complete — 0 story candidates from failures

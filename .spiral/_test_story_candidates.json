@@ -1,0 +1,1720 @@
+{
+  "stories": [
+    {
+      "title": "[E2E Test] Create blog system with static TypeScript data",
+      "description": "Write end-to-end user flow test for the feature in US-001. Story description: Build a blog system using Next.js App Router. Blog posts are stored as TypeScript objects in /src/data/blog/posts.ts. Each post has: slug, title, excerpt, content (HTML string), date, category, author, readTime, tags, and featured image path. Create /app/blog/page.tsx (listing with cards) and /app/blog/[slug]/page.tsx (article page with full content). Both pages must have proper metadata (title, description, OG tags). Add a BlogCard component at /src/components/BlogCard.tsx.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-001",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_001 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-001"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-001",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Integration Test] Write 6 SEO-optimised travel blog articles about JB for backpackers",
+      "description": "Write integration tests for the feature implemented in US-002. Story description: Research backpacker content online and write 6 original, high-quality blog articles targeting tourists visiting Johor Bahru. Articles must be 600-900 words each, written in friendly travel-guide style, and contain keywords backpackers actually search for. Include internal links to /guide, /rooms, and /book pages. Topics: (1) Ultimate JB Food Guide for Backpackers, (2) Singapore to JB Day Trip Guide: How to Cross the Causeway, (3) Top 10 Things to Do in Johor Bahru on a Budget, (4) JB Street Food Hawker Centers You Must Visit, (5) Johor Bahru vs Singapore: Why Savvy Travellers Base Themselves in JB, (6) Hidden Gems in Johor Bahru: Beyond the Usual Tourist Spots. Each article must have a unique slug, proper SEO metadata, and be added to posts.ts.",
+      "acceptanceCriteria": [
+        "Integration tests exist covering the core behaviour of US-002",
+        "Tests cover the happy path and at least one error/edge case",
+        "Tests run without requiring external services or manual setup"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_002 -v"
+      ],
+      "priority": "high",
+      "dependencies": [
+        "US-002"
+      ],
+      "_source": "test-story",
+      "_testType": "integration",
+      "_forStoryId": "US-002",
+      "tags": [
+        "integration",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Write 6 SEO-optimised travel blog articles about JB for backpackers",
+      "description": "Write end-to-end user flow test for the feature in US-002. Story description: Research backpacker content online and write 6 original, high-quality blog articles targeting tourists visiting Johor Bahru. Articles must be 600-900 words each, written in friendly travel-guide style, and contain keywords backpackers actually search for. Include internal links to /guide, /rooms, and /book pages. Topics: (1) Ultimate JB Food Guide for Backpackers, (2) Singapore to JB Day Trip Guide: How to Cross the Causeway, (3) Top 10 Things to Do in Johor Bahru on a Budget, (4) JB Street Food Hawker Centers You Must Visit, (5) Johor Bahru vs Singapore: Why Savvy Travellers Base Themselves in JB, (6) Hidden Gems in Johor Bahru: Beyond the Usual Tourist Spots. Each article must have a unique slug, proper SEO metadata, and be added to posts.ts.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-002",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_002 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-002"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-002",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Add JB News & Updates widget on homepage using curated RSS links",
+      "description": "Write end-to-end user flow test for the feature in US-004. Story description: Add a 'JB Buzz' section on the homepage between CommunityEvents and the teaser section. This is a static, curated section (no live API calls at runtime to avoid SSR issues). It should show: (1) a list of 4-5 curated news/blog links from real JB/Malaysia sources like Johor Now, Malay Mail, The Star Johor, and Visit Johor \u00e2\u20ac\u201d shown as stylish news cards with title, source, date, and a short description. (2) An RSS subscribe button linking to /feed.xml. (3) A 'Latest from Our Blog' teaser showing the 3 most recent blog posts. All links open in new tab with rel='noopener noreferrer'.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-004",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_004 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-004"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-004",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Enhance /guide page with rich backpacker-focused local content",
+      "description": "Write end-to-end user flow test for the feature in US-007. Story description: Substantially improve the /guide page (site/src/app/guide/page.tsx) with richer, more lively content for backpackers. Add sections: (1) Getting Around JB \u00e2\u20ac\u201d GrabCar, bus, taxi fares with real prices; (2) Money & Currency \u00e2\u20ac\u201d where to exchange, ATMs near Taman Pelangi; (3) Singapore Day Trip \u00e2\u20ac\u201d Causeway vs Second Link, immigration tips, operating hours; (4) Top Hawker Centers Near Us \u00e2\u20ac\u201d with distance and opening hours; (5) Safety Tips for Backpackers; (6) Useful Local Apps \u00e2\u20ac\u201d Grab, MyRapid, MySejahtera. All with practical, accurate information. Add internal links to /blog articles where relevant.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-007",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_007 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-007"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-007",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Create /book page with direct booking + OTA options",
+      "description": "Write end-to-end user flow test for the feature in US-009. Story description: The /book URL is linked from the homepage dashboard card, footer, Hero CTAs, and multiple components, but no app/book/page.tsx exists \u2014 users hit a 404. Create a dedicated booking page with: (1) direct WhatsApp booking as primary CTA with pre-filled message, (2) direct booking benefits section, (3) Booking.com and Hostelworld links as secondary OTA options, (4) pricing summary (RM35 nightly, RM594 monthly), and (5) house rules summary.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-009",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_009 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-009"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-009",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Regression Test] Add dynamic OG images for blog posts using next/og ImageResponse",
+      "description": "Write regression test to guard against future breakage of US-013. Story description: All blog posts currently share the same static /images/og-image.png when shared on social media. Next.js App Router supports per-route dynamic OG image generation via opengraph-image.tsx using the ImageResponse API. Adding per-post OG images with the article title, category badge, and branding significantly improves social sharing click-through from WhatsApp, Facebook, and Twitter.",
+      "acceptanceCriteria": [
+        "Regression test covers core observable behaviour of US-013",
+        "Test would reliably fail if the US-013 feature were removed or broken"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_013 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-013"
+      ],
+      "_source": "test-story",
+      "_testType": "regression",
+      "_forStoryId": "US-013",
+      "tags": [
+        "regression",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Add blog category filter and tag pages for long-tail SEO",
+      "description": "Write end-to-end user flow test for the feature in US-022. Story description: The blog has 6 articles tagged with categories like 'Food & Drink', 'Travel Tips', 'Things To Do'. Adding a category filter on /blog and creating /blog/category/[category] static pages creates additional indexable URLs that target long-tail queries like 'JB food guide blog' or 'Johor Bahru travel tips'. These pages also improve internal linking structure and time-on-site by surfacing related content.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-022",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_022 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-022"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-022",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Security Test] Implement Content Security Policy (CSP) header",
+      "description": "Write security tests for auth/permission logic in US-024. Story description: No Content Security Policy exists on the site, leaving it vulnerable to XSS and code injection attacks. A CSP for a static/SSG Next.js site can be configured without nonces via next.config.ts, whitelisting self, inline styles, and the specific third-party domains actually used (e.g. booking proxy). This is a layered defense on top of basic security headers.",
+      "acceptanceCriteria": [
+        "Security test covers access control introduced by US-024",
+        "Test verifies unauthorized access is blocked (401/403 responses)",
+        "No sensitive data (tokens, passwords) leaked in error responses"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_024 -v"
+      ],
+      "priority": "high",
+      "dependencies": [
+        "US-024"
+      ],
+      "_source": "test-story",
+      "_testType": "security",
+      "_forStoryId": "US-024",
+      "tags": [
+        "security",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Optimize INP (Interaction to Next Paint) for booking and filter interactions",
+      "description": "Write end-to-end user flow test for the feature in US-028. Story description: INP replaced FID as a Core Web Vital in March 2024 and measures responsiveness to all user interactions. The blog category filter, booking bar, and chat widget are likely sources of long tasks inflating INP on mobile. Poor INP (>200ms) negatively impacts Google ranking. The existing CWV work only addressed LCP and lazy-loading, not interaction responsiveness.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-028",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_028 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-028"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-028",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Add PDPA/GDPR cookie consent banner for analytics compliance",
+      "description": "Write end-to-end user flow test for the feature in US-032. Story description: If the site uses Google Analytics or any tracking pixels, Malaysia's Personal Data Protection Act (PDPA) requires explicit user consent before loading non-essential cookies. The EU GDPR applies to EU visitors. Currently there is no consent mechanism on the site, creating a legal compliance gap as the hostel attracts international visitors.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-032",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_032 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-032"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-032",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Add dedicated /amenities page with full LocationFeatureSpecification schema",
+      "description": "Write end-to-end user flow test for the feature in US-033. Story description: Amenities content is currently only in the homepage Amenities.tsx component. A dedicated /amenities page with expanded content (Wi-Fi speed, co-working details, laundry, kitchen rules) creates a new indexable URL capturing digital-nomad and long-stay search queries. Full LocationFeatureSpecification objects in JSON-LD enable Google's amenities panel in hotel rich results.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-033",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_033 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-033"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-033",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Performance Test] Add dedicated /amenities page with full LocationFeatureSpecification schema",
+      "description": "Write performance benchmark for the operation in US-033. Story description: Amenities content is currently only in the homepage Amenities.tsx component. A dedicated /amenities page with expanded content (Wi-Fi speed, co-working details, laundry, kitchen rules) creates a new indexable URL capturing digital-nomad and long-stay search queries. Full LocationFeatureSpecification objects in JSON-LD enable Google's amenities panel in hotel rich results.",
+      "acceptanceCriteria": [
+        "Performance test measures key metrics for US-033",
+        "Baseline captured and acceptable threshold defined",
+        "Test fails if response time degrades more than 20% from baseline"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_033 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-033"
+      ],
+      "_source": "test-story",
+      "_testType": "performance",
+      "_forStoryId": "US-033",
+      "tags": [
+        "performance",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Implement Sentry error monitoring for client, server, and edge",
+      "description": "Write end-to-end user flow test for the feature in US-042. Story description: Production errors are currently silent \u2014 there is no error monitoring configured. Without Sentry, broken pages go undetected until a guest reports them. For a live hostel booking site, undetected booking form errors or API failures directly cost revenue. Sentry's Next.js SDK instruments client, server, and Edge Runtime with a single setup wizard.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-042",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_042 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-042"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-042",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Add email newsletter capture form for guest re-marketing",
+      "description": "Write end-to-end user flow test for the feature in US-048. Story description: The site has no mechanism to capture visitor emails. Email is a proven re-marketing channel for hospitality \u2014 visitors who don't book immediately can be nurtured via a newsletter (local tips, JB updates, promotions). A lightweight inline signup form placed at the bottom of the blog index converts reader intent into a direct communication channel without requiring OTA commission.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-048",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_048 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-048"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-048",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Performance Test] Add email newsletter capture form for guest re-marketing",
+      "description": "Write performance benchmark for the operation in US-048. Story description: The site has no mechanism to capture visitor emails. Email is a proven re-marketing channel for hospitality \u2014 visitors who don't book immediately can be nurtured via a newsletter (local tips, JB updates, promotions). A lightweight inline signup form placed at the bottom of the blog index converts reader intent into a direct communication channel without requiring OTA commission.",
+      "acceptanceCriteria": [
+        "Performance test measures key metrics for US-048",
+        "Baseline captured and acceptable threshold defined",
+        "Test fails if response time degrades more than 20% from baseline"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_048 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-048"
+      ],
+      "_source": "test-story",
+      "_testType": "performance",
+      "_forStoryId": "US-048",
+      "tags": [
+        "performance",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Regression Test] Audit and fix WCAG 1.4.3 color contrast failures across all components",
+      "description": "Write regression test to guard against future breakage of US-051. Story description: WCAG 2.1 SC 1.4.3 (Level AA) requires a minimum 4.5:1 contrast ratio for normal text and 3:1 for large text. Common failure points include amber/orange CTAs on white, grey placeholder text, badge text on coloured backgrounds, and footer links. A systematic audit using automated tooling followed by targeted fixes ensures the site meets AA compliance.",
+      "acceptanceCriteria": [
+        "Regression test covers core observable behaviour of US-051",
+        "Test would reliably fail if the US-051 feature were removed or broken"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_051 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-051"
+      ],
+      "_source": "test-story",
+      "_testType": "regression",
+      "_forStoryId": "US-051",
+      "tags": [
+        "regression",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Regression Test] Apply rate limiting middleware to /api/public and /api/chat proxy routes",
+      "description": "Write regression test to guard against future breakage of US-053. Story description: The Next.js site proxies booking API calls (/api/public/*) and Rainbow AI chat (/api/chat/*) to the admin server. These endpoints have no rate limiting, making them vulnerable to DoS attacks, credential stuffing, and API abuse. OWASP API Security Top 10 item API4:2023 (Unrestricted Resource Consumption) specifically covers this risk.",
+      "acceptanceCriteria": [
+        "Regression test covers core observable behaviour of US-053",
+        "Test would reliably fail if the US-053 feature were removed or broken"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_053 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-053"
+      ],
+      "_source": "test-story",
+      "_testType": "regression",
+      "_forStoryId": "US-053",
+      "tags": [
+        "regression",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Performance Test] Set up Lighthouse CI in GitHub Actions for automated performance budgets",
+      "description": "Write performance benchmark for the operation in US-057. Story description: Without automated Lighthouse checks, performance regressions (bundle bloat, new render-blocking resources, CLS shifts) go undetected until after deployment. Lighthouse CI on GitHub Actions runs audits on every PR and fails the check if scores drop below defined thresholds, creating a continuous performance safety net for the website.",
+      "acceptanceCriteria": [
+        "Performance test measures key metrics for US-057",
+        "Baseline captured and acceptable threshold defined",
+        "Test fails if response time degrades more than 20% from baseline"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_057 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-057"
+      ],
+      "_source": "test-story",
+      "_testType": "performance",
+      "_forStoryId": "US-057",
+      "tags": [
+        "performance",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Add Fuse.js client-side site search for blog and guide content",
+      "description": "Write end-to-end user flow test for the feature in US-066. Story description: With 6+ blog articles and a comprehensive guide page, users cannot quickly find specific topics, destinations, or tips. Fuse.js provides fast fuzzy search running entirely in the browser from a pre-built static index \u2014 no backend, no API costs, no privacy concerns. A keyboard-accessible Command Menu (Cmd/Ctrl+K) is the standard pattern for modern site search.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-066",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_066 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-066"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-066",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Performance Test] Add Fuse.js client-side site search for blog and guide content",
+      "description": "Write performance benchmark for the operation in US-066. Story description: With 6+ blog articles and a comprehensive guide page, users cannot quickly find specific topics, destinations, or tips. Fuse.js provides fast fuzzy search running entirely in the browser from a pre-built static index \u2014 no backend, no API costs, no privacy concerns. A keyboard-accessible Command Menu (Cmd/Ctrl+K) is the standard pattern for modern site search.",
+      "acceptanceCriteria": [
+        "Performance test measures key metrics for US-066",
+        "Baseline captured and acceptable threshold defined",
+        "Test fails if response time degrades more than 20% from baseline"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_066 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-066"
+      ],
+      "_source": "test-story",
+      "_testType": "performance",
+      "_forStoryId": "US-066",
+      "tags": [
+        "performance",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Add contact inquiry form with Resend email auto-reply on /contact page",
+      "description": "Write end-to-end user flow test for the feature in US-068. Story description: The /contact page currently renders only a Location map component with no inquiry form. Potential guests must manually compose WhatsApp or email messages, increasing friction and drop-off. A structured form with check-in/out dates, number of guests, and message, plus an automated acknowledgment email via Resend, reduces friction and reassures guests their inquiry was received.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-068",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_068 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-068"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-068",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Integration Test] Migrate CSP script-src from unsafe-inline to nonce-based policy",
+      "description": "Write integration tests for the feature implemented in US-070. Story description: The current CSP in next.config.ts uses 'unsafe-inline' in script-src (line 7), which allows any inline script to execute regardless of origin \u2014 significantly weakening XSS protection. A nonce-based CSP generates a cryptographic nonce per request, allowing only explicitly nonced inline scripts (Next.js hydration, analytics) while blocking unauthorised injected scripts.",
+      "acceptanceCriteria": [
+        "Integration tests exist covering the core behaviour of US-070",
+        "Tests cover the happy path and at least one error/edge case",
+        "Tests run without requiring external services or manual setup"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_070 -v"
+      ],
+      "priority": "high",
+      "dependencies": [
+        "US-070"
+      ],
+      "_source": "test-story",
+      "_testType": "integration",
+      "_forStoryId": "US-070",
+      "tags": [
+        "integration",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Security Test] Migrate CSP script-src from unsafe-inline to nonce-based policy",
+      "description": "Write security tests for auth/permission logic in US-070. Story description: The current CSP in next.config.ts uses 'unsafe-inline' in script-src (line 7), which allows any inline script to execute regardless of origin \u2014 significantly weakening XSS protection. A nonce-based CSP generates a cryptographic nonce per request, allowing only explicitly nonced inline scripts (Next.js hydration, analytics) while blocking unauthorised injected scripts.",
+      "acceptanceCriteria": [
+        "Security test covers access control introduced by US-070",
+        "Test verifies unauthorized access is blocked (401/403 responses)",
+        "No sensitive data (tokens, passwords) leaked in error responses"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_070 -v"
+      ],
+      "priority": "high",
+      "dependencies": [
+        "US-070"
+      ],
+      "_source": "test-story",
+      "_testType": "security",
+      "_forStoryId": "US-070",
+      "tags": [
+        "security",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Performance Test] Upgrade Tailwind CSS from v3 to v4",
+      "description": "Write performance benchmark for the operation in US-071. Story description: Tailwind CSS v4 introduces a CSS-first configuration model, built-in cascade layers, and up to 5x faster full builds (100x faster incremental). The new engine eliminates tailwind.config.ts for most setups, using a @theme block in globals.css. This reduces configuration debt and improves HMR performance during development.",
+      "acceptanceCriteria": [
+        "Performance test measures key metrics for US-071",
+        "Baseline captured and acceptable threshold defined",
+        "Test fails if response time degrades more than 20% from baseline"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_071 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-071"
+      ],
+      "_source": "test-story",
+      "_testType": "performance",
+      "_forStoryId": "US-071",
+      "tags": [
+        "performance",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Integration Test] Implement dark mode support with prefers-color-scheme and Tailwind dark: classes",
+      "description": "Write integration tests for the feature implemented in US-075. Story description: Approximately 65% of mobile users enable dark mode at the OS level. The site has no dark mode support, causing bright white pages for night-time booking \u2014 a common scenario for late travellers. Tailwind's dark: variant (media strategy) provides automatic OS-preference matching with no JavaScript state management required.",
+      "acceptanceCriteria": [
+        "Integration tests exist covering the core behaviour of US-075",
+        "Tests cover the happy path and at least one error/edge case",
+        "Tests run without requiring external services or manual setup"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_075 -v"
+      ],
+      "priority": "high",
+      "dependencies": [
+        "US-075"
+      ],
+      "_source": "test-story",
+      "_testType": "integration",
+      "_forStoryId": "US-075",
+      "tags": [
+        "integration",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Regression Test] WCAG 2.2 SC 2.4.13: Audit and enforce minimum focus appearance (2 px ring, 3:1 con",
+      "description": "Write regression test to guard against future breakage of US-087. Story description: SC 2.4.13 (AA, new in WCAG 2.2) requires focus indicators to have a minimum enclosed area of `perimeter \u00d7 2 CSS pixels` and a 3:1 contrast ratio between focused and unfocused states. This goes beyond the existing SC 1.4.3 text contrast coverage. A Tailwind `focus-visible:ring-2 focus-visible:ring-offset-2` audit across all interactive elements is needed.",
+      "acceptanceCriteria": [
+        "Regression test covers core observable behaviour of US-087",
+        "Test would reliably fail if the US-087 feature were removed or broken"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_087 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-087"
+      ],
+      "_source": "test-story",
+      "_testType": "regression",
+      "_forStoryId": "US-087",
+      "tags": [
+        "regression",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Regression Test] Enable Partial Pre-rendering (PPR) with incremental mode on Home and Gallery pages",
+      "description": "Write regression test to guard against future breakage of US-090. Story description: Next.js 15 ships PPR as an opt-in via `ppr: 'incremental'` in `next.config.ts`. Static shells (hero image, above-fold content) are served instantly while dynamic holes (testimonials, availability counters) stream asynchronously. The Home and Gallery pages mix static and potentially dynamic content and are ideal candidates.",
+      "acceptanceCriteria": [
+        "Regression test covers core observable behaviour of US-090",
+        "Test would reliably fail if the US-090 feature were removed or broken"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_090 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-090"
+      ],
+      "_source": "test-story",
+      "_testType": "regression",
+      "_forStoryId": "US-090",
+      "tags": [
+        "regression",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Performance Test] Add blurDataURL placeholder to remote hero and room images using plaiceholder",
+      "description": "Write performance benchmark for the operation in US-097. Story description: Remote images in `Hero.tsx` and `Rooms.tsx` show a grey box during load (no placeholder), causing perceived CLS. Using `plaiceholder` at build time to generate base64 blur hashes enables `placeholder='blur'` on `next/image`, providing a smooth low-resolution-to-full-resolution transition that improves perceived performance and LCP UX.",
+      "acceptanceCriteria": [
+        "Performance test measures key metrics for US-097",
+        "Baseline captured and acceptable threshold defined",
+        "Test fails if response time degrades more than 20% from baseline"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_097 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-097"
+      ],
+      "_source": "test-story",
+      "_testType": "performance",
+      "_forStoryId": "US-097",
+      "tags": [
+        "performance",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Add Exit Intent overlay on /book page offering early check-in incentive (desktop only)",
+      "description": "Write end-to-end user flow test for the feature in US-101. Story description: Exit-intent interstitials on hotel booking pages recover 5\u201312% of abandoning visitors per industry data. A lightweight `mouseleave` listener on `document.documentElement` triggers a modal with a 'Stay \u2014 we'll throw in early check-in at 11 AM' offer when the cursor moves toward the browser chrome on desktop. No third-party library needed.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-101",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_101 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-101"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-101",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Integration Test] Register Google Business Profile and connect to Google Hotel free booking links",
+      "description": "Write integration tests for the feature implemented in US-103. Story description: Google Hotel free booking links allow accommodation properties to appear in Google Search hotel results at zero cost per click. This requires a verified Google Business Profile linked to the property and a connectivity partner (or the new direct rate-sharing beta) to send real-time availability. For a hostel without an OTA manager, this is the highest-ROI distribution channel improvement available.",
+      "acceptanceCriteria": [
+        "Integration tests exist covering the core behaviour of US-103",
+        "Tests cover the happy path and at least one error/edge case",
+        "Tests run without requiring external services or manual setup"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_103 -v"
+      ],
+      "priority": "high",
+      "dependencies": [
+        "US-103"
+      ],
+      "_source": "test-story",
+      "_testType": "integration",
+      "_forStoryId": "US-103",
+      "tags": [
+        "integration",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Register Google Business Profile and connect to Google Hotel free booking links",
+      "description": "Write end-to-end user flow test for the feature in US-103. Story description: Google Hotel free booking links allow accommodation properties to appear in Google Search hotel results at zero cost per click. This requires a verified Google Business Profile linked to the property and a connectivity partner (or the new direct rate-sharing beta) to send real-time availability. For a hostel without an OTA manager, this is the highest-ROI distribution channel improvement available.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-103",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_103 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-103"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-103",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Implement WCAG 2.2 SC 2.5.8 \u2013 Target Size Minimum (24\u00d724 CSS px)",
+      "description": "Write end-to-end user flow test for the feature in US-105. Story description: WCAG 2.2 introduced SC 2.5.8 at Level AA, requiring all interactive targets (buttons, links, form controls) to have a hit area of at least 24\u00d724 CSS pixels or sufficient offset spacing from adjacent targets. This directly benefits mobile users and people with motor disabilities, and is now a baseline requirement for WCAG 2.2 AA conformance.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-105",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_105 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-105"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-105",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Regression Test] Add Malaysia PDPA-compliant cookie consent banner with explicit opt-in",
+      "description": "Write regression test to guard against future breakage of US-106. Story description: Malaysia's Personal Data Protection (Amendment) Act 2024, effective from January 2025, requires explicit affirmative opt-in consent before setting non-essential cookies (analytics, marketing). Implied consent (continuing to browse) is invalid under the PDPA. The site currently uses analytics without a consent gate, creating legal exposure for a Malaysian-registered business.",
+      "acceptanceCriteria": [
+        "Regression test covers core observable behaviour of US-106",
+        "Test would reliably fail if the US-106 feature were removed or broken"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_106 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-106"
+      ],
+      "_source": "test-story",
+      "_testType": "regression",
+      "_forStoryId": "US-106",
+      "tags": [
+        "regression",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Implement INP optimisation: defer non-critical third-party scripts",
+      "description": "Write end-to-end user flow test for the feature in US-107. Story description: Interaction to Next Paint (INP) replaced FID as a Core Web Vital in March 2024. The primary INP threat on this site is third-party script main-thread contention \u2014 analytics, chat widgets, and tracking scripts that execute synchronously during user interactions. Using `next/script` with `strategy='lazyOnload'` for non-critical scripts and the Scheduler API (`scheduler.postTask`) for deferred work improves INP below the 200ms 'good' threshold.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-107",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_107 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-107"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-107",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Performance Test] Adopt `'use cache'` directive for explicit data caching in Next.js 15",
+      "description": "Write performance benchmark for the operation in US-117. Story description: Next.js 15 introduced the `'use cache'` directive as an experimental, explicit opt-in caching model. For a hostel website with mostly static content (room descriptions, amenities, FAQ) but some dynamic sections, Cache Components let you cache at the right granularity and pair `cacheLife` profiles with `revalidateTag` for precise invalidation.",
+      "acceptanceCriteria": [
+        "Performance test measures key metrics for US-117",
+        "Baseline captured and acceptable threshold defined",
+        "Test fails if response time degrades more than 20% from baseline"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_117 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-117"
+      ],
+      "_source": "test-story",
+      "_testType": "performance",
+      "_forStoryId": "US-117",
+      "tags": [
+        "performance",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Performance Test] Add Service Worker offline fallback to complete PWA installability",
+      "description": "Write performance benchmark for the operation in US-121. Story description: The web app manifest is already in place but Chrome requires a registered Service Worker intercepting fetch requests for the PWA install prompt to fire. Adding a minimal service worker with cache-first for static assets and network-first for pages enables both the install prompt and graceful offline fallback \u2014 critical for travellers on unreliable hostel Wi-Fi.",
+      "acceptanceCriteria": [
+        "Performance test measures key metrics for US-121",
+        "Baseline captured and acceptable threshold defined",
+        "Test fails if response time degrades more than 20% from baseline"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_121 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-121"
+      ],
+      "_source": "test-story",
+      "_testType": "performance",
+      "_forStoryId": "US-121",
+      "tags": [
+        "performance",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Add live chat widget for 24/7 guest pre-booking inquiry support",
+      "description": "Write end-to-end user flow test for the feature in US-123. Story description: Deploying a live chat or AI chatbot widget rescues hesitant bookers by answering pre-booking FAQs (check-in time, parking, dorm vs private room) in real time without requiring WhatsApp initiation. A lightweight, lazy-loaded widget can surface the direct booking CTA at the right moment for travellers who hesitate on the rooms or booking page.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-123",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_123 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-123"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-123",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Add per-room accessible photo lightbox gallery",
+      "description": "Write end-to-end user flow test for the feature in US-124. Story description: Immersive per-room photo galleries with a keyboard-navigable lightbox are one of the top conversion drivers for boutique accommodation websites. Travellers who can inspect the dorm, private room, bathroom, and common areas in detail before booking show significantly higher booking confidence. Each room type page needs a dedicated gallery with at least 6 categorised photos.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-124",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_124 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-124"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-124",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Implement View Transitions API for animated page navigation",
+      "description": "Write end-to-end user flow test for the feature in US-126. Story description: Next.js 15 exposes `experimental.viewTransition` which leverages the native browser View Transitions API for smooth, animated page transitions. For a hostel website, this creates polished cross-fade or slide animations when navigating between room pages, the gallery, and the blog \u2014 improving perceived performance and brand feel with zero third-party JS.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-126",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_126 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-126"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-126",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Performance Test] Implement View Transitions API for animated page navigation",
+      "description": "Write performance benchmark for the operation in US-126. Story description: Next.js 15 exposes `experimental.viewTransition` which leverages the native browser View Transitions API for smooth, animated page transitions. For a hostel website, this creates polished cross-fade or slide animations when navigating between room pages, the gallery, and the blog \u2014 improving perceived performance and brand feel with zero third-party JS.",
+      "acceptanceCriteria": [
+        "Performance test measures key metrics for US-126",
+        "Baseline captured and acceptable threshold defined",
+        "Test fails if response time degrades more than 20% from baseline"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_126 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-126"
+      ],
+      "_source": "test-story",
+      "_testType": "performance",
+      "_forStoryId": "US-126",
+      "tags": [
+        "performance",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Security Test] Add WCAG 2.2 SC 1.2.2 captions to all prerecorded video content",
+      "description": "Write security tests for auth/permission logic in US-128. Story description: SC 1.2.2 (Level A) requires captions for all prerecorded audio in synchronized media. The hostel likely has or will publish promotional videos, room tours, or testimonial clips. Without captions, deaf or hard-of-hearing visitors cannot access the audio content, and the site fails the lowest WCAG conformance tier.",
+      "acceptanceCriteria": [
+        "Security test covers access control introduced by US-128",
+        "Test verifies unauthorized access is blocked (401/403 responses)",
+        "No sensitive data (tokens, passwords) leaked in error responses"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_128 -v"
+      ],
+      "priority": "high",
+      "dependencies": [
+        "US-128"
+      ],
+      "_source": "test-story",
+      "_testType": "security",
+      "_forStoryId": "US-128",
+      "tags": [
+        "security",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Implement booking abandonment recovery via sessionStorage re-engagement prompt",
+      "description": "Write end-to-end user flow test for the feature in US-133. Story description: Industry data shows 80%+ of hotel website visitors abandon the booking flow before completing an enquiry. Persisting the user's selected room, dates, and guest count in sessionStorage and presenting a re-engagement prompt ('Continue where you left off?') on return visits within the same session recovers a significant share of abandoned intent without requiring email capture or cookies, keeping the implementation PDPA-compliant.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-133",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_133 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-133"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-133",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Security Test] Implement booking abandonment recovery via sessionStorage re-engagement prompt",
+      "description": "Write security tests for auth/permission logic in US-133. Story description: Industry data shows 80%+ of hotel website visitors abandon the booking flow before completing an enquiry. Persisting the user's selected room, dates, and guest count in sessionStorage and presenting a re-engagement prompt ('Continue where you left off?') on return visits within the same session recovers a significant share of abandoned intent without requiring email capture or cookies, keeping the implementation PDPA-compliant.",
+      "acceptanceCriteria": [
+        "Security test covers access control introduced by US-133",
+        "Test verifies unauthorized access is blocked (401/403 responses)",
+        "No sensitive data (tokens, passwords) leaked in error responses"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_133 -v"
+      ],
+      "priority": "high",
+      "dependencies": [
+        "US-133"
+      ],
+      "_source": "test-story",
+      "_testType": "security",
+      "_forStoryId": "US-133",
+      "tags": [
+        "security",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Build Suspense-streaming skeleton UI for room availability section",
+      "description": "Write end-to-end user flow test for the feature in US-141. Story description: The room availability section currently blocks the entire page render while fetching dynamic data. Wrapping it in a React Suspense boundary with a skeleton fallback enables HTML streaming: the page shell is sent immediately, the skeleton is shown while availability data loads, and React hydrates the section when data arrives. This measurably improves LCP and perceived performance for the most conversion-critical page section.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-141",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_141 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-141"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-141",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Performance Test] Build Suspense-streaming skeleton UI for room availability section",
+      "description": "Write performance benchmark for the operation in US-141. Story description: The room availability section currently blocks the entire page render while fetching dynamic data. Wrapping it in a React Suspense boundary with a skeleton fallback enables HTML streaming: the page shell is sent immediately, the skeleton is shown while availability data loads, and React hydrates the section when data arrives. This measurably improves LCP and perceived performance for the most conversion-critical page section.",
+      "acceptanceCriteria": [
+        "Performance test measures key metrics for US-141",
+        "Baseline captured and acceptable threshold defined",
+        "Test fails if response time degrades more than 20% from baseline"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_141 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-141"
+      ],
+      "_source": "test-story",
+      "_testType": "performance",
+      "_forStoryId": "US-141",
+      "tags": [
+        "performance",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Integration Test] Upgrade to Next.js 16 and resolve all breaking changes",
+      "description": "Write integration tests for the feature implemented in US-145. Story description: Next.js 16 is the current stable major version. It makes Turbopack the default bundler, fully removes synchronous access to cookies()/headers()/params/searchParams, renames middleware.ts to proxy.ts, removes the experimental.ppr flag in favour of cacheComponents, and requires explicit default.js for all parallel route slots. All breaking changes must be resolved for the site to build on Next.js 16.",
+      "acceptanceCriteria": [
+        "Integration tests exist covering the core behaviour of US-145",
+        "Tests cover the happy path and at least one error/edge case",
+        "Tests run without requiring external services or manual setup"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_145 -v"
+      ],
+      "priority": "high",
+      "dependencies": [
+        "US-145"
+      ],
+      "_source": "test-story",
+      "_testType": "integration",
+      "_forStoryId": "US-145",
+      "tags": [
+        "integration",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Security Test] Upgrade to Next.js 16 and resolve all breaking changes",
+      "description": "Write security tests for auth/permission logic in US-145. Story description: Next.js 16 is the current stable major version. It makes Turbopack the default bundler, fully removes synchronous access to cookies()/headers()/params/searchParams, renames middleware.ts to proxy.ts, removes the experimental.ppr flag in favour of cacheComponents, and requires explicit default.js for all parallel route slots. All breaking changes must be resolved for the site to build on Next.js 16.",
+      "acceptanceCriteria": [
+        "Security test covers access control introduced by US-145",
+        "Test verifies unauthorized access is blocked (401/403 responses)",
+        "No sensitive data (tokens, passwords) leaked in error responses"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_145 -v"
+      ],
+      "priority": "high",
+      "dependencies": [
+        "US-145"
+      ],
+      "_source": "test-story",
+      "_testType": "security",
+      "_forStoryId": "US-145",
+      "tags": [
+        "security",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Performance Test] Upgrade to Next.js 16 and resolve all breaking changes",
+      "description": "Write performance benchmark for the operation in US-145. Story description: Next.js 16 is the current stable major version. It makes Turbopack the default bundler, fully removes synchronous access to cookies()/headers()/params/searchParams, renames middleware.ts to proxy.ts, removes the experimental.ppr flag in favour of cacheComponents, and requires explicit default.js for all parallel route slots. All breaking changes must be resolved for the site to build on Next.js 16.",
+      "acceptanceCriteria": [
+        "Performance test measures key metrics for US-145",
+        "Baseline captured and acceptable threshold defined",
+        "Test fails if response time degrades more than 20% from baseline"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_145 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-145"
+      ],
+      "_source": "test-story",
+      "_testType": "performance",
+      "_forStoryId": "US-145",
+      "tags": [
+        "performance",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Implement scheduler.yield() for INP optimisation on long JavaScript tasks",
+      "description": "Write end-to-end user flow test for the feature in US-147. Story description: The Scheduler API's yield() method is the current recommended technique for breaking up long JavaScript tasks (>50ms) that block the main thread and cause high INP. Unlike setTimeout(0) which deprioritises continuation, scheduler.yield() resumes execution at the same priority. Key targets: gallery filter/sort interaction, room availability check, and analytics batching on booking button click.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-147",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_147 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-147"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-147",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Create dedicated /location page for Google Business Profile 2026 local SEO requirements",
+      "description": "Write end-to-end user flow test for the feature in US-149. Story description: Google 2026 local SEO requirements mandate that GBP profile links must point to a location-specific page (not the home page) with that location's contact information, photos, and local content. A dedicated /location page with embedded Google Maps, local area content, transport directions, and location-specific schema would satisfy these requirements and improve local pack visibility.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-149",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_149 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-149"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-149",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Implement AI search optimisation (AEO) with expanded FAQ and conversational content",
+      "description": "Write end-to-end user flow test for the feature in US-156. Story description: Over 50% of travellers now use AI-powered planners (ChatGPT, Perplexity, Google AI Overviews) to research accommodation. AI search relies on well-structured, factual, conversational content rather than keyword density. The hostel needs expanded FAQ content using natural-language questions that AI assistants would ask, and entity-rich prose that answers traveller questions in complete sentences.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-156",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_156 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-156"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-156",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Implement Google Tag Manager with Consent Mode v2",
+      "description": "Write end-to-end user flow test for the feature in US-163. Story description: Install GTM with Consent Mode v2 so all six consent parameters (ad_storage, ad_user_data, analytics_storage, ad_personalization, functionality_storage, personalization_storage) are correctly signalled before any Google tags fire. Required since March 2024 for Google Ads conversion tracking to function with EU/international visitors. Enables the marketing team to manage tags without code deploys.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-163",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_163 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-163"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-163",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Implement Facebook Conversions API (CAPI) for server-side event tracking",
+      "description": "Write end-to-end user flow test for the feature in US-164. Story description: Add a Next.js Route Handler that sends key booking-intent events (PageView, ViewContent on room pages, Contact on form submission) directly to the Meta Conversions API server-side. Server-side tracking bypasses browser ad blockers and iOS 14+ restrictions, significantly improving Facebook/Instagram Ads attribution accuracy for retargeting campaigns targeting international backpackers.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-164",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_164 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-164"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-164",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Security Test] WCAG 2.1 SC 2.1.1 \u2013 Keyboard: ensure all functionality is keyboard operable",
+      "description": "Write security tests for auth/permission logic in US-165. Story description: Audit all interactive functionality to ensure it can be operated entirely via keyboard without requiring specific timing. Custom components using div/span (image gallery carousel, mobile drawer nav, room tabs) must receive tabindex, role, and keyboard event handlers. This is WCAG 2.1 Level A \u2014 failing this makes the site completely unusable for keyboard-only users including many people with motor disabilities.",
+      "acceptanceCriteria": [
+        "Security test covers access control introduced by US-165",
+        "Test verifies unauthorized access is blocked (401/403 responses)",
+        "No sensitive data (tokens, passwords) leaked in error responses"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_165 -v"
+      ],
+      "priority": "high",
+      "dependencies": [
+        "US-165"
+      ],
+      "_source": "test-story",
+      "_testType": "security",
+      "_forStoryId": "US-165",
+      "tags": [
+        "security",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Integration Test] Implement Stripe FPX online banking for direct booking deposit payment",
+      "description": "Write integration tests for the feature implemented in US-167. Story description: Add a Stripe FPX payment flow to the /book page allowing Malaysian guests to pay a booking deposit directly via online banking (Maybank, CIMB, RHB, etc.) without leaving the site. Direct payment reduces dependency on OTA commissions and increases conversion for guests who prefer local banking over credit cards. FPX is the dominant online payment method in Malaysia.",
+      "acceptanceCriteria": [
+        "Integration tests exist covering the core behaviour of US-167",
+        "Tests cover the happy path and at least one error/edge case",
+        "Tests run without requiring external services or manual setup"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_167 -v"
+      ],
+      "priority": "high",
+      "dependencies": [
+        "US-167"
+      ],
+      "_source": "test-story",
+      "_testType": "integration",
+      "_forStoryId": "US-167",
+      "tags": [
+        "integration",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Implement Stripe FPX online banking for direct booking deposit payment",
+      "description": "Write end-to-end user flow test for the feature in US-167. Story description: Add a Stripe FPX payment flow to the /book page allowing Malaysian guests to pay a booking deposit directly via online banking (Maybank, CIMB, RHB, etc.) without leaving the site. Direct payment reduces dependency on OTA commissions and increases conversion for guests who prefer local banking over credit cards. FPX is the dominant online payment method in Malaysia.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-167",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_167 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-167"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-167",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Add GA4 Enhanced Ecommerce events for booking funnel analysis",
+      "description": "Write end-to-end user flow test for the feature in US-169. Story description: Implement GA4 Enhanced Ecommerce event tracking (view_item, select_item, begin_checkout, generate_lead) throughout the booking funnel so conversion drop-off points can be identified by room type and traffic source. Basic GA4 page view integration misses funnel-level data \u2014 without ecommerce events it is impossible to know which room pages convert best or at which step guests abandon the booking flow.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-169",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_169 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-169"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-169",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Implement WCAG 2.2 SC 3.3.3 + 3.3.4 \u2013 Error Suggestion and Error Prevention on booking fl",
+      "description": "Write end-to-end user flow test for the feature in US-180. Story description: SC 3.3.3 (AA) requires that input errors be accompanied by a suggested correction when possible. SC 3.3.4 (AA) requires that legal/financial submissions be reviewable, confirmable, or reversible. The booking/contact forms currently lack both a review step and specific error suggestions.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-180",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_180 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-180"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-180",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Regression Test] Comply with Malaysia CPETTR 2024 \u2014 mandatory Bahasa Malaysia disclosure",
+      "description": "Write regression test to guard against future breakage of US-191. Story description: The Consumer Protection (Electronic Trade Transaction) Regulations 2024 came into force on 25 December 2024 and require all information shown to Malaysian consumers in online trade transactions to be available in Bahasa Malaysia. This includes pricing, descriptions, terms and conditions, and mandatory trader identity disclosures (name, address, registration, contact). Non-compliance exposes the business to enforcement under the Consumer Protection Act 1999.",
+      "acceptanceCriteria": [
+        "Regression test covers core observable behaviour of US-191",
+        "Test would reliably fail if the US-191 feature were removed or broken"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_191 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-191"
+      ],
+      "_source": "test-story",
+      "_testType": "regression",
+      "_forStoryId": "US-191",
+      "tags": [
+        "regression",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Performance Test] Implement Next.js 16 'use cache' directive with cacheTag/cacheLife",
+      "description": "Write performance benchmark for the operation in US-192. Story description: Next.js 16 ships an explicit opt-in caching model via the 'use cache' directive, replacing the implicit and often surprising caching behaviour of Next.js 14/15. Pages, Server Components, and data-fetch functions can be annotated with 'use cache', cacheLife('hours' | 'days' | 'max'), and cacheTag('tag-name'), enabling fine-grained on-demand revalidation via revalidateTag/updateTag in Server Actions. This directly reduces TTFB for room-listing and homepage routes while keeping dynamic pricing fresh.",
+      "acceptanceCriteria": [
+        "Performance test measures key metrics for US-192",
+        "Baseline captured and acceptable threshold defined",
+        "Test fails if response time degrades more than 20% from baseline"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_192 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-192"
+      ],
+      "_source": "test-story",
+      "_testType": "performance",
+      "_forStoryId": "US-192",
+      "tags": [
+        "performance",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Integration Test] Integrate Google Free Hotel Booking Links via connectivity partner",
+      "description": "Write integration tests for the feature implemented in US-194. Story description: Google Free Booking Links (FBL) allow hotels and hostels to appear directly in Google Hotel Search, Maps, and Travel with live rates and a direct-to-website booking link \u2014 at zero commission. Pelangi requires connection through an approved Google connectivity partner (e.g., Cloudbeds, Beds24, or RoomRaccoon) that synchronises ARI (Availability, Rates, Inventory) with Google Hotel Center. This dramatically reduces OTA dependency for Singapore\u2013JB cross-border travellers searching on Google.",
+      "acceptanceCriteria": [
+        "Integration tests exist covering the core behaviour of US-194",
+        "Tests cover the happy path and at least one error/edge case",
+        "Tests run without requiring external services or manual setup"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_194 -v"
+      ],
+      "priority": "high",
+      "dependencies": [
+        "US-194"
+      ],
+      "_source": "test-story",
+      "_testType": "integration",
+      "_forStoryId": "US-194",
+      "tags": [
+        "integration",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Integrate Google Free Hotel Booking Links via connectivity partner",
+      "description": "Write end-to-end user flow test for the feature in US-194. Story description: Google Free Booking Links (FBL) allow hotels and hostels to appear directly in Google Hotel Search, Maps, and Travel with live rates and a direct-to-website booking link \u2014 at zero commission. Pelangi requires connection through an approved Google connectivity partner (e.g., Cloudbeds, Beds24, or RoomRaccoon) that synchronises ARI (Availability, Rates, Inventory) with Google Hotel Center. This dramatically reduces OTA dependency for Singapore\u2013JB cross-border travellers searching on Google.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-194",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_194 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-194"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-194",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Add Google AI Overviews optimisation: structured Q&A and entity signals",
+      "description": "Write end-to-end user flow test for the feature in US-195. Story description: Google AI Overviews now appear in 85%+ of searches and predominantly cite top-10 organic results. For hospitality queries ('best hostel johor bahru', 'cheap hostel near CIQ'), being cited in an AI Overview dramatically increases brand visibility. Optimisation requires concise factual paragraphs, structured FAQ/HowTo schema, authoritative entity signals (consistent NAP, linked Google Business Profile), and first-hand experience signals (owner responses to reviews, detailed amenity descriptions).",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-195",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_195 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-195"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-195",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Add JB-Singapore RTS Link and MyNIISe QR border crossing info page",
+      "description": "Write end-to-end user flow test for the feature in US-200. Story description: The Johor Bahru\u2013Singapore RTS Link (rapid transit system) is launching by end-2026 with a 5-minute crossing from Woodlands North MRT to Bukit Chagar, plus the MyNIISe QR-code immigration system is now live at JB checkpoints. Pelangi Capsule's primary market is Singaporeans crossing the JB border. A dedicated /getting-here or /location page section covering RTS Link ticketing, MyNIISe QR setup, and DuitNow-PayNow cross-border payments will capture high-intent informational searches and improve time-on-site.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-200",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_200 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-200"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-200",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Add Visit Malaysia 2026 campaign landing page with structured event data",
+      "description": "Write end-to-end user flow test for the feature in US-203. Story description: Malaysia's national Visit Malaysia Year 2026 campaign (target: 35.6 million visitors, RM147.1 billion revenue) and Visit Johor 2026 run concurrently. A dedicated campaign landing page targeting Singaporean travellers using the RTS Link and JB-SG cross-border tourism momentum can capture high-intent traffic. The page should use Event schema for any limited-time promotions and TouristAttraction schema for nearby Johor Bahru sights, aligned with Google's rich result types.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-203",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_203 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-203"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-203",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Add Hotel Price structured data for Google Hotel Price Accuracy validation",
+      "description": "Write end-to-end user flow test for the feature in US-214. Story description: Google's Hotel Price Structured Data format allows hostel websites to annotate room pricing on booking/rooms pages so Google's systems can validate price accuracy (requiring 98-100% match between markup and displayed price). Implementing this unlocks price accuracy signals for Google Hotel Ads free booking links, improves eligibility for rich results, and prevents price mismatch penalties that can demote hotel listings in Google Travel search.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-214",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_214 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-214"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-214",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Security Test] Add Hotel Price structured data for Google Hotel Price Accuracy validation",
+      "description": "Write security tests for auth/permission logic in US-214. Story description: Google's Hotel Price Structured Data format allows hostel websites to annotate room pricing on booking/rooms pages so Google's systems can validate price accuracy (requiring 98-100% match between markup and displayed price). Implementing this unlocks price accuracy signals for Google Hotel Ads free booking links, improves eligibility for rich results, and prevents price mismatch penalties that can demote hotel listings in Google Travel search.",
+      "acceptanceCriteria": [
+        "Security test covers access control introduced by US-214",
+        "Test verifies unauthorized access is blocked (401/403 responses)",
+        "No sensitive data (tokens, passwords) leaked in error responses"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_214 -v"
+      ],
+      "priority": "high",
+      "dependencies": [
+        "US-214"
+      ],
+      "_source": "test-story",
+      "_testType": "security",
+      "_forStoryId": "US-214",
+      "tags": [
+        "security",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Implement mobile booking conversion optimisations: trust badges and price comparison widg",
+      "description": "Write end-to-end user flow test for the feature in US-215. Story description: Industry benchmarks show hotel website conversion rates average below 2%, while high-intent sources like Google Hotel Ads convert at 4.17%. Research shows that authentic trust elements (recent reviews, awards, certifications) and a price-comparison widget showing the site's price vs. OTA prices are among the highest-ROI conversion improvements for boutique hostel sites. Over 70% of hostel website traffic is mobile, making mobile-first booking flow optimisation directly revenue-impacting.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-215",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_215 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-215"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-215",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Regression Test] Implement CSS container queries for responsive room card component",
+      "description": "Write regression test to guard against future breakage of US-219. Story description: CSS container queries became Baseline Widely Available in August 2025, enabling components to respond to their parent container's size rather than the viewport. Room cards and amenity cards are currently responsive to the viewport via Tailwind breakpoints, but when placed in a sidebar vs. full-width grid they need different layouts. Container queries enable truly reusable components that adapt to their placement context, improving both maintainability and visual quality.",
+      "acceptanceCriteria": [
+        "Regression test covers core observable behaviour of US-219",
+        "Test would reliably fail if the US-219 feature were removed or broken"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_219 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-219"
+      ],
+      "_source": "test-story",
+      "_testType": "regression",
+      "_forStoryId": "US-219",
+      "tags": [
+        "regression",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Implement updateTag() and refresh() Server Actions for booking state freshness",
+      "description": "Write end-to-end user flow test for the feature in US-229. Story description: Next.js 16 introduces `updateTag()` (read-your-writes: surfaces a user's own change immediately from cache) and `refresh()` (fetches fresh uncached dynamic data without touching the cache). Without these, booking confirmation pages and enquiry acknowledgements show stale data, eroding guest trust. The existing `revalidateTag()` single-argument call is also deprecated in Next.js 16 and must be updated.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-229",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_229 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-229"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-229",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Performance Test] Implement updateTag() and refresh() Server Actions for booking state freshness",
+      "description": "Write performance benchmark for the operation in US-229. Story description: Next.js 16 introduces `updateTag()` (read-your-writes: surfaces a user's own change immediately from cache) and `refresh()` (fetches fresh uncached dynamic data without touching the cache). Without these, booking confirmation pages and enquiry acknowledgements show stale data, eroding guest trust. The existing `revalidateTag()` single-argument call is also deprecated in Next.js 16 and must be updated.",
+      "acceptanceCriteria": [
+        "Performance test measures key metrics for US-229",
+        "Baseline captured and acceptable threshold defined",
+        "Test fails if response time degrades more than 20% from baseline"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_229 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-229"
+      ],
+      "_source": "test-story",
+      "_testType": "performance",
+      "_forStoryId": "US-229",
+      "tags": [
+        "performance",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Security Test] Audit and fix WCAG 2.1 SC 4.1.2 Name, Role, Value for all interactive elements",
+      "description": "Write security tests for auth/permission logic in US-230. Story description: SC 4.1.2 (Level A) requires every interactive element to have a programmatically determinable name, role, and state. Custom buttons, icon-only controls, gallery navigation arrows, and booking CTAs are common failure points. This is the single most frequently violated WCAG criterion globally and a Level A requirement \u2014 non-compliance constitutes a complete accessibility failure at WCAG 2.1 AA level.",
+      "acceptanceCriteria": [
+        "Security test covers access control introduced by US-230",
+        "Test verifies unauthorized access is blocked (401/403 responses)",
+        "No sensitive data (tokens, passwords) leaked in error responses"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_230 -v"
+      ],
+      "priority": "high",
+      "dependencies": [
+        "US-230"
+      ],
+      "_source": "test-story",
+      "_testType": "security",
+      "_forStoryId": "US-230",
+      "tags": [
+        "security",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[Regression Test] Adopt CSS @property for type-safe, animatable design tokens",
+      "description": "Write regression test to guard against future breakage of US-233. Story description: CSS `@property` (Baseline Newly Available, 2025) enables typed custom properties with initial values and smooth animation support for values previously unanimatable \u2014 gradients, color stops, numeric values. For a hostel website, this unlocks animated gradient hero backgrounds and smooth brand colour transitions in pure CSS without JavaScript animation libraries.",
+      "acceptanceCriteria": [
+        "Regression test covers core observable behaviour of US-233",
+        "Test would reliably fail if the US-233 feature were removed or broken"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_233 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-233"
+      ],
+      "_source": "test-story",
+      "_testType": "regression",
+      "_forStoryId": "US-233",
+      "tags": [
+        "regression",
+        "auto-generated"
+      ]
+    },
+    {
+      "title": "[E2E Test] Implement WCAG 2.1 SC 2.2.2 Pause/Stop/Hide for auto-advancing animated content",
+      "description": "Write end-to-end user flow test for the feature in US-234. Story description: SC 2.2.2 (Level A) requires that any content that moves, blinks, or auto-updates for more than 5 seconds must provide a mechanism to pause, stop, or hide it. This is separate from respecting `prefers-reduced-motion` \u2014 it requires a visible UI control users can activate regardless of OS settings. Hero carousels, scrolling announcements, and animated social proof counters are common failure points.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-234",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_234 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-234"
+      ],
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-234",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ]
+    }
+  ]
+}

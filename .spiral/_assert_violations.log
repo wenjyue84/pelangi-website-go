@@ -1,0 +1,40 @@
+2026-04-13T18:38:59Z | dep_completion_order | US-024 passes but dependency Add HTTP security headers to next.config.ts does not
+US-078 passes but dependency Add Fuse.js client-side site search for blog and guide content does not
+US-082 passes but dependency Add Fuse.js client-side site search for blog and guide content does not
+US-134 passes but dependency Display Malaysia Tourism Tax (TTx) RM10/room/night transparently on booking flow does not
+US-146 passes but dependency Upgrade to Next.js 16 and resolve all breaking changes does not
+US-152 passes but dependency Upgrade to Next.js 16 and resolve all breaking changes does not
+US-158 passes but dependency Upgrade to Next.js 16 and resolve all breaking changes does not
+US-163 passes but dependency Integrate GA4 analytics via @next/third-parties/google does not
+US-163 passes but dependency Add Malaysia PDPA-compliant cookie consent banner with explicit opt-in does not
+US-167 passes but dependency Add 'Book Direct' benefits section to /book page for conversion uplift does not
+US-169 passes but dependency Integrate GA4 analytics via @next/third-parties/google does not
+US-169 passes but dependency Implement Google Tag Manager with Consent Mode v2 does not
+US-172 passes but dependency Add honeypot field to contact form to block spam bot submissions does not
+US-174 passes but dependency Add web app manifest (manifest.json) for mobile installability does not
+US-177 passes but dependency Create blog system with static TypeScript data does not
+US-177 passes but dependency Add RSS/Atom feed at /feed.xml for the blog does not
+US-210 passes but dependency privacy-policy page already exists does not
+US-214 passes but dependency LodgingBusiness schema already implemented does not
+US-218 passes but dependency manifest.json already exists does not
+2026-04-13T18:39:48Z | prd_valid | Schema validation failed for /c/Users/Jyue/Documents/1-projects/Software Projects/pelangi-website/prd.json
+2026-04-13T18:41:29Z | story_count_bounded | Total stories (261) exceeds max (200)
+2026-04-13T18:41:30Z | dep_completion_order | US-024 passes but dependency Add HTTP security headers to next.config.ts does not
+US-078 passes but dependency Add Fuse.js client-side site search for blog and guide content does not
+US-082 passes but dependency Add Fuse.js client-side site search for blog and guide content does not
+US-134 passes but dependency Display Malaysia Tourism Tax (TTx) RM10/room/night transparently on booking flow does not
+US-146 passes but dependency Upgrade to Next.js 16 and resolve all breaking changes does not
+US-152 passes but dependency Upgrade to Next.js 16 and resolve all breaking changes does not
+US-158 passes but dependency Upgrade to Next.js 16 and resolve all breaking changes does not
+US-163 passes but dependency Integrate GA4 analytics via @next/third-parties/google does not
+US-163 passes but dependency Add Malaysia PDPA-compliant cookie consent banner with explicit opt-in does not
+US-167 passes but dependency Add 'Book Direct' benefits section to /book page for conversion uplift does not
+US-169 passes but dependency Integrate GA4 analytics via @next/third-parties/google does not
+US-169 passes but dependency Implement Google Tag Manager with Consent Mode v2 does not
+US-172 passes but dependency Add honeypot field to contact form to block spam bot submissions does not
+US-174 passes but dependency Add web app manifest (manifest.json) for mobile installability does not
+US-177 passes but dependency Create blog system with static TypeScript data does not
+US-177 passes but dependency Add RSS/Atom feed at /feed.xml for the blog does not
+US-210 passes but dependency privacy-policy page already exists does not
+US-214 passes but dependency LodgingBusiness schema already implemented does not
+US-218 passes but dependency manifest.json already exists does not

@@ -1,0 +1,9 @@
+[
+  "Create a blog system with static TypeScript posts for long-tail SEO",
+  "Publish 6+ high-quality, original travel articles about JB and Singapore for tourists",
+  "Add RSS/Atom feed at /feed.xml for the blog",
+  "Add a 'JB News & Updates' widget on the homepage pulling from curated RSS sources",
+  "Enhance structured data (Article, BreadcrumbList schemas) and internal linking",
+  "Update sitemap.ts to include all blog post URLs",
+  "Improve the /guide page with richer, more lively backpacker-focused content"
+]

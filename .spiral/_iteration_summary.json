@@ -1,0 +1,48 @@
+{
+  "iter": 1,
+  "ts_start": 1776104514,
+  "ts_end": 1776105588,
+  "duration_sec": 1074,
+  "stories_attempted": 2,
+  "stories_passed": 1,
+  "stories_failed": 1,
+  "phases_completed": [
+    "R",
+    "T",
+    "M",
+    "I",
+    "V",
+    "C"
+  ],
+  "phase_v_skipped": false,
+  "phase_timings": {
+    "R": {
+      "start_epoch": 1776104611,
+      "duration_seconds": 0
+    },
+    "T": {
+      "start_epoch": 1776104611,
+      "duration_seconds": 0
+    },
+    "S": {
+      "start_epoch": 1776104614,
+      "duration_seconds": 2
+    },
+    "M": {
+      "start_epoch": 1776104618,
+      "duration_seconds": 3
+    },
+    "I": {
+      "start_epoch": 1776104626,
+      "duration_seconds": 914
+    },
+    "V": {
+      "start_epoch": 1776105551,
+      "duration_seconds": 32
+    },
+    "C": {
+      "start_epoch": 1776105584,
+      "duration_seconds": 0
+    }
+  }
+}

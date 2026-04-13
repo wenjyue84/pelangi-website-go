@@ -1,0 +1,119 @@
+[
+  {
+    "title": "Implement server-side blog post auto-discovery from /site/src/blog/posts directory",
+    "priority": "high",
+    "description": "Create a blog-loader utility that scans for TypeScript blog post files, validates them against a BlogPostMeta schema, and exposes them via a getBlogPosts() function for use in blog listing, sitemap generation, and RSS feed creation. This is core infrastructure for the static blog system.",
+    "acceptanceCriteria": [
+      "getBlogPosts() returns sorted array of valid blog posts with title, slug, date, author, excerpt, and category fields",
+      "Invalid posts (missing required fields) are logged as warnings but don't crash the loader; validation uses Zod schema",
+      "Posts are cached during build time; calling revalidateTag('blog-posts') clears cache and refreshes on next request"
+    ],
+    "technicalNotes": [
+      "File to create: site/src/lib/blog-loader.ts (implement getBlogPosts with fs.readdirSync, dynamic imports, Zod validation)",
+      "File to edit: site/src/types/blog.ts (add BlogPostMeta interface with all required fields)",
+      "Test command: npm run test -- blog-loader.test.ts (test valid/invalid post loading, caching, sorting)"
+    ],
+    "filesTouch": [
+      "site/src/lib/blog-loader.ts",
+      "site/src/types/blog.ts",
+      "site/src/lib/__tests__/blog-loader.test.ts"
+    ],
+    "estimatedComplexity": "medium",
+    "_source": "ai-example",
+    "passes": false,
+    "dependencies": []
+  },
+  {
+    "title": "Create Article JSON-LD schema generator for blog post structured data",
+    "priority": "high",
+    "description": "Build generateArticleSchema() utility that creates proper Article schema.org markup from blog post metadata, including author, datePublished, dateModified, wordCount, and image. Integrate into blog [slug]/page.tsx metadata export to enable rich snippets in search results.",
+    "acceptanceCriteria": [
+      "Schema includes @context: 'https://schema.org', @type: 'BlogPosting', headline, datePublished, dateModified, author.name, wordCount, and image URL",
+      "dateModified is optional and defaults to datePublished if not provided in post metadata",
+      "Generated schema validates against schema.org validator; unit tests confirm @id and URL fields are absolute URLs"
+    ],
+    "technicalNotes": [
+      "File to create: site/src/lib/schema/article-schema.ts (generateArticleSchema(post: BlogPostMeta, baseUrl: string) function)",
+      "File to edit: site/src/app/blog/[slug]/page.tsx (call generateArticleSchema in metadata export for structured data)",
+      "Test command: npm run test -- article-schema.test.ts (validate schema structure, URL absoluteness, required fields)"
+    ],
+    "filesTouch": [
+      "site/src/lib/schema/article-schema.ts",
+      "site/src/app/blog/[slug]/page.tsx",
+      "site/src/lib/schema/__tests__/article-schema.test.ts"
+    ],
+    "estimatedComplexity": "small",
+    "_source": "ai-example",
+    "passes": false,
+    "dependencies": []
+  },
+  {
+    "title": "Add blog post reading time calculator utility with unit tests",
+    "priority": "medium",
+    "description": "Create calculateReadingTime() function that estimates reading duration from markdown content (200 words/minute baseline), returning both numeric minutes and human-readable format ('5 min read'). Use on blog card previews and article headers for UX transparency.",
+    "acceptanceCriteria": [
+      "Function accepts markdown string and returns { minutes: number, formatted: string } (e.g., { minutes: 5, formatted: '5 min read' })",
+      "1000 words \u2248 5 min read; 2000 words \u2248 10 min read (based on 200 wpm; 1 word = ~5 chars including spaces)",
+      "Edge cases handled: empty string returns 1 min, code blocks/HTML tags are counted as text, result always \u2265 1 min"
+    ],
+    "technicalNotes": [
+      "File to create: site/src/lib/reading-time.ts (calculateReadingTime(content: string): { minutes: number; formatted: string })",
+      "Test command: npm run test -- reading-time.test.ts (test: 100 chars, 1000 chars, 5000 chars, empty string, code blocks)"
+    ],
+    "filesTouch": [
+      "site/src/lib/reading-time.ts",
+      "site/src/lib/__tests__/reading-time.test.ts"
+    ],
+    "estimatedComplexity": "small",
+    "_source": "ai-example",
+    "passes": false,
+    "dependencies": []
+  },
+  {
+    "title": "Implement markdown excerpt extraction for blog post card previews",
+    "priority": "medium",
+    "description": "Build extractExcerpt() utility that strips markdown syntax and returns first 150\u2013160 characters for blog card displays. Handle code blocks, lists, and image syntax gracefully without breaking layout or leaving orphaned punctuation.",
+    "acceptanceCriteria": [
+      "Removes markdown formatting (##, **, `code`, [link](url), ![image](url)) while preserving readability; returns plain text",
+      "Returns max 160 characters with '\u2026' suffix if content exceeds limit; truncates at word boundary (no mid-word cuts)",
+      "Edge cases: code blocks and nested lists don't break output; multiple spaces/newlines collapsed to single space"
+    ],
+    "technicalNotes": [
+      "File to create: site/src/lib/excerpt-generator.ts (extractExcerpt(markdown: string, charLimit: number = 160): string)",
+      "Use regex to strip markdown: /([#*`\\[!]|\\[.*?\\]\\(.*?\\)|!\\[.*?\\]\\(.*?\\))/g",
+      "Test command: npm run test -- excerpt-generator.test.ts (test: plain text, headers, bold/italic, links, images, code blocks, truncation)"
+    ],
+    "filesTouch": [
+      "site/src/lib/excerpt-generator.ts",
+      "site/src/lib/__tests__/excerpt-generator.test.ts"
+    ],
+    "estimatedComplexity": "small",
+    "_source": "ai-example",
+    "passes": false,
+    "dependencies": []
+  },
+  {
+    "title": "Create BreadcrumbList JSON-LD schema for blog post navigation hierarchy",
+    "priority": "medium",
+    "description": "Build generateBreadcrumbSchema() utility that generates breadcrumb structure (Home > Blog > [Category] > Post Title) in schema.org BreadcrumbList format. Integrate into blog [slug]/layout.tsx for proper navigation context in search results and Google rich snippets.",
+    "acceptanceCriteria": [
+      "Schema includes @context: 'https://schema.org', @type: 'BreadcrumbList', itemListElement array with name, item (absolute URL), and position fields",
+      "Breadcrumb path: Home (/) > Blog (/blog) > Category (/blog?category=X) > Post Title (/blog/slug); all URLs are absolute with domain",
+      "Output validates against schema.org BreadcrumbList validator; position numbers start at 1 and increment by 1"
+    ],
+    "technicalNotes": [
+      "File to create: site/src/lib/schema/breadcrumb-schema.ts (generateBreadcrumbSchema(slug: string, category: string, title: string, baseUrl: string))",
+      "File to edit: site/src/app/blog/[slug]/layout.tsx (add generateBreadcrumbSchema to structured data in metadata export)",
+      "Test command: npm run test -- breadcrumb-schema.test.ts (validate structure, position order, absolute URLs, schema compliance)"
+    ],
+    "filesTouch": [
+      "site/src/lib/schema/breadcrumb-schema.ts",
+      "site/src/app/blog/[slug]/layout.tsx",
+      "site/src/lib/schema/__tests__/breadcrumb-schema.test.ts"
+    ],
+    "estimatedComplexity": "small",
+    "_source": "ai-example",
+    "passes": false,
+    "dependencies": []
+  }
+]
