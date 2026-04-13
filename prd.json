@@ -4359,7 +4359,8 @@
         "tokensAfterMasking": 644,
         "reductionPct": 0,
         "contextWindow": 10
-      }
+      },
+      "_passedCommit": "4bc2b8877ba4dc6193a65e27229fa4b14ae3f052"
     },
     {
       "id": "US-195",
@@ -5411,6 +5412,563 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
+      "passes": false
+    },
+    {
+      "id": "US-242",
+      "title": "Blog post: How Malaysians Can Find Jobs in Singapore (2026 Guide)",
+      "description": "Add a comprehensive SEO-optimised blog post on how Malaysians can find jobs in Singapore, covering job portals, recruitment agencies, networking, work pass eligibility, and step-by-step tips.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "job-seeker"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "New blog post with slug 'how-malaysians-find-jobs-singapore-2026' added to blogPosts array",
+        "Category set to 'Career & Work'",
+        "Content at least 1000 words covering: job portals (JobStreet, LinkedIn, MyCareersFuture), recruitment agencies, work pass types overview, salary expectations, interview tips",
+        "Internal links to /rooms",
+        "Numbered steps for how-to guide",
+        "readTime '10 min read', author authors.jay, date '2026-04-14'",
+        "npm run build in site/ passes"
+      ],
+      "technicalNotes": [
+        "IMPORTANT: Keep content HTML string under 8000 characters to avoid diff-guard rejection",
+        "Use concise paragraphs, avoid padding"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-243",
+      "title": "Blog post: Singapore Work Pass Guide for Malaysians (EP vs S Pass vs WP)",
+      "description": "Add a blog post comparing EP (min S$5000), S Pass (min S$3150), and Work Permit for Malaysian readers, with HTML comparison table and FAQ section.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "job-seeker"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'singapore-work-pass-guide-malaysians', category 'Career & Work'",
+        "HTML comparison table of 3 pass types",
+        "FAQ section with at least 3 Q&As",
+        "readTime '12 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 8000 characters"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-244",
+      "title": "Blog post: Living in JB Working in Singapore — Cross-Border Commuter Guide 2026",
+      "description": "Blog post for Malaysians commuting JB to Singapore. CIQ crossings, Causeway Link/SBS buses, monthly cost breakdown, peak hour tips, Pelangi as base for new arrivals.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "job-seeker",
+        "commuter"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'jb-singapore-commuter-guide-2026', category 'Career & Work'",
+        "HTML list of bus services with prices",
+        "Monthly cost breakdown",
+        "Internal links to /getting-here and /rooms",
+        "readTime '8 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 8000 characters"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-245",
+      "title": "Blog post: Visa Run from Singapore to JB — Step-by-Step Guide 2026",
+      "description": "Blog post for Singapore tourists/expats doing visa runs to JB. What a visa run is, who needs one, step-by-step process, what to do in JB, overnight stay at Pelangi.",
+      "priority": "critical",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "visa-run"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'visa-run-singapore-johor-bahru-guide', category 'Travel Tips'",
+        "HTML checklist of what to bring",
+        "CTA with link to /book",
+        "Internal links to /getting-here and /rooms",
+        "readTime '7 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "CRITICAL: Keep content HTML under 6000 characters. The diff guard limit is 500 lines. Write concise content — 400-600 words max, no padding or repetition."
+      ],
+      "passes": false,
+      "last_attempted": "2026-04-13T18:36:36Z"
+    },
+    {
+      "id": "US-246",
+      "title": "New page: /visa-run — Dedicated Visa Run Resource Hub with FAQPage + HowTo Schema",
+      "description": "Create site/src/app/visa-run/page.tsx as a resource hub with FAQPage and HowTo JSON-LD schemas, Header/Footer components, CTA to /book. Update sitemap.ts with /visa-run entry.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "visa-run",
+        "new-page",
+        "schema"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/app/visa-run/page.tsx",
+        "site/src/app/sitemap.ts"
+      ],
+      "acceptanceCriteria": [
+        "site/src/app/visa-run/page.tsx exists with default export",
+        "Metadata title 'Visa Run Singapore to JB | Pelangi Capsule Hostel'",
+        "FAQPage JSON-LD with 5 Q&As",
+        "HowTo JSON-LD with 5 steps",
+        "Header from @/components/Header, Footer from @/components/Footer",
+        "sitemap.ts /visa-run entry priority 0.85",
+        "npm run build passes"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-247",
+      "title": "Blog post: How to Register as a Foodpanda Delivery Rider in Malaysia (2026)",
+      "description": "Step-by-step guide for Malaysians to work as Foodpanda delivery riders as temp income while waiting for Singapore work pass. Vehicle requirements, registration, earnings RM20-50/hour.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "gig-economy"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'foodpanda-delivery-rider-malaysia-guide', category 'Career & Work'",
+        "Numbered registration steps",
+        "Earnings estimate",
+        "readTime '6 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-248",
+      "title": "Blog post: Lalamove Driver Guide Malaysia — Earn Flexible Income in JB",
+      "description": "Guide to sign up as Lalamove driver in JB. Vehicle types, registration, earnings RM25-80/job, flexibility benefits, comparison with Foodpanda/Grab.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "gig-economy"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'lalamove-driver-malaysia-jb-guide', category 'Career & Work'",
+        "Registration steps",
+        "readTime '5 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 5000 characters"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-249",
+      "title": "Blog post: 5 Gig Jobs for Malaysians Waiting for Singapore Work Approval",
+      "description": "5 gig economy jobs in JB while waiting for Singapore work pass: Foodpanda, Lalamove, Grab, part-time F&B, online freelancing. Each with requirements, earnings, pros/cons.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "gig-economy",
+        "job-seeker"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'gig-jobs-malaysia-waiting-singapore-work-pass', category 'Career & Work'",
+        "5 options with earnings estimates",
+        "Intro referencing Pelangi guests",
+        "readTime '9 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 8000 characters"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-250",
+      "title": "Blog post: 3-Day JB Backpacker Itinerary Under RM250 (2026)",
+      "description": "Day-by-day budget itinerary: accommodation Pelangi RM35/night, food RM25/day, transport RM10/day. Day 1/2/3 morning/afternoon/evening. Budget HTML table.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "backpacker",
+        "tourist"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug '3-day-jb-backpacker-itinerary-rm250', category 'Backpacker Tips'",
+        "Budget HTML table",
+        "Pelangi linked to /book",
+        "readTime '8 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 7000 characters"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-251",
+      "title": "Blog post: Getting Around JB Without a Car — Transport Guide for Backpackers",
+      "description": "JB transport guide: Grab RM5-15, Rapid JB buses, walking from Taman Pelangi, Singapore bus crossing. Price comparison table Grab vs Bus vs Taxi.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "backpacker",
+        "tourist",
+        "transport"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'getting-around-johor-bahru-no-car-guide', category 'Travel Tips'",
+        "Price comparison table",
+        "readTime '5 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 5000 characters"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-252",
+      "title": "Blog post: JB Shopping Guide — Where to Find Cheap Deals in Johor Bahru",
+      "description": "Shopping guide: AEON Tebrau, Paradigm Mall, Pelangi Leisure Mall, KSL City, Larkin wet market, Pasar Malam. What to buy, price comparison JB vs Singapore.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "backpacker",
+        "tourist",
+        "shopping"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'jb-shopping-guide-cheap-deals', category 'Things To Do'",
+        "Price comparison section",
+        "readTime '6 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 5000 characters"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-253",
+      "title": "Blog post: 5 Easy Day Trips from Johor Bahru Under 2 Hours (2026)",
+      "description": "5 day trips from JB: Singapore (30min), Desaru Coast (1hr), Kota Tinggi Waterfalls (45min), Kukup (1hr), Gunung Pulai (30min). Transport, cost, highlights each.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "backpacker",
+        "tourist",
+        "day-trips"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'day-trips-from-johor-bahru', category 'Travel Tips'",
+        "5 destinations covered",
+        "readTime '7 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 5000 characters"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-254",
+      "title": "New page: /singapore-jobs — Malaysian Job Seekers Resource Hub with FAQ Schema",
+      "description": "Create site/src/app/singapore-jobs/page.tsx with FAQPage JSON-LD, work pass types overview, links to job blog posts, CTA to book. Update sitemap.ts.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "job-seeker",
+        "new-page",
+        "schema"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/app/singapore-jobs/page.tsx",
+        "site/src/app/sitemap.ts"
+      ],
+      "acceptanceCriteria": [
+        "site/src/app/singapore-jobs/page.tsx exists",
+        "Title 'Find a Job in Singapore: Malaysian Guide | Pelangi Capsule Hostel'",
+        "FAQPage JSON-LD with 5+ Q&As",
+        "Links to job blog posts",
+        "sitemap.ts /singapore-jobs priority 0.8",
+        "Header/Footer components used",
+        "npm run build passes"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-255",
+      "title": "Add BreadcrumbList JSON-LD schema to blog post pages",
+      "description": "Add BreadcrumbList to site/src/app/blog/[slug]/page.tsx: Home > Blog > Category > Post Title, dynamically generated from post data.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "geo",
+        "seo",
+        "schema",
+        "structured-data"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/app/blog/[slug]/page.tsx"
+      ],
+      "acceptanceCriteria": [
+        "BreadcrumbList JSON-LD in blog [slug] page",
+        "4-level breadcrumb with URLs",
+        "Valid JSON",
+        "npm run build passes"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-256",
+      "title": "Update llms.txt with job seeker, visa run, and gig economy content sections",
+      "description": "Update site/src/app/llms.txt/route.ts to add sections for: Malaysian job seekers, visa run content, gig economy guides. Add /visa-run and /singapore-jobs to Site Pages.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "geo",
+        "seo",
+        "llms-txt"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/app/llms.txt/route.ts"
+      ],
+      "acceptanceCriteria": [
+        "Job seeker content section added",
+        "Visa run section added",
+        "Site Pages updated with /visa-run and /singapore-jobs",
+        "npm run build passes"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-257",
+      "title": "Add FAQ schema to /faq page and expand with job seeker questions",
+      "description": "Add FAQPage JSON-LD to site/src/app/faq/page.tsx. New Q&As: luggage storage while working SG, weekly rates, distance to JB Sentral, ironing facilities.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "geo",
+        "seo",
+        "schema",
+        "faq"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/app/faq/page.tsx"
+      ],
+      "acceptanceCriteria": [
+        "FAQPage JSON-LD in /faq page with 6+ Q&A pairs",
+        "New job-seeker FAQ entries displayed",
+        "Valid JSON-LD",
+        "npm run build passes"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-258",
+      "title": "Add Malaysian workers resource section to /guide page",
+      "description": "Add 'For Malaysians Working In or Near Singapore' section to site/src/app/guide/page.tsx with links to /singapore-jobs, /visa-run, commuter guide, gig jobs posts.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "geo",
+        "seo",
+        "internal-linking"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/app/guide/page.tsx"
+      ],
+      "acceptanceCriteria": [
+        "New section on /guide page with 4+ descriptive links",
+        "Tailwind styled (card or bordered section)",
+        "npm run build passes"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-259",
+      "title": "Blog post: JB Night Markets and Weekend Bazaars — Complete Guide 2026",
+      "description": "JB night markets guide: Kempas, Larkin, Taman Pelangi pasar malam, AEON weekend bazaar. Days/hours, what to find, price range, transport from hostel.",
+      "priority": "low",
+      "estimatedComplexity": "small",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "backpacker",
+        "tourist"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'jb-night-markets-weekend-bazaars-guide', category 'Things To Do'",
+        "4+ night markets covered",
+        "readTime '6 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 5000 characters"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-260",
+      "title": "Blog post: JB Cultural Sites Guide — Glass Temple and Beyond",
+      "description": "Cultural tourism: Arulmigu Sri Rajakaaliamman Glass Temple (RM3), JB Old Chinese Temple, Sultan Abu Bakar Mosque, Bangunan Sultan Ibrahim. Hours, admission, distance from hostel.",
+      "priority": "low",
+      "estimatedComplexity": "small",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "backpacker",
+        "tourist",
+        "culture"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'jb-cultural-sites-glass-temple-guide', category 'Things To Do'",
+        "4 sites with hours/admission",
+        "Distance from hostel noted",
+        "readTime '6 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 5000 characters"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-261",
+      "title": "Blog post: JB vs KL — Why Johor Bahru is Better for Budget Travellers",
+      "description": "Comparison post JB vs KL: cost, Singapore proximity, job seeker angle, tourist attractions. HTML comparison table on 5+ metrics.",
+      "priority": "low",
+      "estimatedComplexity": "small",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "comparison"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'johor-bahru-vs-kuala-lumpur-budget-travellers', category 'Travel Tips'",
+        "HTML comparison table 5+ metrics",
+        "readTime '7 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 5000 characters"
+      ],
       "passes": false
     }
   ]

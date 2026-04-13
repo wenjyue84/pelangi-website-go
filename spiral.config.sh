@@ -18,6 +18,9 @@ SPIRAL_GITNEXUS_REPO=""
 # Auto-archive passed stories when prd.json exceeds this many total stories
 SPIRAL_AUTO_ARCHIVE_THRESHOLD=300
 
+# Blog posts have large HTML content — raise diff limit (default 500 is too low for content stories)
+SPIRAL_MAX_DIFF_LINES=2000
+
 # Memory watchdog disabled (Windows compatibility)
 SPIRAL_MEMORY_WATCHDOG=0
 
