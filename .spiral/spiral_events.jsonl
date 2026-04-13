@@ -158,3 +158,7 @@ opus"}
 {"ts":"2026-04-13T20:14:50Z","event":"phase_start","run_id":"69dd34342c1f","level":"INFO","phase":"G","iteration":8,"trace_id":"f1b7af3bac05b0aabab002f21e2e7ef3","span_id":"4ba0fbdd8122224a"}
 {"ts":"2026-04-13T20:14:52Z","event":"phase_start","run_id":"69dd34342c1f","level":"INFO","phase":"I","iteration":8,"trace_id":"f1b7af3bac05b0aabab002f21e2e7ef3","span_id":"4ba0fbdd8122224a"}
 {"ts":"2026-04-13T20:15:03Z","event":"plan_cache_miss","story_id":"US-244"}
+{"ts":"2026-04-13T20:19:17Z","event":"cost_update","story_id":"US-244","tokens_input":154,"tokens_output":6373,"estimated_usd":0.096057}
+{"ts":"2026-04-13T20:19:18Z","event":"diagnosis_block_missing","storyId":"US-244","retryCount":1}
+{"ts":"2026-04-13T20:19:24Z","event":"plan_cache_miss","story_id":"US-244"}
+{"ts":"2026-04-13T20:23:42Z","event":"cost_update","story_id":"US-244","tokens_input":22,"tokens_output":4698,"estimated_usd":0.166593}

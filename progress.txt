@@ -307,3 +307,37 @@ Based on the user story JSON for **US-244**, there is a mismatch with the reques
 *   **Validation:** Run `npm run build` locally after adding the post to ensure it doesn't break the build process, as required by the acceptance criteria.
 *   **Data Consistency:** Ensure the format for `date`, `readTime`, and other fields exactly matches the format of other posts in the `posts.ts` file.
 
+## Iteration 1 - Tue, Apr 14, 2026  4:19:18 AM
+FAILED diagnosis-block gate: Blog post: Living in JB Working in Singapore — Cross-Border Commuter Guide 2026 (ID: US-244) — no diagnosis block found — attempt 1/3
+
+
+## Pre-analysis for US-244 (Gemini 2.5 Pro)
+Based on the user story JSON for **US-244**, there is a mismatch with the request. This story pertains to adding a blog post to a **TypeScript/Next.js website**, not a Frappe/Python application. The analysis below is for the story as provided.
+
+---
+
+### Technical Brief: US-244
+
+**1. Files to Modify:**
+*   `site/src/data/blog/posts.ts`: The story explicitly identifies this file. It likely contains an array of objects, where each object represents a blog post. A new object for this post needs to be added to this array.
+
+**2. Involved Frameworks/Data Structures:**
+*   The project is a Next.js website using TypeScript. No Frappe DocTypes or Python hooks are relevant.
+*   The core task is to create a new JavaScript/TypeScript object that conforms to the data structure used for existing posts in `posts.ts`.
+
+**3. Recommended Implementation Approach:**
+*   Create a new constant object for the blog post.
+*   Populate its properties:
+    *   `slug`: 'jb-singapore-commuter-guide-2026'
+    *   `category`: 'Career & Work'
+    *   `date`: '2026-04-14'
+    *   `readTime`: '8 min read'
+    *   `content`: Use a template literal (`` ` ``) to hold the HTML content, including the bus service list and cost breakdown.
+*   Ensure internal links to `/getting-here` and `/rooms` are correctly formatted (e.g., using Next.js's `<Link>` component if rendered via MDX, or standard `<a>` tags).
+*   Add the new object to the exported posts array in the correct order.
+
+**4. Edge Cases & Gotchas:**
+*   **HTML Content:** The content must be valid HTML and stay under the 8000-character limit specified in the technical notes.
+*   **Validation:** Run `npm run build` locally after adding the post to ensure it doesn't break the build process, as required by the acceptance criteria.
+*   **Data Consistency:** Ensure the format for `date`, `readTime`, and other fields exactly matches the format of other posts in the `posts.ts` file.
+
