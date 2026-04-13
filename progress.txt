@@ -571,3 +571,54 @@ This user story is for a website blog, not a Frappe/Python application. The impl
     *   Verify the final implementation by running `npm run build` within the `site/` directory to catch any type or build errors.
     *   Match the date format precisely with other entries.
 
+## Iteration 1 - Tue, Apr 14, 2026  5:32:13 AM
+FAILED diff-guard: Create /singapore-jobs resource hub with FAQPage schema and job seeker CTAs (ID: US-262) — 6609 lines > 500 limit — attempt 1/3
+
+
+## Pre-analysis for US-262 (Gemini 2.5 Pro)
+Based on the user story JSON, here is a technical brief for the agent.
+
+**Project Type:** Next.js / TypeScript
+
+**1. Primary Files to Modify:**
+*   **Create:** `site/src/app/singapore-jobs/page.tsx` (The main landing page component).
+*   **Create:** `site/src/components/faq/FaqAccordion.tsx` (A reusable component for the FAQ section).
+*   **Update:** `site/src/lib/structured-data.ts` (To add a helper function for generating `FAQPage` schema).
+*   **Update:** `site/src/app/sitemap.ts` (To add the new `/singapore-jobs` URL).
+
+**2. Key Framework Elements Involved:**
+*   **Next.js App Router:** The new page will be created at `app/singapore-jobs/page.tsx`.
+*   **React Components:** The page and FAQ accordion will be implemented as functional React components.
+*   **JSON-LD Schema:** A script tag with `type="application/ld+json"` for `FAQPage` must be generated and embedded in the page.
+
+**3. Recommended Implementation Approach:**
+1.  First, create the reusable `FaqAccordion.tsx` component to handle the display of question/answer pairs.
+2.  Next, implement the `generateFAQPage(title, faqItems)` function in `site/src/lib/structured-data.ts`.
+3.  Build the main page component `site/src/app/singapore-jobs/page.tsx`.
+4.  Inside this page, import and use the `FaqAccordion` and call `generateFAQPage` to create the JSON-LD structured data.
+5.  Add the "Interview Stay Package" CTA with a pre-filled WhatsApp inquiry link.
+6.  Finally, update `sitemap.ts` to ensure the new page is indexed.
+
+**4. Gotchas and Edge Cases:**
+*   **Diff Size Limit:** The story previously failed due to an `oversized_diff`. Implement changes in small, incremental steps to stay well under the 500-line limit.
+*   **Schema Validation:** The `FAQPage` JSON-LD must be syntactically correct and contain at least 8 question/answer entities to meet acceptance criteria.
+*   **CTA Functionality:** Ensure the WhatsApp link is correctly formatted and URL-encoded to pre-fill the message.
+*   **Build/Lint:** The final code must pass `npm run build` and `npm run lint` without errors.
+
+
+## Iteration 2 - Mon, Apr 14, 2026  5:45:00 AM
+Completed: Create /singapore-jobs resource hub with FAQPage schema and job seeker CTAs (ID: US-262) — attempt 2
+
+### What was implemented
+- Created /singapore-jobs page with job overview, EP/S Pass/WP comparison table, FAQ accordion, booking CTA with WhatsApp link, and related blog post links
+- Created reusable FaqAccordion component in site/src/components/faq/FaqAccordion.tsx
+- Added FAQPage JSON-LD schema with 8 FAQ items covering work permits, salary, visa sponsorship, and job sectors
+- Updated sitemap.ts with /singapore-jobs URL
+
+### Patterns discovered
+- Visa-run page pattern: inline FAQPage schema as const, no separate structured-data.ts helper needed
+- Existing FAQ.tsx component is hostel-specific; created generic reusable FaqAccordion for topic-specific pages
+
+### Gotchas
+- Previous attempt produced 6609 lines — kept this attempt to 170 lines by using concise FAQ answers and following existing page patterns
+- No structured-data.ts file exists despite technical notes suggesting one; inline schema is the codebase pattern

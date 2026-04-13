@@ -129,6 +129,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.85,
         },
         {
+            url: `${baseUrl}/singapore-jobs`,
+            lastModified,
+            changeFrequency: "monthly",
+            priority: 0.85,
+        },
+        {
             url: `${baseUrl}/sitemap-html`,
             lastModified,
             changeFrequency: "monthly",
