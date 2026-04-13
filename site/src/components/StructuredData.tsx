@@ -1,4 +1,5 @@
 import { HOSTELWORLD_RATING } from "@/lib/constants";
+import { ROOM_TYPES, PROPERTY } from "@/data/rooms";
 
 const MOTAC_REG_NUMBER = process.env.NEXT_PUBLIC_MOTAC_REG_NUMBER || "";
 
@@ -51,7 +52,7 @@ export default function StructuredData() {
     },
     "checkinTime": "T14:00:00",
     "checkoutTime": "T12:00:00",
-    "numberOfRooms": 24,
+    "numberOfRooms": PROPERTY.totalRooms,
     "petsAllowed": false,
     "availableLanguage": [
       {
@@ -167,70 +168,51 @@ export default function StructuredData() {
       "ratingValue": "1"
     },
     "makesOffer": [
-      {
-        "@type": "Offer",
-        "name": "Standard Capsule Pod — Nightly",
-        "price": "35",
-        "priceCurrency": "MYR",
+      ...ROOM_TYPES.map((room) => ({
+        "@type": "Offer" as const,
+        "name": `${room.name} — Nightly`,
+        "price": String(room.nightlyRate),
+        "priceCurrency": room.currency,
         "availability": "https://schema.org/InStock",
         "url": "https://pelangicapsulehostel.com/book",
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
-          "price": "35",
-          "priceCurrency": "MYR",
+          "price": String(room.nightlyRate),
+          "priceCurrency": room.currency,
           "unitText": "night",
           "referenceQuantity": {
             "@type": "QuantitativeValue",
             "value": 1,
-            "unitCode": "DAY"
-          }
-        }
-      },
-      {
-        "@type": "Offer",
-        "name": "Premium Capsule Pod — Nightly",
-        "price": "45",
-        "priceCurrency": "MYR",
+            "unitCode": "DAY",
+          },
+        },
+      })),
+      ...ROOM_TYPES.filter((r) => r.monthlyRate).map((room) => ({
+        "@type": "Offer" as const,
+        "name": `${room.name} — Monthly`,
+        "price": String(room.monthlyRate),
+        "priceCurrency": room.currency,
         "availability": "https://schema.org/InStock",
         "url": "https://pelangicapsulehostel.com/book",
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
-          "price": "45",
-          "priceCurrency": "MYR",
-          "unitText": "night",
-          "referenceQuantity": {
-            "@type": "QuantitativeValue",
-            "value": 1,
-            "unitCode": "DAY"
-          }
-        }
-      },
-      {
-        "@type": "Offer",
-        "name": "Standard Capsule Pod — Monthly",
-        "price": "594",
-        "priceCurrency": "MYR",
-        "availability": "https://schema.org/InStock",
-        "url": "https://pelangicapsulehostel.com/book",
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
-          "price": "594",
-          "priceCurrency": "MYR",
+          "price": String(room.monthlyRate),
+          "priceCurrency": room.currency,
           "unitText": "month",
           "referenceQuantity": {
             "@type": "QuantitativeValue",
             "value": 1,
-            "unitCode": "MON"
-          }
-        }
-      },
+            "unitCode": "MON",
+          },
+        },
+      })),
       {
         "@type": "AggregateOffer",
-        "lowPrice": "35",
-        "highPrice": "594",
+        "lowPrice": String(Math.min(...ROOM_TYPES.map((r) => r.nightlyRate))),
+        "highPrice": String(Math.max(...ROOM_TYPES.map((r) => r.monthlyRate ?? r.nightlyRate))),
         "priceCurrency": "MYR",
-        "offerCount": 3
-      }
+        "offerCount": ROOM_TYPES.length + ROOM_TYPES.filter((r) => r.monthlyRate).length,
+      },
     ],
     "potentialAction": {
       "@type": "ReserveAction",

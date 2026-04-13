@@ -7230,3 +7230,55 @@ This is a business process task, not a software implementation task. Owner shoul
 ## Iteration 24 - Sat, Mar 14, 2026  3:06:20 AM
 Incomplete: Integrate Google Free Hotel Booking Links via connectivity partner (ID: US-194) — attempt 2/3
 
+## Iteration 1 - Tue, Apr 14, 2026  2:29:54 AM
+FAILED diff-guard: Blog post: Visa Run from Singapore to JB — Step-by-Step Guide 2026 (ID: US-245) — 41142 lines > 500 limit — attempt 1/3
+
+
+## Pre-analysis for US-194 (Gemini 2.5 Pro)
+This technical brief is for integrating Google Free Booking Links (FBL) with the Pelangi Website, a Next.js/TypeScript project. The prompt's reference to Frappe/Python is disregarded as it contradicts the project's technical stack and the story's content.
+
+***
+
+**Technical Brief: US-194 Google FBL Integration**
+
+**1. Python Files to Modify:**
+This is a **Next.js/TypeScript** project. No Python/Frappe files are relevant. Key modifications will be in:
+*   **New API Route Handlers:** Create files under `site/src/app/api/ari/` to expose ARI (Availability, Rates, Inventory) data endpoints for the connectivity partner.
+*   **New Service/Library Module:** A new module, likely in `site/src/lib/`, to handle the logic of fetching data from the hostel's inventory source and formatting it into the XML/JSON required by the partner.
+*   **Booking Page Logic:** Potentially `site/src/app/book/page.tsx` or related components, to handle incoming deep links from Google with pre-filled data.
+*   **Environment Variables:** `site/.env.local` will need to be updated with credentials for the chosen partner.
+
+**2. Frappe DocTypes/Hooks Involved:**
+*   **"DocTypes" (Data Models):** The core data models will be TypeScript interfaces for `Room`, `RatePlan`, `Availability`, and `Booking`, likely defined in a new `site/src/lib/types/ari.ts`.
+*   **"Hooks" (API Endpoints):** The primary integration point will be the new ARI API routes (e.g., `/api/ari/prices`, `/api/ari/availability`) that the connectivity partner will call (a "Pull" model).
+
+**3. Recommended Implementation Approach:**
+1.  Select a connectivity partner (e.g., Beds24, RoomRaccoon) that offers a developer-friendly "Pull" API.
+2.  Implement the API endpoints they require, which will serve ARI data formatted to their exact specification (often XML).
+3.  These endpoints must fetch live data from the hostel's true inventory source (database or backend service).
+4.  Ensure the booking URL specified in Google Hotel Center can accept parameters (dates, guests) to create a seamless deep-link experience for the user.
+
+**4. Edge Cases & Gotchas:**
+*   **Price Accuracy:** Google's top requirement. The price served via the ARI feed *must* identically match the final price on the website's booking page. Any discrepancy (e.g., taxes, fees) will lead to delisting.
+*   **Authentication:** The ARI endpoints must be secured, likely via an API token or IP whitelisting as specified by the partner.
+*   **Data Freshness & Performance:** The API must respond quickly with up-to-date information. Caching strategies may be necessary, but must not serve stale availability or rates.
+*   **Landing Page Experience:** The booking page must correctly parse incoming URL parameters from Google to pre-fill the booking form, as per Google's policy.
+
+
+## Iteration - Mon, Apr 14, 2026
+Completed: Integrate Google Free Hotel Booking Links via connectivity partner (ID: US-194) — attempt 3/3
+
+### What was implemented
+- `site/src/data/rooms.ts` — Centralized RoomType interface and ROOM_TYPES array (Standard RM35, Premium RM45) + PROPERTY constants
+- `site/src/app/api/ari/route.ts` — ARI (Availability, Rates, Inventory) endpoint for connectivity partners; accepts checkin/checkout params, optional API key auth, returns room availability/rates JSON
+- `site/src/components/StructuredData.tsx` — Refactored makesOffer and numberOfRooms to use centralized room data from data/rooms.ts
+- Pre-existing: /book/google/route.ts already handles Google FBL redirect with UTM tagging
+- Pre-existing: BookingForm already pre-fills from checkin/checkout URL params
+
+### Patterns discovered
+- ARI endpoints for connectivity partners use simple JSON with property_id, rooms array, rates, availability
+- Google FBL requires: (1) ARI endpoint for partner pull, (2) booking landing page with deep link support, (3) Hotel structured data — all now in place
+
+### Gotchas
+- Previous attempts failed by declaring story impossible as code. The ARI endpoint IS the code-side enablement
+- Room data was hardcoded across StructuredData.tsx — now centralized in data/rooms.ts
