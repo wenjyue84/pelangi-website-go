@@ -1,4 +1,46 @@
+## Iteration US-196 - Fri, Apr 14, 2026
 
+Completed: Integrate channel manager for live OTA availability synchronisation (ID: US-196)
+
+### What was implemented
+- **Beds24 client** (`site/src/lib/beds24-client.ts`):
+  - Implemented `parseAvailabilityResponse()` to parse real Beds24 API responses
+  - Returns proper `ChannelManagerAvailability` objects with room inventory
+  - Graceful fallback to placeholder data when channel manager is not configured
+- **ARI endpoint** (`site/src/app/api/ari/route.ts`):
+  - Fetches live availability from Beds24 API
+  - Maps to standard ARI format for connectivity partners (Google Free Booking Links)
+  - Returns JSON with property info, rooms, rates, and booking URL
+- **Booking sync endpoint** (`site/src/app/api/bookings/sync/route.ts`):
+  - Accepts POST requests with booking details (checkin, checkout, guest info, room type)
+  - Syncs bookings to Beds24 to close availability across OTAs
+  - Includes availability check via GET with query parameters
+- **Webhook endpoint** (`site/src/app/api/webhooks/beds24/route.ts`):
+  - Processes Beds24 webhook events for availability updates, booking creation/cancellation
+  - Validates webhook signature using HMAC-SHA256
+  - Logs event details (extensible for database updates)
+- **Configuration & types**:
+  - Channel manager config with environment variables
+  - Type definitions for availability, bookings, webhooks
+  - Updated .env.local.example with all required secrets
+
+### Patterns discovered
+- Next.js App Router uses async GET/POST functions
+- Beds24 API response structure uses `roomtypes` key with room availability objects
+- Response parsing should handle multiple field names (id/roomId, name/roomName) for flexibility
+- Placeholder data allows testing without configured channel manager
+
+### Gotchas
+- Beds24 API field names vary (id vs roomId, total vs totalInventory)
+- Parser must be defensive and return empty array on malformed responses
+- Webhook validation using HMAC requires exact payload matching (must use `request.text()` not `request.json()`)
+
+### Test results
+- TypeScript compilation: ✓ passes (npx tsc --noEmit)
+- Next.js build: ✓ succeeds (all 65 static pages generated)
+- ARI endpoint: ✓ shows as dynamic route (ƒ)
+- Webhook endpoint: ✓ shows as dynamic route (ƒ)
+- Booking sync endpoint: ✓ shows as dynamic route (ƒ)
 
 ## Pre-analysis for US-196 (Gemini 2.5 Pro)
 This user story is for a hotel channel manager integration, which seems mismatched with the `lhdn_payroll_integration` app context. The following brief assumes the target is a hospitality-focused Frappe app (e.g., `pelangi_hospitality`).
