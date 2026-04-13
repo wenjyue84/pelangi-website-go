@@ -1,6 +1,64 @@
 {
   "stories": [
     {
+      "title": "Create /singapore-jobs resource hub with FAQPage schema and job seeker CTAs",
+      "priority": "high",
+      "description": "Build landing page for Malaysian job seekers at /singapore-jobs with job type overview, work pass comparison table, and FAQ section with FAQPage JSON-LD schema covering permit types, salary expectations, visa sponsorship, and relocation. Include prominent hostel booking CTA.",
+      "acceptanceCriteria": [
+        "Page created at site/src/app/singapore-jobs/page.tsx with sections: job overview, work pass table (EP/S Pass/WP comparison), FAQ accordion, and internal links to related blog posts about jobs and passes",
+        "FAQPage JSON-LD schema implemented with 8+ FAQ items (pairs of mainEntity questions and acceptedAnswer) covering work permits, salary, visa sponsorship, and job search resources",
+        "Booking CTA component with text '🏨 Interview Stay Package' and WhatsApp pre-fill link for hostel inquiry; verified with npm run build && npm run lint"
+      ],
+      "technicalNotes": [
+        "File to create: site/src/app/singapore-jobs/page.tsx (~120 lines page component with FAQ section)",
+        "File to update: site/src/lib/structured-data.ts (add generateFAQPage(title, faqItems) helper function)",
+        "File to create: site/src/components/faq/FaqAccordion.tsx (~80 lines reusable accordion component)",
+        "File to update: site/src/app/sitemap.ts (add /singapore-jobs URL)",
+        "Test command: npm run build && npm run lint && curl -s http://localhost:3000/singapore-jobs | grep 'FAQPage'"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "site/src/app/singapore-jobs/page.tsx",
+        "site/src/lib/structured-data.ts",
+        "site/src/components/faq/FaqAccordion.tsx",
+        "site/src/app/sitemap.ts"
+      ],
+      "_source": "ai-example",
+      "passes": false
+    },
+    {
+      "title": "Create /visa-run resource hub with HowTo schema and border crossing FAQPage",
+      "priority": "medium",
+      "description": "Build comprehensive resource page at /visa-run for Singapore-JB border run process with step-by-step instructions formatted as HowTo JSON-LD schema (6-8 steps including passport check, border crossing, accommodation booking), required documents checklist, cost breakdown, and FAQPage schema covering visa run frequency limits and documentation.",
+      "acceptanceCriteria": [
+        "Page created at site/src/app/visa-run/page.tsx with sections: visa run overview, HowTo steps (check Singapore dates → travel to border → exit → stay 1 day → return), required documents checklist, cost breakdown (transport RM20-50, accommodation RM40/night), and FAQ accordion",
+        "HowTo JSON-LD schema with HowToStep items including tool (passport), time estimate (2-3 days), and supply requirements; FAQPage schema with 6+ FAQ items about frequency limits, documentation, and processing",
+        "Booking CTA linking to hostel page with date picker for visa run stay; links to MyNIISe QR and RTS Link info pages; verified with npm run build && npm run lint"
+      ],
+      "technicalNotes": [
+        "File to create: site/src/app/visa-run/page.tsx (~130 lines page with HowTo steps and FAQ sections)",
+        "File to update: site/src/lib/structured-data.ts (add generateHowToSchema(title, steps) helper function for schema generation)",
+        "File to create: site/src/components/visa-run/DocumentChecklist.tsx (~60 lines interactive checklist component)",
+        "File to update: site/src/app/sitemap.ts (add /visa-run URL)",
+        "Test command: npm run build && npm run lint && curl -s http://localhost:3000/visa-run | grep -E 'HowTo|FAQPage'"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "site/src/app/visa-run/page.tsx",
+        "site/src/lib/structured-data.ts",
+        "site/src/components/visa-run/DocumentChecklist.tsx",
+        "site/src/app/sitemap.ts"
+      ],
+      "_source": "ai-example",
+      "passes": false
+    },
+    {
       "title": "[E2E Test] Create blog system with static TypeScript data",
       "priority": "medium",
       "description": "Write end-to-end user flow test for the feature in US-001. Story description: Build a blog system using Next.js App Router. Blog posts are stored as TypeScript objects in /src/data/blog/posts.ts. Each post has: slug, title, excerpt, content (HTML string), date, category, author, readTime, tags, and featured image path. Create /app/blog/page.tsx (listing with cards) and /app/blog/[slug]/page.tsx (article page with full content). Both pages must have proper metadata (title, description, OG tags). Add a BlogCard component at /src/components/BlogCard.tsx.",
@@ -1865,6 +1923,31 @@
       "_source": "test-story",
       "_testType": "e2e",
       "_forStoryId": "US-234"
+    },
+    {
+      "title": "[Regression Test] Blog post: Visa Run from Singapore to JB — Step-by-Step Guide 2026",
+      "priority": "medium",
+      "description": "Write regression test to guard against future breakage of US-245. Story description: Blog post for Singapore tourists/expats doing visa runs to JB. What a visa run is, who needs one, step-by-step process, what to do in JB, overnight stay at Pelangi.",
+      "acceptanceCriteria": [
+        "Regression test covers core observable behaviour of US-245",
+        "Test would reliably fail if the US-245 feature were removed or broken"
+      ],
+      "technicalNotes": [
+        "Source files from US-245: site/src/data/blog/posts.ts",
+        "Run: uv run pytest tests/ -k us_245 -v"
+      ],
+      "dependencies": [
+        "US-245"
+      ],
+      "estimatedComplexity": "medium",
+      "tags": [
+        "regression",
+        "auto-generated"
+      ],
+      "source": "",
+      "_source": "test-story",
+      "_testType": "regression",
+      "_forStoryId": "US-245"
     }
   ]
 }

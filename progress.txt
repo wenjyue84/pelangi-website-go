@@ -1,0 +1,65 @@
+
+
+## Pre-analysis for US-196 (Gemini 2.5 Pro)
+This user story is for a hotel channel manager integration, which seems mismatched with the `lhdn_payroll_integration` app context. The following brief assumes the target is a hospitality-focused Frappe app (e.g., `pelangi_hospitality`).
+
+**Project:** US-196: Channel Manager Integration
+**Target App:** `pelangi_hospitality` (Assumed)
+
+**1. Python Files to Modify:**
+*   **New File:** `pelangi_hospitality/api/channel_manager.py` to encapsulate all communication with the third-party channel manager API (e.g., Beds24).
+*   **New File:** `pelangi_hospitality/api/webhooks.py` to create a dedicated, whitelisted endpoint to receive incoming ARI updates and bookings from the channel manager.
+*   **Existing File:** `pelangi_hospitality/doctype/booking/booking.py` (or similar for reservations) to add logic that pushes new bookings to the channel manager.
+
+**2. Frappe DocTypes & Hooks:**
+*   **DocTypes:**
+    *   A new singleton `Channel Manager Settings` DocType is needed to store API keys, endpoint URLs, and credentials.
+    *   The `Booking` DocType will require modification to trigger syncs and store the channel manager's external booking ID.
+    *   The `Room` DocType needs a field to map its ID to the corresponding ID in the channel manager.
+*   **Hooks (`hooks.py`):**
+    *   `on_submit` on the `Booking` DocType to call `channel_manager.py` and reduce availability.
+    *   `on_cancel` on the `Booking` DocType to call `channel_manager.py` and increase availability.
+
+**3. Implementation Approach:**
+1.  Implement the API client with methods for fetching and updating availability.
+2.  Use the `Booking` DocType's server-side `after_insert` and `on_trash` events to trigger API calls.
+3.  Create a whitelisted API endpoint for the website frontend to call, which in turn fetches live availability from the channel manager API.
+4.  Implement the webhook endpoint to create/update local `Booking` documents from incoming OTA bookings.
+
+**4. Edge Cases & Gotchas:**
+*   **Race Conditions:** Implement a locking mechanism or re-verify availability with the channel manager API just before creating a booking to prevent overbookings.
+*   **API Failure:** Use Frappe's background jobs (RQ) with a retry mechanism for all outgoing API calls to handle transient network issues or API downtime.
+*   **Webhook Security:** Validate incoming webhooks using a shared secret to prevent unauthorized requests.
+
+
+## Pre-analysis for US-196 (Gemini 2.5 Pro)
+This user story is for a hotel channel manager integration, which seems mismatched with the `lhdn_payroll_integration` app context. The following brief assumes the target is a hospitality-focused Frappe app (e.g., `pelangi_hospitality`).
+
+**Project:** US-196: Channel Manager Integration
+**Target App:** `pelangi_hospitality` (Assumed)
+
+**1. Python Files to Modify:**
+*   **New File:** `pelangi_hospitality/api/channel_manager.py` to encapsulate all communication with the third-party channel manager API (e.g., Beds24).
+*   **New File:** `pelangi_hospitality/api/webhooks.py` to create a dedicated, whitelisted endpoint to receive incoming ARI updates and bookings from the channel manager.
+*   **Existing File:** `pelangi_hospitality/doctype/booking/booking.py` (or similar for reservations) to add logic that pushes new bookings to the channel manager.
+
+**2. Frappe DocTypes & Hooks:**
+*   **DocTypes:**
+    *   A new singleton `Channel Manager Settings` DocType is needed to store API keys, endpoint URLs, and credentials.
+    *   The `Booking` DocType will require modification to trigger syncs and store the channel manager's external booking ID.
+    *   The `Room` DocType needs a field to map its ID to the corresponding ID in the channel manager.
+*   **Hooks (`hooks.py`):**
+    *   `on_submit` on the `Booking` DocType to call `channel_manager.py` and reduce availability.
+    *   `on_cancel` on the `Booking` DocType to call `channel_manager.py` and increase availability.
+
+**3. Implementation Approach:**
+1.  Implement the API client with methods for fetching and updating availability.
+2.  Use the `Booking` DocType's server-side `after_insert` and `on_trash` events to trigger API calls.
+3.  Create a whitelisted API endpoint for the website frontend to call, which in turn fetches live availability from the channel manager API.
+4.  Implement the webhook endpoint to create/update local `Booking` documents from incoming OTA bookings.
+
+**4. Edge Cases & Gotchas:**
+*   **Race Conditions:** Implement a locking mechanism or re-verify availability with the channel manager API just before creating a booking to prevent overbookings.
+*   **API Failure:** Use Frappe's background jobs (RQ) with a retry mechanism for all outgoing API calls to handle transient network issues or API downtime.
+*   **Webhook Security:** Validate incoming webhooks using a shared secret to prevent unauthorized requests.
+

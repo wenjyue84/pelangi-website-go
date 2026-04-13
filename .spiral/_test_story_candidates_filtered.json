@@ -1714,5 +1714,28 @@
       "e2e",
       "auto-generated"
     ]
+  },
+  {
+    "title": "[Regression Test] Blog post: Visa Run from Singapore to JB \u2014 Step-by-Step Guide 2026",
+    "description": "Write regression test to guard against future breakage of US-245. Story description: Blog post for Singapore tourists/expats doing visa runs to JB. What a visa run is, who needs one, step-by-step process, what to do in JB, overnight stay at Pelangi.",
+    "acceptanceCriteria": [
+      "Regression test covers core observable behaviour of US-245",
+      "Test would reliably fail if the US-245 feature were removed or broken"
+    ],
+    "technicalNotes": [
+      "Source files from US-245: site/src/data/blog/posts.ts",
+      "Run: uv run pytest tests/ -k us_245 -v"
+    ],
+    "priority": "medium",
+    "dependencies": [
+      "US-245"
+    ],
+    "_source": "test-story",
+    "_testType": "regression",
+    "_forStoryId": "US-245",
+    "tags": [
+      "regression",
+      "auto-generated"
+    ]
   }
 ]

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { ROOM_TYPES, PROPERTY } from "@/data/rooms";
+import { beds24Client } from "@/lib/beds24-client";
 
 /**
  * ARI (Availability, Rates, Inventory) endpoint for connectivity partners.
@@ -10,6 +11,9 @@ import { ROOM_TYPES, PROPERTY } from "@/data/rooms";
  * exposes the hostel's ARI data in a standard JSON format that partners can
  * consume via their pull-based integration.
  *
+ * Pulls real-time data from the configured channel manager (Beds24).
+ * Falls back to local room data if channel manager is not configured.
+ *
  * Query params:
  *   - checkin  (YYYY-MM-DD, required)
  *   - checkout (YYYY-MM-DD, required)
@@ -17,7 +21,7 @@ import { ROOM_TYPES, PROPERTY } from "@/data/rooms";
  *
  * Authentication: API key via x-api-key header (set ARI_API_KEY env var).
  */
-export function GET(request: NextRequest) {
+export async function GET(request: NextRequest) {
   const apiKey = process.env.ARI_API_KEY;
   if (apiKey) {
     const provided = request.headers.get("x-api-key");
@@ -62,20 +66,30 @@ export function GET(request: NextRequest) {
     (checkoutDate.getTime() - checkinDate.getTime()) / (1000 * 60 * 60 * 24),
   );
 
-  const rooms = ROOM_TYPES.map((room) => ({
-    room_id: room.id,
-    room_name: room.name,
-    description: room.description,
-    max_occupancy: room.maxOccupancy,
-    total_inventory: room.totalUnits,
-    available_units: room.totalUnits,
-    rate: {
-      nightly: room.nightlyRate,
-      total: room.nightlyRate * nights,
-      currency,
-    },
-    amenities: room.amenities,
-  }));
+  // Fetch live availability from channel manager
+  const channelAvailability = await beds24Client.getAvailability(checkin, checkout);
+
+  // Map to ARI response format
+  const rooms = ROOM_TYPES.map((room) => {
+    const channelRoom = channelAvailability.find((r) => r.roomId === room.id);
+    const availableUnits = channelRoom?.available ?? room.totalUnits;
+    const totalInventory = channelRoom?.total ?? room.totalUnits;
+
+    return {
+      room_id: room.id,
+      room_name: room.name,
+      description: room.description,
+      max_occupancy: room.maxOccupancy,
+      total_inventory: totalInventory,
+      available_units: Math.max(0, availableUnits),
+      rate: {
+        nightly: room.nightlyRate,
+        total: room.nightlyRate * nights,
+        currency,
+      },
+      amenities: room.amenities,
+    };
+  });
 
   const response = {
     property_id: PROPERTY.id,

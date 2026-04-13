@@ -1,23 +1,52 @@
 {
   "stories": [
     {
-      "title": "Implement server-side blog post auto-discovery from /site/src/blog/posts directory",
+      "title": "Write 'How Malaysians Can Find Jobs in Singapore' blog post with Article + BreadcrumbList schema",
       "priority": "high",
-      "description": "Create a blog-loader utility that scans for TypeScript blog post files, validates them against a BlogPostMeta schema, and exposes them via a getBlogPosts() function for use in blog listing, sitemap generation, and RSS feed creation. This is core infrastructure for the static blog system.",
+      "description": "Create comprehensive blog post targeting Malaysian job seekers covering Singapore employment options, work permit types (EP/S Pass/WP), job search platforms, and salary expectations. Include Article JSON-LD schema, BreadcrumbList, and internal links to /singapore-jobs hub page.",
       "acceptanceCriteria": [
-        "getBlogPosts() returns sorted array of valid blog posts with title, slug, date, author, excerpt, and category fields",
-        "Invalid posts (missing required fields) are logged as warnings but don't crash the loader; validation uses Zod schema",
-        "Posts are cached during build time; calling revalidateTag('blog-posts') clears cache and refreshes on next request"
+        "Blog post file created at site/src/content/blog/malaysia-singapore-jobs.ts with title, slug, publishedDate, wordCount, excerpt, and content sections; post added to blog manifest",
+        "Post includes Article JSON-LD with headline, author, datePublished, image, wordCount, and BreadcrumbList schema with proper URL hierarchy rendered via StructuredData",
+        "Internal links present to /singapore-jobs resource hub and at least 3 related blog posts about Singapore work passes and job resources"
       ],
       "technicalNotes": [
-        "File to create: site/src/lib/blog-loader.ts (implement getBlogPosts with fs.readdirSync, dynamic imports, Zod validation)",
-        "File to edit: site/src/types/blog.ts (add BlogPostMeta interface with all required fields)",
-        "Test command: npm run test -- blog-loader.test.ts (test valid/invalid post loading, caching, sorting)"
+        "File to create: site/src/content/blog/malaysia-singapore-jobs.ts (TypeScript post with metadata and content structure ~100 lines)",
+        "File to update: site/src/lib/blog.ts (register post in getAllBlogPosts() function)",
+        "File to update: site/src/app/sitemap.ts (add post URL to blog section)",
+        "Test command: npm run build && npm run lint && grep 'malaysia-singapore-jobs' site/dist/sitemap.xml"
       ],
       "filesTouch": [
-        "site/src/lib/blog-loader.ts",
-        "site/src/types/blog.ts",
-        "site/src/lib/__tests__/blog-loader.test.ts"
+        "site/src/content/blog/malaysia-singapore-jobs.ts",
+        "site/src/lib/blog.ts",
+        "site/src/app/sitemap.ts"
+      ],
+      "estimatedComplexity": "small",
+      "_source": "ai-example",
+      "passes": false,
+      "dependencies": []
+    },
+    {
+      "title": "Implement blog category filtering UI with dynamic /blog/category/[category] routes",
+      "priority": "high",
+      "description": "Add categories array to blog post type, create BlogCategoryFilter component for blog listing page, build dynamic category landing pages with meta descriptions, and update sitemap.ts to include category page URLs for long-tail SEO.",
+      "acceptanceCriteria": [
+        "BlogCategoryFilter component created at site/src/components/blog/BlogCategoryFilter.tsx that renders category buttons and filters blog list; blog post type updated to include optional categories: string[]",
+        "Dynamic route created at site/src/app/blog/category/[category]/page.tsx that generates static pages for each category with meta description including category name and post count",
+        "Sitemap.ts updated with category page entries generated from unique categories across all blog posts; verified with npm run build && grep 'blog/category' site/dist/sitemap.xml"
+      ],
+      "technicalNotes": [
+        "File to create: site/src/components/blog/BlogCategoryFilter.tsx (~80 lines React component)",
+        "File to update: site/src/lib/blog-types.ts (add categories?: string[] field to BlogPost interface)",
+        "File to create: site/src/app/blog/category/[category]/page.tsx (~100 lines dynamic page with generateStaticParams)",
+        "File to update: site/src/app/sitemap.ts (add category route generation)",
+        "Test command: npm run build && npm run lint && test $(grep -c 'blog/category' site/dist/sitemap.xml) -gt 5"
+      ],
+      "filesTouch": [
+        "site/src/components/blog/BlogCategoryFilter.tsx",
+        "site/src/lib/blog-types.ts",
+        "site/src/app/blog/category/[category]/page.tsx",
+        "site/src/app/sitemap.ts",
+        "site/src/app/blog/page.tsx"
       ],
       "estimatedComplexity": "medium",
       "_source": "ai-example",
@@ -25,23 +54,53 @@
       "dependencies": []
     },
     {
-      "title": "Create Article JSON-LD schema generator for blog post structured data",
+      "title": "Create /singapore-jobs resource hub with FAQPage schema and job seeker CTAs",
       "priority": "high",
-      "description": "Build generateArticleSchema() utility that creates proper Article schema.org markup from blog post metadata, including author, datePublished, dateModified, wordCount, and image. Integrate into blog [slug]/page.tsx metadata export to enable rich snippets in search results.",
+      "description": "Build landing page for Malaysian job seekers at /singapore-jobs with job type overview, work pass comparison table, and FAQ section with FAQPage JSON-LD schema covering permit types, salary expectations, visa sponsorship, and relocation. Include prominent hostel booking CTA.",
       "acceptanceCriteria": [
-        "Schema includes @context: 'https://schema.org', @type: 'BlogPosting', headline, datePublished, dateModified, author.name, wordCount, and image URL",
-        "dateModified is optional and defaults to datePublished if not provided in post metadata",
-        "Generated schema validates against schema.org validator; unit tests confirm @id and URL fields are absolute URLs"
+        "Page created at site/src/app/singapore-jobs/page.tsx with sections: job overview, work pass table (EP/S Pass/WP comparison), FAQ accordion, and internal links to related blog posts about jobs and passes",
+        "FAQPage JSON-LD schema implemented with 8+ FAQ items (pairs of mainEntity questions and acceptedAnswer) covering work permits, salary, visa sponsorship, and job search resources",
+        "Booking CTA component with text '\ud83c\udfe8 Interview Stay Package' and WhatsApp pre-fill link for hostel inquiry; verified with npm run build && npm run lint"
       ],
       "technicalNotes": [
-        "File to create: site/src/lib/schema/article-schema.ts (generateArticleSchema(post: BlogPostMeta, baseUrl: string) function)",
-        "File to edit: site/src/app/blog/[slug]/page.tsx (call generateArticleSchema in metadata export for structured data)",
-        "Test command: npm run test -- article-schema.test.ts (validate schema structure, URL absoluteness, required fields)"
+        "File to create: site/src/app/singapore-jobs/page.tsx (~120 lines page component with FAQ section)",
+        "File to update: site/src/lib/structured-data.ts (add generateFAQPage(title, faqItems) helper function)",
+        "File to create: site/src/components/faq/FaqAccordion.tsx (~80 lines reusable accordion component)",
+        "File to update: site/src/app/sitemap.ts (add /singapore-jobs URL)",
+        "Test command: npm run build && npm run lint && curl -s http://localhost:3000/singapore-jobs | grep 'FAQPage'"
       ],
       "filesTouch": [
-        "site/src/lib/schema/article-schema.ts",
-        "site/src/app/blog/[slug]/page.tsx",
-        "site/src/lib/schema/__tests__/article-schema.test.ts"
+        "site/src/app/singapore-jobs/page.tsx",
+        "site/src/lib/structured-data.ts",
+        "site/src/components/faq/FaqAccordion.tsx",
+        "site/src/app/sitemap.ts"
+      ],
+      "estimatedComplexity": "medium",
+      "_source": "ai-example",
+      "passes": false,
+      "dependencies": []
+    },
+    {
+      "title": "Write '3-Day JB Backpacker Itinerary Under RM250' blog post with attraction links and reading time",
+      "priority": "medium",
+      "description": "Publish detailed 3-day budget itinerary for backpackers in Johor Bahru with daily breakdown (accommodation RM40/night, meals RM30/day, activities RM50), local restaurant recommendations, transport tips, and internal links to /guide page attractions. Include Article schema and readingTime metadata.",
+      "acceptanceCriteria": [
+        "Blog post created at site/src/content/blog/jb-backpacker-itinerary.ts with metadata: publishedDate, wordCount (~2000), readingTime calculated, categories: ['travel', 'budget'], and cost breakdown table in content",
+        "Post includes Article JSON-LD schema with headline, author, datePublished, image, wordCount, and BreadcrumbList schema rendered correctly",
+        "Internal links present to /guide page sections, JB Shopping Guide blog post, and accommodation page; post appears in blog listing with reading time badge"
+      ],
+      "technicalNotes": [
+        "File to create: site/src/content/blog/jb-backpacker-itinerary.ts (TypeScript post structure ~100 lines with content sections)",
+        "File to update: site/src/lib/blog.ts (ensure readingTime utility calculates ~9 min estimate for 2000 words)",
+        "File to update: site/src/app/sitemap.ts (add post URL to blog section)",
+        "Image to create: site/public/images/blog/jb-backpacker-hero.jpg (1200x630px, <100KB)",
+        "Test command: npm run build && npm run lint && node -e \"const p = require('./dist/server/blog.js').getBlogPost('jb-backpacker-itinerary'); console.log(p.readingTime);\""
+      ],
+      "filesTouch": [
+        "site/src/content/blog/jb-backpacker-itinerary.ts",
+        "site/src/lib/blog.ts",
+        "site/src/app/sitemap.ts",
+        "site/public/images/blog/jb-backpacker-hero.jpg"
       ],
       "estimatedComplexity": "small",
       "_source": "ai-example",
@@ -49,70 +108,28 @@
       "dependencies": []
     },
     {
-      "title": "Add blog post reading time calculator utility with unit tests",
+      "title": "Create /visa-run resource hub with HowTo schema and border crossing FAQPage",
       "priority": "medium",
-      "description": "Create calculateReadingTime() function that estimates reading duration from markdown content (200 words/minute baseline), returning both numeric minutes and human-readable format ('5 min read'). Use on blog card previews and article headers for UX transparency.",
+      "description": "Build comprehensive resource page at /visa-run for Singapore-JB border run process with step-by-step instructions formatted as HowTo JSON-LD schema (6-8 steps including passport check, border crossing, accommodation booking), required documents checklist, cost breakdown, and FAQPage schema covering visa run frequency limits and documentation.",
       "acceptanceCriteria": [
-        "Function accepts markdown string and returns { minutes: number, formatted: string } (e.g., { minutes: 5, formatted: '5 min read' })",
-        "1000 words \u2248 5 min read; 2000 words \u2248 10 min read (based on 200 wpm; 1 word = ~5 chars including spaces)",
-        "Edge cases handled: empty string returns 1 min, code blocks/HTML tags are counted as text, result always \u2265 1 min"
+        "Page created at site/src/app/visa-run/page.tsx with sections: visa run overview, HowTo steps (check Singapore dates \u2192 travel to border \u2192 exit \u2192 stay 1 day \u2192 return), required documents checklist, cost breakdown (transport RM20-50, accommodation RM40/night), and FAQ accordion",
+        "HowTo JSON-LD schema with HowToStep items including tool (passport), time estimate (2-3 days), and supply requirements; FAQPage schema with 6+ FAQ items about frequency limits, documentation, and processing",
+        "Booking CTA linking to hostel page with date picker for visa run stay; links to MyNIISe QR and RTS Link info pages; verified with npm run build && npm run lint"
       ],
       "technicalNotes": [
-        "File to create: site/src/lib/reading-time.ts (calculateReadingTime(content: string): { minutes: number; formatted: string })",
-        "Test command: npm run test -- reading-time.test.ts (test: 100 chars, 1000 chars, 5000 chars, empty string, code blocks)"
+        "File to create: site/src/app/visa-run/page.tsx (~130 lines page with HowTo steps and FAQ sections)",
+        "File to update: site/src/lib/structured-data.ts (add generateHowToSchema(title, steps) helper function for schema generation)",
+        "File to create: site/src/components/visa-run/DocumentChecklist.tsx (~60 lines interactive checklist component)",
+        "File to update: site/src/app/sitemap.ts (add /visa-run URL)",
+        "Test command: npm run build && npm run lint && curl -s http://localhost:3000/visa-run | grep -E 'HowTo|FAQPage'"
       ],
       "filesTouch": [
-        "site/src/lib/reading-time.ts",
-        "site/src/lib/__tests__/reading-time.test.ts"
+        "site/src/app/visa-run/page.tsx",
+        "site/src/lib/structured-data.ts",
+        "site/src/components/visa-run/DocumentChecklist.tsx",
+        "site/src/app/sitemap.ts"
       ],
-      "estimatedComplexity": "small",
-      "_source": "ai-example",
-      "passes": false,
-      "dependencies": []
-    },
-    {
-      "title": "Implement markdown excerpt extraction for blog post card previews",
-      "priority": "medium",
-      "description": "Build extractExcerpt() utility that strips markdown syntax and returns first 150\u2013160 characters for blog card displays. Handle code blocks, lists, and image syntax gracefully without breaking layout or leaving orphaned punctuation.",
-      "acceptanceCriteria": [
-        "Removes markdown formatting (##, **, `code`, [link](url), ![image](url)) while preserving readability; returns plain text",
-        "Returns max 160 characters with '\u2026' suffix if content exceeds limit; truncates at word boundary (no mid-word cuts)",
-        "Edge cases: code blocks and nested lists don't break output; multiple spaces/newlines collapsed to single space"
-      ],
-      "technicalNotes": [
-        "File to create: site/src/lib/excerpt-generator.ts (extractExcerpt(markdown: string, charLimit: number = 160): string)",
-        "Use regex to strip markdown: /([#*`\\[!]|\\[.*?\\]\\(.*?\\)|!\\[.*?\\]\\(.*?\\))/g",
-        "Test command: npm run test -- excerpt-generator.test.ts (test: plain text, headers, bold/italic, links, images, code blocks, truncation)"
-      ],
-      "filesTouch": [
-        "site/src/lib/excerpt-generator.ts",
-        "site/src/lib/__tests__/excerpt-generator.test.ts"
-      ],
-      "estimatedComplexity": "small",
-      "_source": "ai-example",
-      "passes": false,
-      "dependencies": []
-    },
-    {
-      "title": "Create BreadcrumbList JSON-LD schema for blog post navigation hierarchy",
-      "priority": "medium",
-      "description": "Build generateBreadcrumbSchema() utility that generates breadcrumb structure (Home > Blog > [Category] > Post Title) in schema.org BreadcrumbList format. Integrate into blog [slug]/layout.tsx for proper navigation context in search results and Google rich snippets.",
-      "acceptanceCriteria": [
-        "Schema includes @context: 'https://schema.org', @type: 'BreadcrumbList', itemListElement array with name, item (absolute URL), and position fields",
-        "Breadcrumb path: Home (/) > Blog (/blog) > Category (/blog?category=X) > Post Title (/blog/slug); all URLs are absolute with domain",
-        "Output validates against schema.org BreadcrumbList validator; position numbers start at 1 and increment by 1"
-      ],
-      "technicalNotes": [
-        "File to create: site/src/lib/schema/breadcrumb-schema.ts (generateBreadcrumbSchema(slug: string, category: string, title: string, baseUrl: string))",
-        "File to edit: site/src/app/blog/[slug]/layout.tsx (add generateBreadcrumbSchema to structured data in metadata export)",
-        "Test command: npm run test -- breadcrumb-schema.test.ts (validate structure, position order, absolute URLs, schema compliance)"
-      ],
-      "filesTouch": [
-        "site/src/lib/schema/breadcrumb-schema.ts",
-        "site/src/app/blog/[slug]/layout.tsx",
-        "site/src/lib/schema/__tests__/breadcrumb-schema.test.ts"
-      ],
-      "estimatedComplexity": "small",
+      "estimatedComplexity": "medium",
       "_source": "ai-example",
       "passes": false,
       "dependencies": []
