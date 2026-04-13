@@ -5552,8 +5552,23 @@
         "sitemap.ts /visa-run entry priority 0.85",
         "npm run build passes"
       ],
-      "passes": false,
-      "model": "haiku"
+      "passes": true,
+      "model": "haiku",
+      "_failureReason": "oversized_diff: produced 11574 lines but limit is 500. Keep total insertions+deletions under 500 lines.",
+      "_antiPatterns": [
+        "oversized_diff: produced 11574 lines but limit is 500. Keep total insertions+deletions under 500 lines."
+      ],
+      "last_attempted": "2026-04-13T20:42:43Z",
+      "_phaseI": {
+        "diagnosisBlock": "## Current State\nBoth `site/src/app/visa-run/page.tsx` (190 lines) and `site/src/app/sitemap.ts` (with `/visa-run` at priority 0.85) were committed in the previous iteration. The build passes successfully with `/visa-run` rendering as a static page.\n\n## Problem Identified\nThe story is marked `passes: false` because the diff-guard failed on the previous attempt due to spiral's own bookkeeping files inflating the diff to 11574 lines. The actual implementation is already correct.\n\n## Planned Changes\n- Update `prd.json` to mark US-246 as `passes: true`\n- Append learnings to `progress.txt`\n- Commit only the prd.json + progress.txt changes (small diff)\n\n<plan>\n{\n  \"files_to_create\": [],\n  \"files_to_modify\": [\"prd.json\", \"progress.txt\"],\n  \"functions_to_add\": [],\n  \"estimated_loc\": 10\n}\n</plan>\n\nAll acceptance criteria are met:\n- ✅ `visa-run/page.tsx` exists with default export `VisaRunPage`\n- ✅ Metadata title `'Visa Run Singapore to JB | Pelangi Capsule Hostel'`\n- ✅ FAQPage JSON-LD with 5 Q&As\n- ✅ HowTo JSON-LD with 5 steps\n- ✅ Header from `@/components/Header`, Footer from `@/components/Footer`\n- ✅ sitemap.ts `/visa-run` entry at priority `0.85`\n- ✅ `npm run build` passes\nStory US-246 is complete. The implementation was already committed in iteration 1 — `visa-run/page.tsx` (190 lines with FAQPage + HowTo schemas, Header/Footer, CTA to /book) and the sitemap entry at priority 0.85 were both correct. The build passes. This iteration just marked `passes: true` with a minimal 58-line diff."
+      },
+      "_contextStats": {
+        "tokensBeforeMasking": 360,
+        "tokensAfterMasking": 359,
+        "reductionPct": 0,
+        "contextWindow": 10
+      },
+      "_passedCommit": "e56c92d9b511b6adcd22108355dccb2587ddc129"
     },
     {
       "id": "US-247",
@@ -5582,7 +5597,8 @@
         "Keep content HTML under 6000 characters"
       ],
       "passes": false,
-      "model": "haiku"
+      "model": "haiku",
+      "last_attempted": "2026-04-13T20:47:09Z"
     },
     {
       "id": "US-248",

@@ -179,3 +179,13 @@ opus"}
 {"ts":"2026-04-13T20:42:48Z","event":"plan_cache_miss","story_id":"US-246"}
 {"ts":"2026-04-13T20:42:49Z","event":"anti_pattern_injected","story_id":"US-246","retry":1,"count":1}
 {"ts":"2026-04-13T20:46:28Z","event":"cost_update","story_id":"US-246","tokens_input":1577,"tokens_output":3802,"estimated_usd":0.325815}
+{"ts":"2026-04-13T20:46:46Z","event":"scope_guard","story_id":"US-246","result":"warn","out_of_scope":[
+  ".spiral/spiral_events.jsonl",
+  "prd.json",
+  "results.tsv"
+],"out_of_scope_count":3,"filesTouch_count":2}
+{"ts":"2026-04-13T20:47:08Z","event":"story_passed","storyId":"US-246","retryCount":0,"model":"sonnet"}
+{"ts":"2026-04-13T20:48:07Z","event":"plan_cache_miss","story_id":"US-247"}
+{"ts":"2026-04-13T20:49:40Z","event":"phase_timeout","run_id":"69dd34342c1f","level":"INFO","phase":"I","story_id":"US-246","iteration":9,"duration_ms":900000,"timeout_s":900,"trace_id":"f1b7af3bac05b0aabab002f21e2e7ef3","span_id":"4ba0fbdd8122224a"}
+{"ts":"2026-04-13T20:49:43Z","event":"plan_cache_store","run_id":"69dd34342c1f","level":"INFO","story_id":"US-246","plan_key":"f27dd365f0db00477dde63359ea6fb63ad3d77170cacd8f09e9ff765870ac6db","trace_id":"f1b7af3bac05b0aabab002f21e2e7ef3","span_id":"4ba0fbdd8122224a"}
+{"ts":"2026-04-13T20:49:44Z","event":"plugin_hook","run_id":"69dd34342c1f","level":"INFO","plugin":"notify-slack","hook":"post-story","type":"POST","exit_code":0,"duration_s":1,"trace_id":"f1b7af3bac05b0aabab002f21e2e7ef3","span_id":"4ba0fbdd8122224a"}

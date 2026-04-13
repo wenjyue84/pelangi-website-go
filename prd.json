@@ -5567,7 +5567,8 @@
         "tokensAfterMasking": 359,
         "reductionPct": 0,
         "contextWindow": 10
-      }
+      },
+      "_passedCommit": "e56c92d9b511b6adcd22108355dccb2587ddc129"
     },
     {
       "id": "US-247",
@@ -5596,7 +5597,8 @@
         "Keep content HTML under 6000 characters"
       ],
       "passes": false,
-      "model": "haiku"
+      "model": "haiku",
+      "last_attempted": "2026-04-13T20:47:09Z"
     },
     {
       "id": "US-248",
