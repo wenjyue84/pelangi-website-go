@@ -1709,6 +1709,49 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 <p>Now that you know what to look for, <a href="/book">book a stay at Pelangi Capsule</a> and make Laksa Johor one of your first meals in the city. It's a dish that defines Johor's food culture.</p>
 `,
   },
+  {
+    slug: "mee-rebus-johor-bahru-guide",
+    title: "Mee Rebus Johor — History, Best Stalls, and the Famous Haji Wahid Legacy (2026)",
+    excerpt:
+      "Explore Mee Rebus Johor, a thick sweet-savory gravy noodle with roots dating back to 1918. Discover what makes it unique compared to KL style, and where to find the legendary Haji Wahid stalls.",
+    date: "2026-04-15",
+    category: "Food & Drink",
+    author: "Jay Lew",
+    readTime: "5 min read",
+    tags: ["food", "johor", "specialty-dish", "heritage-food"],
+    featuredImage: "/images/blog/mee-rebus-johor-guide.jpg",
+    content: `
+<h2>What Is Mee Rebus Johor?</h2>
+<p><strong>Mee Rebus Johor</strong> is a comfort noodle dish unique to Johor—yellow egg noodles swimming in a thick, slightly sweet potato-based gravy infused with dried shrimp, garlic, and spices. Unlike Mee Rebus from Kuala Lumpur, which is spicier and uses a more watery gravy, the Johor version is creamier, richer, and distinctly sweet. The dish has roots tracing back to 1918 when Chinese immigrants blended Malay-inspired gravies with noodle cooking techniques, creating what locals now fiercely protect as a Johor heritage dish.</p>
+<p>For backpackers and visitors staying at <a href="/rooms">Pelangi Capsule Hostel</a>, Mee Rebus is the ultimate late-night comfort meal—warming, affordable (RM6–9), and found at hawker stalls across the city.</p>
+
+<h2>The Gravy That Makes It Special</h2>
+<p>The soul of Mee Rebus Johor is its gravy, a complex blend that takes hours to perfect:</p>
+<ul>
+  <li><strong>Potato base:</strong> Boiled potatoes mashed into the gravy create its signature thickness and slight sweetness.</li>
+  <li><strong>Dried shrimp & fish paste:</strong> Provides umami depth. Stalls often use salted fish or shrimp stock as the broth base.</li>
+  <li><strong>Spice paste (rempah):</strong> Ground garlic, shallots, chilies, turmeric, and galangal create layers of flavor.</li>
+  <li><strong>Sweet element:</strong> A pinch of sugar balances the spices—it's subtle, not dessert-like.</li>
+  <li><strong>Toppings:</strong> Hard-boiled egg halves, tofu, bean sprouts, fried shallots, and boiled potato cubes sink into the gravy.</li>
+</ul>
+
+<h2>Mee Rebus JB vs. Mee Rebus KL — What's the Difference?</h2>
+<p><strong>Johor Mee Rebus</strong> is creamier, thicker, and sweeter, with a focus on the potato's subtle sweetness and the umami from dried seafood. <strong>KL Mee Rebus</strong> is more assertively spicy, with a thinner, more chili-forward gravy. Johor locals debate passionately that theirs is the "authentic" version—a claim they back up by saying the dish originated in Johor's trading ports, not the capital. Choose a Johor stall and you're choosing heritage.</p>
+
+<h2>Top 3 Stalls (Including Haji Wahid Legacy)</h2>
+<p><strong>1. Haji Wahid — Jalan Tan Hiok Nee (Original Stall)</strong><br>The legend. Haji Wahid first opened in 1952, continuing a tradition rooted back to 1918. His family still runs the original stall; the gravy recipe is guarded and made fresh daily. Lines form at lunch and dinner. This is pilgrimage-level Mee Rebus. Budget: RM7–9 per bowl.</p>
+
+<p><strong>2. Mee Rebus Haji Wahid (Branch) — Larkin Terminal</strong><br>A licensed branch operated by the Haji Wahid family. Same gravy quality as the original, with more seating. Ideal if you're catching a bus or prefer a less chaotic environment. Budget: RM7–9 per bowl.</p>
+
+<p><strong>3. Mee Rebus Auntie Kim — Taman Pelangi Hawker Centre</strong><br>Just a 5-minute walk from <a href="/rooms">Pelangi Capsule Hostel</a>. Auntie Kim's version is slightly less sweet than Haji Wahid's, with a richer shrimp-forward gravy. Consistent quality, friendly service, and worth trying for comparison. Budget: RM6–8 per bowl.</p>
+
+<h2>How to Order and Eat</h2>
+<p>Say "Satu Mee Rebus" (one Mee Rebus) or "Dua" if ordering for two. Specify if you want extra egg or tofu. The aunty will ladle hot gravy over yellow noodles, top with boiled egg, tofu, bean sprouts, and fried shallots, then hand you a bowl. Grab a spoon and pair it with a sip of cold sugarcane juice or iced tea to balance the richness.</p>
+
+<h2>Why Visit Pelangi Capsule to Try Mee Rebus?</h2>
+<p>Pelangi Capsule sits in Taman Pelangi, home to some of Johor's best heritage Mee Rebus stalls. Stepping out your hostel door, you're minutes from comfort food that locals have eaten for generations. <a href="/book">Book a stay</a> and make Mee Rebus your first taste of Johor's food heritage.</p>
+`,
+  },
 ];
 
 export const blogPosts: BlogPost[] = rawPosts.map((post) => ({
