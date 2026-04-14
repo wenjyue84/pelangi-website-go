@@ -1,0 +1,19 @@
+{
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "outputDirectory": ".next",
+  "env": [
+    {
+      "key": "NEXT_PUBLIC_FLAG_CTA_VARIANT",
+      "value": "book-now",
+      "type": "system"
+    },
+    {
+      "key": "EDGE_CONFIG",
+      "value": "",
+      "type": "system"
+    }
+  ]
+}
