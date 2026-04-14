@@ -5895,7 +5895,7 @@
         "Keep content HTML under 6000 characters. Use bullet lists, avoid long paragraphs.",
         "Add tags: [\"budget-food\", \"cheap-eats\", \"johor-bahru\", \"hawker-food\"]"
       ],
-      "passes": false,
+      "passes": true,
       "model": "haiku",
       "last_attempted": "2026-04-14T13:14:18Z"
     },

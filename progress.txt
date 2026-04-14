@@ -1,3 +1,44 @@
+## Iteration US-271 - Mon, Apr 14, 2026
+
+Completed: Blog post - 15 Cheap Eats in Johor Bahru Under RM10 - Budget Food Guide (2026) (ID: US-271)
+
+### What was implemented
+- **Blog post** (`site/src/data/blog/posts.ts`):
+  - Added new blog post object with slug `cheap-eats-johor-bahru-under-rm10-budget-guide`
+  - Category: "Food & Drink", date: "2026-04-15", readTime: "6 min read"
+  - 15 cheap eats with prices and areas:
+    - Nasi Lemak, Mee Rebus, Roti Canai + Teh Tarik
+    - Char Kway Teow, Laksa Johor, Satay Sticks
+    - Lok Lok, Otak-Otak, Nasi Kuning
+    - Kuih-Muih, Cendol, Sugarcane Juice
+    - Chicken Rice, Fish Ball Noodle Soup, Rojak
+  - Each item includes price range and location/area info
+  - Intro section comparing JB food costs vs Singapore (RM5–8 vs SGD5–8)
+  - Best places to eat section with timing and highlights
+  - Budget breakdown showing RM24–30 for full day of eating
+  - Internal links to `/book` for capsule booking
+
+### Patterns discovered
+- Blog content stays under 6000 characters with compact list format and minimal prose
+- Prices in RM are more relatable to budget travellers than word descriptions
+- Listing specific hawker centres and areas helps travellers navigate independently
+- Short paragraphs and headers improve scannability for mobile readers
+
+### Acceptance criteria verification
+- ✓ AC1: Slug 'cheap-eats-johor-bahru-under-rm10-budget-guide', category 'Food & Drink'
+- ✓ AC2: 15 dishes listed with prices and areas
+- ✓ AC3: Intro comparing JB food costs vs Singapore (RM5–8 vs SGD5–8)
+- ✓ AC4: readTime '6 min read', date '2026-04-15'
+- ✓ AC5: npm run build passes (69 static pages generated successfully)
+
+### Test results
+- Content size: 4,873 characters (under 6,000 limit) ✓
+- TypeScript compilation: ✓ passes (npx tsc --noEmit)
+- Next.js build: ✓ succeeds (69 static pages including new blog post)
+- All internal links present: `/book` (referenced in CTA)
+- Build output shows blog post slug in route list
+- All acceptance criteria met
+
 ## Iteration US-216 (Attempt 2) - Mon, Apr 14, 2026
 
 Completed: Malaysia Online Safety Act 2025 – Add safety reporting mechanism for user-submitted content (ID: US-216)
