@@ -1089,6 +1089,317 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 `,
   },
   {
+    slug: "zhongguo-huhao-malaxi-a-mianshen-gonglue-2026",
+    title: "中国护照去马来西亚需要签证吗？2026最新免签攻略",
+    excerpt:
+      "好消息！中国护照持有者赴马来西亚已享30天免签。本文详解免签条件、入境流程、注意事项，以及新山最佳住宿推荐。",
+    date: "2026-04-14",
+    category: "签证攻略",
+    author: "Jay Lew",
+    readTime: "6 min read",
+    tags: ["中国游客", "马来西亚免签", "签证攻略", "新山", "柔佛", "出行攻略"],
+    featuredImage: "/images/blog/jb-3-days.jpg",
+    content: `
+<h2>中国护照赴马来西亚：30天免签！</h2>
+<p>2023年12月起，中国与马来西亚互免签证协议正式生效。<strong>中国护照持有者赴马来西亚无需申请签证，可享最长30天免签停留</strong>。这意味着你可以直接购票出发，抵达马来西亚各国际机场或陆路关卡时，只需出示护照即可入境。</p>
+
+<p>对于想探索马来西亚的中国游客来说，新山（Johor Bahru）是最便捷的入口城市之一。从新加坡樟宜机场乘车约30分钟，或从中国直飞士乃国际机场（SZB），即可抵达这座拥有丰富美食和文化的城市。</p>
+
+<h2>免签入境条件</h2>
+<ul>
+  <li><strong>护照有效期</strong>：入境时护照须有至少6个月有效期</li>
+  <li><strong>停留天数</strong>：每次入境最多30天，不可延签</li>
+  <li><strong>入境次数</strong>：无次数限制，可多次入境（每次重新计算30天）</li>
+  <li><strong>资金证明</strong>：建议携带充足外币或银行卡，移民官可能询问</li>
+  <li><strong>回程机票</strong>：建议持有回程或离境机票，以备查验</li>
+  <li><strong>目的</strong>：仅限旅游、探亲、商务考察，不可打工</li>
+</ul>
+
+<h2>新山入境流程（陆路 CIQ 关卡）</h2>
+<p>如果你从新加坡过来，走的是<strong>新山 CIQ（Sultan Iskandar Building）陆路关卡</strong>：</p>
+<ol>
+  <li>在新加坡过出境关卡（盖章离境）</li>
+  <li>步行或乘接驳巴士进入马来西亚入境大厅</li>
+  <li>前往外国人通道（Foreign Passport），出示中国护照</li>
+  <li>移民官扫描护照、采集指纹、盖章，全程约3-5分钟</li>
+  <li>入境完成！</li>
+</ol>
+
+<p><strong>注意：</strong>周五傍晚至周日，新山关卡人流众多，建议避开早7点至晚9点。平日早上或傍晚后排队最短。</p>
+
+<h2>士乃国际机场入境（SZB/JHB）</h2>
+<p>如从国内直飞新山士乃国际机场（IATA代码：JHB），流程更简单：</p>
+<ol>
+  <li>飞机落地后，跟随"Immigration"指示牌</li>
+  <li>在外国人通道排队，出示护照和入境卡（飞机上会发放，也可提前在网上填写）</li>
+  <li>采集指纹、盖章，通关完成</li>
+  <li>出关后叫 Grab 前往市区（约25-35分钟，RM25-35）</li>
+</ol>
+
+<h2>常见问题</h2>
+
+<h3>需要提前申请什么吗？</h3>
+<p>无需任何申请，也无需填写电子表格（eNTRI/eVISA）。直接凭护照入境即可。</p>
+
+<h3>可以在马来西亚工作吗？</h3>
+<p>不可以。免签入境仅限旅游、探亲、短期商务。如需工作，须另行申请工作签证。</p>
+
+<h3>能不能续签？</h3>
+<p>在马来西亚境内无法延长免签期。如需更长停留，须离境（如前往泰国或新加坡）后重新入境。</p>
+
+<h3>马来西亚治安怎么样？</h3>
+<p>马来西亚整体治安良好，是东南亚最安全的国家之一。新山市中心和 Taman Pelangi 区域夜间出行均无重大安全顾虑，但建议注意随身财物，避免炫耀贵重物品。</p>
+
+<h2>在新山住哪里？</h2>
+<p>彩虹胶囊旅馆（Pelangi Capsule Hostel）是新山性价比最高的住宿选择之一。位于 Taman Pelangi 核心美食区，距 CIQ 关卡约15分钟 Grab 车程。</p>
+<ul>
+  <li>每晚 <strong>RM37.80</strong>（含旅游税），约合人民币 60-70 元</li>
+  <li>24小时自助入住，无需等前台</li>
+  <li>免费高速 WiFi，普通话友好</li>
+  <li>旁边就是每周二夜市，步行可达多家餐厅</li>
+</ul>
+<p><a href="/zh/rooms">查看房型</a> 或 <a href="/book">立即预订</a>，直接通过 WhatsApp 联系，无需平台手续费。</p>
+`,
+  },
+  {
+    slug: "xinshan-weixin-zhifubao-zhongguo-youke-zhifu-zhinan",
+    title: "新山可以用微信支付和支付宝吗？中国游客支付完全指南 2026",
+    excerpt:
+      "好消息：新山越来越多商家接受微信支付和支付宝！本文整理哪些地方可用、如何换汇、及现金与手机支付的实用建议。",
+    date: "2026-04-14",
+    category: "签证攻略",
+    author: "Jay Lew",
+    readTime: "5 min read",
+    tags: ["中国游客", "微信支付", "支付宝", "新山", "马来西亚", "换汇"],
+    featuredImage: "/images/blog/jb-transport-guide.jpg",
+    content: `
+<h2>微信支付 / 支付宝在新山能用吗？</h2>
+<p><strong>可以用，而且越来越普遍！</strong> 近年来，随着中国游客赴马来西亚人数大幅增长，新山越来越多的商家开始接受微信支付（WeChat Pay）和支付宝（Alipay）。特别是在购物中心、连锁餐厅、药妆店和旅游景点，扫码支付已经非常普遍。</p>
+
+<h2>哪些地方接受微信支付/支付宝？</h2>
+
+<h3>✅ 大概率接受的场所</h3>
+<ul>
+  <li><strong>购物中心</strong>：Aeon Tebrau City、Paradigm Mall、KSL City Mall 内的大部分品牌门店</li>
+  <li><strong>连锁餐厅</strong>：麦当劳、肯德基、必胜客、星巴克、老虎堂等</li>
+  <li><strong>便利店</strong>：7-Eleven、99 Speedmart（部分门店）</li>
+  <li><strong>药妆店</strong>：Watsons、Guardian</li>
+  <li><strong>旅游景点</strong>：部分景点售票处</li>
+</ul>
+
+<h3>❌ 通常不接受的场所</h3>
+<ul>
+  <li><strong>路边小贩/夜市摊</strong>：大多数只收马来西亚现金（RM）</li>
+  <li><strong>传统茶餐厅和小食摊</strong>：现金为主</li>
+  <li><strong>Grab 打车</strong>：需绑定马来西亚银行卡或国际信用卡（VISA/Mastercard）</li>
+  <li><strong>小型杂货店</strong>：只收现金</li>
+</ul>
+
+<h2>如何在马来西亚使用支付宝/微信支付？</h2>
+
+<h3>支付宝（Alipay）</h3>
+<p>在马来西亚，支付宝通过其国际版（Alipay+）合作当地支付商。使用步骤：</p>
+<ol>
+  <li>打开支付宝 App → 首页点击「境外支付」或直接扫码</li>
+  <li>扫描商家的支付宝/Alipay+ 二维码</li>
+  <li>输入金额（系统自动按实时汇率换算）</li>
+  <li>付款从人民币余额扣除</li>
+</ol>
+<p><strong>注意：</strong> 国内开通的支付宝境外支付功能，每日限额约等值 2,000 元人民币。超额需使用其他支付方式。</p>
+
+<h3>微信支付（WeChat Pay）</h3>
+<p>微信支付在马来西亚同样可用，但接受范围略窄于支付宝。扫商家二维码后，系统会自动换算成令吉（RM）金额，从人民币余额扣除。</p>
+
+<h2>最划算的换汇方式</h2>
+<p>现金在新山的小吃摊和夜市是必需品。换汇建议：</p>
+
+<table style="width:100%;border-collapse:collapse;margin:1rem 0">
+<tr style="background:#f5f5f5"><th style="text-align:left;padding:0.75rem;border:1px solid #ddd">换汇方式</th><th style="padding:0.75rem;border:1px solid #ddd">汇率</th><th style="padding:0.75rem;border:1px solid #ddd">建议</th></tr>
+<tr style="border:1px solid #ddd"><td style="padding:0.75rem"><strong>新山市区换汇店</strong></td><td style="padding:0.75rem">最优</td><td style="padding:0.75rem">✅ 推荐，汇率最好</td></tr>
+<tr style="border:1px solid #ddd"><td style="padding:0.75rem"><strong>银行ATM取现</strong></td><td style="padding:0.75rem">较好</td><td style="padding:0.75rem">✅ 用 Visa/Master 银行卡，按实时汇率</td></tr>
+<tr style="border:1px solid #ddd"><td style="padding:0.75rem"><strong>支付宝/微信扫码</strong></td><td style="padding:0.75rem">实时汇率+小幅手续费</td><td style="padding:0.75rem">✅ 便捷，适合大商场</td></tr>
+<tr style="border:1px solid #ddd"><td style="padding:0.75rem"><strong>机场换汇</strong></td><td style="padding:0.75rem">较差</td><td style="padding:0.75rem">❌ 汇率差，仅换少量应急</td></tr>
+</table>
+
+<p><strong>实用建议：</strong> 入境时先换 RM100-200 的现金（够用2-3天的小吃和 Grab 费用），其余在市区换汇店用人民币现钞换取，汇率明显更优。</p>
+
+<h2>信用卡在新山好用吗？</h2>
+<p>VISA 和 Mastercard 在购物中心和连锁店普遍接受。建议携带一张无境外手续费的信用卡作为备用。银联卡在部分商场和银行柜台也可使用，但覆盖面不如前两者广。</p>
+
+<h2>住宿推荐</h2>
+<p><a href="/zh/rooms">彩虹胶囊旅馆</a>接受网上银行转账和 WhatsApp 直接预订，方便中国游客操作。每晚 RM37.80，约合人民币 60-70 元。<a href="/book">点击预订</a>或 WhatsApp 联系 +60 12-708 8789。</p>
+`,
+  },
+  {
+    slug: "xinshan-gouwu-gonglue-zhongguo-youke-2026",
+    title: "新山购物完全攻略 2026｜中国游客必逛！比国内便宜多少？",
+    excerpt:
+      "新山购物比新加坡便宜40%，比国内还有价格优势！本文盘点最值得逛的商场、必买清单、讲价技巧，以及从彩虹旅馆出发的最佳路线。",
+    date: "2026-04-14",
+    category: "旅游攻略",
+    author: "Jay Lew",
+    readTime: "7 min read",
+    tags: ["中国游客", "新山购物", "马来西亚购物", "柔佛", "攻略", "AEON"],
+    featuredImage: "/images/blog/jb-3-days.jpg",
+    content: `
+<h2>为什么中国游客要来新山购物？</h2>
+<p>新山（Johor Bahru）紧邻新加坡，却拥有马来西亚的物价水平——这意味着同款商品，比新加坡便宜 30-50%，部分进口保健品和奢侈品价格也比国内更具吸引力。加上中国护照赴马来西亚30天免签，越来越多的中国游客把新山纳入东南亚行程，专程来购物。</p>
+
+<h2>必逛购物商场</h2>
+
+<h3>1. AEON Tebrau City — 综合型大商场</h3>
+<p>新山最大的购物中心之一，品牌齐全，超市面积庞大。适合采购：</p>
+<ul>
+  <li><strong>马来西亚特产零食</strong>：老干妈、Myojo 泡面、Munchy's 饼干等品牌价格约为国内1/2</li>
+  <li><strong>保健品</strong>：Blackmores、Swisse、Shaklee 等澳洲/美国品牌，比国内便宜20-40%</li>
+  <li><strong>日用品</strong>：洗发水、护肤品、婴儿用品，价格实惠</li>
+</ul>
+<p>从彩虹胶囊旅馆乘 Grab 约 8-12 分钟（RM8-12）。</p>
+
+<h3>2. Paradigm Mall JB — 时尚购物</h3>
+<p>定位偏年轻时尚，品牌包括 Uniqlo、H&M、Cotton On、Charles & Keith 等，价格比新加坡便宜约30%，比国内也有优势。</p>
+<ul>
+  <li><strong>Uniqlo</strong>：RM59-199（约人民币 100-350 元），尤其是联名款和功能性内衣</li>
+  <li><strong>Charles & Keith 包包</strong>：比新加坡便宜约 20-30%</li>
+</ul>
+
+<h3>3. KSL City Mall — 电子产品 + 平价服装</h3>
+<p>靠近新山市中心，以电子产品和平价服装著称。这里有大量本地手机配件店，价格极为便宜。如需购买充电线、数据线、手机壳等，KSL 是首选。</p>
+
+<h3>4. Johor Premium Outlets (JPO) — 奥特莱斯折扣购物</h3>
+<p>距市区约20分钟车程，汇聚 Coach、Michael Kors、Kate Spade、Polo Ralph Lauren 等大牌折扣门店，折扣通常在30-70%。对于喜欢轻奢品牌的游客，JPO 是不可错过的目的地。</p>
+<p>从彩虹旅馆乘 Grab 约 25-35 分钟（RM20-30）。</p>
+
+<h2>中国游客必买清单</h2>
+
+<h3>🧴 保健品 / 保养品</h3>
+<ul>
+  <li>Blackmores / Swisse 系列维生素（比国内便宜30-50%）</li>
+  <li>燕窝、蜂蜜（马来西亚特产，品质优）</li>
+  <li>Cosrx、Some By Mi 韩国护肤品（比国内代购价低）</li>
+</ul>
+
+<h3>🍫 零食 / 手信</h3>
+<ul>
+  <li>Beryl's 巧克力（马来西亚本土品牌，品质不输进口）</li>
+  <li>Old Town White Coffee 白咖啡（机场版贵，超市购买最划算）</li>
+  <li>EQ 榴莲饼干、Mamee 泡面、Tiger 啤酒（送人亲友必备）</li>
+  <li>马来西亚辣椒酱、椰糖、班兰叶精华</li>
+</ul>
+
+<h3>👗 服装 / 配件</h3>
+<ul>
+  <li>Uniqlo 功能性衣物（东南亚版本有独家款式）</li>
+  <li>Charles & Keith、Pedro 包鞋</li>
+  <li>本地设计师品牌，价格亲民且有特色</li>
+</ul>
+
+<h2>讲价技巧</h2>
+<p>马来西亚大商场标价固定，不能讲价。但在以下场所可以试试：</p>
+<ul>
+  <li><strong>夜市摊位</strong>：购买多件时可询问"可以便宜点吗？"（Can discount?）</li>
+  <li><strong>电子产品小店</strong>：KSL 或旧街场的独立小店通常有议价空间</li>
+  <li><strong>换汇店</strong>：换大额（RM500以上）时可询问更优惠汇率</li>
+</ul>
+
+<h2>从彩虹旅馆出发的购物路线</h2>
+<p>住在<a href="/zh/rooms">彩虹胶囊旅馆</a>（Taman Pelangi）的最优购物路线建议：</p>
+<ul>
+  <li><strong>上午</strong>：Grab 前往 AEON Tebrau City（约10分钟），超市扫货 + 品牌购物</li>
+  <li><strong>午餐</strong>：在商场美食广场解决，约RM15-25</li>
+  <li><strong>下午</strong>：Grab 转至 Paradigm Mall 或 KSL（约15分钟），时装 + 电子产品</li>
+  <li><strong>傍晚</strong>：返回旅馆，步行至 Taman Pelangi 夜市（周二）扫最后一批零食</li>
+</ul>
+
+<h2>行李超重怎么办？</h2>
+<p>购物太多行李超重是常见问题！解决方案：</p>
+<ul>
+  <li>在旅馆附近寄送：马来西亚 Pos Laju 或 J&T Express 可寄国际包裹</li>
+  <li>提前在航空公司官网购买额外行李额（比机场便宜50%）</li>
+  <li>带一个可折叠的备用行李袋（旅馆有推荐本地文具店）</li>
+</ul>
+
+<p>准备好购物了吗？<a href="/zh/rooms">预订彩虹胶囊旅馆</a>，RM37.80/晚，步行即达夜市，Grab 直达各大商场。<a href="/book">立即预订</a>或 WhatsApp：+60 12-708 8789。</p>
+`,
+  },
+  {
+    slug: "xinshan-zhongguo-youke-bichi-mishi-gonglue",
+    title: "中国游客在新山必吃什么？清真与非清真美食完全指南",
+    excerpt:
+      "马来西亚是美食天堂，但清真（Halal）规定让部分中国游客摸不着头脑。本文教你如何分辨，以及中国游客最爱的新山美食推荐。",
+    date: "2026-04-14",
+    category: "住宿指南",
+    author: "Jay Lew",
+    readTime: "7 min read",
+    tags: ["中国游客", "新山美食", "清真美食", "马来西亚饮食", "柔佛", "吃喝攻略"],
+    featuredImage: "/images/blog/jb-food-guide.jpg",
+    content: `
+<h2>中国游客在新山吃饭：你需要了解的基本知识</h2>
+<p>马来西亚是多元文化融合的美食天堂，但"清真"（Halal）这个概念可能让初次到访的中国游客感到困惑。别担心——新山有大量<strong>非清真华人餐厅</strong>，肉骨茶、烧腊、猪肉炒粉一样都少不了。同时，清真美食的品质也极高，绝对值得尝试。本文帮你理清楚，按自己的饮食习惯放心吃。</p>
+
+<h2>清真（Halal）vs 非清真：怎么分辨？</h2>
+
+<table style="width:100%;border-collapse:collapse;margin:1rem 0">
+<tr style="background:#f5f5f5"><th style="text-align:left;padding:0.75rem;border:1px solid #ddd">特征</th><th style="padding:0.75rem;border:1px solid #ddd">清真餐厅</th><th style="padding:0.75rem;border:1px solid #ddd">华人非清真餐厅</th></tr>
+<tr style="border:1px solid #ddd"><td style="padding:0.75rem">门口标志</td><td style="padding:0.75rem">Halal 认证标志（JAKIM）</td><td style="padding:0.75rem">无 Halal 标志；可能有猪肉/烧腊图片</td></tr>
+<tr style="border:1px solid #ddd"><td style="padding:0.75rem">猪肉</td><td style="padding:0.75rem">无猪肉</td><td style="padding:0.75rem">有猪肉菜肴</td></tr>
+<tr style="border:1px solid #ddd"><td style="padding:0.75rem">酒精</td><td style="padding:0.75rem">不提供酒精饮料</td><td style="padding:0.75rem">通常有啤酒</td></tr>
+<tr style="border:1px solid #ddd"><td style="padding:0.75rem">经营者</td><td style="padding:0.75rem">通常为马来人或穆斯林</td><td style="padding:0.75rem">通常为华人</td></tr>
+</table>
+
+<p><strong>实用技巧：</strong> 看店名和招牌就能大致判断。带"汤"、"茶"、"粉"等中文字的路边档通常是华人经营；带"Nasi"、"Mamak"字样的多为清真。</p>
+
+<h2>中国游客最爱：华人非清真美食</h2>
+
+<h3>🥩 肉骨茶（Bak Kut Teh）</h3>
+<p>用猪排骨加药材熬制的浓汤，是新山华人早餐和宵夜的经典。新山版本偏干（干茶），药材香浓，与其他地区不同。一碗约 RM15-20，配白米饭和油条，非常满足。</p>
+<p><strong>推荐：</strong> 旅馆附近的 Taman Pelangi 有几家老字号肉骨茶，步行5-10分钟可达。</p>
+
+<h3>🦞 海鲜大排档</h3>
+<p>新山靠海，海鲜新鲜且价格实惠。螃蟹、虾、蚝、鱿鱼按市价计算，通常比广州、上海便宜30-50%。旅馆附近的三楼米粉（San Low Bee Hoon）也是附近居民极力推荐的本地名店。</p>
+
+<h3>🍜 炒粿条 / 福建面</h3>
+<p>炒粿条是马来西亚华人最具代表性的炒面之一，镬气大火翻炒，配虾、蚶和豆芽。新山版本比槟城更咸香，适合重口味食客。</p>
+
+<h3>🫕 云吞面</h3>
+<p>以猪肉虾云吞配弹性幼面，干捞或汤版均有。价格 RM8-15，是快速解决一餐的好选择。</p>
+
+<h2>值得尝试的清真美食</h2>
+
+<h3>🥘 印度煎饼（Roti Canai）</h3>
+<p>马来西亚最著名的早餐，薄脆酥香的手拉饼配咖喱蘸酱，一份约 RM2-3。来到马来西亚不尝印度煎饼，等于没来过！</p>
+
+<h3>🍛 椰浆饭（Nasi Lemak）</h3>
+<p>椰汁炊的香米配上参巴辣椒酱、江鱼仔、花生、黄瓜和半熟蛋，马来西亚国民早餐。华人版通常加炸鸡，分量更足，约 RM5-8。</p>
+
+<h3>🧆 沙爹（Satay）</h3>
+<p>炭烤鸡肉或牛肉串，配花生酱蘸食，是夜市摊位必点小吃。每串约 RM1-2，多买多便宜。</p>
+
+<h3>🍢 路路（Lok Lok）</h3>
+<p>类似国内麻辣烫的街边小吃：各种食材串签放入沸腾汤锅中烫熟，配酱料食用。每串 RM1-2，边走边吃，是夜市定番。</p>
+
+<h2>中国游客在新山吃饭实用贴士</h2>
+<ul>
+  <li><strong>语言</strong>：新山华人众多，大部分餐厅老板能说普通话或广东话，沟通无障碍</li>
+  <li><strong>付款</strong>：夜市和路边小摊只收现金（RM），商场内可用支付宝/微信扫码</li>
+  <li><strong>辣度</strong>：点菜时说"少辣"或"不辣"（马来语："kurang pedas" / "tidak pedas"）即可</li>
+  <li><strong>水</strong>：路边摊的饮用水安全可靠；避免点冰饮（sensitive 肠胃者）</li>
+  <li><strong>时间</strong>：夜市通常从傍晚6点到深夜，正餐时间（12-2pm、6-9pm）人多需等位</li>
+</ul>
+
+<h2>从彩虹旅馆出发的美食探索</h2>
+<p>住在<a href="/zh/rooms">彩虹胶囊旅馆（Taman Pelangi）</a>，美食就在门口：</p>
+<ul>
+  <li>步行5分钟：肉骨茶、炒粿条、云吞面早餐选择</li>
+  <li>步行10分钟：Taman Pelangi / Taman Sentosa 夜市（周二、周四）</li>
+  <li>步行8分钟：San Low 海鲜大排档（本地人最爱，外国游客必访）</li>
+  <li>Grab 8分钟：新山著名印度煎饼老店</li>
+</ul>
+
+<p>饿了吗？先<a href="/book">预订旅馆</a>，再来新山大吃特吃！WhatsApp 联系：+60 12-708 8789。</p>
+`,
+  },
+  {
     slug: "getting-around-johor-bahru-no-car-guide",
     title: "Getting Around Johor Bahru Without a Car — Transport Guide for Backpackers",
     excerpt:
