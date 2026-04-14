@@ -310,7 +310,7 @@ export default function AmenitiesPage() {
                 </li>
                 <li className="flex gap-2">
                   <span className="text-amber-700 dark:text-amber-400 font-medium">✓</span>
-                  <span>Laundry service: RM15/kg (next-day delivery)</span>
+                  <span>In-house laundry service (guests only): RM5/load — cheaper than outside dobi, available since March 2026</span>
                 </li>
                 <li className="flex gap-2">
                   <span className="text-amber-700 dark:text-amber-400 font-medium">✓</span>

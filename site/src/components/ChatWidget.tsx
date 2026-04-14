@@ -90,7 +90,7 @@ const FAQ_DATA: FaqEntry[] = [
   {
     question: 'Can I stay monthly?',
     answer:
-      'Yes, monthly rates start from RM594/month including all amenities: WiFi, air-conditioning, hot showers, kitchen access, and laundry facilities. Popular with remote workers and digital nomads.',
+      'Yes, monthly rates start from RM594/month including all amenities: WiFi, air-conditioning, hot showers, kitchen access, and laundry facilities. We also offer in-house laundry service at RM5/load (guests only, cheaper than outside dobi). Popular with remote workers and digital nomads.',
     keywords: ['monthly', 'long stay', 'long-term', 'month', 'weekly', 'extended'],
   },
 ];

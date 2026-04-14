@@ -18,7 +18,7 @@ Pelangi Capsule Hostel offers Japanese-inspired capsule pod accommodation for bu
 - Free high-speed WiFi throughout the hostel
 - Air-conditioned sleeping areas
 - 24/7 access — no curfew
-- 24-hour laundry service (dobi downstairs)
+- In-house laundry service for guests: RM5/load (since March 2026, cheaper than outside dobi)
 - Shared kitchen — fully equipped
 - Personal lockers and luggage storage
 - Hot showers with body wash and shampoo provided

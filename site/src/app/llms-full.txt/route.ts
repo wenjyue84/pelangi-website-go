@@ -41,7 +41,7 @@ The hostel is MOTAC-registered (Ministry of Tourism, Arts and Culture Malaysia).
 - Free high-speed WiFi throughout the hostel (sleeping pods + common areas)
 - Air-conditioned sleeping areas
 - 24/7 access — no curfew, no lockouts
-- 24-hour laundry service (dobi right downstairs)
+- In-house laundry service for guests: RM5/load (since March 2026, cheaper than outside dobi)
 - Shared kitchen — fully equipped for cooking meals
 - Personal lockers for valuables
 - Luggage storage before check-in / after check-out

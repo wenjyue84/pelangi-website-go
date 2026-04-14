@@ -668,23 +668,23 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 
 <h2>Tips for Smooth Commuting</h2>
 <ul>
-<li><strong>Leave early:</strong> Causeway delays happen. Plan 15 minutes buffer. Early arrival is stress-free; late arrival jeopardizes your job.</li>
-<li><strong>Use the Causeway Link app:</strong> Real-time bus tracking, seat booking, monthly pass management. Available on iOS and Android.</li>
-<li><strong>Join commuter groups:</strong> Facebook groups like "JB to Singapore Commuters" share traffic updates, carpool opportunities, and tips from experienced commuters.</li>
-<li><strong>Keep documents accessible:</strong> Passport in a small pouch, not buried in your bag. Officers see documents instantly; delays flag you.</li>
-<li><strong>Stay offline during crossings:</strong> Use this time to read, sleep, or mental reset. An hour daily saved to yourself accumulates quickly.</li>
+<li><strong>Build in 15 minutes buffer.</strong> Delays happen — not every day, but often enough. Being late once or twice sets a bad tone early.</li>
+<li><strong>Get the Causeway Link app.</strong> Real-time bus tracking, seat booking, and monthly pass management on iOS and Android. Saves time standing at the terminal.</li>
+<li><strong>Join commuter Facebook groups.</strong> "JB to Singapore Commuters" has thousands of members sharing live traffic updates, carpool arrangements, and tips that don't appear in any guide.</li>
+<li><strong>Keep your passport accessible.</strong> A small document pouch worn on your belt or tucked in a front pocket means you're through immigration faster than people digging through bags.</li>
+<li><strong>Use the crossing time well.</strong> It's roughly 45 minutes each way. Commuters who read, listen to podcasts, or sleep during the trip find it much more tolerable than those who just stare at their phones.</li>
 </ul>
 
-<h2>Why JB as Your Base</h2>
-<p><a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi is purpose-built for this lifestyle. Japanese-style capsules (RM35–50/night for monthly stays), hot showers, lockers, and high-speed WiFi. The neighbourhood has hawker centres, banks, and transport hubs. For the first 1–3 months while you arrange permanent housing, Pelangi provides stable, affordable base with a community of fellow commuters and relocators.</p>
+<h2>Where to Stay When You First Arrive</h2>
+<p>For the first 1–3 months while you find a longer-term place, <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi works well as a base. Japanese-style capsule pods from RM35–50/night, hot showers, lockers, and fast WiFi. The neighbourhood has hawker centres, banks, and transport options nearby. It's also where a lot of other commuters and new arrivals stay, which is useful if you're navigating this for the first time.</p>
 
-<h2>Long-term Housing Strategy</h2>
-<p>Once you've secured your job and work pass, apartment hunting shifts from monthly stays to 12-month leases. <a href="/getting-here">Getting to Pelangi from the Causeway</a> is 10–15 minutes by Grab, so proximity to the hostel signals good transport connections for future housing. Target neighbourhoods: Taman Pelangi, Danga Bay, Larkin. Monthly rents: RM800–1,500 for 1-bedroom private flats in these areas.</p>
+<h2>Finding Longer-Term Housing</h2>
+<p>Once your work pass is sorted, switch to a 12-month lease. Target neighbourhoods near JB Sentral and the Causeway: Taman Pelangi, Danga Bay, and Larkin are all reasonable. One-bedroom private flats in these areas run RM800–1,500/month. <a href="/getting-here">Getting to Pelangi from the Causeway</a> takes 10–15 minutes by Grab, so it's a decent indicator of transport connections for any flat you're considering in the same area.</p>
 
-<h2>Making the Commute Sustainable</h2>
-<p>Daily commuting is sustainable, not glamorous. The Causeway is reliable. Weather delays (rare) add 10–15 minutes. Strikes or roadwork (annual) are predictable and avoidable. Most commuters find the rhythm within 2 weeks. The financial upside — SGD50,000+ annual savings — justifies the daily 1.5-hour round trip.</p>
+<h2>Is It Worth It?</h2>
+<p>Daily commuting isn't glamorous. The Causeway is a routine, not an adventure. But most commuters settle into the rhythm within two weeks, and the financial upside — SGD50,000+ in savings annually at a mid-level salary — is hard to argue with. Weather delays are rare, roadwork is predictable, and the bus runs reliably. The 1.5-hour daily round trip is the trade. Most people find it's worth it.</p>
 
-<p>Ready to cross the Causeway? <a href="/rooms">Book a stay at Pelangi Capsule</a> as your first base, and start your cross-border career today.</p>
+<p><a href="/rooms">Book a stay at Pelangi Capsule</a> as your first base in JB, and start your cross-border commute from there.</p>
 `,
   },
   {
