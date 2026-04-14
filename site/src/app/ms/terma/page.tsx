@@ -129,15 +129,6 @@ export default function TermaBMPage() {
                         </td>
                         <td className="py-2">pelangicapsulehostel.com</td>
                       </tr>
-                      <tr>
-                        <td className="py-2 pr-4 font-medium text-stone-500 dark:text-stone-400 whitespace-nowrap">
-                          Pendaftaran MOTAC
-                        </td>
-                        <td className="py-2">
-                          {process.env.NEXT_PUBLIC_MOTAC_REG_NUMBER ||
-                            "Berdaftar dengan MOTAC"}
-                        </td>
-                      </tr>
                     </tbody>
                   </table>
                 </div>

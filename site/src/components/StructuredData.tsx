@@ -1,8 +1,6 @@
 import { HOSTELWORLD_RATING } from "@/lib/constants";
 import { ROOM_TYPES, PROPERTY } from "@/data/rooms";
 
-const MOTAC_REG_NUMBER = process.env.NEXT_PUBLIC_MOTAC_REG_NUMBER || "";
-
 export default function StructuredData() {
   const hostelSchema = {
     "@context": "https://schema.org",
@@ -229,14 +227,7 @@ export default function StructuredData() {
         "@type": "LodgingReservation",
         "name": "Pod Reservation"
       }
-    },
-    ...(MOTAC_REG_NUMBER ? {
-      "identifier": {
-        "@type": "PropertyValue",
-        "name": "MOTAC Registration",
-        "value": MOTAC_REG_NUMBER
-      }
-    } : {})
+    }
   };
 
   const vacationRentalSchema = {

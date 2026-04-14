@@ -1,7 +1,6 @@
 import type { Route } from "next";
 import Link from "next/link";
 import LangMs from "@/components/LangMs";
-import MotacBadge from "@/components/MotacBadge";
 import {
   BOOK_NOW_LABEL,
   BOOK_NOW_ARIA,
@@ -155,9 +154,6 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-
-        {/* MOTAC Registration */}
-        <MotacBadge />
 
         {/* CPETTR 2024 Mandatory Trader Disclosure */}
         <div className="mb-8 py-6 px-6 bg-stone-800/50 rounded-2xl border border-stone-700/50">

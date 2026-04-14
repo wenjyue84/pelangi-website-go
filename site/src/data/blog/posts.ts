@@ -1089,6 +1089,152 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 `,
   },
   {
+    slug: "taman-pelangi-tuesday-night-market-guide",
+    title: "Taman Pelangi Tuesday Night Market — The Street Food Paradise at Our Doorstep",
+    excerpt:
+      "Every Tuesday from 4:30 PM, Jalan Perang transforms into a 500m street food carnival. Satay, carrot cake, martabak, fresh seafood — all steps from Pelangi Capsule Hostel.",
+    date: "2026-04-15",
+    category: "Food & Drink",
+    author: "Jay Lew",
+    readTime: "5 min read",
+    tags: ["johor-bahru", "night-market", "pasar-malam", "street-food", "taman-pelangi", "budget-travel"],
+    featuredImage: "/images/blog/jb-food-guide.jpg",
+    content: `
+<h2>The Night Market That's Literally Outside Our Door</h2>
+<p>Every Tuesday evening, Jalan Perang — the same street where <a href="/rooms">Pelangi Capsule Hostel</a> sits — transforms into one of Johor Bahru's most beloved weekly night markets. The <strong>Taman Pelangi Pasar Malam</strong> stretches roughly 500–600 metres along the road, filling the air with the smell of charcoal satay, frying carrot cake, and freshly squeezed sugar cane juice.</p>
+<p>If you're staying with us, you don't need Grab. You don't need a map. Walk out the front door, turn left, and dinner is right there.</p>
+
+<h2>When and Where</h2>
+<ul>
+  <li><strong>Day:</strong> Every Tuesday (weekly, rain or shine)</li>
+  <li><strong>Time:</strong> 4:30 PM – 10:00 PM (best from 5:30–8:30 PM)</li>
+  <li><strong>Location:</strong> Jalan Perang, Taman Pelangi, 80400 Johor Bahru</li>
+  <li><strong>Distance from hostel:</strong> ~2 minutes on foot</li>
+</ul>
+
+<h2>Must-Try Stalls</h2>
+
+<h3>🥕 Fried Carrot Cake (Chai Tow Kway)</h3>
+<p>Not made with carrots — "carrot cake" here means white radish cake stir-fried on a scorching iron plate with egg, soy sauce, and crispy lard bits. Order the <strong>black version</strong> for a sweeter, caramelised finish. Around RM5–6. You'll smell the stall from 50 metres away.</p>
+
+<h3>🥞 Martabak Manis</h3>
+<p>A thick, fluffy Indonesian-style pancake folded and stuffed with chocolate, peanut, cheese, banana — or all of the above. Fresh to order, handed over piping hot in paper. RM5–8 depending on fillings.</p>
+
+<h3>🍢 Satay</h3>
+<p>Charcoal-grilled chicken or beef skewers marinated in turmeric and spices, served with ketupat (pressed rice cake) and peanut dipping sauce. RM0.80–1.20 per stick. Order at least 10 — you'll wish you ordered more.</p>
+
+<h3>🐟 Yong Tau Hu</h3>
+<p>Tofu and vegetables stuffed with fish paste, served in clear broth or dry with sauce. A Hakka Chinese classic — light, healthy, and endlessly customisable. Point and choose your pieces. RM0.50–1 each.</p>
+
+<h3>🌯 Popiah (Fresh Spring Rolls)</h3>
+<p>Soft wheat skin rolled around braised turnip, egg, bean sprouts, and lettuce, with sweet or chilli sauce. Lighter than fried food, assembled fresh in front of you. RM3–5 per roll.</p>
+
+<h3>🍱 Nasi Lemak</h3>
+<p>Coconut-steamed rice with sambal, crispy anchovies, peanuts, cucumber, and egg. Night market versions add fried chicken on top. RM5–8. Malaysia's national dish — non-negotiable on your first visit.</p>
+
+<h3>🍡 Onde-Onde</h3>
+<p>Pandan-green glutinous rice balls filled with liquid palm sugar (gula melaka), rolled in grated coconut. Bite carefully — the sugar gushes out. 5 pieces for RM2–3. One of Malaysia's most beloved traditional sweets.</p>
+
+<h3>🐷 Thai Moo Ping (Grilled Pork Skewers)</h3>
+<p>Palm-sugar-marinated pork belly grilled over charcoal until caramelised at the edges, Thai street food style. RM2–3 per stick, usually sold with sticky rice alongside.</p>
+
+<h3>🍮 Tau Fu Fa (Soya Beancurd Pudding)</h3>
+<p>Silky-smooth warm beancurd drizzled with ginger syrup or brown sugar. The perfect closer after a walk through the market. RM2–3 per bowl.</p>
+
+<h2>Beyond Food</h2>
+<p>Walk the full 500m and you'll also find fresh tropical fruits, raw seafood at market prices, casual clothing, kitchenware, and household items — all at prices that make Singapore feel like another planet.</p>
+
+<h2>Budget: A Full Pasar Malam Dinner</h2>
+<table style="width:100%;border-collapse:collapse;margin:1rem 0">
+<tr style="background:#f5f5f5"><th style="text-align:left;padding:0.75rem;border:1px solid #ddd">Item</th><th style="padding:0.75rem;border:1px solid #ddd">Price</th></tr>
+<tr style="border:1px solid #ddd"><td style="padding:0.75rem">Fried carrot cake</td><td style="padding:0.75rem">RM5–6</td></tr>
+<tr style="border:1px solid #ddd"><td style="padding:0.75rem">Satay × 10 sticks</td><td style="padding:0.75rem">RM8–12</td></tr>
+<tr style="border:1px solid #ddd"><td style="padding:0.75rem">Popiah × 1</td><td style="padding:0.75rem">RM4</td></tr>
+<tr style="border:1px solid #ddd"><td style="padding:0.75rem">Sugar cane juice</td><td style="padding:0.75rem">RM2–3</td></tr>
+<tr style="border:1px solid #ddd"><td style="padding:0.75rem">Onde-onde × 5</td><td style="padding:0.75rem">RM2–3</td></tr>
+<tr style="border:1px solid #ddd;font-weight:bold"><td style="padding:0.75rem"><strong>Total</strong></td><td style="padding:0.75rem"><strong>~RM21–28</strong></td></tr>
+</table>
+<p>Multiple dishes, dessert, and a drink — for under RM30 (SGD9 / USD6.50). Hard to beat anywhere in Southeast Asia.</p>
+
+<h2>How to Get There from Pelangi Capsule Hostel</h2>
+<p>Walk out the front door. Turn left on Jalan Perang. Walk 2 minutes. You're there — you'll hear it before you see it.</p>
+<p>If you're visiting JB on a Tuesday, <a href="/book">book your pod now</a>. You'll have the most convenient pasar malam seat in the city.</p>
+`,
+  },
+  {
+    slug: "taman-pelangi-xingqier-yeshi-gonglue",
+    title: "彩虹花园周二夜市攻略｜就在旅馆门口的美食天堂",
+    excerpt:
+      "每个星期二下午4时半，Jalan Perang就变身500米美食长廊。沙爹、煎蕊、马打峇、海鲜……全在彩虹胶囊旅馆门口等着你！",
+    date: "2026-04-15",
+    category: "旅游攻略",
+    author: "Jay Lew",
+    readTime: "5 min read",
+    tags: ["新山", "夜市", "pasar-malam", "彩虹花园", "街头美食", "马来西亚"],
+    featuredImage: "/images/blog/jb-food-guide.jpg",
+    content: `
+<h2>就在旅馆门口的夜市！</h2>
+<p>每个星期二傍晚，<a href="/zh/rooms">彩虹胶囊旅馆</a>门前的 Jalan Perang 就会摇身一变，成为新山其中一个最受本地人喜爱的周夜市集。<strong>彩虹花园（Taman Pelangi）Pasar Malam</strong> 沿路绵延约 500–600 米，木炭沙爹的烟香、大铁板煎萝卜糕的焦香、新鲜榨甘蔗汁的清甜……还没走到，香味已经飘来了。</p>
+<p>住在我们旅馆，你不需要叫 Grab，不需要查地图。走出大门，往左走两分钟，晚餐就摆在眼前。</p>
+
+<h2>夜市基本资讯</h2>
+<ul>
+  <li><strong>日期：</strong>每个星期二（每周固定，风雨不改）</li>
+  <li><strong>时间：</strong>下午 4:30 – 晚上 10:00（最旺时段：5:30–8:30 PM）</li>
+  <li><strong>地点：</strong>Jalan Perang, Taman Pelangi, 80400 Johor Bahru</li>
+  <li><strong>距旅馆：</strong>步行约 2 分钟</li>
+</ul>
+
+<h2>必吃摊位大盘点</h2>
+
+<h3>🥕 煎萝卜糕（Chai Tow Kway）</h3>
+<p>马来西亚华人夜市的灵魂小吃。白萝卜糕切块后在大铁板上高火翻炒，加鸡蛋、酱油和猪油渣，镬气十足。建议点<strong>黑色版本</strong>（加黑酱油），焦糖化的甜香让人欲罢不能。一份约 RM5–6，五十米外就能闻到香味。</p>
+
+<h3>🥞 马打峇马尼斯（Martabak Manis）</h3>
+<p>来自印尼的厚实甜煎饼，外脆内软，现做现折，内馅任选：巧克力、花生、起司、香蕉，或全部塞进去！热腾腾用纸包好递到手上，RM5–8 一份。</p>
+
+<h3>🍢 沙爹（Satay）</h3>
+<p>木炭烤串——鸡肉或牛肉提前腌制，裹上姜黄和香料，炭火慢烤至金黄。配上菱形压缩饭（ketupat）和花生酱蘸食，是马来西亚最经典的夜市小吃。每串约 RM0.80–1.20，至少点10串起步，保证不够吃。</p>
+
+<h3>🐟 酿豆腐（Yong Tau Hu）</h3>
+<p>将鱼浆塞入豆腐、苦瓜、辣椒等食材中烹制，可选清汤或干拌，口味清淡。每件约 RM0.50–1，随手一指，阿姨帮你装好。</p>
+
+<h3>🌯 薄饼（Popiah）</h3>
+<p>用薄面皮包裹炒香的豆薯丝、鸡蛋、豆芽和生菜，淋上甜酱或辣椒酱。比油炸小吃清爽，一条约 RM3–5。</p>
+
+<h3>🍱 椰浆饭（Nasi Lemak）</h3>
+<p>用椰浆炊制的香米配上参巴辣椒酱、江鱼仔、花生和黄瓜，夜市版本通常加炸鸡。约 RM5–8，是马来西亚最具代表性的国民美食。</p>
+
+<h3>🍡 煎蕊（Onde-Onde）</h3>
+<p>以班兰调色的糯米汤圆，内藏液态椰糖，外裹鲜椰丝。咬下去的瞬间，糖汁在口中爆开，甜而不腻。五颗约 RM2–3，新山夜市最治愈的传统糕点。</p>
+
+<h3>🐷 泰式猪颈肉串（Moo Ping）</h3>
+<p>棕榈糖和香料腌制的猪颈肉，炭火慢烤至表面微焦、内里多汁。每串约 RM2–3，配糯米饭一起卖，非穆斯林游客必点。</p>
+
+<h3>🍮 豆腐花（Tau Fu Fa）</h3>
+<p>丝滑嫩白的豆花配上姜汁糖水或黑糖浆，冷热皆宜。逛完夜市，来一碗豆花甜甜收尾。RM2–3 一碗。</p>
+
+<h2>夜市还卖什么？</h2>
+<p>走完整条500米，你还会看到：新鲜时蔬水果、热带水果（应季有榴莲！）、海鲜生料、休闲服装、厨具杂货——价格比超市便宜，比新加坡便宜更多。</p>
+
+<h2>一人逛夜市要花多少钱？</h2>
+<table style="width:100%;border-collapse:collapse;margin:1rem 0">
+<tr style="background:#f5f5f5"><th style="text-align:left;padding:0.75rem;border:1px solid #ddd">食物</th><th style="padding:0.75rem;border:1px solid #ddd">价格</th></tr>
+<tr style="border:1px solid #ddd"><td style="padding:0.75rem">煎萝卜糕</td><td style="padding:0.75rem">RM5–6</td></tr>
+<tr style="border:1px solid #ddd"><td style="padding:0.75rem">沙爹 × 10串</td><td style="padding:0.75rem">RM8–12</td></tr>
+<tr style="border:1px solid #ddd"><td style="padding:0.75rem">薄饼 × 1条</td><td style="padding:0.75rem">RM4</td></tr>
+<tr style="border:1px solid #ddd"><td style="padding:0.75rem">甘蔗汁</td><td style="padding:0.75rem">RM2–3</td></tr>
+<tr style="border:1px solid #ddd"><td style="padding:0.75rem">煎蕊 × 5颗</td><td style="padding:0.75rem">RM2–3</td></tr>
+<tr style="border:1px solid #ddd;font-weight:bold"><td style="padding:0.75rem"><strong>合计</strong></td><td style="padding:0.75rem"><strong>约 RM21–28</strong></td></tr>
+</table>
+<p>多道小吃 + 甜点 + 饮料，不超过 RM30，约合人民币 50 元。这大概是全新山性价比最高的晚餐体验。</p>
+
+<h2>从彩虹胶囊旅馆怎么去？</h2>
+<p>走出旅馆大门，左转，沿着 Jalan Perang 直走两分钟。你会先闻到，再看到整条街的灯光和摊位。</p>
+<p>如果你计划周二抵达新山，<a href="/book">现在就预订</a>你的胶囊床位——用最实惠的住宿费，换一个门口就是夜市的绝佳位置。WhatsApp：<strong>+60 12-708 8789</strong>。</p>
+`,
+  },
+  {
     slug: "zhongguo-huhao-malaxi-a-mianshen-gonglue-2026",
     title: "中国护照去马来西亚需要签证吗？2026最新免签攻略",
     excerpt:

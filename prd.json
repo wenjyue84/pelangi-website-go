@@ -5584,7 +5584,503 @@
       "_antiPatterns": [
         "oversized_diff: produced 7806 lines but limit is 500. Keep total insertions+deletions under 500 lines."
       ],
-      "_passedCommit": "fa167905447c7514150d74a232943413fa30d4e4"
+      "_passedCommit": "fa167905447c7514150d74a232943413fa30d4e4",
+      "_scopeCreep": true
+    },
+    {
+      "id": "US-267",
+      "title": "Blog post: Laksa Johor Guide - Authentic Dish, Where to Eat, and What Makes It Unique (2026)",
+      "description": "Deep-dive guide on Laksa Johor - a creamy coconut-based noodle dish unique to Johor. Covers history, what makes it different from other laksa variants, and the best stalls in JB. Targets high-intent food tourists searching for specialty Johor dishes.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "food-guide"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'laksa-johor-guide-best-places-to-eat', category 'Food & Drink'",
+        "Covers: what is Laksa Johor, key ingredients (coconut milk, thick spaghetti, bean sprouts), top 3-5 stalls",
+        "Include FAQ section: Is Laksa Johor different from Laksa Lemak?",
+        "readTime '6 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"food\", \"johor\", \"specialty-dish\", \"jb-guide\"]",
+        "Category slug: food-drink"
+      ],
+      "passes": true,
+      "model": "haiku",
+      "last_attempted": "2026-04-14T10:47:53Z",
+      "_passedCommit": "847c36a5dd3e380d1cfdc47000d17fc32ddec7f7"
+    },
+    {
+      "id": "US-268",
+      "title": "Blog post: Mee Rebus Johor - History, Best Stalls, and the Famous Haji Wahid Legacy (2026)",
+      "description": "Guide to Mee Rebus Johor - a thick sweet-savory gravy noodle with roots going back to 1918. Targets searches for this iconic Johor specialty dish. Includes story of Haji Wahid original stall, what makes Johor mee rebus different, and walking distance from Pelangi Capsule.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "food-guide"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'mee-rebus-johor-bahru-guide', category 'Food & Drink'",
+        "Covers: history, gravy recipe notes, top 3 stalls including Haji Wahid legacy stalls",
+        "Include comparison: Mee Rebus JB vs KL style",
+        "readTime '5 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"food\", \"johor\", \"specialty-dish\", \"heritage-food\"]"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-269",
+      "title": "Blog post: Best Roti Canai in Johor Bahru - Breakfast Guide Near Taman Pelangi (2026)",
+      "description": "Breakfast guide targeting Singaporean visitors and backpackers who want cheap, authentic roti canai near their accommodation. Highlights top mamak stalls within walking distance of Taman Pelangi, price comparisons, and what to order.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "food-guide",
+        "local-tips"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'best-roti-canai-johor-bahru-breakfast-guide', category 'Food & Drink'",
+        "List 5 stalls near Taman Pelangi/JB city, price range, opening hours",
+        "Include: roti canai vs prata explainer for Singaporean readers",
+        "readTime '5 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"food\", \"breakfast\", \"roti-canai\", \"taman-pelangi\", \"budget-food\"]"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-270",
+      "title": "Blog post: Taman Pelangi Neighborhood Guide - Food, Shopping, and Things to Do (2026)",
+      "description": "Comprehensive neighborhood guide for Taman Pelangi - the area where Pelangi Capsule Hostel is located. Targets searches for 'Taman Pelangi Johor Bahru' and positions Pelangi as the ideal base. Covers hawker centers, shops, transport links, and hidden gems within walking distance.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "local-guide",
+        "jb-neighborhood"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'taman-pelangi-johor-bahru-neighborhood-guide', category 'Local Guide'",
+        "Sections: Getting Here, Where to Eat, Shopping, Night Life, Why Stay Here",
+        "Mention Pelangi Capsule as accommodation anchor naturally in Why Stay Here section",
+        "readTime '7 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"taman-pelangi\", \"jb-neighborhood\", \"local-guide\", \"johor-bahru\"]",
+        "Category slug: local-guide"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-271",
+      "title": "Blog post: 15 Cheap Eats in Johor Bahru Under RM10 - Budget Food Guide (2026)",
+      "description": "List-style blog targeting budget travelers searching for cheap food in JB. Covers hawker stalls, kopitiam classics, and street food. List format optimized for featured snippets. Each entry has dish name, price, and nearest area to Pelangi.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "food-guide",
+        "budget-travel"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'cheap-eats-johor-bahru-under-rm10-budget-guide', category 'Food & Drink'",
+        "List 15 dishes with price and area",
+        "Include intro comparing JB food costs vs Singapore",
+        "readTime '6 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters. Use bullet lists, avoid long paragraphs.",
+        "Add tags: [\"budget-food\", \"cheap-eats\", \"johor-bahru\", \"hawker-food\"]"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-272",
+      "title": "Blog post: Johor Premium Outlets vs Singapore Outlet Malls - Where to Save More (2026)",
+      "description": "Comparison guide targeting Singaporeans researching where to shop for branded goods. Compares JPO vs IMM/Changi City Point. Includes transport costs from Pelangi, opening hours, and top brands. Strong transactional SEO value.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "shopping",
+        "singapore-visitors"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'johor-premium-outlets-vs-singapore-malls-shopping-guide', category 'Travel Tips'",
+        "Side-by-side comparison table: brands, discount levels, transport cost from Singapore",
+        "Include 'Is it worth going to JPO?' FAQ section",
+        "readTime '6 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"shopping\", \"jpo\", \"johor-premium-outlets\", \"singapore-shoppers\"]"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-273",
+      "title": "Blog post: Johor Bahru Night Markets Guide - Best Pasar Malam by Day of Week (2026)",
+      "description": "Practical guide to JB night markets (pasar malam), covering Taman Sentosa Saturday market and others. Targets searches for evening activities and markets in JB. Includes what to eat, what to buy, and how to get there from Pelangi Capsule.",
+      "priority": "medium",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "local-guide",
+        "night-market"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'johor-bahru-night-markets-pasar-malam-guide', category 'Local Guide'",
+        "Table: market name, day, location, distance from Pelangi, highlights",
+        "Include tips: best time to arrive, cash only, what to try",
+        "readTime '5 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"night-market\", \"pasar-malam\", \"johor-bahru\", \"local-activities\"]"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-274",
+      "title": "Blog post: JB vs Melaka vs Penang Weekend Getaway from Singapore - Which Should You Choose? (2026)",
+      "description": "Comparison guide targeting Singaporeans deciding between Malaysian weekend getaways. Positions JB as the best value option due to proximity and lower cost. Includes travel time, budget comparison, and best use case per destination.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "singapore-visitors",
+        "weekend-getaway"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'jb-vs-melaka-vs-penang-weekend-getaway-singapore', category 'Travel Tips'",
+        "Comparison table: travel time from Singapore, average cost, best for whom",
+        "Conclusion: why JB wins for budget weekend trips",
+        "readTime '6 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"weekend-getaway\", \"singapore\", \"malaysia-travel\", \"jb-comparison\"]"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-275",
+      "title": "Blog post: Complete Causeway Bus Guide from Singapore to Johor Bahru (2026)",
+      "description": "Step-by-step bus guide for crossing from Singapore to JB via Woodlands/Tuas checkpoints. Covers SBS Causeway Link 170, CW1, CW2, Transtar, Starmart Express. Targets transactional searches from first-time JB visitors. Includes journey to Pelangi Capsule with estimated time.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "transportation",
+        "singapore-visitors"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'causeway-bus-guide-singapore-to-johor-bahru-2026', category 'Transportation'",
+        "Cover: bus options, prices, where to board, immigration tips, journey to Pelangi",
+        "Include FAQ: Can I use EZLink card? Do I need to clear customs both ways?",
+        "readTime '7 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"transportation\", \"causeway\", \"bus-guide\", \"singapore-to-jb\"]",
+        "Category slug: transportation"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-276",
+      "title": "Blog post: LEGOLAND Malaysia Day Trip from Singapore - Budget Itinerary and Accommodation Guide (2026)",
+      "description": "Practical day trip guide to LEGOLAND Malaysia for Singapore families and tourists. Covers transport options, ticket prices, park highlights, and budget accommodation at Pelangi Capsule (RM35/night) as alternative to expensive LEGOLAND hotels. Targets high-volume family travel searches.",
+      "priority": "medium",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "attractions",
+        "singapore-visitors",
+        "family-travel"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'legoland-malaysia-day-trip-from-singapore-budget-guide', category 'Travel Tips'",
+        "Transport options from Singapore, ticket price range, park tips",
+        "Budget angle: Stay at Pelangi (RM35/night) vs LEGOLAND Hotel (RM400+/night)",
+        "readTime '6 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"legoland\", \"family-travel\", \"day-trip\", \"singapore-visitors\", \"johor-bahru\"]"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-277",
+      "title": "Blog post: DE Rantau Digital Nomad Visa Malaysia - Complete Guide for Remote Workers in JB (2026)",
+      "description": "Comprehensive guide to Malaysia's DE Rantau digital nomad visa for remote workers who want to stay in JB. Covers eligibility (min USD 24k/year income), application process, duration, cost of living, and why JB/Pelangi is ideal base. Targets emerging nomad segment.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "digital-nomad",
+        "long-stay"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'de-rantau-digital-nomad-visa-malaysia-johor-bahru-guide', category 'Career & Work'",
+        "Application steps, requirements, cost breakdown, validity period",
+        "JB section: cost of living, coworking spaces near Pelangi, monthly accommodation from RM594",
+        "readTime '7 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"digital-nomad\", \"de-rantau\", \"malaysia-visa\", \"remote-work\", \"johor-bahru\"]"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-278",
+      "title": "Blog post: Best Cafes in Johor Bahru 2026 - Specialty Coffee and Cafe Hopping Guide",
+      "description": "Curated cafe guide targeting JB cafe hoppers and Singaporean tourists searching for trendy cafes. Covers 8-10 notable cafes with details on specialty coffee, food menu, pricing, and walking/Grab distance from Pelangi Capsule. Includes cafe-hopping route.",
+      "priority": "medium",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "food-guide",
+        "cafe"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'best-cafes-johor-bahru-2026-specialty-coffee-guide', category 'Food & Drink'",
+        "List 8 cafes with name, vibe, price range, distance from Pelangi",
+        "Include: best for solo travelers, best for groups, best for laptop work",
+        "readTime '6 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"cafes\", \"johor-bahru\", \"specialty-coffee\", \"cafe-hopping\", \"jb-food\"]"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-279",
+      "title": "Blog post: Danga Bay Johor Bahru - Waterfront Food, Sunset Spots, and Evening Activities (2026)",
+      "description": "Guide to Danga Bay waterfront area - a popular evening destination near JB city center. Covers the Danga Bay strip, seafood restaurants, sunset viewing spots, and 10-minute Grab from Pelangi. Targets 'Danga Bay Johor Bahru' searches from day-trippers.",
+      "priority": "medium",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "attractions",
+        "local-guide"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'danga-bay-johor-bahru-guide-food-activities', category 'Local Guide'",
+        "Cover: getting there, food options (seafood, BBQ stalls), evening activities, sunset timing",
+        "Include Grab estimate from Pelangi: approx RM8-12, 10 mins",
+        "readTime '5 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"danga-bay\", \"johor-bahru\", \"waterfront\", \"evening-activities\", \"jb-attractions\"]"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-280",
+      "title": "New page: /digital-nomad — Monthly Stay and Digital Nomad Resource Hub with FAQPage Schema",
+      "description": "Dedicated landing page for digital nomads and long-stay guests at Pelangi. Targets 'digital nomad johor bahru', 'monthly hostel jb', 'coworking near taman pelangi' searches. Page showcases monthly rate (RM594), WiFi specs, nearby coworking, DE Rantau visa info, and FAQ.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "page",
+        "geo",
+        "seo",
+        "digital-nomad",
+        "landing-page"
+      ],
+      "dependencies": [
+        "US-277"
+      ],
+      "filesTouch": [
+        "site/src/app/(website)/digital-nomad/page.tsx"
+      ],
+      "acceptanceCriteria": [
+        "Route /digital-nomad returns 200",
+        "Page sections: Monthly Rates, WiFi and Workspace, Nearby Coworking, DE Rantau Visa Info, FAQ",
+        "FAQPage JSON-LD schema with 5+ questions about long stays",
+        "CTA linking to /book page",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Create file: site/src/app/(website)/digital-nomad/page.tsx",
+        "Use FAQPage schema matching the /visa-run and /singapore-jobs page pattern",
+        "FAQ questions: How fast is WiFi? Can I receive mail? Is there a desk? What is monthly rate? Is DE Rantau visa supported?"
+      ],
+      "passes": false,
+      "model": "sonnet"
+    },
+    {
+      "id": "US-281",
+      "title": "Blog post: Budget Hostel Near Singapore Border - Why Pelangi Capsule is the Smartest Base (2026)",
+      "description": "Targeted post for travelers searching for affordable accommodation near the Singapore-JB border checkpoint. Addresses the specific need: arrive from Singapore, need cheap clean bed, easy to cross back. Covers location advantage, price comparison vs Singapore hostels, and booking CTA.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "accommodation",
+        "singapore-visitors"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'budget-hostel-near-singapore-border-johor-bahru', category 'Accommodation'",
+        "Cover: distance to CIQ checkpoint, price vs Singapore hostels (RM35 vs SGD 30+), what is included",
+        "Include cost comparison table: 1 night JB vs 1 night Singapore",
+        "readTime '4 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"accommodation\", \"budget-hostel\", \"singapore-border\", \"johor-bahru\", \"cheap-stay\"]",
+        "Category slug: accommodation"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-282",
+      "title": "Consolidate NAP (Name, Address, Phone) constants to fix schema.org inconsistencies",
+      "priority": "high",
+      "description": "Create shared NAP constants file and update all schema.org markup (LodgingBusiness, Organization, LocalBusiness) to reference it. Fix current mismatches between phone/address in StructuredData.tsx vs Footer and other components. Add validation test to catch future NAP drifts.",
+      "acceptanceCriteria": [
+        "All phone numbers across StructuredData.tsx, Footer, and Contact components match +60-7-3333-6632 from site/src/lib/nap-constants.ts",
+        "All address strings (street: 'Taman Pelangi, JB', postalCode: '79200') match consistently across all schema.org markup without hardcoded duplicates",
+        "Vitest validation test passes: npx vitest run site/src/lib/__tests__/nap-constants.test.ts verifying phone/address across 5+ schema types"
+      ],
+      "technicalNotes": [
+        "File to create: site/src/lib/nap-constants.ts with const NAP = { phone, address, coordinates, businessName }",
+        "File to edit: site/src/components/StructuredData.tsx (replace all hardcoded phone/address with NAP.phone, NAP.address)",
+        "File to create: site/src/lib/__tests__/nap-constants.test.ts with validateNAPConsistency() checks",
+        "Test command: npx vitest run site/src/lib/__tests__/nap-constants.test.ts && grep -r '\\+60-7' site/src/components/ | wc -l"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "_source": "ai-example",
+      "model": "sonnet"
     }
   ]
 }

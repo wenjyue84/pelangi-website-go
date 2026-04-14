@@ -1,0 +1,1 @@
+Implement story **US-267** ("Blog post: Laksa Johor Guide - Authentic Dish, Where to Eat, and What Makes It Unique (2026)") from prd.json now. This is the story assigned to you by the SPIRAL orchestrator — do NOT pick a different story. Read prd.json for the full details of US-267, read progress.txt for codebase context, then implement US-267 only.

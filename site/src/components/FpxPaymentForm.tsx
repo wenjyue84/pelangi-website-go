@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import {
   Elements,
@@ -177,7 +177,10 @@ export default function FpxPaymentForm() {
   const [checkOut, setCheckOut] = useState("");
   const [roomType, setRoomType] = useState("Capsule Pod");
 
-  const today = new Date().toISOString().split("T")[0];
+  const [today, setToday] = useState("");
+  useEffect(() => {
+    setToday(new Date().toISOString().split("T")[0]);
+  }, []);
 
   function handleContinue(e: FormEvent) {
     e.preventDefault();
@@ -300,8 +303,7 @@ export default function FpxPaymentForm() {
             value={guestName}
             onChange={(e) => setGuestName(e.target.value)}
             placeholder="As shown on your IC/passport"
-            className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-stone-50 dark:bg-stone-800
-                       text-stone-900 dark:text-stone-100 px-4 py-3 text-sm focus-visible:border-amber-500"
+            className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-stone-100 px-4 py-3 text-sm focus-visible:border-amber-500"
           />
         </div>
 
@@ -319,8 +321,7 @@ export default function FpxPaymentForm() {
             value={guestEmail}
             onChange={(e) => setGuestEmail(e.target.value)}
             placeholder="For payment receipt"
-            className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-stone-50 dark:bg-stone-800
-                       text-stone-900 dark:text-stone-100 px-4 py-3 text-sm focus-visible:border-amber-500"
+            className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-stone-100 px-4 py-3 text-sm focus-visible:border-amber-500"
           />
         </div>
 
@@ -336,8 +337,7 @@ export default function FpxPaymentForm() {
             id="fpx-room-type"
             value={roomType}
             onChange={(e) => setRoomType(e.target.value)}
-            className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-stone-50 dark:bg-stone-800
-                       text-stone-900 dark:text-stone-100 px-4 py-3 text-sm focus-visible:border-amber-500"
+            className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-stone-100 px-4 py-3 text-sm focus-visible:border-amber-500"
           >
             <option value="Capsule Pod">Capsule Pod — RM35–45/night</option>
             <option value="Monthly Capsule Pod">Monthly Capsule Pod — RM594/month</option>
@@ -362,8 +362,7 @@ export default function FpxPaymentForm() {
               setCheckIn(e.target.value);
               if (checkOut && e.target.value > checkOut) setCheckOut("");
             }}
-            className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-stone-50 dark:bg-stone-800
-                       text-stone-900 dark:text-stone-100 px-4 py-3 text-sm focus-visible:border-amber-500"
+            className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-stone-100 px-4 py-3 text-sm focus-visible:border-amber-500"
           />
         </div>
 
@@ -382,16 +381,13 @@ export default function FpxPaymentForm() {
             value={checkOut}
             min={checkIn || today}
             onChange={(e) => setCheckOut(e.target.value)}
-            className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-stone-50 dark:bg-stone-800
-                       text-stone-900 dark:text-stone-100 px-4 py-3 text-sm focus-visible:border-amber-500"
+            className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-stone-100 px-4 py-3 text-sm focus-visible:border-amber-500"
           />
         </div>
 
         <button
           type="submit"
-          className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-amber-700 text-white
-                     py-4 px-8 font-semibold text-lg hover:bg-amber-800 transition-all duration-300
-                     hover:-translate-y-0.5 hover:shadow-lg"
+          className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-amber-700 text-white py-4 px-8 font-semibold text-lg hover:bg-amber-800 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
         >
           <svg
             className="w-5 h-5"

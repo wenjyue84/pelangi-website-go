@@ -1646,3 +1646,42 @@ Based on the story JSON, the request is for a **Next.js/TypeScript** implementat
 ## Iteration 2 - Tue, Apr 14, 2026  6:25:00 PM
 FAILED diff-guard: Implement Related Blog Posts Widget with IsSimilarTo Schema Linking (ID: US-266) — 7806 lines > 500 limit — attempt 1/3
 
+
+## Pre-analysis for US-267 (Gemini 2.5 Pro)
+Here is a technical brief for user story US-267.
+
+**Note:** This is a content creation task for a **TypeScript-based website**, not a Frappe/Python task. The implementation plan reflects this.
+
+---
+
+### **Technical Brief: US-267 - Blog Post: Laksa Johor Guide**
+
+**1. Primary File for Modification:**
+
+*   `site/src/data/blog/posts.ts`: A new entry for the blog post should be added to the data structure (likely an array) in this file.
+
+**2. Framework & Data Structures:**
+
+*   The task involves adding a new object to a TypeScript data array that defines blog posts.
+*   No Frappe DocTypes or backend hooks are involved. This is a frontend content update.
+
+**3. Implementation Approach:**
+
+1.  **Generate Content:** Author a detailed guide on "Laksa Johor" based on the story description. The content should be a string in HTML or Markdown format (check existing entries in `posts.ts` to match the pattern).
+2.  **Adhere to Constraints:** Keep the generated content under 6000 characters.
+3.  **Create Data Object:** In `site/src/data/blog/posts.ts`, create a new post object with the following key-value pairs:
+    *   `title`: "Blog post: Laksa Johor Guide - Authentic Dish, Where to Eat, and What Makes It Unique (2026)"
+    *   `slug`: 'laksa-johor-guide-best-places-to-eat'
+    *   `category`: 'Food & Drink'
+    *   `date`: '2026-04-15'
+    *   `readTime`: '6 min read'
+    *   `tags`: `["food", "johor", "specialty-dish", "jb-guide"]`
+    *   `content`: The generated article text.
+    *   Include a small FAQ section answering, "Is Laksa Johor different from Laksa Lemak?".
+
+**4. Validation & Edge Cases:**
+
+*   **Type Safety:** Ensure the new object strictly conforms to the TypeScript type defined for posts to avoid build failures.
+*   **Build Verification:** After adding the data, run `npm run build` to confirm there are no errors.
+*   **Content Formatting:** The content format must exactly match other posts (e.g., escaping characters in HTML, using correct Markdown syntax).
+

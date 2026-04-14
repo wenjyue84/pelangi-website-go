@@ -2129,6 +2129,28 @@
         "e2e",
         "auto-generated"
       ]
+    },
+    {
+      "title": "[Regression Test] Implement Related Blog Posts Widget with IsSimilarTo Schema Linking",
+      "description": "Write regression test to guard against future breakage of US-266. Story description: Add a 'You Might Also Like' widget on blog article pages displaying 3 most-relevant related posts. Relevance determined by shared tags and categories. Each related post card embeds IsSimilarTo JSON-LD linking back to the current article for bidirectional SEO.",
+      "acceptanceCriteria": [
+        "Regression test covers core observable behaviour of US-266",
+        "Test would reliably fail if the US-266 feature were removed or broken"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_266 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-266"
+      ],
+      "_source": "test-story",
+      "_testType": "regression",
+      "_forStoryId": "US-266",
+      "tags": [
+        "regression",
+        "auto-generated"
+      ]
     }
   ]
 }

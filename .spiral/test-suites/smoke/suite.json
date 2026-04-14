@@ -3095,6 +3095,32 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[smoke] Blog post: Getting Around JB Without a Car — Transport Guide for Backpackers",
+      "description": "Auto-generated smoke test from US-251",
+      "from_story": "US-251",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-239",
+      "created_ts": "2026-04-14T10:31:50Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
+    },
+    {
+      "title": "[smoke] Implement Related Blog Posts Widget with IsSimilarTo Schema Linking",
+      "description": "Auto-generated smoke test from US-266",
+      "from_story": "US-266",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-240",
+      "created_ts": "2026-04-14T10:31:50Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }
