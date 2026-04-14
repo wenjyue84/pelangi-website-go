@@ -5680,8 +5680,13 @@
         "Keep content HTML under 6000 characters",
         "Add tags: [\"food\", \"breakfast\", \"roti-canai\", \"taman-pelangi\", \"budget-food\"]"
       ],
-      "passes": false,
-      "model": "haiku"
+      "passes": true,
+      "model": "haiku",
+      "_failureReason": "oversized_diff: produced 2490 lines but limit is 500. Keep total insertions+deletions under 500 lines.",
+      "_antiPatterns": [
+        "oversized_diff: produced 2490 lines but limit is 500. Keep total insertions+deletions under 500 lines."
+      ],
+      "last_attempted": "2026-04-14T11:57:32Z"
     },
     {
       "id": "US-270",

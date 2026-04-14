@@ -1752,6 +1752,45 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 <p>Pelangi Capsule sits in Taman Pelangi, home to some of Johor's best heritage Mee Rebus stalls. Stepping out your hostel door, you're minutes from comfort food that locals have eaten for generations. <a href="/book">Book a stay</a> and make Mee Rebus your first taste of Johor's food heritage.</p>
 `,
   },
+  {
+    slug: "best-roti-canai-johor-bahru-breakfast-guide",
+    title: "Best Roti Canai in Johor Bahru — Breakfast Guide Near Taman Pelangi (2026)",
+    excerpt:
+      "5 top mamak stalls for roti canai within walking distance of Taman Pelangi. Price comparisons, opening hours, and a quick explainer on roti canai vs prata for Singaporean visitors.",
+    date: "2026-04-15",
+    category: "Food & Drink",
+    author: "Jay Lew",
+    readTime: "5 min read",
+    tags: ["food", "breakfast", "roti-canai", "taman-pelangi", "budget-food"],
+    featuredImage: "/images/blog/best-roti-canai-johor-bahru.jpg",
+    content: `
+<h2>Roti Canai vs Prata — Same Dish, Different Name</h2>
+<p>If you're crossing from Singapore, you already know <strong>prata</strong>. In Malaysia, the exact same flatbread is called <strong>roti canai</strong> (pronounced "cha-nai"). Same flaky, buttery dough, same technique — just a different name across the Causeway. One key difference: Malaysian roti canai is almost always cheaper (RM1–2 per piece vs SGD2–3 in Singapore) and served at open-air mamak stalls 24 hours a day. The dhal curry and fish curry sides are also richer and more generous in JB.</p>
+
+<h2>5 Best Roti Canai Stalls Near Taman Pelangi</h2>
+<p><strong>1. Restoran Selera Rakyat — Jalan Petrie (5 min walk)</strong><br>The closest mamak to Pelangi Capsule. Roti canai plain: RM1.20. Roti telur: RM2.00. Opens 6am–midnight daily. Best for early breakfast straight off the bus from Singapore.</p>
+
+<p><strong>2. Restoran Kafe Taman Pelangi — Taman Pelangi (8 min walk)</strong><br>Neighborhood staple with reliable teh tarik. Roti canai plain: RM1.30. Roti bawang (onion): RM2.00. Opens 6:30am–11pm daily. Slightly crispier roti than most stalls.</p>
+
+<p><strong>3. Restoran Kapitan — Jalan Wong Ah Fook (15 min walk / RM5 Grab)</strong><br>City-centre landmark mamak. Roti canai plain: RM1.50. Roti tissue: RM4.50. Opens 24 hours daily. Famous among late-night crowd and tourists. Best roti tissue in JB according to locals.</p>
+
+<p><strong>4. Anjung Selera — Jalan Abdul Samad (12 min walk)</strong><br>Large hawker complex with multiple mamak stalls. Roti canai plain: RM1.20. Roti sardin: RM2.50. Opens 7am–10pm daily. Good for groups — plenty of seating and other food options.</p>
+
+<p><strong>5. Restoran Hameediyah — Jalan Ibrahim (20 min walk / RM6 Grab)</strong><br>Heritage mamak near the old town. Roti canai plain: RM1.30. Roti cheese: RM3.00. Opens 7am–9pm (closed Friday lunch). Slower pace, old-school atmosphere, exceptional dhal curry.</p>
+
+<h2>Price Comparison: JB vs Singapore</h2>
+<table><tr><th>Item</th><th>JB (RM)</th><th>SGD equivalent</th><th>Singapore (SGD)</th></tr><tr><td>Roti canai plain</td><td>RM1.20–1.50</td><td>~SGD0.35–0.45</td><td>SGD1.50–2.00</td></tr><tr><td>Roti telur</td><td>RM2.00–2.50</td><td>~SGD0.60–0.75</td><td>SGD2.50–3.50</td></tr><tr><td>Teh tarik</td><td>RM2.00–2.50</td><td>~SGD0.60–0.75</td><td>SGD1.80–2.50</td></tr></table>
+<p>You can eat a full roti canai breakfast with teh tarik for under RM5 (~SGD1.50) at any of these stalls.</p>
+
+<h2>What to Order as a First-Timer</h2>
+<p>Start with <strong>roti canai plain</strong> and ask for both dhal (lentil curry) and fish curry on the side. Add a glass of <strong>teh tarik</strong> (pulled milk tea). If you want something more filling, order <strong>roti telur</strong> (egg roti) — it's flipped on the griddle with a beaten egg inside, creating a heartier meal. Avoid "roti tissue" as a first meal — it's paper-thin and sweet, more dessert than breakfast.</p>
+
+<h2>Best Time to Visit</h2>
+<p>Go between 7–9am for the freshest roti — the dough is made in the morning and quality drops by midday at most stalls. Mamak stalls near Taman Pelangi are quieter on weekday mornings. Weekends get busy by 8:30am, especially at Selera Rakyat.</p>
+
+<p>Staying at <a href="/rooms">Pelangi Capsule Hostel</a>? Walk to Restoran Selera Rakyat first — it's 5 minutes and opens at 6am, perfect if you're catching an early bus back to Singapore. <a href="/book">Book a room</a> and make roti canai your first JB meal.</p>
+`,
+  },
 ];
 
 export const blogPosts: BlogPost[] = rawPosts.map((post) => ({

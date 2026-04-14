@@ -1756,3 +1756,39 @@ Based on the user story, the request is for a **TypeScript-based website**, not 
 ### Gotchas
 - None encountered. File structure was clear from previous US-267 (Laksa Johor) implementation
 - Content length was carefully managed to stay under 6000 character limit
+## Iteration 1 - Tue, Apr 14, 2026  7:57:30 PM
+FAILED diff-guard: Blog post: Best Roti Canai in Johor Bahru - Breakfast Guide Near Taman Pelangi (2026) (ID: US-269) — 2490 lines > 500 limit — attempt 1/3
+
+
+## Pre-analysis for US-269 (Gemini 2.5 Pro)
+This user story is for a **Next.js/TypeScript** content update, not a Frappe/Python task. The `filesTouch` key explicitly targets `site/src/data/blog/posts.ts`, and the acceptance criteria reference `npm run build`. The following brief is tailored for an agent working within that context.
+
+---
+
+### **Technical Brief: US-269 - Roti Canai Blog Post**
+
+**Objective:** Create a new blog post by adding a TypeScript object to the `posts` array.
+
+1.  **File to Modify:**
+    *   `site/src/data/blog/posts.ts`
+
+2.  **DocTypes/Hooks Involved:**
+    *   None. This is a static content update in a TypeScript file. The primary structure is the `Post` type defined within `posts.ts`.
+
+3.  **Implementation Approach:**
+    *   Read `site/src/data/blog/posts.ts` to understand the existing `Post` object structure.
+    *   Append a new `Post` object to the exported `posts` array.
+    *   Populate the new object with the following data:
+        *   `slug`: `'best-roti-canai-johor-bahru-breakfast-guide'`
+        *   `title`: `"Best Roti Canai in Johor Bahru: A Breakfast Guide (2026)"`
+        *   `date`: `'2026-04-15'`
+        *   `category`: `'Food & Drink'`
+        *   `readTime`: `'5 min read'`
+        *   `tags`: `["food", "breakfast", "roti-canai", "taman-pelangi", "budget-food"]`
+        *   `content`: An HTML string containing the article body. The body must list 5 mamak stalls near Taman Pelangi, including price ranges, hours, and an explainer on "roti canai vs. prata" for a Singaporean audience.
+
+4.  **Edge Cases & Gotchas:**
+    *   **Previous Failure:** The last attempt failed due to an `oversized_diff` (2490 lines). **Be concise.** Only add the new post object; do not reformat or modify the existing file content.
+    *   **Character Limit:** Keep the generated `content` HTML string under 6000 characters to stay within technical constraints.
+    *   **Build Verification:** After adding the post, ensure the project builds successfully by running `npm run build`.
+
