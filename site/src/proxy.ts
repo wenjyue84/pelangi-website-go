@@ -71,11 +71,52 @@ const RATE_LIMIT_ROUTES: Array<{ prefix: string; limit: number }> = [
 const WINDOW_MS = 60 * 1000; // 1 minute
 
 // ---------------------------------------------------------------------------
+// WordPress legacy path cleanup
+// Previous WP installation left spam/casino pages indexed by Google.
+// Return 410 Gone (faster de-indexing signal than 404).
+// ---------------------------------------------------------------------------
+
+const WP_PATH_PREFIXES = [
+  "/wp-admin",
+  "/wp-content",
+  "/wp-includes",
+  "/wp-json",
+  "/wp-login.php",
+  "/wp-cron.php",
+  "/xmlrpc.php",
+  "/wp-signup.php",
+  "/wp-activate.php",
+];
+
+// WordPress query params that identify old post/page/archive URLs
+const WP_QUERY_PARAMS = ["p", "page_id", "cat", "tag", "author", "m", "feed", "paged"];
+
+// ---------------------------------------------------------------------------
 // Proxy (renamed from middleware in Next.js 16)
 // ---------------------------------------------------------------------------
 
 export async function proxy(req: NextRequest): Promise<NextResponse> {
-  const { pathname } = req.nextUrl;
+  const { pathname, searchParams } = req.nextUrl;
+
+  // --- WordPress legacy paths → 410 Gone ---
+  const isWpPath = WP_PATH_PREFIXES.some(
+    (prefix) => pathname === prefix || pathname.startsWith(prefix + "/")
+  );
+  if (isWpPath) {
+    return new NextResponse(null, {
+      status: 410,
+      statusText: "Gone",
+      headers: { "X-Robots-Tag": "noindex" },
+    });
+  }
+  const isWpQueryUrl = WP_QUERY_PARAMS.some((param) => searchParams.has(param));
+  if (isWpQueryUrl) {
+    return new NextResponse(null, {
+      status: 410,
+      statusText: "Gone",
+      headers: { "X-Robots-Tag": "noindex" },
+    });
+  }
 
   // --- Deferred page view logging (read headers before deferring) ---
   const userAgent = req.headers.get("user-agent") ?? "";
