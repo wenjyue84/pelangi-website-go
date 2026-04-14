@@ -3,9 +3,9 @@ import { blogPosts } from "@/data/blog/posts";
 export async function GET() {
   const baseUrl = "https://pelangicapsulehostel.com";
 
-  const sortedPosts = [...blogPosts].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  const sortedPosts = [...blogPosts]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 10);
 
   const feed = {
     version: "https://jsonfeed.org/version/1.1",

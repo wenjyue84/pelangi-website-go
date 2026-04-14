@@ -1,10 +1,10 @@
 {
   "iter": 140,
-  "ts_start": 1776141616,
-  "ts_end": 1776142287,
-  "duration_sec": 671,
-  "stories_attempted": 2,
-  "stories_passed": 2,
+  "ts_start": 1776141939,
+  "ts_end": 1776143447,
+  "duration_sec": 1508,
+  "stories_attempted": 1,
+  "stories_passed": 1,
   "stories_failed": 0,
   "phases_completed": [
     "R",
@@ -17,31 +17,31 @@
   "phase_v_skipped": false,
   "phase_timings": {
     "R": {
-      "start_epoch": 1776141745,
-      "duration_seconds": 0
+      "start_epoch": 1776142027,
+      "duration_seconds": 2
     },
     "T": {
-      "start_epoch": 1776141745,
-      "duration_seconds": 0
+      "start_epoch": 1776142027,
+      "duration_seconds": 2
     },
     "S": {
-      "start_epoch": 1776141752,
-      "duration_seconds": 3
+      "start_epoch": 1776142041,
+      "duration_seconds": 4
     },
     "M": {
-      "start_epoch": 1776141760,
-      "duration_seconds": 9
+      "start_epoch": 1776142055,
+      "duration_seconds": 10
     },
     "I": {
-      "start_epoch": 1776141780,
-      "duration_seconds": 28
+      "start_epoch": 1776142078,
+      "duration_seconds": 936
     },
     "V": {
-      "start_epoch": 1776141824,
-      "duration_seconds": 450
+      "start_epoch": 1776143031,
+      "duration_seconds": 403
     },
     "C": {
-      "start_epoch": 1776142277,
+      "start_epoch": 1776143437,
       "duration_seconds": 0
     }
   }

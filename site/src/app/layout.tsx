@@ -142,6 +142,8 @@ export default function RootLayout({
         <link rel="search" type="application/opensearchdescription+xml" title="Pelangi Hostel" href="/opensearch.xml" />
         {/* llms.txt: AI crawler content guidance */}
         <link rel="alternate" type="text/plain" href="/llms.txt" />
+        {/* RSS Feed: blog syndication */}
+        <link rel="alternate" type="application/rss+xml" title="Pelangi Blog" href="/feed.xml" />
         {/* JSON Feed: modern JSON alternative to RSS for blog syndication */}
         <link rel="alternate" type="application/feed+json" title="Pelangi Blog" href="/feed.json" />
         {/* SVG favicon: sharp rendering on modern browsers, ICO/PNG fallbacks auto-detected from app/ */}

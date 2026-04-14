@@ -4231,6 +4231,27 @@
       "model": "haiku"
     },
     {
+      "id": "US-188",
+      "title": "Adopt CSS appearance: base-select for styled native <select> elements",
+      "priority": "low",
+      "description": "Chrome 130+ (Interop 2025) ships appearance: base-select, allowing the native <select> element to be fully styled with CSS while retaining built-in accessibility semantics. This eliminates the need for custom Radix UI Select components in simple dropdowns, reducing bundle size.",
+      "acceptanceCriteria": [
+        "Language switcher and any filter dropdowns use <select> with appearance: base-select where custom Select was used",
+        "Styled select matches brand design system (border-radius, colours, font)",
+        "@supports (appearance: base-select) guard ensures progressive enhancement",
+        "No regression in WCAG 4.1.2 — native select retains keyboard and screen reader support"
+      ],
+      "technicalNotes": [
+        "Reference: https://developer.chrome.com/blog/a-customizable-select",
+        "Polyfill not needed — fallback to system select is acceptable",
+        "Works in Chrome 130+, Safari TP, Firefox Nightly as of 2025"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
       "id": "US-190",
       "title": "Add SiteNavigationElement schema to main navigation for Google Sitelinks",
       "priority": "low",
@@ -5705,7 +5726,7 @@
       "estimatedComplexity": "small",
       "passes": false,
       "_source": "ai-example",
-      "last_attempted": "2026-04-14T05:13:53Z",
+      "last_attempted": "2026-04-14T05:12:56Z",
       "model": "haiku"
     }
   ]

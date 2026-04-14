@@ -184,7 +184,7 @@ export default function Gallery() {
         <div
           ref={scrollRef}
           className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 px-4 md:px-0 snap-x snap-mandatory carousel-scroll-container"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', scrollBehavior: 'smooth' }}
         >
           {children}
         </div>
@@ -215,7 +215,7 @@ export default function Gallery() {
               role="button"
               tabIndex={0}
               aria-label={`View photo: ${photo.alt}`}
-              className="shrink-0 w-72 h-48 md:w-80 md:h-56 relative rounded-2xl overflow-hidden
+              className="shrink-0 w-72 md:w-80 aspect-video relative rounded-2xl overflow-hidden
                        cursor-pointer group snap-start focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
               {...handleActivate(() => openLightbox(photo.src, hostelPhotos.map(p => p.src)))}
             >
@@ -249,7 +249,7 @@ export default function Gallery() {
               role="button"
               tabIndex={0}
               aria-label={`View guest photo ${index + 1}`}
-              className="shrink-0 w-40 h-40 md:w-48 md:h-48 relative rounded-2xl overflow-hidden
+              className="shrink-0 w-40 md:w-48 aspect-square relative rounded-2xl overflow-hidden
                        cursor-pointer group snap-start focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
               {...handleActivate(() => openLightbox(photo.src, guestPhotos.map(p => p.src)))}
             >
@@ -268,7 +268,7 @@ export default function Gallery() {
             role="button"
             tabIndex={0}
             aria-label={`View all ${guestPhotos.length} guest photos`}
-            className="shrink-0 w-40 h-40 md:w-48 md:h-48 relative rounded-2xl overflow-hidden
+            className="shrink-0 w-40 md:w-48 aspect-square relative rounded-2xl overflow-hidden
                      cursor-pointer group snap-start bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center
                      focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
             {...handleActivate(() => { triggerRef.current = document.activeElement as HTMLElement; setActiveModal('guests'); })}
@@ -291,11 +291,11 @@ export default function Gallery() {
               role="button"
               tabIndex={0}
               aria-label={`View photo: ${dest.name}`}
-              className="shrink-0 w-64 md:w-72 relative rounded-2xl overflow-hidden
+              className="shrink-0 w-64 md:w-72 aspect-video relative rounded-2xl overflow-hidden
                        cursor-pointer group snap-start focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
               {...handleActivate(() => openLightbox(dest.src, destinations.map(d => d.src)))}
             >
-              <div className="relative h-44 md:h-52">
+              <div className="relative w-full h-full">
                 <Image
                   src={dest.src}
                   alt={dest.name}
