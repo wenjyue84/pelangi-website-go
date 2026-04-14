@@ -1988,3 +1988,6 @@ Completed: JPO vs Singapore Outlet Malls blog post (ID: US-272)
 - Attempt 1 failed with 14525-line diff — content string was far too verbose
 - Key fix: write concise HTML (table + 5 short sections) instead of exhaustive content
 - Target ~2500 HTML characters, not 6000-char maximum
+## Iteration 2 - Tue, Apr 14, 2026 10:22:43 PM
+Completed: Blog post: Johor Premium Outlets vs Singapore Outlet Malls - Where to Save More (2026) (ID: US-272) in 8m
+

@@ -5945,7 +5945,8 @@
         "tokensAfterMasking": 171,
         "reductionPct": 0,
         "contextWindow": 10
-      }
+      },
+      "_passedCommit": "afbcfee91ebafaf4d8ee8d933d3d55cf5847eb99"
     },
     {
       "id": "US-273",
@@ -6007,7 +6008,8 @@
         "Add tags: [\"weekend-getaway\", \"singapore\", \"malaysia-travel\", \"jb-comparison\"]"
       ],
       "passes": false,
-      "model": "haiku"
+      "model": "haiku",
+      "last_attempted": "2026-04-14T14:22:45Z"
     },
     {
       "id": "US-275",
