@@ -1,69 +1,23 @@
 [
   {
-    "title": "Write 'Getting Around JB Without a Car' Transport Guide Blog Post",
-    "priority": "medium",
-    "description": "Create a comprehensive backpacker-focused blog post covering JB public transport (Causeway Link, rapidKL), Grab usage, taxi services, and costs to support goal #2 (travel articles for tourists).",
-    "acceptanceCriteria": [
-      "Blog post created at site/src/data/blog/getting-around-jb.ts with frontmatter (title, date, slug, excerpt, content)",
-      "Post renders at /blog/getting-around-jb with all sections: public transport options, Grab vs taxis, approximate costs, tips for budget travelers",
-      "Post appears in blog index at /blog with correct metadata and links"
-    ],
-    "technicalNotes": [
-      "File to create: site/src/data/blog/getting-around-jb.ts (follow existing blog post structure with frontmatter metadata)",
-      "File to verify: site/src/app/blog/[slug]/page.tsx (ensure dynamic route includes new post)",
-      "Test command: npm run build && npx playwright test e2e/blog.spec.ts -k 'getting-around'"
-    ],
-    "filesTouch": [
-      "site/src/data/blog/getting-around-jb.ts",
-      "site/src/app/blog/[slug]/page.tsx"
-    ],
-    "estimatedComplexity": "small",
-    "_source": "ai-example",
-    "passes": false,
-    "dependencies": []
-  },
-  {
-    "title": "Implement JB News & Updates RSS Widget on Homepage",
-    "priority": "medium",
-    "description": "Create a dynamic widget that fetches from curated JB tourism and local news RSS feeds and displays latest 3-5 items on the homepage hero section to support goal #4 (JB News & Updates widget).",
-    "acceptanceCriteria": [
-      "JBNewsWidget component fetches from at least 3 RSS sources (e.g., Tourism Johor, JB Today, Visit JB) with 60-minute cache TTL",
-      "Widget displays latest 3-5 news items with title, excerpt, link, and publish date; updates without page reload",
-      "Error handling: if feed fetch fails, widget shows graceful fallback message ('News temporarily unavailable') instead of breaking page"
-    ],
-    "technicalNotes": [
-      "File to create: site/src/components/JBNewsWidget.tsx (React Server Component with error boundary)",
-      "File to create: site/src/lib/rss-fetcher.ts (implement feed parsing and caching logic using feedparser package)",
-      "File to modify: site/src/app/page.tsx (import and render JBNewsWidget in hero section below heading)",
-      "Test command: npm run dev && npx playwright test e2e/homepage.spec.ts -k 'news-widget'"
-    ],
-    "filesTouch": [
-      "site/src/components/JBNewsWidget.tsx",
-      "site/src/lib/rss-fetcher.ts",
-      "site/src/app/page.tsx"
-    ],
-    "estimatedComplexity": "small",
-    "_source": "ai-example",
-    "passes": false,
-    "dependencies": []
-  },
-  {
-    "title": "Dynamically Add All Blog Post URLs to XML Sitemap",
+    "title": "Generate Article JSON-LD schema with author, datePublished, and dateModified for all blog posts",
     "priority": "high",
-    "description": "Modify sitemap.ts to auto-discover all blog posts from site/src/data/blog/ and include them with correct metadata in /sitemap.xml output to support goal #6 (update sitemap with blog posts).",
+    "description": "Implement Article structured data for blog posts to improve SEO visibility and enable rich snippets in search results. Schema will include author, headline, description, image, datePublished, and dateModified fields.",
     "acceptanceCriteria": [
-      "sitemap.ts uses getAllBlogPosts() to discover all blog post files and map to sitemap entries",
-      "Each blog post generates a sitemap entry with loc=/blog/slug, lastmod=post.date, changefreq='weekly', priority=0.8",
-      "Generated /sitemap.xml validates as well-formed XML and includes all 6+ blog post URLs with correct hrefs"
+      "Article schema includes author (Organization), headline, description, datePublished, dateModified, articleBody, image, and url properties matching schema.org/Article spec",
+      "Schema is injected into <head> of /blog/[slug] routes via StructuredData component and validates as valid JSON-LD",
+      "All blog post frontmatter includes publishedDate and modifiedDate fields in YYYY-MM-DD format"
     ],
     "technicalNotes": [
-      "File to modify: site/src/app/sitemap.ts (add getAllBlogPosts() calls within MetadataRoute.Sitemap return array, concat with existing entries)",
-      "File to ensure exists: site/src/lib/blog-posts.ts (export getAllBlogPosts() function that reads site/src/data/blog/*.ts files)",
-      "Test command: npm run build && curl -s http://localhost:3000/sitemap.xml | head -30 (verify blog URLs appear)"
+      "Create lib/schemas/articleSchema.ts with generateArticleSchema(post, baseUrl) function",
+      "Update app/blog/[slug]/page.tsx to call generateArticleSchema and render via <StructuredData> component",
+      "Test command: vitest run tests/lib/schemas/articleSchema.test.ts --reporter=verbose"
     ],
     "filesTouch": [
-      "site/src/app/sitemap.ts",
-      "site/src/lib/blog-posts.ts"
+      "lib/schemas/articleSchema.ts",
+      "app/blog/[slug]/page.tsx",
+      "lib/blog/posts.ts",
+      "tests/lib/schemas/articleSchema.test.ts"
     ],
     "estimatedComplexity": "small",
     "_source": "ai-example",
@@ -71,22 +25,25 @@
     "dependencies": []
   },
   {
-    "title": "Add Article + BreadcrumbList JSON-LD Schemas to Blog Post Template",
+    "title": "Add JB News & Updates widget to homepage displaying latest 5 curated RSS items",
     "priority": "high",
-    "description": "Implement Article and BreadcrumbList structured data in blog post pages for improved SEO and rich snippets to support goal #5 (enhance structured data for SEO).",
+    "description": "Create a server component that fetches from 3-5 curated RSS feeds (JB City Council, MyMetro, Tourism Malaysia) and displays latest items on homepage between hero and amenities sections with loading skeleton and error boundary.",
     "acceptanceCriteria": [
-      "Article schema renders with: headline, author, datePublished, dateModified, wordCount, image, description, articleBody in JSON-LD <script> tag",
-      "BreadcrumbList schema shows navigation path: Home > Blog > [Article Title] with correct itemListElement URLs and positions",
-      "JSON-LD validates with https://validator.schema.org/ and appears in page source when visiting /blog/[slug] pages"
+      "Widget fetches from configured RSS feeds and renders 5 most recent items with title, 100-char snippet, link, and publishedDate",
+      "Component at app/components/JbNewsWidget.tsx displays loading skeleton during fetch and graceful error message if feed fetch fails",
+      "Widget integrated into app/page.tsx between hero section and amenities section with responsive layout"
     ],
     "technicalNotes": [
-      "File to create: site/src/components/BlogPostSchema.tsx (React component that generates Article + BreadcrumbList JSON-LD strings)",
-      "File to modify: site/src/app/blog/[slug]/page.tsx (import BlogPostSchema and render as <script> in document.head via generateMetadata or direct render)",
-      "Test command: npm run build && npm run start && curl http://localhost:3000/blog/getting-around-jb | grep 'schema.org' (verify JSON-LD present)"
+      "Create lib/rss/feedSources.ts with array of feed URLs and lib/rss/fetchFeeds.ts with async fetchRssFeeds() function",
+      "Use rss npm package to parse XML feeds with 5-second timeout per source",
+      "Test command: vitest run tests/lib/rss/fetchFeeds.test.ts --reporter=verbose --mock"
     ],
     "filesTouch": [
-      "site/src/components/BlogPostSchema.tsx",
-      "site/src/app/blog/[slug]/page.tsx"
+      "app/components/JbNewsWidget.tsx",
+      "app/page.tsx",
+      "lib/rss/fetchFeeds.ts",
+      "lib/rss/feedSources.ts",
+      "tests/lib/rss/fetchFeeds.test.ts"
     ],
     "estimatedComplexity": "small",
     "_source": "ai-example",
@@ -94,23 +51,75 @@
     "dependencies": []
   },
   {
-    "title": "Implement Zod Schema Validation for Blog Post Frontmatter",
+    "title": "Create /blog/[category] landing pages with CollectionPage schema for long-tail blog SEO",
     "priority": "medium",
-    "description": "Create a reusable Zod schema to validate blog post metadata (title, date, excerpt, slug, tags, image) at build time to catch errors early and support goal #1 (robust blog system foundation).",
+    "description": "Build category-specific blog landing pages (e.g., /blog/travel-guides, /blog/work-guides) that list all posts in category with pagination and CollectionPage JSON-LD schema for Google rich results.",
     "acceptanceCriteria": [
-      "Zod schema (PostFrontmatterSchema) enforces required fields: title, slug, date, excerpt, and content with correct types",
-      "Optional fields (tags: string[], image?: string, author?: string) have sensible defaults; all properties are typed",
-      "Build fails with descriptive error message if any blog post file violates schema; valid posts build successfully"
+      "Pages at /blog/[category] display 10 blog posts per page with pagination; each post shows title, excerpt (100 chars), image, publishedDate",
+      "Each category page includes CollectionPage JSON-LD schema with hasPart array listing all posts of that category type",
+      "Navigation allows filtering by travel-guides, work-guides, gig-jobs, visa-runs categories via dropdown or breadcrumbs"
     ],
     "technicalNotes": [
-      "File to create: site/src/lib/blog-schema.ts (export const PostFrontmatterSchema = z.object({...}) with all field definitions)",
-      "File to modify: site/src/lib/blog-posts.ts (apply schema.parse() or .safeParse() validation when loading blog posts in getAllBlogPosts())",
-      "Test command: npx vitest run site/tests/lib/blog-schema.test.ts && npm run build (verify validation executes at build time)"
+      "Create app/blog/[category]/page.tsx with getPostsByCategory(category) helper from lib/blog/getPostsByCategory.ts",
+      "Implement CollectionPage schema in lib/schemas/collectionSchema.ts and inject via StructuredData",
+      "Test command: vitest run tests/app/blog/[category]/page.test.tsx --reporter=verbose"
     ],
     "filesTouch": [
-      "site/src/lib/blog-schema.ts",
-      "site/src/lib/blog-posts.ts",
-      "site/tests/lib/blog-schema.test.ts"
+      "app/blog/[category]/page.tsx",
+      "app/blog/[category]/layout.tsx",
+      "lib/blog/getPostsByCategory.ts",
+      "lib/schemas/collectionSchema.ts",
+      "tests/app/blog/[category]/page.test.tsx"
+    ],
+    "estimatedComplexity": "medium",
+    "_source": "ai-example",
+    "passes": false,
+    "dependencies": []
+  },
+  {
+    "title": "Implement dynamic blog post sitemap generation with lastmod timestamps",
+    "priority": "high",
+    "description": "Update app/sitemap.ts to automatically include all /blog/[slug] routes with lastmod timestamps from blog post frontmatter. Ensures search engines re-crawl updated posts.",
+    "acceptanceCriteria": [
+      "sitemap.ts generates entries for all blog posts at /blog/{slug} with lastmod from post.modifiedDate, changefreq=weekly, priority=0.7",
+      "Sitemap includes \u22656 blog post entries in valid XML format with lastmod in ISO 8601 format (YYYY-MM-DD)",
+      "Helper function lib/blog/generateSitemapEntries.ts(allPosts) returns SitemapEntry[] objects with url and lastmod"
+    ],
+    "technicalNotes": [
+      "Update app/sitemap.ts to import and call generateSitemapEntries(allBlogPosts) and merge results",
+      "Create lib/blog/generateSitemapEntries.ts utility that maps blog post metadata to sitemap format",
+      "Test command: vitest run tests/app/sitemap.test.ts --reporter=verbose"
+    ],
+    "filesTouch": [
+      "app/sitemap.ts",
+      "lib/blog/generateSitemapEntries.ts",
+      "lib/blog/posts.ts",
+      "tests/app/sitemap.test.ts"
+    ],
+    "estimatedComplexity": "small",
+    "_source": "ai-example",
+    "passes": false,
+    "dependencies": []
+  },
+  {
+    "title": "Add 'Related Posts' section to blog articles using tag-based similarity matching",
+    "priority": "medium",
+    "description": "Implement a Related Posts component appearing at end of blog articles, showing 3-4 posts with matching tags. Improves internal linking for SEO and user engagement.",
+    "acceptanceCriteria": [
+      "Component app/components/RelatedPosts.tsx accepts currentPostSlug and renders up to 4 related posts in responsive grid (1 col mobile, 2 col desktop)",
+      "Related posts selected by highest tag overlap (\u22651 shared tag with current post); excludes current post and unpublished articles",
+      "Each related post card displays title, 80-char excerpt, cover image, publishedDate, and link to /blog/[slug]"
+    ],
+    "technicalNotes": [
+      "Create lib/blog/getRelatedPosts.ts with getRelatedPosts(currentSlug, allPosts, maxResults=4) using tag intersection scoring algorithm",
+      "Update app/blog/[slug]/page.tsx to render <RelatedPosts currentSlug={slug} /> before footer section",
+      "Test command: vitest run tests/lib/blog/getRelatedPosts.test.ts --reporter=verbose"
+    ],
+    "filesTouch": [
+      "app/components/RelatedPosts.tsx",
+      "app/blog/[slug]/page.tsx",
+      "lib/blog/getRelatedPosts.ts",
+      "tests/lib/blog/getRelatedPosts.test.ts"
     ],
     "estimatedComplexity": "small",
     "_source": "ai-example",

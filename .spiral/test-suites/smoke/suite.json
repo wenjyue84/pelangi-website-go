@@ -2965,6 +2965,19 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[smoke] Adopt CSS appearance: base-select for styled native <select> elements",
+      "description": "Auto-generated smoke test from US-188",
+      "from_story": "US-188",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-229",
+      "created_ts": "2026-04-14T05:59:18Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }

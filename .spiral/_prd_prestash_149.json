@@ -3920,7 +3920,8 @@
       "model": "haiku",
       "_skipped": true,
       "_skipReason": "Consistently oversized diff (12854 lines, limit 500)",
-      "_scopeCreep": true
+      "_scopeCreep": true,
+      "last_attempted": "2026-04-14T05:59:04Z"
     },
     {
       "id": "US-174",
@@ -4248,11 +4249,8 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false,
-      "model": "haiku",
-      "_skipped": true,
-      "_skipReason": "CSS appearance: base-select is experimental and not in stable Chrome/Firefox",
-      "last_attempted": "2026-04-14T05:41:21Z"
+      "passes": true,
+      "model": "haiku"
     },
     {
       "id": "US-190",
