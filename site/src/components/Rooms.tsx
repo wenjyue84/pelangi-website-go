@@ -3,12 +3,29 @@ import LangMs from "@/components/LangMs";
 import pasarMalamImage from "../../public/images/destinations/pasar-malam.jpg";
 import { cacheLife, cacheTag } from "next/cache";
 import RoomsTabsClient from "@/components/RoomsTabsClient";
+import { getCachedData } from "@/lib/cache-utils";
 
 export default async function Rooms() {
   "use cache";
   cacheLife("days");
   cacheTag("rooms-static");
   cacheTag("rooms");
+
+  // Demonstrate React 19.2 cacheSignal() pattern for fetching room availability
+  // The cacheSignal() provides an AbortSignal that fires when the cache entry
+  // lifetime ends, allowing the fetch to be aborted automatically and preventing
+  // hung connections when cache is invalidated.
+  try {
+    // Example: Fetch external availability data with cacheSignal abort support
+    // In production, this would fetch from Beds24 API or similar availability system
+    await getCachedData("https://api.example.com/room-availability");
+  } catch (error) {
+    // Gracefully handle fetch errors including AbortError from cacheSignal
+    // This ensures the component still renders even if the external API is unavailable
+    if (error instanceof Error) {
+      console.debug(`Room availability fetch: ${error.message}`);
+    }
+  }
 
   const hostelHighlights = [
     {

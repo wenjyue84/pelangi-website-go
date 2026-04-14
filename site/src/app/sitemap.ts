@@ -20,6 +20,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.65,
     }));
 
+    const zhRoutes: MetadataRoute.Sitemap = [
+        {
+            url: `${baseUrl}/zh`,
+            lastModified,
+            changeFrequency: "weekly",
+            priority: 0.95,
+            alternates: { languages: { en: `${baseUrl}`, "zh-CN": `${baseUrl}/zh` } },
+        },
+        {
+            url: `${baseUrl}/zh/rooms`,
+            lastModified,
+            changeFrequency: "weekly",
+            priority: 0.9,
+            alternates: { languages: { en: `${baseUrl}/rooms`, "zh-CN": `${baseUrl}/zh/rooms` } },
+        },
+        {
+            url: `${baseUrl}/zh/location`,
+            lastModified,
+            changeFrequency: "monthly",
+            priority: 0.85,
+            alternates: { languages: { en: `${baseUrl}/location`, "zh-CN": `${baseUrl}/zh/location` } },
+        },
+        {
+            url: `${baseUrl}/zh/about`,
+            lastModified,
+            changeFrequency: "monthly",
+            priority: 0.8,
+            alternates: { languages: { en: `${baseUrl}/about`, "zh-CN": `${baseUrl}/zh/about` } },
+        },
+    ];
+
     return [
         {
             url: baseUrl,
@@ -142,5 +173,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
         ...categoryEntries,
         ...blogPostEntries,
+        ...zhRoutes,
     ];
 }

@@ -2887,6 +2887,32 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[smoke] Enable Turbopack file system caching for faster development cold starts",
+      "description": "Auto-generated smoke test from US-160",
+      "from_story": "US-160",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-223",
+      "created_ts": "2026-04-14T01:46:06Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
+    },
+    {
+      "title": "[smoke] Implement React 19.2 useEffectEvent for stable analytics event handlers",
+      "description": "Auto-generated smoke test from US-161",
+      "from_story": "US-161",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-224",
+      "created_ts": "2026-04-14T01:46:06Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }

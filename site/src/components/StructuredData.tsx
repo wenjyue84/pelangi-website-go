@@ -9,6 +9,7 @@ export default function StructuredData() {
     "@type": ["Hostel", "Hotel", "LodgingBusiness"],
     "@id": "https://pelangicapsulehostel.com/#hostel",
     "name": "Pelangi Capsule Hostel",
+    "alternateName": ["彩虹胶囊旅舍", "Pelangi Hostel Capsule"],
     "image": [
       "https://pelangicapsulehostel.com/images/hero-main.webp",
       "https://pelangicapsulehostel.com/images/capsule-1.webp",

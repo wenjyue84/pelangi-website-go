@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { ROOM_TYPES, PROPERTY } from "@/data/rooms";
-import { beds24Client } from "@/lib/beds24-client";
+import { getCachedAvailability } from "@/lib/cached-availability";
 
 /**
  * ARI (Availability, Rates, Inventory) endpoint for connectivity partners.
@@ -66,8 +66,8 @@ export async function GET(request: NextRequest) {
     (checkoutDate.getTime() - checkinDate.getTime()) / (1000 * 60 * 60 * 24),
   );
 
-  // Fetch live availability from channel manager
-  const channelAvailability = await beds24Client.getAvailability(checkin, checkout);
+  // Fetch live availability from channel manager (with cache() + cacheSignal() for cleanup)
+  const channelAvailability = await getCachedAvailability(checkin, checkout);
 
   // Map to ARI response format
   const rooms = ROOM_TYPES.map((room) => {

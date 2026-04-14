@@ -1,144 +1,149 @@
 {
   "stories": [
     {
-      "title": "Generate and serve RSS/Atom feed for blog at /feed.xml",
-      "priority": "medium",
-      "description": "Implement RSS/Atom feed generation from blog posts, served at /feed.xml. This enables blog subscribers and news aggregators to follow new articles.",
-      "acceptanceCriteria": [
-        "GET /feed.xml returns status 200 with Content-Type: application/atom+xml header and valid Atom 1.0 XML body",
-        "Feed includes <entry> element for each published blog post with title, link (post URL), updated (publishDate), and content (full post markdown)",
-        "Feed.xml route handler calls generateAtomFeed(posts: BlogPost[]): string function exported from lib/rss.ts"
-      ],
-      "technicalNotes": [
-        "File to edit: lib/rss.ts (new file, export generateAtomFeed function that builds Atom XML ~100 lines)",
-        "File to edit: app/feed.xml/route.ts (new route handler, async GET() returns Response with XML body ~40 lines)",
-        "Test command: npm run build && curl -H 'Accept: application/atom+xml' http://localhost:3000/feed.xml | head -30"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "lib/rss.ts",
-        "app/feed.xml/route.ts"
-      ],
-      "_source": "ai-example",
-      "passes": false,
-      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
-    },
-    {
-      "title": "Add Table of Contents component for blog posts with scroll-to-section navigation",
-      "priority": "medium",
-      "description": "Create a sticky TOC component that auto-generates from h2/h3 headings in blog posts, allowing readers to jump to sections. Improves UX for longer-form content.",
-      "acceptanceCriteria": [
-        "BlogTableOfContents component renders above article content, displays h2 and h3 headings in nested list structure with indentation",
-        "Each TOC link uses fragment identifier (#heading-id) matching markdown heading ID; clicking scrolls smoothly to section",
-        "Active heading is highlighted via useEffect hook monitoring scroll position using Intersection Observer; highlights persist as user scrolls"
-      ],
-      "technicalNotes": [
-        "File to edit: components/BlogTableOfContents.tsx (new component, use extractHeadings() helper and Intersection Observer ~120 lines)",
-        "File to edit: app/blog/[slug]/page.tsx (import and render <BlogTableOfContents /> component above article div with id-matching h2/h3 tags)",
-        "Test command: npm run build && npm run start, then navigate blog post and verify TOC renders and fragment links work"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "components/BlogTableOfContents.tsx",
-        "app/blog/[slug]/page.tsx"
-      ],
-      "_source": "ai-example",
-      "passes": false,
-      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
-    },
-    {
-      "title": "Calculate and display estimated reading time on blog posts",
-      "priority": "low",
-      "description": "Add a '5 min read' label to blog post cards and article headers based on word count. Helps readers decide which articles to read.",
-      "acceptanceCriteria": [
-        "BlogPostCard component displays 'X min read' text next to publish date using readingTime(content: string): number function",
-        "Blog post article header (app/blog/[slug]/page.tsx) displays reading time: 'Published March 14 · 5 min read'",
-        "readingTime() utility in lib/readingTime.ts calculates minutes using standard 200 words-per-minute average"
-      ],
-      "technicalNotes": [
-        "File to edit: lib/readingTime.ts (new utility, export readingTime(text: string): number function ~15 lines using Math.ceil(words/200))",
-        "File to edit: components/BlogPostCard.tsx (import readingTime and call with post.content to display result)",
-        "File to edit: app/blog/[slug]/page.tsx (import readingTime and display in article meta line near publishDate)",
-        "Test command: npm run build && grep -E 'min read' components/BlogPostCard.tsx app/blog/\\[slug\\]/page.tsx"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "lib/readingTime.ts",
-        "components/BlogPostCard.tsx",
-        "app/blog/[slug]/page.tsx"
-      ],
-      "_source": "ai-example",
-      "passes": false,
-      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
-    },
-    {
-      "title": "Implement blog post category/tag filtering and dedicated category pages",
-      "priority": "medium",
-      "description": "Add category and tag system to blog posts with filter UI on /blog page. Users can discover related articles by category (e.g., 'Backpacking', 'Jobs', 'Guides') and visit dedicated pages at /blog/category/[slug].",
-      "acceptanceCriteria": [
-        "Blog post type in lib/blog.ts includes category: string and tags: string[] fields; all blog posts updated with categories in frontmatter",
-        "Blog listing page (/blog) renders BlogCategoryFilter component with category buttons; selected category persists in URL as ?category=backpacking",
-        "Category pages generated at /blog/category/[slug] via generateStaticParams() returning all unique categories; each page displays only posts matching that category"
-      ],
-      "technicalNotes": [
-        "File to edit: lib/blog.ts (add category: string and tags: string[] to BlogPost interface ~5 lines)",
-        "File to edit: components/BlogCategoryFilter.tsx (new component, render category buttons and emit onChange callback ~80 lines)",
-        "File to edit: app/blog/page.tsx (import BlogCategoryFilter, implement filter logic based on searchParams.category, pass filtered posts to BlogPostList)",
-        "File to edit: app/blog/category/[slug]/page.tsx (new route, export generateStaticParams() and page component ~60 lines)",
-        "Test command: npm run build && curl http://localhost:3000/blog/category/backpacking | grep -c '<article' (verify posts render)"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "medium",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "lib/blog.ts",
-        "components/BlogCategoryFilter.tsx",
-        "app/blog/page.tsx",
-        "app/blog/category/[slug]/page.tsx"
-      ],
-      "_source": "ai-example",
-      "passes": false,
-      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
-    },
-    {
-      "title": "Create JB News & Updates widget for homepage pulling from curated RSS sources",
+      "title": "Create RSS/Atom feed at /feed.xml with Article schema serialization",
       "priority": "high",
-      "description": "Build a homepage widget fetching latest news items from curated RSS feeds about Johor Bahru (tourism, events, local updates). Updates hourly via ISR. Drives homepage engagement and positions site as news authority.",
+      "description": "Implement Atom 1.0 feed endpoint for blog posts with proper Article metadata, enabling feed readers and aggregators to discover and syndicate travel content to broader audiences.",
       "acceptanceCriteria": [
-        "JBNewsWidget Server Component in components/JBNewsWidget.tsx fetches RSS feeds via lib/rssParser.ts and renders <ul> with 5 news items (headline, source, pubDate, 60-char preview)",
-        "Homepage /app/page.tsx imports and renders <JBNewsWidget /> component with revalidateTag('jb-news'); ISR revalidate: 3600 seconds",
-        "Curated feed URLs stored in config/rss-feeds.ts array; rssParser handles fetch timeouts and returns empty array gracefully; widget displays 'Unable to fetch news' fallback"
+        "GET /feed.xml returns valid Atom 1.0 XML feed with Content-Type: application/atom+xml; charset=utf-8",
+        "Each blog post serialized with title, summary excerpt, published timestamp, author name, and full HTML content in <content type=\"html\">",
+        "Feed includes article:published_time and article:author attributes compatible with social media rich previews"
       ],
       "technicalNotes": [
-        "File to edit: lib/rssParser.ts (new utility, export async fetchRSSItems(feedUrls: string[]): Promise<NewsItem[]> that parses Atom/RSS2.0 feeds ~70 lines)",
-        "File to edit: components/JBNewsWidget.tsx (new Server Component, call fetchRSSItems() and render unordered list of news ~90 lines)",
-        "File to edit: config/rss-feeds.ts (new config file, export array of curated RSS feed URLs for JB news sources ~10 lines)",
-        "File to edit: app/page.tsx (import JBNewsWidget and render in HomePage; add 'use cache' directive and revalidateTag('jb-news'))",
-        "Test command: npm run build && npm run start, navigate http://localhost:3000 and verify news items render with correct structure"
+        "File to create: app/feed.xml/route.ts (generateAtomFeed function handling GET request, ~100 lines)",
+        "File to create: lib/blog-feed.ts (buildFeedEntry, formatAtomDate, escapeXml utilities, ~50 lines)",
+        "Import blog posts from existing blog data structure in lib/blog or data/ directory",
+        "Test command: npm run build && curl -s http://localhost:3000/feed.xml | head -50"
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "lib/rssParser.ts",
-        "components/JBNewsWidget.tsx",
-        "config/rss-feeds.ts",
-        "app/page.tsx"
+        "app/feed.xml/route.ts",
+        "lib/blog-feed.ts",
+        "lib/blog-feed.test.ts"
+      ],
+      "_source": "ai-example",
+      "passes": false,
+      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
+    },
+    {
+      "title": "Add blog post series linking with sequential \"Part X of Y\" navigation",
+      "priority": "medium",
+      "description": "Enable multi-part blog series with metadata, sequential navigation, and schema.org support for comprehensive guides like \"Singapore Work Pass\" (3-part series) and \"JB Itinerary\".",
+      "acceptanceCriteria": [
+        "Blog post frontmatter supports optional series object: {name: string, totalParts: number, currentPart: number}",
+        "BlogSeriesNav component renders \"Part 2 of 3\" badge in post header with previous/next navigation links",
+        "Navigation links properly route via Wouter: href={`/blog/${getPreviousPartSlug(series)}`} with proper error handling for missing parts",
+        "Build fails with clear error if series data is invalid (currentPart > totalParts, missing adjacent parts)"
+      ],
+      "technicalNotes": [
+        "File to create: lib/blog-series.ts (validateSeriesOrder function, getPreviousPartSlug, getNextPartSlug, ~70 lines)",
+        "File to create: components/BlogSeriesNav.tsx (React component with Tailwind styling and Wouter Link, ~60 lines)",
+        "File to modify: app/blog/[slug]/page.tsx (import BlogSeriesNav, render after post title if series exists)",
+        "Test command: npm run test -- lib/blog-series.test.ts && npm run build"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "lib/blog-series.ts",
+        "lib/blog-series.test.ts",
+        "components/BlogSeriesNav.tsx",
+        "app/blog/[slug]/page.tsx"
       ],
       "_source": "ai-example",
       "passes": false,
       "_rejection_reason": "too_simple: only 1 measurable ACs -- specify test commands, file paths, or numeric thresholds"
+    },
+    {
+      "title": "Implement blog post author bio section with schema.org Person markup",
+      "priority": "medium",
+      "description": "Add author profile component below blog posts with name, bio, avatar, and social links; emit schema.org Person JSON-LD for search engine knowledge panels and author discovery.",
+      "acceptanceCriteria": [
+        "BlogAuthorBio component renders semantic <aside> with author image (via next/image), name heading, bio text, and social media links (LinkedIn, Twitter, etc.)",
+        "Post page emits schema.org Person JSON-LD in <head>: {\"@type\": \"Person\", \"name\", \"url\", \"image\", \"sameAs\": [social_urls]}",
+        "Author data stored in lib/blog-authors.ts as const array of {id, name, bio, image, socialLinks} objects; validate author ID at build time",
+        "Person schema validates at schema.org JSON-LD validator; no schema errors in Lighthouse audit"
+      ],
+      "technicalNotes": [
+        "File to create: lib/blog-authors.ts (authors const array with ~20 author objects, getAuthorById function, ~40 lines)",
+        "File to create: components/BlogAuthorBio.tsx (React component rendering <aside> with Tailwind, semantic HTML, ~90 lines)",
+        "File to modify: app/blog/[slug]/page.tsx (add Person schema in generateMetadata, render <BlogAuthorBio author={post.author} /> below post body)",
+        "Test command: npm run test -- components/BlogAuthorBio.test.tsx && npm run build && npm run lighthouse"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "lib/blog-authors.ts",
+        "components/BlogAuthorBio.tsx",
+        "app/blog/[slug]/page.tsx"
+      ],
+      "_source": "ai-example",
+      "passes": false,
+      "_rejection_reason": "too_simple: only 1 measurable ACs -- specify test commands, file paths, or numeric thresholds"
+    },
+    {
+      "title": "Create /blog/resources page with curated JB/Singapore travel links and ItemList schema",
+      "priority": "medium",
+      "description": "New resource hub page grouping external travel websites, transport, accommodation, and dining links by category; emit schema.org ItemList for rich search results.",
+      "acceptanceCriteria": [
+        "Page at app/blog/resources/page.tsx displays resources grouped by 5+ categories: Transport, Dining, Shopping, Accommodation, Immigration",
+        "Each resource link rendered as ResourceCard: displays title, description, category badge, and external link with rel=\"noopener noreferrer\"",
+        "Page emits schema.org WebPage with ItemList schema containing each link as ListItem with name, url, description, and position attributes",
+        "Resources loaded from lib/travel-resources.ts as const TRAVEL_RESOURCES array (~30 curated links); easy to maintain and add new links"
+      ],
+      "technicalNotes": [
+        "File to create: lib/travel-resources.ts (const TRAVEL_RESOURCES array with {title, description, url, category} objects, ~60 lines)",
+        "File to create: app/blog/resources/page.tsx (Next.js page component with generateMetadata, ItemList schema, ~100 lines)",
+        "File to create: components/ResourceCard.tsx (reusable card component with Tailwind, ~40 lines)",
+        "Test command: npm run build && npm run test -- app/blog/resources/page.test.ts"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "lib/travel-resources.ts",
+        "app/blog/resources/page.tsx",
+        "components/ResourceCard.tsx"
+      ],
+      "_source": "ai-example",
+      "passes": false,
+      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
+    },
+    {
+      "title": "Add blog post difficulty level indicator with semantic badge and build-time validation",
+      "priority": "low",
+      "description": "Classify blog posts as Beginner/Intermediate/Advanced with visual badge on cards and post headers; help backpackers quickly assess guide complexity without reading full post.",
+      "acceptanceCriteria": [
+        "Blog post frontmatter includes optional difficulty: \"Beginner\" | \"Intermediate\" | \"Advanced\" enum field with default \"Intermediate\"",
+        "DifficultyBadge component renders semantic <span role=\"doc-note\" aria-label=\"Difficulty: {level}\"> with Tailwind color: blue (Beginner), yellow (Intermediate), red (Advanced)",
+        "Badge displays on blog post card (components/BlogCard.tsx) and post header (app/blog/[slug]/page.tsx); includes icon (🟢/🟡/🔴)",
+        "Build validates difficulty enum at collectBlogPosts() time; fails if invalid value provided"
+      ],
+      "technicalNotes": [
+        "File to create: lib/blog-difficulty.ts (validateDifficulty function, getDifficultyColor helper, difficulty type definition, ~30 lines)",
+        "File to create: components/DifficultyBadge.tsx (React component with Tailwind and icon, ~40 lines)",
+        "File to modify: app/blog/[slug]/page.tsx (render <DifficultyBadge level={post.difficulty} /> in post header)",
+        "Test command: npm run test -- components/DifficultyBadge.test.ts && npm run build"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "lib/blog-difficulty.ts",
+        "components/DifficultyBadge.tsx",
+        "app/blog/[slug]/page.tsx"
+      ],
+      "_source": "ai-example",
+      "passes": false,
+      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
     }
   ]
 }

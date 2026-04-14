@@ -58,15 +58,14 @@ export default function Header() {
       <nav className="container-custom flex items-center justify-between px-6 md:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10">
-            <Image
-              src="/images/logo.png"
-              alt="Pelangi Capsule Hostel Logo - Budget accommodation in Johor Bahru"
-              fill
-              sizes="40px"
-              className="object-contain"
-            />
-          </div>
+          <Image
+            src="/images/logo.png"
+            alt="Pelangi Capsule Hostel Logo - Budget accommodation in Johor Bahru"
+            width={40}
+            height={40}
+            className="object-contain"
+            priority
+          />
           <div className="flex flex-col">
             <span className="font-display text-xl font-medium tracking-tight transition-colors duration-300 text-stone-900 dark:text-stone-100">
               Pelangi

@@ -248,6 +248,19 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[security] Implement React 19.2 useEffectEvent for stable analytics event handlers",
+      "description": "Auto-generated security test from US-161",
+      "from_story": "US-161",
+      "command": "",
+      "priority": "high",
+      "id": "security-020",
+      "created_ts": "2026-04-14T01:46:06Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }

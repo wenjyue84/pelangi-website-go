@@ -8,13 +8,11 @@ import { setLanguagePreference } from "@/app/actions/language";
 const LANGUAGES = [
   { code: "en", label: "EN" },
   { code: "ms", label: "BM", href: "/ms/terma" },
-  { code: "zh", label: "中文" },
+  { code: "zh", label: "中文", href: "/zh" },
 ];
 
 export default function LanguageSwitcher() {
   const [currentLanguage, setCurrentLanguage] = useState("en");
-  const [showToast, setShowToast] = useState(false);
-  const [toastMessage, setToastMessage] = useState("");
   const router = useRouter();
 
   const handleLanguageChange = async (langCode: string) => {
@@ -30,12 +28,6 @@ export default function LanguageSwitcher() {
       return;
     }
 
-    // Show toast for Chinese language
-    if (langCode === "zh") {
-      setToastMessage("中文版本即将推出 (Chinese version coming soon)");
-      setShowToast(true);
-      setTimeout(() => setShowToast(false), 3000);
-    }
   };
 
   return (
@@ -61,14 +53,6 @@ export default function LanguageSwitcher() {
         ))}
       </nav>
 
-      {/* Toast notification */}
-      {showToast && (
-        <div className="fixed bottom-24 md:bottom-6 left-4 right-4 md:left-auto md:right-6 z-60 max-w-sm animate-fade-in">
-          <div className="bg-stone-900 text-white px-4 py-3 rounded-lg shadow-lg text-sm">
-            {toastMessage}
-          </div>
-        </div>
-      )}
     </div>
   );
 }
