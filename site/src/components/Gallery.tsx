@@ -183,7 +183,7 @@ export default function Gallery() {
         </div>
         <div
           ref={scrollRef}
-          className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 px-4 md:px-0 snap-x snap-mandatory"
+          className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 px-4 md:px-0 snap-x snap-mandatory carousel-scroll-container"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {children}

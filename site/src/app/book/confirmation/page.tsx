@@ -57,7 +57,7 @@ export default function BookingConfirmationPage() {
           </div>
 
           {/* CTA links */}
-          <div className="mt-6 flex flex-col sm:flex-row gap-3">
+          <div className="mt-6 flex flex-col sm:flex-row gap-3 print:hidden">
             <Link
               href="/check-in"
               className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-amber-700 text-white

@@ -148,6 +148,87 @@
   @apply py-20 md:py-28 lg:py-32 px-6 md:px-8;
 }
 
+/* ============================================================
+   CSS Native Scroll-Driven Carousel (US-187)
+   Chrome 135+ ships ::scroll-button() and ::scroll-marker
+   pseudo-elements for automatic ARIA button roles and
+   keyboard handling. Fallback: scrollBy() JS continues to work.
+   ============================================================ */
+@supports (selector(::scroll-button(*))) {
+  .carousel-scroll-container {
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    overflow-x: auto;
+  }
+
+  .carousel-scroll-container > * {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  /* Automatic scroll prev/next buttons with ARIA roles */
+  .carousel-scroll-container::scroll-button(prev) {
+    @apply w-11 h-11 rounded-full bg-white dark:bg-stone-800 shadow-md
+           flex items-center justify-center
+           hover:bg-stone-50 dark:hover:bg-stone-700
+           transition-colors cursor-pointer;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+  }
+
+  .carousel-scroll-container::scroll-button(next) {
+    @apply w-11 h-11 rounded-full bg-white dark:bg-stone-800 shadow-md
+           flex items-center justify-center
+           hover:bg-stone-50 dark:hover:bg-stone-700
+           transition-colors cursor-pointer;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+  }
+
+  /* Scroll marker group for keyboard-accessible navigation dots */
+  .carousel-scroll-container::scroll-marker {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .carousel-scroll-container::scroll-marker-item {
+    @apply w-2 h-2 rounded-full bg-stone-300 dark:bg-stone-600
+           cursor-pointer transition-colors;
+  }
+
+  .carousel-scroll-container::scroll-marker-item[aria-current="true"] {
+    @apply bg-amber-600 dark:bg-amber-400;
+  }
+}
+
+/* Fallback: older browsers degrade to basic scrollable container */
+@supports not (selector(::scroll-button(*))) {
+  .carousel-scroll-container {
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .carousel-scroll-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel-scroll-container > * {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+}
+
 @utility container-custom {
   /* Container */
   @apply max-w-6xl mx-auto;
