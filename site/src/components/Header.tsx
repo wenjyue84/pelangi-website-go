@@ -65,6 +65,7 @@ export default function Header() {
             height={40}
             className="object-contain"
             priority
+            unoptimized
           />
           <div className="flex flex-col">
             <span className="font-display text-xl font-medium tracking-tight transition-colors duration-300 text-stone-900 dark:text-stone-100">

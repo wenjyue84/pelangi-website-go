@@ -585,3 +585,5 @@ opus"}
 {"ts":"2026-04-14T01:51:49Z","event":"phase_start","run_id":"69dd34342c1f","level":"INFO","phase":"G","iteration":27,"trace_id":"4ce43d1b391b4be60fe582bd498bb221","span_id":"14c009c62a7fadac"}
 {"ts":"2026-04-14T01:51:53Z","event":"phase_start","run_id":"69dd34342c1f","level":"INFO","phase":"I","iteration":27,"trace_id":"4ce43d1b391b4be60fe582bd498bb221","span_id":"14c009c62a7fadac"}
 {"ts":"2026-04-14T01:52:12Z","event":"plan_cache_miss","story_id":"US-162"}
+{"ts":"2026-04-14T02:06:14Z","event":"phase_timeout","run_id":"69dd34342c1f","level":"INFO","phase":"I","story_id":"US-173","iteration":27,"duration_ms":902000,"timeout_s":900,"trace_id":"7db0dd348df2a729e0e06dfeeba550a5","span_id":"01e7aaf80e17a44e"}
+{"ts":"2026-04-14T02:06:20Z","event":"plugin_hook","run_id":"69dd34342c1f","level":"INFO","plugin":"notify-slack","hook":"post-story","type":"POST","exit_code":0,"duration_s":0,"trace_id":"7db0dd348df2a729e0e06dfeeba550a5","span_id":"01e7aaf80e17a44e"}
