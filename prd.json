@@ -3969,7 +3969,9 @@
       "dependencies": [],
       "estimatedComplexity": "large",
       "passes": false,
-      "model": "haiku"
+      "model": "haiku",
+      "_skipped": true,
+      "_skipReason": "Requires WhatsApp Business Platform Cloud API credentials — not implementable in this codebase"
     },
     {
       "id": "US-176",
@@ -3993,7 +3995,9 @@
       "dependencies": [],
       "estimatedComplexity": "medium",
       "passes": false,
-      "model": "sonnet"
+      "model": "sonnet",
+      "_skipped": true,
+      "_skipReason": "Requires external CI setup for schema.org validator — not frontend code"
     },
     {
       "id": "US-177",
@@ -4533,7 +4537,9 @@
       "dependencies": [],
       "estimatedComplexity": "small",
       "passes": false,
-      "model": "haiku"
+      "model": "haiku",
+      "_skipped": true,
+      "_skipReason": "Requires Google Search Console OAuth setup — not implementable in this codebase"
     },
     {
       "id": "US-203",
@@ -4995,7 +5001,9 @@
       "dependencies": [],
       "estimatedComplexity": "small",
       "passes": false,
-      "model": "haiku"
+      "model": "haiku",
+      "_skipped": true,
+      "_skipReason": "Requires Vercel platform config for HTTP 103 Early Hints — not code"
     },
     {
       "id": "US-233",

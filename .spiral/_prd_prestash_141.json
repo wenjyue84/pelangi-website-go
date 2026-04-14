@@ -3969,7 +3969,9 @@
       "dependencies": [],
       "estimatedComplexity": "large",
       "passes": false,
-      "model": "haiku"
+      "model": "haiku",
+      "_skipped": true,
+      "_skipReason": "Requires WhatsApp Business Platform Cloud API credentials — not implementable in this codebase"
     },
     {
       "id": "US-176",
@@ -3993,7 +3995,9 @@
       "dependencies": [],
       "estimatedComplexity": "medium",
       "passes": false,
-      "model": "sonnet"
+      "model": "sonnet",
+      "_skipped": true,
+      "_skipReason": "Requires external CI setup for schema.org validator — not frontend code"
     },
     {
       "id": "US-177",
@@ -4223,49 +4227,6 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
-      "passes": false,
-      "model": "haiku"
-    },
-    {
-      "id": "US-188",
-      "title": "Adopt CSS appearance: base-select for styled native <select> elements",
-      "priority": "low",
-      "description": "Chrome 130+ (Interop 2025) ships appearance: base-select, allowing the native <select> element to be fully styled with CSS while retaining built-in accessibility semantics. This eliminates the need for custom Radix UI Select components in simple dropdowns, reducing bundle size.",
-      "acceptanceCriteria": [
-        "Language switcher and any filter dropdowns use <select> with appearance: base-select where custom Select was used",
-        "Styled select matches brand design system (border-radius, colours, font)",
-        "@supports (appearance: base-select) guard ensures progressive enhancement",
-        "No regression in WCAG 4.1.2 — native select retains keyboard and screen reader support"
-      ],
-      "technicalNotes": [
-        "Reference: https://developer.chrome.com/blog/a-customizable-select",
-        "Polyfill not needed — fallback to system select is acceptable",
-        "Works in Chrome 130+, Safari TP, Firefox Nightly as of 2025"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "passes": false,
-      "model": "haiku"
-    },
-    {
-      "id": "US-189",
-      "title": "Use <dialog closedby='any'> for light-dismiss modals without JavaScript",
-      "priority": "low",
-      "description": "Chrome 133+ adds the closedby attribute to the native <dialog> element, enabling backdrop-click dismiss declaratively without JavaScript event listeners. Reduces bundle size and improves accessibility reliability for cookie consent, gallery lightbox, and booking modals.",
-      "acceptanceCriteria": [
-        "Cookie consent, gallery lightbox, and booking confirmation modals use <dialog closedby='any'>",
-        "Escape key closes all dialogs without additional JS handler",
-        "Clicking backdrop closes dialogs where closedby='any' is set",
-        "Progressive enhancement: feature detection used for graceful fallback",
-        "Screen readers announce dialog correctly via native dialog role"
-      ],
-      "technicalNotes": [
-        "Reference: https://developer.chrome.com/blog/dialog-closedby",
-        "Combine with ::backdrop CSS for branded overlay",
-        "Remove duplicate JS click-outside listeners after migration"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
       "passes": false,
       "model": "haiku"
     },
@@ -4576,7 +4537,9 @@
       "dependencies": [],
       "estimatedComplexity": "small",
       "passes": false,
-      "model": "haiku"
+      "model": "haiku",
+      "_skipped": true,
+      "_skipReason": "Requires Google Search Console OAuth setup — not implementable in this codebase"
     },
     {
       "id": "US-203",
@@ -4623,30 +4586,6 @@
       "dependencies": [],
       "estimatedComplexity": "small",
       "passes": true
-    },
-    {
-      "id": "US-205",
-      "title": "Add PWA App Badge API for unread booking inquiry notifications",
-      "priority": "low",
-      "description": "The Badging API (navigator.setAppBadge) allows an installed PWA to show a numeric badge on its home screen icon — similar to native app notification badges — without requiring a disruptive push notification. When a new booking inquiry or WhatsApp message arrives, the badge count increments, giving staff a non-intrusive signal. The API is supported in Chrome, Edge, and Safari on installed PWAs.",
-      "acceptanceCriteria": [
-        "navigator.setAppBadge(count) is called when a new booking inquiry is received (via push message or polling)",
-        "navigator.clearAppBadge() is called when the staff user opens and reads all pending inquiries",
-        "Badge displays correctly on the PWA home screen icon on Android (Chrome) and iOS (Safari) when the app is installed",
-        "Graceful degradation: badge API calls are wrapped in feature detection (if ('setAppBadge' in navigator))",
-        "Badge count does not exceed actual unread count (no stale badge after read)"
-      ],
-      "technicalNotes": [
-        "Badging API MDN: https://developer.mozilla.org/en-US/docs/Web/API/Badging_API",
-        "Chrome capability guide: https://developer.chrome.com/docs/capabilities/web-apis/badging-api",
-        "On Android, Chrome automatically shows a badge when there is an unread notification — manual setAppBadge may be redundant; test both flows",
-        "Requires HTTPS and the app to be installed (in standalone/fullscreen display mode)",
-        "Combine with the existing Web Push notification flow for maximum reliability"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "passes": false,
-      "model": "haiku"
     },
     {
       "id": "US-209",
@@ -5062,7 +5001,9 @@
       "dependencies": [],
       "estimatedComplexity": "small",
       "passes": false,
-      "model": "haiku"
+      "model": "haiku",
+      "_skipped": true,
+      "_skipReason": "Requires Vercel platform config for HTTP 103 Early Hints — not code"
     },
     {
       "id": "US-233",
@@ -5702,6 +5643,70 @@
         "contextWindow": 10
       },
       "_passedCommit": "d78bd9f5aa293cbd8cea28c97a110470cbb9a136"
+    },
+    {
+      "id": "US-263",
+      "title": "Create blog post metadata configuration file for reuse across routes",
+      "priority": "medium",
+      "description": "Extract blog configuration (site name, author, social profiles) into dedicated TypeScript files to support DRY principle and enable consistent metadata across /feed.xml, blog layout, and components.",
+      "acceptanceCriteria": [
+        "Create `/app/blog/config.ts` exporting blogConfig object with title, description, authorName, authorEmail, and socialLinks array",
+        "Create `/app/blog/constants.ts` exporting BLOG_CATEGORIES (string array) and BLOG_AUTHORS (Record of author profiles)",
+        "Import and use blogConfig in both `/app/feed.xml/route.ts` (RSS generation) and blog layout component"
+      ],
+      "technicalNotes": [
+        "File to create: app/blog/config.ts with interface BlogConfig { title: string; description: string; authorName: string; socialLinks: { platform: string; url: string }[] }",
+        "File to modify: app/feed.xml/route.ts to import blogConfig and use blogConfig.title, blogConfig.authorName in RSS XML generation",
+        "Test command: npm test -- app/blog/config.test.ts --run (verify config exports are defined and types are correct)"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "_source": "ai-example",
+      "model": "haiku"
+    },
+    {
+      "id": "US-264",
+      "title": "Implement Zod schema validation for blog post frontmatter",
+      "priority": "medium",
+      "description": "Add runtime validation for blog post metadata using Zod to catch schema errors at build time before feed generation or page rendering.",
+      "acceptanceCriteria": [
+        "Create `/app/blog/schema.ts` exporting BlogPostSchema (Zod object) with required fields: id, slug, title, date (ISO 8601), tags (string array), excerpt",
+        "Create `/app/blog/lib/load-validated-posts.ts` with loadAndValidatePosts() function that parses and validates all posts, throwing descriptive error on invalid data",
+        "Update `/app/blog/posts.ts` to call loadAndValidatePosts() on import, ensuring all posts are validated at runtime"
+      ],
+      "technicalNotes": [
+        "File to create: app/blog/schema.ts with export const BlogPostSchema = z.object({ id: z.string().min(1), slug: z.string().regex(/^[a-z0-9-]+$/), title: z.string(), date: z.coerce.date(), tags: z.array(z.string()), excerpt: z.string() })",
+        "File to create: app/blog/lib/load-validated-posts.ts exporting loadAndValidatePosts(posts: unknown[]): BlogPost[] { return posts.map(p => BlogPostSchema.parse(p)) }",
+        "Test command: npm test -- app/blog/schema.test.ts --run (test with valid posts, invalid dates, missing fields)"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "_source": "ai-example",
+      "model": "sonnet"
+    },
+    {
+      "id": "US-265",
+      "title": "Implement RSS auto-discovery link tag in head and create JSON Feed 1.1 endpoint",
+      "priority": "high",
+      "description": "Add RSS and JSON Feed auto-discovery meta tags in the HTML head and create a modern JSON Feed 1.1 endpoint at /feed.json. Enables blog content syndication across multiple feed reader platforms.",
+      "acceptanceCriteria": [
+        "Add <link rel='alternate' type='application/rss+xml' href='/feed.xml' /> and <link rel='alternate' type='application/feed+json' href='/feed.json' /> to site/src/app/layout.tsx metadata",
+        "Create site/src/app/feed.json/route.ts that returns valid JSON Feed 1.1 with 10 most recent blog posts including title, content_html, date_published, and author",
+        "Verify feed structure: curl 'http://localhost:3000/feed.json' | jq '.items[0]' contains all required JSON Feed 1.1 fields"
+      ],
+      "technicalNotes": [
+        "File to edit: site/src/app/layout.tsx (add links in root layout metadata)",
+        "File to create: site/src/app/feed.json/route.ts (export GET handler returning proper JSON Feed 1.1 response)",
+        "Test command: uv run vitest site/src/app/feed.json/route.test.ts -v"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "_source": "ai-example",
+      "last_attempted": "2026-04-14T05:12:56Z",
+      "model": "haiku"
     }
   ]
 }
