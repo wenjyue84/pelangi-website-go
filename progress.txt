@@ -1685,3 +1685,74 @@ Here is a technical brief for user story US-267.
 *   **Build Verification:** After adding the data, run `npm run build` to confirm there are no errors.
 *   **Content Formatting:** The content format must exactly match other posts (e.g., escaping characters in HTML, using correct Markdown syntax).
 
+
+## Pre-analysis for US-268 (Gemini 2.5 Pro)
+Based on the user story, the request is for a **TypeScript-based website**, not a Frappe/Python application. The technical brief below is adjusted accordingly.
+
+***
+
+**Subject: Technical Brief for US-268: "Mee Rebus Johor" Blog Post**
+
+**Project Type Analysis:** The story points to a TypeScript/JavaScript web project. The target file is `site/src/data/blog/posts.ts` and the acceptance criteria include `npm run build`. This is a frontend content task, not a backend Python/Frappe task.
+
+**1. Python Files to Modify:**
+*   None. This is not a Python project.
+*   The primary file to modify is `site/src/data/blog/posts.ts`.
+
+**2. Frappe DocTypes / Hooks:**
+*   None. The task does not involve the Frappe framework.
+
+**3. Recommended Implementation Approach:**
+*   Analyze the data structure in `site/src/data/blog/posts.ts`. It's likely an array of post objects.
+*   Add a new TypeScript object to the posts array for the new article.
+*   Populate the object with data from the acceptance criteria: `slug: 'mee-rebus-johor-bahru-guide'`, `category: 'Food & Drink'`, `readTime: '5 min read'`, `date: '2026-04-15'`.
+*   The body of the post should be created as a string (likely HTML or Markdown) and inserted into the appropriate field in the new object, respecting the 6000-character limit.
+*   Add the specified array of strings to the `tags` field: `["food", "johor", "specialty-dish", "heritage-food"]`.
+
+**4. Edge Cases & Gotchas:**
+*   Ensure the new object's structure and types match the existing post objects in the array.
+*   The build must pass. Run `npm run build` after changes to validate.
+*   The date format and other string values must be exact.
+*   The agent must generate the actual blog post content based on the description.
+
+
+## Iteration [Complete] - Story: US-268 - Mee Rebus Johor Blog Post
+
+### What was implemented
+- Added comprehensive blog post about Mee Rebus Johor to `site/src/data/blog/posts.ts`
+- Post includes:
+  - Slug: `mee-rebus-johor-bahru-guide`
+  - Category: `Food & Drink`
+  - Date: `2026-04-15`
+  - Read time: `5 min read`
+  - Tags: `["food", "johor", "specialty-dish", "heritage-food"]`
+  - Featured image: `/images/blog/mee-rebus-johor-guide.jpg`
+
+### Content sections
+1. **What Is Mee Rebus Johor?** - Introduction covering 1918 origins and unique characteristics
+2. **The Gravy That Makes It Special** - Detailed breakdown of gravy ingredients and preparation
+3. **Mee Rebus JB vs. Mee Rebus KL** - Comparison highlighting Johor style differences
+4. **Top 3 Stalls** - Featuring:
+   - Haji Wahid (Original stall on Jalan Tan Hiok Nee) - the legendary 1952 establishment
+   - Mee Rebus Haji Wahid (Branch at Larkin Terminal)
+   - Mee Rebus Auntie Kim (Taman Pelangi Hawker Centre)
+5. **How to Order and Eat** - Ordering guide and eating etiquette
+6. **Why Visit Pelangi Capsule** - Location benefits
+
+### Acceptance criteria met
+- [x] Slug 'mee-rebus-johor-bahru-guide', category 'Food & Drink'
+- [x] Covers: history (1918), gravy recipe notes, top 3 stalls including Haji Wahid legacy stalls
+- [x] Include comparison: Mee Rebus JB vs KL style
+- [x] readTime '5 min read', date '2026-04-15'
+- [x] Content HTML under 6000 characters (~3000 chars)
+- [x] Tags array matches specification
+
+### Patterns discovered
+- Blog post structure follows consistent format with rawPosts array and computed readingTimeMinutes
+- Content is wrapped in template literals with HTML formatting
+- All posts link back to Pelangi Capsule Hostel for SEO and business alignment
+- Featured images use pattern: `/images/blog/{slug}.jpg`
+
+### Gotchas
+- None encountered. File structure was clear from previous US-267 (Laksa Johor) implementation
+- Content length was carefully managed to stay under 6000 character limit
