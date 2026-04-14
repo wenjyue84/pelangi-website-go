@@ -5727,7 +5727,8 @@
       "passes": false,
       "_source": "ai-example",
       "last_attempted": "2026-04-14T05:12:56Z",
-      "model": "haiku"
+      "model": "haiku",
+      "_scopeCreep": true
     }
   ]
 }
