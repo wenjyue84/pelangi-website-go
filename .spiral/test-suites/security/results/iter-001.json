@@ -1,12 +1,12 @@
 {
   "iteration": 1,
   "suite_type": "security",
-  "timestamp": "2026-04-13T18:39:41Z",
+  "timestamp": "2026-04-14T09:29:34Z",
   "summary": {
-    "total": 18,
+    "total": 21,
     "passed": 0,
     "failed": 0,
-    "skipped": 18
+    "skipped": 21
   },
   "tests": [
     {
@@ -272,6 +272,51 @@
       "priority": "high",
       "id": "security-018",
       "created_ts": "2026-04-13T18:39:39Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0,
+      "result": "skip",
+      "reason": "no command defined"
+    },
+    {
+      "title": "[security] Integrate channel manager for live OTA availability synchronisation",
+      "description": "Auto-generated security test from US-196",
+      "from_story": "US-196",
+      "command": "",
+      "priority": "high",
+      "id": "security-019",
+      "created_ts": "2026-04-13T19:48:23Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0,
+      "result": "skip",
+      "reason": "no command defined"
+    },
+    {
+      "title": "[security] Implement React 19.2 useEffectEvent for stable analytics event handlers",
+      "description": "Auto-generated security test from US-161",
+      "from_story": "US-161",
+      "command": "",
+      "priority": "high",
+      "id": "security-020",
+      "created_ts": "2026-04-14T01:46:06Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0,
+      "result": "skip",
+      "reason": "no command defined"
+    },
+    {
+      "title": "[security] Add WhatsApp Business Platform Cloud API for booking confirmation notifications",
+      "description": "Auto-generated security test from US-175",
+      "from_story": "US-175",
+      "command": "",
+      "priority": "high",
+      "id": "security-021",
+      "created_ts": "2026-04-14T07:20:29Z",
       "last_run_ts": "",
       "last_result": "pending",
       "obsolete": false,

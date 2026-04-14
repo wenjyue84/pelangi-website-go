@@ -1,133 +1,138 @@
 {
   "stories": [
     {
-      "title": "Create blog.ts utility module with category and related post queries",
+      "title": "Add JB News & Updates widget to homepage with curated RSS feed",
       "priority": "high",
-      "description": "Build TypeScript utilities to query blog posts by category, find related posts, and enumerate all published articles for sidebar widgets and SEO features.",
+      "description": "Implement a homepage widget that fetches and displays 3 latest news items from curated local RSS sources (JB tourism, travel blogs) to provide fresh content signals and encourage repeat visits for SEO.",
       "acceptanceCriteria": [
-        "blog.ts exports getPostsByCategory(category: string): Post[] function that filters and sorts blog posts by category field",
-        "blog.ts exports getRelatedPosts(slug: string, limit?: number): Post[] function matching by shared categories, excluding the source post",
-        "Functions successfully load and parse all markdown files from site/src/content/blog/ using gray-matter for frontmatter extraction"
+        "Widget renders 3 latest news items with title, excerpt (100 chars), publish date, and source link on homepage above fold",
+        "RSS parsing happens at build time (via ISR) and caches for 6 hours to prevent stale content",
+        "Each news item includes source attribution without rel=nofollow to credit and link to original sources"
       ],
       "technicalNotes": [
-        "File to create: site/src/lib/blog.ts with Post interface matching frontmatter schema (title, slug, date, author, category, excerpt, image)",
-        "File to modify: site/src/lib/types.ts to export Post type for reuse across components",
-        "Test command: npm run test -- src/__tests__/blog.test.ts -v (verify getPostsByCategory filters correctly, getRelatedPosts returns max 3 posts)"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "site/src/lib/blog.ts",
-        "site/src/lib/types.ts",
-        "site/src/__tests__/blog.test.ts"
-      ],
-      "_source": "ai-example",
-      "passes": false,
-      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
-    },
-    {
-      "title": "Implement Article and BreadcrumbList schema.org markup on blog post pages",
-      "priority": "high",
-      "description": "Generate structured data for Article and BreadcrumbList JSON-LD on all blog post pages for enhanced SERP visibility, rich snippets, and Google News indexing.",
-      "acceptanceCriteria": [
-        "Blog post page generateMetadata includes Article schema with headline, author, datePublished, dateModified, wordCount, and image URL properties in JSON-LD format",
-        "BreadcrumbList schema renders breadcrumb navigation path: Home > Blog > [Category] > [Post Title] with proper itemListElement structure",
-        "Both schemas output as <script type='application/ld+json'> in page <head> and validate against schema.org validation tool"
-      ],
-      "technicalNotes": [
-        "File to modify: site/src/app/blog/[slug]/page.tsx to call new generateArticleSchema(post, url) in generateMetadata function",
-        "File to create: site/src/lib/structuredData.ts with exported functions generateArticleSchema(post, url) and generateBreadcrumbSchema(breadcrumbs)",
-        "Test command: npm run build && curl http://localhost:3000/blog/[slug] | grep -A20 '\"@type\":\"Article\"' should output valid JSON-LD"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "site/src/app/blog/[slug]/page.tsx",
-        "site/src/lib/structuredData.ts"
-      ],
-      "_source": "ai-example",
-      "passes": false,
-      "_rejection_reason": "too_simple: only 1 measurable ACs -- specify test commands, file paths, or numeric thresholds"
-    },
-    {
-      "title": "Extend sitemap.ts to include all blog post URLs with lastmod dates",
-      "priority": "high",
-      "description": "Dynamically generate XML sitemap entries for all published blog posts to ensure Google crawls and prioritizes blog content alongside main pages.",
-      "acceptanceCriteria": [
-        "sitemap.ts reads from site/src/content/blog/ directory and generates URL objects for each .md file with pattern /blog/[slug]",
-        "Each blog URL entry includes lastmod timestamp extracted from markdown frontmatter date field in ISO 8601 format",
-        "Blog post URLs assigned priority 0.8 (below homepage 1.0, above resource pages 0.5) to signal medium importance"
-      ],
-      "technicalNotes": [
-        "File to modify: site/src/app/sitemap.ts to import getAllBlogPosts() helper and append to urlSet array with proper lastmod parsing",
-        "File to create: site/src/lib/getBlogPosts.ts exporting getAllBlogPosts(): {slug, lastmod}[] function using fs.readdirSync and gray-matter",
-        "Test command: npm run build && grep -c '/blog/' .next/server/sitemap-0.xml should match blog post count (e.g., 8+ matches)"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "site/src/app/sitemap.ts",
-        "site/src/lib/getBlogPosts.ts"
-      ],
-      "_source": "ai-example",
-      "passes": false,
-      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
-    },
-    {
-      "title": "Build Table of Contents component with anchor link navigation for blog posts",
-      "priority": "medium",
-      "description": "Extract H2/H3 headings from blog markdown and render as sticky TOC sidebar for improved UX on long-form travel articles (1500+ words).",
-      "acceptanceCriteria": [
-        "TableOfContents component accepts markdown content string and extracts all h2 and h3 headings with auto-generated anchor IDs (e.g., #why-backpack-jb)",
-        "TOC renders as sticky sidebar on desktop (top 20% viewport), collapsible drawer on mobile breakpoint, with active link highlight as user scrolls",
-        "Clicking any TOC link scrolls smoothly to matching heading with window.location.hash update for bookmark support"
-      ],
-      "technicalNotes": [
-        "File to create: site/src/components/TableOfContents.tsx using remark parser to extract headings from markdown AST",
-        "File to modify: site/src/app/blog/[slug]/page.tsx to render <TableOfContents content={post.content} /> above blog body, wrap headings with id attributes",
-        "Test command: npm run dev && npx playwright test e2e/blog-toc.spec.ts (verify TOC extracts 5+ headings, scroll spy highlights active section)"
+        "File to create: site/lib/rssFeeds.ts — export const RSS_SOURCES array with 4+ trusted JB/Malaysia tourism feed URLs",
+        "File to create: site/components/home/NewsWidget.tsx — async React component that fetches and renders news items",
+        "Test command: npm run build && npm run test -- site/components/home/NewsWidget.test.tsx"
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "site/src/components/TableOfContents.tsx",
-        "site/src/app/blog/[slug]/page.tsx",
-        "e2e/blog-toc.spec.ts"
+        "site/lib/rssFeeds.ts",
+        "site/lib/parseFeed.ts",
+        "site/components/home/NewsWidget.tsx",
+        "site/app/page.tsx"
       ],
       "_source": "ai-example",
       "passes": false,
       "_rejection_reason": "too_simple: only 1 measurable ACs -- specify test commands, file paths, or numeric thresholds"
     },
     {
-      "title": "Integrate JBNewsWidget component on homepage pulling from Bernama RSS feed",
-      "priority": "medium",
-      "description": "Display latest Johor Bahru news items on homepage to increase freshness signals for Google crawler, improve repeat visitor engagement, and provide travel updates.",
+      "title": "Implement blog category taxonomy with filter UI and dynamic category pages",
+      "priority": "high",
+      "description": "Add category taxonomy (Transport, Food, Jobs, Culture, Budget) to all blog posts with real-time client-side filter on /blog index and generate dynamic /blog/category/[slug] pages to capture long-tail SEO traffic.",
       "acceptanceCriteria": [
-        "JBNewsWidget component fetches and parses RSS from Bernama RSS (https://www.bernama.com/feed/latest.rss) via /api/rss proxy endpoint",
-        "Widget displays top 3 latest news items with headline, publication date (relative time), source name, and external link (rel='noopener noreferrer')",
-        "Widget appears on homepage after hero section, includes 'View All JB News' link to /news page, and updates every 4 hours via ISR"
+        "Blog index displays category filter that updates post list in real-time without page reload; selected category shows count",
+        "Each dynamic category page (/blog/category/transport, /blog/category/food) renders with og:title, canonical, and CollectionPage schema",
+        "generateStaticParams pre-builds all category routes to static HTML; category pages pass schema.org validation with no errors"
       ],
       "technicalNotes": [
-        "File to create: site/src/components/JBNewsWidget.tsx component with React.memo, conditionally render skeleton during data load",
-        "File to create: site/src/app/api/rss/route.ts route handler using rss-parser npm package, cache response with unstable_cache for 4 hours, return JSON array of news items",
-        "File to modify: site/src/app/page.tsx to import and render <JBNewsWidget /> component, test via npm run dev && curl http://localhost:3000/api/rss?feed=bernama"
+        "File to create: site/lib/blogCategories.ts — export const BLOG_CATEGORIES: Record<string, CategoryMeta> with 5+ categories",
+        "File to create: site/app/blog/category/[slug]/page.tsx — async page with generateMetadata and generateStaticParams",
+        "Test command: npm run build && npm run test -- site/app/blog/category"
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "site/src/components/JBNewsWidget.tsx",
-        "site/src/app/api/rss/route.ts",
-        "site/src/app/page.tsx"
+        "site/lib/blogCategories.ts",
+        "site/lib/blogData.ts",
+        "site/app/blog/page.tsx",
+        "site/app/blog/category/[slug]/page.tsx",
+        "site/components/blog/CategoryFilter.tsx"
+      ],
+      "_source": "ai-example",
+      "passes": false,
+      "_rejection_reason": "too_simple: only 1 measurable ACs -- specify test commands, file paths, or numeric thresholds"
+    },
+    {
+      "title": "Build Table of Contents component with scroll spy for blog posts",
+      "priority": "medium",
+      "description": "Create auto-generated Table of Contents sidebar that extracts h2/h3 headings from blog posts and highlights current section as user scrolls to improve long-form content navigation and internal linking.",
+      "acceptanceCriteria": [
+        "TableOfContents component extracts all h2 and h3 headings from post HTML and renders as nested list with proper indentation",
+        "Current section highlights dynamically via Intersection Observer API as user scrolls; highlight persists during scroll",
+        "Clicking TOC link smoothly scrolls page to heading with 80px offset (sticky header height) and updates URL hash"
+      ],
+      "technicalNotes": [
+        "File to create: site/lib/extractHeadings.ts — export function extractHeadingsFromElement(root: HTMLElement): Heading[]",
+        "File to create: site/components/blog/TableOfContents.tsx — React component using useEffect, useRef, and Intersection Observer",
+        "Test command: npm run test -- site/components/blog/TableOfContents.test.tsx -v"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "site/lib/extractHeadings.ts",
+        "site/components/blog/TableOfContents.tsx",
+        "site/app/blog/[slug]/page.tsx"
+      ],
+      "_source": "ai-example",
+      "passes": false,
+      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
+    },
+    {
+      "title": "Add estimated reading time calculation and display on blog posts",
+      "priority": "medium",
+      "description": "Calculate and display estimated reading time (200 wpm baseline) on blog post cards, post headers, and collection pages to set user expectations and improve engagement signals for SEO.",
+      "acceptanceCriteria": [
+        "calculateReadingTime(wordCount: number) function returns minutes as integer rounded up (1 min minimum); 100 words = 1 min",
+        "Reading time displays on /blog index cards below excerpt as '7 min read' in gray text (font-size: 14px)",
+        "Reading time displays on blog post header next to publication date with clock icon using Lucide or shadcn icon"
+      ],
+      "technicalNotes": [
+        "File to create: site/lib/calculateReadingTime.ts — export const calculateReadingTime = (wordCount: number): number",
+        "File to modify: site/components/blog/BlogPostCard.tsx — integrate reading time in metadata section",
+        "Test command: npm run test -- site/lib/calculateReadingTime.test.ts && npm run test -- site/components/blog/BlogPostCard.test.tsx"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "site/lib/calculateReadingTime.ts",
+        "site/components/blog/BlogPostCard.tsx",
+        "site/components/blog/BlogPostHeader.tsx"
+      ],
+      "_source": "ai-example",
+      "passes": false,
+      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
+    },
+    {
+      "title": "Implement client-side blog search with Fuse.js for real-time post discovery",
+      "priority": "medium",
+      "description": "Add Fuse.js-powered search box to /blog page that enables real-time client-side filtering across blog post titles, excerpts, and categories without backend API calls to improve content discoverability.",
+      "acceptanceCriteria": [
+        "Search input on /blog filters posts in real-time as user types (200ms debounce); results update incrementally",
+        "Fuse.js matches against post title (weight: 3), excerpt (weight: 2), and category (weight: 1) with fuzzy threshold 0.3",
+        "Matching terms are highlighted in results with <mark> tags; empty results state displays 'No posts found matching [query]'"
+      ],
+      "technicalNotes": [
+        "File to create: site/lib/buildSearchIndex.ts — export function buildBlogSearchIndex(): FuseSearchItem[]",
+        "File to create: site/components/search/BlogSearch.tsx — React component with useState and useCallback for debounced search",
+        "Test command: npm run build && npm run test -- site/components/search/BlogSearch.test.tsx"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "site/lib/buildSearchIndex.ts",
+        "site/components/search/BlogSearch.tsx",
+        "site/app/blog/page.tsx"
       ],
       "_source": "ai-example",
       "passes": false,

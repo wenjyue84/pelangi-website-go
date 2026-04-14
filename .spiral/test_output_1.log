@@ -1,2 +1,5 @@
-.next/types/validator.ts(143,39): error TS2307: Cannot find module '../../src/app/faq/page.js' or its corresponding type declarations.
-.next/types/validator.ts(287,39): error TS2307: Cannot find module '../../src/app/api/mcp/route.js' or its corresponding type declarations.
+src/components/FAQ.tsx(3,26): error TS2307: Cannot find module '@/data/faq-items' or its corresponding type declarations.
+src/components/FAQ.tsx(14,36): error TS7006: Parameter 'faq' implicitly has an 'any' type.
+src/components/FAQ.tsx(14,41): error TS7006: Parameter 'index' implicitly has an 'any' type.
+src/components/FAQSection.tsx(2,15): error TS2614: Module '"./FAQ"' has no exported member 'faqItems'. Did you mean to use 'import faqItems from "./FAQ"' instead?
+src/components/FAQSection.tsx(26,31): error TS7006: Parameter 'faq' implicitly has an 'any' type.

@@ -1087,6 +1087,103 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 <p>Staying in JB? <a href="/rooms">Pelangi Capsule Hostel</a> is perfect for gig workers. Reliable WiFi, community of hustlers, <a href="/book">book now</a>.</p>
 `,
   },
+  {
+    slug: "getting-around-johor-bahru-no-car-guide",
+    title: "Getting Around Johor Bahru Without a Car — Transport Guide for Backpackers",
+    excerpt:
+      "Master JB transport on a budget: Grab (RM5–15), Rapid JB buses (RM1–3), walking Taman Pelangi, and crossing to Singapore. Complete price comparison.",
+    date: "2026-04-14",
+    category: "Travel Tips",
+    author: "Jay Lew",
+    readTime: "5 min read",
+    tags: ["johor-bahru", "transport", "backpacker", "budget-travel", "grab", "bus", "getting-around"],
+    featuredImage: "/images/blog/jb-transport-guide.jpg",
+    content: `
+<h2>Getting Around JB Without a Car</h2>
+<p>You don't need a car in JB. You have Grab, buses, walking, and cross-border rides to Singapore — all on a backpacker budget.</p>
+
+<h2>Grab: Fast and Flexible (RM5–15)</h2>
+<p><strong>Grab</strong> is the fastest way to move around JB. Download the app, enter your destination, and a driver arrives in 3–5 minutes. Prices are predictable and surge only during peak hours (lunch and evening rush).</p>
+<ul>
+  <li><strong>Short rides (2–3 km):</strong> RM5–8 (e.g., Taman Pelangi to Aeon Tebrau)</li>
+  <li><strong>Medium rides (5–7 km):</strong> RM10–15 (e.g., hostel to JB Sentral or Danga Bay)</li>
+  <li><strong>Long rides (10+ km):</strong> RM20–35 (e.g., to Desaru beach, one-way)</li>
+</ul>
+<p>Peak hour surge: Expect 1.2–1.5x multiplier on lunch (12–2 pm) and evening (5–8 pm) rides. Early morning (7–9 am) rides are cheapest.</p>
+
+<h2>Rapid JB Buses: Cheapest Option (RM1–3)</h2>
+<p><strong>Rapid JB</strong> is the city's public bus network. Buses are air-conditioned, reliable, and cost a fraction of Grab. Download the Rapid JB app or buy a physical card at any station.</p>
+<ul>
+  <li><strong>Taman Pelangi to City Centre:</strong> Routes 2M, 13A — RM2, 20 minutes</li>
+  <li><strong>Hostel to Aeon Tebrau:</strong> Route 5 — RM3, 25 minutes</li>
+  <li><strong>Hostel to JB Sentral:</strong> Route 2A — RM2.50, 30 minutes</li>
+  <li><strong>Single journey card:</strong> RM1 minimum; load credit for discounts</li>
+</ul>
+<p>Buses run 6 am–11 pm. Peak hours (8–9 am, 5–7 pm) are crowded but reliable. Use Google Maps or the Rapid JB app to plan routes.</p>
+
+<h2>Walking: Taman Pelangi Is a Walkable Neighbourhood</h2>
+<p>If you're staying at Pelangi Capsule, you're in luck. Taman Pelangi is dense with hawker centres, food stalls, and shops. Walk 10 minutes in any direction and you'll find breakfast, lunch, dinner, and coffee.</p>
+<ul>
+  <li><strong>Nearby hawker centres:</strong> Sik Bao Sin, Taman Sentosa food stalls — 5–10 min walks</li>
+  <li><strong>Supermarkets:</strong> Aeon BigExtra (15 min walk), Tesco (20 min walk)</li>
+  <li><strong>Night market:</strong> Taman Sentosa pasar malam (Thurs, Sun) — 10 min walk</li>
+</ul>
+<p>Walking is free, you get to know the neighbourhood, and you'll stumble upon local spots tourists miss. JB is flat, so walking is comfortable year-round (though midday heat is intense).</p>
+
+<h2>Crossing to Singapore: Budget Buses and Grab</h2>
+<p>Day-tripping to Singapore from JB is popular and affordable. Options:</p>
+<ul>
+  <li><strong>Rapid JB to Larkin Terminal:</strong> Take Rapid JB bus to Larkin Bus Terminal → Bus to Woodlands Checkpoint (SGD2–3) → MRT into Singapore city</li>
+  <li><strong>Grab to border:</strong> Grab to Malaysia-side checkpoint (RM8–12) → Walk through immigration → Grab in Singapore (SGD8–15)</li>
+  <li><strong>Cross-border bus:</strong> Causeway Link or SBS Transit buses (SGD2–4) from JB Sentral to Singapore</li>
+</ul>
+<p><strong>Tip:</strong> Weekday mornings (before 10 am) have the shortest border wait times. Friday evenings and Sundays are packed; expect 1–2 hour delays.</p>
+
+<h2>Transport Price Comparison Table</h2>
+<table style="width:100%;border-collapse:collapse;margin:1rem 0">
+<tr style="background:#f0f0f0">
+<th style="text-align:left;padding:0.75rem;border:1px solid #ddd"><strong>Trip</strong></th>
+<th style="padding:0.75rem;border:1px solid #ddd"><strong>Grab</strong></th>
+<th style="padding:0.75rem;border:1px solid #ddd"><strong>Bus</strong></th>
+<th style="padding:0.75rem;border:1px solid #ddd"><strong>Time</strong></th>
+</tr>
+<tr style="border:1px solid #ddd">
+<td style="padding:0.75rem"><strong>Pelangi → Aeon Tebrau</strong></td>
+<td style="padding:0.75rem">RM8–10</td>
+<td style="padding:0.75rem">RM2–3</td>
+<td style="padding:0.75rem">5 min / 25 min</td>
+</tr>
+<tr style="border:1px solid #ddd">
+<td style="padding:0.75rem"><strong>Pelangi → JB Sentral</strong></td>
+<td style="padding:0.75rem">RM12–15</td>
+<td style="padding:0.75rem">RM2.50</td>
+<td style="padding:0.75rem">10 min / 30 min</td>
+</tr>
+<tr style="border:1px solid #ddd">
+<td style="padding:0.75rem"><strong>Pelangi → Danga Bay</strong></td>
+<td style="padding:0.75rem">RM15–20</td>
+<td style="padding:0.75rem">RM3–4</td>
+<td style="padding:0.75rem">15 min / 40 min</td>
+</tr>
+<tr style="border:1px solid #ddd">
+<td style="padding:0.75rem"><strong>JB → Singapore (Grab)</strong></td>
+<td style="padding:0.75rem">SGD8–15</td>
+<td style="padding:0.75rem">SGD2–4</td>
+<td style="padding:0.75rem">20 min / 45 min</td>
+</tr>
+</table>
+
+<h2>Pro Tips</h2>
+<ul>
+  <li><strong>Bus card:</strong> Load RM20–50 for 10–15% savings vs. single journeys.</li>
+  <li><strong>Off-peak rides:</strong> Travel 10–11 am or 3–4 pm to save RM5–10 vs. rush hours.</li>
+  <li><strong>Ask locals:</strong> Hostel staff know shortcuts and hidden food spots.</li>
+</ul>
+
+<h2>Bottom Line</h2>
+<p>JB is one of Southeast Asia's most affordable cities to navigate. A day of transport — two Grab rides plus meals — costs under RM30. Many backpackers never need a car. Buses are reliable, Grab is cheap, and walking Taman Pelangi connects you to everything. Stay at <a href="/book">Pelangi Capsule Hostel</a>, grab a Rapid JB card, and explore JB like a pro.</p>
+`,
+  },
 ];
 
 export const blogPosts: BlogPost[] = rawPosts.map((post) => ({

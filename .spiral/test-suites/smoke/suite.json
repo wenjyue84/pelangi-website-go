@@ -3069,6 +3069,32 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[smoke] Add Subresource Integrity (SRI) hashes for all third-party CDN scripts",
+      "description": "Auto-generated smoke test from US-236",
+      "from_story": "US-236",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-237",
+      "created_ts": "2026-04-14T09:29:33Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
+    },
+    {
+      "title": "[smoke] Blog post: Lalamove Driver Guide Malaysia — Earn Flexible Income in JB",
+      "description": "Auto-generated smoke test from US-248",
+      "from_story": "US-248",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-238",
+      "created_ts": "2026-04-14T09:29:33Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }

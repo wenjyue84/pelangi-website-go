@@ -1,5 +1,6 @@
 import { cacheLife, cacheTag } from 'next/cache';
-import FAQ, { faqItems } from './FAQ';
+import FAQ from './FAQ';
+import { faqItems } from '@/data/faq-items';
 
 /**
  * FAQSection — Server Component wrapper around the client FAQ accordion.
