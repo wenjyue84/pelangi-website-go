@@ -1874,6 +1874,28 @@
     ]
   },
   {
+    "title": "[Regression Test] Add Subresource Integrity (SRI) hashes for all third-party CDN scripts",
+    "description": "Write regression test to guard against future breakage of US-236. Story description: Subresource Integrity (SRI) ensures that externally hosted scripts and stylesheets have not been tampered with by a CDN compromise or man-in-the-middle attack. SRI is an OWASP-recommended defence and complements the existing CSP. It is especially relevant for a hostel site handling enquiry forms and payment information.",
+    "acceptanceCriteria": [
+      "Regression test covers core observable behaviour of US-236",
+      "Test would reliably fail if the US-236 feature were removed or broken"
+    ],
+    "technicalNotes": [
+      "Run: uv run pytest tests/ -k us_236 -v"
+    ],
+    "priority": "medium",
+    "dependencies": [
+      "US-236"
+    ],
+    "_source": "test-story",
+    "_testType": "regression",
+    "_forStoryId": "US-236",
+    "tags": [
+      "regression",
+      "auto-generated"
+    ]
+  },
+  {
     "title": "[Regression Test] Blog post: How Malaysians Can Find Jobs in Singapore (2026 Guide)",
     "description": "Write regression test to guard against future breakage of US-242. Story description: Add a comprehensive SEO-optimised blog post on how Malaysians can find jobs in Singapore, covering job portals, recruitment agencies, networking, work pass eligibility, and step-by-step tips.",
     "acceptanceCriteria": [

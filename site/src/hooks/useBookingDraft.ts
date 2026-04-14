@@ -30,7 +30,7 @@ export function useBookingDraft() {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- reading sessionStorage on mount (SSR-safe)
     setDraft(getStorageItem<BookingDraft>(STORAGE_KEY));
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+     
     setDismissed(sessionStorage.getItem(DISMISSED_KEY) === "true");
   }, []);
 

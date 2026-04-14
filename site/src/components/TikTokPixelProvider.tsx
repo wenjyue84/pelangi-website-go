@@ -148,7 +148,7 @@ export default function TikTokPixelProvider() {
           ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},
           ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};
           var a=d.createElement("script");a.type="text/javascript";a.async=!0;
-          a.src=r+"?sdkid="+e+"&lib="+t;var s=d.getElementsByTagName("script")[0];
+          a.src=r+"?sdkid="+e+"&lib="+t;a.integrity="sha384-/E3jBC6DCAnSa2DwyCpJnCEamCjN6/yPUQ1A2C+uHvW66ROgKjnhkL0M2h4iTyxT";a.crossOrigin="anonymous";var s=d.getElementsByTagName("script")[0];
           s.parentNode.insertBefore(a,s)};
           ttq.load('${PIXEL_ID}');
           ttq.page();

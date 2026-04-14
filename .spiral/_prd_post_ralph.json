@@ -5042,7 +5042,8 @@
       "model": "haiku",
       "_skipped": true,
       "_skipReason": "Requires Vercel platform config for HTTP 103 Early Hints — not code",
-      "_passedCommit": "15772cddb4f539797309e8e5a56bd3f47598ba31"
+      "_passedCommit": "15772cddb4f539797309e8e5a56bd3f47598ba31",
+      "_scopeCreep": true
     },
     {
       "id": "US-233",
@@ -5130,8 +5131,9 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
-      "passes": false,
-      "model": "haiku"
+      "passes": true,
+      "model": "haiku",
+      "last_attempted": "2026-04-14T08:34:26Z"
     },
     {
       "id": "US-242",

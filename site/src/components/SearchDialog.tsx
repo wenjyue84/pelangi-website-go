@@ -40,7 +40,7 @@ export default function SearchDialog({
     if (open) {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- resetting state on open prop change
       setQuery("");
-      // eslint-disable-next-line react-hooks/set-state-in-effect
+       
       setActiveIndex(0);
       // Focus input after render
       requestAnimationFrame(() => inputRef.current?.focus());

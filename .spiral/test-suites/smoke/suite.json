@@ -3056,6 +3056,19 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[smoke] Implement HTTP 103 Early Hints for critical resource preloading on Vercel",
+      "description": "Auto-generated smoke test from US-232",
+      "from_story": "US-232",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-236",
+      "created_ts": "2026-04-14T08:30:29Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }

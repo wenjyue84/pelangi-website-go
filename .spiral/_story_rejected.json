@@ -1,118 +1,139 @@
 {
   "stories": [
     {
-      "title": "Add 'JB News & Updates' Widget to Homepage with Curated RSS Feed Integration",
+      "title": "Implement /blog/[slug] page with Article schema and breadcrumb navigation",
       "priority": "high",
-      "description": "Implement a live news widget on the homepage fetching from 4-5 curated RSS sources (Tourism JB, Malaysia News, local events). Display 5 latest items with title, publish date, source attribution, and read-more link. Cache results for 6 hours to minimize feed requests.",
+      "description": "Create Next.js dynamic route for individual blog posts rendering full content with Article and BreadcrumbList JSON-LD schemas to improve SEO visibility in Google Search and blog post discovery.",
       "acceptanceCriteria": [
-        "Widget fetches and displays 5 latest news items from app/config/rss-sources.ts with title, date, source, and clickable link",
-        "Failed RSS feed endpoints gracefully degrade to cached results or placeholder state without breaking layout",
-        "Server-side cache refreshes every 6 hours; manual refresh endpoint available at GET /api/news/refresh"
+        "/blog/[slug]/page.tsx displays blog post title, author, publish date, featured image, and full content from static blog data structure",
+        "Article schema includes author, datePublished, dateModified, image, wordCount, and articleBody in <script type=\"application/ld+json\">",
+        "BreadcrumbList schema renders breadcrumb path (Home > Blog > Post Title) with itemListElement array"
       ],
       "technicalNotes": [
-        "File to create: app/components/JBNewsWidget.tsx (RSS parsing, <Feed> UI component)",
-        "File to create: app/config/rss-sources.ts (array of RSS URLs with source metadata)",
-        "File to create: app/lib/rss-parser.ts (fetch + parse feed with error handling + caching via React cache())",
-        "File to modify: app/page.tsx (import and render JBNewsWidget on homepage)",
-        "Test command: vitest run app/lib/rss-parser.test.ts (mock feed parsing, verify cache logic)"
+        "File to create: site/src/app/blog/[slug]/page.tsx - implement generateStaticParams and generateMetadata exports",
+        "File to create: site/src/lib/schemas/article.ts - export generateArticleSchema(post: BlogPost, baseUrl: string)",
+        "File to create: site/src/lib/schemas/breadcrumb.ts - export generateBreadcrumbSchema(postTitle: string, slug: string)",
+        "Test command: npm run build && curl http://localhost:3000/blog/johor-backpacker-guide | grep -c 'application/ld+json' (should output 2 or more)"
       ],
       "dependencies": [],
-      "estimatedComplexity": "medium",
+      "estimatedComplexity": "small",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "app/components/JBNewsWidget.tsx",
-        "app/config/rss-sources.ts",
-        "app/lib/rss-parser.ts",
-        "app/page.tsx",
-        "app/lib/rss-parser.test.ts"
-      ],
-      "_source": "ai-example",
-      "passes": false,
-      "_rejection_reason": "too_simple: only 1 measurable ACs -- specify test commands, file paths, or numeric thresholds"
-    },
-    {
-      "title": "Build Hostel Amenity Comparison Matrix with LocationFeatureSpecification Schema",
-      "priority": "high",
-      "description": "Create an interactive comparison table displaying 6-8 JB hostels across 12 key amenities (WiFi, kitchen, lockers, AC, laundry, social areas, etc.). Each amenity row embeds LocationFeatureSpecification JSON-LD. Table is sortable/filterable by hostel or amenity with highlighting.",
-      "acceptanceCriteria": [
-        "Table renders 6-8 hostels (columns) × 12 amenities (rows) with checkmark icons; each hostel column links to hostel website",
-        "Each <tr> data attribute contains LocationFeatureSpecification JSON for the amenity; schema validation passes via AJV",
-        "Filter UI allows toggle by hostel name or amenity type; table dynamically hides/shows columns; Playwright test confirms filter interactions"
-      ],
-      "technicalNotes": [
-        "File to create: data/jb-hostels-amenities.ts (array of hostel objects with amenity flags and external links)",
-        "File to create: app/components/HostelAmenityMatrix.tsx (table component with filter state, LocationFeatureSpecification schema embedding)",
-        "File to modify: app/lib/schema-generators.ts (addLocationFeatureSpecification function for amenity row schema)",
-        "Test command: vitest run app/components/HostelAmenityMatrix.test.ts (filter logic, schema structure)"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "medium",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "data/jb-hostels-amenities.ts",
-        "app/components/HostelAmenityMatrix.tsx",
-        "app/lib/schema-generators.ts",
-        "app/components/HostelAmenityMatrix.test.ts"
-      ],
-      "_source": "ai-example",
-      "passes": false,
-      "_rejection_reason": "too_simple: only 1 measurable ACs -- specify test commands, file paths, or numeric thresholds"
-    },
-    {
-      "title": "Create Interactive JB Backpacker Daily Budget Calculator Tool",
-      "priority": "medium",
-      "description": "Build a client-side budget calculator allowing backpackers to input daily spend on accommodation, meals, activities, and local transport. Displays daily total, 7-day projection, and cost breakdown by category. Embeds WebApplication or SoftwareApplication schema for discoverability.",
-      "acceptanceCriteria": [
-        "Calculator renders 4 input fields (accommodation RM/night, meals RM/day, activities RM/day, transport RM/day) with default values; live displays daily total and 7-day projection",
-        "Breakdown pie chart updates reactively; localStorage persists user inputs across sessions",
-        "SoftwareApplication JSON-LD embedded in page head with applicationCategory='Travel/Budget', includes name, description, url"
-      ],
-      "technicalNotes": [
-        "File to create: app/components/BudgetCalculator.tsx (React form with useReducer state, recharts pie chart, localStorage sync)",
-        "File to create: app/(website)/budget-calculator/page.tsx (page wrapper with SEO metadata)",
-        "File to create: lib/schema-generators.ts (getSoftwareApplicationSchema function with calculator metadata)",
-        "Test command: vitest run app/components/BudgetCalculator.test.ts (input handling, calculation accuracy, localStorage)"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "medium",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "app/components/BudgetCalculator.tsx",
-        "app/(website)/budget-calculator/page.tsx",
-        "lib/schema-generators.ts",
-        "app/components/BudgetCalculator.test.ts"
+        "site/src/app/blog/[slug]/page.tsx",
+        "site/src/lib/schemas/article.ts",
+        "site/src/lib/schemas/breadcrumb.ts"
       ],
       "_source": "ai-example",
       "passes": false,
       "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
     },
     {
-      "title": "Create JB Events Calendar Page with Event Schema for Festivals & Markets",
-      "priority": "medium",
-      "description": "Build a /events page displaying annual JB events (food festivals, night markets, parades, holidays) with dates, location, brief description. Filterable by month and category. Each event embeds Event JSON-LD schema with name, startDate, location, description for Google rich results.",
+      "title": "Build /blog index page with real-time category and tag filtering",
+      "priority": "high",
+      "description": "Create /blog listing page with client-side filtering UI for categories and tags, plus schema.org CollectionPage markup to improve blog discoverability in Google search results.",
       "acceptanceCriteria": [
-        "Page renders 15+ JB events in a calendar/list view; month filter (Jan-Dec) and category tabs (food, culture, market) dynamically show/hide events",
-        "Each event card includes title, date range, location, category badge; embeds Event schema with startDate (ISO 8601), location object, and url",
-        "SEO: page title contains 'JB Events' and meta description covers festivals; schema validation via Lighthouse Structured Data audit passes"
+        "/blog/page.tsx displays grid of all blog posts with title, excerpt, date, category badge, and read-time estimate with no page reload",
+        "Category and tag filter chips toggle post visibility via React state (use 'use client' component), with active filter count badge",
+        "CollectionPage JSON-LD schema includes numberOfItems count, hasPart array of article references, and mainEntity object with blog URL"
       ],
       "technicalNotes": [
-        "File to create: data/jb-events.ts (array of Event objects with name, startDate, endDate, location, category, description)",
-        "File to create: app/(website)/events/page.tsx (calendar/list view with filter state, Event schema embedding, generateMetadata)",
-        "File to create: app/components/EventCard.tsx (event display card component with Event JSON-LD in parent)",
-        "Test command: vitest run data/jb-events.test.ts (date validation, category filtering logic)"
+        "File to create: site/src/app/blog/page.tsx - 'use client' component with useState for active filters, map over filtered posts",
+        "File to create: site/src/components/BlogPostGrid.tsx - grid component rendering BlogPostCard items with author, date, and tags",
+        "File to create: site/src/lib/schemas/collection.ts - export generateCollectionPageSchema(posts: BlogPost[], baseUrl: string)",
+        "Test command: npm run dev && curl http://localhost:3000/blog | grep -o 'CollectionPage' | head -1"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "site/src/app/blog/page.tsx",
+        "site/src/components/BlogPostGrid.tsx",
+        "site/src/lib/schemas/collection.ts"
+      ],
+      "_source": "ai-example",
+      "passes": false,
+      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
+    },
+    {
+      "title": "Create JB News & Updates widget synced to curated RSS feeds on homepage",
+      "priority": "medium",
+      "description": "Build an async Server Component fetching latest news from 3+ curated JB/Singapore RSS sources and displaying on homepage hero, with NewsArticle schema markup for improved news visibility.",
+      "acceptanceCriteria": [
+        "JbNewsWidget async component fetches RSS feeds from 3+ sources with 10-second timeout and displays latest 3 news items as clickable cards",
+        "Each news card shows headline, source name/logo, publication date, and link to source article without opening new tab on small screens",
+        "NewsArticle schema for each item includes headline, description, datePublished, image, author, and articleBody fields in page JSON-LD"
+      ],
+      "technicalNotes": [
+        "File to create: site/src/components/JbNewsWidget.tsx - async Server Component with error boundary, renders up to 3 feed items",
+        "File to create: site/src/lib/rss/parser.ts - export parseRssFeed(url: string, timeout: number): Promise<NewsItem[]>",
+        "File to create: site/src/lib/rss/sources.ts - export RSS_SOURCES array with {name, url, category} objects for JB/Singapore feeds",
+        "Test command: npm run dev && curl -s http://localhost:3000 | grep -o 'JbNewsWidget\\|NewsArticle' | head -5"
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "data/jb-events.ts",
-        "app/(website)/events/page.tsx",
-        "app/components/EventCard.tsx",
-        "data/jb-events.test.ts"
+        "site/src/components/JbNewsWidget.tsx",
+        "site/src/lib/rss/parser.ts",
+        "site/src/lib/rss/sources.ts",
+        "site/src/app/page.tsx"
+      ],
+      "_source": "ai-example",
+      "passes": false,
+      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
+    },
+    {
+      "title": "Implement /api/feed route for RSS/Atom feed with blog posts and news",
+      "priority": "high",
+      "description": "Create API route generating valid RSS 2.0 feed with all blog posts and curated news items, plus auto-discovery link tag in layout head for feed reader compatibility.",
+      "acceptanceCriteria": [
+        "GET /api/feed returns valid RSS 2.0 XML with Content-Type: application/rss+xml, includes 10+ blog post items with title, link, pubDate (RFC 2822), guid, and description",
+        "Each RSS item links to full blog post at /blog/[slug] with proper URL encoding and includes author email and category tags",
+        "Auto-discovery <link rel=\"alternate\" type=\"application/rss+xml\" href=\"/api/feed\" title=\"Blog\"> tag present in site/src/app/layout.tsx <head>"
+      ],
+      "technicalNotes": [
+        "File to create: site/src/app/api/feed/route.ts - export async function GET() returning RSS XML response with proper headers",
+        "File to create: site/src/lib/feed/generator.ts - export generateRssFeed(posts: BlogPost[], baseUrl: string): string",
+        "File to modify: site/src/app/layout.tsx - add Feed auto-discovery link in <Head> component or metadata export",
+        "Test command: npm run dev && curl -s http://localhost:3000/api/feed | head -20 && npm run build && cat .next/server/app/api/feed/route.js | grep -c 'rss+xml'"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "site/src/app/api/feed/route.ts",
+        "site/src/lib/feed/generator.ts",
+        "site/src/app/layout.tsx"
+      ],
+      "_source": "ai-example",
+      "passes": false,
+      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
+    },
+    {
+      "title": "Update sitemap.ts to include blog post URLs with publication metadata",
+      "priority": "medium",
+      "description": "Extend sitemap.ts to dynamically generate <url> entries for all blog posts with lastModified dates, proper changefreq, and priority scores for SEO indexing across search engines.",
+      "acceptanceCriteria": [
+        "sitemap.ts iterates over getAllBlogPosts() and appends <url> entries with loc path (/blog/[slug]), lastmod (ISO 8601 format), changefreq=\"weekly\", priority=0.8",
+        "Blog post lastmod sourced from post.dateModified frontmatter field, fallback to file mtime if missing",
+        "Generated sitemap XML validates against sitemap protocol schema v0.9 and includes 10+ blog post URLs"
+      ],
+      "technicalNotes": [
+        "File to modify: site/src/app/sitemap.ts - add blog post loop after static routes: for (const post of getAllBlogPosts()) { routes.push({url: `/blog/${post.slug}`, lastModified: post.dateModified, ...}) }",
+        "File to verify: site/src/lib/blog/posts.ts - ensure getAllBlogPosts() export returns BlogPost[] with slug and dateModified fields",
+        "Test command: npm run build && cat .next/static/sitemap.xml | grep -c '/blog/' (count should match total blog posts), grep '<priority>0.8</priority>' to verify priority"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "site/src/app/sitemap.ts",
+        "site/src/lib/blog/posts.ts"
       ],
       "_source": "ai-example",
       "passes": false,

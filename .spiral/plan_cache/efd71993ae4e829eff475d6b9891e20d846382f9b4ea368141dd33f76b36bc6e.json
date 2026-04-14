@@ -1,0 +1,11 @@
+{
+  "story_id": "US-236",
+  "story_title": "Add Subresource Integrity (SRI) hashes for all third-party CDN scripts",
+  "key_source": "add|subresource|integrity|medium|",
+  "stored_ts": 1776156568.9729204,
+  "plan": {
+    "story_id": "US-236",
+    "duration_s": 901,
+    "model": "unknown"
+  }
+}

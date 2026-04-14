@@ -1488,3 +1488,30 @@ This is a Next.js/TypeScript project, not a Frappe/Python one. No Python files w
 ## Iteration 1 - Tue, Apr 14, 2026  4:19:53 PM
 FAILED diff-guard: Implement Next.js 16.1 Turbopack filesystem caching for faster local dev builds (ID: US-220) — 1559 lines > 500 limit — attempt 1/3
 
+
+## Pre-analysis for US-236 (Gemini 2.5 Pro)
+Based on the user story for implementing Subresource Integrity (SRI), here is a technical brief for the development agent.
+
+**Objective:** Implement SRI for all third-party CDN assets and refactor Google Fonts to be self-hosted via `next/font`.
+
+**1. Primary Files for Modification:**
+*   `site/app/layout.tsx`: This is the root layout. It's the most likely place to find `<head>` definitions, global stylesheets, and third-party scripts that apply to the entire application.
+*   `site/components/GlobalHead.tsx`: A potential component that centralizes all `<head>` tag management. Look for `<link>` and `<script>` tags here.
+*   `pages/_document.js` / `pages/_app.js` (if using Pages Router): If the project uses the older Next.js Pages Router, these files would control the main document structure and global scripts.
+
+**2. Key Next.js / React Constructs Involved:**
+*   **`next/font`**: This module must be used to replace any existing Google Fonts `<link>` tag. The font will be downloaded at build time and self-hosted.
+*   **Document `<head>`**: All modifications will happen here. Standard `<script>` and `<link>` tags must be used, as the Next.js `<Script>` component does not support the `integrity` attribute.
+
+**3. Recommended Implementation Approach:**
+1.  **Audit:** Identify all external `<script src="...">` and `<link rel="stylesheet" href="...">` tags in the codebase.
+2.  **Refactor Google Fonts:** Remove any `<link>` tags for Google Fonts. Import the desired fonts (e.g., `Inter`, `Roboto`) from `next/font/google`, instantiate them, and apply the generated class name to the `<body>` tag in `app/layout.tsx`.
+3.  **Generate Hashes:** For all remaining third-party assets (e.g., analytics scripts, CSS frameworks from a CDN), generate a `sha384` or `sha512` hash. Use `openssl` or an online tool like srihash.org.
+4.  **Update Tags:** Add the `integrity` attribute with the generated hash and `crossorigin="anonymous"` to each respective `<script>` and `<link>` tag.
+
+**4. Edge Cases and Gotchas:**
+*   **SRI Maintenance:** The primary challenge is that hashes will break if the CDN file is updated. This process must be documented for future library/version updates.
+*   **`next/Script` Component:** Do not use the Next.js `<Script>` component for assets requiring SRI. Use a standard `<script>` tag in the document head with `async` or `defer` to avoid blocking render.
+*   **CSP:** The existing Content Security Policy (CSP) may need to be reviewed to ensure it doesn't conflict with the new attributes or sources.
+*   **Console Errors:** After implementation, thoroughly check the browser's developer console for any integrity check failures, which indicate a hash mismatch.
+

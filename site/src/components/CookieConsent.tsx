@@ -103,9 +103,9 @@ export default function CookieConsent() {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- SSR hydration: read browser-only state on mount
     setMounted(true);
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+     
     setConsentState(getConsent());
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+     
     setLang(detectLanguage());
   }, []);
 

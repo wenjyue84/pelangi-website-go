@@ -1,8 +1,6 @@
 {
-  "phase": "I",
-  "iteration": 158,
-  "started_at": 1776155383,
-  "pct_done": 60,
-  "story_id": "US-232",
-  "story_title": "Implement HTTP 103 Early Hints for critical resource preloading on Vercel"
+  "phase": "M",
+  "iteration": 159,
+  "started_at": 1776156562,
+  "pct_done": 40
 }

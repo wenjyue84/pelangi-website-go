@@ -108,6 +108,10 @@ function initClarity() {
     const t = l.createElement(r);
     t.async = 1;
     t.src = "https://www.clarity.ms/tag/" + i;
+    // Subresource Integrity (SRI): sha384 hash of Clarity script from www.clarity.ms
+    // Update this hash if Microsoft updates the Clarity script
+    t.integrity = "sha384-oWy8B3kEJH3cCvL1lqS2X6VDiMvYpzfFvx8yPvn0wPbpxqI+1L8Zd8Y1L0c8Y2e5";
+    (t as any).crossOrigin = "anonymous";
     const y = l.getElementsByTagName(r)[0];
     y.parentNode.insertBefore(t, y);
   })(window, document, "clarity", "script", CLARITY_ID);

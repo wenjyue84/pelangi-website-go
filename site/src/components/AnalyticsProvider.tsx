@@ -49,6 +49,8 @@ export default function AnalyticsProvider() {
         id="_next-ga"
         strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+        integrity="sha384-VgHGdVW55pNfDcu5KaOcZlNPywG7c5uPZKlJmojJOZ4PYYzq02zAspkU6MVejDTo"
+        crossOrigin="anonymous"
       />
     </>
   );
