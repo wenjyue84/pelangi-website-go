@@ -413,10 +413,86 @@ export default function TermsPage() {
                 </p>
               </section>
 
-              {/* 11. Changes */}
+              {/* 11. Online Safety Act Compliance */}
               <section className="mb-8">
                 <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
-                  11. Changes to These Terms
+                  11. Malaysia Online Safety Act 2025 – User-Generated Content & Safety
+                </h2>
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed mb-4">
+                  Pelangi Capsule Hostel complies with the Malaysia Online Safety Act 2025
+                  (Act 866), which came into effect on 1 January 2026. This section clarifies
+                  our approach to user-generated content (UGC) and safety reporting.
+                </p>
+
+                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-5 mb-4 border border-blue-200 dark:border-blue-800">
+                  <h3 className="font-semibold text-stone-800 dark:text-stone-100 mb-3">
+                    User-Generated Content on Our Website
+                  </h3>
+                  <p className="text-stone-700 dark:text-stone-300 text-sm mb-3">
+                    Pelangi Capsule Hostel publishes guest reviews and testimonials on our
+                    website. These reviews represent the genuine feedback of past guests and
+                    contribute to an informed community.
+                  </p>
+                  <p className="text-stone-700 dark:text-stone-300 text-sm">
+                    We also display ratings from third-party platforms (Google Reviews,
+                    Booking.com, Hostelworld, Airpaz) via hyperlinks or embedded content. As
+                    these platforms host their own content, users should report concerns
+                    directly to the platform operators.
+                  </p>
+                </div>
+
+                <h3 className="font-semibold text-stone-800 dark:text-stone-100 mb-2">
+                  Safety Reporting & Content Moderation
+                </h3>
+                <ul className="list-disc list-inside space-y-2 text-stone-700 dark:text-stone-300 mb-4">
+                  <li>
+                    Each guest review on our website includes a <strong>&quot;Report&quot;</strong> button to
+                    submit safety concerns.
+                  </li>
+                  <li>
+                    Reports can also be sent directly to our safety team at{" "}
+                    <a
+                      href="mailto:safety@pelangicapsulehostel.com"
+                      className="text-blue-600 dark:text-blue-400 hover:underline"
+                    >
+                      safety@pelangicapsulehostel.com
+                    </a>
+                    .
+                  </li>
+                  <li>
+                    Our full Content Safety Guidelines and community standards are available
+                    at our{" "}
+                    <a
+                      href="/safety-guidelines"
+                      className="text-blue-600 dark:text-blue-400 hover:underline"
+                    >
+                      Safety Guidelines page
+                    </a>
+                    .
+                  </li>
+                  <li>
+                    We review all reports and respond within 5–10 business days in accordance
+                    with the Online Safety Act 2025.
+                  </li>
+                </ul>
+
+                <p className="text-stone-600 dark:text-stone-400 text-sm">
+                  For full details on our safety processes, prohibited content, and how to
+                  report, please visit our{" "}
+                  <a
+                    href="/safety-guidelines"
+                    className="text-blue-600 dark:text-blue-400 hover:underline"
+                  >
+                    Safety Guidelines & Content Policy
+                  </a>
+                  .
+                </p>
+              </section>
+
+              {/* 12. Changes */}
+              <section className="mb-8">
+                <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
+                  12. Changes to These Terms
                 </h2>
                 <p className="text-stone-700 dark:text-stone-300 leading-relaxed">
                   We reserve the right to update or modify these Terms at any time. Changes
@@ -426,10 +502,10 @@ export default function TermsPage() {
                 </p>
               </section>
 
-              {/* 12. Contact */}
+              {/* 13. Contact */}
               <section className="mb-8">
                 <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
-                  12. Contact Us
+                  13. Contact Us
                 </h2>
                 <p className="text-stone-700 dark:text-stone-300 leading-relaxed mb-3">
                   If you have questions about these Terms, please contact us:

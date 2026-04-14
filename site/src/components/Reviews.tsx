@@ -1,4 +1,5 @@
 import React from 'react';
+import ReportContentButton from './ReportContentButton';
 
 const reviews = [
     {
@@ -75,7 +76,7 @@ export default function Reviews() {
 
                 <div className="grid md:grid-cols-3 gap-8">
                     {reviews.map((review, index) => (
-                        <div key={index} className="scroll-reveal bg-stone-50 dark:bg-stone-800 p-8 rounded-3xl relative">
+                        <div key={index} className="scroll-reveal bg-stone-50 dark:bg-stone-800 p-8 rounded-3xl relative flex flex-col">
                             <div className="flex text-amber-400 mb-4">
                                 {[...Array(review.rating)].map((_, i) => (
                                     <svg key={i} className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -83,14 +84,17 @@ export default function Reviews() {
                                     </svg>
                                 ))}
                             </div>
-                            <p className="text-stone-700 dark:text-stone-300 mb-6 italic">&ldquo;{review.text}&rdquo;</p>
-                            <div className="flex items-center justify-between mt-auto">
+                            <p className="text-stone-700 dark:text-stone-300 mb-6 italic flex-1">&ldquo;{review.text}&rdquo;</p>
+                            <div className="flex items-end justify-between mt-auto gap-4">
                                 <div>
                                     <h4 className="font-bold text-stone-900 dark:text-stone-100">{review.name}</h4>
                                     <p className="text-sm text-stone-500 dark:text-stone-400">{review.country}</p>
                                 </div>
-                                <div className="text-xs text-stone-500 dark:text-stone-400 border border-stone-200 dark:border-stone-600 px-2 py-1 rounded-full">
-                                    Verified Guest
+                                <div className="flex flex-col items-end gap-2">
+                                    <div className="text-xs text-stone-500 dark:text-stone-400 border border-stone-200 dark:border-stone-600 px-2 py-1 rounded-full whitespace-nowrap">
+                                        Verified Guest
+                                    </div>
+                                    <ReportContentButton />
                                 </div>
                             </div>
                         </div>
