@@ -5717,8 +5717,13 @@
         "Add tags: [\"taman-pelangi\", \"jb-neighborhood\", \"local-guide\", \"johor-bahru\"]",
         "Category slug: local-guide"
       ],
-      "passes": false,
-      "model": "haiku"
+      "passes": true,
+      "model": "haiku",
+      "_failureReason": "oversized_diff: produced 11456 lines but limit is 500. Keep total insertions+deletions under 500 lines.",
+      "_antiPatterns": [
+        "oversized_diff: produced 11456 lines but limit is 500. Keep total insertions+deletions under 500 lines."
+      ],
+      "last_attempted": "2026-04-14T12:53:21Z"
     },
     {
       "id": "US-271",
