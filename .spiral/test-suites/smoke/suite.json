@@ -2861,6 +2861,19 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[smoke] Replace JavaScript tooltip positioning with CSS Popover API and Anchor Positioning",
+      "description": "Auto-generated smoke test from US-144",
+      "from_story": "US-144",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-221",
+      "created_ts": "2026-04-14T00:25:07Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }
