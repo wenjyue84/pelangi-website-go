@@ -965,3 +965,6 @@ Completed: Implement React 19.2 useEffectEvent for stable analytics event handle
 ## Iteration 1 - Tue, Apr 14, 2026  9:42:43 AM
 FAILED diagnosis-block gate: Implement React 19.2 useEffectEvent for stable analytics event handlers (ID: US-161) — no diagnosis block found — attempt 3/3
 
+## Iteration 1 - Tue, Apr 14, 2026 12:46:02 PM
+FAILED diff-guard: Add CSS print stylesheet for booking confirmation and receipt pages (ID: US-178) — 17126 lines > 500 limit — attempt 1/3
+

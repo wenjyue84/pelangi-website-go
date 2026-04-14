@@ -3649,9 +3649,9 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false,
+      "passes": true,
       "model": "haiku",
-      "last_attempted": "2026-04-14T01:51:17Z"
+      "last_attempted": "2026-04-14T01:42:45Z"
     },
     {
       "id": "US-163",
@@ -4041,7 +4041,7 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false,
+      "passes": true,
       "model": "haiku"
     },
     {
@@ -4241,6 +4241,28 @@
         "Reference: https://developer.chrome.com/blog/a-customizable-select",
         "Polyfill not needed — fallback to system select is acceptable",
         "Works in Chrome 130+, Safari TP, Firefox Nightly as of 2025"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-189",
+      "title": "Use <dialog closedby='any'> for light-dismiss modals without JavaScript",
+      "priority": "low",
+      "description": "Chrome 133+ adds the closedby attribute to the native <dialog> element, enabling backdrop-click dismiss declaratively without JavaScript event listeners. Reduces bundle size and improves accessibility reliability for cookie consent, gallery lightbox, and booking modals.",
+      "acceptanceCriteria": [
+        "Cookie consent, gallery lightbox, and booking confirmation modals use <dialog closedby='any'>",
+        "Escape key closes all dialogs without additional JS handler",
+        "Clicking backdrop closes dialogs where closedby='any' is set",
+        "Progressive enhancement: feature detection used for graceful fallback",
+        "Screen readers announce dialog correctly via native dialog role"
+      ],
+      "technicalNotes": [
+        "Reference: https://developer.chrome.com/blog/dialog-closedby",
+        "Combine with ::backdrop CSS for branded overlay",
+        "Remove duplicate JS click-outside listeners after migration"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
@@ -4601,6 +4623,30 @@
       "dependencies": [],
       "estimatedComplexity": "small",
       "passes": true
+    },
+    {
+      "id": "US-205",
+      "title": "Add PWA App Badge API for unread booking inquiry notifications",
+      "priority": "low",
+      "description": "The Badging API (navigator.setAppBadge) allows an installed PWA to show a numeric badge on its home screen icon — similar to native app notification badges — without requiring a disruptive push notification. When a new booking inquiry or WhatsApp message arrives, the badge count increments, giving staff a non-intrusive signal. The API is supported in Chrome, Edge, and Safari on installed PWAs.",
+      "acceptanceCriteria": [
+        "navigator.setAppBadge(count) is called when a new booking inquiry is received (via push message or polling)",
+        "navigator.clearAppBadge() is called when the staff user opens and reads all pending inquiries",
+        "Badge displays correctly on the PWA home screen icon on Android (Chrome) and iOS (Safari) when the app is installed",
+        "Graceful degradation: badge API calls are wrapped in feature detection (if ('setAppBadge' in navigator))",
+        "Badge count does not exceed actual unread count (no stale badge after read)"
+      ],
+      "technicalNotes": [
+        "Badging API MDN: https://developer.mozilla.org/en-US/docs/Web/API/Badging_API",
+        "Chrome capability guide: https://developer.chrome.com/docs/capabilities/web-apis/badging-api",
+        "On Android, Chrome automatically shows a badge when there is an unread notification — manual setAppBadge may be redundant; test both flows",
+        "Requires HTTPS and the app to be installed (in standalone/fullscreen display mode)",
+        "Combine with the existing Web Push notification flow for maximum reliability"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "model": "haiku"
     },
     {
       "id": "US-209",

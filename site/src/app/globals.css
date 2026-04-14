@@ -758,3 +758,32 @@ html.animations-paused *::after {
     background-color: #78716c;
   }
 }
+
+/* Print styles — booking confirmation and receipt pages */
+@media print {
+  nav,
+  footer,
+  .cookie-banner,
+  .chat-widget,
+  [data-chat-widget],
+  .sticky-booking-bar,
+  [data-cookie-banner] {
+    display: none !important;
+  }
+
+  * {
+    color: #000 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+  }
+
+  .booking-summary,
+  [class*="booking-summary"],
+  [class*="confirmation"] {
+    page-break-inside: avoid;
+  }
+}

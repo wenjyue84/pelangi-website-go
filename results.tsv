@@ -22,3 +22,4 @@ opus	2	4bc2b8877ba4dc6193a65e27229fa4b14ae3f052	69dd34342c1f	false	0	0	0	0	0	0	0
 2026-04-14T01:22:20Z	25	1	US-160	Enable Turbopack file system caching for faster development cold starts	keep	720	haiku	0	76977f5c2eac8f7882dc330feb98b340d643f63a	69dd34342c1f	false	0	0	0	0	0	0	0		0	0	0	0				
 2026-04-14T01:37:20Z	26	1	US-161	Implement React 19.2 useEffectEvent for stable analytics event handlers	reject	418	sonnet	2		69dd34342c1f	false	0	0	0	0	0	0	0		0	0	0	0				
 2026-04-14T01:42:43Z	26	1	US-161	Implement React 19.2 useEffectEvent for stable analytics event handlers	reject	721	sonnet	3		69dd34342c1f	false	0	0	0	0	0	0	0		0	0	0	0				
+2026-04-14T04:46:02Z	140	1	US-178	Add CSS print stylesheet for booking confirmation and receipt pages	reject	350	sonnet	1		69dda823c9d	false	0	0	0	0	0	0	0		0	0	0	0				
