@@ -3616,11 +3616,16 @@
       "estimatedComplexity": "small",
       "passes": true,
       "model": "haiku",
-      "_failureReason": "oversized_diff: produced 23068 lines but limit is 500. Keep total insertions+deletions under 500 lines.",
       "_antiPatterns": [
         "oversized_diff: produced 23068 lines but limit is 500. Keep total insertions+deletions under 500 lines."
       ],
-      "last_attempted": "2026-04-14T01:37:22Z"
+      "last_attempted": "2026-04-14T01:37:22Z",
+      "_contextStats": {
+        "tokensBeforeMasking": 114,
+        "tokensAfterMasking": 113,
+        "reductionPct": 0,
+        "contextWindow": 10
+      }
     },
     {
       "id": "US-162",
@@ -3642,7 +3647,8 @@
       "dependencies": [],
       "estimatedComplexity": "small",
       "passes": false,
-      "model": "haiku"
+      "model": "haiku",
+      "last_attempted": "2026-04-14T01:42:45Z"
     },
     {
       "id": "US-163",

@@ -1,3 +1,21 @@
+## Iteration US-161 (Attempt 3) - Mon, Apr 14, 2026
+
+Completed: Implement React 19.2 useEffectEvent for stable analytics event handlers (ID: US-161)
+
+### What was implemented
+- Replaced `useCallback` with `useEffectEvent` in RoomsEcommerceTracker.tsx and BookEcommerceTracker.tsx
+- Removed analytics click handlers from useEffect dependency arrays
+- Effects now run once on mount, not on every callback identity change
+
+### Patterns discovered
+- Code was already committed in attempt 2 (d9fa754) but diff guard failed due to unstaged files inflating diff count
+- Attempt 3 only needed to verify code was in place and mark passes: true
+- When prior attempts commit code but fail post-commit gates, verify existing commits before re-implementing
+
+### Gotchas
+- SPIRAL diff guard counts ALL staged/unstaged changes, not just story-related files — always use `git add <specific-files>` not `git add -A`
+- Previous attempts failed at 540 and 23068 lines because unrelated modified files were included in the diff measurement
+
 ## Iteration US-144 - Mon, Apr 14, 2026
 
 Completed: Replace JavaScript tooltip positioning with CSS Popover API and Anchor Positioning (ID: US-144)
@@ -920,3 +938,6 @@ Completed: Implement React 19.2 useEffectEvent for stable analytics event handle
 ### Gotchas
 - Previous attempt (540 lines) likely created a new file or made sweeping changes — minimal approach (one file, ~12 line diff) is the right strategy
 - Edit tool applied changes to in-memory Read cache but NOT to disk — must verify with `cat` and use Bash heredoc to write if needed
+## Iteration 1 - Tue, Apr 14, 2026  9:42:43 AM
+FAILED diagnosis-block gate: Implement React 19.2 useEffectEvent for stable analytics event handlers (ID: US-161) — no diagnosis block found — attempt 3/3
+
