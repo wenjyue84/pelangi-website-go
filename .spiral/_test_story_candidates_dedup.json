@@ -1396,6 +1396,29 @@
       ]
     },
     {
+      "title": "[Integration Test] Add WhatsApp Business Platform Cloud API for booking confirmation notifications",
+      "description": "Write integration tests for the feature implemented in US-175. Story description: Integrate the WhatsApp Business Platform (Cloud API) to send automated template messages to guests after inquiry submission or deposit payment. Unlike the existing wa.me deep-link (outbound only), this enables programmatic outbound notifications: guests receive a WhatsApp message with booking confirmation, check-in instructions, and hostel location link. First 1,000 business-initiated conversations per month are free.",
+      "acceptanceCriteria": [
+        "Integration tests exist covering the core behaviour of US-175",
+        "Tests cover the happy path and at least one error/edge case",
+        "Tests run without requiring external services or manual setup"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_175 -v"
+      ],
+      "priority": "high",
+      "dependencies": [
+        "US-175"
+      ],
+      "_source": "test-story",
+      "_testType": "integration",
+      "_forStoryId": "US-175",
+      "tags": [
+        "integration",
+        "auto-generated"
+      ]
+    },
+    {
       "title": "[E2E Test] Implement WCAG 2.2 SC 3.3.3 + 3.3.4 \u2013 Error Suggestion and Error Prevention on booking fl",
       "description": "Write end-to-end user flow test for the feature in US-180. Story description: SC 3.3.3 (AA) requires that input errors be accompanied by a suggested correction when possible. SC 3.3.4 (AA) requires that legal/financial submissions be reviewable, confirmable, or reversible. The booking/contact forms currently lack both a review step and specific error suggestions.",
       "acceptanceCriteria": [

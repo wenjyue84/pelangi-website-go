@@ -495,6 +495,19 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[performance] Add WhatsApp Business Platform Cloud API for booking confirmation notifications",
+      "description": "Auto-generated performance test from US-175",
+      "from_story": "US-175",
+      "command": "",
+      "priority": "medium",
+      "id": "performance-039",
+      "created_ts": "2026-04-14T07:20:29Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }

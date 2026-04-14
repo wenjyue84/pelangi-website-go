@@ -13,3 +13,286 @@
   [preflight] Scanning story fields for prompt injection patterns...
   [preflight] Injection scan: OK
 [state_machine] Checkpoint valid: iter=151, phase=M
+  [checkpoint-completeness] OK (phase=✓, storyId=absent, retryCount=absent) — resuming
+  [plugin] Loading SPIRAL plugin system...
+  [plugin] Loaded: notify-slack (version 1.0.0)
+  [plugin] Loaded 1 plugin(s)
+[spiral] Backup: /c/Users/Jyue/Documents/1-projects/Software Projects/pelangi-website/prd.json.bak
+
+  ╔══════════════════════════════════════════════╗
+  ║   SPIRAL — Self-iterating PRD Loop            ║
+  ╠══════════════════════════════════════════════╣
+  ║  PRD:         /c/Users/Jyue/Documents/1-projects/Software Projects/pelangi-website/prd.json
+  ║  Stories:     230/239 complete (9 pending)
+  ║  Max iters:   999
+  ║  Ralph iters: 120 per phase
+  ║  Model:       auto (haiku/sonnet/opus by complexity)
+  ║  Phase models: R=haiku  S=haiku  M=haiku
+  ║  Research:    haiku model (WebFetch fallback)
+  ║  Mode:        --skip-research (Phase R skipped)
+  ║  Batch size:  20 stories per iteration
+  ║  Low power:   adaptive memory management enabled
+  ║  Capacity:    Phase R skipped when pending > 50
+  ║  Scratch:     /c/Users/Jyue/Documents/1-projects/Software Projects/pelangi-website/.spiral
+  ╚══════════════════════════════════════════════╝
+
+  [UI] Dashboard: http://localhost:5299/Pelangi Capsule Hostel Website
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Jyue\Documents\1-projects\Software Projects\pelangi-website>  [checkpoint] Resuming from iter=151 phase=M
+/c/Users/Jyue/Documents/1-projects/Software Projects/Spiral/lib/spiral_helpers.sh: line 179: 1776151077 - 2026-04-14T06: value too great for base (error token is "14T06")
+  [Phase 0] Skipping (--gate proceed)
+
+  ┌─────────────────────────────────────────────────────┐
+  │  SPIRAL Iteration 151 / 999
+  │  Stories: 230/239 complete (9 pending)
+  └─────────────────────────────────────────────────────┘
+
+  [Phase A] AI SUGGESTIONS — generating per-iteration story candidates...
+[A] LLM generated 5 story candidates
+  [A] Generated 5 AI suggestion(s) via LLM
+  [A] Injected 50 completed stories into prompt for dedup
+  [A] AI suggestions: 5 candidate(s) → C:/Users/Jyue/Documents/1-projects/Software Projects/pelangi-website/.spiral/_ai_suggest_output.json
+  [test-stories] Generated 90 test story candidate(s): e2e=45, integration=8, regression=16, security=8, performance=13
+Filtered stories: 5 -> 5 passing (min score: 0.0)
+Filtered stories: 90 -> 90 passing (min score: 0.0)
+
+  [R] Skipping Phase R (checkpoint: already done this iter)
+  [T] Skipping Phase T (checkpoint: already done this iter)
+  [quality-judge] Scoring Phase R output...
+  [quality-judge] Failed to call judge: [WinError 2] The system cannot find the file specified
+  [quality-judge] Could not parse judge response for Phase R
+
+  [Phase S] STORY VALIDATE — filtering candidates against project goals...
+  [S] REJECTED: 'Add blog category filter and full-text search on /blog page using Fuse' — too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds
+  [S] REJECTED: 'Write "Getting Around JB Without a Car — Transport Guide for Backpacke' — too_simple: only 1 measurable ACs -- specify test commands, file paths, or numeric thresholds
+  [S] REJECTED: 'Create RelatedPosts component with automatic category-based linking fo' — too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds
+  [S] REJECTED: 'Add dynamic breadcrumb navigation with BreadcrumbList schema to blog a' — too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds
+  [S] REJECTED: 'Implement blog post reading time and word count metrics in post metada' — too_simple: only 1 measurable ACs -- specify test commands, file paths, or numeric thresholds
+  [S] Validated 95 stories: 90 accepted (95%), 5 rejected
+  [S] Source breakdown: test-story=90 accepted/90 | ai-example=0 accepted/5
+  [S] WARNING: Failed to record rejected patterns: No module named 'lib'
+
+  [Phase E] STORY ENRICHMENT — injecting similar solutions and refining stories...
+  [E] Enrichment complete — 90 stories ready for merge (1s)
+
+  [Phase M] MERGE — deduplicating and patching prd.json...
+  [M] Using Phase S validated stories: /c/Users/Jyue/Documents/1-projects/Software Projects/pelangi-website/.spiral/_validated_stories.json
+[merge] prd.json: 239 existing stories (9 pending)
+[merge] Test candidates: 0, Research candidates: 90
+[merge] Skip duplicate (research): [Integration Test] Write 6 SEO-optimised travel blog articles about JB for backp
+[merge] Skip duplicate (research): [Security Test] Implement Content Security Policy (CSP) header
+[merge] Skip duplicate (research): [Integration Test] Migrate CSP script-src from unsafe-inline to nonce-based poli
+[merge] Skip duplicate (research): [Security Test] Migrate CSP script-src from unsafe-inline to nonce-based policy
+[merge] Skip duplicate (research): [Integration Test] Implement dark mode support with prefers-color-scheme and Tai
+[merge] Skip duplicate (research): [Integration Test] Register Google Business Profile and connect to Google Hotel 
+[merge] Skip duplicate (research): [Security Test] Add WCAG 2.2 SC 1.2.2 captions to all prerecorded video content
+[merge] Skip duplicate (research): [Security Test] Implement booking abandonment recovery via sessionStorage re-eng
+[merge] Skip duplicate (research): [Integration Test] Upgrade to Next.js 16 and resolve all breaking changes
+[merge] Skip duplicate (research): [Security Test] Upgrade to Next.js 16 and resolve all breaking changes
+[merge] Skip duplicate (research): [Security Test] WCAG 2.1 SC 2.1.1 – Keyboard: ensure all functionality is keyb
+[merge] Skip duplicate (research): [Integration Test] Implement Stripe FPX online banking for direct booking deposi
+[merge] Skip duplicate (research): [Integration Test] Integrate Google Free Hotel Booking Links via connectivity pa
+[merge] Skip duplicate (research): [Integration Test] Integrate channel manager for live OTA availability synchroni
+[merge] Skip duplicate (research): [Security Test] Add Hotel Price structured data for Google Hotel Price Accuracy 
+[merge] Skip duplicate (research): [Security Test] Audit and fix WCAG 2.1 SC 4.1.2 Name, Role, Value for all intera
+[merge] Skip duplicate (research): [E2E Test] Create blog system with static TypeScript data
+[merge] Skip duplicate (research): [E2E Test] Write 6 SEO-optimised travel blog articles about JB for backpackers
+[merge] Skip duplicate (research): [E2E Test] Add JB News & Updates widget on homepage using curated RSS links
+[merge] Skip duplicate (research): [E2E Test] Enhance /guide page with rich backpacker-focused local content
+[merge] Skip duplicate (research): [E2E Test] Create /book page with direct booking + OTA options
+[merge] Skip duplicate (research): [Regression Test] Add dynamic OG images for blog posts using next/og ImageRespon
+[merge] Skip duplicate (research): [E2E Test] Add blog category filter and tag pages for long-tail SEO
+[merge] Skip duplicate (research): [E2E Test] Optimize INP (Interaction to Next Paint) for booking and filter inter
+[merge] Skip duplicate (research): [E2E Test] Add PDPA/GDPR cookie consent banner for analytics compliance
+[merge] Skip duplicate (research): [E2E Test] Add dedicated /amenities page with full LocationFeatureSpecification 
+[merge] Skip duplicate (research): [Performance Test] Add dedicated /amenities page with full LocationFeatureSpecif
+[merge] Skip duplicate (research): [E2E Test] Implement Sentry error monitoring for client, server, and edge
+[merge] Skip duplicate (research): [E2E Test] Add email newsletter capture form for guest re-marketing
+[merge] Skip duplicate (research): [Performance Test] Add email newsletter capture form for guest re-marketing
+[merge] Skip duplicate (research): [Regression Test] Audit and fix WCAG 1.4.3 color contrast failures across all co
+[merge] Skip duplicate (research): [Regression Test] Apply rate limiting middleware to /api/public and /api/chat pr
+[merge] Skip duplicate (research): [Performance Test] Set up Lighthouse CI in GitHub Actions for automated performa
+[merge] Skip duplicate (research): [E2E Test] Add Fuse.js client-side site search for blog and guide content
+[merge] Skip duplicate (research): [Performance Test] Add Fuse.js client-side site search for blog and guide conten
+[merge] Skip duplicate (research): [E2E Test] Add contact inquiry form with Resend email auto-reply on /contact pag
+[merge] Skip duplicate (research): [Performance Test] Upgrade Tailwind CSS from v3 to v4
+[merge] Skip duplicate (research): [Regression Test] WCAG 2.2 SC 2.4.13: Audit and enforce minimum focus appearance
+[merge] Skip duplicate (research): [Regression Test] Enable Partial Pre-rendering (PPR) with incremental mode on Ho
+[merge] Skip duplicate (research): [Performance Test] Add blurDataURL placeholder to remote hero and room images us
+[merge] Skip duplicate (research): [E2E Test] Add Exit Intent overlay on /book page offering early check-in incenti
+[merge] Skip duplicate (research): [E2E Test] Register Google Business Profile and connect to Google Hotel free boo
+[merge] Skip duplicate (research): [E2E Test] Implement WCAG 2.2 SC 2.5.8 – Target Size Minimum (24×24 CSS px)
+[merge] Skip duplicate (research): [Regression Test] Add Malaysia PDPA-compliant cookie consent banner with explici
+[merge] Skip duplicate (research): [E2E Test] Implement INP optimisation: defer non-critical third-party scripts
+[merge] Skip duplicate (research): [Performance Test] Adopt `'use cache'` directive for explicit data caching in Ne
+[merge] Skip duplicate (research): [Performance Test] Add Service Worker offline fallback to complete PWA installab
+[merge] Skip duplicate (research): [E2E Test] Add live chat widget for 24/7 guest pre-booking inquiry support
+[merge] Skip duplicate (research): [E2E Test] Add per-room accessible photo lightbox gallery
+[merge] Skip duplicate (research): [E2E Test] Implement View Transitions API for animated page navigation
+[merge] Skip duplicate (research): [Performance Test] Implement View Transitions API for animated page navigation
+[merge] Skip duplicate (research): [E2E Test] Implement booking abandonment recovery via sessionStorage re-engageme
+[merge] Skip duplicate (research): [E2E Test] Build Suspense-streaming skeleton UI for room availability section
+[merge] Skip duplicate (research): [Performance Test] Build Suspense-streaming skeleton UI for room availability se
+[merge] Skip duplicate (research): [Regression Test] Replace JavaScript tooltip positioning with CSS Popover API an
+[merge] Skip duplicate (research): [Performance Test] Upgrade to Next.js 16 and resolve all breaking changes
+[merge] Skip duplicate (research): [E2E Test] Implement scheduler.yield() for INP optimisation on long JavaScript t
+[merge] Skip duplicate (research): [E2E Test] Create dedicated /location page for Google Business Profile 2026 loca
+[merge] Skip duplicate (research): [E2E Test] Implement AI search optimisation (AEO) with expanded FAQ and conversa
+[merge] Skip duplicate (research): [E2E Test] Implement Google Tag Manager with Consent Mode v2
+[merge] Skip duplicate (research): [E2E Test] Implement Facebook Conversions API (CAPI) for server-side event track
+[merge] Skip duplicate (research): [E2E Test] Implement Stripe FPX online banking for direct booking deposit paymen
+[merge] Skip duplicate (research): [E2E Test] Add GA4 Enhanced Ecommerce events for booking funnel analysis
+[merge] Skip duplicate (research): [Regression Test] Add TikTok Pixel and Events API for Gen Z audience analytics
+[merge] Skip duplicate (research): [E2E Test] Implement A/B testing with Vercel Feature Flags and Edge Config
+[merge] Skip duplicate (research): [E2E Test] Implement WCAG 2.2 SC 3.3.3 + 3.3.4 – Error Suggestion and Error Pr
+[merge] Skip duplicate (research): [E2E Test] Add CSS native scroll-driven carousel using ::scroll-button() and ::s
+[merge] Skip duplicate (research): [Regression Test] Comply with Malaysia CPETTR 2024 — mandatory Bahasa Malaysia
+[merge] Skip duplicate (research): [Performance Test] Implement Next.js 16 'use cache' directive with cacheTag/cach
+[merge] Skip duplicate (research): [E2E Test] Integrate Google Free Hotel Booking Links via connectivity partner
+[merge] Skip duplicate (research): [E2E Test] Add Google AI Overviews optimisation: structured Q&A and entity signa
+[merge] Skip duplicate (research): [E2E Test] Add JB-Singapore RTS Link and MyNIISe QR border crossing info page
+[merge] Skip duplicate (research): [E2E Test] Add Visit Malaysia 2026 campaign landing page with structured event d
+[merge] Skip duplicate (research): [E2E Test] Add Hotel Price structured data for Google Hotel Price Accuracy valid
+[merge] Skip duplicate (research): [E2E Test] Implement mobile booking conversion optimisations: trust badges and p
+[merge] Skip duplicate (research): [Regression Test] Implement CSS container queries for responsive room card compo
+[merge] Skip duplicate (research): [E2E Test] Implement updateTag() and refresh() Server Actions for booking state 
+[merge] Skip duplicate (research): [Performance Test] Implement updateTag() and refresh() Server Actions for bookin
+[merge] Skip duplicate (research): [Regression Test] Adopt CSS @property for type-safe, animatable design tokens
+[merge] Skip duplicate (research): [E2E Test] Implement WCAG 2.1 SC 2.2.2 Pause/Stop/Hide for auto-advancing animat
+[merge] Skip duplicate (research): [Regression Test] Blog post: How Malaysians Can Find Jobs in Singapore (2026 Gui
+[merge] Skip duplicate (research): [E2E Test] Blog post: Singapore Work Pass Guide for Malaysians (EP vs S Pass vs 
+[merge] Skip duplicate (research): [Regression Test] Blog post: Living in JB Working in Singapore — Cross-Border 
+[merge] Skip duplicate (research): [Regression Test] Blog post: Visa Run from Singapore to JB — Step-by-Step Guid
+[merge] Skip duplicate (research): [E2E Test] New page: /visa-run — Dedicated Visa Run Resource Hub with FAQPage 
+[merge] Skip duplicate (research): [Regression Test] Blog post: How to Register as a Foodpanda Delivery Rider in Ma
+[merge] Skip duplicate (research): [Regression Test] Blog post: 5 Gig Jobs for Malaysians Waiting for Singapore Wor
+[merge] Skip duplicate (research): [E2E Test] Blog post: 3-Day JB Backpacker Itinerary Under RM250 (2026)
+[merge] Skip duplicate (research): [E2E Test] New page: /singapore-jobs — Malaysian Job Seekers Resource Hub with
+[merge] Skip duplicate (research): [E2E Test] Create /singapore-jobs resource hub with FAQPage schema and job seeke
+[merge] Overflow: cleared (all candidates consumed or cap not reached)
+[merge] No new stories to add — prd.json unchanged
+  [M] Merge complete — 0 new stories added (total: 239)
+[ASSERT FAIL] story_count_bounded: Total stories (239) exceeds max (200)
+[rebalance] Pending: 9, cap: 50
+[rebalance] Within cap � no eviction needed
+  [M] Detecting file conflicts between pending stories...
+{"conflicts": [], "total": 0}
+  [M] Inferring dependencies from filesTouch overlap...
+[schema] WARNING: prd.json has no schemaVersion field. Run 'spiral.sh --migrate' or 'python lib/migrate_prd.py prd.json' to add it.
+[infer_deps] Scanned 239 stories — 1 strong deps, 0 weak overlaps
+[infer_deps] Weak overlap hints → C:/Users/Jyue/Documents/1-projects/Software Projects/pelangi-website/.spiral/_dependency_hints.json
+[infer_deps] 1 strong dep(s) found — set SPIRAL_AUTO_INFER_DEPS=true to apply to prd.json
+  [X] Applying context overflow guard to stories...
+  [overflow-guard] Applied to 239 stories (0 trimmed)
+  [X] Context build complete (overflow guard only, 1s)
+
+  [baseline] Capturing test baseline before Phase I (US-782)...
+  [SAST] semgrep not found in PATH — skipping (install semgrep to enable)
+
+  ╔══════════════════════════════════════════════════════╗
+  ║  [Phase G] HUMAN GATE — Iteration 151
+  ╠══════════════════════════════════════════════════════╣
+  ║  New stories added:  0
+  ║  Total pending:      9
+  ║  Total stories:      239 (230 complete)
+  ║  Review report:      /c/Users/Jyue/Documents/1-projects/Software Projects/pelangi-website/.spiral/gate-reports/latest-review.html
+  ╠══════════════════════════════════════════════════════╣
+  ║  Options:
+  ║    proceed — run ralph to implement pending stories
+  ║    skip    — skip ralph, advance to check-done
+  ║    quit    — halt SPIRAL
+  ╚══════════════════════════════════════════════════════╝
+
+  [G] Auto-gate: proceed
+  [G] Proceeding to implementation...
+  [I-Pre] Routing stories to optimal models...
+[router] Starting story routing...
+  [router] Story 'US-175' -> score: 30 -> model: haiku
+  [router] Story 'US-176' -> score: 45 -> model: sonnet
+  [router] Story 'US-202' -> score: 30 -> model: haiku
+  [router] Story 'US-216' -> score: 30 -> model: haiku
+  [router] Story 'US-220' -> score: 45 -> model: sonnet
+  [router] Story 'US-232' -> score: 30 -> model: haiku
+  [router] Story 'US-236' -> score: 30 -> model: haiku
+  [router] Story 'US-248' -> score: 30 -> model: haiku
+  [router] Story 'US-251' -> score: 30 -> model: haiku
+[router] No story models needed updating.
+[router] Emitted 9 routing telemetry events to C:/Users/Jyue/Documents/1-projects/Software Projects/pelangi-website\spiral_events.jsonl
+[router] Story routing complete.
+
+  [parallel] Auto-recommendation disabled — using 1 worker (pass --ralph-workers N to override)
+
+  [Phase I] IMPLEMENT — running ralph (120 inner iterations)...
+  [I] Pending stories (9):
+    [US-175] Add WhatsApp Business Platform Cloud API for booking confirmation notifications
+    [US-176] Automate structured data validation in CI with schema.org validator
+    [US-202] Add Google Search Console Search Insights and branded vs non-branded filter
+    [US-216] Malaysia Online Safety Act 2025 – Add safety reporting mechanism for user-submitted content
+    [US-220] Implement Next.js 16.1 Turbopack filesystem caching for faster local dev builds
+    [US-232] Implement HTTP 103 Early Hints for critical resource preloading on Vercel
+    [US-236] Add Subresource Integrity (SRI) hashes for all third-party CDN scripts
+    [US-248] Blog post: Lalamove Driver Guide Malaysia — Earn Flexible Income in JB
+    [US-251] Blog post: Getting Around JB Without a Car — Transport Guide for Backpackers
+
+  [Phase I] Dirty working tree detected — auto-stashing prd.json only (iter 151)...
+Saved working directory and index state On master: spiral-auto-stash-iter-151
+  [Phase I] Stash created: stash@{0}}
+  [Phase I] Restored prd.json from pre-stash backup (Phase M stories preserved)
+  [idempotency] Story US-175 already implemented in commit 15772cdd — skipping
+[master 76069ac] feat(spiral): complete 1 stories (iter 151)
+ 87 files changed, 10071 insertions(+), 2104 deletions(-)
+ create mode 100644 .spiral/_claude_raw_11151.tmp
+ create mode 100644 .spiral/_claude_raw_16503.tmp
+ create mode 100644 .spiral/_claude_raw_38466.tmp
+ create mode 100644 .spiral/_claude_raw_49109.tmp
+ create mode 100644 .spiral/_claude_raw_55397.tmp
+ create mode 100644 .spiral/_core_hashes_iter150.txt
+ create mode 100644 .spiral/_core_hashes_iter151.txt
+ rename .spiral/{_prd_prestash_149.json => _full_prd_backup.json} (99%)
+ create mode 100644 .spiral/_last_error.json
+ create mode 100644 .spiral/_phase_R_148.ckpt.gz
+ create mode 100644 .spiral/_phase_R_149.ckpt.gz
+ rename .spiral/{_phase_R_148.ckpt => _phase_R_150.ckpt} (100%)
+ rename .spiral/{_phase_R_149.ckpt => _phase_R_151.ckpt} (100%)
+ create mode 100644 .spiral/_phase_T_148.ckpt.gz
+ create mode 100644 .spiral/_phase_T_149.ckpt.gz
+ rename .spiral/{_phase_T_148.ckpt => _phase_T_150.ckpt} (100%)
+ rename .spiral/{_phase_T_149.ckpt => _phase_T_151.ckpt} (100%)
+ rename .spiral/{_prd_prestash_148.json => _prd_prestash_151.json} (98%)
+ rename .spiral/{_ralph_stderr_NYo2SZ.txt => _ralph_stderr_4pcNyt.txt} (100%)
+ rename .spiral/{_ralph_stderr_aVYnHY.txt => _ralph_stderr_guyXJz.txt} (100%)
+ create mode 100644 .spiral/_sys_prompt_11151.txt
+ create mode 100644 .spiral/_sys_prompt_16503.txt
+ create mode 100644 .spiral/_sys_prompt_38466.txt
+ create mode 100644 .spiral/_sys_prompt_49109.txt
+ create mode 100644 .spiral/_sys_prompt_55397.txt
+ create mode 100644 .spiral/_user_prompt_11151.txt
+ create mode 100644 .spiral/_user_prompt_16503.txt
+ create mode 100644 .spiral/_user_prompt_38466.txt
+ create mode 100644 .spiral/_user_prompt_49109.txt
+ create mode 100644 .spiral/_user_prompt_55397.txt
+ create mode 100644 .spiral/crashes/US-173_20260414T061358Z.txt
+ create mode 100644 .spiral/crashes/US-173_20260414T062426Z.txt
+ create mode 100644 .spiral/crashes/US-173_20260414T063256Z.txt
+ create mode 100644 .spiral/crashes/US-173_20260414T063929Z.txt
+ create mode 100644 .spiral/crashes/US-173_20260414T064253Z.txt
+ delete mode 100644 .spiral/gemini-cache/US-173.json
+ create mode 100644 .spiral/learned_patterns_iter_149.json
+ create mode 100644 .spiral/learned_patterns_iter_150.json
+ rename .spiral/prd-backups/{prd-iter140.json.gz => prd-iter148.json.gz} (53%)
+ rename .spiral/prd-backups/{prd-iter141.json.gz => prd-iter149.json.gz} (56%)
+ rename .spiral/prd-backups/{prd-iter148.json => prd-iter150.json} (98%)
+ rename .spiral/prd-backups/{prd-iter149.json => prd-iter151.json} (98%)
+ create mode 100644 .spiral/test-suites/performance/results/iter-149.json
+ create mode 100644 .spiral/test-suites/regression/results/iter-149.json
+ create mode 100644 .spiral/test-suites/security/results/iter-149.json
+ create mode 100644 .spiral/test-suites/smoke/results/iter-149.json
+ create mode 100644 .spiral/test_output_149.log
+ create mode 100644 GEO-AUDIT-REPORT.md
+ create mode 100644 site/public/googleb99bb85b26e0c3a4.html
+ rename site/src/{middleware.ts => middleware.ts.bak} (100%)
+ create mode 100644 test-reports/20260414-141421/report.json
+  [I] Git: committed 1 stories (fallback single commit)
+  [I] Ralph completed 1 new stories

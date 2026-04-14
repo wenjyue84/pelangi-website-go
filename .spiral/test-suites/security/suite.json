@@ -261,6 +261,19 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[security] Add WhatsApp Business Platform Cloud API for booking confirmation notifications",
+      "description": "Auto-generated security test from US-175",
+      "from_story": "US-175",
+      "command": "",
+      "priority": "high",
+      "id": "security-021",
+      "created_ts": "2026-04-14T07:20:29Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }
