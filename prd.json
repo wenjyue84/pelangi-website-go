@@ -5936,7 +5936,16 @@
       "_antiPatterns": [
         "oversized_diff: produced 14525 lines but limit is 500. Keep total insertions+deletions under 500 lines."
       ],
-      "last_attempted": "2026-04-14T14:13:26Z"
+      "last_attempted": "2026-04-14T14:13:26Z",
+      "_phaseI": {
+        "diagnosisBlock": "## Current State\n`posts.ts` has a `rawPosts` array ending at line 1873. The last post (cheap-eats) ends on line 1872.\n\n## Problem Identified\nUS-272 needs a new blog post entry added to `rawPosts`. Previous attempt generated 14525 lines - likely due to writing an overly verbose content string.\n\n## Planned Changes\n- Add one compact blog post object to `rawPosts` in `site/src/data/blog/posts.ts`, inserted before the closing `];`\n- HTML content kept well under 6000 characters (~2500 chars) with a comparison table and FAQ section\n- Total diff under 80 lines\n\n<plan>\n{\n  \"files_to_create\": [],\n  \"files_to_modify\": [\"site/src/data/blog/posts.ts\"],\n  \"functions_to_add\": [],\n  \"estimated_loc\": 75\n}\n</plan>\nNow let me verify the diff size:\n45 lines added - well within the 500-line limit. Now run the build:\nBuild passes. Now mark the story as complete:\nNow update progress.txt and commit:\nUS-272 is complete. Summary:\n\n- **Added** compact blog post to `site/src/data/blog/posts.ts` (45 lines inserted)\n- **Comparison table** covers brands, discount levels, and transport costs from Singapore (JPO vs IMM/Changi City Point)\n- **FAQ section** answers \"Is it worth going to JPO?\" with 5 targeted Q&As\n- **Build passes**, `passes: true` set in `prd.json`\n- **Diff: 45 lines** (previous attempt: 14,525 lines — fixed by writing concise HTML ~2500 chars instead of exhaustive content)"
+      },
+      "_contextStats": {
+        "tokensBeforeMasking": 172,
+        "tokensAfterMasking": 171,
+        "reductionPct": 0,
+        "contextWindow": 10
+      }
     },
     {
       "id": "US-273",
