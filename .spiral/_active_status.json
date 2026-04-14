@@ -1,8 +1,6 @@
 {
-  "phase": "I",
+  "phase": "V",
   "iteration": 141,
-  "started_at": 1776143614,
-  "pct_done": 60,
-  "story_id": "US-265",
-  "story_title": "Implement RSS auto-discovery link tag in head and create JSON Feed 1.1 endpoint"
+  "started_at": 1776144147,
+  "pct_done": 80
 }

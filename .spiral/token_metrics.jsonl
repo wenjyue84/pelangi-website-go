@@ -27,3 +27,4 @@
 {"ts": "2026-04-14T05:03:25Z", "story_id": "US-173", "phase": "I", "model": "unknown", "input_tokens": 0, "output_tokens": 0, "total_tokens": 0, "duration_ms": 905000.0}
 {"ts": "2026-04-14T05:09:15Z", "story_id": "US-173", "phase": "I", "model": "unknown", "input_tokens": 0, "output_tokens": 0, "total_tokens": 0, "duration_ms": 902000.0}
 {"ts": "2026-04-14T05:21:49Z", "story_id": "US-173", "phase": "I", "model": "unknown", "input_tokens": 0, "output_tokens": 0, "total_tokens": 0, "duration_ms": 901000.0}
+{"ts": "2026-04-14T05:23:48Z", "story_id": "US-265", "phase": "I", "model": "unknown", "input_tokens": 0, "output_tokens": 0, "total_tokens": 0, "duration_ms": 602000.0}
