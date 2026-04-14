@@ -864,3 +864,6 @@ Completed: Add Pinterest Rich Pins metadata for room and blog pages (ID: US-159)
 ### Gotchas
 - First attempt failed with 14,223 lines > 500 limit. Only 35 lines of actual changes needed.
 - Pinterest domain verification token is injected via `NEXT_PUBLIC_PINTEREST_VERIFICATION_TOKEN` env var (set in Vercel dashboard)
+## Iteration 2 - Tue, Apr 14, 2026  9:01:31 AM
+FAILED diagnosis-block gate: Add Pinterest Rich Pins metadata for room and blog pages (ID: US-159) — no diagnosis block found — attempt 2/3
+
