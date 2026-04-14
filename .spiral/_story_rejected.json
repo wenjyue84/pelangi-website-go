@@ -1,151 +1,138 @@
 {
   "stories": [
     {
-      "title": "Write 'JB Shopping Guide: Budget Hauls & Bargaining Tips' Blog Post with Product Schema",
+      "title": "Implement RSS 2.0 Feed Generator for Blog Posts at /feed.xml",
       "priority": "high",
-      "description": "Create a detailed shopping guide for backpackers visiting Johor Bahru, covering night markets (Pasar Tun Dr. Ismail), malls (Aeon), and street markets with specific store names, item prices, bargaining tips, and opening hours. Publish at /blog/jb-shopping-guide with Product schema markup for recommended items and LocalBusiness schema for shops. Target long-tail keywords: 'cheap shopping JB', 'JB markets for backpackers'.",
+      "description": "Create RSS feed endpoint that generates valid RSS 2.0 XML with all published blog posts. Include auto-discovery <link> tag in HTML head for feed readers and SEO.",
       "acceptanceCriteria": [
-        "Blog post renders at /blog/jb-shopping-guide with h2 sections for each market type, store listings with prices and hours",
-        "Product schema markup embeds for 5+ recommended items (e.g., batik shirts, local snacks) with price, currency, and store name",
-        "Post includes LocalBusiness schema for 3+ key shopping venues with address, phone, openingHoursSpecification"
+        "GET /feed.xml returns valid RSS 2.0 XML with Content-Type: application/rss+xml header",
+        "Feed contains all blog posts with <title>, <link>, <pubDate> (ISO 8601), <description>, and <author> elements",
+        "app/layout.tsx includes <link rel=\"alternate\" type=\"application/rss+xml\" href=\"/feed.xml\"> tag in <head> for feed discovery"
       ],
       "technicalNotes": [
-        "File to create: site/content/blog/jb-shopping-guide.mdx with front matter (tags: [shopping, jb, budget])",
-        "File to update: site/lib/schema.ts — add generateProductSchema() for items with price and priceCurrency fields",
-        "File to update: site/lib/schema.ts — LocalBusiness schema generation with openingHoursSpecification",
-        "Test command: npm run build && npm run test -- schema.test.ts (validate Product and LocalBusiness schemas)"
+        "File to create: app/api/feed/route.ts (RSS endpoint returning XML response)",
+        "File to modify: app/layout.tsx (add feed discovery link)",
+        "File to reference: lib/blog.ts (blog post metadata structure)",
+        "Test command: curl http://localhost:3000/feed.xml | grep -E '(<rss|<title|<link)' | head -10"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "site/content/blog/jb-shopping-guide.mdx",
-        "site/lib/schema.ts",
-        "tests/schema.test.ts"
+        "app/api/feed/route.ts",
+        "app/layout.tsx",
+        "lib/blog.ts"
+      ],
+      "_source": "ai-example",
+      "passes": false,
+      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
+    },
+    {
+      "title": "Add JB News & Updates Widget to Homepage Pulling Curated RSS Feeds",
+      "priority": "high",
+      "description": "Create homepage widget that fetches and displays latest 3 items from curated JB news RSS sources (Berita Harian, Johor Tourism Board). Implements 24-hour cache layer to prevent feed fetch failures and rate limiting.",
+      "acceptanceCriteria": [
+        "Widget fetches from 3 hardcoded RSS feed URLs and parses latest 3 items with title, snippet, and publication date",
+        "Implements revalidateTag('jb-news') caching with 86400 second (24-hour) ISR revalidation window",
+        "Widget gracefully handles fetch errors and displays fallback content (e.g., 'Updates unavailable')"
+      ],
+      "technicalNotes": [
+        "File to create: components/JBNewsWidget.tsx (Server Component with async RSS parsing)",
+        "File to create: lib/feedparser.ts (utility to parse RSS XML and extract title/description/pubDate)",
+        "File to modify: app/page.tsx (render JBNewsWidget component in hero or below fold)",
+        "Test command: npm run dev && curl http://localhost:3000 | grep -A 5 'JB News'"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "components/JBNewsWidget.tsx",
+        "lib/feedparser.ts",
+        "app/page.tsx"
       ],
       "_source": "ai-example",
       "passes": false,
       "_rejection_reason": "too_simple: only 1 measurable ACs -- specify test commands, file paths, or numeric thresholds"
     },
     {
-      "title": "Add Blog Post Author Profiles with Byline Cards and Person Schema Markup",
+      "title": "Publish 'Getting Around JB Without a Car — Transport Guide for Backpackers' Blog Post",
       "priority": "medium",
-      "description": "Implement author profile metadata and byline cards that display at the top and bottom of blog posts. Each author has a profile page at /blog/authors/[slug] with bio, avatar, social links, and list of published posts. Add Person schema markup to bylines and author pages for E-E-A-T authority signals. Support multiple authors per post for collaborative content.",
+      "description": "Write 1500+ word original blog post covering public transport (Rapidkuala buses), ride-hailing (Grab), taxis, and walking in Johor Bahru. Include cost comparisons, Google Maps tips, and HowTo schema for navigation. Target Malaysian workers and budget-conscious travelers.",
       "acceptanceCriteria": [
-        "Blog post header displays author card with avatar, name, bio excerpt, and clickable author profile link; Person schema embeds name, url, image, sameAs fields",
-        "Author profile page /blog/authors/jad-tan shows full bio, photo, social links (LinkedIn, Twitter), and lists all 5+ posts authored by that person",
-        "Post footer includes author card with 'Follow' link to author profile; schema generates sameAs array from social media links"
+        "Blog post created at src/content/blog/getting-around-jb-without-car.tsx with >1500 words, frontmatter (title, slug, pubDate, author), and export declaration",
+        "Includes HowTo schema markup with 5+ steps for using buses, Grab, taxis, and walking",
+        "Post contains internal links to /guide, /singapore-jobs, /visa-run, and at least 2 other JB transport-related blog posts"
       ],
       "technicalNotes": [
-        "File to create: site/app/(main)/blog/authors/[slug]/page.tsx with dynamic author routing",
-        "File to create: site/components/AuthorCard.tsx (reusable byline component with schema props)",
-        "File to update: site/lib/blog.ts — add getAuthorPosts(authorId: string) and generateAuthorPageData(slug: string)",
-        "File to update: site/lib/schema.ts — add generatePersonSchema(author: Author) with sameAs generation",
-        "Test command: npm run test -- AuthorCard.test.tsx && npm run build (component rendering, schema validation)"
+        "File to create: src/content/blog/getting-around-jb-without-car.tsx (TSX blog post with frontmatter)",
+        "File to modify: lib/blog.ts (import and register new post in blog post registry array)",
+        "Outline sections: Intro, Rapidkuala buses (routes/costs/passes), Taxis (call/alternatives), Grab (pricing vs Singapore), Walking neighborhoods, Google Maps tips, First-timer recommendations",
+        "Test command: npm run build && npm run dev && curl http://localhost:3000/blog/getting-around-jb-without-car | grep -i transport"
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "site/app/(main)/blog/authors/[slug]/page.tsx",
-        "site/components/AuthorCard.tsx",
-        "site/lib/blog.ts",
-        "site/lib/schema.ts",
-        "tests/AuthorCard.test.tsx"
+        "src/content/blog/getting-around-jb-without-car.tsx",
+        "lib/blog.ts"
       ],
       "_source": "ai-example",
       "passes": false,
-      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
+      "_rejection_reason": "too_simple: only 1 measurable ACs -- specify test commands, file paths, or numeric thresholds"
     },
     {
-      "title": "Implement Blog Post Series Pages with SeriesCollection Schema and Cross-Linking",
-      "priority": "high",
-      "description": "Organize blog posts into content series (e.g., 'Malaysia Work Series' for Foodpanda/Lalamove/Gig Jobs, 'JB Travel Series' for itineraries/transport/shopping). Create dynamic series landing pages at /blog/series/[series-slug] that display all posts in the series with reading order, SeriesCollection schema, and breadcrumbs. Auto-populate series navigation widgets in post headers/footers. Update sitemap.ts to include series URLs.",
-      "acceptanceCriteria": [
-        "Navigate to /blog/series/malaysia-work and see all 5 job/gig economy posts in reading order with progress indicators (e.g., '2 of 5')",
-        "Series page renders SeriesCollection schema with hasPart array linking to all Article objects in correct order",
-        "Blog post header/footer displays series navigation: 'Part 2 of 5' badge and 'Previous: Foodpanda' / 'Next: 5 Gig Jobs' links"
-      ],
-      "technicalNotes": [
-        "File to create: site/app/(main)/blog/series/[series-slug]/page.tsx with dynamic series routing",
-        "File to update: site/lib/blog.ts — add getSeriesPosts(seriesId: string) and getSeriesMetadata(seriesId: string)",
-        "File to update: site/lib/schema.ts — add generateSeriesCollectionSchema(series: Series, posts: Post[])",
-        "File to update: site/sitemap.ts — include /blog/series/* routes in sitemap generation",
-        "Test command: npm run test -- blog-series.test.ts (routing, series ordering, schema validation)"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "medium",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "site/app/(main)/blog/series/[series-slug]/page.tsx",
-        "site/lib/blog.ts",
-        "site/lib/schema.ts",
-        "site/sitemap.ts",
-        "tests/blog-series.test.ts"
-      ],
-      "_source": "ai-example",
-      "passes": false,
-      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
-    },
-    {
-      "title": "Add Native Blog Post Comments System with Honeypot Spam Protection",
+      "title": "Implement Table of Contents Auto-Generator for Blog Post Pages",
       "priority": "medium",
-      "description": "Implement a native comment system for blog posts (no third-party Disqus) with form validation, honeypot anti-spam field, and moderation queue. Comments display below each post with author name, avatar, timestamp, and content. Moderators review pending comments before publishing. Store comments in database with soft-delete for retention. Add Comment and CommentAction schema markup for Google rich results.",
+      "description": "Create TableOfContents component that auto-extracts h2/h3 headings from blog post content, generates slugified anchor IDs, and renders as sticky sidebar (desktop) or collapsible menu (mobile). Improves long-form content navigation and UX.",
       "acceptanceCriteria": [
-        "Blog post footer displays comment form with name, email, website (optional), and comment textarea; form includes hidden honeypot field 'url' that triggers rejection if filled",
-        "Submitted comments appear in moderation queue; moderators approve/reject via admin panel; approved comments display with author name and timestamp",
-        "Post page renders CommentAction schema for approved comments with author, text, dateCreated, and parentItem reference to Article"
+        "Component auto-scans React children for h2/h3 elements, extracts text content, generates slugified anchor IDs using lib/slug utility",
+        "Renders as sticky sidebar on desktop (position: sticky, top: 100px) and collapsible accordion on mobile (max-width: 768px)",
+        "Clicking TOC items scrolls to corresponding heading with smooth scroll-behavior: smooth CSS property"
       ],
       "technicalNotes": [
-        "File to create: site/components/CommentForm.tsx (form with honeypot validation and client-side error handling)",
-        "File to create: site/app/api/comments/route.ts (POST endpoint validating honeypot, returning 400 if filled)",
-        "File to update: site/lib/schema.ts — add generateCommentActionSchema(comment: Comment) with required fields",
-        "File to update: site/app/(main)/blog/[slug]/page.tsx — integrate comment form and display approved comments",
-        "Test command: npm run test -- CommentForm.test.tsx && npm run test -- comments-api.test.ts (honeypot validation, spam rejection)"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "medium",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "site/components/CommentForm.tsx",
-        "site/app/api/comments/route.ts",
-        "site/lib/schema.ts",
-        "site/app/(main)/blog/[slug]/page.tsx",
-        "tests/CommentForm.test.tsx",
-        "tests/comments-api.test.ts"
-      ],
-      "_source": "ai-example",
-      "passes": false,
-      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
-    },
-    {
-      "title": "Add Blog Post Difficulty & Duration Tags for Travel Guide Filtering",
-      "priority": "high",
-      "description": "Extend blog post front matter to include metadata tags for travel guides: difficulty (Easy/Medium/Hard), duration (30min/1day/3days), and activity type (Shopping/Nightlife/Cultural). Create a blog sidebar filter UI allowing readers to view posts matching selected difficulty and duration. Update blog index page to show filtered post cards. Implement URL query params for sharing filtered views (e.g., /blog?difficulty=easy&duration=1day).",
-      "acceptanceCriteria": [
-        "Blog post front matter includes difficulty: 'easy', duration: '1day', activity: ['shopping', 'food'] tags; posts render with visible tags on cards",
-        "Blog sidebar displays filter checkboxes for difficulty levels and durations; clicking filters updates URL params and displayed posts in real-time",
-        "Shareable filter link /blog?difficulty=easy&duration=30min filters correctly; page title updates to 'Easy Activities (30 min)'"
-      ],
-      "technicalNotes": [
-        "File to update: site/lib/blog.ts — add parsePostMetadata() to extract difficulty, duration, and activity tags from front matter",
-        "File to create: site/components/BlogFilterSidebar.tsx with checkbox controls, useRouter to update query params",
-        "File to update: site/app/(main)/blog/page.tsx — implement useSearchParams() to read filters, call getFilteredPosts(params)",
-        "Test command: npm run test -- blog-filters.test.ts (filter logic, query param parsing, card filtering)"
+        "File to create: components/TableOfContents.tsx (React component with useEffect DOM scanning and scroll listener)",
+        "File to create: lib/slug.ts (slugify function: lowercase, replace spaces/symbols with hyphens)",
+        "File to modify: app/blog/[slug]/page.tsx (wrap blog content with <TableOfContents> wrapper component)",
+        "Test command: npm run dev && navigate to blog post && click TOC items && verify smooth scroll to headings"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "site/lib/blog.ts",
-        "site/components/BlogFilterSidebar.tsx",
-        "site/app/(main)/blog/page.tsx",
-        "tests/blog-filters.test.ts"
+        "components/TableOfContents.tsx",
+        "lib/slug.ts",
+        "app/blog/[slug]/page.tsx"
+      ],
+      "_source": "ai-example",
+      "passes": false,
+      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
+    },
+    {
+      "title": "Update sitemap.ts to Include All Published Blog Post URLs with Metadata",
+      "priority": "high",
+      "description": "Modify app/sitemap.ts to dynamically enumerate all blog posts from lib/blog.ts and generate <url> entries with lastmod (ISO 8601), changefreq: weekly, and priority: 0.8. Ensures all blog content is discoverable by search engines.",
+      "acceptanceCriteria": [
+        "sitemap.ts imports blog post array from lib/blog.ts and maps each post to a Sitemap URL entry with loc, lastmod, changefreq, priority",
+        "Each blog URL includes correct <lastmod> (post.pubDate in ISO 8601), <changefreq>weekly</changefreq>, <priority>0.8</priority>",
+        "Total URL count in /sitemap.xml increases from current count to >25 URLs (verifiable via grep <url> count)"
+      ],
+      "technicalNotes": [
+        "File to modify: app/sitemap.ts (add blog post enumeration before return statement)",
+        "File to reference: lib/blog.ts (import blog post array and extract slug, pubDate metadata)",
+        "Example entry: { url: 'https://pelangi-capsule-hostel.com/blog/getting-around-jb', lastmod: new Date('2026-04-14').toISOString(), changefreq: 'weekly', priority: 0.8 }",
+        "Test command: curl http://localhost:3000/sitemap.xml | grep -c '<url>' && curl http://localhost:3000/sitemap.xml | grep 'blog/'"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "app/sitemap.ts",
+        "lib/blog.ts"
       ],
       "_source": "ai-example",
       "passes": false,

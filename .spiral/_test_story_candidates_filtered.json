@@ -1328,6 +1328,28 @@
     ]
   },
   {
+    "title": "[Regression Test] Add TikTok Pixel and Events API for Gen Z audience analytics",
+    "description": "Write regression test to guard against future breakage of US-171. Story description: Install TikTok Pixel browser-side and implement a server-side TikTok Events API Route Handler for dual-signal tracking. TikTok is the primary discovery channel for Gen Z and millennial backpackers (18-30 demographic) researching Malaysia travel. Server-side Events API ensures signal reliability despite ad blockers, improving attribution for TikTok Ads campaigns targeting Malaysian-bound travellers.",
+    "acceptanceCriteria": [
+      "Regression test covers core observable behaviour of US-171",
+      "Test would reliably fail if the US-171 feature were removed or broken"
+    ],
+    "technicalNotes": [
+      "Run: uv run pytest tests/ -k us_171 -v"
+    ],
+    "priority": "medium",
+    "dependencies": [
+      "US-171"
+    ],
+    "_source": "test-story",
+    "_testType": "regression",
+    "_forStoryId": "US-171",
+    "tags": [
+      "regression",
+      "auto-generated"
+    ]
+  },
+  {
     "title": "[E2E Test] Implement WCAG 2.2 SC 3.3.3 + 3.3.4 \u2013 Error Suggestion and Error Prevention on booking fl",
     "description": "Write end-to-end user flow test for the feature in US-180. Story description: SC 3.3.3 (AA) requires that input errors be accompanied by a suggested correction when possible. SC 3.3.4 (AA) requires that legal/financial submissions be reviewable, confirmable, or reversible. The booking/contact forms currently lack both a review step and specific error suggestions.",
     "acceptanceCriteria": [

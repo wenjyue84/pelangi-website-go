@@ -15,3 +15,4 @@ opus	2	4bc2b8877ba4dc6193a65e27229fa4b14ae3f052	69dd34342c1f	false	0	0	0	0	0	0	0
 2026-04-13T23:40:06Z	20	1	US-143	Apply CSS @starting-style for GPU-accelerated entry animations	reject	325	opus	1		69dd34342c1f	false	0	0	0	0	0	0	0		0	0	0	0				
 2026-04-13T23:42:24Z	20	1	US-143	Apply CSS @starting-style for GPU-accelerated entry animations	reject	376	opus	2		69dd34342c1f	false	0	0	0	0	0	0	0		0	0	0	0				
 2026-04-13T23:50:31Z	20	2	US-143	Apply CSS @starting-style for GPU-accelerated entry animations	keep	236	opus	2	b4be79602d1bb204dd32b91c0f7eab14c17414cb	69dd34342c1f	false	0	0	0	0	0	0	0		0	0	0	0				
+2026-04-14T00:04:25Z	21	1	US-144	Replace JavaScript tooltip positioning with CSS Popover API and Anchor Positioning	reject	647	sonnet	1		69dd34342c1f	false	0	0	0	0	0	0	0		0	0	0	0				
