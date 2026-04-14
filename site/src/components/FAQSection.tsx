@@ -1,5 +1,5 @@
 import { cacheLife, cacheTag } from 'next/cache';
-import FAQ from './FAQ';
+import FAQ, { faqItems } from './FAQ';
 
 /**
  * FAQSection — Server Component wrapper around the client FAQ accordion.
@@ -11,11 +11,35 @@ import FAQ from './FAQ';
  *
  * The RSC payload (client component reference + props) is cached; the
  * interactive accordion still hydrates in the browser on every page load.
+ *
+ * FAQPage JSON-LD is rendered server-side here so non-JS crawlers and AI
+ * agents can index it without executing JavaScript.
  */
 export default async function FAQSection() {
   "use cache";
   cacheLife("days");
   cacheTag("faq");
 
-  return <FAQ />;
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <FAQ />
+    </>
+  );
 }

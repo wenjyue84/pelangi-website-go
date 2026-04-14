@@ -51,7 +51,7 @@ export default function StructuredData() {
       "opens": "00:00",
       "closes": "23:59"
     },
-    "checkinTime": "T14:00:00",
+    "checkinTime": "T15:00:00",
     "checkoutTime": "T12:00:00",
     "numberOfRooms": PROPERTY.totalRooms,
     "petsAllowed": false,
@@ -262,7 +262,7 @@ export default function StructuredData() {
       "@type": "QuantitativeValue",
       "value": 24
     },
-    "checkinTime": "T14:00:00",
+    "checkinTime": "T15:00:00",
     "checkoutTime": "T12:00:00",
     "image": [
       "https://pelangicapsulehostel.com/images/capsule-1.webp",

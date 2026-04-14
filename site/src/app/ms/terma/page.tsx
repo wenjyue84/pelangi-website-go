@@ -449,10 +449,88 @@ export default function TermaBMPage() {
                 </p>
               </section>
 
-              {/* 11. Perubahan */}
+              {/* 11. Akta Keselamatan Dalam Talian Malaysia 2025 */}
               <section className="mb-8">
                 <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
-                  11. Perubahan kepada Terma Ini
+                  11. Akta Keselamatan Dalam Talian Malaysia 2025 – Kandungan Pengguna &amp; Keselamatan
+                </h2>
+                <p className="text-stone-700 dark:text-stone-300 leading-relaxed mb-4">
+                  Pelangi Capsule Hostel mematuhi Akta Keselamatan Dalam Talian Malaysia 2025
+                  (Akta 866), yang berkuat kuasa pada 1 Januari 2026. Bahagian ini menjelaskan
+                  pendekatan kami terhadap kandungan yang dijana pengguna (UGC) dan pelaporan
+                  keselamatan.
+                </p>
+
+                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-5 mb-4 border border-blue-200 dark:border-blue-800">
+                  <h3 className="font-semibold text-stone-800 dark:text-stone-100 mb-3">
+                    Kandungan Pengguna di Laman Web Kami
+                  </h3>
+                  <p className="text-stone-700 dark:text-stone-300 text-sm mb-3">
+                    Pelangi Capsule Hostel menerbitkan ulasan tamu dan testimonial di laman
+                    web kami. Ulasan ini mewakili maklum balas tulin daripada tamu masa lalu
+                    kami dan menyumbang kepada komuniti yang termaklum.
+                  </p>
+                  <p className="text-stone-700 dark:text-stone-300 text-sm">
+                    Kami juga memaparkan penilaian daripada platform pihak ketiga (Google
+                    Reviews, Booking.com, Hostelworld, Airpaz) melalui pautan hiperlink atau
+                    kandungan terbenam. Memandangkan platform ini mengurus kandungan mereka
+                    sendiri, pengguna harus melaporkan kebimbangan terus kepada pengendali
+                    platform.
+                  </p>
+                </div>
+
+                <h3 className="font-semibold text-stone-800 dark:text-stone-100 mb-2">
+                  Pelaporan Keselamatan &amp; Moderasi Kandungan
+                </h3>
+                <ul className="list-disc list-inside space-y-2 text-stone-700 dark:text-stone-300 mb-4">
+                  <li>
+                    Setiap ulasan tamu di laman web kami termasuk butang <strong>&quot;Laporkan&quot;</strong> untuk
+                    mengemukakan kebimbangan keselamatan.
+                  </li>
+                  <li>
+                    Laporan juga boleh dihantar terus kepada pasukan keselamatan kami di{" "}
+                    <a
+                      href="mailto:safety@pelangicapsulehostel.com"
+                      className="text-blue-600 dark:text-blue-400 hover:underline"
+                    >
+                      safety@pelangicapsulehostel.com
+                    </a>
+                    .
+                  </li>
+                  <li>
+                    Garis panduan keselamatan kandungan lengkap kami dan piawaian komuniti
+                    tersedia di{" "}
+                    <a
+                      href="/safety-guidelines"
+                      className="text-blue-600 dark:text-blue-400 hover:underline"
+                    >
+                      halaman Garis Panduan Keselamatan
+                    </a>
+                    kami.
+                  </li>
+                  <li>
+                    Kami menyemak semua laporan dan bertindak balas dalam 5–10 hari perniagaan
+                    selaras dengan Akta Keselamatan Dalam Talian Malaysia 2025.
+                  </li>
+                </ul>
+
+                <p className="text-stone-600 dark:text-stone-400 text-sm">
+                  Untuk butiran lengkap tentang proses keselamatan kami, kandungan yang
+                  dilarang, dan cara melaporkan, sila lawati{" "}
+                  <a
+                    href="/safety-guidelines"
+                    className="text-blue-600 dark:text-blue-400 hover:underline"
+                  >
+                    Garis Panduan Keselamatan &amp; Polisi Kandungan
+                  </a>
+                  kami.
+                </p>
+              </section>
+
+              {/* 12. Perubahan */}
+              <section className="mb-8">
+                <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
+                  12. Perubahan kepada Terma Ini
                 </h2>
                 <p className="text-stone-700 dark:text-stone-300 leading-relaxed">
                   Kami berhak untuk mengemaskini atau mengubah Terma ini pada
@@ -463,10 +541,10 @@ export default function TermaBMPage() {
                 </p>
               </section>
 
-              {/* 12. Hubungi Kami */}
+              {/* 13. Hubungi Kami */}
               <section className="mb-8">
                 <h2 className="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4">
-                  12. Hubungi Kami
+                  13. Hubungi Kami
                 </h2>
                 <p className="text-stone-700 dark:text-stone-300 leading-relaxed mb-3">
                   Jika anda mempunyai soalan mengenai Terma ini, sila hubungi

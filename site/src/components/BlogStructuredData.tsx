@@ -13,8 +13,14 @@ export default function BlogStructuredData({ post }: BlogStructuredDataProps) {
     datePublished: post.date,
     dateModified: post.date,
     author: {
-      "@type": "Organization",
-      name: "Pelangi Capsule Hostel",
+      "@type": "Person",
+      name: post.author,
+      jobTitle: "Hostel Owner",
+      worksFor: {
+        "@type": "Organization",
+        name: "Pelangi Capsule Hostel",
+      },
+      url: "https://pelangicapsulehostel.com/about",
     },
     publisher: {
       "@type": "Organization",

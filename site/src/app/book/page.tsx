@@ -111,7 +111,7 @@ const lodgingReservationSchema = {
       "addressCountry": "MY",
     },
   },
-  "checkinTime": "T14:00:00",
+  "checkinTime": "T15:00:00",
   "checkoutTime": "T12:00:00",
   "totalPrice": "37.80",
   "priceCurrency": "MYR",

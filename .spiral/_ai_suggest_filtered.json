@@ -1,1 +1,118 @@
-[]
+[
+  {
+    "title": "Create blog-posts.ts data file with TypeScript types and slug generation utility",
+    "priority": "high",
+    "description": "Establish a centralized, type-safe blog post data source using TypeScript. Define BlogPost interface with title, slug, author, publishDate, description, category, content, and featuredImage. Implement slug generation utility that converts titles to deterministic URL-safe slugs.",
+    "acceptanceCriteria": [
+      "BlogPost interface exported from site/src/data/blog-posts.ts with required fields: title, slug, author, publishDate, description, category, content, featuredImage",
+      "slug utility function (site/src/lib/slug-utils.ts) generates consistent URL-safe slugs (e.g., 'Getting Around JB' \u2192 'getting-around-jb') with no duplicate slugs",
+      "At least 6 blog posts defined with backpacker/traveler content theme (JB, Singapore, visa, jobs, transport)"
+    ],
+    "technicalNotes": [
+      "File to create: site/src/data/blog-posts.ts (export const blogPosts: BlogPost[] with BlogPost interface definition)",
+      "File to create: site/src/lib/slug-utils.ts (export function generateSlug(title: string): string using toLowerCase + kebab-case)",
+      "Test command: npx tsc --noEmit to verify types; grep -c 'slug:' site/src/data/blog-posts.ts should equal post count"
+    ],
+    "filesTouch": [
+      "site/src/data/blog-posts.ts",
+      "site/src/lib/slug-utils.ts"
+    ],
+    "estimatedComplexity": "small",
+    "_source": "ai-example",
+    "passes": false,
+    "dependencies": []
+  },
+  {
+    "title": "Add Article JSON-LD schema to blog post layout with author, publishDate, image, and wordCount",
+    "priority": "high",
+    "description": "Implement Article schema.org structured data for blog posts. Extract metadata from blog post data (title, author, publishDate, description, featuredImage, wordCount) and generate valid JSON-LD embedded in the page head that Google Search Console recognizes for rich result display.",
+    "acceptanceCriteria": [
+      "Article JSON-LD schema in blog post layout (site/src/app/blog/[slug]/layout.tsx) includes @context, @type, headline, author, datePublished, image, description, and wordCount fields",
+      "Schema validates successfully using Google's Rich Results Test with no errors; passes JSON-LD syntax validation",
+      "Schema <script> tag has id='article-schema' for test verification and is placed before closing </head>"
+    ],
+    "technicalNotes": [
+      "File to edit: site/src/app/blog/[slug]/layout.tsx - add generateMetadata export that returns structured data in metadata.other",
+      "File to create: site/src/lib/blog-schema.ts (export function generateArticleSchema(post: BlogPost, wordCount: number): object)",
+      "Test command: curl -s http://localhost:3000/blog/[post-slug] | grep -o '\"@type\":\"Article\"' should return match; validate with: npm install --save-dev @types/schema.org"
+    ],
+    "filesTouch": [
+      "site/src/app/blog/[slug]/layout.tsx",
+      "site/src/lib/blog-schema.ts"
+    ],
+    "estimatedComplexity": "small",
+    "_source": "ai-example",
+    "passes": false,
+    "dependencies": []
+  },
+  {
+    "title": "Generate RSS/Atom feed at /feed.xml using next-rss with auto-discovery link in layout",
+    "priority": "high",
+    "description": "Create an RSS 2.0 feed endpoint that exports the 10 most recent blog posts with title, description, author, pubDate, and link. Add auto-discovery link tag to the layout head so RSS readers and search engines can discover the feed automatically.",
+    "acceptanceCriteria": [
+      "GET /feed.xml returns valid RSS 2.0 XML with <rss version='2.0'>, <channel>, and <item> elements, sorted by pubDate descending (newest first)",
+      "Each <item> contains <title>, <description>, <author>, <pubDate (RFC 822 format)>, <link>, and <guid> matching post slug URL",
+      "Layout head includes <link rel='alternate' type='application/rss+xml' href='/feed.xml' title='Pelangi Blog Feed' /> in site/src/app/layout.tsx"
+    ],
+    "technicalNotes": [
+      "File to create: site/src/app/feed.xml/route.ts (export async function GET() { return new Response(rssString, { headers: { 'Content-Type': 'application/xml' } }) })",
+      "Install rss package: npm install rss, or build RSS string manually with template literals and XML encoding",
+      "Test command: curl -s http://localhost:3000/feed.xml | head -20 should show valid XML; npx rss-parser 'http://localhost:3000/feed.xml' should parse without errors"
+    ],
+    "filesTouch": [
+      "site/src/app/feed.xml/route.ts",
+      "site/src/app/layout.tsx"
+    ],
+    "estimatedComplexity": "small",
+    "_source": "ai-example",
+    "passes": false,
+    "dependencies": []
+  },
+  {
+    "title": "Create /blog index page with category filter, post listing, and responsive grid layout",
+    "priority": "high",
+    "description": "Build the main blog landing page that displays all blog posts in a responsive grid. Implement client-side category filtering with toggle buttons and render blog post cards with title, excerpt, author, publishDate, and featured image. Ensure mobile-first responsive layout.",
+    "acceptanceCriteria": [
+      "Page route site/src/app/blog/page.tsx renders all posts from blogPosts data, sorted by publishDate descending; displays post count",
+      "Category filter buttons toggle visibility (e.g., selecting 'Backpacking' shows only posts with category: 'backpacking'), 'All' shows all posts; active filter state visually highlighted",
+      "Blog post cards display title, excerpt (first 150 chars), author, publishDate, featured image; responsive grid: 1 col mobile (<640px), 2 cols tablet (640-1024px), 3 cols desktop (>1024px)"
+    ],
+    "technicalNotes": [
+      "File to create: site/src/app/blog/page.tsx - use 'use client' for state, useState for selectedCategory filter, import blogPosts from site/src/data/blog-posts.ts",
+      "File to create/edit: site/src/components/BlogCard.tsx - display post preview card with Image, title, excerpt, author, date; use responsive image sizes",
+      "Test command: npm run dev && curl -s http://localhost:3000/blog | grep -c '<article' should match post count; filter by category in browser dev tools Network tab"
+    ],
+    "filesTouch": [
+      "site/src/app/blog/page.tsx",
+      "site/src/components/BlogCard.tsx"
+    ],
+    "estimatedComplexity": "medium",
+    "_source": "ai-example",
+    "passes": false,
+    "dependencies": []
+  },
+  {
+    "title": "Build JB News & Updates widget for homepage fetching from 3 curated travel news RSS feeds",
+    "priority": "medium",
+    "description": "Create a reusable widget component that fetches the latest 3-5 news items from curated RSS feeds (e.g., JB tourism, travel blogs, local news). Display items as a card list on the homepage with title, snippet, and link. Include loading and error states for robustness.",
+    "acceptanceCriteria": [
+      "Widget component site/src/components/JBNewsWidget.tsx fetches from 3 hardcoded RSS feed URLs (define in site/src/lib/rss-utils.ts) using async fetch; displays 3-5 most recent items",
+      "Each item renders with title (linkified to original), description (first 100 chars), source name, and pubDate; shows loading spinner while fetching, error message if fetch fails",
+      "Widget renders on homepage (site/src/app/page.tsx) in a scrollable or card-grid layout; data refetches on each page load (no stale cache)"
+    ],
+    "technicalNotes": [
+      "File to create: site/src/components/JBNewsWidget.tsx - use 'use client', useState, useEffect; import parseRSSFeed from rss-utils; handle loading/error states",
+      "File to create: site/src/lib/rss-utils.ts (export const RSS_FEEDS: string[] = [...], export async function parseRSSFeed(url: string): Promise<NewsItem[]>) using xml2js or rss-parser",
+      "Test command: npm run dev && visit http://localhost:3000, open Network tab, filter by 'feed' or 'rss'; check widget displays 3-5 items within 5 seconds; npm install xml2js or rss-parser"
+    ],
+    "filesTouch": [
+      "site/src/components/JBNewsWidget.tsx",
+      "site/src/lib/rss-utils.ts",
+      "site/src/app/page.tsx"
+    ],
+    "estimatedComplexity": "medium",
+    "_source": "ai-example",
+    "passes": false,
+    "dependencies": []
+  }
+]

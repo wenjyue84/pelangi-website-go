@@ -62,7 +62,7 @@ export const PROPERTY = {
   name: "Pelangi Capsule Hostel",
   currency: "MYR",
   timezone: "Asia/Kuala_Lumpur",
-  checkinTime: "14:00",
+  checkinTime: "15:00",
   checkoutTime: "12:00",
   totalRooms: 24,
 } as const;

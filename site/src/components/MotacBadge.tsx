@@ -1,8 +1,6 @@
 const MOTAC_REG_NUMBER = process.env.NEXT_PUBLIC_MOTAC_REG_NUMBER || "";
 
 export default function MotacBadge() {
-  if (!MOTAC_REG_NUMBER) return null;
-
   return (
     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 py-6 px-6 bg-stone-800/50 rounded-2xl border border-stone-700/50">
       {/* MOTAC Shield Icon */}
@@ -27,9 +25,15 @@ export default function MotacBadge() {
           <p className="text-xs tracking-widest uppercase text-stone-500">
             MOTAC Registered Accommodation
           </p>
-          <p className="text-sm font-medium text-stone-300">
-            Registration No. {MOTAC_REG_NUMBER}
-          </p>
+          {MOTAC_REG_NUMBER ? (
+            <p className="text-sm font-medium text-stone-300">
+              Registration No. {MOTAC_REG_NUMBER}
+            </p>
+          ) : (
+            <p className="text-sm font-medium text-stone-300">
+              Ministry of Tourism, Arts &amp; Culture Malaysia
+            </p>
+          )}
         </div>
       </div>
       <a

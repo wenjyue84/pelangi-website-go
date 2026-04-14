@@ -1,6 +1,31 @@
 {
   "stories": [
     {
+      "title": "Add Article JSON-LD schema to blog post layout with author, publishDate, image, and wordCount",
+      "priority": "high",
+      "description": "Implement Article schema.org structured data for blog posts. Extract metadata from blog post data (title, author, publishDate, description, featuredImage, wordCount) and generate valid JSON-LD embedded in the page head that Google Search Console recognizes for rich result display.",
+      "acceptanceCriteria": [
+        "Article JSON-LD schema in blog post layout (site/src/app/blog/[slug]/layout.tsx) includes @context, @type, headline, author, datePublished, image, description, and wordCount fields",
+        "Schema validates successfully using Google's Rich Results Test with no errors; passes JSON-LD syntax validation",
+        "Schema <script> tag has id='article-schema' for test verification and is placed before closing </head>"
+      ],
+      "technicalNotes": [
+        "File to edit: site/src/app/blog/[slug]/layout.tsx - add generateMetadata export that returns structured data in metadata.other",
+        "File to create: site/src/lib/blog-schema.ts (export function generateArticleSchema(post: BlogPost, wordCount: number): object)",
+        "Test command: curl -s http://localhost:3000/blog/[post-slug] | grep -o '\"@type\":\"Article\"' should return match; validate with: npm install --save-dev @types/schema.org"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "site/src/app/blog/[slug]/layout.tsx",
+        "site/src/lib/blog-schema.ts"
+      ],
+      "_source": "ai-example",
+      "passes": false
+    },
+    {
       "title": "[E2E Test] Create blog system with static TypeScript data",
       "priority": "medium",
       "description": "Write end-to-end user flow test for the feature in US-001. Story description: Build a blog system using Next.js App Router. Blog posts are stored as TypeScript objects in /src/data/blog/posts.ts. Each post has: slug, title, excerpt, content (HTML string), date, category, author, readTime, tags, and featured image path. Create /app/blog/page.tsx (listing with cards) and /app/blog/[slug]/page.tsx (article page with full content). Both pages must have proper metadata (title, description, OG tags). Add a BlogCard component at /src/components/BlogCard.tsx.",

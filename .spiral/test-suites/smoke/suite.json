@@ -3017,6 +3017,19 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[smoke] Add Google Search Console Search Insights and branded vs non-branded filter",
+      "description": "Auto-generated smoke test from US-202",
+      "from_story": "US-202",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-233",
+      "created_ts": "2026-04-14T07:29:56Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }

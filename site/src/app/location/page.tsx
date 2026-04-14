@@ -146,7 +146,7 @@ export default function LocationPage() {
     priceRange: "$",
     currenciesAccepted: "MYR",
     paymentAccepted: "Cash, DuitNow QR, Credit Card",
-    checkinTime: "T14:00:00",
+    checkinTime: "T15:00:00",
     checkoutTime: "T12:00:00",
     address: {
       "@type": "PostalAddress",

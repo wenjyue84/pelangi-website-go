@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 
-const faqs = [
+export const faqItems = [
     {
         question: "What time is check-in and check-out at Pelangi Capsule Hostel?",
         answer: "Check-in at Pelangi Capsule Hostel is from 3:00 PM onwards, and check-out is before 12:00 PM (noon). We offer self-check-in so you can arrive anytime after 3 PM without waiting for reception. Early check-in or late check-out may be available on request — contact us via WhatsApp at +60 12-708 8789."
@@ -76,34 +76,16 @@ const faqs = [
     }
 ];
 
-const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((faq) => ({
-        '@type': 'Question',
-        name: faq.question,
-        acceptedAnswer: {
-            '@type': 'Answer',
-            text: faq.answer,
-        },
-    })),
-};
-
 export default function FAQ() {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
-        <>
-        <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
         <section className="py-20 bg-white dark:bg-stone-900">
             <div className="container-custom max-w-3xl">
                 <h2 className="font-display text-4xl font-medium mb-10 text-center text-stone-900 dark:text-stone-100">Frequently Asked Questions</h2>
 
                 <div className="space-y-4">
-                    {faqs.map((faq, index) => (
+                    {faqItems.map((faq, index) => (
                         <div
                             key={index}
                             className={`border border-stone-200 dark:border-stone-700 rounded-2xl overflow-hidden transition-all duration-300 ${openIndex === index ? 'shadow-md bg-white dark:bg-stone-800' : 'hover:border-stone-300 dark:hover:border-stone-600'}`}
@@ -131,6 +113,5 @@ export default function FAQ() {
                 </div>
             </div>
         </section>
-        </>
     );
 }
