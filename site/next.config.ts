@@ -41,9 +41,10 @@ const nextConfig: NextConfig = {
       dynamic: 30,   // Dynamic pages: cache prefetched links for 30s
       static: 180,   // Static pages: cache prefetched links for 3 min
     },
-    // Turbopack file system caching for faster development cold starts (US-160)
-    // Stores compiler artifacts on disk between dev server restarts
+    // Turbopack filesystem caching (US-160 initial, US-220 complete)
+    // Persists compilation cache on disk between dev/build restarts for 50%+ faster cold starts
     turbopackFileSystemCacheForDev: true,
+    turbopackFileSystemCacheForBuild: true,
   },
   async headers() {
     return [

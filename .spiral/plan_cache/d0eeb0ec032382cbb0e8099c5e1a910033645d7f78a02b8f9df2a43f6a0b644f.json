@@ -1,0 +1,11 @@
+{
+  "story_id": "US-220",
+  "story_title": "Implement Next.js 16.1 Turbopack filesystem caching for faster local dev builds",
+  "key_source": "implement|next.js|16.1|small|",
+  "stored_ts": 1776155105.0072393,
+  "plan": {
+    "story_id": "US-220",
+    "duration_s": 600,
+    "model": "unknown"
+  }
+}
