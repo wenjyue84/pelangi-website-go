@@ -4249,7 +4249,10 @@
       "dependencies": [],
       "estimatedComplexity": "small",
       "passes": false,
-      "model": "haiku"
+      "model": "haiku",
+      "_skipped": true,
+      "_skipReason": "CSS appearance: base-select is experimental and not in stable Chrome/Firefox",
+      "last_attempted": "2026-04-14T05:36:52Z"
     },
     {
       "id": "US-190",

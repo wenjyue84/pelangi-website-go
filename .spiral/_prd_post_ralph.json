@@ -4249,7 +4249,9 @@
       "dependencies": [],
       "estimatedComplexity": "small",
       "passes": false,
-      "model": "haiku"
+      "model": "haiku",
+      "_skipped": true,
+      "_skipReason": "CSS appearance: base-select is experimental and not in stable Chrome/Firefox"
     },
     {
       "id": "US-190",
