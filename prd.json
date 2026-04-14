@@ -5463,7 +5463,8 @@
       ],
       "passes": true,
       "model": "haiku",
-      "last_attempted": "2026-04-14T09:31:47Z"
+      "last_attempted": "2026-04-14T09:31:47Z",
+      "_scopeCreep": true
     },
     {
       "id": "US-254",
@@ -5575,9 +5576,10 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
-      "passes": false,
+      "passes": true,
       "_source": "ai-example",
-      "model": "sonnet"
+      "model": "sonnet",
+      "last_attempted": "2026-04-14T10:12:38Z"
     }
   ]
 }

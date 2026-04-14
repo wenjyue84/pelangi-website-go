@@ -1563,3 +1563,83 @@ Completed: Blog post - Lalamove Driver Guide Malaysia (ID: US-248)
 - File syntax: Valid TypeScript interface implementation
 - All metadata fields present and correct
 - prd.json updated with passes: true
+
+## Pre-analysis for US-266 (Gemini 2.5 Pro)
+Based on the story JSON, the request is for a **Next.js/TypeScript** implementation, not Frappe/Python. Here is the technical brief based on the actual file paths and technologies in the user story.
+
+### Technical Brief: US-266 Related Posts Widget
+
+**1. Core Files to Implement/Modify:**
+
+*   **Create `lib/blog-search.ts`:** To house the core relevance-ranking logic. It will export a `searchRelatedPosts` function that filters and sorts all blog posts against the current post's tags and categories.
+*   **Create `app/components/RelatedPosts.tsx`:** A new React component that takes the current post's details, uses `searchRelatedPosts` to get the top 3 matches, and renders them as cards.
+*   **Modify `app/(website)/blog/[slug]/page.tsx`:** Import and render the new `<RelatedPosts />` component, likely just above the comments section, passing the current post's data as props.
+
+**2. Key Frameworks & APIs:**
+
+*   **Next.js (App Router):** The component will be integrated into a dynamic route page (`[slug]/page.tsx`).
+*   **React (TypeScript):** For component creation and state management.
+*   **JSON-LD:** The implementation must dynamically generate and embed `IsSimilarTo` schema data for each of the three related posts within the main page's schema.
+
+**3. Implementation Approach:**
+
+1.  In `lib/blog-search.ts`, the `searchRelatedPosts` function should accept the current post's tags and categories. It will need to access a full index of all blog posts (e.g., from a static data file or CMS API).
+2.  It should calculate a relevance score for each post based on the number of shared tags/categories and return the top 3 highest-scoring posts.
+3.  The `<RelatedPosts>` component will call this function and render the results. It is also responsible for injecting the `IsSimilarTo` JSON-LD data into the page's head, likely by manipulating a shared schema context or using a script tag.
+4.  The main blog page will render this component, ensuring it has the necessary data to perform the search.
+
+**4. Gotchas & Edge Cases:**
+
+*   **Performance:** With many posts, the search/filter operation could be slow. Consider pre-calculating related posts at build time if performance becomes an issue.
+*   **No Matches:** The component should handle cases where zero related posts are found and render nothing.
+*   **Tie-Breaking:** The search logic needs a deterministic secondary sort key (e.g., publish date) for posts with identical relevance scores.
+*   **Schema Validity:** Ensure the `IsSimilarTo` schema is correctly nested within the primary `BlogPosting` schema to avoid validation errors.
+
+
+## Pre-analysis for US-266 (Gemini 2.5 Pro)
+Based on the story JSON, the request is for a **Next.js/TypeScript** implementation, not Frappe/Python. Here is the technical brief based on the actual file paths and technologies in the user story.
+
+### Technical Brief: US-266 Related Posts Widget
+
+**1. Core Files to Implement/Modify:**
+
+*   **Create `lib/blog-search.ts`:** To house the core relevance-ranking logic. It will export a `searchRelatedPosts` function that filters and sorts all blog posts against the current post's tags and categories.
+*   **Create `app/components/RelatedPosts.tsx`:** A new React component that takes the current post's details, uses `searchRelatedPosts` to get the top 3 matches, and renders them as cards.
+*   **Modify `app/(website)/blog/[slug]/page.tsx`:** Import and render the new `<RelatedPosts />` component, likely just above the comments section, passing the current post's data as props.
+
+**2. Key Frameworks & APIs:**
+
+*   **Next.js (App Router):** The component will be integrated into a dynamic route page (`[slug]/page.tsx`).
+*   **React (TypeScript):** For component creation and state management.
+*   **JSON-LD:** The implementation must dynamically generate and embed `IsSimilarTo` schema data for each of the three related posts within the main page's schema.
+
+**3. Implementation Approach:**
+
+1.  In `lib/blog-search.ts`, the `searchRelatedPosts` function should accept the current post's tags and categories. It will need to access a full index of all blog posts (e.g., from a static data file or CMS API).
+2.  It should calculate a relevance score for each post based on the number of shared tags/categories and return the top 3 highest-scoring posts.
+3.  The `<RelatedPosts>` component will call this function and render the results. It is also responsible for injecting the `IsSimilarTo` JSON-LD data into the page's head, likely by manipulating a shared schema context or using a script tag.
+4.  The main blog page will render this component, ensuring it has the necessary data to perform the search.
+
+**4. Gotchas & Edge Cases:**
+
+*   **Performance:** With many posts, the search/filter operation could be slow. Consider pre-calculating related posts at build time if performance becomes an issue.
+*   **No Matches:** The component should handle cases where zero related posts are found and render nothing.
+*   **Tie-Breaking:** The search logic needs a deterministic secondary sort key (e.g., publish date) for posts with identical relevance scores.
+*   **Schema Validity:** Ensure the `IsSimilarTo` schema is correctly nested within the primary `BlogPosting` schema to avoid validation errors.
+
+
+## Iteration N - Story: US-266 Related Blog Posts Widget
+
+### What was implemented
+- Created site/src/lib/blog-search.ts: searchRelatedPosts(currentSlug, tags, category) filtering blogPosts, scoring by shared tags + category bonus, tie-breaking by date desc, top 3
+- Created site/src/components/RelatedPosts.tsx: renders 3 related post cards with IsSimilarTo JSON-LD ItemList schema, data-relationship="similar" on anchors
+- Modified site/src/app/blog/[slug]/page.tsx: imports RelatedPosts and searchRelatedPosts, renders widget above bottom back-link
+
+### Patterns discovered
+- Blog post type is BlogPost from @/data/blog/posts with slug, tags, category, date, title, excerpt fields
+- JSON-LD embedded inline via <script type="application/ld+json"> in component body (not in <head>)
+- IsSimilarTo schema uses ItemList wrapper, each item has isSimilarTo linking back to currentPostUrl
+
+### Gotchas
+- Filter score > 0 ensures no unrelated posts shown; empty result returns null from component
+- All 5 vitest tests pass; tsc --noEmit clean
