@@ -1,142 +1,151 @@
 {
   "stories": [
     {
-      "title": "Generate Article JSON-LD schema with author, datePublished, and dateModified for all blog posts",
+      "title": "Add blog category filter and full-text search on /blog page using Fuse.js",
       "priority": "high",
-      "description": "Implement Article structured data for blog posts to improve SEO visibility and enable rich snippets in search results. Schema will include author, headline, description, image, datePublished, and dateModified fields.",
+      "description": "Implement client-side search and category filtering for blog posts using Fuse.js to improve long-tail SEO and user discoverability. Filter by category (JB Guide, Singapore, Gig Work, Visa Info) and search by post title/excerpt with fuzzy matching. Update URL with query parameters for shareable search results.",
       "acceptanceCriteria": [
-        "Article schema includes author (Organization), headline, description, datePublished, dateModified, articleBody, image, and url properties matching schema.org/Article spec",
-        "Schema is injected into <head> of /blog/[slug] routes via StructuredData component and validates as valid JSON-LD",
-        "All blog post frontmatter includes publishedDate and modifiedDate fields in YYYY-MM-DD format"
+        "Blog category dropdown filters posts by JB Guide, Singapore, Gig Work, Visa Info categories with post count badges",
+        "Fuse.js search indexes blog post title, excerpt, and author with fuzzy matching; displays results count on search",
+        "URL updates with ?search=query&category=value params; filter persists on page reload"
       ],
       "technicalNotes": [
-        "Create lib/schemas/articleSchema.ts with generateArticleSchema(post, baseUrl) function",
-        "Update app/blog/[slug]/page.tsx to call generateArticleSchema and render via <StructuredData> component",
-        "Test command: vitest run tests/lib/schemas/articleSchema.test.ts --reporter=verbose"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "lib/schemas/articleSchema.ts",
-        "app/blog/[slug]/page.tsx",
-        "lib/blog/posts.ts",
-        "tests/lib/schemas/articleSchema.test.ts"
-      ],
-      "_source": "ai-example",
-      "passes": false,
-      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
-    },
-    {
-      "title": "Add JB News & Updates widget to homepage displaying latest 5 curated RSS items",
-      "priority": "high",
-      "description": "Create a server component that fetches from 3-5 curated RSS feeds (JB City Council, MyMetro, Tourism Malaysia) and displays latest items on homepage between hero and amenities sections with loading skeleton and error boundary.",
-      "acceptanceCriteria": [
-        "Widget fetches from configured RSS feeds and renders 5 most recent items with title, 100-char snippet, link, and publishedDate",
-        "Component at app/components/JbNewsWidget.tsx displays loading skeleton during fetch and graceful error message if feed fetch fails",
-        "Widget integrated into app/page.tsx between hero section and amenities section with responsive layout"
-      ],
-      "technicalNotes": [
-        "Create lib/rss/feedSources.ts with array of feed URLs and lib/rss/fetchFeeds.ts with async fetchRssFeeds() function",
-        "Use rss npm package to parse XML feeds with 5-second timeout per source",
-        "Test command: vitest run tests/lib/rss/fetchFeeds.test.ts --reporter=verbose --mock"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "app/components/JbNewsWidget.tsx",
-        "app/page.tsx",
-        "lib/rss/fetchFeeds.ts",
-        "lib/rss/feedSources.ts",
-        "tests/lib/rss/fetchFeeds.test.ts"
-      ],
-      "_source": "ai-example",
-      "passes": false,
-      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
-    },
-    {
-      "title": "Create /blog/[category] landing pages with CollectionPage schema for long-tail blog SEO",
-      "priority": "medium",
-      "description": "Build category-specific blog landing pages (e.g., /blog/travel-guides, /blog/work-guides) that list all posts in category with pagination and CollectionPage JSON-LD schema for Google rich results.",
-      "acceptanceCriteria": [
-        "Pages at /blog/[category] display 10 blog posts per page with pagination; each post shows title, excerpt (100 chars), image, publishedDate",
-        "Each category page includes CollectionPage JSON-LD schema with hasPart array listing all posts of that category type",
-        "Navigation allows filtering by travel-guides, work-guides, gig-jobs, visa-runs categories via dropdown or breadcrumbs"
-      ],
-      "technicalNotes": [
-        "Create app/blog/[category]/page.tsx with getPostsByCategory(category) helper from lib/blog/getPostsByCategory.ts",
-        "Implement CollectionPage schema in lib/schemas/collectionSchema.ts and inject via StructuredData",
-        "Test command: vitest run tests/app/blog/[category]/page.test.tsx --reporter=verbose"
+        "File to create: site/src/components/BlogSearch.tsx (~140 lines with Fuse.js indexing)",
+        "File to edit: site/src/app/blog/page.tsx (integrate BlogSearch component)",
+        "File to edit: site/src/data/blog/posts.ts (ensure all posts have category field)",
+        "Install: npm install fuse.js",
+        "Test command: npm run test -- blog-search.test.ts",
+        "Use Fuse.js indexOptions: { keys: ['title', 'excerpt', 'author'], threshold: 0.3 }"
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "app/blog/[category]/page.tsx",
-        "app/blog/[category]/layout.tsx",
-        "lib/blog/getPostsByCategory.ts",
-        "lib/schemas/collectionSchema.ts",
-        "tests/app/blog/[category]/page.test.tsx"
+        "site/src/components/BlogSearch.tsx",
+        "site/src/app/blog/page.tsx",
+        "site/src/data/blog/posts.ts",
+        "site/tests/blog-search.test.ts"
       ],
       "_source": "ai-example",
       "passes": false,
       "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
     },
     {
-      "title": "Implement dynamic blog post sitemap generation with lastmod timestamps",
+      "title": "Write \"Getting Around JB Without a Car — Transport Guide for Backpackers\" blog post with cost breakdown",
       "priority": "high",
-      "description": "Update app/sitemap.ts to automatically include all /blog/[slug] routes with lastmod timestamps from blog post frontmatter. Ensures search engines re-crawl updated posts.",
+      "description": "Publish new 1800+ word blog article targeting backpackers arriving in Johor Bahru without private transport. Include practical transport options (Johor Bus, MRT feeder, Grab, walking tours) with RM-per-trip costs, neighborhood walkability ratings, and internal links to related posts for SEO.",
       "acceptanceCriteria": [
-        "sitemap.ts generates entries for all blog posts at /blog/{slug} with lastmod from post.modifiedDate, changefreq=weekly, priority=0.7",
-        "Sitemap includes ≥6 blog post entries in valid XML format with lastmod in ISO 8601 format (YYYY-MM-DD)",
-        "Helper function lib/blog/generateSitemapEntries.ts(allPosts) returns SitemapEntry[] objects with url and lastmod"
+        "Blog post is 1800+ words covering Johor Bus routes (RM1-2), Grab usage (avg RM8 in-city), MRT feeder (RM1.50), walking neighborhoods (Little India, Taman Sentosa) with estimated costs per trip",
+        "Post includes rendered cost comparison table (transport type, avg cost, coverage area) and neighborhood walkability scores (1-5 stars)",
+        "Post includes internal links to '3-Day JB Backpacker Itinerary Under RM250' and 'Singapore RTS Link Guide' with proper schema.org IsSimilarTo markup"
       ],
       "technicalNotes": [
-        "Update app/sitemap.ts to import and call generateSitemapEntries(allBlogPosts) and merge results",
-        "Create lib/blog/generateSitemapEntries.ts utility that maps blog post metadata to sitemap format",
-        "Test command: vitest run tests/app/sitemap.test.ts --reporter=verbose"
+        "File to create: post object in site/src/data/blog/posts.ts with slug 'jb-transport-guide', category 'JB Guide', published: true",
+        "Post must include: title, excerpt (<160 chars), author, date, featured image path in site/public/blog/",
+        "Test command: npm run test -- blog-content.test.ts -t \"transport-guide\"",
+        "Validate: wordCount > 1800, excerpt under 160 chars, relatedPosts array contains valid post slugs, images load"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "site/src/data/blog/posts.ts",
+        "site/tests/blog-content.test.ts",
+        "site/public/blog/jb-transport-guide-hero.jpg"
+      ],
+      "_source": "ai-example",
+      "passes": false,
+      "_rejection_reason": "too_simple: only 1 measurable ACs -- specify test commands, file paths, or numeric thresholds"
+    },
+    {
+      "title": "Create RelatedPosts component with automatic category-based linking for blog articles",
+      "priority": "high",
+      "description": "Build a reusable RelatedPosts component that automatically fetches and displays 3 blog posts from the same category as the current article. Include schema.org IsSimilarTo markup, render on blog post layout, and ensure related posts are published and distinct from current post.",
+      "acceptanceCriteria": [
+        "Component accepts currentPostId (slug), filters by category, and displays 3 published related posts excluding current post as ArticleCard components",
+        "Each related post card shows: title, author, publish date, excerpt, featured image, reading time, and category tag",
+        "Blog post layout.tsx renders RelatedPosts below article content with proper BreadcrumbList + IsSimilarTo schema.org JSON-LD"
+      ],
+      "technicalNotes": [
+        "File to create: site/src/components/RelatedPosts.tsx (~90 lines, exports RelatedPosts component)",
+        "File to edit: site/src/app/blog/[slug]/layout.tsx (add <RelatedPosts slug={slug} /> before </article>)",
+        "File to edit: site/src/lib/schema.ts (add generateIsSimilarToSchema function)",
+        "Test command: npm run test -- related-posts.test.ts",
+        "Filter logic: posts.filter(p => p.category === current.category && p.slug !== slug && p.published).slice(0, 3)"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "app/sitemap.ts",
-        "lib/blog/generateSitemapEntries.ts",
-        "lib/blog/posts.ts",
-        "tests/app/sitemap.test.ts"
+        "site/src/components/RelatedPosts.tsx",
+        "site/src/app/blog/[slug]/layout.tsx",
+        "site/src/lib/schema.ts",
+        "site/tests/related-posts.test.ts"
       ],
       "_source": "ai-example",
       "passes": false,
       "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
     },
     {
-      "title": "Add 'Related Posts' section to blog articles using tag-based similarity matching",
+      "title": "Add dynamic breadcrumb navigation with BreadcrumbList schema to blog and guide pages",
       "priority": "medium",
-      "description": "Implement a Related Posts component appearing at end of blog articles, showing 3-4 posts with matching tags. Improves internal linking for SEO and user engagement.",
+      "description": "Implement a reusable BreadcrumbNav component that renders breadcrumb trails for blog posts and guide sections with proper schema.org BreadcrumbList JSON-LD markup. Support mobile-responsive truncation and dynamic breadcrumb generation from pathname.",
       "acceptanceCriteria": [
-        "Component app/components/RelatedPosts.tsx accepts currentPostSlug and renders up to 4 related posts in responsive grid (1 col mobile, 2 col desktop)",
-        "Related posts selected by highest tag overlap (≥1 shared tag with current post); excludes current post and unpublished articles",
-        "Each related post card displays title, 80-char excerpt, cover image, publishedDate, and link to /blog/[slug]"
+        "BreadcrumbNav renders trail: Home > Blog > Category > Post Title (blog) or Home > Guide > Section > Subsection (guide) with clickable links to parent pages",
+        "Component generates valid BreadcrumbList JSON-LD with @context, @type, and itemListElement containing @id, name, and position for each breadcrumb item",
+        "Mobile view truncates breadcrumb to Home > Current Page with tooltip showing full path; CSS matches hostel branding"
       ],
       "technicalNotes": [
-        "Create lib/blog/getRelatedPosts.ts with getRelatedPosts(currentSlug, allPosts, maxResults=4) using tag intersection scoring algorithm",
-        "Update app/blog/[slug]/page.tsx to render <RelatedPosts currentSlug={slug} /> before footer section",
-        "Test command: vitest run tests/lib/blog/getRelatedPosts.test.ts --reporter=verbose"
+        "File to create: site/src/components/BreadcrumbNav.tsx (~120 lines, accepts items: BreadcrumbItem[] and renders <nav> with <ol>)",
+        "File to create: site/src/lib/breadcrumb.ts (~60 lines, exports getBreadcrumbs(pathname: string): BreadcrumbItem[])",
+        "File to edit: site/src/app/blog/[slug]/layout.tsx (add <BreadcrumbNav items={getBreadcrumbs(pathname)} /> in <header>)",
+        "Test command: npm run test -- breadcrumb.test.ts",
+        "JSON-LD: render as <script type='application/ld+json'>{\"@context\": \"https://schema.org\", \"@type\": \"BreadcrumbList\", ...}</script>"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "app/components/RelatedPosts.tsx",
-        "app/blog/[slug]/page.tsx",
-        "lib/blog/getRelatedPosts.ts",
-        "tests/lib/blog/getRelatedPosts.test.ts"
+        "site/src/components/BreadcrumbNav.tsx",
+        "site/src/lib/breadcrumb.ts",
+        "site/src/app/blog/[slug]/layout.tsx",
+        "site/src/app/guide/page.tsx",
+        "site/tests/breadcrumb.test.ts"
+      ],
+      "_source": "ai-example",
+      "passes": false,
+      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
+    },
+    {
+      "title": "Implement blog post reading time and word count metrics in post metadata and display",
+      "priority": "medium",
+      "description": "Create reading time calculation utility (200 wpm baseline) and integrate estimated read duration into blog post frontmatter, post header, and blog card previews. Display as \"X min read\" format to improve user experience and content transparency.",
+      "acceptanceCriteria": [
+        "calculateReadingTime(content: string) function returns { minutes: number; words: number } using 200 wpm baseline (min 1 min); unit tests verify 1000-word content → 5 min and 500-word content → 3 min",
+        "Blog post cards display \"X min read\" badge in bottom-right corner; blog post header shows \"By Author | Published Date | X min read\" layout",
+        "BlogPost type includes readingTime: number field; all posts in site/src/data/blog/posts.ts have validated readingTime based on content length"
+      ],
+      "technicalNotes": [
+        "File to create: site/src/utils/reading-time.ts (~40 lines, export calculateReadingTime function)",
+        "File to edit: site/src/data/blog/posts.ts (add readingTime: number to BlogPost interface and populate for all posts)",
+        "File to edit: site/src/components/BlogPostCard.tsx (add <span className='text-sm text-gray-500'>{post.readingTime} min read</span>)",
+        "Test command: npm run test -- reading-time.test.ts",
+        "Logic: const words = content.split(/\\s+/).length; const minutes = Math.max(1, Math.ceil(words / 200))"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "site/src/utils/reading-time.ts",
+        "site/src/data/blog/posts.ts",
+        "site/src/components/BlogPostCard.tsx",
+        "site/src/app/blog/[slug]/page.tsx",
+        "site/tests/reading-time.test.ts"
       ],
       "_source": "ai-example",
       "passes": false,

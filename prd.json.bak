@@ -3916,11 +3916,12 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
-      "passes": false,
+      "passes": true,
       "model": "haiku",
       "_skipped": true,
       "_skipReason": "Consistently oversized diff (12854 lines, limit 500)",
-      "_scopeCreep": true
+      "_scopeCreep": true,
+      "last_attempted": "2026-04-14T06:46:28Z"
     },
     {
       "id": "US-174",
@@ -4248,11 +4249,8 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false,
-      "model": "haiku",
-      "_skipped": true,
-      "_skipReason": "CSS appearance: base-select is experimental and not in stable Chrome/Firefox",
-      "last_attempted": "2026-04-14T05:36:52Z"
+      "passes": true,
+      "model": "haiku"
     },
     {
       "id": "US-190",
@@ -5443,66 +5441,6 @@
       "model": "haiku"
     },
     {
-      "id": "US-252",
-      "title": "Blog post: JB Shopping Guide — Where to Find Cheap Deals in Johor Bahru",
-      "description": "Shopping guide: AEON Tebrau, Paradigm Mall, Pelangi Leisure Mall, KSL City, Larkin wet market, Pasar Malam. What to buy, price comparison JB vs Singapore.",
-      "priority": "medium",
-      "estimatedComplexity": "small",
-      "tags": [
-        "content",
-        "geo",
-        "seo",
-        "backpacker",
-        "tourist",
-        "shopping"
-      ],
-      "dependencies": [],
-      "filesTouch": [
-        "site/src/data/blog/posts.ts"
-      ],
-      "acceptanceCriteria": [
-        "Slug 'jb-shopping-guide-cheap-deals', category 'Things To Do'",
-        "Price comparison section",
-        "readTime '6 min read', date '2026-04-14'",
-        "npm run build passes"
-      ],
-      "technicalNotes": [
-        "Keep content HTML under 5000 characters"
-      ],
-      "passes": false,
-      "model": "haiku"
-    },
-    {
-      "id": "US-253",
-      "title": "Blog post: 5 Easy Day Trips from Johor Bahru Under 2 Hours (2026)",
-      "description": "5 day trips from JB: Singapore (30min), Desaru Coast (1hr), Kota Tinggi Waterfalls (45min), Kukup (1hr), Gunung Pulai (30min). Transport, cost, highlights each.",
-      "priority": "medium",
-      "estimatedComplexity": "small",
-      "tags": [
-        "content",
-        "geo",
-        "seo",
-        "backpacker",
-        "tourist",
-        "day-trips"
-      ],
-      "dependencies": [],
-      "filesTouch": [
-        "site/src/data/blog/posts.ts"
-      ],
-      "acceptanceCriteria": [
-        "Slug 'day-trips-from-johor-bahru', category 'Travel Tips'",
-        "5 destinations covered",
-        "readTime '7 min read', date '2026-04-14'",
-        "npm run build passes"
-      ],
-      "technicalNotes": [
-        "Keep content HTML under 5000 characters"
-      ],
-      "passes": false,
-      "model": "haiku"
-    },
-    {
       "id": "US-254",
       "title": "New page: /singapore-jobs — Malaysian Job Seekers Resource Hub with FAQ Schema",
       "description": "Create site/src/app/singapore-jobs/page.tsx with FAQPage JSON-LD, work pass types overview, links to job blog posts, CTA to book. Update sitemap.ts.",
@@ -5531,103 +5469,6 @@
         "npm run build passes"
       ],
       "passes": true,
-      "model": "haiku"
-    },
-    {
-      "id": "US-255",
-      "title": "Add BreadcrumbList JSON-LD schema to blog post pages",
-      "description": "Add BreadcrumbList to site/src/app/blog/[slug]/page.tsx: Home > Blog > Category > Post Title, dynamically generated from post data.",
-      "priority": "medium",
-      "estimatedComplexity": "small",
-      "tags": [
-        "geo",
-        "seo",
-        "schema",
-        "structured-data"
-      ],
-      "dependencies": [],
-      "filesTouch": [
-        "site/src/app/blog/[slug]/page.tsx"
-      ],
-      "acceptanceCriteria": [
-        "BreadcrumbList JSON-LD in blog [slug] page",
-        "4-level breadcrumb with URLs",
-        "Valid JSON",
-        "npm run build passes"
-      ],
-      "passes": false,
-      "model": "haiku"
-    },
-    {
-      "id": "US-256",
-      "title": "Update llms.txt with job seeker, visa run, and gig economy content sections",
-      "description": "Update site/src/app/llms.txt/route.ts to add sections for: Malaysian job seekers, visa run content, gig economy guides. Add /visa-run and /singapore-jobs to Site Pages.",
-      "priority": "medium",
-      "estimatedComplexity": "small",
-      "tags": [
-        "geo",
-        "seo",
-        "llms-txt"
-      ],
-      "dependencies": [],
-      "filesTouch": [
-        "site/src/app/llms.txt/route.ts"
-      ],
-      "acceptanceCriteria": [
-        "Job seeker content section added",
-        "Visa run section added",
-        "Site Pages updated with /visa-run and /singapore-jobs",
-        "npm run build passes"
-      ],
-      "passes": false,
-      "model": "haiku"
-    },
-    {
-      "id": "US-257",
-      "title": "Add FAQ schema to /faq page and expand with job seeker questions",
-      "description": "Add FAQPage JSON-LD to site/src/app/faq/page.tsx. New Q&As: luggage storage while working SG, weekly rates, distance to JB Sentral, ironing facilities.",
-      "priority": "medium",
-      "estimatedComplexity": "small",
-      "tags": [
-        "geo",
-        "seo",
-        "schema",
-        "faq"
-      ],
-      "dependencies": [],
-      "filesTouch": [
-        "site/src/app/faq/page.tsx"
-      ],
-      "acceptanceCriteria": [
-        "FAQPage JSON-LD in /faq page with 6+ Q&A pairs",
-        "New job-seeker FAQ entries displayed",
-        "Valid JSON-LD",
-        "npm run build passes"
-      ],
-      "passes": false,
-      "model": "haiku"
-    },
-    {
-      "id": "US-258",
-      "title": "Add Malaysian workers resource section to /guide page",
-      "description": "Add 'For Malaysians Working In or Near Singapore' section to site/src/app/guide/page.tsx with links to /singapore-jobs, /visa-run, commuter guide, gig jobs posts.",
-      "priority": "medium",
-      "estimatedComplexity": "small",
-      "tags": [
-        "geo",
-        "seo",
-        "internal-linking"
-      ],
-      "dependencies": [],
-      "filesTouch": [
-        "site/src/app/guide/page.tsx"
-      ],
-      "acceptanceCriteria": [
-        "New section on /guide page with 4+ descriptive links",
-        "Tailwind styled (card or bordered section)",
-        "npm run build passes"
-      ],
-      "passes": false,
       "model": "haiku"
     },
     {
@@ -5667,48 +5508,6 @@
         "contextWindow": 10
       },
       "_passedCommit": "d78bd9f5aa293cbd8cea28c97a110470cbb9a136"
-    },
-    {
-      "id": "US-263",
-      "title": "Create blog post metadata configuration file for reuse across routes",
-      "priority": "medium",
-      "description": "Extract blog configuration (site name, author, social profiles) into dedicated TypeScript files to support DRY principle and enable consistent metadata across /feed.xml, blog layout, and components.",
-      "acceptanceCriteria": [
-        "Create `/app/blog/config.ts` exporting blogConfig object with title, description, authorName, authorEmail, and socialLinks array",
-        "Create `/app/blog/constants.ts` exporting BLOG_CATEGORIES (string array) and BLOG_AUTHORS (Record of author profiles)",
-        "Import and use blogConfig in both `/app/feed.xml/route.ts` (RSS generation) and blog layout component"
-      ],
-      "technicalNotes": [
-        "File to create: app/blog/config.ts with interface BlogConfig { title: string; description: string; authorName: string; socialLinks: { platform: string; url: string }[] }",
-        "File to modify: app/feed.xml/route.ts to import blogConfig and use blogConfig.title, blogConfig.authorName in RSS XML generation",
-        "Test command: npm test -- app/blog/config.test.ts --run (verify config exports are defined and types are correct)"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "passes": false,
-      "_source": "ai-example",
-      "model": "haiku"
-    },
-    {
-      "id": "US-264",
-      "title": "Implement Zod schema validation for blog post frontmatter",
-      "priority": "medium",
-      "description": "Add runtime validation for blog post metadata using Zod to catch schema errors at build time before feed generation or page rendering.",
-      "acceptanceCriteria": [
-        "Create `/app/blog/schema.ts` exporting BlogPostSchema (Zod object) with required fields: id, slug, title, date (ISO 8601), tags (string array), excerpt",
-        "Create `/app/blog/lib/load-validated-posts.ts` with loadAndValidatePosts() function that parses and validates all posts, throwing descriptive error on invalid data",
-        "Update `/app/blog/posts.ts` to call loadAndValidatePosts() on import, ensuring all posts are validated at runtime"
-      ],
-      "technicalNotes": [
-        "File to create: app/blog/schema.ts with export const BlogPostSchema = z.object({ id: z.string().min(1), slug: z.string().regex(/^[a-z0-9-]+$/), title: z.string(), date: z.coerce.date(), tags: z.array(z.string()), excerpt: z.string() })",
-        "File to create: app/blog/lib/load-validated-posts.ts exporting loadAndValidatePosts(posts: unknown[]): BlogPost[] { return posts.map(p => BlogPostSchema.parse(p)) }",
-        "Test command: npm test -- app/blog/schema.test.ts --run (test with valid posts, invalid dates, missing fields)"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "passes": false,
-      "_source": "ai-example",
-      "model": "sonnet"
     },
     {
       "id": "US-265",

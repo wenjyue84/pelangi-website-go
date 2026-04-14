@@ -830,6 +830,201 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 <p><a href="/book">Book your stay at Pelangi Capsule Hostel</a> and start your three-day JB backpacking journey. It's affordable, authentic, and memorable.</p>
 `,
   },
+  {
+    slug: "xinshan-juzhu-tuijian-jiaonang-lvguan",
+    title: "新山住宿推荐：胶囊旅馆体验指南 (2026)",
+    excerpt:
+      "新山最值得入住的胶囊旅馆是哪家？本文带你深入了解Pelangi胶囊旅馆——价格、设施、位置，一文读懂。",
+    date: "2026-04-14",
+    category: "住宿指南",
+    author: "Pelangi Team",
+    readTime: "6 min read",
+    tags: ["新山", "住宿", "胶囊旅馆", "马来西亚", "背包旅行", "柔佛"],
+    featuredImage: "/images/blog/jb-food-guide.jpg",
+    content: `
+<h2>为什么选择胶囊旅馆？</h2>
+<p>胶囊旅馆（Capsule Hostel）源自日本，以其高性价比和私密性著称。每个床位配备独立的私人舱体，拥有个人插座、USB充电口、阅读灯和拉帘，让你在共享空间中享有属于自己的小天地。对于独自旅行者、背包客和数字游民来说，胶囊旅馆是兼顾预算与品质的最佳选择。</p>
+
+<h2>Pelangi胶囊旅馆：新山最受欢迎的背包客据点</h2>
+<p><strong>彩虹胶囊旅馆（Pelangi Capsule Hostel）</strong>位于新山Taman Pelangi区，距离新山关卡（JB Sentral CIQ）约15分钟车程，交通便利，周边餐饮选择丰富。</p>
+
+<h3>房型与价格</h3>
+<ul>
+  <li><strong>混合宿舍（Mixed Dorm）</strong>：每晚 RM37.80（含旅游税），月租 RM594</li>
+  <li><strong>女生专用宿舍（Female Dorm）</strong>：同等价格，环境更安全私密</li>
+  <li>所有床位均为日式胶囊设计，配备高密度记忆棉床垫</li>
+</ul>
+
+<h3>设施一览</h3>
+<ul>
+  <li>免费高速 WiFi（全区覆盖）</li>
+  <li>24小时出入，无宵禁</li>
+  <li>冷气空调（独立温控）</li>
+  <li>个人储物柜（附锁）</li>
+  <li>共用厨房（可自行烹饪）</li>
+  <li>热水淋浴（含沐浴露和洗发水）</li>
+  <li>毛巾提供</li>
+  <li>洗衣服务：RM5/次</li>
+  <li>24小时闭路电视保安</li>
+</ul>
+
+<h2>地理位置优势</h2>
+<p>旅馆位于 <strong>Jalan Perang, Taman Pelangi</strong>，步行可达多家餐厅、便利店和夜市。每周二下午4:30，门口附近的Taman Pelangi夜市开档，是体验本地美食文化的绝佳机会。</p>
+
+<h2>如何从新加坡前往？</h2>
+<p>从新加坡出发，可乘坐地铁至<strong>兀兰北（Woodlands North）</strong>站，步行过长堤至马来西亚关卡（JB Sentral CIQ），再叫Grab前往旅馆，全程约30-45分钟，Grab约RM12-18。详细交通指南请参阅<a href="/zh/location">前往路线页面</a>。</p>
+
+<h2>适合哪些旅客？</h2>
+<ul>
+  <li>从新加坡出发的一日游或短途旅行者</li>
+  <li>在新山寻找月租住宿的外籍工作者</li>
+  <li>背包客、独自旅行者</li>
+  <li>希望节省住宿预算的商务旅客</li>
+</ul>
+
+<p>想了解更多或直接预订？访问<a href="/zh/rooms">客房介绍页面</a>或通过<strong>WhatsApp (+60 12-708 8789)</strong>联系我们。</p>
+`,
+  },
+  {
+    slug: "xingjiapo-qu-xinshan-zenme-qu-jiaotong-zhinan",
+    title: "从新加坡去新山怎么去？2026最新交通全攻略",
+    excerpt:
+      "地铁、巴士、自驾……从新加坡前往新山的所有交通方式详细对比，附最新过关攻略和省钱小技巧。",
+    date: "2026-04-14",
+    category: "交通攻略",
+    author: "Pelangi Team",
+    readTime: "8 min read",
+    tags: ["新加坡", "新山", "交通", "过关", "长堤", "马来西亚"],
+    featuredImage: "/images/blog/causeway-guide.jpg",
+    content: `
+<h2>从新加坡去新山的主要方式</h2>
+<p>新加坡与新山之间有两个陆路通关口：<strong>兀兰关卡（Woodlands / JB Sentral CIQ）</strong>和<strong>大士关卡（Tuas / Sultan Abu Bakar CIQ）</strong>。大多数旅客选择兀兰关卡，因为交通更方便。</p>
+
+<h2>方式一：地铁 + 步行过桥（最省钱）</h2>
+<p>这是背包客最常用的方式，也是最省钱的选择。</p>
+<ol>
+  <li>乘坐地铁汤申-东海岸线（TEL）至<strong>兀兰北站（Woodlands North）</strong></li>
+  <li>沿指示牌步行至新加坡关卡（ICA Building），盖出境章</li>
+  <li>步行过长堤（约1公里），或乘坐免费摆渡巴士</li>
+  <li>抵达马来西亚 JB Sentral CIQ，盖入境章</li>
+  <li>在 JB Sentral 叫 Grab 前往目的地</li>
+</ol>
+<p><strong>费用：</strong>地铁票约 SGD1.50-2.50，Grab 至 Taman Pelangi 约 RM12-18</p>
+<p><strong>耗时：</strong>高峰期约 60-90 分钟，非高峰期 30-45 分钟</p>
+
+<h2>方式二：巴士（JB Express / CW1）</h2>
+<p>多家巴士公司提供从新加坡市区直达 JB Sentral 的服务，无需自行走路过桥，适合携带大行李的旅客。</p>
+<ul>
+  <li><strong>JB Express</strong>：从 Queen Street Terminal 或 Kranji MRT 出发，约 SGD4-5</li>
+  <li><strong>Causeway Link（CW1）</strong>：从 Kranji MRT 出发，约 SGD3.5</li>
+  <li>巴士直接带你通过两国关卡，下车盖章后再上车继续</li>
+</ul>
+<p><strong>优点：</strong>无需步行，适合行李多的旅客</p>
+<p><strong>缺点：</strong>高峰期可能堵车，耗时较长</p>
+
+<h2>方式三：Grab（最舒适）</h2>
+<p>可以在新加坡叫 Grab 直接送至 JB Sentral 关卡，自行过关后在马来西亚侧再叫另一辆 Grab。注意：Grab 车辆无法直接带你过关，需要自行下车办理出入境手续。</p>
+<p><strong>费用：</strong>新加坡侧 Grab 约 SGD15-25，马来西亚侧 Grab 至 Taman Pelangi 约 RM12-18</p>
+
+<h2>过关小技巧</h2>
+<ul>
+  <li><strong>避开高峰期</strong>：周五下午3pm后、周末早上8-11am 和下午5-8pm 最拥挤，排队可能超过2小时</li>
+  <li><strong>最佳时间</strong>：工作日早上10am-下午3pm 过关最顺畅</li>
+  <li><strong>备好护照</strong>：马来西亚入境单可在关卡领取，或提前下载 MyTravelPass App 填写电子表格</li>
+  <li><strong>带足现金</strong>：马来西亚林吉特（RM），许多小店和 Grab 更偏好现金</li>
+  <li><strong>汇率</strong>：在新加坡兑换点兑换 RM 通常比机场或马来西亚关卡划算</li>
+</ul>
+
+<h2>抵达新山后前往彩虹胶囊旅馆</h2>
+<p>从 JB Sentral CIQ 出来后，叫 Grab 前往 <strong>26A Jalan Perang, Taman Pelangi</strong>，约 5-10 分钟车程，费用 RM8-15。详细路线请查看<a href="/zh/location">前往路线页面</a>。</p>
+
+<p>准备好了吗？<a href="/zh/rooms">查看客房</a>或<a href="/book">立即预订</a>，开始你的新山之旅！</p>
+`,
+  },
+  {
+    slug: "xinshan-ziyou-xing-gonglue-2026",
+    title: "新山自由行攻略 2026：吃喝玩乐全指南",
+    excerpt:
+      "新山不只是过境城市！本文带你探索新山最值得打卡的景点、美食和购物地，附三天两夜行程规划。",
+    date: "2026-04-14",
+    category: "旅游攻略",
+    author: "Pelangi Team",
+    readTime: "10 min read",
+    tags: ["新山", "自由行", "旅游攻略", "马来西亚", "柔佛", "Visit Malaysia 2026"],
+    featuredImage: "/images/blog/jb-3-days.jpg",
+    content: `
+<h2>新山：被严重低估的马来西亚城市</h2>
+<p>很多旅客把新山当作前往吉隆坡的中转站，却错过了这座城市本身的精彩。新山（Johor Bahru，简称 JB）是马来西亚第二大城市，拥有丰富的美食文化、独特的历史遗迹、亲民的购物商场，以及距离新加坡仅15分钟的地理优势。2026年，随着 Visit Malaysia 2026 旅游计划推出，新山更是成为热门目的地。</p>
+
+<h2>必去景点</h2>
+
+<h3>1. 新山古庙（华人历史文化地标）</h3>
+<p>位于新山市中心的华人庙宇群，是新山华人社区数百年历史的见证。每逢农历新年和重要节日，这里香火鼎盛，是了解马来西亚华人文化的最佳地点。</p>
+
+<h3>2. 苏丹阿布峇卡皇宫（Istana Besar）</h3>
+<p>柔佛皇室的历史宫殿，现为皇家博物馆，展示柔佛苏丹王室的历史文物和皇家珍藏。门票约 RM10，是了解马来西亚王室文化的好去处。</p>
+
+<h3>3. 达伊花园（Danga Bay）</h3>
+<p>新山最大的滨海休闲区，拥有观景台、游乐设施和多家餐厅。傍晚时分在这里欣赏夕阳和新加坡天际线，是不少摄影爱好者的打卡胜地。</p>
+
+<h3>4. Taman Pelangi彩虹花园</h3>
+<p>我们旅馆所在的社区！这里是新山著名的美食区，聚集了各类传统餐厅、咖啡店和特色小吃。每周二的夜市更是不容错过。</p>
+
+<h2>美食必吃清单</h2>
+<ul>
+  <li><strong>柔佛喇沙（Laksa Johor）</strong>：用意粉代替米粉的独特喇沙，是柔佛州的标志性美食</li>
+  <li><strong>炒粿条（Char Kway Teow）</strong>：新山版本偏干炒，镬气十足</li>
+  <li><strong>肉骨茶（Bak Kut Teh）</strong>：新山风格以香料为主，汤头清澈鲜美</li>
+  <li><strong>三楼米粉（San Low Bee Hoon）</strong>：新山独创的干炒米粉，步行可从旅馆到达</li>
+  <li><strong>罗惹（Rojak）</strong>：马来式水果沙拉，以虾膏酱汁拌食，酸甜开胃</li>
+</ul>
+
+<h2>购物天堂</h2>
+<p>新山有多个大型购物中心，价格比新加坡便宜30-50%：</p>
+<ul>
+  <li><strong>AEON Tebrau City</strong>：新山最大购物中心之一，品牌齐全</li>
+  <li><strong>Paradigm Mall JB</strong>：时尚购物，餐饮选择丰富</li>
+  <li><strong>KSL City Mall</strong>：靠近市中心，电子产品和服装性价比高</li>
+  <li><strong>Taman Pelangi夜市（周二）</strong>：本地特产、小吃、服装，从旅馆步行即达</li>
+</ul>
+
+<h2>三天两夜行程建议</h2>
+
+<h3>第一天：抵达 + 周边探索</h3>
+<ul>
+  <li>下午：从新加坡过关，入住彩虹胶囊旅馆，安顿行李</li>
+  <li>傍晚：步行探索 Taman Pelangi 美食区，晚餐就在附近解决</li>
+  <li>晚上：在旅馆公共区域与来自世界各地的旅客交流</li>
+</ul>
+
+<h3>第二天：市区文化探索</h3>
+<ul>
+  <li>早餐：旅馆附近的茶餐厅，来一份咖椰吐司 + 半生熟鸡蛋 + 白咖啡</li>
+  <li>上午：参观苏丹阿布峇卡皇宫和华人庙宇群</li>
+  <li>午餐：新山市中心的茶餐厅，点一碗肉骨茶</li>
+  <li>下午：逛 KSL City Mall 或 Paradigm Mall，购物或休息</li>
+  <li>晚餐：Danga Bay 滨海区，看夕阳吃海鲜</li>
+</ul>
+
+<h3>第三天：美食扫街 + 返程</h3>
+<ul>
+  <li>早餐：附近 mamak 店，罗惹 + 印度煎饼（Roti Canai）</li>
+  <li>上午：AEON Tebrau City 购物，带手信回去</li>
+  <li>午餐：在购物中心美食广场尝试柔佛喇沙</li>
+  <li>下午：返回旅馆取行李，过关返回新加坡</li>
+</ul>
+
+<h2>实用资讯</h2>
+<ul>
+  <li><strong>货币</strong>：马来西亚林吉特（MYR/RM），1 SGD ≈ 3.5 RM</li>
+  <li><strong>交通</strong>：Grab 是新山最方便的出行方式，下载后即可使用</li>
+  <li><strong>语言</strong>：新山华人众多，普通话和广东话均可沟通</li>
+  <li><strong>住宿</strong>：<a href="/zh/rooms">彩虹胶囊旅馆</a>每晚仅需 RM37.80，是背包客的最佳选择</li>
+</ul>
+
+<p>还在犹豫？<a href="/book">立即预订</a>，开始你的新山自由行！或通过 <strong>WhatsApp (+60 12-708 8789)</strong> 与我们联系获取更多旅游建议。</p>
+`,
+  },
 ];
 
 export const blogPosts: BlogPost[] = rawPosts.map((post) => ({

@@ -53,6 +53,46 @@ Book directly on our website for the best rates with no booking fees:
 ## Optional
 
 - [Detailed information including rooms, amenities, FAQ, and blog](/llms-full.txt)
+
+---
+
+## 中文信息 (Chinese)
+
+> 彩虹胶囊旅馆（Pelangi Capsule Hostel）位于马来西亚柔佛州新山市，提供日式胶囊床位住宿。每晚低至RM35起，距离新加坡仅15分钟车程，免费WiFi，24小时入住。
+
+### 服务
+
+- **胶囊床位**：私人睡眠舱，配备独立空调、阅读灯、USB充电口、拉帘和个人储物柜
+- **每晚价格**：RM37.80/晚（含旅游税）
+- **月租价格**：RM594/月
+- **入住时间**：下午3时起（支持自助入住）
+- **退房时间**：中午12时前
+
+### 设施
+
+- 全区免费高速WiFi
+- 冷气空调
+- 24小时出入，无宵禁
+- 洗衣服务：RM5/次
+- 共用厨房
+- 个人储物柜
+- 热水淋浴（含洗浴用品）
+- 毛巾提供
+- 24小时闭路电视保安
+
+### 地址与交通
+
+- **地址**：26A Jalan Perang, Taman Pelangi, 80400 新山, 柔佛, 马来西亚
+- 距新加坡兀兰关卡约15分钟车程
+- 距士乃国际机场约20分钟Grab车程
+- 每周二Taman Pelangi夜市在门口举行
+
+### 预订联系
+
+- **官网预订**：https://pelangicapsulehostel.com/book
+- **WhatsApp**：https://wa.me/60127088789
+- **电邮**：pelangicapsule@gmail.com
+- **中文页面**：https://pelangicapsulehostel.com/zh
 `;
 
   return new Response(content, {

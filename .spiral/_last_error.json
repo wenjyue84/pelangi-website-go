@@ -1,0 +1,1 @@
+{"ts":"2026-04-14T06:33:35Z","error_code":"E401","category":"Worker","exit_code":9,"message":"Zero-progress stall: all pending stories are blocked","remediation":"Run: python main.py status   # check blocked stories; consider --skip-story or splitting"}

@@ -1,7 +1,7 @@
 /**
  * Vercel Feature Flags and flag resolution logic.
- * Defines flag types and server-side flag reading from Edge Config.
- * For local dev, falls back to mock flags from environment variables.
+ * Reads flags from Edge Config in production, falls back to mock values in local dev.
+ * Reference: https://vercel.com/docs/feature-flags
  */
 
 export type CTAVariant = "book-now" | "check-availability" | "best-price-direct";
@@ -10,21 +10,15 @@ export interface FlagsConfig {
   "cta-variant": CTAVariant;
 }
 
-// Default flags for local development / fallback
+// Default flags for development / fallback
 const DEFAULT_FLAGS: FlagsConfig = {
   "cta-variant": "book-now",
 };
 
-// Mock flag values from environment
-const MOCK_FLAGS: Partial<FlagsConfig> = {
-  "cta-variant":
-    (process.env.NEXT_PUBLIC_FLAG_CTA_VARIANT as CTAVariant) ?? "book-now",
-};
-
 /**
  * Get a flag value from Edge Config (production) or mock (local dev).
- * In production, reads from Vercel Edge Config.
- * In development, uses mock values from environment variables.
+ * In production with Vercel Edge Config enabled, reads the flag value.
+ * In development or when Edge Config is not configured, falls back to environment variable.
  *
  * @param key - The flag key (e.g., 'cta-variant')
  * @param defaultValue - Fallback value if flag is not found
@@ -35,14 +29,24 @@ export async function getFlag<K extends keyof FlagsConfig>(
   defaultValue?: FlagsConfig[K]
 ): Promise<FlagsConfig[K]> {
   try {
-    // In production with Vercel Edge Config, import and use @vercel/edge-config
-    // For now, use mock values that respect environment overrides
-    const mockValue = MOCK_FLAGS[key];
-    if (mockValue !== undefined) {
-      return mockValue as FlagsConfig[K];
+    // In production: Use @vercel/edge-config if available
+    if (process.env.EDGE_CONFIG) {
+      const { get } = await import("@vercel/edge-config");
+      const value = (await get(key)) as FlagsConfig[K] | undefined;
+      if (value !== undefined) {
+        return value;
+      }
     }
 
-    // Fall back to defaults
+    // Fallback to environment variable for local development
+    if (key === "cta-variant") {
+      const envValue = process.env.NEXT_PUBLIC_FLAG_CTA_VARIANT as CTAVariant | undefined;
+      if (envValue) {
+        return envValue as FlagsConfig[K];
+      }
+    }
+
+    // Final fallback to hardcoded defaults
     return defaultValue ?? DEFAULT_FLAGS[key];
   } catch (error) {
     console.error(`[flags] Error reading flag '${key}':`, error);
@@ -51,22 +55,17 @@ export async function getFlag<K extends keyof FlagsConfig>(
 }
 
 /**
- * Get a variant for a specific A/B test from the flag value.
- * Deterministically assigns variants based on flag configuration
- * and optional user identifier for consistent variants within a session.
+ * Get the CTA variant for A/B testing.
+ * Evaluates the flag and returns the assigned variant for this session.
  *
- * @param sessionId - Optional session ID for deterministic variant assignment
  * @returns The assigned variant
  */
-export async function getVariant(
-  sessionId?: string
-): Promise<CTAVariant> {
-  const variant = await getFlag("cta-variant");
-  return variant;
+export async function getVariant(): Promise<CTAVariant> {
+  return getFlag("cta-variant");
 }
 
 /**
- * Get the human-readable CTA text for a given variant.
+ * Get the human-readable CTA button text for a given variant.
  */
 export function getCTAText(variant: CTAVariant): string {
   const ctaMap: Record<CTAVariant, string> = {

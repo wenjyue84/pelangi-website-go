@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { logPageView } from "@/lib/server-analytics";
+import { getVariant } from "@/lib/flags";
 
 // ---------------------------------------------------------------------------
 // In-memory sliding window rate limiter
@@ -73,7 +74,7 @@ const WINDOW_MS = 60 * 1000; // 1 minute
 // Proxy (renamed from middleware in Next.js 16)
 // ---------------------------------------------------------------------------
 
-export function proxy(req: NextRequest): NextResponse {
+export async function proxy(req: NextRequest): Promise<NextResponse> {
   const { pathname } = req.nextUrl;
 
   // --- Deferred page view logging (read headers before deferring) ---
@@ -120,7 +121,20 @@ export function proxy(req: NextRequest): NextResponse {
     return res;
   }
 
-  return NextResponse.next();
+  // --- A/B testing: Evaluate CTA variant flag for /book page ---
+  const response = NextResponse.next();
+  if (pathname.startsWith("/book")) {
+    const variant = await getVariant();
+    response.headers.set("x-variant", variant);
+    response.cookies.set("x-variant", variant, {
+      httpOnly: false, // Allow client JS to read for GA4 tracking
+      path: "/",
+      maxAge: 30 * 24 * 60 * 60, // 30 days
+      sameSite: "lax",
+    });
+  }
+
+  return response;
 }
 
 export const config = {

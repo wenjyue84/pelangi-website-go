@@ -243,5 +243,40 @@
     "exit_code": 124,
     "worker_id": "sequential",
     "crash_file": "US-173_20260414T061123Z.txt"
+  },
+  {
+    "story_id": "US-173",
+    "timestamp": "20260414T061358Z",
+    "exit_code": 124,
+    "worker_id": "sequential",
+    "crash_file": "US-173_20260414T061358Z.txt"
+  },
+  {
+    "story_id": "US-173",
+    "timestamp": "20260414T062426Z",
+    "exit_code": 124,
+    "worker_id": "sequential",
+    "crash_file": "US-173_20260414T062426Z.txt"
+  },
+  {
+    "story_id": "US-173",
+    "timestamp": "20260414T063256Z",
+    "exit_code": 124,
+    "worker_id": "sequential",
+    "crash_file": "US-173_20260414T063256Z.txt"
+  },
+  {
+    "story_id": "US-173",
+    "timestamp": "20260414T063929Z",
+    "exit_code": 124,
+    "worker_id": "sequential",
+    "crash_file": "US-173_20260414T063929Z.txt"
+  },
+  {
+    "story_id": "US-173",
+    "timestamp": "20260414T064253Z",
+    "exit_code": 124,
+    "worker_id": "sequential",
+    "crash_file": "US-173_20260414T064253Z.txt"
   }
 ]

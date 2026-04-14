@@ -1493,6 +1493,31 @@
       "_forStoryId": "US-171"
     },
     {
+      "title": "[E2E Test] Implement A/B testing with Vercel Feature Flags and Edge Config",
+      "priority": "medium",
+      "description": "Write end-to-end user flow test for the feature in US-173. Story description: Set up Vercel Feature Flags using Edge Config to run server-side A/B tests on the /book page hero CTA and room card layouts without client-side flicker or layout shift. Edge Config reads are under 1ms p99 globally, making flags safe to evaluate in Next.js Middleware. Start with a CTA copy test to measure booking conversion impact scientifically.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-173",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_173 -v"
+      ],
+      "dependencies": [
+        "US-173"
+      ],
+      "estimatedComplexity": "medium",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ],
+      "source": "",
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-173"
+    },
+    {
       "title": "[E2E Test] Implement WCAG 2.2 SC 3.3.3 + 3.3.4 – Error Suggestion and Error Prevention on booking fl",
       "priority": "medium",
       "description": "Write end-to-end user flow test for the feature in US-180. Story description: SC 3.3.3 (AA) requires that input errors be accompanied by a suggested correction when possible. SC 3.3.4 (AA) requires that legal/financial submissions be reviewable, confirmable, or reversible. The booking/contact forms currently lack both a review step and specific error suggestions.",
