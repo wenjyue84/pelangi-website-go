@@ -4566,7 +4566,8 @@
       "model": "haiku",
       "_skipped": true,
       "_skipReason": "Requires Google Search Console OAuth setup — not implementable in this codebase",
-      "_passedCommit": "15772cddb4f539797309e8e5a56bd3f47598ba31"
+      "_passedCommit": "15772cddb4f539797309e8e5a56bd3f47598ba31",
+      "_scopeCreep": true
     },
     {
       "id": "US-203",
@@ -4782,8 +4783,9 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
-      "passes": false,
-      "model": "haiku"
+      "passes": true,
+      "model": "haiku",
+      "last_attempted": "2026-04-14T07:47:17Z"
     },
     {
       "id": "US-217",
