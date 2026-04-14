@@ -2939,6 +2939,32 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[smoke] Add CSS native scroll-driven carousel using ::scroll-button() and ::scroll-marker",
+      "description": "Auto-generated smoke test from US-187",
+      "from_story": "US-187",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-227",
+      "created_ts": "2026-04-14T05:25:57Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
+    },
+    {
+      "title": "[smoke] Implement RSS auto-discovery link tag in head and create JSON Feed 1.1 endpoint",
+      "description": "Auto-generated smoke test from US-265",
+      "from_story": "US-265",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-228",
+      "created_ts": "2026-04-14T05:25:57Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }
