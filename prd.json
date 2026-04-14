@@ -5461,7 +5461,7 @@
       "technicalNotes": [
         "Keep content HTML under 5000 characters"
       ],
-      "passes": false,
+      "passes": true,
       "model": "haiku",
       "last_attempted": "2026-04-14T09:31:47Z"
     },

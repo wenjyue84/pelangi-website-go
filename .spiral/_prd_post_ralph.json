@@ -5369,7 +5369,8 @@
       "last_attempted": "2026-04-14T09:19:06Z",
       "_phaseI": {
         "diagnosisBlock": "## Current State\n\nThe pelangi-website project has a blog system with structured blog posts stored in `site/src/data/blog/posts.ts`. The file exports a `BlogPost` interface and an array of blog posts with metadata (slug, title, excerpt, date, category, etc.) and HTML content. Reading time is computed automatically from word count.\n\n## Problem Identified\n\nUS-248 requires adding a new blog post about Lalamove Driver Guide for Malaysia/JB. This post needs to cover:\n- Registration steps for becoming a Lalamove driver\n- Vehicle types, earnings (RM25-80/job)\n- Flexibility benefits\n- Comparison with Foodpanda/Grab\n- Specific requirements: slug `lalamove-driver-malaysia-jb-guide`, category `Career & Work`, date `2026-04-14`, `5 min read`\n- HTML content under 5000 characters\n\n## Planned Changes\n\n<plan>\n{\n  \"files_to_create\": [],\n  \"files_to_modify\": [\"site/src/data/blog/posts.ts\"],\n  \"functions_to_add\": [],\n  \"estimated_loc\": 120\n}\n</plan>\n\nNow implementing the blog post. I'll add the new post to the `rawPosts` array with all required fields and appropriate content about Lalamove driver guide for Malaysia.\n## ✅ Story US-248 Completed"
-      }
+      },
+      "_scopeCreep": true
     },
     {
       "id": "US-249",
@@ -5460,8 +5461,9 @@
       "technicalNotes": [
         "Keep content HTML under 5000 characters"
       ],
-      "passes": false,
-      "model": "haiku"
+      "passes": true,
+      "model": "haiku",
+      "last_attempted": "2026-04-14T09:31:47Z"
     },
     {
       "id": "US-254",
