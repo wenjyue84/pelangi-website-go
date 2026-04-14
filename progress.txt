@@ -1,3 +1,32 @@
+## Iteration US-173 - Mon, Apr 14, 2026
+
+Completed: Implement A/B testing with Vercel Feature Flags and Edge Config (ID: US-173)
+
+### What was implemented
+- Created `site/vercel.json` with Next.js framework configuration and environment variables:
+  - NEXT_PUBLIC_FLAG_CTA_VARIANT (default: "book-now") for local development fallback
+  - EDGE_CONFIG placeholder for production Vercel Edge Config connection
+- Verified complete A/B testing implementation already in place:
+  - `flags.ts`: Flag types (CTAVariant with 3 options) and getVariant() function
+  - `proxy.ts`: Server-side flag evaluation in Next.js 16 proxy (formerly middleware)
+  - `site/src/app/book/page.tsx`: Reads variant from response headers (zero layout shift)
+  - `BookEcommerceTracker.tsx`: GA4 custom dimension (dimension_1) records variant for statistical analysis
+- Updated `.env.local` with NEXT_PUBLIC_FLAG_CTA_VARIANT environment variable
+- Verified build passes: all 68+ static pages generated successfully
+
+### Patterns discovered
+- Next.js 16 uses `proxy()` function instead of middleware.ts (both cannot coexist in same project)
+- `proxy.ts` already had A/B testing logic in place but vercel.json was missing
+- Previous attempt failed with 12854-line oversized diff due to unrelated file modifications
+- This iteration focused on minimal required configuration: vercel.json + env setup verification
+- All acceptance criteria were already implemented by prior work; this iteration completes the story by adding the missing vercel.json configuration
+
+### Gotchas
+- Vercel Flags UI in dashboard requires EDGE_CONFIG environment variable to be set in Vercel project settings
+- .env.local should NOT be committed (already in .gitignore); only .env.local.example and vercel.json are version-controlled
+- Next.js 16 proxy() is the evolution of middleware.ts; cannot have both files in src/ root
+- Flag values must be evaluated server-side in proxy() or middleware to prevent client-side flicker
+
 ## Iteration US-162 - Mon, Apr 14, 2026
 
 Completed: Add React 19.2 cacheSignal() for Server Component fetch cleanup (ID: US-162)
@@ -1137,6 +1166,191 @@ This user story is for a **Next.js/Vercel** project, not Frappe/Python. The tech
 *   The page component must be a Server Component to securely read the variant cookie/header and prevent client-side flickering.
 *   Provide a default/fallback variant in the code in case the Edge Config lookup fails.
 *   Ensure the cookie key is unique to avoid conflicts.
+
+
+## Pre-analysis for US-173 (Gemini 2.5 Pro)
+Okay, I'll analyze the user story and prepare the technical brief. First, I need to understand the project's structure.
+Here is the technical brief for implementing the A/B testing user story:
+
+**Project:** Pelangi Website (Next.js)
+**User Story:** US-173: Implement A/B testing with Vercel Feature Flags and Edge Config
+
+**1. Python/Frappe Files to Modify:**
+This is a Next.js/TypeScript project, not a Frappe/Python one. No Python files will be modified.
+
+**2. Next.js Files to Modify:**
+
+*   **`middleware.ts`**: (New file at `site/middleware.ts`) This is the core of the implementation. It will intercept requests for the `/book` page, evaluate the Vercel feature flag, and set a cookie with the assigned variant (e.g., `x-cta-variant: 'B'`).
+*   **`site/src/app/book/page.tsx`**: This page will read the variant from the cookie (or a header passed from middleware) and pass it as a prop to the relevant components.
+*   **`site/src/components/Hero.tsx`**: This component will be modified to conditionally render the CTA button text based on the `variant` prop received from `page.tsx`.
+*   **`site/src/components/Rooms.tsx` or `site/src/components/RoomsTabsClient.tsx`**: These components will be updated to conditionally render different room card layouts based on the `variant` prop.
+*   **`site/src/lib/flags.ts`**: (New file) To define the feature flag configuration, following the "Flags as Code" pattern.
+*   **`site/src/lib/analytics.ts` (or similar)**: The analytics service will be updated to read the variant and send it to GA4 as a custom dimension.
+
+**3. Implementation Approach:**
+
+1.  **Install Dependencies:** `npm install @vercel/edge-config @vercel/flags`
+2.  **Create Edge Config:** Set up a new Edge Config store in the Vercel dashboard and link it to the project.
+3.  **Define Flag:** Create a feature flag in `site/src/lib/flags.ts` for the CTA test (e.g., `ctaVariantFlag`). Define the variants: 'Book Now', 'Check Availability', 'Get Best Price Direct'.
+4.  **Middleware Logic:** In `middleware.ts`, use `@vercel/flags` to evaluate the `ctaVariantFlag` for the incoming request to `/book`. Store the result in a cookie. This ensures the variant is determined server-side before the page is rendered, preventing flicker.
+5.  **Conditional Rendering:** In `Hero.tsx` and `Rooms.tsx`/`RoomsTabsClient.tsx`, access the variant and use conditional logic (e.g., a switch statement or ternary operators) to render the correct UI.
+6.  **Analytics:** In your analytics tracking code (likely in a component like `AnalyticsProvider.tsx` or directly in `page.tsx`), read the variant from the cookie and send an event to GA4 with the variant as a custom dimension.
+
+**4. Edge Cases & Gotchas:**
+
+*   **Bot/Crawler Traffic:** The middleware should filter out known bot user-agents to avoid skewing A/B test results.
+*   **Cookie Consent:** Ensure that setting the A/B test variant cookie complies with your site's cookie policy and the user's consent status. The variant cookie is arguably essential for site functionality in this context, but this should be verified.
+*   **Caching:** Be mindful of how Vercel's caching and Next.js's static generation might interact with the feature flags. The use of middleware should bust the cache correctly, but this needs to be tested.
+*   **Cross-Page Consistency:** If the user navigates away from and back to the `/book` page within the same session, they should see the same variant. Using a session-level cookie is the correct approach here.
+*   **Development Environment:** Mock the Vercel flags/Edge Config environment locally for development and testing. You can use a simple object or a local JSON file to simulate the flag values.
+
+
+## Pre-analysis for US-173 (Gemini 2.5 Pro)
+Okay, I'll analyze the user story and prepare the technical brief. First, I need to understand the project's structure.
+Here is the technical brief for implementing the A/B testing user story:
+
+**Project:** Pelangi Website (Next.js)
+**User Story:** US-173: Implement A/B testing with Vercel Feature Flags and Edge Config
+
+**1. Python/Frappe Files to Modify:**
+This is a Next.js/TypeScript project, not a Frappe/Python one. No Python files will be modified.
+
+**2. Next.js Files to Modify:**
+
+*   **`middleware.ts`**: (New file at `site/middleware.ts`) This is the core of the implementation. It will intercept requests for the `/book` page, evaluate the Vercel feature flag, and set a cookie with the assigned variant (e.g., `x-cta-variant: 'B'`).
+*   **`site/src/app/book/page.tsx`**: This page will read the variant from the cookie (or a header passed from middleware) and pass it as a prop to the relevant components.
+*   **`site/src/components/Hero.tsx`**: This component will be modified to conditionally render the CTA button text based on the `variant` prop received from `page.tsx`.
+*   **`site/src/components/Rooms.tsx` or `site/src/components/RoomsTabsClient.tsx`**: These components will be updated to conditionally render different room card layouts based on the `variant` prop.
+*   **`site/src/lib/flags.ts`**: (New file) To define the feature flag configuration, following the "Flags as Code" pattern.
+*   **`site/src/lib/analytics.ts` (or similar)**: The analytics service will be updated to read the variant and send it to GA4 as a custom dimension.
+
+**3. Implementation Approach:**
+
+1.  **Install Dependencies:** `npm install @vercel/edge-config @vercel/flags`
+2.  **Create Edge Config:** Set up a new Edge Config store in the Vercel dashboard and link it to the project.
+3.  **Define Flag:** Create a feature flag in `site/src/lib/flags.ts` for the CTA test (e.g., `ctaVariantFlag`). Define the variants: 'Book Now', 'Check Availability', 'Get Best Price Direct'.
+4.  **Middleware Logic:** In `middleware.ts`, use `@vercel/flags` to evaluate the `ctaVariantFlag` for the incoming request to `/book`. Store the result in a cookie. This ensures the variant is determined server-side before the page is rendered, preventing flicker.
+5.  **Conditional Rendering:** In `Hero.tsx` and `Rooms.tsx`/`RoomsTabsClient.tsx`, access the variant and use conditional logic (e.g., a switch statement or ternary operators) to render the correct UI.
+6.  **Analytics:** In your analytics tracking code (likely in a component like `AnalyticsProvider.tsx` or directly in `page.tsx`), read the variant from the cookie and send an event to GA4 with the variant as a custom dimension.
+
+**4. Edge Cases & Gotchas:**
+
+*   **Bot/Crawler Traffic:** The middleware should filter out known bot user-agents to avoid skewing A/B test results.
+*   **Cookie Consent:** Ensure that setting the A/B test variant cookie complies with your site's cookie policy and the user's consent status. The variant cookie is arguably essential for site functionality in this context, but this should be verified.
+*   **Caching:** Be mindful of how Vercel's caching and Next.js's static generation might interact with the feature flags. The use of middleware should bust the cache correctly, but this needs to be tested.
+*   **Cross-Page Consistency:** If the user navigates away from and back to the `/book` page within the same session, they should see the same variant. Using a session-level cookie is the correct approach here.
+*   **Development Environment:** Mock the Vercel flags/Edge Config environment locally for development and testing. You can use a simple object or a local JSON file to simulate the flag values.
+
+
+## Pre-analysis for US-173 (Gemini 2.5 Pro)
+Okay, I'll analyze the user story and prepare the technical brief. First, I need to understand the project's structure.
+Here is the technical brief for implementing the A/B testing user story:
+
+**Project:** Pelangi Website (Next.js)
+**User Story:** US-173: Implement A/B testing with Vercel Feature Flags and Edge Config
+
+**1. Python/Frappe Files to Modify:**
+This is a Next.js/TypeScript project, not a Frappe/Python one. No Python files will be modified.
+
+**2. Next.js Files to Modify:**
+
+*   **`middleware.ts`**: (New file at `site/middleware.ts`) This is the core of the implementation. It will intercept requests for the `/book` page, evaluate the Vercel feature flag, and set a cookie with the assigned variant (e.g., `x-cta-variant: 'B'`).
+*   **`site/src/app/book/page.tsx`**: This page will read the variant from the cookie (or a header passed from middleware) and pass it as a prop to the relevant components.
+*   **`site/src/components/Hero.tsx`**: This component will be modified to conditionally render the CTA button text based on the `variant` prop received from `page.tsx`.
+*   **`site/src/components/Rooms.tsx` or `site/src/components/RoomsTabsClient.tsx`**: These components will be updated to conditionally render different room card layouts based on the `variant` prop.
+*   **`site/src/lib/flags.ts`**: (New file) To define the feature flag configuration, following the "Flags as Code" pattern.
+*   **`site/src/lib/analytics.ts` (or similar)**: The analytics service will be updated to read the variant and send it to GA4 as a custom dimension.
+
+**3. Implementation Approach:**
+
+1.  **Install Dependencies:** `npm install @vercel/edge-config @vercel/flags`
+2.  **Create Edge Config:** Set up a new Edge Config store in the Vercel dashboard and link it to the project.
+3.  **Define Flag:** Create a feature flag in `site/src/lib/flags.ts` for the CTA test (e.g., `ctaVariantFlag`). Define the variants: 'Book Now', 'Check Availability', 'Get Best Price Direct'.
+4.  **Middleware Logic:** In `middleware.ts`, use `@vercel/flags` to evaluate the `ctaVariantFlag` for the incoming request to `/book`. Store the result in a cookie. This ensures the variant is determined server-side before the page is rendered, preventing flicker.
+5.  **Conditional Rendering:** In `Hero.tsx` and `Rooms.tsx`/`RoomsTabsClient.tsx`, access the variant and use conditional logic (e.g., a switch statement or ternary operators) to render the correct UI.
+6.  **Analytics:** In your analytics tracking code (likely in a component like `AnalyticsProvider.tsx` or directly in `page.tsx`), read the variant from the cookie and send an event to GA4 with the variant as a custom dimension.
+
+**4. Edge Cases & Gotchas:**
+
+*   **Bot/Crawler Traffic:** The middleware should filter out known bot user-agents to avoid skewing A/B test results.
+*   **Cookie Consent:** Ensure that setting the A/B test variant cookie complies with your site's cookie policy and the user's consent status. The variant cookie is arguably essential for site functionality in this context, but this should be verified.
+*   **Caching:** Be mindful of how Vercel's caching and Next.js's static generation might interact with the feature flags. The use of middleware should bust the cache correctly, but this needs to be tested.
+*   **Cross-Page Consistency:** If the user navigates away from and back to the `/book` page within the same session, they should see the same variant. Using a session-level cookie is the correct approach here.
+*   **Development Environment:** Mock the Vercel flags/Edge Config environment locally for development and testing. You can use a simple object or a local JSON file to simulate the flag values.
+
+
+## Pre-analysis for US-173 (Gemini 2.5 Pro)
+Okay, I'll analyze the user story and prepare the technical brief. First, I need to understand the project's structure.
+Here is the technical brief for implementing the A/B testing user story:
+
+**Project:** Pelangi Website (Next.js)
+**User Story:** US-173: Implement A/B testing with Vercel Feature Flags and Edge Config
+
+**1. Python/Frappe Files to Modify:**
+This is a Next.js/TypeScript project, not a Frappe/Python one. No Python files will be modified.
+
+**2. Next.js Files to Modify:**
+
+*   **`middleware.ts`**: (New file at `site/middleware.ts`) This is the core of the implementation. It will intercept requests for the `/book` page, evaluate the Vercel feature flag, and set a cookie with the assigned variant (e.g., `x-cta-variant: 'B'`).
+*   **`site/src/app/book/page.tsx`**: This page will read the variant from the cookie (or a header passed from middleware) and pass it as a prop to the relevant components.
+*   **`site/src/components/Hero.tsx`**: This component will be modified to conditionally render the CTA button text based on the `variant` prop received from `page.tsx`.
+*   **`site/src/components/Rooms.tsx` or `site/src/components/RoomsTabsClient.tsx`**: These components will be updated to conditionally render different room card layouts based on the `variant` prop.
+*   **`site/src/lib/flags.ts`**: (New file) To define the feature flag configuration, following the "Flags as Code" pattern.
+*   **`site/src/lib/analytics.ts` (or similar)**: The analytics service will be updated to read the variant and send it to GA4 as a custom dimension.
+
+**3. Implementation Approach:**
+
+1.  **Install Dependencies:** `npm install @vercel/edge-config @vercel/flags`
+2.  **Create Edge Config:** Set up a new Edge Config store in the Vercel dashboard and link it to the project.
+3.  **Define Flag:** Create a feature flag in `site/src/lib/flags.ts` for the CTA test (e.g., `ctaVariantFlag`). Define the variants: 'Book Now', 'Check Availability', 'Get Best Price Direct'.
+4.  **Middleware Logic:** In `middleware.ts`, use `@vercel/flags` to evaluate the `ctaVariantFlag` for the incoming request to `/book`. Store the result in a cookie. This ensures the variant is determined server-side before the page is rendered, preventing flicker.
+5.  **Conditional Rendering:** In `Hero.tsx` and `Rooms.tsx`/`RoomsTabsClient.tsx`, access the variant and use conditional logic (e.g., a switch statement or ternary operators) to render the correct UI.
+6.  **Analytics:** In your analytics tracking code (likely in a component like `AnalyticsProvider.tsx` or directly in `page.tsx`), read the variant from the cookie and send an event to GA4 with the variant as a custom dimension.
+
+**4. Edge Cases & Gotchas:**
+
+*   **Bot/Crawler Traffic:** The middleware should filter out known bot user-agents to avoid skewing A/B test results.
+*   **Cookie Consent:** Ensure that setting the A/B test variant cookie complies with your site's cookie policy and the user's consent status. The variant cookie is arguably essential for site functionality in this context, but this should be verified.
+*   **Caching:** Be mindful of how Vercel's caching and Next.js's static generation might interact with the feature flags. The use of middleware should bust the cache correctly, but this needs to be tested.
+*   **Cross-Page Consistency:** If the user navigates away from and back to the `/book` page within the same session, they should see the same variant. Using a session-level cookie is the correct approach here.
+*   **Development Environment:** Mock the Vercel flags/Edge Config environment locally for development and testing. You can use a simple object or a local JSON file to simulate the flag values.
+
+
+## Pre-analysis for US-173 (Gemini 2.5 Pro)
+Okay, I'll analyze the user story and prepare the technical brief. First, I need to understand the project's structure.
+Here is the technical brief for implementing the A/B testing user story:
+
+**Project:** Pelangi Website (Next.js)
+**User Story:** US-173: Implement A/B testing with Vercel Feature Flags and Edge Config
+
+**1. Python/Frappe Files to Modify:**
+This is a Next.js/TypeScript project, not a Frappe/Python one. No Python files will be modified.
+
+**2. Next.js Files to Modify:**
+
+*   **`middleware.ts`**: (New file at `site/middleware.ts`) This is the core of the implementation. It will intercept requests for the `/book` page, evaluate the Vercel feature flag, and set a cookie with the assigned variant (e.g., `x-cta-variant: 'B'`).
+*   **`site/src/app/book/page.tsx`**: This page will read the variant from the cookie (or a header passed from middleware) and pass it as a prop to the relevant components.
+*   **`site/src/components/Hero.tsx`**: This component will be modified to conditionally render the CTA button text based on the `variant` prop received from `page.tsx`.
+*   **`site/src/components/Rooms.tsx` or `site/src/components/RoomsTabsClient.tsx`**: These components will be updated to conditionally render different room card layouts based on the `variant` prop.
+*   **`site/src/lib/flags.ts`**: (New file) To define the feature flag configuration, following the "Flags as Code" pattern.
+*   **`site/src/lib/analytics.ts` (or similar)**: The analytics service will be updated to read the variant and send it to GA4 as a custom dimension.
+
+**3. Implementation Approach:**
+
+1.  **Install Dependencies:** `npm install @vercel/edge-config @vercel/flags`
+2.  **Create Edge Config:** Set up a new Edge Config store in the Vercel dashboard and link it to the project.
+3.  **Define Flag:** Create a feature flag in `site/src/lib/flags.ts` for the CTA test (e.g., `ctaVariantFlag`). Define the variants: 'Book Now', 'Check Availability', 'Get Best Price Direct'.
+4.  **Middleware Logic:** In `middleware.ts`, use `@vercel/flags` to evaluate the `ctaVariantFlag` for the incoming request to `/book`. Store the result in a cookie. This ensures the variant is determined server-side before the page is rendered, preventing flicker.
+5.  **Conditional Rendering:** In `Hero.tsx` and `Rooms.tsx`/`RoomsTabsClient.tsx`, access the variant and use conditional logic (e.g., a switch statement or ternary operators) to render the correct UI.
+6.  **Analytics:** In your analytics tracking code (likely in a component like `AnalyticsProvider.tsx` or directly in `page.tsx`), read the variant from the cookie and send an event to GA4 with the variant as a custom dimension.
+
+**4. Edge Cases & Gotchas:**
+
+*   **Bot/Crawler Traffic:** The middleware should filter out known bot user-agents to avoid skewing A/B test results.
+*   **Cookie Consent:** Ensure that setting the A/B test variant cookie complies with your site's cookie policy and the user's consent status. The variant cookie is arguably essential for site functionality in this context, but this should be verified.
+*   **Caching:** Be mindful of how Vercel's caching and Next.js's static generation might interact with the feature flags. The use of middleware should bust the cache correctly, but this needs to be tested.
+*   **Cross-Page Consistency:** If the user navigates away from and back to the `/book` page within the same session, they should see the same variant. Using a session-level cookie is the correct approach here.
+*   **Development Environment:** Mock the Vercel flags/Edge Config environment locally for development and testing. You can use a simple object or a local JSON file to simulate the flag values.
 
 
 ## Pre-analysis for US-173 (Gemini 2.5 Pro)
