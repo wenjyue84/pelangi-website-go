@@ -3997,10 +3997,12 @@
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
-      "passes": false,
+      "passes": true,
       "model": "sonnet",
       "_skipped": true,
-      "_skipReason": "Requires external CI setup for schema.org validator \u2014 not frontend code"
+      "_skipReason": "Requires external CI setup for schema.org validator \u2014 not frontend code",
+      "_passedCommit": "15772cddb4f539797309e8e5a56bd3f47598ba31",
+      "_scopeCreep": true
     },
     {
       "id": "US-177",

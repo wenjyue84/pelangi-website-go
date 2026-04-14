@@ -3004,6 +3004,19 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[smoke] Automate structured data validation in CI with schema.org validator",
+      "description": "Auto-generated smoke test from US-176",
+      "from_story": "US-176",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-232",
+      "created_ts": "2026-04-14T07:25:34Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }

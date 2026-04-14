@@ -1543,6 +1543,30 @@
       "_forStoryId": "US-175"
     },
     {
+      "title": "[Regression Test] Automate structured data validation in CI with schema.org validator",
+      "priority": "medium",
+      "description": "Write regression test to guard against future breakage of US-176. Story description: Add a CI step that validates all JSON-LD structured data against schema.org schemas before production deploy, catching type errors, missing required properties, and invalid enum values before they reach Google's crawlers. Currently structured data is written manually and only verified ad-hoc via Google Rich Results Test — a CI check prevents silent regressions when schema files are edited.",
+      "acceptanceCriteria": [
+        "Regression test covers core observable behaviour of US-176",
+        "Test would reliably fail if the US-176 feature were removed or broken"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_176 -v"
+      ],
+      "dependencies": [
+        "US-176"
+      ],
+      "estimatedComplexity": "medium",
+      "tags": [
+        "regression",
+        "auto-generated"
+      ],
+      "source": "",
+      "_source": "test-story",
+      "_testType": "regression",
+      "_forStoryId": "US-176"
+    },
+    {
       "title": "[E2E Test] Implement WCAG 2.2 SC 3.3.3 + 3.3.4 – Error Suggestion and Error Prevention on booking fl",
       "priority": "medium",
       "description": "Write end-to-end user flow test for the feature in US-180. Story description: SC 3.3.3 (AA) requires that input errors be accompanied by a suggested correction when possible. SC 3.3.4 (AA) requires that legal/financial submissions be reviewable, confirmable, or reversible. The booking/contact forms currently lack both a review step and specific error suggestions.",
