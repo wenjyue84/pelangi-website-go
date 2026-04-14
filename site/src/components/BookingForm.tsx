@@ -189,9 +189,7 @@ export default function BookingForm() {
                 id="room-type"
                 value={roomType}
                 onChange={(e) => setRoomType(e.target.value)}
-                className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-stone-50 dark:bg-stone-800
-                           text-stone-900 dark:text-stone-100 px-4 py-3 text-sm
-                           focus-visible:border-amber-500"
+                className="select-base w-full"
               >
                 <option value="Capsule Pod">Capsule Pod — RM35–45/night</option>
                 <option value="Monthly Capsule Pod">Monthly Capsule Pod — RM594/month</option>

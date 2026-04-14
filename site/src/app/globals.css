@@ -760,6 +760,81 @@ html.animations-paused *::after {
   }
 }
 
+/* ============================================================
+   Styled Native Select with appearance: base-select (US-188)
+   Chrome 130+, Safari 18.3+, Firefox future.
+   @supports fallback for browsers without appearance: base-select.
+   Retains built-in accessibility (keyboard, screen reader).
+   Reference: https://developer.chrome.com/blog/a-customizable-select
+   ============================================================ */
+@supports (appearance: base-select) {
+  select.select-base {
+    appearance: base-select;
+    border: 1px solid var(--color-stone-500, #78716c);
+    border-radius: 0.75rem;
+    background-color: var(--color-stone-50, #fafaf9);
+    color: var(--color-stone-900, #1c1917);
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 0.2s ease-out, background-color 0.2s ease-out;
+  }
+
+  select.select-base:hover {
+    border-color: var(--color-stone-600, #57534e);
+  }
+
+  select.select-base:focus-visible {
+    outline: 2px solid var(--color-amber-700, #b45309);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    select.select-base {
+      background-color: var(--color-stone-800, #292524);
+      color: var(--color-stone-100, #f5f5f4);
+      border-color: var(--color-stone-600, #57534e);
+    }
+
+    select.select-base:hover {
+      border-color: var(--color-stone-500, #78716c);
+    }
+
+    select.select-base:focus-visible {
+      outline-color: var(--color-amber-400, #fbbf24);
+    }
+  }
+
+  @media (prefers-contrast: more) {
+    select.select-base {
+      border-width: 2px;
+      border-color: var(--color-stone-700, #44403c);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      select.select-base {
+        border-color: var(--color-stone-500, #78716c);
+      }
+    }
+  }
+
+  @media (forced-colors: active) {
+    select.select-base {
+      border: 1px solid ButtonText;
+      background-color: ButtonFace;
+      color: ButtonText;
+      forced-color-adjust: none;
+    }
+
+    select.select-base:hover {
+      background-color: Highlight;
+      color: HighlightText;
+    }
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
