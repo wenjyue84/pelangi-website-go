@@ -1,32 +1,25 @@
 {
   "iteration": 4,
-  "timestamp": "2026-04-13T19:25:53.123604+00:00",
+  "timestamp": "2026-04-14T10:28:05.841129+00:00",
   "summary": {
     "0_retries": {
-      "count": 205,
-      "avg_ac_count": 5.1,
-      "avg_description_length": 376.7,
+      "count": 232,
+      "avg_ac_count": 5.09,
+      "avg_description_length": 367.4,
       "common_tags": [],
       "common_file_patterns": []
     },
     "1_retry": {
-      "count": 2,
+      "count": 6,
       "avg_ac_count": 5.5,
-      "avg_description_length": 234.5,
-      "common_tags": [
-        "content",
-        "geo",
-        "seo",
-        "visa-run"
-      ],
-      "common_file_patterns": [
-        "site"
-      ]
+      "avg_description_length": 334.3,
+      "common_tags": [],
+      "common_file_patterns": []
     },
     "2_retries": {
-      "count": 0,
-      "avg_ac_count": 0.0,
-      "avg_description_length": 0.0,
+      "count": 1,
+      "avg_ac_count": 5.0,
+      "avg_description_length": 404.0,
       "common_tags": [],
       "common_file_patterns": []
     },
@@ -39,8 +32,8 @@
     }
   },
   "insights": {
-    "total_analyzed": 207,
-    "easy_count": 207,
+    "total_analyzed": 239,
+    "easy_count": 238,
     "hard_count": 0
   }
 }

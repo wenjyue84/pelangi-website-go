@@ -5461,8 +5461,10 @@
       "technicalNotes": [
         "Keep content HTML under 5000 characters"
       ],
-      "passes": false,
-      "model": "haiku"
+      "passes": true,
+      "model": "haiku",
+      "last_attempted": "2026-04-14T09:31:47Z",
+      "_scopeCreep": true
     },
     {
       "id": "US-254",
@@ -5576,7 +5578,12 @@
       "estimatedComplexity": "medium",
       "passes": false,
       "_source": "ai-example",
-      "model": "sonnet"
+      "model": "sonnet",
+      "last_attempted": "2026-04-14T10:25:04Z",
+      "_failureReason": "oversized_diff: produced 7806 lines but limit is 500. Keep total insertions+deletions under 500 lines.",
+      "_antiPatterns": [
+        "oversized_diff: produced 7806 lines but limit is 500. Keep total insertions+deletions under 500 lines."
+      ]
     }
   ]
 }

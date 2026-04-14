@@ -365,17 +365,9 @@ export default async function BookPage() {
                     <span>Platform service fee</span>
                     <span className="font-medium">+15–20%</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span>Service Tax (SST) 8%</span>
-                    <span className="font-medium">+8%</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Tourism Tax (TTx)</span>
-                    <span className="font-medium">RM10</span>
-                  </div>
                   <div className="border-t border-stone-200 dark:border-stone-700 pt-2 mt-2 flex justify-between font-semibold text-stone-800 dark:text-stone-200">
                     <span>You pay</span>
-                    <span>~RM60–73/night</span>
+                    <span>~RM46–58/night</span>
                   </div>
                 </div>
               </div>
@@ -399,27 +391,15 @@ export default async function BookPage() {
                     <span>Platform fee</span>
                     <span className="font-medium">RM0</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span>Service Tax (SST) 8%</span>
-                    <span className="font-medium">+8%</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Tourism Tax (TTx)</span>
-                    <span className="font-medium">RM10</span>
-                  </div>
                   <div className="border-t border-green-200 dark:border-green-800 pt-2 mt-2 flex justify-between font-semibold text-green-800 dark:text-green-300">
                     <span>You pay</span>
-                    <span>RM48–59/night</span>
+                    <span>RM35–45/night</span>
                   </div>
                 </div>
               </div>
             </div>
             <p className="text-center text-sm text-amber-800 dark:text-amber-300 font-medium">
-              Save up to <span className="font-bold text-green-700">RM14/night</span> by booking direct — that&apos;s <span className="font-bold text-green-700">RM98/week</span> back in your pocket.
-            </p>
-            <p className="text-center text-xs text-stone-500 dark:text-stone-400 mt-2">
-              All room rates are subject to Service Tax (SST) 8% and Tourism Tax (TTx) of RM10/room/night for non-Malaysian guests, as required by Malaysian law. Tax rates are subject to change per Malaysian government regulation.{" "}
-              <a href="https://www.myttx.customs.gov.my/" target="_blank" rel="noopener noreferrer" className="text-amber-600 dark:text-amber-400 hover:underline" aria-label="Learn more about Malaysia Tourism Tax (TTx)">Learn more about TTx</a>
+              Save up to <span className="font-bold text-green-700">RM13/night</span> by booking direct — that&apos;s <span className="font-bold text-green-700">RM91/week</span> back in your pocket.
             </p>
           </div>
 

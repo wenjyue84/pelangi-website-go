@@ -1643,3 +1643,6 @@ Based on the story JSON, the request is for a **Next.js/TypeScript** implementat
 ### Gotchas
 - Filter score > 0 ensures no unrelated posts shown; empty result returns null from component
 - All 5 vitest tests pass; tsc --noEmit clean
+## Iteration 2 - Tue, Apr 14, 2026  6:25:00 PM
+FAILED diff-guard: Implement Related Blog Posts Widget with IsSimilarTo Schema Linking (ID: US-266) — 7806 lines > 500 limit — attempt 1/3
+

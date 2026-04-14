@@ -1,8 +1,8 @@
 {
   "phase": "I",
-  "iteration": 2,
-  "started_at": 1776159102,
+  "iteration": 5,
+  "started_at": 1776162606,
   "pct_done": 60,
-  "story_id": "US-251",
-  "story_title": "Blog post: Getting Around JB Without a Car — Transport Guide for Backpackers"
+  "story_id": "US-266",
+  "story_title": "Implement Related Blog Posts Widget with IsSimilarTo Schema Linking"
 }

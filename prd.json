@@ -5579,7 +5579,12 @@
       "passes": true,
       "_source": "ai-example",
       "model": "sonnet",
-      "last_attempted": "2026-04-14T10:12:38Z"
+      "last_attempted": "2026-04-14T10:25:04Z",
+      "_failureReason": "oversized_diff: produced 7806 lines but limit is 500. Keep total insertions+deletions under 500 lines.",
+      "_antiPatterns": [
+        "oversized_diff: produced 7806 lines but limit is 500. Keep total insertions+deletions under 500 lines."
+      ],
+      "_passedCommit": "fa167905447c7514150d74a232943413fa30d4e4"
     }
   ]
 }
