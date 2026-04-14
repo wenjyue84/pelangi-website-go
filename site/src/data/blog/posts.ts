@@ -1025,6 +1025,68 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 <p>还在犹豫？<a href="/book">立即预订</a>，开始你的新山自由行！或通过 <strong>WhatsApp (+60 12-708 8789)</strong> 与我们联系获取更多旅游建议。</p>
 `,
   },
+  {
+    slug: "lalamove-driver-malaysia-jb-guide",
+    title: "Lalamove Driver Guide Malaysia: Earn RM25–80 Per Job in JB",
+    excerpt:
+      "How to become a Lalamove driver in Malaysia, from registration to first earning. Vehicle types, RM25–80 per job, registration steps, and comparison with Foodpanda and Grab.",
+    date: "2026-04-14",
+    category: "Career & Work",
+    author: "Jay Lew",
+    readTime: "5 min read",
+    tags: ["gig-economy", "johor-bahru", "lalamove", "delivery", "malaysia", "side-hustle"],
+    featuredImage: "/images/blog/lalamove-driver-guide.jpg",
+    content: `
+<h2>Start Earning With Lalamove in Johor Bahru</h2>
+<p>Lalamove connects drivers with customers needing parcels, documents, and goods delivered. Work your own hours in JB and earn RM25–80 per job. This guide covers registration, vehicle options, earnings, and how Lalamove compares to Foodpanda and Grab.</p>
+
+<h2>Earnings & Vehicle Types</h2>
+<p><strong>Pay per job varies by distance and vehicle:</strong></p>
+<ul>
+  <li><strong>Bike (motorcycle):</strong> RM25–40, under 5 kg, fastest urban delivery</li>
+  <li><strong>Car (sedan/SUV):</strong> RM40–65, medium loads, general parcels</li>
+  <li><strong>Van:</strong> RM60–80+, heavy items, furniture, bulk orders</li>
+</ul>
+<p>Peak hours (12–2 pm, 5–8 pm) offer 1.5–2x surge pricing. Full-time drivers: RM200–300/day. Part-time: RM100–150/evening.</p>
+
+<h2>Vehicle & Document Requirements</h2>
+<p>To register, you'll need:</p>
+<ul>
+  <li>Valid driver's license and vehicle registration (current roadtax)</li>
+  <li>Insurance certificate (third-party or comprehensive)</li>
+  <li>Photos: License, registration, insurance, vehicle (exterior + interior), selfie with ID</li>
+  <li>Malaysian bank account for payouts</li>
+</ul>
+
+<h2>5-Step Registration Process</h2>
+<p><strong>Step 1:</strong> Download Lalamove Driver app → "Sign up as driver" → Enter Malaysian ID and phone number.</p>
+<p><strong>Step 2:</strong> Upload clear photos of all documents (license, registration, insurance).</p>
+<p><strong>Step 3:</strong> Lalamove calls to verify your identity and bank details.</p>
+<p><strong>Step 4:</strong> Vehicle inspection (usually photo-based in JB; in-person if requested).</p>
+<p><strong>Step 5:</strong> Approval in 3–5 days → Go live and accept jobs.</p>
+
+<h2>Why Lalamove?</h2>
+<p><strong>Flexibility:</strong> 24/7 availability, no shift requirements, no boss. Accept 2 jobs or 20 — your choice.</p>
+<p><strong>Keep Your Earnings:</strong> Lalamove's 15–20% platform fee is transparent. No hidden deductions.</p>
+<p><strong>Cross-Border Demand:</strong> JB's proximity to Singapore creates high demand for parcels and documents (RM50–80 for long deliveries).</p>
+
+<h2>Lalamove vs. Foodpanda vs. Grab</h2>
+<table style="width:100%;border-collapse:collapse;margin:1rem 0">
+<tr style="border-bottom:1px solid #ddd"><th style="text-align:left;padding:0.5rem">Platform</th><th style="padding:0.5rem">RM/Job</th><th style="padding:0.5rem">Focus</th></tr>
+<tr style="border-bottom:1px solid #ddd"><td style="padding:0.5rem"><strong>Lalamove</strong></td><td style="padding:0.5rem">25–80</td><td style="padding:0.5rem">General parcels, logistics</td></tr>
+<tr style="border-bottom:1px solid #ddd"><td style="padding:0.5rem"><strong>Foodpanda</strong></td><td style="padding:0.5rem">15–40</td><td style="padding:0.5rem">Food delivery</td></tr>
+<tr><td style="padding:0.5rem"><strong>Grab</strong></td><td style="padding:0.5rem">20–50</td><td style="padding:0.5rem">Rides + parcels</td></tr>
+</table>
+
+<p><strong>Lalamove wins:</strong> Highest payouts. No restaurant partnership needed — any customer, any parcel.</p>
+<p><strong>Tip:</strong> Many drivers work all three platforms. Lalamove mornings, Foodpanda lunch, Grab evenings = maximized income.</p>
+
+<h2>Start Today</h2>
+<p>Download Lalamove Driver, submit documents, and earn within days. You're your own boss—set your hours, keep your income, grow your earnings.</p>
+
+<p>Staying in JB? <a href="/rooms">Pelangi Capsule Hostel</a> is perfect for gig workers. Reliable WiFi, community of hustlers, <a href="/book">book now</a>.</p>
+`,
+  },
 ];
 
 export const blogPosts: BlogPost[] = rawPosts.map((post) => ({

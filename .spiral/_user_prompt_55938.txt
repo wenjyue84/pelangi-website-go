@@ -1,0 +1,1 @@
+Implement story **US-248** ("Blog post: Lalamove Driver Guide Malaysia — Earn Flexible Income in JB") from prd.json now. This is the story assigned to you by the SPIRAL orchestrator — do NOT pick a different story. Read prd.json for the full details of US-248, read progress.txt for codebase context, then implement US-248 only.

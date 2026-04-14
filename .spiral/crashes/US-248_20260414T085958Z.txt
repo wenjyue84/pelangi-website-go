@@ -1,0 +1,8 @@
+# SPIRAL Crash Report
+# Story:     US-248
+# Worker:    sequential
+# Exit Code: 5
+# Timestamp: 20260414T085958Z
+# ─────────────────────────────────────────
+
+No stderr capture available (exit_code=5)

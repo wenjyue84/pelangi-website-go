@@ -1,23 +1,45 @@
 [
   {
-    "title": "Implement /blog/[slug] page with Article schema and breadcrumb navigation",
+    "title": "Create blog.ts utility module with category and related post queries",
     "priority": "high",
-    "description": "Create Next.js dynamic route for individual blog posts rendering full content with Article and BreadcrumbList JSON-LD schemas to improve SEO visibility in Google Search and blog post discovery.",
+    "description": "Build TypeScript utilities to query blog posts by category, find related posts, and enumerate all published articles for sidebar widgets and SEO features.",
     "acceptanceCriteria": [
-      "/blog/[slug]/page.tsx displays blog post title, author, publish date, featured image, and full content from static blog data structure",
-      "Article schema includes author, datePublished, dateModified, image, wordCount, and articleBody in <script type=\"application/ld+json\">",
-      "BreadcrumbList schema renders breadcrumb path (Home > Blog > Post Title) with itemListElement array"
+      "blog.ts exports getPostsByCategory(category: string): Post[] function that filters and sorts blog posts by category field",
+      "blog.ts exports getRelatedPosts(slug: string, limit?: number): Post[] function matching by shared categories, excluding the source post",
+      "Functions successfully load and parse all markdown files from site/src/content/blog/ using gray-matter for frontmatter extraction"
     ],
     "technicalNotes": [
-      "File to create: site/src/app/blog/[slug]/page.tsx - implement generateStaticParams and generateMetadata exports",
-      "File to create: site/src/lib/schemas/article.ts - export generateArticleSchema(post: BlogPost, baseUrl: string)",
-      "File to create: site/src/lib/schemas/breadcrumb.ts - export generateBreadcrumbSchema(postTitle: string, slug: string)",
-      "Test command: npm run build && curl http://localhost:3000/blog/johor-backpacker-guide | grep -c 'application/ld+json' (should output 2 or more)"
+      "File to create: site/src/lib/blog.ts with Post interface matching frontmatter schema (title, slug, date, author, category, excerpt, image)",
+      "File to modify: site/src/lib/types.ts to export Post type for reuse across components",
+      "Test command: npm run test -- src/__tests__/blog.test.ts -v (verify getPostsByCategory filters correctly, getRelatedPosts returns max 3 posts)"
+    ],
+    "filesTouch": [
+      "site/src/lib/blog.ts",
+      "site/src/lib/types.ts",
+      "site/src/__tests__/blog.test.ts"
+    ],
+    "estimatedComplexity": "small",
+    "_source": "ai-example",
+    "passes": false,
+    "dependencies": []
+  },
+  {
+    "title": "Implement Article and BreadcrumbList schema.org markup on blog post pages",
+    "priority": "high",
+    "description": "Generate structured data for Article and BreadcrumbList JSON-LD on all blog post pages for enhanced SERP visibility, rich snippets, and Google News indexing.",
+    "acceptanceCriteria": [
+      "Blog post page generateMetadata includes Article schema with headline, author, datePublished, dateModified, wordCount, and image URL properties in JSON-LD format",
+      "BreadcrumbList schema renders breadcrumb navigation path: Home > Blog > [Category] > [Post Title] with proper itemListElement structure",
+      "Both schemas output as <script type='application/ld+json'> in page <head> and validate against schema.org validation tool"
+    ],
+    "technicalNotes": [
+      "File to modify: site/src/app/blog/[slug]/page.tsx to call new generateArticleSchema(post, url) in generateMetadata function",
+      "File to create: site/src/lib/structuredData.ts with exported functions generateArticleSchema(post, url) and generateBreadcrumbSchema(breadcrumbs)",
+      "Test command: npm run build && curl http://localhost:3000/blog/[slug] | grep -A20 '\"@type\":\"Article\"' should output valid JSON-LD"
     ],
     "filesTouch": [
       "site/src/app/blog/[slug]/page.tsx",
-      "site/src/lib/schemas/article.ts",
-      "site/src/lib/schemas/breadcrumb.ts"
+      "site/src/lib/structuredData.ts"
     ],
     "estimatedComplexity": "small",
     "_source": "ai-example",
@@ -25,24 +47,22 @@
     "dependencies": []
   },
   {
-    "title": "Build /blog index page with real-time category and tag filtering",
+    "title": "Extend sitemap.ts to include all blog post URLs with lastmod dates",
     "priority": "high",
-    "description": "Create /blog listing page with client-side filtering UI for categories and tags, plus schema.org CollectionPage markup to improve blog discoverability in Google search results.",
+    "description": "Dynamically generate XML sitemap entries for all published blog posts to ensure Google crawls and prioritizes blog content alongside main pages.",
     "acceptanceCriteria": [
-      "/blog/page.tsx displays grid of all blog posts with title, excerpt, date, category badge, and read-time estimate with no page reload",
-      "Category and tag filter chips toggle post visibility via React state (use 'use client' component), with active filter count badge",
-      "CollectionPage JSON-LD schema includes numberOfItems count, hasPart array of article references, and mainEntity object with blog URL"
+      "sitemap.ts reads from site/src/content/blog/ directory and generates URL objects for each .md file with pattern /blog/[slug]",
+      "Each blog URL entry includes lastmod timestamp extracted from markdown frontmatter date field in ISO 8601 format",
+      "Blog post URLs assigned priority 0.8 (below homepage 1.0, above resource pages 0.5) to signal medium importance"
     ],
     "technicalNotes": [
-      "File to create: site/src/app/blog/page.tsx - 'use client' component with useState for active filters, map over filtered posts",
-      "File to create: site/src/components/BlogPostGrid.tsx - grid component rendering BlogPostCard items with author, date, and tags",
-      "File to create: site/src/lib/schemas/collection.ts - export generateCollectionPageSchema(posts: BlogPost[], baseUrl: string)",
-      "Test command: npm run dev && curl http://localhost:3000/blog | grep -o 'CollectionPage' | head -1"
+      "File to modify: site/src/app/sitemap.ts to import getAllBlogPosts() helper and append to urlSet array with proper lastmod parsing",
+      "File to create: site/src/lib/getBlogPosts.ts exporting getAllBlogPosts(): {slug, lastmod}[] function using fs.readdirSync and gray-matter",
+      "Test command: npm run build && grep -c '/blog/' .next/server/sitemap-0.xml should match blog post count (e.g., 8+ matches)"
     ],
     "filesTouch": [
-      "site/src/app/blog/page.tsx",
-      "site/src/components/BlogPostGrid.tsx",
-      "site/src/lib/schemas/collection.ts"
+      "site/src/app/sitemap.ts",
+      "site/src/lib/getBlogPosts.ts"
     ],
     "estimatedComplexity": "small",
     "_source": "ai-example",
@@ -50,25 +70,23 @@
     "dependencies": []
   },
   {
-    "title": "Create JB News & Updates widget synced to curated RSS feeds on homepage",
+    "title": "Build Table of Contents component with anchor link navigation for blog posts",
     "priority": "medium",
-    "description": "Build an async Server Component fetching latest news from 3+ curated JB/Singapore RSS sources and displaying on homepage hero, with NewsArticle schema markup for improved news visibility.",
+    "description": "Extract H2/H3 headings from blog markdown and render as sticky TOC sidebar for improved UX on long-form travel articles (1500+ words).",
     "acceptanceCriteria": [
-      "JbNewsWidget async component fetches RSS feeds from 3+ sources with 10-second timeout and displays latest 3 news items as clickable cards",
-      "Each news card shows headline, source name/logo, publication date, and link to source article without opening new tab on small screens",
-      "NewsArticle schema for each item includes headline, description, datePublished, image, author, and articleBody fields in page JSON-LD"
+      "TableOfContents component accepts markdown content string and extracts all h2 and h3 headings with auto-generated anchor IDs (e.g., #why-backpack-jb)",
+      "TOC renders as sticky sidebar on desktop (top 20% viewport), collapsible drawer on mobile breakpoint, with active link highlight as user scrolls",
+      "Clicking any TOC link scrolls smoothly to matching heading with window.location.hash update for bookmark support"
     ],
     "technicalNotes": [
-      "File to create: site/src/components/JbNewsWidget.tsx - async Server Component with error boundary, renders up to 3 feed items",
-      "File to create: site/src/lib/rss/parser.ts - export parseRssFeed(url: string, timeout: number): Promise<NewsItem[]>",
-      "File to create: site/src/lib/rss/sources.ts - export RSS_SOURCES array with {name, url, category} objects for JB/Singapore feeds",
-      "Test command: npm run dev && curl -s http://localhost:3000 | grep -o 'JbNewsWidget\\|NewsArticle' | head -5"
+      "File to create: site/src/components/TableOfContents.tsx using remark parser to extract headings from markdown AST",
+      "File to modify: site/src/app/blog/[slug]/page.tsx to render <TableOfContents content={post.content} /> above blog body, wrap headings with id attributes",
+      "Test command: npm run dev && npx playwright test e2e/blog-toc.spec.ts (verify TOC extracts 5+ headings, scroll spy highlights active section)"
     ],
     "filesTouch": [
-      "site/src/components/JbNewsWidget.tsx",
-      "site/src/lib/rss/parser.ts",
-      "site/src/lib/rss/sources.ts",
-      "site/src/app/page.tsx"
+      "site/src/components/TableOfContents.tsx",
+      "site/src/app/blog/[slug]/page.tsx",
+      "e2e/blog-toc.spec.ts"
     ],
     "estimatedComplexity": "medium",
     "_source": "ai-example",
@@ -76,49 +94,25 @@
     "dependencies": []
   },
   {
-    "title": "Implement /api/feed route for RSS/Atom feed with blog posts and news",
-    "priority": "high",
-    "description": "Create API route generating valid RSS 2.0 feed with all blog posts and curated news items, plus auto-discovery link tag in layout head for feed reader compatibility.",
-    "acceptanceCriteria": [
-      "GET /api/feed returns valid RSS 2.0 XML with Content-Type: application/rss+xml, includes 10+ blog post items with title, link, pubDate (RFC 2822), guid, and description",
-      "Each RSS item links to full blog post at /blog/[slug] with proper URL encoding and includes author email and category tags",
-      "Auto-discovery <link rel=\"alternate\" type=\"application/rss+xml\" href=\"/api/feed\" title=\"Blog\"> tag present in site/src/app/layout.tsx <head>"
-    ],
-    "technicalNotes": [
-      "File to create: site/src/app/api/feed/route.ts - export async function GET() returning RSS XML response with proper headers",
-      "File to create: site/src/lib/feed/generator.ts - export generateRssFeed(posts: BlogPost[], baseUrl: string): string",
-      "File to modify: site/src/app/layout.tsx - add Feed auto-discovery link in <Head> component or metadata export",
-      "Test command: npm run dev && curl -s http://localhost:3000/api/feed | head -20 && npm run build && cat .next/server/app/api/feed/route.js | grep -c 'rss+xml'"
-    ],
-    "filesTouch": [
-      "site/src/app/api/feed/route.ts",
-      "site/src/lib/feed/generator.ts",
-      "site/src/app/layout.tsx"
-    ],
-    "estimatedComplexity": "small",
-    "_source": "ai-example",
-    "passes": false,
-    "dependencies": []
-  },
-  {
-    "title": "Update sitemap.ts to include blog post URLs with publication metadata",
+    "title": "Integrate JBNewsWidget component on homepage pulling from Bernama RSS feed",
     "priority": "medium",
-    "description": "Extend sitemap.ts to dynamically generate <url> entries for all blog posts with lastModified dates, proper changefreq, and priority scores for SEO indexing across search engines.",
+    "description": "Display latest Johor Bahru news items on homepage to increase freshness signals for Google crawler, improve repeat visitor engagement, and provide travel updates.",
     "acceptanceCriteria": [
-      "sitemap.ts iterates over getAllBlogPosts() and appends <url> entries with loc path (/blog/[slug]), lastmod (ISO 8601 format), changefreq=\"weekly\", priority=0.8",
-      "Blog post lastmod sourced from post.dateModified frontmatter field, fallback to file mtime if missing",
-      "Generated sitemap XML validates against sitemap protocol schema v0.9 and includes 10+ blog post URLs"
+      "JBNewsWidget component fetches and parses RSS from Bernama RSS (https://www.bernama.com/feed/latest.rss) via /api/rss proxy endpoint",
+      "Widget displays top 3 latest news items with headline, publication date (relative time), source name, and external link (rel='noopener noreferrer')",
+      "Widget appears on homepage after hero section, includes 'View All JB News' link to /news page, and updates every 4 hours via ISR"
     ],
     "technicalNotes": [
-      "File to modify: site/src/app/sitemap.ts - add blog post loop after static routes: for (const post of getAllBlogPosts()) { routes.push({url: `/blog/${post.slug}`, lastModified: post.dateModified, ...}) }",
-      "File to verify: site/src/lib/blog/posts.ts - ensure getAllBlogPosts() export returns BlogPost[] with slug and dateModified fields",
-      "Test command: npm run build && cat .next/static/sitemap.xml | grep -c '/blog/' (count should match total blog posts), grep '<priority>0.8</priority>' to verify priority"
+      "File to create: site/src/components/JBNewsWidget.tsx component with React.memo, conditionally render skeleton during data load",
+      "File to create: site/src/app/api/rss/route.ts route handler using rss-parser npm package, cache response with unstable_cache for 4 hours, return JSON array of news items",
+      "File to modify: site/src/app/page.tsx to import and render <JBNewsWidget /> component, test via npm run dev && curl http://localhost:3000/api/rss?feed=bernama"
     ],
     "filesTouch": [
-      "site/src/app/sitemap.ts",
-      "site/src/lib/blog/posts.ts"
+      "site/src/components/JBNewsWidget.tsx",
+      "site/src/app/api/rss/route.ts",
+      "site/src/app/page.tsx"
     ],
-    "estimatedComplexity": "small",
+    "estimatedComplexity": "medium",
     "_source": "ai-example",
     "passes": false,
     "dependencies": []
