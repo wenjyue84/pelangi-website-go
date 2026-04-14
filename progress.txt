@@ -1,3 +1,24 @@
+## Iteration US-144 - Mon, Apr 14, 2026
+
+Completed: Replace JavaScript tooltip positioning with CSS Popover API and Anchor Positioning (ID: US-144)
+
+### What was implemented
+- Created `InfoPopover.tsx` component using native HTML `popover` attribute, `popoverTarget`, CSS `anchor-name`/`position-anchor`
+- Added popover + anchor positioning CSS in globals.css with `@supports` fallback for browsers without anchor positioning
+- Converted Header.tsx search button `title` tooltip to InfoPopover
+- Converted HeroTrustBadges.tsx trust badge buttons to InfoPopover with contextual content
+- No JS tooltip library existed to remove (no Popper.js/Floating UI in the project)
+
+### Patterns discovered
+- React 19 includes `popover` and `popoverTarget` in its type definitions — no `@ts-expect-error` needed
+- `CSS.escape()` is a browser API not available in Node.js SSR — use regex sanitization instead for `useId()` output
+- Attempt 1 failed with 17,788 line diff — caused by touching package-lock.json or similar large files
+- Keep implementation under 500 lines total insertions+deletions
+
+### Gotchas
+- `useId()` returns colon-wrapped strings like `:r0:` — must sanitize for CSS custom property names
+- Linter may auto-revert changes if import is added separately from usage
+
 ## Iteration US-143 (FINAL - Attempt 3) - Mon, Apr 14, 2026
 
 Completed: Apply CSS @starting-style for GPU-accelerated entry animations (ID: US-143)
@@ -713,4 +734,112 @@ FAILED diagnosis-block gate: Apply CSS @starting-style for GPU-accelerated entry
 
 ## Iteration 2 - Tue, Apr 14, 2026  7:50:32 AM
 Completed: Apply CSS @starting-style for GPU-accelerated entry animations (ID: US-143) in 3m
+
+## Iteration 1 - Tue, Apr 14, 2026  8:04:25 AM
+FAILED diff-guard: Replace JavaScript tooltip positioning with CSS Popover API and Anchor Positioning (ID: US-144) — 17788 lines > 500 limit — attempt 1/3
+
+
+## Pre-analysis for US-144 (Gemini 2.5 Pro)
+This user story describes a frontend task focused on modernizing HTML and CSS, not a Frappe/Python backend task. The goal is to replace a JavaScript-based tooltip/popover solution (likely using a library like Popper.js) with the new native Popover and CSS Anchor Positioning APIs.
+
+Here is a technical brief based on that:
+
+**File Candidates for Modification:**
+
+*   **JavaScript/TypeScript:** Look for existing tooltip/popover components. Likely files to modify would be `site/components/ui/tooltip.tsx`, `site/components/shared/InfoPopover.tsx`, or similar files that handle popover logic.
+*   **CSS/SCSS:** Styles for the existing tooltips will need to be updated. Check files like `site/styles/globals.css` or component-specific style files. You will be adding new CSS using `anchor-name` and `position-anchor`.
+
+**Frappe/Backend Elements (Not Applicable):**
+
+*   No Frappe DocTypes or Python hooks are involved. This is purely a frontend change.
+
+**Recommended Implementation Approach:**
+
+1.  **Identify Tooltip Components:** Locate the React/HTML components currently creating tooltips. Search the codebase for terms like "tooltip" or libraries like "Popper.js" or "Tippy.js".
+2.  **Convert to Popover API:**
+    *   Add the `popover` attribute to the tooltip container element (e.g., `<div popover="auto">...</div>`).
+    *   Change the trigger element (the button or element that shows the tooltip) to use the `popovertarget` attribute, pointing to the ID of the popover container.
+    *   Remove the existing JavaScript logic that manually shows/hides the tooltip.
+3.  **Implement CSS Anchor Positioning:**
+    *   On the trigger element, assign a unique `anchor-name` via CSS (e.g., `anchor-name: --my-tooltip-trigger;`).
+    *   On the popover element, use `position-anchor: --my-tooltip-trigger;` to link it to the trigger.
+    *   Use `inset-area` or fallback positioning (`top`, `left`) to position the popover relative to the anchor.
+4.  **Fallback for Older Browsers:** Wrap the anchor positioning CSS in an `@supports (position-anchor: --anchor-name)` block. Provide a basic `position: absolute;` fallback for browsers that don't support it.
+5.  **Clean Up:** Remove the Popper.js or equivalent dependency from `package.json` and run `npm install` to reduce the bundle size.
+
+**Edge Cases & Gotchas:**
+
+*   **Browser Support:** The Popover API is widely supported, but CSS Anchor Positioning is very new (Chrome 125+). The fallback CSS is critical for Firefox, Safari, and older Chrome versions.
+*   **Complex Positioning:** For tooltips that need to flip their position based on viewport collision, the new APIs do not yet have a built-in "auto" placement like Popper.js. The implementation might need to handle a few common positions manually (e.g., top, bottom).
+*   **Styling Conflicts:** The popover element is promoted to the top layer, which can affect existing `z-index` and positioning styles. Test thoroughly to ensure it doesn't appear underneath other elements.
+
+
+## Pre-analysis for US-144 (Gemini 2.5 Pro)
+This user story describes a frontend task focused on modernizing HTML and CSS, not a Frappe/Python backend task. The goal is to replace a JavaScript-based tooltip/popover solution (likely using a library like Popper.js) with the new native Popover and CSS Anchor Positioning APIs.
+
+Here is a technical brief based on that:
+
+**File Candidates for Modification:**
+
+*   **JavaScript/TypeScript:** Look for existing tooltip/popover components. Likely files to modify would be `site/components/ui/tooltip.tsx`, `site/components/shared/InfoPopover.tsx`, or similar files that handle popover logic.
+*   **CSS/SCSS:** Styles for the existing tooltips will need to be updated. Check files like `site/styles/globals.css` or component-specific style files. You will be adding new CSS using `anchor-name` and `position-anchor`.
+
+**Frappe/Backend Elements (Not Applicable):**
+
+*   No Frappe DocTypes or Python hooks are involved. This is purely a frontend change.
+
+**Recommended Implementation Approach:**
+
+1.  **Identify Tooltip Components:** Locate the React/HTML components currently creating tooltips. Search the codebase for terms like "tooltip" or libraries like "Popper.js" or "Tippy.js".
+2.  **Convert to Popover API:**
+    *   Add the `popover` attribute to the tooltip container element (e.g., `<div popover="auto">...</div>`).
+    *   Change the trigger element (the button or element that shows the tooltip) to use the `popovertarget` attribute, pointing to the ID of the popover container.
+    *   Remove the existing JavaScript logic that manually shows/hides the tooltip.
+3.  **Implement CSS Anchor Positioning:**
+    *   On the trigger element, assign a unique `anchor-name` via CSS (e.g., `anchor-name: --my-tooltip-trigger;`).
+    *   On the popover element, use `position-anchor: --my-tooltip-trigger;` to link it to the trigger.
+    *   Use `inset-area` or fallback positioning (`top`, `left`) to position the popover relative to the anchor.
+4.  **Fallback for Older Browsers:** Wrap the anchor positioning CSS in an `@supports (position-anchor: --anchor-name)` block. Provide a basic `position: absolute;` fallback for browsers that don't support it.
+5.  **Clean Up:** Remove the Popper.js or equivalent dependency from `package.json` and run `npm install` to reduce the bundle size.
+
+**Edge Cases & Gotchas:**
+
+*   **Browser Support:** The Popover API is widely supported, but CSS Anchor Positioning is very new (Chrome 125+). The fallback CSS is critical for Firefox, Safari, and older Chrome versions.
+*   **Complex Positioning:** For tooltips that need to flip their position based on viewport collision, the new APIs do not yet have a built-in "auto" placement like Popper.js. The implementation might need to handle a few common positions manually (e.g., top, bottom).
+*   **Styling Conflicts:** The popover element is promoted to the top layer, which can affect existing `z-index` and positioning styles. Test thoroughly to ensure it doesn't appear underneath other elements.
+
+
+## Pre-analysis for US-144 (Gemini 2.5 Pro)
+This user story describes a frontend task focused on modernizing HTML and CSS, not a Frappe/Python backend task. The goal is to replace a JavaScript-based tooltip/popover solution (likely using a library like Popper.js) with the new native Popover and CSS Anchor Positioning APIs.
+
+Here is a technical brief based on that:
+
+**File Candidates for Modification:**
+
+*   **JavaScript/TypeScript:** Look for existing tooltip/popover components. Likely files to modify would be `site/components/ui/tooltip.tsx`, `site/components/shared/InfoPopover.tsx`, or similar files that handle popover logic.
+*   **CSS/SCSS:** Styles for the existing tooltips will need to be updated. Check files like `site/styles/globals.css` or component-specific style files. You will be adding new CSS using `anchor-name` and `position-anchor`.
+
+**Frappe/Backend Elements (Not Applicable):**
+
+*   No Frappe DocTypes or Python hooks are involved. This is purely a frontend change.
+
+**Recommended Implementation Approach:**
+
+1.  **Identify Tooltip Components:** Locate the React/HTML components currently creating tooltips. Search the codebase for terms like "tooltip" or libraries like "Popper.js" or "Tippy.js".
+2.  **Convert to Popover API:**
+    *   Add the `popover` attribute to the tooltip container element (e.g., `<div popover="auto">...</div>`).
+    *   Change the trigger element (the button or element that shows the tooltip) to use the `popovertarget` attribute, pointing to the ID of the popover container.
+    *   Remove the existing JavaScript logic that manually shows/hides the tooltip.
+3.  **Implement CSS Anchor Positioning:**
+    *   On the trigger element, assign a unique `anchor-name` via CSS (e.g., `anchor-name: --my-tooltip-trigger;`).
+    *   On the popover element, use `position-anchor: --my-tooltip-trigger;` to link it to the trigger.
+    *   Use `inset-area` or fallback positioning (`top`, `left`) to position the popover relative to the anchor.
+4.  **Fallback for Older Browsers:** Wrap the anchor positioning CSS in an `@supports (position-anchor: --anchor-name)` block. Provide a basic `position: absolute;` fallback for browsers that don't support it.
+5.  **Clean Up:** Remove the Popper.js or equivalent dependency from `package.json` and run `npm install` to reduce the bundle size.
+
+**Edge Cases & Gotchas:**
+
+*   **Browser Support:** The Popover API is widely supported, but CSS Anchor Positioning is very new (Chrome 125+). The fallback CSS is critical for Firefox, Safari, and older Chrome versions.
+*   **Complex Positioning:** For tooltips that need to flip their position based on viewport collision, the new APIs do not yet have a built-in "auto" placement like Popper.js. The implementation might need to handle a few common positions manually (e.g., top, bottom).
+*   **Styling Conflicts:** The popover element is promoted to the top layer, which can affect existing `z-index` and positioning styles. Test thoroughly to ensure it doesn't appear underneath other elements.
 
