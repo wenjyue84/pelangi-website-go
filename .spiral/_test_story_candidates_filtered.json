@@ -2150,5 +2150,28 @@
       "regression",
       "auto-generated"
     ]
+  },
+  {
+    "title": "[Regression Test] Blog post: Laksa Johor Guide - Authentic Dish, Where to Eat, and What Makes It Uni",
+    "description": "Write regression test to guard against future breakage of US-267. Story description: Deep-dive guide on Laksa Johor - a creamy coconut-based noodle dish unique to Johor. Covers history, what makes it different from other laksa variants, and the best stalls in JB. Targets high-intent food tourists searching for specialty Johor dishes.",
+    "acceptanceCriteria": [
+      "Regression test covers core observable behaviour of US-267",
+      "Test would reliably fail if the US-267 feature were removed or broken"
+    ],
+    "technicalNotes": [
+      "Source files from US-267: site/src/data/blog/posts.ts",
+      "Run: uv run pytest tests/ -k us_267 -v"
+    ],
+    "priority": "medium",
+    "dependencies": [
+      "US-267"
+    ],
+    "_source": "test-story",
+    "_testType": "regression",
+    "_forStoryId": "US-267",
+    "tags": [
+      "regression",
+      "auto-generated"
+    ]
   }
 ]

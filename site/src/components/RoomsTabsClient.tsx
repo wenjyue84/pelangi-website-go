@@ -181,7 +181,7 @@ export default function RoomsTabsClient() {
                   Premium comfort at backpacker prices
                 </p>
                 <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">
-                  + SST 8% + Tourism Tax RM10/night (non-MY guests)
+                  + SST 8%
                 </p>
               </div>
               <FeatureList features={standardFeatures} />
@@ -273,7 +273,7 @@ export default function RoomsTabsClient() {
                   Elevated comfort for discerning travellers
                 </p>
                 <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">
-                  + SST 8% + Tourism Tax RM10/night (non-MY guests)
+                  + SST 8%
                 </p>
               </div>
               <FeatureList features={premiumFeatures} />

@@ -5618,7 +5618,8 @@
       "passes": true,
       "model": "haiku",
       "last_attempted": "2026-04-14T10:47:53Z",
-      "_passedCommit": "847c36a5dd3e380d1cfdc47000d17fc32ddec7f7"
+      "_passedCommit": "847c36a5dd3e380d1cfdc47000d17fc32ddec7f7",
+      "_scopeCreep": true
     },
     {
       "id": "US-268",
@@ -5647,8 +5648,9 @@
         "Keep content HTML under 6000 characters",
         "Add tags: [\"food\", \"johor\", \"specialty-dish\", \"heritage-food\"]"
       ],
-      "passes": false,
-      "model": "haiku"
+      "passes": true,
+      "model": "haiku",
+      "last_attempted": "2026-04-14T11:30:00Z"
     },
     {
       "id": "US-269",

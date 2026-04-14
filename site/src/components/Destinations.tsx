@@ -311,9 +311,7 @@ export default function Destinations() {
               tabIndex={0}
               aria-label={`View details for ${dest.name}`}
               aria-haspopup="dialog"
-              className="scroll-reveal group bg-white dark:bg-stone-900 rounded-2xl overflow-hidden shadow-xs hover:shadow-xl
-                       transition-all duration-300 cursor-pointer border border-stone-100 dark:border-stone-700
-                       focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
+              className="scroll-reveal group bg-white dark:bg-stone-900 rounded-2xl overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-100 dark:border-stone-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
               onClick={() => setSelectedDest(dest)}
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setSelectedDest(dest); } }}
             >
@@ -371,8 +369,7 @@ export default function Destinations() {
           </p>
           <a
             href="/book"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-amber-700 text-white rounded-full
-                     font-medium hover:bg-amber-800 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-amber-700 text-white rounded-full font-medium hover:bg-amber-800 transition-colors"
           >
             Book Your Stay
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -408,9 +405,7 @@ export default function Destinations() {
               <button
                 onClick={() => setSelectedDest(null)}
                 aria-label="Close destination details"
-                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-xs
-                         flex items-center justify-center text-white hover:bg-white/30 transition-colors cursor-pointer
-                         focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-xs flex items-center justify-center text-white hover:bg-white/30 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -500,15 +495,13 @@ export default function Destinations() {
                 <a
                   href="/book"
                   onClick={() => setSelectedDest(null)}
-                  className="flex-1 text-center px-6 py-3 bg-amber-700 text-white rounded-full font-medium
-                           hover:bg-amber-800 transition-colors"
+                  className="flex-1 text-center px-6 py-3 bg-amber-700 text-white rounded-full font-medium hover:bg-amber-800 transition-colors"
                 >
                   Book Your Stay & Explore
                 </a>
                 <button
                   onClick={() => setSelectedDest(null)}
-                  className="px-6 py-3 border border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-400 rounded-full font-medium
-                           hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors cursor-pointer"
+                  className="px-6 py-3 border border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-400 rounded-full font-medium hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors cursor-pointer"
                 >
                   Close
                 </button>

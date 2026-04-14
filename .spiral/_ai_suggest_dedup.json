@@ -1,126 +1,126 @@
 {
   "stories": [
     {
-      "title": "Create Author Bio Component with Avatar and Social Links for Blog Posts",
-      "priority": "medium",
-      "description": "Add a reusable author card component to display on blog post pages. Shows author avatar, name, bio excerpt, and social media links. Includes schema.org Person markup for improved SEO and author identification.",
+      "title": "Add Article JSON-LD structured data to blog post pages",
+      "priority": "high",
+      "description": "Implement Article schema markup on blog post pages to improve SEO and enable Google rich results (Article schema with author info, publish/update dates, featured image).",
       "acceptanceCriteria": [
-        "Author bio card renders below blog post title with avatar, name, and bio text",
-        "Social media links (Twitter, LinkedIn, GitHub) display and link correctly",
-        "Person schema markup included in structured data with name, image, url, and sameAs properties"
+        "Blog post pages at /blog/[slug] render Article JSON-LD in <head> with @context, headline, description, datePublished, dateModified, author, and image",
+        "Article schema includes articleBody (excerpt), thumbnailUrl, and featured image URL for Google rich snippet display",
+        "Validation passes schema.org Article validator and Google Rich Results Test with no errors"
       ],
       "technicalNotes": [
-        "File to edit: site/src/types/blog.ts \u2014 add author field to BlogPost interface with name, avatar, bio, social links",
-        "File to create: site/src/components/AuthorBio.tsx \u2014 render author card with Person JSON-LD schema",
-        "Test command: npm run test -- site/src/components/AuthorBio.tsx -t 'renders author name and social links'"
+        "File to edit: site/src/app/blog/[slug]/page.tsx (generateMetadata function to inject Article schema)",
+        "File to create: site/src/lib/schemas/article-schema.ts (ArticleSchema class with @type, headline, description, author fields)",
+        "Test command: curl http://localhost:3000/blog/laksa-johor-guide | grep -A 20 '\"@type\":\"Article\"'"
       ],
       "filesTouch": [
-        "site/src/types/blog.ts",
-        "site/src/components/AuthorBio.tsx",
+        "site/src/app/blog/[slug]/page.tsx",
+        "site/src/lib/schemas/article-schema.ts",
+        "site/src/components/StructuredData.tsx"
+      ],
+      "estimatedComplexity": "small",
+      "_source": "ai-example",
+      "passes": false,
+      "dependencies": []
+    },
+    {
+      "title": "Implement RSS 2.0 feed endpoint at /feed.xml for blog syndication",
+      "priority": "high",
+      "description": "Create an RSS feed that aggregates all blog posts with title, description, publication date, and author. Enable feed readers and aggregators to subscribe to new blog content.",
+      "acceptanceCriteria": [
+        "GET /feed.xml returns valid RSS 2.0 XML with channel, item, description, pubDate, link, and guid elements",
+        "Feed includes all published blog posts sorted by publishedAt descending; limited to first 10 items with <lastBuildDate>",
+        "Feed auto-discovers via <link rel=\"alternate\" type=\"application/rss+xml\" href=\"/feed.xml\"> in site/src/app/layout.tsx <head>"
+      ],
+      "technicalNotes": [
+        "File to create: site/src/app/feed.xml/route.ts (GET handler returning RSS XML from RSS builder utility)",
+        "File to create: site/src/lib/rss-builder.ts (buildRssFeed function generating RSS template with blog posts data)",
+        "Test command: curl -s http://localhost:3000/feed.xml | xmllint --format - | head -40"
+      ],
+      "filesTouch": [
+        "site/src/app/feed.xml/route.ts",
+        "site/src/lib/rss-builder.ts",
+        "site/src/app/layout.tsx"
+      ],
+      "estimatedComplexity": "small",
+      "_source": "ai-example",
+      "passes": false,
+      "dependencies": []
+    },
+    {
+      "title": "Create auto-generated Table of Contents component for blog posts",
+      "priority": "medium",
+      "description": "Extract H2 and H3 headings from blog post markdown and render a sticky Table of Contents sidebar for navigation. Improves UX, supports WCAG 2.4.5 (Multiple Ways), and reduces bounce rate.",
+      "acceptanceCriteria": [
+        "TableOfContents component extracts H2/H3 headings from blog post and renders with anchor links; clicking link scrolls to heading with smooth behavior",
+        "On mobile (<768px), TOC is hidden by default but accessible via expandable toggle button in post header",
+        "Active heading is highlighted with visual indicator (border or background color) as user scrolls; highlight updates on scroll event"
+      ],
+      "technicalNotes": [
+        "File to create: site/src/components/TableOfContents.tsx (parse headings from MDX, track scroll position, render sticky sidebar with Intersection Observer)",
+        "File to edit: site/src/app/blog/[slug]/page.tsx (extract heading nodes from parsed markdown, integrate TOC on right side)",
+        "Test command: npx playwright test tests/e2e/blog-toc.spec.ts --headed (verify scroll tracking and mobile toggle behavior)"
+      ],
+      "filesTouch": [
+        "site/src/components/TableOfContents.tsx",
+        "site/src/app/blog/[slug]/page.tsx",
+        "tests/e2e/blog-toc.spec.ts"
+      ],
+      "estimatedComplexity": "small",
+      "_source": "ai-example",
+      "passes": false,
+      "dependencies": []
+    },
+    {
+      "title": "Add blog post category and tag filtering with dedicated archive pages",
+      "priority": "medium",
+      "description": "Add category and tag metadata to blog posts, create /blog/category/[category] and /blog/tag/[tag] archive pages, and implement filter UI. Improves long-tail SEO via faceted navigation and internal linking.",
+      "acceptanceCriteria": [
+        "Blog post frontmatter includes categories and tags arrays; /blog/category/[category] renders only matching posts with breadcrumb Home > Blog > Category > [Name]",
+        "Tag pages at /blog/tag/[tag] render only matching posts; tag cloud appears on blog index with post counts in parentheses",
+        "Blog index page displays category and tag filter UI; filtering works client-side with URL params (?category=food&tag=authentic) without full page reload"
+      ],
+      "technicalNotes": [
+        "File to edit: site/src/lib/blog.ts (extract categories and tags from frontmatter, add getCategoryCounts() and getTagCounts() helper functions)",
+        "File to create: site/src/app/blog/category/[category]/page.tsx (dynamic category archive page with generateStaticParams for all categories)",
+        "File to create: site/src/app/blog/tag/[tag]/page.tsx (dynamic tag archive page with generateStaticParams for all tags)",
+        "Test command: curl -s http://localhost:3000/blog/category/food | grep -c '<article' (verify category filtering returns posts)"
+      ],
+      "filesTouch": [
+        "site/src/lib/blog.ts",
+        "site/src/app/blog/category/[category]/page.tsx",
+        "site/src/app/blog/tag/[tag]/page.tsx",
+        "site/src/components/BlogFilter.tsx",
+        "site/src/app/blog/page.tsx"
+      ],
+      "estimatedComplexity": "medium",
+      "_source": "ai-example",
+      "passes": false,
+      "dependencies": []
+    },
+    {
+      "title": "Implement related blog posts sidebar with schema.org IsSimilarTo linking",
+      "priority": "medium",
+      "description": "Display 3-4 related blog posts at end of each article based on shared tags/categories. Add isSimilarTo schema.org relations to improve semantic linking and reduce bounce rate.",
+      "acceptanceCriteria": [
+        "RelatedPosts component renders at end of blog post with 3-4 cards showing thumbnail, title, excerpt (100 chars), and publish date in grid layout",
+        "Related posts determined by matching tags or categories; posts ranked by relevance score (number of matching tags/categories); exclude current post",
+        "Article JSON-LD schema includes isSimilarTo property as array of related post URLs for search engine semantic understanding"
+      ],
+      "technicalNotes": [
+        "File to create: site/src/components/RelatedPosts.tsx (query matching posts by tag/category intersection, render responsive card grid)",
+        "File to create: site/src/lib/blog-utils.ts (findRelatedPosts(slug, limit=4) function with tag/category matching and relevance scoring logic)",
+        "File to edit: site/src/lib/schemas/article-schema.ts (add isSimilarTo property to Article schema with URL array)",
+        "Test command: npx vitest run tests/lib/blog-utils.test.ts (verify findRelatedPosts returns correct matches in relevance order)"
+      ],
+      "filesTouch": [
+        "site/src/components/RelatedPosts.tsx",
+        "site/src/lib/blog-utils.ts",
+        "site/src/lib/schemas/article-schema.ts",
         "site/src/app/blog/[slug]/page.tsx"
       ],
       "estimatedComplexity": "small",
-      "_source": "ai-example",
-      "passes": false,
-      "dependencies": []
-    },
-    {
-      "title": "Add Intelligent Excerpt Generation for Blog Cards with Proper Truncation",
-      "priority": "medium",
-      "description": "Create a utility function that extracts clean excerpts from blog post markdown content without breaking HTML tags or cutting sentences mid-way. Excerpts display on blog listing cards and OG meta descriptions with proper character limits.",
-      "acceptanceCriteria": [
-        "Excerpts truncate at 160 characters maximum without cutting words or breaking sentences",
-        "Markdown formatting and HTML tags are stripped; plain text only in output",
-        "Function handles edge cases: lists, code blocks, emphasis markers without corruption"
-      ],
-      "technicalNotes": [
-        "File to create: site/src/lib/blog-excerpt.ts \u2014 implement truncateToSentence(markdown: string, maxChars: number) function",
-        "File to edit: site/src/components/BlogCard.tsx \u2014 replace inline truncation with excerpt utility",
-        "Test command: npm run test -- site/src/lib/blog-excerpt.ts -t 'truncate' (verify edge cases and sentence boundaries)"
-      ],
-      "filesTouch": [
-        "site/src/lib/blog-excerpt.ts",
-        "site/src/components/BlogCard.tsx",
-        "site/src/lib/blog.ts"
-      ],
-      "estimatedComplexity": "small",
-      "_source": "ai-example",
-      "passes": false,
-      "dependencies": []
-    },
-    {
-      "title": "Implement Blog Post Scheduling System for Planned Content Publication",
-      "priority": "high",
-      "description": "Enable scheduling blog posts for future publication dates. Posts remain in draft status until their scheduled publish date, then automatically become public. Admin dashboard displays scheduled posts with publication countdown. Supports content calendar planning and staggered content releases.",
-      "acceptanceCriteria": [
-        "BlogPost type includes optional scheduledPublishDate field",
-        "Posts with future publish dates exclude from public blog listing and RSS feed",
-        "Admin view shows scheduled posts sorted by publish date with countdown timer",
-        "Scheduled posts automatically become live at publish time (via server-side date check)"
-      ],
-      "technicalNotes": [
-        "File to edit: site/src/types/blog.ts \u2014 add scheduledPublishDate?: Date field to BlogPost",
-        "File to create: site/src/lib/blog-scheduler.ts \u2014 implement isScheduledFuture(post: BlogPost) boolean helper",
-        "File to edit: site/src/app/blog/page.tsx \u2014 filter out scheduled posts: const published = allPosts.filter(p => !isScheduledFuture(p))",
-        "Test command: npm run test -- site/src/lib/blog-scheduler.ts -t 'isScheduledFuture'"
-      ],
-      "filesTouch": [
-        "site/src/types/blog.ts",
-        "site/src/lib/blog-scheduler.ts",
-        "site/src/app/blog/page.tsx",
-        "site/src/lib/feed.ts"
-      ],
-      "estimatedComplexity": "small",
-      "_source": "ai-example",
-      "passes": false,
-      "dependencies": []
-    },
-    {
-      "title": "Generate Dynamic OpenGraph Images for Blog Posts Using ImageResponse",
-      "priority": "high",
-      "description": "Use Next.js ImageResponse to dynamically generate unique social preview images for each blog post. Images display blog title, author name, publication date, and featured image as background. Improves click-through rates on social media shares.",
-      "acceptanceCriteria": [
-        "OG image generated at /blog/[slug]/opengraph-image.jsx route without errors",
-        "Social preview displays blog title, author name, publish date, and featured image",
-        "og:image meta tag in page head correctly references generated image URL",
-        "Twitter/Facebook/LinkedIn social share previews render correctly with generated image"
-      ],
-      "technicalNotes": [
-        "File to create: site/src/app/blog/[slug]/opengraph-image.jsx \u2014 implement using ImageResponse with Satori, include title/author/date/image",
-        "File to edit: site/src/app/blog/[slug]/layout.tsx \u2014 add generateMetadata() function with openGraph.images config",
-        "Test command: npm run build && grep 'og:image' .next/static/chunks/index.html | head -5"
-      ],
-      "filesTouch": [
-        "site/src/app/blog/[slug]/opengraph-image.jsx",
-        "site/src/app/blog/[slug]/layout.tsx",
-        "site/src/components/BlogCard.tsx"
-      ],
-      "estimatedComplexity": "medium",
-      "_source": "ai-example",
-      "passes": false,
-      "dependencies": []
-    },
-    {
-      "title": "Add Internal Link Validator for Blog Posts to Prevent Broken Cross-References",
-      "priority": "medium",
-      "description": "Create a build-time validation script that scans all blog post markdown files for internal links and verifies they point to existing blog posts or pages. Build fails with clear error messages if broken links are detected. Integrates into CI/CD pipeline.",
-      "acceptanceCriteria": [
-        "Script scans all blog .mdx/.md files and identifies internal links matching /blog/, /guide/, /rooms patterns",
-        "Validator checks each internal link target exists as published blog post or page",
-        "Reports broken links with file name, line number, link URL, and suggested fix",
-        "Runnable via npm run validate:links and returns exit code 1 on failures"
-      ],
-      "technicalNotes": [
-        "File to create: site/scripts/validate-blog-links.ts \u2014 parse markdown, extract links, validate against blog registry",
-        "File to edit: site/package.json \u2014 add script: 'validate:links': 'tsx scripts/validate-blog-links.ts'",
-        "Test command: npm run validate:links (intentionally add /blog/nonexistent to a test post and verify error reporting)"
-      ],
-      "filesTouch": [
-        "site/scripts/validate-blog-links.ts",
-        "site/package.json",
-        ".github/workflows/build.yml"
-      ],
-      "estimatedComplexity": "medium",
       "_source": "ai-example",
       "passes": false,
       "dependencies": []
