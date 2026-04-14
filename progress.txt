@@ -867,3 +867,28 @@ Completed: Add Pinterest Rich Pins metadata for room and blog pages (ID: US-159)
 ## Iteration 2 - Tue, Apr 14, 2026  9:01:31 AM
 FAILED diagnosis-block gate: Add Pinterest Rich Pins metadata for room and blog pages (ID: US-159) — no diagnosis block found — attempt 2/3
 
+
+## Iteration US-160 - Mon, Apr 14, 2026
+
+Completed: Enable Turbopack file system caching for faster development cold starts (ID: US-160)
+
+### What was implemented
+- Added `turbopackFileSystemCacheForDev: true` to the `experimental` config object in `site/next.config.ts`
+- Added explanatory comment documenting the feature (Turbopack file system caching for faster development cold starts)
+- Configuration is on lines 44-46 in next.config.ts
+
+### Patterns discovered
+- Turbopack file system caching is a simple one-line config change in Next.js 16
+- The `.next/` directory (including `.next/cache/`) is already excluded from git via root `.gitignore`
+- No additional code changes required beyond the config change
+
+### Test results
+- TypeScript compilation: ✓ passes (npx tsc --noEmit)
+- Git commit: ✓ successful (d436793)
+- Acceptance criteria met:
+  - ✓ turbopackFileSystemCacheForDev: true added to experimental config
+  - ✓ .next/cache directory already excluded from git
+  - ✓ TypeScript compiles without errors
+
+### Gotchas
+- None observed; straightforward configuration change
