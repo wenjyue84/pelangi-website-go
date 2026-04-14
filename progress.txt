@@ -1,3 +1,27 @@
+## Iteration US-162 - Mon, Apr 14, 2026
+
+Completed: Add React 19.2 cacheSignal() for Server Component fetch cleanup (ID: US-162)
+
+### What was implemented
+- Created `lib/cache-utils.ts` with two functions:
+  - `getCachedData()`: Generic utility that wraps fetch with cache() and cacheSignal()
+  - `getCachedRoomAvailability()`: Example implementation for room availability API calls
+- Updated `Rooms.tsx` Server Component to import and demonstrate cacheSignal() pattern
+- Added try-catch error handling to gracefully handle AbortError when cache is invalidated
+- No TypeScript errors; all 83 pages generated successfully during build
+
+### Patterns discovered
+- React 19.2 cacheSignal() is only available in Server Components (not Client Components or Route Handlers)
+- cacheSignal() returns an AbortSignal that fires when cache lifetime ends
+- Pattern: `const dedupedFetch = cache((url) => fetch(url, { signal: cacheSignal() }))`
+- AbortError has name property that can be checked to distinguish cache invalidation from network errors
+- Graceful error handling prevents cache-related aborts from breaking the page
+
+### Gotchas
+- cacheSignal() is a React 19.2 feature; requires Next.js 16+ for full support
+- Must import both `cache` and `cacheSignal` from "react" (not from "next/cache")
+- External API calls may fail during SSR (expected for example APIs) — always wrap in try-catch
+
 ## Iteration US-161 (Attempt 3) - Mon, Apr 14, 2026
 
 Completed: Implement React 19.2 useEffectEvent for stable analytics event handlers (ID: US-161)
