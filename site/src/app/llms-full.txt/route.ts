@@ -120,6 +120,18 @@ The Tourism Tax (TTx) of RM10 per room per night is a government-mandated charge
 **How do I get from Senai Airport to Pelangi Capsule Hostel?**
 From Senai International Airport (JHB), take a Grab or taxi to 26A Jalan Perang, Taman Pelangi, Johor Bahru. The ride takes approximately 20–30 minutes and costs around RM25–35 depending on traffic. Airport taxis are available at the arrivals hall, or you can book a Grab ride using the app. There is no direct public bus from Senai Airport to Taman Pelangi.
 
+## Team
+
+**Jay Lew** — Co-Founder & Hostel Owner
+Jay built Pelangi Capsule Hostel in 2023 after years of backpacking across Japan and Southeast Asia. He designed every detail of the hostel — from the capsule layout to the self-check-in system — to give travellers the privacy and freedom he always wanted on the road.
+- Phone: +60 12-708 8789
+- About page: https://pelangicapsulehostel.com/about
+
+**Alston** — Co-Founder & Operations Manager
+Alston handles day-to-day operations, guest relations, and ensures every guest feels welcome — from first message on WhatsApp to the moment they check out. Background in hospitality.
+- Phone: +60 16-762 0815
+- About page: https://pelangicapsulehostel.com/about
+
 ## Booking
 
 Book directly on our website for the best rates with no booking fees:

@@ -34,6 +34,11 @@ Pelangi Capsule Hostel offers Japanese-inspired capsule pod accommodation for bu
 - Short Grab ride from Senai International Airport
 - Taman Pelangi Night Market (pasar malam) every Tuesday from 4:30 PM — right at the doorstep
 
+## Team
+
+- **Jay Lew** — Co-Founder & Hostel Owner. Built Pelangi Capsule Hostel in 2023, designed the self-check-in system and capsule layout. Contact: +60 12-708 8789
+- **Alston** — Co-Founder & Operations Manager. Handles day-to-day operations and guest relations. Contact: +60 16-762 0815
+
 ## Booking
 
 Book directly on our website for the best rates with no booking fees:

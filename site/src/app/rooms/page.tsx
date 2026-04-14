@@ -183,6 +183,36 @@ const hotelRoomsSchema = [
     },
 ];
 
+const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://pelangicapsulehostel.com",
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Rooms",
+            "item": "https://pelangicapsulehostel.com/rooms",
+        },
+    ],
+};
+
+const speakableSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Capsule Pod Rooms | Pelangi Capsule Hostel JB",
+    "url": "https://pelangicapsulehostel.com/rooms",
+    "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["#speakable-price"],
+    },
+};
+
 export default async function RoomsPage() {
     return (
         <main id="main-content" className="min-h-screen bg-stone-50 dark:bg-stone-950">
@@ -193,6 +223,14 @@ export default async function RoomsPage() {
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
                 />
             ))}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }}
+            />
             <Header />
             <div className="pt-20">
                 <Suspense fallback={<RoomCardSkeleton />}>
@@ -214,7 +252,7 @@ export default async function RoomsPage() {
                                 url="https://pelangicapsulehostel.com/rooms"
                             />
                         </div>
-                        <div className="text-lg text-stone-700 dark:text-stone-300 leading-relaxed space-y-4">
+                        <div id="speakable-price" className="text-lg text-stone-700 dark:text-stone-300 leading-relaxed space-y-4">
                             <p>
                                 Pelangi Capsule Hostel offers two pod types in Taman Pelangi, Johor Bahru. Standard Capsule Pods start from RM35 per night and Premium Capsule Pods from RM45 per night. Monthly long-stay rates begin at RM594 per month. All rates are subject to Malaysia Service Tax (SST) at 8% and Tourism Tax (TTx) of RM10 per room per night for non-Malaysian guests as mandated by the Royal Malaysian Customs Department. Tax rates are subject to change per Malaysian government regulation.
                             </p>

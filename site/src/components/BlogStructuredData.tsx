@@ -11,7 +11,7 @@ export default function BlogStructuredData({ post }: BlogStructuredDataProps) {
     headline: post.title,
     description: post.excerpt,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.lastModified ?? post.date,
     author: {
       "@type": "Person",
       name: post.author,
@@ -19,8 +19,13 @@ export default function BlogStructuredData({ post }: BlogStructuredDataProps) {
       worksFor: {
         "@type": "Organization",
         name: "Pelangi Capsule Hostel",
+        url: "https://pelangicapsulehostel.com",
       },
       url: "https://pelangicapsulehostel.com/about",
+      sameAs: [
+        "https://www.facebook.com/pelangicapsulehostel",
+        "https://www.instagram.com/pelangicapsulehostel",
+      ],
     },
     publisher: {
       "@type": "Organization",

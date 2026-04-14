@@ -3,7 +3,8 @@ export interface BlogPost {
   title: string;
   excerpt: string;
   content: string; // HTML string
-  date: string; // YYYY-MM-DD
+  date: string; // YYYY-MM-DD (published)
+  lastModified?: string; // YYYY-MM-DD (last edited — used as dateModified in schema)
   category: string;
   author: string;
   readTime: string;

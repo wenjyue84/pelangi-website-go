@@ -5,11 +5,13 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BlogStructuredData from "@/components/BlogStructuredData";
 import BlogPageViewTracker from "@/components/BlogPageViewTracker";
+import RelatedPosts from "@/components/RelatedPosts";
 import TableOfContents from "@/components/TableOfContents";
 import ShareButton from "@/components/ShareButton";
 import { blogPosts, getPostBySlug } from "@/data/blog/posts";
 import { extractHeadings, addHeadingIds } from "@/lib/headings";
 import { annotateMsHtml } from "@/components/LangMs";
+import { searchRelatedPosts } from "@/lib/blog-search";
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
@@ -60,6 +62,8 @@ export default async function BlogPostPage({ params }: PageProps<'/blog/[slug]'>
 
   const headings = extractHeadings(post.content);
   const contentWithIds = annotateMsHtml(addHeadingIds(post.content));
+  const relatedPosts = searchRelatedPosts(post.slug, post.tags, post.category);
+  const currentPostUrl = `https://pelangicapsulehostel.com/blog/${post.slug}`;
 
   return (
     <main id="main-content" className="min-h-screen bg-stone-50 dark:bg-stone-950">
@@ -156,6 +160,9 @@ export default async function BlogPostPage({ params }: PageProps<'/blog/[slug]'>
                   </div>
                 </div>
               )}
+
+              {/* Related posts */}
+              <RelatedPosts relatedPosts={relatedPosts} currentPostUrl={currentPostUrl} />
 
               {/* Back link (bottom) */}
               <div className="mt-12">
