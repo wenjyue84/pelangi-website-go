@@ -215,5 +215,26 @@
     "exit_code": 124,
     "worker_id": "sequential",
     "crash_file": "US-173_20260414T052748Z.txt"
+  },
+  {
+    "story_id": "US-173",
+    "timestamp": "20260414T055151Z",
+    "exit_code": 124,
+    "worker_id": "sequential",
+    "crash_file": "US-173_20260414T055151Z.txt"
+  },
+  {
+    "story_id": "US-173",
+    "timestamp": "20260414T055448Z",
+    "exit_code": 124,
+    "worker_id": "sequential",
+    "crash_file": "US-173_20260414T055448Z.txt"
+  },
+  {
+    "story_id": "US-173",
+    "timestamp": "20260414T055613Z",
+    "exit_code": 124,
+    "worker_id": "sequential",
+    "crash_file": "US-173_20260414T055613Z.txt"
   }
 ]

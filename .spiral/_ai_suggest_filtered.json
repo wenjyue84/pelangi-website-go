@@ -1,118 +1,116 @@
 [
   {
-    "title": "Create blog post metadata config with Zod schema validation",
-    "priority": "high",
-    "description": "Establish a centralized, type-safe blog post metadata system using Zod to validate frontmatter structure. This enables consistent metadata reuse across blog routes and supports future blog post creation at scale.",
+    "title": "Write 'Getting Around JB Without a Car' Transport Guide Blog Post",
+    "priority": "medium",
+    "description": "Create a comprehensive backpacker-focused blog post covering JB public transport (Causeway Link, rapidKL), Grab usage, taxi services, and costs to support goal #2 (travel articles for tourists).",
     "acceptanceCriteria": [
-      "Create site/src/lib/blog-metadata.ts with Zod schema for title, slug, publishedAt, readingTime, featured, author, excerpt, tags, and canonical fields",
-      "Create site/src/lib/blog-posts.ts data file containing 3+ complete blog post entries matching the schema",
-      "Verify schema validation passes: uv run vitest site/src/lib/blog-metadata.test.ts --grep 'validates.*frontmatter'"
+      "Blog post created at site/src/data/blog/getting-around-jb.ts with frontmatter (title, date, slug, excerpt, content)",
+      "Post renders at /blog/getting-around-jb with all sections: public transport options, Grab vs taxis, approximate costs, tips for budget travelers",
+      "Post appears in blog index at /blog with correct metadata and links"
     ],
     "technicalNotes": [
-      "File to create: site/src/lib/blog-metadata.ts (export const BlogPostSchema = z.object({...}))",
-      "File to create: site/src/lib/blog-posts.ts (export const BLOG_POSTS: z.infer<typeof BlogPostSchema>[])",
-      "Test command: uv run vitest site/src/lib/blog-metadata.test.ts -v"
+      "File to create: site/src/data/blog/getting-around-jb.ts (follow existing blog post structure with frontmatter metadata)",
+      "File to verify: site/src/app/blog/[slug]/page.tsx (ensure dynamic route includes new post)",
+      "Test command: npm run build && npx playwright test e2e/blog.spec.ts -k 'getting-around'"
     ],
     "filesTouch": [
-      "site/src/lib/blog-metadata.ts",
+      "site/src/data/blog/getting-around-jb.ts",
+      "site/src/app/blog/[slug]/page.tsx"
+    ],
+    "estimatedComplexity": "small",
+    "_source": "ai-example",
+    "passes": false,
+    "dependencies": []
+  },
+  {
+    "title": "Implement JB News & Updates RSS Widget on Homepage",
+    "priority": "medium",
+    "description": "Create a dynamic widget that fetches from curated JB tourism and local news RSS feeds and displays latest 3-5 items on the homepage hero section to support goal #4 (JB News & Updates widget).",
+    "acceptanceCriteria": [
+      "JBNewsWidget component fetches from at least 3 RSS sources (e.g., Tourism Johor, JB Today, Visit JB) with 60-minute cache TTL",
+      "Widget displays latest 3-5 news items with title, excerpt, link, and publish date; updates without page reload",
+      "Error handling: if feed fetch fails, widget shows graceful fallback message ('News temporarily unavailable') instead of breaking page"
+    ],
+    "technicalNotes": [
+      "File to create: site/src/components/JBNewsWidget.tsx (React Server Component with error boundary)",
+      "File to create: site/src/lib/rss-fetcher.ts (implement feed parsing and caching logic using feedparser package)",
+      "File to modify: site/src/app/page.tsx (import and render JBNewsWidget in hero section below heading)",
+      "Test command: npm run dev && npx playwright test e2e/homepage.spec.ts -k 'news-widget'"
+    ],
+    "filesTouch": [
+      "site/src/components/JBNewsWidget.tsx",
+      "site/src/lib/rss-fetcher.ts",
+      "site/src/app/page.tsx"
+    ],
+    "estimatedComplexity": "small",
+    "_source": "ai-example",
+    "passes": false,
+    "dependencies": []
+  },
+  {
+    "title": "Dynamically Add All Blog Post URLs to XML Sitemap",
+    "priority": "high",
+    "description": "Modify sitemap.ts to auto-discover all blog posts from site/src/data/blog/ and include them with correct metadata in /sitemap.xml output to support goal #6 (update sitemap with blog posts).",
+    "acceptanceCriteria": [
+      "sitemap.ts uses getAllBlogPosts() to discover all blog post files and map to sitemap entries",
+      "Each blog post generates a sitemap entry with loc=/blog/slug, lastmod=post.date, changefreq='weekly', priority=0.8",
+      "Generated /sitemap.xml validates as well-formed XML and includes all 6+ blog post URLs with correct hrefs"
+    ],
+    "technicalNotes": [
+      "File to modify: site/src/app/sitemap.ts (add getAllBlogPosts() calls within MetadataRoute.Sitemap return array, concat with existing entries)",
+      "File to ensure exists: site/src/lib/blog-posts.ts (export getAllBlogPosts() function that reads site/src/data/blog/*.ts files)",
+      "Test command: npm run build && curl -s http://localhost:3000/sitemap.xml | head -30 (verify blog URLs appear)"
+    ],
+    "filesTouch": [
+      "site/src/app/sitemap.ts",
+      "site/src/lib/blog-posts.ts"
+    ],
+    "estimatedComplexity": "small",
+    "_source": "ai-example",
+    "passes": false,
+    "dependencies": []
+  },
+  {
+    "title": "Add Article + BreadcrumbList JSON-LD Schemas to Blog Post Template",
+    "priority": "high",
+    "description": "Implement Article and BreadcrumbList structured data in blog post pages for improved SEO and rich snippets to support goal #5 (enhance structured data for SEO).",
+    "acceptanceCriteria": [
+      "Article schema renders with: headline, author, datePublished, dateModified, wordCount, image, description, articleBody in JSON-LD <script> tag",
+      "BreadcrumbList schema shows navigation path: Home > Blog > [Article Title] with correct itemListElement URLs and positions",
+      "JSON-LD validates with https://validator.schema.org/ and appears in page source when visiting /blog/[slug] pages"
+    ],
+    "technicalNotes": [
+      "File to create: site/src/components/BlogPostSchema.tsx (React component that generates Article + BreadcrumbList JSON-LD strings)",
+      "File to modify: site/src/app/blog/[slug]/page.tsx (import BlogPostSchema and render as <script> in document.head via generateMetadata or direct render)",
+      "Test command: npm run build && npm run start && curl http://localhost:3000/blog/getting-around-jb | grep 'schema.org' (verify JSON-LD present)"
+    ],
+    "filesTouch": [
+      "site/src/components/BlogPostSchema.tsx",
+      "site/src/app/blog/[slug]/page.tsx"
+    ],
+    "estimatedComplexity": "small",
+    "_source": "ai-example",
+    "passes": false,
+    "dependencies": []
+  },
+  {
+    "title": "Implement Zod Schema Validation for Blog Post Frontmatter",
+    "priority": "medium",
+    "description": "Create a reusable Zod schema to validate blog post metadata (title, date, excerpt, slug, tags, image) at build time to catch errors early and support goal #1 (robust blog system foundation).",
+    "acceptanceCriteria": [
+      "Zod schema (PostFrontmatterSchema) enforces required fields: title, slug, date, excerpt, and content with correct types",
+      "Optional fields (tags: string[], image?: string, author?: string) have sensible defaults; all properties are typed",
+      "Build fails with descriptive error message if any blog post file violates schema; valid posts build successfully"
+    ],
+    "technicalNotes": [
+      "File to create: site/src/lib/blog-schema.ts (export const PostFrontmatterSchema = z.object({...}) with all field definitions)",
+      "File to modify: site/src/lib/blog-posts.ts (apply schema.parse() or .safeParse() validation when loading blog posts in getAllBlogPosts())",
+      "Test command: npx vitest run site/tests/lib/blog-schema.test.ts && npm run build (verify validation executes at build time)"
+    ],
+    "filesTouch": [
+      "site/src/lib/blog-schema.ts",
       "site/src/lib/blog-posts.ts",
-      "site/src/lib/blog-metadata.test.ts"
-    ],
-    "estimatedComplexity": "small",
-    "_source": "ai-example",
-    "passes": false,
-    "dependencies": []
-  },
-  {
-    "title": "Add estimated reading time and table of contents to blog post template",
-    "priority": "high",
-    "description": "Enhance blog post UX by displaying estimated reading time in post metadata and rendering an interactive table of contents from markdown headings. Improves engagement metrics and content discoverability.",
-    "acceptanceCriteria": [
-      "Implement calculateReadingTime(content: string): number function in site/src/lib/blog-utils.ts (assumes 200 words per minute)",
-      "Add <TableOfContents /> component to site/src/app/blog/[slug]/page.tsx that renders anchor links for h2 and h3 headings",
-      "Verify reading time calculation: uv run vitest site/src/lib/blog-utils.test.ts --grep 'calculateReadingTime' shows correct minute counts"
-    ],
-    "technicalNotes": [
-      "File to create: site/src/components/TableOfContents.tsx (parse markdown headings, render sticky nav)",
-      "File to edit: site/src/lib/blog-utils.ts (add calculateReadingTime function)",
-      "Test command: uv run vitest site/src/lib/blog-utils.test.ts -v"
-    ],
-    "filesTouch": [
-      "site/src/components/TableOfContents.tsx",
-      "site/src/lib/blog-utils.ts",
-      "site/src/app/blog/[slug]/page.tsx",
-      "site/src/lib/blog-utils.test.ts"
-    ],
-    "estimatedComplexity": "small",
-    "_source": "ai-example",
-    "passes": false,
-    "dependencies": []
-  },
-  {
-    "title": "Add dynamic Open Graph images for blog posts using next/og ImageResponse",
-    "priority": "medium",
-    "description": "Generate unique, branded OG images for each blog post dynamically at request time using Next.js next/og. Improves social sharing click-through rates and brand visibility on social platforms.",
-    "acceptanceCriteria": [
-      "Create site/src/app/blog/[slug]/opengraph-image.tsx that generates 1200x630px images with blog title, author initials, and Pelangi branding",
-      "Image generation must handle missing or malformed slug gracefully with fallback hostel branding image",
-      "Verify OG image returns 200: curl -I 'http://localhost:3000/blog/test-post/opengraph-image' shows Content-Type: image/png"
-    ],
-    "technicalNotes": [
-      "File to create: site/src/app/blog/[slug]/opengraph-image.tsx (import { ImageResponse } from 'next/og')",
-      "File to edit: next.config.ts (add unsafeAllowedExternalUrls if using external font/image URLs)",
-      "Test command: npx playwright test tests/e2e/blog-og-image.spec.ts"
-    ],
-    "filesTouch": [
-      "site/src/app/blog/[slug]/opengraph-image.tsx",
-      "next.config.ts",
-      "tests/e2e/blog-og-image.spec.ts"
-    ],
-    "estimatedComplexity": "small",
-    "_source": "ai-example",
-    "passes": false,
-    "dependencies": []
-  },
-  {
-    "title": "Implement RSS auto-discovery link tag in head and create JSON Feed 1.1 endpoint",
-    "priority": "high",
-    "description": "Add RSS and JSON Feed auto-discovery meta tags in the HTML head and create a modern JSON Feed 1.1 endpoint at /feed.json. Enables blog content syndication across multiple feed reader platforms.",
-    "acceptanceCriteria": [
-      "Add <link rel='alternate' type='application/rss+xml' href='/feed.xml' /> and <link rel='alternate' type='application/feed+json' href='/feed.json' /> to site/src/app/layout.tsx metadata",
-      "Create site/src/app/feed.json/route.ts that returns valid JSON Feed 1.1 with 10 most recent blog posts including title, content_html, date_published, and author",
-      "Verify feed structure: curl 'http://localhost:3000/feed.json' | jq '.items[0]' contains all required JSON Feed 1.1 fields"
-    ],
-    "technicalNotes": [
-      "File to edit: site/src/app/layout.tsx (add links in root layout metadata)",
-      "File to create: site/src/app/feed.json/route.ts (export GET handler returning proper JSON Feed 1.1 response)",
-      "Test command: uv run vitest site/src/app/feed.json/route.test.ts -v"
-    ],
-    "filesTouch": [
-      "site/src/app/layout.tsx",
-      "site/src/app/feed.json/route.ts",
-      "site/src/app/feed.json/route.test.ts"
-    ],
-    "estimatedComplexity": "small",
-    "_source": "ai-example",
-    "passes": false,
-    "dependencies": []
-  },
-  {
-    "title": "Create llms.txt file for AI crawler content guidance and discoverability",
-    "priority": "medium",
-    "description": "Add a machine-readable llms.txt file at the root that guides AI crawlers and large language models on hostel information, travel guides, and job seeker resources. Improves visibility in Google AI Overviews and ChatGPT web search results.",
-    "acceptanceCriteria": [
-      "Create site/public/llms.txt with sections: Hostel Overview, Rooms & Amenities, Travel Guides (JB & Singapore), Job Seeker Resources, Visa & Border Info, and Blog Feed with brief content anchors",
-      "Include clear URLs and brief descriptions for each major content section (not boilerplate, actual URLs from sitemap.ts)",
-      "Verify file accessibility and format: curl 'http://localhost:3000/llms.txt' returns 200 with Content-Type: text/plain and valid UTF-8"
-    ],
-    "technicalNotes": [
-      "File to create: site/public/llms.txt (text file with content sections for AI crawler guidance, ~100 lines)",
-      "File to reference: site/src/lib/sitemap.ts (ensure URLs match actual routes)",
-      "Test command: npx playwright test tests/e2e/llms-txt-availability.spec.ts"
-    ],
-    "filesTouch": [
-      "site/public/llms.txt",
-      "tests/e2e/llms-txt-availability.spec.ts"
+      "site/tests/lib/blog-schema.test.ts"
     ],
     "estimatedComplexity": "small",
     "_source": "ai-example",

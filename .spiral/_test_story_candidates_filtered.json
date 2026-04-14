@@ -1395,6 +1395,29 @@
     ]
   },
   {
+    "title": "[E2E Test] Add CSS native scroll-driven carousel using ::scroll-button() and ::scroll-marker",
+    "description": "Write end-to-end user flow test for the feature in US-187. Story description: Chrome 135+ (March 2025) ships native CSS carousels via ::scroll-button() and ::scroll-marker pseudo-elements. These provide automatic ARIA button roles, keyboard handling, and reduced JavaScript dependency. The gallery and room-photo sliders can be refactored to use this zero-JS approach.",
+    "acceptanceCriteria": [
+      "E2E test covers the user flow introduced by US-187",
+      "Test navigates to relevant page(s) and asserts on visible state",
+      "Test passes in headless browser (Playwright/Cypress/similar)"
+    ],
+    "technicalNotes": [
+      "Run: uv run pytest tests/ -k us_187 -v"
+    ],
+    "priority": "medium",
+    "dependencies": [
+      "US-187"
+    ],
+    "_source": "test-story",
+    "_testType": "e2e",
+    "_forStoryId": "US-187",
+    "tags": [
+      "e2e",
+      "auto-generated"
+    ]
+  },
+  {
     "title": "[Regression Test] Comply with Malaysia CPETTR 2024 \u2014 mandatory Bahasa Malaysia disclosure",
     "description": "Write regression test to guard against future breakage of US-191. Story description: The Consumer Protection (Electronic Trade Transaction) Regulations 2024 came into force on 25 December 2024 and require all information shown to Malaysian consumers in online trade transactions to be available in Bahasa Malaysia. This includes pricing, descriptions, terms and conditions, and mandatory trader identity disclosures (name, address, registration, contact). Non-compliance exposes the business to enforcement under the Consumer Protection Act 1999.",
     "acceptanceCriteria": [

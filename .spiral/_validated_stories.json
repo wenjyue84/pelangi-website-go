@@ -1,32 +1,6 @@
 {
   "stories": [
     {
-      "title": "Implement RSS auto-discovery link tag in head and create JSON Feed 1.1 endpoint",
-      "priority": "high",
-      "description": "Add RSS and JSON Feed auto-discovery meta tags in the HTML head and create a modern JSON Feed 1.1 endpoint at /feed.json. Enables blog content syndication across multiple feed reader platforms.",
-      "acceptanceCriteria": [
-        "Add <link rel='alternate' type='application/rss+xml' href='/feed.xml' /> and <link rel='alternate' type='application/feed+json' href='/feed.json' /> to site/src/app/layout.tsx metadata",
-        "Create site/src/app/feed.json/route.ts that returns valid JSON Feed 1.1 with 10 most recent blog posts including title, content_html, date_published, and author",
-        "Verify feed structure: curl 'http://localhost:3000/feed.json' | jq '.items[0]' contains all required JSON Feed 1.1 fields"
-      ],
-      "technicalNotes": [
-        "File to edit: site/src/app/layout.tsx (add links in root layout metadata)",
-        "File to create: site/src/app/feed.json/route.ts (export GET handler returning proper JSON Feed 1.1 response)",
-        "Test command: uv run vitest site/src/app/feed.json/route.test.ts -v"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "site/src/app/layout.tsx",
-        "site/src/app/feed.json/route.ts",
-        "site/src/app/feed.json/route.test.ts"
-      ],
-      "_source": "ai-example",
-      "passes": false
-    },
-    {
       "title": "[E2E Test] Create blog system with static TypeScript data",
       "priority": "medium",
       "description": "Write end-to-end user flow test for the feature in US-001. Story description: Build a blog system using Next.js App Router. Blog posts are stored as TypeScript objects in /src/data/blog/posts.ts. Each post has: slug, title, excerpt, content (HTML string), date, category, author, readTime, tags, and featured image path. Create /app/blog/page.tsx (listing with cards) and /app/blog/[slug]/page.tsx (article page with full content). Both pages must have proper metadata (title, description, OG tags). Add a BlogCard component at /src/components/BlogCard.tsx.",
@@ -1542,6 +1516,31 @@
       "_source": "test-story",
       "_testType": "e2e",
       "_forStoryId": "US-180"
+    },
+    {
+      "title": "[E2E Test] Add CSS native scroll-driven carousel using ::scroll-button() and ::scroll-marker",
+      "priority": "medium",
+      "description": "Write end-to-end user flow test for the feature in US-187. Story description: Chrome 135+ (March 2025) ships native CSS carousels via ::scroll-button() and ::scroll-marker pseudo-elements. These provide automatic ARIA button roles, keyboard handling, and reduced JavaScript dependency. The gallery and room-photo sliders can be refactored to use this zero-JS approach.",
+      "acceptanceCriteria": [
+        "E2E test covers the user flow introduced by US-187",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_187 -v"
+      ],
+      "dependencies": [
+        "US-187"
+      ],
+      "estimatedComplexity": "medium",
+      "tags": [
+        "e2e",
+        "auto-generated"
+      ],
+      "source": "",
+      "_source": "test-story",
+      "_testType": "e2e",
+      "_forStoryId": "US-187"
     },
     {
       "title": "[Regression Test] Comply with Malaysia CPETTR 2024 — mandatory Bahasa Malaysia disclosure",
