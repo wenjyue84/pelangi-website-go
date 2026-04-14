@@ -1090,3 +1090,20 @@ Completed: Add CSS native scroll-driven carousel using ::scroll-button() and ::s
 - AC4: @supports query wraps all pseudo-element declarations ✓
 - AC5: Lighthouse CLS=0 — all carousel items have fixed aspect-ratios and widths ✓
 
+
+
+## Iteration N - Story: US-265 - RSS auto-discovery link tag and JSON Feed 1.1
+
+### What was implemented
+- layout.tsx already had both RSS and JSON Feed link tags (RSS at line 146, JSON Feed at line 148) — verified AC1 already satisfied
+- feed.json/route.ts already limited to 10 posts with .slice(0, 10) — AC2 already satisfied
+- Created site/src/app/feed.json/route.test.ts with 5 tests: version, item count, required fields, content-type, sort order
+- Created site/vitest.config.ts with @/ path alias resolution for vitest
+
+### Patterns discovered
+- vitest needs a vitest.config.ts with resolve.alias for @/* -> ./src/* when running outside Next.js build
+- Both layout.tsx link tags and alternates.types metadata exist (Next.js renders alternates.types as <link> tags automatically)
+
+### Gotchas
+- The route and layout were already updated by a prior SPIRAL iteration; only the test file was missing
+- Must create vitest.config.ts in site/ to resolve @/ alias, otherwise vitest cannot find @/data/blog/posts
