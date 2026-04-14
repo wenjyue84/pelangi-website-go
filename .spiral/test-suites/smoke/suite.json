@@ -2874,6 +2874,19 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[smoke] Add Pinterest Rich Pins metadata for room and blog pages",
+      "description": "Auto-generated smoke test from US-159",
+      "from_story": "US-159",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-222",
+      "created_ts": "2026-04-14T01:03:00Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }

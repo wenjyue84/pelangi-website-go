@@ -1145,6 +1145,30 @@
       "_forStoryId": "US-141"
     },
     {
+      "title": "[Regression Test] Replace JavaScript tooltip positioning with CSS Popover API and Anchor Positioning",
+      "priority": "medium",
+      "description": "Write regression test to guard against future breakage of US-144. Story description: The HTML Popover API (Baseline 2024) provides built-in keyboard navigation, Escape-key dismissal, focus management, and top-layer rendering without JavaScript. CSS Anchor Positioning (Chrome 125+) replaces Popper.js-style JavaScript tethering. Migrating hostel site tooltips and info-popovers to these native APIs reduces JS bundle size and provides accessible behaviour for free.",
+      "acceptanceCriteria": [
+        "Regression test covers core observable behaviour of US-144",
+        "Test would reliably fail if the US-144 feature were removed or broken"
+      ],
+      "technicalNotes": [
+        "Run: uv run pytest tests/ -k us_144 -v"
+      ],
+      "dependencies": [
+        "US-144"
+      ],
+      "estimatedComplexity": "medium",
+      "tags": [
+        "regression",
+        "auto-generated"
+      ],
+      "source": "",
+      "_source": "test-story",
+      "_testType": "regression",
+      "_forStoryId": "US-144"
+    },
+    {
       "title": "[Integration Test] Upgrade to Next.js 16 and resolve all breaking changes",
       "priority": "high",
       "description": "Write integration tests for the feature implemented in US-145. Story description: Next.js 16 is the current stable major version. It makes Turbopack the default bundler, fully removes synchronous access to cookies()/headers()/params/searchParams, renames middleware.ts to proxy.ts, removes the experimental.ppr flag in favour of cacheComponents, and requires explicit default.js for all parallel route slots. All breaking changes must be resolved for the site to build on Next.js 16.",

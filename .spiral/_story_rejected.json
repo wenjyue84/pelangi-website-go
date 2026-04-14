@@ -1,110 +1,51 @@
 {
   "stories": [
     {
-      "title": "Implement RSS 2.0 Feed Generator for Blog Posts at /feed.xml",
-      "priority": "high",
-      "description": "Create RSS feed endpoint that generates valid RSS 2.0 XML with all published blog posts. Include auto-discovery <link> tag in HTML head for feed readers and SEO.",
+      "title": "Generate and serve RSS/Atom feed for blog at /feed.xml",
+      "priority": "medium",
+      "description": "Implement RSS/Atom feed generation from blog posts, served at /feed.xml. This enables blog subscribers and news aggregators to follow new articles.",
       "acceptanceCriteria": [
-        "GET /feed.xml returns valid RSS 2.0 XML with Content-Type: application/rss+xml header",
-        "Feed contains all blog posts with <title>, <link>, <pubDate> (ISO 8601), <description>, and <author> elements",
-        "app/layout.tsx includes <link rel=\"alternate\" type=\"application/rss+xml\" href=\"/feed.xml\"> tag in <head> for feed discovery"
+        "GET /feed.xml returns status 200 with Content-Type: application/atom+xml header and valid Atom 1.0 XML body",
+        "Feed includes <entry> element for each published blog post with title, link (post URL), updated (publishDate), and content (full post markdown)",
+        "Feed.xml route handler calls generateAtomFeed(posts: BlogPost[]): string function exported from lib/rss.ts"
       ],
       "technicalNotes": [
-        "File to create: app/api/feed/route.ts (RSS endpoint returning XML response)",
-        "File to modify: app/layout.tsx (add feed discovery link)",
-        "File to reference: lib/blog.ts (blog post metadata structure)",
-        "Test command: curl http://localhost:3000/feed.xml | grep -E '(<rss|<title|<link)' | head -10"
+        "File to edit: lib/rss.ts (new file, export generateAtomFeed function that builds Atom XML ~100 lines)",
+        "File to edit: app/feed.xml/route.ts (new route handler, async GET() returns Response with XML body ~40 lines)",
+        "Test command: npm run build && curl -H 'Accept: application/atom+xml' http://localhost:3000/feed.xml | head -30"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "app/api/feed/route.ts",
-        "app/layout.tsx",
-        "lib/blog.ts"
+        "lib/rss.ts",
+        "app/feed.xml/route.ts"
       ],
       "_source": "ai-example",
       "passes": false,
       "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
     },
     {
-      "title": "Add JB News & Updates Widget to Homepage Pulling Curated RSS Feeds",
-      "priority": "high",
-      "description": "Create homepage widget that fetches and displays latest 3 items from curated JB news RSS sources (Berita Harian, Johor Tourism Board). Implements 24-hour cache layer to prevent feed fetch failures and rate limiting.",
-      "acceptanceCriteria": [
-        "Widget fetches from 3 hardcoded RSS feed URLs and parses latest 3 items with title, snippet, and publication date",
-        "Implements revalidateTag('jb-news') caching with 86400 second (24-hour) ISR revalidation window",
-        "Widget gracefully handles fetch errors and displays fallback content (e.g., 'Updates unavailable')"
-      ],
-      "technicalNotes": [
-        "File to create: components/JBNewsWidget.tsx (Server Component with async RSS parsing)",
-        "File to create: lib/feedparser.ts (utility to parse RSS XML and extract title/description/pubDate)",
-        "File to modify: app/page.tsx (render JBNewsWidget component in hero or below fold)",
-        "Test command: npm run dev && curl http://localhost:3000 | grep -A 5 'JB News'"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "medium",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "components/JBNewsWidget.tsx",
-        "lib/feedparser.ts",
-        "app/page.tsx"
-      ],
-      "_source": "ai-example",
-      "passes": false,
-      "_rejection_reason": "too_simple: only 1 measurable ACs -- specify test commands, file paths, or numeric thresholds"
-    },
-    {
-      "title": "Publish 'Getting Around JB Without a Car — Transport Guide for Backpackers' Blog Post",
+      "title": "Add Table of Contents component for blog posts with scroll-to-section navigation",
       "priority": "medium",
-      "description": "Write 1500+ word original blog post covering public transport (Rapidkuala buses), ride-hailing (Grab), taxis, and walking in Johor Bahru. Include cost comparisons, Google Maps tips, and HowTo schema for navigation. Target Malaysian workers and budget-conscious travelers.",
+      "description": "Create a sticky TOC component that auto-generates from h2/h3 headings in blog posts, allowing readers to jump to sections. Improves UX for longer-form content.",
       "acceptanceCriteria": [
-        "Blog post created at src/content/blog/getting-around-jb-without-car.tsx with >1500 words, frontmatter (title, slug, pubDate, author), and export declaration",
-        "Includes HowTo schema markup with 5+ steps for using buses, Grab, taxis, and walking",
-        "Post contains internal links to /guide, /singapore-jobs, /visa-run, and at least 2 other JB transport-related blog posts"
+        "BlogTableOfContents component renders above article content, displays h2 and h3 headings in nested list structure with indentation",
+        "Each TOC link uses fragment identifier (#heading-id) matching markdown heading ID; clicking scrolls smoothly to section",
+        "Active heading is highlighted via useEffect hook monitoring scroll position using Intersection Observer; highlights persist as user scrolls"
       ],
       "technicalNotes": [
-        "File to create: src/content/blog/getting-around-jb-without-car.tsx (TSX blog post with frontmatter)",
-        "File to modify: lib/blog.ts (import and register new post in blog post registry array)",
-        "Outline sections: Intro, Rapidkuala buses (routes/costs/passes), Taxis (call/alternatives), Grab (pricing vs Singapore), Walking neighborhoods, Google Maps tips, First-timer recommendations",
-        "Test command: npm run build && npm run dev && curl http://localhost:3000/blog/getting-around-jb-without-car | grep -i transport"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "medium",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "src/content/blog/getting-around-jb-without-car.tsx",
-        "lib/blog.ts"
-      ],
-      "_source": "ai-example",
-      "passes": false,
-      "_rejection_reason": "too_simple: only 1 measurable ACs -- specify test commands, file paths, or numeric thresholds"
-    },
-    {
-      "title": "Implement Table of Contents Auto-Generator for Blog Post Pages",
-      "priority": "medium",
-      "description": "Create TableOfContents component that auto-extracts h2/h3 headings from blog post content, generates slugified anchor IDs, and renders as sticky sidebar (desktop) or collapsible menu (mobile). Improves long-form content navigation and UX.",
-      "acceptanceCriteria": [
-        "Component auto-scans React children for h2/h3 elements, extracts text content, generates slugified anchor IDs using lib/slug utility",
-        "Renders as sticky sidebar on desktop (position: sticky, top: 100px) and collapsible accordion on mobile (max-width: 768px)",
-        "Clicking TOC items scrolls to corresponding heading with smooth scroll-behavior: smooth CSS property"
-      ],
-      "technicalNotes": [
-        "File to create: components/TableOfContents.tsx (React component with useEffect DOM scanning and scroll listener)",
-        "File to create: lib/slug.ts (slugify function: lowercase, replace spaces/symbols with hyphens)",
-        "File to modify: app/blog/[slug]/page.tsx (wrap blog content with <TableOfContents> wrapper component)",
-        "Test command: npm run dev && navigate to blog post && click TOC items && verify smooth scroll to headings"
+        "File to edit: components/BlogTableOfContents.tsx (new component, use extractHeadings() helper and Intersection Observer ~120 lines)",
+        "File to edit: app/blog/[slug]/page.tsx (import and render <BlogTableOfContents /> component above article div with id-matching h2/h3 tags)",
+        "Test command: npm run build && npm run start, then navigate blog post and verify TOC renders and fragment links work"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "components/TableOfContents.tsx",
-        "lib/slug.ts",
+        "components/BlogTableOfContents.tsx",
         "app/blog/[slug]/page.tsx"
       ],
       "_source": "ai-example",
@@ -112,31 +53,92 @@
       "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
     },
     {
-      "title": "Update sitemap.ts to Include All Published Blog Post URLs with Metadata",
-      "priority": "high",
-      "description": "Modify app/sitemap.ts to dynamically enumerate all blog posts from lib/blog.ts and generate <url> entries with lastmod (ISO 8601), changefreq: weekly, and priority: 0.8. Ensures all blog content is discoverable by search engines.",
+      "title": "Calculate and display estimated reading time on blog posts",
+      "priority": "low",
+      "description": "Add a '5 min read' label to blog post cards and article headers based on word count. Helps readers decide which articles to read.",
       "acceptanceCriteria": [
-        "sitemap.ts imports blog post array from lib/blog.ts and maps each post to a Sitemap URL entry with loc, lastmod, changefreq, priority",
-        "Each blog URL includes correct <lastmod> (post.pubDate in ISO 8601), <changefreq>weekly</changefreq>, <priority>0.8</priority>",
-        "Total URL count in /sitemap.xml increases from current count to >25 URLs (verifiable via grep <url> count)"
+        "BlogPostCard component displays 'X min read' text next to publish date using readingTime(content: string): number function",
+        "Blog post article header (app/blog/[slug]/page.tsx) displays reading time: 'Published March 14 · 5 min read'",
+        "readingTime() utility in lib/readingTime.ts calculates minutes using standard 200 words-per-minute average"
       ],
       "technicalNotes": [
-        "File to modify: app/sitemap.ts (add blog post enumeration before return statement)",
-        "File to reference: lib/blog.ts (import blog post array and extract slug, pubDate metadata)",
-        "Example entry: { url: 'https://pelangi-capsule-hostel.com/blog/getting-around-jb', lastmod: new Date('2026-04-14').toISOString(), changefreq: 'weekly', priority: 0.8 }",
-        "Test command: curl http://localhost:3000/sitemap.xml | grep -c '<url>' && curl http://localhost:3000/sitemap.xml | grep 'blog/'"
+        "File to edit: lib/readingTime.ts (new utility, export readingTime(text: string): number function ~15 lines using Math.ceil(words/200))",
+        "File to edit: components/BlogPostCard.tsx (import readingTime and call with post.content to display result)",
+        "File to edit: app/blog/[slug]/page.tsx (import readingTime and display in article meta line near publishDate)",
+        "Test command: npm run build && grep -E 'min read' components/BlogPostCard.tsx app/blog/\\[slug\\]/page.tsx"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "app/sitemap.ts",
-        "lib/blog.ts"
+        "lib/readingTime.ts",
+        "components/BlogPostCard.tsx",
+        "app/blog/[slug]/page.tsx"
       ],
       "_source": "ai-example",
       "passes": false,
       "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
+    },
+    {
+      "title": "Implement blog post category/tag filtering and dedicated category pages",
+      "priority": "medium",
+      "description": "Add category and tag system to blog posts with filter UI on /blog page. Users can discover related articles by category (e.g., 'Backpacking', 'Jobs', 'Guides') and visit dedicated pages at /blog/category/[slug].",
+      "acceptanceCriteria": [
+        "Blog post type in lib/blog.ts includes category: string and tags: string[] fields; all blog posts updated with categories in frontmatter",
+        "Blog listing page (/blog) renders BlogCategoryFilter component with category buttons; selected category persists in URL as ?category=backpacking",
+        "Category pages generated at /blog/category/[slug] via generateStaticParams() returning all unique categories; each page displays only posts matching that category"
+      ],
+      "technicalNotes": [
+        "File to edit: lib/blog.ts (add category: string and tags: string[] to BlogPost interface ~5 lines)",
+        "File to edit: components/BlogCategoryFilter.tsx (new component, render category buttons and emit onChange callback ~80 lines)",
+        "File to edit: app/blog/page.tsx (import BlogCategoryFilter, implement filter logic based on searchParams.category, pass filtered posts to BlogPostList)",
+        "File to edit: app/blog/category/[slug]/page.tsx (new route, export generateStaticParams() and page component ~60 lines)",
+        "Test command: npm run build && curl http://localhost:3000/blog/category/backpacking | grep -c '<article' (verify posts render)"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "lib/blog.ts",
+        "components/BlogCategoryFilter.tsx",
+        "app/blog/page.tsx",
+        "app/blog/category/[slug]/page.tsx"
+      ],
+      "_source": "ai-example",
+      "passes": false,
+      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
+    },
+    {
+      "title": "Create JB News & Updates widget for homepage pulling from curated RSS sources",
+      "priority": "high",
+      "description": "Build a homepage widget fetching latest news items from curated RSS feeds about Johor Bahru (tourism, events, local updates). Updates hourly via ISR. Drives homepage engagement and positions site as news authority.",
+      "acceptanceCriteria": [
+        "JBNewsWidget Server Component in components/JBNewsWidget.tsx fetches RSS feeds via lib/rssParser.ts and renders <ul> with 5 news items (headline, source, pubDate, 60-char preview)",
+        "Homepage /app/page.tsx imports and renders <JBNewsWidget /> component with revalidateTag('jb-news'); ISR revalidate: 3600 seconds",
+        "Curated feed URLs stored in config/rss-feeds.ts array; rssParser handles fetch timeouts and returns empty array gracefully; widget displays 'Unable to fetch news' fallback"
+      ],
+      "technicalNotes": [
+        "File to edit: lib/rssParser.ts (new utility, export async fetchRSSItems(feedUrls: string[]): Promise<NewsItem[]> that parses Atom/RSS2.0 feeds ~70 lines)",
+        "File to edit: components/JBNewsWidget.tsx (new Server Component, call fetchRSSItems() and render unordered list of news ~90 lines)",
+        "File to edit: config/rss-feeds.ts (new config file, export array of curated RSS feed URLs for JB news sources ~10 lines)",
+        "File to edit: app/page.tsx (import JBNewsWidget and render in HomePage; add 'use cache' directive and revalidateTag('jb-news'))",
+        "Test command: npm run build && npm run start, navigate http://localhost:3000 and verify news items render with correct structure"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "lib/rssParser.ts",
+        "components/JBNewsWidget.tsx",
+        "config/rss-feeds.ts",
+        "app/page.tsx"
+      ],
+      "_source": "ai-example",
+      "passes": false,
+      "_rejection_reason": "too_simple: only 1 measurable ACs -- specify test commands, file paths, or numeric thresholds"
     }
   ]
 }

@@ -1,6 +1,8 @@
 {
-  "phase": "V",
-  "iteration": 22,
-  "started_at": 1776126271,
-  "pct_done": 80
+  "phase": "I",
+  "iteration": 25,
+  "started_at": 1776128890,
+  "pct_done": 60,
+  "story_id": "US-173",
+  "story_title": "Implement A/B testing with Vercel Feature Flags and Edge Config"
 }
