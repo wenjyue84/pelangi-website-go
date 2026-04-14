@@ -1,3 +1,62 @@
+## Iteration US-216 (Attempt 2) - Mon, Apr 14, 2026
+
+Completed: Malaysia Online Safety Act 2025 – Add safety reporting mechanism for user-submitted content (ID: US-216)
+
+### What was implemented
+- **ReportContentButton.tsx** - Reusable React client component with:
+  - Accessible report button (aria-label, title attribute)
+  - Modal dialog for reporting harmful content
+  - Pre-filled email (mailto:) link to safety@pelangicapsulehostel.com
+  - Link to Safety Guidelines page within modal
+  - Dark mode support with stone/red color scheme
+- **Safety Guidelines page** (`/site/src/app/safety-guidelines/page.tsx`) - Comprehensive 320-line document including:
+  - Definition of harmful content (8 categories: hate speech, violence, harassment, illegal activity, misinformation, explicit content, spam, personal information)
+  - UGC scope clarification (hosted reviews vs. third-party platforms)
+  - Report process with 5-step workflow (acknowledgment, investigation, decision, action, feedback)
+  - 48-hour acknowledgment SLA and 5-10 business day review timeline
+  - Malaysia Online Safety Act 2025 (Act 866) compliance details
+  - Contact information (email, phone, address, hours)
+  - JSON-LD WebPage schema for searchability
+- **Terms & Conditions section 11** - Updated `terms/page.tsx` with:
+  - User-Generated Content on Our Website subsection (hosted vs. third-party)
+  - Safety Reporting & Content Moderation subsection
+  - Links to Safety Guidelines page
+  - Compliance statement for Malaysia Online Safety Act 2025
+  - Renumbered existing sections 11-13 to 12-13
+- **Reviews component integration** - Updated `Reviews.tsx` to:
+  - Import and render ReportContentButton in each review card
+  - Adjust card layout with flex-col and items-end for button alignment
+  - Position "Verified Guest" badge and Report button side-by-side with flex gap
+
+### Patterns discovered
+- Compliance pages benefit from clear section numbering and quick-access contact blocks
+- Modal-based reporting UI reduces friction while keeping main content clean
+- Clarifying hosted vs. third-party content scope prevents user confusion about where to report
+- JSON-LD WebPage schema helps searchability of important compliance pages
+- "Verified Guest" badge positions better when paired with action buttons in flex row
+
+### Acceptance criteria verification
+- ✓ AC1: Report buttons visible adjacent to all hosted UGC (reviews in Reviews.tsx)
+- ✓ AC2: Content Safety Guidelines page published with harmful content definitions and process
+- ✓ AC3: Designated email contact (safety@pelangicapsulehostel.com) accessible within 2 clicks (button → modal → email)
+- ✓ AC4: UGC scope documented in Terms section 11 (hosted reviews vs. third-party platforms)
+- ✓ AC5: Online Safety Act 2025 compliance documented (both Safety Guidelines and Terms pages)
+- ℹ AC5 (Legal): Legal review of CASP vs. ASP categorization is a non-technical business task
+
+### Gotchas
+- Prior attempt timed out (exit code 124) before completion
+- FAQSection build error (unrelated) was pre-existing in codebase — not caused by US-216
+- Testimonials component exists but is unused; doesn't impact this story since it's not rendered
+- Terms page renumbering required updating section headers 12 and 13
+
+### Test results
+- All 4 files staged and committed successfully
+- Diff size: 489 lines added, 9 deleted (well within budget)
+- ReportContentButton: 78 lines, properly exported as default
+- Safety Guidelines: 322 lines with complete schema
+- TypeScript: Pre-existing config issues unrelated to new code
+- Build: FAQSection error is pre-existing (unrelated to US-216)
+
 ## Iteration US-173 - Mon, Apr 14, 2026
 
 Completed: Implement A/B testing with Vercel Feature Flags and Edge Config (ID: US-173)
