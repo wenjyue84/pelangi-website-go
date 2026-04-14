@@ -1,34 +1,35 @@
 {
   "iteration": 9,
-  "timestamp": "2026-04-13T20:52:15.223620+00:00",
+  "timestamp": "2026-04-14T13:12:23.877284+00:00",
   "summary": {
     "0_retries": {
-      "count": 210,
-      "avg_ac_count": 5.12,
-      "avg_description_length": 373.0,
+      "count": 234,
+      "avg_ac_count": 5.08,
+      "avg_description_length": 366.3,
       "common_tags": [],
       "common_file_patterns": []
     },
     "1_retry": {
+      "count": 8,
+      "avg_ac_count": 5.25,
+      "avg_description_length": 304.6,
+      "common_tags": [],
+      "common_file_patterns": []
+    },
+    "2_retries": {
       "count": 2,
-      "avg_ac_count": 5.5,
-      "avg_description_length": 234.5,
+      "avg_ac_count": 5.0,
+      "avg_description_length": 342.0,
       "common_tags": [
         "content",
         "geo",
-        "seo",
-        "visa-run"
+        "jb-neighborhood",
+        "local-guide",
+        "seo"
       ],
       "common_file_patterns": [
         "site"
       ]
-    },
-    "2_retries": {
-      "count": 0,
-      "avg_ac_count": 0.0,
-      "avg_description_length": 0.0,
-      "common_tags": [],
-      "common_file_patterns": []
     },
     "3plus_retries": {
       "count": 0,
@@ -39,8 +40,8 @@
     }
   },
   "insights": {
-    "total_analyzed": 212,
-    "easy_count": 212,
+    "total_analyzed": 244,
+    "easy_count": 242,
     "hard_count": 0
   }
 }

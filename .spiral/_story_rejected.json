@@ -1,130 +1,111 @@
 {
   "stories": [
     {
-      "title": "Consolidate NAP constants to fix schema.org inconsistencies across all structured data",
+      "title": "Create /feed.xml RSS feed endpoint for blog posts",
       "priority": "high",
-      "description": "Create a single source of truth for hostel Name, Address, and Phone (NAP) values used in JSON-LD schemas. Currently hardcoded in multiple places (StructuredData.tsx, schema files), causing maintenance issues and potential inconsistencies. Consolidating to site/src/config/nap.ts ensures all schemas reference the same values.",
+      "description": "Implement RSS 2.0 feed generation at /feed.xml including channel metadata and all blog posts with publication dates. Enables feed reader subscriptions and content syndication.",
       "acceptanceCriteria": [
-        "Create site/src/config/nap.ts exporting NAP constants: hostelName, address (street, city, postalCode, country), phone, email, website",
-        "Update site/src/components/StructuredData.tsx to import and use NAP constants instead of hardcoded values",
-        "Grep search for hardcoded phone/address strings in site/src/components/ returns zero matches"
+        "GET /feed.xml returns valid RSS 2.0 XML with Content-Type: application/rss+xml",
+        "Feed includes channel title 'Pelangi Capsule Blog', description, and link to /blog home",
+        "Each blog post appears as <item> with title, description, pubDate (RFC 2822), link, and guid"
       ],
       "technicalNotes": [
-        "File to create: site/src/config/nap.ts with export const NAP = { hostelName, addressLine1, city, postalCode, countryCode, telephone, email }",
-        "File to update: site/src/components/StructuredData.tsx — replace all inline NAP references with import { NAP } from '@/config/nap'",
-        "Test command: rtk grep -r '\\+6012-[0-9]{7}' site/src/components/ (should return 0 results after refactor)"
+        "File to create: site/app/feed.xml/route.ts (RSS generation route handler)",
+        "File to create: site/lib/blog/generateRssFeed.ts (XML builder function)",
+        "Import getAllBlogPosts from site/lib/blog to iterate posts in route",
+        "Test command: npm run build && curl http://localhost:3000/feed.xml | grep '<rss version=\"2.0\">' && npm run dev",
+        "Validate at https://validator.w3.org/feed/"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "site/src/config/nap.ts",
-        "site/src/components/StructuredData.tsx"
+        "site/app/feed.xml/route.ts",
+        "site/lib/blog/generateRssFeed.ts"
       ],
       "_source": "ai-example",
       "passes": false,
       "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
     },
     {
-      "title": "Create /digital-nomad landing page with FAQPage schema and DE Rantau visa content",
-      "priority": "medium",
-      "description": "Build dedicated landing page for digital nomads and remote workers considering the DE Rantau visa program in JB. Includes FAQPage JSON-LD schema with 5+ Q&A items about visa eligibility, monthly costs, visa renewal process. Links internally to related blog posts on visa requirements and cost of living.",
+      "title": "Update sitemap.ts to include all blog post URLs with metadata",
+      "priority": "high",
+      "description": "Extend Next.js sitemap.ts to dynamically inject all blog post routes with publication dates and SEO priority. Ensures search engine crawlers discover all blog content.",
       "acceptanceCriteria": [
-        "Create site/src/app/digital-nomad/page.tsx with hero section, 5+ FAQ items (eligibility, duration, renewal, costs, support), and internal links to /blog posts",
-        "FAQPage JSON-LD schema includes mainEntity array with min 5 Question/Answer pairs with proper @type declarations",
-        "Page accessible at /digital-nomad with meta description and canonical URL in generateMetadata"
+        "sitemap.ts calls getAllBlogPosts() and maps each post to MetadataRoute.Sitemap entry with url, lastModified (ISO 8601 from post.publishedAt), changefreq: 'weekly', priority: 0.7",
+        "Build completes without errors and generated sitemap.xml includes all blog post URLs (e.g. /blog/taman-pelangi)",
+        "Homepage and core pages retain priority: 1.0; blog index /blog gets priority: 0.8"
       ],
       "technicalNotes": [
-        "File to create: site/src/app/digital-nomad/page.tsx (React component with FAQPage schema in metadata)",
-        "Update site/src/app/sitemap.ts to add route: { url: 'https://pelangi.fyi/digital-nomad', lastModified: new Date() }",
-        "Test command: npm run build && rtk curl http://localhost:3000/digital-nomad (verify page loads and schema renders in head)"
+        "File to modify: site/app/sitemap.ts (add blog posts section after homepage entry)",
+        "Import type MetadataRoute from 'next' and getAllBlogPosts from site/lib/blog",
+        "Map posts: posts.map(post => ({ url: `${baseUrl}/blog/${post.slug}`, lastModified: post.publishedAt, changefreq: 'weekly', priority: 0.7 }))",
+        "Test command: npm run build && grep -c '/blog/' public/sitemap.xml (should equal blog post count) && curl http://localhost:3000/sitemap.xml | grep taman-pelangi"
       ],
       "dependencies": [],
       "estimatedComplexity": "small",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "site/src/app/digital-nomad/page.tsx",
-        "site/src/app/sitemap.ts"
+        "site/app/sitemap.ts"
       ],
       "_source": "ai-example",
       "passes": false,
       "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
     },
     {
-      "title": "Add blog post tags system with dynamic tag filter pages for long-tail SEO",
+      "title": "Add BreadcrumbList JSON-LD schema to blog post pages",
       "priority": "medium",
-      "description": "Extend blog system with tagging support. Update posts.ts schema to include tags array (e.g. ['budget', 'transport', 'food']). Create dynamic tag filter page at /blog/tag/[tag] showing all posts with that tag. Update blog index page to display tag badges and tag filter UI.",
+      "description": "Implement BreadcrumbList structured data on blog post pages showing Home > Blog > Post Title hierarchy. Improves SEO by signaling content structure to search engines and enables breadcrumb rich snippets.",
       "acceptanceCriteria": [
-        "Update site/src/data/blog/posts.ts — add tags: string[] field to BlogPost type and populate all 6+ existing posts with relevant tags",
-        "Create site/src/app/blog/tag/[tag]/page.tsx with dynamic route that filters posts.ts by tag and renders results with meta tags",
-        "Blog index page (site/src/app/blog/page.tsx) displays clickable tag badges below each post card linking to /blog/tag/[tag]"
+        "BlogBreadcrumbs component renders visible HTML nav with semantic <ol> and <li> elements showing Home → Blog → Post Title links",
+        "Component emits BreadcrumbList JSON-LD in <script type='application/ld+json'> with 3 itemListElement objects (position 1-3)",
+        "Blog post page.tsx integrates component via <BlogBreadcrumbs slug={slug} title={post.title} /> and includes schema in head"
       ],
       "technicalNotes": [
-        "File to update: site/src/data/blog/posts.ts — add tags field to each post object",
-        "File to create: site/src/app/blog/tag/[tag]/page.tsx with generateStaticParams() exporting all unique tags from posts.ts",
-        "Test command: npm run build && npx playwright test tests/blog-tags.spec.ts (verify tag pages render and links work)"
+        "File to create: site/src/components/BlogBreadcrumbs.tsx (renders nav + emits JSON-LD)",
+        "File to modify: site/app/blog/[slug]/page.tsx (import and render component, ensure JSON-LD in <head>)",
+        "Schema keys: @context 'https://schema.org', @type 'BreadcrumbList', itemListElement: [{position: 1, name: 'Home', item: baseUrl}, {position: 2, name: 'Blog', item: `${baseUrl}/blog`}, {position: 3, name: post.title, item: current URL}]",
+        "Test command: npx vitest run src/components/BlogBreadcrumbs.test.tsx -- --coverage && npm run dev",
+        "Validate: Use https://validator.schema.org/ on rendered /blog/taman-pelangi page"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "site/src/components/BlogBreadcrumbs.tsx",
+        "site/app/blog/[slug]/page.tsx"
+      ],
+      "_source": "ai-example",
+      "passes": false,
+      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
+    },
+    {
+      "title": "Create /api/og/blog route for dynamic blog post Open Graph images",
+      "priority": "high",
+      "description": "Implement next/og ImageResponse to generate 1200x630px OG images per blog post with title, author, and hostel branding. Improves social sharing click-through rates and brand consistency on LinkedIn, Facebook, Twitter.",
+      "acceptanceCriteria": [
+        "GET /api/og/blog?slug=taman-pelangi returns PNG image (200 OK, Content-Type: image/png) with post title, author name, 'Pelangi Capsule' branding, and publication date",
+        "Blog post generateMetadata dynamically sets og:image to https://pelangi.my/api/og/blog?slug={slug}",
+        "Invalid slug or missing post returns fallback brand image without error"
+      ],
+      "technicalNotes": [
+        "File to create: site/app/api/og/blog/route.ts (ImageResponse handler using next/og Satori engine)",
+        "File to modify: site/app/blog/[slug]/page.tsx (update generateMetadata function to set og:image URL)",
+        "Route handler: const { slug } = searchParams; const post = await getBlogPost(slug); return new ImageResponse(...)",
+        "ImageResponse dimensions: 1200×630 with Tailwind-style layout (Satori uses Flexbox)",
+        "Test command: npm run build && curl 'http://localhost:3000/api/og/blog?slug=taman-pelangi' -o test.png && file test.png",
+        "Verify og:image: npm run dev && curl -s http://localhost:3000/blog/taman-pelangi | grep '<meta property=\"og:image\"'"
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "site/src/data/blog/posts.ts",
-        "site/src/app/blog/tag/[tag]/page.tsx",
-        "site/src/app/blog/page.tsx"
-      ],
-      "_source": "ai-example",
-      "passes": false,
-      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
-    },
-    {
-      "title": "Update sitemap.ts to include all blog posts and tag pages with lastModified dates",
-      "priority": "medium",
-      "description": "Extend site/src/app/sitemap.ts to dynamically generate sitemap entries for all blog posts and tag archive pages. Each post includes lastModified date from frontmatter for accurate Google crawl scheduling. Ensures search engines discover new blog content immediately.",
-      "acceptanceCriteria": [
-        "sitemap.ts imports posts.ts and generates URL entry for each post with path /blog/[slug] and lastModified from post.publishedAt",
-        "sitemap.ts extracts all unique tags from posts array and generates URL entry for each tag at /blog/tag/[tag]",
-        "Sitemap XML validates against sitemap.xml schema with priority 0.8 for blogs and 0.6 for tag pages"
-      ],
-      "technicalNotes": [
-        "File to update: site/src/app/sitemap.ts — add const posts = await getBlogPosts(); then map over posts and extract/add routes",
-        "Import all blog posts or lazy-load from site/src/data/blog/posts.ts directly in sitemap route handler",
-        "Test command: rtk curl http://localhost:3000/sitemap.xml | grep -c 'blog/' (verify count matches posts.ts length + unique tags)"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "site/src/app/sitemap.ts"
-      ],
-      "_source": "ai-example",
-      "passes": false,
-      "_rejection_reason": "too_simple: only 0 measurable ACs -- specify test commands, file paths, or numeric thresholds"
-    },
-    {
-      "title": "Create blog post frontmatter Zod schema for build-time validation and type safety",
-      "priority": "high",
-      "description": "Define Zod schema for blog post frontmatter (title, slug, date, author, excerpt, featured, etc.). Validate all posts.ts entries at build time with clear error messages for missing or invalid fields. Auto-generate TypeScript types from schema to ensure compile-time safety.",
-      "acceptanceCriteria": [
-        "Create site/src/lib/blog-frontmatter.ts exporting BlogPostSchema (Zod) with fields: slug, title, publishedAt, author, excerpt (min 20 chars), featured (boolean), category",
-        "site/src/data/blog/posts.ts validates all post objects against schema using .parse() at module load or build-time",
-        "Build fails with descriptive error if any post is missing required fields or has invalid values (e.g. future publishedAt)"
-      ],
-      "technicalNotes": [
-        "File to create: site/src/lib/blog-frontmatter.ts with export const BlogPostSchema = z.object({ slug: z.string().min(1), ... })",
-        "File to update: site/src/data/blog/posts.ts to add validation: export const posts = BlogPostSchema.array().parse(rawPosts);",
-        "Test command: npm run build (should fail if test post has publishedAt in future or missing excerpt); add invalid post temporarily to verify error message"
-      ],
-      "dependencies": [],
-      "estimatedComplexity": "small",
-      "tags": [],
-      "source": "",
-      "filesTouch": [
-        "site/src/lib/blog-frontmatter.ts",
-        "site/src/data/blog/posts.ts"
+        "site/app/api/og/blog/route.ts",
+        "site/app/blog/[slug]/page.tsx"
       ],
       "_source": "ai-example",
       "passes": false,

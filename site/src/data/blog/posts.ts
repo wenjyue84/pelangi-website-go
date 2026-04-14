@@ -1824,6 +1824,52 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 <p><strong>Pelangi Capsule Hostel</strong> puts you at the heart of Taman Pelangi — walking distance from the hawker centre, mamak stalls, and the morning market. It's quieter than staying in the city centre but still 10 minutes from JB Sentral by Grab. If you want to experience Johor Bahru like a local rather than a tourist, Taman Pelangi is the right base. <a href="/rooms">Book a capsule</a> and explore the neighborhood on foot.</p>
 `,
   },
+  {
+    slug: "cheap-eats-johor-bahru-under-rm10-budget-guide",
+    title: "15 Cheap Eats in Johor Bahru Under RM10 - Budget Food Guide (2026)",
+    excerpt:
+      "Complete list of the best budget-friendly dishes in Johor Bahru, from hawker stalls to kopitiam classics — all under RM10. Perfect for backpackers.",
+    date: "2026-04-15",
+    category: "Food & Drink",
+    author: "Jay Lew",
+    readTime: "6 min read",
+    tags: ["budget-food", "cheap-eats", "johor-bahru", "hawker-food"],
+    featuredImage: "/images/blog/jb-cheap-eats.jpg",
+    content: `
+<h2>Food in JB vs Singapore: The Price Difference</h2>
+<p>A full meal in Singapore's hawker centres costs SGD5–8 (RM17–27). Cross the Causeway into Johor Bahru, and that same meal costs RM5–8 (SGD1.50–2.50). For budget travellers, the food price difference alone makes JB worth a visit — but the quality is just as good. Here are 15 authentic, delicious, and absurdly cheap dishes you can find throughout JB, all under RM10.</p>
+
+<h2>15 Cheap Eats Under RM10</h2>
+<ul>
+  <li><strong>Nasi Lemak (RM3–5)</strong> — Coconut rice with sambal, fried anchovies, peanuts, egg. Find it at Taman Pelangi Hawker Centre or any morning market.</li>
+  <li><strong>Mee Rebus (RM4–6)</strong> — Yellow noodles in thick potato gravy, topped with egg and fried shallots. Signature dish at Taman Pelangi Hawker Centre.</li>
+  <li><strong>Roti Canai + Teh Tarik (RM3–4)</strong> — Flaky flatbread + pulled milk tea. Available at any mamak shop. Restoran Selera Rakyat is a local favourite.</li>
+  <li><strong>Char Kway Teow (RM5–7)</strong> — Flat rice noodles with soy sauce, seafood, and egg. Best at Taman Pelangi Hawker Centre during lunch.</li>
+  <li><strong>Laksa Johor (RM6–8)</strong> — Spaghetti noodles in rich fish curry. A Johorean specialty with loyal locals. Try any hawker centre lunch crowd.</li>
+  <li><strong>Satay Sticks (RM0.60 per stick)</strong> — Grilled meat skewers with peanut dipping sauce. Night markets and street vendors. Buy 5–10 sticks for RM3–6.</li>
+  <li><strong>Lok Lok (RM1–2 per stick)</strong> — Meats and vegetables dipped in boiling broth. Night markets (Taman Sentosa every Thursday &amp; Sunday). Budget RM10–15 for a feast.</li>
+  <li><strong>Otak-Otak (RM1–2 per piece)</strong> — Spiced fish paste grilled in banana leaf. Roadside vendors near hawker centres. Grab 5 pieces for RM5–7.</li>
+  <li><strong>Nasi Kuning (RM4–6)</strong> — Fragrant turmeric rice with chicken and sambal. Available at Taman Pelangi Hawker Centre and morning markets.</li>
+  <li><strong>Kuih-Muih (RM0.50–1 per piece)</strong> — Bite-sized Malay cakes and sweets. Morning markets (Taman Pelangi every Saturday 7–11am). Kuih lapis, ondeh-ondeh, and sticky rice specialties.</li>
+  <li><strong>Cendol (RM3–4)</strong> — Shaved ice, green rice flour jelly, palm sugar syrup, and coconut milk. Perfect for hot afternoons. Hawker centres year-round.</li>
+  <li><strong>Sugarcane Juice (RM3–4)</strong> — Fresh-pressed sugarcane, no added sugar. Street vendors near hawker centres. Drink immediately for best taste.</li>
+  <li><strong>Chicken Rice (RM5–7)</strong> — Steamed or roasted chicken on rice with ginger paste and soy sauce. Every hawker centre lunch service.</li>
+  <li><strong>Fish Ball Noodle Soup (RM5–6)</strong> — Silky noodles in mild broth with fish balls and greens. Comfort food staple at lunch-time hawker centres.</li>
+  <li><strong>Rojak (RM4–5)</strong> — Fruit and vegetable fritters with sweet peanut dipping sauce. Pasar Karat (Sunday mornings) and night markets.</li>
+</ul>
+
+<h2>Best Places to Eat Cheap</h2>
+<p><strong>Taman Pelangi Hawker Centre</strong> — The hub for lunch (11am–2pm) and dinner (6–9pm). Dozens of stalls, fresh food, loud and authentic.</p>
+<p><strong>Taman Sentosa Night Market</strong> — Thursday and Sunday evenings. Best for satay, lok-lok, grilled corn, and casual street eating.</p>
+<p><strong>Any Mamak Shop</strong> — Open early morning and late night. Roti canai, teh tarik, and comfort food staples.</p>
+<p><strong>Morning Markets (Pasar)</strong> — Saturday mornings in Taman Pelangi. Fresh-cooked dishes and local snacks from 7–11am.</p>
+
+<h2>Budget Breakdown</h2>
+<p>A full day of eating in JB: breakfast (RM5) + lunch (RM7) + snack (RM4) + dinner (RM8) = RM24. Add drinks and you're at RM28–30 for a day of eating. That's less than one restaurant meal in Singapore.</p>
+
+<p>Ready to eat cheap and eat well? <a href="/book">Book a capsule at Pelangi</a> and dive into JB's food scene.</p>
+`,
+  },
 ];
 
 export const blogPosts: BlogPost[] = rawPosts.map((post) => ({

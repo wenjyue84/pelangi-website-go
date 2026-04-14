@@ -2221,6 +2221,29 @@
         "regression",
         "auto-generated"
       ]
+    },
+    {
+      "title": "[Regression Test] Blog post: Taman Pelangi Neighborhood Guide - Food, Shopping, and Things to Do (20",
+      "description": "Write regression test to guard against future breakage of US-270. Story description: Comprehensive neighborhood guide for Taman Pelangi - the area where Pelangi Capsule Hostel is located. Targets searches for 'Taman Pelangi Johor Bahru' and positions Pelangi as the ideal base. Covers hawker centers, shops, transport links, and hidden gems within walking distance.",
+      "acceptanceCriteria": [
+        "Regression test covers core observable behaviour of US-270",
+        "Test would reliably fail if the US-270 feature were removed or broken"
+      ],
+      "technicalNotes": [
+        "Source files from US-270: site/src/data/blog/posts.ts",
+        "Run: uv run pytest tests/ -k us_270 -v"
+      ],
+      "priority": "medium",
+      "dependencies": [
+        "US-270"
+      ],
+      "_source": "test-story",
+      "_testType": "regression",
+      "_forStoryId": "US-270",
+      "tags": [
+        "regression",
+        "auto-generated"
+      ]
     }
   ]
 }

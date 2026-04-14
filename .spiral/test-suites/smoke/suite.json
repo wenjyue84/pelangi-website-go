@@ -3134,6 +3134,71 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[smoke] Implement client-side blog post search with Fuse.js and live filtering",
+      "description": "Auto-generated smoke test from US-266",
+      "from_story": "US-266",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-242",
+      "created_ts": "2026-04-14T13:08:51Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
+    },
+    {
+      "title": "[smoke] Add Fuse.js-powered blog search component with real-time keystroke filtering",
+      "description": "Auto-generated smoke test from US-267",
+      "from_story": "US-267",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-243",
+      "created_ts": "2026-04-14T13:08:51Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
+    },
+    {
+      "title": "[smoke] Blog post: Mee Rebus Johor - History, Best Stalls, and the Famous Haji Wahid Legacy (2026)",
+      "description": "Auto-generated smoke test from US-268",
+      "from_story": "US-268",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-244",
+      "created_ts": "2026-04-14T13:08:51Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
+    },
+    {
+      "title": "[smoke] Blog post: Best Roti Canai in Johor Bahru - Breakfast Guide Near Taman Pelangi (2026)",
+      "description": "Auto-generated smoke test from US-269",
+      "from_story": "US-269",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-245",
+      "created_ts": "2026-04-14T13:08:51Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
+    },
+    {
+      "title": "[smoke] Blog post: Taman Pelangi Neighborhood Guide - Food, Shopping, and Things to Do (2026)",
+      "description": "Auto-generated smoke test from US-270",
+      "from_story": "US-270",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-246",
+      "created_ts": "2026-04-14T13:08:51Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }

@@ -11,28 +11,27 @@ import capsule3Image from '../../public/images/capsule-3.webp';
 type RoomTab = 'standard' | 'premium' | 'monthly';
 
 const TABS: { id: RoomTab; label: string; badge?: string }[] = [
-  { id: 'standard', label: 'Standard Pod' },
-  { id: 'premium', label: 'Premium Pod', badge: 'Enhanced' },
+  { id: 'standard', label: 'Lower Deck', badge: 'Budget Pick' },
+  { id: 'premium', label: 'Upper Deck' },
   { id: 'monthly', label: 'Long Stay' },
 ];
 
 const standardFeatures = [
+  'Ground-level — easy access, no ladder',
   'Personal climate control',
   'Adjustable LED lighting',
   'USB & power outlets',
-  'Privacy sliding door',
-  'Premium mattress',
+  'Privacy curtain',
   'Personal locker',
 ];
 
 const premiumFeatures = [
+  'Upper bunk — elevated & more private',
   'Personal climate control',
-  'Enhanced LED lighting system',
+  'Adjustable LED lighting',
   'USB & power outlets',
-  'Privacy sliding door',
-  'Premium memory foam mattress',
+  'Privacy curtain',
   'Personal locker',
-  'Extra storage space',
 ];
 
 const monthlyFeatures = [
@@ -136,8 +135,8 @@ export default function RoomsTabsClient() {
               />
               <div className="absolute inset-0 bg-linear-to-t from-stone-900/40 to-transparent" />
               <div className="absolute bottom-4 left-4 text-white">
-                <div className="text-xs tracking-widest uppercase opacity-70">Featured</div>
-                <div className="text-lg font-medium">Standard Capsule Interior</div>
+                <div className="text-xs tracking-widest uppercase opacity-70">Lower Deck</div>
+                <div className="text-lg font-medium">Ground-Level Pod Interior</div>
               </div>
             </div>
             <div className="relative h-48 md:h-56 rounded-2xl overflow-hidden group">
@@ -171,14 +170,14 @@ export default function RoomsTabsClient() {
             <div className="bg-stone-50 dark:bg-stone-800 rounded-3xl p-8 lg:p-10 h-full flex flex-col">
               <div className="mb-8">
                 <div className="text-xs tracking-widest uppercase text-stone-500 dark:text-stone-400 mb-2">
-                  Starting from
+                  Lower Deck — from
                 </div>
                 <div className="flex items-baseline gap-2">
                   <span className="font-display text-5xl font-medium text-stone-900 dark:text-stone-100">RM35</span>
                   <span className="text-stone-500 dark:text-stone-400">/night</span>
                 </div>
                 <p className="text-sm text-stone-500 dark:text-stone-400 mt-2">
-                  Premium comfort at backpacker prices
+                  Ground-level access — no climbing needed
                 </p>
                 <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">
                   + SST 8%
@@ -222,8 +221,8 @@ export default function RoomsTabsClient() {
               />
               <div className="absolute inset-0 bg-linear-to-t from-stone-900/40 to-transparent" />
               <div className="absolute bottom-4 left-4 text-white">
-                <div className="text-xs tracking-widest uppercase opacity-70">Enhanced</div>
-                <div className="text-lg font-medium">Premium Pod Interior</div>
+                <div className="text-xs tracking-widest uppercase opacity-70">Upper Deck</div>
+                <div className="text-lg font-medium">Elevated Pod Interior</div>
               </div>
             </div>
             <div className="relative h-48 md:h-56 rounded-2xl overflow-hidden group">
@@ -260,17 +259,17 @@ export default function RoomsTabsClient() {
                   <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
-                  Enhanced Comfort
+                  More Privacy
                 </div>
                 <div className="text-xs tracking-widest uppercase text-stone-500 dark:text-stone-400 mb-2">
-                  Starting from
+                  Upper Deck — from
                 </div>
                 <div className="flex items-baseline gap-2">
                   <span className="font-display text-5xl font-medium text-stone-900 dark:text-stone-100">RM45</span>
                   <span className="text-stone-500 dark:text-stone-400">/night</span>
                 </div>
                 <p className="text-sm text-stone-500 dark:text-stone-400 mt-2">
-                  Elevated comfort for discerning travellers
+                  Elevated position — quieter, more secluded
                 </p>
                 <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">
                   + SST 8%
@@ -283,7 +282,7 @@ export default function RoomsTabsClient() {
                 <RateRow label="Check-out" value="12:00 PM" />
               </div>
               <Link href="#booking" className="btn-primary w-full text-center block">
-                Book Premium Pod
+                Book Upper Deck Pod
               </Link>
             </div>
           </div>

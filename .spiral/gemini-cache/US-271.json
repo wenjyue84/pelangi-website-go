@@ -1,0 +1,6 @@
+{
+  "run_id": "69de1ab27b56",
+  "story_id": "US-271",
+  "timestamp": "2026-04-14T13:18:26Z",
+  "content": "This user story is for a blog post to be added to a content site, likely built with a JavaScript/TypeScript framework like Next.js. The `filesTouch` field points to `site/src/data/blog/posts.ts`, confirming this.\n\nIt has no connection to a Frappe/Python application like `lhdn_payroll_integration`. The concepts of \"blog post,\" \"cheap eats,\" and \"SEO tags\" do not translate to DocTypes, hooks, or Python logic within a payroll system.\n\nTo get a useful technical brief for the Frappe/Python task, please provide the correct user story JSON related to the `lhdn_payroll_integration` app."
+}

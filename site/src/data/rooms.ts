@@ -20,16 +20,17 @@ export interface RoomType {
 
 export const ROOM_TYPES: RoomType[] = [
   {
-    id: "standard-capsule",
-    name: "Standard Capsule Pod",
+    id: "lower-deck-pod",
+    name: "Lower Deck Pod",
     description:
-      "Japanese-style capsule pod with personal curtain, LED reading light, USB charging port, and personal locker.",
+      "Ground-level capsule pod — easy access, no ladder required. Japanese-style with personal curtain, LED reading light, USB charging port, and personal locker.",
     nightlyRate: 35,
     monthlyRate: 594,
     currency: "MYR",
     maxOccupancy: 1,
     totalUnits: 18,
     amenities: [
+      "Ground-level access",
       "Personal curtain",
       "LED reading light",
       "USB charging",
@@ -38,19 +39,19 @@ export const ROOM_TYPES: RoomType[] = [
     ],
   },
   {
-    id: "premium-capsule",
-    name: "Premium Capsule Pod",
+    id: "upper-deck-pod",
+    name: "Upper Deck Pod",
     description:
-      "Larger capsule pod with enhanced privacy, personal power outlet, USB-C fast charging, and premium mattress.",
+      "Elevated capsule pod on the upper bunk — more privacy and less foot traffic. Same Japanese-style comfort with personal curtain, LED reading light, USB charging port, and personal locker.",
     nightlyRate: 45,
     currency: "MYR",
     maxOccupancy: 1,
     totalUnits: 6,
     amenities: [
-      "Enhanced privacy screen",
-      "Personal power outlet",
-      "USB-C fast charging",
-      "Premium mattress",
+      "Elevated upper bunk position",
+      "Personal curtain",
+      "LED reading light",
+      "USB charging",
       "Personal locker",
       "Shared bathroom",
     ],

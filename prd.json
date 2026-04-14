@@ -5864,7 +5864,8 @@
         "Category slug: local-guide"
       ],
       "passes": true,
-      "model": "haiku"
+      "model": "haiku",
+      "_scopeCreep": true
     },
     {
       "id": "US-271",
@@ -5895,7 +5896,8 @@
         "Add tags: [\"budget-food\", \"cheap-eats\", \"johor-bahru\", \"hawker-food\"]"
       ],
       "passes": false,
-      "model": "haiku"
+      "model": "haiku",
+      "last_attempted": "2026-04-14T13:14:18Z"
     },
     {
       "id": "US-272",

@@ -1,6 +1,35 @@
 {
   "stories": [
     {
+      "title": "Create JB News & Updates widget pulling curated RSS feeds",
+      "priority": "medium",
+      "description": "Build a React component fetching recent items from 3+ local news RSS sources and displaying on homepage. Shows titles, publication dates, and source attribution in a compact widget.",
+      "acceptanceCriteria": [
+        "JBNewsWidget component fetches from 3 minimum hardcoded RSS feed URLs (Berita Harian, NST Johor, Astro Awani)",
+        "Displays latest 5 items sorted by publication date descending with title, relative date ('2 hours ago'), source, and link",
+        "Component has graceful error fallback displaying 'Unable to load news' if all RSS fetches fail"
+      ],
+      "technicalNotes": [
+        "File to create: site/src/components/JBNewsWidget.tsx (React component with use client directive)",
+        "File to create: site/lib/news/parseRssFeed.ts (XML parser using fast-xml-parser or cheerio)",
+        "File to modify: site/app/page.tsx (integrate JBNewsWidget on homepage)",
+        "Store feed URLs as constants in site/lib/news/feedSources.ts for maintenance",
+        "Test command: npx vitest run src/components/JBNewsWidget.test.tsx -- --coverage"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "medium",
+      "tags": [],
+      "source": "",
+      "filesTouch": [
+        "site/src/components/JBNewsWidget.tsx",
+        "site/lib/news/parseRssFeed.ts",
+        "site/lib/news/feedSources.ts",
+        "site/app/page.tsx"
+      ],
+      "_source": "ai-example",
+      "passes": false
+    },
+    {
       "title": "[E2E Test] Create blog system with static TypeScript data",
       "priority": "medium",
       "description": "Write end-to-end user flow test for the feature in US-001. Story description: Build a blog system using Next.js App Router. Blog posts are stored as TypeScript objects in /src/data/blog/posts.ts. Each post has: slug, title, excerpt, content (HTML string), date, category, author, readTime, tags, and featured image path. Create /app/blog/page.tsx (listing with cards) and /app/blog/[slug]/page.tsx (article page with full content). Both pages must have proper metadata (title, description, OG tags). Add a BlogCard component at /src/components/BlogCard.tsx.",
@@ -2415,6 +2444,31 @@
       "_source": "test-story",
       "_testType": "regression",
       "_forStoryId": "US-269"
+    },
+    {
+      "title": "[Regression Test] Blog post: Taman Pelangi Neighborhood Guide - Food, Shopping, and Things to Do (20",
+      "priority": "medium",
+      "description": "Write regression test to guard against future breakage of US-270. Story description: Comprehensive neighborhood guide for Taman Pelangi - the area where Pelangi Capsule Hostel is located. Targets searches for 'Taman Pelangi Johor Bahru' and positions Pelangi as the ideal base. Covers hawker centers, shops, transport links, and hidden gems within walking distance.",
+      "acceptanceCriteria": [
+        "Regression test covers core observable behaviour of US-270",
+        "Test would reliably fail if the US-270 feature were removed or broken"
+      ],
+      "technicalNotes": [
+        "Source files from US-270: site/src/data/blog/posts.ts",
+        "Run: uv run pytest tests/ -k us_270 -v"
+      ],
+      "dependencies": [
+        "US-270"
+      ],
+      "estimatedComplexity": "medium",
+      "tags": [
+        "regression",
+        "auto-generated"
+      ],
+      "source": "",
+      "_source": "test-story",
+      "_testType": "regression",
+      "_forStoryId": "US-270"
     }
   ]
 }
