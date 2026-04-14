@@ -2913,6 +2913,32 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[smoke] Add React 19.2 cacheSignal() for Server Component fetch cleanup",
+      "description": "Auto-generated smoke test from US-162",
+      "from_story": "US-162",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-225",
+      "created_ts": "2026-04-14T04:56:07Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
+    },
+    {
+      "title": "[smoke] Add CSS print stylesheet for booking confirmation and receipt pages",
+      "description": "Auto-generated smoke test from US-178",
+      "from_story": "US-178",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-226",
+      "created_ts": "2026-04-14T04:56:08Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }
