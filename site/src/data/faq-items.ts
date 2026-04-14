@@ -65,10 +65,6 @@ export const faqItems: FaqItem[] = [
     answer: "Walk-ins are welcome at Pelangi Capsule Hostel subject to availability, but booking in advance is recommended — especially on weekends and Malaysian public holidays when occupancy is highest. Book directly on our website at pelangicapsulehostel.com/book or message us on WhatsApp at +60 12-708 8789 to secure your pod. Direct bookings always get the best rate with no middleman fees.",
   },
   {
-    question: "Is Pelangi Capsule Hostel registered with MOTAC?",
-    answer: "Yes, Pelangi Capsule Hostel is registered with the Ministry of Tourism, Arts and Culture Malaysia (MOTAC). This means the hostel meets all Malaysian government standards for licensed accommodation premises, including safety, hygiene, and guest welfare requirements. MOTAC registration is required for all legal accommodation operators in Malaysia.",
-  },
-  {
     question: "What is the Malaysia Tourism Tax (TTx)?",
     answer: "The Tourism Tax (TTx) of RM10 per room per night is a government-mandated charge under the Tourism Tax Act 2017. It applies to all licensed accommodation premises in Malaysia and is collected on behalf of the Royal Malaysian Customs Department. This tax is separate from the room rate and will be added to your bill at check-in. For more details, visit the official MyTTx portal at myttx.customs.gov.my.",
   },
