@@ -3921,7 +3921,7 @@
       "_skipped": true,
       "_skipReason": "Consistently oversized diff (12854 lines, limit 500)",
       "_scopeCreep": true,
-      "last_attempted": "2026-04-14T06:46:28Z"
+      "last_attempted": "2026-04-14T06:43:03Z"
     },
     {
       "id": "US-174",
@@ -3972,9 +3972,7 @@
       "passes": true,
       "model": "haiku",
       "_skipped": true,
-      "_skipReason": "Requires WhatsApp Business Platform Cloud API credentials — not implementable in this codebase",
-      "_passedCommit": "15772cddb4f539797309e8e5a56bd3f47598ba31",
-      "_scopeCreep": true
+      "_skipReason": "Requires WhatsApp Business Platform Cloud API credentials — not implementable in this codebase"
     },
     {
       "id": "US-176",
@@ -4000,9 +3998,7 @@
       "passes": true,
       "model": "sonnet",
       "_skipped": true,
-      "_skipReason": "Requires external CI setup for schema.org validator — not frontend code",
-      "_passedCommit": "15772cddb4f539797309e8e5a56bd3f47598ba31",
-      "_scopeCreep": true
+      "_skipReason": "Requires external CI setup for schema.org validator — not frontend code"
     },
     {
       "id": "US-177",
@@ -4565,9 +4561,7 @@
       "passes": true,
       "model": "haiku",
       "_skipped": true,
-      "_skipReason": "Requires Google Search Console OAuth setup — not implementable in this codebase",
-      "_passedCommit": "15772cddb4f539797309e8e5a56bd3f47598ba31",
-      "_scopeCreep": true
+      "_skipReason": "Requires Google Search Console OAuth setup — not implementable in this codebase"
     },
     {
       "id": "US-203",
@@ -4784,11 +4778,7 @@
       "dependencies": [],
       "estimatedComplexity": "small",
       "passes": true,
-      "model": "haiku",
-      "last_attempted": "2026-04-14T07:47:17Z",
-      "_phaseI": {
-        "diagnosisBlock": "## Current State\nThe implementation for US-216 is **mostly complete**:\n- ✅ ReportContentButton component exists and is integrated into Reviews.tsx\n- ✅ Safety Guidelines page (`/safety-guidelines`) is published with comprehensive content\n- ✅ Terms & Conditions page has section 11 documenting Online Safety Act 2025 compliance\n- ✅ Designated email contact for safety reports: `safety@pelangicapsulehostel.com`\n- ✅ Report mechanism is accessible within two clicks from UGC\n- ❌ Testimonials component exists but is orphaned (not used anywhere) and lacks ReportContentButton\n- ❓ Legal review task (CASP vs ASP categorization) is not a technical task\n\n## Problem Identified\nThe Testimonials.tsx component was created but is never imported into the homepage or any other page. Since it's not actually used/displayed to users, it doesn't need the ReportContentButton. However, the story may have failed before because the implementation was incomplete or there was an issue with verification.\n\n## Planned Changes\n\n<plan>\n{\n  \"files_to_create\": [],\n  \"files_to_modify\": [\n    \"site/src/components/Testimonials.tsx\",\n    \"site/src/app/terms/page.tsx\"\n  ],\n  \"functions_to_add\": [],\n  \"estimated_loc\": 20\n}\n</plan>\n\n**Changes:**\n1. **Add ReportContentButton to Testimonials.tsx** - Add the report button to testimonial cards for consistency (in case it's ever used in the future)\n2. **Verify Terms & Conditions section 11** - Ensure it meets all legal requirements and is clearly documenting the platform scope\n3. **Run build and type checks** - Ensure everything compiles and meets acceptance criteria\n\nLet me execute these changes:\nLet me verify the complete implementation and stage the untracked files:\nLet me verify the implementation is complete by checking all the files needed:\n## Diagnosis"
-      }
+      "model": "haiku"
     },
     {
       "id": "US-217",
@@ -4878,13 +4868,7 @@
       "dependencies": [],
       "estimatedComplexity": "small",
       "passes": true,
-      "model": "sonnet",
-      "_failureReason": "oversized_diff: produced 1559 lines but limit is 500. Keep total insertions+deletions under 500 lines.",
-      "_antiPatterns": [
-        "oversized_diff: produced 1559 lines but limit is 500. Keep total insertions+deletions under 500 lines."
-      ],
-      "last_attempted": "2026-04-14T08:19:56Z",
-      "_scopeCreep": true
+      "model": "sonnet"
     },
     {
       "id": "US-226",
@@ -5041,9 +5025,7 @@
       "passes": true,
       "model": "haiku",
       "_skipped": true,
-      "_skipReason": "Requires Vercel platform config for HTTP 103 Early Hints — not code",
-      "_passedCommit": "15772cddb4f539797309e8e5a56bd3f47598ba31",
-      "_scopeCreep": true
+      "_skipReason": "Requires Vercel platform config for HTTP 103 Early Hints — not code"
     },
     {
       "id": "US-233",
@@ -5132,8 +5114,7 @@
       "dependencies": [],
       "estimatedComplexity": "medium",
       "passes": true,
-      "model": "haiku",
-      "last_attempted": "2026-04-14T08:34:26Z"
+      "model": "haiku"
     },
     {
       "id": "US-242",
@@ -5365,12 +5346,7 @@
         "Keep content HTML under 5000 characters"
       ],
       "passes": true,
-      "model": "haiku",
-      "last_attempted": "2026-04-14T09:19:06Z",
-      "_phaseI": {
-        "diagnosisBlock": "## Current State\n\nThe pelangi-website project has a blog system with structured blog posts stored in `site/src/data/blog/posts.ts`. The file exports a `BlogPost` interface and an array of blog posts with metadata (slug, title, excerpt, date, category, etc.) and HTML content. Reading time is computed automatically from word count.\n\n## Problem Identified\n\nUS-248 requires adding a new blog post about Lalamove Driver Guide for Malaysia/JB. This post needs to cover:\n- Registration steps for becoming a Lalamove driver\n- Vehicle types, earnings (RM25-80/job)\n- Flexibility benefits\n- Comparison with Foodpanda/Grab\n- Specific requirements: slug `lalamove-driver-malaysia-jb-guide`, category `Career & Work`, date `2026-04-14`, `5 min read`\n- HTML content under 5000 characters\n\n## Planned Changes\n\n<plan>\n{\n  \"files_to_create\": [],\n  \"files_to_modify\": [\"site/src/data/blog/posts.ts\"],\n  \"functions_to_add\": [],\n  \"estimated_loc\": 120\n}\n</plan>\n\nNow implementing the blog post. I'll add the new post to the `rawPosts` array with all required fields and appropriate content about Lalamove driver guide for Malaysia.\n## ✅ Story US-248 Completed"
-      },
-      "_scopeCreep": true
+      "model": "haiku"
     },
     {
       "id": "US-249",
@@ -5462,9 +5438,67 @@
         "Keep content HTML under 5000 characters"
       ],
       "passes": true,
-      "model": "haiku",
-      "last_attempted": "2026-04-14T09:31:47Z",
-      "_scopeCreep": true
+      "model": "haiku"
+    },
+    {
+      "id": "US-252",
+      "title": "Blog post: JB Shopping Guide — Where to Find Cheap Deals in Johor Bahru",
+      "description": "Shopping guide: AEON Tebrau, Paradigm Mall, Pelangi Leisure Mall, KSL City, Larkin wet market, Pasar Malam. What to buy, price comparison JB vs Singapore.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "backpacker",
+        "tourist",
+        "shopping"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'jb-shopping-guide-cheap-deals', category 'Things To Do'",
+        "Price comparison section",
+        "readTime '6 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 5000 characters"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-253",
+      "title": "Blog post: 5 Easy Day Trips from Johor Bahru Under 2 Hours (2026)",
+      "description": "5 day trips from JB: Singapore (30min), Desaru Coast (1hr), Kota Tinggi Waterfalls (45min), Kukup (1hr), Gunung Pulai (30min). Transport, cost, highlights each.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "backpacker",
+        "tourist",
+        "day-trips"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'day-trips-from-johor-bahru', category 'Travel Tips'",
+        "5 destinations covered",
+        "readTime '7 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 5000 characters"
+      ],
+      "passes": false,
+      "model": "haiku"
     },
     {
       "id": "US-254",
@@ -5495,6 +5529,103 @@
         "npm run build passes"
       ],
       "passes": true,
+      "model": "haiku"
+    },
+    {
+      "id": "US-255",
+      "title": "Add BreadcrumbList JSON-LD schema to blog post pages",
+      "description": "Add BreadcrumbList to site/src/app/blog/[slug]/page.tsx: Home > Blog > Category > Post Title, dynamically generated from post data.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "geo",
+        "seo",
+        "schema",
+        "structured-data"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/app/blog/[slug]/page.tsx"
+      ],
+      "acceptanceCriteria": [
+        "BreadcrumbList JSON-LD in blog [slug] page",
+        "4-level breadcrumb with URLs",
+        "Valid JSON",
+        "npm run build passes"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-256",
+      "title": "Update llms.txt with job seeker, visa run, and gig economy content sections",
+      "description": "Update site/src/app/llms.txt/route.ts to add sections for: Malaysian job seekers, visa run content, gig economy guides. Add /visa-run and /singapore-jobs to Site Pages.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "geo",
+        "seo",
+        "llms-txt"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/app/llms.txt/route.ts"
+      ],
+      "acceptanceCriteria": [
+        "Job seeker content section added",
+        "Visa run section added",
+        "Site Pages updated with /visa-run and /singapore-jobs",
+        "npm run build passes"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-257",
+      "title": "Add FAQ schema to /faq page and expand with job seeker questions",
+      "description": "Add FAQPage JSON-LD to site/src/app/faq/page.tsx. New Q&As: luggage storage while working SG, weekly rates, distance to JB Sentral, ironing facilities.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "geo",
+        "seo",
+        "schema",
+        "faq"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/app/faq/page.tsx"
+      ],
+      "acceptanceCriteria": [
+        "FAQPage JSON-LD in /faq page with 6+ Q&A pairs",
+        "New job-seeker FAQ entries displayed",
+        "Valid JSON-LD",
+        "npm run build passes"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-258",
+      "title": "Add Malaysian workers resource section to /guide page",
+      "description": "Add 'For Malaysians Working In or Near Singapore' section to site/src/app/guide/page.tsx with links to /singapore-jobs, /visa-run, commuter guide, gig jobs posts.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "geo",
+        "seo",
+        "internal-linking"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/app/guide/page.tsx"
+      ],
+      "acceptanceCriteria": [
+        "New section on /guide page with 4+ descriptive links",
+        "Tailwind styled (card or bordered section)",
+        "npm run build passes"
+      ],
+      "passes": false,
       "model": "haiku"
     },
     {
@@ -5536,6 +5667,48 @@
       "_passedCommit": "d78bd9f5aa293cbd8cea28c97a110470cbb9a136"
     },
     {
+      "id": "US-263",
+      "title": "Create blog post metadata configuration file for reuse across routes",
+      "priority": "medium",
+      "description": "Extract blog configuration (site name, author, social profiles) into dedicated TypeScript files to support DRY principle and enable consistent metadata across /feed.xml, blog layout, and components.",
+      "acceptanceCriteria": [
+        "Create `/app/blog/config.ts` exporting blogConfig object with title, description, authorName, authorEmail, and socialLinks array",
+        "Create `/app/blog/constants.ts` exporting BLOG_CATEGORIES (string array) and BLOG_AUTHORS (Record of author profiles)",
+        "Import and use blogConfig in both `/app/feed.xml/route.ts` (RSS generation) and blog layout component"
+      ],
+      "technicalNotes": [
+        "File to create: app/blog/config.ts with interface BlogConfig { title: string; description: string; authorName: string; socialLinks: { platform: string; url: string }[] }",
+        "File to modify: app/feed.xml/route.ts to import blogConfig and use blogConfig.title, blogConfig.authorName in RSS XML generation",
+        "Test command: npm test -- app/blog/config.test.ts --run (verify config exports are defined and types are correct)"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "_source": "ai-example",
+      "model": "haiku"
+    },
+    {
+      "id": "US-264",
+      "title": "Implement Zod schema validation for blog post frontmatter",
+      "priority": "medium",
+      "description": "Add runtime validation for blog post metadata using Zod to catch schema errors at build time before feed generation or page rendering.",
+      "acceptanceCriteria": [
+        "Create `/app/blog/schema.ts` exporting BlogPostSchema (Zod object) with required fields: id, slug, title, date (ISO 8601), tags (string array), excerpt",
+        "Create `/app/blog/lib/load-validated-posts.ts` with loadAndValidatePosts() function that parses and validates all posts, throwing descriptive error on invalid data",
+        "Update `/app/blog/posts.ts` to call loadAndValidatePosts() on import, ensuring all posts are validated at runtime"
+      ],
+      "technicalNotes": [
+        "File to create: app/blog/schema.ts with export const BlogPostSchema = z.object({ id: z.string().min(1), slug: z.string().regex(/^[a-z0-9-]+$/), title: z.string(), date: z.coerce.date(), tags: z.array(z.string()), excerpt: z.string() })",
+        "File to create: app/blog/lib/load-validated-posts.ts exporting loadAndValidatePosts(posts: unknown[]): BlogPost[] { return posts.map(p => BlogPostSchema.parse(p)) }",
+        "Test command: npm test -- app/blog/schema.test.ts --run (test with valid posts, invalid dates, missing fields)"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "_source": "ai-example",
+      "model": "sonnet"
+    },
+    {
       "id": "US-265",
       "title": "Implement RSS auto-discovery link tag in head and create JSON Feed 1.1 endpoint",
       "priority": "high",
@@ -5560,66 +5733,47 @@
     },
     {
       "id": "US-266",
-      "title": "Implement Related Blog Posts Widget with IsSimilarTo Schema Linking",
+      "title": "Implement client-side blog post search with Fuse.js and live filtering",
       "priority": "medium",
-      "description": "Add a 'You Might Also Like' widget on blog article pages displaying 3 most-relevant related posts. Relevance determined by shared tags and categories. Each related post card embeds IsSimilarTo JSON-LD linking back to the current article for bidirectional SEO.",
+      "description": "Add `/blog/search` page and BlogSearch component using Fuse.js for real-time blog post search by title, description, and tags. Support URL query parameters, debounced input, and result highlighting.",
       "acceptanceCriteria": [
-        "RelatedPosts component queries blog index, filters by matching tags/categories, ranks by match count, returns top 3; cards show post title, excerpt, publish date",
-        "Each related post <a> includes data-relationship='similar' and embeds IsSimilarTo JSON-LD in parent schema",
-        "Playwright test confirms widget displays on 3 sample blog post pages and schema validation passes"
+        "Search page at `/blog/search` accepts `?q=query` param and pre-populates input; displays results matching query",
+        "Fuse.js searches posts by title (weight 2), description (weight 1), and tags (weight 1) with threshold 0.3",
+        "Search input is debounced to 300ms; results update in <50ms even with 50+ posts",
+        "Pressing Enter or clicking search button updates URL to `/blog/search?q=...` and displays results"
       ],
       "technicalNotes": [
-        "File to create: app/components/RelatedPosts.tsx (BlogPost[] filter by tags, sort by match count, render cards with schema)",
-        "File to create: lib/blog-search.ts (function searchRelatedPosts(currentPostTags, currentPostCategories) returning sorted BlogPost[])",
-        "File to modify: app/(website)/blog/[slug]/page.tsx (import and render <RelatedPosts /> above comments section)",
-        "Test command: vitest run lib/blog-search.test.ts (search relevance ranking, tie-breaking logic)"
+        "File to create: site/src/app/blog/search/page.tsx as 'use client' component",
+        "File to create: site/src/lib/blog-search.ts with initializeFuse(posts) and search(query) functions",
+        "Add fuse.js package to site/package.json dependencies",
+        "Test command: npm test -- site/tests/lib/blog-search.test.ts"
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
       "passes": true,
       "_source": "ai-example",
-      "model": "sonnet",
-      "last_attempted": "2026-04-14T10:25:04Z",
-      "_failureReason": "oversized_diff: produced 7806 lines but limit is 500. Keep total insertions+deletions under 500 lines.",
-      "_antiPatterns": [
-        "oversized_diff: produced 7806 lines but limit is 500. Keep total insertions+deletions under 500 lines."
-      ],
-      "_passedCommit": "fa167905447c7514150d74a232943413fa30d4e4",
-      "_scopeCreep": true
+      "model": "haiku"
     },
     {
       "id": "US-267",
-      "title": "Blog post: Laksa Johor Guide - Authentic Dish, Where to Eat, and What Makes It Unique (2026)",
-      "description": "Deep-dive guide on Laksa Johor - a creamy coconut-based noodle dish unique to Johor. Covers history, what makes it different from other laksa variants, and the best stalls in JB. Targets high-intent food tourists searching for specialty Johor dishes.",
-      "priority": "high",
-      "estimatedComplexity": "medium",
-      "tags": [
-        "content",
-        "geo",
-        "seo",
-        "food-guide"
-      ],
-      "dependencies": [],
-      "filesTouch": [
-        "site/src/data/blog/posts.ts"
-      ],
+      "title": "Add Fuse.js-powered blog search component with real-time keystroke filtering",
+      "priority": "medium",
+      "description": "Create searchable blog directory component that filters posts in real-time as users type, indexed by title, tags, and keywords. Enables discovery without server round-trip; supports long-tail SEO queries.",
       "acceptanceCriteria": [
-        "Slug 'laksa-johor-guide-best-places-to-eat', category 'Food & Drink'",
-        "Covers: what is Laksa Johor, key ingredients (coconut milk, thick spaghetti, bean sprouts), top 3-5 stalls",
-        "Include FAQ section: Is Laksa Johor different from Laksa Lemak?",
-        "readTime '6 min read', date '2026-04-15'",
-        "npm run build passes"
+        "Create site/src/components/BlogSearch.tsx React component with <input> onChange handler and results <ul>; Fuse.js initialized with keys ['title', 'tags', 'keywords']; typing 'visa' filters and displays visa-related posts in <100ms",
+        "Component handles empty query (shows all posts), no results (displays 'No posts found'), and cleared input (resets to all); built with useState/useEffect hooks",
+        "npm run vitest -- BlogSearch.test.tsx passes tests for filtering behavior, keystroke handling, and empty state rendering"
       ],
       "technicalNotes": [
-        "Keep content HTML under 6000 characters",
-        "Add tags: [\"food\", \"johor\", \"specialty-dish\", \"jb-guide\"]",
-        "Category slug: food-drink"
+        "File to edit: site/src/components/BlogSearch.tsx (useState for query + results; useEffect for Fuse instance; use useMemo for post list)",
+        "Test command: npm run vitest -- BlogSearch.test.tsx -t 'filters posts by query' -t 'handles empty results'",
+        "Dependency: npm list fuse.js (verify v7.0+ installed; if not: npm install fuse.js@7)"
       ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
       "passes": true,
-      "model": "haiku",
-      "last_attempted": "2026-04-14T10:47:53Z",
-      "_passedCommit": "847c36a5dd3e380d1cfdc47000d17fc32ddec7f7",
-      "_scopeCreep": true
+      "_source": "ai-example",
+      "model": "haiku"
     },
     {
       "id": "US-268",
@@ -5648,9 +5802,7 @@
         "Keep content HTML under 6000 characters",
         "Add tags: [\"food\", \"johor\", \"specialty-dish\", \"heritage-food\"]"
       ],
-      "passes": true,
-      "model": "haiku",
-      "last_attempted": "2026-04-14T11:30:00Z"
+      "passes": true
     },
     {
       "id": "US-269",
@@ -5680,13 +5832,7 @@
         "Keep content HTML under 6000 characters",
         "Add tags: [\"food\", \"breakfast\", \"roti-canai\", \"taman-pelangi\", \"budget-food\"]"
       ],
-      "passes": true,
-      "model": "haiku",
-      "_failureReason": "oversized_diff: produced 2490 lines but limit is 500. Keep total insertions+deletions under 500 lines.",
-      "_antiPatterns": [
-        "oversized_diff: produced 2490 lines but limit is 500. Keep total insertions+deletions under 500 lines."
-      ],
-      "last_attempted": "2026-04-14T11:57:32Z"
+      "passes": true
     },
     {
       "id": "US-270",
@@ -5717,7 +5863,7 @@
         "Add tags: [\"taman-pelangi\", \"jb-neighborhood\", \"local-guide\", \"johor-bahru\"]",
         "Category slug: local-guide"
       ],
-      "passes": false,
+      "passes": true,
       "model": "haiku"
     },
     {

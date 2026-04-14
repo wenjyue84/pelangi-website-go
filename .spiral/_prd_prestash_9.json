@@ -3921,7 +3921,7 @@
       "_skipped": true,
       "_skipReason": "Consistently oversized diff (12854 lines, limit 500)",
       "_scopeCreep": true,
-      "last_attempted": "2026-04-14T06:46:28Z"
+      "last_attempted": "2026-04-14T06:43:03Z"
     },
     {
       "id": "US-174",
@@ -3972,9 +3972,7 @@
       "passes": true,
       "model": "haiku",
       "_skipped": true,
-      "_skipReason": "Requires WhatsApp Business Platform Cloud API credentials — not implementable in this codebase",
-      "_passedCommit": "15772cddb4f539797309e8e5a56bd3f47598ba31",
-      "_scopeCreep": true
+      "_skipReason": "Requires WhatsApp Business Platform Cloud API credentials — not implementable in this codebase"
     },
     {
       "id": "US-176",
@@ -4000,9 +3998,7 @@
       "passes": true,
       "model": "sonnet",
       "_skipped": true,
-      "_skipReason": "Requires external CI setup for schema.org validator — not frontend code",
-      "_passedCommit": "15772cddb4f539797309e8e5a56bd3f47598ba31",
-      "_scopeCreep": true
+      "_skipReason": "Requires external CI setup for schema.org validator — not frontend code"
     },
     {
       "id": "US-177",
@@ -4565,9 +4561,7 @@
       "passes": true,
       "model": "haiku",
       "_skipped": true,
-      "_skipReason": "Requires Google Search Console OAuth setup — not implementable in this codebase",
-      "_passedCommit": "15772cddb4f539797309e8e5a56bd3f47598ba31",
-      "_scopeCreep": true
+      "_skipReason": "Requires Google Search Console OAuth setup — not implementable in this codebase"
     },
     {
       "id": "US-203",
@@ -4784,11 +4778,7 @@
       "dependencies": [],
       "estimatedComplexity": "small",
       "passes": true,
-      "model": "haiku",
-      "last_attempted": "2026-04-14T07:47:17Z",
-      "_phaseI": {
-        "diagnosisBlock": "## Current State\nThe implementation for US-216 is **mostly complete**:\n- ✅ ReportContentButton component exists and is integrated into Reviews.tsx\n- ✅ Safety Guidelines page (`/safety-guidelines`) is published with comprehensive content\n- ✅ Terms & Conditions page has section 11 documenting Online Safety Act 2025 compliance\n- ✅ Designated email contact for safety reports: `safety@pelangicapsulehostel.com`\n- ✅ Report mechanism is accessible within two clicks from UGC\n- ❌ Testimonials component exists but is orphaned (not used anywhere) and lacks ReportContentButton\n- ❓ Legal review task (CASP vs ASP categorization) is not a technical task\n\n## Problem Identified\nThe Testimonials.tsx component was created but is never imported into the homepage or any other page. Since it's not actually used/displayed to users, it doesn't need the ReportContentButton. However, the story may have failed before because the implementation was incomplete or there was an issue with verification.\n\n## Planned Changes\n\n<plan>\n{\n  \"files_to_create\": [],\n  \"files_to_modify\": [\n    \"site/src/components/Testimonials.tsx\",\n    \"site/src/app/terms/page.tsx\"\n  ],\n  \"functions_to_add\": [],\n  \"estimated_loc\": 20\n}\n</plan>\n\n**Changes:**\n1. **Add ReportContentButton to Testimonials.tsx** - Add the report button to testimonial cards for consistency (in case it's ever used in the future)\n2. **Verify Terms & Conditions section 11** - Ensure it meets all legal requirements and is clearly documenting the platform scope\n3. **Run build and type checks** - Ensure everything compiles and meets acceptance criteria\n\nLet me execute these changes:\nLet me verify the complete implementation and stage the untracked files:\nLet me verify the implementation is complete by checking all the files needed:\n## Diagnosis"
-      }
+      "model": "haiku"
     },
     {
       "id": "US-217",
@@ -4878,13 +4868,7 @@
       "dependencies": [],
       "estimatedComplexity": "small",
       "passes": true,
-      "model": "sonnet",
-      "_failureReason": "oversized_diff: produced 1559 lines but limit is 500. Keep total insertions+deletions under 500 lines.",
-      "_antiPatterns": [
-        "oversized_diff: produced 1559 lines but limit is 500. Keep total insertions+deletions under 500 lines."
-      ],
-      "last_attempted": "2026-04-14T08:19:56Z",
-      "_scopeCreep": true
+      "model": "sonnet"
     },
     {
       "id": "US-226",
@@ -5041,9 +5025,7 @@
       "passes": true,
       "model": "haiku",
       "_skipped": true,
-      "_skipReason": "Requires Vercel platform config for HTTP 103 Early Hints — not code",
-      "_passedCommit": "15772cddb4f539797309e8e5a56bd3f47598ba31",
-      "_scopeCreep": true
+      "_skipReason": "Requires Vercel platform config for HTTP 103 Early Hints — not code"
     },
     {
       "id": "US-233",
@@ -5132,8 +5114,7 @@
       "dependencies": [],
       "estimatedComplexity": "medium",
       "passes": true,
-      "model": "haiku",
-      "last_attempted": "2026-04-14T08:34:26Z"
+      "model": "haiku"
     },
     {
       "id": "US-242",
@@ -5365,12 +5346,7 @@
         "Keep content HTML under 5000 characters"
       ],
       "passes": true,
-      "model": "haiku",
-      "last_attempted": "2026-04-14T09:19:06Z",
-      "_phaseI": {
-        "diagnosisBlock": "## Current State\n\nThe pelangi-website project has a blog system with structured blog posts stored in `site/src/data/blog/posts.ts`. The file exports a `BlogPost` interface and an array of blog posts with metadata (slug, title, excerpt, date, category, etc.) and HTML content. Reading time is computed automatically from word count.\n\n## Problem Identified\n\nUS-248 requires adding a new blog post about Lalamove Driver Guide for Malaysia/JB. This post needs to cover:\n- Registration steps for becoming a Lalamove driver\n- Vehicle types, earnings (RM25-80/job)\n- Flexibility benefits\n- Comparison with Foodpanda/Grab\n- Specific requirements: slug `lalamove-driver-malaysia-jb-guide`, category `Career & Work`, date `2026-04-14`, `5 min read`\n- HTML content under 5000 characters\n\n## Planned Changes\n\n<plan>\n{\n  \"files_to_create\": [],\n  \"files_to_modify\": [\"site/src/data/blog/posts.ts\"],\n  \"functions_to_add\": [],\n  \"estimated_loc\": 120\n}\n</plan>\n\nNow implementing the blog post. I'll add the new post to the `rawPosts` array with all required fields and appropriate content about Lalamove driver guide for Malaysia.\n## ✅ Story US-248 Completed"
-      },
-      "_scopeCreep": true
+      "model": "haiku"
     },
     {
       "id": "US-249",
@@ -5462,9 +5438,67 @@
         "Keep content HTML under 5000 characters"
       ],
       "passes": true,
-      "model": "haiku",
-      "last_attempted": "2026-04-14T09:31:47Z",
-      "_scopeCreep": true
+      "model": "haiku"
+    },
+    {
+      "id": "US-252",
+      "title": "Blog post: JB Shopping Guide — Where to Find Cheap Deals in Johor Bahru",
+      "description": "Shopping guide: AEON Tebrau, Paradigm Mall, Pelangi Leisure Mall, KSL City, Larkin wet market, Pasar Malam. What to buy, price comparison JB vs Singapore.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "backpacker",
+        "tourist",
+        "shopping"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'jb-shopping-guide-cheap-deals', category 'Things To Do'",
+        "Price comparison section",
+        "readTime '6 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 5000 characters"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-253",
+      "title": "Blog post: 5 Easy Day Trips from Johor Bahru Under 2 Hours (2026)",
+      "description": "5 day trips from JB: Singapore (30min), Desaru Coast (1hr), Kota Tinggi Waterfalls (45min), Kukup (1hr), Gunung Pulai (30min). Transport, cost, highlights each.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "backpacker",
+        "tourist",
+        "day-trips"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'day-trips-from-johor-bahru', category 'Travel Tips'",
+        "5 destinations covered",
+        "readTime '7 min read', date '2026-04-14'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 5000 characters"
+      ],
+      "passes": false,
+      "model": "haiku"
     },
     {
       "id": "US-254",
@@ -5495,6 +5529,103 @@
         "npm run build passes"
       ],
       "passes": true,
+      "model": "haiku"
+    },
+    {
+      "id": "US-255",
+      "title": "Add BreadcrumbList JSON-LD schema to blog post pages",
+      "description": "Add BreadcrumbList to site/src/app/blog/[slug]/page.tsx: Home > Blog > Category > Post Title, dynamically generated from post data.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "geo",
+        "seo",
+        "schema",
+        "structured-data"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/app/blog/[slug]/page.tsx"
+      ],
+      "acceptanceCriteria": [
+        "BreadcrumbList JSON-LD in blog [slug] page",
+        "4-level breadcrumb with URLs",
+        "Valid JSON",
+        "npm run build passes"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-256",
+      "title": "Update llms.txt with job seeker, visa run, and gig economy content sections",
+      "description": "Update site/src/app/llms.txt/route.ts to add sections for: Malaysian job seekers, visa run content, gig economy guides. Add /visa-run and /singapore-jobs to Site Pages.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "geo",
+        "seo",
+        "llms-txt"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/app/llms.txt/route.ts"
+      ],
+      "acceptanceCriteria": [
+        "Job seeker content section added",
+        "Visa run section added",
+        "Site Pages updated with /visa-run and /singapore-jobs",
+        "npm run build passes"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-257",
+      "title": "Add FAQ schema to /faq page and expand with job seeker questions",
+      "description": "Add FAQPage JSON-LD to site/src/app/faq/page.tsx. New Q&As: luggage storage while working SG, weekly rates, distance to JB Sentral, ironing facilities.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "geo",
+        "seo",
+        "schema",
+        "faq"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/app/faq/page.tsx"
+      ],
+      "acceptanceCriteria": [
+        "FAQPage JSON-LD in /faq page with 6+ Q&A pairs",
+        "New job-seeker FAQ entries displayed",
+        "Valid JSON-LD",
+        "npm run build passes"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-258",
+      "title": "Add Malaysian workers resource section to /guide page",
+      "description": "Add 'For Malaysians Working In or Near Singapore' section to site/src/app/guide/page.tsx with links to /singapore-jobs, /visa-run, commuter guide, gig jobs posts.",
+      "priority": "medium",
+      "estimatedComplexity": "small",
+      "tags": [
+        "geo",
+        "seo",
+        "internal-linking"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/app/guide/page.tsx"
+      ],
+      "acceptanceCriteria": [
+        "New section on /guide page with 4+ descriptive links",
+        "Tailwind styled (card or bordered section)",
+        "npm run build passes"
+      ],
+      "passes": false,
       "model": "haiku"
     },
     {
@@ -5536,6 +5667,48 @@
       "_passedCommit": "d78bd9f5aa293cbd8cea28c97a110470cbb9a136"
     },
     {
+      "id": "US-263",
+      "title": "Create blog post metadata configuration file for reuse across routes",
+      "priority": "medium",
+      "description": "Extract blog configuration (site name, author, social profiles) into dedicated TypeScript files to support DRY principle and enable consistent metadata across /feed.xml, blog layout, and components.",
+      "acceptanceCriteria": [
+        "Create `/app/blog/config.ts` exporting blogConfig object with title, description, authorName, authorEmail, and socialLinks array",
+        "Create `/app/blog/constants.ts` exporting BLOG_CATEGORIES (string array) and BLOG_AUTHORS (Record of author profiles)",
+        "Import and use blogConfig in both `/app/feed.xml/route.ts` (RSS generation) and blog layout component"
+      ],
+      "technicalNotes": [
+        "File to create: app/blog/config.ts with interface BlogConfig { title: string; description: string; authorName: string; socialLinks: { platform: string; url: string }[] }",
+        "File to modify: app/feed.xml/route.ts to import blogConfig and use blogConfig.title, blogConfig.authorName in RSS XML generation",
+        "Test command: npm test -- app/blog/config.test.ts --run (verify config exports are defined and types are correct)"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "_source": "ai-example",
+      "model": "haiku"
+    },
+    {
+      "id": "US-264",
+      "title": "Implement Zod schema validation for blog post frontmatter",
+      "priority": "medium",
+      "description": "Add runtime validation for blog post metadata using Zod to catch schema errors at build time before feed generation or page rendering.",
+      "acceptanceCriteria": [
+        "Create `/app/blog/schema.ts` exporting BlogPostSchema (Zod object) with required fields: id, slug, title, date (ISO 8601), tags (string array), excerpt",
+        "Create `/app/blog/lib/load-validated-posts.ts` with loadAndValidatePosts() function that parses and validates all posts, throwing descriptive error on invalid data",
+        "Update `/app/blog/posts.ts` to call loadAndValidatePosts() on import, ensuring all posts are validated at runtime"
+      ],
+      "technicalNotes": [
+        "File to create: app/blog/schema.ts with export const BlogPostSchema = z.object({ id: z.string().min(1), slug: z.string().regex(/^[a-z0-9-]+$/), title: z.string(), date: z.coerce.date(), tags: z.array(z.string()), excerpt: z.string() })",
+        "File to create: app/blog/lib/load-validated-posts.ts exporting loadAndValidatePosts(posts: unknown[]): BlogPost[] { return posts.map(p => BlogPostSchema.parse(p)) }",
+        "Test command: npm test -- app/blog/schema.test.ts --run (test with valid posts, invalid dates, missing fields)"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": false,
+      "_source": "ai-example",
+      "model": "sonnet"
+    },
+    {
       "id": "US-265",
       "title": "Implement RSS auto-discovery link tag in head and create JSON Feed 1.1 endpoint",
       "priority": "high",
@@ -5560,30 +5733,476 @@
     },
     {
       "id": "US-266",
-      "title": "Implement Related Blog Posts Widget with IsSimilarTo Schema Linking",
+      "title": "Implement client-side blog post search with Fuse.js and live filtering",
       "priority": "medium",
-      "description": "Add a 'You Might Also Like' widget on blog article pages displaying 3 most-relevant related posts. Relevance determined by shared tags and categories. Each related post card embeds IsSimilarTo JSON-LD linking back to the current article for bidirectional SEO.",
+      "description": "Add `/blog/search` page and BlogSearch component using Fuse.js for real-time blog post search by title, description, and tags. Support URL query parameters, debounced input, and result highlighting.",
       "acceptanceCriteria": [
-        "RelatedPosts component queries blog index, filters by matching tags/categories, ranks by match count, returns top 3; cards show post title, excerpt, publish date",
-        "Each related post <a> includes data-relationship='similar' and embeds IsSimilarTo JSON-LD in parent schema",
-        "Playwright test confirms widget displays on 3 sample blog post pages and schema validation passes"
+        "Search page at `/blog/search` accepts `?q=query` param and pre-populates input; displays results matching query",
+        "Fuse.js searches posts by title (weight 2), description (weight 1), and tags (weight 1) with threshold 0.3",
+        "Search input is debounced to 300ms; results update in <50ms even with 50+ posts",
+        "Pressing Enter or clicking search button updates URL to `/blog/search?q=...` and displays results"
       ],
       "technicalNotes": [
-        "File to create: app/components/RelatedPosts.tsx (BlogPost[] filter by tags, sort by match count, render cards with schema)",
-        "File to create: lib/blog-search.ts (function searchRelatedPosts(currentPostTags, currentPostCategories) returning sorted BlogPost[])",
-        "File to modify: app/(website)/blog/[slug]/page.tsx (import and render <RelatedPosts /> above comments section)",
-        "Test command: vitest run lib/blog-search.test.ts (search relevance ranking, tie-breaking logic)"
+        "File to create: site/src/app/blog/search/page.tsx as 'use client' component",
+        "File to create: site/src/lib/blog-search.ts with initializeFuse(posts) and search(query) functions",
+        "Add fuse.js package to site/package.json dependencies",
+        "Test command: npm test -- site/tests/lib/blog-search.test.ts"
       ],
       "dependencies": [],
       "estimatedComplexity": "medium",
+      "passes": true,
+      "_source": "ai-example",
+      "model": "haiku"
+    },
+    {
+      "id": "US-267",
+      "title": "Add Fuse.js-powered blog search component with real-time keystroke filtering",
+      "priority": "medium",
+      "description": "Create searchable blog directory component that filters posts in real-time as users type, indexed by title, tags, and keywords. Enables discovery without server round-trip; supports long-tail SEO queries.",
+      "acceptanceCriteria": [
+        "Create site/src/components/BlogSearch.tsx React component with <input> onChange handler and results <ul>; Fuse.js initialized with keys ['title', 'tags', 'keywords']; typing 'visa' filters and displays visa-related posts in <100ms",
+        "Component handles empty query (shows all posts), no results (displays 'No posts found'), and cleared input (resets to all); built with useState/useEffect hooks",
+        "npm run vitest -- BlogSearch.test.tsx passes tests for filtering behavior, keystroke handling, and empty state rendering"
+      ],
+      "technicalNotes": [
+        "File to edit: site/src/components/BlogSearch.tsx (useState for query + results; useEffect for Fuse instance; use useMemo for post list)",
+        "Test command: npm run vitest -- BlogSearch.test.tsx -t 'filters posts by query' -t 'handles empty results'",
+        "Dependency: npm list fuse.js (verify v7.0+ installed; if not: npm install fuse.js@7)"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
+      "passes": true,
+      "_source": "ai-example",
+      "model": "haiku"
+    },
+    {
+      "id": "US-268",
+      "title": "Blog post: Mee Rebus Johor - History, Best Stalls, and the Famous Haji Wahid Legacy (2026)",
+      "description": "Guide to Mee Rebus Johor - a thick sweet-savory gravy noodle with roots going back to 1918. Targets searches for this iconic Johor specialty dish. Includes story of Haji Wahid original stall, what makes Johor mee rebus different, and walking distance from Pelangi Capsule.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "food-guide"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'mee-rebus-johor-bahru-guide', category 'Food & Drink'",
+        "Covers: history, gravy recipe notes, top 3 stalls including Haji Wahid legacy stalls",
+        "Include comparison: Mee Rebus JB vs KL style",
+        "readTime '5 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"food\", \"johor\", \"specialty-dish\", \"heritage-food\"]"
+      ],
+      "passes": true
+    },
+    {
+      "id": "US-269",
+      "title": "Blog post: Best Roti Canai in Johor Bahru - Breakfast Guide Near Taman Pelangi (2026)",
+      "description": "Breakfast guide targeting Singaporean visitors and backpackers who want cheap, authentic roti canai near their accommodation. Highlights top mamak stalls within walking distance of Taman Pelangi, price comparisons, and what to order.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "food-guide",
+        "local-tips"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'best-roti-canai-johor-bahru-breakfast-guide', category 'Food & Drink'",
+        "List 5 stalls near Taman Pelangi/JB city, price range, opening hours",
+        "Include: roti canai vs prata explainer for Singaporean readers",
+        "readTime '5 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"food\", \"breakfast\", \"roti-canai\", \"taman-pelangi\", \"budget-food\"]"
+      ],
+      "passes": true
+    },
+    {
+      "id": "US-270",
+      "title": "Blog post: Taman Pelangi Neighborhood Guide - Food, Shopping, and Things to Do (2026)",
+      "description": "Comprehensive neighborhood guide for Taman Pelangi - the area where Pelangi Capsule Hostel is located. Targets searches for 'Taman Pelangi Johor Bahru' and positions Pelangi as the ideal base. Covers hawker centers, shops, transport links, and hidden gems within walking distance.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "local-guide",
+        "jb-neighborhood"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'taman-pelangi-johor-bahru-neighborhood-guide', category 'Local Guide'",
+        "Sections: Getting Here, Where to Eat, Shopping, Night Life, Why Stay Here",
+        "Mention Pelangi Capsule as accommodation anchor naturally in Why Stay Here section",
+        "readTime '7 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"taman-pelangi\", \"jb-neighborhood\", \"local-guide\", \"johor-bahru\"]",
+        "Category slug: local-guide"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-271",
+      "title": "Blog post: 15 Cheap Eats in Johor Bahru Under RM10 - Budget Food Guide (2026)",
+      "description": "List-style blog targeting budget travelers searching for cheap food in JB. Covers hawker stalls, kopitiam classics, and street food. List format optimized for featured snippets. Each entry has dish name, price, and nearest area to Pelangi.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "food-guide",
+        "budget-travel"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'cheap-eats-johor-bahru-under-rm10-budget-guide', category 'Food & Drink'",
+        "List 15 dishes with price and area",
+        "Include intro comparing JB food costs vs Singapore",
+        "readTime '6 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters. Use bullet lists, avoid long paragraphs.",
+        "Add tags: [\"budget-food\", \"cheap-eats\", \"johor-bahru\", \"hawker-food\"]"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-272",
+      "title": "Blog post: Johor Premium Outlets vs Singapore Outlet Malls - Where to Save More (2026)",
+      "description": "Comparison guide targeting Singaporeans researching where to shop for branded goods. Compares JPO vs IMM/Changi City Point. Includes transport costs from Pelangi, opening hours, and top brands. Strong transactional SEO value.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "shopping",
+        "singapore-visitors"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'johor-premium-outlets-vs-singapore-malls-shopping-guide', category 'Travel Tips'",
+        "Side-by-side comparison table: brands, discount levels, transport cost from Singapore",
+        "Include 'Is it worth going to JPO?' FAQ section",
+        "readTime '6 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"shopping\", \"jpo\", \"johor-premium-outlets\", \"singapore-shoppers\"]"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-273",
+      "title": "Blog post: Johor Bahru Night Markets Guide - Best Pasar Malam by Day of Week (2026)",
+      "description": "Practical guide to JB night markets (pasar malam), covering Taman Sentosa Saturday market and others. Targets searches for evening activities and markets in JB. Includes what to eat, what to buy, and how to get there from Pelangi Capsule.",
+      "priority": "medium",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "local-guide",
+        "night-market"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'johor-bahru-night-markets-pasar-malam-guide', category 'Local Guide'",
+        "Table: market name, day, location, distance from Pelangi, highlights",
+        "Include tips: best time to arrive, cash only, what to try",
+        "readTime '5 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"night-market\", \"pasar-malam\", \"johor-bahru\", \"local-activities\"]"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-274",
+      "title": "Blog post: JB vs Melaka vs Penang Weekend Getaway from Singapore - Which Should You Choose? (2026)",
+      "description": "Comparison guide targeting Singaporeans deciding between Malaysian weekend getaways. Positions JB as the best value option due to proximity and lower cost. Includes travel time, budget comparison, and best use case per destination.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "singapore-visitors",
+        "weekend-getaway"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'jb-vs-melaka-vs-penang-weekend-getaway-singapore', category 'Travel Tips'",
+        "Comparison table: travel time from Singapore, average cost, best for whom",
+        "Conclusion: why JB wins for budget weekend trips",
+        "readTime '6 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"weekend-getaway\", \"singapore\", \"malaysia-travel\", \"jb-comparison\"]"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-275",
+      "title": "Blog post: Complete Causeway Bus Guide from Singapore to Johor Bahru (2026)",
+      "description": "Step-by-step bus guide for crossing from Singapore to JB via Woodlands/Tuas checkpoints. Covers SBS Causeway Link 170, CW1, CW2, Transtar, Starmart Express. Targets transactional searches from first-time JB visitors. Includes journey to Pelangi Capsule with estimated time.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "transportation",
+        "singapore-visitors"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'causeway-bus-guide-singapore-to-johor-bahru-2026', category 'Transportation'",
+        "Cover: bus options, prices, where to board, immigration tips, journey to Pelangi",
+        "Include FAQ: Can I use EZLink card? Do I need to clear customs both ways?",
+        "readTime '7 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"transportation\", \"causeway\", \"bus-guide\", \"singapore-to-jb\"]",
+        "Category slug: transportation"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-276",
+      "title": "Blog post: LEGOLAND Malaysia Day Trip from Singapore - Budget Itinerary and Accommodation Guide (2026)",
+      "description": "Practical day trip guide to LEGOLAND Malaysia for Singapore families and tourists. Covers transport options, ticket prices, park highlights, and budget accommodation at Pelangi Capsule (RM35/night) as alternative to expensive LEGOLAND hotels. Targets high-volume family travel searches.",
+      "priority": "medium",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "attractions",
+        "singapore-visitors",
+        "family-travel"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'legoland-malaysia-day-trip-from-singapore-budget-guide', category 'Travel Tips'",
+        "Transport options from Singapore, ticket price range, park tips",
+        "Budget angle: Stay at Pelangi (RM35/night) vs LEGOLAND Hotel (RM400+/night)",
+        "readTime '6 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"legoland\", \"family-travel\", \"day-trip\", \"singapore-visitors\", \"johor-bahru\"]"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-277",
+      "title": "Blog post: DE Rantau Digital Nomad Visa Malaysia - Complete Guide for Remote Workers in JB (2026)",
+      "description": "Comprehensive guide to Malaysia's DE Rantau digital nomad visa for remote workers who want to stay in JB. Covers eligibility (min USD 24k/year income), application process, duration, cost of living, and why JB/Pelangi is ideal base. Targets emerging nomad segment.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "digital-nomad",
+        "long-stay"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'de-rantau-digital-nomad-visa-malaysia-johor-bahru-guide', category 'Career & Work'",
+        "Application steps, requirements, cost breakdown, validity period",
+        "JB section: cost of living, coworking spaces near Pelangi, monthly accommodation from RM594",
+        "readTime '7 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"digital-nomad\", \"de-rantau\", \"malaysia-visa\", \"remote-work\", \"johor-bahru\"]"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-278",
+      "title": "Blog post: Best Cafes in Johor Bahru 2026 - Specialty Coffee and Cafe Hopping Guide",
+      "description": "Curated cafe guide targeting JB cafe hoppers and Singaporean tourists searching for trendy cafes. Covers 8-10 notable cafes with details on specialty coffee, food menu, pricing, and walking/Grab distance from Pelangi Capsule. Includes cafe-hopping route.",
+      "priority": "medium",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "food-guide",
+        "cafe"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'best-cafes-johor-bahru-2026-specialty-coffee-guide', category 'Food & Drink'",
+        "List 8 cafes with name, vibe, price range, distance from Pelangi",
+        "Include: best for solo travelers, best for groups, best for laptop work",
+        "readTime '6 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"cafes\", \"johor-bahru\", \"specialty-coffee\", \"cafe-hopping\", \"jb-food\"]"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-280",
+      "title": "New page: /digital-nomad — Monthly Stay and Digital Nomad Resource Hub with FAQPage Schema",
+      "description": "Dedicated landing page for digital nomads and long-stay guests at Pelangi. Targets 'digital nomad johor bahru', 'monthly hostel jb', 'coworking near taman pelangi' searches. Page showcases monthly rate (RM594), WiFi specs, nearby coworking, DE Rantau visa info, and FAQ.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "page",
+        "geo",
+        "seo",
+        "digital-nomad",
+        "landing-page"
+      ],
+      "dependencies": [
+        "US-277"
+      ],
+      "filesTouch": [
+        "site/src/app/(website)/digital-nomad/page.tsx"
+      ],
+      "acceptanceCriteria": [
+        "Route /digital-nomad returns 200",
+        "Page sections: Monthly Rates, WiFi and Workspace, Nearby Coworking, DE Rantau Visa Info, FAQ",
+        "FAQPage JSON-LD schema with 5+ questions about long stays",
+        "CTA linking to /book page",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Create file: site/src/app/(website)/digital-nomad/page.tsx",
+        "Use FAQPage schema matching the /visa-run and /singapore-jobs page pattern",
+        "FAQ questions: How fast is WiFi? Can I receive mail? Is there a desk? What is monthly rate? Is DE Rantau visa supported?"
+      ],
+      "passes": false,
+      "model": "sonnet"
+    },
+    {
+      "id": "US-281",
+      "title": "Blog post: Budget Hostel Near Singapore Border - Why Pelangi Capsule is the Smartest Base (2026)",
+      "description": "Targeted post for travelers searching for affordable accommodation near the Singapore-JB border checkpoint. Addresses the specific need: arrive from Singapore, need cheap clean bed, easy to cross back. Covers location advantage, price comparison vs Singapore hostels, and booking CTA.",
+      "priority": "high",
+      "estimatedComplexity": "medium",
+      "tags": [
+        "content",
+        "geo",
+        "seo",
+        "accommodation",
+        "singapore-visitors"
+      ],
+      "dependencies": [],
+      "filesTouch": [
+        "site/src/data/blog/posts.ts"
+      ],
+      "acceptanceCriteria": [
+        "Slug 'budget-hostel-near-singapore-border-johor-bahru', category 'Accommodation'",
+        "Cover: distance to CIQ checkpoint, price vs Singapore hostels (RM35 vs SGD 30+), what is included",
+        "Include cost comparison table: 1 night JB vs 1 night Singapore",
+        "readTime '4 min read', date '2026-04-15'",
+        "npm run build passes"
+      ],
+      "technicalNotes": [
+        "Keep content HTML under 6000 characters",
+        "Add tags: [\"accommodation\", \"budget-hostel\", \"singapore-border\", \"johor-bahru\", \"cheap-stay\"]",
+        "Category slug: accommodation"
+      ],
+      "passes": false,
+      "model": "haiku"
+    },
+    {
+      "id": "US-282",
+      "title": "Consolidate NAP (Name, Address, Phone) constants to fix schema.org inconsistencies",
+      "priority": "high",
+      "description": "Create shared NAP constants file and update all schema.org markup (LodgingBusiness, Organization, LocalBusiness) to reference it. Fix current mismatches between phone/address in StructuredData.tsx vs Footer and other components. Add validation test to catch future NAP drifts.",
+      "acceptanceCriteria": [
+        "All phone numbers across StructuredData.tsx, Footer, and Contact components match +60-7-3333-6632 from site/src/lib/nap-constants.ts",
+        "All address strings (street: 'Taman Pelangi, JB', postalCode: '79200') match consistently across all schema.org markup without hardcoded duplicates",
+        "Vitest validation test passes: npx vitest run site/src/lib/__tests__/nap-constants.test.ts verifying phone/address across 5+ schema types"
+      ],
+      "technicalNotes": [
+        "File to create: site/src/lib/nap-constants.ts with const NAP = { phone, address, coordinates, businessName }",
+        "File to edit: site/src/components/StructuredData.tsx (replace all hardcoded phone/address with NAP.phone, NAP.address)",
+        "File to create: site/src/lib/__tests__/nap-constants.test.ts with validateNAPConsistency() checks",
+        "Test command: npx vitest run site/src/lib/__tests__/nap-constants.test.ts && grep -r '\\+60-7' site/src/components/ | wc -l"
+      ],
+      "dependencies": [],
+      "estimatedComplexity": "small",
       "passes": false,
       "_source": "ai-example",
-      "model": "sonnet",
-      "last_attempted": "2026-04-14T10:25:04Z",
-      "_failureReason": "oversized_diff: produced 7806 lines but limit is 500. Keep total insertions+deletions under 500 lines.",
-      "_antiPatterns": [
-        "oversized_diff: produced 7806 lines but limit is 500. Keep total insertions+deletions under 500 lines."
-      ]
+      "model": "sonnet"
     }
   ]
 }

@@ -2317,12 +2317,13 @@
       "_forStoryId": "US-262"
     },
     {
-      "title": "[Regression Test] Implement Related Blog Posts Widget with IsSimilarTo Schema Linking",
+      "title": "[E2E Test] Implement client-side blog post search with Fuse.js and live filtering",
       "priority": "medium",
-      "description": "Write regression test to guard against future breakage of US-266. Story description: Add a 'You Might Also Like' widget on blog article pages displaying 3 most-relevant related posts. Relevance determined by shared tags and categories. Each related post card embeds IsSimilarTo JSON-LD linking back to the current article for bidirectional SEO.",
+      "description": "Write end-to-end user flow test for the feature in US-266. Story description: Add `/blog/search` page and BlogSearch component using Fuse.js for real-time blog post search by title, description, and tags. Support URL query parameters, debounced input, and result highlighting.",
       "acceptanceCriteria": [
-        "Regression test covers core observable behaviour of US-266",
-        "Test would reliably fail if the US-266 feature were removed or broken"
+        "E2E test covers the user flow introduced by US-266",
+        "Test navigates to relevant page(s) and asserts on visible state",
+        "Test passes in headless browser (Playwright/Cypress/similar)"
       ],
       "technicalNotes": [
         "Run: uv run pytest tests/ -k us_266 -v"
@@ -2332,28 +2333,53 @@
       ],
       "estimatedComplexity": "medium",
       "tags": [
-        "regression",
+        "e2e",
         "auto-generated"
       ],
       "source": "",
       "_source": "test-story",
-      "_testType": "regression",
+      "_testType": "e2e",
       "_forStoryId": "US-266"
     },
     {
-      "title": "[Regression Test] Blog post: Laksa Johor Guide - Authentic Dish, Where to Eat, and What Makes It Uni",
+      "title": "[Performance Test] Implement client-side blog post search with Fuse.js and live filtering",
       "priority": "medium",
-      "description": "Write regression test to guard against future breakage of US-267. Story description: Deep-dive guide on Laksa Johor - a creamy coconut-based noodle dish unique to Johor. Covers history, what makes it different from other laksa variants, and the best stalls in JB. Targets high-intent food tourists searching for specialty Johor dishes.",
+      "description": "Write performance benchmark for the operation in US-266. Story description: Add `/blog/search` page and BlogSearch component using Fuse.js for real-time blog post search by title, description, and tags. Support URL query parameters, debounced input, and result highlighting.",
       "acceptanceCriteria": [
-        "Regression test covers core observable behaviour of US-267",
-        "Test would reliably fail if the US-267 feature were removed or broken"
+        "Performance test measures key metrics for US-266",
+        "Baseline captured and acceptable threshold defined",
+        "Test fails if response time degrades more than 20% from baseline"
       ],
       "technicalNotes": [
-        "Source files from US-267: site/src/data/blog/posts.ts",
-        "Run: uv run pytest tests/ -k us_267 -v"
+        "Run: uv run pytest tests/ -k us_266 -v"
       ],
       "dependencies": [
-        "US-267"
+        "US-266"
+      ],
+      "estimatedComplexity": "medium",
+      "tags": [
+        "performance",
+        "auto-generated"
+      ],
+      "source": "",
+      "_source": "test-story",
+      "_testType": "performance",
+      "_forStoryId": "US-266"
+    },
+    {
+      "title": "[Regression Test] Blog post: Mee Rebus Johor - History, Best Stalls, and the Famous Haji Wahid Legac",
+      "priority": "medium",
+      "description": "Write regression test to guard against future breakage of US-268. Story description: Guide to Mee Rebus Johor - a thick sweet-savory gravy noodle with roots going back to 1918. Targets searches for this iconic Johor specialty dish. Includes story of Haji Wahid original stall, what makes Johor mee rebus different, and walking distance from Pelangi Capsule.",
+      "acceptanceCriteria": [
+        "Regression test covers core observable behaviour of US-268",
+        "Test would reliably fail if the US-268 feature were removed or broken"
+      ],
+      "technicalNotes": [
+        "Source files from US-268: site/src/data/blog/posts.ts",
+        "Run: uv run pytest tests/ -k us_268 -v"
+      ],
+      "dependencies": [
+        "US-268"
       ],
       "estimatedComplexity": "medium",
       "tags": [
@@ -2363,7 +2389,32 @@
       "source": "",
       "_source": "test-story",
       "_testType": "regression",
-      "_forStoryId": "US-267"
+      "_forStoryId": "US-268"
+    },
+    {
+      "title": "[Regression Test] Blog post: Best Roti Canai in Johor Bahru - Breakfast Guide Near Taman Pelangi (20",
+      "priority": "medium",
+      "description": "Write regression test to guard against future breakage of US-269. Story description: Breakfast guide targeting Singaporean visitors and backpackers who want cheap, authentic roti canai near their accommodation. Highlights top mamak stalls within walking distance of Taman Pelangi, price comparisons, and what to order.",
+      "acceptanceCriteria": [
+        "Regression test covers core observable behaviour of US-269",
+        "Test would reliably fail if the US-269 feature were removed or broken"
+      ],
+      "technicalNotes": [
+        "Source files from US-269: site/src/data/blog/posts.ts",
+        "Run: uv run pytest tests/ -k us_269 -v"
+      ],
+      "dependencies": [
+        "US-269"
+      ],
+      "estimatedComplexity": "medium",
+      "tags": [
+        "regression",
+        "auto-generated"
+      ],
+      "source": "",
+      "_source": "test-story",
+      "_testType": "regression",
+      "_forStoryId": "US-269"
     }
   ]
 }

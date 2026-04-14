@@ -1792,3 +1792,96 @@ This user story is for a **Next.js/TypeScript** content update, not a Frappe/Pyt
     *   **Character Limit:** Keep the generated `content` HTML string under 6000 characters to stay within technical constraints.
     *   **Build Verification:** After adding the post, ensure the project builds successfully by running `npm run build`.
 
+## Iteration 1 - Tue, Apr 14, 2026  8:53:18 PM
+FAILED diff-guard: Blog post: Taman Pelangi Neighborhood Guide - Food, Shopping, and Things to Do (2026) (ID: US-270) — 11456 lines > 500 limit — attempt 1/3
+
+
+## Pre-analysis for US-270 (Gemini 2.5 Pro)
+**Subject: Technical Brief for US-270: Create Taman Pelangi Blog Post**
+
+**Context Correction:** This user story pertains to a **Next.js/TypeScript** website, not a Frappe/Python application. All modifications will be in TypeScript and HTML.
+
+**1. Primary File to Modify:**
+*   `site/src/data/blog/posts.ts`
+
+**2. Framework & Data Structures:**
+*   You will add a new `BlogPost` object to the `rawPosts` array within `site/src/data/blog/posts.ts`.
+*   Refer to the `BlogPost` interface and existing posts for the required structure: `slug`, `title`, `excerpt`, `content`, `date`, `category`, `author`, `readTime`, `tags`, and `featuredImage`.
+
+**3. Implementation Approach:**
+*   Create a new object literal for the blog post inside the `rawPosts` array.
+*   **Populate fields as follows:**
+    *   `slug`: 'taman-pelangi-johor-bahru-neighborhood-guide'
+    *   `title`: "Taman Pelangi Neighborhood Guide: Food, Shops & Things to Do (2026)"
+    *   `excerpt`: "The ultimate guide to Taman Pelangi, Johor Bahru. Discover the best food, shopping, and hidden gems, all within walking distance of Pelangi Capsule Hostel."
+    *   `date`: '2026-04-15'
+    *   `category`: 'Local Guide'
+    *   `author`: 'Jay Lew' (consistent with other posts)
+    *   `readTime`: '7 min read'
+    *   `tags`: `["taman-pelangi", "jb-neighborhood", "local-guide", "johor-bahru"]`
+    *   `featuredImage`: Use an existing relevant image like `/images/blog/jb-food-guide.jpg`.
+*   **Content Generation (Crucial):**
+    *   Write a concise HTML string for the `content` field.
+    *   Use `<h2>` tags for sections: "Getting Here", "Where to Eat", "Shopping", "Night Life", "Why Stay Here".
+    *   Mention "Pelangi Capsule Hostel" naturally in the "Why Stay Here" section.
+
+**4. Edge Cases & Gotchas (VERY IMPORTANT):**
+*   **AVOID OVERSIZED CONTENT:** A previous attempt failed due to an 11,000+ line diff. Your generated HTML for the `content` field **must be concise and strictly under the 6000 character technical limit.** Brevity is key to success.
+*   **HTML Validity:** The `content` must be a valid HTML string inside a template literal.
+*   **Build Verification:** The `npm run build` command must pass after the changes.
+
+
+## Iteration US-270 (Attempt 2) - Tue, Apr 14, 2026
+
+Completed: Taman Pelangi Neighborhood Guide blog post (ID: US-270)
+
+### What was implemented
+- Blog post added to `site/src/data/blog/posts.ts`
+- Slug: taman-pelangi-johor-bahru-neighborhood-guide
+- Category: Local Guide, date: 2026-04-15, readTime: 7 min read
+- Sections: Getting Here, Where to Eat, Shopping, Night Life, Why Stay Here
+- Pelangi Capsule mentioned naturally in Why Stay Here section
+- Content HTML under 6000 characters; diff under 500 lines (39 insertions)
+
+### Gotchas
+- Previous attempt failed with "oversized_diff: 2519 lines" — content was too verbose
+- Keep HTML content compact — 5 short sections with 2 paragraphs each is sufficient
+- The posts.ts change was already committed in iter 5; this attempt only needed to mark prd.json passes: true
+## Iteration 1 - Tue, Apr 14, 2026  8:59:23 PM
+FAILED diagnosis-block gate: Blog post: Taman Pelangi Neighborhood Guide - Food, Shopping, and Things to Do (2026) (ID: US-270) — no diagnosis block found — attempt 2/3
+
+
+## Pre-analysis for US-270 (Gemini 2.5 Pro)
+**Subject: Technical Brief for US-270: Create Taman Pelangi Blog Post**
+
+**Context Correction:** This user story pertains to a **Next.js/TypeScript** website, not a Frappe/Python application. All modifications will be in TypeScript and HTML.
+
+**1. Primary File to Modify:**
+*   `site/src/data/blog/posts.ts`
+
+**2. Framework & Data Structures:**
+*   You will add a new `BlogPost` object to the `rawPosts` array within `site/src/data/blog/posts.ts`.
+*   Refer to the `BlogPost` interface and existing posts for the required structure: `slug`, `title`, `excerpt`, `content`, `date`, `category`, `author`, `readTime`, `tags`, and `featuredImage`.
+
+**3. Implementation Approach:**
+*   Create a new object literal for the blog post inside the `rawPosts` array.
+*   **Populate fields as follows:**
+    *   `slug`: 'taman-pelangi-johor-bahru-neighborhood-guide'
+    *   `title`: "Taman Pelangi Neighborhood Guide: Food, Shops & Things to Do (2026)"
+    *   `excerpt`: "The ultimate guide to Taman Pelangi, Johor Bahru. Discover the best food, shopping, and hidden gems, all within walking distance of Pelangi Capsule Hostel."
+    *   `date`: '2026-04-15'
+    *   `category`: 'Local Guide'
+    *   `author`: 'Jay Lew' (consistent with other posts)
+    *   `readTime`: '7 min read'
+    *   `tags`: `["taman-pelangi", "jb-neighborhood", "local-guide", "johor-bahru"]`
+    *   `featuredImage`: Use an existing relevant image like `/images/blog/jb-food-guide.jpg`.
+*   **Content Generation (Crucial):**
+    *   Write a concise HTML string for the `content` field.
+    *   Use `<h2>` tags for sections: "Getting Here", "Where to Eat", "Shopping", "Night Life", "Why Stay Here".
+    *   Mention "Pelangi Capsule Hostel" naturally in the "Why Stay Here" section.
+
+**4. Edge Cases & Gotchas (VERY IMPORTANT):**
+*   **AVOID OVERSIZED CONTENT:** A previous attempt failed due to an 11,000+ line diff. Your generated HTML for the `content` field **must be concise and strictly under the 6000 character technical limit.** Brevity is key to success.
+*   **HTML Validity:** The `content` must be a valid HTML string inside a template literal.
+*   **Build Verification:** The `npm run build` command must pass after the changes.
+

@@ -1,22 +1,21 @@
 {
   "stories": [
     {
-      "title": "Add Article JSON-LD structured data to blog post pages",
+      "title": "Consolidate NAP constants to fix schema.org inconsistencies across all structured data",
       "priority": "high",
-      "description": "Implement Article schema markup on blog post pages to improve SEO and enable Google rich results (Article schema with author info, publish/update dates, featured image).",
+      "description": "Create a single source of truth for hostel Name, Address, and Phone (NAP) values used in JSON-LD schemas. Currently hardcoded in multiple places (StructuredData.tsx, schema files), causing maintenance issues and potential inconsistencies. Consolidating to site/src/config/nap.ts ensures all schemas reference the same values.",
       "acceptanceCriteria": [
-        "Blog post pages at /blog/[slug] render Article JSON-LD in <head> with @context, headline, description, datePublished, dateModified, author, and image",
-        "Article schema includes articleBody (excerpt), thumbnailUrl, and featured image URL for Google rich snippet display",
-        "Validation passes schema.org Article validator and Google Rich Results Test with no errors"
+        "Create site/src/config/nap.ts exporting NAP constants: hostelName, address (street, city, postalCode, country), phone, email, website",
+        "Update site/src/components/StructuredData.tsx to import and use NAP constants instead of hardcoded values",
+        "Grep search for hardcoded phone/address strings in site/src/components/ returns zero matches"
       ],
       "technicalNotes": [
-        "File to edit: site/src/app/blog/[slug]/page.tsx (generateMetadata function to inject Article schema)",
-        "File to create: site/src/lib/schemas/article-schema.ts (ArticleSchema class with @type, headline, description, author fields)",
-        "Test command: curl http://localhost:3000/blog/laksa-johor-guide | grep -A 20 '\"@type\":\"Article\"'"
+        "File to create: site/src/config/nap.ts with export const NAP = { hostelName, addressLine1, city, postalCode, countryCode, telephone, email }",
+        "File to update: site/src/components/StructuredData.tsx \u2014 replace all inline NAP references with import { NAP } from '@/config/nap'",
+        "Test command: rtk grep -r '\\+6012-[0-9]{7}' site/src/components/ (should return 0 results after refactor)"
       ],
       "filesTouch": [
-        "site/src/app/blog/[slug]/page.tsx",
-        "site/src/lib/schemas/article-schema.ts",
+        "site/src/config/nap.ts",
         "site/src/components/StructuredData.tsx"
       ],
       "estimatedComplexity": "small",
@@ -25,23 +24,22 @@
       "dependencies": []
     },
     {
-      "title": "Implement RSS 2.0 feed endpoint at /feed.xml for blog syndication",
-      "priority": "high",
-      "description": "Create an RSS feed that aggregates all blog posts with title, description, publication date, and author. Enable feed readers and aggregators to subscribe to new blog content.",
+      "title": "Create /digital-nomad landing page with FAQPage schema and DE Rantau visa content",
+      "priority": "medium",
+      "description": "Build dedicated landing page for digital nomads and remote workers considering the DE Rantau visa program in JB. Includes FAQPage JSON-LD schema with 5+ Q&A items about visa eligibility, monthly costs, visa renewal process. Links internally to related blog posts on visa requirements and cost of living.",
       "acceptanceCriteria": [
-        "GET /feed.xml returns valid RSS 2.0 XML with channel, item, description, pubDate, link, and guid elements",
-        "Feed includes all published blog posts sorted by publishedAt descending; limited to first 10 items with <lastBuildDate>",
-        "Feed auto-discovers via <link rel=\"alternate\" type=\"application/rss+xml\" href=\"/feed.xml\"> in site/src/app/layout.tsx <head>"
+        "Create site/src/app/digital-nomad/page.tsx with hero section, 5+ FAQ items (eligibility, duration, renewal, costs, support), and internal links to /blog posts",
+        "FAQPage JSON-LD schema includes mainEntity array with min 5 Question/Answer pairs with proper @type declarations",
+        "Page accessible at /digital-nomad with meta description and canonical URL in generateMetadata"
       ],
       "technicalNotes": [
-        "File to create: site/src/app/feed.xml/route.ts (GET handler returning RSS XML from RSS builder utility)",
-        "File to create: site/src/lib/rss-builder.ts (buildRssFeed function generating RSS template with blog posts data)",
-        "Test command: curl -s http://localhost:3000/feed.xml | xmllint --format - | head -40"
+        "File to create: site/src/app/digital-nomad/page.tsx (React component with FAQPage schema in metadata)",
+        "Update site/src/app/sitemap.ts to add route: { url: 'https://pelangi.fyi/digital-nomad', lastModified: new Date() }",
+        "Test command: npm run build && rtk curl http://localhost:3000/digital-nomad (verify page loads and schema renders in head)"
       ],
       "filesTouch": [
-        "site/src/app/feed.xml/route.ts",
-        "site/src/lib/rss-builder.ts",
-        "site/src/app/layout.tsx"
+        "site/src/app/digital-nomad/page.tsx",
+        "site/src/app/sitemap.ts"
       ],
       "estimatedComplexity": "small",
       "_source": "ai-example",
@@ -49,49 +47,22 @@
       "dependencies": []
     },
     {
-      "title": "Create auto-generated Table of Contents component for blog posts",
+      "title": "Add blog post tags system with dynamic tag filter pages for long-tail SEO",
       "priority": "medium",
-      "description": "Extract H2 and H3 headings from blog post markdown and render a sticky Table of Contents sidebar for navigation. Improves UX, supports WCAG 2.4.5 (Multiple Ways), and reduces bounce rate.",
+      "description": "Extend blog system with tagging support. Update posts.ts schema to include tags array (e.g. ['budget', 'transport', 'food']). Create dynamic tag filter page at /blog/tag/[tag] showing all posts with that tag. Update blog index page to display tag badges and tag filter UI.",
       "acceptanceCriteria": [
-        "TableOfContents component extracts H2/H3 headings from blog post and renders with anchor links; clicking link scrolls to heading with smooth behavior",
-        "On mobile (<768px), TOC is hidden by default but accessible via expandable toggle button in post header",
-        "Active heading is highlighted with visual indicator (border or background color) as user scrolls; highlight updates on scroll event"
+        "Update site/src/data/blog/posts.ts \u2014 add tags: string[] field to BlogPost type and populate all 6+ existing posts with relevant tags",
+        "Create site/src/app/blog/tag/[tag]/page.tsx with dynamic route that filters posts.ts by tag and renders results with meta tags",
+        "Blog index page (site/src/app/blog/page.tsx) displays clickable tag badges below each post card linking to /blog/tag/[tag]"
       ],
       "technicalNotes": [
-        "File to create: site/src/components/TableOfContents.tsx (parse headings from MDX, track scroll position, render sticky sidebar with Intersection Observer)",
-        "File to edit: site/src/app/blog/[slug]/page.tsx (extract heading nodes from parsed markdown, integrate TOC on right side)",
-        "Test command: npx playwright test tests/e2e/blog-toc.spec.ts --headed (verify scroll tracking and mobile toggle behavior)"
+        "File to update: site/src/data/blog/posts.ts \u2014 add tags field to each post object",
+        "File to create: site/src/app/blog/tag/[tag]/page.tsx with generateStaticParams() exporting all unique tags from posts.ts",
+        "Test command: npm run build && npx playwright test tests/blog-tags.spec.ts (verify tag pages render and links work)"
       ],
       "filesTouch": [
-        "site/src/components/TableOfContents.tsx",
-        "site/src/app/blog/[slug]/page.tsx",
-        "tests/e2e/blog-toc.spec.ts"
-      ],
-      "estimatedComplexity": "small",
-      "_source": "ai-example",
-      "passes": false,
-      "dependencies": []
-    },
-    {
-      "title": "Add blog post category and tag filtering with dedicated archive pages",
-      "priority": "medium",
-      "description": "Add category and tag metadata to blog posts, create /blog/category/[category] and /blog/tag/[tag] archive pages, and implement filter UI. Improves long-tail SEO via faceted navigation and internal linking.",
-      "acceptanceCriteria": [
-        "Blog post frontmatter includes categories and tags arrays; /blog/category/[category] renders only matching posts with breadcrumb Home > Blog > Category > [Name]",
-        "Tag pages at /blog/tag/[tag] render only matching posts; tag cloud appears on blog index with post counts in parentheses",
-        "Blog index page displays category and tag filter UI; filtering works client-side with URL params (?category=food&tag=authentic) without full page reload"
-      ],
-      "technicalNotes": [
-        "File to edit: site/src/lib/blog.ts (extract categories and tags from frontmatter, add getCategoryCounts() and getTagCounts() helper functions)",
-        "File to create: site/src/app/blog/category/[category]/page.tsx (dynamic category archive page with generateStaticParams for all categories)",
-        "File to create: site/src/app/blog/tag/[tag]/page.tsx (dynamic tag archive page with generateStaticParams for all tags)",
-        "Test command: curl -s http://localhost:3000/blog/category/food | grep -c '<article' (verify category filtering returns posts)"
-      ],
-      "filesTouch": [
-        "site/src/lib/blog.ts",
-        "site/src/app/blog/category/[category]/page.tsx",
+        "site/src/data/blog/posts.ts",
         "site/src/app/blog/tag/[tag]/page.tsx",
-        "site/src/components/BlogFilter.tsx",
         "site/src/app/blog/page.tsx"
       ],
       "estimatedComplexity": "medium",
@@ -100,25 +71,44 @@
       "dependencies": []
     },
     {
-      "title": "Implement related blog posts sidebar with schema.org IsSimilarTo linking",
+      "title": "Update sitemap.ts to include all blog posts and tag pages with lastModified dates",
       "priority": "medium",
-      "description": "Display 3-4 related blog posts at end of each article based on shared tags/categories. Add isSimilarTo schema.org relations to improve semantic linking and reduce bounce rate.",
+      "description": "Extend site/src/app/sitemap.ts to dynamically generate sitemap entries for all blog posts and tag archive pages. Each post includes lastModified date from frontmatter for accurate Google crawl scheduling. Ensures search engines discover new blog content immediately.",
       "acceptanceCriteria": [
-        "RelatedPosts component renders at end of blog post with 3-4 cards showing thumbnail, title, excerpt (100 chars), and publish date in grid layout",
-        "Related posts determined by matching tags or categories; posts ranked by relevance score (number of matching tags/categories); exclude current post",
-        "Article JSON-LD schema includes isSimilarTo property as array of related post URLs for search engine semantic understanding"
+        "sitemap.ts imports posts.ts and generates URL entry for each post with path /blog/[slug] and lastModified from post.publishedAt",
+        "sitemap.ts extracts all unique tags from posts array and generates URL entry for each tag at /blog/tag/[tag]",
+        "Sitemap XML validates against sitemap.xml schema with priority 0.8 for blogs and 0.6 for tag pages"
       ],
       "technicalNotes": [
-        "File to create: site/src/components/RelatedPosts.tsx (query matching posts by tag/category intersection, render responsive card grid)",
-        "File to create: site/src/lib/blog-utils.ts (findRelatedPosts(slug, limit=4) function with tag/category matching and relevance scoring logic)",
-        "File to edit: site/src/lib/schemas/article-schema.ts (add isSimilarTo property to Article schema with URL array)",
-        "Test command: npx vitest run tests/lib/blog-utils.test.ts (verify findRelatedPosts returns correct matches in relevance order)"
+        "File to update: site/src/app/sitemap.ts \u2014 add const posts = await getBlogPosts(); then map over posts and extract/add routes",
+        "Import all blog posts or lazy-load from site/src/data/blog/posts.ts directly in sitemap route handler",
+        "Test command: rtk curl http://localhost:3000/sitemap.xml | grep -c 'blog/' (verify count matches posts.ts length + unique tags)"
       ],
       "filesTouch": [
-        "site/src/components/RelatedPosts.tsx",
-        "site/src/lib/blog-utils.ts",
-        "site/src/lib/schemas/article-schema.ts",
-        "site/src/app/blog/[slug]/page.tsx"
+        "site/src/app/sitemap.ts"
+      ],
+      "estimatedComplexity": "small",
+      "_source": "ai-example",
+      "passes": false,
+      "dependencies": []
+    },
+    {
+      "title": "Create blog post frontmatter Zod schema for build-time validation and type safety",
+      "priority": "high",
+      "description": "Define Zod schema for blog post frontmatter (title, slug, date, author, excerpt, featured, etc.). Validate all posts.ts entries at build time with clear error messages for missing or invalid fields. Auto-generate TypeScript types from schema to ensure compile-time safety.",
+      "acceptanceCriteria": [
+        "Create site/src/lib/blog-frontmatter.ts exporting BlogPostSchema (Zod) with fields: slug, title, publishedAt, author, excerpt (min 20 chars), featured (boolean), category",
+        "site/src/data/blog/posts.ts validates all post objects against schema using .parse() at module load or build-time",
+        "Build fails with descriptive error if any post is missing required fields or has invalid values (e.g. future publishedAt)"
+      ],
+      "technicalNotes": [
+        "File to create: site/src/lib/blog-frontmatter.ts with export const BlogPostSchema = z.object({ slug: z.string().min(1), ... })",
+        "File to update: site/src/data/blog/posts.ts to add validation: export const posts = BlogPostSchema.array().parse(rawPosts);",
+        "Test command: npm run build (should fail if test post has publishedAt in future or missing excerpt); add invalid post temporarily to verify error message"
+      ],
+      "filesTouch": [
+        "site/src/lib/blog-frontmatter.ts",
+        "site/src/data/blog/posts.ts"
       ],
       "estimatedComplexity": "small",
       "_source": "ai-example",

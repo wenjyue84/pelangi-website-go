@@ -1791,6 +1791,39 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 <p>Staying at <a href="/rooms">Pelangi Capsule Hostel</a>? Walk to Restoran Selera Rakyat first — it's 5 minutes and opens at 6am, perfect if you're catching an early bus back to Singapore. <a href="/book">Book a room</a> and make roti canai your first JB meal.</p>
 `,
   },
+  {
+    slug: "taman-pelangi-johor-bahru-neighborhood-guide",
+    title: "Taman Pelangi Neighborhood Guide: Food, Shops & Things to Do (2026)",
+    excerpt:
+      "The ultimate guide to Taman Pelangi, Johor Bahru. Discover the best food, shopping, and hidden gems within walking distance of Pelangi Capsule Hostel.",
+    date: "2026-04-15",
+    category: "Local Guide",
+    author: "Jay Lew",
+    readTime: "7 min read",
+    tags: ["taman-pelangi", "jb-neighborhood", "local-guide", "johor-bahru"],
+    featuredImage: "/images/blog/taman-pelangi-neighborhood-guide.jpg",
+    content: `
+<h2>Getting Here</h2>
+<p><strong>Taman Pelangi</strong> is a mature residential and commercial district in central Johor Bahru, about 3 km from JB Sentral. From Singapore: take the MRT to Woodlands, cross via Causeway Link bus (RM3.50), then a 10-minute Grab (~RM8) or bus 23/41 from the JB Sentral bus terminal directly to Taman Pelangi. From JB City Centre: 10-minute Grab (RM8–12) or a 25-minute walk via Jalan Abdul Samad.</p>
+
+<h2>Where to Eat</h2>
+<p><strong>Taman Pelangi Hawker Centre</strong> — The neighborhood's main food hub. Open daily 6am–10pm. Highlights: Mee Rebus Auntie Kim (legit old-school gravy), char kway teow, and fresh sugarcane juice. Budget RM5–10 per meal.</p>
+<p><strong>Restoran Selera Rakyat</strong> — Best mamak for roti canai and teh tarik. Open 6am–midnight. Roti canai from RM1.20, teh tarik RM2.</p>
+<p><strong>Jalan Kenanga Food Street</strong> — Evening street food strip with satay, grilled fish, and BBQ corn. Best after 6pm on weekends.</p>
+<p><strong>99 Speedmart &amp; 7-Eleven</strong> — Both within 3 min walk for snacks, drinks, and top-ups around the clock.</p>
+
+<h2>Shopping</h2>
+<p><strong>Taman Pelangi Commercial Centre</strong> — Row of shophouses with pharmacies, hardware, convenience stores, and a few clothing boutiques. All walkable from the hostel.</p>
+<p><strong>KSL City Mall</strong> — 15 min by Grab (~RM10). Full shopping mall with AEON, H&amp;M, and a food court. Good for groceries and electronics.</p>
+<p><strong>Morning market (Pasar Taman Pelangi)</strong> — Saturdays 7–11am. Fresh produce, local snacks, and cheap household goods. A great slice of everyday JB life.</p>
+
+<h2>Night Life</h2>
+<p>Taman Pelangi is a quiet residential area — night life here is relaxed rather than loud. Local kopitiams stay open until midnight serving beer and snacks. For live music and bars, head to Jalan Dhoby or Jalan Ayer Molek (20 min by Grab). The nearest 24-hour mamak is Restoran Selera Rakyat — a JB tradition is to end the night with roti and teh tarik.</p>
+
+<h2>Why Stay Here</h2>
+<p><strong>Pelangi Capsule Hostel</strong> puts you at the heart of Taman Pelangi — walking distance from the hawker centre, mamak stalls, and the morning market. It's quieter than staying in the city centre but still 10 minutes from JB Sentral by Grab. If you want to experience Johor Bahru like a local rather than a tourist, Taman Pelangi is the right base. <a href="/rooms">Book a capsule</a> and explore the neighborhood on foot.</p>
+`,
+  },
 ];
 
 export const blogPosts: BlogPost[] = rawPosts.map((post) => ({
