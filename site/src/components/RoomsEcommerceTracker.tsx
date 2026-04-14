@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useCallback } from "react";
+import { useEffect, useEffectEvent } from "react";
 import { trackViewItem, trackSelectItem } from "@/lib/gtm-ecommerce";
 import { trackMetaEvent } from "@/lib/meta-capi";
 
@@ -22,14 +22,16 @@ const ROOM_ITEMS = [
 ] as const;
 
 export default function RoomsEcommerceTracker() {
-  const handleClick = useCallback((e: MouseEvent) => {
+  // useEffectEvent: stable analytics callback — always reads latest state
+  // without causing the Effect to re-run when function identity changes
+  const handleClick = useEffectEvent((e: MouseEvent) => {
     const target = e.target as HTMLElement;
     // "Book Your Pod Now" CTA links to #booking
     const link = target.closest("a[href='#booking'], .btn-primary");
     if (link) {
       trackSelectItem(ROOM_ITEMS[0], "Rooms Page");
     }
-  }, []);
+  });
 
   useEffect(() => {
     for (const item of ROOM_ITEMS) {
@@ -49,7 +51,7 @@ export default function RoomsEcommerceTracker() {
 
     document.addEventListener("click", handleClick);
     return () => document.removeEventListener("click", handleClick);
-  }, [handleClick]);
+  }, []); // handleClick is an Effect Event — not a dependency
 
   return null;
 }

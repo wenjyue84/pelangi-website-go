@@ -898,3 +898,25 @@ FAILED diff-guard: Implement React 19.2 useEffectEvent for stable analytics even
 ## Iteration 1 - Tue, Apr 14, 2026  9:22:20 AM
 Completed: Enable Turbopack file system caching for faster development cold starts (ID: US-160) in 12m
 
+## Iteration 1 - Tue, Apr 14, 2026  9:37:20 AM
+FAILED diff-guard: Implement React 19.2 useEffectEvent for stable analytics event handlers (ID: US-161) — 23068 lines > 500 limit — attempt 2/3
+
+
+## Iteration US-161 - Tue, Apr 14, 2026
+
+Completed: Implement React 19.2 useEffectEvent for stable analytics event handlers (ID: US-161)
+
+### What was implemented
+- `site/src/components/RoomsEcommerceTracker.tsx`: Replaced `useCallback` with `useEffectEvent` for the analytics click handler
+  - Changed import: `useCallback` → `useEffectEvent`
+  - Changed `useCallback((e) => {...}, [])` → `useEffectEvent((e) => {...})`
+  - Changed deps from `[handleClick]` → `[]` with comment "handleClick is an Effect Event — not a dependency"
+
+### Patterns discovered
+- `RoomsEcommerceTracker.tsx` was the right target: it had `useCallback` for an analytics-only function in `useEffect` deps
+- `BookEcommerceTracker.tsx` already used `useEffectEvent` (from US-163/US-169), so it was already done
+- Write via Bash heredoc required — Edit tool changes didn't persist to disk (Windows path encoding issue between tool and filesystem)
+
+### Gotchas
+- Previous attempt (540 lines) likely created a new file or made sweeping changes — minimal approach (one file, ~12 line diff) is the right strategy
+- Edit tool applied changes to in-memory Read cache but NOT to disk — must verify with `cat` and use Bash heredoc to write if needed

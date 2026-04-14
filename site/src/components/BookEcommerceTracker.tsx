@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useCallback } from "react";
+import { useEffect, useEffectEvent } from "react";
 import { trackBeginCheckout } from "@/lib/gtm-ecommerce";
 
 const CHECKOUT_ITEMS = [
@@ -14,18 +14,18 @@ const CHECKOUT_ITEMS = [
 ];
 
 export default function BookEcommerceTracker() {
-  const handleBookNowClick = useCallback((e: MouseEvent) => {
+  const handleBookNowClick = useEffectEvent((e: MouseEvent) => {
     const target = e.target as HTMLElement;
     const link = target.closest("a[href*='wa.me'], a[href='#booking'], .btn-primary");
     if (link) {
       trackBeginCheckout(CHECKOUT_ITEMS);
     }
-  }, []);
+  });
 
   useEffect(() => {
     document.addEventListener("click", handleBookNowClick);
     return () => document.removeEventListener("click", handleBookNowClick);
-  }, [handleBookNowClick]);
+  }, []);
 
   return null;
 }
