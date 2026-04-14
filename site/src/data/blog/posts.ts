@@ -1496,6 +1496,73 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 <p>JB is one of Southeast Asia's most affordable cities to navigate. A day of transport — two Grab rides plus meals — costs under RM30. Many backpackers never need a car. Buses are reliable, Grab is cheap, and walking Taman Pelangi connects you to everything. Stay at <a href="/book">Pelangi Capsule Hostel</a>, grab a Rapid JB card, and explore JB like a pro.</p>
 `,
   },
+  {
+    slug: "laksa-johor-guide-best-places-to-eat",
+    title: "Laksa Johor Guide — Authentic Dish, Where to Eat, and What Makes It Unique (2026)",
+    excerpt:
+      "Deep-dive guide on Laksa Johor—a creamy coconut-based noodle dish unique to Johor. Covers history, what makes it different from other laksa variants, and the best stalls in JB.",
+    date: "2026-04-15",
+    category: "Food & Drink",
+    author: "Jay Lew",
+    readTime: "6 min read",
+    tags: ["food", "johor", "specialty-dish", "jb-guide"],
+    featuredImage: "/images/blog/laksa-johor-guide.jpg",
+    content: `
+<h2>What Is Laksa Johor?</h2>
+<p><strong>Laksa Johor</strong> is a creamy coconut-based noodle soup unique to the state of Johor. Unlike laksa from other regions in Malaysia (Laksa Lemak from KL, Laksa Penang, Laksa Sarawak), Laksa Johor uses thick spaghetti noodles instead of rice noodles, giving it a distinctly different texture and mouthfeel. The broth is rich, aromatic, and infused with fish, coconut milk, and spices — making it one of the most indulgent noodle dishes in Malaysia.</p>
+<p>It's a fiercely regional dish. Walk into a hawker centre in Johor Bahru and locals will defend their stall's laksa recipe with pride. For visitors staying at <a href="/rooms">Pelangi Capsule Hostel</a>, tasting an authentic bowl of Laksa Johor is non-negotiable.</p>
+
+<h2>Key Ingredients That Make It Special</h2>
+<ul>
+  <li><strong>Thick spaghetti noodles:</strong> Not rice noodles. The thickness absorbs the broth and provides a satisfying chew.</li>
+  <li><strong>Coconut milk (santan):</strong> The base that makes Laksa Johor creamy and rich. Often 2–3 cups per pot.</li>
+  <li><strong>Fresh fish or fish paste:</strong> Adds depth and umami. Some stalls use ikan kembung (mackerel), others use salted fish.</li>
+  <li><strong>Bean sprouts:</strong> Fresh and crunchy, a crucial contrast to the soft noodles and creamy broth.</li>
+  <li><strong>Hard-boiled eggs:</strong> Halved and placed on top, adds richness and protein.</li>
+  <li><strong>Sambal (chilli paste):</strong> Served on the side, added to taste for heat and punch.</li>
+  <li><strong>Aromatic spices:</strong> Turmeric, galangal, shallots, garlic, lemongrass — ground into a paste (rempah).</li>
+  <li><strong>Fish cake or tau pok (fried tofu):</strong> Optional toppings that absorb the broth.</li>
+</ul>
+
+<h2>Top Stalls to Try in Johor Bahru</h2>
+<p><strong>1. Laksa Auntie Nur — Taman Pelangi</strong><br>Family-run stall operating for 20+ years. Laksa served in a generous bowl with extra toppings. Known for thick, creamy broth and generous portions. Budget: RM8–10 per bowl.</p>
+
+<p><strong>2. Laksa Johor Larkin — Larkin Terminal</strong><br>Popular spot near the bus terminal; serves commuters and tourists daily. Quick service, consistent quality. Broth is balanced between rich and not overpowering. Budget: RM7–9 per bowl.</p>
+
+<p><strong>3. San Low Laksa — Taman Sentosa</strong><br>Modern kopitiam with laksa as a speciality. Cleaner environment than traditional hawker stalls, slightly pricier but excellent quality. Allows customization (spice level, extra toppings). Budget: RM10–12 per bowl.</p>
+
+<p><strong>4. Laksa Mak Cik — Jalan Wong Ah Fook</strong><br>Street stall in downtown JB, minimal seating, authentic old-school vibe. Broth made fresh daily. Worth the hunt if you want the "real deal." Budget: RM6–8 per bowl.</p>
+
+<p><strong>5. Laksa Ayah Wan — Danga Bay</strong><br>Slightly upscale but still hawker-style. Uses premium fish and generous amounts of coconut milk. Good for groups. Budget: RM9–11 per bowl.</p>
+
+<h2>How to Order and Eat Laksa Johor</h2>
+<p>Walk up to the stall and say "Satu Laksa" (one Laksa) or "Dua Laksa" (two). Specify if you want extra toppings or less sambal. The aunty will ladle hot broth over spaghetti noodles, top with bean sprouts, egg halves, and fish cake, then hand you a bowl. Sambal comes on the side in a small container.</p>
+<p><strong>Eating etiquette:</strong> Slurp loudly (it's expected and helps cool the noodles). Mix the sambal into the broth gradually—taste as you go. Most locals finish the broth at the end, drinking it directly from the bowl for every last drop of flavour. It's a complete eating experience, not just a meal.</p>
+
+<h2>FAQ: Is Laksa Johor Different From Laksa Lemak?</h2>
+<p><strong>Q: What's the main difference between Laksa Johor and Laksa Lemak (KL laksa)?</strong></p>
+<p><strong>A:</strong> Yes, they're distinctly different dishes:</p>
+<ul>
+  <li><strong>Noodles:</strong> Laksa Johor uses thick spaghetti; Laksa Lemak uses thin rice noodles.</li>
+  <li><strong>Broth:</strong> Laksa Johor is heavier and more coconut-forward; Laksa Lemak is more balanced with more visible spices.</li>
+  <li><strong>Fish content:</strong> Laksa Johor emphasizes fresh or salted fish; Laksa Lemak uses ground fish paste.</li>
+  <li><strong>Texture:</strong> Laksa Johor is creamier and richer; Laksa Lemak is lighter and more delicate.</li>
+  <li><strong>Regional pride:</strong> Johor locals consider Laksa Lemak a different (inferior) dish. Don't confuse them.</li>
+</ul>
+
+<p><strong>Q: Where should I try it first?</strong></p>
+<p><strong>A:</strong> If staying at <a href="/rooms">Pelangi Capsule Hostel</a>, walk to Laksa Auntie Nur in Taman Pelangi—closest and most consistent. For a broader JB experience, visit Larkin Terminal stall during lunch hours (11am–2pm) when the broth is freshest.</p>
+
+<p><strong>Q: Is it very spicy?</strong></p>
+<p><strong>A:</strong> The broth itself is mild. Heat comes from the sambal paste served on the side. Add it gradually. Most stalls offer a milder version if you ask ("sedikit pedas" = a little spicy).</p>
+
+<h2>When to Visit & Best Times</h2>
+<p>Laksa Johor is available year-round but best during lunch (11am–2pm) and early dinner (5–7pm) when the broth is freshest. Many stalls close by 8–9pm. Weekday lunch is less crowded than weekends; come early to secure a seat at popular stalls.</p>
+
+<h2>Next Steps</h2>
+<p>Now that you know what to look for, <a href="/book">book a stay at Pelangi Capsule</a> and make Laksa Johor one of your first meals in the city. It's a dish that defines Johor's food culture.</p>
+`,
+  },
 ];
 
 export const blogPosts: BlogPost[] = rawPosts.map((post) => ({
