@@ -1934,3 +1934,57 @@ It has no connection to a Frappe/Python application like `lhdn_payroll_integrati
 
 To get a useful technical brief for the Frappe/Python task, please provide the correct user story JSON related to the `lhdn_payroll_integration` app.
 
+## Iteration 1 - Tue, Apr 14, 2026 10:13:24 PM
+FAILED diff-guard: Blog post: Johor Premium Outlets vs Singapore Outlet Malls - Where to Save More (2026) (ID: US-272) — 14525 lines > 500 limit — attempt 1/3
+
+
+## Pre-analysis for US-272 (Gemini 2.5 Pro)
+This user story is for a website blog post, not a Frappe/Python application. The context seems incorrect.
+
+Here is the technical brief based on the JSON provided:
+
+**Project:** Pelangi Website (Next.js/TypeScript)
+**Goal:** Create a new blog post data object.
+
+**1. Files to Modify:**
+*   `site/src/data/blog/posts.ts`: This is the primary file. You will be adding a new post object to the array exported from this file.
+
+**2. DocTypes/Frameworks Involved:**
+*   This is a TypeScript/Next.js project, not Frappe.
+*   You will be working with the existing data structure for blog posts, likely a TypeScript interface or type defined elsewhere and used in `posts.ts`.
+
+**3. Implementation Approach:**
+*   Append a new JavaScript object to the `posts` array in `site/src/data/blog/posts.ts`.
+*   The object must have the following properties:
+    *   `slug`: 'johor-premium-outlets-vs-singapore-malls-shopping-guide'
+    *   `title`: "Blog post: Johor Premium Outlets vs Singapore Outlet Malls - Where to Save More (2026)"
+    *   `category`: 'Travel Tips'
+    *   `readTime`: '6 min read'
+    *   `date`: '2026-04-15'
+    *   `tags`: `["shopping", "jpo", "johor-premium-outlets", "singapore-shoppers"]`
+    *   `content`: An HTML string containing the comparison table and FAQ section.
+
+**4. Gotchas & Edge Cases:**
+*   **CRITICAL:** The previous attempt failed due to an `oversized_diff`. Keep the total new content concise and well under the 500-line limit for the change.
+*   The content HTML must be kept under 6000 characters as per `technicalNotes`.
+*   Ensure the final object structure exactly matches the other posts in the file.
+*   Verify completion by running `npm run build` as required by the acceptance criteria.
+
+
+## Iteration US-272 (Attempt 2) - Mon, Apr 14, 2026
+
+Completed: JPO vs Singapore Outlet Malls blog post (ID: US-272)
+
+### What was implemented
+- Blog post added to `site/src/data/blog/posts.ts`
+- Slug: johor-premium-outlets-vs-singapore-malls-shopping-guide
+- Category: Travel Tips, date: 2026-04-15, readTime: 6 min read
+- Includes comparison table (brands, discounts, transport costs)
+- FAQ section: "Is it worth going to JPO?" with 5 Q&As
+- Mentions Pelangi Capsule Hostel in context of JPO day trips
+- 45 lines inserted, well under 500-line limit
+
+### Gotchas
+- Attempt 1 failed with 14525-line diff — content string was far too verbose
+- Key fix: write concise HTML (table + 5 short sections) instead of exhaustive content
+- Target ~2500 HTML characters, not 6000-char maximum

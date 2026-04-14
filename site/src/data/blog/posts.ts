@@ -1825,6 +1825,51 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 `,
   },
   {
+    slug: "johor-premium-outlets-vs-singapore-malls-shopping-guide",
+    title:
+      "Johor Premium Outlets vs Singapore Outlet Malls: Where to Save More (2026)",
+    excerpt:
+      "Comparing JPO, IMM, and Changi City Point for Singaporeans planning a shopping trip. Brands, discounts, transport costs, and the honest answer to: is JPO worth the trip?",
+    date: "2026-04-15",
+    category: "Travel Tips",
+    author: "Jay Lew",
+    readTime: "6 min read",
+    tags: ["shopping", "jpo", "johor-premium-outlets", "singapore-shoppers"],
+    featuredImage: "/images/blog/johor-premium-outlets.jpg",
+    content: `
+<h2>Quick Comparison: JPO vs Singapore Outlet Malls</h2>
+<table>
+  <thead><tr><th>Factor</th><th>JPO (Johor)</th><th>IMM / Changi City Point (SG)</th></tr></thead>
+  <tbody>
+    <tr><td>Premium Brands</td><td>Coach, Michael Kors, Kate Spade, Polo Ralph Lauren, Burberry</td><td>Mostly mid-range: Levi's, Bossini, Puma, Nike</td></tr>
+    <tr><td>Discount Level</td><td>30–70% off RRP</td><td>10–40% off RRP</td></tr>
+    <tr><td>Transport from Woodlands MRT</td><td>Causeway Link bus + Grab (~SGD7–10, 60–90 min)</td><td>MRT direct (SGD1.50–2.50, 15–30 min)</td></tr>
+    <tr><td>Opening Hours</td><td>10am–10pm daily</td><td>10am–10pm daily</td></tr>
+    <tr><td>Parking</td><td>Free (ample)</td><td>Paid (SGD2–5/hr)</td></tr>
+  </tbody>
+</table>
+
+<h2>Johor Premium Outlets (JPO)</h2>
+<p>JPO is Malaysia's first premium outlet centre with 130+ stores in an open-air village layout. Key brands: <strong>Coach, Michael Kors, Kate Spade, Polo Ralph Lauren, Bottega Veneta, Nike, Adidas, Samsonite</strong>. Discounts run 30–70% below regular retail. The Nike and Adidas stores are consistently well-stocked for footwear. JPO is in Indahpura, Kulai — 40 km north of the Causeway. Best for big-ticket branded purchases.</p>
+
+<h2>Singapore Outlet Malls: IMM & Changi City Point</h2>
+<p><strong>IMM (Jurong)</strong> is Singapore's largest outlet mall with 90+ stores. Good for mid-range brands but limited premium label depth. <strong>Changi City Point</strong> has a smaller outlet section — convenient for airport shoppers but not a full outlet experience. Both are MRT-accessible with no border crossing.</p>
+
+<h2>Getting to JPO from Singapore</h2>
+<p>Take MRT to <strong>Woodlands MRT (NS9)</strong>, then board <strong>Causeway Link CW2 express bus</strong> directly to JPO (departs from Queen Street or Woodlands). Journey: 60–90 min including customs. Cost: SGD4–5 one way. Alternatively, book a private shuttle from Bugis or Woodlands.</p>
+<p>Staying at <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi? JPO is just 30 min by Grab (~RM30) — far faster than traveling from Singapore.</p>
+
+<h2>FAQ: Is It Worth Going to JPO?</h2>
+<p><strong>Q: Is JPO better than IMM for branded goods?</strong><br/>Yes — JPO carries premium Western labels at 30–70% off. IMM is more accessible but lacks luxury brand depth.</p>
+<p><strong>Q: How much should I budget for transport from Singapore?</strong><br/>SGD8–12 return (Causeway Link bus + Grab from JB Sentral). Add 1 hour per crossing for customs.</p>
+<p><strong>Q: What are JPO's opening hours?</strong><br/>Daily 10am–10pm. Most stores are open year-round; some may close on Malaysian public holidays.</p>
+<p><strong>Q: Is JPO cheaper than airport duty-free for bags?</strong><br/>Often yes — Coach and Kate Spade outlet prices at JPO (40–60% off) typically beat airport duty-free pricing.</p>
+<p><strong>Q: Is JPO worth the trip for just one item?</strong><br/>For 2+ premium purchases, the savings easily cover transport. For a single small item, the 3+ hour round trip may not be worth it unless you combine with other JB activities.</p>
+
+<p>Planning a JPO shopping day? <a href="/book">Stay at Pelangi Capsule Hostel</a> the night before — skip the morning Causeway rush and reach JPO at opening time.</p>
+`,
+  },
+  {
     slug: "cheap-eats-johor-bahru-under-rm10-budget-guide",
     title: "15 Cheap Eats in Johor Bahru Under RM10 - Budget Food Guide (2026)",
     excerpt:
