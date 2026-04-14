@@ -126,7 +126,7 @@ const amenities = [
       </svg>
     ),
     label: "Laundry Facilities",
-    description: "Complimentary washing machine and dryer (RM3/load). Laundry service available: RM15 per kg, next-day delivery. Iron and ironing board available.",
+    description: "Complimentary washing machine and dryer (RM3/load). In-house laundry service for guests: RM5/load (since March 2026) — cheaper than the dobi outside. Iron and ironing board available.",
     schemaName: "Laundry Service",
   },
 ];

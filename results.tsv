@@ -18,3 +18,5 @@ opus	2	4bc2b8877ba4dc6193a65e27229fa4b14ae3f052	69dd34342c1f	false	0	0	0	0	0	0	0
 2026-04-14T00:04:25Z	21	1	US-144	Replace JavaScript tooltip positioning with CSS Popover API and Anchor Positioning	reject	647	sonnet	1		69dd34342c1f	false	0	0	0	0	0	0	0		0	0	0	0				
 2026-04-14T00:55:18Z	24	1	US-159	Add Pinterest Rich Pins metadata for room and blog pages	reject	481	sonnet	1		69dd34342c1f	false	0	0	0	0	0	0	0		0	0	0	0				
 2026-04-14T01:01:31Z	24	2	US-159	Add Pinterest Rich Pins metadata for room and blog pages	reject	366	sonnet	2		69dd34342c1f	false	0	0	0	0	0	0	0		0	0	0	0				
+2026-04-14T01:22:17Z	25	2	US-161	Implement React 19.2 useEffectEvent for stable analytics event handlers	reject	383	haiku	1		69dd34342c1f	false	0	0	0	0	0	0	0		0	0	0	0				
+2026-04-14T01:22:20Z	25	1	US-160	Enable Turbopack file system caching for faster development cold starts	keep	720	haiku	0	76977f5c2eac8f7882dc330feb98b340d643f63a	69dd34342c1f	false	0	0	0	0	0	0	0		0	0	0	0				

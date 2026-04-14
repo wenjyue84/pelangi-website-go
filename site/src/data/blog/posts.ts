@@ -560,8 +560,8 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
     featuredImage: "/images/blog/jb-singapore-commuter.jpg",
     content: `
 <h2>The Commuter Advantage</h2>
-<p>Thousands of Malaysians cross the Causeway every weekday to work in Singapore. Why? A Singapore salary (SGD4,000–8,000/month) combined with Johor Bahru living costs (RM2,500–3,500/month for rent, food, transport) creates a savings rate impossible in either country alone. For Malaysian professionals earning SGD5,000 as an <a href="singapore-work-pass-guide-malaysians">Employment Pass holder</a>, living in JB while working in Singapore means saving SGD2,000–3,000 monthly.</p>
-<p>This guide covers everything: bus options, CIQ checkpoint crossings, monthly budgets, peak-hour strategies, and why <a href="/rooms">Pelangi Capsule Hostel</a> works as a base while you settle in.</p>
+<p>Thousands of Malaysians cross the Causeway every weekday. The math is simple: Singapore salary (SGD4,000–8,000/month), Johor Bahru living costs (roughly RM2,500–3,500/month for rent, food, and transport). The gap between what you earn and what you spend is larger than almost any arrangement possible in either country alone. For someone on a <a href="singapore-work-pass-guide-malaysians">SGD5,000 Employment Pass</a>, living in JB typically means saving SGD2,000–3,000 every month.</p>
+<p>This guide covers bus options, how the CIQ checkpoints work, realistic monthly budgets, and how to avoid the common time-wasters. There's also a section on short-term accommodation while you sort out longer-term housing.</p>
 
 <h2>Getting Across: Your Bus Options</h2>
 <p>Five daily shuttle services cross the Causeway. Most commuters use two: <strong>Causeway Link</strong> and <strong>SBS Transit</strong>. Both operate modern, air-conditioned coaches with WiFi.</p>
@@ -612,9 +612,9 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 <p><strong>Pro tip:</strong> Causeway Link and SBS are cheapest and most frequent. Buy monthly passes for RM60–80 (saves 20% vs daily tickets). Causeway Link passes sold at JB Sentral; SBS through their Larkin Sentral office.</p>
 
 <h2>The CIQ Process: What to Expect</h2>
-<p>CIQ = Customs, Immigration, Quarantine. You pass through Malaysia's exit, then Singapore's entry. On buses, this takes 20–40 minutes depending on traffic and checkpoint congestion.</p>
-<p><strong>Your documents:</strong> Passport, employment pass or work visa. Keep them accessible. Officers rarely question commuters; the process is routine. You'll join a queue, present documents, answer standard questions ("Where do you work?" "How long?"), and proceed.</p>
-<p><strong>Peak hour advice:</strong> Early crossings (before 7:30am) and evening returns (after 6pm) face longer queues. Mid-morning crossings (9–11am) and mid-afternoon (2–4pm) are significantly quieter. If your work schedule allows, shift crossing time. 30 minutes saved daily equals 2.5 hours weekly.</p>
+<p>CIQ stands for Customs, Immigration, Quarantine. You clear Malaysia's exit checkpoint, then Singapore's entry. On buses, everyone steps off, queues through their respective counters, and re-boards. The whole thing takes 20–40 minutes depending on how busy the checkpoint is.</p>
+<p>Keep your passport and work pass accessible — not buried in your bag. Officers rarely stop regular commuters; the questions are standard ("Where do you work?" "How long have you been commuting?"). After a few weeks it becomes muscle memory.</p>
+<p>The queue times vary significantly by hour. Before 7:30am and after 6pm are the most congested. If your work schedule has any flexibility, crossing mid-morning (9–11am) or mid-afternoon (2–4pm) can save 30 minutes each way — that's five hours a week compounded.</p>
 
 <h2>Monthly Budget: JB Living, Singapore Salary</h2>
 <p>Here's a realistic monthly breakdown for a single commuter earning SGD5,500/month (typical Employment Pass salary):</p>
