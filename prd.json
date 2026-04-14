@@ -3593,7 +3593,10 @@
       "estimatedComplexity": "small",
       "passes": true,
       "model": "haiku",
-      "last_attempted": "2026-04-14T01:08:19Z"
+      "last_attempted": "2026-04-14T01:08:19Z",
+      "_phaseI": {
+        "diagnosisBlock": "## Current State\nThe `next.config.ts` has an `experimental` block (lines 35-44) with `viewTransition` and `staleTimes` settings, but lacks the `turbopackFileSystemCacheForDev` configuration needed for Turbopack file system caching.\n\n## Problem Identified\nUS-160 requires enabling Turbopack file system caching for faster development cold starts by adding `turbopackFileSystemCacheForDev: true` to the `experimental` config object in Next.js 16.\n\n## Planned Changes\n- Add `turbopackFileSystemCacheForDev: true` to the `experimental` object in `site/next.config.ts`\n- Verify TypeScript compilation passes\n- Test the change by restarting the dev server and comparing startup times\n\n<plan>\n{\n  \"files_to_create\": [],\n  \"files_to_modify\": [\"site/next.config.ts\"],\n  \"functions_to_add\": [],\n  \"estimated_loc\": 5\n}\n</plan>\n\nNow implementing the change:\nNow let me verify TypeScript compilation:\nPerfect! TypeScript compiled successfully. Let me verify the change:\nNow let me verify that `.next/` is already in .gitignore:\nExcellent! The `.next/` directory is already in the root `.gitignore` (line 5), which means the cache directory is already excluded from git.\n\nNow let me update prd.json to mark the story as complete:\nNow let me commit the changes:\nPerfect! Let me verify the commit:\nNow let me update progress.txt:\nLet me verify the prd.json update:\nPerfect! Let me commit the progress.txt update:\n## ✅ Story US-160 Complete"
+      }
     },
     {
       "id": "US-161",

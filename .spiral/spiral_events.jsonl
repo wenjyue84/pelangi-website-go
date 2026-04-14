@@ -507,3 +507,4 @@ opus"}
 {"ts":"2026-04-14T01:07:58Z","event":"phase_start","run_id":"69dd34342c1f","level":"INFO","phase":"G","iteration":25,"trace_id":"4ce43d1b391b4be60fe582bd498bb221","span_id":"14c009c62a7fadac"}
 {"ts":"2026-04-14T01:08:04Z","event":"phase_start","run_id":"69dd34342c1f","level":"INFO","phase":"I","iteration":25,"trace_id":"4ce43d1b391b4be60fe582bd498bb221","span_id":"14c009c62a7fadac"}
 {"ts":"2026-04-14T01:08:29Z","event":"plan_cache_miss","story_id":"US-160"}
+{"ts":"2026-04-14T01:12:56Z","event":"cost_update","story_id":"US-160","tokens_input":162,"tokens_output":4460,"estimated_usd":0.067386}
