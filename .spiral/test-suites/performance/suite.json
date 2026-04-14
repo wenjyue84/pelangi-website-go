@@ -521,6 +521,19 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[performance] Implement Next.js 16.1 Turbopack filesystem caching for faster local dev builds",
+      "description": "Auto-generated performance test from US-220",
+      "from_story": "US-220",
+      "command": "",
+      "priority": "medium",
+      "id": "performance-041",
+      "created_ts": "2026-04-14T08:25:49Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }

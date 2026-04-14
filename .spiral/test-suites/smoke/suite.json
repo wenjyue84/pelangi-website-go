@@ -3030,6 +3030,32 @@
       "last_result": "pending",
       "obsolete": false,
       "run_count": 0
+    },
+    {
+      "title": "[smoke] Malaysia Online Safety Act 2025 – Add safety reporting mechanism for user-submitted content",
+      "description": "Auto-generated smoke test from US-216",
+      "from_story": "US-216",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-234",
+      "created_ts": "2026-04-14T08:25:49Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
+    },
+    {
+      "title": "[smoke] Implement Next.js 16.1 Turbopack filesystem caching for faster local dev builds",
+      "description": "Auto-generated smoke test from US-220",
+      "from_story": "US-220",
+      "command": "",
+      "priority": "medium",
+      "id": "smoke-235",
+      "created_ts": "2026-04-14T08:25:49Z",
+      "last_run_ts": "",
+      "last_result": "pending",
+      "obsolete": false,
+      "run_count": 0
     }
   ]
 }

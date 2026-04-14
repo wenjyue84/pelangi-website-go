@@ -1,26 +1,29 @@
 {
   "stories": [
     {
-      "title": "Add Article JSON-LD schema to blog post layout with author, publishDate, image, and wordCount",
-      "priority": "high",
-      "description": "Implement Article schema.org structured data for blog posts. Extract metadata from blog post data (title, author, publishDate, description, featuredImage, wordCount) and generate valid JSON-LD embedded in the page head that Google Search Console recognizes for rich result display.",
+      "title": "Implement Related Blog Posts Widget with IsSimilarTo Schema Linking",
+      "priority": "medium",
+      "description": "Add a 'You Might Also Like' widget on blog article pages displaying 3 most-relevant related posts. Relevance determined by shared tags and categories. Each related post card embeds IsSimilarTo JSON-LD linking back to the current article for bidirectional SEO.",
       "acceptanceCriteria": [
-        "Article JSON-LD schema in blog post layout (site/src/app/blog/[slug]/layout.tsx) includes @context, @type, headline, author, datePublished, image, description, and wordCount fields",
-        "Schema validates successfully using Google's Rich Results Test with no errors; passes JSON-LD syntax validation",
-        "Schema <script> tag has id='article-schema' for test verification and is placed before closing </head>"
+        "RelatedPosts component queries blog index, filters by matching tags/categories, ranks by match count, returns top 3; cards show post title, excerpt, publish date",
+        "Each related post <a> includes data-relationship='similar' and embeds IsSimilarTo JSON-LD in parent schema",
+        "Playwright test confirms widget displays on 3 sample blog post pages and schema validation passes"
       ],
       "technicalNotes": [
-        "File to edit: site/src/app/blog/[slug]/layout.tsx - add generateMetadata export that returns structured data in metadata.other",
-        "File to create: site/src/lib/blog-schema.ts (export function generateArticleSchema(post: BlogPost, wordCount: number): object)",
-        "Test command: curl -s http://localhost:3000/blog/[post-slug] | grep -o '\"@type\":\"Article\"' should return match; validate with: npm install --save-dev @types/schema.org"
+        "File to create: app/components/RelatedPosts.tsx (BlogPost[] filter by tags, sort by match count, render cards with schema)",
+        "File to create: lib/blog-search.ts (function searchRelatedPosts(currentPostTags, currentPostCategories) returning sorted BlogPost[])",
+        "File to modify: app/(website)/blog/[slug]/page.tsx (import and render <RelatedPosts /> above comments section)",
+        "Test command: vitest run lib/blog-search.test.ts (search relevance ranking, tie-breaking logic)"
       ],
       "dependencies": [],
-      "estimatedComplexity": "small",
+      "estimatedComplexity": "medium",
       "tags": [],
       "source": "",
       "filesTouch": [
-        "site/src/app/blog/[slug]/layout.tsx",
-        "site/src/lib/blog-schema.ts"
+        "app/components/RelatedPosts.tsx",
+        "lib/blog-search.ts",
+        "app/(website)/blog/[slug]/page.tsx",
+        "lib/blog-search.test.ts"
       ],
       "_source": "ai-example",
       "passes": false
