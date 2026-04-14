@@ -30,6 +30,12 @@ export const metadata: Metadata = {
             },
         ],
     },
+    other: {
+        "og:price:amount": "37.80",
+        "og:price:currency": "MYR",
+        "product:price:amount": "37.80",
+        "product:price:currency": "MYR",
+    },
 };
 
 const containedInPlace = {

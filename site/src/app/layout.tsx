@@ -98,6 +98,10 @@ export const metadata: Metadata = {
   },
   other: {
     "apple-mobile-web-app-status-bar-style": "black-translucent",
+    // Pinterest domain verification — add token from Pinterest Developer Portal > Claim Website
+    ...(process.env.NEXT_PUBLIC_PINTEREST_VERIFICATION_TOKEN
+      ? { "p:domain_verify": process.env.NEXT_PUBLIC_PINTEREST_VERIFICATION_TOKEN }
+      : {}),
   },
 };
 

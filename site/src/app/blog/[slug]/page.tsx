@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: PageProps<'/blog/[slug]'>): P
       siteName: "Pelangi Capsule Hostel",
       locale: "en_MY",
       type: "article",
-      publishedTime: post.date,
+      publishedTime: new Date(post.date).toISOString(),
       authors: [post.author],
       images: [
         {
