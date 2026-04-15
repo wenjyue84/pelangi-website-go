@@ -15,19 +15,6 @@ export const metadata: Metadata = {
 
 const PAYPAL_LINK = "https://www.paypal.com/ncp/payment/6675966FLY2T4";
 
-const rooms = [
-    {
-        name: "Lower Deck Pod",
-        price: "RM 35",
-        note: "per night",
-    },
-    {
-        name: "Upper Deck Pod",
-        price: "RM 45",
-        note: "per night",
-    },
-];
-
 export default function PayPage() {
     return (
         <main id="main-content" className="min-h-screen bg-stone-50 dark:bg-stone-950">
@@ -50,28 +37,6 @@ export default function PayPage() {
 
                     {/* Payment card */}
                     <div className="bg-white dark:bg-stone-900 rounded-3xl border border-stone-100 dark:border-stone-700 shadow-sm overflow-hidden mb-6">
-
-                        {/* Room pricing reference */}
-                        <div className="px-8 pt-8 pb-6 border-b border-stone-100 dark:border-stone-700">
-                            <p className="text-xs font-medium tracking-widest uppercase text-stone-400 dark:text-stone-500 mb-4">
-                                Room Rates
-                            </p>
-                            <div className="space-y-3">
-                                {rooms.map((room) => (
-                                    <div key={room.name} className="flex items-center justify-between">
-                                        <span className="text-stone-700 dark:text-stone-300 font-medium">{room.name}</span>
-                                        <span className="text-stone-900 dark:text-stone-100 font-semibold">
-                                            {room.price}{" "}
-                                            <span className="text-xs font-normal text-stone-400">{room.note}</span>
-                                        </span>
-                                    </div>
-                                ))}
-                            </div>
-                            <p className="mt-4 text-xs text-stone-400 dark:text-stone-500">
-                                Tourism Tax (TTx) RM10/room/night applies for non-Malaysian guests.
-                                Enter the exact total amount on the PayPal payment page.
-                            </p>
-                        </div>
 
                         {/* PayPal button */}
                         <div className="px-8 py-8">
