@@ -151,7 +151,7 @@ export default async function Home() {
                 How much does a capsule pod cost?
               </h3>
               <p>
-                Capsule pods at Pelangi Capsule Hostel start from RM35 per night (approximately SGD 10.50 or USD 7.50). A Malaysia Tourism Tax (TTx) of RM10 per room per night is added as required by law. Monthly long-stay rates are available from RM594 per month. Booking directly at <a href="/book" className="text-amber-700 dark:text-amber-400 hover:underline">pelangicapsulehostel.com/book</a> guarantees the best rate with no OTA commissions or hidden fees.
+                Capsule pods at Pelangi Capsule Hostel start from RM35 per night (approximately SGD 10.50 or USD 7.50). Monthly long-stay rates are available from RM594 per month. Booking directly at <a href="/book" className="text-amber-700 dark:text-amber-400 hover:underline">pelangicapsulehostel.com/book</a> guarantees the best rate with no OTA commissions or hidden fees.
               </p>
             </div>
 

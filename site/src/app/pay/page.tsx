@@ -71,14 +71,20 @@ export default function PayPage() {
                     <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-2xl px-6 py-5">
                         <p className="text-sm text-amber-800 dark:text-amber-300 font-medium mb-1">After payment</p>
                         <p className="text-sm text-stone-600 dark:text-stone-400">
-                            Screenshot your PayPal receipt and send it to us on WhatsApp at{" "}
+                            Screenshot your PayPal receipt and send it to us on WhatsApp to confirm your booking:{" "}
                             <a
                                 href="https://wa.me/60127088789"
                                 className="font-medium text-amber-700 dark:text-amber-400 underline underline-offset-2"
                             >
-                                +60 12-708 8789
+                                Jay +60 12-708 8789
                             </a>{" "}
-                            to confirm your booking.
+                            or{" "}
+                            <a
+                                href="https://wa.me/60167052004"
+                                className="font-medium text-amber-700 dark:text-amber-400 underline underline-offset-2"
+                            >
+                                Alston +60 16-705 2004
+                            </a>
                         </p>
                     </div>
 
