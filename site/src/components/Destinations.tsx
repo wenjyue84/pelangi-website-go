@@ -40,7 +40,7 @@ const destinations: Destination[] = [
   {
     id: "rawa",
     name: "Pulau Rawa",
-    image: "/images/destinations/tioman-island.jpg",
+    image: "/images/destinations/rawa-island.jpg",
     distance: "3-4 hours",
     category: "Island Getaway",
     bestFor: ["Couples", "Luxury Seekers", "Instagram Lovers"],
@@ -77,7 +77,7 @@ const destinations: Destination[] = [
   {
     id: "marina-bay",
     name: "Marina Bay Sands",
-    image: "/images/destinations/singapore.jpg",
+    image: "/images/destinations/marina-bay-sands.jpg",
     distance: "1-1.5 hours",
     category: "Singapore",
     bestFor: ["Luxury Seekers", "Photographers", "First-time Visitors", "Foodies"],
@@ -113,7 +113,7 @@ const destinations: Destination[] = [
   {
     id: "sentosa",
     name: "Sentosa Island",
-    image: "/images/destinations/jewel.jpg",
+    image: "/images/destinations/sentosa.jpg",
     distance: "1.5-2 hours",
     category: "Singapore",
     bestFor: ["Thrill-seekers", "Families", "Beach Lovers", "Theme Park Fans"],
@@ -150,7 +150,7 @@ const destinations: Destination[] = [
   {
     id: "sultan-mosque",
     name: "Sultan Abu Bakar Mosque",
-    image: "/images/destinations/melaka.jpg",
+    image: "/images/destinations/sultan-mosque.jpg",
     distance: "15-20 min",
     category: "Heritage",
     bestFor: ["Architecture Admirers", "Spiritual Seekers", "Photographers"],
@@ -187,7 +187,7 @@ const destinations: Destination[] = [
   {
     id: "desaru",
     name: "Desaru Coast",
-    image: "/images/destinations/tanjung-piai-nationa.jpg",
+    image: "/images/destinations/desaru.jpg",
     distance: "1.5 hours",
     category: "Nature",
     bestFor: ["Families", "Golfers", "Resort Seekers", "Beach Lovers"],
@@ -206,7 +206,7 @@ const destinations: Destination[] = [
   {
     id: "tan-hiok-nee",
     name: "Tan Hiok Nee Heritage Street",
-    image: "/images/tan-hiok-nee.jpg",
+    image: "/images/destinations/tan-hiok-nee-new.jpg",
     distance: "In JB center",
     category: "Local Gem",
     bestFor: ["History Lovers", "Cafe Hoppers", "Street Art Hunters", "Photographers"],

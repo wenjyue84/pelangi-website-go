@@ -21,7 +21,6 @@ const standardFeatures = [
   'Personal climate control',
   'Adjustable LED lighting',
   'USB & power outlets',
-  'Privacy curtain',
   'Personal locker',
 ];
 
@@ -30,7 +29,6 @@ const premiumFeatures = [
   'Personal climate control',
   'Adjustable LED lighting',
   'USB & power outlets',
-  'Privacy curtain',
   'Personal locker',
 ];
 
@@ -125,7 +123,7 @@ export default function RoomsTabsClient() {
             <div className="relative h-64 md:h-72 rounded-2xl overflow-hidden group sm:col-span-2">
               <Image
                 src={capsule4Image}
-                alt="Modern Japanese-style capsule pod interior at Pelangi Hostel Johor Bahru with personal lighting and privacy curtain"
+                alt="Modern Japanese-style capsule pod interior at Pelangi Hostel Johor Bahru with personal lighting"
                 fill
                 sizes="(max-width: 1024px) 100vw, 60vw"
                 quality={80}
@@ -173,14 +171,11 @@ export default function RoomsTabsClient() {
                   Lower Deck — from
                 </div>
                 <div className="flex items-baseline gap-2">
-                  <span className="font-display text-5xl font-medium text-stone-900 dark:text-stone-100">RM35</span>
+                  <span className="font-display text-5xl font-medium text-stone-900 dark:text-stone-100">RM45</span>
                   <span className="text-stone-500 dark:text-stone-400">/night</span>
                 </div>
                 <p className="text-sm text-stone-500 dark:text-stone-400 mt-2">
                   Ground-level access — no climbing needed
-                </p>
-                <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">
-                  + SST 8%
                 </p>
               </div>
               <FeatureList features={standardFeatures} />
@@ -265,14 +260,11 @@ export default function RoomsTabsClient() {
                   Upper Deck — from
                 </div>
                 <div className="flex items-baseline gap-2">
-                  <span className="font-display text-5xl font-medium text-stone-900 dark:text-stone-100">RM45</span>
+                  <span className="font-display text-5xl font-medium text-stone-900 dark:text-stone-100">RM35</span>
                   <span className="text-stone-500 dark:text-stone-400">/night</span>
                 </div>
                 <p className="text-sm text-stone-500 dark:text-stone-400 mt-2">
                   Elevated position — quieter, more secluded
-                </p>
-                <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">
-                  + SST 8%
                 </p>
               </div>
               <FeatureList features={premiumFeatures} />
@@ -356,7 +348,6 @@ export default function RoomsTabsClient() {
                 <p className="text-sm text-stone-500 dark:text-stone-400 mt-2">
                   Budget your stay — no nightly surprises
                 </p>
-                <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">+ SST 8%</p>
               </div>
               <FeatureList features={monthlyFeatures} />
               <div className="divider my-8" />

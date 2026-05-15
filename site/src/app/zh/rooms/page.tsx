@@ -29,7 +29,7 @@ const rooms = [
   {
     name: "混住胶囊舱",
     nameEn: "Mixed Dorm Capsule",
-    price: "RM37.80",
+    price: "RM35",
     monthlyPrice: "RM594",
     description: "男女混住日式胶囊舱，适合独行旅客或小团队。每个舱位均配备可锁滑动门板，提供充足私密空间。",
     features: ["可锁滑动门板", "个人温控", "USB-A/C 充电", "可调节 LED 灯", "高密度泡沫床垫", "储物网格"],
@@ -38,7 +38,7 @@ const rooms = [
   {
     name: "女性专用胶囊舱",
     nameEn: "Female-Only Capsule",
-    price: "RM37.80",
+    price: "RM35",
     monthlyPrice: "RM594",
     description: "专为女性旅客设计的独立舱区，提供更安心的住宿环境，配置与混住舱完全相同。",
     features: ["仅限女性入住", "可锁滑动门板", "个人温控", "USB-A/C 充电", "可调节 LED 灯", "高密度泡沫床垫"],

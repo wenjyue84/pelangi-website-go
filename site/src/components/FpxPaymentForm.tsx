@@ -167,7 +167,7 @@ function CheckoutForm({
 
 /* ---------- outer wrapper (booking details + Elements provider) ---------- */
 
-const DEPOSIT_AMOUNT_SEN = 3780; // RM37.80 deposit (1 night at RM35 + 8% SST)
+const DEPOSIT_AMOUNT_SEN = 3500; // RM35 deposit (1 night Upper Deck Pod)
 
 export default function FpxPaymentForm() {
   const [step, setStep] = useState<"details" | "payment">("details");

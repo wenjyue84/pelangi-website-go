@@ -113,7 +113,7 @@ const lodgingReservationSchema = {
   },
   "checkinTime": "T15:00:00",
   "checkoutTime": "T12:00:00",
-  "totalPrice": "37.80",
+  "totalPrice": "35",
   "priceCurrency": "MYR",
 };
 
@@ -199,9 +199,6 @@ export default async function BookPage() {
               </div>
               <div className="text-sm text-stone-500 dark:text-stone-400 mb-2 space-y-1">
                 <div className="flex items-center justify-center gap-1.5">
-                  <span>+ Service Tax (SST) 8%</span>
-                </div>
-                <div className="flex items-center justify-center gap-1.5">
                   <span>+ Tourism Tax (TTx): RM10/room/night</span>
                   <a
                     href="https://www.myttx.customs.gov.my/"
@@ -246,9 +243,6 @@ export default async function BookPage() {
                 <span className="text-stone-500 dark:text-stone-400 ml-1">/month</span>
               </div>
               <div className="text-sm text-stone-500 dark:text-stone-400 mb-2 space-y-1">
-                <div className="flex items-center justify-center gap-1.5">
-                  <span>+ Service Tax (SST) 8%</span>
-                </div>
                 <div className="flex items-center justify-center gap-1.5">
                   <span>+ Tourism Tax (TTx): RM10/room/night</span>
                   <a
@@ -492,7 +486,7 @@ export default async function BookPage() {
               </h4>
             </div>
             <p className="text-xs text-stone-500 dark:text-stone-400 leading-relaxed">
-              Pelangi Capsule Hostel maintains rate parity across all distribution channels. The rates displayed on this direct booking page are identical to or lower than those listed on Booking.com, Hostelworld, Agoda, and Google Hotels free booking links. All rates are inclusive of applicable taxes (SST 8%, Tourism Tax RM10/room/night for non-Malaysian guests). Rate parity is audited monthly to ensure compliance.
+              Pelangi Capsule Hostel maintains rate parity across all distribution channels. The rates displayed on this direct booking page are identical to or lower than those listed on Booking.com, Hostelworld, Agoda, and Google Hotels free booking links. Tourism Tax (RM10/room/night) applies for non-Malaysian guests. Rate parity is audited monthly to ensure compliance.
             </p>
             <p className="text-xs text-stone-400 dark:text-stone-500 mt-2">
               Last rate parity audit: March 2026

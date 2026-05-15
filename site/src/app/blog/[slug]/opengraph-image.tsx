@@ -1,7 +1,6 @@
 import { ImageResponse } from 'next/og';
 import { blogPosts, getPostBySlug } from '@/data/blog/posts';
 
-export const runtime = 'nodejs';
 export const revalidate = 3600; // Cache for 1 hour
 
 export const size = {

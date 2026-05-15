@@ -185,7 +185,7 @@ export default async function Rooms() {
               </div>
               <div>
                 <h4 className="font-semibold text-stone-900 dark:text-stone-100">More Privacy Than Dorms</h4>
-                <p className="text-sm text-stone-500 dark:text-stone-400">Your own enclosed space with a door that locks — not just a curtain</p>
+                <p className="text-sm text-stone-500 dark:text-stone-400">Your own enclosed space with a door that locks — not a curtain-style pod</p>
               </div>
             </div>
             <div className="flex gap-4">

@@ -1,0 +1,2 @@
+[2026-04-14T16:37:02Z] FAILURE_ROOT_CAUSE: unknown
+  story_id=US-274 retry=2 reason=oversized_diff: produced 20924 lines but limit is 500. Keep total insertions+deletions under 500 lines.

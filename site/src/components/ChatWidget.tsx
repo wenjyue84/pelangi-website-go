@@ -51,6 +51,12 @@ const FAQ_DATA: FaqEntry[] = [
     keywords: ['wifi', 'wi-fi', 'internet', 'connection', 'online'],
   },
   {
+    question: 'What is the WiFi password?',
+    answer:
+      'The WiFi network name is "Pelangi_Hostel_Free" and the password is "ilovestaycapsule". You can connect from anywhere on the property including your capsule pod and the common areas.',
+    keywords: ['wifi', 'wi-fi', 'password', 'password', 'network', 'ssid', 'connect'],
+  },
+  {
     question: 'How do I get here from Singapore?',
     answer:
       'We are only 15 minutes by car from the Woodlands CIQ checkpoint. Take a Grab or taxi from JB CIQ to Taman Pelangi for around RM8\u201312. Alternatively, take bus CW1 from Woodlands to JB Sentral, then a short Grab ride to us.',

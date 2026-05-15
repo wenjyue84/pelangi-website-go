@@ -6009,7 +6009,11 @@
       ],
       "passes": false,
       "model": "haiku",
-      "last_attempted": "2026-04-14T14:22:45Z"
+      "last_attempted": "2026-04-14T16:21:08Z",
+      "_failureReason": "oversized_diff: produced 20924 lines but limit is 500. Keep total insertions+deletions under 500 lines.",
+      "_antiPatterns": [
+        "oversized_diff: produced 20924 lines but limit is 500. Keep total insertions+deletions under 500 lines."
+      ]
     },
     {
       "id": "US-275",

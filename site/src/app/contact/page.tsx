@@ -23,9 +23,7 @@ export default function ContactPage() {
                 <section className="py-6 container-custom">
                     <div className="max-w-2xl mx-auto">
                         <p className="text-xs text-stone-500 dark:text-stone-400 text-center">
-                            All quoted room rates are subject to{" "}
-                            <strong className="text-stone-600 dark:text-stone-300">Service Tax (SST) 8%</strong>{" "}
-                            and Tourism Tax (TTx) RM10/room/night for non-Malaysian guests, as required by Malaysian law.
+                            All quoted room rates are subject to Tourism Tax (TTx) RM10/room/night for non-Malaysian guests, as required by Malaysian law.
                             Tax rates are subject to change per Malaysian government regulation.
                         </p>
                     </div>

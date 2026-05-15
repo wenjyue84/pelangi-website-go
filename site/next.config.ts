@@ -24,6 +24,7 @@ const withBundleAnalyzer = bundleAnalyzer({
 });
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   poweredByHeader: false,
   // React Compiler: automatic memoization (top-level in Next.js 16)
   reactCompiler: true,
@@ -32,6 +33,9 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   // Typed routes: stable as of Next.js 15.5 (US-153)
   typedRoutes: true,
+  turbopack: {
+    root: __dirname,
+  },
   experimental: {
     // View Transitions API for animated soft-navigation between pages (US-126)
     // Enables useViewTransition() hook and viewTransition prop on <Link>
@@ -91,7 +95,7 @@ const nextConfig: NextConfig = {
     ],
   },
   async rewrites() {
-    const adminHost = "https://admin.pelangicapsulehostel.com";
+    const adminHost = process.env.PMS2_API_URL || "https://admin.pelangicapsulehostel.com";
     // In local dev, set RAINBOW_API_URL=http://localhost:3002 in .env.local
     const rainbowHost = process.env.RAINBOW_API_URL || adminHost;
     return [

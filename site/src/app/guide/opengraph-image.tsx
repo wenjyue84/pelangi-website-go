@@ -1,6 +1,5 @@
 import { ImageResponse } from 'next/og';
 
-export const runtime = 'nodejs';
 export const revalidate = 86400; // Cache for 24 hours
 
 export const alt = 'Johor Bahru Backpacker Guide 2026 - Transport, Food, Money, and Safety Tips from Pelangi Capsule Hostel';

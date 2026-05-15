@@ -38,7 +38,7 @@ const imageData: PageImages[] = [
             {
                 url: `${baseUrl}/images/capsule-4.webp`,
                 title: "Standard Capsule Pod — Pelangi Capsule Hostel",
-                caption: "Comfortable standard capsule pod with privacy curtain, USB charging, and personal ventilation at Pelangi Capsule Hostel JB.",
+                caption: "Comfortable standard capsule pod with USB charging and personal ventilation at Pelangi Capsule Hostel JB.",
             },
             {
                 url: `${baseUrl}/images/capsule-2.webp`,

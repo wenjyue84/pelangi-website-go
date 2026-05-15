@@ -5,7 +5,6 @@ import Script from "next/script";
 import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 import StructuredData from "@/components/StructuredData";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ChatWidget, MobileBookingBar, CookieConsent, AnalyticsProvider, BookingRecoveryBanner, MetaPixelProvider, TikTokPixelProvider, PauseAnimationsButton } from "@/components/DynamicComponents";
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "";
@@ -191,7 +190,6 @@ export default function RootLayout({
         <AnalyticsProvider />
         <MetaPixelProvider />
         <TikTokPixelProvider />
-        <SpeedInsights />
       </body>
     </html>
   );

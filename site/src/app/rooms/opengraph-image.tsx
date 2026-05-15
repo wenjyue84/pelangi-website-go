@@ -1,6 +1,5 @@
 import { ImageResponse } from 'next/og';
 
-export const runtime = 'nodejs';
 export const revalidate = 86400; // Cache for 24 hours
 
 export const alt = 'Pelangi Capsule Hostel - Private Capsule Pod Rooms from RM35 per night in Johor Bahru';

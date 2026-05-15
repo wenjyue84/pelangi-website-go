@@ -19,8 +19,7 @@
     "@stripe/stripe-js": "^8.9.0",
     "@tailwindcss/typography": "^0.5.19",
     "@vercel/edge-config": "^1.4.3",
-    "@vercel/flags": "^3.1.1",
-    "@vercel/speed-insights": "^2.0.0",
+    "@neondatabase/serverless": "^1.1.0",
     "babel-plugin-react-compiler": "^19.0.0-beta-af1b7da-20250417",
     "fuse.js": "^7.1.0",
     "next": "^16.1.6",
@@ -29,6 +28,7 @@
     "resend": "^6.9.3",
     "serwist": "^9.5.6",
     "stripe": "^20.4.1",
+    "sharp": "^0.33.5",
     "web-vitals": "^4.2.4",
     "yet-another-react-lightbox": "^3.29.1"
   },

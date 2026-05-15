@@ -1,3 +1,8 @@
+import { changiTransitEN } from "./post-changi-en";
+import { dayTripBaseEN } from "./post-daytrip-en";
+import { changiTransitZH } from "./post-changi-zh";
+import { dayTripBaseZH } from "./post-daytrip-zh";
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -851,7 +856,7 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 
 <h3>房型与价格</h3>
 <ul>
-  <li><strong>混合宿舍（Mixed Dorm）</strong>：每晚 RM37.80（含旅游税），月租 RM594</li>
+  <li><strong>混合宿舍（Mixed Dorm）</strong>：每晚 RM35起，月租 RM594</li>
   <li><strong>女生专用宿舍（Female Dorm）</strong>：同等价格，环境更安全私密</li>
   <li>所有床位均为日式胶囊设计，配备高密度记忆棉床垫</li>
 </ul>
@@ -1020,7 +1025,7 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
   <li><strong>货币</strong>：马来西亚林吉特（MYR/RM），1 SGD ≈ 3.5 RM</li>
   <li><strong>交通</strong>：Grab 是新山最方便的出行方式，下载后即可使用</li>
   <li><strong>语言</strong>：新山华人众多，普通话和广东话均可沟通</li>
-  <li><strong>住宿</strong>：<a href="/zh/rooms">彩虹胶囊旅馆</a>每晚仅需 RM37.80，是背包客的最佳选择</li>
+  <li><strong>住宿</strong>：<a href="/zh/rooms">彩虹胶囊旅馆</a>每晚仅需 RM35起，是背包客的最佳选择</li>
 </ul>
 
 <p>还在犹豫？<a href="/book">立即预订</a>，开始你的新山自由行！或通过 <strong>WhatsApp (+60 12-708 8789)</strong> 与我们联系获取更多旅游建议。</p>
@@ -1299,7 +1304,7 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 <h2>在新山住哪里？</h2>
 <p>彩虹胶囊旅馆（Pelangi Capsule Hostel）是新山性价比最高的住宿选择之一。位于 Taman Pelangi 核心美食区，距 CIQ 关卡约15分钟 Grab 车程。</p>
 <ul>
-  <li>每晚 <strong>RM37.80</strong>（含旅游税），约合人民币 60-70 元</li>
+  <li>每晚 <strong>RM35</strong>起，约合人民币 60-70 元</li>
   <li>24小时自助入住，无需等前台</li>
   <li>免费高速 WiFi，普通话友好</li>
   <li>旁边就是每周二夜市，步行可达多家餐厅</li>
@@ -1373,7 +1378,7 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 <p>VISA 和 Mastercard 在购物中心和连锁店普遍接受。建议携带一张无境外手续费的信用卡作为备用。银联卡在部分商场和银行柜台也可使用，但覆盖面不如前两者广。</p>
 
 <h2>住宿推荐</h2>
-<p><a href="/zh/rooms">彩虹胶囊旅馆</a>接受网上银行转账和 WhatsApp 直接预订，方便中国游客操作。每晚 RM37.80，约合人民币 60-70 元。<a href="/book">点击预订</a>或 WhatsApp 联系 +60 12-708 8789。</p>
+<p><a href="/zh/rooms">彩虹胶囊旅馆</a>接受网上银行转账和 WhatsApp 直接预订，方便中国游客操作。每晚 RM35起，约合人民币 55-65 元。<a href="/book">点击预订</a>或 WhatsApp 联系 +60 12-708 8789。</p>
 `,
   },
   {
@@ -1465,7 +1470,7 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
   <li>带一个可折叠的备用行李袋（旅馆有推荐本地文具店）</li>
 </ul>
 
-<p>准备好购物了吗？<a href="/zh/rooms">预订彩虹胶囊旅馆</a>，RM37.80/晚，步行即达夜市，Grab 直达各大商场。<a href="/book">立即预订</a>或 WhatsApp：+60 12-708 8789。</p>
+<p>准备好购物了吗？<a href="/zh/rooms">预订彩虹胶囊旅馆</a>，RM35/晚起，步行即达夜市，Grab 直达各大商场。<a href="/book">立即预订</a>或 WhatsApp：+60 12-708 8789。</p>
 `,
   },
   {
@@ -1915,6 +1920,10 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 <p>Ready to eat cheap and eat well? <a href="/book">Book a capsule at Pelangi</a> and dive into JB's food scene.</p>
 `,
   },
+  changiTransitEN,
+  dayTripBaseEN,
+  changiTransitZH,
+  dayTripBaseZH,
 ];
 
 export const blogPosts: BlogPost[] = rawPosts.map((post) => ({

@@ -1,6 +1,5 @@
 import { ImageResponse } from 'next/og';
 
-export const runtime = 'nodejs';
 export const revalidate = 86400; // Cache for 24 hours
 
 export const alt = 'Pelangi Capsule Hostel Amenities - Free WiFi, Co-working Space, Shared Kitchen, and More in Johor Bahru';

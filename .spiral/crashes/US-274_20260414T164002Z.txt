@@ -1,0 +1,11 @@
+# SPIRAL Crash Report
+# Story:     US-274
+# Worker:    sequential
+# Exit Code: 124
+# Timestamp: 20260414T164002Z
+# ─────────────────────────────────────────
+
+usage: decompose_story.py [-h] [--prd PRD] --story-id STORY_ID
+                          [--progress PROGRESS] [--model MODEL]
+                          [--max-substories MAX_SUBSTORIES] [--dry-run]
+decompose_story.py: error: unrecognized arguments: --git-root C:/Users/Jyue/Documents/1-projects/Software Projects/pelangi-website --failure-reason oversized_diff: produced 20924 lines but limit is 500. Keep total insertions+deletions under 500 lines.

@@ -1,1 +1,1 @@
-{"schema_version":1,"iter":10,"phase":"M","ts":"2026-04-14T13:13:59Z","run_id":"69de1ab27b56","spiralVersion":"39360ac7+","log_level":"INFO","phaseDurations":{"R":0,"T":0,"M":0,"I":0,"V":0,"C":0}}
+{"iter":18,"phase":"I","ts":"2026-04-14T16:40:10Z","run_id":"69de1ab27b56","abort_reason":"consecutive_failures","consecutive_zero_pass":3,"limit":3,"stuck_ids":"US-252,US-253,US-255,US-256,US-257,US-258,US-263,US-264,US-273,US-274,US-275,US-276,US-277,US-278,US-279,US-280,US-281,US-282"}

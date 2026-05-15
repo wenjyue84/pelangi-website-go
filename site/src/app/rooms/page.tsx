@@ -31,9 +31,9 @@ export const metadata: Metadata = {
         ],
     },
     other: {
-        "og:price:amount": "37.80",
+        "og:price:amount": "35",
         "og:price:currency": "MYR",
-        "product:price:amount": "37.80",
+        "product:price:amount": "35",
         "product:price:currency": "MYR",
     },
 };
@@ -86,17 +86,17 @@ const hotelRoomsSchema = [
         offers: [
             {
                 "@type": "Offer",
-                price: "37.80",
+                price: "45",
                 priceCurrency: "MYR",
                 availability: "https://schema.org/InStock",
                 seller,
                 priceValidUntil,
                 businessFunction: "http://purl.org/goodrelations/v1#LeaseOut",
-                description: "Nightly rate inclusive of SST 8%",
+                description: "Nightly rate",
                 unitCode: "DAY",
                 priceSpecification: {
                     "@type": "UnitPriceSpecification",
-                    price: "37.80",
+                    price: "45",
                     priceCurrency: "MYR",
                     unitText: "night",
                     referenceQuantity: {
@@ -108,17 +108,17 @@ const hotelRoomsSchema = [
             },
             {
                 "@type": "Offer",
-                price: "641.52",
+                price: "594",
                 priceCurrency: "MYR",
                 availability: "https://schema.org/InStock",
                 seller,
                 priceValidUntil,
                 businessFunction: "http://purl.org/goodrelations/v1#LeaseOut",
-                description: "Monthly rate inclusive of SST 8%",
+                description: "Monthly rate",
                 unitCode: "MON",
                 priceSpecification: {
                     "@type": "UnitPriceSpecification",
-                    price: "641.52",
+                    price: "594",
                     priceCurrency: "MYR",
                     unitText: "month",
                     referenceQuantity: {
@@ -159,17 +159,17 @@ const hotelRoomsSchema = [
         offers: [
             {
                 "@type": "Offer",
-                price: "48.60",
+                price: "35",
                 priceCurrency: "MYR",
                 availability: "https://schema.org/InStock",
                 seller,
                 priceValidUntil,
                 businessFunction: "http://purl.org/goodrelations/v1#LeaseOut",
-                description: "Nightly rate inclusive of SST 8%",
+                description: "Nightly rate",
                 unitCode: "DAY",
                 priceSpecification: {
                     "@type": "UnitPriceSpecification",
-                    price: "48.60",
+                    price: "35",
                     priceCurrency: "MYR",
                     unitText: "night",
                     referenceQuantity: {
@@ -254,7 +254,7 @@ export default async function RoomsPage() {
                         </div>
                         <div id="speakable-price" className="text-lg text-stone-700 dark:text-stone-300 leading-relaxed space-y-4">
                             <p>
-                                Pelangi Capsule Hostel offers two pod types in Taman Pelangi, Johor Bahru. Standard Capsule Pods start from RM35 per night and Premium Capsule Pods from RM45 per night. Monthly long-stay rates begin at RM594 per month. All rates are subject to Malaysia Service Tax (SST) at 8%. Tax rates are subject to change per Malaysian government regulation.
+                                Pelangi Capsule Hostel offers two pod types in Taman Pelangi, Johor Bahru. Upper Deck Pods start from RM35 per night and Lower Deck Pods from RM45 per night. Monthly long-stay rates begin at RM594 per month.
                             </p>
                             <p>
                                 Every pod includes a lockable sliding privacy door, personal climate control (fan and air-conditioning), adjustable LED lighting, USB and power outlets, a premium mattress, and a personal locker. Shared facilities include free high-speed WiFi, hot showers, a fully equipped kitchen, a water dispenser, laundry facilities, and luggage storage. The hostel operates 24/7 with self-check-in access and CCTV security throughout the property.
