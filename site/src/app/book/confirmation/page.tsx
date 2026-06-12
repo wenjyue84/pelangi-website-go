@@ -49,7 +49,7 @@ export default function BookingConfirmationPage() {
                   3
                 </span>
                 <span>
-                  <strong className="text-stone-800 dark:text-stone-200">Check in from 2:00 PM</strong> — bring your
+                  <strong className="text-stone-800 dark:text-stone-200">Check in from 3:00 PM</strong> — bring your
                   IC/passport. Remaining balance payable at reception.
                 </span>
               </li>

@@ -288,7 +288,7 @@ export default function LocationPage() {
                     <div className="grid grid-cols-2 gap-4">
                       <div>
                         <p className="text-xs uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-1">Check-in</p>
-                        <p className="text-lg font-medium text-stone-900 dark:text-stone-100">2:00 PM</p>
+                        <p className="text-lg font-medium text-stone-900 dark:text-stone-100">3:00 PM</p>
                       </div>
                       <div>
                         <p className="text-xs uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-1">Check-out</p>
