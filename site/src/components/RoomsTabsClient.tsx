@@ -185,7 +185,7 @@ export default function RoomsTabsClient() {
                 <RateRow label="Check-in" value="3:00 PM" />
                 <RateRow label="Check-out" value="12:00 PM" />
               </div>
-              <Link href="#booking" className="btn-primary w-full text-center block">
+              <Link href="/book" className="btn-primary w-full text-center block">
                 Book Your Pod Now
               </Link>
             </div>
@@ -273,7 +273,7 @@ export default function RoomsTabsClient() {
                 <RateRow label="Check-in" value="3:00 PM" />
                 <RateRow label="Check-out" value="12:00 PM" />
               </div>
-              <Link href="#booking" className="btn-primary w-full text-center block">
+              <Link href="/book" className="btn-primary w-full text-center block">
                 Book Upper Deck Pod
               </Link>
             </div>

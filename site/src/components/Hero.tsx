@@ -92,7 +92,7 @@ export default function Hero() {
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in delay-400">
           <Link
-            href="#booking"
+            href="/book"
             className="bg-white text-stone-900 font-medium py-4 px-10 rounded-full
                      hover:bg-amber-50 transition-all duration-300
                      text-sm tracking-wide uppercase shadow-lg hover:shadow-xl"
@@ -100,7 +100,7 @@ export default function Hero() {
             Reserve Your Pod
           </Link>
           <Link
-            href="#rooms"
+            href="/rooms"
             className="bg-transparent border border-white/30 text-white font-medium
                      py-4 px-10 rounded-full hover:bg-white/10
                      transition-all duration-300 text-sm tracking-wide uppercase"
