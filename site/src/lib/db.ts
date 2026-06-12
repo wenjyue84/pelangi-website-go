@@ -1,6 +1,7 @@
 /**
  * Neon serverless DB client for pelangi-website.
  * Used by /api/mcp for dynamic website data (inquiries, events).
+ * Also used by /api/stripe-webhook for payment event persistence.
  */
 import { neon } from "@neondatabase/serverless";
 
@@ -50,4 +51,35 @@ export async function ensureTables(): Promise<void> {
       created_at  TIMESTAMPTZ DEFAULT NOW()
     )
   `;
+}
+
+/**
+ * Memoized DDL for Stripe payment events table.
+ * Runs once per process — subsequent calls return the cached promise.
+ */
+let _paymentTablesPromise: Promise<void> | undefined;
+
+export function ensurePaymentTables(): Promise<void> {
+  if (!_paymentTablesPromise) {
+    _paymentTablesPromise = (async () => {
+      const sql = getSql();
+      await sql`
+        CREATE TABLE IF NOT EXISTS stripe_payment_events (
+          id                 SERIAL PRIMARY KEY,
+          stripe_event_id    TEXT NOT NULL,
+          event_type         TEXT,
+          payment_intent_id  TEXT,
+          amount             INTEGER,
+          currency           TEXT,
+          guest_email        TEXT,
+          guest_name         TEXT,
+          status             TEXT,
+          raw                JSONB,
+          created_at         TIMESTAMPTZ DEFAULT NOW(),
+          CONSTRAINT stripe_payment_events_stripe_event_id_key UNIQUE (stripe_event_id)
+        )
+      `;
+    })();
+  }
+  return _paymentTablesPromise;
 }
