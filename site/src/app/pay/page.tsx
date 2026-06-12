@@ -74,16 +74,20 @@ export default function PayPage() {
                             Screenshot your PayPal receipt and send it to us on WhatsApp to confirm your booking:{" "}
                             <a
                                 href="https://wa.me/60127088789"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="font-medium text-amber-700 dark:text-amber-400 underline underline-offset-2"
                             >
                                 Jay +60 12-708 8789
                             </a>{" "}
                             or{" "}
                             <a
-                                href="https://wa.me/60167052004"
+                                href="https://wa.me/60167620815"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="font-medium text-amber-700 dark:text-amber-400 underline underline-offset-2"
                             >
-                                Alston +60 16-705 2004
+                                Alston +60 16-762 0815
                             </a>
                         </p>
                     </div>
