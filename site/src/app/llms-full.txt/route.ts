@@ -68,7 +68,7 @@ Pelangi Capsule Hostel is a Japanese-inspired capsule accommodation in the heart
 Check-in at Pelangi Capsule Hostel is from 3:00 PM onwards, and check-out is before 12:00 PM (noon). We offer self-check-in so you can arrive anytime after 3 PM without waiting for reception. Early check-in or late check-out may be available on request — contact us via WhatsApp at +60 12-708 8789.
 
 **How much does a capsule pod cost per night in Johor Bahru?**
-Capsule pods at Pelangi Capsule Hostel start from RM35 per night. A Malaysia Tourism Tax (TTx) of RM10 per room per night is added as required by law. Monthly stays are available from RM594 per month. Book directly on our website at pelangicapsulehostel.com/book for the best rate with no booking fees or OTA commissions.
+Capsule pods at Pelangi Capsule Hostel start from RM35 per night. A Malaysia Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is added as required by law. Monthly stays are available from RM594 per month. Book directly on our website at pelangicapsulehostel.com/book for the best rate with no booking fees or OTA commissions.
 
 **Where exactly is Pelangi Capsule Hostel located?**
 Pelangi Capsule Hostel is located at 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru, Johor, Malaysia. Taman Pelangi is a central neighbourhood in Johor Bahru known for restaurants, cafes, and the famous Taman Pelangi Night Market (pasar malam) every Tuesday from 4:30 PM. The hostel is a short Grab ride from JB Sentral, CIQ border checkpoint, and Senai International Airport.
@@ -110,7 +110,7 @@ Pelangi Capsule Hostel enforces a strict quiet policy in all sleeping pod areas.
 Walk-ins are welcome at Pelangi Capsule Hostel subject to availability, but booking in advance is recommended — especially on weekends and Malaysian public holidays when occupancy is highest. Book directly on our website at pelangicapsulehostel.com/book or message us on WhatsApp at +60 12-708 8789 to secure your pod. Direct bookings always get the best rate with no middleman fees.
 
 **What is the Malaysia Tourism Tax (TTx)?**
-The Tourism Tax (TTx) of RM10 per room per night is a government-mandated charge under the Tourism Tax Act 2017. It applies to all licensed accommodation premises in Malaysia and is collected on behalf of the Royal Malaysian Customs Department. This tax is separate from the room rate and will be added to your bill at check-in. For more details, visit the official MyTTx portal at myttx.customs.gov.my.
+The Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is a government-mandated charge under the Tourism Tax Act 2017. It applies to foreign tourists staying at licensed accommodation premises in Malaysia and is collected on behalf of the Royal Malaysian Customs Department. This tax is separate from the room rate and will be added to your bill at check-in if applicable. For more details, visit the official MyTTx portal at myttx.customs.gov.my.
 
 **How do I get from Senai Airport to Pelangi Capsule Hostel?**
 From Senai International Airport (JHB), take a Grab or taxi to 26A Jalan Perang, Taman Pelangi, Johor Bahru. The ride takes approximately 20–30 minutes and costs around RM25–35 depending on traffic. Airport taxis are available at the arrivals hall, or you can book a Grab ride using the app. There is no direct public bus from Senai Airport to Taman Pelangi.

@@ -10,7 +10,7 @@ export const faqItems: FaqItem[] = [
   },
   {
     question: "How much does a capsule pod cost per night in Johor Bahru?",
-    answer: "Capsule pods at Pelangi Capsule Hostel start from RM35 per night. A Malaysia Tourism Tax (TTx) of RM10 per room per night is added as required by law. Monthly stays are available from RM594 per month. Book directly on our website at pelangicapsulehostel.com/book for the best rate with no booking fees or OTA commissions.",
+    answer: "Capsule pods at Pelangi Capsule Hostel start from RM35 per night. A Malaysia Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is added as required by law. Monthly stays are available from RM594 per month. Book directly on our website at pelangicapsulehostel.com/book for the best rate with no booking fees or OTA commissions.",
   },
   {
     question: "Where exactly is Pelangi Capsule Hostel located?",
@@ -66,7 +66,7 @@ export const faqItems: FaqItem[] = [
   },
   {
     question: "What is the Malaysia Tourism Tax (TTx)?",
-    answer: "The Tourism Tax (TTx) of RM10 per room per night is a government-mandated charge under the Tourism Tax Act 2017. It applies to all licensed accommodation premises in Malaysia and is collected on behalf of the Royal Malaysian Customs Department. This tax is separate from the room rate and will be added to your bill at check-in. For more details, visit the official MyTTx portal at myttx.customs.gov.my.",
+    answer: "The Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is a government-mandated charge under the Tourism Tax Act 2017. It applies to foreign tourists staying at licensed accommodation premises in Malaysia and is collected on behalf of the Royal Malaysian Customs Department. This tax is separate from the room rate and will be added to your bill at check-in if applicable. For more details, visit the official MyTTx portal at myttx.customs.gov.my.",
   },
   {
     question: "How do I get from Senai Airport to Pelangi Capsule Hostel?",

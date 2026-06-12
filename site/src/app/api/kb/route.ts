@@ -88,7 +88,7 @@ function buildPoliciesSection(): string {
 - Early check-in / late check-out available on request via WhatsApp
 
 ## Tourism Tax (TTx)
-- RM10 per room per night — government-mandated (Tourism Tax Act 2017)
+- RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) — government-mandated (Tourism Tax Act 2017)
 - Collected at check-in, separate from room rate
 
 ## Payment Methods

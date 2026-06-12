@@ -26,7 +26,7 @@ const FAQ_DATA: FaqEntry[] = [
   {
     question: 'How much does a capsule pod cost?',
     answer:
-      'Capsule pods start from RM35 per night. A Tourism Tax (TTx) of RM10 per room per night is added as required by law. Monthly stays are available from RM594/month. Book directly on our website at pelangicapsulehostel.com/book for the best rate.',
+      'Capsule pods start from RM35 per night. A Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is added as required by law. Monthly stays are available from RM594/month. Book directly on our website at pelangicapsulehostel.com/book for the best rate.',
     keywords: ['price', 'pricing', 'cost', 'rate', 'rm', 'cheap', 'afford', 'how much', 'per night', 'monthly', 'budget'],
     chipLabel: 'Pricing & rates',
   },
@@ -53,8 +53,8 @@ const FAQ_DATA: FaqEntry[] = [
   {
     question: 'What is the WiFi password?',
     answer:
-      'The WiFi network name is "Pelangi_Hostel_Free" and the password is "ilovestaycapsule". You can connect from anywhere on the property including your capsule pod and the common areas.',
-    keywords: ['wifi', 'wi-fi', 'password', 'password', 'network', 'ssid', 'connect'],
+      'The WiFi network name is "pelangi capsule" and the password is "ilovestaycapsule". You can connect from anywhere on the property including your capsule pod and the common areas.',
+    keywords: ['wifi', 'wi-fi', 'password', 'network', 'ssid', 'connect'],
   },
   {
     question: 'How do I get here from Singapore?',
@@ -152,9 +152,24 @@ export default function ChatWidget() {
 
   // ─── Init: load session history ───────────────────────────────────
   useEffect(() => {
+    const VALID_ROLES = new Set(['user', 'assistant']);
+    function isValidHistory(val: unknown): val is Message[] {
+      return (
+        Array.isArray(val) &&
+        val.every(
+          (item) =>
+            item !== null &&
+            typeof item === 'object' &&
+            typeof (item as Record<string, unknown>).role === 'string' &&
+            VALID_ROLES.has((item as Record<string, unknown>).role as string) &&
+            typeof (item as Record<string, unknown>).content === 'string',
+        )
+      );
+    }
     try {
       const raw = sessionStorage.getItem(SESSION_KEY);
-      const saved: Message[] = raw ? JSON.parse(raw) : [];
+      const parsed: unknown = raw ? JSON.parse(raw) : [];
+      const saved = isValidHistory(parsed) ? parsed : [];
       if (saved.length > 0) {
         setMessages(saved);
         setShowChips(false);
