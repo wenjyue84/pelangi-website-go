@@ -78,7 +78,7 @@ public/
 ## Property Facts (used by Rainbow AI KB)
 
 - **Address:** 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru
-- **Rooms:** Lower Deck Pod (RM35/night), Upper Deck Pod (RM45/night)
+- **Rooms:** Lower Deck Pod (RM45/night), Upper Deck Pod (RM35/night)
 - **Check-in:** 3:00 PM | Check-out: 12:00 PM
 - **WiFi:** Network `pelangi capsule` | Password `ilovestaycapsule`
 - **Tourism Tax:** RM10/room/night
