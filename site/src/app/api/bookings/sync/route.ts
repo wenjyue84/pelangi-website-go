@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { beds24Client } from "@/lib/beds24-client";
+import { ROOM_TYPES } from "@/data/rooms";
 import type { ChannelManagerBooking } from "@/lib/channel-manager-types";
 
 // POST: Sync booking to channel manager
@@ -23,7 +24,13 @@ export async function POST(request: NextRequest) {
       (checkout.getTime() - checkin.getTime()) / (1000 * 60 * 60 * 24),
     );
 
+    // "Premium Capsule Pod" → upper-deck (RM35); everything else → lower-deck (RM45)
     const isPremium = roomType === "Premium Capsule Pod";
+    const upperDeck = ROOM_TYPES.find((r) => r.id === "upper-deck-pod");
+    const lowerDeck = ROOM_TYPES.find((r) => r.id === "lower-deck-pod");
+    const nightlyRate = isPremium
+      ? (upperDeck?.nightlyRate ?? 35)
+      : (lowerDeck?.nightlyRate ?? 45);
     const booking: Partial<ChannelManagerBooking> = {
       roomId: isPremium ? "premium-capsule" : "standard-capsule",
       guestName,
@@ -33,7 +40,7 @@ export async function POST(request: NextRequest) {
       checkout: checkout.toISOString().split("T")[0],
       nights,
       adults: body.adults || 1,
-      totalPrice: (isPremium ? 45 : 35) * nights,
+      totalPrice: nightlyRate * nights,
       currency: "MYR",
       status: "confirmed",
       source: "website",

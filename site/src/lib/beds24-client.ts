@@ -1,5 +1,6 @@
 import { createHmac } from "crypto";
 import { CHANNEL_MANAGER_CONFIG } from "@/config/channel-manager";
+import { ROOM_TYPES } from "@/data/rooms";
 import type { ChannelManagerAvailability, ChannelManagerBooking } from "./channel-manager-types";
 
 export class Beds24Client {
@@ -31,6 +32,7 @@ export class Beds24Client {
 
       const response = await fetch(`${this.baseUrl}/getAvailability?${params}`, {
         cache: "no-store",
+        signal: AbortSignal.timeout(10_000),
       });
 
       if (!response.ok) {
@@ -96,6 +98,7 @@ export class Beds24Client {
       const response = await fetch(`${this.baseUrl}/putBooking`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        signal: AbortSignal.timeout(10_000),
         body: JSON.stringify({
           apiKey: this.apiKey,
           propid: this.propertyId,
@@ -119,7 +122,9 @@ export class Beds24Client {
 
   validateWebhook(payload: string, signature: string | null): boolean {
     if (!signature) return false;
-    const hmac = createHmac("sha256", CHANNEL_MANAGER_CONFIG.webhook.secret);
+    const secret = CHANNEL_MANAGER_CONFIG.webhook.secret;
+    if (!secret) return false;
+    const hmac = createHmac("sha256", secret);
     hmac.update(payload);
     return hmac.digest("hex") === signature;
   }
@@ -137,15 +142,21 @@ export class Beds24Client {
         (1000 * 60 * 60 * 24),
     );
 
+    // Derive rates from canonical rooms data: Lower Deck = RM45, Upper Deck = RM35
+    const lowerDeck = ROOM_TYPES.find((r) => r.id === "lower-deck-pod");
+    const upperDeck = ROOM_TYPES.find((r) => r.id === "upper-deck-pod");
+    const lowerRate = lowerDeck?.nightlyRate ?? 45;
+    const upperRate = upperDeck?.nightlyRate ?? 35;
+
     return [
       {
         roomId: "standard-capsule",
         roomName: "Standard Capsule Pod",
         checkin,
         checkout,
-        available: 18,
-        total: 18,
-        rate: 35 * nights,
+        available: lowerDeck?.totalUnits ?? 18,
+        total: lowerDeck?.totalUnits ?? 18,
+        rate: lowerRate * nights,
         currency: "MYR",
       },
       {
@@ -153,9 +164,9 @@ export class Beds24Client {
         roomName: "Premium Capsule Pod",
         checkin,
         checkout,
-        available: 6,
-        total: 6,
-        rate: 45 * nights,
+        available: upperDeck?.totalUnits ?? 6,
+        total: upperDeck?.totalUnits ?? 6,
+        rate: upperRate * nights,
         currency: "MYR",
       },
     ];
