@@ -1,11 +1,22 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { revalidateTag, revalidatePath } from "next/cache";
 import { beds24Client } from "@/lib/beds24-client";
+import { CHANNEL_MANAGER_CONFIG } from "@/config/channel-manager";
+import { ensureChannelTables, getSql } from "@/lib/db";
 import type { ChannelManagerWebhookPayload } from "@/lib/channel-manager-types";
 
 // Webhook endpoint for Beds24 real-time updates
 // Validates signature, then processes availability/booking changes
 export async function POST(request: NextRequest) {
+  // 503 if webhook secret is not configured
+  if (!CHANNEL_MANAGER_CONFIG.webhook.secret) {
+    return NextResponse.json(
+      { error: "Webhook secret not configured" },
+      { status: 503 },
+    );
+  }
+
   try {
     const rawBody = await request.text();
     const signature = request.headers.get("x-beds24-signature");
@@ -18,45 +29,40 @@ export async function POST(request: NextRequest) {
 
     switch (payload.eventType) {
       case "availability_update": {
-        // Handle availability updates from OTAs
-        const availability = payload.data as any;
-        console.info(
-          `Availability update: Room ${availability.roomId} - ${availability.available}/${availability.total} units available`,
-        );
-        // In production, update local database with new availability
-        // Example: await db.roomInventory.update(...)
+        revalidateTag("rooms", "max");
+        revalidatePath("/rooms");
+        revalidatePath("/book");
         return NextResponse.json({ status: "processed" });
       }
 
-      case "booking_created": {
-        // Handle new booking from OTA
-        const booking = payload.data as any;
-        console.info(
-          `New booking from ${booking.source}: ${booking.guestName} for ${booking.checkin} to ${booking.checkout}`,
-        );
-        // In production, create booking record and reduce availability
-        // Example: await db.bookings.create({...})
-        // Example: await beds24Client.updateAvailability(...)
-        return NextResponse.json({ status: "processed" });
-      }
-
+      case "booking_created":
       case "booking_cancelled": {
-        // Handle cancelled booking from OTA
-        const booking = payload.data as any;
-        console.info(
-          `Booking cancelled: ${booking.externalBookingId} from ${booking.source}`,
-        );
-        // In production, mark booking as cancelled and restore availability
-        // Example: await db.bookings.update({...})
-        // Example: await beds24Client.restoreAvailability(...)
+        if (process.env.DATABASE_URL) {
+          const booking = payload.data as unknown as Record<string, unknown>;
+          const bookingId =
+            (booking.externalBookingId as string | undefined) ?? null;
+          const roomId = (booking.roomId as string | undefined) ?? null;
+          const status = (booking.status as string | undefined) ?? null;
+
+          await ensureChannelTables();
+          const sql = getSql();
+          await sql`
+            INSERT INTO channel_bookings
+              (event_type, booking_id, room_id, status, payload)
+            VALUES
+              (${payload.eventType}, ${bookingId}, ${roomId}, ${status}, ${JSON.stringify(payload) as unknown as object})
+            ON CONFLICT DO NOTHING
+          `;
+        } else {
+          console.warn(
+            `[beds24-webhook] DATABASE_URL not set — skipping audit for ${payload.eventType}`,
+          );
+        }
         return NextResponse.json({ status: "processed" });
       }
 
       default:
-        return NextResponse.json(
-          { error: "Unknown event type" },
-          { status: 400 },
-        );
+        return NextResponse.json({ status: "processed" });
     }
   } catch (error) {
     console.error("Webhook error:", error);

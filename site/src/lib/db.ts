@@ -2,6 +2,7 @@
  * Neon serverless DB client for pelangi-website.
  * Used by /api/mcp for dynamic website data (inquiries, events).
  * Also used by /api/stripe-webhook for payment event persistence.
+ * Also used by /api/webhooks/beds24 for channel manager audit log.
  */
 import { neon } from "@neondatabase/serverless";
 
@@ -82,4 +83,35 @@ export function ensurePaymentTables(): Promise<void> {
     })();
   }
   return _paymentTablesPromise;
+}
+
+/**
+ * Memoized DDL for Beds24 channel manager audit table.
+ * Runs once per process — subsequent calls return the cached promise.
+ */
+let _channelTablesPromise: Promise<void> | undefined;
+
+export function ensureChannelTables(): Promise<void> {
+  if (!_channelTablesPromise) {
+    _channelTablesPromise = (async () => {
+      const sql = getSql();
+      await sql`
+        CREATE TABLE IF NOT EXISTS channel_bookings (
+          id           SERIAL PRIMARY KEY,
+          event_type   TEXT,
+          booking_id   TEXT,
+          room_id      TEXT,
+          status       TEXT,
+          payload      JSONB,
+          created_at   TIMESTAMPTZ DEFAULT NOW()
+        )
+      `;
+      await sql`
+        CREATE UNIQUE INDEX IF NOT EXISTS channel_bookings_dedupe
+          ON channel_bookings (event_type, booking_id)
+          WHERE booking_id IS NOT NULL
+      `;
+    })();
+  }
+  return _channelTablesPromise;
 }
