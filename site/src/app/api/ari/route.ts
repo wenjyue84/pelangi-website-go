@@ -36,7 +36,9 @@ export async function GET(request: NextRequest) {
   const params = request.nextUrl.searchParams;
   const checkin = params.get("checkin");
   const checkout = params.get("checkout");
-  const currency = params.get("currency") || "MYR";
+  // Only MYR is supported — normalize any other value to MYR
+  const rawCurrency = params.get("currency");
+  const currency = rawCurrency && rawCurrency.toUpperCase() === "MYR" ? "MYR" : "MYR";
 
   if (!checkin || !checkout) {
     return NextResponse.json(

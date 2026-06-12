@@ -50,13 +50,18 @@ function buildPayload(
 
   // User data — values are already SHA-256 hashed from the client
   const user: Record<string, string> = {};
+  const SHA256_HEX_RE = /^[a-f0-9]{64}$/i;
   if (body.user_data?.em) {
-    // Re-hash server-side to ensure consistency (client already hashed, but
-    // if the value was somehow sent unhashed, this normalises it)
-    user.email = body.user_data.em.length === 64 ? body.user_data.em : sha256(body.user_data.em);
+    // Pass through if already a valid SHA-256 hex digest; otherwise hash it.
+    // Using a strict regex prevents arbitrary 64-char junk from bypassing hashing.
+    user.email = SHA256_HEX_RE.test(body.user_data.em)
+      ? body.user_data.em
+      : sha256(body.user_data.em);
   }
   if (body.user_data?.ph) {
-    user.phone_number = body.user_data.ph.length === 64 ? body.user_data.ph : sha256(body.user_data.ph);
+    user.phone_number = SHA256_HEX_RE.test(body.user_data.ph)
+      ? body.user_data.ph
+      : sha256(body.user_data.ph);
   }
 
   return {
@@ -126,6 +131,7 @@ export async function POST(request: NextRequest) {
             "Access-Token": ACCESS_TOKEN,
           },
           body: JSON.stringify({ data: [payload] }),
+          signal: AbortSignal.timeout(10000),
         }
       );
 

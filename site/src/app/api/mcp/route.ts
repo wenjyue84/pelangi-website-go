@@ -91,7 +91,7 @@ const HOSTEL_INFO = {
     website: "https://pelangicapsulehostel.com",
   },
   hours: {
-    checkin: "2:00 PM",
+    checkin: "3:00 PM",
     checkout: "12:00 PM (noon)",
     reception: "24/7 — self check-in available",
   },
@@ -249,13 +249,61 @@ async function handleGetEvents(args: Record<string, unknown>) {
   };
 }
 
+// ─── ensureTables once-per-process guard ──────────────────────────────────
+let tablesReady: Promise<void> | null = null;
+function getTablesReady(): Promise<void> {
+  if (!tablesReady) {
+    tablesReady = ensureTables().catch((err) => {
+      // Reset on failure so the next request can retry
+      tablesReady = null;
+      throw err;
+    });
+  }
+  return tablesReady;
+}
+
+// ─── Input validation helpers ──────────────────────────────────────────────
+function validateInquiryArgs(args: Record<string, unknown>): string | null {
+  if (args.name !== undefined && args.name !== null) {
+    if (typeof args.name !== "string" || args.name.length > 100) {
+      return "name must be a string of at most 100 characters";
+    }
+  }
+  if (args.email !== undefined && args.email !== null) {
+    if (typeof args.email !== "string") return "email must be a string";
+    if (args.email.length > 254) return "email must be at most 254 characters";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(args.email)) return "email format is invalid";
+  }
+  if (args.message !== undefined && args.message !== null) {
+    if (typeof args.message !== "string" || args.message.length > 2000) {
+      return "message must be a string of at most 2000 characters";
+    }
+  }
+  if (args.phone !== undefined && args.phone !== null) {
+    if (typeof args.phone !== "string" || args.phone.length > 50) {
+      return "phone must be a string of at most 50 characters";
+    }
+  }
+  if (args.session_id !== undefined && args.session_id !== null) {
+    if (typeof args.session_id !== "string" || args.session_id.length > 128) {
+      return "session_id must be a string of at most 128 characters";
+    }
+  }
+  return null;
+}
+
 async function handleCreateInquiry(args: Record<string, unknown>) {
   if (!args.message) {
     return { content: [{ type: "text", text: "Error: message is required" }], isError: true };
   }
 
+  const validationError = validateInquiryArgs(args);
+  if (validationError) {
+    return { content: [{ type: "text", text: `Error: ${validationError}` }], isError: true };
+  }
+
   try {
-    await ensureTables();
+    await getTablesReady();
     const sql = getSql();
     const rows = await sql`
       INSERT INTO website_inquiries (name, email, phone, message, check_in, check_out, guests, session_id)
