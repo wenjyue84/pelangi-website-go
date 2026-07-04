@@ -23,6 +23,14 @@
   `curl https://pelangicapsulehostel.com/robots.txt` no longer contains "Cloudflare Managed content".
   (API token can't do it — zone not in the account token's scope; found by geo-audit 2026-07-05.)
 
+## On-site follow-ups (from GEO-AUDIT-2026-07.md, high priority)
+
+- [ ] Add security headers via Cloudflare Transform Rules (HSTS, X-Content-Type-Options, Referrer-Policy, Permissions-Policy) — audit H2
+- [ ] Add Wikidata + TripAdvisor + GBP URLs to the LodgingBusiness `sameAs` (currently only on Organization) + `SearchAction` on WebSite schema — audit H3
+- [ ] Reconcile trust numbers: homepage "4.9/5 (500+)" vs about "8.2 Guest Rating"; source or replace the unattributed testimonials — audit H4
+- [ ] Beef up `/author/jay-lew` page (photo, credentials, Person schema) + bylines on blog cards — audit H5
+- [ ] Bing: register Bing Places + Webmaster Tools (msvalidate.01) — audit H6
+
 ## Off-site (Jay executes)
 
 - [ ] GBP: get review short-link, save the review-ask script into WhatsApp quick replies
