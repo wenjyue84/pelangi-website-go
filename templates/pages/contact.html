@@ -1,0 +1,569 @@
+{{define "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://pelangicapsulehostel.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Contact",
+      "item": "https://pelangicapsulehostel.com/contact"
+    }
+  ]
+}
+</script>
+{{end}}
+
+{{define "content"}}
+{{template "header" .}}
+<main id="main-content" class="min-h-screen bg-stone-50 dark:bg-stone-950">
+  <div class="pt-20">
+
+    <!-- ============================================================
+         ContactForm (inlined from ContactForm.tsx)
+         ============================================================ -->
+    <section aria-labelledby="contact-form-heading" class="section-padding bg-stone-50 dark:bg-stone-950">
+      <div class="container-custom max-w-2xl">
+        <p class="section-label">Get in Touch</p>
+        <h2 id="contact-form-heading" class="section-heading mb-4">Send Us an Inquiry</h2>
+        <p class="text-stone-600 dark:text-stone-400 mb-10">
+          Have questions about rooms, rates, or your stay? Fill out the form
+          below and we&apos;ll get back to you within 24 hours.
+        </p>
+
+        <!-- Success / error banner (populated by JS after POST) -->
+        <div id="contact-status" role="status" aria-live="polite" class="hidden mb-6"></div>
+
+        <!-- TODO(port): POST /api/contact handler (Resend email + Turnstile) to be implemented server-side -->
+        <form id="contact-form" method="post" action="/api/contact" class="space-y-6" novalidate>
+
+          <!-- Honeypot -->
+          <div class="absolute -left-[9999px] opacity-0" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <!-- Name + Email row -->
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="contact-name" class="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5">
+                Name <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="contact-name"
+                name="name"
+                type="text"
+                required
+                aria-required="true"
+                autocomplete="name"
+                placeholder="Your full name"
+                class="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors"
+              />
+              <p id="contact-name-error" role="alert" class="hidden mt-1 text-sm text-red-600 dark:text-red-400"></p>
+            </div>
+            <div>
+              <label for="contact-email" class="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5">
+                Email <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="contact-email"
+                name="email"
+                type="email"
+                required
+                aria-required="true"
+                aria-describedby="contact-email-hint"
+                autocomplete="email"
+                placeholder="you@example.com"
+                class="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors"
+              />
+              <p id="contact-email-hint" class="mt-1 text-xs text-stone-400 dark:text-stone-500">e.g. name@example.com</p>
+              <p id="contact-email-error" role="alert" class="hidden mt-1 text-sm text-red-600 dark:text-red-400"></p>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div>
+            <label for="contact-phone" class="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5">
+              Phone
+            </label>
+            <input
+              id="contact-phone"
+              name="phone"
+              type="tel"
+              aria-describedby="contact-phone-hint"
+              autocomplete="tel"
+              placeholder="+60 12-345 6789"
+              class="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors"
+            />
+            <p id="contact-phone-hint" class="mt-1 text-xs text-stone-400 dark:text-stone-500">Include country code, e.g. +60 12-345 6789</p>
+            <p id="contact-phone-error" role="alert" class="hidden mt-1 text-sm text-red-600 dark:text-red-400"></p>
+          </div>
+
+          <!-- Check-in / Check-out row -->
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="contact-checkin" class="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5">
+                Check-in Date
+              </label>
+              <input
+                id="contact-checkin"
+                name="checkIn"
+                type="date"
+                aria-describedby="contact-checkin-hint"
+                autocomplete="off"
+                class="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 focus-visible:border-amber-500 transition-colors"
+              />
+              <p id="contact-checkin-hint" class="mt-1 text-xs text-stone-400 dark:text-stone-500">Select a date in DD/MM/YYYY format</p>
+              <p id="contact-checkin-error" role="alert" class="hidden mt-1 text-sm text-red-600 dark:text-red-400"></p>
+            </div>
+            <div>
+              <label for="contact-checkout" class="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5">
+                Check-out Date
+              </label>
+              <input
+                id="contact-checkout"
+                name="checkOut"
+                type="date"
+                aria-describedby="contact-checkout-hint"
+                autocomplete="off"
+                class="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 focus-visible:border-amber-500 transition-colors"
+              />
+              <p id="contact-checkout-hint" class="mt-1 text-xs text-stone-400 dark:text-stone-500">Must be after your check-in date</p>
+              <p id="contact-checkout-error" role="alert" class="hidden mt-1 text-sm text-red-600 dark:text-red-400"></p>
+            </div>
+          </div>
+
+          <!-- Number of guests -->
+          <div>
+            <label for="contact-guests" class="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5">
+              Number of Guests
+            </label>
+            <input
+              id="contact-guests"
+              name="guests"
+              type="number"
+              min="1"
+              max="20"
+              placeholder="e.g. 2"
+              class="w-full sm:w-40 rounded-xl border border-stone-500 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors"
+            />
+          </div>
+
+          <!-- Message -->
+          <div>
+            <label for="contact-message" class="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5">
+              Message <span class="text-red-500">*</span>
+            </label>
+            <textarea
+              id="contact-message"
+              name="message"
+              required
+              aria-required="true"
+              rows="5"
+              placeholder="Tell us about your travel plans or any questions you have..."
+              class="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-white dark:bg-stone-800 px-4 py-3 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus-visible:border-amber-500 transition-colors resize-y"
+            ></textarea>
+            <p id="contact-message-error" role="alert" class="hidden mt-1 text-sm text-red-600 dark:text-red-400"></p>
+          </div>
+
+          <!-- Cloudflare Turnstile CAPTCHA -->
+          <div>
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAABkMTDfKBBJoX2rA" data-theme="light" data-size="normal"></div>
+            <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+            <!-- Hidden field populated by Turnstile callback -->
+            <input type="hidden" name="cf-turnstile-response" id="cf-turnstile-response" />
+            <p id="contact-turnstile-error" role="alert" class="hidden mt-1 text-sm text-red-600 dark:text-red-400">Please complete the security check.</p>
+          </div>
+
+          <!-- Terms & Conditions agreement -->
+          <div class="flex items-start gap-3">
+            <input
+              id="contact-terms"
+              name="terms"
+              type="checkbox"
+              required
+              aria-required="true"
+              class="mt-1 h-4 w-4 rounded border-stone-400 dark:border-stone-600 accent-amber-700"
+            />
+            <label for="contact-terms" class="text-sm text-stone-600 dark:text-stone-400">
+              I agree to the
+              <a href="/terms" target="_blank" class="text-amber-700 dark:text-amber-400 underline hover:text-amber-800 dark:hover:text-amber-300">Terms and Conditions</a>
+              <span class="text-red-500">*</span>
+            </label>
+          </div>
+
+          <!-- Submit -->
+          <button
+            type="submit"
+            id="contact-submit"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-amber-700 px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-amber-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700"
+          >
+            Review &amp; Send
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         DuitNowPayment compact=true (inlined from DuitNowPayment.tsx)
+         ============================================================ -->
+    <section aria-labelledby="duitnow-compact-heading" class="py-10 container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="bg-white dark:bg-stone-900 rounded-2xl p-6 border border-stone-100 dark:border-stone-700 shadow-sm">
+          <div class="flex flex-col sm:flex-row items-center gap-6">
+            <!-- QR Code -->
+            <div class="shrink-0">
+              <img
+                src="/images/duitnow-qr.png"
+                alt="DuitNow QR code for Pelangi Capsule Hostel"
+                width="128"
+                height="128"
+                class="rounded-xl border border-stone-200 dark:border-stone-600"
+              />
+            </div>
+            <!-- Info -->
+            <div>
+              <h3 id="duitnow-compact-heading" class="font-semibold text-stone-900 dark:text-stone-100 mb-1">
+                Pay via DuitNow QR
+              </h3>
+              <p class="text-sm text-stone-600 dark:text-stone-400 mb-2">
+                Scan with any Malaysian banking app or e-wallet. Works with Maybank, CIMB, Touch &apos;n Go, Boost, GrabPay, and 40+ others.
+              </p>
+              <p class="text-xs text-stone-500 dark:text-stone-500">
+                DuitNow QR is Malaysia&apos;s national interoperable QR payment standard by PayNet.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tourism Tax notice -->
+    <section class="py-6 container-custom">
+      <div class="max-w-2xl mx-auto">
+        <p class="text-xs text-stone-500 dark:text-stone-400 text-center">
+          All quoted room rates are subject to Tourism Tax (TTx) RM10/room/night for non-Malaysian guests, as required by Malaysian law.
+          Tax rates are subject to change per Malaysian government regulation.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         Location (inlined from Location.tsx)
+         ============================================================ -->
+    <section id="location" class="section-padding bg-white dark:bg-stone-900">
+      <div class="container-custom">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+
+          <!-- Content — DOM-first for screen reader logical sequence (WCAG SC 1.3.2) -->
+          <div class="lg:order-2">
+            <p class="section-label">Location</p>
+            <h2 class="section-heading mb-8">
+              Find Us in<br />Taman Pelangi
+            </h2>
+
+            <!-- Address Card -->
+            <div class="bg-stone-50 dark:bg-stone-800 rounded-2xl p-6 mb-8 border border-stone-100 dark:border-stone-700">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center shrink-0">
+                  <svg class="w-6 h-6 text-amber-600 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-stone-900 dark:text-stone-100 mb-2">Address</h3>
+                  <p class="text-stone-600 dark:text-stone-400 leading-relaxed">
+                    26A, <span lang="ms">Jalan Perang</span>,<br />
+                    <span lang="ms">Taman Pelangi</span>,<br />
+                    80400 Johor Bahru,<br />
+                    Johor, Malaysia
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Nearby Places -->
+            <div class="mb-8">
+              <h3 class="text-xs tracking-widest uppercase text-stone-500 dark:text-stone-400 mb-4">What&apos;s Nearby</h3>
+              <div class="grid sm:grid-cols-2 gap-3">
+
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700">
+                  <div class="w-8 h-8 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                  <div class="min-w-0">
+                    <div class="text-sm font-medium text-stone-800 dark:text-stone-200 truncate">Pelangi Leisure Mall</div>
+                    <div class="text-xs text-stone-500 dark:text-stone-400">2 min walk</div>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700">
+                  <div class="w-8 h-8 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                  <div class="min-w-0">
+                    <div class="text-sm font-medium text-stone-800 dark:text-stone-200 truncate">7-Eleven</div>
+                    <div class="text-xs text-stone-500 dark:text-stone-400">1 min walk</div>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700">
+                  <div class="w-8 h-8 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                  <div class="min-w-0">
+                    <div class="text-sm font-medium text-stone-800 dark:text-stone-200 truncate">Bus Stop</div>
+                    <div class="text-xs text-stone-500 dark:text-stone-400">Steps away</div>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700">
+                  <div class="w-8 h-8 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                  <div class="min-w-0">
+                    <div class="text-sm font-medium text-stone-800 dark:text-stone-200 truncate">JB Sentral</div>
+                    <div class="text-xs text-stone-500 dark:text-stone-400">10 min drive</div>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700">
+                  <div class="w-8 h-8 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                  <div class="min-w-0">
+                    <div class="text-sm font-medium text-stone-800 dark:text-stone-200 truncate">CIQ Border</div>
+                    <div class="text-xs text-stone-500 dark:text-stone-400">15 min drive</div>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700">
+                  <div class="w-8 h-8 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                  <div class="min-w-0">
+                    <div class="text-sm font-medium text-stone-800 dark:text-stone-200 truncate">AEON Tebrau</div>
+                    <div class="text-xs text-stone-500 dark:text-stone-400">10 min drive</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Directions Button -->
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=26a+Jalan+Perang+Taman+Pelangi+Johor+Bahru"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-primary inline-flex items-center gap-3 cursor-pointer"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+              </svg>
+              Get Directions
+            </a>
+          </div>
+
+          <!-- Map — DOM-second (supplementary visual); visually first on desktop via lg:order-1 -->
+          <div class="relative h-[400px] lg:h-full min-h-[450px] rounded-3xl overflow-hidden shadow-2xl lg:order-1">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.4044839447424!2d103.7573!3d1.4862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da6c15f34a1b2d%3A0x1234567890abcdef!2s26a%20Jalan%20Perang%2C%20Taman%20Pelangi%2C%2080400%20Johor%20Bahru%2C%20Johor!5e0!3m2!1sen!2smy!4v1234567890"
+              width="100%"
+              height="100%"
+              style="border:0"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              class="absolute inset-0"
+              title="Pelangi Capsule Hostel map — 26A Jalan Perang, Taman Pelangi, Johor Bahru"
+            ></iframe>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /pt-20 -->
+</main>
+{{template "footer" .}}
+
+<script>
+(function () {
+  "use strict";
+
+  // Set date input min to today (replaces JSX {today} prop)
+  var today = new Date().toISOString().split("T")[0];
+  var ci = document.getElementById("contact-checkin");
+  var co = document.getElementById("contact-checkout");
+  if (ci) ci.min = today;
+  if (co) co.min = today;
+
+  // ── Inline validation helpers ─────────────────────────────────────────────
+  function validateEmail(email) {
+    if (!email.trim()) return "Please enter your email address (e.g. you@example.com).";
+    if (!email.includes("@")) return "It looks like '@' is missing. Did you mean " + email.trim() + "@gmail.com?";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return "Please enter a valid email address (e.g. you@example.com).";
+    return null;
+  }
+  function validatePhone(phone) {
+    if (!phone.trim()) return null;
+    var digits = phone.replace(/\D/g, "");
+    if (digits.length < 8 || digits.length > 15) return "Please enter a valid phone number with country code (e.g. +60 12-345 6789).";
+    return null;
+  }
+  function showError(id, msg) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    if (msg) { el.textContent = msg; el.classList.remove("hidden"); }
+    else { el.textContent = ""; el.classList.add("hidden"); }
+  }
+  function clearErrors() {
+    ["contact-name-error","contact-email-error","contact-phone-error","contact-checkin-error","contact-checkout-error","contact-message-error","contact-turnstile-error"].forEach(function(id) {
+      showError(id, null);
+    });
+  }
+
+  // ── Review/confirm step (mirrors SC 3.3.4 behaviour) ─────────────────────
+  var reviewPanel = null;
+
+  function buildReviewPanel(data) {
+    var rows = [
+      ["Name", data.name],
+      ["Email", data.email],
+      data.phone ? ["Phone", data.phone] : null,
+      data.checkIn ? ["Check-in", data.checkIn] : null,
+      data.checkOut ? ["Check-out", data.checkOut] : null,
+      data.guests ? ["Guests", data.guests] : null,
+      ["Message", data.message],
+    ].filter(Boolean);
+
+    var dlHtml = rows.map(function(r) {
+      return '<div class="flex gap-3"><dt class="font-medium text-stone-500 dark:text-stone-400 w-28 shrink-0">' + r[0] + '</dt><dd class="text-stone-900 dark:text-stone-100">' + escHtml(r[1]) + '</dd></div>';
+    }).join("");
+
+    var panel = document.createElement("div");
+    panel.id = "contact-review-panel";
+    panel.className = "rounded-2xl border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/20 p-6 space-y-4";
+    panel.innerHTML = '<h3 class="font-display text-lg font-medium text-stone-900 dark:text-stone-100 mb-2">Review Your Inquiry</h3>'
+      + '<p class="text-sm text-stone-600 dark:text-stone-400 mb-4">Please confirm the details below are correct before submitting.</p>'
+      + '<dl class="space-y-3 text-sm">' + dlHtml + '</dl>'
+      + '<div class="flex gap-3 pt-4 border-t border-amber-200 dark:border-amber-700">'
+      + '<button type="button" id="contact-edit-btn" class="rounded-xl border border-stone-300 dark:border-stone-600 px-6 py-3 text-sm font-medium text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">Edit</button>'
+      + '<button type="button" id="contact-confirm-btn" class="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-700 px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-amber-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700">Confirm &amp; Send</button>'
+      + '</div>';
+    return panel;
+  }
+
+  function escHtml(s) {
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+
+  var form = document.getElementById("contact-form");
+  var statusEl = document.getElementById("contact-status");
+
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      clearErrors();
+
+      var fd = new FormData(form);
+      var name     = (fd.get("name") || "").trim();
+      var email    = (fd.get("email") || "").trim();
+      var phone    = (fd.get("phone") || "").trim();
+      var checkIn  = fd.get("checkIn") || "";
+      var checkOut = fd.get("checkOut") || "";
+      var guests   = fd.get("guests") || "";
+      var message  = (fd.get("message") || "").trim();
+      var token    = (fd.get("cf-turnstile-response") || "").trim();
+
+      var hasErrors = false;
+
+      if (!name) { showError("contact-name-error", "Please enter your full name."); hasErrors = true; }
+      var emailErr = validateEmail(email);
+      if (emailErr) { showError("contact-email-error", emailErr); hasErrors = true; }
+      var phoneErr = validatePhone(phone);
+      if (phoneErr) { showError("contact-phone-error", phoneErr); hasErrors = true; }
+
+      if (checkIn) {
+        var today2 = new Date(); today2.setHours(0,0,0,0);
+        var ci2 = new Date(checkIn);
+        if (isNaN(ci2.getTime())) { showError("contact-checkin-error", "Please enter a valid date."); hasErrors = true; }
+        else if (ci2 < today2) { showError("contact-checkin-error", "Check-in date cannot be in the past."); hasErrors = true; }
+      }
+      if (checkOut) {
+        var co2 = new Date(checkOut);
+        if (isNaN(co2.getTime())) { showError("contact-checkout-error", "Please enter a valid date."); hasErrors = true; }
+        else if (checkIn && new Date(checkIn) >= co2) { showError("contact-checkout-error", "Check-out date must be after your check-in date."); hasErrors = true; }
+      }
+      if (!message) { showError("contact-message-error", "Please enter a message describing your inquiry."); hasErrors = true; }
+      if (!token) { showError("contact-turnstile-error", "Please complete the security check."); hasErrors = true; }
+
+      if (hasErrors) return;
+
+      // Show review panel (SC 3.3.4)
+      form.style.display = "none";
+      reviewPanel = buildReviewPanel({ name: name, email: email, phone: phone, checkIn: checkIn, checkOut: checkOut, guests: guests, message: message });
+      form.parentNode.insertBefore(reviewPanel, form.nextSibling);
+
+      document.getElementById("contact-edit-btn").addEventListener("click", function () {
+        reviewPanel.remove(); reviewPanel = null;
+        form.style.display = "";
+      });
+
+      document.getElementById("contact-confirm-btn").addEventListener("click", function () {
+        var confirmBtn = document.getElementById("contact-confirm-btn");
+        confirmBtn.disabled = true;
+        confirmBtn.textContent = "Sending…";
+
+        fetch("/api/contact", { method: "POST", body: new FormData(form) })
+          .then(function (res) {
+            reviewPanel.remove(); reviewPanel = null;
+            form.style.display = "";
+            if (res.ok) {
+              // Success banner
+              form.style.display = "none";
+              statusEl.className = "rounded-2xl bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800 p-8 text-center mb-6";
+              statusEl.innerHTML = '<div class="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center mx-auto mb-4">'
+                + '<svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></div>'
+                + '<p class="text-green-800 dark:text-green-300 text-lg font-medium mb-2">Inquiry Sent!</p>'
+                + '<p class="text-green-700 dark:text-green-400 text-sm">We\'ll respond within 24 hours.</p>';
+            } else {
+              statusEl.className = "text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-lg p-3 mb-6";
+              statusEl.textContent = "Something went wrong. Please try again or contact us directly via WhatsApp.";
+            }
+          })
+          .catch(function () {
+            if (reviewPanel) { reviewPanel.remove(); reviewPanel = null; }
+            form.style.display = "";
+            statusEl.className = "text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-lg p-3 mb-6";
+            statusEl.textContent = "Network error. Please check your connection and try again.";
+          });
+      });
+    });
+  }
+})();
+</script>
+{{end}}

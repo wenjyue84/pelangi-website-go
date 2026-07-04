@@ -1,0 +1,4 @@
+/node_modules/
+/pelangi-go
+/pelangi-go.exe
+*.test

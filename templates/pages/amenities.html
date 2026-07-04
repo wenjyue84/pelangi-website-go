@@ -1,0 +1,425 @@
+{{define "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://pelangicapsulehostel.com"},
+    {"@type": "ListItem", "position": 2, "name": "Amenities", "item": "https://pelangicapsulehostel.com/amenities"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "name": "Pelangi Capsule Hostel",
+  "description": "Japanese-style capsule hostel in Johor Bahru with modern amenities",
+  "url": "https://pelangicapsulehostel.com",
+  "telephone": "+60127088789",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "26A Jalan Perang",
+    "addressLocality": "Johor Bahru",
+    "addressRegion": "Johor",
+    "postalCode": "80400",
+    "addressCountry": "MY"
+  },
+  "amenityFeature": [
+    {"@type": "LocationFeatureSpecification", "name": "High-Speed WiFi", "value": true},
+    {"@type": "LocationFeatureSpecification", "name": "Quiet Hours 10PM-8AM", "value": true},
+    {"@type": "LocationFeatureSpecification", "name": "Secure Lockers in Pods", "value": true},
+    {"@type": "LocationFeatureSpecification", "name": "Universal Power Outlets and USB Charging", "value": true},
+    {"@type": "LocationFeatureSpecification", "name": "Dedicated Co-working Space", "value": true},
+    {"@type": "LocationFeatureSpecification", "name": "Air Conditioning", "value": true},
+    {"@type": "LocationFeatureSpecification", "name": "Fresh Linens and Towels", "value": true},
+    {"@type": "LocationFeatureSpecification", "name": "Shared Kitchen Facilities", "value": true},
+    {"@type": "LocationFeatureSpecification", "name": "Laundry Service", "value": true}
+  ],
+  "priceRange": "$",
+  "currenciesAccepted": "MYR",
+  "paymentAccepted": "Cash, DuitNow QR, Credit Card",
+  "tourBookingPage": "https://pelangicapsulehostel.com/book",
+  "hasMap": "https://maps.app.goo.gl/maLXetUqYS5MtSLD9"
+}
+</script>
+{{end}}
+
+{{define "content"}}
+{{template "header" .}}
+<main id="main-content" class="min-h-screen bg-stone-50 dark:bg-stone-950">
+
+  <!-- Hero Section -->
+  <section class="pt-28 pb-16 bg-linear-to-br from-stone-50 to-amber-50 dark:from-stone-950 dark:to-stone-900">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <h1 class="font-display text-5xl font-medium mb-6 text-stone-900 dark:text-stone-100">
+          Everything You Need
+        </h1>
+        <p class="text-lg text-stone-600 dark:text-stone-400 mb-6">
+          Pelangi Capsule Hostel is equipped with modern amenities designed for digital nomads, long-stay guests, and backpackers. From high-speed WiFi to a dedicated co-working space, we&apos;ve thought of everything to make your stay comfortable and productive.
+        </p>
+        <div class="flex justify-center gap-4">
+          <a
+            href="/book"
+            class="px-8 py-3 bg-amber-700 text-white rounded-lg hover:bg-amber-800 transition-colors"
+            aria-label="Book Now — Reserve your stay at Pelangi Capsule Hostel"
+          >
+            Book Now
+          </a>
+          <a
+            href="/"
+            class="px-8 py-3 bg-white dark:bg-stone-900 text-amber-700 dark:text-amber-400 border border-amber-700 rounded-lg hover:bg-amber-50 dark:hover:bg-stone-800 transition-colors"
+          >
+            Back Home
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Amenities Grid -->
+  <section class="py-20">
+    <div class="container-custom">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- High-Speed WiFi -->
+        <div class="bg-white dark:bg-stone-900 p-8 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs hover:shadow-md transition-shadow">
+          <div class="w-14 h-14 bg-amber-50 dark:bg-amber-900/30 rounded-full flex items-center justify-center text-amber-800 dark:text-amber-300 mb-6">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-medium mb-3 text-stone-900 dark:text-stone-100">High-Speed WiFi</h3>
+          <p class="text-stone-600 dark:text-stone-400 leading-relaxed">Gigabit fiber internet connection with 50+ Mbps download speeds. Perfect for streaming, video calls, and remote work. Coverage throughout the hostel.</p>
+        </div>
+
+        <!-- Quiet Hours -->
+        <div class="bg-white dark:bg-stone-900 p-8 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs hover:shadow-md transition-shadow">
+          <div class="w-14 h-14 bg-amber-50 dark:bg-amber-900/30 rounded-full flex items-center justify-center text-amber-800 dark:text-amber-300 mb-6">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-medium mb-3 text-stone-900 dark:text-stone-100">Quiet Hours</h3>
+          <p class="text-stone-600 dark:text-stone-400 leading-relaxed">10 PM - 8 AM quiet hours policy ensures peaceful sleep. Common areas are available 24/7 for guests who need to work around the clock.</p>
+        </div>
+
+        <!-- Secure Lockers -->
+        <div class="bg-white dark:bg-stone-900 p-8 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs hover:shadow-md transition-shadow">
+          <div class="w-14 h-14 bg-amber-50 dark:bg-amber-900/30 rounded-full flex items-center justify-center text-amber-800 dark:text-amber-300 mb-6">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-medium mb-3 text-stone-900 dark:text-stone-100">Secure Lockers</h3>
+          <p class="text-stone-600 dark:text-stone-400 leading-relaxed">Individual lockers in each pod with master key access. Valuables storage available. 24/7 access to your personal locker.</p>
+        </div>
+
+        <!-- Universal Power Outlets -->
+        <div class="bg-white dark:bg-stone-900 p-8 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs hover:shadow-md transition-shadow">
+          <div class="w-14 h-14 bg-amber-50 dark:bg-amber-900/30 rounded-full flex items-center justify-center text-amber-800 dark:text-amber-300 mb-6">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-medium mb-3 text-stone-900 dark:text-stone-100">Universal Power Outlets</h3>
+          <p class="text-stone-600 dark:text-stone-400 leading-relaxed">Multiple 220V outlets and USB charging ports in each pod. Lightning, USB-C, and Micro USB adapters available at reception.</p>
+        </div>
+
+        <!-- Co-working Space -->
+        <div class="bg-white dark:bg-stone-900 p-8 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs hover:shadow-md transition-shadow">
+          <div class="w-14 h-14 bg-amber-50 dark:bg-amber-900/30 rounded-full flex items-center justify-center text-amber-800 dark:text-amber-300 mb-6">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-medium mb-3 text-stone-900 dark:text-stone-100">Co-working Space</h3>
+          <p class="text-stone-600 dark:text-stone-400 leading-relaxed">Dedicated co-working area with high-speed WiFi, desk, and ergonomic seating. Free to use for all guests. Bookable for business meetings. Conference call-friendly.</p>
+        </div>
+
+        <!-- Full Air Conditioning -->
+        <div class="bg-white dark:bg-stone-900 p-8 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs hover:shadow-md transition-shadow">
+          <div class="w-14 h-14 bg-amber-50 dark:bg-amber-900/30 rounded-full flex items-center justify-center text-amber-800 dark:text-amber-300 mb-6">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-medium mb-3 text-stone-900 dark:text-stone-100">Full Air Conditioning</h3>
+          <p class="text-stone-600 dark:text-stone-400 leading-relaxed">Climate-controlled pods with individual temperature controls. Central air conditioning maintains 22-24&deg;C comfort year-round.</p>
+        </div>
+
+        <!-- Fresh Linens Daily -->
+        <div class="bg-white dark:bg-stone-900 p-8 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs hover:shadow-md transition-shadow">
+          <div class="w-14 h-14 bg-amber-50 dark:bg-amber-900/30 rounded-full flex items-center justify-center text-amber-800 dark:text-amber-300 mb-6">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-medium mb-3 text-stone-900 dark:text-stone-100">Fresh Linens Daily</h3>
+          <p class="text-stone-600 dark:text-stone-400 leading-relaxed">Complimentary fresh sheets, pillowcases, and towels. Laundry service available daily. Duvet covers changed weekly or on request.</p>
+        </div>
+
+        <!-- Shared Kitchen -->
+        <div class="bg-white dark:bg-stone-900 p-8 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs hover:shadow-md transition-shadow">
+          <div class="w-14 h-14 bg-amber-50 dark:bg-amber-900/30 rounded-full flex items-center justify-center text-amber-800 dark:text-amber-300 mb-6">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10h-8m0 0v8a2 2 0 002 2h12a2 2 0 002-2v-8m-13 0V5a2 2 0 012-2h4a2 2 0 012 2v5m-13 0a2 2 0 002 2h12a2 2 0 002-2" />
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-medium mb-3 text-stone-900 dark:text-stone-100">Shared Kitchen</h3>
+          <p class="text-stone-600 dark:text-stone-400 leading-relaxed">Fully equipped kitchen with refrigerator, microwave, stove, oven, and dishwasher. Open 6 AM - 11 PM. Complimentary cooking utensils and basic spices provided.</p>
+        </div>
+
+        <!-- Laundry Facilities -->
+        <div class="bg-white dark:bg-stone-900 p-8 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs hover:shadow-md transition-shadow">
+          <div class="w-14 h-14 bg-amber-50 dark:bg-amber-900/30 rounded-full flex items-center justify-center text-amber-800 dark:text-amber-300 mb-6">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h0m16 0v-5m0 5v10a2 2 0 01-2 2h-12a2 2 0 01-2-2v-10m16 0h2a2 2 0 012 2v10a2 2 0 01-2 2h-2m0 0v-6a2 2 0 00-2-2h-4a2 2 0 00-2 2v6m0 0H2m16 0H6" />
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-medium mb-3 text-stone-900 dark:text-stone-100">Laundry Facilities</h3>
+          <p class="text-stone-600 dark:text-stone-400 leading-relaxed">Complimentary washing machine and dryer (RM3/load). In-house laundry service for guests: RM5/load (since March 2026) &mdash; cheaper than the dobi outside. Iron and ironing board available.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Additional Details Section -->
+  <section class="py-20 bg-white dark:bg-stone-900">
+    <div class="container-custom">
+      <h2 class="font-display text-4xl font-medium mb-12 text-center text-stone-900 dark:text-stone-100">
+        Designed for Your Comfort
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+
+        <!-- Kitchen Details -->
+        <div class="space-y-4">
+          <h3 class="font-display text-2xl font-medium text-stone-900 dark:text-stone-100">Kitchen &amp; Dining</h3>
+          <p class="text-stone-600 dark:text-stone-400">Our fully-equipped shared kitchen is open daily from 6 AM to 11 PM. Cook meals at your own pace with friends.</p>
+          <ul class="space-y-2 text-stone-600 dark:text-stone-400">
+            <li class="flex gap-2">
+              <span class="text-amber-700 dark:text-amber-400 font-medium">&#10003;</span>
+              <span>Full-size refrigerator with labeled storage</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-amber-700 dark:text-amber-400 font-medium">&#10003;</span>
+              <span>Electric stove, oven, and microwave</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-amber-700 dark:text-amber-400 font-medium">&#10003;</span>
+              <span>Dishwasher and basic cooking utensils</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-amber-700 dark:text-amber-400 font-medium">&#10003;</span>
+              <span>Common dining area with seating for 20+</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-amber-700 dark:text-amber-400 font-medium">&#10003;</span>
+              <span>Free spices, oil, and condiments</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Co-working Details -->
+        <div class="space-y-4">
+          <h3 class="font-display text-2xl font-medium text-stone-900 dark:text-stone-100">Co-working Space</h3>
+          <p class="text-stone-600 dark:text-stone-400">Perfect for digital nomads and remote workers. Fast, reliable internet and professional atmosphere.</p>
+          <ul class="space-y-2 text-stone-600 dark:text-stone-400">
+            <li class="flex gap-2">
+              <span class="text-amber-700 dark:text-amber-400 font-medium">&#10003;</span>
+              <span>Dedicated desk with ergonomic seating</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-amber-700 dark:text-amber-400 font-medium">&#10003;</span>
+              <span>Gigabit fiber WiFi (50+ Mbps)</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-amber-700 dark:text-amber-400 font-medium">&#10003;</span>
+              <span>USB charging and multiple power outlets</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-amber-700 dark:text-amber-400 font-medium">&#10003;</span>
+              <span>Bookable for business meetings</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-amber-700 dark:text-amber-400 font-medium">&#10003;</span>
+              <span>Video call-friendly (quiet, professional background)</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Laundry Details -->
+        <div class="space-y-4">
+          <h3 class="font-display text-2xl font-medium text-stone-900 dark:text-stone-100">Laundry Services</h3>
+          <p class="text-stone-600 dark:text-stone-400">Keep your clothes fresh and clean during your stay with our convenient laundry options.</p>
+          <ul class="space-y-2 text-stone-600 dark:text-stone-400">
+            <li class="flex gap-2">
+              <span class="text-amber-700 dark:text-amber-400 font-medium">&#10003;</span>
+              <span>Self-service washing &amp; drying: RM3 per load</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-amber-700 dark:text-amber-400 font-medium">&#10003;</span>
+              <span>In-house laundry service (guests only): RM5/load &mdash; cheaper than outside dobi, available since March 2026</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-amber-700 dark:text-amber-400 font-medium">&#10003;</span>
+              <span>Free iron and ironing board in common area</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-amber-700 dark:text-amber-400 font-medium">&#10003;</span>
+              <span>Daily linen change (weekly duvet covers)</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Safety & Access -->
+        <div class="space-y-4">
+          <h3 class="font-display text-2xl font-medium text-stone-900 dark:text-stone-100">Safety &amp; Access</h3>
+          <p class="text-stone-600 dark:text-stone-400">Your safety and peace of mind are our top priorities. 24/7 access with secure lockdown features.</p>
+          <ul class="space-y-2 text-stone-600 dark:text-stone-400">
+            <li class="flex gap-2">
+              <span class="text-amber-700 dark:text-amber-400 font-medium">&#10003;</span>
+              <span>24/7 access to your pod with personal key card</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-amber-700 dark:text-amber-400 font-medium">&#10003;</span>
+              <span>Individual secure locker in each pod</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-amber-700 dark:text-amber-400 font-medium">&#10003;</span>
+              <span>CCTV surveillance in common areas</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-amber-700 dark:text-amber-400 font-medium">&#10003;</span>
+              <span>24-hour front desk staff</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-amber-700 dark:text-amber-400 font-medium">&#10003;</span>
+              <span>Emergency contact available anytime</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Sustainability Section -->
+  <section class="py-20 bg-linear-to-br from-green-50 to-emerald-50 dark:from-stone-900 dark:to-stone-900">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="font-display text-4xl font-medium mb-6 text-stone-900 dark:text-stone-100">
+            Our Sustainability Commitment
+          </h2>
+          <p class="text-lg text-stone-600 dark:text-stone-400">
+            At Pelangi Capsule Hostel, we&apos;re dedicated to minimizing our environmental impact while providing exceptional hospitality. Sustainable travel isn&apos;t just a trend &mdash; it&apos;s our responsibility to future generations of travelers exploring Johor Bahru.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+
+          <!-- Water Dispensers -->
+          <div class="bg-white dark:bg-stone-800 p-8 rounded-2xl border border-emerald-100 dark:border-stone-700 shadow-xs">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v12m8-8a8 8 0 11-16 0 8 8 0 0116 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-display text-xl font-medium text-stone-900 dark:text-stone-100 mb-2">Water Dispensers</h3>
+                <p class="text-stone-600 dark:text-stone-400">Complimentary refillable water dispensers throughout the hostel reduce single-use plastic bottles. We provide reusable water bottles to guests to further minimize waste.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Energy-Efficient Lighting -->
+          <div class="bg-white dark:bg-stone-800 p-8 rounded-2xl border border-emerald-100 dark:border-stone-700 shadow-xs">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-display text-xl font-medium text-stone-900 dark:text-stone-100 mb-2">Energy-Efficient Lighting</h3>
+                <p class="text-stone-600 dark:text-stone-400">All capsule pods and common areas are equipped with LED lighting and motion-sensor lighting in restrooms and corridors. This reduces electricity consumption while maintaining comfort.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comprehensive Recycling -->
+          <div class="bg-white dark:bg-stone-800 p-8 rounded-2xl border border-emerald-100 dark:border-stone-700 shadow-xs">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m0 0l8 4m-8-4v10l8 4v-10m0 0l8 4m-8-4v10m0 0l-8-4m8 4l8-4" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-display text-xl font-medium text-stone-900 dark:text-stone-100 mb-2">Comprehensive Recycling</h3>
+                <p class="text-stone-600 dark:text-stone-400">Color-coded recycling bins for paper, plastic, glass, and organic waste are available in all common areas and throughout the hostel. Staff ensure proper sorting and disposal with local recycling facilities.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Eco-Conscious Operations -->
+          <div class="bg-white dark:bg-stone-800 p-8 rounded-2xl border border-emerald-100 dark:border-stone-700 shadow-xs">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-display text-xl font-medium text-stone-900 dark:text-stone-100 mb-2">Eco-Conscious Operations</h3>
+                <p class="text-stone-600 dark:text-stone-400">We source local and sustainable products whenever possible, use biodegradable cleaning supplies, and prioritize eco-friendly amenities. Our commitment to sustainability is integral to how we operate daily.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="bg-white dark:bg-stone-800 p-8 rounded-2xl border border-emerald-100 dark:border-stone-700 text-center">
+          <p class="text-stone-600 dark:text-stone-400 text-lg">
+            By choosing Pelangi Capsule Hostel, you&apos;re supporting sustainable tourism in Johor Bahru. Together, we can make travel more responsible and protect the beautiful destinations we all love to explore.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-amber-700 text-white">
+    <div class="container-custom text-center">
+      <h2 class="font-display text-4xl font-medium mb-4">
+        Ready to Experience Pelangi?
+      </h2>
+      <p class="text-lg mb-8 text-amber-100 max-w-2xl mx-auto">
+        Book your stay today and enjoy our full range of hostel amenities. Digital nomads and long-stay guests receive special discounts.
+      </p>
+      <div class="flex justify-center gap-4 flex-wrap">
+        <a
+          href="/book"
+          class="px-8 py-3 bg-white text-amber-700 rounded-lg hover:bg-amber-50 transition-colors font-medium"
+          aria-label="Book Now — Reserve your stay at Pelangi Capsule Hostel"
+        >
+          Book Now
+        </a>
+        <a
+          href="/rooms"
+          class="px-8 py-3 border border-white text-white rounded-lg hover:bg-white hover:text-amber-700 transition-colors font-medium"
+        >
+          View Rooms
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+{{template "footer" .}}
+{{end}}

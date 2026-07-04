@@ -1,0 +1,278 @@
+{{define "widgetsA"}}
+<!-- ═══════════════════════════════════════════════════════════════════
+     widgets_a.html — static HTML for ChatWidget, MobileBookingBar,
+     BookingRecoveryBanner, ExitIntentOverlay.
+     Behaviour is driven by go-site/static/js/widgets_a.js (IIFE).
+     ═══════════════════════════════════════════════════════════════════ -->
+
+<!-- ── Chat Panel ──────────────────────────────────────────────────── -->
+<div
+  id="chat-panel"
+  class="fixed z-50 w-[calc(100vw-2rem)] sm:w-96 shadow-2xl rounded-2xl overflow-hidden flex flex-col bg-white dark:bg-stone-800 transition-all duration-300 ease-out origin-bottom-right opacity-0 scale-95 pointer-events-none"
+  style="bottom: calc(5rem + 8px); right: 1rem; max-height: min(540px, calc(100dvh - 110px));"
+  role="dialog"
+  aria-label="Chat with Pelangi Capsule Hostel FAQ assistant"
+  aria-modal="true"
+  aria-hidden="true"
+>
+  <!-- Header -->
+  <div
+    class="flex items-center gap-3 px-4 py-3 text-white shrink-0"
+    style="background: linear-gradient(135deg, #a68b64 0%, #715d47 100%);"
+  >
+    <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" />
+      </svg>
+    </div>
+    <div class="flex-1 min-w-0">
+      <div class="font-semibold text-sm leading-tight truncate">Pelangi Capsule Hostel</div>
+      <div class="text-xs opacity-80">FAQ Assistant</div>
+    </div>
+    <button
+      id="chat-close-btn"
+      class="w-11 h-11 flex items-center justify-center text-white/70 hover:text-white rounded-lg transition shrink-0"
+      aria-label="Close chat"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Messages (JS renders bubbles + chips here) -->
+  <div
+    id="chat-messages"
+    class="flex-1 overflow-y-auto px-4 py-3 space-y-2.5"
+    style="background: #faf8f5;"
+  ></div>
+
+  <!-- Input area -->
+  <div class="bg-white dark:bg-stone-800 border-t border-stone-100 dark:border-stone-700 px-3 py-2.5 flex gap-2 items-end shrink-0">
+    <textarea
+      id="chat-input"
+      placeholder="Type a question&#8230;"
+      rows="1"
+      autocomplete="on"
+      class="flex-1 resize-none text-sm transition border border-stone-500 dark:border-stone-600 rounded-xl px-3 py-2 bg-white dark:bg-stone-700 text-stone-900 dark:text-stone-100 focus-visible:border-amber-400 placeholder:text-stone-500"
+      style="line-height: 1.4; font-family: inherit; max-height: 96px;"
+      aria-label="Type your question"
+    ></textarea>
+    <button
+      id="chat-send-btn"
+      class="w-11 h-11 rounded-full flex items-center justify-center shrink-0 transition hover:brightness-110 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed"
+      style="background: #d6d3d1;"
+      aria-label="Send message"
+      disabled
+    >
+      <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13" />
+        <polygon points="22 2 15 22 11 13 2 9 22 2" fill="currentColor" stroke="none" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- WhatsApp fallback -->
+  <div class="text-center text-[10px] text-stone-500 dark:text-stone-400 py-1.5 bg-white dark:bg-stone-800 border-t border-stone-50 dark:border-stone-700">
+    Need more help?&#32;<a
+      href="https://wa.me/60127088789?text=Hi!%20I%20have%20a%20question%20about%20Pelangi%20Capsule%20Hostel."
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-green-600 hover:underline"
+    >WhatsApp us</a>
+  </div>
+</div>
+
+<!-- ── Chat Floating Action Button ─────────────────────────────────── -->
+<!-- Starts opacity-0; widgets_a.js reveals it after 10 s (DELAY_MS) -->
+<button
+  id="chat-fab"
+  class="fixed bottom-20 right-4 sm:bottom-5 sm:right-6 z-50 w-14 h-14 rounded-full shadow-xl flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700 opacity-0 pointer-events-none"
+  style="background: linear-gradient(135deg, #a68b64 0%, #715d47 100%);"
+  aria-label="Open chat"
+  data-chat-open="false"
+>
+  <!-- Chat bubble icon — visible when panel is closed -->
+  <svg id="chat-fab-icon-open" class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" />
+  </svg>
+  <!-- X icon — visible when panel is open -->
+  <svg id="chat-fab-icon-close" class="w-6 h-6 text-white transition-transform duration-200 hidden" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+  </svg>
+</button>
+
+<!-- ── Mobile Booking Bar ───────────────────────────────────────────── -->
+<!-- Hidden on md+ via Tailwind; hidden by JS while chat panel is open -->
+<div
+  id="mobile-booking-bar"
+  class="fixed bottom-0 left-0 right-0 z-40 md:hidden"
+  role="banner"
+  aria-label="Quick booking bar"
+>
+  <div class="bg-white dark:bg-stone-900 border-t border-stone-200 dark:border-stone-700 shadow-[0_-2px_10px_rgba(0,0,0,0.08)] dark:shadow-[0_-2px_10px_rgba(0,0,0,0.3)] px-4 py-3 flex items-center justify-between gap-3">
+    <div class="flex flex-col min-w-0">
+      <span class="text-sm font-semibold text-stone-800 dark:text-stone-200 truncate">From RM30/night</span>
+      <span data-live-availability class="hidden text-xs font-medium text-red-600 dark:text-red-400 truncate"></span>
+    </div>
+    <div class="flex items-center gap-2 shrink-0">
+      <a
+        href="https://wa.me/60127088789?text=Hi!%20I%20have%20a%20question%20about%20Pelangi%20Capsule%20Hostel."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-green-500 text-green-500 hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors"
+        aria-label="Questions? WhatsApp us"
+      >
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+      </a>
+      <a
+        id="mobile-booking-bar-cta"
+        href="/book"
+        class="inline-flex items-center gap-1.5 bg-amber-700 hover:bg-amber-800 active:bg-amber-900 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
+        aria-label="Book your stay now"
+      >Book Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── Desktop Sticky Booking Bar ───────────────────────────────────── -->
+<!-- md+ only; booking.js slides it up after the visitor scrolls past the hero -->
+<div
+  id="desktop-booking-bar"
+  class="fixed bottom-0 left-0 right-0 z-40 hidden md:block translate-y-full transition-transform duration-300"
+  aria-label="Quick booking bar"
+>
+  <div class="bg-white/95 dark:bg-stone-900/95 backdrop-blur-md border-t border-stone-200 dark:border-stone-700 shadow-[0_-2px_10px_rgba(0,0,0,0.08)] dark:shadow-[0_-2px_10px_rgba(0,0,0,0.3)] px-6 py-3">
+    <div class="container-custom flex items-center justify-between gap-4">
+      <div class="flex items-center gap-4 min-w-0">
+        <span class="font-display text-lg font-medium text-stone-900 dark:text-stone-100">From RM30<span class="text-sm text-stone-500 dark:text-stone-400">/night</span></span>
+        <span data-live-availability class="hidden text-sm font-medium text-red-600 dark:text-red-400 truncate"></span>
+      </div>
+      <div class="flex items-center gap-4 shrink-0">
+        <a
+          href="https://wa.me/60127088789?text=Hi!%20I%20have%20a%20question%20about%20Pelangi%20Capsule%20Hostel."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm font-medium text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300 transition-colors"
+        >Questions? WhatsApp us</a>
+        <a
+          href="/book"
+          class="bg-amber-700 hover:bg-amber-800 text-white text-sm font-semibold px-6 py-2.5 rounded-full transition-colors"
+        >Book Now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Booking Recovery Banner ──────────────────────────────────────── -->
+<!-- Hidden by default; widgets_a.js populates text and reveals after 800 ms -->
+<div
+  id="booking-recovery-banner"
+  class="fixed bottom-20 md:bottom-6 left-4 right-4 md:left-auto md:right-6 z-50 max-w-sm hidden"
+  role="status"
+  aria-live="polite"
+>
+  <div class="bg-stone-900 dark:bg-stone-800 text-white rounded-2xl shadow-xl p-4 border border-stone-700">
+    <p class="text-sm mb-3">
+      Continue your booking for
+      <span id="booking-recovery-room" class="font-semibold text-amber-400">Capsule Pod</span><span id="booking-recovery-dates"></span>?
+    </p>
+    <div class="flex items-center gap-2">
+      <a
+        href="/book"
+        class="flex-1 inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white text-sm font-medium rounded-xl px-4 py-2.5 transition-colors"
+      >
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+        </svg>
+        Resume Booking
+      </a>
+      <button
+        type="button"
+        id="booking-recovery-dismiss"
+        class="text-stone-400 hover:text-white text-sm px-3 py-2.5 rounded-xl transition-colors"
+        aria-label="Dismiss booking reminder"
+      >Dismiss</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Exit Intent Overlay ──────────────────────────────────────────── -->
+<!-- Desktop-only trigger (>1024 px), once per session; hidden by default -->
+<div
+  id="exit-intent-overlay"
+  class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-sm hidden"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="exit-intent-title"
+  tabindex="-1"
+>
+  <div class="bg-white dark:bg-stone-900 rounded-3xl shadow-2xl max-w-md w-full p-8 relative">
+    <!-- Close -->
+    <button
+      type="button"
+      id="exit-intent-close"
+      class="absolute top-4 right-4 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-stone-500 hover:text-stone-800 dark:text-stone-400 dark:hover:text-stone-200 transition-colors"
+      aria-label="Close"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Icon -->
+    <div class="w-14 h-14 rounded-2xl bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mx-auto mb-5">
+      <svg class="w-7 h-7 text-amber-700 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </div>
+
+    <!-- Offer text -->
+    <h2
+      id="exit-intent-title"
+      class="font-display text-2xl font-medium text-stone-900 dark:text-stone-100 text-center mb-2"
+    >Wait &#8212; Early Check-in on Us</h2>
+    <p class="text-stone-600 dark:text-stone-400 text-center mb-1">
+      Book direct via WhatsApp today and we&#8217;ll throw in
+      <strong class="text-amber-700 dark:text-amber-400">early check-in at 11 AM</strong> &#8212; free.
+    </p>
+    <p class="text-stone-500 dark:text-stone-400 text-sm text-center mb-8">
+      No OTA fees. Instant confirmation. Just mention this offer.
+    </p>
+
+    <!-- CTAs -->
+    <div class="flex flex-col gap-3">
+      <a
+        id="exit-intent-wa-cta"
+        href="https://wa.me/60127088789?text=Hi%20Pelangi%20Capsule%20Hostel!%20I'd%20like%20to%20book%20early%20check-in%20at%2011%20AM.%20Please%20advise%20availability."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center justify-center gap-3 bg-green-500 text-white rounded-2xl py-4 px-6 font-semibold hover:bg-green-600 transition-colors"
+      >
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+        Book via WhatsApp
+      </a>
+      <button
+        type="button"
+        id="exit-intent-browse-btn"
+        class="flex items-center justify-center py-3 px-6 rounded-2xl font-medium text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+      >Continue Browsing</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #chat-panel,
+    #chat-fab { transition: none !important; animation: none !important; }
+  }
+</style>
+{{end}}

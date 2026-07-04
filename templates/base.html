@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="{{.Lang}}" data-scroll-behavior="smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{.Title}}</title>
+  <meta name="description" content="{{.Description}}">
+  <link rel="canonical" href="{{.Canonical}}">
+  {{if .NoIndex}}<meta name="robots" content="noindex, nofollow">{{else}}<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">{{end}}
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="Pelangi Capsule Hostel">
+  <meta property="og:type" content="{{if .OGType}}{{.OGType}}{{else}}website{{end}}">
+  <meta property="og:locale" content="en_MY">
+  <meta property="og:title" content="{{.Title}}">
+  <meta property="og:description" content="{{.Description}}">
+  <meta property="og:url" content="{{.Canonical}}">
+  <meta property="og:image" content="{{if .OGImage}}{{.OGImage}}{{else}}https://pelangicapsulehostel.com/images/og-image.png{{end}}">
+  {{if .OGPublished}}<meta property="article:published_time" content="{{.OGPublished}}">{{end}}
+  {{if .OGModified}}<meta property="article:modified_time" content="{{.OGModified}}">{{end}}
+  <meta name="twitter:card" content="summary_large_image">
+
+  {{if and .AltEN .AltZH}}
+  <link rel="alternate" hreflang="en" href="{{.AltEN}}">
+  <link rel="alternate" hreflang="zh-CN" href="{{.AltZH}}">
+  <link rel="alternate" hreflang="x-default" href="{{.AltEN}}">
+  {{end}}
+
+  <!-- Site-wide entities: Organization + WebSite (stable @ids referenced by page-level schema) -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://pelangicapsulehostel.com/#organization","name":"Pelangi Capsule Hostel","url":"https://pelangicapsulehostel.com","logo":{"@type":"ImageObject","url":"https://pelangicapsulehostel.com/images/logo.png"},"telephone":"+60127088789","email":"pelangicapsule@gmail.com","address":{"@type":"PostalAddress","streetAddress":"26A Jalan Perang, Taman Pelangi","addressLocality":"Johor Bahru","addressRegion":"Johor","postalCode":"80400","addressCountry":"MY"},"sameAs":["https://www.facebook.com/pelangicapsulehostel","https://www.instagram.com/pelangicapsulehostel","https://maps.app.goo.gl/maLXetUqYS5MtSLD9","https://www.booking.com/hotel/my/pelangi-hostel-capsule.html","https://www.hostelworld.com/pwa/hosteldetails.php/Pelangi-Capsule-Hostel/Johor-Bahru/317698","https://www.wikidata.org/wiki/Q140363023"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://pelangicapsulehostel.com/#website","url":"https://pelangicapsulehostel.com","name":"Pelangi Capsule Hostel","publisher":{"@id":"https://pelangicapsulehostel.com/#organization"},"inLanguage":["en","zh-CN"]}</script>
+
+  <!-- Consent Mode v2: deny all consent parameters before GTM loads -->
+  <script>{{- safeJS `window.dataLayer = window.dataLayer || [];function gtag(){window.dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',analytics_storage:'denied',ad_personalization:'denied',functionality_storage:'denied',security_storage:'granted'});` }}</script>
+
+  <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1c1917" media="(prefers-color-scheme: dark)">
+
+  <!-- Fonts: self-hosted woff2 (@font-face in app.css); preload the two above-the-fold faces -->
+  <link rel="preload" href="/static/fonts/inter-v20-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/static/fonts/playfair-display-v40-latin-500.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="/static/css/app.css">
+
+  <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://www.google.com">
+  <link rel="dns-prefetch" href="https://ak-d.tripcdn.com">
+  <link rel="search" type="application/opensearchdescription+xml" title="Pelangi Hostel" href="/opensearch.xml">
+  <link rel="alternate" type="text/plain" href="/llms.txt">
+  <link rel="alternate" type="application/rss+xml" title="Pelangi Blog" href="/feed.xml">
+  <link rel="alternate" type="application/feed+json" title="Pelangi Blog" href="/feed.json">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="manifest" href="/manifest.webmanifest">
+
+  {{block "head" .}}{{end}}
+</head>
+<body class="pb-16 md:pb-0">
+  {{if .GTMID}}
+  <!-- Google Tag Manager -->
+  <script>{{ safeJS (printf "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','%s');" .GTMID) }}</script>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{.GTMID}}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  {{end}}
+
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:z-100 focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-amber-700 focus:text-white focus:rounded-lg focus:font-medium focus:shadow-lg">Skip to main content</a>
+
+  {{if .BannerHTML}}
+  <!-- Site-wide announcement banner (dismissible; header is pushed down while visible) -->
+  <div id="site-banner" class="fixed top-0 inset-x-0 z-[60] hidden bg-stone-900 text-stone-100 dark:bg-amber-700 dark:text-white" role="region" aria-label="Announcement">
+    <div class="container-custom flex items-center gap-3 px-4 py-2 text-xs sm:text-sm leading-snug">
+      <p class="flex-1 min-w-0">{{safeHTML .BannerHTML}}</p>
+      <button type="button" id="site-banner-close" class="shrink-0 p-1.5 rounded-full hover:bg-white/15 transition-colors" aria-label="Dismiss announcement">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+  <script>{{safeJS (printf `(function(){var b=document.getElementById('site-banner');if(!b)return;var k='pelangi-banner-%s';try{if(localStorage.getItem(k))return;}catch(e){}b.classList.remove('hidden');var h=document.querySelector('header');function pad(){if(h)h.style.top=b.offsetHeight+'px';}pad();window.addEventListener('resize',pad);var x=document.getElementById('site-banner-close');if(x)x.addEventListener('click',function(){try{localStorage.setItem(k,'1');}catch(e){}b.classList.add('hidden');if(h)h.style.top='';});})();` .BannerID)}}</script>
+  {{end}}
+
+  {{template "content" .}}
+
+  {{template "widgetsA" .}}
+  {{template "widgetsB" .}}
+
+  <script>window.__PELANGI_CFG = {metaPixelId:"{{.MetaPixelID}}",tiktokPixelId:"{{.TikTokPixelID}}",sentryDsn:"{{.SentryDSN}}",clarityId:"{{.ClarityID}}",ga:"{{.GA}}"};</script>
+  <script src="/static/js/app.js" defer></script>
+  <script src="/static/js/widgets_a.js" defer></script>
+  <script src="/static/js/booking.js" defer></script>
+  <script src="/static/js/analytics.js" defer></script>
+</body>
+</html>

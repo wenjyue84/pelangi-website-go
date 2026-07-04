@@ -1,0 +1,31 @@
+{{define "content"}}
+{{template "header" .}}
+<main id="main-content" class="min-h-screen bg-stone-50 dark:bg-stone-950">
+  <div class="pt-28 pb-16 container-custom max-w-2xl text-center">
+    <div class="w-14 h-14 rounded-2xl bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mx-auto mb-6">
+      <svg class="w-7 h-7 text-amber-700 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+          d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+      </svg>
+    </div>
+    <h1 class="font-display text-3xl font-medium text-stone-900 dark:text-stone-100 mb-3">
+      {{.ShareTitle}}
+    </h1>
+    {{if .ShareText}}
+    <p class="text-stone-600 dark:text-stone-400 mb-6">{{.ShareText}}</p>
+    {{end}}
+    <a
+      href="{{.InternalHref}}"
+      class="inline-flex items-center gap-2 bg-amber-700 text-white rounded-2xl py-3 px-6 font-medium hover:bg-amber-800 transition-colors"
+    >
+      View Page
+    </a>
+    <div class="mt-8">
+      <a href="/" class="text-sm text-amber-700 dark:text-amber-400 hover:underline">
+        Back to Pelangi Capsule Hostel
+      </a>
+    </div>
+  </div>
+</main>
+{{template "footer" .}}
+{{end}}
