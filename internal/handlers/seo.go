@@ -17,11 +17,10 @@ var aiCrawlers = []string{
 	"meta-externalagent", "YouBot", "CCBot",
 }
 
-// wpDisallow are legacy WordPress paths blocked for the default crawler.
-var wpDisallow = []string{
-	"/private/", "/wp-admin/", "/wp-content/", "/wp-includes/", "/wp-json/",
-	"/wp-login.php", "/wp-cron.php", "/xmlrpc.php", "/wp-signup.php", "/wp-activate.php",
-}
+// wpDisallow: paths hidden from crawlers. Legacy /wp-* paths are deliberately
+// NOT listed — the middleware answers them with 410 Gone, and crawlers must be
+// able to fetch them to see the 410 and de-index the old WordPress spam.
+var wpDisallow = []string{"/private/"}
 
 // robots serves /robots.txt, ported from site/src/app/robots.ts.
 func (h *Handler) robots(w http.ResponseWriter, r *http.Request) {

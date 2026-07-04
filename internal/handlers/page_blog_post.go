@@ -118,7 +118,9 @@ func (h *Handler) blogPost(w http.ResponseWriter, r *http.Request) {
 			"url":         ogImage,
 			"description": imageDesc,
 		},
-		"url": canonical,
+		"url":            canonical,
+		"wordCount":      data.WordCount(post.Content),
+		"articleSection": post.Category,
 		"mainEntityOfPage": map[string]string{
 			"@type": "WebPage",
 			"@id":   canonical,

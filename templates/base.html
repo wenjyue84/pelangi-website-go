@@ -19,6 +19,9 @@
   {{if .OGPublished}}<meta property="article:published_time" content="{{.OGPublished}}">{{end}}
   {{if .OGModified}}<meta property="article:modified_time" content="{{.OGModified}}">{{end}}
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{.Title}}">
+  <meta name="twitter:description" content="{{.Description}}">
+  <meta name="twitter:image" content="{{if .OGImage}}{{.OGImage}}{{else}}https://pelangicapsulehostel.com/images/og-image.png{{end}}">
 
   {{if and .AltEN .AltZH}}
   <link rel="alternate" hreflang="en" href="{{.AltEN}}">
@@ -27,7 +30,7 @@
   {{end}}
 
   <!-- Site-wide entities: Organization + WebSite (stable @ids referenced by page-level schema) -->
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://pelangicapsulehostel.com/#organization","name":"Pelangi Capsule Hostel","url":"https://pelangicapsulehostel.com","logo":{"@type":"ImageObject","url":"https://pelangicapsulehostel.com/images/logo.png"},"telephone":"+60127088789","email":"pelangicapsule@gmail.com","address":{"@type":"PostalAddress","streetAddress":"26A Jalan Perang, Taman Pelangi","addressLocality":"Johor Bahru","addressRegion":"Johor","postalCode":"80400","addressCountry":"MY"},"sameAs":["https://www.facebook.com/pelangicapsulehostel","https://www.instagram.com/pelangicapsulehostel","https://maps.app.goo.gl/maLXetUqYS5MtSLD9","https://www.booking.com/hotel/my/pelangi-hostel-capsule.html","https://www.hostelworld.com/pwa/hosteldetails.php/Pelangi-Capsule-Hostel/Johor-Bahru/317698","https://www.wikidata.org/wiki/Q140363023"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://pelangicapsulehostel.com/#organization","name":"Pelangi Capsule Hostel","url":"https://pelangicapsulehostel.com","logo":{"@type":"ImageObject","url":"https://pelangicapsulehostel.com/images/logo.png"},"telephone":"+60127088789","email":"pelangicapsule@gmail.com","address":{"@type":"PostalAddress","streetAddress":"26A Jalan Perang, Taman Pelangi","addressLocality":"Johor Bahru","addressRegion":"Johor","postalCode":"80400","addressCountry":"MY"},"sameAs":["https://www.facebook.com/pelangicapsulehostel","https://www.instagram.com/pelangicapsulehostel","https://maps.app.goo.gl/maLXetUqYS5MtSLD9","https://www.booking.com/hotel/my/pelangi-hostel-capsule.html","https://www.hostelworld.com/pwa/hosteldetails.php/Pelangi-Capsule-Hostel/Johor-Bahru/317698","https://www.tripadvisor.com/Hotel_Review-g298278-d27125478-Reviews-Pelangi_Capsule_Hostel-Johor_Bahru_Johor_Bahru_District_Johor.html","https://www.agoda.com/pelangi-hostel-capsule/hotel/johor-bahru-my.html","https://www.wikidata.org/wiki/Q140363023"]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://pelangicapsulehostel.com/#website","url":"https://pelangicapsulehostel.com","name":"Pelangi Capsule Hostel","publisher":{"@id":"https://pelangicapsulehostel.com/#organization"},"inLanguage":["en","zh-CN"]}</script>
 
   <!-- Consent Mode v2: deny all consent parameters before GTM loads -->
