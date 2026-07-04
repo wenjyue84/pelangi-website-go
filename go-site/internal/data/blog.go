@@ -31,6 +31,12 @@ var _blogTagRE = regexp.MustCompile(`<[^>]+>`)
 var _blogCatCleanRE = regexp.MustCompile(`[^a-z0-9\s]`)
 var _blogCatSpaceRE = regexp.MustCompile(`\s+`)
 
+// WordCount returns the plain-text word count of a post's HTML content
+// (used for the BlogPosting JSON-LD wordCount property).
+func WordCount(html string) int {
+	return len(strings.Fields(_blogTagRE.ReplaceAllString(html, " ")))
+}
+
 // _blogComputeReadingTime estimates reading time (minutes) from raw HTML using
 // 200 wpm with a minimum of 1 minute — matching the TypeScript implementation.
 func _blogComputeReadingTime(html string) int {

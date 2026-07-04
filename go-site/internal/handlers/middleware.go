@@ -17,6 +17,14 @@ func (h *Handler) Middleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		path := r.URL.Path
 
+		// --- Security headers (site is HTTPS-only behind Cloudflare) ---
+		hdr := w.Header()
+		hdr.Set("Strict-Transport-Security", "max-age=31536000; includeSubDomains")
+		hdr.Set("X-Content-Type-Options", "nosniff")
+		hdr.Set("X-Frame-Options", "SAMEORIGIN")
+		hdr.Set("Referrer-Policy", "strict-origin-when-cross-origin")
+		hdr.Set("Permissions-Policy", "camera=(), microphone=(), geolocation=()")
+
 		// --- WordPress legacy paths → 410 Gone ---
 		for _, p := range wpPathPrefixes {
 			if path == p || strings.HasPrefix(path, p+"/") {

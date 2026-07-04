@@ -1,49 +1,50 @@
 # SEO Tasks — Pelangi Website
 
 > Open action items. `/pelangi-website-brief` reads this daily and reports unchecked items.
-> Details for off-site items: `offsite-seo-actions.md`.
+> Off-site details: `offsite-seo-actions.md`. Paste-ready browser prompts: `claude-for-chrome-prompts.md`.
 
-## On-site (done 2026-07-05)
+## ✅ Done (2026-07-05 session)
 
-- [x] Sync RM30/RM35 pricing across site, llms.txt, JSON-LD, FAQ (deployed 2026-07-05)
-- [x] Self-host fonts (remove render-blocking Google Fonts) (deployed 2026-07-05)
-- [x] Document real deploy flow (go-site/DEPLOY.md + skill rewrite)
-- [x] GEO audit baseline for the Go site (GEO-AUDIT-2026-07.md)
+- [x] Cloudflare AI-crawler block removed (managed robots.txt off; self-heal via CF_BM_TOKEN wired into daily brief)
+- [x] Sync RM30/RM35 pricing across site, llms.txt, JSON-LD, FAQ (deployed)
+- [x] Self-host fonts (removed render-blocking Google Fonts)
+- [x] Blog JSON-LD double-encoding bug fixed (safeJS) — all 36 posts' schema now parseable
+- [x] Security headers (HSTS, nosniff, X-Frame-Options, Referrer-Policy, Permissions-Policy) served by Go middleware — audit H2
+- [x] sameAs enriched with Wikidata + TripAdvisor + Agoda on Organization, Hostel (home) and LodgingBusiness (location) — audit H3 (on-page part)
+- [x] Trust numbers reconciled: about-page "8.2" → "4.9/5"; homepage 500+ reviews attributed to Google/Booking/Hostelworld — audit H4 (numbers part)
+- [x] Blog bylines: cards show "By Jay Lew", post byline links to /author/jay-lew (author page already had ProfilePage+Person schema) — audit H5
+- [x] BlogPosting wordCount + articleSection added — audit L4
+- [x] Explicit twitter:title/description/image tags — audit L2
+- [x] robots.txt: removed wp-* Disallows so crawlers can see the 410s and de-index old spam faster — audit L3
+- [x] IndexNow live: key file served, all 68 sitemap URLs submitted (HTTP 202) — Bing/Yandex/Naver
+- [x] GEO audit baseline saved (GEO-AUDIT-2026-07.md, 61/100)
+- [x] Deploy flow documented (go-site/DEPLOY.md + skill rewrite)
 
-## 🔴 P0 — Cloudflare is blocking AI crawlers (2-minute dashboard fix)
+**Closed as obsolete:** WebSite SearchAction — Google retired the sitelinks search box (Oct 2024); site search is a client-side dialog. Not worth a /search page.
 
-- [ ] **Turn OFF Cloudflare's "block AI bots" managed robots.txt** for zone
-  pelangicapsulehostel.com. It currently injects `Disallow: /` for **GPTBot, ClaudeBot,
-  Google-Extended, CCBot, Amazonbot, Applebot-Extended, Bytespider, meta-externalagent**
-  plus `Content-Signal: ai-train=no` — overriding our allow-all robots.txt and making the
-  site invisible to ChatGPT/Claude/Gemini training + crawling. This defeats the whole GEO
-  strategy (llms.txt etc.).
-  **Where:** dash.cloudflare.com → pelangicapsulehostel.com → **Security → Bots / AI Crawl
-  Control** (a.k.a. "Block AI training bots" / managed robots.txt) → disable, then verify
-  `curl https://pelangicapsulehostel.com/robots.txt` no longer contains "Cloudflare Managed content".
-  (API token can't do it — zone not in the account token's scope; found by geo-audit 2026-07-05.)
+## 🧑 Jay — browser tasks (paste-ready prompts in `claude-for-chrome-prompts.md`)
 
-## On-site follow-ups (from GEO-AUDIT-2026-07.md, high priority)
+- [ ] Prompt 1: GBP — get review short-link + publish first weekly post
+- [ ] Prompt 2: TripAdvisor — finish claim (legal cert + ID were pending per 2026-06-26 memory), amenities, price range, photos
+- [ ] Prompt 3: Bing Webmaster Tools — import from GSC (IndexNow already live)
+- [ ] Prompt 4: Bing Places — import from GBP
+- [ ] Prompt 5: Wikidata Q140363023 — add TripAdvisor/Booking/Hostelworld external IDs
+- [ ] Save the GBP review-ask script as a WhatsApp quick reply (script in offsite-seo-actions.md §1)
+- [ ] Confirm homepage testimonials are real guests (Sarah Jenkins / Hiroki Tanaka / Alex & Jordan) — if not verifiable, replace with quotes from actual Google/Booking reviews (audit H4 remainder)
+- [ ] STAAH: verify RM30/35 pushed to Booking.com + capsule inventory open (price-watch 4/7 finding)
+- [ ] Ask Alston/Maya: Sleepy Bear's monthly worker rate (competitive intel)
 
-- [ ] Add security headers via Cloudflare Transform Rules (HSTS, X-Content-Type-Options, Referrer-Policy, Permissions-Policy) — audit H2
-- [ ] Add Wikidata + TripAdvisor + GBP URLs to the LodgingBusiness `sameAs` (currently only on Organization) + `SearchAction` on WebSite schema — audit H3
-- [ ] Reconcile trust numbers: homepage "4.9/5 (500+)" vs about "8.2 Guest Rating"; source or replace the unattributed testimonials — audit H4
-- [ ] Beef up `/author/jay-lew` page (photo, credentials, Person schema) + bylines on blog cards — audit H5
-- [ ] Bing: register Bing Places + Webmaster Tools (msvalidate.01) — audit H6
+## 📋 Backlog (code/content, for future sessions)
 
-## Off-site (Jay executes)
-
-- [ ] GBP: get review short-link, save the review-ask script into WhatsApp quick replies
-- [ ] GBP: first weekly post (photo + "pods from RM30/night")
-- [ ] TripAdvisor: upload 15–20 photos, complete amenities, set price range
-- [ ] NAP consistency sweep (checklist in offsite-seo-actions.md §4)
-- [ ] Ask Alston/Maya: find Sleepy Bear's monthly worker rate (competitive intel, from pricing.md)
-- [ ] STAAH: verify RM30/35 pushed to Booking.com + capsule inventory open (from price-watch 4/7 finding)
-- [ ] Backlink outreach #1: pick one JB travel blogger, offer free night for review
+- [ ] Add width/height (or aspect-ratio) to hero + content images to kill CLS — audit L1
+- [ ] Reddit presence: genuinely answer JB-stay questions on r/askSingapore, r/JohorBahru, r/solotravel — audit H1
+- [ ] Backlink outreach #1: one JB travel blogger, free night for honest review
 - [ ] Apply for Visit Malaysia 2026 accommodation directory listing
+- [ ] 60-second pod walkthrough video → YouTube channel — audit L5
+- [ ] NAP consistency sweep (checklist in offsite-seo-actions.md §4)
 
-## Recurring
+## 🔁 Recurring
 
 - [ ] Weekly GBP post (Mondays)
-- [ ] Monthly: re-run `/geo-compare` against GEO-AUDIT-2026-07.md baseline
+- [ ] Monthly: `/geo-compare` against GEO-AUDIT-2026-07.md baseline (expect Technical + Schema + Citability to jump from tonight's fixes)
 - [ ] Quarterly: NAP consistency re-check
