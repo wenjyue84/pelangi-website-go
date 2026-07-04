@@ -1,6 +1,6 @@
 {{define "head"}}
-<script type="application/ld+json">{{ safeHTML .BreadcrumbJSON }}</script>
-<script type="application/ld+json">{{ safeHTML .CollectionJSON }}</script>
+<script type="application/ld+json">{{ safeJS .BreadcrumbJSON }}</script>
+<script type="application/ld+json">{{ safeJS .CollectionJSON }}</script>
 {{end}}
 
 {{define "content"}}
