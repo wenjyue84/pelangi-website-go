@@ -1,0 +1,118 @@
+{{define "content"}}
+{{template "header" .}}
+<main class="min-h-screen bg-stone-50">
+  <div class="pt-28 pb-16 container-custom">
+    <div class="max-w-3xl mx-auto">
+      <div class="mb-10">
+        <h1 class="font-display text-4xl font-semibold text-stone-900 mb-3">
+          Sitemap
+        </h1>
+        <p class="text-stone-500 text-sm">
+          A complete list of all pages on our website.
+        </p>
+      </div>
+
+      <nav aria-label="Sitemap">
+
+        <!-- Main Pages -->
+        <section class="mb-10">
+          <h2 class="font-display text-xl font-medium text-stone-800 mb-4 border-b border-stone-200 pb-2">
+            Main Pages
+          </h2>
+          <ul class="space-y-2">
+            <li><a href="/" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Home</a></li>
+            <li><a href="/rooms" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Rooms &amp; Capsule Types</a></li>
+            <li><a href="/book" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Book Now</a></li>
+            <li><a href="/amenities" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Amenities &amp; Facilities</a></li>
+            <li><a href="/gallery" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Photo Gallery</a></li>
+            <li><a href="/about" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">About Us</a></li>
+            <li><a href="/location" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Location &amp; Directions</a></li>
+            <li><a href="/contact" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Contact Us</a></li>
+          </ul>
+        </section>
+
+        <!-- Guest Information -->
+        <section class="mb-10">
+          <h2 class="font-display text-xl font-medium text-stone-800 mb-4 border-b border-stone-200 pb-2">
+            Guest Information
+          </h2>
+          <ul class="space-y-2">
+            <li><a href="/check-in" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Online Check-in</a></li>
+            <li><a href="/getting-here" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Getting Here — Border Crossing &amp; RTS Link</a></li>
+            <li><a href="/guide" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Guest Guide</a></li>
+          </ul>
+        </section>
+
+        <!-- Blog -->
+        <section class="mb-10">
+          <h2 class="font-display text-xl font-medium text-stone-800 mb-4 border-b border-stone-200 pb-2">
+            Blog
+          </h2>
+          <ul class="space-y-2">
+            <li><a href="/blog" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">All Articles</a></li>
+            <!-- Categories derived from getUniqueCategories() in the Next.js source -->
+            <li><a href="/blog/category/food-drink" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Food &amp; Drink</a></li>
+            <li><a href="/blog/category/travel-tips" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Travel Tips</a></li>
+            <li><a href="/blog/category/things-to-do" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Things To Do</a></li>
+            <li><a href="/blog/category/local-life" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Local Life</a></li>
+            <li><a href="/blog/category/career-work" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Career &amp; Work</a></li>
+            <li><a href="/blog/category/backpacker-tips" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Backpacker Tips</a></li>
+            <li><a href="/blog/category/local-guide" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Local Guide</a></li>
+          </ul>
+        </section>
+
+        <!-- Blog Articles -->
+        <section class="mb-10">
+          <h2 class="font-display text-xl font-medium text-stone-800 mb-4 border-b border-stone-200 pb-2">
+            Blog Articles
+          </h2>
+          <ul class="space-y-2">
+            <li><a href="/blog/ultimate-jb-food-guide-backpackers" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">The Ultimate Johor Bahru Food Guide for Backpackers (2026)</a></li>
+            <li><a href="/blog/singapore-to-jb-day-trip-causeway-guide" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Singapore to JB Day Trip Guide: How to Cross the Causeway (2026)</a></li>
+            <li><a href="/blog/top-10-things-to-do-johor-bahru-budget" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Top 10 Things to Do in Johor Bahru on a Budget</a></li>
+            <li><a href="/blog/jb-hawker-centres-street-food-must-visit" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">JB Street Food Hawker Centres You Must Visit</a></li>
+            <li><a href="/blog/johor-bahru-vs-singapore-why-travellers-base-in-jb" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Johor Bahru vs Singapore: Why Savvy Travellers Base Themselves in JB</a></li>
+            <li><a href="/blog/hidden-gems-johor-bahru-beyond-tourist-spots" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Hidden Gems in Johor Bahru: Beyond the Usual Tourist Spots</a></li>
+            <li><a href="/blog/how-malaysians-find-jobs-singapore-2026" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">How Malaysians Can Find Jobs in Singapore (2026 Guide)</a></li>
+            <li><a href="/blog/singapore-work-pass-guide-malaysians" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Singapore Work Pass Guide for Malaysians: EP vs S Pass vs Work Permit</a></li>
+            <li><a href="/blog/jb-singapore-commuter-guide-2026" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Living in Johor Bahru, Working in Singapore: The Commuter&#39;s Guide 2026</a></li>
+            <li><a href="/blog/gig-jobs-malaysia-waiting-singapore-work-pass" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">5 Gig Jobs for Malaysians Waiting for Singapore Work Approval</a></li>
+            <li><a href="/blog/3-day-jb-backpacker-itinerary-rm250" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">3-Day JB Backpacker Itinerary Under RM250 (2026)</a></li>
+            <li><a href="/blog/xinshan-juzhu-tuijian-jiaonang-lvguan" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">新山住宿推荐：胶囊旅馆体验指南 (2026)</a></li>
+            <li><a href="/blog/xingjiapo-qu-xinshan-zenme-qu-jiaotong-zhinan" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">从新加坡去新山怎么去？2026最新交通全攻略</a></li>
+            <li><a href="/blog/xinshan-ziyou-xing-gonglue-2026" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">新山自由行攻略 2026：吃喝玩乐全指南</a></li>
+            <li><a href="/blog/lalamove-driver-malaysia-jb-guide" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Lalamove Driver Guide Malaysia: Earn RM25–80 Per Job in JB</a></li>
+            <li><a href="/blog/taman-pelangi-tuesday-night-market-guide" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Taman Pelangi Tuesday Night Market — The Street Food Paradise at Our Doorstep</a></li>
+            <li><a href="/blog/taman-pelangi-xingqier-yeshi-gonglue" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">彩虹花园周二夜市攻略｜就在旅馆门口的美食天堂</a></li>
+            <li><a href="/blog/zhongguo-huhao-malaxi-a-mianshen-gonglue-2026" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">中国护照去马来西亚需要签证吗？2026最新免签攻略</a></li>
+            <li><a href="/blog/xinshan-weixin-zhifubao-zhongguo-youke-zhifu-zhinan" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">新山可以用微信支付和支付宝吗？中国游客支付完全指南 2026</a></li>
+            <li><a href="/blog/xinshan-gouwu-gonglue-zhongguo-youke-2026" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">新山购物完全攻略 2026｜中国游客必逛！比国内便宜多少？</a></li>
+            <li><a href="/blog/xinshan-zhongguo-youke-bichi-mishi-gonglue" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">中国游客在新山必吃什么？清真与非清真美食完全指南</a></li>
+            <li><a href="/blog/getting-around-johor-bahru-no-car-guide" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Getting Around Johor Bahru Without a Car — Transport Guide for Backpackers</a></li>
+            <li><a href="/blog/laksa-johor-guide-best-places-to-eat" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Laksa Johor Guide — Authentic Dish, Where to Eat, and What Makes It Unique (2026)</a></li>
+            <li><a href="/blog/mee-rebus-johor-bahru-guide" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Mee Rebus Johor — History, Best Stalls, and the Famous Haji Wahid Legacy (2026)</a></li>
+            <li><a href="/blog/best-roti-canai-johor-bahru-breakfast-guide" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Best Roti Canai in Johor Bahru — Breakfast Guide Near Taman Pelangi (2026)</a></li>
+            <li><a href="/blog/taman-pelangi-johor-bahru-neighborhood-guide" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Taman Pelangi Neighborhood Guide: Food, Shops &amp; Things to Do (2026)</a></li>
+            <li><a href="/blog/johor-premium-outlets-vs-singapore-malls-shopping-guide" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Johor Premium Outlets vs Singapore Malls — Shopping Guide</a></li>
+            <li><a href="/blog/cheap-eats-johor-bahru-under-rm10-budget-guide" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">15 Cheap Eats in Johor Bahru Under RM10 - Budget Food Guide (2026)</a></li>
+            <!-- TODO(port): blog post links from blog data — posts imported from post-changi-en, post-daytrip-en, post-changi-zh, post-daytrip-zh, post-ets sub-modules not enumerated above -->
+          </ul>
+        </section>
+
+        <!-- Legal & Policies -->
+        <section class="mb-10">
+          <h2 class="font-display text-xl font-medium text-stone-800 mb-4 border-b border-stone-200 pb-2">
+            Legal &amp; Policies
+          </h2>
+          <ul class="space-y-2">
+            <li><a href="/privacy-policy" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Privacy Policy</a></li>
+            <li><a href="/terms" class="text-amber-700 hover:text-amber-900 hover:underline transition-colors duration-200">Terms &amp; Conditions</a></li>
+          </ul>
+        </section>
+
+      </nav>
+    </div>
+  </div>
+</main>
+{{template "footer" .}}
+{{end}}

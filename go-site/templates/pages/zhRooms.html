@@ -1,0 +1,234 @@
+{{define "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "胶囊房型与价格",
+  "description": "彩虹胶囊旅舍所有房型及价格",
+  "url": "https://pelangicapsulehostel.com/zh/rooms",
+  "inLanguage": "zh-Hans",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Pelangi Capsule Hostel",
+    "url": "https://pelangicapsulehostel.com"
+  }
+}
+</script>
+{{end}}
+
+{{define "content"}}
+{{template "header" .}}
+<main id="main-content" class="min-h-screen bg-stone-50 dark:bg-stone-950" lang="zh-Hans">
+  <div class="pt-28 pb-16 container-custom">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Page Header -->
+      <div class="mb-4 flex items-center gap-3">
+        <span class="inline-flex items-center px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 text-xs font-medium">
+          简体中文
+        </span>
+        <a href="/rooms" class="text-xs text-stone-500 hover:text-stone-700 dark:hover:text-stone-300 transition-colors">
+          English version &rarr;
+        </a>
+      </div>
+      <h1 class="font-display text-4xl font-semibold text-stone-900 dark:text-stone-100 mb-3">
+        胶囊房型与价格
+      </h1>
+      <p class="text-stone-500 dark:text-stone-400 mb-12">
+        所有舱位均含免费 WiFi &middot; 24小时入住 &middot; 公共热水浴室 &middot; 共享厨房
+      </p>
+
+      <!-- Room Cards -->
+      <div class="space-y-10 mb-16">
+
+        <!-- Room 1: Mixed Dorm -->
+        <div class="bg-white dark:bg-stone-800 rounded-3xl shadow-lg overflow-hidden border border-stone-100 dark:border-stone-700">
+          <div class="md:flex">
+            <div class="md:w-80 flex-shrink-0">
+              <img
+                src="/images/capsule-1.webp"
+                alt="混住胶囊舱"
+                width="640"
+                height="480"
+                class="w-full h-56 md:h-full object-cover"
+              />
+            </div>
+            <div class="p-8 flex flex-col justify-between flex-1">
+              <div>
+                <h2 class="font-display text-2xl font-semibold text-stone-900 dark:text-stone-100 mb-1">
+                  混住胶囊舱
+                </h2>
+                <p class="text-stone-500 dark:text-stone-400 text-sm mb-4">Mixed Dorm Capsule</p>
+                <p class="text-stone-700 dark:text-stone-300 mb-6">男女混住日式胶囊舱，适合独行旅客或小团队。每个舱位均配备可锁滑动门板，提供充足私密空间。</p>
+                <ul class="grid grid-cols-2 gap-y-2 gap-x-4 mb-6">
+                  <li class="flex items-center gap-2 text-sm text-stone-600 dark:text-stone-400">
+                    <span class="text-green-500">✓</span> 可锁滑动门板
+                  </li>
+                  <li class="flex items-center gap-2 text-sm text-stone-600 dark:text-stone-400">
+                    <span class="text-green-500">✓</span> 个人温控
+                  </li>
+                  <li class="flex items-center gap-2 text-sm text-stone-600 dark:text-stone-400">
+                    <span class="text-green-500">✓</span> USB-A/C 充电
+                  </li>
+                  <li class="flex items-center gap-2 text-sm text-stone-600 dark:text-stone-400">
+                    <span class="text-green-500">✓</span> 可调节 LED 灯
+                  </li>
+                  <li class="flex items-center gap-2 text-sm text-stone-600 dark:text-stone-400">
+                    <span class="text-green-500">✓</span> 高密度泡沫床垫
+                  </li>
+                  <li class="flex items-center gap-2 text-sm text-stone-600 dark:text-stone-400">
+                    <span class="text-green-500">✓</span> 储物网格
+                  </li>
+                </ul>
+              </div>
+              <div class="flex flex-wrap items-end justify-between gap-4">
+                <div>
+                  <p class="text-3xl font-bold text-amber-700 dark:text-amber-400">
+                    RM30<span class="text-base font-normal text-stone-500 dark:text-stone-400">/晚起（周末 RM35）</span>
+                  </p>
+                  <p class="text-sm text-stone-500 dark:text-stone-400 mt-1">
+                    月租套餐：RM594/月
+                  </p>
+                  <p class="text-xs text-stone-400 dark:text-stone-500 mt-1">
+                    * 外国游客须加收旅游税 RM10/间/晚
+                  </p>
+                </div>
+                <a href="/book" class="px-6 py-3 bg-amber-700 hover:bg-amber-600 text-white font-semibold rounded-full transition-colors">
+                  立即预订
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room 2: Female-Only -->
+        <div class="bg-white dark:bg-stone-800 rounded-3xl shadow-lg overflow-hidden border border-stone-100 dark:border-stone-700">
+          <div class="md:flex">
+            <div class="md:w-80 flex-shrink-0">
+              <img
+                src="/images/capsule-2.webp"
+                alt="女性专用胶囊舱"
+                width="640"
+                height="480"
+                class="w-full h-56 md:h-full object-cover"
+              />
+            </div>
+            <div class="p-8 flex flex-col justify-between flex-1">
+              <div>
+                <h2 class="font-display text-2xl font-semibold text-stone-900 dark:text-stone-100 mb-1">
+                  女性专用胶囊舱
+                </h2>
+                <p class="text-stone-500 dark:text-stone-400 text-sm mb-4">Female-Only Capsule</p>
+                <p class="text-stone-700 dark:text-stone-300 mb-6">专为女性旅客设计的独立舱区，提供更安心的住宿环境，配置与混住舱完全相同。</p>
+                <ul class="grid grid-cols-2 gap-y-2 gap-x-4 mb-6">
+                  <li class="flex items-center gap-2 text-sm text-stone-600 dark:text-stone-400">
+                    <span class="text-green-500">✓</span> 仅限女性入住
+                  </li>
+                  <li class="flex items-center gap-2 text-sm text-stone-600 dark:text-stone-400">
+                    <span class="text-green-500">✓</span> 可锁滑动门板
+                  </li>
+                  <li class="flex items-center gap-2 text-sm text-stone-600 dark:text-stone-400">
+                    <span class="text-green-500">✓</span> 个人温控
+                  </li>
+                  <li class="flex items-center gap-2 text-sm text-stone-600 dark:text-stone-400">
+                    <span class="text-green-500">✓</span> USB-A/C 充电
+                  </li>
+                  <li class="flex items-center gap-2 text-sm text-stone-600 dark:text-stone-400">
+                    <span class="text-green-500">✓</span> 可调节 LED 灯
+                  </li>
+                  <li class="flex items-center gap-2 text-sm text-stone-600 dark:text-stone-400">
+                    <span class="text-green-500">✓</span> 高密度泡沫床垫
+                  </li>
+                </ul>
+              </div>
+              <div class="flex flex-wrap items-end justify-between gap-4">
+                <div>
+                  <p class="text-3xl font-bold text-amber-700 dark:text-amber-400">
+                    RM30<span class="text-base font-normal text-stone-500 dark:text-stone-400">/晚起（周末 RM35）</span>
+                  </p>
+                  <p class="text-sm text-stone-500 dark:text-stone-400 mt-1">
+                    月租套餐：RM594/月
+                  </p>
+                  <p class="text-xs text-stone-400 dark:text-stone-500 mt-1">
+                    * 外国游客须加收旅游税 RM10/间/晚
+                  </p>
+                </div>
+                <a href="/book" class="px-6 py-3 bg-amber-700 hover:bg-amber-600 text-white font-semibold rounded-full transition-colors">
+                  立即预订
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Shared Facilities -->
+      <div class="bg-white dark:bg-stone-800 rounded-3xl p-8 border border-stone-100 dark:border-stone-700 mb-12">
+        <h2 class="font-display text-2xl font-semibold text-stone-900 dark:text-stone-100 mb-6">
+          共用设施
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="flex items-center gap-2 text-stone-700 dark:text-stone-300 text-sm">
+            <span class="text-green-500 text-base">✓</span> 免费高速 WiFi
+          </div>
+          <div class="flex items-center gap-2 text-stone-700 dark:text-stone-300 text-sm">
+            <span class="text-green-500 text-base">✓</span> 热水淋浴间
+          </div>
+          <div class="flex items-center gap-2 text-stone-700 dark:text-stone-300 text-sm">
+            <span class="text-green-500 text-base">✓</span> 共用厨房（微波炉、热水壶）
+          </div>
+          <div class="flex items-center gap-2 text-stone-700 dark:text-stone-300 text-sm">
+            <span class="text-green-500 text-base">✓</span> 个人储物柜
+          </div>
+          <div class="flex items-center gap-2 text-stone-700 dark:text-stone-300 text-sm">
+            <span class="text-green-500 text-base">✓</span> 洗衣机与烘干机
+          </div>
+          <div class="flex items-center gap-2 text-stone-700 dark:text-stone-300 text-sm">
+            <span class="text-green-500 text-base">✓</span> 行李寄存区
+          </div>
+          <div class="flex items-center gap-2 text-stone-700 dark:text-stone-300 text-sm">
+            <span class="text-green-500 text-base">✓</span> 客厅休息区
+          </div>
+          <div class="flex items-center gap-2 text-stone-700 dark:text-stone-300 text-sm">
+            <span class="text-green-500 text-base">✓</span> 饮水机
+          </div>
+          <div class="flex items-center gap-2 text-stone-700 dark:text-stone-300 text-sm">
+            <span class="text-green-500 text-base">✓</span> 晾衣架
+          </div>
+        </div>
+      </div>
+
+      <!-- House Rules -->
+      <div class="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 rounded-2xl p-6 mb-12">
+        <h2 class="font-display text-xl font-semibold text-stone-900 dark:text-stone-100 mb-4">
+          住宿规则
+        </h2>
+        <ul class="space-y-2 text-stone-700 dark:text-stone-300 text-sm">
+          <li>🕙 <strong>安静时间：</strong>晚上 10:00 至早上 8:00</li>
+          <li>🚭 <strong>全面禁烟：</strong>旅舍所有区域均禁止吸烟</li>
+          <li>🚫 <strong>禁止烹饪：</strong>提供微波炉和热水壶，不可使用明火</li>
+          <li>🛂 <strong>入住须知：</strong>外国旅客需出示有效护照，本地旅客需出示身份证</li>
+          <li>👶 <strong>年龄限制：</strong>18岁以下须由父母或法定监护人陪同</li>
+        </ul>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center">
+        <p class="text-stone-600 dark:text-stone-400 mb-6">有疑问？通过 WhatsApp 直接联系我们，中文服务。</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/book" class="px-8 py-3 bg-amber-700 hover:bg-amber-600 text-white font-semibold rounded-full transition-colors">
+            立即预订
+          </a>
+          <a href="https://wa.me/60127088789" target="_blank" rel="noopener noreferrer"
+             class="px-8 py-3 bg-stone-100 dark:bg-stone-700 hover:bg-stone-200 dark:hover:bg-stone-600 text-stone-800 dark:text-stone-200 font-medium rounded-full transition-colors">
+            WhatsApp 咨询
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+{{template "footer" .}}
+{{end}}

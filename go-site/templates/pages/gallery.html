@@ -1,0 +1,332 @@
+{{define "head"}}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ImageGallery","name":"Pelangi Capsule Hostel Photo Gallery","description":"Photos of Pelangi Capsule Hostel in Johor Bahru — capsule pods, facilities, common areas, and the surrounding Taman Pelangi neighbourhood.","url":"https://pelangicapsulehostel.com/gallery","image":[{"@type":"ImageObject","contentUrl":"https://pelangicapsulehostel.com/images/living-room.jpeg","name":"Common Area and Living Room","description":"Cozy common area and living room at Pelangi Capsule Hostel Johor Bahru","encodingFormat":"image/jpeg"},{"@type":"ImageObject","contentUrl":"https://pelangicapsulehostel.com/images/capsule-1.webp","name":"Capsule Pod Interior","description":"Japanese-style capsule pod interior with privacy features at Pelangi Capsule Hostel JB","encodingFormat":"image/webp"},{"@type":"ImageObject","contentUrl":"https://pelangicapsulehostel.com/images/entrance.jpeg","name":"Hostel Entrance","description":"Welcoming entrance of Pelangi Capsule Hostel in Taman Pelangi, Johor Bahru","encodingFormat":"image/jpeg"},{"@type":"ImageObject","contentUrl":"https://pelangicapsulehostel.com/images/exterior.JPG","name":"Hostel Exterior","description":"Pelangi Capsule Hostel building exterior in Johor Bahru Malaysia","encodingFormat":"image/jpeg"},{"@type":"ImageObject","contentUrl":"https://pelangicapsulehostel.com/images/capsule-2.webp","name":"Capsule Pod Mattress","description":"Comfortable premium mattress in affordable capsule pod near Singapore","encodingFormat":"image/webp"},{"@type":"ImageObject","contentUrl":"https://pelangicapsulehostel.com/images/toilet.jpg","name":"Private Bathroom","description":"Clean private bathroom with hot shower at Pelangi Capsule Hostel JB","encodingFormat":"image/jpeg"},{"@type":"ImageObject","contentUrl":"https://pelangicapsulehostel.com/images/facility-heater.jpg","name":"Hot Water Heater Facility","description":"24/7 hot water heater facility at Pelangi Capsule Hostel Johor Bahru","encodingFormat":"image/jpeg"},{"@type":"ImageObject","contentUrl":"https://pelangicapsulehostel.com/images/capsule-3.webp","name":"Capsule Pod Amenities","description":"Capsule pod amenities including USB charging port and individual ventilation at Pelangi Hostel","encodingFormat":"image/webp"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://pelangicapsulehostel.com"},{"@type":"ListItem","position":2,"name":"Gallery","item":"https://pelangicapsulehostel.com/gallery"}]}</script>
+{{end}}
+
+{{define "content"}}
+{{template "header" .}}
+<main id="main-content" class="min-h-screen bg-stone-50 dark:bg-stone-950">
+  <section class="py-16 bg-stone-50 dark:bg-stone-950" aria-labelledby="gallery-heading">
+    <div class="container-custom">
+
+      <!-- Page header -->
+      <div class="text-center mb-10">
+        <p class="section-label">Gallery</p>
+        <h2 id="gallery-heading" class="section-heading mb-4">Explore Our Space</h2>
+        <p class="text-stone-600 dark:text-stone-400 text-lg max-w-2xl mx-auto">
+          Take a closer look at our capsule pods, shared facilities, and
+          everything that makes Pelangi Capsule Hostel feel like home.
+        </p>
+      </div>
+
+      <!-- Category filter tabs -->
+      <div
+        id="gallery-filters"
+        class="flex flex-wrap justify-center gap-2 mb-10"
+        role="tablist"
+        aria-label="Filter gallery by category"
+      >
+        {{range .Categories}}
+        <button
+          type="button"
+          role="tab"
+          data-category="{{.ID}}"
+          aria-selected="{{if eq .ID "all"}}true{{else}}false{{end}}"
+          class="gallery-filter-btn px-4 py-2 rounded-full text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600{{if eq .ID "all"}} bg-amber-600 text-white{{else}} bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-700{{end}}"
+        >{{.Label}}</button>
+        {{end}}
+      </div>
+
+      <!-- Gallery grid -->
+      <div
+        id="gallery-grid"
+        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+        role="tabpanel"
+        aria-label="Gallery photos"
+        aria-live="polite"
+      >
+        {{range $i, $img := .Images}}
+        <button
+          type="button"
+          class="gallery-item relative aspect-[4/3] rounded-xl overflow-hidden group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"
+          data-category="{{$img.Category}}"
+          data-src="{{$img.Src}}"
+          data-index="{{$i}}"
+          aria-label="View photo: {{$img.Alt}}"
+        >
+          <img
+            src="{{$img.Src}}"
+            alt="{{$img.Alt}}"
+            width="{{$img.Width}}"
+            height="{{$img.Height}}"
+            loading="lazy"
+            class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+          />
+          <div class="absolute inset-0 bg-stone-900/0 group-hover:bg-stone-900/20 transition-colors duration-300"></div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <svg class="w-8 h-8 text-white drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+            </svg>
+          </div>
+        </button>
+        {{end}}
+      </div>
+
+      <!-- Video section -->
+      <div class="mt-16 px-4 md:px-0">
+        <div class="text-center mb-8">
+          <p class="text-xs tracking-widest uppercase text-stone-500 dark:text-stone-400 mb-2">Virtual Tour</p>
+          <h3 class="font-display text-2xl font-medium text-stone-900 dark:text-stone-100">
+            Watch Our Check-in Guide
+          </h3>
+        </div>
+        <!-- Click-to-play facade: no autoplay, no iframe until user clicks -->
+        <div class="relative max-w-3xl mx-auto aspect-video rounded-2xl overflow-hidden shadow-2xl bg-stone-900">
+          <div id="yt-facade" class="absolute inset-0 cursor-pointer group" role="button" tabindex="0"
+               aria-label="Play Pelangi Capsule Hostel Check-in Guide video on YouTube">
+            <!-- Thumbnail -->
+            <img
+              src="https://i.ytimg.com/vi/6Ux11oBZaQQ/hqdefault.jpg"
+              alt="Pelangi Capsule Hostel Check-in Guide video thumbnail"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+            <!-- Dark overlay -->
+            <div class="absolute inset-0 bg-stone-900/40 group-hover:bg-stone-900/30 transition-colors"></div>
+            <!-- Play button -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-16 h-16 rounded-full bg-amber-600 flex items-center justify-center shadow-xl
+                          group-hover:bg-amber-500 transition-colors">
+                <svg class="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <!-- iframe is injected by JS only after user click -->
+          <iframe
+            id="yt-iframe"
+            class="absolute inset-0 w-full h-full hidden"
+            src=""
+            title="Pelangi Capsule Hostel Check-in Guide"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+
+    </div><!-- /container-custom -->
+  </section>
+
+  <!-- ============================================================
+       Lightbox overlay (hidden by default, shown via JS)
+       ============================================================ -->
+  <div
+    id="gallery-lightbox"
+    role="dialog"
+    aria-label="Image lightbox"
+    aria-modal="true"
+    class="fixed inset-0 z-50 bg-stone-900/95 backdrop-blur-sm items-center justify-center p-4 hidden"
+    aria-hidden="true"
+  >
+    <!-- Close button -->
+    <button
+      id="lightbox-close"
+      type="button"
+      class="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center
+             text-white hover:bg-white/20 transition-colors cursor-pointer z-10"
+      aria-label="Close lightbox (Escape)"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Prev button -->
+    <button
+      id="lightbox-prev"
+      type="button"
+      class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center
+             text-white hover:bg-white/20 transition-colors cursor-pointer z-10"
+      aria-label="Previous image (Left arrow)"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <!-- Image container -->
+    <div class="relative w-full max-w-5xl" style="height:80vh;">
+      <img
+        id="lightbox-img"
+        src=""
+        alt=""
+        class="w-full h-full object-contain"
+      />
+    </div>
+
+    <!-- Next button -->
+    <button
+      id="lightbox-next"
+      type="button"
+      class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center
+             text-white hover:bg-white/20 transition-colors cursor-pointer z-10"
+      aria-label="Next image (Right arrow)"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+
+    <!-- Counter -->
+    <div id="lightbox-counter" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 text-sm tabular-nums"></div>
+  </div>
+
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ─── Category filter ─── */
+  var activeCategory = 'all';
+  var filterBtns = document.querySelectorAll('.gallery-filter-btn');
+  var gridItems  = document.querySelectorAll('.gallery-item');
+  var grid       = document.getElementById('gallery-grid');
+
+  function applyFilter(cat) {
+    activeCategory = cat;
+
+    // Update button states
+    filterBtns.forEach(function (btn) {
+      var selected = btn.dataset.category === cat;
+      btn.setAttribute('aria-selected', selected ? 'true' : 'false');
+      if (selected) {
+        btn.classList.add('bg-amber-600', 'text-white');
+        btn.classList.remove('bg-white', 'dark:bg-stone-800', 'text-stone-600', 'dark:text-stone-400',
+                             'hover:bg-stone-100', 'dark:hover:bg-stone-700');
+      } else {
+        btn.classList.remove('bg-amber-600', 'text-white');
+        btn.classList.add('bg-white', 'dark:bg-stone-800', 'text-stone-600', 'dark:text-stone-400',
+                          'hover:bg-stone-100', 'dark:hover:bg-stone-700');
+      }
+    });
+
+    // Show/hide grid items; rebuild visible list for lightbox
+    visibleSrcs = [];
+    gridItems.forEach(function (item) {
+      var match = cat === 'all' || item.dataset.category === cat;
+      item.style.display = match ? '' : 'none';
+      if (match) visibleSrcs.push(item.dataset.src);
+    });
+
+    // Update tabpanel label
+    var label = cat === 'all' ? 'Gallery photos' : (cat + ' photos');
+    grid.setAttribute('aria-label', label);
+  }
+
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      applyFilter(btn.dataset.category);
+    });
+  });
+
+  /* ─── Lightbox ─── */
+  var lightbox     = document.getElementById('gallery-lightbox');
+  var lbImg        = document.getElementById('lightbox-img');
+  var lbClose      = document.getElementById('lightbox-close');
+  var lbPrev       = document.getElementById('lightbox-prev');
+  var lbNext       = document.getElementById('lightbox-next');
+  var lbCounter    = document.getElementById('lightbox-counter');
+  var visibleSrcs  = [];   // filled by applyFilter + openLightbox
+  var currentIndex = 0;
+  var triggerEl    = null;
+
+  // Build initial visible list
+  gridItems.forEach(function (item) { visibleSrcs.push(item.dataset.src); });
+
+  function openLightbox(src) {
+    triggerEl = document.activeElement;
+
+    // Rebuild visible list at open time (in case filter changed)
+    visibleSrcs = [];
+    gridItems.forEach(function (item) {
+      if (item.style.display !== 'none') visibleSrcs.push(item.dataset.src);
+    });
+
+    currentIndex = visibleSrcs.indexOf(src);
+    if (currentIndex === -1) currentIndex = 0;
+    showSlide(currentIndex);
+
+    lightbox.classList.remove('hidden');
+    lightbox.classList.add('flex');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    lbImg.src = '';
+    lbImg.alt = '';
+    if (triggerEl) { triggerEl.focus(); triggerEl = null; }
+  }
+
+  function showSlide(idx) {
+    if (visibleSrcs.length === 0) return;
+    currentIndex = (idx + visibleSrcs.length) % visibleSrcs.length;
+    lbImg.src = visibleSrcs[currentIndex];
+    lbImg.alt = 'Pelangi Capsule Hostel Johor Bahru - Gallery photo ' + (currentIndex + 1);
+    lbCounter.textContent = (currentIndex + 1) + ' / ' + visibleSrcs.length;
+    lbPrev.style.display = visibleSrcs.length > 1 ? '' : 'none';
+    lbNext.style.display = visibleSrcs.length > 1 ? '' : 'none';
+  }
+
+  // Open lightbox when clicking a grid item
+  gridItems.forEach(function (item) {
+    item.addEventListener('click', function () { openLightbox(item.dataset.src); });
+    item.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(item.dataset.src); }
+    });
+  });
+
+  lbClose.addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click', function () { showSlide(currentIndex - 1); });
+  lbNext.addEventListener('click', function () { showSlide(currentIndex + 1); });
+
+  // Close on backdrop click (but not on img/button clicks)
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // Keyboard: Escape, ArrowLeft, ArrowRight
+  document.addEventListener('keydown', function (e) {
+    if (lightbox.classList.contains('hidden')) return;
+    if (e.key === 'Escape')     { closeLightbox(); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); showSlide(currentIndex - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); showSlide(currentIndex + 1); }
+  });
+
+  /* ─── YouTube click-to-play facade ─── */
+  var facade  = document.getElementById('yt-facade');
+  var iframe  = document.getElementById('yt-iframe');
+
+  function activateFacade() {
+    facade.style.display = 'none';
+    iframe.src = 'https://www.youtube.com/embed/6Ux11oBZaQQ?cc_load_policy=1&cc_lang_pref=en&autoplay=1';
+    iframe.classList.remove('hidden');
+  }
+
+  facade.addEventListener('click', activateFacade);
+  facade.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activateFacade(); }
+  });
+
+})();
+</script>
+{{template "footer" .}}
+{{end}}

@@ -1,0 +1,14 @@
+{
+  "name": "pelangi-website-go-assets",
+  "private": true,
+  "description": "Build-time only: compiles Tailwind CSS into static/css/app.css for the Go binary. Not part of the runtime.",
+  "scripts": {
+    "css": "tailwindcss -i ./styles/app.css -o ./static/css/app.css --minify",
+    "css:watch": "tailwindcss -i ./styles/app.css -o ./static/css/app.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.2.1",
+    "@tailwindcss/typography": "^0.5.19",
+    "tailwindcss": "^4.2.1"
+  }
+}
