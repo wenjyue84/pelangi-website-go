@@ -4,6 +4,7 @@ import (
 	"math"
 	"regexp"
 	"strings"
+	"time"
 )
 
 // BlogPost mirrors the TypeScript BlogPost interface in site/src/data/blog/posts.ts.
@@ -2602,12 +2603,693 @@ var BlogPosts = func() []BlogPost {
 <p>One honest tip: <strong>book early for 10–12 July</strong>. Returning voters and their families snap up budget beds in JB faster than a normal weekend, and pods are limited. <a href="/book">Reserve your pod</a> now and cross the Causeway on your own schedule.</p>
 `,
 		},
+		// 37
+		{
+			Slug:          "rts-link-jb-singapore-final-testing-2026",
+			ImageAlt:      "Vehicles crossing the Johor–Singapore Causeway, soon to be relieved by the RTS Link rail line connecting Bukit Chagar to Woodlands North",
+			Title:         "JB–Singapore RTS Link 2026: What the Final Testing Phase Means for Travellers",
+			Excerpt:       "The RTS Link is now in comprehensive testing with customs and immigration agencies from both countries. Here is what the timeline means for commuters and travellers planning a stay in Johor Bahru before and after opening.",
+			Date:          "2026-07-05",
+			Category:      "Travel Tips",
+			Author:        "Jay Lew",
+			ReadTime:      "5 min read",
+			Tags:          []string{"rts-link", "johor-bahru", "singapore", "commuter", "causeway", "jb-travel-2026", "rail"},
+			FeaturedImage: "/images/blog/rts-link-jb-singapore-final-testing-2026.jpg",
+			Content: `
+<h2>The Short Version</h2>
+<p>The Johor Bahru–Singapore RTS Link is a 4 km light rail line connecting <strong>Bukit Chagar station (JB)</strong> to <strong>Woodlands North station (Singapore)</strong>. Trials began in December 2025 without passengers, and from July 2026 the project entered its final comprehensive testing phase — the most complex stretch, involving customs, immigration, and security agencies from both countries simultaneously. Targeted completion remains <strong>31 December 2026</strong>, with full public operations expected by <strong>January 2027</strong>.</p>
+<p>If you are planning a trip to JB in the second half of 2026, or thinking about commuting between both cities once the line opens, this is the timeline you need to understand.</p>
+
+<h2>Where the Project Stands Right Now</h2>
+<p>As of mid-2026, systems and operational works had passed <strong>65% completion</strong> (per the November 2025 progress report). The current July–December 2026 testing window is the critical final hurdle: it is not just testing the trains themselves but validating the integrated operations of both countries' border agencies in a live environment. That is a much harder coordination challenge than running empty trains on a track.</p>
+<p>Key facts about the line:</p>
+<ul>
+  <li><strong>Length:</strong> 4 km, connecting the two border districts</li>
+  <li><strong>Journey time:</strong> approximately 5 minutes between the two terminals</li>
+  <li><strong>Rolling stock:</strong> 8 train sets, 4 coaches each</li>
+  <li><strong>Capacity:</strong> up to 10,000 passengers per hour per direction</li>
+  <li><strong>Expected one-way fare:</strong> S$5–S$7 (final fares to be confirmed in the second half of 2026)</li>
+</ul>
+<p>The fare range, once confirmed, will make crossing dramatically faster than sitting in Causeway traffic — and far more predictable.</p>
+
+<h2>What This Means If You Are Commuting Now</h2>
+<p>The RTS Link is not open yet. Until it is, the two main options remain:</p>
+<ul>
+  <li><strong>Causeway buses:</strong> CW1 (Larkin ↔ Kranji MRT) and bus 170 (Larkin ↔ Queen Street). Budget RM5–RM10 one-way depending on operator, plus queuing time at the checkpoint.</li>
+  <li><strong>KTM Shuttle Tebrau:</strong> Runs between JB Sentral and Woodlands CIQ. Short hop, roughly RM5 from the JB side, useful for avoiding the Causeway pedestrian queue.</li>
+</ul>
+<p>The current crossing experience — functional, but queues at peak hours can stretch 30–90 minutes — is exactly why the RTS Link is being watched so closely. <a href="/blog/jb-singapore-commuter-guide-2026">Our JB–Singapore commuter guide covers current crossing options in detail.</a> The <a href="/blog/singapore-to-jb-day-trip-causeway-guide">day-trip Causeway guide</a> is also worth reading if you are visiting from Singapore for the first time.</p>
+
+<h2>The Accommodation Logic for 2026 and Early 2027</h2>
+<p>Once the RTS Link opens, Bukit Chagar becomes the new focal point for travellers crossing from Singapore. Demand for accommodation within easy reach of that station will increase — it is a straightforward consequence of making the crossing faster and more predictable.</p>
+<p>Pelangi Capsule Hostel is roughly <strong>10 minutes' drive from the Bukit Chagar station area</strong>, putting you in the same corridor as JB Sentral and the causeway checkpoint. The same proximity that makes us convenient for current bus and KTM crossings will hold once the RTS opens.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Period</th>
+      <th>Best crossing method</th>
+      <th>Estimated crossing time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Now (July 2026)</td>
+      <td>Causeway bus CW1/170, or KTM Shuttle</td>
+      <td>45–90 min including queue</td>
+    </tr>
+    <tr>
+      <td>From Jan 2027 (projected)</td>
+      <td>RTS Link (Bukit Chagar ↔ Woodlands North)</td>
+      <td>~5 min rail + immigration time</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Planning Your Stay Around the Timeline</h2>
+<p>If you are visiting JB now, treat the current situation as business as usual — Causeway crossings are manageable with the right timing (avoid Sunday evenings, Malaysian public holidays, and peak-hour Fridays). If you are planning a trip for early 2027, it is worth watching LTA's official updates before booking transport, as the January 2027 operational date could shift slightly depending on how the remaining testing phases resolve.</p>
+<p>For commuters already living between both cities, JB accommodation is increasingly a practical choice. At <strong>RM30/night on weekdays</strong> and <strong>RM35/night on weekends</strong>, a monthly stay from <strong>RM594</strong>, and a 10-minute drive to the crossing — the numbers work well as a base while the RTS testing phase completes.</p>
+<p>We offer <strong>24/7 self check-in</strong>, free WiFi, and standard check-in from <strong>3:00 PM</strong> (check-out by <strong>12:00 PM</strong>). WhatsApp us on <strong>+60 12-708 8789</strong> if you have questions about long stays or flexible arrangements.</p>
+<p>See our <a href="/blog/3-day-jb-backpacker-itinerary-rm250">3-day JB backpacker itinerary</a> if you are still working out what to do once you arrive.</p>
+
+<h2>Book a Pod</h2>
+<p>Whether you are crossing for a day trip, a week of work, or planning ahead for the RTS era, Pelangi gives you a quiet, affordable base close to the action. <a href="/book">Book your capsule pod here</a> — or check <a href="/rooms">room types and pricing</a> if you want to compare weekday and weekend rates before committing.</p>
+
+<h2>Sources</h2>
+<ul>
+  <li><a href="https://www.lta.gov.sg/content/ltagov/en/upcoming_projects/rail_expansion/JB-Singapore_RTS_link.html" target="_blank" rel="noopener">Land Transport Authority (Singapore) — JB–Singapore RTS Link project page</a></li>
+  <li><a href="https://paultan.org/2025/11/04/rts-link-first-trial-phase-to-begin-in-december-without-passengers-still-targeted-for-dec-2026-completion/" target="_blank" rel="noopener">paultan.org — RTS Link first trial phase to begin in December, still targeted for Dec 2026 completion</a></li>
+  <li><a href="https://www.mot.gov.sg/news-resources/newsroom/singapore-and-malaysia-commemorate-the-unveiling-of-the--first-johor-bahru---singapore-rts-link-train/" target="_blank" rel="noopener">Ministry of Transport Singapore — Unveiling of the first JB–Singapore RTS Link train</a></li>
+</ul>
+`,
+		},
+		// 38 — scheduled: goes live 2026-07-08
+		{
+			Slug:          "july-best-month-visit-johor-bahru-low-season",
+			ImageAlt:      "Quiet morning at a Johor Bahru attraction during July low season, with short queues and overcast tropical sky",
+			Title:         "Why July Is Actually the Best Month to Visit Johor Bahru on a Budget",
+			Excerpt:       "Low season in JB means shorter queues, cheaper pods, and durian at its absolute peak. Here is an honest look at what July offers — and one thing worth planning around.",
+			Date:          "2026-07-08",
+			Category:      "Travel Tips",
+			Author:        "Jay Lew",
+			ReadTime:      "7 min read",
+			Tags:          []string{"johor-bahru", "july", "low-season", "durian-season", "budget-travel", "things-to-do", "travel-tips"},
+			FeaturedImage: "/images/blog/july-best-month-visit-johor-bahru-low-season.jpg",
+			Content: `
+<h2>The Short Version</h2>
+<p>July is a low-season month for JB tourism. That means shorter queues at LEGOLAND and other attractions, easier table-finding at popular restaurants, and the same accommodation you would pay a premium for in December available at everyday rates. It also coincides with <strong>peak durian season</strong> — arguably the single best reason to be in Johor in the middle of the year. There is one scheduling note worth knowing about (more on that below), but overall, July is quietly one of the better months to visit if you are travelling on a budget.</p>
+
+<h2>Low Season — What That Actually Means</h2>
+<p>JB tourism peaks around school holidays (June, November–December) and major Malaysian public holidays. July sits in a quieter window. In practical terms:</p>
+<ul>
+  <li><strong>LEGOLAND Malaysia and other paid attractions:</strong> Same-day tickets are usually available. Weekday mornings are noticeably calm. Weekend slots at popular spots can still fill, so booking a day ahead remains sensible.</li>
+  <li><strong>Restaurants:</strong> Popular local spots — especially the hawker centres near Jalan Tan Hiok Nee — are easier to get into on weekday evenings.</li>
+  <li><strong>Causeway crossings:</strong> Still busy during Friday evenings and Sunday returns, but weekday crossings are generally smoother than peak season. See <a href="/blog/singapore-to-jb-day-trip-causeway-guide">our Causeway day-trip guide</a> for timing advice.</li>
+</ul>
+<p>Low season does not mean empty — JB has year-round domestic tourism from KL and Singapore. It means the difference between a 45-minute queue and a 20-minute queue, a full restaurant and a table in ten minutes. Meaningful differences if you are trying to get the most out of a short trip.</p>
+
+<h2>Durian Season: The Real Reason to Come in July</h2>
+<p>Johor's durian season typically peaks in July, and it is not a minor occasion. <strong>Musang King (D197)</strong> is widely available — the variety that commands the highest prices in Singapore supermarkets is here in JB at a fraction of the cost, sold straight from lorry beds and roadside stalls.</p>
+<p>Where to find it:</p>
+<ul>
+  <li><strong>Jalan Tan Hiok Nee and surrounding streets:</strong> Night stalls set up from around 6 PM, with fruit arriving from Pahang and Johor highland farms. You can usually smell them before you see them.</li>
+  <li><strong>Pasar malam (night markets):</strong> Rotating locations around the city throughout the week — ask at the hostel for the current schedule.</li>
+  <li><strong>Roadside lorries:</strong> Trucks from Pahang park along major roads and offer unsealed fruit by weight. No frills, often better value than fixed stalls.</li>
+</ul>
+<p>If you have never eaten durian sitting on a plastic stool at 10 PM in Malaysia, July is the month to fix that.</p>
+
+<h2>One Thing to Plan Around: Johor State Election, 11 July 2026</h2>
+<p>Johor state election day falls on <strong>Saturday, 11 July 2026</strong>, which is a public holiday in Johor. This creates predictable congestion: many Malaysian voters working in Singapore return home to cast ballots, meaning the <strong>Causeway will be unusually busy on Friday 10 July</strong> (people going home) and <strong>Sunday 12 July</strong> (people returning). If your trip overlaps with that weekend, either build in extra crossing time or shift your arrival and departure to avoid those specific days.</p>
+<p>We have a separate post covering this in more detail: <a href="/blog/johor-state-election-2026-travellers-guide">Johor State Election 2026 — traveller's guide</a>. The short version: the election weekend is manageable with a bit of planning, and the rest of July is unaffected.</p>
+
+<h2>Honest Note on July Weather</h2>
+<p>JB sits close to the equator, and July afternoons bring convective thunderstorms — typically arriving between 2 PM and 5 PM and clearing within an hour or two. Morning and evening temperatures are comfortable for walking. The practical approach: do outdoor activities in the morning, eat or rest during the afternoon downpour, then go out again in the evening. This rhythm works naturally with how JB operates anyway — most good food action starts after 7 PM.</p>
+
+<h2>A Budget Week Skeleton</h2>
+<p>If you are planning a week in JB on a tight budget, arriving on a weekday is the straightforward move — capsule pods at Pelangi are <strong>RM30/night on weekdays</strong>, versus <strong>RM35/night on weekends</strong>. Across a 5-night weekday stay, that is RM150 for accommodation.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Activity sketch</th>
+      <th>Approx. cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Weekday arrival</td>
+      <td>Check in from 3 PM, walk to Taman Pelangi eateries for dinner</td>
+      <td>RM10–15 dinner</td>
+    </tr>
+    <tr>
+      <td>Day 2</td>
+      <td>Morning: hawker breakfast + explore Jalan Dhoby heritage area. Afternoon: rest during thunderstorm window. Evening: durian stalls near Jalan Tan Hiok Nee</td>
+      <td>RM25–35 food + durian</td>
+    </tr>
+    <tr>
+      <td>Day 3</td>
+      <td>LEGOLAND or Desaru (book day before). Same-day tickets available in July.</td>
+      <td>RM75–120 entry + transport</td>
+    </tr>
+    <tr>
+      <td>Day 4</td>
+      <td>Free morning at Danga Bay waterfront, afternoon KSL City Mall or City Square for air-conditioned reset</td>
+      <td>RM10–20 food</td>
+    </tr>
+    <tr>
+      <td>Day 5 (weekend)</td>
+      <td>Check out by 12 PM or extend at weekend rate (RM35). Night bus or crossing to Singapore.</td>
+      <td>RM35 pod if extending</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For a more detailed day-by-day plan with specific food stops and transport, see our <a href="/blog/3-day-jb-backpacker-itinerary-rm250">3-day JB backpacker itinerary</a>.</p>
+
+<h2>Pelangi in July</h2>
+<p>We are a short walk from Taman Pelangi's row of kopitiam and casual restaurants, and roughly <strong>10 minutes' drive from JB Sentral and the CIQ causeway checkpoint</strong>. 24/7 self check-in means no pressure to arrive at a particular hour — useful if your bus from Singapore runs late. Standard check-in is from <strong>3:00 PM</strong>; check-out by <strong>12:00 PM</strong>. Free WiFi throughout. WhatsApp us on <strong>+60 12-708 8789</strong> for any questions about July availability or longer stays (monthly rates from <strong>RM594</strong> for those considering an extended base).</p>
+<p>See <a href="/blog/jb-singapore-commuter-guide-2026">our commuter guide</a> if you are crossing regularly and want to understand current options while the <a href="/blog/rts-link-jb-singapore-final-testing-2026">RTS Link completes testing</a>.</p>
+
+<h2>Book Your July Pod</h2>
+<p>Weekday availability in July is generally good, but specific dates around the election weekend (10–12 July) may move faster than usual. <a href="/book">Book your capsule pod here</a>, or check <a href="/rooms">room types and current rates</a> to compare options before you decide.</p>
+
+<h2>Sources</h2>
+<ul>
+  <li><a href="https://thingstodoinjohorbahru.com/month/july/" target="_blank" rel="noopener">Things to Do in Johor Bahru — July guide</a></li>
+  <li><a href="https://thingstodoinjohorbahru.com/events/" target="_blank" rel="noopener">Things to Do in Johor Bahru — Events calendar</a></li>
+</ul>
+`,
+		},
+		// 39 — scheduled: goes live 2026-07-11
+		{
+			Slug:          "rm594-month-jb-long-stay-singapore-commute-base",
+			ImageAlt:      "Inside a capsule pod at Pelangi Capsule Hostel, Johor Bahru — monthly stays from RM594 for Singapore commuters",
+			Title:         "RM594/Month Capsule Pod: The Honest Maths for JB-Based Singapore Commuters",
+			Excerpt:       "If you're starting a new job in Singapore and not ready to sign a 12-month tenancy, a monthly capsule pod in JB changes the financial equation significantly. Here's how the numbers actually stack up.",
+			Date:          "2026-07-11",
+			Category:      "Career & Work",
+			Author:        "Jay Lew",
+			ReadTime:      "7 min read",
+			Tags:          []string{"monthly-stay", "jb-singapore-commute", "budget-accommodation", "johor-bahru", "long-stay", "capsule-hostel", "cost-of-living"},
+			FeaturedImage: "/images/blog/rm594-month-jb-long-stay-singapore-commute-base.jpg",
+			Content: `
+<h2>The Problem With Signing a Tenancy Before Your Job Starts</h2>
+<p>You've landed a job offer in Singapore. The start date is three weeks away. Your new employer wants you at the office in Toa Payoh. You're sitting in Johor Bahru, Googling "room rental JB near CIQ" and realising that every room listing comes with strings attached: two months deposit, one month advance, 12-month contract, utilities separate.</p>
+<p>For someone on probation — typically three to six months — signing a 12-month tenancy before you even know if the role works out is a significant financial bet. This post runs through the honest maths of using a monthly capsule pod at <strong>Pelangi Capsule Hostel</strong> as your base during those first months, versus committing to a conventional room rental. It's not the right answer for everyone, and I'll be clear about who it suits and who it doesn't.</p>
+
+<h2>What a Monthly Stay at Pelangi Actually Costs</h2>
+<p>Monthly stays at Pelangi start from <strong>RM594/month</strong>. That rate covers your capsule pod, utilities, and WiFi — no separate bills, no deposit contract, no minimum tenure beyond the month you pay for. You can check in on a Monday and check out 30 days later if something changes.</p>
+<p>The nightly rate for short stays is <strong>RM30 on weekdays and RM35 on weekends</strong>. If you're doing a full calendar month of 30 nights at those nightly rates you'd pay more — the monthly rate is specifically designed for people settling in for the longer haul. Check-in is 3:00 PM, check-out 12:00 PM, and the building has 24/7 self check-in, which matters if you're crossing the Causeway on irregular shift times.</p>
+<p>For a full look at room types and availability, see our <a href="/rooms">rooms page</a>.</p>
+
+<h2>What a Conventional JB Room Rental Actually Costs</h2>
+<p>Looking at current listings on property portals, a single room in a shared house in areas like Taman Pelangi, Mount Austin, or Bukit Indah typically runs somewhere in the <strong>RM500–RM900/month</strong> range, depending on location, furnishing, and whether air conditioning is included. Most landlords ask for a deposit structure of two months security plus one month advance — so you're paying roughly <strong>RM1,500–RM2,700 upfront</strong> before you sleep a single night.</p>
+<p>On top of that, utilities — electricity, water, sometimes wifi — are usually billed separately or split among housemates. It adds up. The commitment is typically a 12-month tenancy, which means if the job falls through or you decide to relocate to Singapore-side after probation, you're negotiating an early exit or forfeiting your deposit.</p>
+<p><em>Ranges cited are approximate based on listings as of July 2026. Check iProperty or similar portals for current figures in your preferred area.</em></p>
+
+<h2>The Commuter Maths: JB to Singapore Daily</h2>
+<p>The Causeway crossing is the constant in this equation. Pelangi is roughly a <strong>10-minute drive</strong> from JB Sentral and the CIQ checkpoint. From Taman Pelangi you can take a Grab or local taxi to the checkpoint, then cross via bus into Singapore.</p>
+<p>The two main bus options are <strong>CW1 (to Kranji MRT)</strong> and <strong>bus 170 (to Queen Street terminal)</strong>. Both run regularly and connect you to Singapore's MRT network. From Kranji you can reach most of Singapore's commercial districts in under 40 minutes by train.</p>
+<p>The practical golden rule that experienced commuters follow: <strong>cross before 7:00 AM or after 9:00 PM</strong> on weekdays to avoid peak congestion at the checkpoint. If your employer requires a fixed 9 AM start, work backwards — a 6:00 AM departure from Taman Pelangi is realistic. It's a discipline, but tens of thousands of Malaysians do it every working day.</p>
+<p>For a more detailed breakdown of the crossing options, timing, and costs, read our post on the <a href="/blog/jb-singapore-commuter-guide-2026">JB–Singapore commuter guide</a>.</p>
+
+<h2>Side-by-Side Cost Comparison</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Pelangi Monthly Pod</th>
+      <th>JB Room Rental (typical)</th>
+      <th>Singapore Room Rental (typical)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Monthly accommodation</td>
+      <td>RM594</td>
+      <td>RM500–900</td>
+      <td>S$700–1,200 (≈RM2,300–4,000)</td>
+    </tr>
+    <tr>
+      <td>Upfront deposit</td>
+      <td>None (pay monthly)</td>
+      <td>≈RM1,500–2,700 (2+1 months)</td>
+      <td>≈S$1,400–2,400 (typically 2 months)</td>
+    </tr>
+    <tr>
+      <td>Utilities</td>
+      <td>Included</td>
+      <td>Extra (split or billed separately)</td>
+      <td>Sometimes included, sometimes extra</td>
+    </tr>
+    <tr>
+      <td>WiFi</td>
+      <td>Included (free)</td>
+      <td>Often separate or shared plan</td>
+      <td>Usually included</td>
+    </tr>
+    <tr>
+      <td>Minimum commitment</td>
+      <td>1 month</td>
+      <td>Typically 12 months</td>
+      <td>Typically 6–12 months</td>
+    </tr>
+  </tbody>
+</table>
+<p><em>Singapore room rental ranges from Wise's cost-of-living guidance for Malaysians working in Singapore. All figures approximate and dated July 2026. Note: Malaysia's RM10/night Tourism Tax applies to foreign tourists only — Malaysian citizens are exempt.</em></p>
+
+<h2>Who This Actually Suits</h2>
+<p>A capsule pod is a practical base for someone who is:</p>
+<ul>
+  <li><strong>Single, travelling light</strong> — one bag, a work laptop, minimal belongings</li>
+  <li><strong>On probation or a short-term contract</strong> — not ready to lock capital into deposits</li>
+  <li><strong>Uncertain about their long-term base</strong> — might move to Singapore-side after six months, or transfer to a different city</li>
+  <li><strong>Prioritising cash flow</strong> — RM594/month leaves more runway than a tenancy deposit during the gap between job start and first payslip</li>
+  <li><strong>Crossing the Causeway daily</strong> — the 10-minute proximity to JB Sentral and CIQ is the whole point</li>
+</ul>
+
+<h2>Who It Doesn't Suit</h2>
+<p>I'd rather be honest here than sell a pod to someone it won't work for. A capsule hostel is <strong>not</strong> the right answer if you:</p>
+<ul>
+  <li>Are moving with a partner or family — a shared pod room isn't a family home</li>
+  <li>Work from home or need a private desk for video calls during the day — capsule pods are for sleeping, not working</li>
+  <li>Have a lot of belongings — storage in a pod is limited; a locker is available but it's not a wardrobe</li>
+  <li>Value long-term rental stability and plan to stay in JB for more than six months with certainty — at that point, a conventional room with a proper lock-in may actually work out cheaper per month</li>
+</ul>
+<p>If you're in the second camp but want to read more about finding work in Singapore while based in JB, the posts on <a href="/blog/singapore-work-pass-guide-malaysians">Singapore work pass types for Malaysians</a> and <a href="/blog/how-malaysians-find-jobs-singapore-2026">how Malaysians find jobs in Singapore</a> are worth reading first.</p>
+
+<h2>The Practical Verdict</h2>
+<p>The RM594/month pod isn't for everyone, and it isn't supposed to be. But for a single person starting a new Singapore role and wanting to preserve cash flow during probation, it removes a significant upfront cost (no deposit lock-in) and keeps your options open. Food in Taman Pelangi is within walking distance — hawker meals from RM5–8 — and the crossing to Singapore is a known quantity once you build the rhythm into your mornings.</p>
+<p>If you have questions about availability or want to talk through whether a monthly stay suits your situation, WhatsApp us at <strong>+60 12-708 8789</strong> directly.</p>
+<p>Ready to check availability and book? <a href="/book">See current availability and rates here</a>.</p>
+
+<h2>Sources</h2>
+<ul>
+  <li><a href="https://www.iproperty.com.my/" target="_blank" rel="noopener">iProperty — JB room rental listings (typical ranges, July 2026)</a></li>
+  <li><a href="https://wise.com/my/blog/singapore-work-permit-for-malaysian" target="_blank" rel="noopener">Wise — Singapore work permit and cost context for Malaysians</a></li>
+</ul>
+`,
+		},
+		// 40 — scheduled: goes live 2026-07-14
+		{
+			Slug:          "singapore-lqs-1800-july-2026-malaysians-guide",
+			ImageAlt:      "Malaysian workers boarding a Causeway bus at JB Sentral for the daily commute to Singapore",
+			Title:         "Singapore LQS Rises to S$1,800 in July 2026: What Malaysian Job Seekers Need to Know",
+			Excerpt:       "Singapore's Local Qualifying Salary increased to S$1,800 on 1 July 2026. If you're a Malaysian applying for or renewing a Work Permit or S Pass, here's what the change actually means for your job hunt and timing.",
+			Date:          "2026-07-14",
+			Category:      "Career & Work",
+			Author:        "Jay Lew",
+			ReadTime:      "7 min read",
+			Tags:          []string{"singapore", "work-permit", "lqs", "s-pass", "malaysian-workers", "career", "policy-2026"},
+			FeaturedImage: "/images/blog/singapore-lqs-1800-july-2026-malaysians-guide.jpg",
+			Content: `
+<h2>Singapore's Local Qualifying Salary Changed on 1 July 2026</h2>
+<p>If you're a Malaysian looking for work in Singapore — or already there on a Work Permit or S Pass and due for renewal — there's a policy update that directly affects your chances of getting hired or renewed: the <strong>Local Qualifying Salary (LQS) rose from S$1,600 to S$1,800</strong> effective 1 July 2026.</p>
+<p>This isn't just a wage floor for Singapore citizens. It has a direct knock-on effect on how many foreign workers — including Malaysians on Work Permits — a company is allowed to employ. This post explains what LQS is, how it affects you practically, and what the current salary thresholds are for the main pass types Malaysians use.</p>
+<p><strong>Important disclaimer:</strong> Policy figures change, and this post reflects what is publicly confirmed as of early July 2026. Always verify current figures directly on MOM's official website before making any decisions about employment or pass applications.</p>
+
+<h2>What Is the Local Qualifying Salary?</h2>
+<p>The LQS is the <strong>minimum salary a Singapore citizen or permanent resident must be paid</strong> in order to count as a full local employee in a firm's headcount for workforce quota purposes.</p>
+<p>Singapore's foreign worker quota system works like this: for most sectors, a company can only hire a certain ratio of foreign workers relative to its local workforce. If a local employee earns below the full LQS, they count as only a partial employee (in some cases 0.5, in others 0) toward that quota. This matters because if a company's local headcount shrinks — or effectively shrinks because local staff are below the new LQS — the number of foreign workers they're permitted to hire or renew drops with it.</p>
+<p>From 1 July 2026, the new threshold is <strong>S$1,800/month</strong>. Any local staff still on S$1,600–S$1,799 now fall below the qualifying line until their employer adjusts their salary.</p>
+
+<h2>How This Affects Malaysian Job Seekers and Work Permit Holders</h2>
+<p>The practical effect: if an employer hasn't raised local staff salaries to match the new LQS, their foreign-worker quota headroom may have effectively reduced on 1 July 2026. This can mean:</p>
+<ul>
+  <li><strong>New hire delays</strong> — An employer who wants to bring in a new Work Permit holder may find they no longer have quota space until they sort out local salary compliance</li>
+  <li><strong>Renewal complications</strong> — Existing Work Permit holders up for renewal at employers with tight or non-compliant quotas may face delays or non-renewal</li>
+  <li><strong>Sectors most affected</strong> — F&B, retail, cleaning, and other services sectors typically have the highest ratios of lower-wage local staff and are most sensitive to LQS changes</li>
+</ul>
+<p>The practical question to ask any potential employer: <em>"Is your local workforce quota headroom in order after the July 2026 LQS update?"</em> A good employer will have an answer. If they don't, that tells you something about how prepared they are.</p>
+
+<h2>Current Pass Thresholds for Malaysians (July 2026)</h2>
+<p>Here's a reference table of the current salary thresholds for the three main pass types Malaysians use. These are <strong>minimums at the time of writing</strong> — confirm on MOM's site for your specific sector and situation:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Pass Type</th>
+      <th>Current Minimum Salary</th>
+      <th>Upcoming Change</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Work Permit (Malaysian)</td>
+      <td>No fixed minimum salary</td>
+      <td>—</td>
+      <td>Eligible age 18–58 (vs 18–50 for non-Malaysians — a real advantage)</td>
+    </tr>
+    <tr>
+      <td>S Pass</td>
+      <td>S$3,300/month</td>
+      <td>S$3,600 from 1 Jan 2027 (new applications)</td>
+      <td>Levy S$650/month payable by employer; subject to quota ceiling</td>
+    </tr>
+    <tr>
+      <td>Employment Pass</td>
+      <td>S$5,600/month</td>
+      <td>S$6,000 from 1 Jan 2027 (all sectors except financial services)</td>
+      <td>Financial services sector has a higher threshold — check MOM directly</td>
+    </tr>
+  </tbody>
+</table>
+<p>For most Malaysians entering Singapore's workforce in services, F&B, construction, or manufacturing, the <strong>Work Permit</strong> is the relevant pass — and the extended age eligibility to 58 (vs 50 for other nationalities) is a concrete advantage that's worth knowing. The LQS change affects you indirectly via your employer's quota, not via your own salary requirement on the permit itself.</p>
+
+<h2>The January 2027 Changes Are Already Coming</h2>
+<p>If you're targeting an S Pass or EP, note that the qualifying salary thresholds are rising again in January 2027. For S Pass applicants, the minimum goes from S$3,300 to <strong>S$3,600</strong>. For Employment Pass, from S$5,600 to <strong>S$6,000</strong>.</p>
+<p>If you're currently at S$3,300–S$3,599 on an S Pass, your renewal in 2027 will require a salary uplift — something worth discussing with your employer well before the renewal date rather than two weeks before it expires.</p>
+
+<h2>What You Can Do While You Wait</h2>
+<p>Job searches take time. Permit approvals take time. Employer quota complications take time. If you're based in JB, working through that gap without burning through savings is a real practical problem.</p>
+<p>Some options worth considering:</p>
+<ul>
+  <li><strong>Gig work in JB</strong> — delivery, freelance, or short-term local work while the Singapore application is processed. Read our post on <a href="/blog/gig-jobs-malaysia-waiting-singapore-work-pass">gig jobs in Malaysia while waiting for a Singapore work pass</a> for specifics.</li>
+  <li><strong>Keep accommodation flexible</strong> — if you're not certain when the Singapore role will start or whether it will start, committing to a 12-month JB tenancy before you have a confirmed offer is a financial risk. A monthly stay option keeps your options open without a large deposit outlay.</li>
+  <li><strong>Understand your employer's pass situation before you resign from your current job</strong> — if they're scrambling with LQS compliance, a new Work Permit application for you may take longer than either of you expect.</li>
+</ul>
+<p>For a broader guide to the job-hunting process itself, see <a href="/blog/how-malaysians-find-jobs-singapore-2026">how Malaysians find jobs in Singapore in 2026</a> and the full <a href="/blog/singapore-work-pass-guide-malaysians">Singapore work pass guide for Malaysians</a>.</p>
+
+<h2>Staying at Pelangi During the Transition Period</h2>
+<p>Pelangi Capsule Hostel is a 10-minute drive from JB Sentral and CIQ. If you're commuting daily to Singapore for interviews, trial shifts, or your first weeks on a new job, the location works in your favour. Pods are <strong>RM30/night on weekdays and RM35/night on weekends</strong>, with monthly rates from <strong>RM594</strong> (utilities and WiFi included). No deposit, no minimum tenancy — monthly stays renew on your terms.</p>
+<p>24/7 self check-in means the building works around your hours, not the other way around. If you're crossing before 7:00 AM to beat the Causeway rush, that flexibility matters.</p>
+<p>Questions? WhatsApp us directly at <strong>+60 12-708 8789</strong>.</p>
+<p><a href="/book">Check availability and book a stay here.</a></p>
+
+<h2>Sources</h2>
+<ul>
+  <li><a href="https://www.mom.gov.sg/employment-practices/progressive-wage-model/local-qualifying-salary" target="_blank" rel="noopener">Ministry of Manpower Singapore — Local Qualifying Salary official page</a></li>
+  <li><a href="https://kpmg.com/xx/en/our-insights/gms-flash-alert/2026/flash-alert-2026-059.html" target="_blank" rel="noopener">KPMG — Singapore Budget 2026 Flash Alert (GMS Flash Alert 2026-059)</a></li>
+  <li><a href="https://www.humanresourcesonline.net/legal-and-policy-changes-to-look-out-for-across-singapore-and-malaysia-in-2026" target="_blank" rel="noopener">Human Resources Online — Legal and policy changes across Singapore and Malaysia in 2026</a></li>
+</ul>
+`,
+		},
+		// 41 — scheduled: goes live 2026-07-17
+		{
+			Slug:          "jb-durian-season-july-2026-budget-guide",
+			ImageAlt:      "Durian stalls at night along Jalan Tan Hiok Nee heritage street, Johor Bahru, with crates of Musang King and D24",
+			Title:         "JB Durian Season July 2026: A Budget Traveller's Guide to Eating Well Without Getting Ripped Off",
+			Excerpt:       "July is peak durian season in Johor Bahru, and Jalan Tan Hiok Nee lights up every night with stalls piled high with Musang King, D24, and kampung varieties. Here is how to eat smart and avoid the common traps.",
+			Date:          "2026-07-17",
+			Category:      "Food & Drink",
+			Author:        "Jay Lew",
+			ReadTime:      "6 min read",
+			Tags:          []string{"durian-season", "johor-bahru", "food", "musang-king", "budget-travel", "tan-hiok-nee", "night-stalls"},
+			FeaturedImage: "/images/blog/jb-durian-season-july-2026-budget-guide.jpg",
+			Content: `
+<h2>Why July Is the Best Time to Visit JB for Durian</h2>
+<p>If you time your trip to Johor Bahru in July, you land in the middle of peak durian season. Supply trucks roll down from Pahang and Johor's inland orchards every night, and the heritage streets around <strong>Jalan Tan Hiok Nee</strong> transform into a durian lover's circuit from early evening onwards. Stalls stack crates three rows deep, and the smell hits you from the end of the street — you will not miss them.</p>
+<p>This is not just a local thing. Durian tourists cross the Causeway specifically for this window. The difference between eating durian in JB versus Singapore is significant — better freshness, more variety, and prices that reflect local supply rather than import premiums.</p>
+
+<h2>The Three Varieties You Need to Know</h2>
+<p>Before you sit down at any stall, understand what you are ordering. The board price changes nightly depending on that evening's supply, so do not anchor on what you read online. Here is a practical breakdown of the main types you will encounter:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Variety</th>
+      <th>Flavour Profile</th>
+      <th>Relative Price Tier</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Musang King (Mao Shan Wang)</strong></td>
+      <td>Rich, creamy, bittersweet with a thick golden flesh; low seed-to-flesh ratio</td>
+      <td>Premium — highest price on the board</td>
+    </tr>
+    <tr>
+      <td><strong>D24 (Sultan)</strong></td>
+      <td>Slightly bitter, silky texture, less intense than Musang King; widely available</td>
+      <td>Mid-range — good value for the quality</td>
+    </tr>
+    <tr>
+      <td><strong>Kampung (Wild/Village)</strong></td>
+      <td>Variable by tree — can be thin-fleshed but highly fragrant; rustic character</td>
+      <td>Budget — the most affordable option</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If this is your first time eating durian, start with D24. If you are a returning durian traveller with a budget, kampung varieties offer the best value. Musang King is the headline act — worth trying once, but it commands a premium that swings sharply on nights when supply is tight.</p>
+
+<h2>How to Buy Without Getting Caught Out</h2>
+<p>There are a few simple rules that will save you from an unpleasant surprise at the till:</p>
+<ul>
+  <li><strong>Check the board price first.</strong> Every reputable stall posts the current price per kg on a whiteboard at the front. If there is no board, ask before you sit. Prices change nightly with supply — what you paid last Tuesday may be different on Saturday.</li>
+  <li><strong>Confirm the weight before the stall opens the durian.</strong> Once it is open, it is yours. Ask the vendor to place it on the scale and show you the weight before they crack it. This is normal practice and no decent vendor will object.</li>
+  <li><strong>Carry cash.</strong> Most stalls at the Tan Hiok Nee night cluster are cash-only. A small number accept DuitNow QR, but do not rely on it. Draw cash before you head out.</li>
+  <li><strong>Arrive by 8 PM for best selection.</strong> Stalls open from early evening, and the better boxes of Musang King sell out first. If you want first pick, do not leave it until 10 PM.</li>
+</ul>
+
+<h2>Getting There from Taman Pelangi</h2>
+<p>Jalan Tan Hiok Nee is roughly a 10-minute Grab ride from <strong>Taman Pelangi</strong>, where Pelangi Capsule Hostel is based. Factor in evening Grab surge pricing on weekends — it is still a short, inexpensive ride. Alternatively, Tan Hiok Nee is walkable from JB Sentral if you combine it with a day trip through the city centre.</p>
+<p>For a full picture of the food scene around the hostel and the wider city, see our <a href="/blog/ultimate-jb-food-guide-backpackers">ultimate JB food guide for backpackers</a> and the <a href="/blog/jb-hawker-centres-street-food-must-visit">JB hawker centres guide</a>. Taman Pelangi itself has its own weekly food event worth knowing about — the <a href="/blog/taman-pelangi-tuesday-night-market-guide">Tuesday night market</a> is five minutes' walk from the hostel.</p>
+
+<h2>The Durian-in-Room Rule (and Why It Exists)</h2>
+<p>One thing worth knowing before you plan your evening: <strong>durian is not permitted inside the hostel</strong>, as is standard practice across most accommodation in Malaysia. The smell is exceptionally persistent and permeates soft furnishings for days — it is a genuine concern for other guests, not just a house rule for the sake of it.</p>
+<p>The good news is that this is not a problem in practice. Eating at the stall is the correct way to eat durian. Pull up a plastic chair, eat it fresh, and leave the shells at the stall. It is a better experience than eating it in a room anyway.</p>
+
+<h2>What Else Is On in JB in July</h2>
+<p>July is a strong month for JB beyond durian. The city runs a steady calendar of events through the month. Check the <a href="https://thingstodoinjohorbahru.com/events/" target="_blank" rel="noopener">Things to Do in Johor Bahru events page</a> for what is running during your specific dates.</p>
+
+<h2>Staying Near the Action</h2>
+<p>Pelangi Capsule Hostel puts you in Taman Pelangi — close to the city's food belt, ~10 minutes from JB Sentral and the CIQ checkpoint, and a short Grab from Tan Hiok Nee. <a href="/rooms">Capsule pods</a> are RM30/night on weekdays and RM35/night on weekends, with monthly rates from RM594. Check-in is 3:00 PM, check-out 12:00 PM, and the property runs 24/7 self check-in — so if your durian run goes late, there is no reception cut-off to worry about. WhatsApp us at <strong>+60 12-708 8789</strong> if you have any questions before you arrive.</p>
+<p>Ready to book your July stay? <a href="/book">Check availability and secure your pod here.</a></p>
+
+<h2>Sources</h2>
+<ul>
+  <li><a href="https://thingstodoinjohorbahru.com/month/july/" target="_blank" rel="noopener">Things to Do in Johor Bahru — July guide</a></li>
+  <li><a href="https://thingstodoinjohorbahru.com/events/" target="_blank" rel="noopener">Things to Do in Johor Bahru — Events listing</a></li>
+</ul>
+`,
+		},
+		// 42 — scheduled: goes live 2026-07-20
+		{
+			Slug:          "mystarjob-fair-jb-july-2026-weekend-plan",
+			ImageAlt:      "Job fair exhibition hall at Mid Valley Southkey Johor Bahru with attendees in business attire visiting employer booths",
+			Title:         "myStarjob Fair JB July 2026: A Job-Hunter's Weekend Plan on a Budget",
+			Excerpt:       "The myStarjob Fair returns to Mid Valley Southkey on 25–26 July 2026. Here is how to plan a productive two-day job-hunting weekend in JB — what to bring, how to prepare, and how to keep your total spend under RM120.",
+			Date:          "2026-07-20",
+			Category:      "Career & Work",
+			Author:        "Jay Lew",
+			ReadTime:      "6 min read",
+			Tags:          []string{"job-fair", "johor-bahru", "jobs", "work-in-singapore", "career", "budget-weekend", "mid-valley-southkey"},
+			FeaturedImage: "/images/blog/mystarjob-fair-jb-july-2026-weekend-plan.jpg",
+			Content: `
+<h2>The myStarjob Fair Is Coming to JB — Here Is How to Make the Most of It</h2>
+<p>The <strong>myStarjob Fair</strong> is scheduled for <strong>Saturday 25 and Sunday 26 July 2026</strong>, from 11:00 AM, at <strong>Mid Valley Exhibition Centre, Mid Valley Southkey, Johor Bahru</strong>. It brings together employers from Malaysia and Singapore under one roof — which makes it genuinely worth planning a weekend trip around if you are a job-hunter based in Johor or crossing from Singapore.</p>
+<p><strong>Important:</strong> event schedules can shift. Before you travel, confirm the current times and any entry requirements directly on the organiser's page. Links are in the Sources section below.</p>
+
+<h2>Why This Fair Matters for JB-Based Job Seekers</h2>
+<p>Job fairs in Johor Bahru carry additional weight because of the cross-border dimension. Many of the employers at myStarjob events are recruiting for Singapore-based roles, which means this is not just a local employment event — it is a live opportunity to meet hiring managers you would otherwise only reach via email or LinkedIn.</p>
+<p>For Malaysians considering working across the Causeway, the practical information on work passes is worth understanding before you walk through the door. Our post on the <a href="/blog/singapore-work-pass-guide-malaysians">Singapore work pass guide for Malaysians</a> covers the main routes — including the S Pass, which currently carries a minimum qualifying salary of S$3,300 per month, and the Work Permit route for specific sectors. Reading that before the fair means you can ask targeted questions at employer booths rather than spending time on basics. If you are exploring gig or contract work as a bridge, see also our guide on <a href="/blog/how-malaysians-find-jobs-singapore-2026">how Malaysians find jobs in Singapore in 2026</a>.</p>
+
+<h2>What to Bring — The Non-Negotiable Checklist</h2>
+<p>Job fairs reward preparation. Here is what to have ready before you leave the hostel on Saturday morning:</p>
+<ul>
+  <li><strong>Printed CVs — at least 15 copies.</strong> Not every booth has a scanner, and handing a physical CV signals preparation. Print them the night before; do not rely on finding a print shop on the day.</li>
+  <li><strong>IC and passport copies.</strong> Bring photocopies of your MyKad and, if applicable, your passport. Some booths request these on the spot for data-entry or on-site applications.</li>
+  <li><strong>A pen.</strong> Forms, consent slips, and booth sign-in sheets are ubiquitous at these events. Carry your own rather than hunting for one.</li>
+  <li><strong>A printed or digital portfolio</strong> if your field is design, architecture, or any visual/technical discipline. A phone portfolio is fine; a printed one is better if you can manage it.</li>
+  <li><strong>A bag that keeps your documents flat.</strong> Crumpled CVs create a poor first impression before you have said a word.</li>
+</ul>
+
+<h2>Dress Code</h2>
+<p>Business casual is the baseline — long trousers, a collared shirt or blouse, clean shoes. If you are applying for finance, legal, or corporate roles, step it up to business formal. The fair is an air-conditioned exhibition hall, so you will be comfortable in professional dress. Avoid overly casual clothes; this is an interview environment, not a career talk.</p>
+
+<h2>Arrive Early, Leave With Leads</h2>
+<p>Doors open at 11:00 AM. Arriving within the first hour gives you access to booths before queues build and before the most engaged hiring managers move on to back-to-back conversations. Plan to spend at least three to four hours if you want to cover the hall properly.</p>
+<p>For Singapore-employer booths specifically, prepare a 60-second summary of your experience, your target role, and your available start date. Many Singapore HR teams at these fairs have decision-making authority — they are not just collecting CVs for head office review. A focused conversation can move quickly.</p>
+
+<h2>Getting to Mid Valley Southkey from Taman Pelangi</h2>
+<p>Mid Valley Southkey is approximately a 10-minute Grab ride from Taman Pelangi, where Pelangi Capsule Hostel sits. Budget RM8–12 each way depending on traffic and time of day. Saturday morning Grab rides in JB are generally reliable — leave by 10:30 AM to arrive with time to get your bearings before the hall fills up.</p>
+
+<h2>The Budget Breakdown: Under RM120 for the Whole Weekend</h2>
+<p>Here is a realistic two-night budget for the fair weekend staying at Pelangi Capsule Hostel:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Estimated Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Friday night pod (weekday rate)</td>
+      <td>RM30</td>
+    </tr>
+    <tr>
+      <td>Saturday night pod (weekend rate)</td>
+      <td>RM35</td>
+    </tr>
+    <tr>
+      <td>Grab to/from Mid Valley Southkey (×2)</td>
+      <td>~RM20–25</td>
+    </tr>
+    <tr>
+      <td>Meals (hawker centres, Taman Pelangi area)</td>
+      <td>~RM25–30</td>
+    </tr>
+    <tr>
+      <td><strong>Total</strong></td>
+      <td><strong>~RM110–120</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>That covers accommodation, transport, and food for the full fair weekend. If you print CVs at a local print shop the evening before, add roughly RM5–8 for 15 copies in colour. Still well under RM130.</p>
+<p>The Taman Pelangi area has a strong selection of affordable hawker food within walking distance — breakfast and dinner sorted without effort. See our <a href="/blog/jb-hawker-centres-street-food-must-visit">JB hawker centres guide</a> for options nearby.</p>
+
+<h2>Using Friday Night Productively</h2>
+<p>If you arrive Friday evening, use that time well. Print and organise your CVs into a folder. Research two or three specific employers you want to prioritise at the fair — check their current job listings online so you can reference specific roles in conversation. Lay out your outfit. Get an early night. Job fairs are more physically and mentally demanding than they look; showing up rested makes a measurable difference.</p>
+<p>The hostel runs <strong>24/7 self check-in</strong>, so if you are arriving late Friday after work or the commute from Singapore, there is no reception deadline to worry about. Check in at whatever time suits you.</p>
+
+<h2>Booking Your Stay</h2>
+<p>Pelangi Capsule Hostel is at <strong>26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru</strong>. Pods are <strong>RM30/night weekdays and RM35/night weekends</strong>, with 24/7 self check-in, free WiFi, and check-out at 12:00 PM — giving you a relaxed Sunday morning before heading back. WhatsApp us on <strong>+60 12-708 8789</strong> with any questions.</p>
+<p><a href="/book">Book your fair-weekend stay now before pods fill up.</a> Weekend dates around large job fairs move quickly.</p>
+
+<h2>Sources</h2>
+<ul>
+  <li><a href="https://allevents.in/johor-bahru/all" target="_blank" rel="noopener">AllEvents — Johor Bahru events listing</a></li>
+  <li><a href="https://10times.com/johorbahru-my" target="_blank" rel="noopener">10times — Johor Bahru events and exhibitions</a></li>
+</ul>
+`,
+		},
+		// 43 — scheduled: goes live 2026-07-23
+		{
+			Slug:          "jb-transit-base-foreign-workers-guide",
+			ImageAlt:      "Capsule pod interior at Pelangi Capsule Hostel, Johor Bahru — clean sleeping pod with privacy screen for transit workers",
+			Title:         "Using Johor Bahru as a Transit Base: A Practical Guide for Foreign Workers",
+			Excerpt:       "If you're between Singapore work contracts or heading home on a budget flight, JB is a cheaper, practical overnight base than any airport hotel — here's how to make it work.",
+			Date:          "2026-07-23",
+			Category:      "Travel Tips",
+			Author:        "Jay Lew",
+			ReadTime:      "5 min read",
+			Tags:          []string{"johor-bahru", "transit", "foreign-workers", "senai-airport", "changi", "budget-accommodation", "causeway"},
+			FeaturedImage: "/images/blog/jb-transit-base-foreign-workers-guide.jpg",
+			Content: `
+<h2>The Short Version</h2>
+<p>We see this pattern regularly at Pelangi Capsule Hostel: a guest from Myanmar, Indonesia, or the Philippines checks in late at night, sleeps, and is gone by morning to catch a flight or cross back into Singapore. Sometimes it's two or three nights while they sort paperwork or wait on a work-permit outcome. JB has become a quiet but reliable transit hub for foreign workers in the region — and this guide explains why, and how to plan it properly.</p>
+
+<h2>Why JB Makes Sense as a Transit Base</h2>
+<p>The cost logic is straightforward. A capsule pod at Pelangi is <strong>RM30 per night on weekdays and RM35 on weekends</strong>, with monthly stays from RM594. Compare that to airport hotel rates in Singapore or even budget hostels near Changi — you are almost always paying significantly more on the Singapore side. For workers who are between contracts, waiting on documentation, or simply passing through on their way home, those savings compound over even a short stay.</p>
+<p>Beyond cost, JB gives you options. You have two realistic routes for your onward journey: fly out of <strong>Senai International Airport (JHB)</strong> or cross the Causeway and use <strong>Changi Airport (SIN)</strong>. Both are covered below.</p>
+
+<h2>Option 1: Flying from Senai International Airport</h2>
+<p>Senai is roughly 30–40 minutes from Taman Pelangi by Grab, depending on traffic. It is AirAsia's main hub in Johor, with direct routes to regional destinations — Kuala Lumpur, Penang, Jakarta, and more. Fares on regional routes from Senai are often notably cheaper than equivalent flights from Changi, particularly on AirAsia's network. Check the current route map on Senai Airport's official site before booking.</p>
+<p>If your flight departs early morning, this is where 24/7 self check-in matters. <strong>You can arrive at the hostel at 1 AM, sleep, and leave by 4 AM for a 6 AM flight without waking anyone or paying extra.</strong> Our check-in is self-managed around the clock. Check-in time is from 3:00 PM and check-out is by 12:00 PM, but arrival time is genuinely flexible.</p>
+<p>Our <a href="/blog/changi-airport-transit-budget-stay-johor-bahru">Changi transit guide</a> also covers how the two airports compare for regional travel.</p>
+
+<h2>Option 2: Crossing to Changi Airport</h2>
+<p>If your airline operates out of Changi, or if you have a layover there, the crossing is straightforward but needs time built in. Allow <strong>3–4 hours total</strong> to cover: Grab to CIQ or JB Sentral (about 10 minutes from Taman Pelangi), queue at Malaysian immigration departure, bus or coach through the Causeway, Singapore immigration arrival, and then MRT or bus to Changi. Immigration queues are the variable — they can be smooth or they can add an hour. Do not cut it close.</p>
+<p>See <a href="/blog/singapore-to-jb-day-trip-causeway-guide">our full Causeway guide</a> for queue timing tips, transport options, and what to expect at both checkpoints.</p>
+
+<h2>Practical Checklist for Transit Workers</h2>
+<p>Use this before you travel. Small oversights cause real problems at immigration counters.</p>
+<ul>
+  <li><strong>Passport validity:</strong> Both Malaysia and Singapore require at least 6 months validity remaining. Check your passport before you book anything. Airlines will deny boarding; immigration will turn you around.</li>
+  <li><strong>Onward ticket proof:</strong> If entering Malaysia on a social visit pass, immigration officers may ask to see an onward ticket. Have it accessible on your phone or printed.</li>
+  <li><strong>Singapore entry requirements:</strong> If you're crossing into Singapore — whether to catch a flight or to report to an employer — know your visa status. See <a href="/blog/singapore-work-pass-guide-malaysians">our Singapore work pass guide</a> for permit types and processes.</li>
+  <li><strong>Cash in MYR:</strong> Bring some Malaysian Ringgit. Money changers operate in the main JB malls (City Square, KSL, Paradigm) and rates are generally reasonable. ATMs are widely available but card acceptance varies at smaller shops and eateries.</li>
+  <li><strong>SIM card or eSIM:</strong> A local or regional SIM makes navigation, Grab bookings, and WhatsApp communication much easier. eSIMs can be set up before you arrive. Alternatively, grab a local SIM at any convenience store or mall.</li>
+  <li><strong>Luggage:</strong> The hostel is luggage-friendly. If you arrive with a large bag and need to go out before check-in time, ask about storage.</li>
+</ul>
+
+<h2>Waiting on a Singapore Work Permit?</h2>
+<p>We regularly host workers who are in a holding pattern — permit applications submitted, MOM processing ongoing, and a decision still pending. Waiting that out in JB is significantly cheaper than staying in Singapore on a tourist budget. RM30–35 per night for a clean capsule pod with free WiFi gives you a workable base: you can monitor email, respond to your employer or agent, and stay close enough to cross over quickly when called.</p>
+<p>The <a href="/blog/singapore-work-pass-guide-malaysians">Singapore work pass guide</a> covers the main permit types, processing timelines, and what workers typically need to prepare during the waiting period.</p>
+
+<h2>What Pelangi Offers Transit Guests</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Detail</th>
+      <th>Info</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Nightly rate (weekday)</td>
+      <td>RM30</td>
+    </tr>
+    <tr>
+      <td>Nightly rate (weekend)</td>
+      <td>RM35</td>
+    </tr>
+    <tr>
+      <td>Monthly stay</td>
+      <td>From RM594</td>
+    </tr>
+    <tr>
+      <td>Check-in / check-out</td>
+      <td>3:00 PM / 12:00 PM (24/7 self check-in available)</td>
+    </tr>
+    <tr>
+      <td>WiFi</td>
+      <td>Free, included</td>
+    </tr>
+    <tr>
+      <td>Distance to JB Sentral / CIQ</td>
+      <td>~10 min by Grab</td>
+    </tr>
+    <tr>
+      <td>Distance to Senai Airport</td>
+      <td>~30–40 min by Grab</td>
+    </tr>
+    <tr>
+      <td>WhatsApp</td>
+      <td>+60 12-708 8789</td>
+    </tr>
+  </tbody>
+</table>
+<p>If you have questions about the area, transport, or your stay, message us on WhatsApp before you arrive. We know JB well and can point you in the right direction.</p>
+<p>Ready to sort your accommodation? <a href="/book"><strong>Book your pod here</strong></a> or <a href="/rooms">view room details and photos</a> before you decide.</p>
+
+<h2>Sources</h2>
+<ul>
+  <li><a href="https://www.senaiairport.com/" target="_blank" rel="noopener">Senai International Airport — Official site (routes, terminal info)</a></li>
+  <li><a href="https://www.changiairport.com/" target="_blank" rel="noopener">Changi Airport Group — Official site (terminal guides, transport)</a></li>
+</ul>
+`,
+		},
 	}
 	for i := range raw {
 		raw[i].ReadingTimeMinutes = _blogComputeReadingTime(raw[i].Content)
 	}
 	return raw
 }()
+
+// _mytZone is the site's editorial timezone (Malaysia, UTC+8).
+var _mytZone = time.FixedZone("MYT", 8*3600)
+
+// TodayMYT returns today's date in Malaysia time as YYYY-MM-DD.
+func TodayMYT() string {
+	return time.Now().In(_mytZone).Format("2006-01-02")
+}
+
+// IsPublished reports whether the post's publish date has arrived (Malaysia
+// time). Scheduled publishing: a post whose Date is in the future is compiled
+// into the binary but hidden from every list, sitemap, feed, KB export, and
+// direct URL until that date — it goes live automatically, no redeploy needed.
+func (p BlogPost) IsPublished() bool {
+	return p.Date <= TodayMYT()
+}
+
+// PublishedPosts returns all posts whose publish date has arrived, in
+// insertion order.
+func PublishedPosts() []BlogPost {
+	today := TodayMYT()
+	out := make([]BlogPost, 0, len(BlogPosts))
+	for _, p := range BlogPosts {
+		if p.Date <= today {
+			out = append(out, p)
+		}
+	}
+	return out
+}
 
 // CategoryToSlug converts a category name to a URL slug.
 func CategoryToSlug(category string) string {
@@ -2619,7 +3301,7 @@ func CategoryToSlug(category string) string {
 
 // SlugToCategory returns the original category name for a given slug.
 func SlugToCategory(slug string) string {
-	for _, p := range BlogPosts {
+	for _, p := range PublishedPosts() {
 		if CategoryToSlug(p.Category) == slug {
 			return p.Category
 		}
@@ -2631,7 +3313,7 @@ func SlugToCategory(slug string) string {
 func GetUniqueCategories() []string {
 	seen := make(map[string]bool)
 	var cats []string
-	for _, p := range BlogPosts {
+	for _, p := range PublishedPosts() {
 		if !seen[p.Category] {
 			seen[p.Category] = true
 			cats = append(cats, p.Category)
@@ -2641,19 +3323,23 @@ func GetUniqueCategories() []string {
 }
 
 // GetPostBySlug returns a pointer to the post with the given slug, or nil.
+// Scheduled (future-dated) posts are invisible — nil until their date arrives.
 func GetPostBySlug(slug string) *BlogPost {
 	for i := range BlogPosts {
 		if BlogPosts[i].Slug == slug {
+			if !BlogPosts[i].IsPublished() {
+				return nil
+			}
 			return &BlogPosts[i]
 		}
 	}
 	return nil
 }
 
-// BlogNewestDate returns the most recent Date string across all posts.
+// BlogNewestDate returns the most recent Date string across published posts.
 func BlogNewestDate() string {
 	newest := ""
-	for _, p := range BlogPosts {
+	for _, p := range PublishedPosts() {
 		if p.Date > newest {
 			newest = p.Date
 		}
@@ -2661,10 +3347,10 @@ func BlogNewestDate() string {
 	return newest
 }
 
-// BlogListMarkdown returns a markdown bullet list of all posts with title and excerpt.
+// BlogListMarkdown returns a markdown bullet list of published posts with title and excerpt.
 func BlogListMarkdown() string {
 	var sb strings.Builder
-	for _, p := range BlogPosts {
+	for _, p := range PublishedPosts() {
 		sb.WriteString("- [")
 		sb.WriteString(p.Title)
 		sb.WriteString("](/blog/")

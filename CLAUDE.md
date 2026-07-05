@@ -89,6 +89,7 @@ go run .             # dev server :3000 (PORT env to override)
 - **PII hashing** — email/phone must be SHA-256 hashed before sending to Meta/TikTok APIs
 - **No hard deletes** — content is versioned in git
 - Sitemap `lastmod` is driven by the newest blog post date automatically
+- **Scheduled publishing** — give a `BlogPost` a future `Date:` and it stays hidden everywhere (blog list, direct URL 404, sitemap, feeds, KB/llms, related posts) until that date arrives in MYT; goes live automatically, no redeploy. Server gate: `PublishedPosts()` in `internal/data/blog.go`. Client search index: add the entry in `static/js/widgets_b.js` with `live: "YYYY-MM-DD"` — same date as the post
 
 ## When You Update Content
 

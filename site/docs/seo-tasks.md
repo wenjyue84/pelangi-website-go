@@ -3,6 +3,12 @@
 > Open action items. `/pelangi-website-brief` reads this daily and reports unchecked items.
 > Off-site details: `offsite-seo-actions.md`. Paste-ready browser prompts: `claude-for-chrome-prompts.md`.
 
+## ✅ Done (2026-07-05 session 2)
+
+- [x] Scheduled blog publishing feature: future-dated posts in blog.go stay hidden (lists, sitemap, feeds, KB, direct URL, search index) until their Date arrives in MYT — no redeploy needed
+- [x] Published RTS Link post (live) + 6 scheduled posts (Jul 8/11/14/17/20/23), all with reader-checkable Sources sections; IndexNow pinged
+- [x] Booking flow tested end-to-end; 3 issues found (10–12 Jul "no beds" vs ARI mismatch, flat pricing ignoring RM30/35 weekday/weekend split, page title "PMS") — sent to Alston with screenshots for counter-check
+
 ## ✅ Done (2026-07-05 session)
 
 - [x] Cloudflare AI-crawler block removed (managed robots.txt off; self-heal via CF_BM_TOKEN wired into daily brief)
@@ -36,7 +42,7 @@
 
 ## 📋 Backlog (code/content, for future sessions)
 
-- [ ] Add width/height (or aspect-ratio) to hero + content images to kill CLS — audit L1
+- [x] Add width/height (or aspect-ratio) to hero + content images to kill CLS — audit L1 (2026-07-05: hero got explicit width/height; blog featured images + cards already CLS-safe via aspect-video / fixed-height wrappers)
 - [ ] Reddit presence: genuinely answer JB-stay questions on r/askSingapore, r/JohorBahru, r/solotravel — audit H1
 - [ ] Backlink outreach #1: one JB travel blogger, free night for honest review
 - [ ] Apply for Visit Malaysia 2026 accommodation directory listing
