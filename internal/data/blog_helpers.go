@@ -12,7 +12,7 @@ import (
 // GetPostsByCategory returns all posts in the given category.
 func GetPostsByCategory(category string) []BlogPost {
 	var out []BlogPost
-	for _, p := range BlogPosts {
+	for _, p := range PublishedPosts() {
 		if p.Category == category {
 			out = append(out, p)
 		}
@@ -23,7 +23,7 @@ func GetPostsByCategory(category string) []BlogPost {
 // GetPostsByTag returns all posts carrying the given tag.
 func GetPostsByTag(tag string) []BlogPost {
 	var out []BlogPost
-	for _, p := range BlogPosts {
+	for _, p := range PublishedPosts() {
 		for _, t := range p.Tags {
 			if t == tag {
 				out = append(out, p)
@@ -38,7 +38,7 @@ func GetPostsByTag(tag string) []BlogPost {
 func GetAllTags() []string {
 	seen := map[string]bool{}
 	var out []string
-	for _, p := range BlogPosts {
+	for _, p := range PublishedPosts() {
 		for _, t := range p.Tags {
 			if !seen[t] {
 				seen[t] = true
@@ -57,7 +57,7 @@ func GetRelatedPosts(slug string, n int) []BlogPost {
 		return nil
 	}
 	var same, other []BlogPost
-	for _, p := range BlogPosts {
+	for _, p := range PublishedPosts() {
 		if p.Slug == slug {
 			continue
 		}
@@ -74,10 +74,9 @@ func GetRelatedPosts(slug string, n int) []BlogPost {
 	return related
 }
 
-// PostsNewestFirst returns a copy of BlogPosts sorted by date descending.
+// PostsNewestFirst returns published posts sorted by date descending.
 func PostsNewestFirst() []BlogPost {
-	out := make([]BlogPost, len(BlogPosts))
-	copy(out, BlogPosts)
+	out := PublishedPosts()
 	sort.SliceStable(out, func(i, j int) bool {
 		return out[i].Date > out[j].Date // ISO dates sort lexicographically
 	})
@@ -88,7 +87,7 @@ func PostsNewestFirst() []BlogPost {
 // ported from buildBlogSection() in site/src/app/api/kb/route.ts.
 func KbBlogSection() string {
 	lines := []string{"# Blog & Travel Guides\n"}
-	for _, p := range BlogPosts {
+	for _, p := range PublishedPosts() {
 		lines = append(lines, "## "+p.Title)
 		lines = append(lines, "*"+p.Date+" | "+p.Category+" | "+p.ReadTime+"*")
 		lines = append(lines, p.Excerpt)

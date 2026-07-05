@@ -102,7 +102,8 @@ func (h *Handler) sitemap(w http.ResponseWriter, r *http.Request) {
 	var b strings.Builder
 	b.WriteString(`<?xml version="1.0" encoding="UTF-8"?>` + "\n")
 	b.WriteString(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">` + "\n")
-	entries := make([]sitemapEntry, 0, len(staticSitemap)+len(data.BlogPosts)+8)
+	blogPosts := data.PublishedPosts()
+	entries := make([]sitemapEntry, 0, len(staticSitemap)+len(blogPosts)+8)
 	entries = append(entries, staticSitemap...)
 
 	// Blog category entries (ported from sitemap.ts categoryEntries).
@@ -115,7 +116,7 @@ func (h *Handler) sitemap(w http.ResponseWriter, r *http.Request) {
 		})
 	}
 	// Blog post entries (ported from sitemap.ts blogPostEntries).
-	for _, p := range data.BlogPosts {
+	for _, p := range blogPosts {
 		lm := p.LastModified
 		if lm == "" {
 			lm = p.Date
@@ -198,9 +199,10 @@ var staticImageData = []pageImages{
 
 // imageSitemap serves /image-sitemap.xml.
 func (h *Handler) imageSitemap(w http.ResponseWriter, r *http.Request) {
-	pages := make([]pageImages, 0, len(staticImageData)+len(data.BlogPosts))
+	blogPosts := data.PublishedPosts()
+	pages := make([]pageImages, 0, len(staticImageData)+len(blogPosts))
 	pages = append(pages, staticImageData...)
-	for _, p := range data.BlogPosts {
+	for _, p := range blogPosts {
 		img := p.FeaturedImage
 		if !strings.HasPrefix(img, "http") {
 			img = baseURL + img
