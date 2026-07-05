@@ -3070,7 +3070,7 @@ var BlogPosts = func() []BlogPost {
 			Slug:          "mystarjob-fair-jb-july-2026-weekend-plan",
 			ImageAlt:      "Job fair exhibition hall at Mid Valley Southkey Johor Bahru with attendees in business attire visiting employer booths",
 			Title:         "myStarjob Fair JB July 2026: A Job-Hunter's Weekend Plan on a Budget",
-			Excerpt:       "The myStarjob Fair returns to Mid Valley Southkey on 25–26 July 2026. Here is how to plan a productive two-day job-hunting weekend in JB — what to bring, how to prepare, and how to keep your total spend under RM120.",
+			Excerpt:       "The myStarjob Fair returns to Mid Valley Southkey on 25–26 July 2026. Here is how to plan a productive two-day job-hunting weekend in JB — what to bring, how to prepare, and how to keep your total spend around RM125.",
 			Date:          "2026-07-20",
 			Category:      "Career & Work",
 			Author:        "Jay Lew",
@@ -3106,7 +3106,7 @@ var BlogPosts = func() []BlogPost {
 <h2>Getting to Mid Valley Southkey from Taman Pelangi</h2>
 <p>Mid Valley Southkey is approximately a 10-minute Grab ride from Taman Pelangi, where Pelangi Capsule Hostel sits. Budget RM8–12 each way depending on traffic and time of day. Saturday morning Grab rides in JB are generally reliable — leave by 10:30 AM to arrive with time to get your bearings before the hall fills up.</p>
 
-<h2>The Budget Breakdown: Under RM120 for the Whole Weekend</h2>
+<h2>The Budget Breakdown: Around RM125 for the Whole Weekend</h2>
 <p>Here is a realistic two-night budget for the fair weekend staying at Pelangi Capsule Hostel:</p>
 
 <table>
@@ -3118,8 +3118,8 @@ var BlogPosts = func() []BlogPost {
   </thead>
   <tbody>
     <tr>
-      <td>Friday night pod (weekday rate)</td>
-      <td>RM30</td>
+      <td>Friday night pod (weekend rate)</td>
+      <td>RM35</td>
     </tr>
     <tr>
       <td>Saturday night pod (weekend rate)</td>
@@ -3135,12 +3135,12 @@ var BlogPosts = func() []BlogPost {
     </tr>
     <tr>
       <td><strong>Total</strong></td>
-      <td><strong>~RM110–120</strong></td>
+      <td><strong>~RM115–125</strong></td>
     </tr>
   </tbody>
 </table>
 
-<p>That covers accommodation, transport, and food for the full fair weekend. If you print CVs at a local print shop the evening before, add roughly RM5–8 for 15 copies in colour. Still well under RM130.</p>
+<p>That covers accommodation, transport, and food for the full fair weekend. If you print CVs at a local print shop the evening before, add roughly RM5–8 for 15 copies in colour. Still around RM130 all-in.</p>
 <p>The Taman Pelangi area has a strong selection of affordable hawker food within walking distance — breakfast and dinner sorted without effort. See our <a href="/blog/jb-hawker-centres-street-food-must-visit">JB hawker centres guide</a> for options nearby.</p>
 
 <h2>Using Friday Night Productively</h2>

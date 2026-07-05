@@ -8,7 +8,8 @@ type RoomType struct {
 	ID           string
 	Name         string
 	Description  string
-	NightlyRate  int // MYR
+	NightlyRate  int // MYR, weekday rate (Sun–Thu nights)
+	WeekendRate  int // MYR, Friday/Saturday nights; 0 = same as NightlyRate
 	MonthlyRate  int // MYR, 0 if not applicable
 	Currency     string
 	MaxOccupancy int
@@ -23,7 +24,8 @@ var RoomTypes = []RoomType{
 		Name: "Lower Deck Pod",
 		Description: "Ground-level capsule pod — easy access, no ladder required. " +
 			"Japanese-style with LED reading light, USB charging port, and personal locker.",
-		NightlyRate:  30, // weekday "from" rate; RM35 on weekends (price cut 2026-07-03, was RM45)
+		NightlyRate:  30, // weekday rate (price cut 2026-07-03, was RM45)
+		WeekendRate:  35, // Fri/Sat nights
 		MonthlyRate:  594,
 		Currency:     "MYR",
 		MaxOccupancy: 1,
@@ -41,7 +43,8 @@ var RoomTypes = []RoomType{
 		Name: "Upper Deck Pod",
 		Description: "Elevated capsule pod on the upper bunk — more privacy and less foot traffic. " +
 			"Same Japanese-style comfort with LED reading light, USB charging port, and personal locker.",
-		NightlyRate:  30, // weekday "from" rate; RM35 on weekends (price cut 2026-07-03)
+		NightlyRate:  30, // weekday rate (price cut 2026-07-03)
+		WeekendRate:  35, // Fri/Sat nights
 		Currency:     "MYR",
 		MaxOccupancy: 1,
 		TotalUnits:   6,
