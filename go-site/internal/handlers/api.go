@@ -10,11 +10,60 @@ import (
 	"pelangi-website/internal/data"
 )
 
-// ariRate is the rate block in the ARI response.
+// ariRate is the rate block in the ARI response. Nightly is the weekday
+// ("from") rate; Total is the exact weekend-aware sum for the stay, so on
+// mixed stays Nightly × nights ≠ Total — the breakdown fields explain why.
 type ariRate struct {
-	Nightly  int    `json:"nightly"`
-	Total    int    `json:"total"`
-	Currency string `json:"currency"`
+	Nightly       int    `json:"nightly"`
+	Total         int    `json:"total"`
+	Currency      string `json:"currency"`
+	WeekdayRate   int    `json:"weekday_rate"`
+	WeekendRate   int    `json:"weekend_rate"`
+	WeekdayNights int    `json:"weekday_nights"`
+	WeekendNights int    `json:"weekend_nights"`
+}
+
+// countStayNights splits a stay into weekday and weekend nights. Weekend
+// nights are Friday and Saturday nights (RM30 weekday / RM35 weekend pricing,
+// effective 2026-07-03).
+func countStayNights(ci, co time.Time) (weekday, weekend int) {
+	for d := ci; d.Before(co); d = d.AddDate(0, 0, 1) {
+		switch d.Weekday() {
+		case time.Friday, time.Saturday:
+			weekend++
+		default:
+			weekday++
+		}
+	}
+	return
+}
+
+// pmsAvailableBeds asks the local PMS gateway (source of truth for real
+// occupancy) how many beds are free for the stay. Returns ok=false when the
+// gateway is unreachable or the response is malformed.
+func pmsAvailableBeds(checkin, checkout string) (int, bool) {
+	base := os.Getenv("PMS2_API_URL")
+	if base == "" {
+		return 0, false
+	}
+	client := &http.Client{Timeout: 3 * time.Second}
+	resp, err := client.Get(base + "/api/public/availability?checkIn=" + checkin + "&checkOut=" + checkout)
+	if err != nil {
+		return 0, false
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != http.StatusOK {
+		return 0, false
+	}
+	var body struct {
+		Data struct {
+			AvailableCount *int `json:"availableCount"`
+		} `json:"data"`
+	}
+	if err := json.NewDecoder(resp.Body).Decode(&body); err != nil || body.Data.AvailableCount == nil {
+		return 0, false
+	}
+	return *body.Data.AvailableCount, true
 }
 
 // ariRoom is one room entry in the ARI response.
@@ -87,6 +136,18 @@ func (h *Handler) ari(w http.ResponseWriter, r *http.Request) {
 	}
 
 	avail := beds24.CachedAvailability(checkin, checkout)
+
+	// When the channel manager has no data, fall back to the PMS gateway's
+	// real-occupancy count instead of pretending the full inventory is free.
+	// The PMS returns one pooled bed count; allocate it lower-deck first.
+	pmsAvail, pmsOK := -1, false
+	if avail == nil {
+		pmsAvail, pmsOK = pmsAvailableBeds(checkin, checkout)
+	}
+	pmsRemaining := pmsAvail
+
+	weekdayNights, weekendNights := countStayNights(ci, co)
+
 	rooms := make([]ariRoom, 0, len(data.RoomTypes))
 	for _, room := range data.RoomTypes {
 		available := room.TotalUnits
@@ -98,8 +159,19 @@ func (h *Handler) ari(w http.ResponseWriter, r *http.Request) {
 				break
 			}
 		}
+		if avail == nil && pmsOK {
+			available = pmsRemaining
+			if available > room.TotalUnits {
+				available = room.TotalUnits
+			}
+			pmsRemaining -= available
+		}
 		if available < 0 {
 			available = 0
+		}
+		weekendRate := room.WeekendRate
+		if weekendRate == 0 {
+			weekendRate = room.NightlyRate
 		}
 		rooms = append(rooms, ariRoom{
 			RoomID:         room.ID,
@@ -109,9 +181,13 @@ func (h *Handler) ari(w http.ResponseWriter, r *http.Request) {
 			TotalInventory: total,
 			AvailableUnits: available,
 			Rate: ariRate{
-				Nightly:  room.NightlyRate,
-				Total:    room.NightlyRate * nights,
-				Currency: currency,
+				Nightly:       room.NightlyRate,
+				Total:         room.NightlyRate*weekdayNights + weekendRate*weekendNights,
+				Currency:      currency,
+				WeekdayRate:   room.NightlyRate,
+				WeekendRate:   weekendRate,
+				WeekdayNights: weekdayNights,
+				WeekendNights: weekendNights,
 			},
 			Amenities: room.Amenities,
 		})
