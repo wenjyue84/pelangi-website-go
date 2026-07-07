@@ -30,14 +30,14 @@
 
 ## 🧑 Jay — browser tasks (paste-ready prompts in `claude-for-chrome-prompts.md`)
 
-- [ ] Prompt 1: GBP — get review short-link + publish first weekly post
+- [x] Prompt 1: GBP — review short-link obtained (`https://g.page/r/CV-GmpNH-zs1EBE/review`) + first weekly post published Mon 2026-07-06 ("Pods from RM30/night on weekdays…") — evidence: `_evidence/_gbp_review.png`, `_evidence/_gbp_post2.png` (2026-07-08)
 - [ ] Prompt 2: TripAdvisor — finish claim (legal cert + ID were pending per 2026-06-26 memory), amenities, price range, photos
-- [ ] Prompt 3: Bing Webmaster Tools — import from GSC (IndexNow already live)
-- [ ] Prompt 4: Bing Places — import from GBP
-- [ ] Prompt 5: Wikidata Q140363023 — add TripAdvisor/Booking/Hostelworld external IDs
-- [ ] Save the GBP review-ask script as a WhatsApp quick reply (script in offsite-seo-actions.md §1)
-- [ ] Confirm homepage testimonials are real guests (Sarah Jenkins / Hiroki Tanaka / Alex & Jordan) — if not verifiable, replace with quotes from actual Google/Booking reviews (audit H4 remainder)
-- [ ] STAAH: verify RM30/35 pushed to Booking.com + capsule inventory open (price-watch 4/7 finding)
+- [x] Prompt 3: Bing Webmaster Tools — DONE per 2026-07-06 seo-verify session (site registered, logged in, IndexNow receiving RTS URL) — see log.md 2026-07-06
+- [x] Prompt 4: Bing Places — import from GBP done, verification queued (ETA 7–12d) — evidence: `_evidence/_bing_status.png`. ⚠️ Draft wrongly "Marked as closed" on a locked field; Jay filing Bing Places support ticket (bizid d3a1e76f-3f5d-4649-a37a-38d0094046da, see log.md 2026-07-06)
+- [x] Prompt 5: Wikidata Q140363023 — added P3134 Tripadvisor ID (d27125478 slug), P3607 Booking.com (`my/pelangi-hostel-capsule`), P10442 Hostelworld (`317698`), P6008 Agoda (`pelangi-hostel-capsule/hotel/johor-bahru-my`) via API 2026-07-08, verified live (revid 2514869218)
+- [ ] Save the GBP review-ask script as a WhatsApp quick reply — script is now paste-ready with the real link in offsite-seo-actions.md §1 (needs Jay's phone; Periskope API has no quick-reply endpoint)
+- [x] Homepage testimonials: Sarah Jenkins / Hiroki Tanaka / Alex & Jordan NOT found among the 85 real Google reviews — replaced cards + Review JSON-LD with 3 verbatim 5★ Google reviews (Claire Tyrrell 2024, Surya Tamang 2024, Hamza Es-skali 2023), deployed + verified live 2026-07-08 (audit H4 remainder)
+- [ ] STAAH: RM30/35 push to Booking.com **CONFIRMED NOT DONE** (checked 2026-07-08, weekday 08→09 AND weekend 10→11): Booking.com offers ONLY "Single Room" at MYR 45 — no capsule pods listed at all, old RM45 rate live. → Alston must open capsule inventory + push RM30/35 in STAAH
 - [ ] Ask Alston/Maya: Sleepy Bear's monthly worker rate (competitive intel)
 
 ## 📋 Backlog (code/content, for future sessions)
@@ -47,10 +47,10 @@
 - [ ] Backlink outreach #1: one JB travel blogger, free night for honest review
 - [ ] Apply for Visit Malaysia 2026 accommodation directory listing
 - [ ] 60-second pod walkthrough video → YouTube channel — audit L5
-- [ ] NAP consistency sweep (checklist in offsite-seo-actions.md §4)
+- [x] NAP consistency sweep 2026-07-08 — GBP/TripAdvisor/Booking/Agoda/Hostelworld all ✅ (results in offsite-seo-actions.md §4); Facebook About + Instagram bio behind login walls → Jay to eyeball on phone; Waze/Apple Maps/Foursquare unchecked (need accounts)
 
 ## 🔁 Recurring
 
-- [ ] Weekly GBP post (Mondays)
+- [ ] Weekly GBP post (Mondays) — ✅ week of 2026-07-06 done (`_evidence/_gbp_post2.png`); next due Mon 2026-07-13
 - [ ] Monthly: `/geo-compare` against GEO-AUDIT-2026-07.md baseline (expect Technical + Schema + Citability to jump from tonight's fixes)
 - [ ] Quarterly: NAP consistency re-check

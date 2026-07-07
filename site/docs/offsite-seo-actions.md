@@ -5,7 +5,7 @@
 
 ## ✅ Already done
 
-- **Wikidata entity** — Q140363023 live, linked from site JSON-LD `sameAs`. Nothing further.
+- **Wikidata entity** — Q140363023 live, linked from site JSON-LD `sameAs`. 2026-07-08: added external IDs P3134 (Tripadvisor), P3607 (Booking.com `my/pelangi-hostel-capsule`), P10442 (Hostelworld `317698`), P6008 (Agoda). Nothing further.
 - **Google Business Profile** — website URL + phone corrected (canonical 012-708 8789).
 - **TripAdvisor** — listing claimed (location ID 27125478).
 
@@ -15,8 +15,8 @@
   night-market food / guest tip / price ("pods from RM30/night on weekdays").
 - **Review-ask script** (send to happy guests at checkout via WhatsApp):
   > "Glad you enjoyed your stay! 🌈 If you have 30 seconds, a Google review helps small
-  > hostels like us a lot: https://g.page/r/<GBP-review-link> — thank you!"
-  (Get the exact short link from GBP dashboard → "Ask for reviews".)
+  > hostels like us a lot: https://g.page/r/CV-GmpNH-zs1EBE/review — thank you!"
+  (Link confirmed from GBP dashboard 2026-07-07 — paste-ready.)
 - **Reply to every review** within a week — mention "capsule hostel Johor Bahru" naturally.
 - **Q&A:** seed 3 questions yourself (check-in time, price, distance to CIQ) and answer them.
 
@@ -41,16 +41,16 @@
 
 ## 4. NAP consistency checklist (do once, then quarterly)
 
-Check name/address/phone EXACTLY matches canonical on:
-- [ ] Google Business Profile
-- [ ] TripAdvisor
-- [ ] Booking.com extranet
-- [ ] Agoda
-- [ ] Hostelworld
-- [ ] Facebook page ("About" section)
-- [ ] Instagram bio (linktree/website field)
-- [ ] Waze / Apple Maps (report correction if wrong)
-- [ ] Foursquare/Swarm
+Check name/address/phone EXACTLY matches canonical on (last sweep: **2026-07-08**):
+- [x] Google Business Profile — ✅ name, phone 012-708 8789, "26a, Taman Pelangi, 80400 Johor Bahru" (3.9★ / 85 reviews)
+- [x] TripAdvisor — ✅ name, "26a Jalan Perang, Johor Bahru 80400 Malaysia" (phone not displayed publicly)
+- [x] Booking.com — ✅ name, "26a Jalan Perang, 80400 Johor Bahru, Malaysia"
+- [x] Agoda — ✅ name, "26a Jalan Perang, Johor Bahru City Center, 80400" ("City Center" is Agoda's own zone label, fine)
+- [x] Hostelworld — ✅ name, "26a Jalan Perang Taman Pelangi, Johor Bahru" (HW shows no postcode/phone fields)
+- [ ] Facebook page ("About" section) — page live, name ✅, About behind login wall → Jay: check address/phone on phone
+- [ ] Instagram bio (linktree/website field) — login wall → Jay: check bio has pelangicapsulehostel.com
+- [ ] Waze / Apple Maps (report correction if wrong) — needs Jay's accounts
+- [ ] Foursquare/Swarm — needs login; likely no listing (low priority)
 
 Any mismatch (old phone, "Pelangi Hostel Capsule" name variants) weakens entity
 recognition for AI search — fix to canonical everywhere.
