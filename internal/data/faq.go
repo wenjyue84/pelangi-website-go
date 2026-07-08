@@ -58,7 +58,11 @@ var FaqItems = []FaqItem{
 	},
 	{
 		Question: "Can I stay monthly at Pelangi Capsule Hostel?",
-		Answer:   "Yes, Pelangi Capsule Hostel offers monthly rates from RM594 per month, making it one of the most affordable long-stay accommodation options in Johor Bahru. Monthly stays are popular with remote workers, digital nomads, and professionals on work assignments in JB. The rate includes all amenities: WiFi, air-conditioning, hot showers, kitchen access, and laundry facilities. We also offer an in-house laundry service at RM5/load for guests — cheaper than the outside dobi.",
+		Answer:   "Yes, Pelangi Capsule Hostel offers monthly rates from RM594 per month, making it one of the most affordable long-stay accommodation options in Johor Bahru. Monthly stays are popular with remote workers, digital nomads, and professionals on work assignments in JB. The rate includes all amenities: WiFi, air-conditioning, hot showers, kitchen access, and laundry facilities. We also offer an in-house laundry service at RM5/load for guests — cheaper than the outside dobi. If you prefer your own room, we also rent private rooms nearby from RM500 per month (RM250 deposit) — see the next question.",
+	},
+	{
+		Question: "Do you have private rooms for monthly rent in Johor Bahru?",
+		Answer:   "Yes. Alongside our capsule pods, the Pelangi Capsule Hostel team rents private rooms on a monthly basis from RM500 per month with a flat RM250 deposit — no two-months-plus-one-month-advance like typical JB room rentals. The rooms are located above the 7-Eleven in Taman Pelangi, a short walk from the hostel, with the neighbourhood's eateries and the Tuesday night market at your doorstep and the Singapore CIQ checkpoint about 15 minutes away. Availability changes month to month — WhatsApp +60 12-708 8789 (Jay) or +60 16-762 0815 (Alston) to check what is open and arrange a viewing.",
 	},
 	{
 		Question: "Is the hostel quiet enough to sleep well?",

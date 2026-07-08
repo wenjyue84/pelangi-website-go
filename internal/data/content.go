@@ -31,6 +31,7 @@ Pelangi Capsule Hostel offers Japanese-inspired capsule pod accommodation for bu
 - **Capsule Pods**: Private sleeping pods with personal climate control, adjustable LED lighting, USB & power outlets, privacy sliding door, premium mattress, and personal locker.
 - **Daily Rate**: From RM30/night on weekdays, RM35/night on weekends (+ RM10/room/night Tourism Tax)
 - **Monthly Rate**: RM594/month
+- **Private Rooms (monthly rental)**: From RM500/month + RM250 flat deposit — private lockable rooms above the 7-Eleven in Taman Pelangi, a short walk from the hostel, managed by the same team. Month-to-month terms, no long tenancy. WhatsApp +60 12-708 8789 to check availability. Details: https://pelangicapsulehostel.com/blog/room-for-rent-taman-pelangi-jb-rm500-month
 - **Check-in**: 3:00 PM onwards (self check-in available)
 - **Check-out**: Before 12:00 PM
 
@@ -99,6 +100,7 @@ Book directly on our website for the best rates with no booking fees:
 - **胶囊床位**：私人睡眠舱，配备独立空调、阅读灯、USB充电口和个人储物柜
 - **每晚价格**：RM30/晚起（平日；周末RM35）
 - **月租价格**：RM594/月
+- **月租私人房间**：RM500/月起，押金RM250（一次性），位于Taman Pelangi 7-Eleven楼上，步行可达旅馆，由同一团队管理。按月续租，无需长期租约。WhatsApp +60 12-708 8789 查询空房
 - **入住时间**：下午3时起（支持自助入住）
 - **退房时间**：中午12时前
 
@@ -170,6 +172,15 @@ Pelangi Capsule Hostel is a Japanese-inspired capsule accommodation in the heart
   - Personal locker
   - Fresh towel provided
 
+### Private Room (Monthly Rental)
+- **Price**: From RM500/month
+- **Deposit**: RM250 flat (one-time) — not the typical JB two-months-plus-one-advance
+- **Minimum stay**: 1 month, renews month to month
+- **Location**: Above the 7-Eleven in Taman Pelangi, 80400 Johor Bahru — a short walk from the hostel; managed by the Pelangi Capsule Hostel team
+- **Suits**: JB-based workers, Singapore commuters, job-seekers, and anyone wanting a private lockable room without a 12-month tenancy
+- **Enquiries**: WhatsApp +60 12-708 8789 (Jay) or +60 16-762 0815 (Alston) — availability changes month to month; viewing by appointment
+- **Details**: https://pelangicapsulehostel.com/blog/room-for-rent-taman-pelangi-jb-rm500-month
+
 ## Amenities
 
 - Free high-speed WiFi throughout the hostel (sleeping pods + common areas)
@@ -238,6 +249,9 @@ Pelangi Capsule Hostel is in Taman Pelangi, one of Johor Bahru's most vibrant ne
 
 **Can I stay monthly at Pelangi Capsule Hostel?**
 Yes, Pelangi Capsule Hostel offers monthly rates from RM594 per month, making it one of the most affordable long-stay accommodation options in Johor Bahru. Monthly stays are popular with remote workers, digital nomads, and professionals on work assignments in JB. The rate includes all amenities: WiFi, air-conditioning, hot showers, kitchen access, and laundry facilities.
+
+**Do you have private rooms for monthly rent in Johor Bahru?**
+Yes. Alongside the capsule pods, the Pelangi Capsule Hostel team rents private rooms on a monthly basis from RM500 per month with a flat RM250 deposit — no two-months-plus-one-month-advance like typical JB room rentals. The rooms are located above the 7-Eleven in Taman Pelangi, a short walk from the hostel. Availability changes month to month — WhatsApp +60 12-708 8789 (Jay) or +60 16-762 0815 (Alston) to check what is open and arrange a viewing.
 
 **Is the hostel quiet enough to sleep well?**
 Pelangi Capsule Hostel enforces a strict quiet policy in all sleeping pod areas. Each capsule is enclosed with a sliding door, providing sound insulation from other guests. For working, socialising, or making calls, there is a separate common lounge area so that the sleeping zone remains peaceful. Earplugs are also available at the front desk if you are a light sleeper.
