@@ -3255,6 +3255,78 @@ var BlogPosts = func() []BlogPost {
 </ul>
 `,
 		},
+		// 44
+		{
+			Slug:          "room-for-rent-taman-pelangi-jb-rm500-month",
+			ImageAlt:      "Private room for monthly rent above the 7-Eleven in Taman Pelangi, Johor Bahru — from RM500 per month",
+			Title:         "Room for Rent in Taman Pelangi, Johor Bahru: Private Rooms from RM500/Month",
+			Excerpt:       "Looking for a bilik sewa in central JB without the usual two-plus-one deposit? We rent private rooms above the 7-Eleven in Taman Pelangi from RM500/month with a flat RM250 deposit — managed by the Pelangi Capsule Hostel team.",
+			Date:          "2026-07-08",
+			Category:      "Accommodation",
+			Author:        "Jay Lew",
+			ReadTime:      "6 min read",
+			Tags:          []string{"room-for-rent", "bilik-sewa", "taman-pelangi", "johor-bahru", "monthly-rental", "long-stay", "budget-accommodation"},
+			FeaturedImage: "/images/blog/room-for-rent-taman-pelangi-jb-rm500-month.jpg",
+			Content: `
+<h2>The Short Version</h2>
+<p>Alongside our capsule pods, we rent out <strong>private rooms on a monthly basis from RM500/month</strong>, located above the 7-Eleven in Taman Pelangi — a short walk from Pelangi Capsule Hostel and managed by the same team. The deposit is a flat <strong>RM250</strong>, not the two-months-plus-one-month advance that most JB room rentals ask for. If you want your own lockable room in one of JB's most convenient neighbourhoods without signing a 12-month tenancy, this is that option.</p>
+
+<h2>What You Get for RM500/Month</h2>
+<p>This is a straightforward private room: your own door, your own space, month-to-month terms. It suits people who have outgrown a dorm bed but do not want the overheads of renting a whole unit.</p>
+<table>
+  <thead>
+    <tr><th>Item</th><th>Detail</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Monthly rent</td><td>From RM500/month</td></tr>
+    <tr><td>Deposit</td><td>RM250 (flat, one-time)</td></tr>
+    <tr><td>Minimum stay</td><td>1 month, renew month to month</td></tr>
+    <tr><td>Location</td><td>Above the 7-Eleven, Taman Pelangi, 80400 Johor Bahru</td></tr>
+    <tr><td>Managed by</td><td>Pelangi Capsule Hostel team (same people, same WhatsApp)</td></tr>
+  </tbody>
+</table>
+<p>Room availability changes month to month — WhatsApp us at <strong>+60 12-708 8789</strong> to ask what is open, arrange a viewing, and confirm the exact rate for the room you want.</p>
+
+<h2>Why the Deposit Structure Matters</h2>
+<p>Most room rentals in Johor Bahru — on Facebook groups, iBilik, or through agents — ask for <em>two months' deposit plus one month advance</em> before you get a key. On a RM600 room that is RM1,800 upfront. Our structure is one month's rent plus RM250 deposit: <strong>RM750 total to move in</strong> on a RM500 room. For workers starting a new job, people between contracts, or anyone whose plans might change in three months, that difference is real money kept in your pocket.</p>
+
+<h2>The Location, Honestly</h2>
+<p>Taman Pelangi is one of the most walkable neighbourhoods in central JB, and this room puts a convenience store literally downstairs.</p>
+<ul>
+  <li><strong>7-Eleven downstairs</strong> — top-ups, snacks, essentials, 24 hours.</li>
+  <li><strong>Taman Pelangi Night Market</strong> — every Tuesday from 4:30 PM, 500+ metres of food stalls nearby.</li>
+  <li><strong>Hawker food from RM5–8</strong> — dozens of kopitiam and restaurants within walking distance, including the heritage Restoran Hua Mui area a short ride away.</li>
+  <li><strong>15 minutes to CIQ</strong> — if you commute to Singapore, the Causeway checkpoint is a quick Grab or bus ride. See our <a href="/getting-here">getting-here guide</a> for routes.</li>
+  <li><strong>KOMTAR JBCC and city centre</strong> — a short ride for malls, banks, and government offices.</li>
+</ul>
+
+<h2>Private Room vs Monthly Capsule: Which One?</h2>
+<p>We offer both, so here is the honest comparison rather than a sales pitch:</p>
+<table>
+  <thead>
+    <tr><th></th><th>Private Room</th><th>Monthly Capsule Pod</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Price</td><td>From RM500/month + RM250 deposit</td><td>From RM594/month, no deposit contract</td></tr>
+    <tr><td>Space</td><td>Full room, your own door</td><td>Enclosed pod with sliding door</td></tr>
+    <tr><td>Best for</td><td>Longer stints, more possessions — anyone who needs room to live</td><td>Solo stays, lighter packers, hostel amenities on tap</td></tr>
+    <tr><td>Amenities</td><td>7-Eleven downstairs, neighbourhood on foot</td><td>Hostel WiFi, kitchen, lounge, laundry at RM5/load</td></tr>
+  </tbody>
+</table>
+<p>If you are weighing the capsule option, the <a href="/rooms">rooms page</a> has full pod details, and nightly stays run RM30 on weekdays / RM35 on weekends if you want to trial the area before committing to a month.</p>
+
+<h2>Who This Suits</h2>
+<ul>
+  <li><strong>Workers based in JB</strong> — factory, retail, F&amp;B staff who want their own room near the city at a flat, predictable cost.</li>
+  <li><strong>Singapore commuters</strong> — a JB base at a fraction of Singapore rent; cross the Causeway daily and bank the difference.</li>
+  <li><strong>Job-seekers and new starters</strong> — low move-in cost while you wait for the first payslip.</li>
+  <li><strong>Anyone between houses</strong> — month-to-month terms mean no penalty when your situation changes.</li>
+</ul>
+
+<h2>How to Enquire</h2>
+<p>No forms, no agents, no agent fees. WhatsApp <strong>+60 12-708 8789</strong> (Jay) or <strong>+60 16-762 0815</strong> (Alston) and ask about the monthly rooms above the 7-Eleven. We will tell you what is available, the exact price for that room, and set up a viewing. You can also reach us through the <a href="/contact">contact page</a>. If a room is not free, we will offer you a monthly capsule pod or put you on the list for the next opening — no pressure either way.</p>
+`,
+		},
 	}
 	for i := range raw {
 		raw[i].ReadingTimeMinutes = _blogComputeReadingTime(raw[i].Content)

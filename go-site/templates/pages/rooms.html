@@ -73,6 +73,50 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": ["Accommodation", "Product"],
+  "name": "Private Room — Monthly Rental (Taman Pelangi)",
+  "description": "Private lockable room for monthly rent above the 7-Eleven in Taman Pelangi, Johor Bahru — a short walk from Pelangi Capsule Hostel and managed by the same team. Flat RM250 deposit, month-to-month terms.",
+  "url": "https://pelangicapsulehostel.com/blog/room-for-rent-taman-pelangi-jb-rm500-month",
+  "containedInPlace": {
+    "@type": "Place",
+    "name": "Taman Pelangi, Johor Bahru",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Johor Bahru",
+      "addressRegion": "Johor",
+      "postalCode": "80400",
+      "addressCountry": "MY"
+    }
+  },
+  "occupancy": {
+    "@type": "QuantitativeValue",
+    "minValue": 1,
+    "unitText": "persons"
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "price": "500",
+      "priceCurrency": "MYR",
+      "availability": "https://schema.org/InStock",
+      "seller": {"@type":"Hostel","@id":"https://pelangicapsulehostel.com/#hostel","name":"Pelangi Capsule Hostel"},
+      "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut",
+      "description": "Monthly rent from RM500 with flat RM250 deposit",
+      "unitCode": "MON",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "500",
+        "priceCurrency": "MYR",
+        "unitText": "month",
+        "referenceQuantity": {"@type":"QuantitativeValue","value":1,"unitCode":"MON"}
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
     {"@type":"ListItem","position":1,"name":"Home","item":"https://pelangicapsulehostel.com"},
@@ -366,6 +410,41 @@
                 >
                   Enquire via WhatsApp
                 </a>
+              </div>
+            </div>
+
+            <!-- Private Room — monthly rental above the 7-Eleven, Taman Pelangi -->
+            <div class="lg:col-span-5">
+              <div class="bg-stone-50 dark:bg-stone-800 rounded-3xl p-8 lg:p-10">
+                <div class="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
+                  <div class="lg:col-span-3">
+                    <div class="text-xs tracking-widest uppercase text-stone-500 dark:text-stone-400 mb-2">Prefer your own room?</div>
+                    <h3 class="font-display text-2xl font-medium text-stone-900 dark:text-stone-100 mb-4">Private Rooms from RM500/month</h3>
+                    <p class="text-stone-700 dark:text-stone-300 mb-4">
+                      We also rent private lockable rooms above the 7-Eleven in Taman Pelangi &mdash; a short walk from the hostel, managed by the same team. Flat <strong>RM250 deposit</strong> instead of the usual two-months-plus-one-advance, month-to-month terms, and the Tuesday night market plus the neighbourhood&apos;s eateries at your doorstep.
+                    </p>
+                    <div class="space-y-3">
+                      <div class="flex justify-between text-sm max-w-md"><span class="text-stone-500 dark:text-stone-400">Monthly rent</span><span class="font-medium text-stone-800 dark:text-stone-200">From RM500/month</span></div>
+                      <div class="flex justify-between text-sm max-w-md"><span class="text-stone-500 dark:text-stone-400">Deposit</span><span class="font-medium text-stone-800 dark:text-stone-200">RM250 (flat, one-time)</span></div>
+                      <div class="flex justify-between text-sm max-w-md"><span class="text-stone-500 dark:text-stone-400">Minimum stay</span><span class="font-medium text-stone-800 dark:text-stone-200">1 month, renews monthly</span></div>
+                      <div class="flex justify-between text-sm max-w-md"><span class="text-stone-500 dark:text-stone-400">Location</span><span class="font-medium text-stone-800 dark:text-stone-200">Above 7-Eleven, Taman Pelangi</span></div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-2">
+                    <p class="text-sm text-stone-500 dark:text-stone-400 mb-4">Availability changes month to month &mdash; message us to check what is open and arrange a viewing.</p>
+                    <a
+                      href="https://wa.me/60127088789?text=Hi%2C%20I'm%20interested%20in%20the%20RM500%2Fmonth%20private%20room%20above%20the%207-Eleven%20in%20Taman%20Pelangi."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn-primary w-full text-center block mb-3"
+                    >
+                      Ask About Private Rooms
+                    </a>
+                    <a href="/blog/room-for-rent-taman-pelangi-jb-rm500-month" class="block text-center text-sm text-amber-700 dark:text-amber-400 hover:underline">
+                      Read the full room-for-rent guide
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -665,7 +744,7 @@
         </div>
         <div id="speakable-price" class="text-lg text-stone-700 dark:text-stone-300 leading-relaxed space-y-4">
           <p>
-            Pelangi Capsule Hostel offers two pod types in Taman Pelangi, Johor Bahru. Both Upper Deck and Lower Deck Pods are RM30 per night on weekdays and RM35 per night on weekends. Monthly long-stay rates begin at RM594 per month.
+            Pelangi Capsule Hostel offers two pod types in Taman Pelangi, Johor Bahru. Both Upper Deck and Lower Deck Pods are RM30 per night on weekdays and RM35 per night on weekends. Monthly long-stay rates begin at RM594 per month. Private rooms for monthly rent are also available from RM500 per month (RM250 flat deposit), located above the 7-Eleven in Taman Pelangi and managed by the same team.
           </p>
           <p>
             Every pod includes a lockable sliding privacy door, personal climate control (fan and air-conditioning), adjustable LED lighting, USB and power outlets, a premium mattress, and a personal locker. Shared facilities include free high-speed WiFi, hot showers, a fully equipped kitchen, a water dispenser, laundry facilities, and luggage storage. The hostel operates 24/7 with self-check-in access and CCTV security throughout the property.
