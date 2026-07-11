@@ -704,7 +704,9 @@ var BlogPosts = func() []BlogPost {
 <h2>Is It Worth It?</h2>
 <p>Daily commuting isn't glamorous. The Causeway is a routine, not an adventure. But most commuters settle into the rhythm within two weeks, and the financial upside — SGD50,000+ in savings annually at a mid-level salary — is hard to argue with. Weather delays are rare, roadwork is predictable, and the bus runs reliably. The 1.5-hour daily round trip is the trade. Most people find it's worth it.</p>
 
-<p><a href="/rooms">Book a stay at Pelangi Capsule</a> as your first base in JB, and start your cross-border commute from there.</p>
+<h2>Make Pelangi Your Commuter Base</h2>
+<p>Hundreds of cross-border commuters have used <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi as their first JB base — capsule pods are <strong>RM30/night on weekdays (RM35 weekends)</strong>, or <strong>RM594/month</strong> for long-stayers, with no deposit and no minimum tenancy. Private rooms are also available from <strong>RM500/month</strong>, right above the 7-Eleven on Jalan Perang. Fast WiFi, lockers, hot showers, 24/7 self check-in for pre-dawn Causeway crossings, and the CIQ checkpoint is 10–15 minutes away.</p>
+<p><a href="/book">Book a pod</a>, or compare the numbers first: the <a href="/blog/rm594-month-jb-long-stay-singapore-commute-base">honest maths of RM594/month capsule living</a> and the <a href="/blog/room-for-rent-taman-pelangi-jb-rm500-month">RM500/month private room guide</a>.</p>
 `,
 		},
 		// 10
@@ -759,6 +761,7 @@ var BlogPosts = func() []BlogPost {
 
 <h2>Combining Gigs for Max Income</h2>
 <p>Smart approach: deliver food 5–6 hours/day (RM400–600) + freelance 3–4 hours evenings (RM150–300) = RM550–900/day. Pair active gigs (delivery, rides) with remote work. During slow hours (2–5pm), do freelance projects.</p>
+<p>For the app-by-app breakdown — requirements, per-job pay, and the daypart rotation JB riders run — see our <a href="/blog/delivery-gig-apps-jb-comparison-2026">Grab vs Lalamove vs Foodpanda comparison</a>, and budget the whole month with the <a href="/blog/gig-worker-jb-monthly-budget-guide">gig worker JB budget guide</a>.</p>
 
 <h2>Tax and Legal</h2>
 <p>Gig income is generally taxable. Keep earnings records. Check your work visa terms—S Pass and Employment Pass typically allow gig work outside your primary job. Confirm with your employer before starting.</p>
@@ -1101,7 +1104,7 @@ var BlogPosts = func() []BlogPost {
 </table>
 
 <p><strong>Lalamove wins:</strong> Highest payouts. No restaurant partnership needed — any customer, any parcel.</p>
-<p><strong>Tip:</strong> Many drivers work all three platforms. Lalamove mornings, Foodpanda lunch, Grab evenings = maximized income.</p>
+<p><strong>Tip:</strong> Many drivers work all three platforms. Lalamove mornings, Foodpanda lunch, Grab evenings = maximized income. The full side-by-side is in our <a href="/blog/delivery-gig-apps-jb-comparison-2026">JB gig app comparison</a>, with deep-dives on <a href="/blog/grab-driver-jb-guide-2026">Grab driving in JB</a> and <a href="/blog/foodpanda-rider-jb-guide-2026">Foodpanda riding in JB</a>.</p>
 
 <h2>Start Today</h2>
 <p>Download Lalamove Driver, submit documents, and earn within days. You're your own boss—set your hours, keep your income, grow your earnings.</p>
@@ -3327,6 +3330,312 @@ var BlogPosts = func() []BlogPost {
 
 <h2>How to Enquire</h2>
 <p>No forms, no agents, no agent fees. WhatsApp <strong>+60 12-708 8789</strong> (Jay) or <strong>+60 16-762 0815</strong> (Alston) and ask about the monthly rooms above the 7-Eleven. We will tell you what is available, the exact price for that room, and set up a viewing. You can also reach us through the <a href="/contact">contact page</a>. If a room is not free, we will offer you a monthly capsule pod or put you on the list for the next opening — no pressure either way.</p>
+`,
+		},
+		// 45 — scheduled: goes live 2026-07-26
+		{
+			Slug:          "grab-driver-jb-guide-2026",
+			ImageAlt:      "E-hailing driver's view of Johor Bahru city traffic near the CIQ checkpoint — Grab driving in JB",
+			Title:         "Becoming a Grab Driver in Johor Bahru 2026: PSV Licence, Sign-Up, and Realistic Earnings",
+			Excerpt:       "Everything you need to drive for Grab in JB: the PSV licence and EVP process, what Grab subsidises, where the demand hotspots are, and how e-hailing compares with delivery work.",
+			Date:          "2026-07-26",
+			Category:      "Career & Work",
+			Author:        "Jay Lew",
+			ReadTime:      "7 min read",
+			Tags:          []string{"gig-economy", "johor-bahru", "grab", "e-hailing", "driver", "malaysia", "side-hustle"},
+			FeaturedImage: "/images/blog/grab-driver-jb-guide-2026.jpg",
+			Content: `
+<h2>Why Grab Works in JB</h2>
+<p>Johor Bahru is one of the busiest e-hailing markets in Malaysia outside the Klang Valley, and the reason is simple: the Causeway. Every day, travellers land at JB Sentral and the CIQ checkpoint needing rides, Singaporeans cross over for weekend food runs and mall trips, and locals move between Taman Pelangi, City Square, KSL, and Mid Valley Southkey. That steady cross-border churn means demand does not depend on one office crowd — it runs mornings, evenings, and weekends.</p>
+<p>This guide covers what you legally need to drive for Grab in Malaysia, the sign-up process, where JB's demand actually concentrates, and how e-hailing stacks up against delivery gigs like <a href="/blog/lalamove-driver-malaysia-jb-guide">Lalamove</a>.</p>
+
+<h2>What You Need (the Legal Bits)</h2>
+<p>Since October 2019, e-hailing drivers in Malaysia must hold a <strong>PSV (Public Service Vehicle) licence</strong>. Grab's current requirements, per its official driver page:</p>
+<ul>
+  <li><strong>Age 21–69</strong>, Malaysian citizen with a valid blue NRIC</li>
+  <li>Valid Malaysian competent driving licence</li>
+  <li><strong>E-hailing PSV licence</strong> (Grab currently subsidises the PSV training, licence, and medical check-up)</li>
+  <li><strong>EVP (E-Hailing Vehicle Permit)</strong> — Grab applies for this on your behalf</li>
+  <li>A car <strong>not older than 15 years</strong>, registered in your own name</li>
+  <li><strong>Puspakom inspection</strong> if the vehicle is older than 3 years</li>
+  <li>Personal bank account under the same NRIC, plus a background check</li>
+</ul>
+<p>The PSV step is what puts most people off, but in practice it is a short course plus a test, and with the cost currently subsidised the main investment is your time — typically a few days to two weeks from registration to approval, depending on how fast your documents and inspection clear.</p>
+
+<h2>Sign-Up in Five Steps</h2>
+<p><strong>Step 1:</strong> Download the Grab Driver app and register with your NRIC and phone number.</p>
+<p><strong>Step 2:</strong> Upload documents — licence, NRIC, vehicle registration with valid roadtax, insurance.</p>
+<p><strong>Step 3:</strong> Complete the PSV course and medical check-up (book through the app flow).</p>
+<p><strong>Step 4:</strong> Send the car for Puspakom inspection if it is older than 3 years; Grab processes your EVP.</p>
+<p><strong>Step 5:</strong> Pass the background check, activate, and start accepting jobs.</p>
+
+<h2>Realistic Earnings in JB</h2>
+<p>Ignore the recruitment-poster numbers. Based on what driver-guests staying with us report, and consistent with the per-job ranges in our <a href="/blog/lalamove-driver-malaysia-jb-guide">Lalamove guide</a>, JB e-hailing looks like this:</p>
+<table>
+  <thead>
+    <tr><th>Pattern</th><th>Typical Take</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Per trip (short urban)</td><td>RM5–12</td><td>Taman Pelangi to City Square class of trip</td></tr>
+    <tr><td>Per trip (longer / airport)</td><td>RM20–50</td><td>Senai Airport runs and cross-town trips pay best</td></tr>
+    <tr><td>Part-time evening (4–5 hrs)</td><td>RM60–120</td><td>Dinner-to-midnight window, weekend surges help</td></tr>
+    <tr><td>Full-time day (10–12 hrs)</td><td>RM150–250</td><td>Before petrol; incentive quests can add more</td></tr>
+  </tbody>
+</table>
+<p>Petrol, tolls, and car wear come out of that, so a full-time JB Grab driver clearing RM2,500–4,000 a month is a realistic band — not the RM8,000 fantasy figures you see in ads. Weekend nights and public holidays around the malls and checkpoint are where surge pricing genuinely moves the number.</p>
+
+<h2>Where the Demand Is: JB Hotspots</h2>
+<ul>
+  <li><strong>CIQ / JB Sentral</strong> — the single most reliable queue in the city. Arrivals from Singapore need rides all day; peak after work hours and weekend mornings.</li>
+  <li><strong>City Square, KSL, Mid Valley Southkey, Paradigm</strong> — mall runs are short but constant; weekend afternoons stack trips back-to-back.</li>
+  <li><strong>Taman Pelangi and Taman Sentosa</strong> — dense food-and-shophouse neighbourhoods with steady local demand, especially on <a href="/blog/taman-pelangi-tuesday-night-market-guide">Tuesday night market</a> evenings.</li>
+  <li><strong>Senai Airport</strong> — fewer jobs but the highest per-trip fares; worth positioning for morning flight banks.</li>
+</ul>
+
+<h2>Grab E-Hailing vs GrabFood vs Lalamove</h2>
+<p>If your car is too old for the EVP, or the PSV step is a blocker, delivery is the alternative path — GrabFood and Lalamove both take motorcycles, and Lalamove takes cars and vans for parcels without a PSV requirement.</p>
+<table>
+  <thead>
+    <tr><th></th><th>Grab (e-hailing)</th><th>Lalamove (parcels)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Licence hurdle</td><td>PSV + EVP required</td><td>Standard licence (GDL for van/lorry)</td></tr>
+    <tr><td>Per job</td><td>RM5–50</td><td>RM25–80</td></tr>
+    <tr><td>Demand pattern</td><td>Commute peaks, weekends, malls</td><td>Business hours, cross-border parcels</td></tr>
+    <tr><td>Vehicle</td><td>Car under 15 years, own name</td><td>Bike, car, van, 4x4, lorry</td></tr>
+  </tbody>
+</table>
+<p>Many JB drivers run both: passengers during commute peaks, parcels in the flat mid-afternoon. Our <a href="/blog/delivery-gig-apps-jb-comparison-2026">full JB gig-app comparison</a> breaks down all four major platforms daypart by daypart.</p>
+
+<h2>A Cheap Base Makes the Maths Work</h2>
+<p>The biggest lever on gig income is not the app — it is your fixed costs. Drivers staying at <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi pay <strong>RM30/night on weekdays (RM35 weekends)</strong>, or <strong>RM594/month</strong> for long-stayers, with private rooms from <strong>RM500/month</strong> above the 7-Eleven on Jalan Perang. You are 10–15 minutes from the CIQ queue, in the middle of the mall belt, with fast WiFi for the driver app and 24/7 self check-in after late shifts.</p>
+<p><a href="/book">Book a pod</a>, or run the numbers first with our <a href="/blog/gig-worker-jb-monthly-budget-guide">gig worker monthly budget guide</a> and the <a href="/blog/rm594-month-jb-long-stay-singapore-commute-base">RM594/month capsule maths</a>.</p>
+
+<h2>Sources</h2>
+<ul>
+  <li><a href="https://www.grab.com/my/driver/" target="_blank" rel="noopener">Grab Malaysia — Official driver sign-up page (requirements, PSV and EVP process)</a></li>
+</ul>
+`,
+		},
+		// 46 — scheduled: goes live 2026-07-29
+		{
+			Slug:          "delivery-gig-apps-jb-comparison-2026",
+			ImageAlt:      "Delivery riders from different gig platforms waiting outside a Johor Bahru mall with thermal bags and parcels",
+			Title:         "Grab vs Lalamove vs Foodpanda in JB 2026: Which Gig App Actually Pays?",
+			Excerpt:       "The honest side-by-side for Johor Bahru gig workers: per-job pay, licence hurdles, vehicle requirements, and which app to run at which time of day.",
+			Date:          "2026-07-29",
+			Category:      "Career & Work",
+			Author:        "Jay Lew",
+			ReadTime:      "7 min read",
+			Tags:          []string{"gig-economy", "johor-bahru", "grab", "lalamove", "foodpanda", "delivery", "comparison"},
+			FeaturedImage: "/images/blog/delivery-gig-apps-jb-comparison-2026.jpg",
+			Content: `
+<h2>The Question Every New JB Gig Worker Asks</h2>
+<p>Which app should I sign up for first? The honest answer for Johor Bahru in 2026: it depends on your vehicle, your licence, and which hours you can actually work. Each platform has a different sweet spot, and the drivers earning the most here run two or three of them in rotation rather than staying loyal to one.</p>
+<p>This post puts the three main platforms side by side, with the requirements taken from each company's official driver page, then shows you the stacking pattern that works in JB.</p>
+
+<h2>The Big Comparison</h2>
+<table>
+  <thead>
+    <tr><th></th><th>Grab (e-hailing)</th><th>Lalamove</th><th>Foodpanda</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Work type</strong></td><td>Passenger rides</td><td>Parcels, documents, goods</td><td>Food delivery</td></tr>
+    <tr><td><strong>Per job (JB)</strong></td><td>RM5–50</td><td>RM25–80</td><td>RM5–8 + tips</td></tr>
+    <tr><td><strong>Vehicle</strong></td><td>Car under 15 years, own name</td><td>Bike, car, van, 4x4, lorry</td><td>Motorcycle (min. P licence)</td></tr>
+    <tr><td><strong>Licence hurdle</strong></td><td>PSV licence + EVP</td><td>Standard licence; GDL for van/lorry</td><td>Standard bike licence, age 18+</td></tr>
+    <tr><td><strong>Schedule model</strong></td><td>Fully open — drive any time</td><td>Fully open — accept any job</td><td>Book shift sessions in advance</td></tr>
+    <tr><td><strong>Approval speed</strong></td><td>Slowest (PSV course, Puspakom if car over 3 years)</td><td>3–5 days, virtual training</td><td>Fast — days, minimal steps</td></tr>
+    <tr><td><strong>Best hours</strong></td><td>Commute peaks, weekend nights</td><td>Business hours, mornings</td><td>Lunch 11am–2pm, dinner 6–9pm</td></tr>
+  </tbody>
+</table>
+<p>ShopeeFood also operates food delivery in parts of Malaysia, but its JB rider coverage and terms change frequently — check availability in the Shopee app before counting on it. We have left it out of the earnings table rather than quote numbers we cannot stand behind.</p>
+
+<h2>Barrier to Entry: Who Can Start This Week</h2>
+<p><strong>Foodpanda is the fastest start.</strong> Official requirements are minimal: age 18+, Malaysian citizen, a motorcycle with valid licence (P licence accepted) and roadtax, a smartphone, and a bank account. If your documents are in order, you can be booking shift sessions within days. Our <a href="/blog/foodpanda-rider-jb-guide-2026">Foodpanda rider deep-dive</a> covers the batch and shift system in detail.</p>
+<p><strong>Lalamove is the best pay-per-job with a normal licence.</strong> No PSV needed for parcel delivery — bike, car, van, 4x4, or lorry, with a GDL only for van and lorry classes. Approval takes about 3–5 days including virtual training. Full walkthrough in our <a href="/blog/lalamove-driver-malaysia-jb-guide">Lalamove driver guide</a>.</p>
+<p><strong>Grab has the highest hurdle but the steadiest demand.</strong> The PSV licence and EVP take real effort (currently subsidised by Grab), and your car must be under 15 years old and registered in your name. In exchange, you get JB's deepest ride queue: the CIQ, JB Sentral, and the mall belt. See the <a href="/blog/grab-driver-jb-guide-2026">Grab driver JB guide</a> for the full process.</p>
+
+<h2>The Stacking Strategy: One Day, Three Apps</h2>
+<p>The pattern that keeps showing up among the gig workers who stay with us:</p>
+<table>
+  <thead>
+    <tr><th>Daypart</th><th>App</th><th>Why</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>8–11 am</td><td>Lalamove</td><td>Businesses ship parcels and documents in the morning; highest per-job rates</td></tr>
+    <tr><td>11 am–2 pm</td><td>Foodpanda</td><td>Lunch surge — short, dense food runs around the malls and offices</td></tr>
+    <tr><td>2–5 pm</td><td>Lalamove or rest</td><td>Flattest demand window across all apps</td></tr>
+    <tr><td>5–9 pm</td><td>Grab or Foodpanda</td><td>Commute peak and dinner surge; weekend nights favour Grab around CIQ and the malls</td></tr>
+  </tbody>
+</table>
+<p>A motorcycle rider can stack Lalamove and Foodpanda with nothing but a standard licence. Add Grab only if you have a qualifying car and are ready for the PSV step — it is the highest fixed investment but fills the evening slot best.</p>
+
+<h2>What This Adds Up To</h2>
+<p>Stacked across a full week in JB, part-timers working evenings and weekends typically land in the RM1,500–2,500/month band, and full-timers running the three-app rotation report RM2,500–4,000 before petrol. The single biggest difference between the two ends of that range is not speed or luck — it is fixed costs and hours worked. Which brings us to rent.</p>
+
+<h2>Keep Your Overheads Gig-Sized</h2>
+<p>A 12-month tenancy with a two-plus-one deposit makes no sense when your income flexes week to week. <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi — mid-belt between the CIQ, City Square, and KSL — runs <strong>RM30/night on weekdays (RM35 weekends)</strong>, <strong>RM594/month</strong> for capsule long-stayers, and private rooms from <strong>RM500/month</strong> above the 7-Eleven on Jalan Perang, all with fast WiFi and 24/7 self check-in for late shifts.</p>
+<p><a href="/book">Book a pod</a>, or see exactly how a gig income covers a JB month in our <a href="/blog/gig-worker-jb-monthly-budget-guide">gig worker monthly budget guide</a>.</p>
+
+<h2>Sources</h2>
+<ul>
+  <li><a href="https://www.grab.com/my/driver/" target="_blank" rel="noopener">Grab Malaysia — Official driver requirements</a></li>
+  <li><a href="https://www.lalamove.com/en-my/driver" target="_blank" rel="noopener">Lalamove Malaysia — Official driver page (vehicle types, GDL, training)</a></li>
+  <li><a href="https://rider.foodpanda.my/" target="_blank" rel="noopener">foodpanda Malaysia — Official rider sign-up page (requirements, sessions)</a></li>
+</ul>
+`,
+		},
+		// 47 — scheduled: goes live 2026-08-01
+		{
+			Slug:          "gig-worker-jb-monthly-budget-guide",
+			ImageAlt:      "Monthly budget planning for a gig worker in Johor Bahru — calculator, hawker meal, and capsule hostel room keys",
+			Title:         "Living in JB on Gig Income: The Full Monthly Budget (RM594 Rent, RM10 Meals, Real Numbers)",
+			Excerpt:       "What a month in Johor Bahru actually costs a delivery rider or e-hailing driver: rent from RM500–594, hawker food at RM10–15 a meal, petrol, data — and how much a stacked gig income leaves over.",
+			Date:          "2026-08-01",
+			Category:      "Career & Work",
+			Author:        "Jay Lew",
+			ReadTime:      "7 min read",
+			Tags:          []string{"gig-economy", "johor-bahru", "budget", "cost-of-living", "monthly-stay", "long-stay", "delivery"},
+			FeaturedImage: "/images/blog/gig-worker-jb-monthly-budget-guide.jpg",
+			Content: `
+<h2>The Question Behind Every Gig Sign-Up</h2>
+<p>Can I actually live on this? Delivery and e-hailing income in JB flexes week to week, so the way to answer it is from the cost side: pin your fixed costs low enough that an average month clears them comfortably, and a bad month still covers them. This post lays out a complete, honest month of JB costs for a gig worker — no aspirational condo rent, no pretending you cook every meal.</p>
+
+<h2>The Whole Month in One Table</h2>
+<table>
+  <thead>
+    <tr><th>Item</th><th>Lean</th><th>Comfortable</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Rent — capsule pod (monthly)</strong></td><td>RM594</td><td>RM594</td><td>Utilities and WiFi included, no deposit, month to month</td></tr>
+    <tr><td><strong>— or private room</strong></td><td>RM500</td><td>RM600+</td><td>Above the 7-Eleven, Taman Pelangi; flat RM250 deposit</td></tr>
+    <tr><td><strong>Food</strong></td><td>RM600</td><td>RM900</td><td>Hawker meals run RM10–15; RM20–30/day is realistic eating out every meal</td></tr>
+    <tr><td><strong>Petrol (motorcycle)</strong></td><td>RM150</td><td>RM250</td><td>Full-time delivery riding; car drivers budget 2–3x this</td></tr>
+    <tr><td><strong>Phone data</strong></td><td>RM35</td><td>RM60</td><td>Unlimited-data prepaid plans; the driver apps eat data all day</td></tr>
+    <tr><td><strong>Laundry</strong></td><td>RM20</td><td>RM40</td><td>RM5/load at the hostel</td></tr>
+    <tr><td><strong>Buffer / misc</strong></td><td>RM100</td><td>RM250</td><td>Bike servicing, phone holder, rain gear, the odd kopitiam session</td></tr>
+    <tr><td><strong>TOTAL</strong></td><td><strong>~RM1,400–1,500</strong></td><td><strong>~RM2,000–2,100</strong></td><td>Using the RM500–594 rent anchor</td></tr>
+  </tbody>
+</table>
+<p>That is the entire month. Notice what is missing: no utility bills (included), no internet bill (included), no 12-month tenancy, no two-months-plus-one deposit locked up with a landlord.</p>
+
+<h2>The Income Side, Honestly</h2>
+<p>From our gig-app guides — <a href="/blog/lalamove-driver-malaysia-jb-guide">Lalamove</a>, <a href="/blog/grab-driver-jb-guide-2026">Grab</a>, <a href="/blog/foodpanda-rider-jb-guide-2026">Foodpanda</a>, and the <a href="/blog/delivery-gig-apps-jb-comparison-2026">full comparison</a> — realistic JB bands look like:</p>
+<ul>
+  <li><strong>Part-time (evenings + weekends):</strong> RM1,500–2,500/month</li>
+  <li><strong>Full-time, single app:</strong> RM2,000–3,000/month</li>
+  <li><strong>Full-time, stacked apps (the rotation strategy):</strong> RM2,500–4,000/month before petrol</li>
+</ul>
+<p>Set those against the cost table and the arithmetic is straightforward: a lean month costs about RM1,400–1,500, so even a part-time gig income covers life in JB, and a stacked full-time month can bank RM1,000–2,000. A bad week does not put your housing at risk, because your housing renews monthly and costs less than a single good weekend of stacked deliveries.</p>
+
+<h2>Why Taman Pelangi Specifically</h2>
+<ul>
+  <li><strong>You live inside the demand zone.</strong> Taman Pelangi sits mid-belt between the CIQ (10–15 minutes), City Square, KSL, and the shophouse food streets — you start your shift already positioned instead of dead-heading across town.</li>
+  <li><strong>Food is genuinely RM10–15 a meal.</strong> Dozens of kopitiam and hawker options on foot, plus the <a href="/blog/taman-pelangi-tuesday-night-market-guide">Tuesday night market</a> for RM5–8 dinners. See our <a href="/blog/ultimate-jb-food-guide-backpackers">JB cheap-eats guide</a>.</li>
+  <li><strong>The 7-Eleven is downstairs</strong> from the private rooms — top-ups, snacks, and essentials at 2 am after a late shift.</li>
+  <li><strong>24/7 self check-in</strong> at the hostel means late-shift hours are not a problem on day one.</li>
+</ul>
+
+<h2>Capsule or Private Room?</h2>
+<p>Both are run by the same team, so pick on space, not trust:</p>
+<table>
+  <thead>
+    <tr><th></th><th>Monthly Capsule — RM594</th><th>Private Room — from RM500</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Move-in cost</td><td>RM594, no deposit</td><td>First month + flat RM250 deposit</td></tr>
+    <tr><td>Space</td><td>Enclosed pod, locker, shared facilities</td><td>Full room with your own door</td></tr>
+    <tr><td>Included</td><td>WiFi, utilities, kitchen, lounge</td><td>7-Eleven downstairs, neighbourhood on foot</td></tr>
+    <tr><td>Suits</td><td>Light packers, first 1–3 months in JB</td><td>Longer stints, more gear, couples of possessions</td></tr>
+  </tbody>
+</table>
+<p>Full details in the <a href="/blog/rm594-month-jb-long-stay-singapore-commute-base">RM594/month capsule maths</a> and the <a href="/blog/room-for-rent-taman-pelangi-jb-rm500-month">RM500/month private room guide</a>.</p>
+
+<h2>Start the Month</h2>
+<p>Nightly pods are <strong>RM30 on weekdays and RM35 on weekends</strong> if you want to trial the area for a week before committing to a month. <a href="/book">Book a pod here</a>, browse <a href="/rooms">room details and photos</a>, or WhatsApp <strong>+60 12-708 8789</strong> and ask about monthly capsule or private-room availability — we will tell you straight what is open.</p>
+
+<h2>Sources</h2>
+<ul>
+  <li><a href="https://www.grab.com/my/driver/" target="_blank" rel="noopener">Grab Malaysia — Official driver page</a></li>
+  <li><a href="https://www.lalamove.com/en-my/driver" target="_blank" rel="noopener">Lalamove Malaysia — Official driver page</a></li>
+  <li><a href="https://rider.foodpanda.my/" target="_blank" rel="noopener">foodpanda Malaysia — Official rider page</a></li>
+</ul>
+`,
+		},
+		// 48 — scheduled: goes live 2026-08-04
+		{
+			Slug:          "foodpanda-rider-jb-guide-2026",
+			ImageAlt:      "foodpanda delivery rider on a motorcycle with pink thermal bag navigating a Johor Bahru street at dusk",
+			Title:         "Foodpanda Rider in JB 2026: Shifts, Sign-Up, Gear, and What You Really Earn Per Hour",
+			Excerpt:       "The deep-dive for Johor Bahru foodpanda riders: how the shift-session system works, the minimal sign-up requirements (P licence accepted), what gear you need, and honest RM-per-hour numbers.",
+			Date:          "2026-08-04",
+			Category:      "Career & Work",
+			Author:        "Jay Lew",
+			ReadTime:      "6 min read",
+			Tags:          []string{"gig-economy", "johor-bahru", "foodpanda", "delivery", "rider", "malaysia", "side-hustle"},
+			FeaturedImage: "/images/blog/foodpanda-rider-jb-guide-2026.jpg",
+			Content: `
+<h2>The Lowest Barrier in the JB Gig Economy</h2>
+<p>Of the major gig platforms operating in Johor Bahru, foodpanda has the gentlest entry requirements — which is exactly why it is the first app most new riders activate. Per foodpanda Malaysia's official rider page, you need:</p>
+<ul>
+  <li>Age <strong>18 or above</strong>, Malaysian citizen</li>
+  <li>A motorcycle with valid licence and roadtax — <strong>a P licence is accepted</strong></li>
+  <li>A smartphone (iOS 11.2+ or Android 5.0+)</li>
+  <li>A personal bank account</li>
+</ul>
+<p>No PSV course, no vehicle-age rule, no Puspakom. If a Grab e-hailing application takes weeks, a foodpanda application is measured in days. That makes it the standard first move for anyone who needs income now — including guests of ours waiting out a <a href="/blog/singapore-work-pass-guide-malaysians">Singapore work pass decision</a>.</p>
+
+<h2>How the Shift System Actually Works</h2>
+<p>Foodpanda is the odd one out among JB gig apps: you do not simply go online whenever you feel like it. Riders <strong>book shift sessions in advance</strong> through the rider platform, choosing the time blocks that suit them. In practice:</p>
+<ul>
+  <li><strong>Sessions are released in batches</strong>, and riders with better performance stats generally get earlier access to pick the prime slots.</li>
+  <li><strong>The prime slots are exactly when you would guess:</strong> lunch (11 am–2 pm) and dinner (6–9 pm), plus weekend evenings.</li>
+  <li><strong>Booking a shift is a commitment</strong> — repeated no-shows hurt your standing and your access to good future slots.</li>
+</ul>
+<p>The upside of the structure: during a booked peak shift, orders come to you steadily instead of you fishing for jobs. The downside: less spontaneity than Lalamove or Grab, where you just switch on. Treat shift booking like a weekly planning session — lock your lunch and dinner blocks, and leave the dead afternoon free (or fill it with <a href="/blog/lalamove-driver-malaysia-jb-guide">Lalamove parcels</a>).</p>
+
+<h2>Sign-Up, Step by Step</h2>
+<p><strong>Step 1:</strong> Register on the official foodpanda rider site (rider.foodpanda.my) with your IC and phone number.</p>
+<p><strong>Step 2:</strong> Upload documents — licence, roadtax, bank details.</p>
+<p><strong>Step 3:</strong> Complete the onboarding and get your rider account activated.</p>
+<p><strong>Step 4:</strong> Collect or buy your thermal bag, book your first sessions, and start delivering.</p>
+
+<h2>Gear That Pays for Itself</h2>
+<ul>
+  <li><strong>Thermal delivery bag</strong> — required kit; keep it clean, complaints about cold food hit your ratings.</li>
+  <li><strong>Phone mount and power bank</strong> — the rider app plus navigation drains a battery in half a shift.</li>
+  <li><strong>Full rain suit</strong> — JB rains hard and briefly; the riders who keep working through a downpour own the surge window that follows.</li>
+  <li><strong>Unlimited-data prepaid plan</strong> — RM35–60/month; the app is useless on a throttled connection.</li>
+</ul>
+
+<h2>What You Really Earn in JB</h2>
+<table>
+  <thead>
+    <tr><th>Pattern</th><th>Typical Take</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Per delivery</td><td>RM5–8 + tips</td></tr>
+    <tr><td>Peak-shift hour (lunch/dinner)</td><td>RM15–25</td></tr>
+    <tr><td>Off-peak hour</td><td>RM8–12</td></tr>
+    <tr><td>Strong full day (both peaks)</td><td>RM80–120</td></tr>
+    <tr><td>Part-time month</td><td>RM1,500–2,500</td></tr>
+    <tr><td>Full-time month</td><td>RM3,000–3,500</td></tr>
+  </tbody>
+</table>
+<p>Those bands assume JB order density — the mall belt (City Square, KSL, Mid Valley Southkey) and the dense food neighbourhoods like Taman Pelangi and Taman Sentosa are where stacked orders happen. Riding a quiet suburb halves the numbers.</p>
+
+<h2>Foodpanda vs the Other Apps</h2>
+<p>Short version: foodpanda is the easiest start and the most predictable during booked peaks; Lalamove pays more per job with a fully open schedule; Grab has the deepest demand but a real licensing hurdle. The full side-by-side — requirements, pay, and the three-app daily rotation JB riders actually run — is in our <a href="/blog/delivery-gig-apps-jb-comparison-2026">JB gig app comparison</a>.</p>
+
+<h2>A Rider's Base in Taman Pelangi</h2>
+<p>Your shift schedule is peaks-based, so live where the peaks are. <a href="/rooms">Pelangi Capsule Hostel</a> puts you inside the delivery zone: pods at <strong>RM30/night weekdays (RM35 weekends)</strong>, <strong>RM594/month</strong> for monthly capsule stays, and private rooms from <strong>RM500/month</strong> above the 7-Eleven on Jalan Perang. Hot showers after a rain shift, lockers for your gear, fast WiFi for session booking, and 24/7 self check-in when dinner peak runs late.</p>
+<p><a href="/book">Book a pod</a>, or plan the whole month first with the <a href="/blog/gig-worker-jb-monthly-budget-guide">gig worker JB budget guide</a>.</p>
+
+<h2>Sources</h2>
+<ul>
+  <li><a href="https://rider.foodpanda.my/" target="_blank" rel="noopener">foodpanda Malaysia — Official rider sign-up page (requirements, session system)</a></li>
+</ul>
 `,
 		},
 	}
