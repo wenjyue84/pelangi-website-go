@@ -311,7 +311,7 @@ var BlogPosts = func() []BlogPost {
     <tr><th>Expense</th><th>Singapore (SGD)</th><th>JB (RM / SGD equivalent)</th></tr>
   </thead>
   <tbody>
-    <tr><td>Hostel per night</td><td>SGD 45–60</td><td>RM 35–50 (SGD 10–15)</td></tr>
+    <tr><td>Hostel per night</td><td>SGD 45–60</td><td>RM 30–50 (SGD 9–15)</td></tr>
     <tr><td>Breakfast</td><td>SGD 5–8</td><td>RM 3–5 (SGD 1–1.50)</td></tr>
     <tr><td>Lunch</td><td>SGD 6–10</td><td>RM 6–12 (SGD 2–4)</td></tr>
     <tr><td>Dinner</td><td>SGD 8–15</td><td>RM 10–25 (SGD 3–8)</td></tr>
@@ -1946,7 +1946,7 @@ var BlogPosts = func() []BlogPost {
 		{
 			Slug:          "changi-airport-transit-budget-stay-johor-bahru",
 			Title:         "Changi Airport Transit? Stay in Johor Bahru and Save Hundreds (2026)",
-			Excerpt:       "Skip overpriced Changi airport hotels and stay in Johor Bahru for RM35-45/night instead. Here's exactly how to get there, what it costs, and why budget travellers are making the switch.",
+			Excerpt:       "Skip overpriced Changi airport hotels and stay in Johor Bahru for RM30-35/night instead. Here's exactly how to get there, what it costs, and why budget travellers are making the switch.",
 			Date:          "2026-04-15",
 			Category:      "Travel Tips",
 			Author:        "Pelangi Capsule Hostel",
@@ -1961,11 +1961,11 @@ var BlogPosts = func() []BlogPost {
 <p>For a bed. For one night. When you're just passing through.</p>
 <p>If you're a budget traveller, this math doesn't work. You're spending more on a transit sleep than on entire days in Southeast Asia. There's a city 90 minutes south where a clean capsule pod costs SGD10-13 per night, the food is incredible, and you actually get to explore a real place instead of staring at departure boards.</p>
 <p>It's Johor Bahru.</p>
-<h2>The JB Alternative: RM35-45 Per Night Instead of SGD150+</h2>
+<h2>The JB Alternative: RM30-35 Per Night Instead of SGD150+</h2>
 <p>Johor Bahru sits at the southern tip of Peninsular Malaysia, connected to Singapore by the Causeway. It's about 1.5 hours from Changi Airport by public transport, and prices are in a completely different league.</p>
-<p>At <a href="/rooms">Pelangi Capsule Hostel</a>, a pod costs <strong>RM35/night for an Upper Deck Pod</strong> or <strong>RM45/night for a Lower Deck Pod</strong> (ground-level, no ladder). That's roughly SGD10-13. Each pod comes with an LED reading light, USB charging port, and personal locker. The hostel is in Taman Pelangi, one of JB's best food neighbourhoods. Hawker centres and local restaurants are everywhere.</p>
+<p>At <a href="/rooms">Pelangi Capsule Hostel</a>, a pod costs <strong>RM30/night on weekdays and RM35/night on weekends</strong> — Upper and Lower Deck (ground-level, no ladder) are the same price. That's roughly SGD9-11. Each pod comes with an LED reading light, USB charging port, and personal locker. The hostel is in Taman Pelangi, one of JB's best food neighbourhoods. Hawker centres and local restaurants are everywhere.</p>
 <p>Think about it. One night at YOTEL Changi costs the same as <strong>three to four nights</strong> in a JB capsule. One night at the Crowne Plaza Changi equals <strong>a full week</strong> at Pelangi. And instead of sleeping in an airport terminal, you're sleeping in a real neighbourhood where a plate of chicken rice costs RM6 and the teh tarik flows freely.</p>
-<p>Non-Malaysian guests pay an additional RM10/room/night tourism tax, so your all-in nightly cost is RM45-55 (SGD13-16). Still dirt cheap.</p>
+<p>Non-Malaysian guests pay an additional RM10/room/night tourism tax, so your all-in nightly cost is RM40-45 (SGD11-13). Still dirt cheap.</p>
 <h2>How to Get from Changi Airport to Johor Bahru</h2>
 <p>Three options, cheapest to most convenient.</p>
 <h3>Option 1: Public Transport (SGD5, 1.5-2 hours)</h3>
@@ -1993,7 +1993,7 @@ var BlogPosts = func() []BlogPost {
 <table>
   <thead><tr><th>Expense</th><th>Changi Hotel (1 night)</th><th>JB Stay (1 night)</th></tr></thead>
   <tbody>
-    <tr><td>Accommodation</td><td>SGD120</td><td>SGD10-13 (RM35-45)</td></tr>
+    <tr><td>Accommodation</td><td>SGD120</td><td>SGD9-11 (RM30-35)</td></tr>
     <tr><td>Tourism Tax</td><td>-</td><td>SGD3 (RM10)</td></tr>
     <tr><td>Transport (round trip)</td><td>SGD0</td><td>SGD10-12</td></tr>
     <tr><td>Meals (dinner + breakfast)</td><td>SGD25-40</td><td>SGD5-8</td></tr>
@@ -2041,14 +2041,14 @@ var BlogPosts = func() []BlogPost {
 </ul>
 <h2>The Bottom Line</h2>
 <p>Changi is a great airport and an expensive place to sleep. If you have 8+ hours and you're watching your budget, JB is 90 minutes south, five times cheaper, and far more interesting than Terminal 3.</p>
-<p><strong>Upper Deck Pods from RM35/night. Lower Deck Pods from RM45/night.</strong> <a href="/book">Book your pod at Pelangi Capsule Hostel</a> and turn your Changi layover into a budget win.</p>
+<p><strong>Pods from RM30/night on weekdays, RM35/night on weekends — Upper and Lower Deck same price.</strong> <a href="/book">Book your pod at Pelangi Capsule Hostel</a> and turn your Changi layover into a budget win.</p>
 `,
 		},
 		// 30
 		{
 			Slug:          "jb-budget-base-singapore-day-trips-save-money",
 			Title:         "Use JB as Your Budget Base for Singapore Day Trips (2026 Guide)",
-			Excerpt:       "Stay in Johor Bahru for RM35-45/night and day-trip into Singapore — save up to 70% on accommodation and food while seeing everything the city-state has to offer.",
+			Excerpt:       "Stay in Johor Bahru for RM30-35/night and day-trip into Singapore — save up to 70% on accommodation and food while seeing everything the city-state has to offer.",
 			Date:          "2026-04-15",
 			Category:      "Travel Tips",
 			Author:        "Pelangi Capsule Hostel",
@@ -2058,7 +2058,7 @@ var BlogPosts = func() []BlogPost {
 			Content: `
 <h2>The Strategy: Sleep in JB, Explore Singapore</h2>
 <p>Here's a travel hack Southeast Asia backpackers have used for years: stay in Johor Bahru, Malaysia, and day-trip into Singapore. The two cities are connected by a 1km causeway, and the price gap is enormous.</p>
-<p>A dorm bed in Singapore costs SGD40-60 per night. A capsule pod at <a href="/rooms">Pelangi Capsule Hostel</a> costs RM35-45 per night — that's SGD10-13. You're saving SGD30-50 every single night just by sleeping 30 minutes further north.</p>
+<p>A dorm bed in Singapore costs SGD40-60 per night. A capsule pod at <a href="/rooms">Pelangi Capsule Hostel</a> costs RM30-35 per night — that's SGD9-11. You're saving SGD30-50 every single night just by sleeping 30 minutes further north.</p>
 <p>Accommodation is only half of it. A plate of chicken rice in Singapore runs SGD5-7. The same dish in JB costs RM5-8 (SGD1.50-2.30). Over a 5-day trip, the savings add up to enough for an extra week of travel.</p>
 <p>The causeway crossing takes 45-90 minutes depending on traffic. That's the trade-off: about an hour each way in exchange for cutting your daily budget by 60-70%.</p>
 <h2>The Numbers: 5-Day Trip Comparison</h2>
@@ -2170,8 +2170,8 @@ var BlogPosts = func() []BlogPost {
 </ul>
 <h2>Why Pelangi Capsule Is the Ideal Base</h2>
 <ul>
-  <li><strong>RM35/night (Upper Deck Pod)</strong> — cheapest clean, private sleeping space in JB.</li>
-  <li><strong>RM45/night (Lower Deck Pod)</strong> — ground-level, easier access.</li>
+  <li><strong>RM30/night on weekdays (Upper or Lower Deck)</strong> — cheapest clean, private sleeping space in JB.</li>
+  <li><strong>RM35/night on weekends</strong> — same pods, weekend rate; Lower Deck is ground-level with easier access.</li>
   <li><strong>Taman Pelangi</strong> — hawker centres, mamak, cafes, night markets walking distance.</li>
   <li><strong>15 min from CIQ</strong> — quick Grab to causeway checkpoint.</li>
   <li><strong>Lockers</strong> — secure laptop, cash, documents while in Singapore.</li>
@@ -2199,8 +2199,8 @@ var BlogPosts = func() []BlogPost {
 <p>新山（Johor Bahru，简称JB）在马来西亚最南端，跟新加坡就隔一条海峡。从樟宜机场过去，<strong>1.5小时到新山市区</strong>。</p>
 <p>关键是价格差太多了——新山住宿只要新加坡的<strong>十分之一</strong>。拿<a href="/rooms">Pelangi Capsule Hostel（彩虹胶囊旅馆）</a>来说：</p>
 <ul>
-<li><strong>上层舱位（Upper Deck Pod）：RM35/晚</strong>（约SGD10 / 约人民币55）</li>
-<li><strong>下层舱位（Lower Deck Pod）：RM45/晚</strong>（约SGD13 / 约人民币75）</li>
+<li><strong>平日（周一至周四）：RM30/晚</strong>（约SGD9 / 约人民币48）—— 上下层同价</li>
+<li><strong>周末（周五至周日）：RM35/晚</strong>（约SGD10 / 约人民币56）—— 下层舱位无需爬梯</li>
 </ul>
 <p><strong>一晚直接省SGD100+。</strong>中转时间长的话，住两三晚省下的钱够买张国际机票。</p>
 <p><strong>注意：</strong>非马来西亚公民需额外支付旅游税RM10/房/晚。</p>
@@ -2227,7 +2227,7 @@ var BlogPosts = func() []BlogPost {
 <tr><th>项目</th><th>樟宜机场酒店</th><th>新山胶囊旅馆</th><th>你省了</th></tr>
 </thead>
 <tbody>
-<tr><td><strong>1晚住宿</strong></td><td>SGD150-300（¥800-1600）</td><td>RM35-45（SGD10-13 / ¥55-75）</td><td><strong>SGD137-290</strong></td></tr>
+<tr><td><strong>1晚住宿</strong></td><td>SGD150-300（¥800-1600）</td><td>RM30-35（SGD9-10 / ¥48-56）</td><td><strong>SGD140-290</strong></td></tr>
 <tr><td><strong>2晚住宿</strong></td><td>SGD300-600</td><td>RM70-90（SGD20-26）</td><td><strong>SGD274-580</strong></td></tr>
 <tr><td><strong>3晚住宿</strong></td><td>SGD450-900</td><td>RM105-135（SGD30-39）</td><td><strong>SGD411-870</strong></td></tr>
 <tr><td><strong>交通成本（往返）</strong></td><td>—</td><td>SGD10-30</td><td>算上交通依然大省</td></tr>
@@ -2262,7 +2262,7 @@ var BlogPosts = func() []BlogPost {
 <ul>
 <li><strong>地址：</strong>26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru</li>
 <li><strong>入住：</strong>下午3:00 | <strong>退房：</strong>中午12:00</li>
-<li><strong>房型：</strong>上层舱RM35/晚，下层舱RM45/晚</li>
+<li><strong>房型：</strong>平日RM30/晚，周末RM35/晚（上下层同价）</li>
 <li><strong>WiFi：</strong>全馆免费，网速够用</li>
 </ul>
 <p><a href="/book">现在就订</a>，省下的钱路上花。</p>
@@ -2282,7 +2282,7 @@ var BlogPosts = func() []BlogPost {
 			Content: `
 <h2>住新山、玩新加坡——最聪明的省钱方式</h2>
 <p>第一次来东南亚的朋友，十有八九直接订新加坡的酒店。但玩过的人都知道：<strong>住在马来西亚新山（Johor Bahru），白天坐巴士过关去新加坡逛，晚上回来吃饭睡觉</strong>。两座城就隔一条海峡，过关45分钟到1个半小时，省下来的钱够你多玩好几天。</p>
-<p>对比住宿：新加坡青旅一晚SGD40-60（约¥210-315），稍微像样的酒店SGD150-200起步。新山<a href="/rooms">彩虹胶囊旅馆</a>上层舱位只要<strong>RM35/晚（约¥56）</strong>，下层舱位<strong>RM45/晚（约¥72）</strong>。一晚的差价够你在新山吃三天。</p>
+<p>对比住宿：新加坡青旅一晚SGD40-60（约¥210-315），稍微像样的酒店SGD150-200起步。新山<a href="/rooms">彩虹胶囊旅馆</a>胶囊舱位平日只要<strong>RM30/晚（约¥48）</strong>，周末<strong>RM35/晚（约¥56）</strong>，上下层同价。一晚的差价够你在新山吃三天。</p>
 <p>吃饭差距更大：新加坡随便吃一顿SGD10-15，新山路边档口一碗面RM5-8（约¥8-13）。<strong>同样的钱，在新山能吃三倍的量</strong>。</p>
 <h2>五天花费对比</h2>
 <table>
@@ -2354,7 +2354,7 @@ var BlogPosts = func() []BlogPost {
 </ul>
 <h2>为什么推荐彩虹胶囊旅馆？</h2>
 <ul>
-  <li>上层舱位RM35/晚（约¥56），下层舱位RM45/晚（约¥72）</li>
+  <li>胶囊舱位平日RM30/晚（约¥48），周末RM35/晚（约¥56），上下层同价</li>
   <li>Taman Pelangi美食区，到CIQ关口15分钟车程</li>
   <li>每个舱位配储物柜，白天去新加坡贵重东西锁好</li>
   <li>24小时出入，没有门禁</li>
@@ -2415,7 +2415,7 @@ var BlogPosts = func() []BlogPost {
 </ul>
 <h2>Staying in Taman Pelangi After the Train</h2>
 <p>Taman Pelangi is one of JB's most food-rich neighbourhoods. Within walking distance: hawker centres, old-school kopitiams, seafood restaurants, and late-night mamak stalls.</p>
-<p>Check-in at Pelangi is from <strong>3:00 PM</strong>. Drop your bags earlier and head out to explore. <a href="/rooms">Upper Deck Pods from RM35/night</a>, Lower Deck Pods from RM45/night.</p>
+<p>Check-in at Pelangi is from <strong>3:00 PM</strong>. Drop your bags earlier and head out to explore. <a href="/rooms">Pods from RM30/night on weekdays (RM35 weekends)</a> — Upper and Lower Deck same price.</p>
 <p><a href="/book">Book your pod at Pelangi Capsule Hostel</a> and make the most of your JB trip.</p>
 `,
 		},
@@ -2464,7 +2464,7 @@ var BlogPosts = func() []BlogPost {
   <li><strong>Check-out time:</strong> 12:00 PM (noon).</li>
   <li><strong>Address:</strong> 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru.</li>
   <li><strong>WiFi:</strong> Free throughout. Network: pelangi capsule, password: ilovestaycapsule.</li>
-  <li><strong>Pods:</strong> <a href="/rooms">Upper Deck Pods from RM35/night</a>, Lower Deck Pods from RM45/night. LED reading light, USB charging port, personal locker per pod.</li>
+  <li><strong>Pods:</strong> <a href="/rooms">RM30/night on weekdays, RM35/night on weekends</a> — Upper and Lower Deck same price. LED reading light, USB charging port, personal locker per pod.</li>
   <li><strong>Tourism tax:</strong> Non-Malaysian guests pay RM10 per room per night at check-in.</li>
 </ul>
 <p>Arriving late or have questions? Reach us via the WhatsApp link on our <a href="/getting-here">Getting Here page</a>.</p>
@@ -2533,7 +2533,7 @@ var BlogPosts = func() []BlogPost {
 <ul>
   <li><strong>地址：</strong>26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru</li>
   <li><strong>入住时间：</strong>下午 3:00 | <strong>退房时间：</strong>中午 12:00</li>
-  <li><strong>房型：</strong>上层舱位 RM35/晚，下层舱位 RM45/晚。独立阅读灯、USB 充电口和个人储物柜。</li>
+  <li><strong>房型：</strong>平日 RM30/晚，周末 RM35/晚（上下层同价）。独立阅读灯、USB 充电口和个人储物柜。</li>
   <li><strong>旅游税：</strong>非马来西亚公民额外 RM10/房/晚，入住时缴纳。</li>
   <li><strong>WiFi：</strong>全馆免费，网络名：pelangi capsule，密码：ilovestaycapsule。</li>
 </ul>
@@ -3682,14 +3682,17 @@ func CategoryToSlug(category string) string {
 	return _blogCatSpaceRE.ReplaceAllString(trimmed, "-")
 }
 
-// SlugToCategory returns the original category name for a given slug.
+// SlugToCategory returns the original category name for a given slug, or ""
+// when no published post has that category — the handler treats "" as 404.
+// (Returning the raw slug here made /blog/category/<anything> render an
+// indexable empty page; hunt finding 2026-07-11.)
 func SlugToCategory(slug string) string {
 	for _, p := range PublishedPosts() {
 		if CategoryToSlug(p.Category) == slug {
 			return p.Category
 		}
 	}
-	return slug
+	return ""
 }
 
 // GetUniqueCategories returns all distinct category names in insertion order.

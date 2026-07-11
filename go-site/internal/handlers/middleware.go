@@ -3,6 +3,7 @@ package handlers
 import (
 	"net/http"
 	"os"
+	stdpath "path"
 	"strconv"
 	"strings"
 	"sync"
@@ -24,6 +25,25 @@ func (h *Handler) Middleware(next http.Handler) http.Handler {
 		hdr.Set("X-Frame-Options", "SAMEORIGIN")
 		hdr.Set("Referrer-Policy", "strict-origin-when-cross-origin")
 		hdr.Set("Permissions-Policy", "camera=(), microphone=(), geolocation=()")
+
+		// --- Trailing-slash / double-slash canonicalisation (hunt 2026-07-11) ---
+		// /blog/some-post/ and /blog// were hard 404s (Go 1.22 ServeMux has no
+		// trailing-slash variant of GET /blog/{slug}); redirect to the clean
+		// path instead. Proxied prefixes and static/file paths are excluded —
+		// their handlers own their own trailing-slash semantics.
+		if len(path) > 1 && (strings.HasSuffix(path, "/") || strings.Contains(path, "//")) &&
+			!strings.HasPrefix(path, "/static/") && !strings.HasPrefix(path, "/book") &&
+			!strings.HasPrefix(path, "/api/") && !strings.HasPrefix(path, "/images/") {
+			clean := strings.TrimRight(stdpath.Clean(path), "/")
+			if clean == "" {
+				clean = "/"
+			}
+			if q := r.URL.RawQuery; q != "" {
+				clean += "?" + q
+			}
+			http.Redirect(w, r, clean, http.StatusMovedPermanently)
+			return
+		}
 
 		// --- WordPress legacy paths → 410 Gone ---
 		for _, p := range wpPathPrefixes {

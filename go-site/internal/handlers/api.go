@@ -129,6 +129,16 @@ func (h *Handler) ari(w http.ResponseWriter, r *http.Request) {
 		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "checkout must be after checkin"})
 		return
 	}
+	// Bounds (hunt 2026-07-11): past check-ins and multi-year ranges previously
+	// returned nominal availability from the fallback path.
+	if checkin < data.TodayMYT() {
+		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "checkin must be today or later"})
+		return
+	}
+	if co.Sub(ci).Hours() > 365*24 {
+		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "stay cannot exceed 365 nights"})
+		return
+	}
 
 	nights := int(co.Sub(ci).Hours() / 24)
 	if nights < 1 {

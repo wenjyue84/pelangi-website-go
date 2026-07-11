@@ -14,9 +14,11 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"strings"
 	"syscall"
 	"time"
 
+	"pelangi-website/internal/gbp"
 	"pelangi-website/internal/handlers"
 	"pelangi-website/internal/render"
 )
@@ -48,10 +50,28 @@ func main() {
 		log.Fatalf("static sub: %v", err)
 	}
 
+	gbpSvc, err := gbp.NewServiceFromEnv()
+	if err != nil {
+		log.Fatalf("gbp init: %v", err)
+	}
+	if gbpSvc != nil {
+		gbpSvc.StartScheduler()
+		log.Printf("GBP scheduler started — admin at /admin/gbp?token=%s", gbpSvc.AdminToken)
+	}
+
 	mux := http.NewServeMux()
-	h := handlers.New(r, publicDir)
+	h := handlers.New(r, publicDir, gbpSvc)
 	h.Register(mux)
-	mux.Handle("GET /static/", http.StripPrefix("/static/", cacheControl(http.FileServerFS(staticFS))))
+	// Directory paths under /static/ must 404, not render a listing of the
+	// embedded FS layout (hunt 2026-07-11).
+	staticHandler := http.StripPrefix("/static/", cacheControl(http.FileServerFS(staticFS)))
+	mux.Handle("GET /static/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if strings.HasSuffix(r.URL.Path, "/") {
+			http.NotFound(w, r)
+			return
+		}
+		staticHandler.ServeHTTP(w, r)
+	}))
 
 	srv := &http.Server{
 		Addr:              ":" + port,

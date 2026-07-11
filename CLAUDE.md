@@ -82,6 +82,23 @@ go run .             # dev server :3000 (PORT env to override)
 ./build.sh           # production build (linux/amd64 static binary)
 ```
 
+## Testing — ACI (browserless regression harness)
+
+```bash
+cd go-site
+node aci.mjs describe            # capability catalog — agents START HERE
+node aci.mjs test --suite=all    # 75 checks, 8 suites, ephemeral server on :3210 (~45s)
+node aci.mjs test --suite=integrity   # no-server fast loop (<1s): slugs, dates, index sync
+node aci.mjs gates               # authoritative: go vet + go build
+```
+
+Run `test --suite=all` after ANY go-site change, BEFORE deploy. Suites cover:
+scheduled-publish gate, pricing consistency (RM45 must stay dead), JSON-LD parse,
+sitemap gating/lastmod, wp-* 410s, security headers, /api/ari validation.
+Agents: `pelangi-aci-deterministic` (regression) + `pelangi-aci-evaluator` (judgment)
+in `.claude/agents/`. Browser automation only for pixels/events (Step 6 boundary
+in the setup-aci skill) — everything else goes through the ACI.
+
 ## Coding Patterns
 
 - One template file per route under `templates/pages/`; page handlers in `internal/handlers/page_*.go`
