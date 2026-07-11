@@ -46,6 +46,11 @@ func (h *Handler) blogPost(w http.ResponseWriter, r *http.Request) {
 		h.notFound(w, r)
 		return
 	}
+	// Render-time gate: cross-links to still-scheduled posts degrade to plain
+	// text until their go-live date (mirrors the PublishedPosts 404 gate).
+	stripped := *post
+	stripped.Content = data.StripUnpublishedLinks(post.Content)
+	post = &stripped
 
 	isZh := blogContainsCJK(post.Title)
 	lang := "en"

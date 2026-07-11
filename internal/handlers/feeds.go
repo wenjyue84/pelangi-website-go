@@ -68,7 +68,7 @@ func (h *Handler) feedJSON(w http.ResponseWriter, r *http.Request) {
 			ID:            baseURL + "/blog/" + p.Slug,
 			URL:           baseURL + "/blog/" + p.Slug,
 			Title:         p.Title,
-			ContentHTML:   p.Content,
+			ContentHTML:   data.StripUnpublishedLinks(p.Content),
 			Summary:       p.Excerpt,
 			DatePublished: parseDate(p.Date).Format("2006-01-02T15:04:05.000Z"),
 			Authors:       []jfAuthor{{Name: p.Author}},
@@ -130,7 +130,7 @@ func (h *Handler) feedXML(w http.ResponseWriter, r *http.Request) {
 		b.WriteString("      <pubDate>" + pub + "</pubDate>\n")
 		b.WriteString("      <category>" + escapeXMLFeed(p.Category) + "</category>\n")
 		b.WriteString(`      <guid isPermaLink="true">` + baseURL + "/blog/" + p.Slug + "</guid>\n")
-		b.WriteString("      <content:encoded><![CDATA[" + p.Content + "]]></content:encoded>\n")
+		b.WriteString("      <content:encoded><![CDATA[" + data.StripUnpublishedLinks(p.Content) + "]]></content:encoded>\n")
 		b.WriteString("    </item>\n    ")
 	}
 	b.WriteString("\n  </channel>\n</rss>")
