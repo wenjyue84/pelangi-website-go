@@ -1106,7 +1106,9 @@ var BlogPosts = func() []BlogPost {
 <h2>Start Today</h2>
 <p>Download Lalamove Driver, submit documents, and earn within days. You're your own boss—set your hours, keep your income, grow your earnings.</p>
 
-<p>Staying in JB? <a href="/rooms">Pelangi Capsule Hostel</a> is perfect for gig workers. Reliable WiFi, community of hustlers, <a href="/book">book now</a>.</p>
+<h2>Need a Cheap Base While You Drive?</h2>
+<p>Many gig drivers in JB keep overheads low by staying at <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi — capsule pods from <strong>RM30/night on weekdays (RM35 weekends)</strong>, or <strong>RM594/month</strong> for long-stayers. Private rooms are also available from <strong>RM500/month</strong>, right above the 7-Eleven on Jalan Perang. Fast WiFi for the driver app, lockers, hot showers, and a base 15 minutes from the Causeway — cross-border delivery jobs start at your doorstep.</p>
+<p><a href="/book">Book a pod</a>, or compare the numbers first: the <a href="/blog/rm594-month-jb-long-stay-singapore-commute-base">honest maths of RM594/month capsule living</a> and the <a href="/blog/room-for-rent-taman-pelangi-jb-rm500-month">RM500/month private room guide</a>.</p>
 `,
 		},
 		// 16
