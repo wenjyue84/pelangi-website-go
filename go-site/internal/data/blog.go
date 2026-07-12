@@ -3638,6 +3638,541 @@ var BlogPosts = func() []BlogPost {
 </ul>
 `,
 		},
+		// 49 — scheduled: goes live 2026-08-07
+		{
+			Slug:          "medical-emergency-johor-bahru-hospitals-clinics-foreigner-costs",
+			ImageAlt:      "Red and white emergency department sign at a hospital entrance in Johor Bahru, Malaysia",
+			Title:         "Medical Emergency in Johor Bahru: Hospitals, Clinics & Foreigner Costs (2026)",
+			Excerpt:       "What to do in a medical emergency in Johor Bahru — from dialling 999 to choosing between government and private hospitals, plus honest foreigner price ranges.",
+			Date:          "2026-08-07",
+			Category:      "Local Life",
+			Author:        "Jay Lew",
+			ReadTime:      "7 min read",
+			Tags:          []string{"johor-bahru", "hospitals", "medical-emergency", "foreigner-travel", "health", "expat"},
+			FeaturedImage: "/images/blog/medical-emergency-johor-bahru-hospitals-clinics-foreigner-costs.jpg",
+			Content: `
+<h2>First: Call 999 (MERS)</h2>
+<p>In any life-threatening emergency — chest pain, severe injury, unconscious person, difficulty breathing — your first call is <strong>999</strong>. This is Malaysia's unified emergency hotline, operated by the <strong>Malaysian Emergency Response Service (MERS 999)</strong>. It connects you to ambulance, fire rescue, police, and civil defence from a single number.</p>
+<ul>
+  <li><strong>999</strong> — standard emergency number (works on all Malaysian networks)</li>
+  <li><strong>112</strong> — international GSM emergency number; works even on a locked phone with no SIM credit</li>
+  <li>Calls are answered within 10 seconds by trained emergency officers who dispatch the nearest available ambulance</li>
+  <li>Download the <strong>SaveME999 app</strong> (iOS/Android) — it sends your GPS coordinates automatically with the call, cutting response time when you cannot describe your location</li>
+</ul>
+<p>999 is free. You do not need phone credit. You do not need a Malaysian SIM. Dial it first; sort out hospital logistics after.</p>
+
+<h2>Hospital Sultanah Aminah — Public (Government) Hospital</h2>
+<p>For non-critical emergencies or if cost is a concern, <strong>Hospital Sultanah Aminah (HSA)</strong> is Johor's largest government hospital and the main public emergency facility in JB city centre.</p>
+<ul>
+  <li><strong>Address:</strong> Jalan Persiaran Abu Bakar Sultan, 80100 Johor Bahru</li>
+  <li><strong>Phone:</strong> 07-223 1666</li>
+  <li><strong>Emergency:</strong> 24-hour Accident &amp; Emergency department</li>
+  <li><strong>Beds:</strong> 857 (main referral centre for all of Johor state)</li>
+  <li>Established 1882; full spectrum of specialties including cardiology, neurology, orthopaedics, and obstetrics</li>
+</ul>
+<h3>What foreigners pay at government hospitals</h3>
+<p>Government hospitals charge non-citizens a higher rate than Malaysians under the Fees Act 1951 (Second Schedule). These are still far below private hospital rates. Current indicative figures (amended 2017 gazette):</p>
+<table>
+  <thead><tr><th>Service</th><th>Non-Citizen Rate (indicative)</th></tr></thead>
+  <tbody>
+    <tr><td>Outpatient / A&amp;E visit</td><td>RM40 – RM100</td></tr>
+    <tr><td>Outpatient specialist clinic</td><td>RM120</td></tr>
+    <tr><td>3rd class ward (per day)</td><td>RM126</td></tr>
+    <tr><td>2nd class ward (per day)</td><td>RM200+</td></tr>
+    <tr><td>1st class ward (per day)</td><td>RM400+</td></tr>
+    <tr><td>Normal delivery</td><td>RM800+</td></tr>
+    <tr><td>C-section</td><td>RM3,000+</td></tr>
+  </tbody>
+</table>
+<p><em>Verify current figures directly with the hospital — gazetted rates are subject to change and individual charges depend on treatment rendered.</em></p>
+<p>Expect long waits. The A&amp;E triage system prioritises by severity, not arrival time. For true emergencies you will be seen fast; for minor issues, a private clinic will be quicker.</p>
+
+<h2>Private Hospitals in Johor Bahru</h2>
+<p>Private hospitals offer shorter waits, English-speaking coordinators, single rooms, and the ability to choose your consultant. They cost significantly more than HSA but are the practical choice for most travellers and cross-border visitors who carry travel insurance.</p>
+
+<h3>KPJ Johor Specialist Hospital</h3>
+<ul>
+  <li><strong>Address:</strong> 39-B, Jalan Abdul Samad, 80100 Johor Bahru (city centre)</li>
+  <li><strong>Phone:</strong> 07-225 3000</li>
+  <li><strong>Emergency:</strong> 24-hour A&amp;E</li>
+  <li><strong>Beds:</strong> 282; centres of excellence in cardiology, oncology, and IVF</li>
+  <li>Dedicated international patient department with coordinators for foreign visitors</li>
+  <li><strong>Indicative foreigner costs:</strong> Specialist consultation RM150–350 (first visit); facility and procedure fees additional. As of July 2025, a 6% SST applies to treatment for foreign nationals at Malaysian private hospitals.</li>
+</ul>
+
+<h3>Gleneagles Hospital Medini (IHH Healthcare)</h3>
+<ul>
+  <li><strong>Address:</strong> No. 2, Jalan Medini Utara 4, Medini Iskandar, 79250 Iskandar Puteri, Johor</li>
+  <li><strong>Phone:</strong> 07-560 1000 | <strong>Emergency line:</strong> 07-560 1111</li>
+  <li><strong>Emergency:</strong> 24-hour A&amp;E; 300 beds</li>
+  <li>IHH flagship for cross-border Singapore patients; <strong>Medisave-accredited</strong> — Singaporeans can use CPF Medisave for eligible treatments here</li>
+  <li>International patient team handles insurance claims, flight bookings, visa arrangements, and airport transfers</li>
+  <li><strong>Indicative costs:</strong> Specialist consultation RM200–500+; major surgical cases RM3,000–RM10,000+ depending on procedure</li>
+</ul>
+
+<h3>Columbia Asia Hospital — Iskandar Puteri</h3>
+<ul>
+  <li><strong>Address:</strong> Persiaran Afiat, Taman Kesihatan Afiat, 79250 Iskandar Puteri, Johor</li>
+  <li><strong>Phone:</strong> 07-233 9999</li>
+  <li><strong>Emergency:</strong> 24-hour A&amp;E</li>
+  <li>Mid-size private hospital with a reputation for shorter wait times; good option for non-critical urgent care in the Iskandar Puteri / Nusajaya area</li>
+  <li><strong>Indicative costs:</strong> GP/emergency consultation RM100–250; specialist RM150–400</li>
+</ul>
+
+<h3>Regency Specialist Hospital — Masai</h3>
+<ul>
+  <li><strong>Address:</strong> No. 1, Jalan Suria, Bandar Seri Alam, 81750 Masai, Johor</li>
+  <li><strong>Phone:</strong> 07-381 7700 | <strong>24-hour A&amp;E hotline:</strong> 1-800-22-2505</li>
+  <li><strong>Emergency:</strong> 24-hour A&amp;E staffed by board-certified emergency medicine specialists</li>
+  <li>Located east of JB city; good choice if you are in the Masai / Pasir Gudang / Seri Alam corridor</li>
+  <li>International Patient Services department; also reachable via 365Care: +65-9099-1662</li>
+  <li><strong>Indicative costs:</strong> Consultation RM150–350; procedures and ward fees additional</li>
+</ul>
+
+<h2>GP Clinics — For Minor, Non-Emergency Issues</h2>
+<p>For fever, mild infection, diarrhoea, minor cuts, sore throat, or a prescription refill, a <strong>GP (general practitioner) clinic</strong> is faster and cheaper than any hospital emergency department. Every neighbourhood in JB has multiple GP clinics.</p>
+<ul>
+  <li><strong>Typical GP consultation fee:</strong> RM25–60 per visit, including basic medication</li>
+  <li>Walk-in only; most open 8am–10pm, some 24 hours</li>
+  <li>Taman Pelangi and surrounding areas have several clinics within a 5-minute walk or Grab ride from the hostel</li>
+  <li>Ask at the hostel reception — staff can point you to the nearest clinic and help with translation if needed</li>
+</ul>
+
+<h2>Pharmacies</h2>
+<p>For mild symptoms or over-the-counter medicines, pharmacies are your first stop before spending time in a clinic queue.</p>
+<ul>
+  <li><strong>Guardian, Watsons, Caring Pharmacy</strong> — the three main chains with branches throughout JB malls and shophouses. Aeon Tebrau and KSL City Mall both have at least one chain pharmacy each.</li>
+  <li>Pharmacists in Malaysia are licensed to counsel on OTC medications including antihistamines, antidiarrheals, rehydration salts, pain relief, and basic wound care</li>
+  <li>Paracetamol (Panadol), ibuprofen, oral rehydration salts, and most common travel medicines are available without prescription</li>
+  <li><strong>Hours:</strong> Mall-based pharmacies follow mall hours (10am–10pm). Standalone Caring/Guardian branches in shophouses often open from 8:30am</li>
+</ul>
+
+<h2>Travel Insurance — Get It Before You Arrive</h2>
+<p>Private hospital bills in Malaysia add up fast. A single night in a private ward plus specialist consultation can run RM1,500–5,000 before procedures. Travel insurance covering medical evacuation and hospitalisation is strongly recommended for all visitors.</p>
+<ul>
+  <li>Check that your policy covers <strong>Malaysia specifically</strong> and includes emergency hospitalisation, not just outpatient treatment</li>
+  <li>Gleneagles Medini is <strong>Medisave-accredited</strong> — Singaporeans with CPF Medisave can use it for eligible inpatient and day surgery claims</li>
+  <li>Keep your insurer's emergency hotline number saved on your phone before you travel</li>
+  <li>Many insurers require you to call their hotline <em>before</em> admission for non-emergency procedures — check your policy terms</li>
+  <li>Government hospital (HSA) costs are significantly lower and manageable even without insurance; private hospital costs are where insurance matters most</li>
+</ul>
+
+<h2>Quick Reference: Who to Call</h2>
+<table>
+  <thead><tr><th>Situation</th><th>Where to Go</th><th>Contact</th></tr></thead>
+  <tbody>
+    <tr><td>Life-threatening emergency</td><td>Call ambulance first</td><td>999 or 112</td></tr>
+    <tr><td>Serious but not immediately life-threatening</td><td>KPJ Johor or Gleneagles Medini A&amp;E</td><td>07-225 3000 / 07-560 1111</td></tr>
+    <tr><td>Budget emergency option</td><td>Hospital Sultanah Aminah A&amp;E</td><td>07-223 1666</td></tr>
+    <tr><td>East JB / Masai area</td><td>Regency Specialist Hospital</td><td>1-800-22-2505</td></tr>
+    <tr><td>Iskandar Puteri / Nusajaya area</td><td>Columbia Asia or Gleneagles Medini</td><td>07-233 9999 / 07-560 1000</td></tr>
+    <tr><td>Minor illness / prescription</td><td>Any GP clinic near your location</td><td>Ask hostel staff</td></tr>
+    <tr><td>OTC medicine only</td><td>Guardian / Watsons / Caring Pharmacy</td><td>Walk-in</td></tr>
+  </tbody>
+</table>
+
+<h2>Staying at Pelangi Capsule Hostel</h2>
+<p>If you are staying with us at <strong>Pelangi Capsule Hostel</strong> (26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru), our front desk staff can help you identify the nearest clinic, arrange a Grab to the hospital, or assist with basic communication. WhatsApp us any time at <a href="https://wa.me/60127088789" target="_blank" rel="noopener">+60 12-708 8789</a>.</p>
+<p>Our pods start at <strong>RM30/night weekdays</strong> and <strong>RM35/night weekends</strong>, with monthly stays from <strong>RM594</strong>. Check-in from 3:00 PM, check-out by 12:00 PM. <a href="/book">Book your stay</a> and travel with one less thing to worry about.</p>
+
+<h2>Sources</h2>
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Sultanah_Aminah_Hospital" target="_blank" rel="noopener">Wikipedia — Sultanah Aminah Hospital</a></li>
+  <li><a href="https://www.civildefence.gov.my/999-emergency-services/?lang=en" target="_blank" rel="noopener">Malaysia Civil Defence Department — 999 Emergency Services</a></li>
+  <li><a href="https://www.nst.com.my/news/nation/2025/11/1319952/how-use-malaysias-new-emergency-app-saveme999" target="_blank" rel="noopener">New Straits Times — SaveME999 App Guide</a></li>
+  <li><a href="https://kpjhealth.com.my/johor" target="_blank" rel="noopener">KPJ Johor Specialist Hospital — Official Site</a></li>
+  <li><a href="https://gleneagles.com.my/medini-johor/contactus" target="_blank" rel="noopener">Gleneagles Hospital Medini — Contact &amp; Emergency</a></li>
+  <li><a href="https://www.columbiaasia.com/malaysia/hospitals/iskandar-puteri/" target="_blank" rel="noopener">Columbia Asia Hospital Iskandar Puteri — Official Site</a></li>
+  <li><a href="https://www.regencyspecialist.com/contact-us" target="_blank" rel="noopener">Regency Specialist Hospital — Contact Us</a></li>
+  <li><a href="https://calculatormalaysia.com/health/medical-cost-malaysia/" target="_blank" rel="noopener">Calculator Malaysia — Medical Cost Malaysia 2026 (non-citizen fee schedule)</a></li>
+  <li><a href="https://www.medisata.com/kpj-johor" target="_blank" rel="noopener">MediSata — KPJ Johor (consultation fees, SST note)</a></li>
+  <li><a href="https://trekmedics.org/database/malaysia-2/" target="_blank" rel="noopener">Trek Medics — How to Call an Ambulance in Malaysia</a></li>
+  <li><em>All price figures are indicative ranges only. Verify current charges directly with each hospital before treatment. Fees are subject to change without notice and vary by treatment rendered.</em></li>
+</ul>
+`,
+		},
+		// 50 — scheduled: goes live 2026-08-10
+		{
+			Slug:          "online-friend-romance-scam-safety-johor-bahru",
+			ImageAlt:      "Smartphone wrapped in chain and padlock symbolising online scam safety in Johor Bahru",
+			Title:         "Online Scams in JB: How to Spot Romance, Job-Lure, and Macau Scams Before They Strike",
+			Excerpt:       "Budget travellers and cross-border workers in Johor Bahru face a rising tide of romance scams, fake job offers, and police-impersonation calls. Here is how to recognise them and who to call.",
+			Date:          "2026-08-10",
+			Category:      "Local Life",
+			Author:        "Jay Lew",
+			ReadTime:      "7 min read",
+			Tags:          []string{"safety", "scam-awareness", "johor-bahru", "travel-tips", "local-life"},
+			FeaturedImage: "/images/blog/online-friend-romance-scam-safety-johor-bahru.jpg",
+			Content: `
+<h2>Why JB Is a High-Risk Zone for Scams</h2>
+<p>Johor Bahru sits at one of Southeast Asia's busiest crossroads. Every day, tens of thousands of Malaysians commute to Singapore for work, and budget travellers pass through on their way to or from the Causeway. That constant flow of people — many of them young, mobile, and far from their support networks — makes JB a prime hunting ground for scam syndicates.</p>
+<p>Malaysia loses tens of billions of ringgit to scams every year. The three types most likely to hit someone in or passing through JB are romance scams, fake job-lure trafficking schemes, and Macau-style police-impersonation calls. Knowing how each one works can save you from becoming the next victim.</p>
+
+<h2>1. Romance Scams: Tinder, WeChat, and the Long Con</h2>
+<p>A 28-year-old delivery worker in Johor Baru lost RM63,000 to a woman he met on WeChat in early 2025. A woman in Sibu lost RM86,841 to a Tinder match posing as a Korean man in 2024. These are not isolated cases — Malaysian police reported <strong>RM23.3 million lost to online love scams by women alone in the first half of 2024</strong>.</p>
+
+<h3>How it works</h3>
+<ol>
+  <li>Scammer creates a polished profile — often using stolen photos of an attractive foreign national (a soldier, engineer, or doctor working overseas).</li>
+  <li>Contact starts on a dating app (Tinder, MiCo) or social platform (WeChat, Instagram, Facebook).</li>
+  <li>They invest weeks or months building an emotional bond — daily messages, voice notes, small "gifts."</li>
+  <li>Once trust is established, a crisis emerges: they need money urgently for a medical emergency, customs clearance, or a business opportunity that "only you can help with."</li>
+  <li>Requests escalate. The "person" is never able to meet in real life — there is always a reason.</li>
+</ol>
+
+<h3>Red flags</h3>
+<ul>
+  <li>Profile seems too perfect; photos look like a model or stock image.</li>
+  <li>Claims to be overseas (often military, oil rig, or international business).</li>
+  <li>Conversation moves very quickly to declarations of love or strong attachment.</li>
+  <li>Avoids video calls, or appears only briefly and in poor lighting.</li>
+  <li>Eventually asks you to transfer money, buy gift cards, or invest in a cryptocurrency platform they recommend.</li>
+</ul>
+
+<h3>What to do</h3>
+<ul>
+  <li>Reverse image-search their profile photo using Google Images or TinEye before trusting anyone you meet online.</li>
+  <li>Never send money to someone you have not met in person, regardless of how long you have been talking.</li>
+  <li>Check suspicious phone numbers or bank accounts at <a href="https://semakmule.rmp.gov.my/" target="_blank" rel="noopener">Semak Mule (semakmule.rmp.gov.my)</a> — PDRM's free portal to verify if a number or account has been flagged for fraud.</li>
+  <li>If you have already transferred money, call <strong>NSRC 997</strong> immediately (8 AM–8 PM daily, including public holidays). Speed is critical — early reports have recovered nearly all funds; an 8-hour delay can mean recovering only a fraction.</li>
+</ul>
+
+<h2>2. Fake Job Offers: The JB–Singapore–Southeast Asia Pipeline</h2>
+<p>This scam specifically targets people in the JB–Singapore corridor. The pitch sounds legitimate: a high-paying clerical, customer service, or IT job in Singapore or elsewhere in Southeast Asia, with no interview required and all travel arranged. The reality is a guarded scam compound in Cambodia, Myanmar, or Laos — and you are the product, not the employee.</p>
+<p>In one documented case, <strong>Nur Elisha, a 23-year-old diploma holder from Johor Bahru</strong>, was approached in November 2023 with a fake clerical job in Singapore. She was instead flown through Changi Airport to Phnom Penh, Cambodia, held in a compound, and forced to run online scams targeting others. She eventually escaped with help from her family, the Malaysian Humanitarian Organisation, and the Malaysian embassy — returning home via KLIA.</p>
+
+<h3>How it works</h3>
+<ol>
+  <li>A recruiter contacts you on Telegram, WhatsApp, Facebook, or through a mutual acquaintance.</li>
+  <li>The offer involves unusually high pay for simple work (data entry, customer chat, social media management).</li>
+  <li>They handle everything: flights, accommodation, visa — so you have no control over the itinerary.</li>
+  <li>On arrival, your passport is confiscated. You are taken to a compound and told to run scam operations or face violence, being sold to a worse compound, or debt bondage.</li>
+</ol>
+
+<h3>Red flags</h3>
+<ul>
+  <li>Job offer arrives unsolicited via Telegram or WhatsApp from someone you barely know.</li>
+  <li>Pay is disproportionately high for unskilled work (RM5,000–RM15,000/month for basic tasks).</li>
+  <li>No formal interview, no employment contract, no verifiable company address.</li>
+  <li>They urgently want you to leave within days and arrange your travel themselves.</li>
+  <li>The destination keeps changing or is vague ("Southeast Asia," "border area").</li>
+  <li>They ask for your passport details before you have signed anything.</li>
+</ul>
+
+<h3>What to do</h3>
+<ul>
+  <li>Verify any overseas job offer by checking the company's official website independently — do not click links they send you.</li>
+  <li>Search the company name plus "scam" on Google before agreeing to anything.</li>
+  <li>Tell a trusted person where you are going and keep control of your own passport and travel documents at all times.</li>
+  <li>If you suspect a job offer is a trafficking lure, report it to <strong>PDRM CCID Infoline: 013-211 1222</strong> or lodge a report at <a href="https://ccid.rmp.gov.my/" target="_blank" rel="noopener">ccid.rmp.gov.my</a>.</li>
+  <li>If you are already trapped overseas, contact the <strong>Malaysian embassy</strong> in that country immediately.</li>
+  <li>Singapore-side workers: verify suspicious recruitment via <a href="https://www.scamshield.gov.sg/" target="_blank" rel="noopener">ScamShield</a> at <strong>1799</strong> (24/7) or the Singapore Police Force anti-scam channels.</li>
+</ul>
+
+<h2>3. Macau Scam / Police-Impersonation Calls</h2>
+<p>Despite the name, this scam has nothing to do with Macau. It involves a caller who claims to be from PDRM, the courts, Bank Negara Malaysia, the Inland Revenue Board (LHDN), or customs. They tell you that your identity has been used in a crime, your bank account is frozen, or there is a warrant for your arrest — and that you must transfer money to a "safe account" to cooperate with an investigation.</p>
+
+<h3>How it works</h3>
+<ol>
+  <li>You receive a call — sometimes preceded by an automated message — from someone claiming to be a government official.</li>
+  <li>They provide a fake badge number, case number, or "official" reference to sound credible.</li>
+  <li>The call is transferred to a supposed "superior officer" or "Bank Negara officer" who escalates the pressure.</li>
+  <li>They insist you keep the call secret and not tell family members — a classic isolation tactic.</li>
+  <li>You are told to transfer your savings to a designated account immediately to "protect" them or to prove your innocence.</li>
+</ol>
+
+<h3>Red flags</h3>
+<ul>
+  <li>Any government agency asking you to transfer money over the phone is a scam. PDRM, BNM, and LHDN do not call you and demand bank transfers.</li>
+  <li>The caller asks you to keep the conversation secret from your family.</li>
+  <li>There is pressure to act immediately — "the warrant will be issued in one hour."</li>
+  <li>The call is transferred multiple times between "departments."</li>
+  <li>They ask for your banking credentials, TAC/OTP codes, or online banking login details.</li>
+</ul>
+
+<h3>What to do</h3>
+<ul>
+  <li>Hang up immediately. No legitimate government agency will demand money over the phone.</li>
+  <li>Call the agency they claimed to be from directly using the official number from their website — not the number the caller gave you.</li>
+  <li>If you have transferred money, call <strong>NSRC 997</strong> right away (8 AM–8 PM). Outside those hours, call your bank's 24/7 fraud line to freeze the transaction.</li>
+  <li>Check if the phone number or account number has been flagged at <a href="https://semakmule.rmp.gov.my/" target="_blank" rel="noopener">Semak Mule</a>.</li>
+</ul>
+
+<h2>Your Quick-Reference Toolkit</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Tool</th>
+      <th>What It Does</th>
+      <th>Contact</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>NSRC Hotline</strong></td>
+      <td>Emergency scam response — freeze funds, lodge report</td>
+      <td><strong>997</strong> (8 AM–8 PM daily incl. public holidays)</td>
+    </tr>
+    <tr>
+      <td><strong>PDRM CCID Infoline</strong></td>
+      <td>Cybercrime reports and enquiries</td>
+      <td><strong>013-211 1222</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Semak Mule</strong></td>
+      <td>Check if a bank account or phone has been flagged as a mule</td>
+      <td><a href="https://semakmule.rmp.gov.my/" target="_blank" rel="noopener">semakmule.rmp.gov.my</a></td>
+    </tr>
+    <tr>
+      <td><strong>ScamShield (SG)</strong></td>
+      <td>Singapore scam helpline and app — verify suspicious contacts</td>
+      <td><strong>1799</strong> (24/7) or <a href="https://www.scamshield.gov.sg/" target="_blank" rel="noopener">scamshield.gov.sg</a></td>
+    </tr>
+    <tr>
+      <td><strong>MyCERT</strong></td>
+      <td>Cybersecurity incident reporting</td>
+      <td>1-300-88-2999 or <a href="https://www.mycert.org.my/" target="_blank" rel="noopener">mycert.org.my</a></td>
+    </tr>
+    <tr>
+      <td><strong>Your bank's 24/7 fraud line</strong></td>
+      <td>Freeze transactions outside NSRC hours</td>
+      <td>Number on the back of your bank card</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>A Safe Base in JB</h2>
+<p>If you are passing through or staying in Johor Bahru, having a secure, reliable base helps. At <strong>Pelangi Capsule Hostel</strong>, we host a mix of budget travellers, Singapore commuters, and cross-border workers every week — and we are always happy to share local knowledge, including what to watch out for in the area.</p>
+<p>We are located at <strong>26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru</strong>. Capsule pods start from <strong>RM30/night on weekdays</strong> and <strong>RM35/night on weekends</strong>, with monthly packages from <strong>RM594</strong>. Check-in is at 3 PM and check-out at 12 PM. <a href="/book">Book your pod here</a> or <a href="/contact">reach us on WhatsApp at +60 12-708 8789</a>.</p>
+
+<h2>Sources</h2>
+<ul>
+  <li><a href="https://semakmule.rmp.gov.my/" target="_blank" rel="noopener">PDRM CCID Semak Mule portal — semakmule.rmp.gov.my</a></li>
+  <li><a href="https://nfcc.jpm.gov.my/index.php/en/about-nsrc" target="_blank" rel="noopener">National Scam Response Centre (NSRC) — nfcc.jpm.gov.my</a></li>
+  <li><a href="https://www.thestar.com.my/news/nation/2026/03/04/call-997-if-you-are-scammed-says-fahmi" target="_blank" rel="noopener">The Star: Call 997 if you've been scammed, says Fahmi (March 2026)</a></li>
+  <li><a href="https://www.nst.com.my/news/nation/2023/03/885495/national-scam-response-centres-997-hotline-be-available-around-the-clock" target="_blank" rel="noopener">New Straits Times: National Scam Response Centre's 997 hotline (2023)</a></li>
+  <li><a href="https://www.nst.com.my/news/crime-courts/2025/01/1156724/delivery-worker-loses-rm63000-online-love-scam" target="_blank" rel="noopener">NST: Delivery worker loses RM63,000 in online love scam, Johor Baru (January 2025)</a></li>
+  <li><a href="https://www.malaymail.com/news/malaysia/2024/09/06/bukit-aman-women-hit-hard-by-online-love-scams-rm233m-lost-in-2024-alone/149503" target="_blank" rel="noopener">Malay Mail: Bukit Aman — RM23.3m lost to love scams by women in 2024</a></li>
+  <li><a href="https://www.malaymail.com/news/malaysia/2024/11/16/tinder-oppa-tricks-sibu-woman-out-of-rm86841-in-love-scam/157080" target="_blank" rel="noopener">Malay Mail: Tinder 'oppa' tricks Sibu woman out of RM86,841 (November 2024)</a></li>
+  <li><a href="https://www.thevibes.com/index.php/articles/news/111093/job-offer-turns-nightmare-as-malaysian-woman-tricked-into-scam-syndicate" target="_blank" rel="noopener">The Vibes: Job offer turns nightmare — JB woman trafficked to Cambodia (July 2025)</a></li>
+  <li><a href="https://www.kln.gov.my/web/guest/-/malaysia-takes-firm-action-against-job-scam-syndicates-a-key-focus-of-the-2025-asean-chairmanship" target="_blank" rel="noopener">Malaysia MFA: Action against job scam syndicates — ASEAN 2025 Chairmanship</a></li>
+  <li><a href="https://www.rhbgroup.com/others/fraud-awareness/macau-scam/index.html" target="_blank" rel="noopener">RHB Bank: Macau Scam — how it works and red flags</a></li>
+  <li><a href="https://www.scamshield.gov.sg/" target="_blank" rel="noopener">ScamShield Singapore — scamshield.gov.sg (helpline 1799, 24/7)</a></li>
+  <li><a href="https://www.mycert.org.my/" target="_blank" rel="noopener">MyCERT — CyberSecurity Malaysia (1-300-88-2999)</a></li>
+  <li><strong>Image credit:</strong> <a href="https://www.pexels.com/photo/close-up-of-a-smart-phone-with-a-lock-11391947/" target="_blank" rel="noopener">Pexels — "Close up of a Smart Phone with a Lock" by Towfiqu barbhuiya</a> (Pexels Free License)</li>
+  <li><em>Hotline numbers and URLs change. Always verify current details at official government websites before relying on them.</em></li>
+</ul>
+`,
+		},
+		// 51 — scheduled: goes live 2026-08-13
+		{
+			Slug:          "cheap-mixed-rice-economy-rice-taman-pelangi-jb",
+			ImageAlt:      "A spread of economy rice with multiple dishes — braised meat, stir-fried vegetables, tofu, and egg on white rice, typical of Malaysian chap fan hawker stalls",
+			Title:         "Cheap Eats in Taman Pelangi: Your Guide to Economy Rice (Chap Fan) Near the Hostel",
+			Excerpt:       "Economy rice — known as chap fan in Chinese, nasi campur in Malay — is the most honest meal in Malaysia: you point at what you want, someone scoops it onto rice, and you pay for what you take. Here is where to find it within walking distance of Pelangi Capsule Hostel.",
+			Date:          "2026-08-13",
+			Category:      "Food & Drink",
+			Author:        "Jay Lew",
+			ReadTime:      "6 min read",
+			Tags:          []string{"economy-rice", "chap-fan", "nasi-campur", "taman-pelangi", "cheap-food", "hawker", "johor-bahru", "budget-travel"},
+			FeaturedImage: "/images/blog/cheap-mixed-rice-economy-rice-taman-pelangi-jb.jpg",
+			Content: `
+<h2>What Is Economy Rice?</h2>
+<p>Economy rice goes by several names depending on who you ask. Chinese Malaysians call it <strong>chap fan</strong> (杂饭) or <em>cai fan</em>. Malay Malaysians call it <strong>nasi campur</strong>. Indian Malaysians have their own mixed-rice tradition with banana-leaf service. The mechanics are the same across all three: a stall sets out 10 to 20 pre-cooked dishes in trays — braised meats, stir-fried vegetables, tofu, eggs, curries, sambal — you point at what you want, the server scoops it onto rice, and you pay based on what you picked.</p>
+<p>Locals call this system <strong>point-point</strong>. No menu, no waiting for orders, no guesswork about what is fresh. Everything in the tray was cooked that morning.</p>
+<p>A typical plate with rice and two to three dishes costs between <strong>RM5 and RM10</strong> at most hawker stalls in Johor Bahru. If you stick to one meat dish and one vegetable, you can eat well for under RM7. Add a second protein and a drink and you are still under RM12.</p>
+
+<h2>How the Point-Point System Works</h2>
+<ol>
+  <li><strong>Walk up to the counter.</strong> The dishes are laid out in metal trays, clearly visible. No need to speak Mandarin or Malay — pointing works fine at every economy rice stall in JB.</li>
+  <li><strong>Pick your rice portion first.</strong> White rice is the base. Some stalls ask if you want a lot or a little; others just scoop. If you want less, say "sikit" (a little in Malay).</li>
+  <li><strong>Point at your dishes.</strong> Typically you pick two or three items. One meat or fish dish, one vegetable, and maybe an egg or tofu. The server portions everything onto one plate.</li>
+  <li><strong>Pay at the counter or cashier.</strong> Price is calculated on the spot based on what you chose. More expensive items (seafood, big cuts of meat) cost more than a simple stir-fried vegetable.</li>
+  <li><strong>Bring cash.</strong> Most economy rice stalls in JB do not accept cards or e-wallets. RM20 in your pocket covers a meal with a drink and change left over.</li>
+</ol>
+<p><strong>Sharing tip:</strong> Two people ordering three dishes each can combine six flavours without paying for two full plates. Economy rice rewards sharing — order one extra dish and split it across both plates.</p>
+
+<h2>Economy Rice vs Nasi Campur vs Chap Fan: Is There a Difference?</h2>
+<p>In practice, the terms are used interchangeably in JB. A Chinese kopitiam will advertise <em>chap fan</em> or <em>economy rice</em>. A Malay stall uses <em>nasi campur</em>. An Indian stall may say <em>mixed rice</em> or simply plate it on a banana leaf. The pick-and-pay model is the constant. The dishes change by ethnicity and the cook's preference that day — which is exactly what makes it interesting.</p>
+<p>Taman Pelangi has all three variants within a short walk. The neighbourhood's mix of Chinese kopitiams, Malay gerai stalls, and mamak restaurants means you can eat a different style every day of the week.</p>
+
+<h2>Where to Eat Economy Rice Near Pelangi Capsule Hostel</h2>
+<p>The hostel is at <strong>26A Jalan Perang</strong>. Everything below is on the same street or within five minutes on foot.</p>
+
+<h3>Bar Wang Rice — 25 Jalan Perang, Taman Pelangi</h3>
+<p>Directly along the same street as the hostel. Bar Wang Rice is a well-known JB chain with a Taman Pelangi outlet on Jalan Perang. The format is economy rice with braised pork (lu rou) as the centrepiece — rice loaded with braised meat, a soft-boiled egg, and your choice of vegetable sides. It is filling, it is quick, and it is the kind of stall that regulars visit three times a week without needing to think about it. Available on Foodpanda for delivery if you want to eat in the pod, but the walk is negligible.</p>
+<p><strong>Estimated cost per plate:</strong> RM6–10 depending on dishes chosen. Opening hours approximately 9:30 am to 9:00 pm.</p>
+
+<h3>FECA &amp; Kopi — 44 Jalan Perang, Taman Pelangi</h3>
+<p>A popular kopitiam a short walk from the hostel serving affordable Malaysian breakfast and lunch staples. While not a dedicated economy rice stall, FECA &amp; Kopi serves rice-based dishes including nasi lemak and daily specials alongside their famous kaya toast and Nanyang coffee. Their all-day lunch set runs <strong>RM10.90</strong> — a beverage, a main, and a large drumstick. Gets busy by mid-morning; go early. Closes around 5 pm.</p>
+
+<h3>Taman Pelangi Hawker Centre — 1 Jalan Perang, Taman Pelangi</h3>
+<p>The neighbourhood's old-school evening food court, operating from approximately 5 pm to 10 pm. Multiple stalls under one roof: claypot chicken rice, char kway teow, laksa yong tau foo, Hokkien mee, and more. Budget around <strong>RM10–15 per person</strong> for a full hawker dinner with a drink. This is the place if you arrive back at the hostel after dark and want a proper hot meal without going far.</p>
+
+<h3>Nasi Ayam Kian Huat — 135 Jalan Sri Pelangi, Taman Pelangi</h3>
+<p>A well-regarded chicken rice stall that has been running in Taman Pelangi for years. Not economy rice in the strict chap fan sense, but offers a similar pick-a-dish-with-rice model centred on poached and roasted chicken. Plates are priced accessibly — expect <strong>RM6–9</strong> for chicken rice with soup and chili. Opens from around 7:30 am to 3 pm, so it covers breakfast and early lunch. A short walk from the hostel.</p>
+
+<h2>How to Keep a Plate Under RM8</h2>
+<ul>
+  <li><strong>Pick one meat, one vegetable.</strong> Two dishes plus rice sits comfortably at RM5–7 at most JB economy rice stalls.</li>
+  <li><strong>Go for egg or tofu as your protein.</strong> Braised egg and tofu are the cheapest items at most stalls — filling, tasty, and RM1–2 each.</li>
+  <li><strong>Skip the drink at the stall.</strong> A canned drink from the 7-Eleven downstairs is RM1.50 vs RM2.50–3.50 at the stall. Saves RM1 every meal.</li>
+  <li><strong>Go before 12:30 pm.</strong> The best dishes go fast. Economy rice stalls in JB often run out of the popular items by early afternoon and may close by 2 pm.</li>
+  <li><strong>Order vegetables generously.</strong> Stir-fried vegetables cost less than meat and take up the same amount of plate space. A plate of three vegetable dishes and rice can keep you full for under RM6.</li>
+  <li><strong>Share dishes when eating with someone.</strong> One extra dish between two people costs RM2–4 and adds variety without doubling the bill.</li>
+</ul>
+
+<h2>What a Typical Week of Economy Rice Costs</h2>
+<table>
+  <thead>
+    <tr><th>Meal</th><th>Low estimate</th><th>Comfortable estimate</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Rice + 1 meat + 1 veg (no drink)</td><td>RM5–6</td><td>RM7–8</td></tr>
+    <tr><td>Rice + 2 meats + 1 veg</td><td>RM7–9</td><td>RM10–12</td></tr>
+    <tr><td>+ Iced drink at stall</td><td>+RM2</td><td>+RM3</td></tr>
+    <tr><td>Full hawker dinner (Taman Pelangi FC)</td><td>RM10</td><td>RM15</td></tr>
+    <tr><td>7 economy rice lunches in a week</td><td>RM35–42</td><td>RM49–56</td></tr>
+  </tbody>
+</table>
+<p>At the lower end, you can eat a full cooked lunch every day for a week on about <strong>RM35–42</strong>. That is roughly <strong>RM150/month</strong> for daily lunches alone — or under RM300 if you add dinners at the hawker centre. These are cross-checked estimates based on current JB economy rice price bands; individual stalls vary. Verify prices on the day.</p>
+
+<h2>Practical Tips for First-Timers</h2>
+<ul>
+  <li><strong>Arrive early.</strong> Economy rice stalls run out of the best dishes by 1 pm. The prime window is 11 am to 12:30 pm.</li>
+  <li><strong>Bring small notes.</strong> RM10 and RM5 notes make payment fast. Most stalls cannot break a RM50 easily.</li>
+  <li><strong>Don't overthink the language.</strong> Point at the dish, hold up fingers for how many scoops. The server has seen it thousands of times.</li>
+  <li><strong>Ask "berapa?" (how much?) if the price isn't clear.</strong> Asking before paying avoids surprises. Stalls in Taman Pelangi are generally straightforward about pricing to tourists.</li>
+  <li><strong>Look for the crowd.</strong> A long queue at a stall is the most reliable signal of quality and freshness. Economy rice gets replenished less often in slow stalls.</li>
+</ul>
+
+<h2>Beyond Economy Rice: More Cheap Eats in Taman Pelangi</h2>
+<p>Economy rice is one slice of the cheap-food ecosystem here. Taman Pelangi also has mamak stalls open until midnight, a <a href="/blog/taman-pelangi-tuesday-night-market-guide">Tuesday night market</a> where mains run RM5–8, and old-school kopitiams serving kaya toast breakfasts for under RM5. If you want the full neighbourhood food map, see our <a href="/blog/ultimate-jb-food-guide-backpackers">JB cheap eats guide for backpackers</a>.</p>
+
+<h2>Staying Close to the Food</h2>
+<p>Pelangi Capsule Hostel is at <strong>26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru</strong> — the same street as Bar Wang Rice and FECA &amp; Kopi, two minutes from the hawker centre. Pods start at <strong>RM30/night on weekdays and RM35 on weekends</strong>. Monthly stays from <strong>RM594</strong>. Check-in from 3 PM, check-out by 12 PM. Questions? WhatsApp us at <strong>+60 12-708 8789</strong>.</p>
+<p><a href="/book">Book a pod</a> or <a href="/contact">get in touch</a> if you want to know more about what is walking distance from the hostel.</p>
+
+<h2>Sources</h2>
+<ul>
+  <li><a href="https://my.asiafirms.com/johor/bar-wang-rice-4taman-pelangi-598807.html" target="_blank" rel="noopener">Bar Wang Rice Taman Pelangi — asiafirms.com business listing (address: 25 Jalan Perang)</a></li>
+  <li><a href="https://www.foodpanda.my/restaurant/j5st/bar-wang-rice-lu-rou-ba-wang-fan-taman-pelangi" target="_blank" rel="noopener">Bar Wang Rice Taman Pelangi — Foodpanda listing</a></li>
+  <li><a href="https://sgmytrips.com/taman-pelangi-food/" target="_blank" rel="noopener">16 Best Food &amp; Restaurants in Taman Pelangi JB — sgmytrips.com (FECA &amp; Kopi, 44 Jalan Perang)</a></li>
+  <li><a href="https://www.discoverjb.com/%E6%96%B0%E5%B1%B1%E7%BE%8E%E9%A3%9F-johor-bahru-food/taman-pelangi-breakfast/" target="_blank" rel="noopener">Taman Pelangi Breakfast Guide — discoverjb.com (FECA &amp; Kopi confirmed, 44 Jalan Perang)</a></li>
+  <li><a href="https://johorkaki.blogspot.com/2017/06/cheap-good-chicken-rice-at-kim-kooi.html" target="_blank" rel="noopener">Nasi Ayam Kian Huat — Johor Kaki blog (135 Jalan Sri Pelangi, Taman Pelangi)</a></li>
+  <li><a href="https://johorkaki.blogspot.com/2012/10/makan-blitz-with-makan-kakis-taman.html" target="_blank" rel="noopener">Taman Pelangi Food Centre — Johor Kaki makan blitz (stall inventory, evening hawker centre)</a></li>
+  <li><a href="https://smartdory.com/smartdory-penang-food-blog/economy-rice/" target="_blank" rel="noopener">Economy Rice in Malaysia: A Local's Guide to Chap Fan — smartdory.com (price range, system explainer)</a></li>
+  <li><a href="https://weirdkaya.com/heres-everything-you-need-to-know-about-economy-rice-the-meal-every-msian-loves/" target="_blank" rel="noopener">Everything You Need to Know About Economy Rice — WeirdKaya (pick-and-pay system, sharing tips)</a></li>
+  <li><a href="https://www.pexels.com/photo/authentic-indonesian-nasi-padang-meal-display-37062603/" target="_blank" rel="noopener">Featured image: Mixed rice meal spread — Kandhi Bharata via Pexels (free license)</a></li>
+</ul>
+<p><em>Prices are estimates based on published sources and typical JB economy rice price bands as of mid-2026. Individual stalls vary — verify current prices on the day.</em></p>
+`,
+		},
+		// 52 — scheduled: goes live 2026-08-16
+		{
+			Slug:          "language-exchange-partner-johor-bahru-practice-english",
+			ImageAlt:      "Two friends from different backgrounds chatting over coffee at a cafe table — language exchange in Johor Bahru",
+			Title:         "How to Find a Language Exchange Partner in Johor Bahru (English, Mandarin, Malay)",
+			Excerpt:       "Apps like Tandem and HelloTalk connect you with JB students in minutes. Here's how to find a language practice partner in Johor Bahru safely — online and face-to-face.",
+			Date:          "2026-08-16",
+			Category:      "Local Life",
+			Author:        "Jay Lew",
+			ReadTime:      "6 min read",
+			Tags:          []string{"johor-bahru", "language-exchange", "english-practice", "mandarin", "malay", "students", "local-life"},
+			FeaturedImage: "/images/blog/language-exchange-partner-johor-bahru-practice-english.jpg",
+			Content: `
+<h2>Why JB Is Unusually Good for Language Exchange</h2>
+<p>Johor Bahru sits at the intersection of three languages used every day — English, Mandarin, and Bahasa Malaysia — plus a daily flow of Singaporeans, Indonesian workers, and travellers from all over Southeast Asia. That mix means genuine demand on both sides of any language swap. A local student who wants to sharpen their English can offer you Mandarin or Malay in return. A foreign visitor who wants to practise Bahasa Malaysia can offer English. The supply of willing partners is there; what most people lack is a way to find them efficiently and meet safely.</p>
+<p>This guide covers the three apps that actually work for finding a language partner in JB, where to meet locals offline, how to handle the first meeting safely, and why the common room at a hostel is a surprisingly effective shortcut.</p>
+
+<h2>Three Apps Worth Installing</h2>
+<p>All three below are real, active platforms verified against their official sites. Each takes a different approach — pick the one that fits how you prefer to communicate.</p>
+
+<table>
+  <thead>
+    <tr><th>App</th><th>Best for</th><th>Free?</th><th>Format</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Tandem</strong></td>
+      <td>Structured 1-on-1 exchange with text, voice notes, and video</td>
+      <td>Yes (Pro tier optional)</td>
+      <td>Mobile + Web</td>
+    </tr>
+    <tr>
+      <td><strong>HelloTalk</strong></td>
+      <td>Social feed + live voice rooms; 70 million+ users, 260+ languages</td>
+      <td>Yes</td>
+      <td>Mobile + Web</td>
+    </tr>
+    <tr>
+      <td><strong>Conversation Exchange</strong></td>
+      <td>Simple web-based pen-pal matching; filter by country and language</td>
+      <td>Yes</td>
+      <td>Web only</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Tandem (tandem.net)</h3>
+<p>Tandem pairs you with a native speaker of your target language who is also learning yours. You can filter by location — search for partners in Malaysia or specifically JB — and the app supports text, voice notes, and video calls within a single chat thread. A built-in Grammar Check tool lets your partner correct your messages directly in the thread, which makes feedback immediate rather than awkward. The free tier covers everything you need to start; Tandem Pro adds profile-visit notifications and unlimited translation.</p>
+
+<h3>HelloTalk (hellotalk.com)</h3>
+<p>HelloTalk's Moments feed works like a public social wall where language learners share short posts and native speakers reply with corrections. The Voicerooms feature lets you drop into a live group conversation on a topic — useful when you want to practise listening without the pressure of a 1-on-1. With over 70 million registered users it is the largest of the three platforms, which translates into more partners available in Southeast Asian languages like Malay and Mandarin.</p>
+
+<h3>Conversation Exchange (conversationexchange.com)</h3>
+<p>The oldest of the three and deliberately simple: create a profile, specify your native language and target language, and browse partners by country. It supports face-to-face meetups, text correspondence, and voice/video chat. Because it is web-based and has been running for years, it attracts a more serious learner demographic — less social feed noise, more people who actually want to practise.</p>
+
+<h2>Finding Partners Offline: Universities and Meetups</h2>
+<p>Apps get you started but face-to-face practice cements the habit. JB has two universities with active student populations close enough to matter.</p>
+
+<h3>UTM — Universiti Teknologi Malaysia (Skudai)</h3>
+<p>UTM's main campus is in Skudai, about 20 km north of Johor Bahru city centre — roughly 30 minutes by Grab. The university's Language Academy runs English and foreign-language programmes and hosts a Toastmasters club on campus. UTM also has a large international student intake, so the campus population includes students who want English conversation practice with native or fluent speakers. If you are staying in JB for more than a week, reaching out through UTM's Language Academy Facebook page (<a href="https://www.facebook.com/languageacademyutm/" target="_blank" rel="noopener">Language Academy, UTM</a>) is a legitimate way to find a motivated partner.</p>
+
+<h3>Southern University College (Skudai)</h3>
+<p>Southern UC is a private, non-profit university college also based in Skudai, Johor. It has a strong Mandarin-medium academic tradition and an international student exchange programme, which means its student body regularly includes learners who want to improve their English while you might want to improve your Mandarin or Malay. Southern UC is worth checking directly (southern.edu.my) for any student-organised language events or bulletin boards.</p>
+
+<h3>Meetup.com</h3>
+<p>Meetup's Johor Bahru language category lists active groups for language and cultural exchange. The <a href="https://www.meetup.com/en-AU/cities/my/johor_bahru/language/" target="_blank" rel="noopener">JB language groups page on Meetup</a> is the fastest way to see what is currently running. Groups range from casual coffee catch-ups to structured practice sessions. Numbers fluctuate, so check the event calendar rather than group member count — a group with 200 members and a session next Saturday is more useful than one with 2,000 members whose last event was six months ago.</p>
+
+<h2>First-Meeting Etiquette and Safety</h2>
+<p>Most language exchange partners are exactly what they present themselves as: students and professionals who want to practise. A small minority are not. The same principles that apply to <a href="/blog/online-friend-romance-scam-safety-johor-bahru">avoiding romance and friendship scams in JB</a> apply here.</p>
+<ul>
+  <li><strong>Meet in public the first time.</strong> A kopitiam, a mall food court, or a hostel common room — anywhere with other people around. Decline any invitation to a private home or unfamiliar address for a first meeting.</li>
+  <li><strong>Keep personal information vague early.</strong> Your neighbourhood, workplace, and daily routine are things you share over time, not in the first message. A language partner does not need your home address.</li>
+  <li><strong>Use the app's chat before exchanging numbers.</strong> Most of the platforms above have in-app calling. Stick to that until you are confident about the person.</li>
+  <li><strong>Split the session time equally.</strong> A genuine language exchange is reciprocal — roughly half the time in each language. If your partner only wants to practise their target language and shows no interest in helping you with yours, that is a red flag worth noting.</li>
+  <li><strong>Trust your instincts.</strong> If a conversation shifts quickly from language practice to requests for money, investment tips, or cryptocurrency, end it. That is a script, not a friendship.</li>
+</ul>
+
+<h2>How to Structure a Practice Session</h2>
+<p>A good first session runs 60–90 minutes and has a loose structure so neither person ends up dominating:</p>
+<ol>
+  <li><strong>10 minutes:</strong> Introductions in Language A (the partner's target language).</li>
+  <li><strong>20–25 minutes:</strong> Free conversation in Language A. Partner corrects gently — write corrections down, do not interrupt flow.</li>
+  <li><strong>Switch.</strong> Repeat in Language B.</li>
+  <li><strong>5 minutes at the end:</strong> Agree on one thing each person will practise before you meet again. This is what separates a productive exchange from just chatting.</li>
+</ol>
+<p>Pick a topic beforehand — news, food, weekend plans, a TV show. Open-ended topics produce more natural sentences than grammar drills.</p>
+
+<h2>The Common Room Shortcut</h2>
+<p>If you are staying at a hostel, you already have a built-in language exchange venue. Common rooms attract travellers from Singapore, Indonesia, mainland China, Japan, Korea, and Europe — all in the same space, all open to conversation by definition. The social dynamic of a hostel lounge is lower-stakes than a formal meetup: you start talking about the food you just ate, and twenty minutes later you are explaining idioms to each other.</p>
+<p>At <strong>Pelangi Capsule Hostel</strong> in Taman Pelangi, the common area is where guests naturally gather in the evenings. We have hosted guests from across Southeast Asia and beyond, and informal language exchanges happen here without anyone organising them. It is the most frictionless way to start — no app needed, no scheduling, just show up.</p>
+<p>Pods start at <strong>RM30/night on weekdays, RM35 on weekends</strong>, with monthly stays from <strong>RM594</strong>. Check-in is from 3:00 PM, check-out by 12:00 PM. Find us at 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru. WhatsApp us at <strong>+60 12-708 8789</strong> or <a href="/book">book a pod online</a> — and start practising from day one.</p>
+
+<h2>Sources</h2>
+<ul>
+  <li><a href="https://tandem.net/" target="_blank" rel="noopener">Tandem — Official language exchange app (tandem.net)</a></li>
+  <li><a href="https://www.hellotalk.com/en" target="_blank" rel="noopener">HelloTalk — Official language learning app (hellotalk.com)</a></li>
+  <li><a href="https://www.conversationexchange.com/" target="_blank" rel="noopener">Conversation Exchange — Official platform (conversationexchange.com)</a></li>
+  <li><a href="https://www.utm.my/about/utm-campus/" target="_blank" rel="noopener">UTM — About Campus (utm.my) — main campus in Skudai, Johor Bahru</a></li>
+  <li><a href="https://www.southern.edu.my/" target="_blank" rel="noopener">Southern University College — Official site (southern.edu.my)</a></li>
+  <li><a href="https://www.meetup.com/en-AU/cities/my/johor_bahru/language/" target="_blank" rel="noopener">Meetup — Language groups in Johor Bahru</a></li>
+  <li><a href="https://humanities.utm.my/languageacademy/" target="_blank" rel="noopener">UTM Language Academy — Humanities portal</a></li>
+  <li><a href="https://www.pexels.com/photo/cheerful-diverse-friends-talking-at-table-with-coffee-in-cafe-6457517/" target="_blank" rel="noopener">Featured image: Alexander Suhorucov via Pexels (free license)</a></li>
+</ul>
+`,
+		},
 	}
 	for i := range raw {
 		raw[i].ReadingTimeMinutes = _blogComputeReadingTime(raw[i].Content)
