@@ -3070,13 +3070,13 @@ var BlogPosts = func() []BlogPost {
 </ul>
 `,
 		},
-		// 42 — scheduled: goes live 2026-07-20
+		// 42 — pulled forward to 2026-07-12 for max indexing runway before the 25-26 Jul fair
 		{
 			Slug:          "mystarjob-fair-jb-july-2026-weekend-plan",
 			ImageAlt:      "Job fair exhibition hall at Mid Valley Southkey Johor Bahru with attendees in business attire visiting employer booths",
 			Title:         "myStarjob Fair JB July 2026: A Job-Hunter's Weekend Plan on a Budget",
 			Excerpt:       "The myStarjob Fair returns to Mid Valley Southkey on 25–26 July 2026. Here is how to plan a productive two-day job-hunting weekend in JB — what to bring, how to prepare, and how to keep your total spend around RM125.",
-			Date:          "2026-07-20",
+			Date:          "2026-07-12",
 			Category:      "Career & Work",
 			Author:        "Jay Lew",
 			ReadTime:      "6 min read",
