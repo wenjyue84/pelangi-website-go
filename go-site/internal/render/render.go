@@ -10,6 +10,7 @@ import (
 	"io"
 	"io/fs"
 	"path"
+	"strings"
 )
 
 // Renderer holds one fully-parsed template set per page file.
@@ -55,4 +56,18 @@ func (r *Renderer) Render(w io.Writer, page string, data any) error {
 		return fmt.Errorf("render: unknown page template %q", page)
 	}
 	return t.ExecuteTemplate(w, "base.html", data)
+}
+
+// Partial renders a shared partial template (e.g. "widgetsA") to a string.
+// Any page set works because they all include templates/partials/*.html.
+// Used to inject the chat widget into the proxied /book SPA response.
+func (r *Renderer) Partial(name string, data any) (string, error) {
+	for _, t := range r.sets {
+		var b strings.Builder
+		if err := t.ExecuteTemplate(&b, name, data); err != nil {
+			return "", err
+		}
+		return b.String(), nil
+	}
+	return "", fmt.Errorf("render: no template sets available")
 }

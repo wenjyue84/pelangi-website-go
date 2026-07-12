@@ -89,10 +89,17 @@
         "Yes, monthly rates start from RM594/month including all amenities: WiFi, air-conditioning, hot showers, kitchen access, and laundry facilities. We also offer in-house laundry service at RM5/load (guests only, cheaper than outside dobi). Popular with remote workers and digital nomads.",
       keywords: ["monthly","long stay","long-term","month","weekly","extended"],
     },
+    {
+      question: "How do I book a capsule?",
+      answer:
+        "Booking is easy and direct bookings get the best rate (no middleman fees). Just pick your dates and pay online at pelangicapsulehostel.com/book — pods start from RM30/night on weekdays and RM35/night on weekends. Check-in is from 3:00 PM (self check-in, so you can arrive anytime after 3 PM) and check-out is before 12:00 PM. If you'd rather book by message or need help with dates, WhatsApp us at +60 12-708 8789.",
+      keywords: ["book","booking","reserve","reservation","reservations","availability","available","stay","nights","night","how do i book","how to book","make a booking","room for"],
+      chipLabel: "Book now",
+    },
   ];
 
-  // Indices of chips shown on greeting: check-in, pricing, location, room, Singapore
-  var QUICK_FAQ_INDICES = [0, 1, 2, 3, 6];
+  // Indices of chips shown on greeting: book, check-in, pricing, location, room
+  var QUICK_FAQ_INDICES = [12, 0, 1, 2, 3];
 
   var GREETING =
     "Hi! Welcome to Pelangi Capsule Hostel. I can answer common questions about our rooms, pricing, check-in, location, and more. Tap a topic below or type your question!";
