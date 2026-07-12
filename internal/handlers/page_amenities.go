@@ -16,5 +16,10 @@ func (h *Handler) amenities(w http.ResponseWriter, r *http.Request) {
 		"en",
 		enNav,
 	)
+	p.AltEN = baseURL + "/amenities"
+	p.AltZH = baseURL + "/zh/amenities"
+	p.AltMS = baseURL + "/ms/amenities"
+	p.TranslatedZH = baseURL + "/zh/amenities"
+	p.TranslatedMS = baseURL + "/ms/amenities"
 	h.renderPage(w, "amenities.html", p)
 }

@@ -1,0 +1,357 @@
+{{define "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "新山背包客旅行指南",
+  "description": "新山（JB）背包客完整攻略：交通出行、货币兑换、新加坡一日游、附近小贩中心、安全须知及实用App推荐。",
+  "url": "https://pelangicapsulehostel.com/zh/guide",
+  "inLanguage": "zh-Hans",
+  "author": {
+    "@type": "Organization",
+    "name": "Pelangi Capsule Hostel",
+    "url": "https://pelangicapsulehostel.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Pelangi Capsule Hostel",
+    "url": "https://pelangicapsulehostel.com"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Pelangi Capsule Hostel",
+    "url": "https://pelangicapsulehostel.com"
+  }
+}
+</script>
+{{end}}
+
+{{define "content"}}
+{{template "header" .}}
+<main id="main-content" class="min-h-screen bg-stone-50 dark:bg-stone-950" lang="zh-Hans">
+  <div class="pt-28 pb-16 container-custom">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Page Header -->
+      <div class="mb-4 flex items-center gap-3">
+        <span class="inline-flex items-center px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 text-xs font-medium">
+          简体中文
+        </span>
+        <a href="/guide" class="text-xs text-stone-500 hover:text-stone-700 dark:hover:text-stone-300 transition-colors">
+          English version &rarr;
+        </a>
+      </div>
+      <h1 class="font-display text-4xl md:text-5xl font-medium mb-4 text-stone-900 dark:text-stone-100">
+        新山背包客旅行指南
+      </h1>
+      <p class="text-xl text-stone-600 dark:text-stone-400 max-w-2xl mb-12">
+        交通出行、货币兑换、新加坡一日游、附近美食、安全须知，一文搞定。
+      </p>
+
+      <div class="prose prose-stone dark:prose-invert prose-lg max-w-none">
+
+        <!-- Section 1: Getting Around -->
+        <section id="jiaotong" class="mb-14">
+          <h2 class="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4 flex items-center gap-3 not-prose">
+            <span>🚗</span> 新山出行方式
+          </h2>
+          <p class="text-stone-600 dark:text-stone-400 text-sm mb-6 not-prose">以下为2026年参考价，实际收费请以司机或App显示为准。</p>
+
+          <div class="grid md:grid-cols-3 gap-5 not-prose mb-6">
+            <div class="border rounded-2xl p-6 bg-green-50 border-green-200 dark:bg-green-900/20 dark:border-green-800">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-bold text-lg text-stone-900 dark:text-stone-100">Grab</h3>
+                <span class="text-xs font-semibold px-2 py-1 rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">首选推荐</span>
+              </div>
+              <ul class="space-y-2 text-sm text-stone-700 dark:text-stone-300">
+                <li class="flex items-start gap-2"><span class="mt-0.5 text-stone-400">•</span><span>关卡 &rarr; 塔曼彩虹：RM 12&ndash;18</span></li>
+                <li class="flex items-start gap-2"><span class="mt-0.5 text-stone-400">•</span><span>市中心 &rarr; JB Sentral：RM 8&ndash;12</span></li>
+                <li class="flex items-start gap-2"><span class="mt-0.5 text-stone-400">•</span><span>塔曼彩虹 &rarr; AEON Tebrau：RM 14&ndash;20</span></li>
+                <li class="flex items-start gap-2"><span class="mt-0.5 text-stone-400">•</span><span>高峰时段价格会上涨</span></li>
+              </ul>
+            </div>
+            <div class="border rounded-2xl p-6 bg-blue-50 border-blue-200 dark:bg-blue-900/20 dark:border-blue-800">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-bold text-lg text-stone-900 dark:text-stone-100">计程车（德士）</h3>
+                <span class="text-xs font-semibold px-2 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">须打表</span>
+              </div>
+              <ul class="space-y-2 text-sm text-stone-700 dark:text-stone-300">
+                <li class="flex items-start gap-2"><span class="mt-0.5 text-stone-400">•</span><span>起跳：RM 3.00</span></li>
+                <li class="flex items-start gap-2"><span class="mt-0.5 text-stone-400">•</span><span>每公里：RM 1.60</span></li>
+                <li class="flex items-start gap-2"><span class="mt-0.5 text-stone-400">•</span><span>短途（3&ndash;5 km）：RM 8&ndash;15</span></li>
+                <li class="flex items-start gap-2"><span class="mt-0.5 text-stone-400">•</span><span>务必坚持使用计价表</span></li>
+              </ul>
+            </div>
+            <div class="border rounded-2xl p-6 bg-amber-50 border-amber-200 dark:bg-amber-900/20 dark:border-amber-800">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-bold text-lg text-stone-900 dark:text-stone-100">公共巴士（Rapid JB）</h3>
+                <span class="text-xs font-semibold px-2 py-1 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-300">最省钱</span>
+              </div>
+              <ul class="space-y-2 text-sm text-stone-700 dark:text-stone-300">
+                <li class="flex items-start gap-2"><span class="mt-0.5 text-stone-400">•</span><span>市区路线：统一 RM 1.20</span></li>
+                <li class="flex items-start gap-2"><span class="mt-0.5 text-stone-400">•</span><span>较长路线：RM 2&ndash;4</span></li>
+                <li class="flex items-start gap-2"><span class="mt-0.5 text-stone-400">•</span><span>CW1 关卡穿梭：RM 2.50</span></li>
+                <li class="flex items-start gap-2"><span class="mt-0.5 text-stone-400">•</span><span>用 MyRapid App 查看实时班次</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="not-prose text-sm text-stone-600 dark:text-stone-400 bg-white dark:bg-stone-900 border border-stone-100 dark:border-stone-700 rounded-xl px-5 py-3">
+            <strong>温馨提示：</strong>关卡附近常有德士司机招揽生意报"固定价"，通常比计价表贵许多，建议直接用 Grab 或坚持打表。
+          </div>
+        </section>
+
+        <!-- Section 2: Money -->
+        <section id="huobi" class="mb-14">
+          <h2 class="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4 flex items-center gap-3 not-prose">
+            <span>💰</span> 货币兑换与付款
+          </h2>
+          <p class="text-stone-600 dark:text-stone-400 text-sm mb-6 not-prose">马来西亚令吉（MYR）是法定货币，许多小档口和小贩只收现金。</p>
+
+          <div class="grid md:grid-cols-2 gap-6 not-prose">
+            <div class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs p-6">
+              <h3 class="font-bold text-lg text-stone-900 dark:text-stone-100 mb-4">最佳兑换地点</h3>
+              <ul class="space-y-4 text-stone-700 dark:text-stone-300">
+                <li class="flex gap-3">
+                  <span class="text-amber-700 dark:text-amber-400 font-bold mt-0.5 shrink-0">1.</span>
+                  <div>
+                    <strong>黄亚福街（Jalan Wong Ah Fook）兑换商</strong>
+                    <p class="text-sm text-stone-500 mt-0.5">新山最佳新币/令吉汇率，多家竞争档口，多比几家再换。距本旅舍约10分钟Grab车程。</p>
+                  </div>
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-amber-700 dark:text-amber-400 font-bold mt-0.5 shrink-0">2.</span>
+                  <div>
+                    <strong>JB Sentral / CIQ 关卡综合楼</strong>
+                    <p class="text-sm text-stone-500 mt-0.5">从新加坡抵达时最方便，但汇率略逊于街边兑换商。</p>
+                  </div>
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-amber-700 dark:text-amber-400 font-bold mt-0.5 shrink-0">3.</span>
+                  <div>
+                    <strong>ATM（Maybank、CIMB、RHB）</strong>
+                    <p class="text-sm text-stone-500 mt-0.5">彩虹休闲广场（Pelangi Leisure Mall）内有ATM，步行约10分钟。支持 Visa/Mastercard，银行可能收取境外手续费。</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="bg-amber-50 dark:bg-amber-900/20 rounded-2xl border border-amber-200 dark:border-amber-700 p-6">
+              <h3 class="font-bold text-lg text-stone-900 dark:text-stone-100 mb-4">DuitNow — 马来西亚二维码付款</h3>
+              <p class="text-sm text-stone-600 dark:text-stone-400 mb-4">
+                DuitNow 是马来西亚官方即时转账/扫码付款系统，类似中国的微信支付或支付宝。大多数餐厅、商店和市集均支持扫码付款，强烈建议在出发前设置好您的马来西亚银行账户或Touch 'n Go eWallet。
+              </p>
+              <div class="space-y-2 text-sm text-stone-700 dark:text-stone-300">
+                <div class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span><span>Touch 'n Go（TNG）eWallet &mdash; 最通用</span></div>
+                <div class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span><span>Maybank MAE App &mdash; 银行直连，到账即时</span></div>
+                <div class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span><span>Grab Pay &mdash; 在 Grab App 内直接使用</span></div>
+              </div>
+              <p class="text-xs text-stone-500 dark:text-stone-400 mt-4">出发前可用 XE Currency App 查询实时汇率，避免被坑。</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 3: Singapore Day Trip -->
+        <section id="xinjiapo" class="mb-14">
+          <h2 class="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4 flex items-center gap-3 not-prose">
+            <span>🇸🇬</span> 新加坡一日游
+          </h2>
+          <p class="text-stone-600 dark:text-stone-400 mb-6 not-prose">
+            住新山，逛新加坡——住宿费节省超过七成，这是背包客最聪明的玩法。
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6 not-prose">
+            <div class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs p-6">
+              <h3 class="font-bold text-lg text-stone-900 dark:text-stone-100 mb-1">长堤（Woodlands）</h3>
+              <p class="text-sm text-amber-700 dark:text-amber-400 font-medium mb-4">24小时通关</p>
+              <ul class="space-y-2 text-sm text-stone-700 dark:text-stone-300">
+                <li><strong>高峰拥堵：</strong>工作日早7&ndash;9时、下午5&ndash;8时</li>
+                <li><strong>CW1 穿梭巴士：</strong>JB Sentral &harr; Kranji MRT &mdash; RM 2.50 / SGD 1</li>
+                <li><strong>170路巴士：</strong>Larkin &rarr; 新加坡 Queen St</li>
+                <li><strong>Grab / 德士：</strong>单程约 RM 40&ndash;60</li>
+                <li><strong>步行过关：</strong>可行但不建议（约1.5公里）</li>
+              </ul>
+            </div>
+            <div class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs p-6">
+              <h3 class="font-bold text-lg text-stone-900 dark:text-stone-100 mb-1">第二通道（Tuas）</h3>
+              <p class="text-sm text-green-700 dark:text-green-400 font-medium mb-4">人少、速度更快</p>
+              <ul class="space-y-2 text-sm text-stone-700 dark:text-stone-300">
+                <li><strong>开放时间：</strong>24小时</li>
+                <li><strong>最适合：</strong>驾车或包车</li>
+                <li><strong>巴士：</strong>CW2 从 JB Sentral 出发，RM 3.50</li>
+                <li><strong>Grab：</strong>高峰期比长堤路线便宜约三成</li>
+                <li><strong>最近MRT：</strong>Tuas Link（EW线）</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="not-prose mt-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl px-5 py-4 text-sm text-stone-700 dark:text-stone-300">
+            <strong>过关贴士：</strong>马来西亚出境和新加坡入境是两个独立关卡，在巴士上不要中途下车。护照和出入境卡请提前准备好，非高峰期排队很快。
+          </div>
+        </section>
+
+        <!-- Section 4: Hawker Centres -->
+        <section id="xiaopan" class="mb-14">
+          <h2 class="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4 flex items-center gap-3 not-prose">
+            <span>🍜</span> 旅舍附近小贩中心
+          </h2>
+          <p class="text-stone-600 dark:text-stone-400 mb-6 not-prose">新山的街边美食水准极高。以下是距彩虹旅舍最近的几处必去觅食点。</p>
+
+          <div class="space-y-4 not-prose">
+            <div class="bg-white dark:bg-stone-900 p-6 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs hover:shadow-md transition-shadow flex flex-col sm:flex-row sm:items-start gap-4">
+              <div class="flex-1">
+                <h3 class="font-bold text-lg text-stone-900 dark:text-stone-100">亚裕亚小贩中心（Jalan Yahya Awal）</h3>
+                <p class="text-stone-600 dark:text-stone-400 mt-1">新山人气最旺的小贩中心之一，炒粿条、叻沙、煎蕊冰镇全在这里，早餐和午餐首选。</p>
+              </div>
+              <div class="text-right shrink-0">
+                <p class="text-sm font-medium text-amber-700 dark:text-amber-400">步行约12分钟</p>
+                <p class="text-xs text-stone-500 mt-1">每日 早6时 &ndash; 下午2时</p>
+              </div>
+            </div>
+
+            <div class="bg-white dark:bg-stone-900 p-6 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs hover:shadow-md transition-shadow flex flex-col sm:flex-row sm:items-start gap-4">
+              <div class="flex-1">
+                <h3 class="font-bold text-lg text-stone-900 dark:text-stone-100">彩虹餐馆群（Restoran Pelangi 一带）</h3>
+                <p class="text-stone-600 dark:text-stone-400 mt-1">旅舍门口附近的露天咖啡店，椰浆饭、印度煎饼、南洋咖啡，早餐最方便。</p>
+              </div>
+              <div class="text-right shrink-0">
+                <p class="text-sm font-medium text-amber-700 dark:text-amber-400">步行约5分钟</p>
+                <p class="text-xs text-stone-500 mt-1">每日 早6时 &ndash; 中午12时</p>
+              </div>
+            </div>
+
+            <div class="bg-white dark:bg-stone-900 p-6 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs hover:shadow-md transition-shadow flex flex-col sm:flex-row sm:items-start gap-4">
+              <div class="flex-1">
+                <h3 class="font-bold text-lg text-stone-900 dark:text-stone-100">塔曼彩虹夜市（Pasar Malam）</h3>
+                <p class="text-stone-600 dark:text-stone-400 mt-1">每逢周五、六举办的夜市，沙爹、烤玉米、炸蚝煎、马来糕点应有尽有，晚餐最划算。</p>
+              </div>
+              <div class="text-right shrink-0">
+                <p class="text-sm font-medium text-amber-700 dark:text-amber-400">步行约8分钟</p>
+                <p class="text-xs text-stone-500 mt-1">周五、六 约下午5时 &ndash; 晚10时</p>
+              </div>
+            </div>
+
+            <div class="bg-white dark:bg-stone-900 p-6 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs hover:shadow-md transition-shadow flex flex-col sm:flex-row sm:items-start gap-4">
+              <div class="flex-1">
+                <h3 class="font-bold text-lg text-stone-900 dark:text-stone-100">苏迪拉街美食广场（Jalan Sutera）</h3>
+                <p class="text-stone-600 dark:text-stone-400 mt-1">热闹的露天食阁，经济饭、点心和新鲜果汁深受本地人喜爱，午市和晚市均营业。</p>
+              </div>
+              <div class="text-right shrink-0">
+                <p class="text-sm font-medium text-amber-700 dark:text-amber-400">步行约15分钟</p>
+                <p class="text-xs text-stone-500 mt-1">每日 上午11时 &ndash; 晚9时</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 5: Safety -->
+        <section id="anquan" class="mb-14">
+          <h2 class="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4 flex items-center gap-3 not-prose">
+            <span>🔒</span> 安全须知
+          </h2>
+          <p class="text-stone-600 dark:text-stone-400 mb-6 not-prose">新山整体治安良好，但与任何城市一样，基本常识不可缺。</p>
+
+          <div class="grid md:grid-cols-2 gap-5 not-prose">
+            <div class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs p-6 border-l-4 border-l-amber-400">
+              <h3 class="font-bold text-base text-stone-900 dark:text-stone-100 mb-3">街头与公共场所</h3>
+              <ul class="space-y-2 text-sm text-stone-700 dark:text-stone-300">
+                <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span><span>在人多的地方，背包放前胸</span></li>
+                <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span><span>在市集避免展示贵重相机或手机</span></li>
+                <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span><span>晚上11时后走灯光充足的街道</span></li>
+                <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span><span>塔曼彩虹一带对独行旅客非常安全</span></li>
+              </ul>
+            </div>
+            <div class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs p-6 border-l-4 border-l-blue-400">
+              <h3 class="font-bold text-base text-stone-900 dark:text-stone-100 mb-3">交通安全</h3>
+              <ul class="space-y-2 text-sm text-stone-700 dark:text-stone-300">
+                <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span><span>优先使用 Grab，价格透明可追溯</span></li>
+                <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span><span>上车前核对司机姓名和车牌</span></li>
+                <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span><span>不乘坐摩托车（载客不合法）</span></li>
+                <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span><span>CW1 巴士过关完全安全</span></li>
+              </ul>
+            </div>
+            <div class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs p-6 border-l-4 border-l-green-400">
+              <h3 class="font-bold text-base text-stone-900 dark:text-stone-100 mb-3">旅舍与贵重物品</h3>
+              <ul class="space-y-2 text-sm text-stone-700 dark:text-stone-300">
+                <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span><span>使用旅舍储物柜，已提供挂锁</span></li>
+                <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span><span>贵重物品不要放在公共桌上</span></li>
+                <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span><span>护照备份与正本分开存放</span></li>
+                <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span><span>将护照和保险资料发邮件备份</span></li>
+              </ul>
+            </div>
+            <div class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs p-6 border-l-4 border-l-red-400">
+              <h3 class="font-bold text-base text-stone-900 dark:text-stone-100 mb-3">健康与紧急情况</h3>
+              <ul class="space-y-2 text-sm text-stone-700 dark:text-stone-300">
+                <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span><span>紧急救援：警察 999 / 救护车 994</span></li>
+                <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span><span>最近诊所：塔曼彩虹医疗中心，步行5分钟</span></li>
+                <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span><span>自来水一般可饮，但建议购买瓶装水</span></li>
+                <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span><span>强烈建议购买旅游保险</span></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 6: Apps -->
+        <section id="app" class="mb-14">
+          <h2 class="font-display text-2xl font-semibold text-stone-800 dark:text-stone-200 mb-4 flex items-center gap-3 not-prose">
+            <span>📱</span> 实用本地 App
+          </h2>
+          <p class="text-stone-600 dark:text-stone-400 mb-6 not-prose">出发前下载好，部分App需要本地数据网络才能完成注册。</p>
+
+          <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 not-prose">
+            <div class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs p-5 hover:shadow-md transition-shadow">
+              <div class="text-3xl mb-3">🚗</div>
+              <h3 class="font-bold text-base text-stone-900 dark:text-stone-100 mb-1">Grab</h3>
+              <p class="text-sm text-stone-600 dark:text-stone-400">新山最主流的网约车和外卖App，价格远比路边招揽的德士便宜。出发前务必下载。</p>
+            </div>
+            <div class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs p-5 hover:shadow-md transition-shadow">
+              <div class="text-3xl mb-3">🚌</div>
+              <h3 class="font-bold text-base text-stone-900 dark:text-stone-100 mb-1">MyRapid</h3>
+              <p class="text-sm text-stone-600 dark:text-stone-400">实时查询 Rapid Bus JB 到站时间，市中心部分路线免费。</p>
+            </div>
+            <div class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs p-5 hover:shadow-md transition-shadow">
+              <div class="text-3xl mb-3">🗺️</div>
+              <h3 class="font-bold text-base text-stone-900 dark:text-stone-100 mb-1">Google Maps</h3>
+              <p class="text-sm text-stone-600 dark:text-stone-400">在新山导航效果很好。建议出发前下载新山离线地图，节省流量。</p>
+            </div>
+            <div class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs p-5 hover:shadow-md transition-shadow">
+              <div class="text-3xl mb-3">💱</div>
+              <h3 class="font-bold text-base text-stone-900 dark:text-stone-100 mb-1">XE Currency</h3>
+              <p class="text-sm text-stone-600 dark:text-stone-400">实时查询 MYR/SGD 等汇率，换钱前先查，避免被坑。</p>
+            </div>
+            <div class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs p-5 hover:shadow-md transition-shadow">
+              <div class="text-3xl mb-3">💳</div>
+              <h3 class="font-bold text-base text-stone-900 dark:text-stone-100 mb-1">Touch 'n Go eWallet</h3>
+              <p class="text-sm text-stone-600 dark:text-stone-400">马来西亚最普及的电子钱包，扫 DuitNow 二维码付款，高速公路过路费也能用。</p>
+            </div>
+            <div class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs p-5 hover:shadow-md transition-shadow">
+              <div class="text-3xl mb-3">🏥</div>
+              <h3 class="font-bold text-base text-stone-900 dark:text-stone-100 mb-1">MySejahtera</h3>
+              <p class="text-sm text-stone-600 dark:text-stone-400">马来西亚官方健康应用程序，进入部分政府建筑或医院时偶有需要。</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <div class="not-prose mt-4 text-center bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 rounded-2xl p-10">
+          <h3 class="font-display text-2xl font-medium text-stone-900 dark:text-stone-100 mb-2">准备好探索新山了吗？</h3>
+          <p class="text-stone-600 dark:text-stone-400 mb-6">彩虹胶囊旅舍就坐落在塔曼彩虹的核心地带，指南上的一切美食与景点，步行或Grab几分钟即可抵达。</p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="/book" class="btn-primary inline-flex items-center gap-2">
+              立即预订
+            </a>
+            <a href="/zh/getting-here" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-amber-700 dark:border-amber-500 text-amber-700 dark:text-amber-400 hover:bg-amber-700 hover:text-white transition-colors font-medium">
+              如何抵达旅舍 &rarr;
+            </a>
+          </div>
+          <p class="text-sm text-stone-500 dark:text-stone-400 mt-6">
+            有疑问？随时通过 WhatsApp 联系我们：
+            <a href="https://wa.me/60127088789" target="_blank" rel="noopener noreferrer" class="text-amber-700 dark:text-amber-400 hover:underline">+60 12-708 8789</a>
+          </p>
+        </div>
+
+      </div><!-- end prose -->
+    </div>
+  </div>
+</main>
+{{template "footer" .}}
+{{end}}
