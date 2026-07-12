@@ -16,5 +16,10 @@ func (h *Handler) gettingHere(w http.ResponseWriter, r *http.Request) {
 		"en",
 		enNav,
 	)
+	p.AltEN = baseURL + "/getting-here"
+	p.AltZH = baseURL + "/zh/getting-here"
+	p.AltMS = baseURL + "/ms/getting-here"
+	p.TranslatedZH = baseURL + "/zh/getting-here"
+	p.TranslatedMS = baseURL + "/ms/getting-here"
 	h.renderPage(w, "gettingHere.html", p)
 }

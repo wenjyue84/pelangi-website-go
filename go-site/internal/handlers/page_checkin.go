@@ -16,5 +16,10 @@ func (h *Handler) checkIn(w http.ResponseWriter, r *http.Request) {
 		"en",
 		enNav,
 	)
+	p.AltEN = baseURL + "/check-in"
+	p.AltZH = baseURL + "/zh/check-in"
+	p.AltMS = baseURL + "/ms/check-in"
+	p.TranslatedZH = baseURL + "/zh/check-in"
+	p.TranslatedMS = baseURL + "/ms/check-in"
 	h.renderPage(w, "checkin.html", p)
 }

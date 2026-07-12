@@ -16,5 +16,10 @@ func (h *Handler) guide(w http.ResponseWriter, r *http.Request) {
 		"en",
 		enNav,
 	)
+	p.AltEN = baseURL + "/guide"
+	p.AltZH = baseURL + "/zh/guide"
+	p.AltMS = baseURL + "/ms/guide"
+	p.TranslatedZH = baseURL + "/zh/guide"
+	p.TranslatedMS = baseURL + "/ms/guide"
 	h.renderPage(w, "guide.html", p)
 }
