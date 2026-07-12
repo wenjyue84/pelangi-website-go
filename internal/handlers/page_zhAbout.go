@@ -13,7 +13,7 @@ func (h *Handler) zhAbout(w http.ResponseWriter, r *http.Request) {
 		"关于我们 | 彩虹胶囊旅舍 新山",
 		"了解彩虹胶囊旅舍的故事与理念。我们位于马来西亚新山，提供日式胶囊住宿，以亲民价格为背包客和旅行者打造舒适、安全的住宿体验。",
 		"https://pelangicapsulehostel.com/zh/about",
-		"zh",
+		"zh-CN",
 		zhNav,
 	)
 	p.AltEN = baseURL + "/about"

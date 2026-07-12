@@ -18,5 +18,6 @@ func (h *Handler) location(w http.ResponseWriter, r *http.Request) {
 	)
 	p.AltEN = baseURL + "/location"
 	p.AltZH = baseURL + "/zh/location"
+	p.TranslatedZH = baseURL + "/zh/location"
 	h.renderPage(w, "location.html", p)
 }
