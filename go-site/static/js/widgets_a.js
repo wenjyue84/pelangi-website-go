@@ -102,10 +102,14 @@
   var QUICK_FAQ_INDICES = [12, 0, 1, 2, 3];
 
   var GREETING =
-    "Hi! Welcome to Pelangi Capsule Hostel. I can answer common questions about our rooms, pricing, check-in, location, and more. Tap a topic below or type your question!";
+    "Hi! Welcome to Pelangi Capsule Hostel 🌈\n\nFor real help, our team is on WhatsApp at +60 12-708 8789 (fastest, always human).\n\nPrefer to try our AI Assistant (Beta)? Just tap a topic below or type your question — it can help with rooms, pricing, check-in, booking and more. It’s still in beta, so double-check anything important with our team.";
+
+  // Appended when the AI is unavailable and we fall back to a canned FAQ answer.
+  var AI_FALLBACK_NOTE =
+    "\n\n(Our AI Assistant is in beta and couldn’t answer live just now — for anything important please WhatsApp our team at +60 12-708 8789.)";
 
   var FALLBACK =
-    "I’m not sure about that one. For specific questions, please contact us directly on WhatsApp at +60 12-708 8789 or visit our contact page.";
+    "I’m not sure about that one. Our AI Assistant is in beta — for specific questions please contact our team on WhatsApp at +60 12-708 8789 or visit our contact page.";
 
   // ─── sessionStorage keys ──────────────────────────────────────────
   var CHAT_SESSION_KEY     = "chatwidget_history";
@@ -259,16 +263,52 @@
     msgContainer.scrollTop = msgContainer.scrollHeight;
   }
 
-  // ── Append a user question + bot answer ──────────────────────────
+  // ── Append a user question, then answer via the AI Assistant (Beta) ──
+  // Human WhatsApp support stays the primary path (see greeting); the AI is an
+  // optional beta helper. We POST to /api/ai-chat (server proxies to Rainbow);
+  // if it fails or times out we fall back to the local FAQ match + a note to
+  // reach the human team.
   function handleQuestion(text) {
     var now = Date.now();
     chatMessages = chatMessages.concat([
-      { role: "user",      content: text,           timestamp: now },
-      { role: "assistant", content: matchFaq(text), timestamp: now + 1 },
+      { role: "user",      content: text, timestamp: now },
+      { role: "assistant", content: "…",  timestamp: now + 1, pending: true },
     ]);
     showChips = false;
-    saveChatHistory(chatMessages);
     renderMessages();
+
+    var idx = chatMessages.length - 1;
+    var done = false;
+    function settle(content) {
+      if (done) return;
+      done = true;
+      if (chatMessages[idx]) {
+        chatMessages[idx].content = content;
+        chatMessages[idx].pending = false;
+      }
+      saveChatHistory(chatMessages);
+      renderMessages();
+    }
+
+    var timer = setTimeout(function () { settle(matchFaq(text) + AI_FALLBACK_NOTE); }, 22000);
+
+    try {
+      fetch("/api/ai-chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text }),
+      })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) {
+          clearTimeout(timer);
+          if (d && d.ok && d.reply) settle(d.reply);
+          else settle(matchFaq(text) + AI_FALLBACK_NOTE);
+        })
+        .catch(function () { clearTimeout(timer); settle(matchFaq(text) + AI_FALLBACK_NOTE); });
+    } catch (e) {
+      clearTimeout(timer);
+      settle(matchFaq(text) + AI_FALLBACK_NOTE);
+    }
   }
 
   // ── Open / close panel ────────────────────────────────────────────

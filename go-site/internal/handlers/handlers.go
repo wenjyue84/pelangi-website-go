@@ -55,6 +55,7 @@ func (h *Handler) Register(mux *http.ServeMux) {
 	mux.HandleFunc("GET /api/ari", h.ari)
 	mux.HandleFunc("POST /api/revalidate", h.revalidate)
 	mux.HandleFunc("GET /api/kb", h.kb)
+	mux.HandleFunc("POST /api/ai-chat", h.aiChat)
 	mux.HandleFunc("POST /api/contact", h.contactSubmit)
 	mux.HandleFunc("POST /api/create-payment-intent", h.createPaymentIntent)
 	mux.HandleFunc("POST /api/stripe-webhook", h.stripeWebhook)
