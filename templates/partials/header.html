@@ -23,7 +23,20 @@
       <button type="button" data-search-open title="Search (Ctrl+K)" aria-label="Open search" class="p-2 text-stone-500 hover:text-stone-900 hover:bg-stone-100 rounded-full transition-colors dark:text-stone-400 dark:hover:text-stone-100 dark:hover:bg-stone-800 inline-flex">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
       </button>
-      <a href="/book" class="ml-4 px-6 py-2.5 text-sm font-medium rounded-full transition-all duration-300 bg-amber-700 text-white hover:bg-amber-800">Book Now</a>
+      <!-- Language selector -->
+      <details class="relative notranslate" translate="no" data-lang-menu>
+        <summary class="list-none cursor-pointer select-none px-3 py-2 text-sm font-medium rounded-full text-stone-600 hover:text-stone-900 hover:bg-stone-100 dark:text-stone-400 dark:hover:text-stone-100 dark:hover:bg-stone-800 inline-flex items-center gap-1.5" aria-label="Select language">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" /></svg>
+          <span data-lang-label>EN</span>
+          <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+        </summary>
+        <div class="absolute right-0 mt-2 w-44 bg-white dark:bg-stone-800 rounded-xl shadow-xl border border-stone-100 dark:border-stone-700 py-1 z-50">
+          <button type="button" onclick="setSiteLang('en')" data-lang-opt="en" class="w-full text-left px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 dark:text-stone-300 dark:hover:bg-stone-700">English</button>
+          <button type="button" onclick="setSiteLang('zh-CN')" data-lang-opt="zh-CN" class="w-full text-left px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 dark:text-stone-300 dark:hover:bg-stone-700">中文</button>
+          <button type="button" onclick="setSiteLang('ms')" data-lang-opt="ms" class="w-full text-left px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 dark:text-stone-300 dark:hover:bg-stone-700">Bahasa Melayu</button>
+        </div>
+      </details>
+      <a href="/book" class="ml-2 px-6 py-2.5 text-sm font-medium rounded-full transition-all duration-300 bg-amber-700 text-white hover:bg-amber-800">Book Now</a>
     </div>
 
     <!-- Mobile Search + Menu Buttons -->
@@ -42,6 +55,14 @@
         {{range .NavLinks}}
         <a href="{{.Href}}" class="block px-6 py-3 text-stone-700 hover:bg-stone-50 hover:text-stone-900 transition-colors dark:text-stone-300 dark:hover:bg-stone-700 dark:hover:text-stone-100" data-nav-href="{{.Href}}">{{.Label}}</a>
         {{end}}
+        <div class="px-6 py-3 border-t border-stone-100 mt-2 dark:border-stone-700 notranslate" translate="no">
+          <p class="text-xs font-medium tracking-widest uppercase text-stone-400 mb-2">Language</p>
+          <div class="flex gap-2">
+            <button type="button" onclick="setSiteLang('en')" data-lang-opt="en" class="flex-1 py-2 text-sm rounded-lg border border-stone-200 dark:border-stone-600 text-stone-700 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-700">EN</button>
+            <button type="button" onclick="setSiteLang('zh-CN')" data-lang-opt="zh-CN" class="flex-1 py-2 text-sm rounded-lg border border-stone-200 dark:border-stone-600 text-stone-700 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-700">中文</button>
+            <button type="button" onclick="setSiteLang('ms')" data-lang-opt="ms" class="flex-1 py-2 text-sm rounded-lg border border-stone-200 dark:border-stone-600 text-stone-700 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-700">BM</button>
+          </div>
+        </div>
         <div class="px-6 py-3 border-t border-stone-100 mt-2 dark:border-stone-700">
           <a href="/book" class="block w-full text-center bg-amber-700 text-white py-3 rounded-xl font-medium hover:bg-amber-800 transition-colors">Book Now</a>
         </div>
