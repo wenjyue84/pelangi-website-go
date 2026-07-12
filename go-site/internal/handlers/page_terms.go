@@ -16,5 +16,8 @@ func (h *Handler) terms(w http.ResponseWriter, r *http.Request) {
 		"en",
 		enNav,
 	)
+	p.AltEN = baseURL + "/terms"
+	p.AltMS = baseURL + "/ms/terma"
+	p.TranslatedMS = baseURL + "/ms/terma"
 	h.renderPage(w, "terms.html", p)
 }

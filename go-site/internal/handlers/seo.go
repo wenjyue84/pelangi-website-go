@@ -65,13 +65,13 @@ var lastMod = func() string {
 // staticSitemap holds the non-blog routes, ported from sitemap.ts.
 // TODO(port): append blog post + category entries once blog data is ported.
 var staticSitemap = []sitemapEntry{
-	{loc: baseURL, lastmod: lastMod, freq: "weekly", priority: "1.0", images: []string{baseURL + "/images/hero-final.png"}},
+	{loc: baseURL, lastmod: lastMod, freq: "weekly", priority: "1.0", images: []string{baseURL + "/images/hero-final.png"}, alt: map[string]string{"en": baseURL, "zh-CN": baseURL + "/zh"}},
 	{loc: baseURL + "/book", lastmod: lastMod, freq: "weekly", priority: "0.95"},
 	{loc: baseURL + "/rooms", lastmod: lastMod, freq: "weekly", priority: "0.9", images: []string{
 		baseURL + "/images/capsule-4.webp", baseURL + "/images/capsule-2.webp",
 		baseURL + "/images/capsule-1.webp", baseURL + "/images/capsule-3.webp",
-	}},
-	{loc: baseURL + "/about", lastmod: lastMod, freq: "monthly", priority: "0.8", images: []string{baseURL + "/images/exterior.JPG"}},
+	}, alt: map[string]string{"en": baseURL + "/rooms", "zh-CN": baseURL + "/zh/rooms"}},
+	{loc: baseURL + "/about", lastmod: lastMod, freq: "monthly", priority: "0.8", images: []string{baseURL + "/images/exterior.JPG"}, alt: map[string]string{"en": baseURL + "/about", "zh-CN": baseURL + "/zh/about"}},
 	{loc: baseURL + "/gallery", lastmod: lastMod, freq: "monthly", priority: "0.8", images: []string{
 		baseURL + "/images/living-room.jpeg", baseURL + "/images/capsule-1.webp", baseURL + "/images/entrance.jpeg",
 		baseURL + "/images/exterior.JPG", baseURL + "/images/capsule-2.webp", baseURL + "/images/toilet.jpg",
@@ -79,13 +79,15 @@ var staticSitemap = []sitemapEntry{
 		baseURL + "/images/facility-shoes-rack.jpg", baseURL + "/images/facility-1.webp",
 		baseURL + "/images/facility-2.webp", baseURL + "/images/facility-3.webp",
 	}},
-	{loc: baseURL + "/location", lastmod: lastMod, freq: "monthly", priority: "0.8"},
+	{loc: baseURL + "/location", lastmod: lastMod, freq: "monthly", priority: "0.8", alt: map[string]string{"en": baseURL + "/location", "zh-CN": baseURL + "/zh/location"}},
 	{loc: baseURL + "/contact", lastmod: lastMod, freq: "monthly", priority: "0.7"},
-	{loc: baseURL + "/check-in", lastmod: lastMod, freq: "monthly", priority: "0.7"},
-	{loc: baseURL + "/getting-here", lastmod: lastMod, freq: "monthly", priority: "0.8"},
-	{loc: baseURL + "/guide", lastmod: lastMod, freq: "monthly", priority: "0.6"},
+	{loc: baseURL + "/terms", lastmod: lastMod, freq: "yearly", priority: "0.3", alt: map[string]string{"en": baseURL + "/terms", "ms": baseURL + "/ms/terma"}},
+	{loc: baseURL + "/ms/terma", lastmod: lastMod, freq: "yearly", priority: "0.3", alt: map[string]string{"en": baseURL + "/terms", "ms": baseURL + "/ms/terma"}},
+	{loc: baseURL + "/check-in", lastmod: lastMod, freq: "monthly", priority: "0.7", alt: map[string]string{"en": baseURL + "/check-in", "zh-CN": baseURL + "/zh/check-in", "ms": baseURL + "/ms/check-in"}},
+	{loc: baseURL + "/getting-here", lastmod: lastMod, freq: "monthly", priority: "0.8", alt: map[string]string{"en": baseURL + "/getting-here", "zh-CN": baseURL + "/zh/getting-here", "ms": baseURL + "/ms/getting-here"}},
+	{loc: baseURL + "/guide", lastmod: lastMod, freq: "monthly", priority: "0.6", alt: map[string]string{"en": baseURL + "/guide", "zh-CN": baseURL + "/zh/guide", "ms": baseURL + "/ms/guide"}},
 	{loc: baseURL + "/blog", lastmod: lastMod, freq: "weekly", priority: "0.8"},
-	{loc: baseURL + "/amenities", lastmod: lastMod, freq: "monthly", priority: "0.8"},
+	{loc: baseURL + "/amenities", lastmod: lastMod, freq: "monthly", priority: "0.8", alt: map[string]string{"en": baseURL + "/amenities", "zh-CN": baseURL + "/zh/amenities", "ms": baseURL + "/ms/amenities"}},
 	{loc: baseURL + "/visit-malaysia-2026", lastmod: lastMod, freq: "monthly", priority: "0.85"},
 	{loc: baseURL + "/johor-election-2026", lastmod: lastMod, freq: "weekly", priority: "0.85"},
 	{loc: baseURL + "/visa-run", lastmod: lastMod, freq: "monthly", priority: "0.85"},
@@ -95,6 +97,14 @@ var staticSitemap = []sitemapEntry{
 	{loc: baseURL + "/zh/rooms", lastmod: lastMod, freq: "weekly", priority: "0.9", alt: map[string]string{"en": baseURL + "/rooms", "zh-CN": baseURL + "/zh/rooms"}},
 	{loc: baseURL + "/zh/location", lastmod: lastMod, freq: "monthly", priority: "0.85", alt: map[string]string{"en": baseURL + "/location", "zh-CN": baseURL + "/zh/location"}},
 	{loc: baseURL + "/zh/about", lastmod: lastMod, freq: "monthly", priority: "0.8", alt: map[string]string{"en": baseURL + "/about", "zh-CN": baseURL + "/zh/about"}},
+	{loc: baseURL + "/zh/getting-here", lastmod: lastMod, freq: "monthly", priority: "0.85", alt: map[string]string{"en": baseURL + "/getting-here", "zh-CN": baseURL + "/zh/getting-here", "ms": baseURL + "/ms/getting-here"}},
+	{loc: baseURL + "/ms/getting-here", lastmod: lastMod, freq: "monthly", priority: "0.85", alt: map[string]string{"en": baseURL + "/getting-here", "zh-CN": baseURL + "/zh/getting-here", "ms": baseURL + "/ms/getting-here"}},
+	{loc: baseURL + "/zh/check-in", lastmod: lastMod, freq: "monthly", priority: "0.75", alt: map[string]string{"en": baseURL + "/check-in", "zh-CN": baseURL + "/zh/check-in", "ms": baseURL + "/ms/check-in"}},
+	{loc: baseURL + "/ms/check-in", lastmod: lastMod, freq: "monthly", priority: "0.75", alt: map[string]string{"en": baseURL + "/check-in", "zh-CN": baseURL + "/zh/check-in", "ms": baseURL + "/ms/check-in"}},
+	{loc: baseURL + "/zh/amenities", lastmod: lastMod, freq: "monthly", priority: "0.8", alt: map[string]string{"en": baseURL + "/amenities", "zh-CN": baseURL + "/zh/amenities", "ms": baseURL + "/ms/amenities"}},
+	{loc: baseURL + "/ms/amenities", lastmod: lastMod, freq: "monthly", priority: "0.8", alt: map[string]string{"en": baseURL + "/amenities", "zh-CN": baseURL + "/zh/amenities", "ms": baseURL + "/ms/amenities"}},
+	{loc: baseURL + "/zh/guide", lastmod: lastMod, freq: "monthly", priority: "0.6", alt: map[string]string{"en": baseURL + "/guide", "zh-CN": baseURL + "/zh/guide", "ms": baseURL + "/ms/guide"}},
+	{loc: baseURL + "/ms/guide", lastmod: lastMod, freq: "monthly", priority: "0.6", alt: map[string]string{"en": baseURL + "/guide", "zh-CN": baseURL + "/zh/guide", "ms": baseURL + "/ms/guide"}},
 }
 
 // sitemap serves /sitemap.xml, ported from site/src/app/sitemap.ts.

@@ -18,5 +18,6 @@ func (h *Handler) about(w http.ResponseWriter, r *http.Request) {
 	)
 	p.AltEN = baseURL + "/about"
 	p.AltZH = baseURL + "/zh/about"
+	p.TranslatedZH = baseURL + "/zh/about"
 	h.renderPage(w, "about.html", p)
 }

@@ -139,7 +139,7 @@ var zhNav = []NavLink{
 	{"/blog", "博客"},
 	{"/zh#community", "社区"},
 	{"/zh/location", "位置"},
-	{"/check-in", "入住指南"},
+	{"/zh/check-in", "入住指南"},
 }
 
 var msNav = []NavLink{
@@ -150,7 +150,7 @@ var msNav = []NavLink{
 	{"/blog", "Blog"},
 	{"/#community", "Komuniti"},
 	{"/contact", "Lokasi"},
-	{"/check-in", "Panduan Daftar Masuk"},
+	{"/ms/check-in", "Panduan Daftar Masuk"},
 }
 
 // BasePage holds fields the base layout + shared partials need on every page.
@@ -169,9 +169,20 @@ type BasePage struct {
 	OGImage     string // absolute URL
 	OGPublished string // article:published_time (blog posts only)
 	OGModified  string // article:modified_time (blog posts only)
-	// hreflang alternates for en↔zh page pairs; emitted only when both set.
+	// hreflang alternates for en↔zh↔ms page pairs; each emitted when set. The
+	// base template also emits x-default (=AltEN). All handlers in a language
+	// group must set the SAME alternate set for reciprocity.
 	AltEN string
 	AltZH string
+	AltMS string
+	// OGLocale is the og:locale value derived from Lang (en_MY / zh_CN / ms_MY).
+	OGLocale string
+	// TranslatedZH/TranslatedMS are the authored-translation URLs for this EN
+	// page (empty when no authored mirror). The client language-suggestion
+	// banner reads the one matching the guest's browser language. Set on EN
+	// handlers that have a ZH and/or MS authored mirror.
+	TranslatedZH string
+	TranslatedMS string
 	// Site-wide announcement banner (empty = no banner). BannerID keys the
 	// localStorage dismissal so a new campaign re-shows the banner.
 	BannerHTML string
@@ -195,6 +206,18 @@ const homeDescription = "Experience Japanese-style capsule accommodation in Tama
 	"Budget-friendly hostel from RM30/night with free WiFi, 24/7 access, hot showers, and personal lockers. " +
 	"Perfect base for Singapore day trips - just 30 minutes from the border."
 
+// ogLocale maps an <html lang> code to an Open Graph og:locale value.
+func ogLocale(lang string) string {
+	switch {
+	case strings.HasPrefix(lang, "zh"):
+		return "zh_CN"
+	case strings.HasPrefix(lang, "ms"):
+		return "ms_MY"
+	default:
+		return "en_MY"
+	}
+}
+
 func (h *Handler) base(title, description, canonical, lang string, nav []NavLink) BasePage {
 	banner, bannerID := activeBanner()
 	return BasePage{
@@ -206,6 +229,7 @@ func (h *Handler) base(title, description, canonical, lang string, nav []NavLink
 		NavLinks:      nav,
 		Year:          time.Now().Year(),
 		OGType:        "website",
+		OGLocale:      ogLocale(lang),
 		OGImage:       "https://pelangicapsulehostel.com/images/og-image.png",
 		BannerHTML:    banner,
 		BannerID:      bannerID,
@@ -246,6 +270,7 @@ func (h *Handler) home(w http.ResponseWriter, r *http.Request) {
 	}
 	p.AltEN = baseURL
 	p.AltZH = baseURL + "/zh"
+	p.TranslatedZH = baseURL + "/zh"
 	h.renderPage(w, "home.html", p)
 }
 

@@ -31,5 +31,6 @@ func (h *Handler) rooms(w http.ResponseWriter, r *http.Request) {
 	}
 	p.AltEN = baseURL + "/rooms"
 	p.AltZH = baseURL + "/zh/rooms"
+	p.TranslatedZH = baseURL + "/zh/rooms"
 	h.renderPage(w, "rooms.html", p)
 }
