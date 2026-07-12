@@ -210,7 +210,7 @@ func mcpHostelInfo() map[string]any {
 			"website":  "https://pelangicapsulehostel.com",
 		},
 		"hours": map[string]any{
-			"checkin":   "3:00 PM",
+			"checkin":   "2:00 PM",
 			"checkout":  "12:00 PM (noon)",
 			"reception": "24/7 — self check-in available",
 		},

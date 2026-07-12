@@ -9,7 +9,7 @@
     {
       question: "What time is check-in and check-out?",
       answer:
-        "Check-in is from 3:00 PM onwards, and check-out is before 12:00 PM (noon). We offer self-check-in so you can arrive anytime after 3 PM. Early check-in or late check-out may be available on request — message us on WhatsApp at +60 12-708 8789.",
+        "Check-in is from 2:00 PM onwards, and check-out is before 12:00 PM (noon). We offer self-check-in so you can arrive anytime after 2 PM. Early check-in or late check-out may be available on request — message us on WhatsApp at +60 12-708 8789.",
       keywords: ["check-in","check-out","checkout","checkin","time","arrive","arrival","early","late"],
       chipLabel: "Check-in times",
     },
@@ -92,7 +92,7 @@
     {
       question: "How do I book a capsule?",
       answer:
-        "Booking is easy and direct bookings get the best rate (no middleman fees). Just pick your dates and pay online at pelangicapsulehostel.com/book — pods start from RM30/night on weekdays and RM35/night on weekends. Check-in is from 3:00 PM (self check-in, so you can arrive anytime after 3 PM) and check-out is before 12:00 PM. If you'd rather book by message or need help with dates, WhatsApp us at +60 12-708 8789.",
+        "Booking is easy and direct bookings get the best rate (no middleman fees). Just pick your dates and pay online at pelangicapsulehostel.com/book — pods start from RM30/night on weekdays and RM35/night on weekends. Check-in is from 2:00 PM (self check-in, so you can arrive anytime after 2 PM) and check-out is before 12:00 PM. If you'd rather book by message or need help with dates, WhatsApp us at +60 12-708 8789.",
       keywords: ["book","booking","reserve","reservation","reservations","availability","available","stay","nights","night","how do i book","how to book","make a booking","room for"],
       chipLabel: "Book now",
     },

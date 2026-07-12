@@ -29,7 +29,12 @@ var RoomTypes = []RoomType{
 		MonthlyRate:  594,
 		Currency:     "MYR",
 		MaxOccupancy: 1,
-		TotalUnits:   18,
+		// Total sellable capsules = 30 (matches the PMS units table, the actual
+		// booking source of truth: C/J/R units across front/middle/back). The
+		// lower/upper split is an OTA-presentation construct only — the PMS pools
+		// all pods and /api/ari allocates the live PMS free count lower-deck first,
+		// so these per-type caps must sum to 30.
+		TotalUnits:   24,
 		Amenities: []string{
 			"Ground-level access",
 			"LED reading light",
@@ -72,7 +77,7 @@ var Property = struct {
 	Name:         "Pelangi Capsule Hostel",
 	Currency:     "MYR",
 	Timezone:     "Asia/Kuala_Lumpur",
-	CheckinTime:  "15:00",
+	CheckinTime:  "14:00",
 	CheckoutTime: "12:00",
-	TotalRooms:   24,
+	TotalRooms:   30,
 }

@@ -125,7 +125,7 @@ func (h *Handler) registerProxies(mux *http.ServeMux) {
 	}
 	inject := ""
 	if widgetHTML != "" {
-		inject = "\n" + widgetHTML + "\n<script src=\"/static/js/widgets_a.js?v=aibeta1\" defer></script>\n"
+		inject = "\n" + widgetHTML + "\n<script src=\"/static/js/widgets_a.js?v=aibeta2\" defer></script>\n"
 	}
 	if bookProxy, berr := newBookProxy(adminHost(), inject); berr == nil {
 		mux.Handle("/book", bookProxy)

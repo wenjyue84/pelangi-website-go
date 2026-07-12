@@ -2026,7 +2026,7 @@ var BlogPosts = func() []BlogPost {
 </ul>
 <h2>Practical Details</h2>
 <ul>
-  <li><strong>Check-in:</strong> 3:00 PM | <strong>Check-out:</strong> 12:00 PM</li>
+  <li><strong>Check-in:</strong> 2:00 PM | <strong>Check-out:</strong> 12:00 PM</li>
   <li><strong>Address:</strong> 26A Jalan Perang, Taman Pelangi, 80400 JB. 10-min Grab from CIQ.</li>
   <li><strong>WiFi:</strong> Free. Network: pelangi capsule.</li>
   <li><strong>Currency:</strong> SGD1 ≈ RM3.40. Withdraw RM200-300 for 1-2 nights.</li>
@@ -2261,7 +2261,7 @@ var BlogPosts = func() []BlogPost {
 <h2>入住须知</h2>
 <ul>
 <li><strong>地址：</strong>26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru</li>
-<li><strong>入住：</strong>下午3:00 | <strong>退房：</strong>中午12:00</li>
+<li><strong>入住：</strong>下午2:00 | <strong>退房：</strong>中午12:00</li>
 <li><strong>房型：</strong>平日RM30/晚，周末RM35/晚（上下层同价）</li>
 <li><strong>WiFi：</strong>全馆免费，网速够用</li>
 </ul>
@@ -2415,7 +2415,7 @@ var BlogPosts = func() []BlogPost {
 </ul>
 <h2>Staying in Taman Pelangi After the Train</h2>
 <p>Taman Pelangi is one of JB's most food-rich neighbourhoods. Within walking distance: hawker centres, old-school kopitiams, seafood restaurants, and late-night mamak stalls.</p>
-<p>Check-in at Pelangi is from <strong>3:00 PM</strong>. Drop your bags earlier and head out to explore. <a href="/rooms">Pods from RM30/night on weekdays (RM35 weekends)</a> — Upper and Lower Deck same price.</p>
+<p>Check-in at Pelangi is from <strong>2:00 PM</strong>. Drop your bags earlier and head out to explore. <a href="/rooms">Pods from RM30/night on weekdays (RM35 weekends)</a> — Upper and Lower Deck same price.</p>
 <p><a href="/book">Book your pod at Pelangi Capsule Hostel</a> and make the most of your JB trip.</p>
 `,
 		},
@@ -2460,7 +2460,7 @@ var BlogPosts = func() []BlogPost {
 </ul>
 <h2>Checking In at Pelangi Capsule Hostel</h2>
 <ul>
-  <li><strong>Check-in time:</strong> 3:00 PM. Bag drop available for early arrivals.</li>
+  <li><strong>Check-in time:</strong> 2:00 PM. Bag drop available for early arrivals.</li>
   <li><strong>Check-out time:</strong> 12:00 PM (noon).</li>
   <li><strong>Address:</strong> 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru.</li>
   <li><strong>WiFi:</strong> Free throughout. Network: pelangi capsule, password: ilovestaycapsule.</li>
@@ -2532,7 +2532,7 @@ var BlogPosts = func() []BlogPost {
 <h2>入住须知</h2>
 <ul>
   <li><strong>地址：</strong>26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru</li>
-  <li><strong>入住时间：</strong>下午 3:00 | <strong>退房时间：</strong>中午 12:00</li>
+  <li><strong>入住时间：</strong>下午 2:00 | <strong>退房时间：</strong>中午 12:00</li>
   <li><strong>房型：</strong>平日 RM30/晚，周末 RM35/晚（上下层同价）。独立阅读灯、USB 充电口和个人储物柜。</li>
   <li><strong>旅游税：</strong>非马来西亚公民额外 RM10/房/晚，入住时缴纳。</li>
   <li><strong>WiFi：</strong>全馆免费，网络名：pelangi capsule，密码：ilovestaycapsule。</li>
@@ -2600,7 +2600,7 @@ var BlogPosts = func() []BlogPost {
 <h2>Your Stay at Pelangi Capsule Hostel</h2>
 <p>We operate <strong>completely as usual</strong> through the election weekend:</p>
 <ul>
-  <li><strong>Check-in:</strong> 3:00 PM onwards (24/7 self check-in — arrive any time)</li>
+  <li><strong>Check-in:</strong> 2:00 PM onwards (24/7 self check-in — arrive any time)</li>
   <li><strong>Check-out:</strong> before 12:00 PM</li>
   <li><strong>Address:</strong> 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru</li>
   <li><strong>WhatsApp:</strong> +60 12-708 8789 if you need anything</li>
@@ -2674,7 +2674,7 @@ var BlogPosts = func() []BlogPost {
 <h2>Planning Your Stay Around the Timeline</h2>
 <p>If you are visiting JB now, treat the current situation as business as usual — Causeway crossings are manageable with the right timing (avoid Sunday evenings, Malaysian public holidays, and peak-hour Fridays). If you are planning a trip for early 2027, it is worth watching LTA's official updates before booking transport, as the January 2027 operational date could shift slightly depending on how the remaining testing phases resolve.</p>
 <p>For commuters already living between both cities, JB accommodation is increasingly a practical choice. At <strong>RM30/night on weekdays</strong> and <strong>RM35/night on weekends</strong>, a monthly stay from <strong>RM594</strong>, and a 10-minute drive to the crossing — the numbers work well as a base while the RTS testing phase completes.</p>
-<p>We offer <strong>24/7 self check-in</strong>, free WiFi, and standard check-in from <strong>3:00 PM</strong> (check-out by <strong>12:00 PM</strong>). WhatsApp us on <strong>+60 12-708 8789</strong> if you have questions about long stays or flexible arrangements.</p>
+<p>We offer <strong>24/7 self check-in</strong>, free WiFi, and standard check-in from <strong>2:00 PM</strong> (check-out by <strong>12:00 PM</strong>). WhatsApp us on <strong>+60 12-708 8789</strong> if you have questions about long stays or flexible arrangements.</p>
 <p>See our <a href="/blog/3-day-jb-backpacker-itinerary-rm250">3-day JB backpacker itinerary</a> if you are still working out what to do once you arrive.</p>
 
 <h2>Book a Pod</h2>
@@ -2744,7 +2744,7 @@ var BlogPosts = func() []BlogPost {
   <tbody>
     <tr>
       <td>Weekday arrival</td>
-      <td>Check in from 3 PM, walk to Taman Pelangi eateries for dinner</td>
+      <td>Check in from 2 PM, walk to Taman Pelangi eateries for dinner</td>
       <td>RM10–15 dinner</td>
     </tr>
     <tr>
@@ -2773,7 +2773,7 @@ var BlogPosts = func() []BlogPost {
 <p>For a more detailed day-by-day plan with specific food stops and transport, see our <a href="/blog/3-day-jb-backpacker-itinerary-rm250">3-day JB backpacker itinerary</a>.</p>
 
 <h2>Pelangi in July</h2>
-<p>We are a short walk from Taman Pelangi's row of kopitiam and casual restaurants, and roughly <strong>10 minutes' drive from JB Sentral and the CIQ causeway checkpoint</strong>. 24/7 self check-in means no pressure to arrive at a particular hour — useful if your bus from Singapore runs late. Standard check-in is from <strong>3:00 PM</strong>; check-out by <strong>12:00 PM</strong>. Free WiFi throughout. WhatsApp us on <strong>+60 12-708 8789</strong> for any questions about July availability or longer stays (monthly rates from <strong>RM594</strong> for those considering an extended base).</p>
+<p>We are a short walk from Taman Pelangi's row of kopitiam and casual restaurants, and roughly <strong>10 minutes' drive from JB Sentral and the CIQ causeway checkpoint</strong>. 24/7 self check-in means no pressure to arrive at a particular hour — useful if your bus from Singapore runs late. Standard check-in is from <strong>2:00 PM</strong>; check-out by <strong>12:00 PM</strong>. Free WiFi throughout. WhatsApp us on <strong>+60 12-708 8789</strong> for any questions about July availability or longer stays (monthly rates from <strong>RM594</strong> for those considering an extended base).</p>
 <p>See <a href="/blog/jb-singapore-commuter-guide-2026">our commuter guide</a> if you are crossing regularly and want to understand current options while the <a href="/blog/rts-link-jb-singapore-final-testing-2026">RTS Link completes testing</a>.</p>
 
 <h2>Book Your July Pod</h2>
@@ -2805,7 +2805,7 @@ var BlogPosts = func() []BlogPost {
 
 <h2>What a Monthly Stay at Pelangi Actually Costs</h2>
 <p>Monthly stays at Pelangi start from <strong>RM594/month</strong>. That rate covers your capsule pod, utilities, and WiFi — no separate bills, no deposit contract, no minimum tenure beyond the month you pay for. You can check in on a Monday and check out 30 days later if something changes.</p>
-<p>The nightly rate for short stays is <strong>RM30 on weekdays and RM35 on weekends</strong>. If you're doing a full calendar month of 30 nights at those nightly rates you'd pay more — the monthly rate is specifically designed for people settling in for the longer haul. Check-in is 3:00 PM, check-out 12:00 PM, and the building has 24/7 self check-in, which matters if you're crossing the Causeway on irregular shift times.</p>
+<p>The nightly rate for short stays is <strong>RM30 on weekdays and RM35 on weekends</strong>. If you're doing a full calendar month of 30 nights at those nightly rates you'd pay more — the monthly rate is specifically designed for people settling in for the longer haul. Check-in is 2:00 PM, check-out 12:00 PM, and the building has 24/7 self check-in, which matters if you're crossing the Causeway on irregular shift times.</p>
 <p>For a full look at room types and availability, see our <a href="/rooms">rooms page</a>.</p>
 
 <h2>What a Conventional JB Room Rental Actually Costs</h2>
@@ -3060,7 +3060,7 @@ var BlogPosts = func() []BlogPost {
 <p>July is a strong month for JB beyond durian. The city runs a steady calendar of events through the month. Check the <a href="https://thingstodoinjohorbahru.com/events/" target="_blank" rel="noopener">Things to Do in Johor Bahru events page</a> for what is running during your specific dates.</p>
 
 <h2>Staying Near the Action</h2>
-<p>Pelangi Capsule Hostel puts you in Taman Pelangi — close to the city's food belt, ~10 minutes from JB Sentral and the CIQ checkpoint, and a short Grab from Tan Hiok Nee. <a href="/rooms">Capsule pods</a> are RM30/night on weekdays and RM35/night on weekends, with monthly rates from RM594. Check-in is 3:00 PM, check-out 12:00 PM, and the property runs 24/7 self check-in — so if your durian run goes late, there is no reception cut-off to worry about. WhatsApp us at <strong>+60 12-708 8789</strong> if you have any questions before you arrive.</p>
+<p>Pelangi Capsule Hostel puts you in Taman Pelangi — close to the city's food belt, ~10 minutes from JB Sentral and the CIQ checkpoint, and a short Grab from Tan Hiok Nee. <a href="/rooms">Capsule pods</a> are RM30/night on weekdays and RM35/night on weekends, with monthly rates from RM594. Check-in is 2:00 PM, check-out 12:00 PM, and the property runs 24/7 self check-in — so if your durian run goes late, there is no reception cut-off to worry about. WhatsApp us at <strong>+60 12-708 8789</strong> if you have any questions before you arrive.</p>
 <p>Ready to book your July stay? <a href="/book">Check availability and secure your pod here.</a></p>
 
 <h2>Sources</h2>
@@ -3185,7 +3185,7 @@ var BlogPosts = func() []BlogPost {
 
 <h2>Option 1: Flying from Senai International Airport</h2>
 <p>Senai is roughly 30–40 minutes from Taman Pelangi by Grab, depending on traffic. It is AirAsia's main hub in Johor, with direct routes to regional destinations — Kuala Lumpur, Penang, Jakarta, and more. Fares on regional routes from Senai are often notably cheaper than equivalent flights from Changi, particularly on AirAsia's network. Check the current route map on Senai Airport's official site before booking.</p>
-<p>If your flight departs early morning, this is where 24/7 self check-in matters. <strong>You can arrive at the hostel at 1 AM, sleep, and leave by 4 AM for a 6 AM flight without waking anyone or paying extra.</strong> Our check-in is self-managed around the clock. Check-in time is from 3:00 PM and check-out is by 12:00 PM, but arrival time is genuinely flexible.</p>
+<p>If your flight departs early morning, this is where 24/7 self check-in matters. <strong>You can arrive at the hostel at 1 AM, sleep, and leave by 4 AM for a 6 AM flight without waking anyone or paying extra.</strong> Our check-in is self-managed around the clock. Check-in time is from 2:00 PM and check-out is by 12:00 PM, but arrival time is genuinely flexible.</p>
 <p>Our <a href="/blog/changi-airport-transit-budget-stay-johor-bahru">Changi transit guide</a> also covers how the two airports compare for regional travel.</p>
 
 <h2>Option 2: Crossing to Changi Airport</h2>
@@ -3230,7 +3230,7 @@ var BlogPosts = func() []BlogPost {
     </tr>
     <tr>
       <td>Check-in / check-out</td>
-      <td>3:00 PM / 12:00 PM (24/7 self check-in available)</td>
+      <td>2:00 PM / 12:00 PM (24/7 self check-in available)</td>
     </tr>
     <tr>
       <td>WiFi</td>
@@ -3773,7 +3773,7 @@ var BlogPosts = func() []BlogPost {
 
 <h2>Staying at Pelangi Capsule Hostel</h2>
 <p>If you are staying with us at <strong>Pelangi Capsule Hostel</strong> (26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru), our front desk staff can help you identify the nearest clinic, arrange a Grab to the hospital, or assist with basic communication. WhatsApp us any time at <a href="https://wa.me/60127088789" target="_blank" rel="noopener">+60 12-708 8789</a>.</p>
-<p>Our pods start at <strong>RM30/night weekdays</strong> and <strong>RM35/night weekends</strong>, with monthly stays from <strong>RM594</strong>. Check-in from 3:00 PM, check-out by 12:00 PM. <a href="/book">Book your stay</a> and travel with one less thing to worry about.</p>
+<p>Our pods start at <strong>RM30/night weekdays</strong> and <strong>RM35/night weekends</strong>, with monthly stays from <strong>RM594</strong>. Check-in from 2:00 PM, check-out by 12:00 PM. <a href="/book">Book your stay</a> and travel with one less thing to worry about.</p>
 
 <h2>Sources</h2>
 <ul>
@@ -3943,7 +3943,7 @@ var BlogPosts = func() []BlogPost {
 
 <h2>A Safe Base in JB</h2>
 <p>If you are passing through or staying in Johor Bahru, having a secure, reliable base helps. At <strong>Pelangi Capsule Hostel</strong>, we host a mix of budget travellers, Singapore commuters, and cross-border workers every week — and we are always happy to share local knowledge, including what to watch out for in the area.</p>
-<p>We are located at <strong>26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru</strong>. Capsule pods start from <strong>RM30/night on weekdays</strong> and <strong>RM35/night on weekends</strong>, with monthly packages from <strong>RM594</strong>. Check-in is at 3 PM and check-out at 12 PM. <a href="/book">Book your pod here</a> or <a href="/contact">reach us on WhatsApp at +60 12-708 8789</a>.</p>
+<p>We are located at <strong>26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru</strong>. Capsule pods start from <strong>RM30/night on weekdays</strong> and <strong>RM35/night on weekends</strong>, with monthly packages from <strong>RM594</strong>. Check-in is at 2 PM and check-out at 12 PM. <a href="/book">Book your pod here</a> or <a href="/contact">reach us on WhatsApp at +60 12-708 8789</a>.</p>
 
 <h2>Sources</h2>
 <ul>
@@ -4050,7 +4050,7 @@ var BlogPosts = func() []BlogPost {
 <p>Economy rice is one slice of the cheap-food ecosystem here. Taman Pelangi also has mamak stalls open until midnight, a <a href="/blog/taman-pelangi-tuesday-night-market-guide">Tuesday night market</a> where mains run RM5–8, and old-school kopitiams serving kaya toast breakfasts for under RM5. If you want the full neighbourhood food map, see our <a href="/blog/ultimate-jb-food-guide-backpackers">JB cheap eats guide for backpackers</a>.</p>
 
 <h2>Staying Close to the Food</h2>
-<p>Pelangi Capsule Hostel is at <strong>26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru</strong> — the same street as Bar Wang Rice and FECA &amp; Kopi, two minutes from the hawker centre. Pods start at <strong>RM30/night on weekdays and RM35 on weekends</strong>. Monthly stays from <strong>RM594</strong>. Check-in from 3 PM, check-out by 12 PM. Questions? WhatsApp us at <strong>+60 12-708 8789</strong>.</p>
+<p>Pelangi Capsule Hostel is at <strong>26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru</strong> — the same street as Bar Wang Rice and FECA &amp; Kopi, two minutes from the hawker centre. Pods start at <strong>RM30/night on weekdays and RM35 on weekends</strong>. Monthly stays from <strong>RM594</strong>. Check-in from 2 PM, check-out by 12 PM. Questions? WhatsApp us at <strong>+60 12-708 8789</strong>.</p>
 <p><a href="/book">Book a pod</a> or <a href="/contact">get in touch</a> if you want to know more about what is walking distance from the hostel.</p>
 
 <h2>Sources</h2>
@@ -4158,7 +4158,7 @@ var BlogPosts = func() []BlogPost {
 <h2>The Common Room Shortcut</h2>
 <p>If you are staying at a hostel, you already have a built-in language exchange venue. Common rooms attract travellers from Singapore, Indonesia, mainland China, Japan, Korea, and Europe — all in the same space, all open to conversation by definition. The social dynamic of a hostel lounge is lower-stakes than a formal meetup: you start talking about the food you just ate, and twenty minutes later you are explaining idioms to each other.</p>
 <p>At <strong>Pelangi Capsule Hostel</strong> in Taman Pelangi, the common area is where guests naturally gather in the evenings. We have hosted guests from across Southeast Asia and beyond, and informal language exchanges happen here without anyone organising them. It is the most frictionless way to start — no app needed, no scheduling, just show up.</p>
-<p>Pods start at <strong>RM30/night on weekdays, RM35 on weekends</strong>, with monthly stays from <strong>RM594</strong>. Check-in is from 3:00 PM, check-out by 12:00 PM. Find us at 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru. WhatsApp us at <strong>+60 12-708 8789</strong> or <a href="/book">book a pod online</a> — and start practising from day one.</p>
+<p>Pods start at <strong>RM30/night on weekdays, RM35 on weekends</strong>, with monthly stays from <strong>RM594</strong>. Check-in is from 2:00 PM, check-out by 12:00 PM. Find us at 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru. WhatsApp us at <strong>+60 12-708 8789</strong> or <a href="/book">book a pod online</a> — and start practising from day one.</p>
 
 <h2>Sources</h2>
 <ul>

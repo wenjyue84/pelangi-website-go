@@ -108,7 +108,7 @@ const kbLocationSection = `# Location & Transport
 const kbPoliciesSection = `# Policies & House Rules
 
 ## Check-in / Check-out
-- **Check-in:** 3:00 PM onwards (self-check-in available 24/7)
+- **Check-in:** 2:00 PM onwards (self-check-in available 24/7)
 - **Check-out:** Before 12:00 PM (noon)
 - Early check-in / late check-out available on request via WhatsApp
 

@@ -22,7 +22,7 @@ const llmsTxtBody = `# Pelangi Capsule Hostel
 
 ## Current Notices
 
-- **Johor State Election — Saturday 11 July 2026**: Polling day is a public holiday in Johor state. The hostel operates completely as usual (check-in 3:00 PM, check-out 12:00 PM, 24/7 self check-in). Expect heavy Causeway/CIQ traffic 10–12 July 2026 as Johoreans working in Singapore return to vote — cross before 7 AM or after 9 PM, or take bus CW1/170. Some smaller shops and eateries may open late on polling day; malls and convenience stores are open. Book early for that weekend — demand is higher than a normal weekend. Details: https://pelangicapsulehostel.com/johor-election-2026
+- **Johor State Election — Saturday 11 July 2026**: Polling day is a public holiday in Johor state. The hostel operates completely as usual (check-in 2:00 PM, check-out 12:00 PM, 24/7 self check-in). Expect heavy Causeway/CIQ traffic 10–12 July 2026 as Johoreans working in Singapore return to vote — cross before 7 AM or after 9 PM, or take bus CW1/170. Some smaller shops and eateries may open late on polling day; malls and convenience stores are open. Book early for that weekend — demand is higher than a normal weekend. Details: https://pelangicapsulehostel.com/johor-election-2026
 
 ## Services
 
@@ -32,7 +32,7 @@ Pelangi Capsule Hostel offers Japanese-inspired capsule pod accommodation for bu
 - **Daily Rate**: From RM30/night on weekdays, RM35/night on weekends (+ RM10/room/night Tourism Tax)
 - **Monthly Rate**: RM594/month
 - **Private Rooms (monthly rental)**: From RM500/month + RM250 flat deposit — private lockable rooms above the 7-Eleven in Taman Pelangi, a short walk from the hostel, managed by the same team. Month-to-month terms, no long tenancy. WhatsApp +60 12-708 8789 to check availability. Details: https://pelangicapsulehostel.com/blog/room-for-rent-taman-pelangi-jb-rm500-month
-- **Check-in**: 3:00 PM onwards (self check-in available)
+- **Check-in**: 2:00 PM onwards (self check-in available)
 - **Check-out**: Before 12:00 PM
 
 ## Amenities
@@ -101,7 +101,7 @@ Book directly on our website for the best rates with no booking fees:
 - **每晚价格**：RM30/晚起（平日；周末RM35）
 - **月租价格**：RM594/月
 - **月租私人房间**：RM500/月起，押金RM250（一次性），位于Taman Pelangi 7-Eleven楼上，步行可达旅馆，由同一团队管理。按月续租，无需长期租约。WhatsApp +60 12-708 8789 查询空房
-- **入住时间**：下午3时起（支持自助入住）
+- **入住时间**：下午2时起（支持自助入住）
 - **退房时间**：中午12时前
 
 ### 设施
@@ -152,7 +152,7 @@ const llmsFullBody = `# Pelangi Capsule Hostel — Full Details
 
 ## Current Notices
 
-- **Johor State Election — Saturday 11 July 2026**: Polling day for the 16th Johor State Assembly is a public holiday in Johor state (early voting 7 July; campaigning ends 10 July 11:59 PM). The hostel operates completely as usual: check-in 3:00 PM, check-out 12:00 PM, 24/7 self check-in unaffected. Travellers should expect heavy Causeway/CIQ traffic from 10–12 July 2026 as Singapore-based Johoreans return home to vote — cross before 7 AM or after 9 PM, or use bus CW1 (Kranji) / bus 170 (Queen Street). On polling day banks and government offices close; malls, convenience stores, and most restaurants stay open, though small kopitiam may open late morning. Elections in Malaysia are orderly and safe for visitors. Book accommodation early for that weekend. Guest guide: https://pelangicapsulehostel.com/johor-election-2026
+- **Johor State Election — Saturday 11 July 2026**: Polling day for the 16th Johor State Assembly is a public holiday in Johor state (early voting 7 July; campaigning ends 10 July 11:59 PM). The hostel operates completely as usual: check-in 2:00 PM, check-out 12:00 PM, 24/7 self check-in unaffected. Travellers should expect heavy Causeway/CIQ traffic from 10–12 July 2026 as Singapore-based Johoreans return home to vote — cross before 7 AM or after 9 PM, or use bus CW1 (Kranji) / bus 170 (Queen Street). On polling day banks and government offices close; malls, convenience stores, and most restaurants stay open, though small kopitiam may open late morning. Elections in Malaysia are orderly and safe for visitors. Book accommodation early for that weekend. Guest guide: https://pelangicapsulehostel.com/johor-election-2026
 
 ## About
 
@@ -197,7 +197,7 @@ Pelangi Capsule Hostel is a Japanese-inspired capsule accommodation in the heart
 
 ## Check-in & Check-out
 
-- **Check-in**: 3:00 PM onwards (self check-in available — arrive anytime after 3 PM)
+- **Check-in**: 2:00 PM onwards (self check-in available — arrive anytime after 2 PM)
 - **Check-out**: Before 12:00 PM
 - **Tourism Tax (TTx)**: RM10/room/night — a government-mandated charge under the Tourism Tax Act 2017, collected on behalf of the Royal Malaysian Customs Department
 
@@ -212,7 +212,7 @@ Pelangi Capsule Hostel is a Japanese-inspired capsule accommodation in the heart
 ## Frequently Asked Questions
 
 **What time is check-in and check-out at Pelangi Capsule Hostel?**
-Check-in at Pelangi Capsule Hostel is from 3:00 PM onwards, and check-out is before 12:00 PM (noon). We offer self-check-in so you can arrive anytime after 3 PM without waiting for reception. Early check-in or late check-out may be available on request — contact us via WhatsApp at +60 12-708 8789.
+Check-in at Pelangi Capsule Hostel is from 2:00 PM onwards, and check-out is before 12:00 PM (noon). We offer self-check-in so you can arrive anytime after 2 PM without waiting for reception. Early check-in or late check-out may be available on request — contact us via WhatsApp at +60 12-708 8789.
 
 **How much does a capsule pod cost per night in Johor Bahru?**
 Capsule pods at Pelangi Capsule Hostel start from RM30 per night on weekdays and RM35 per night on weekends. A Malaysia Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is added as required by law. Monthly stays are available from RM594 per month. Book directly on our website at pelangicapsulehostel.com/book for the best rate with no booking fees or OTA commissions.

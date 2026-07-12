@@ -10,7 +10,7 @@ type FaqItem struct {
 var FaqItems = []FaqItem{
 	{
 		Question: "What time is check-in and check-out at Pelangi Capsule Hostel?",
-		Answer:   "Check-in at Pelangi Capsule Hostel is from 3:00 PM onwards, and check-out is before 12:00 PM (noon). We offer self-check-in so you can arrive anytime after 3 PM without waiting for reception. Early check-in or late check-out may be available on request — contact us via WhatsApp at +60 12-708 8789.",
+		Answer:   "Check-in at Pelangi Capsule Hostel is from 2:00 PM onwards, and check-out is before 12:00 PM (noon). We offer self-check-in so you can arrive anytime after 2 PM without waiting for reception. Early check-in or late check-out may be available on request — contact us via WhatsApp at +60 12-708 8789.",
 	},
 	{
 		Question: "How much does a capsule pod cost per night in Johor Bahru?",
