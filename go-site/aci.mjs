@@ -314,6 +314,32 @@ SUITES.seo = {
     const llmsFull = await rawGet("/llms-full.txt");
     check("llms-full.txt → 200 with pricing", llmsFull.status === 200 && llmsFull.body.includes("RM30"),
       `status=${llmsFull.status}`);
+
+    // hreflang reciprocity — every page in a language group must emit the SAME
+    // alternate set (Google ignores one-way hreflang). Added 2026-07-12 with the
+    // multilingual-SEO track. Each entry: [paths that must share a set, langs].
+    const hreflangGroups = [
+      { paths: ["/", "/zh"], langs: ["en", "zh-CN"] },
+      { paths: ["/rooms", "/zh/rooms"], langs: ["en", "zh-CN"] },
+      { paths: ["/about", "/zh/about"], langs: ["en", "zh-CN"] },
+      { paths: ["/location", "/zh/location"], langs: ["en", "zh-CN"] },
+      { paths: ["/getting-here", "/zh/getting-here", "/ms/getting-here"], langs: ["en", "zh-CN", "ms"] },
+      { paths: ["/check-in", "/zh/check-in", "/ms/check-in"], langs: ["en", "zh-CN", "ms"] },
+      { paths: ["/amenities", "/zh/amenities", "/ms/amenities"], langs: ["en", "zh-CN", "ms"] },
+      { paths: ["/guide", "/zh/guide", "/ms/guide"], langs: ["en", "zh-CN", "ms"] },
+      { paths: ["/terms", "/ms/terma"], langs: ["en", "ms"] },
+    ];
+    for (const g of hreflangGroups) {
+      for (const path of g.paths) {
+        const r = await rawGet(path);
+        const langs = [...r.body.matchAll(/rel="alternate"\s+hreflang="([^"]+)"/g)].map((m) => m[1]);
+        const missing = g.langs.filter((l) => !langs.includes(l));
+        const hasXDefault = langs.includes("x-default");
+        check(`hreflang ${path} lists ${g.langs.join("/")}+x-default`,
+          r.status === 200 && missing.length === 0 && hasXDefault,
+          `status=${r.status} got=[${langs.join(",")}] missing=[${missing.join(",")}] xdefault=${hasXDefault}`);
+      }
+    }
   },
 };
 
