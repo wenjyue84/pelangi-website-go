@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"pelangi-website/internal/data"
+	"pelangi-website/internal/gbp"
 	"pelangi-website/internal/render"
 )
 
@@ -19,15 +20,17 @@ type Handler struct {
 	r         *render.Renderer
 	gtmID     string
 	publicDir string // on-disk dir for large public assets (images, llms.txt, etc.)
+	gbp       *gbp.Service
 }
 
 // New constructs a Handler. publicDir is the directory of non-embedded public
 // assets (defaults handled by the caller); empty disables disk asset serving.
-func New(r *render.Renderer, publicDir string) *Handler {
+func New(r *render.Renderer, publicDir string, gbpSvc *gbp.Service) *Handler {
 	return &Handler{
 		r:         r,
 		gtmID:     os.Getenv("NEXT_PUBLIC_GTM_ID"),
 		publicDir: publicDir,
+		gbp:       gbpSvc,
 	}
 }
 
@@ -122,6 +125,7 @@ var enNav = []NavLink{
 	{"/rooms", "Rooms"},
 	{"/#destinations", "Destinations"},
 	{"/gallery", "Gallery"},
+	{"/blog", "Blog"},
 	{"/#community", "Community"},
 	{"/contact", "Location"},
 	{"/check-in", "Check-in Guide"},
@@ -132,6 +136,7 @@ var zhNav = []NavLink{
 	{"/zh/rooms", "房型"},
 	{"/zh#destinations", "周边景点"},
 	{"/gallery", "相册"},
+	{"/blog", "博客"},
 	{"/zh#community", "社区"},
 	{"/zh/location", "位置"},
 	{"/check-in", "入住指南"},
@@ -142,6 +147,7 @@ var msNav = []NavLink{
 	{"/rooms", "Bilik"},
 	{"/#destinations", "Destinasi"},
 	{"/gallery", "Galeri"},
+	{"/blog", "Blog"},
 	{"/#community", "Komuniti"},
 	{"/contact", "Lokasi"},
 	{"/check-in", "Panduan Daftar Masuk"},
