@@ -4173,6 +4173,59 @@ var BlogPosts = func() []BlogPost {
 </ul>
 `,
 		},
+		// 53 — scheduled: goes live 2026-08-19
+		{
+			Slug:          "malaysia-tourism-tax-jb-hostel-walk-in-guide",
+			ImageAlt:      "Budget traveller arriving at a JB hostel reception desk, paying cash for a pod",
+			Title:         "Malaysia Tourism Tax at JB Hostels: What Foreign Guests Pay — and Why Walk-In Cash Visits Can Be Different",
+			Excerpt:       "Foreign visitors pay RM10 per night in tourism tax at most Malaysian accommodation. But walk-in cash bookings are handled differently in practice. Here's what the tax covers, who it applies to, and why budget travellers arriving in person sometimes find a lower final bill.",
+			Date:          "2026-08-19",
+			Category:      "Practical Guides",
+			Author:        "Jay Lew",
+			ReadTime:      "5 min read",
+			Tags:          []string{"tourism-tax", "budget-travel", "johor-bahru", "cash-payment", "walk-in", "malaysia-travel", "practical-guide"},
+			FeaturedImage: "/images/blog/malaysia-tourism-tax-jb-hostel-walk-in-guide.jpg",
+			Content: `
+<h2>What Is Malaysia's Tourism Tax?</h2>
+<p>Malaysia introduced the Tourism Tax (TTx) in 2017 under the Tourism Tax Act. The rate is <strong>RM10 per room per night</strong>, and it applies to registered accommodation properties — which includes most hotels, guesthouses, serviced apartments, and hostels in Johor Bahru.</p>
+<p>The tax is collected by the accommodation operator and remitted to the Malaysian government. You do not pay it to any government office directly — it is added to your bill by the property at check-in or checkout.</p>
+
+<h2>Who Has to Pay It?</h2>
+<p>Only <strong>foreign tourists</strong> — non-Malaysian citizens and non-permanent residents — are subject to the tourism tax. Malaysian citizens and MyPR holders do not pay it.</p>
+<p>For a short stay, RM10/night adds up fast: a 3-night stay is RM30, a week is RM70. On top of a capsule pod rate of RM30–35 per night, that is a meaningful percentage of your total.</p>
+
+<h2>Online and OTA Bookings: Tourism Tax Is Automatic</h2>
+<p>When you book through Booking.com, Agoda, Hostelworld, or a property's own online system, the platform typically captures your nationality at checkout. If you are a foreign visitor, the tourism tax is either factored into the total or listed separately at payment.</p>
+<p>Your passport is verified at check-in to confirm your foreign status — the tax is confirmed and collected. The process is largely automated: your nationality is on record before you arrive, so the property charges accordingly.</p>
+
+<h2>Walk-In Cash Visits: A Different Process</h2>
+<p>Walk-in bookings — where you arrive in person, request a bed, and pay cash at the front desk — go through a different administrative process. There is no pre-submitted passport, no online form capturing your nationality in advance, and no system automatically applying the tax before you step inside.</p>
+<p>Individual properties have some discretion in how they handle on-site registration for cash walk-in guests. Some run a streamlined check-in focused on room assignment and payment rather than detailed document verification. Guests who have booked this way have reported that the tourism tax was not added to their bill.</p>
+<p>This is not universal — some properties are diligent about collecting TTx from all guests regardless of booking method. But the administrative difference between a pre-registered online booking and a cash walk-in is real, and that difference can result in a lower final bill.</p>
+<p><em>Note: Under Malaysian law, the obligation to collect and remit tourism tax sits with the accommodation operator, not the guest. If a property does not charge it, that is a matter between the operator and the relevant authority.</em></p>
+
+<h2>Other Reasons to Walk In and Pay Cash</h2>
+<p>Tourism tax aside, there are several practical reasons why budget travellers prefer to book in person:</p>
+<ul>
+  <li><strong>No booking platform fees baked in</strong> — OTAs charge operators 15–18% commission, often reflected in listed rates. Properties may price walk-in rates lower to avoid that overhead.</li>
+  <li><strong>Negotiate directly</strong> — If a property has empty beds tonight, a face-to-face request has a better chance of landing a small discount than an online form.</li>
+  <li><strong>No credit card needed</strong> — Pay in ringgit, no card surcharge, no pre-authorisation hold on your account.</li>
+  <li><strong>See the room first</strong> — Check the pod, the air conditioning, the locker size before handing over cash.</li>
+  <li><strong>Flexible stay length</strong> — Extend or cut short your stay with a direct conversation rather than a platform modification request.</li>
+</ul>
+
+<h2>Walk-In Rates at Pelangi Capsule Hostel</h2>
+<p>At <strong>Pelangi Capsule Hostel</strong>, capsule pods start at <strong>RM30/night on weekdays, RM35/night on weekends</strong>. Monthly stays from <strong>RM594</strong>. Walk-in guests are welcome — no reservation required if beds are available.</p>
+<p>We are at 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru — about 10 minutes by Grab from JB Sentral or the Causeway CW1/CW2 bus stops. Check-in from 2:00 PM, checkout by 12:00 PM.</p>
+<p>Want to check availability before walking in? <a href="/book">See live availability here</a> or WhatsApp us at +60 12-708 8789. Full specs and photos at our <a href="/rooms">rooms page</a>.</p>
+
+<h2>Sources</h2>
+<ul>
+  <li><a href="https://www.customs.gov.my/en/tt/Pages/Overview-of-Tourism-Tax.aspx" target="_blank" rel="noopener">Royal Malaysian Customs Department — Tourism Tax overview</a></li>
+  <li><a href="https://www.motac.gov.my/" target="_blank" rel="noopener">Ministry of Tourism, Arts and Culture Malaysia</a></li>
+</ul>
+`,
+		},
 	}
 	for i := range raw {
 		raw[i].ReadingTimeMinutes = _blogComputeReadingTime(raw[i].Content)
