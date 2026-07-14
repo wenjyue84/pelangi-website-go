@@ -4226,6 +4226,232 @@ var BlogPosts = func() []BlogPost {
 </ul>
 `,
 		},
+		// 54 — scheduled: goes live 2026-08-22
+		{
+			Slug:          "jalan-perang-food-guide-taman-pelangi",
+			ImageAlt:      "Jalan Perang food street in Taman Pelangi JB with lit-up restaurant signage at night",
+			Title:         "What to Eat on Jalan Perang: A Food Street Guide from Pelangi Capsule Hostel's Doorstep",
+			Excerpt:       "Five confirmed-open restaurants within a short walk of the hostel — Korean BBQ, Japanese-Western fusion, heritage zi char from 1979, Teochew fish head soup, and halal Korean-Japanese. All on the same street.",
+			Date:          "2026-08-22",
+			Category:      "Food & Drink",
+			Author:        "Jay Lew",
+			ReadTime:      "6 min read",
+			Tags:          []string{"johor-bahru", "food-guide", "taman-pelangi", "jalan-perang", "korean-bbq", "halal", "budget-food", "local-eats"},
+			FeaturedImage: "/images/blog/jalan-perang-food-guide-taman-pelangi.jpg",
+			Content: `
+<h2>Five Restaurants on the Hostel's Own Street</h2>
+<p>Jalan Perang is one of Taman Pelangi's best-kept food secrets. Within a five-minute walk from Pelangi Capsule Hostel, you have Korean BBQ, Japanese-Western fusion, Teochew fish soup, and one of JB's most famous heritage zi char restaurants — all on the same street. No Grab needed.</p>
+<p>Every restaurant on this list was verified as open as of mid-2026 using multiple independent sources. Hours and menus can change, so confirm by phone or Google Maps before visiting — especially if you are planning a specific day.</p>
+
+<h2>1. Dusk by Mok Mok — Japanese-Western Fusion (No. 49)</h2>
+<p>The most photographed cafe on the street. Dusk by Mok Mok occupies a converted shophouse styled with rattan furniture, trailing plants, and neon signage that reads like a Bali-Tokyo crossover. It is the sister outlet to the original Mok Mok Brunch and Bistro.</p>
+<p>The kitchen runs a Japanese-Western menu built around JB's love of seafood. The standout is the <strong>Chilli Crab Pasta (RM36)</strong> — fresh crab sauce over al dente pasta with a proper chilli kick. The <strong>Curry Karaage Risotto (RM32)</strong> is a close second. Cash or bank transfer only (no credit cards as of last check). Parking on the street fills up by 7 PM on weekends — walk from the hostel instead.</p>
+<ul>
+  <li><strong>Address:</strong> 49 Jalan Perang, Taman Pelangi</li>
+  <li><strong>Hours:</strong> Daily approximately 10:00 AM – 10:00 PM</li>
+  <li><strong>Halal:</strong> Not certified (no pork, no lard)</li>
+  <li><strong>Phone:</strong> +60 19-771 0068</li>
+  <li><strong>Price range:</strong> RM16–RM36 per main</li>
+</ul>
+
+<h2>2. Yeon Cafe — Korean-Japanese, Halal (No. 12)</h2>
+<p>Yeon is the most popular halal option on the street and probably the most Instagrammed. Minimalist Korean interior — pastel tones, clean lines, soft K-pop in the background — and a menu that blends Korean and Japanese techniques effectively.</p>
+<p>The <strong>Salmon Yuzu Ochazuke (RM33)</strong> is the dish to order: green tea broth poured over rice and salmon, fragrant and light. The <strong>Rainbow Kimbap (RM18)</strong> works as a snack or side. For dessert, the Genmaicha Mochi Tart (RM12) sells out early.</p>
+<p>Some older sources mention Yeon closes on Tuesdays — call ahead if that is your day.</p>
+<ul>
+  <li><strong>Address:</strong> 12 Jalan Perang, Taman Pelangi</li>
+  <li><strong>Hours:</strong> Daily 10:30 AM – 10:00 PM (call to confirm Tuesday hours)</li>
+  <li><strong>Halal:</strong> Yes — certified</li>
+  <li><strong>Phone:</strong> +60 18-385 6899</li>
+  <li><strong>Price range:</strong> RM12–RM33 per dish</li>
+</ul>
+
+<h2>3. Korean BBQ Nam Moon — 17 Years on Jalan Perang (No. 29–31)</h2>
+<p>Nam Moon is the oldest Korean restaurant on the street and the one most frequented by Korean expats in JB — a reliable indicator of authenticity. The family has been running it for about 17 years, with smokeless sunken charcoal grills still going strong.</p>
+<p>Lunch sets (noon–2 PM) start from around RM12: rice, kimchi soup, and up to 8 house-made banchan side dishes. Dinner group BBQ sets run from RM115 for 2 pax with pork belly, pork jowl, marinated spare ribs, and marbled beef ribs. House-made makgeolli rice wine is available.</p>
+<ul>
+  <li><strong>Address:</strong> 29–31 Jalan Perang, Taman Pelangi</li>
+  <li><strong>Hours:</strong> Daily 11:00 AM – 10:00 PM</li>
+  <li><strong>Halal:</strong> No (pork served)</li>
+  <li><strong>Phone:</strong> +60 7-331 5573</li>
+  <li><strong>Price range:</strong> Lunch from RM12 | Dinner sets from RM115 for 2 pax</li>
+</ul>
+
+<h2>4. CM Restaurant — Teochew Fish Head Soup (No. 21)</h2>
+<p>No signage, no social media, no hype. CM Restaurant has been in the same Jalan Perang shophouse for over 30 years, now run by the second generation of the Chew family. The regulars order without looking at the menu.</p>
+<p>Traditional Teochew seafood: fish head soup, steamed fish with preserved turnip, sweet potato leaves with garlic. These are not dishes you describe — they are dishes you eat slowly. Closed Sundays.</p>
+<ul>
+  <li><strong>Address:</strong> 21 Jalan Perang, Taman Pelangi</li>
+  <li><strong>Hours:</strong> Mon–Sat 11:00 AM – 9:00 PM (closed Sundays)</li>
+  <li><strong>Halal:</strong> No</li>
+  <li><strong>Phone:</strong> +60 12-774 7775</li>
+</ul>
+
+<h2>5. Restoran Ah Kaw — Original San Lou Mee Hoon Since 1979 (No. 33)</h2>
+<p>Ah Kaw is the reason food writers make the trip to Jalan Perang. Established in 1979, this zi char restaurant is widely credited as the original creator of San Lou Mee Hoon — the charred, wok-fragrant fried vermicelli that later spread across JB and into Singapore.</p>
+<p>Order the <strong>San Lou Mee Hoon (RM9)</strong>. The Shrimp Paste Chicken (RM17) and Fried Squid with Salted Egg (RM20) round out a solid table. Cash preferred. Closed Tuesdays.</p>
+<ul>
+  <li><strong>Address:</strong> 33 Jalan Perang, Taman Pelangi</li>
+  <li><strong>Hours:</strong> Wed–Mon, 12:00 PM – 3:30 PM and 6:00 PM – 10:00 PM (closed Tuesdays)</li>
+  <li><strong>Halal:</strong> No (zi char)</li>
+  <li><strong>Phone:</strong> +60 7-334 0590</li>
+  <li><strong>Price range:</strong> RM9–RM20 per dish</li>
+</ul>
+
+<h2>Practical Tips</h2>
+<ul>
+  <li><strong>Walk from the hostel</strong> — Pelangi Capsule Hostel is at 26A Jalan Perang, so all five restaurants are a short walk in either direction.</li>
+  <li><strong>Halal visitors</strong> — Yeon Cafe (No. 12) is the only halal-certified option on this list.</li>
+  <li><strong>Tuesday</strong> — Ah Kaw is definitely closed. Yeon Cafe — call ahead to confirm.</li>
+  <li><strong>Sunday</strong> — CM Restaurant is closed.</li>
+  <li><strong>Budget</strong> — Ah Kaw and CM Restaurant are lowest cost. Dusk and Yeon run RM25–40 for a full meal.</li>
+</ul>
+
+<p>Staying on Jalan Perang makes it easy — check in at <a href="/book">Pelangi Capsule Hostel</a> (from RM30/night on weekdays) and walk out for dinner. Full room specs at <a href="/rooms">our rooms page</a>.</p>
+
+<h2>Sources</h2>
+<ul>
+  <li><a href="https://rubbisheatrubbishgrow.com/" target="_blank" rel="noopener">Rubbish Eat Rubbish Grow — Dusk by Mok Mok, June 2026</a></li>
+  <li><a href="https://wanderlog.com" target="_blank" rel="noopener">Wanderlog — Yeon Cafe (797 reviews, May 2026) and Nam Moon (626 reviews, Dec 2025)</a></li>
+  <li><a href="https://sethlui.com" target="_blank" rel="noopener">Sethlui.com — Nam Moon Korean BBQ, updated January 2026</a></li>
+  <li><a href="https://johor.makan.fans/" target="_blank" rel="noopener">JohorKaki — CM Restaurant, updated October 2024</a></li>
+  <li><a href="https://explorejb.sg" target="_blank" rel="noopener">ExploreJB.sg — Restoran Ah Kaw, updated October 2025</a></li>
+</ul>
+`,
+		},
+		// 55 — scheduled: goes live 2026-08-25
+		{
+			Slug:          "new-cafes-taman-pelangi-jb-2025-2026",
+			ImageAlt:      "Interior of a modern cafe in Taman Pelangi JB with warm lighting and artisan drinks",
+			Title:         "3 New Cafes and Bars That Opened in Taman Pelangi JB in 2025 and 2026",
+			Excerpt:       "Rowan & Betty (brunch), Cha Haus (artisan Chinese tea), and Bar9 (JB's first meatless bar with live music) — all confirmed open in Taman Pelangi as of mid-2026, all within a short walk of each other.",
+			Date:          "2026-08-25",
+			Category:      "Food & Drink",
+			Author:        "Jay Lew",
+			ReadTime:      "5 min read",
+			Tags:          []string{"taman-pelangi", "johor-bahru", "new-cafe", "brunch", "tea", "bar", "2026", "jb-food"},
+			FeaturedImage: "/images/blog/new-cafes-taman-pelangi-jb-2025-2026.jpg",
+			Content: `
+<h2>Taman Pelangi's Cafe Scene Is Growing Fast</h2>
+<p>Taman Pelangi has had a strong food reputation for years — Korean BBQ, heritage zi char, and late-night seafood along Jalan Perang. But its cafe scene has expanded quickly in the last twelve months. Three new venues opened in 2025 and early 2026, covering brunch, artisan tea, and nightlife. All three are confirmed open as of mid-2026 with multiple independent sources.</p>
+
+<h2>Rowan & Betty — Brunch Cafe (Opened 2026)</h2>
+<p>The newer sister brand of Rowan & Parsley, a popular brunch spot in JB's CIQ corridor. Rowan & Betty opened in 2026 at a 2nd-floor unit on Jalan Sri Pelangi 3 — reached by lift, with a retro/vintage interior that is warmer and more relaxed than its older sibling.</p>
+<p>The menu blends Western brunch with Asian inflections. The <strong>Chopped Beef Cornedict (RM39)</strong> is the signature — slow-cooked beef, hollandaise, toasted muffin. The <strong>Chicken Tikka Masala with Roti Canai (RM22)</strong> is a lower-cost option that works better than it sounds. Salmon Donburi (RM38) is the safe bet for Japanese-leaning guests. Not halal-certified but no pork or lard — confirmed with staff.</p>
+
+<table>
+  <thead><tr><th>Item</th><th>Price</th></tr></thead>
+  <tbody>
+    <tr><td>Chopped Beef Cornedict</td><td>RM39</td></tr>
+    <tr><td>Salmon Donburi</td><td>RM38</td></tr>
+    <tr><td>Chicken Tikka Masala + Roti Canai</td><td>RM22</td></tr>
+    <tr><td>French Toast</td><td>RM20</td></tr>
+    <tr><td>Truffle Fries</td><td>RM16</td></tr>
+    <tr><td>Black coffee</td><td>RM9</td></tr>
+  </tbody>
+</table>
+
+<ul>
+  <li><strong>Address:</strong> 27-02, Jalan Sri Pelangi 3, Taman Pelangi (2nd floor — take the lift)</li>
+  <li><strong>Hours:</strong> Sun–Thu 10:00 AM – 6:00 PM | Fri–Sat 10:00 AM – 10:00 PM</li>
+  <li><strong>Halal:</strong> Not certified (no pork/lard)</li>
+  <li><strong>Instagram:</strong> @rowanandbetty</li>
+</ul>
+
+<h2>Cha Haus — Modern Chinese Tea House (Opened September 2025)</h2>
+<p>Cha Haus (chahaustea.com) is a registered specialty tea house that opened in September 2025 at Pusat Komersial Pelangi on Jalan Sri Pelangi 4. The concept is rooted in new Chinese tea culture — loose-leaf brews, ceramic service, and a quieter pace that stands apart from bubble tea chains. The owner trained extensively in tea before opening.</p>
+<p>Signature teas include Mountain Bloom, Jade Dew, and CocoJuju, served with complimentary mini egg tarts. The pastry selection runs to Longan & Oolong Tea Jelly Cake and Pistachio Basque Cheesecake. A Tea Beers product line (non-alcoholic, tea-infused) was launching in mid-2026. 120-minute dine limit during peak hours.</p>
+<ul>
+  <li><strong>Address:</strong> Block B, #05-02, Pusat Komersial Pelangi, Jalan Sri Pelangi 4 (2nd floor)</li>
+  <li><strong>Hours:</strong> Daily 10:00 AM – 10:00 PM</li>
+  <li><strong>Website:</strong> chahaustea.com</li>
+  <li><strong>Instagram:</strong> @chahaus.my</li>
+</ul>
+
+<h2>Bar9 — JB's First Meatless Bar (Rebranded May 2025)</h2>
+<p>Bar9 has operated in Taman Pelangi for several years but repositioned in May 2025 as JB's first meatless bar — vegetarian food with a full drinks menu. It is one of the few venues in the neighbourhood with regular live music (Friday and Saturday nights) and a midnight licence.</p>
+<p>The food menu is vegetarian Asian-Western: mushroom pizza (RM28.90), aglio olio (RM23.90), mala fried rice, tempeh fries, satay. Draft Tiger and Guinness on tap. Weekday cocktail promotions. Private room available for events. Pet-friendly on the outdoor section. Google rating 4.7/5 across 74 reviews; live Eatigo bookings available as of July 2026.</p>
+<ul>
+  <li><strong>Address:</strong> 1A, Jalan Kuning 1, Taman Pelangi (2nd floor shophouse — entrance can be easy to miss)</li>
+  <li><strong>Hours:</strong> Daily 3:00 PM – 12:00 AM</li>
+  <li><strong>Halal:</strong> Not halal (serves alcohol)</li>
+  <li><strong>Phone:</strong> +60 16-798 9120</li>
+  <li><strong>Instagram:</strong> @bar9pelangi</li>
+</ul>
+
+<h2>Getting Here from Pelangi Capsule Hostel</h2>
+<p>All three venues are within Taman Pelangi. Rowan & Betty and Cha Haus are near the commercial centre on Jalan Sri Pelangi — about a 10–15 minute walk or short Grab ride from the hostel at 26A Jalan Perang. Bar9 is on Jalan Kuning, roughly midway.</p>
+<p>Pods at <a href="/rooms">Pelangi Capsule Hostel</a> start from <strong>RM30/night on weekdays, RM35 on weekends</strong>. <a href="/book">Check live availability here</a>, or walk in at 26A Jalan Perang.</p>
+
+<h2>Sources</h2>
+<ul>
+  <li><a href="https://eatbook.sg/taman-pelangi-jb-cafes/" target="_blank" rel="noopener">Eatbook — Taman Pelangi JB Cafes guide (Rowan & Betty, Cha Haus)</a></li>
+  <li><a href="https://eatbook.sg/new-jb-cafes-2026/" target="_blank" rel="noopener">Eatbook — New JB Cafes 2026</a></li>
+  <li><a href="https://chahaustea.com/" target="_blank" rel="noopener">Cha Haus official website</a></li>
+  <li><a href="https://www.tripadvisor.com/Restaurant_Review-g298278-d24919606-Reviews-Restaurant_Bar_9-Johor_Bahru_Johor_Bahru_District_Johor.html" target="_blank" rel="noopener">TripAdvisor — Bar9 Taman Pelangi</a></li>
+  <li><a href="https://eatigo.com/en/branches/3395165844327" target="_blank" rel="noopener">Eatigo — Bar9 live bookings, July 2026</a></li>
+</ul>
+`,
+		},
+		// 56 — scheduled: goes live 2026-08-28
+		{
+			Slug:          "taman-pelangi-jb-development-rts-link-2026",
+			ImageAlt:      "Aerial view of Taman Pelangi Johor Bahru neighbourhood with development cranes in the background",
+			Title:         "Why Taman Pelangi in Johor Bahru Is Worth Visiting Now — Before the RTS Link Changes Everything",
+			Excerpt:       "The JB-Singapore RTS Link is targeted to open by end of 2026. Taman Pelangi sits approximately 3 km from Bukit Chagar station and is already seeing developer attention — RM1.5 billion in new residential projects, 90% sold at launch. Budget accommodation is still RM30/night.",
+			Date:          "2026-08-28",
+			Category:      "Travel & Transport",
+			Author:        "Jay Lew",
+			ReadTime:      "6 min read",
+			Tags:          []string{"rts-link", "johor-bahru", "taman-pelangi", "singapore", "property", "travel", "budget-travel", "commuter"},
+			FeaturedImage: "/images/blog/taman-pelangi-jb-development-rts-link-2026.jpg",
+			Content: `
+<h2>The RTS Link Is Coming — and Taman Pelangi Is 3 km Away</h2>
+<p>The Johor Bahru–Singapore RTS Link is targeted to open by end of 2026. When it does, the journey between Bukit Chagar station in JB and Woodlands North in Singapore will take approximately five minutes. For Malaysians working in Singapore, for Singaporeans visiting JB for food and a weekend away, and for budget travellers using JB as a cheaper base — this changes the map significantly.</p>
+<p>Taman Pelangi is approximately 3 km from Bukit Chagar station (according to Mah Sing, the developer of the area's largest new project — cited across Bernama, The Star, and KLSE Screener). That is a 10-minute Grab or a manageable commute. And right now, before the RTS Link opens, it is still one of JB's most affordable neighbourhoods with its local character intact.</p>
+
+<h2>What the RTS Link Actually Is</h2>
+<p>The RTS Link will connect <strong>Bukit Chagar station (Johor Bahru)</strong> to <strong>Woodlands North station (Singapore)</strong> in approximately 5 minutes, operated by a joint venture of SMRT Singapore and Prasarana Malaysia.</p>
+<p>Key confirmed facts as of July 2026:</p>
+<ul>
+  <li><strong>Target opening:</strong> by end of December 2026 — confirmed jointly by Singapore Acting Minister for Transport Jeffrey Siow and Malaysia Minister of Transport Anthony Loke on 30 June 2025</li>
+  <li><strong>Capacity:</strong> 8 trains, 4 cars each, capacity for 10,000+ passengers per hour at peak</li>
+  <li><strong>Journey time:</strong> approximately 5 minutes between stations</li>
+  <li><strong>Fares:</strong> not yet confirmed — expected announcement in second half of 2026. Early analyst estimates: S$5–S$7 one-way (approximately RM15–22)</li>
+  <li><strong>Immigration:</strong> cleared at departure station only — no double queueing at both ends, unlike the current Causeway crossing</li>
+  <li><strong>Progress:</strong> First train arrived at Woodlands North test site on 5 February 2026 (Malay Mail). Rail systems were 56% complete as of June 2025</li>
+</ul>
+
+<h2>What Is Happening in Taman Pelangi Right Now</h2>
+<p>Property developers noticed the RTS effect before most travellers did. Two major new projects launched in Taman Pelangi in 2025:</p>
+<p><strong>M Grand Minori by Mah Sing</strong> is a 5.99-acre freehold mixed-use development on Jalan Kuning, Taman Pelangi — 1,733 serviced apartment units across two 59-storey towers, total GDV RM1.5 billion. Phase 1 launched at the sales gallery on 11 August 2025 and achieved a <strong>90% take-up rate over a single weekend</strong> (Bernama; The Star, 11 Aug 2025). Phase 1 prices started at RM390,000 for a 403 sq ft studio, up to RM769,000 for 835 sq ft. Phase 2 was targeting a Q2–Q3 2026 launch.</p>
+<p><strong>Residensi Maxim by Maxim Global</strong> launched 1,026 units in November 2025, from 450–865 sq ft at RM426,000–RM816,000 (The Edge Malaysia Q4 2025 JB Property Monitor).</p>
+<p>A 90% take-up rate in a single weekend is not speculative hype. It reflects buyers who are convinced that a 5-minute rail link to Singapore will materially increase the value — and the demand — for accommodation in this neighbourhood.</p>
+
+<h2>What This Means for Budget Travellers Right Now</h2>
+<p>The short version: <strong>Taman Pelangi is still at pre-RTS prices, and that window is finite.</strong></p>
+<p>A capsule pod at Pelangi Capsule Hostel — located at 26A Jalan Perang in Taman Pelangi — costs <strong>RM30/night on weekdays, RM35 on weekends</strong>. Monthly stays from RM594. The street outside has a Korean BBQ that has been running for 17 years, a heritage zi char restaurant dating to 1979, Japanese-Western fusion cafes, and new brunch spots that opened in 2025 and 2026. It is a neighbourhood that still functions like one.</p>
+<p>When the RTS Link opens and weekend visitors from Singapore begin flowing through Bukit Chagar in volume, demand for affordable accommodation in the area will grow. Property developers have already priced that in. Short-stay rates have not — yet.</p>
+
+<h2>Practical Notes for Visitors</h2>
+<ul>
+  <li><strong>Getting from Bukit Chagar to Taman Pelangi:</strong> approximately 3 km by road, 8–12 minutes by Grab from JB Sentral (near the Bukit Chagar area). The RTS Link is not yet open — until then, crossing by Causeway or Second Link is the standard route from Singapore</li>
+  <li><strong>From JB Sentral now:</strong> Causeway Link CW1/CW2 buses stop near JB Sentral, then about 10 minutes by Grab to Taman Pelangi</li>
+  <li><strong>Food nearby:</strong> Five confirmed-open restaurants on <a href="/blog/jalan-perang-food-guide-taman-pelangi">Jalan Perang</a> within walking distance of the hostel; <a href="/blog/new-cafes-taman-pelangi-jb-2025-2026">three new cafes and bars</a> that opened in 2025–2026</li>
+  <li><strong>Stay:</strong> <a href="/rooms">Capsule pods at Pelangi Capsule Hostel</a> from RM30/night. <a href="/book">Check live availability here</a></li>
+</ul>
+
+<h2>Sources</h2>
+<ul>
+  <li><a href="https://www.mot.gov.sg/news-resources/newsroom/singapore-and-malaysia-commemorate-the-unveiling-of-the--first-johor-bahru---singapore-rts-link-train/" target="_blank" rel="noopener">MOT Singapore — RTS Link joint statement, 30 June 2025</a></li>
+  <li><a href="https://www.lta.gov.sg/content/ltagov/en/upcoming_projects/rail_expansion/JB-Singapore_RTS_link.html" target="_blank" rel="noopener">LTA Singapore — JB-Singapore RTS Link project page</a></li>
+  <li><a href="https://bernama.com/en/news.php?id=2453653" target="_blank" rel="noopener">Bernama — M Grand Minori 90% take-up at launch weekend</a></li>
+  <li><a href="https://www.thestar.com.my/metro/metro-news/2025/08/11/90-take-up-rate-for-housing-project-over-a-weekend" target="_blank" rel="noopener">The Star — M Grand Minori sales launch, 11 August 2025</a></li>
+  <li><a href="https://theedgemalaysia.com/node/798249" target="_blank" rel="noopener">The Edge Malaysia — M Grand Minori Phase 1 and Phase 2 details</a></li>
+  <li><a href="https://theedgemalaysia.com/node/798459" target="_blank" rel="noopener">The Edge Malaysia — Q4 2025 JB property monitor (Residensi Maxim)</a></li>
+</ul>
+`,
+		},
 	}
 	for i := range raw {
 		raw[i].ReadingTimeMinutes = _blogComputeReadingTime(raw[i].Content)
