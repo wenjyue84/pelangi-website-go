@@ -4849,6 +4849,468 @@ var BlogPosts = func() []BlogPost {
 </ul>
 `,
 		},
+		// 60 — scheduled: goes live 2026-09-10
+		{
+			Slug:          "rts-link-january-2027-jb-travel-guide",
+			Title:         "RTS Link Opens January 2027: What JB Travellers Need to Know Now",
+			Excerpt:       "The Johor Bahru–Singapore RTS Link is 90%+ complete and targeting January 2027. Here's what co-located CIQ, RM15–21 fares, and a 5-minute crossing mean for your next JB stay.",
+			Date:          "2026-09-10",
+			Category:      "Travel Tips",
+			Author:        "Jay Lew",
+			ReadTime:      "7 min read",
+			Tags:          []string{"rts-link", "johor-bahru", "singapore", "border-crossing", "commuter", "travel-tips"},
+			FeaturedImage: "/images/blog/rts-link-january-2027-jb-travel-guide.jpg",
+			ImageAlt:      "RTS Link elevated rail structure at Bukit Chagar station in Johor Bahru under construction, nearly complete in 2026",
+			InLanguage:    "en",
+			Content: `
+<h2>What the RTS Link Means for JB Travellers</h2>
+
+<p>The Johor Bahru–Singapore Rapid Transit System (RTS Link) is now more than 90% complete, with full passenger operations targeted for January 2027. Systems testing begins September 2026. After years of delays and negotiations, the cross-border rail link is finally close enough to plan around — and if you're staying in JB, it changes the calculus on how you commute, visit, or base yourself on the Malaysian side of the causeway.</p>
+
+<p>This guide covers the confirmed facts: fares, stations, journey time, immigration process, and what the opening means practically for travellers staying near <a href="/getting-here">Taman Pelangi</a>.</p>
+
+<h2>Key RTS Link Details at a Glance</h2>
+
+<p>The RTS Link is a 4-kilometre elevated rail line connecting Bukit Chagar station in Johor Bahru to Woodlands North station in Singapore. On the Singapore side, Woodlands North connects directly to the Thomson-East Coast Line (TEL), meaning onward travel to Orchard, Marina Bay, or Changi is a single-transfer ride with no additional border crossing.</p>
+
+<ul>
+  <li><strong>JB Station:</strong> Bukit Chagar — located near JB Sentral and the current Customs, Immigration and Quarantine (CIQ) complex</li>
+  <li><strong>Singapore Station:</strong> Woodlands North — direct interchange with Thomson-East Coast Line</li>
+  <li><strong>Journey time:</strong> approximately 5 minutes across the strait</li>
+  <li><strong>Expected fare:</strong> RM15.50–RM21.70 one way (approximately S$5–S$7)</li>
+  <li><strong>Systems testing:</strong> begins September 2026</li>
+  <li><strong>Full operations target:</strong> January 2027</li>
+  <li><strong>Construction progress:</strong> 90%+ complete as of May 2026</li>
+</ul>
+
+<h2>Single Immigration Clearance — No More Double Queue</h2>
+
+<p>This is the detail most travellers care about. Singapore's Parliament passed the Cross-Border Railways (Border Control Co-Location) Bill in May 2026. Under co-location arrangements, travellers clear both Malaysian and Singapore immigration at the <em>departing</em> station before boarding. That means one checkpoint, one queue, one process — then you're on the train and done.</p>
+
+<p>If you're departing from Bukit Chagar (heading to Singapore), you clear Malaysian exit and Singapore entry at Bukit Chagar. If you're returning from Woodlands North, you handle both at Woodlands North before boarding. There is no secondary inspection mid-journey or on arrival. This is a meaningful improvement over the current bus and taxi crossings, where passengers queue at Malaysian customs, cross the causeway, then queue again at Singapore's Woodlands checkpoint.</p>
+
+<h2>RTS Link vs Current Crossing Options</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Journey Time</th>
+      <th>Approximate Cost</th>
+      <th>Immigration Process</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>RTS Link (from Jan 2027)</td>
+      <td>~5 min rail + clearance time</td>
+      <td>RM15.50–RM21.70 one way</td>
+      <td>Single checkpoint at departing station</td>
+      <td>Connects to TEL at Woodlands North</td>
+    </tr>
+    <tr>
+      <td>Causeway Link / SBS Express Bus</td>
+      <td>45 min–2+ hours (traffic dependent)</td>
+      <td>RM5–RM10 one way</td>
+      <td>Two checkpoints (Malaysian + Singapore)</td>
+      <td>Cheapest option; slowest in peak hours</td>
+    </tr>
+    <tr>
+      <td>Grab / Taxi (private car)</td>
+      <td>30 min–2+ hours (traffic dependent)</td>
+      <td>RM30–RM80+ depending on demand</td>
+      <td>Two checkpoints</td>
+      <td>Convenient but expensive; surge pricing at peak</td>
+    </tr>
+    <tr>
+      <td>Motorcycle (own vehicle)</td>
+      <td>Variable</td>
+      <td>Road tax + toll</td>
+      <td>Two checkpoints</td>
+      <td>For residents with bikes only</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The RTS Link won't be the cheapest option — buses will still run cheaper for budget travellers who can tolerate the queue. But for daily commuters and anyone crossing more than once or twice a week, the time savings will be substantial. A 5-minute ride replacing a 90-minute morning commute is a different lifestyle, not just a faster trip.</p>
+
+<h2>Getting from Taman Pelangi to Bukit Chagar Station</h2>
+
+<p>Taman Pelangi sits approximately 3 km from Bukit Chagar station — about a 10-minute Grab or taxi ride under normal traffic conditions. The neighbourhood is centrally located within JB, which means access to the RTS Link will be straightforward once it opens.</p>
+
+<p>For current transport options between Taman Pelangi and the causeway, see our <a href="/getting-here">getting here page</a>, which covers Grab routes, bus stops, and landmarks near the hostel.</p>
+
+<h2>What This Means for Monthly Stays in JB</h2>
+
+<p>The RTS Link is likely to accelerate what's already a visible trend: Singapore-based workers and professionals choosing to live in JB and commute. Monthly rental demand in neighbourhoods close to Bukit Chagar — including Taman Pelangi — has been rising in anticipation. The combination of a predictable 5-minute crossing, co-located immigration, and significantly lower cost of living in JB makes the calculus straightforward for anyone whose Singapore work schedule has any flexibility.</p>
+
+<p>For travellers testing the JB lifestyle before committing to a long-term lease, a monthly stay at a capsule hostel is a low-risk way to experience the neighbourhood, the commute options, and the daily routines before signing anything. Monthly <a href="/rooms">capsule pods</a> at Pelangi are available from RM594.</p>
+
+<h2>FAQ: RTS Link for JB Travellers</h2>
+
+<h3>When exactly does the RTS Link open?</h3>
+<p>The confirmed target is January 2027. Systems testing begins in September 2026. No specific opening date within January 2027 has been officially announced. Track updates from Prasarana (Malaysia) and the Land Transport Authority (Singapore) for confirmed dates closer to opening.</p>
+
+<h3>How much will a single trip cost?</h3>
+<p>Expected fares are in the range of RM15.50–RM21.70 one way, equivalent to approximately S$5–S$7. These are projected fares based on planning documents — final confirmed pricing has not been officially published as of mid-2026. Fares may vary by time of day or distance-based calculation once the ticketing system is finalised.</p>
+
+<h3>Do I still need to carry my passport?</h3>
+<p>Yes. The RTS Link is a cross-border rail service; you are crossing an international boundary. You will need a valid travel document — passport for most nationalities — for immigration clearance at the departing station. The co-location arrangement streamlines the process, but does not remove the immigration requirement.</p>
+
+<h3>Will the RTS Link reduce congestion on the Causeway?</h3>
+<p>The RTS Link is designed to carry up to 10,000 passengers per hour per direction at capacity — which would represent a meaningful reduction in vehicle and bus crossings over time. However, car and truck crossings are unaffected; the Causeway will continue to carry road traffic. Reduced passenger bus volumes may ease Causeway congestion somewhat during peak hours, but private vehicle crossings will remain unchanged.</p>
+
+<h2>Plan Your JB Stay Around the RTS Link</h2>
+
+<p>If you're arriving in JB before January 2027, the current crossing options remain: express buses via Larkin or Queen Street terminal, or Grab across the Causeway. Once the RTS Link opens, Bukit Chagar becomes a practical base for anyone commuting into Singapore regularly — and Taman Pelangi, 10 minutes away by Grab, will be well-positioned for that new commuter pattern.</p>
+
+<p>Pelangi Capsule Hostel offers <a href="/rooms">capsule pods</a> from RM30/night on weekdays and RM35/night on weekends, with monthly rates from RM594. Whether you're visiting JB to scope out the neighbourhood ahead of the RTS Link opening, or you're a commuter looking for a flexible short-term base, <a href="/book">book a stay</a> and see the area for yourself.</p>
+
+<h2>Sources</h2>
+<ul>
+  <li><a href="https://railwaynews.net/rts-link-project-johor-bahru-singapore-lrt-system.html" target="_blank" rel="noopener">Railway News — RTS Link Project: Johor Bahru–Singapore LRT System</a> (construction progress, January 2027 target, September 2026 systems testing)</li>
+  <li><a href="https://mediaselangor.com/en/2026/05/355590" target="_blank" rel="noopener">Media Selangor — Singapore Parliament passes Cross-Border Railways Bill, May 2026</a> (co-location immigration arrangement)</li>
+</ul>
+`,
+		},
+		// 61 — scheduled: goes live 2026-09-13
+		{
+			Slug:          "jb-visa-run-cheapest-routes-thailand-brunei-indonesia",
+			Title:         "JB Visa Run 2026: Cheapest Routes to Thailand, Brunei & Indonesia from Johor Bahru",
+			Excerpt:       "Already in Malaysia and need to reset your Social Visit Pass? From Hat Yai buses to Batam ferries — every route out of JB, what each costs, and how long you get on re-entry.",
+			Date:          "2026-09-13",
+			Category:      "Travel Tips",
+			Author:        "Jay Lew",
+			ReadTime:      "8 min read",
+			Tags:          []string{"visa-run", "johor-bahru", "thailand", "brunei", "indonesia", "budget-travel", "border-crossing", "malaysia-visa"},
+			FeaturedImage: "/images/blog/jb-visa-run-cheapest-routes-thailand-brunei-indonesia.jpg",
+			ImageAlt:      "Larkin Sentral bus terminal in Johor Bahru, the departure point for cross-border buses to Thailand and beyond for visa runners",
+			InLanguage:    "en",
+			Content: `
+<p>If you're staying in Johor Bahru on a Malaysia Social Visit Pass and the 30-day clock is ticking, you have more exit options than most people realise. You don't need to fly. From JB you can reach Thailand, Indonesia, Brunei, or even just pop into Singapore and back — each with different trade-offs in cost, travel time, and immigration scrutiny.</p>
+
+<p>This guide covers every practical route out of JB, what each one costs, where to book, and how long you'll get on re-entry. It assumes you're already in Malaysia and need to reset your visitor stamp — not that you're planning a day trip from Singapore.</p>
+
+<h2>Understanding the Malaysia Social Visit Pass</h2>
+
+<p>Most nationalities entering Malaysia on a passport receive a Social Visit Pass on arrival — typically <strong>30 days</strong> for Western, Southeast Asian, and many other nationalities, though citizens of some countries (notably the UK, Australia, New Zealand, Canada, the US, and EU states) may receive 90 days. The pass is stamped into your passport at the immigration counter; there is no visa sticker involved for visa-exempt countries.</p>
+
+<p>When the pass expires, you must leave Malaysia. Upon re-entering through any official point of entry, immigration stamps a fresh pass. There is no fixed statutory limit on how many times you can do this — but Malaysian immigration officers have broad discretionary power. If you re-enter repeatedly within a short window with no visible means of support, you may be questioned or denied entry. More on that in the FAQ below.</p>
+
+<h2>Route 1: Hat Yai, Thailand — The Classic Budget Run</h2>
+
+<p>Hat Yai in southern Thailand is the most popular visa run destination from JB for a simple reason: it's the cheapest international crossing you can make overland, and the round trip can be done in two days without flying.</p>
+
+<h3>How to get there</h3>
+<p>Head to <strong>Larkin Sentral Bus Terminal</strong> in JB — the main long-distance bus hub, about 5 km north of JB city centre (roughly RM10–15 by Grab). Operators including <strong>KPB Express</strong> and <strong>Transnasional</strong> run direct coaches to Hat Yai. The journey typically takes <strong>5–7 hours</strong> depending on border queues at Bukit Kayu Hitam/Sadao, though KPB's published schedule lists it at around 5 hours on a good day. Overnight departures are available, letting you sleep on the bus and arrive in Hat Yai in the morning.</p>
+
+<h3>Cost</h3>
+<ul>
+  <li>Bus ticket JB → Hat Yai: approximately <strong>RM55–80 one way</strong> (book at the Larkin terminal counter or via Easybook.com)</li>
+  <li>Return bus Hat Yai → JB: similar fare</li>
+  <li>Budget for a night's accommodation in Hat Yai: from THB 300–600 (~RM40–80) in a guesthouse near the clock tower area</li>
+  <li>Total round trip (transport only): roughly <strong>RM110–160</strong></li>
+</ul>
+
+<h3>Re-entry</h3>
+<p>You exit Malaysia at the Bukit Kayu Hitam checkpoint, cross into Thailand, then re-enter Malaysia on the way back. Each Malaysia entry gets you a fresh 30-day (or 90-day, depending on your passport) Social Visit Pass stamp.</p>
+
+<h3>Hassle level: Low–Medium</h3>
+<p>The border crossing at Bukit Kayu Hitam can get congested on weekends and public holidays. Early morning crossings are fastest. You do not need a Thai visa if your country is on Thailand's visa-exemption list (most Western passports get 60 days visa-free; ASEAN passports get 30 days).</p>
+
+<h2>Route 2: Batam or Bintan, Indonesia — The Fastest Crossing</h2>
+
+<p>The Indonesian islands of Batam and Bintan in the Riau Islands are a quick ferry hop away and offer a legitimately different country exit — useful if you want to vary your travel history rather than doing the same Thailand border run every time.</p>
+
+<h3>How to get there from JB</h3>
+<p>The most reliable JB–Batam ferry route departs from <strong>Stulang Laut Ferry Terminal</strong> (near JB city centre) or from <strong>Pasir Gudang</strong>. Ferries also run from Tanah Merah Ferry Terminal in Singapore if you're transiting through Singapore first. Operators include <strong>Batam Fast</strong> and others. The crossing takes approximately <strong>1–1.5 hours</strong>.</p>
+
+<h3>Cost</h3>
+<ul>
+  <li>Ferry JB → Batam one way: approximately <strong>RM100–120</strong> (prices vary by operator and season)</li>
+  <li>Indonesian entry: Malaysian and Singaporean passport holders enter Batam/Riau Islands visa-free for 30 days. Most other nationalities can get a <strong>Visa on Arrival (VoA)</strong> at the Batam ferry terminal — IDR 500,000 (~RM150 / ~SGD 45) for a 30-day stay, or a cheaper 7-day VoA (IDR 250,000) exclusive to the Riau Islands zone</li>
+  <li>Total round trip (transport only): roughly <strong>RM200–250</strong> depending on nationality and operator</li>
+</ul>
+
+<h3>Re-entry</h3>
+<p>Exit Malaysia via Stulang Laut or Pasir Gudang port, enter Indonesia at Batam Centre ferry terminal, then return to Malaysia for a fresh stamp.</p>
+
+<h3>Hassle level: Low</h3>
+<p>Indonesian immigration at Batam is generally efficient for ferry arrivals. The VoA process is straightforward. This is a solid alternative to the Thailand run and a shorter total travel time if you keep the Indonesia stay brief.</p>
+
+<h2>Route 3: Singapore — The Simplest Exit (Use With Caution)</h2>
+
+<p>The most obvious route: cross the Causeway or Second Link from JB into Singapore, spend a few hours, and re-enter Malaysia. No bus to Hat Yai, no ferry to Batam — just a 20-minute Grab or bus ride across the border.</p>
+
+<h3>How to get there</h3>
+<p>Take the <strong>Causeway Link</strong> CW1 or CW2 bus from JB Sentral to Woodlands CIQ (~RM3.50 one way), or take a Grab across the Second Link (Tuas). The crossing itself takes 20–40 minutes depending on traffic.</p>
+
+<h3>Cost</h3>
+<ul>
+  <li>Bus JB → Singapore one way: <strong>RM3.50–5</strong></li>
+  <li>No Singapore visa required for most nationalities (30-day social visit)</li>
+  <li>Budget for a few hours in Singapore: food, transport — SGD 20–40 is typical</li>
+  <li>Total round trip: effectively <strong>RM10–15 in transport</strong>, plus whatever you spend in Singapore</li>
+</ul>
+
+<h3>Re-entry</h3>
+<p>You exit Malaysia at Johor Bahru CIQ and re-enter the same day or next day. In theory, this resets your Malaysia Social Visit Pass. In practice, Malaysian immigration at JB CIQ is aware that Singapore crossings are commonly used as visa runs, and officers may question frequent re-entrants.</p>
+
+<h3>Hassle level: Medium–High for frequent runners</h3>
+<p>The Singapore route is fine for a one-off or occasional reset. If you've done it multiple times in recent months, expect more questions at the counter. Vary your routes if you're a long-term visa runner.</p>
+
+<h2>Route 4: Brunei — The Long-Haul Circuit</h2>
+
+<p>Brunei is a legitimate visa run destination and produces a convincingly "different" travel record, but it is not a quick trip. Overland from JB, you must cross through Sarawak (Kuching, Sibu, Miri) before reaching Brunei — a journey of roughly <strong>18–24 hours</strong> by bus if you do it in stages, or 12–14 hours if you take a direct overnight express and push through.</p>
+
+<h3>How to get there</h3>
+<p>From Larkin Sentral, operators run coaches to Kuching, Miri, and onward to Brunei. The full overland route: JB → Kuching (~10h) → Miri (~10h) → Brunei Border at Sungai Tujuh (~1h). Alternatively, fly JB to Kota Kinabalu or Miri (AirAsia from Senai International Airport) and bus to Brunei — this saves 10+ hours.</p>
+
+<h3>Cost</h3>
+<ul>
+  <li>Full overland (bus stages): RM150–250 in bus fares total</li>
+  <li>Fly + bus (e.g. JB → Miri, then bus to Brunei): RM180–350+ depending on flight availability</li>
+  <li>Brunei entry: most nationalities enter visa-free for 14–30 days (check your passport's bilateral treaty with Brunei)</li>
+  <li>Accommodation en route: budget BND 30–60/night (~RM100–200)</li>
+</ul>
+
+<h3>Re-entry</h3>
+<p>Entering Malaysia from Brunei via Sarawak counts as a fresh entry into Malaysia, resetting your Social Visit Pass. Note that Sarawak and Sabah operate additional immigration controls — you'll receive a Sarawak entry stamp as well as the federal Malaysia stamp.</p>
+
+<h3>Hassle level: High (travel time), Low (immigration)</h3>
+<p>The Brunei route is rarely questioned by immigration officers since it represents a genuine multi-day trip. The downside is time and cost — this is not a weekend run. Most people save Brunei for when they want a proper side trip rather than a pure immigration reset.</p>
+
+<h2>Route Comparison Table</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Route</th>
+      <th>Approx. Cost (Return)</th>
+      <th>Total Travel Time</th>
+      <th>Re-entry Stamp</th>
+      <th>Hassle Level</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Hat Yai, Thailand (bus)</td>
+      <td>RM110–160</td>
+      <td>10–14h round trip</td>
+      <td>30 or 90 days (nationality-dependent)</td>
+      <td>Low–Medium</td>
+    </tr>
+    <tr>
+      <td>Batam, Indonesia (ferry)</td>
+      <td>RM200–250 + VoA</td>
+      <td>3–4h round trip</td>
+      <td>30 or 90 days</td>
+      <td>Low</td>
+    </tr>
+    <tr>
+      <td>Singapore (Causeway)</td>
+      <td>RM10–15 + spending</td>
+      <td>2–4h round trip</td>
+      <td>30 or 90 days</td>
+      <td>Medium–High (if frequent)</td>
+    </tr>
+    <tr>
+      <td>Brunei (overland/fly)</td>
+      <td>RM300–600+</td>
+      <td>2–4 days</td>
+      <td>30 or 90 days</td>
+      <td>Low (immigration) / High (effort)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Practical Tips Before You Go</h2>
+
+<ul>
+  <li><strong>Check your passport's remaining validity.</strong> Malaysia requires at least 6 months of passport validity to grant entry. If your passport expires within 6 months, renew before your visa run.</li>
+  <li><strong>Carry proof of onward travel or accommodation.</strong> Malaysian immigration can ask for evidence that you're not intending to stay indefinitely. A hostel booking confirmation helps.</li>
+  <li><strong>Avoid school holidays and Malaysian public holidays for border crossings.</strong> The Johor CIQ and Bukit Kayu Hitam checkpoints can be severely congested — add 2–3 hours to your estimates during peak periods.</li>
+  <li><strong>Book buses in advance for Thailand.</strong> Larkin Sentral counter seats for Hat Yai sell out on Fridays. Use <a href="https://www.easybook.com" target="_blank" rel="noopener noreferrer">Easybook.com</a> or buy tickets a day before.</li>
+  <li><strong>Bring cash in the destination currency.</strong> THB for Thailand, IDR for Indonesia, SGD for Singapore, BND for Brunei.</li>
+</ul>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>How many times can I do a visa run in Malaysia?</h3>
+<p>Malaysian law does not specify a maximum number of Social Visit Pass entries per year. However, Malaysian Immigration (Jabatan Imigresen Malaysia) officers have full discretionary authority to deny entry to any visitor they believe is misusing the tourist entry system to live in Malaysia indefinitely. In practice, doing a visa run more than 3–4 times in a 12-month period — especially using the same border crossing each time — increases your risk of being questioned or denied entry. If you need to stay in Malaysia long-term, explore the MM2H programme, a student visa, or a DE Rantau digital nomad pass instead.</p>
+
+<h3>Will Malaysia immigration question me when I re-enter?</h3>
+<p>Possibly, and you should be prepared for it. Common questions include: Where are you staying? What is your purpose of visit? Do you have enough money to support your stay? Have a clear, honest answer. A hostel booking printout, a bank statement showing sufficient funds, and a plausible reason for being in Malaysia (tourism, visiting friends, awaiting a longer-term application) all help. Do not lie to an immigration officer. If denied entry, you may be held and returned on the next available transport at your own cost.</p>
+
+<h3>How long before my visa expires should I do the run?</h3>
+<p>Do not wait until the last day. Aim to cross out of Malaysia with at least <strong>2–3 days remaining</strong> on your current pass. This gives you buffer if there's a queue delay, a bus breakdown, or unexpected documentation issues at the border. Overstaying a Malaysian Social Visit Pass — even by one day — results in a fine, and repeated overstays can result in a ban from re-entry.</p>
+
+<h3>Does the Malaysia re-entry stamp always give me another 30 days?</h3>
+<p>Not automatically. The duration of your new Social Visit Pass is at the discretion of the immigration officer, based on your nationality's bilateral agreement with Malaysia. Most Western passports get 30 days per entry (some nationalities receive 90 days). The officer can also grant fewer days if they are suspicious of your intentions. Check <a href="https://www.imi.gov.my" target="_blank" rel="noopener noreferrer">imi.gov.my</a> for the official list of nationalities and their permitted stay durations.</p>
+
+<h2>Your JB Base Before and After the Run</h2>
+
+<p>Whether you're catching a 6 AM bus to Hat Yai from Larkin or an early ferry to Batam, having a comfortable and affordable base in JB makes the logistics much easier. <a href="/rooms">Pelangi Capsule Hostel</a> is located in Taman Pelangi — a 10-minute Grab ride from Larkin Sentral and 15 minutes from Stulang Laut Ferry Terminal.</p>
+
+<p>Capsule pods start from <strong>RM30/night on weekdays and RM35/night on weekends</strong>. You get a private sleeping pod with curtain, your own power socket and USB charging, air-conditioning, and free high-speed WiFi — everything you need to plan your crossing, rest up before an early departure, and settle back in after the run. Monthly stays from RM594/month are also available for longer-term visitors managing repeated visa resets. For dedicated visa-run logistics and transport options, see our <a href="/visa-run">visa-run page</a>.</p>
+
+<p><a href="/book">Book your pod at Pelangi Capsule Hostel</a> — no OTA fees, best rate guaranteed direct.</p>
+
+<h2>Sources</h2>
+<ul>
+  <li><a href="https://www.imi.gov.my/index.php/en/main-services/pass/visitor-pass/social-visit-pass/short-term-social-visit-pass/" target="_blank" rel="noopener noreferrer">Malaysian Immigration Department — Short-Term Social Visit Pass</a></li>
+  <li><a href="https://www.easybook.com/ferry/booking/johor-to-batam" target="_blank" rel="noopener noreferrer">Easybook — Johor to Batam Ferry Tickets</a></li>
+  <li><a href="https://discoverbatam.com/en/essentials" target="_blank" rel="noopener noreferrer">Discover Batam — Visa &amp; Entry Essentials</a></li>
+  <li><a href="https://citizenremote.com/visas/malaysia-short-term-social-visit-pass/" target="_blank" rel="noopener noreferrer">Citizen Remote — Malaysia Short-Term Social Visit Pass Guide 2026</a></li>
+</ul>
+`,
+		},
+		// 62 — scheduled: goes live 2026-09-16
+		{
+			Slug:          "capsule-pod-vs-private-room-jb-which-to-book",
+			Title:         "Capsule Pod vs Private Room in JB: Which Should You Book?",
+			Excerpt:       "RM30 pods or RM80–300 private rooms — an honest breakdown of who should choose each, what the tradeoffs are, and when paying more actually makes sense.",
+			Date:          "2026-09-16",
+			Category:      "Accommodation",
+			Author:        "Jay Lew",
+			ReadTime:      "6 min read",
+			Tags:          []string{"capsule-hostel", "private-room", "johor-bahru", "accommodation", "budget-travel", "backpacker", "solo-travel"},
+			FeaturedImage: "/images/blog/capsule-pod-vs-private-room-jb-which-to-book.jpg",
+			ImageAlt:      "Interior of a capsule pod at Pelangi Capsule Hostel Taman Pelangi JB, showing privacy curtain, personal power socket and reading light",
+			InLanguage:    "en",
+			Content: `
+<p>Johor Bahru has no shortage of places to sleep. Budget guesthouses, Airbnbs, 3-star hotels, and capsule hostels all compete for the same travellers crossing the Causeway. So when you're comparing capsule pods against private rooms, the decision usually comes down to one question: what are you actually paying for?</p>
+
+<p>This guide lays out the honest tradeoffs. No spin — just the information you need to pick the right bed for your trip.</p>
+
+<h2>The Price Gap Is Real</h2>
+
+<p>Let's start with money, because that's usually what brings people to a capsule hostel in the first place.</p>
+
+<p>At <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi, a capsule pod runs <strong>RM30 per night on weekdays</strong> and <strong>RM35 on weekends</strong>. For a monthly stay, it starts from <strong>RM594</strong> — that includes WiFi and no deposit required.</p>
+
+<p>Compare that to the private room market in JB:</p>
+
+<ul>
+  <li>Budget guesthouses: RM80–RM150/night</li>
+  <li>3-star hotels: RM150–RM300/night</li>
+  <li>Airbnb private rooms: RM60–RM120/night</li>
+  <li>Monthly private room rentals: typically RM800–RM1,200/month</li>
+</ul>
+
+<p>A solo traveller spending three nights in JB saves roughly RM150–RM350 by choosing a pod over a budget private room. Over a month, that difference can fund two weeks of hawker meals. For longer stays the maths compounds quickly.</p>
+
+<p>But cheaper accommodation only makes sense if it suits the way you travel. So let's be direct about what each option actually delivers.</p>
+
+<h2>Side-by-Side Comparison</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Factor</th>
+      <th>Capsule Pod</th>
+      <th>Private Room</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Price (per night)</strong></td>
+      <td>RM30 (weekday) / RM35 (weekend)</td>
+      <td>RM60–RM300 depending on type</td>
+    </tr>
+    <tr>
+      <td><strong>Privacy</strong></td>
+      <td>Privacy curtain, personal pod space — shared bathroom and common areas</td>
+      <td>Full room to yourself; en-suite or shared bathroom depending on property</td>
+    </tr>
+    <tr>
+      <td><strong>Storage</strong></td>
+      <td>Personal locker inside pod</td>
+      <td>Room wardrobe, under-bed storage — varies by property</td>
+    </tr>
+    <tr>
+      <td><strong>Noise</strong></td>
+      <td>Shared dorm environment — earplugs recommended for light sleepers</td>
+      <td>Significantly quieter; you control your own space</td>
+    </tr>
+    <tr>
+      <td><strong>Amenities in room</strong></td>
+      <td>Power socket, USB charging, reading light, privacy curtain</td>
+      <td>Full room amenities vary — TV, desk, sometimes kettle</td>
+    </tr>
+    <tr>
+      <td><strong>Best for</strong></td>
+      <td>Solo travellers, backpackers, visa runners, monthly workers</td>
+      <td>Couples, business travellers, light sleepers, longer leisure stays</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Who Should Book a Capsule Pod</h2>
+
+<p>Capsule pods work well for a specific type of traveller. If you recognise yourself in this list, a pod is probably the smarter choice:</p>
+
+<ul>
+  <li><strong>Solo travellers and backpackers</strong> who treat the room as a place to sleep and store their bag — nothing more. You're out exploring JB during the day, and you need a clean, secure bed at night.</li>
+  <li><strong>Budget travellers</strong> who'd rather spend RM100 on food and experiences than RM100 on a nicer pillow. JB's hawker scene — five minutes from Pelangi — is one of the best value food corridors in Malaysia. Put the savings there.</li>
+  <li><strong>Visa runners</strong> doing a quick overnight from Singapore. You need a bed for one or two nights, not a suite. A RM30 pod with 24/7 self check-in at <a href="/amenities">Pelangi</a> is purpose-built for this.</li>
+  <li><strong>Workers and interns on monthly stay</strong>. At RM594/month including WiFi, no deposit, and no utility bills, a monthly pod is materially cheaper than renting a private room (RM800–RM1,200/month in Taman Pelangi). That's a genuine financial advantage if you're working in JB for a few months.</li>
+  <li><strong>People who are comfortable with shared bathrooms and a hostel vibe</strong>. There's a social dimension to hostel life that some travellers actively enjoy. If you don't mind sharing facilities and occasional noise, a pod gives you excellent value.</li>
+</ul>
+
+<h2>Who Should Book a Private Room</h2>
+
+<p>Capsule pods are not for everyone, and it's better to know that before you arrive than after. A private room is the right call if:</p>
+
+<ul>
+  <li><strong>You're travelling as a couple.</strong> Pods are individual — there's no shared pod option. Couples wanting to sleep in the same space need a private room.</li>
+  <li><strong>You have early business calls or need guaranteed quiet.</strong> A dorm environment is unpredictable. Even with a privacy curtain, you're exposed to other guests' schedules. If you need complete silence for a 7am video call, book a private room.</li>
+  <li><strong>You're staying four nights or longer on a leisure trip.</strong> A few nights is manageable; a full week or more in a shared dorm requires a higher tolerance for noise and limited personal space. The incremental savings start to feel less worth it the longer you stay without the flexibility of a private room.</li>
+  <li><strong>You are a genuinely light sleeper.</strong> Capsule pods have curtains and personal reading lights, but they don't eliminate ambient noise from a shared dorm. If you wake up at every sound, pay the premium for a private room. A bad night's sleep every night is not worth the saving.</li>
+</ul>
+
+<h2>What Pelangi's Pods Actually Offer</h2>
+
+<p>Each pod at <a href="/rooms">Pelangi Capsule Hostel</a> (26A Jalan Perang, Taman Pelangi) includes:</p>
+
+<ul>
+  <li>Privacy curtain across the pod entrance</li>
+  <li>Personal power socket and USB charging point</li>
+  <li>Reading light inside the pod</li>
+  <li>Personal locker for valuables and luggage</li>
+  <li>Shared bathroom facilities</li>
+  <li>Free WiFi throughout the hostel</li>
+  <li>24/7 self check-in — no front desk, no curfew</li>
+</ul>
+
+<p>There is no kitchen at Pelangi. This is worth knowing upfront. However, hawker stalls and food courts are within a five-minute walk — JB's food scene means this is rarely a problem in practice, and eating out costs less than running a kitchen anyway.</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>Are capsule pods safe for solo female travellers?</h3>
+<p>Capsule hostels are one of the more popular accommodation types for solo female travellers precisely because the pod format gives a defined personal space with a curtain, and lockers mean your belongings are secured. That said, comfort levels vary. If you prefer a female-only dorm or a private room for additional peace of mind, that's a completely valid call — prioritise what makes you feel comfortable on the road.</p>
+
+<h3>Can couples share a capsule pod?</h3>
+<p>No. Pods at Pelangi are designed for one person. The bunk-style layout and dimensions mean two people cannot share a pod. Couples who want to stay together should look at private room options in JB.</p>
+
+<h3>Is there air conditioning in the pods?</h3>
+<p>The hostel has air conditioning. Individual pod climate control is not listed among the pod specs — the AC operates at a shared facility level, which is standard for capsule hostels. If precise temperature control matters to you, confirm the current setup directly with the hostel before booking.</p>
+
+<h3>Is a capsule pod worth it for a visa run from Singapore?</h3>
+<p>For most visa runners, yes. You typically need one or two nights, a secure place to leave luggage, reliable WiFi, and easy access in and out — all of which a capsule pod covers at the lowest practical price point. The 24/7 self check-in at Pelangi is particularly useful if your bus or train arrives late.</p>
+
+<h2>The Bottom Line</h2>
+
+<p>A capsule pod is the right choice if you're a solo traveller, you're watching your budget, or you're doing a short practical stay in JB. The savings are real, the pod specs are solid for what they are, and the Taman Pelangi location puts you close to food and transport.</p>
+
+<p>A private room is the right choice if you're travelling with a partner, you need guaranteed quiet, or you simply value personal space over the price difference. That's a legitimate preference — the extra RM50–RM150 a night is worth it for the right person.</p>
+
+<p>Neither option is objectively better. It depends on how you travel.</p>
+
+<p>If a capsule pod sounds like your kind of stay, <a href="/rooms">check the full pod specs here</a> or <a href="/book">view availability and book directly</a>.</p>
+`,
+		},
 	}
 	for i := range raw {
 		raw[i].ReadingTimeMinutes = _blogComputeReadingTime(raw[i].Content)
