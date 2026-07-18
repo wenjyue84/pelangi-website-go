@@ -49,29 +49,84 @@ func GetAllTags() []string {
 	return out
 }
 
-// GetRelatedPosts returns up to n posts related to the given slug — same
-// category first, then most recent others — excluding the post itself.
+// slugTokens splits a slug into lowercase word tokens on hyphens.
+func slugTokens(slug string) []string {
+	return strings.Split(slug, "-")
+}
+
+// topicTokens returns a deduped union of slug tokens and tag tokens for a post.
+func topicTokens(p BlogPost) []string {
+	seen := map[string]bool{}
+	var out []string
+	add := func(w string) {
+		if w != "" && !seen[w] {
+			seen[w] = true
+			out = append(out, w)
+		}
+	}
+	for _, w := range slugTokens(p.Slug) {
+		add(w)
+	}
+	for _, t := range p.Tags {
+		for _, w := range strings.Split(t, "-") {
+			add(w)
+		}
+	}
+	return out
+}
+
+// overlapScore counts shared tokens between two token slices.
+func overlapScore(a, b []string) int {
+	set := make(map[string]bool, len(a))
+	for _, w := range a {
+		set[w] = true
+	}
+	n := 0
+	for _, w := range b {
+		if set[w] {
+			n++
+		}
+	}
+	return n
+}
+
+// GetRelatedPosts returns up to n posts related to the given slug.
+// Posts are scored by slug+tag keyword overlap; recency breaks ties.
 func GetRelatedPosts(slug string, n int) []BlogPost {
 	cur := GetPostBySlug(slug)
 	if cur == nil {
 		return nil
 	}
-	var same, other []BlogPost
+	curTokens := topicTokens(*cur)
+
+	type scored struct {
+		post  BlogPost
+		score int
+	}
+	var candidates []scored
 	for _, p := range PublishedPosts() {
 		if p.Slug == slug {
 			continue
 		}
-		if p.Category == cur.Category {
-			same = append(same, p)
-		} else {
-			other = append(other, p)
+		candidates = append(candidates, scored{
+			post:  p,
+			score: overlapScore(curTokens, topicTokens(p)),
+		})
+	}
+	sort.SliceStable(candidates, func(i, j int) bool {
+		if candidates[i].score != candidates[j].score {
+			return candidates[i].score > candidates[j].score
 		}
+		return candidates[i].post.Date > candidates[j].post.Date
+	})
+	out := make([]BlogPost, 0, n)
+	for _, c := range candidates {
+		if len(out) >= n {
+			break
+		}
+		out = append(out, c.post)
 	}
-	related := append(same, other...)
-	if len(related) > n {
-		related = related[:n]
-	}
-	return related
+	return out
 }
 
 // PostsNewestFirst returns published posts sorted by date descending.
