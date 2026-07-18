@@ -31,16 +31,20 @@
 ## 🧑 Jay — browser tasks (paste-ready prompts in `claude-for-chrome-prompts.md`)
 
 - [x] Prompt 1: GBP — review short-link obtained (`https://g.page/r/CV-GmpNH-zs1EBE/review`) + first weekly post published Mon 2026-07-06 ("Pods from RM30/night on weekdays…") — evidence: `_evidence/_gbp_review.png`, `_evidence/_gbp_post2.png` (2026-07-08)
-- [ ] Prompt 2: TripAdvisor — finish claim (legal cert + ID were pending per 2026-06-26 memory), amenities, price range, photos
+- [ ] Prompt 2: TripAdvisor — finish claim (amenities, price range, photos). **Docs located 2026-07-12** — SSM cert PDF `260426_SSM_Pelangi_Capsule_Hostel_JM0968539.pdf` (Google Drive id `1wPLxxl3AU59HhFn66MqTbHTitu5wX_Jc`); biz reg no **202203226886 (JM0968539-T)**, PERKONGSIAN, 26A Jalan Perang Taman Pelangi 80400 JB; partners FOO YUU CHUEN (IC 970815106613) + LEW WEN JYUE (IC 840816015291). Note: extract shows expiry 06-09-2023 — attach the renewed SSM if available (Notion "Ssm Pelangi Capsule Hostel old and new" fa400499). Submission still needs tripadvisor.com/owners login (browser).
 - [x] Prompt 3: Bing Webmaster Tools — DONE per 2026-07-06 seo-verify session (site registered, logged in, IndexNow receiving RTS URL) — see log.md 2026-07-06
 - [x] Prompt 4: Bing Places — import from GBP done, verification queued (ETA 7–12d) — evidence: `_evidence/_bing_status.png`. ⚠️ Draft wrongly "Marked as closed" on a locked field; Jay filing Bing Places support ticket (bizid d3a1e76f-3f5d-4649-a37a-38d0094046da, see log.md 2026-07-06)
 - [x] Prompt 5: Wikidata Q140363023 — added P3134 Tripadvisor ID (d27125478 slug), P3607 Booking.com (`my/pelangi-hostel-capsule`), P10442 Hostelworld (`317698`), P6008 Agoda (`pelangi-hostel-capsule/hotel/johor-bahru-my`) via API 2026-07-08, verified live (revid 2514869218)
+- [ ] CF API token: add **Zone > Analytics > Read** (for GraphQL traffic stats in briefs) and **Zone > Cache Purge > Purge** (deploys touching `static/js/*` currently can't purge edge cache — auth error 10000 on 2026-07-11). Dashboard-only: dash.cloudflare.com → My Profile → API Tokens (or Account API Tokens) → edit the account token → add both permissions, Zone Resources: All zones. Claude-for-Chrome can drive this.
 - [ ] Save the GBP review-ask script as a WhatsApp quick reply — script is now paste-ready with the real link in offsite-seo-actions.md §1 (needs Jay's phone; Periskope API has no quick-reply endpoint)
 - [x] Homepage testimonials: Sarah Jenkins / Hiroki Tanaka / Alex & Jordan NOT found among the 85 real Google reviews — replaced cards + Review JSON-LD with 3 verbatim 5★ Google reviews (Claire Tyrrell 2024, Surya Tamang 2024, Hamza Es-skali 2023), deployed + verified live 2026-07-08 (audit H4 remainder)
 - [ ] STAAH: RM30/35 push to Booking.com **CONFIRMED NOT DONE** (checked 2026-07-08, weekday 08→09 AND weekend 10→11): Booking.com offers ONLY "Single Room" at MYR 45 — no capsule pods listed at all, old RM45 rate live. → Alston must open capsule inventory + push RM30/35 in STAAH
 - [ ] Ask Alston/Maya: Sleepy Bear's monthly worker rate (competitive intel)
 
 ## 📋 Backlog (code/content, for future sessions)
+
+- [x] Gig-cluster expansion (2026-07-11, commit 4220e78, data-driven from 07-11 stats trace): 4 scheduled posts — Grab driver JB (live 07-26), 4-app comparison (07-29), gig-worker monthly budget with RM594/RM500 anchor (08-01), Foodpanda rider deep-dive (08-04). Commuter-guide closing CTA rebuilt to the Lalamove conversion pattern + IndexNow pinged. Daily brief verifies each post 200 on go-live and pings IndexNow.
+- [ ] Next content slots after gig queue (Aug 7+): Private-Room-vs-Capsule (8.4 persona score) + Friday-walk-in post (both from real guest friction, 07-11 brief); zh gig content = weak fit, skip.
 
 - [x] Add width/height (or aspect-ratio) to hero + content images to kill CLS — audit L1 (2026-07-05: hero got explicit width/height; blog featured images + cards already CLS-safe via aspect-video / fixed-height wrappers)
 - [ ] Reddit presence: genuinely answer JB-stay questions on r/askSingapore, r/JohorBahru, r/solotravel — audit H1

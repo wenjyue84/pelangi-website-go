@@ -1,5 +1,9 @@
 # Log — pelangi-website
 
+## [2026-07-17] website-brief | gate blocked (durian post live today = 0d gap); top shortlist: T1 Causeway overnight avg 8.2, T3 RTS Link cost avg 7.8, T8 cross-causeway worker avg 7.6 — all ≥7.5, publish earliest Jul 20; occupancy 60.6% (20/33 Fri); BLOCKER: Periskope offline, GBP post 4d overdue, STAAH RM45 still wrong
+
+## [2026-07-16] website-brief | gate blocked (Jul 14 = 2d ago, need 3d → opens Jul 17, taken); top: T5 Causeway Jam Guide avg 9.4, T3 MDAC avg 8.4 — queued Sep 19/22; occupancy 54.5% (18/33 Thu); BLOCKER: undeployed binary + GBP post 3d overdue
+
 ## [2026-07-15] website-brief | publish gate failed (last post Jul 14, 1-day gap); top candidate RTS Link Jan 2027 (avg 8.2) queued for Jul 18+; occupancy 54.5% (18/33); GBP post 2 days overdue; undeployed binary (3 Sep posts)
 
 ## [2026-07-14] seo-content | 3 Singaporean-tourist posts added (// 57/58/59): is-jb-worth-staying-overnight-2026 (Sep 1), singapore-to-jb-transport-guide-avoid-scams-2026 (Sep 4), monthly-stay-capsule-hostel-jb-workers-interns-2026 (Sep 7). All 2-source verified. Pipeline now stocked to 2026-09-07. IndexNow deferred to go-live dates. Images placeholder — replace before Sep 1.
@@ -45,3 +49,5 @@
 ## [2026-07-12] website-brief | Health green (80% occ), gate FAILED (07-11 post <3d); queue full to 08-04; STAAH RM45 Booking.com blocker persists
 
 ## [2026-07-12] i18n | Top-right language selector live (EN default / 中文 / BM), Google-Translate-driven, whole site incl. blog; verified /rooms renders 1462 CJK chars
+
+## [2026-07-18] website-brief | Health green (63.6% occ Sat); ⚠️ deploy 21632f7 before Sep 10 (Sep 10/13/16 posts undeployed); AC malfunction Jul 17 (ops); gate FAILED 3d spacing; top content topic JB Hostel vs Airbnb 7.75 avg → Sep 19 slot; rogue SG-commuter agent wrote 3 unapproved drafts in blog-drafts-2026-07-18/; STAAH RM45 Booking.com blocker persists
