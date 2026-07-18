@@ -136,10 +136,31 @@ func LLMsTxt() string {
 	return strings.ReplaceAll(llmsTxtBody, "__LAST_UPDATED__", NewestContentDate())
 }
 
-// BlogSectionMarkdown returns the "- [title](url) — excerpt" lines for all blog
-// posts, newest first, used in /llms-full.txt.
+// BlogSectionMarkdown returns structured blog post entries for /llms-full.txt,
+// ordered newest-first. Each entry includes title, URL, date, category, tags,
+// and excerpt — enabling progressive disclosure without reading the full post.
 func BlogSectionMarkdown() string {
-	return BlogListMarkdown()
+	posts := PostsNewestFirst()
+	var sb strings.Builder
+	for _, p := range posts {
+		sb.WriteString("### [")
+		sb.WriteString(p.Title)
+		sb.WriteString("](https://pelangicapsulehostel.com/blog/")
+		sb.WriteString(p.Slug)
+		sb.WriteString(")\n")
+		sb.WriteString("Published: ")
+		sb.WriteString(p.Date)
+		sb.WriteString(" | Category: ")
+		sb.WriteString(p.Category)
+		if len(p.Tags) > 0 {
+			sb.WriteString(" | Tags: ")
+			sb.WriteString(strings.Join(p.Tags, ", "))
+		}
+		sb.WriteString("\nSummary: ")
+		sb.WriteString(p.Excerpt)
+		sb.WriteString("\n\n")
+	}
+	return strings.TrimRight(sb.String(), "\n")
 }
 
 // llmsFullBody is the /llms-full.txt content, ported verbatim from
