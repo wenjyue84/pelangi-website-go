@@ -26,7 +26,7 @@ const FAQ_DATA: FaqEntry[] = [
   {
     question: 'How much does a capsule pod cost?',
     answer:
-      'Capsule pods start from RM35 per night. A Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is added as required by law. Monthly stays are available from RM594/month. Book directly on our website at pelangicapsulehostel.com/book for the best rate.',
+      'Capsule pods are RM35 per night — a flat rate every day of the week. A Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is added as required by law. Monthly stays are available from RM594/month. Book directly on our website at pelangicapsulehostel.com/book for the best rate.',
     keywords: ['price', 'pricing', 'cost', 'rate', 'rm', 'cheap', 'afford', 'how much', 'per night', 'monthly', 'budget'],
     chipLabel: 'Pricing & rates',
   },
@@ -134,12 +134,98 @@ function matchFaq(input: string): string {
   return bestScore > 0 ? bestAnswer : FALLBACK;
 }
 
+// ─── Rich-text rendering for assistant replies ──────────────────────
+// Rainbow returns WhatsApp-style markup (*bold*, _italic_, __underline__,
+// ~strike~), plain URLs, and image links (e.g. the DuitNow QR .png). Assistant
+// bubbles render that as HTML (clickable links, inline images, formatting) via
+// dangerouslySetInnerHTML; user messages stay literal text. Ported 1:1 from
+// go-site/static/js/widgets_a.js renderRichContent().
+function escapeHtml(s: string): string {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+// WhatsApp-style inline markup on already-escaped text. Underline (__x__)
+// before italic (_x_) so the double form isn't eaten first.
+function formatInline(s: string): string {
+  return s
+    .replace(/__([^_\n]+)__/g, '<u>$1</u>')
+    .replace(/\*([^*\n]+)\*/g, '<strong>$1</strong>')
+    .replace(/_([^_\n]+)_/g, '<em>$1</em>')
+    .replace(/~([^~\n]+)~/g, '<del>$1</del>')
+    .replace(/\n/g, '<br>');
+}
+
+const IMG_EXT_RE = /\.(?:png|jpe?g|gif|webp)(?:[?#]|$)/i;
+
+function renderRichContent(raw: string): string {
+  const urlRe = /(https?:\/\/[^\s<>]+)/g;
+  let out = '';
+  let last = 0;
+  let m: RegExpExecArray | null;
+  while ((m = urlRe.exec(raw)) !== null) {
+    out += formatInline(escapeHtml(raw.slice(last, m.index)));
+    const url = m[1];
+    const attr = url.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+    if (IMG_EXT_RE.test(url)) {
+      out +=
+        '<a href="' + attr + '" target="_blank" rel="noopener noreferrer">' +
+        '<img src="' + attr + '" alt="image" loading="lazy" ' +
+        'style="max-width:100%;border-radius:10px;margin:6px 0;display:block;" /></a>';
+    } else {
+      out +=
+        '<a href="' + attr + '" target="_blank" rel="noopener noreferrer" ' +
+        'style="color:#1d4ed8;text-decoration:underline;word-break:break-all;">' +
+        escapeHtml(url) + '</a>';
+    }
+    last = m.index + url.length;
+  }
+  out += formatInline(escapeHtml(raw.slice(last)));
+  return out;
+}
+
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([]);
+  // ─── Init: load session history via lazy initialisers ────────────
+  // Avoids synchronous setState inside useEffect (react-hooks/set-state-in-effect).
+  const VALID_ROLES = new Set(['user', 'assistant']);
+  function isValidHistory(val: unknown): val is Message[] {
+    return (
+      Array.isArray(val) &&
+      val.every(
+        (item) =>
+          item !== null &&
+          typeof item === 'object' &&
+          typeof (item as Record<string, unknown>).role === 'string' &&
+          VALID_ROLES.has((item as Record<string, unknown>).role as string) &&
+          typeof (item as Record<string, unknown>).content === 'string',
+      )
+    );
+  }
+  function loadSessionHistory(): { msgs: Message[]; chips: boolean } {
+    if (typeof window === 'undefined') {
+      return { msgs: [{ role: 'assistant', content: GREETING, timestamp: Date.now() }], chips: true };
+    }
+    try {
+      const raw = sessionStorage.getItem(SESSION_KEY);
+      const parsed: unknown = raw ? JSON.parse(raw) : [];
+      const saved = isValidHistory(parsed) ? parsed : [];
+      if (saved.length > 0) {
+        return { msgs: saved, chips: false };
+      }
+    } catch {
+      // fall through
+    }
+    return { msgs: [{ role: 'assistant', content: GREETING, timestamp: Date.now() }], chips: true };
+  }
+  const initialHistory = useState(() => loadSessionHistory())[0];
+  const [messages, setMessages] = useState<Message[]>(initialHistory.msgs);
   const [input, setInput] = useState('');
-  const [showChips, setShowChips] = useState(true);
+  const [showChips, setShowChips] = useState(initialHistory.chips);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -148,37 +234,6 @@ export default function ChatWidget() {
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), DELAY_MS);
     return () => clearTimeout(timer);
-  }, []);
-
-  // ─── Init: load session history ───────────────────────────────────
-  useEffect(() => {
-    const VALID_ROLES = new Set(['user', 'assistant']);
-    function isValidHistory(val: unknown): val is Message[] {
-      return (
-        Array.isArray(val) &&
-        val.every(
-          (item) =>
-            item !== null &&
-            typeof item === 'object' &&
-            typeof (item as Record<string, unknown>).role === 'string' &&
-            VALID_ROLES.has((item as Record<string, unknown>).role as string) &&
-            typeof (item as Record<string, unknown>).content === 'string',
-        )
-      );
-    }
-    try {
-      const raw = sessionStorage.getItem(SESSION_KEY);
-      const parsed: unknown = raw ? JSON.parse(raw) : [];
-      const saved = isValidHistory(parsed) ? parsed : [];
-      if (saved.length > 0) {
-        setMessages(saved);
-        setShowChips(false);
-      } else {
-        setMessages([{ role: 'assistant', content: GREETING, timestamp: Date.now() }]);
-      }
-    } catch {
-      setMessages([{ role: 'assistant', content: GREETING, timestamp: Date.now() }]);
-    }
   }, []);
 
   // ─── Auto-scroll to bottom ────────────────────────────────────────
@@ -328,8 +383,11 @@ export default function ChatWidget() {
                   }
                 `}
                 style={msg.role === 'user' ? { background: '#a68b64' } : {}}
+                {...(msg.role === 'assistant'
+                  ? { dangerouslySetInnerHTML: { __html: renderRichContent(msg.content) } }
+                  : {})}
               >
-                {msg.content}
+                {msg.role === 'user' ? msg.content : null}
               </div>
               <div className="text-[10px] text-stone-500 mt-1 px-1">
                 {new Date(msg.timestamp).toLocaleTimeString([], {
