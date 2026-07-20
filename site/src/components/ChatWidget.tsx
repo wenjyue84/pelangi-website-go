@@ -19,7 +19,7 @@ const FAQ_DATA: FaqEntry[] = [
   {
     question: 'What time is check-in and check-out?',
     answer:
-      'Check-in is from 3:00 PM onwards, and check-out is before 12:00 PM (noon). We offer self-check-in so you can arrive anytime after 3 PM. Early check-in or late check-out may be available on request \u2014 message us on WhatsApp at +60 12-708 8789.',
+      'Check-in is from 2:00 PM onwards, and check-out is before 12:00 PM (noon). We offer self-check-in so you can arrive anytime after 2 PM. Early check-in or late check-out may be available on request \u2014 message us on WhatsApp at +60 12-708 8789.',
     keywords: ['check-in', 'check-out', 'checkout', 'checkin', 'time', 'arrive', 'arrival', 'early', 'late'],
     chipLabel: 'Check-in times',
   },
@@ -99,10 +99,17 @@ const FAQ_DATA: FaqEntry[] = [
       'Yes, monthly rates start from RM594/month including all amenities: WiFi, air-conditioning, hot showers, kitchen access, and laundry facilities. We also offer in-house laundry service at RM5/load (guests only, cheaper than outside dobi). Popular with remote workers and digital nomads.',
     keywords: ['monthly', 'long stay', 'long-term', 'month', 'weekly', 'extended'],
   },
+  {
+    question: 'How do I book a capsule?',
+    answer:
+      "Booking is easy and direct bookings get the best rate (no middleman fees). Just pick your dates and pay online at pelangicapsulehostel.com/book — pods are RM35/night, a flat rate every day. Check-in is from 2:00 PM (self check-in, so you can arrive anytime after 2 PM) and check-out is before 12:00 PM. If you'd rather book by message or need help with dates, WhatsApp us at +60 12-708 8789.",
+    keywords: ['book', 'booking', 'reserve', 'reservation', 'reservations', 'availability', 'available', 'stay', 'nights', 'night', 'how do i book', 'how to book', 'make a booking', 'room for'],
+    chipLabel: 'Book now',
+  },
 ];
 
-/** Quick suggestion chips: check-in, pricing, location, room types, parking */
-const QUICK_FAQS: number[] = [0, 1, 2, 3, 6];
+/** Quick suggestion chips: book, check-in, pricing, location, room types */
+const QUICK_FAQS: number[] = [12, 0, 1, 2, 3];
 
 const GREETING =
   "Hi! Welcome to Pelangi Capsule Hostel. I can answer common questions about our rooms, pricing, check-in, location, and more. Tap a topic below or type your question!";
