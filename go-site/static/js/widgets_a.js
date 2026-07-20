@@ -16,7 +16,7 @@
     {
       question: "How much does a capsule pod cost?",
       answer:
-        "Capsule pods start from RM30 per night on weekdays and RM35 on weekends. A Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is added as required by law. Monthly stays are available from RM594/month. Book directly on our website at pelangicapsulehostel.com/book for the best rate.",
+        "Capsule pods are RM35 per night — a flat rate every day of the week. A Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is added as required by law. Monthly stays are available from RM594/month. Book directly on our website at pelangicapsulehostel.com/book for the best rate.",
       keywords: ["price","pricing","cost","rate","rm","cheap","afford","how much","per night","monthly","budget"],
       chipLabel: "Pricing & rates",
     },
@@ -92,7 +92,7 @@
     {
       question: "How do I book a capsule?",
       answer:
-        "Booking is easy and direct bookings get the best rate (no middleman fees). Just pick your dates and pay online at pelangicapsulehostel.com/book — pods start from RM30/night on weekdays and RM35/night on weekends. Check-in is from 2:00 PM (self check-in, so you can arrive anytime after 2 PM) and check-out is before 12:00 PM. If you'd rather book by message or need help with dates, WhatsApp us at +60 12-708 8789.",
+        "Booking is easy and direct bookings get the best rate (no middleman fees). Just pick your dates and pay online at pelangicapsulehostel.com/book — pods are RM35/night, a flat rate every day. Check-in is from 2:00 PM (self check-in, so you can arrive anytime after 2 PM) and check-out is before 12:00 PM. If you'd rather book by message or need help with dates, WhatsApp us at +60 12-708 8789.",
       keywords: ["book","booking","reserve","reservation","reservations","availability","available","stay","nights","night","how do i book","how to book","make a booking","room for"],
       chipLabel: "Book now",
     },
@@ -199,6 +199,53 @@
   //  CHAT WIDGET
   // ═══════════════════════════════════════════════════════════════════
 
+  // ── Rich-text rendering for assistant replies ────────────────────
+  // Rainbow returns WhatsApp-style markup (*bold*, _italic_, __underline__,
+  // ~strike~), plain URLs, and image links (e.g. the DuitNow QR .png). The
+  // widget renders that as HTML: clickable links, inline images, formatting.
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+
+  // WhatsApp-style inline markup on already-escaped text. Underline (__x__)
+  // before italic (_x_) so the double form isn't eaten first.
+  function formatInline(s) {
+    s = s.replace(/__([^_\n]+)__/g, "<u>$1</u>");
+    s = s.replace(/\*([^*\n]+)\*/g, "<strong>$1</strong>");
+    s = s.replace(/_([^_\n]+)_/g, "<em>$1</em>");
+    s = s.replace(/~([^~\n]+)~/g, "<del>$1</del>");
+    s = s.replace(/\n/g, "<br>");
+    return s;
+  }
+
+  var IMG_EXT_RE = /\.(?:png|jpe?g|gif|webp)(?:[?#]|$)/i;
+
+  function renderRichContent(raw) {
+    var urlRe = /(https?:\/\/[^\s<>]+)/g;
+    var out = "", last = 0, m;
+    while ((m = urlRe.exec(raw))) {
+      out += formatInline(escapeHtml(raw.slice(last, m.index)));
+      var url = m[1];
+      var attr = url.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+      if (IMG_EXT_RE.test(url)) {
+        out +=
+          '<a href="' + attr + '" target="_blank" rel="noopener noreferrer">' +
+          '<img src="' + attr + '" alt="image" loading="lazy" ' +
+          'style="max-width:100%;border-radius:10px;margin:6px 0;display:block;" /></a>';
+      } else {
+        out +=
+          '<a href="' + attr + '" target="_blank" rel="noopener noreferrer" ' +
+          'style="color:#1d4ed8;text-decoration:underline;word-break:break-all;">' +
+          escapeHtml(url) + "</a>";
+      }
+      last = m.index + url.length;
+    }
+    out += formatInline(escapeHtml(raw.slice(last)));
+    return out;
+  }
+
   // ── Render a single message bubble ───────────────────────────────
   function createBubble(msg) {
     var wrap = document.createElement("div");
@@ -215,7 +262,13 @@
         base +
         "bg-white dark:bg-stone-700 text-stone-800 dark:text-stone-200 rounded-bl-[4px] shadow-xs border border-stone-100 dark:border-stone-600";
     }
-    bubble.textContent = msg.content;
+    // User text stays literal (textContent); assistant replies render markup,
+    // clickable links, and inline images.
+    if (msg.role === "user") {
+      bubble.textContent = msg.content;
+    } else {
+      bubble.innerHTML = renderRichContent(msg.content);
+    }
 
     var ts = document.createElement("div");
     ts.className = "text-[10px] text-stone-500 mt-1 px-1";
@@ -268,7 +321,23 @@
   // optional beta helper. We POST to /api/ai-chat (server proxies to Rainbow);
   // if it fails or times out we fall back to the local FAQ match + a note to
   // reach the human team.
-  function handleQuestion(text) {
+  // Per-visitor chat session id so Rainbow keeps one conversation per guest
+  // (without it, all website guests share a single "web:webchat" session).
+  var CHAT_SID_KEY = "pelangi_chat_sid";
+  function chatSessionId() {
+    try {
+      var sid = localStorage.getItem(CHAT_SID_KEY);
+      if (!sid) {
+        sid = "web_" + Math.random().toString(36).slice(2, 10) + "_" + Date.now();
+        localStorage.setItem(CHAT_SID_KEY, sid);
+      }
+      return sid;
+    } catch (e) {
+      return "web_anon";
+    }
+  }
+
+  function handleQuestion(text, imageDataUrl) {
     var now = Date.now();
     chatMessages = chatMessages.concat([
       { role: "user",      content: text, timestamp: now },
@@ -290,13 +359,16 @@
       renderMessages();
     }
 
-    var timer = setTimeout(function () { settle(matchFaq(text) + AI_FALLBACK_NOTE); }, 22000);
+    // Image turns (receipt OCR) run vision + PMS checks server-side — allow longer.
+    var timer = setTimeout(function () { settle(matchFaq(text) + AI_FALLBACK_NOTE); }, imageDataUrl ? 70000 : 22000);
 
+    var payload = { message: text, sessionId: chatSessionId() };
+    if (imageDataUrl) payload.image = imageDataUrl;
     try {
       fetch("/api/ai-chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text }),
+        body: JSON.stringify(payload),
       })
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(function (d) {
@@ -370,6 +442,58 @@
   }
   if (sendBtn) {
     sendBtn.addEventListener("click", doSend);
+  }
+
+  // ── Receipt image upload (payment-receipt OCR) ────────────────────
+  // Minimal attach flow: paperclip button + hidden file input. jpeg/png ≤5MB,
+  // sent as a base64 data URL to /api/ai-chat {message, image}.
+  if (sendBtn && sendBtn.parentNode) {
+    var fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = "image/jpeg,image/png";
+    fileInput.style.display = "none";
+    fileInput.setAttribute("aria-hidden", "true");
+
+    var attachBtn = document.createElement("button");
+    attachBtn.type = "button";
+    attachBtn.id = "chat-attach-btn";
+    attachBtn.setAttribute("aria-label", "Send payment receipt image");
+    attachBtn.title = "Send payment receipt (JPG/PNG, max 5MB)";
+    attachBtn.textContent = "📎";
+    attachBtn.className =
+      "shrink-0 w-9 h-9 rounded-full flex items-center justify-center text-base border border-stone-200 dark:border-stone-600 bg-white dark:bg-stone-700 hover:border-amber-400 transition-colors";
+
+    sendBtn.parentNode.insertBefore(attachBtn, sendBtn);
+    sendBtn.parentNode.insertBefore(fileInput, sendBtn);
+
+    function chatNote(text) {
+      chatMessages = chatMessages.concat([{ role: "assistant", content: text, timestamp: Date.now() }]);
+      saveChatHistory(chatMessages);
+      renderMessages();
+    }
+
+    attachBtn.addEventListener("click", function () { fileInput.click(); });
+    fileInput.addEventListener("change", function () {
+      var f = fileInput.files && fileInput.files[0];
+      fileInput.value = "";
+      if (!f) return;
+      if (f.type !== "image/jpeg" && f.type !== "image/png") {
+        chatNote("Sorry, please upload the receipt as a JPG or PNG image.");
+        return;
+      }
+      if (f.size > 5 * 1024 * 1024) {
+        chatNote("Sorry, that image is over 5MB. Please send a smaller screenshot.");
+        return;
+      }
+      var reader = new FileReader();
+      reader.onload = function () {
+        handleQuestion("📎 Payment receipt", String(reader.result));
+      };
+      reader.onerror = function () {
+        chatNote("Sorry, I couldn't read that file. Please try again.");
+      };
+      reader.readAsDataURL(f);
+    });
   }
   if (inputEl) {
     inputEl.addEventListener("input", function () {
