@@ -204,7 +204,7 @@ type HomePage struct {
 }
 
 const homeDescription = "Experience Japanese-style capsule accommodation in Taman Pelangi, Johor Bahru. " +
-	"Budget-friendly hostel from RM30/night with free WiFi, 24/7 access, hot showers, and personal lockers. " +
+	"Budget-friendly hostel at a flat RM35/night with free WiFi, 24/7 access, hot showers, and personal lockers. " +
 	"Perfect base for Singapore day trips - just 30 minutes from the border."
 
 // ogLocale maps an <html lang> code to an Open Graph og:locale value.

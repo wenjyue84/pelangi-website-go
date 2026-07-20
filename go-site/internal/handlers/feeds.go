@@ -145,7 +145,7 @@ func (h *Handler) feedXML(w http.ResponseWriter, r *http.Request) {
 const webManifest = `{
   "name": "Pelangi Capsule Hostel",
   "short_name": "Pelangi",
-  "description": "Japanese-style capsule accommodation in Johor Bahru from RM30/night. Free WiFi, 24/7 access, hot showers.",
+  "description": "Japanese-style capsule accommodation in Johor Bahru at a flat RM35/night. Free WiFi, 24/7 access, hot showers.",
   "start_url": "/",
   "display": "standalone",
   "orientation": "any",

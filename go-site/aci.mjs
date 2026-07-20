@@ -175,7 +175,7 @@ SUITES.pages = {
   run: async () => {
     const routes = [
       ["/", "Pelangi"],
-      ["/rooms", "RM30"],
+      ["/rooms", "RM35"],
       ["/blog", "blog"],
       ["/contact", "WhatsApp"],
       ["/getting-here", "Causeway"],
@@ -235,7 +235,8 @@ SUITES.blog = {
   },
 };
 
-// pricing — RM30/35/594/500 consistency; RM45 must be dead on money pages.
+// pricing — flat RM35/594/500 consistency; stale RM30 weekday and RM45 must be
+// dead on money pages (2026-07-20: nightly price unified to a flat RM35).
 SUITES.pricing = {
   needsServer: true,
   run: async () => {
@@ -243,12 +244,13 @@ SUITES.pricing = {
     const rooms = await rawGet("/rooms");
     const llms = await rawGet("/llms.txt");
     for (const [name, r] of [["home", home], ["rooms", rooms], ["llms.txt", llms]]) {
-      check(`${name} has RM30 + RM35`, r.body.includes("RM30") && r.body.includes("RM35"),
-        `RM30=${r.body.includes("RM30")} RM35=${r.body.includes("RM35")}`);
+      check(`${name} has flat RM35`, r.body.includes("RM35"),
+        `RM35=${r.body.includes("RM35")}`);
     }
     check("llms.txt has RM594 monthly", llms.body.includes("594"), "no 594");
     check("rooms page has RM500 private room", rooms.body.includes("RM500"), "no RM500");
     for (const [name, r] of [["home", home], ["rooms", rooms], ["llms.txt", llms]]) {
+      check(`${name} has NO stale RM30 weekday rate`, !r.body.includes("RM30"), "RM30 found");
       check(`${name} has NO stale RM45`, !r.body.includes("RM45"), "RM45 found");
     }
     const bookingJs = readFileSync(join(__dirname, "static", "js", "booking.js"), "utf8");

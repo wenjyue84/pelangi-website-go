@@ -16,7 +16,7 @@ func NewestContentDate() string {
 // serve time with NewestContentDate().
 const llmsTxtBody = `# Pelangi Capsule Hostel
 
-> Japanese-style capsule hostel in Johor Bahru, Malaysia. Budget-friendly accommodation from RM30/night (weekdays; RM35 on weekends) with free WiFi, 24/7 access, and modern pod amenities. 15 minutes from Singapore via the Woodlands CIQ checkpoint.
+> Japanese-style capsule hostel in Johor Bahru, Malaysia. Budget-friendly accommodation at a flat RM35/night, every day, with free WiFi, 24/7 access, and modern pod amenities. 15 minutes from Singapore via the Woodlands CIQ checkpoint.
 
 **Last Updated:** __LAST_UPDATED__
 
@@ -29,7 +29,7 @@ const llmsTxtBody = `# Pelangi Capsule Hostel
 Pelangi Capsule Hostel offers Japanese-inspired capsule pod accommodation for budget travellers, backpackers, and digital nomads visiting Johor Bahru.
 
 - **Capsule Pods**: Private sleeping pods with personal climate control, adjustable LED lighting, USB & power outlets, privacy sliding door, premium mattress, and personal locker.
-- **Daily Rate**: From RM30/night on weekdays, RM35/night on weekends (+ RM10/room/night Tourism Tax)
+- **Daily Rate**: Flat RM35/night, every day (+ RM10/room/night Tourism Tax)
 - **Monthly Rate**: RM594/month
 - **Private Rooms (monthly rental)**: From RM500/month + RM250 flat deposit — private lockable rooms above the 7-Eleven in Taman Pelangi, a short walk from the hostel, managed by the same team. Month-to-month terms, no long tenancy. WhatsApp +60 12-708 8789 to check availability. Details: https://pelangicapsulehostel.com/blog/room-for-rent-taman-pelangi-jb-rm500-month
 - **Check-in**: 2:00 PM onwards (self check-in available)
@@ -93,12 +93,12 @@ Book directly on our website for the best rates with no booking fees:
 
 ## 中文信息 (Chinese)
 
-> 彩虹胶囊旅馆（Pelangi Capsule Hostel）位于马来西亚柔佛州新山市，提供日式胶囊床位住宿。每晚低至RM30起（周末RM35），距离新加坡仅15分钟车程，免费WiFi，24小时入住。
+> 彩虹胶囊旅馆（Pelangi Capsule Hostel）位于马来西亚柔佛州新山市，提供日式胶囊床位住宿。每晚统一价 RM35，距离新加坡仅15分钟车程，免费WiFi，24小时入住。
 
 ### 服务
 
 - **胶囊床位**：私人睡眠舱，配备独立空调、阅读灯、USB充电口和个人储物柜
-- **每晚价格**：RM30/晚起（平日；周末RM35）
+- **每晚价格**：RM35/晚（统一价）
 - **月租价格**：RM594/月
 - **月租私人房间**：RM500/月起，押金RM250（一次性），位于Taman Pelangi 7-Eleven楼上，步行可达旅馆，由同一团队管理。按月续租，无需长期租约。WhatsApp +60 12-708 8789 查询空房
 - **入住时间**：下午2时起（支持自助入住）
@@ -167,7 +167,7 @@ func BlogSectionMarkdown() string {
 // site/src/app/llms-full.txt/route.ts. Sentinels are replaced at serve time.
 const llmsFullBody = `# Pelangi Capsule Hostel — Full Details
 
-> Japanese-style capsule hostel in Johor Bahru, Malaysia. Budget-friendly accommodation from RM30/night (weekdays; RM35 on weekends) with free WiFi, 24/7 access, and modern pod amenities. 15 minutes from Singapore via the Woodlands CIQ checkpoint.
+> Japanese-style capsule hostel in Johor Bahru, Malaysia. Budget-friendly accommodation at a flat RM35/night, every day, with free WiFi, 24/7 access, and modern pod amenities. 15 minutes from Singapore via the Woodlands CIQ checkpoint.
 
 **Last Updated:** __LAST_UPDATED__
 
@@ -182,7 +182,7 @@ Pelangi Capsule Hostel is a Japanese-inspired capsule accommodation in the heart
 ## Room Types
 
 ### Capsule Pod
-- **Price**: From RM30/night on weekdays, RM35/night on weekends (+ RM10/room/night Tourism Tax)
+- **Price**: Flat RM35/night, every day (+ RM10/room/night Tourism Tax)
 - **Monthly Rate**: RM594/month
 - **Features**:
   - Personal climate control (fan/AC)
@@ -236,7 +236,7 @@ Pelangi Capsule Hostel is a Japanese-inspired capsule accommodation in the heart
 Check-in at Pelangi Capsule Hostel is from 2:00 PM onwards, and check-out is before 12:00 PM (noon). We offer self-check-in so you can arrive anytime after 2 PM without waiting for reception. Early check-in or late check-out may be available on request — contact us via WhatsApp at +60 12-708 8789.
 
 **How much does a capsule pod cost per night in Johor Bahru?**
-Capsule pods at Pelangi Capsule Hostel start from RM30 per night on weekdays and RM35 per night on weekends. A Malaysia Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is added as required by law. Monthly stays are available from RM594 per month. Book directly on our website at pelangicapsulehostel.com/book for the best rate with no booking fees or OTA commissions.
+Capsule pods at Pelangi Capsule Hostel are a flat RM35 per night, every day of the week. A Malaysia Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is added as required by law. Monthly stays are available from RM594 per month. Book directly on our website at pelangicapsulehostel.com/book for the best rate with no booking fees or OTA commissions.
 
 **Where exactly is Pelangi Capsule Hostel located?**
 Pelangi Capsule Hostel is located at 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru, Johor, Malaysia. Taman Pelangi is a central neighbourhood in Johor Bahru known for restaurants, cafes, and the famous Taman Pelangi Night Market (pasar malam) every Tuesday from 4:30 PM. The hostel is a short Grab ride from JB Sentral, CIQ border checkpoint, and Senai International Airport.

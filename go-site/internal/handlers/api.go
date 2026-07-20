@@ -24,8 +24,8 @@ type ariRate struct {
 }
 
 // countStayNights splits a stay into weekday and weekend nights. Weekend
-// nights are Friday and Saturday nights (RM30 weekday / RM35 weekend pricing,
-// effective 2026-07-03).
+// nights are Friday and Saturday nights. Pricing is a flat RM35 every day
+// (2026-07-20), so the split now only feeds the informational breakdown fields.
 func countStayNights(ci, co time.Time) (weekday, weekend int) {
 	for d := ci; d.Before(co); d = d.AddDate(0, 0, 1) {
 		switch d.Weekday() {

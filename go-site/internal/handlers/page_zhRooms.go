@@ -11,7 +11,7 @@ func init() {
 func (h *Handler) zhRooms(w http.ResponseWriter, r *http.Request) {
 	p := h.base(
 		"胶囊房型与价格 | 彩虹胶囊旅舍 新山",
-		"查看彩虹胶囊旅舍所有房型及价格。男女混住舱和女性专用舱，每晚 RM30 起。含个人温控、USB 充电、可锁门板及免费 WiFi。",
+		"查看彩虹胶囊旅舍所有房型及价格。男女混住舱和女性专用舱，每晚统一价 RM35。含个人温控、USB 充电、可锁门板及免费 WiFi。",
 		"https://pelangicapsulehostel.com/zh/rooms",
 		"zh-CN",
 		zhNav,

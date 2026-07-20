@@ -14,7 +14,7 @@ var FaqItems = []FaqItem{
 	},
 	{
 		Question: "How much does a capsule pod cost per night in Johor Bahru?",
-		Answer:   "Capsule pods at Pelangi Capsule Hostel start from RM30 per night on weekdays and RM35 per night on weekends. A Malaysia Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is added as required by law. Monthly stays are available from RM594 per month. Book directly on our website at pelangicapsulehostel.com/book for the best rate with no booking fees or OTA commissions.",
+		Answer:   "Capsule pods at Pelangi Capsule Hostel are a flat RM35 per night, every day of the week. A Malaysia Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is added as required by law. Monthly stays are available from RM594 per month. Book directly on our website at pelangicapsulehostel.com/book for the best rate with no booking fees or OTA commissions.",
 	},
 	{
 		Question: "Where exactly is Pelangi Capsule Hostel located?",

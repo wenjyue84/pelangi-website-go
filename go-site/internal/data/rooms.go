@@ -24,8 +24,8 @@ var RoomTypes = []RoomType{
 		Name: "Lower Deck Pod",
 		Description: "Ground-level capsule pod — easy access, no ladder required. " +
 			"Japanese-style with LED reading light, USB charging port, and personal locker.",
-		NightlyRate:  30, // weekday rate (price cut 2026-07-03, was RM45)
-		WeekendRate:  35, // Fri/Sat nights
+		NightlyRate:  35, // flat rate, every day (2026-07-20: unified from RM30 weekday / RM35 weekend)
+		WeekendRate:  35, // flat — same as weekday
 		MonthlyRate:  594,
 		Currency:     "MYR",
 		MaxOccupancy: 1,
@@ -48,8 +48,8 @@ var RoomTypes = []RoomType{
 		Name: "Upper Deck Pod",
 		Description: "Elevated capsule pod on the upper bunk — more privacy and less foot traffic. " +
 			"Same Japanese-style comfort with LED reading light, USB charging port, and personal locker.",
-		NightlyRate:  30, // weekday rate (price cut 2026-07-03)
-		WeekendRate:  35, // Fri/Sat nights
+		NightlyRate:  35, // flat rate, every day (2026-07-20: unified from RM30 weekday / RM35 weekend)
+		WeekendRate:  35, // flat — same as weekday
 		Currency:     "MYR",
 		MaxOccupancy: 1,
 		TotalUnits:   6,

@@ -52,9 +52,9 @@
         if (n <= 0) {
           text = "Fully booked tonight — check other dates";
         } else if (n <= 8) {
-          text = "Only " + n + " pod" + (n === 1 ? "" : "s") + " left tonight — from RM30";
+          text = "Only " + n + " pod" + (n === 1 ? "" : "s") + " left tonight — at RM35";
         } else {
-          text = n + " pods available tonight — from RM30";
+          text = n + " pods available tonight — at RM35";
         }
         for (var i = 0; i < slots.length; i++) {
           slots[i].textContent = text;

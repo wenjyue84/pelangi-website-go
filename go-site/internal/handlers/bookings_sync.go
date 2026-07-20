@@ -41,15 +41,12 @@ func (h *Handler) bookingsSyncPost(w http.ResponseWriter, r *http.Request) {
 		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "Invalid dates"})
 		return
 	}
-	// Both pod types share the same nightly pricing since the 2026-07-03 revision:
-	// RM30 weekday, RM35 for Friday/Saturday nights. RoomType only picks the Beds24 room.
+	// Both pod types share the same nightly pricing: a flat RM35 every day
+	// (2026-07-20 revision, unified from RM30 weekday / RM35 weekend).
+	// RoomType only picks the Beds24 room.
 	totalPrice := 0
 	for d := checkin; d.Before(checkout); d = d.AddDate(0, 0, 1) {
-		if wd := d.Weekday(); wd == time.Friday || wd == time.Saturday {
-			totalPrice += 35
-		} else {
-			totalPrice += 30
-		}
+		totalPrice += 35
 	}
 
 	roomID := "standard-capsule"
