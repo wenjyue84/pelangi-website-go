@@ -63,13 +63,15 @@
           src="{{.Post.FeaturedImage}}"
           alt="{{or .Post.ImageAlt .Post.Title}}"
           loading="eager"
+          fetchpriority="high"
+          decoding="async"
           class="absolute inset-0 w-full h-full object-cover"
         >
       </div>
       {{end}}
 
       {{/* Two-column layout: content + ToC sidebar (sidebar omitted — see TODO) */}}
-      <div class="lg:grid lg:grid-cols-[minmax(0,1fr)_256px] lg:gap-12">
+      <div>
 
         {{/* Main content column */}}
         <div class="min-w-0">
@@ -152,9 +154,6 @@
           </div>
 
         </div>{{/* end main content column */}}
-
-        {{/* Desktop ToC sidebar — omitted pending heading extraction support */}}
-        {{/* TODO(port): <aside class="hidden lg:block"><div class="sticky top-24"><TableOfContents/></div></aside> */}}
 
       </div>{{/* end two-column grid */}}
 

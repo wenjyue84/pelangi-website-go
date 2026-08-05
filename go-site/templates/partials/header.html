@@ -2,17 +2,8 @@
 <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white/95 backdrop-blur-md shadow-xs py-3 dark:bg-stone-900/95 dark:shadow-stone-950/50">
   <nav class="container-custom flex items-center justify-between px-6 md:px-8">
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-3 group" aria-label="Pelangi Capsule Hostel - home">
-      <svg class="h-9 w-9 shrink-0" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect x="2.5" y="7.5" width="35" height="25" rx="8" stroke="#5BBCE4" stroke-width="3" />
-        <path d="M11 32.5 V20 a9 9 0 0 1 18 0 v12.5" stroke="#5BBCE4" stroke-width="3" stroke-linecap="round" fill="none" />
-        <circle cx="20" cy="18.5" r="3" fill="#5BBCE4" />
-        <line x1="11" y1="27.5" x2="29" y2="27.5" stroke="#5BBCE4" stroke-width="3" stroke-linecap="round" />
-      </svg>
-      <div class="flex flex-col">
-        <span class="font-display text-xl font-medium tracking-tight transition-colors duration-300 text-stone-900 dark:text-stone-100">Pelangi</span>
-        <span class="text-[10px] font-medium tracking-widest uppercase transition-colors duration-300 text-stone-500 dark:text-stone-400">Capsule Hostel</span>
-      </div>
+    <a href="/" class="flex items-center group" aria-label="Pelangi Capsule Hostel - home">
+      <img src="/images/logo.png" alt="Pelangi Capsule Hostel" class="h-12 w-auto shrink-0" width="157" height="110">
     </a>
 
     <!-- Desktop Navigation -->
@@ -30,10 +21,21 @@
           <span data-lang-label>EN</span>
           <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
         </summary>
-        <div class="absolute right-0 mt-2 w-44 bg-white dark:bg-stone-800 rounded-xl shadow-xl border border-stone-100 dark:border-stone-700 py-1 z-50">
+        <div class="absolute right-0 mt-2 w-52 bg-white dark:bg-stone-800 rounded-xl shadow-xl border border-stone-100 dark:border-stone-700 py-1 z-50">
           <button type="button" onclick="setSiteLang('en')" data-lang-opt="en" class="w-full text-left px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 dark:text-stone-300 dark:hover:bg-stone-700">English</button>
           <button type="button" onclick="setSiteLang('zh-CN')" data-lang-opt="zh-CN" class="w-full text-left px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 dark:text-stone-300 dark:hover:bg-stone-700">中文</button>
           <button type="button" onclick="setSiteLang('ms')" data-lang-opt="ms" class="w-full text-left px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 dark:text-stone-300 dark:hover:bg-stone-700">Bahasa Melayu</button>
+          <div class="border-t border-stone-100 dark:border-stone-700 my-1"></div>
+          <button type="button" onclick="setSiteLang('ja')" data-lang-opt="ja" class="w-full text-left px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 dark:text-stone-300 dark:hover:bg-stone-700">🇯🇵 日本語</button>
+          <button type="button" onclick="setSiteLang('ko')" data-lang-opt="ko" class="w-full text-left px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 dark:text-stone-300 dark:hover:bg-stone-700">🇰🇷 한국어</button>
+          <button type="button" onclick="setSiteLang('ar')" data-lang-opt="ar" class="w-full text-left px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 dark:text-stone-300 dark:hover:bg-stone-700">🇸🇦 العربية</button>
+          <button type="button" onclick="setSiteLang('hi')" data-lang-opt="hi" class="w-full text-left px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 dark:text-stone-300 dark:hover:bg-stone-700">🇮🇳 हिन्दी</button>
+          <button type="button" onclick="setSiteLang('ta')" data-lang-opt="ta" class="w-full text-left px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 dark:text-stone-300 dark:hover:bg-stone-700">🇮🇳 தமிழ்</button>
+          <button type="button" onclick="setSiteLang('th')" data-lang-opt="th" class="w-full text-left px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 dark:text-stone-300 dark:hover:bg-stone-700">🇹🇭 ไทย</button>
+          <button type="button" onclick="setSiteLang('vi')" data-lang-opt="vi" class="w-full text-left px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 dark:text-stone-300 dark:hover:bg-stone-700">🇻🇳 Việt</button>
+          <button type="button" onclick="setSiteLang('my')" data-lang-opt="my" class="w-full text-left px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 dark:text-stone-300 dark:hover:bg-stone-700">🇲🇲 မြန်မာ</button>
+          <button type="button" onclick="setSiteLang('es')" data-lang-opt="es" class="w-full text-left px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 dark:text-stone-300 dark:hover:bg-stone-700">🇪🇸 Español</button>
+          <button type="button" onclick="setSiteLang('fr')" data-lang-opt="fr" class="w-full text-left px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 dark:text-stone-300 dark:hover:bg-stone-700">🇫🇷 Français</button>
         </div>
       </details>
       <a href="/book" class="ml-2 px-6 py-2.5 text-sm font-medium rounded-full transition-all duration-300 bg-amber-700 text-white hover:bg-amber-800">Book Now</a>
@@ -57,10 +59,22 @@
         {{end}}
         <div class="px-6 py-3 border-t border-stone-100 mt-2 dark:border-stone-700 notranslate" translate="no">
           <p class="text-xs font-medium tracking-widest uppercase text-stone-400 mb-2">Language</p>
-          <div class="flex gap-2">
+          <div class="flex gap-2 mb-2">
             <button type="button" onclick="setSiteLang('en')" data-lang-opt="en" class="flex-1 py-2 text-sm rounded-lg border border-stone-200 dark:border-stone-600 text-stone-700 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-700">EN</button>
             <button type="button" onclick="setSiteLang('zh-CN')" data-lang-opt="zh-CN" class="flex-1 py-2 text-sm rounded-lg border border-stone-200 dark:border-stone-600 text-stone-700 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-700">中文</button>
             <button type="button" onclick="setSiteLang('ms')" data-lang-opt="ms" class="flex-1 py-2 text-sm rounded-lg border border-stone-200 dark:border-stone-600 text-stone-700 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-700">BM</button>
+          </div>
+          <div class="grid grid-cols-2 gap-1">
+            <button type="button" onclick="setSiteLang('ja')" data-lang-opt="ja" class="text-left text-xs py-1.5 px-2 rounded-lg border border-stone-200 dark:border-stone-600 text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-700 truncate">🇯🇵 日本語</button>
+            <button type="button" onclick="setSiteLang('ko')" data-lang-opt="ko" class="text-left text-xs py-1.5 px-2 rounded-lg border border-stone-200 dark:border-stone-600 text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-700 truncate">🇰🇷 한국어</button>
+            <button type="button" onclick="setSiteLang('ar')" data-lang-opt="ar" class="text-left text-xs py-1.5 px-2 rounded-lg border border-stone-200 dark:border-stone-600 text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-700 truncate">🇸🇦 العربية</button>
+            <button type="button" onclick="setSiteLang('hi')" data-lang-opt="hi" class="text-left text-xs py-1.5 px-2 rounded-lg border border-stone-200 dark:border-stone-600 text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-700 truncate">🇮🇳 हिन्दी</button>
+            <button type="button" onclick="setSiteLang('ta')" data-lang-opt="ta" class="text-left text-xs py-1.5 px-2 rounded-lg border border-stone-200 dark:border-stone-600 text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-700 truncate">🇮🇳 தமிழ்</button>
+            <button type="button" onclick="setSiteLang('th')" data-lang-opt="th" class="text-left text-xs py-1.5 px-2 rounded-lg border border-stone-200 dark:border-stone-600 text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-700 truncate">🇹🇭 ไทย</button>
+            <button type="button" onclick="setSiteLang('vi')" data-lang-opt="vi" class="text-left text-xs py-1.5 px-2 rounded-lg border border-stone-200 dark:border-stone-600 text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-700 truncate">🇻🇳 Việt</button>
+            <button type="button" onclick="setSiteLang('my')" data-lang-opt="my" class="text-left text-xs py-1.5 px-2 rounded-lg border border-stone-200 dark:border-stone-600 text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-700 truncate">🇲🇲 မြန်မာ</button>
+            <button type="button" onclick="setSiteLang('es')" data-lang-opt="es" class="text-left text-xs py-1.5 px-2 rounded-lg border border-stone-200 dark:border-stone-600 text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-700 truncate">🇪🇸 Español</button>
+            <button type="button" onclick="setSiteLang('fr')" data-lang-opt="fr" class="text-left text-xs py-1.5 px-2 rounded-lg border border-stone-200 dark:border-stone-600 text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-700 truncate">🇫🇷 Français</button>
           </div>
         </div>
         <div class="px-6 py-3 border-t border-stone-100 mt-2 dark:border-stone-700">

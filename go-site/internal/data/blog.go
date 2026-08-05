@@ -23,6 +23,9 @@ type BlogPost struct {
 	FeaturedImage      string
 	ImageAlt           string // empty if not set
 	InLanguage         string // empty if not set
+	AlternateEN        string // slug of EN language sibling (empty if no multilingual set)
+	AlternateZH        string // slug of ZH language sibling
+	AlternateMS        string // slug of MS/BM language sibling
 }
 
 // _blogTagRE strips HTML tags when computing reading time.
@@ -50,11 +53,150 @@ func _blogComputeReadingTime(html string) int {
 	return int(minutes)
 }
 
-// BlogPosts is the complete ordered list of all 35 blog posts.
+// BlogPosts is the complete ordered list of every blog post (62 as of
+// 2026-07-30; the old "35 posts" comment was stale — count with
+// `grep -c 'Slug:' blog.go` rather than trusting a number here).
 // ReadingTimeMinutes is computed from each post's HTML Content at init time.
 var BlogPosts = func() []BlogPost {
 	raw := []BlogPost{
 		// 1
+		{
+			Slug:     "india-to-johor-bahru-travel-guide",
+			Date:     "2026-08-01",
+			Category: "Travel Tips",
+			Author:   "Jay Lew",
+			ReadTime: "7 min read",
+			Tags:     []string{"india", "johor-bahru", "budget-travel", "travel-tips", "from-india", "malaysia"},
+			FeaturedImage: "/images/blog/india-to-jb-guide.webp",
+			ImageAlt:      "Johor Bahru city skyline with Indian traveler at the Causeway, JB-Singapore border",
+			Title:         "India to Johor Bahru: The Complete Budget Travel Guide for 2026",
+			Excerpt:       "Indian passport? RM35/night capsule. Flights from Chennai from RM280. Visa info, transport routes, vegetarian food guide — all in one place.",
+			Content: `
+<h2>Why Indian Travelers Are Choosing Johor Bahru</h2>
+<p>Johor Bahru is quietly becoming one of the most popular weekend destinations for Indian professionals based in Singapore — and for good reason. At RM35 per night (approximately ₹630), Pelangi Capsule Hostel offers a modern, private capsule pod for less than a meal at a mid-range Singapore restaurant. The math is simple: stay in JB, cross into Singapore for the day, and pocket the savings.</p>
+
+<p>But JB is far more than a cheap alternative to Singapore hotels. It has its own food culture, a vibrant Indian community, temples, malls, and a pace of life that feels refreshingly unhurried. For Indian travelers coming directly from India, JB is the ideal first stop in Malaysia &mdash; or a value-packed base for exploring the peninsula.</p>
+
+<h2>Getting to JB from India</h2>
+
+<h3>From Chennai</h3>
+<p>AirAsia and IndiGo operate regular flights from Chennai (MAA) to Kuala Lumpur (KUL), with fares starting around RM280 (₹5,000) return during off-peak seasons. From KUL's TBS terminal, a direct JB bus takes approximately 4 hours and costs RM25&ndash;35. Alternatively, check for direct flights to Senai International Airport (JHB) &mdash; when available, these eliminate the KUL connection entirely.</p>
+
+<h3>From Bangalore, Hyderabad, and Other Cities</h3>
+<p>Most Indian cities connect to KUL via AirAsia, Air India, or Malaysia Airlines. Travel time is typically 4&ndash;6 hours. From KUL, take the TBS bus to JB Sentral (Larkin terminal) or JBCC City Square. A Grab from either terminal to Pelangi Capsule Hostel in Taman Pelangi takes 10&ndash;15 minutes and costs RM8&ndash;12.</p>
+
+<h3>Via Singapore</h3>
+<p>Many Indian travelers fly to Singapore first, then cross the Causeway. Take the Causeway Link CW1 bus from Queen Street Terminal or Woodlands CIQ to JB Sentral &mdash; the bus costs SGD3.30 and takes 30&ndash;45 minutes including the border crossing. From JB Sentral, a Grab to Taman Pelangi is RM8&ndash;12.</p>
+
+<h2>Visa Information for Indian Passport Holders</h2>
+<p>Most Indian travelers use the <strong>eNTRI</strong> (eNotification of Travel Information) for short stays up to 15 days. Apply online before travel at Malaysia's official immigration portal. Processing is fast and there is no visa sticker required.</p>
+
+<p>For longer stays, apply for an <strong>eVisa</strong> through the same portal. Indian nationals holding a valid Singapore Employment Pass (EP) or S Pass entering from Singapore may enter Malaysia visa-free for short stays &mdash; confirm the current rules at <a href="https://www.imi.gov.my" target="_blank" rel="noopener noreferrer">imi.gov.my</a> before booking your trip, as conditions are subject to change.</p>
+
+<h2>INR to MYR: The Numbers That Make JB Irresistible</h2>
+<p>At current exchange rates, 1 MYR ≈ ₹18. Here is what that means in practice for a 3-night JB trip from Singapore:</p>
+<ul>
+<li>Hostel: RM35 × 3 nights = RM105 ≈ ₹1,890</li>
+<li>Meals (3/day at mamak): RM15 × 3 days = RM45 ≈ ₹810</li>
+<li>Grab rides: RM30 total ≈ ₹540</li>
+<li><strong>Total: RM180 ≈ ₹3,240</strong> for 3 nights in a modern, safe hostel with food</li>
+</ul>
+<p>Compare that to a Singapore hotel at SGD80+/night. The JB advantage is real.</p>
+
+<h2>Getting Around JB</h2>
+<p>Grab is the primary way to move around JB. It is safe, reliable, and inexpensive &mdash; most rides within the city cost RM5&ndash;15. There is no MRT in JB (the RTS Link to Singapore is under construction), so plan for Grab or occasional taxis for longer distances.</p>
+
+<p>For day trips: KL is 4 hours by Causeway Link bus (RM25&ndash;35), Melaka is 2 hours (RM15&ndash;20), and Desaru beaches are 1.5 hours by Grab or shared taxi.</p>
+
+<h2>Where to Stay: Pelangi Capsule Hostel</h2>
+<p><a href="/rooms">Pelangi Capsule Hostel</a> is located at 26A Jalan Perang, Taman Pelangi &mdash; a central JB neighbourhood known for food, the Tuesday night market, and easy Grab access to everywhere. Each pod has a locking sliding door, air-conditioning, USB charging, and a premium mattress. Free WiFi throughout, 24/7 self check-in, personal lockers, shared kitchen, and hot showers.</p>
+
+<p>Nightly rates start at RM30 your first night (new guests) and RM35 per night thereafter. Monthly rates from RM594 &mdash; popular with Singapore-based professionals who commute back on weekends.</p>
+
+<h2>Final Tips for Indian Travelers</h2>
+<ul>
+<li><strong>Currency:</strong> Exchange INR to MYR at JB CIQ money changers or City Square mall. Rates are competitive. Most ATMs accept Indian Visa/Mastercard debit cards.</li>
+<li><strong>SIM card:</strong> Buy a Malaysian prepaid SIM at City Square or Larkin terminal (Digi, Maxis, Celcom all carry Indian-roaming-friendly plans).</li>
+<li><strong>Food:</strong> You will not go hungry as a vegetarian. Mamak stalls and South Indian restaurants are everywhere. See our <a href="/blog/vegetarian-food-johor-bahru-indian-travelers">vegetarian food guide for JB</a>.</li>
+<li><strong>Safety:</strong> JB is generally safe for solo travelers including women. Stick to populated areas at night and use Grab for late rides.</li>
+</ul>
+`,
+		},
+		// 2
+		{
+			Slug:     "vegetarian-food-johor-bahru-indian-travelers",
+			Date:     "2026-07-28",
+			Category: "Food & Drink",
+			Author:   "Jay Lew",
+			ReadTime: "5 min read",
+			Tags:     []string{"food", "vegetarian", "indian-travelers", "johor-bahru", "taman-pelangi"},
+			FeaturedImage: "/images/blog/jb-vegetarian-indian-food.webp",
+			ImageAlt:      "Banana leaf rice spread and roti canai at a Johor Bahru mamak restaurant",
+			Title:         "Vegetarian Food in Johor Bahru: An Indian Traveler's Guide",
+			Excerpt:       "From banana leaf thali to roti canai — JB's Indian food scene is better than you'd expect. Best spots within 1km of Taman Pelangi.",
+			Content: `
+<h2>JB's Indian Food Scene: Better Than You'd Expect</h2>
+<p>Johor Bahru's food culture is deeply influenced by Malaysia's large Tamil and North Indian communities. The result: a city where finding vegetarian South Indian food is easier than in many parts of South India itself. Mamak restaurants &mdash; open-air eateries run by Tamil Muslim families &mdash; serve roti canai, dhal, dosai, and teh tarik 24 hours a day, 7 days a week.</p>
+
+<p>For Indian travelers staying at <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi, vegetarian options are literally steps away.</p>
+
+<h2>What You'll Find Within Walking Distance of the Hostel</h2>
+
+<h3>Mamak Stalls (5 Minutes' Walk)</h3>
+<p>Mamak stalls are the backbone of JB's food scene. Look for the open-air restaurants with fluorescent lighting and stacks of roti on the griddle. Typical prices:</p>
+<ul>
+<li>Roti canai plain: RM1.50</li>
+<li>Roti canai with egg: RM2.50</li>
+<li>Dhal curry (side): RM1.50</li>
+<li>Dosai (thosai): RM3&ndash;4</li>
+<li>Teh tarik: RM2</li>
+<li>Milo ais: RM2.50</li>
+</ul>
+<p>Most mamak stalls have a full vegetarian menu &mdash; just ask for "sayur sahaja" (vegetables only) and they will prepare your roti or nasi without meat.</p>
+
+<h3>Nasi Campur Stalls</h3>
+<p>Nasi campur (mixed rice) stalls let you pick from a display of dishes. Vegetarian options typically include: tempeh goreng, sayur goreng (stir-fried vegetables), dhal, sambal terung (brinjal), and fried tofu. A plate costs RM5&ndash;8 with 3&ndash;4 side dishes.</p>
+
+<h3>Taman Pelangi Tuesday Night Market</h3>
+<p>Every Tuesday from 4:30 PM, Jalan Kuning (5 minutes from the hostel) hosts a 500-metre night market. Indian-influenced stalls sell putu piring, vadai, apom (appam), and kuih with various vegetarian fillings. Budget RM10&ndash;20 for a full evening's eating.</p>
+
+<h2>Jalan Dhoby — Little India (10 Minutes by Grab)</h2>
+<p>Jalan Dhoby is JB's Indian commercial district. Here you will find:</p>
+<ul>
+<li><strong>South Indian vegetarian restaurants</strong> with banana leaf rice, sambar, rasam, and a full array of vegetable curries (RM8&ndash;15 per set)</li>
+<li><strong>Thali meals</strong> &mdash; unlimited rice refills with rotating curries and pickle, in the Kerala/Tamil tradition</li>
+<li><strong>Indian sweets</strong> &mdash; ladoo, halwa, barfi, and murukku sold by weight at Indian provision shops</li>
+<li><strong>Indian grocery stores</strong> &mdash; masala powders, pickle jars, chilli, and rice varieties from India and Sri Lanka</li>
+</ul>
+
+<h2>Key Vegetarian-Friendly Dishes to Try in JB</h2>
+<table>
+<thead><tr><th>Dish</th><th>Description</th><th>Typical Price</th></tr></thead>
+<tbody>
+<tr><td>Roti canai</td><td>Flaky flatbread with dhal and curry</td><td>RM1.50&ndash;3</td></tr>
+<tr><td>Thosai (dosai)</td><td>Crispy rice-lentil crepe, served with chutney</td><td>RM3&ndash;5</td></tr>
+<tr><td>Nasi lemak (veg)</td><td>Coconut rice with sambal, peanuts, cucumber</td><td>RM4&ndash;6</td></tr>
+<tr><td>Char kway teow (veg)</td><td>Stir-fried flat rice noodles — ask for no cockles or lard</td><td>RM6&ndash;8</td></tr>
+<tr><td>Banana leaf rice</td><td>Full South Indian meal on a banana leaf</td><td>RM10&ndash;15</td></tr>
+<tr><td>Vegetable briyani</td><td>Fragrant rice with mixed vegetables and raita</td><td>RM8&ndash;12</td></tr>
+</tbody>
+</table>
+
+<h2>Supermarkets and Cooking</h2>
+<p>If you prefer cooking, Pelangi Capsule Hostel has a shared kitchen available to all guests. The nearest supermarket (Giant or Econsave) is a short Grab ride away. Indian ingredients &mdash; spices, lentils, basmati, canned tomatoes &mdash; are available at Indian grocery shops on Jalan Dhoby and at Cold Storage in City Square mall.</p>
+
+<h2>Practical Tips for Vegetarian Travelers</h2>
+<ul>
+<li>Say <strong>"sayur sahaja"</strong> (vegetables only) or <strong>"tak nak daging"</strong> (no meat) at stalls that mix veg and non-veg dishes.</li>
+<li>At mamak restaurants, clarify if dishes are cooked in the same wok as meat &mdash; most reputable stalls will accommodate your request.</li>
+<li>Egg is widely used in Malaysian vegetarian dishes &mdash; specify if you need egg-free options.</li>
+<li>JB has several dedicated Indian vegetarian restaurants where cross-contamination is not a concern.</li>
+</ul>
+
+<p>For more on getting to JB from India, see our <a href="/blog/india-to-johor-bahru-travel-guide">India to JB travel guide</a>. Ready to book? <a href="/book">Check availability at Pelangi Capsule Hostel</a>.</p>
+`,
+		},
+		// 3
 		{
 			Slug:          "ultimate-jb-food-guide-backpackers",
 			LastModified:  "2026-06-26",
@@ -66,7 +208,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "8 min read",
 			Tags:          []string{"johor-bahru", "food", "backpacker", "budget-travel", "malaysia", "hawker"},
-			FeaturedImage: "/images/blog/jb-food-guide.jpg",
+			FeaturedImage: "/images/blog/jb-food-guide.webp",
 			Content: `
 <h2>Why JB Is a Backpacker's Food Paradise</h2>
 <p>Johor Bahru sits at the crossroads of Malay, Chinese, Indian, and Peranakan culinary traditions — and the prices are absurdly low. A full meal at a hawker centre runs RM5–12, a pulled tea costs RM2, and the quality of food rivals cities ten times its size. For backpackers crossing the border from Singapore, where a similar meal costs SGD8–15, JB feels like a food revelation.</p>
@@ -122,7 +264,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "9 min read",
 			Tags:          []string{"johor-bahru", "singapore", "causeway", "border-crossing", "backpacker", "budget-travel"},
-			FeaturedImage: "/images/blog/causeway-guide.jpg",
+			FeaturedImage: "/images/blog/causeway-guide.webp",
 			Content: `
 <h2>Why Cross the Causeway?</h2>
 <p>The Johor–Singapore Causeway is one of the busiest land border crossings in the world, connecting Singapore's Woodlands district to Johor Bahru, Malaysia. For travellers based in Singapore, JB offers dramatically cheaper food, shopping, and accommodation — making it the most popular day trip from the island. For backpackers, it's even more strategic: stay in JB at a fraction of Singapore prices and day-trip into Singapore whenever you want.</p>
@@ -191,7 +333,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "8 min read",
 			Tags:          []string{"johor-bahru", "budget-travel", "backpacker", "things-to-do", "malaysia", "free-activities"},
-			FeaturedImage: "/images/blog/jb-budget-activities.jpg",
+			FeaturedImage: "/images/blog/jb-budget-activities.webp",
 			Content: `
 <h2>JB on a Shoestring</h2>
 <p>Johor Bahru isn't on most backpacker itineraries — and that's exactly what makes it great. While tourists crowd Kuala Lumpur's Petronas Towers, JB offers authentic Malaysian life without the tourist markup. Better still, most of JB's best experiences cost little or nothing. Here are ten things to do in Johor Bahru that won't break your budget.</p>
@@ -239,7 +381,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "8 min read",
 			Tags:          []string{"johor-bahru", "food", "hawker", "street-food", "backpacker", "budget-travel"},
-			FeaturedImage: "/images/blog/jb-hawker-centres.jpg",
+			FeaturedImage: "/images/blog/jb-hawker-centres.webp",
 			Content: `
 <h2>Hawker Culture in Johor Bahru</h2>
 <p>Hawker centres are the beating heart of Malaysian food culture, and Johor Bahru has some of the best in the country. Unlike restaurants, hawker centres are open-air or semi-covered food courts where independent stall operators cook single dishes to perfection. You'll find a dozen stalls under one roof, each specialising in one thing — noodles, rice, grilled meats, or desserts. Pick a seat, order from as many stalls as you want, and eat like a local for a fraction of restaurant prices.</p>
@@ -297,7 +439,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "8 min read",
 			Tags:          []string{"johor-bahru", "singapore", "budget-travel", "backpacker", "malaysia", "comparison"},
-			FeaturedImage: "/images/blog/jb-vs-singapore.jpg",
+			FeaturedImage: "/images/blog/jb-vs-singapore.webp",
 			Content: `
 <h2>The Backpacker's Dilemma</h2>
 <p>Singapore is one of the most expensive cities in Asia. A hostel bed costs SGD40–60 per night. A hawker meal — the cheapest eating option — runs SGD5–8. A single day in Singapore can easily cost SGD100–150 including transport, food, and one or two attractions. For backpackers on a Southeast Asian circuit, three nights in Singapore can consume a week's budget for Thailand or Vietnam.</p>
@@ -364,7 +506,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "8 min read",
 			Tags:          []string{"johor-bahru", "hidden-gems", "local-life", "backpacker", "malaysia", "off-the-beaten-path"},
-			FeaturedImage: "/images/blog/jb-hidden-gems.jpg",
+			FeaturedImage: "/images/blog/jb-hidden-gems.webp",
 			Content: `
 <h2>The JB That Tourists Miss</h2>
 <p>Most visitors to Johor Bahru follow the same script: cross from Singapore, shop at City Square, eat at a hawker centre, go home. They miss the city entirely. JB is a layered place — Malay, Chinese, Indian, and Peranakan cultures have been trading, cooking, and building here for over a century, and the results are tucked into back streets, heritage districts, and neighbourhoods that rarely make the guidebooks.</p>
@@ -408,7 +550,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "10 min read",
 			Tags:          []string{"singapore", "jobs", "career", "work-pass", "malaysia", "job-search"},
-			FeaturedImage: "/images/blog/singapore-jobs-guide.jpg",
+			FeaturedImage: "/images/blog/singapore-jobs-guide.webp",
 			Content: `
 <h2>Why Malaysians Move to Singapore</h2>
 <p>Singapore attracts Malaysian professionals seeking higher salaries. A RM6,000 earner might earn SGD6,500 (RM24,000)—a massive jump. The economy, institutions, and international companies create opportunities unavailable in Malaysia. Securing a role requires strategy, timing, and understanding visa rules.</p>
@@ -473,7 +615,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "12 min read",
 			Tags:          []string{"singapore", "work-pass", "career", "expat", "malaysia", "employment-pass", "visa"},
-			FeaturedImage: "/images/blog/singapore-work-pass-guide.jpg",
+			FeaturedImage: "/images/blog/singapore-work-pass-guide.webp",
 			Content: `
 <h2>Singapore's Work Visa System Explained</h2>
 <p>Malaysia is Singapore's top source of migrant workers, accounting for 30% of foreign labour. The Ministry of Manpower (MOM) manages work passes under three main categories: Employment Pass (EP), S Pass, and Work Permit. Each serves a different skill level and salary band. Understanding which pass you qualify for is critical before job hunting.</p>
@@ -577,7 +719,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "8 min read",
 			Tags:          []string{"johor-bahru", "singapore", "commuter", "work", "malaysia", "cross-border", "cost-of-living"},
-			FeaturedImage: "/images/blog/jb-singapore-commuter.jpg",
+			FeaturedImage: "/images/blog/jb-singapore-commuter.webp",
 			Content: `
 <h2>The Commuter Advantage</h2>
 <p>Thousands of Malaysians cross the Causeway every weekday. The math is simple: Singapore salary (SGD4,000–8,000/month), Johor Bahru living costs (roughly RM2,500–3,500/month for rent, food, and transport). The gap between what you earn and what you spend is larger than almost any arrangement possible in either country alone. For someone on a <a href="singapore-work-pass-guide-malaysians">SGD5,000 Employment Pass</a>, living in JB typically means saving SGD2,000–3,000 every month.</p>
@@ -719,7 +861,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "9 min read",
 			Tags:          []string{"gig-economy", "malaysia", "work", "freelance", "income", "job-seeker"},
-			FeaturedImage: "/images/blog/gig-jobs.jpg",
+			FeaturedImage: "/images/blog/gig-jobs.webp",
 			Content: `
 <h2>Making Money While You Wait</h2>
 <p>Singapore work pass approvals take 4–12 weeks. Pelangi guests often ask: how do I earn during this gap? The answer: Malaysia's gig economy. You can earn RM1,500–4,000/month with zero commitment. Here are 5 proven gig jobs for your transition.</p>
@@ -785,7 +927,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "8 min read",
 			Tags:          []string{"johor-bahru", "backpacker", "budget-travel", "itinerary", "malaysia", "hostel"},
-			FeaturedImage: "/images/blog/jb-backpacker-itinerary.jpg",
+			FeaturedImage: "/images/blog/jb-backpacker-itinerary.webp",
 			Content: `
 <h2>The RM250 Challenge: Is It Possible?</h2>
 <p>Three days in Johor Bahru for under RM250 total? Yes. This includes accommodation, all meals, transport, and activities. Here's the day-by-day breakdown that proves it.</p>
@@ -865,7 +1007,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "6 min read",
 			Tags:          []string{"新山", "住宿", "胶囊旅馆", "马来西亚", "背包旅行", "柔佛"},
-			FeaturedImage: "/images/blog/jb-food-guide.jpg",
+			FeaturedImage: "/images/blog/jb-food-guide.webp",
 			Content: `
 <h2>为什么选择胶囊旅馆？</h2>
 <p>胶囊旅馆（Capsule Hostel）源自日本，以其高性价比和私密性著称。每个床位配备独立的私人舱体，拥有个人插座、USB充电口、阅读灯和拉帘，让你在共享空间中享有属于自己的小天地。对于独自旅行者、背包客和数字游民来说，胶囊旅馆是兼顾预算与品质的最佳选择。</p>
@@ -920,7 +1062,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "8 min read",
 			Tags:          []string{"新加坡", "新山", "交通", "过关", "长堤", "马来西亚"},
-			FeaturedImage: "/images/blog/causeway-guide.jpg",
+			FeaturedImage: "/images/blog/causeway-guide.webp",
 			Content: `
 <h2>从新加坡去新山的主要方式</h2>
 <p>新加坡与新山之间有两个陆路通关口：<strong>兀兰关卡（Woodlands / JB Sentral CIQ）</strong>和<strong>大士关卡（Tuas / Sultan Abu Bakar CIQ）</strong>。大多数旅客选择兀兰关卡，因为交通更方便。</p>
@@ -976,7 +1118,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "10 min read",
 			Tags:          []string{"新山", "自由行", "旅游攻略", "马来西亚", "柔佛", "Visit Malaysia 2026"},
-			FeaturedImage: "/images/blog/jb-3-days.jpg",
+			FeaturedImage: "/images/blog/jb-3-days.webp",
 			Content: `
 <h2>新山：被严重低估的马来西亚城市</h2>
 <p>很多旅客把新山当作前往吉隆坡的中转站，却错过了这座城市本身的精彩。新山（Johor Bahru，简称 JB）是马来西亚第二大城市，拥有丰富的美食文化、独特的历史遗迹、亲民的购物商场，以及距离新加坡仅15分钟的地理优势。2026年，随着 Visit Malaysia 2026 旅游计划推出，新山更是成为热门目的地。</p>
@@ -1060,7 +1202,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "5 min read",
 			Tags:          []string{"gig-economy", "johor-bahru", "lalamove", "delivery", "malaysia", "side-hustle"},
-			FeaturedImage: "/images/blog/lalamove-driver-guide.jpg",
+			FeaturedImage: "/images/blog/lalamove-driver-guide.webp",
 			Content: `
 <h2>Start Earning With Lalamove in Johor Bahru</h2>
 <p>Lalamove connects drivers with customers needing parcels, documents, and goods delivered. Work your own hours in JB and earn RM25–80 per job. This guide covers registration, vehicle options, earnings, and how Lalamove compares to Foodpanda and Grab.</p>
@@ -1124,7 +1266,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "5 min read",
 			Tags:          []string{"johor-bahru", "night-market", "pasar-malam", "street-food", "taman-pelangi", "budget-travel"},
-			FeaturedImage: "/images/blog/jb-food-guide.jpg",
+			FeaturedImage: "/images/blog/jb-food-guide.webp",
 			Content: `
 <h2>The Night Market That's Literally Outside Our Door</h2>
 <p>Every Tuesday evening, Jalan Perang — the same street where <a href="/rooms">Pelangi Capsule Hostel</a> sits — transforms into one of Johor Bahru's most beloved weekly night markets. The <strong>Taman Pelangi Pasar Malam</strong> stretches roughly 500–600 metres along the road, filling the air with the smell of charcoal satay, frying carrot cake, and freshly squeezed sugar cane juice.</p>
@@ -1197,7 +1339,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "5 min read",
 			Tags:          []string{"新山", "夜市", "pasar-malam", "彩虹花园", "街头美食", "马来西亚"},
-			FeaturedImage: "/images/blog/jb-food-guide.jpg",
+			FeaturedImage: "/images/blog/jb-food-guide.webp",
 			Content: `
 <h2>就在旅馆门口的夜市！</h2>
 <p>每个星期二傍晚，<a href="/zh/rooms">彩虹胶囊旅馆</a>门前的 Jalan Perang 就会摇身一变，成为新山其中一个最受本地人喜爱的周夜市集。<strong>彩虹花园（Taman Pelangi）Pasar Malam</strong> 沿路绵延约 500–600 米，木炭沙爹的烟香、大铁板煎萝卜糕的焦香、新鲜榨甘蔗汁的清甜……还没走到，香味已经飘来了。</p>
@@ -1270,7 +1412,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "6 min read",
 			Tags:          []string{"中国游客", "马来西亚免签", "签证攻略", "新山", "柔佛", "出行攻略"},
-			FeaturedImage: "/images/blog/jb-3-days.jpg",
+			FeaturedImage: "/images/blog/jb-3-days.webp",
 			Content: `
 <h2>中国护照赴马来西亚：30天免签！</h2>
 <p>2023年12月起，中国与马来西亚互免签证协议正式生效。<strong>中国护照持有者赴马来西亚无需申请签证，可享最长30天免签停留</strong>。这意味着你可以直接购票出发，抵达马来西亚各国际机场或陆路关卡时，只需出示护照即可入境。</p>
@@ -1343,7 +1485,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "5 min read",
 			Tags:          []string{"中国游客", "微信支付", "支付宝", "新山", "马来西亚", "换汇"},
-			FeaturedImage: "/images/blog/jb-transport-guide.jpg",
+			FeaturedImage: "/images/blog/jb-transport-guide.webp",
 			Content: `
 <h2>微信支付 / 支付宝在新山能用吗？</h2>
 <p><strong>可以用，而且越来越普遍！</strong> 近年来，随着中国游客赴马来西亚人数大幅增长，新山越来越多的商家开始接受微信支付（WeChat Pay）和支付宝（Alipay）。特别是在购物中心、连锁餐厅、药妆店和旅游景点，扫码支付已经非常普遍。</p>
@@ -1412,7 +1554,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "7 min read",
 			Tags:          []string{"中国游客", "新山购物", "马来西亚购物", "柔佛", "攻略", "AEON"},
-			FeaturedImage: "/images/blog/jb-3-days.jpg",
+			FeaturedImage: "/images/blog/jb-3-days.webp",
 			Content: `
 <h2>为什么中国游客要来新山购物？</h2>
 <p>新山（Johor Bahru）紧邻新加坡，却拥有马来西亚的物价水平——这意味着同款商品，比新加坡便宜 30-50%，部分进口保健品和奢侈品价格也比国内更具吸引力。加上中国护照赴马来西亚30天免签，越来越多的中国游客把新山纳入东南亚行程，专程来购物。</p>
@@ -1504,7 +1646,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "7 min read",
 			Tags:          []string{"中国游客", "新山美食", "清真美食", "马来西亚饮食", "柔佛", "吃喝攻略"},
-			FeaturedImage: "/images/blog/jb-food-guide.jpg",
+			FeaturedImage: "/images/blog/jb-food-guide.webp",
 			Content: `
 <h2>中国游客在新山吃饭：你需要了解的基本知识</h2>
 <p>马来西亚是多元文化融合的美食天堂，但"清真"（Halal）这个概念可能让初次到访的中国游客感到困惑。别担心——新山有大量<strong>非清真华人餐厅</strong>，肉骨茶、烧腊、猪肉炒粉一样都少不了。同时，清真美食的品质也极高，绝对值得尝试。本文帮你理清楚，按自己的饮食习惯放心吃。</p>
@@ -1583,7 +1725,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "5 min read",
 			Tags:          []string{"johor-bahru", "transport", "backpacker", "budget-travel", "grab", "bus", "getting-around"},
-			FeaturedImage: "/images/blog/jb-transport-guide.jpg",
+			FeaturedImage: "/images/blog/jb-transport-guide.webp",
 			Content: `
 <h2>Getting Around JB Without a Car</h2>
 <p>You don't need a car in JB. You have Grab, buses, walking, and cross-border rides to Singapore — all on a backpacker budget.</p>
@@ -1680,7 +1822,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "6 min read",
 			Tags:          []string{"food", "johor", "specialty-dish", "jb-guide"},
-			FeaturedImage: "/images/blog/laksa-johor-guide.jpg",
+			FeaturedImage: "/images/blog/laksa-johor-guide.webp",
 			Content: `
 <h2>What Is Laksa Johor?</h2>
 <p><strong>Laksa Johor</strong> is a creamy coconut-based noodle soup unique to the state of Johor. Unlike laksa from other regions in Malaysia (Laksa Lemak from KL, Laksa Penang, Laksa Sarawak), Laksa Johor uses thick spaghetti noodles instead of rice noodles, giving it a distinctly different texture and mouthfeel. The broth is rich, aromatic, and infused with fish, coconut milk, and spices — making it one of the most indulgent noodle dishes in Malaysia.</p>
@@ -1747,7 +1889,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "5 min read",
 			Tags:          []string{"food", "johor", "specialty-dish", "heritage-food"},
-			FeaturedImage: "/images/blog/mee-rebus-johor-guide.jpg",
+			FeaturedImage: "/images/blog/mee-rebus-johor-guide.webp",
 			Content: `
 <h2>What Is Mee Rebus Johor?</h2>
 <p><strong>Mee Rebus Johor</strong> is a comfort noodle dish unique to Johor—yellow egg noodles swimming in a thick, slightly sweet potato-based gravy infused with dried shrimp, garlic, and spices. Unlike Mee Rebus from Kuala Lumpur, which is spicier and uses a more watery gravy, the Johor version is creamier, richer, and distinctly sweet. The dish has roots tracing back to 1918 when Chinese immigrants blended Malay-inspired gravies with noodle cooking techniques, creating what locals now fiercely protect as a Johor heritage dish.</p>
@@ -1790,7 +1932,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "5 min read",
 			Tags:          []string{"food", "breakfast", "roti-canai", "taman-pelangi", "budget-food"},
-			FeaturedImage: "/images/blog/best-roti-canai-johor-bahru.jpg",
+			FeaturedImage: "/images/blog/best-roti-canai-johor-bahru.webp",
 			Content: `
 <h2>Roti Canai vs Prata — Same Dish, Different Name</h2>
 <p>If you're crossing from Singapore, you already know <strong>prata</strong>. In Malaysia, the exact same flatbread is called <strong>roti canai</strong> (pronounced "cha-nai"). Same flaky, buttery dough, same technique — just a different name across the Causeway. One key difference: Malaysian roti canai is almost always cheaper (RM1–2 per piece vs SGD2–3 in Singapore) and served at open-air mamak stalls 24 hours a day. The dhal curry and fish curry sides are also richer and more generous in JB.</p>
@@ -1829,7 +1971,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "7 min read",
 			Tags:          []string{"taman-pelangi", "jb-neighborhood", "local-guide", "johor-bahru"},
-			FeaturedImage: "/images/blog/taman-pelangi-neighborhood-guide.jpg",
+			FeaturedImage: "/images/blog/taman-pelangi-neighborhood-guide.webp",
 			Content: `
 <h2>Getting Here</h2>
 <p><strong>Taman Pelangi</strong> is a mature residential and commercial district in central Johor Bahru, about 3 km from JB Sentral. From Singapore: take the MRT to Woodlands, cross via Causeway Link bus (RM3.50), then a 10-minute Grab (~RM8) or bus 23/41 from the JB Sentral bus terminal directly to Taman Pelangi. From JB City Centre: 10-minute Grab (RM8–12) or a 25-minute walk via Jalan Abdul Samad.</p>
@@ -1862,7 +2004,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "6 min read",
 			Tags:          []string{"shopping", "jpo", "johor-premium-outlets", "singapore-shoppers"},
-			FeaturedImage: "/images/blog/johor-premium-outlets.jpg",
+			FeaturedImage: "/images/blog/johor-premium-outlets.webp",
 			Content: `
 <h2>Quick Comparison: JPO vs Singapore Outlet Malls</h2>
 <table>
@@ -1906,7 +2048,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "6 min read",
 			Tags:          []string{"budget-food", "cheap-eats", "johor-bahru", "hawker-food"},
-			FeaturedImage: "/images/blog/jb-cheap-eats.jpg",
+			FeaturedImage: "/images/blog/jb-cheap-eats.webp",
 			Content: `
 <h2>Food in JB vs Singapore: The Price Difference</h2>
 <p>A full meal in Singapore's hawker centres costs SGD5–8 (RM17–27). Cross the Causeway into Johor Bahru, and that same meal costs RM5–8 (SGD1.50–2.50). For budget travellers, the food price difference alone makes JB worth a visit — but the quality is just as good. Here are 15 authentic, delicious, and absurdly cheap dishes you can find throughout JB, all under RM10.</p>
@@ -1952,7 +2094,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "10 min read",
 			Tags:          []string{"changi-airport", "singapore", "johor-bahru", "transit", "budget-travel", "airport-hotel-alternative", "malaysia"},
-			FeaturedImage: "/images/blog/changi-airport-transit-jb.jpg",
+			FeaturedImage: "/images/blog/changi-airport-transit-jb.webp",
 			Content: `
 <h2>The Changi Airport Hotel Problem</h2>
 <p>You've got a long layover at Changi Airport. Maybe your connecting flight is tomorrow morning. Maybe you landed at midnight and your next leg doesn't leave until noon. Either way, you need somewhere to sleep.</p>
@@ -2054,7 +2196,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "11 min read",
 			Tags:          []string{"johor-bahru", "singapore", "day-trip", "budget-travel", "backpacker", "malaysia", "accommodation"},
-			FeaturedImage: "/images/blog/jb-singapore-day-trip-base.jpg",
+			FeaturedImage: "/images/blog/jb-singapore-day-trip-base.webp",
 			Content: `
 <h2>The Strategy: Sleep in JB, Explore Singapore</h2>
 <p>Here's a travel hack Southeast Asia backpackers have used for years: stay in Johor Bahru, Malaysia, and day-trip into Singapore. The two cities are connected by a 1km causeway, and the price gap is enormous.</p>
@@ -2190,7 +2332,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "9 min read",
 			Tags:          []string{"樟宜机场", "新加坡", "新山", "中转", "省钱", "胶囊旅馆", "马来西亚"},
-			FeaturedImage: "/images/blog/changi-airport-transit-jb.jpg",
+			FeaturedImage: "/images/blog/changi-airport-transit-jb.webp",
 			Content: `
 <h2>樟宜机场住宿太贵了</h2>
 <p>在樟宜机场中转要过夜？打开订房App那一刻你就懂了——机场周边酒店SGD150-300一晚（约人民币800-1600），机场里的胶囊休息室也要SGD50+（约人民币270+）。就睡一觉，这价格真的肉疼。</p>
@@ -2278,7 +2420,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "10 min read",
 			Tags:          []string{"新山", "新加坡", "一日游", "省钱", "背包旅行", "马来西亚", "住宿"},
-			FeaturedImage: "/images/blog/jb-singapore-day-trip-base.jpg",
+			FeaturedImage: "/images/blog/jb-singapore-day-trip-base.webp",
 			Content: `
 <h2>住新山、玩新加坡——最聪明的省钱方式</h2>
 <p>第一次来东南亚的朋友，十有八九直接订新加坡的酒店。但玩过的人都知道：<strong>住在马来西亚新山（Johor Bahru），白天坐巴士过关去新加坡逛，晚上回来吃饭睡觉</strong>。两座城就隔一条海峡，过关45分钟到1个半小时，省下来的钱够你多玩好几天。</p>
@@ -2372,7 +2514,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "9 min read",
 			Tags:          []string{"ktm-ets", "train", "kuala-lumpur", "johor-bahru", "travel-tips", "tourist", "ktmb"},
-			FeaturedImage: "/images/blog/ets-train-jb.jpg",
+			FeaturedImage: "/images/blog/ets-train-jb.webp",
 			Content: `
 <h2>Why Take the Train to Johor Bahru?</h2>
 <p>Flying between Kuala Lumpur and Johor Bahru is fast, but when you factor in getting to the airport, checking in, and making your way into JB from Senai Airport, the time advantage shrinks quickly. The KTM ETS (Electric Train Service) pulls into <strong>JB Sentral</strong> — right in the heart of the city, next to the Causeway immigration complex. No airport buses, no long Grab rides from Senai. You step off the train and you are already in Johor Bahru.</p>
@@ -2429,7 +2571,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "7 min read",
 			Tags:          []string{"jb-sentral", "train", "taman-pelangi", "arrival", "travel-tips", "tourist", "getting-here"},
-			FeaturedImage: "/images/blog/jb-sentral-arrival.jpg",
+			FeaturedImage: "/images/blog/jb-sentral-arrival.webp",
 			Content: `
 <h2>You've Just Arrived at JB Sentral — Now What?</h2>
 <p>JB Sentral is a busy, multi-level transport hub that doubles as a border crossing complex. For first-time visitors, stepping off the train and being confronted with signs for immigration, City Square Mall, taxis, buses, and the CIQ checkpoint all at once can feel a little overwhelming. Take a breath. Getting from here to Taman Pelangi is genuinely easy and takes about 10 minutes.</p>
@@ -2484,7 +2626,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "8 min read",
 			Tags:          []string{"ktm-ets", "火车", "新山", "交通攻略", "旅游", "kuala-lumpur"},
-			FeaturedImage: "/images/blog/ets-train-jb.jpg",
+			FeaturedImage: "/images/blog/ets-train-jb.webp",
 			Content: `
 <h2>为什么选择坐火车去新山？</h2>
 <p>很多游客去新山（Johor Bahru，简称JB）会选择飞机或大巴，但 <strong>KTM ETS 电气化列车</strong>其实是更舒适、更省心的选择——尤其是从吉隆坡出发的旅客。</p>
@@ -2560,7 +2702,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "6 min read",
 			Tags:          []string{"johor-bahru", "johor-election", "public-holiday", "causeway", "travel-tips", "malaysia"},
-			FeaturedImage: "/images/blog/causeway-guide.jpg",
+			FeaturedImage: "/images/blog/causeway-guide.webp",
 			Content: `
 <h2>The Short Version</h2>
 <p>Johor holds its <strong>16th State Assembly election</strong> with polling on <strong>Saturday 11 July 2026</strong>. Polling day is a <strong>public holiday in Johor state</strong> (not in the rest of Malaysia or Singapore). Early voting for police and military personnel happens on 7 July, and campaigning runs until 11:59 PM on 10 July.</p>
@@ -2619,7 +2761,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "5 min read",
 			Tags:          []string{"rts-link", "johor-bahru", "singapore", "commuter", "causeway", "jb-travel-2026", "rail"},
-			FeaturedImage: "/images/blog/rts-link-jb-singapore-final-testing-2026.jpg",
+			FeaturedImage: "/images/blog/rts-link-jb-singapore-final-testing-2026.webp",
 			Content: `
 <h2>The Short Version</h2>
 <p>The Johor Bahru–Singapore RTS Link is a 4 km light rail line connecting <strong>Bukit Chagar station (JB)</strong> to <strong>Woodlands North station (Singapore)</strong>. Trials began in December 2025 without passengers, and from July 2026 the project entered its final comprehensive testing phase — the most complex stretch, involving customs, immigration, and security agencies from both countries simultaneously. Targeted completion remains <strong>31 December 2026</strong>, with full public operations expected by <strong>January 2027</strong>.</p>
@@ -2699,7 +2841,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "7 min read",
 			Tags:          []string{"johor-bahru", "july", "low-season", "durian-season", "budget-travel", "things-to-do", "travel-tips"},
-			FeaturedImage: "/images/blog/july-best-month-visit-johor-bahru-low-season.jpg",
+			FeaturedImage: "/images/blog/july-best-month-visit-johor-bahru-low-season.webp",
 			Content: `
 <h2>The Short Version</h2>
 <p>July is a low-season month for JB tourism. That means shorter queues at LEGOLAND and other attractions, easier table-finding at popular restaurants, and the same accommodation you would pay a premium for in December available at everyday rates. It also coincides with <strong>peak durian season</strong> — arguably the single best reason to be in Johor in the middle of the year. There is one scheduling note worth knowing about (more on that below), but overall, July is quietly one of the better months to visit if you are travelling on a budget.</p>
@@ -2797,7 +2939,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "7 min read",
 			Tags:          []string{"monthly-stay", "jb-singapore-commute", "budget-accommodation", "johor-bahru", "long-stay", "capsule-hostel", "cost-of-living"},
-			FeaturedImage: "/images/blog/rm594-month-jb-long-stay-singapore-commute-base.jpg",
+			FeaturedImage: "/images/blog/rm594-month-jb-long-stay-singapore-commute-base.webp",
 			Content: `
 <h2>The Problem With Signing a Tenancy Before Your Job Starts</h2>
 <p>You've landed a job offer in Singapore. The start date is three weeks away. Your new employer wants you at the office in Toa Payoh. You're sitting in Johor Bahru, Googling "room rental JB near CIQ" and realising that every room listing comes with strings attached: two months deposit, one month advance, 12-month contract, utilities separate.</p>
@@ -2907,7 +3049,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "7 min read",
 			Tags:          []string{"singapore", "work-permit", "lqs", "s-pass", "malaysian-workers", "career", "policy-2026"},
-			FeaturedImage: "/images/blog/singapore-lqs-1800-july-2026-malaysians-guide.jpg",
+			FeaturedImage: "/images/blog/singapore-lqs-1800-july-2026-malaysians-guide.webp",
 			Content: `
 <h2>Singapore's Local Qualifying Salary Changed on 1 July 2026</h2>
 <p>If you're a Malaysian looking for work in Singapore — or already there on a Work Permit or S Pass and due for renewal — there's a policy update that directly affects your chances of getting hired or renewed: the <strong>Local Qualifying Salary (LQS) rose from S$1,600 to S$1,800</strong> effective 1 July 2026.</p>
@@ -3001,7 +3143,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "6 min read",
 			Tags:          []string{"durian-season", "johor-bahru", "food", "musang-king", "budget-travel", "tan-hiok-nee", "night-stalls"},
-			FeaturedImage: "/images/blog/jb-durian-season-july-2026-budget-guide.jpg",
+			FeaturedImage: "/images/blog/jb-durian-season-july-2026-budget-guide.webp",
 			Content: `
 <h2>Why July Is the Best Time to Visit JB for Durian</h2>
 <p>If you time your trip to Johor Bahru in July, you land in the middle of peak durian season. Supply trucks roll down from Pahang and Johor's inland orchards every night, and the heritage streets around <strong>Jalan Tan Hiok Nee</strong> transform into a durian lover's circuit from early evening onwards. Stalls stack crates three rows deep, and the smell hits you from the end of the street — you will not miss them.</p>
@@ -3081,7 +3223,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "6 min read",
 			Tags:          []string{"job-fair", "johor-bahru", "jobs", "work-in-singapore", "career", "budget-weekend", "mid-valley-southkey"},
-			FeaturedImage: "/images/blog/mystarjob-fair-jb-july-2026-weekend-plan.jpg",
+			FeaturedImage: "/images/blog/mystarjob-fair-jb-july-2026-weekend-plan.webp",
 			Content: `
 <h2>The myStarjob Fair Is Coming to JB — Here Is How to Make the Most of It</h2>
 <p>The <strong>myStarjob Fair</strong> is scheduled for <strong>Saturday 25 and Sunday 26 July 2026</strong>, from 11:00 AM, at <strong>Mid Valley Exhibition Centre, Mid Valley Southkey, Johor Bahru</strong>. It brings together employers from Malaysia and Singapore under one roof — which makes it genuinely worth planning a weekend trip around if you are a job-hunter based in Johor or crossing from Singapore.</p>
@@ -3174,7 +3316,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "5 min read",
 			Tags:          []string{"johor-bahru", "transit", "foreign-workers", "senai-airport", "changi", "budget-accommodation", "causeway"},
-			FeaturedImage: "/images/blog/jb-transit-base-foreign-workers-guide.jpg",
+			FeaturedImage: "/images/blog/jb-transit-base-foreign-workers-guide.webp",
 			Content: `
 <h2>The Short Version</h2>
 <p>We see this pattern regularly at Pelangi Capsule Hostel: a guest from Myanmar, Indonesia, or the Philippines checks in late at night, sleeps, and is gone by morning to catch a flight or cross back into Singapore. Sometimes it's two or three nights while they sort paperwork or wait on a work-permit outcome. JB has become a quiet but reliable transit hub for foreign workers in the region — and this guide explains why, and how to plan it properly.</p>
@@ -3271,7 +3413,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "6 min read",
 			Tags:          []string{"room-for-rent", "bilik-sewa", "taman-pelangi", "johor-bahru", "monthly-rental", "long-stay", "budget-accommodation"},
-			FeaturedImage: "/images/blog/room-for-rent-taman-pelangi-jb-rm500-month.jpg",
+			FeaturedImage: "/images/blog/room-for-rent-taman-pelangi-jb-rm500-month.webp",
 			Content: `
 <h2>The Short Version</h2>
 <p>Alongside our capsule pods, we rent out <strong>private rooms on a monthly basis from RM500/month</strong>, located above the 7-Eleven in Taman Pelangi — a short walk from Pelangi Capsule Hostel and managed by the same team. The deposit is a flat <strong>RM250</strong>, not the two-months-plus-one-month advance that most JB room rentals ask for. If you want your own lockable room in one of JB's most convenient neighbourhoods without signing a 12-month tenancy, this is that option.</p>
@@ -3343,7 +3485,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "7 min read",
 			Tags:          []string{"gig-economy", "johor-bahru", "grab", "e-hailing", "driver", "malaysia", "side-hustle"},
-			FeaturedImage: "/images/blog/grab-driver-jb-guide-2026.jpg",
+			FeaturedImage: "/images/blog/grab-driver-jb-guide-2026.webp",
 			Content: `
 <h2>Why Grab Works in JB</h2>
 <p>Johor Bahru is one of the busiest e-hailing markets in Malaysia outside the Klang Valley, and the reason is simple: the Causeway. Every day, travellers land at JB Sentral and the CIQ checkpoint needing rides, Singaporeans cross over for weekend food runs and mall trips, and locals move between Taman Pelangi, City Square, KSL, and Mid Valley Southkey. That steady cross-border churn means demand does not depend on one office crowd — it runs mornings, evenings, and weekends.</p>
@@ -3428,7 +3570,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "7 min read",
 			Tags:          []string{"gig-economy", "johor-bahru", "grab", "lalamove", "foodpanda", "delivery", "comparison"},
-			FeaturedImage: "/images/blog/delivery-gig-apps-jb-comparison-2026.jpg",
+			FeaturedImage: "/images/blog/delivery-gig-apps-jb-comparison-2026.webp",
 			Content: `
 <h2>The Question Every New JB Gig Worker Asks</h2>
 <p>Which app should I sign up for first? The honest answer for Johor Bahru in 2026: it depends on your vehicle, your licence, and which hours you can actually work. Each platform has a different sweet spot, and the drivers earning the most here run two or three of them in rotation rather than staying loyal to one.</p>
@@ -3497,7 +3639,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "7 min read",
 			Tags:          []string{"gig-economy", "johor-bahru", "budget", "cost-of-living", "monthly-stay", "long-stay", "delivery"},
-			FeaturedImage: "/images/blog/gig-worker-jb-monthly-budget-guide.jpg",
+			FeaturedImage: "/images/blog/gig-worker-jb-monthly-budget-guide.webp",
 			Content: `
 <h2>The Question Behind Every Gig Sign-Up</h2>
 <p>Can I actually live on this? Delivery and e-hailing income in JB flexes week to week, so the way to answer it is from the cost side: pin your fixed costs low enough that an average month clears them comfortably, and a bad month still covers them. This post lays out a complete, honest month of JB costs for a gig worker — no aspirational condo rent, no pretending you cook every meal.</p>
@@ -3574,7 +3716,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "6 min read",
 			Tags:          []string{"gig-economy", "johor-bahru", "foodpanda", "delivery", "rider", "malaysia", "side-hustle"},
-			FeaturedImage: "/images/blog/foodpanda-rider-jb-guide-2026.jpg",
+			FeaturedImage: "/images/blog/foodpanda-rider-jb-guide-2026.webp",
 			Content: `
 <h2>The Lowest Barrier in the JB Gig Economy</h2>
 <p>Of the major gig platforms operating in Johor Bahru, foodpanda has the gentlest entry requirements — which is exactly why it is the first app most new riders activate. Per foodpanda Malaysia's official rider page, you need:</p>
@@ -3649,7 +3791,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "7 min read",
 			Tags:          []string{"johor-bahru", "hospitals", "medical-emergency", "foreigner-travel", "health", "expat"},
-			FeaturedImage: "/images/blog/medical-emergency-johor-bahru-hospitals-clinics-foreigner-costs.jpg",
+			FeaturedImage: "/images/blog/medical-emergency-johor-bahru-hospitals-clinics-foreigner-costs.webp",
 			Content: `
 <h2>First: Call 999 (MERS)</h2>
 <p>In any life-threatening emergency — chest pain, severe injury, unconscious person, difficulty breathing — your first call is <strong>999</strong>. This is Malaysia's unified emergency hotline, operated by the <strong>Malaysian Emergency Response Service (MERS 999)</strong>. It connects you to ambulance, fire rescue, police, and civil defence from a single number.</p>
@@ -3802,7 +3944,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "7 min read",
 			Tags:          []string{"safety", "scam-awareness", "johor-bahru", "travel-tips", "local-life"},
-			FeaturedImage: "/images/blog/online-friend-romance-scam-safety-johor-bahru.jpg",
+			FeaturedImage: "/images/blog/online-friend-romance-scam-safety-johor-bahru.webp",
 			Content: `
 <h2>Why JB Is a High-Risk Zone for Scams</h2>
 <p>Johor Bahru sits at one of Southeast Asia's busiest crossroads. Every day, tens of thousands of Malaysians commute to Singapore for work, and budget travellers pass through on their way to or from the Causeway. That constant flow of people — many of them young, mobile, and far from their support networks — makes JB a prime hunting ground for scam syndicates.</p>
@@ -3975,7 +4117,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "6 min read",
 			Tags:          []string{"economy-rice", "chap-fan", "nasi-campur", "taman-pelangi", "cheap-food", "hawker", "johor-bahru", "budget-travel"},
-			FeaturedImage: "/images/blog/cheap-mixed-rice-economy-rice-taman-pelangi-jb.jpg",
+			FeaturedImage: "/images/blog/cheap-mixed-rice-economy-rice-taman-pelangi-jb.webp",
 			Content: `
 <h2>What Is Economy Rice?</h2>
 <p>Economy rice goes by several names depending on who you ask. Chinese Malaysians call it <strong>chap fan</strong> (杂饭) or <em>cai fan</em>. Malay Malaysians call it <strong>nasi campur</strong>. Indian Malaysians have their own mixed-rice tradition with banana-leaf service. The mechanics are the same across all three: a stall sets out 10 to 20 pre-cooked dishes in trays — braised meats, stir-fried vegetables, tofu, eggs, curries, sambal — you point at what you want, the server scoops it onto rice, and you pay based on what you picked.</p>
@@ -4079,7 +4221,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "6 min read",
 			Tags:          []string{"johor-bahru", "language-exchange", "english-practice", "mandarin", "malay", "students", "local-life"},
-			FeaturedImage: "/images/blog/language-exchange-partner-johor-bahru-practice-english.jpg",
+			FeaturedImage: "/images/blog/language-exchange-partner-johor-bahru-practice-english.webp",
 			Content: `
 <h2>Why JB Is Unusually Good for Language Exchange</h2>
 <p>Johor Bahru sits at the intersection of three languages used every day — English, Mandarin, and Bahasa Malaysia — plus a daily flow of Singaporeans, Indonesian workers, and travellers from all over Southeast Asia. That mix means genuine demand on both sides of any language swap. A local student who wants to sharpen their English can offer you Mandarin or Malay in return. A foreign visitor who wants to practise Bahasa Malaysia can offer English. The supply of willing partners is there; what most people lack is a way to find them efficiently and meet safely.</p>
@@ -4184,7 +4326,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "5 min read",
 			Tags:          []string{"tourism-tax", "budget-travel", "johor-bahru", "cash-payment", "walk-in", "malaysia-travel", "practical-guide"},
-			FeaturedImage: "/images/blog/malaysia-tourism-tax-jb-hostel-walk-in-guide.jpg",
+			FeaturedImage: "/images/blog/malaysia-tourism-tax-jb-hostel-walk-in-guide.webp",
 			Content: `
 <h2>What Is Malaysia's Tourism Tax?</h2>
 <p>Malaysia introduced the Tourism Tax (TTx) in 2017 under the Tourism Tax Act. The rate is <strong>RM10 per room per night</strong>, and it applies to registered accommodation properties — which includes most hotels, guesthouses, serviced apartments, and hostels in Johor Bahru.</p>
@@ -4237,7 +4379,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "6 min read",
 			Tags:          []string{"johor-bahru", "food-guide", "taman-pelangi", "jalan-perang", "korean-bbq", "halal", "budget-food", "local-eats"},
-			FeaturedImage: "/images/blog/jalan-perang-food-guide-taman-pelangi.jpg",
+			FeaturedImage: "/images/blog/jalan-perang-food-guide-taman-pelangi.webp",
 			Content: `
 <h2>Five Restaurants on the Hostel's Own Street</h2>
 <p>Jalan Perang is one of Taman Pelangi's best-kept food secrets. Within a five-minute walk from Pelangi Capsule Hostel, you have Korean BBQ, Japanese-Western fusion, Teochew fish soup, and one of JB's most famous heritage zi char restaurants — all on the same street. No Grab needed.</p>
@@ -4330,7 +4472,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "5 min read",
 			Tags:          []string{"taman-pelangi", "johor-bahru", "new-cafe", "brunch", "tea", "bar", "2026", "jb-food"},
-			FeaturedImage: "/images/blog/new-cafes-taman-pelangi-jb-2025-2026.jpg",
+			FeaturedImage: "/images/blog/new-cafes-taman-pelangi-jb-2025-2026.webp",
 			Content: `
 <h2>Taman Pelangi's Cafe Scene Is Growing Fast</h2>
 <p>Taman Pelangi has had a strong food reputation for years — Korean BBQ, heritage zi char, and late-night seafood along Jalan Perang. But its cafe scene has expanded quickly in the last twelve months. Three new venues opened in 2025 and early 2026, covering brunch, artisan tea, and nightlife. All three are confirmed open as of mid-2026 with multiple independent sources.</p>
@@ -4404,7 +4546,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "6 min read",
 			Tags:          []string{"johor bahru", "monthly stay", "budget accommodation", "workers", "jb capsule hostel", "long stay"},
-			FeaturedImage: "/images/blog/monthly-stay-capsule-hostel-jb-workers-interns-2026.jpg",
+			FeaturedImage: "/images/blog/monthly-stay-capsule-hostel-jb-workers-interns-2026.webp",
 			Content: `
 <p>I run Pelangi Capsule Hostel at 26A Jalan Perang, Taman Pelangi, Johor Bahru — and over the past year, something has quietly shifted. We started as a backpacker hostel. We still are. But a growing share of our beds are now filled by workers: engineers commuting to Iskandar Puteri, interns on three-month placements in JB, and Malaysians who cross daily into Singapore for work and need a clean, affordable base on this side of the Causeway. This post is for all of them.</p>
 
@@ -4533,7 +4675,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "6 min read",
 			Tags:          []string{"rts-link", "johor-bahru", "taman-pelangi", "singapore", "property", "travel", "budget-travel", "commuter"},
-			FeaturedImage: "/images/blog/taman-pelangi-jb-development-rts-link-2026.jpg",
+			FeaturedImage: "/images/blog/taman-pelangi-jb-development-rts-link-2026.webp",
 			Content: `
 <h2>The RTS Link Is Coming — and Taman Pelangi Is 3 km Away</h2>
 <p>The Johor Bahru–Singapore RTS Link is targeted to open by end of 2026. When it does, the journey between Bukit Chagar station in JB and Woodlands North in Singapore will take approximately five minutes. For Malaysians working in Singapore, for Singaporeans visiting JB for food and a weekend away, and for budget travellers using JB as a cheaper base — this changes the map significantly.</p>
@@ -4591,7 +4733,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "7 min read",
 			Tags:          []string{"johor bahru", "singapore", "budget travel", "overnight stay", "taman pelangi"},
-			FeaturedImage: "/images/blog/is-jb-worth-staying-overnight-2026.jpg",
+			FeaturedImage: "/images/blog/is-jb-worth-staying-overnight-2026.webp",
 			ImageAlt:      "Johor Bahru night skyline viewed from across the Strait of Johor, with the city lights reflecting on the water",
 			InLanguage:    "en",
 			Content: `
@@ -4730,7 +4872,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "7 min read",
 			Tags:          []string{"johor bahru", "singapore", "causeway", "transport", "travel tips", "jb sentral"},
-			FeaturedImage: "/images/blog/singapore-to-jb-transport-guide-avoid-scams-2026.jpg",
+			FeaturedImage: "/images/blog/singapore-to-jb-transport-guide-avoid-scams-2026.webp",
 			Content: `
 <p>The moment you step out of Malaysian customs at JB Sentral, someone will probably approach you. They look confident, they know exactly what you need, and they will tell you the taxi queue is broken or the meter is not working or there is a much better option — their option. This has been happening for years, and it still catches first-timers every single time. I run a hostel at 26A Jalan Perang, Taman Pelangi, and I hear the same story from guests who arrived here via a RM60 "uncle taxi" that should have cost RM10. This guide exists so that does not happen to you.</p>
 
@@ -4859,7 +5001,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "7 min read",
 			Tags:          []string{"rts-link", "johor-bahru", "singapore", "border-crossing", "commuter", "travel-tips"},
-			FeaturedImage: "/images/blog/rts-link-january-2027-jb-travel-guide.jpg",
+			FeaturedImage: "/images/blog/rts-link-january-2027-jb-travel-guide.webp",
 			ImageAlt:      "RTS Link elevated rail structure at Bukit Chagar station in Johor Bahru under construction, nearly complete in 2026",
 			InLanguage:    "en",
 			Content: `
@@ -4984,7 +5126,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "8 min read",
 			Tags:          []string{"visa-run", "johor-bahru", "thailand", "brunei", "indonesia", "budget-travel", "border-crossing", "malaysia-visa"},
-			FeaturedImage: "/images/blog/jb-visa-run-cheapest-routes-thailand-brunei-indonesia.jpg",
+			FeaturedImage: "/images/blog/jb-visa-run-cheapest-routes-thailand-brunei-indonesia.webp",
 			ImageAlt:      "Larkin Sentral bus terminal in Johor Bahru, the departure point for cross-border buses to Thailand and beyond for visa runners",
 			InLanguage:    "en",
 			Content: `
@@ -5176,7 +5318,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Jay Lew",
 			ReadTime:      "6 min read",
 			Tags:          []string{"capsule-hostel", "private-room", "johor-bahru", "accommodation", "budget-travel", "backpacker", "solo-travel"},
-			FeaturedImage: "/images/blog/capsule-pod-vs-private-room-jb-which-to-book.jpg",
+			FeaturedImage: "/images/blog/capsule-pod-vs-private-room-jb-which-to-book.webp",
 			ImageAlt:      "Interior of a capsule pod at Pelangi Capsule Hostel Taman Pelangi JB, showing privacy curtain, personal power socket and reading light",
 			InLanguage:    "en",
 			Content: `
@@ -5188,7 +5330,7 @@ var BlogPosts = func() []BlogPost {
 
 <p>Let's start with money, because that's usually what brings people to a capsule hostel in the first place.</p>
 
-<p>At <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi, a capsule pod runs <strong>RM30 per night on weekdays</strong> and <strong>RM35 on weekends</strong>. For a monthly stay, it starts from <strong>RM594</strong> — that includes WiFi and no deposit required.</p>
+<p>At <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi, a capsule pod is <strong>RM30 for a first-time guest's first night</strong> and <strong>RM35 per night from the second night onward</strong>; repeat guests pay RM35 throughout. For a monthly stay, it starts from <strong>RM594</strong> — that includes WiFi and no deposit required.</p>
 
 <p>Compare that to the private room market in JB:</p>
 
@@ -5309,6 +5451,993 @@ var BlogPosts = func() []BlogPost {
 <p>Neither option is objectively better. It depends on how you travel.</p>
 
 <p>If a capsule pod sounds like your kind of stay, <a href="/rooms">check the full pod specs here</a> or <a href="/book">view availability and book directly</a>.</p>
+`,
+		},
+		// 63 — Chelsea v JDT, 9 Aug 2026. Same night as Singapore National Day.
+		{
+			Slug:          "chelsea-jdt-friendly-jb-where-to-stay-2026",
+			LastModified:  "2026-07-30",
+			ImageAlt:      "Johor Bahru city across the strait from Singapore, illustrating the short crossing between the two cities",
+			Title:         "Chelsea vs JDT in Johor, 9 August 2026 — Where to Stay and How to Get There",
+			Excerpt:       "Chelsea play Johor Darul Ta'zim at Sultan Ibrahim Stadium on Sunday 9 August 2026 — the same night as Singapore's National Day. Here is what that does to JB beds, and how to plan around it.",
+			Date:          "2026-07-30",
+			Category:      "Travel Tips",
+			Author:        "Jay Lew",
+			ReadTime:      "6 min read",
+			Tags:          []string{"johor-bahru", "events", "football", "jdt", "budget-travel", "singapore"},
+			FeaturedImage: "/images/blog/jb-vs-singapore.webp",
+			InLanguage:    "en",
+			Content: `
+<h2>The Fixture</h2>
+
+<p>Chelsea play Johor Darul Ta'zim at Sultan Ibrahim Stadium in Iskandar Puteri on <strong>Sunday 9 August 2026, kick-off 8:00 PM Malaysian time</strong>. The match was originally set for 11 August and was brought forward two days by mutual agreement between the clubs (source: Free Malaysia Today, 9 June 2026). It is the last stop of Chelsea's pre-season tour before the Premier League restarts on 22 August (source: Chelsea FC official site).</p>
+
+<p>The stadium holds about 40,000. Tickets went on general sale through the club's appointed Malaysian ticketing partner — check the official channels rather than resale listings, and confirm the kick-off time on the day, because pre-season fixtures do move.</p>
+
+<h2>Why Beds Will Be Tight That Weekend</h2>
+
+<p>Two things land on the same date, and this is the part most people miss.</p>
+
+<p><strong>9 August 2026 is also Singapore's National Day</strong>, and it falls on a Sunday — which means Monday 10 August is a public holiday in lieu for anyone whose rest day falls on the 9th (source: Singapore Ministry of Manpower public holidays list). So Singapore has a long weekend at exactly the moment 40,000 people are heading to a stadium 20 minutes from the border.</p>
+
+<p>Translation: the Causeway will be busy, and JB accommodation across every price band will be booked earlier than usual. If you are coming for the match, or just crossing for a normal weekend and did not realise the match was on, book before the first week of August.</p>
+
+<h2>Getting to the Stadium</h2>
+
+<p>Sultan Ibrahim Stadium is in Iskandar Puteri, west of Johor Bahru city centre — not in the city itself. From central JB it is a Grab ride; budget more time and more money than usual on match day, because surge pricing and traffic around a full stadium are guaranteed.</p>
+
+<p>Plan the return leg before you go. Leaving a 40,000-capacity stadium at roughly 10 PM with everyone else calling a Grab at the same time is the part of the evening that goes wrong. Either wait it out somewhere nearby, or agree a pickup point away from the stadium exits.</p>
+
+<h2>Where to Stay</h2>
+
+<p>Staying in the city centre rather than next to the stadium is usually the better trade: more food, more transport options, and a short ride back to the border the next morning.</p>
+
+<p><a href="/rooms">Pelangi Capsule Hostel</a> is in Taman Pelangi, central JB. A pod is <strong>RM30 for a first-time guest's first night and RM35 per night after that</strong>; repeat guests pay RM35 throughout. Malaysia Tourism Tax of RM10 per room per night applies to foreign tourists only — Malaysians and permanent residents are exempt.</p>
+
+<p>Check-in is from 2:00 PM, check-out by 12:00 PM, and self check-in runs 24 hours with no curfew — which matters when you are getting back from a night match. Luggage storage before check-in and after check-out is free.</p>
+
+<h2>Crossing the Causeway on Match Weekend</h2>
+
+<p>Standard JB advice applies, only more so:</p>
+
+<ul>
+  <li>Cross very early or very late. Mid-morning Saturday and late Sunday evening are the worst windows on a normal weekend, and this is not a normal weekend.</li>
+  <li>Bus CW1 from Woodlands or bus 170 from Queen Street both reach JB Sentral; motorcycles and buses clear immigration faster than cars.</li>
+  <li>From JB CIQ or JB Sentral to Taman Pelangi is a RM8–12 Grab ride.</li>
+</ul>
+
+<p>Our full route breakdown is in the <a href="/blog/singapore-to-jb-day-trip-causeway-guide">Causeway crossing guide</a>, and there is a separate piece on <a href="/blog/singapore-to-jb-transport-guide-avoid-scams-2026">avoiding transport scams on the JB side</a>.</p>
+
+<h2>If You Are Not Here for the Football</h2>
+
+<p>You still get the crowds. If your trip is flexible, shift it a week either side and JB goes back to normal pricing and normal queues. If it is not flexible, book the bed now and cross at an unfashionable hour.</p>
+
+<p><a href="/book">Check availability and book directly</a> — no booking fee, no OTA commission. See what else is on in <a href="/events">our JB events calendar</a>.</p>
+`,
+		},
+		// 64 — Johor Industrial Fair, 19–21 Aug 2026. Dates confirmed on the
+		// organiser's own domain (johorexpo.com), not an aggregator.
+		{
+			Slug:          "johor-industrial-fair-2026-jb-budget-stay",
+			LastModified:  "2026-07-30",
+			ImageAlt:      "Job fair exhibition hall at Mid Valley Southkey Johor Bahru with attendees in business attire visiting employer booths",
+			Title:         "Johor Industrial Fair 2026 (19–21 August) — Budget Stay Near AICC for Exhibitors and Trade Visitors",
+			Excerpt:       "Three days of manufacturing and automation trade at Austin International Convention Centre. If you are exhibiting or visiting on a per-diem, here is what a bed actually costs in JB and how to get to Mount Austin.",
+			Date:          "2026-07-30",
+			Category:      "Travel Tips",
+			Author:        "Jay Lew",
+			ReadTime:      "5 min read",
+			Tags:          []string{"johor-bahru", "events", "trade-fair", "business-travel", "budget-travel", "mount-austin"},
+			FeaturedImage: "/images/blog/mystarjob-fair-jb-july-2026-weekend-plan.webp",
+			InLanguage:    "en",
+			Content: `
+<h2>The Details</h2>
+
+<p>Johor Industrial Fair 2026 runs <strong>19–21 August 2026, 10:00 AM to 5:00 PM daily</strong>, at Austin International Convention Centre (AICC) in Mount Austin, Johor Bahru. The organiser is FBI Publications (M) Sdn Bhd (source: johorexpo.com, the organiser's own site, checked July 2026).</p>
+
+<p>Two things to know before you turn up:</p>
+
+<ul>
+  <li><strong>Admission is free, but trade only.</strong> You register for a visitor badge online in advance, or on-site with a business card.</li>
+  <li><strong>Under-16s are not admitted.</strong> This is not a family day out — it is a manufacturing and industrial automation trade show.</li>
+</ul>
+
+<h2>Why This Post Exists</h2>
+
+<p>Most JB accommodation writing is aimed at tourists and Causeway day-trippers. Trade-show travel is a different problem: you are here on a company per-diem or your own margin, you need three nights near a convention centre, and you would rather not burn RM250 a night on a business hotel to sleep six hours between stand duty and dinner.</p>
+
+<h2>Getting to AICC From Central JB</h2>
+
+<p>AICC is in Mount Austin, east of the city centre — not walkable from anywhere you would normally stay as a visitor. From Taman Pelangi it is a Grab ride; budget 20–30 minutes in morning traffic, and order earlier than you think on the first morning of a fair.</p>
+
+<p>If you are driving in from Senai Airport or from the Causeway, Mount Austin is straightforward on the Tebrau highway corridor.</p>
+
+<h2>What a Bed Costs</h2>
+
+<p>At <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi, a capsule pod is <strong>RM30 for a first-time guest's first night and RM35 per night after that</strong>; repeat guests pay RM35 throughout. Malaysia Tourism Tax of RM10 per room per night applies to foreign tourists only — Malaysians and permanent residents are exempt.</p>
+
+<p>For a three-night fair, that is RM100 in room charges for a first-time Malaysian guest. Each pod is an enclosed space with a door that locks from the inside, personal air-conditioning, a reading light, USB charging and a power socket, plus a locker in the pod room. Free WiFi throughout, including inside the pods — adequate for email and video calls.</p>
+
+<h2>The Practical Bits for Trade Travel</h2>
+
+<ul>
+  <li><strong>Check-in from 2:00 PM, check-out by 12:00 PM.</strong> Self check-in runs 24 hours with no curfew, so a late arrival the night before setup is fine.</li>
+  <li><strong>Free luggage storage</strong> before check-in and after check-out — useful if your flight out is in the evening of the last day.</li>
+  <li><strong>Food.</strong> Taman Pelangi is surrounded by kopitiam, mamak and restaurants; a local breakfast runs RM3–8. See the <a href="/blog/jalan-perang-food-guide-taman-pelangi">Jalan Perang food guide</a>.</li>
+  <li><strong>Receipts.</strong> Ask at check-in if you need something for a claim.</li>
+</ul>
+
+<h2>One Caveat</h2>
+
+<p>A capsule pod is a shared-bathroom, single-occupancy space. If you are hosting clients, or need to take confidential calls in your room, book a hotel — this is the wrong product for that. If you just need somewhere clean and secure to sleep between fair days, it does the job at a fraction of the price.</p>
+
+<h2>Book</h2>
+
+<p>Fair weeks tighten up JB's budget beds, so book ahead rather than walking in. <a href="/book">Check availability and book directly</a> — no booking fee, no OTA commission. Other dated JB events are in the <a href="/events">events calendar</a>.</p>
+`,
+		},
+		// 65 — Merdeka + Malaysia Day 2026.
+		{
+			Slug:          "merdeka-malaysia-day-2026-jb-long-weekend-guide",
+			LastModified:  "2026-07-30",
+			ImageAlt:      "The Johor–Singapore Causeway land border crossing connecting Woodlands to Johor Bahru",
+			Title:         "Merdeka and Malaysia Day 2026 in Johor Bahru — Dates, Crowds and Where to Stay",
+			Excerpt:       "Merdeka Day falls on Monday 31 August 2026 and Malaysia Day on Wednesday 16 September. Here is what each date actually does to JB — and which one is the long weekend.",
+			Date:          "2026-07-30",
+			Category:      "Travel Tips",
+			Author:        "Jay Lew",
+			ReadTime:      "5 min read",
+			Tags:          []string{"johor-bahru", "merdeka", "malaysia-day", "public-holiday", "budget-travel", "events"},
+			FeaturedImage: "/images/blog/causeway-guide.webp",
+			InLanguage:    "en",
+			Content: `
+<h2>The Two Dates</h2>
+
+<ul>
+  <li><strong>Merdeka Day — Monday 31 August 2026.</strong> A national public holiday in Malaysia, and it lands on a Monday, so most of the country gets a three-day weekend running Saturday 29 to Monday 31 August.</li>
+  <li><strong>Malaysia Day — Wednesday 16 September 2026.</strong> Also a national public holiday, but midweek. No long weekend attached.</li>
+</ul>
+
+<p>(Dates checked against the Johor state holiday list on publicholidays.com.my, July 2026.)</p>
+
+<h2>What That Means If You Are Coming From Singapore</h2>
+
+<p>Worth being precise here, because a lot of travel content gets it wrong: <strong>neither date is a Singapore public holiday.</strong> Merdeka and Malaysia Day are Malaysian holidays. So the crowd on those dates is mostly domestic — Malaysians travelling within Malaysia, and Johoreans working in Singapore heading home.</p>
+
+<p>The practical effect on a Singapore-based traveller is one-directional: the Causeway gets heavy in the JB-bound direction on the Friday and Saturday before Merdeka, and heavy back toward Singapore on Monday evening. JB itself is busier, malls are full, and accommodation books out earlier than a normal weekend.</p>
+
+<p>If you want a quiet JB weekend, the weekend after Merdeka is a much better bet than the weekend of it.</p>
+
+<h2>Note on Johor's Weekend</h2>
+
+<p>Worth clearing up, because a lot of older travel content still gets this wrong: <strong>Johor's weekend is Saturday and Sunday</strong>, the same as the rest of Malaysia and the same as Singapore. The state ran a Friday–Saturday weekend from 2014 but reverted on 1 January 2025 (source: The Star, 7 October 2024, reporting the Regent of Johor's announcement). If you read somewhere that Johor offices close on Fridays, that guide is out of date.</p>
+
+<h2>What Is Open</h2>
+
+<p>On both holidays: banks and government offices close, malls and convenience stores open, most restaurants and hawker stalls open, though smaller kopitiam may start late. The Taman Pelangi night market runs every Tuesday from 4:30 PM regardless — 1 September is a Tuesday, so the market runs the day after Merdeka.</p>
+
+<h2>Where to Stay</h2>
+
+<p><a href="/rooms">Pelangi Capsule Hostel</a> is in Taman Pelangi, central JB: pods at <strong>RM30 for a first-time guest's first night, RM35 per night after that</strong>, repeat guests RM35 throughout. Malaysia Tourism Tax of RM10 per room per night applies to foreign tourists only.</p>
+
+<p>Self check-in runs 24 hours with no curfew, so a late Causeway crossing is not a problem. Luggage storage before check-in and after check-out is free.</p>
+
+<h2>Booking Advice</h2>
+
+<p>For a Malaysian public-holiday weekend, book two to three weeks out. The pattern in JB is that the cheap beds go first and the mid-range hotels hold their rooms at raised rates — so waiting rarely wins.</p>
+
+<p><a href="/book">Check availability</a>, or see what else is coming up in the <a href="/events">JB events calendar</a>. If you are travelling without a car, the <a href="/blog/getting-around-johor-bahru-no-car-guide">no-car transport guide</a> covers buses, Grab and what things cost.</p>
+`,
+		},
+		// 65 — BM twin of the Merdeka post.
+		{
+			Slug:          "cuti-merdeka-2026-johor-bahru-bajet",
+			LastModified:  "2026-07-30",
+			ImageAlt:      "A backpacker exploring Johor Bahru streets on a three-day budget itinerary",
+			Title:         "Cuti Merdeka 2026 di Johor Bahru: Panduan Bajet untuk Hujung Minggu Panjang",
+			Excerpt:       "Hari Merdeka jatuh pada Isnin 31 Ogos 2026 — cuti hujung minggu tiga hari. Ini kadar penginapan sebenar di Taman Pelangi, keadaan lalu lintas Tambak Johor, dan apa yang buka.",
+			Date:          "2026-07-30",
+			Category:      "Travel Tips",
+			Author:        "Jay Lew",
+			ReadTime:      "5 min read",
+			Tags:          []string{"johor-bahru", "merdeka", "cuti-umum", "bajet", "taman-pelangi", "bahasa-melayu"},
+			FeaturedImage: "/images/blog/jb-backpacker-itinerary.webp",
+			InLanguage:    "ms",
+			Content: `
+<h2>Tarikh Cuti</h2>
+
+<ul>
+  <li><strong>Hari Merdeka — Isnin, 31 Ogos 2026.</strong> Cuti umum seluruh negara. Kerana ia jatuh pada hari Isnin, kebanyakan negeri mendapat cuti hujung minggu tiga hari (Sabtu 29 hingga Isnin 31 Ogos).</li>
+  <li><strong>Hari Malaysia — Rabu, 16 September 2026.</strong> Cuti umum juga, tetapi pada pertengahan minggu. Tiada hujung minggu panjang.</li>
+</ul>
+
+<p>(Tarikh disemak dengan senarai cuti umum negeri Johor di publicholidays.com.my, Julai 2026.)</p>
+
+<h2>Minggu Kerja di Johor</h2>
+
+<p>Perlu diperjelas, kerana banyak panduan lama masih salah tentang ini: <strong>hujung minggu di Johor ialah Sabtu dan Ahad</strong>, sama seperti negeri lain dan sama seperti Singapura. Johor mengamalkan hujung minggu Jumaat–Sabtu sejak 2014, tetapi kembali kepada Sabtu–Ahad mulai 1 Januari 2025 (sumber: The Star, 7 Oktober 2024, melaporkan pengumuman Tunku Mahkota Johor). Kalau anda terbaca yang pejabat di Johor tutup hari Jumaat, panduan itu sudah lapuk.</p>
+
+<h2>Lalu Lintas Tambak Johor</h2>
+
+<p>Hari Merdeka bukan cuti umum di Singapura. Jadi aliran utama adalah rakyat Malaysia yang bekerja di Singapura pulang ke Johor pada Jumaat dan Sabtu sebelum cuti, dan kembali ke Singapura pada petang Isnin.</p>
+
+<p>Kalau anda melintas, elakkan waktu pagi Sabtu dan petang Isnin. Lintas sebelum 7 pagi atau selepas 9 malam. Bas CW1 dari Woodlands dan bas 170 dari Queen Street sampai ke JB Sentral; motosikal dan bas lebih cepat melepasi imigresen berbanding kereta.</p>
+
+<h2>Apa yang Buka</h2>
+
+<p>Bank dan pejabat kerajaan tutup. Pusat beli-belah, kedai serbaneka dan kebanyakan restoran serta gerai buka seperti biasa, cuma sesetengah kedai kopi kecil mungkin buka lewat.</p>
+
+<p>Pasar malam Taman Pelangi beroperasi setiap Selasa mulai 4:30 petang — 1 September 2026 ialah hari Selasa, jadi pasar malam berjalan sehari selepas Merdeka.</p>
+
+<h2>Kadar Penginapan</h2>
+
+<p>Di <a href="/rooms">Pelangi Capsule Hostel</a>, Taman Pelangi:</p>
+
+<ul>
+  <li><strong>RM30</strong> — malam pertama untuk tetamu kali pertama</li>
+  <li><strong>RM35</strong> — malam kedua dan seterusnya; tetamu berulang RM35 sepanjang penginapan</li>
+  <li><strong>RM594 sebulan</strong> untuk penginapan bulanan</li>
+  <li>Cukai Pelancongan RM10 sebilik semalam — pelancong asing sahaja; rakyat Malaysia dan pemastautin tetap dikecualikan</li>
+</ul>
+
+<p>Daftar masuk dari 2:00 petang, daftar keluar sebelum 12:00 tengah hari. Daftar masuk sendiri 24 jam, tiada waktu kunci pintu. Simpanan bagasi percuma sebelum daftar masuk dan selepas daftar keluar.</p>
+
+<h2>Tempah Awal</h2>
+
+<p>Untuk hujung minggu cuti umum, tempah dua hingga tiga minggu awal. Katil bajet di JB habis dahulu.</p>
+
+<p><a href="/book">Semak ketersediaan dan tempah terus</a> — tiada yuran tempahan, tiada komisen OTA. Panduan lain dalam Bahasa Melayu: <a href="/blog/hotel-murah-johor-bahru-taman-pelangi-panduan">hotel murah di Taman Pelangi</a>.</p>
+`,
+		},
+		// 66 — scheduled: goes live 2026-10-25, ahead of the Deepavali weekend.
+		{
+			Slug:          "deepavali-2026-jb-long-weekend-guide",
+			LastModified:  "2026-10-25",
+			ImageAlt:      "A spread of Johor Bahru hawker dishes — roti canai, nasi lemak, and local noodles served at a Taman Pelangi food stall",
+			Title:         "Deepavali 2026 in Johor Bahru — A Long Weekend on Both Sides of the Causeway",
+			Excerpt:       "Deepavali falls on Sunday 8 November 2026, with Monday 9 November as the holiday in lieu in both Malaysia and Singapore. That makes it one of the few genuinely two-country long weekends of the year.",
+			Date:          "2026-10-25",
+			Category:      "Travel Tips",
+			Author:        "Jay Lew",
+			ReadTime:      "5 min read",
+			Tags:          []string{"johor-bahru", "deepavali", "public-holiday", "events", "budget-travel", "singapore"},
+			FeaturedImage: "/images/blog/jb-food-guide.webp",
+			InLanguage:    "en",
+			Content: `
+<h2>The Dates</h2>
+
+<p><strong>Deepavali 2026 falls on Sunday 8 November.</strong> In Malaysia, Monday 9 November is the public holiday observance (source: Johor state holiday list, publicholidays.com.my). In Singapore, Deepavali is also a public holiday on 8 November, with Monday 9 November a holiday in lieu for anyone whose rest day falls on the Sunday (source: Singapore Ministry of Manpower).</p>
+
+<p>That combination is rarer than it sounds. Most Malaysian public holidays are not Singapore public holidays and vice versa. Deepavali 2026 is a long weekend on <em>both</em> sides of the border at once — which is why it behaves differently from a Merdeka weekend.</p>
+
+<h2>What That Does to JB</h2>
+
+<p>Demand comes from two directions simultaneously: Singaporeans crossing over for a three-day break, and Malaysians travelling home or travelling domestically. Expect the Causeway to be heavy in both directions, expect malls to be full, and expect budget accommodation to book out well before the week itself.</p>
+
+<p>If your dates are flexible, the following weekend is dramatically calmer.</p>
+
+<h2>Crossing</h2>
+
+<ul>
+  <li>Cross before 7 AM or after 9 PM. The Friday evening and Saturday morning windows are the worst.</li>
+  <li>Bus CW1 from Woodlands or bus 170 from Queen Street to JB Sentral. Buses and motorcycles clear immigration faster than cars.</li>
+  <li>JB CIQ or JB Sentral to Taman Pelangi is a RM8–12 Grab ride.</li>
+</ul>
+
+<h2>What Is Open</h2>
+
+<p>Banks and government offices close on the holiday. Malls, convenience stores and most restaurants stay open. Some family-run Indian restaurants close for the day itself — if there is a specific place you want to eat at, message them first rather than turning up.</p>
+
+<p>The Taman Pelangi night market runs every Tuesday from 4:30 PM, so 10 November — the day after the holiday — is a market night.</p>
+
+<h2>Where to Stay</h2>
+
+<p><a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi: pods at <strong>RM30 for a first-time guest's first night, RM35 per night after that</strong>, repeat guests RM35 throughout. Tourism Tax of RM10 per room per night applies to foreign tourists only — Malaysians and permanent residents are exempt.</p>
+
+<p>Self check-in runs 24 hours, no curfew, and luggage storage before check-in and after check-out is free. Central Taman Pelangi means food is walkable and Grab rides are short.</p>
+
+<h2>Book Early</h2>
+
+<p>For a two-country long weekend, three to four weeks ahead is not too early. <a href="/book">Check availability and book directly</a> — no booking fee, no OTA commission.</p>
+
+<p>More dates in the <a href="/events">JB events calendar</a>. If you are new to crossing, start with the <a href="/blog/singapore-to-jb-day-trip-causeway-guide">Causeway guide</a>.</p>
+`,
+		},
+		// 67 — scheduled: goes live 2026-11-20, ahead of CNY 2027 booking season.
+		{
+			Slug:          "cny-2027-jb-long-weekend-singapore-guide",
+			LastModified:  "2026-11-20",
+			ImageAlt:      "The Johor–Singapore Causeway land border crossing connecting Woodlands to Johor Bahru",
+			Title:         "Chinese New Year 2027 in Johor Bahru — Dates, Causeway Crowds and Booking Timeline",
+			Excerpt:       "CNY 2027 falls on Saturday 6 and Sunday 7 February, with Monday 8 February as the holiday in lieu in both Malaysia and Singapore. JB's single busiest weekend of the year — here is how to plan it.",
+			Date:          "2026-11-20",
+			Category:      "Travel Tips",
+			Author:        "Jay Lew",
+			ReadTime:      "5 min read",
+			Tags:          []string{"johor-bahru", "chinese-new-year", "public-holiday", "events", "budget-travel", "singapore"},
+			FeaturedImage: "/images/blog/causeway-guide.webp",
+			InLanguage:    "en",
+			Content: `
+<h2>The Dates</h2>
+
+<p><strong>Chinese New Year 2027 falls on Saturday 6 and Sunday 7 February.</strong> Monday 8 February is the holiday in lieu — in Malaysia per the Johor state holiday list (publicholidays.com.my), and in Singapore for anyone whose rest day falls on the Sunday (Singapore Ministry of Manpower).</p>
+
+<p>So: a three-day weekend on both sides of the Causeway, landing on the one festival where cross-border family travel peaks. This is the heaviest travel window JB sees all year.</p>
+
+<h2>Why It Is Different From Every Other Long Weekend</h2>
+
+<p>A normal long weekend brings tourists. CNY brings tourists <em>and</em> the annual homecoming — Johoreans working in Singapore returning to family, Malaysians travelling up and down the peninsula, and Singaporean families crossing for reunion dinners. The Causeway does not have a quiet hour on CNY eve.</p>
+
+<p>Reunion dinner is the night before the first day, so the crush is on Friday 5 February 2027.</p>
+
+<h2>Booking Timeline</h2>
+
+<p>For CNY, the useful rule in JB is: budget beds go first, and they go early. Six to eight weeks out is normal for this weekend; four weeks out you are choosing from what is left. If your dates are fixed by family, book as soon as you know them.</p>
+
+<p>If your dates are flexible, note that the week <em>after</em> CNY is one of the quietest of the year in JB — hotels discount, queues vanish, and most things reopen by the third day.</p>
+
+<h2>Crossing</h2>
+
+<ul>
+  <li>Avoid Friday 5 February entirely if you can. If you cannot, cross before dawn.</li>
+  <li>Bus CW1 from Woodlands or bus 170 from Queen Street to JB Sentral; buses and motorcycles clear immigration faster than cars.</li>
+  <li>JB CIQ or JB Sentral to Taman Pelangi is a RM8–12 Grab ride, longer than usual on CNY eve.</li>
+</ul>
+
+<h2>What Is Open</h2>
+
+<p>Many Chinese-run businesses in JB close for the first two or three days of CNY, including a large share of the hawker stalls and kopitiam. Malls, convenience stores, mamak stalls and Malay and Indian eateries stay open. Plan meals accordingly — this catches out visitors expecting the usual food scene.</p>
+
+<p>The Taman Pelangi night market runs Tuesdays from 4:30 PM; 9 February 2027 is a Tuesday, but expect a reduced turnout that week.</p>
+
+<h2>Where to Stay</h2>
+
+<p><a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi: pods at <strong>RM30 for a first-time guest's first night, RM35 per night after that</strong>, repeat guests RM35 throughout. Tourism Tax of RM10 per room per night applies to foreign tourists only.</p>
+
+<p>Self check-in runs 24 hours with no curfew — useful when the crossing takes three hours longer than planned. Luggage storage before check-in and after check-out is free.</p>
+
+<p><a href="/book">Check availability and book directly</a>. Other dated JB events are listed in the <a href="/events">events calendar</a>.</p>
+`,
+		},
+		// 68 — first Bahasa Melayu post on the site (InLanguage must be set
+		// explicitly; blogContainsCJK only auto-detects Chinese).
+		{
+			Slug:          "hotel-murah-johor-bahru-taman-pelangi-panduan",
+			LastModified:  "2026-07-30",
+			ImageAlt:      "Worker at a desk in a modern capsule hostel common area in Johor Bahru, laptop open, capsule pods in background",
+			Title:         "Hotel Murah Johor Bahru: Panduan Bilik Sewa Harian di Taman Pelangi (2026)",
+			Excerpt:       "Cari hotel murah di Johor Bahru atau bilik sewa harian dekat JB Sentral? Ini kadar sebenar, lokasi, cara sampai dan apa yang anda dapat di Pelangi Capsule Hostel, Taman Pelangi.",
+			Date:          "2026-07-30",
+			Category:      "Travel Tips",
+			Author:        "Jay Lew",
+			ReadTime:      "6 min read",
+			Tags:          []string{"johor-bahru", "hotel-murah", "bilik-sewa-harian", "taman-pelangi", "bajet", "bahasa-melayu"},
+			FeaturedImage: "/images/blog/monthly-stay-capsule-hostel-jb-workers-interns-2026.webp",
+			InLanguage:    "ms",
+			Content: `
+<h2>Berapa Sebenarnya Kos Hotel Murah di Johor Bahru?</h2>
+
+<p>Kebanyakan carian "hotel murah Johor Bahru" berakhir dengan senarai harga yang berubah-ubah mengikut tarikh. Jadi kami mulakan dengan nombor kami sendiri, terus terang:</p>
+
+<ul>
+  <li><strong>RM30</strong> — malam pertama, untuk tetamu kali pertama sahaja</li>
+  <li><strong>RM35</strong> — malam kedua dan seterusnya; tetamu berulang bayar RM35 sepanjang penginapan</li>
+  <li><strong>RM594 sebulan</strong> — kadar penginapan bulanan, WiFi termasuk, tiada deposit</li>
+  <li><strong>Cukai Pelancongan RM10</strong> sebilik semalam — dikenakan kepada pelancong asing sahaja. Rakyat Malaysia dan pemastautin tetap dikecualikan</li>
+</ul>
+
+<p>Itu kadar untuk satu pod kapsul di <a href="/rooms">Pelangi Capsule Hostel</a>, Taman Pelangi. Tempahan terus melalui laman web kami tiada yuran tempahan dan tiada komisen OTA.</p>
+
+<h2>Pod Kapsul, Bukan Katil Dorm</h2>
+
+<p>Ramai yang menyangka "hostel" bermaksud katil bertingkat dalam bilik terbuka. Pod kapsul berbeza: setiap pod adalah ruang tertutup dengan pintu gelangsar yang boleh dikunci dari dalam.</p>
+
+<p>Dalam setiap pod anda dapat tilam, kipas dan penghawa dingin peribadi, lampu bacaan LED yang boleh dilaraskan, port pengecas USB dan soket kuasa. Loker peribadi disediakan di dalam bilik pod. Tuala bersih diberi kepada setiap tetamu, manakala sabun mandi dan syampu disediakan di bilik air kongsi.</p>
+
+<p>Kami ada 30 pod kesemuanya — 24 Lower Deck (aras bawah, tiada tangga) dan 6 Upper Deck (aras atas, lebih sunyi). Butiran penuh ada di <a href="/ms/amenities">halaman kemudahan</a>.</p>
+
+<h2>Lokasi: Taman Pelangi, Dekat JB Sentral dan CIQ</h2>
+
+<p>Alamat kami ialah 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru.</p>
+
+<ul>
+  <li><strong>Dari Woodlands CIQ (Singapura):</strong> 15 minit dengan kereta</li>
+  <li><strong>Dari JB CIQ / JB Sentral:</strong> tambang Grab sekitar RM8–12</li>
+  <li><strong>Pengangkutan awam:</strong> bas CW1 dari Woodlands atau bas 170 dari Queen Street ke JB Sentral, kemudian Grab</li>
+  <li><strong>Berjalan kaki:</strong> kedai kopi, gerai mamak dan restoran di sekitar Taman Pelangi</li>
+</ul>
+
+<p>Pasar malam Taman Pelangi beroperasi setiap hari Selasa mulai 4:30 petang — antara pasar malam paling terkenal di JB, dan ia betul-betul di kawasan ini. Arah penuh ada di <a href="/getting-here">halaman panduan perjalanan</a>.</p>
+
+<h2>Bilik Sewa Harian vs Penginapan Bulanan</h2>
+
+<p>Kalau anda cari <strong>bilik sewa harian JB</strong> untuk satu atau dua malam — urusan kerja, transit, atau singgah sebelum ke Singapura — pod harian adalah pilihan paling murah untuk mendapatkan ruang peribadi berkunci.</p>
+
+<p>Kalau anda perlu tempat jangka panjang, kadar bulanan bermula RM594 sebulan. Kami juga ada bilik sewa bulanan berasingan dari RM500 sebulan (deposit rata RM250) di atas 7-Eleven Taman Pelangi, diuruskan oleh pasukan yang sama.</p>
+
+<h2>Waktu Daftar Masuk dan Keluar</h2>
+
+<p>Daftar masuk bermula 2:00 petang, daftar keluar sebelum 12:00 tengah hari. Daftar masuk sendiri (self check-in) beroperasi 24 jam, jadi anda boleh tiba bila-bila masa selepas 2:00 petang tanpa menunggu kaunter — berguna kalau anda lintas Tambak Johor lewat malam. Tiada waktu kunci pintu (curfew).</p>
+
+<p>Simpanan bagasi sebelum daftar masuk dan selepas daftar keluar adalah percuma. Langkah-langkah daftar masuk ada di <a href="/ms/check-in">panduan daftar masuk</a>.</p>
+
+<h2>Keselamatan</h2>
+
+<p>Bangunan ini dilengkapi CCTV 24 jam, pintu masuk berkunci pad nombor, dan loker peribadi di dalam bilik pod. Setiap pod pula ada pintu yang berkunci dari dalam.</p>
+
+<h2>Soalan Lazim</h2>
+
+<h3>Ada penghawa dingin?</h3>
+<p>Ya. Setiap pod ada kawalan suhu peribadi — kipas dan penghawa dingin.</p>
+
+<h3>Boleh bayar dengan DuitNow QR?</h3>
+<p>Boleh. Kami terima tunai (Ringgit Malaysia), DuitNow QR (semua bank tempatan dan e-dompet utama termasuk Touch 'n Go, Boost dan GrabPay), serta kad kredit.</p>
+
+<h3>Ada sarapan?</h3>
+<p>Sarapan tidak termasuk dalam kadar bilik, tetapi ada dapur kongsi yang lengkap. Sarapan nasi lemak atau roti canai di gerai berdekatan sekitar RM3–8.</p>
+
+<h3>Rakyat Malaysia kena bayar Cukai Pelancongan?</h3>
+<p>Tidak. Cukai Pelancongan RM10 sebilik semalam dikenakan kepada pelancong asing sahaja. Rakyat Malaysia dan pemastautin tetap dikecualikan.</p>
+
+<h3>Boleh dua orang kongsi satu pod?</h3>
+<p>Tidak boleh. Setiap pod direka untuk seorang sahaja.</p>
+
+<h2>Nak Tempah?</h2>
+
+<p>Lihat jenis pod di <a href="/rooms">halaman bilik</a>, atau terus <a href="/book">semak ketersediaan dan tempah</a>. Hujung minggu dan musim cuti sekolah cepat penuh — tempah awal.</p>
+`,
+		},
+		// --- BUS ROUTES (EN) ---
+		{
+			Slug:          "jb-public-bus-guide-budget-backpackers",
+			Date:          "2026-08-01",
+			LastModified:  "2026-08-01",
+			Title:         "JB Public Bus Guide for Budget Backpackers (2026)",
+			Excerpt:       "Skip the Grab. Johor Bahru's public buses are cheap, air-conditioned, and easy once you know the routes. Complete guide for backpackers — CIQ to Taman Pelangi and beyond.",
+			Category:      "Travel Tips",
+			Author:        "Jay Lew",
+			Tags:          []string{"johor-bahru", "bus", "backpacker", "budget-travel", "public-transport", "taman-pelangi"},
+			FeaturedImage: "/images/blog/jb-bus-guide.webp",
+			ImageAlt:      "A Causeway Link CT1 bus at JB Sentral bus terminal heading toward Taman Pelangi",
+			AlternateEN:   "jb-public-bus-guide-budget-backpackers",
+			AlternateZH:   "xinshan-gonggong-qiche-zhinan-beibaoke",
+			AlternateMS:   "panduan-bas-awam-jb-pelancong-bajet",
+			Content: `
+<h2>Why Take the Bus in JB?</h2>
+<p>Grab is convenient, but for backpackers watching every ringgit, Johor Bahru's public bus network is a revelation. A single ride costs RM1.20–2.00, covers most tourist routes, and the buses are air-conditioned. Once you understand three key routes, you can navigate the city without ever opening a ride-hailing app.</p>
+
+<p>This guide covers the routes most useful for guests staying at <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi — particularly how to arrive from JB CIQ/JB Sentral and how to reach nearby attractions by bus.</p>
+
+<h2>First Stop: JB Sentral Bus Terminal</h2>
+<p>Almost every public bus journey in JB starts at <strong>JB Sentral</strong>, the city's main transport interchange connected to the KTM train station and City Square Mall. If you're arriving from Singapore via the Causeway, good news: after clearing immigration at <strong>JB CIQ</strong>, the JB Sentral bus terminal is a 5-minute indoor walk through an air-conditioned corridor. No taxi needed just to get to the bus station.</p>
+
+<p>At JB Sentral, head to the <strong>ground floor bus terminal</strong>. Buses are numbered and displayed on digital boards. You can pay with cash (exact change helpful) or a <strong>Touch 'n Go eWallet</strong> card — if you plan to take more than two bus trips, a Touch 'n Go card pays for itself.</p>
+
+<h2>Route 1: CT1 — The Backpacker's Best Friend to Taman Pelangi</h2>
+<p>The <strong>Causeway Link CT1</strong> (JB Sentral → Bayu Puteri) is the only public bus that goes directly into the Taman Pelangi residential area. For guests of Pelangi Capsule Hostel, this is your route:</p>
+<ol>
+  <li>Board CT1 at JB Sentral, direction <strong>Bayu Puteri</strong></li>
+  <li>Alight at <strong>"Opp Pelangi Leisure Mall"</strong> stop on Jalan Serampang</li>
+  <li>Walk approximately <strong>2 minutes (160m)</strong> to Pelangi Capsule Hostel at 26A Jalan Perang</li>
+</ol>
+<p><strong>Fare:</strong> ~RM2 &nbsp;|&nbsp; <strong>Frequency:</strong> every 80 minutes<br>
+<strong>Departures from JB Sentral:</strong> 07:00, 08:20, 09:40, 11:00, 12:20, 15:50, 17:10, 18:30, 19:50<br>
+⚠️ No CT1 service 12:20–15:50 (plan around this gap)</p>
+
+<h2>Route 2: J15 — Most Frequent to the Taman Pelangi Area</h2>
+<p><strong>BAS.MY J15</strong> runs from JB Sentral every 20 minutes (05:00 to midnight) — the highest frequency of any route serving this area. However, it stops on <strong>Jalan Tebrau</strong> (the main highway), not inside the residential estate. The "Opp Plaza Pelangi" stop is about 1.5km from Pelangi Leisure Mall.</p>
+<ul>
+  <li>Board J15 at JB Sentral (Bus Bay 5), direction Mid Valley Southkey</li>
+  <li>Alight at <strong>"Opp Plaza Pelangi"</strong> on Jalan Tebrau — cross the overhead bridge</li>
+  <li>Walk 15–20 minutes through Taman Pelangi to the hostel, OR book a short Grab (~RM5–8, 5 min)</li>
+</ul>
+<p><strong>Fare:</strong> ~RM1.20 &nbsp;|&nbsp; <strong>Frequency:</strong> every 20 min &nbsp;|&nbsp; Best option when CT1 is not running</p>
+<p>Routes <strong>J11, J20, J22</strong> also stop at "Opp Plaza Pelangi" and work as J15 alternatives when one is delayed.</p>
+
+<h2>Route 3: Larkin Sentral for Long-Distance Buses</h2>
+<p>Arriving from Kuala Lumpur, Penang, or other Malaysian cities? Your express bus will drop you at <strong>Larkin Sentral</strong>, JB's long-distance bus terminal, about 5km north of JB Sentral. From Larkin, take <strong>bus T13</strong> to JB Sentral (fare ~RM1.40), then connect to CT1 or J15 for Taman Pelangi. Total cost: under RM4. Grab direct from Larkin to Pelangi Capsule runs ~RM10–15.</p>
+
+<h2>Getting Around JB by Bus: Nearby Destinations</h2>
+<table>
+  <thead><tr><th>Destination</th><th>Bus</th><th>Alight At</th><th>Fare</th></tr></thead>
+  <tbody>
+    <tr><td>JB Sentral / City Square</td><td>CT1 or J15 (reverse)</td><td>JB Sentral</td><td>RM1.20–2</td></tr>
+    <tr><td>Komtar JBCC / Jalan Wong Ah Fook</td><td>J15 inbound</td><td>Jalan Wong Ah Fook</td><td>RM1.20</td></tr>
+    <tr><td>Mid Valley Southkey</td><td>J15</td><td>Mid Valley Southkey</td><td>RM1.20</td></tr>
+    <tr><td>KSL City Mall</td><td>J11 or J22</td><td>KSL City</td><td>RM1.40</td></tr>
+    <tr><td>Larkin Sentral (intercity buses)</td><td>T13</td><td>Larkin Sentral</td><td>RM1.40</td></tr>
+  </tbody>
+</table>
+
+<h2>Essential Tips for First-Time Riders</h2>
+<ul>
+  <li><strong>Touch 'n Go eWallet:</strong> Buy a TnG card at convenience stores or 7-Eleven. Tap-in, tap-out. Saves fumbling for coins.</li>
+  <li><strong>No change given:</strong> Bring small notes or exact coins if paying cash. Drivers don't carry change.</li>
+  <li><strong>Google Maps works:</strong> Enter your destination and select "Transit" — JB buses are mapped and include departure times. Moovit app also shows live arrivals.</li>
+  <li><strong>Night travel:</strong> J15 runs until midnight. CT1's last bus from JB Sentral is 19:50 — after that, take J15 + short Grab.</li>
+  <li><strong>Stay hydrated:</strong> JB heat is intense between buses. Carry water. The wait for a CT1 (every 80 min) in open sun is rough — time your arrival using Moovit.</li>
+</ul>
+
+<h2>Budget Breakdown: Bus vs Grab</h2>
+<ul>
+  <li><strong>CIQ → Pelangi Capsule by CT1 bus:</strong> RM2 per person</li>
+  <li><strong>CIQ → Pelangi Capsule by Grab:</strong> RM10–15 per trip</li>
+  <li><strong>Daily bus pass (all-day unlimited, if available):</strong> check Causeway Link app</li>
+  <li><strong>Saving per trip:</strong> RM8–13 — enough for a full hawker meal</li>
+</ul>
+
+<p>For a 3-day trip with two bus rides daily, taking the bus saves you roughly RM50–75 compared to Grab — enough to cover two extra nights at <a href="/rooms">Pelangi Capsule</a>. The trade-off is waiting. If you're on a schedule, Grab wins. If you have time and a Touch 'n Go card, the bus is the smarter move.</p>
+
+<p>Questions about getting here? Our AI assistant Rainbow on the <a href="/">website chat</a> can answer bus timing and directions 24/7.</p>
+`,
+		},
+		// --- BUS ROUTES (BM) ---
+		{
+			Slug:          "panduan-bas-awam-jb-pelancong-bajet",
+			Date:          "2026-08-01",
+			LastModified:  "2026-08-01",
+			InLanguage:    "ms",
+			Title:         "Panduan Bas Awam JB untuk Pelancong Bajet 2026",
+			Excerpt:       "Tak perlu Grab setiap masa. Bas awam Johor Bahru murah, berhawa dingin dan mudah bila anda tahu laluan yang betul. Panduan lengkap dari CIQ ke Taman Pelangi.",
+			Category:      "Tips Perjalanan",
+			Author:        "Jay Lew",
+			Tags:          []string{"johor-bahru", "bas", "pelancong-bajet", "pengangkutan-awam", "taman-pelangi"},
+			FeaturedImage: "/images/blog/jb-bus-guide.webp",
+			ImageAlt:      "Bas Causeway Link CT1 di terminal JB Sentral menuju Taman Pelangi",
+			AlternateEN:   "jb-public-bus-guide-budget-backpackers",
+			AlternateZH:   "xinshan-gonggong-qiche-zhinan-beibaoke",
+			AlternateMS:   "panduan-bas-awam-jb-pelancong-bajet",
+			Content: `
+<h2>Kenapa Naik Bas di JB?</h2>
+<p>Grab memang senang, tapi bagi pelancong yang jimat belanja, sistem bas awam Johor Bahru adalah pilihan bijak. Setiap perjalanan hanya RM1.20–2.00, bas berhawa dingin, dan mudah bila anda tahu tiga laluan utama. Anda boleh explore bandar tanpa buka aplikasi ride-hailing langsung.</p>
+
+<p>Panduan ini fokus kepada laluan yang paling berguna untuk tetamu yang menginap di <a href="/rooms">Pelangi Capsule Hostel</a> di Taman Pelangi — terutamanya cara tiba dari JB CIQ/JB Sentral dan cara ke tempat tarikan berdekatan.</p>
+
+<h2>Titik Mula: Terminal Bas JB Sentral</h2>
+<p>Hampir semua perjalanan bas awam di JB bermula di <strong>JB Sentral</strong>, hab pengangkutan utama bandar yang disambungkan ke stesen KTM dan City Square Mall. Jika anda tiba dari Singapura melalui Tambak Johor, berita baik: selepas selesai urusan imigresen di <strong>JB CIQ</strong>, terminal bas JB Sentral hanya 5 minit jalan kaki dalam koridor berhawa dingin. Tak perlu teksi semata-mata untuk sampai ke stesen bas.</p>
+
+<p>Di JB Sentral, pergi ke <strong>terminal bas tingkat bawah</strong>. Bas bernombor dan ditunjukkan pada papan digital. Anda boleh bayar tunai (duit syiling lebih mudah) atau guna kad <strong>Touch 'n Go eWallet</strong> — kalau rancang naik bas lebih dari dua kali, kad TnG memang berbaloi.</p>
+
+<h2>Laluan 1: CT1 — Sahabat Terbaik Pelancong Bajet ke Taman Pelangi</h2>
+<p><strong>Causeway Link CT1</strong> (JB Sentral → Bayu Puteri) adalah satu-satunya bas awam yang masuk terus ke kawasan kediaman Taman Pelangi. Untuk tetamu Pelangi Capsule Hostel, ini laluan anda:</p>
+<ol>
+  <li>Naik CT1 di JB Sentral, arah <strong>Bayu Puteri</strong></li>
+  <li>Turun di hentian <strong>"Opp Pelangi Leisure Mall"</strong> di Jalan Serampang</li>
+  <li>Jalan kira-kira <strong>2 minit (160m)</strong> ke Pelangi Capsule Hostel di 26A Jalan Perang</li>
+</ol>
+<p><strong>Tambang:</strong> ~RM2 &nbsp;|&nbsp; <strong>Kekerapan:</strong> setiap 80 minit<br>
+<strong>Waktu berlepas dari JB Sentral:</strong> 07:00, 08:20, 09:40, 11:00, 12:20, 15:50, 17:10, 18:30, 19:50<br>
+⚠️ Tiada perkhidmatan CT1 12:20–15:50 (rancang perjalanan anda)</p>
+
+<h2>Laluan 2: J15 — Bas Paling Kerap ke Kawasan Taman Pelangi</h2>
+<p><strong>BAS.MY J15</strong> beroperasi dari JB Sentral setiap 20 minit (05:00 hingga tengah malam) — kekerapan tertinggi bagi laluan yang berkhidmat di kawasan ini. Walau bagaimanapun, ia berhenti di <strong>Jalan Tebrau</strong> (lebuh raya utama), bukan dalam kawasan kediaman. Hentian "Opp Plaza Pelangi" kira-kira 1.5km dari Pelangi Leisure Mall.</p>
+<ul>
+  <li>Naik J15 di JB Sentral (Bay 5), arah Mid Valley Southkey</li>
+  <li>Turun di <strong>"Opp Plaza Pelangi"</strong> di Jalan Tebrau — seberang menggunakan jambatan pejalan kaki</li>
+  <li>Jalan 15–20 minit melalui Taman Pelangi ke hostel, ATAU tempah Grab pendek (~RM5–8, 5 minit)</li>
+</ul>
+<p><strong>Tambang:</strong> ~RM1.20 &nbsp;|&nbsp; <strong>Kekerapan:</strong> setiap 20 minit &nbsp;|&nbsp; Pilihan terbaik bila CT1 tidak beroperasi</p>
+
+<h2>Laluan 3: Larkin Sentral untuk Bas Jarak Jauh</h2>
+<p>Tiba dari Kuala Lumpur, Pulau Pinang atau bandar lain? Bas ekspres anda akan menurunkan anda di <strong>Larkin Sentral</strong>, terminal bas jarak jauh JB, kira-kira 5km utara JB Sentral. Dari Larkin, naik <strong>bas T13</strong> ke JB Sentral (tambang ~RM1.40), kemudian sambung CT1 atau J15 ke Taman Pelangi. Jumlah kos: bawah RM4. Grab terus dari Larkin ke Pelangi Capsule lebih kurang RM10–15.</p>
+
+<h2>Destinasi Berdekatan dengan Bas</h2>
+<table>
+  <thead><tr><th>Destinasi</th><th>Bas</th><th>Turun Di</th><th>Tambang</th></tr></thead>
+  <tbody>
+    <tr><td>JB Sentral / City Square</td><td>CT1 atau J15 (balik)</td><td>JB Sentral</td><td>RM1.20–2</td></tr>
+    <tr><td>Komtar JBCC / Jalan Wong Ah Fook</td><td>J15 masuk</td><td>Jalan Wong Ah Fook</td><td>RM1.20</td></tr>
+    <tr><td>Mid Valley Southkey</td><td>J15</td><td>Mid Valley Southkey</td><td>RM1.20</td></tr>
+    <tr><td>KSL City Mall</td><td>J11 atau J22</td><td>KSL City</td><td>RM1.40</td></tr>
+    <tr><td>Larkin Sentral (bas antara bandar)</td><td>T13</td><td>Larkin Sentral</td><td>RM1.40</td></tr>
+  </tbody>
+</table>
+
+<h2>Tips Penting untuk Penumpang Baru</h2>
+<ul>
+  <li><strong>Touch 'n Go eWallet:</strong> Beli kad TnG di kedai serbaneka atau 7-Eleven. Tap masuk, tap keluar. Jimat masa cari duit syiling.</li>
+  <li><strong>Tiada baki diberikan:</strong> Bawa wang kecil atau duit syiling tepat jika bayar tunai. Pemandu tidak bawa baki.</li>
+  <li><strong>Google Maps berfungsi:</strong> Masukkan destinasi dan pilih "Transit" — bas JB dipetakan termasuk waktu berlepas. Aplikasi Moovit juga tunjukkan ketibaan langsung.</li>
+  <li><strong>Perjalanan malam:</strong> J15 beroperasi hingga tengah malam. Bas terakhir CT1 dari JB Sentral ialah 19:50 — selepas itu, naik J15 + Grab pendek.</li>
+</ul>
+
+<h2>Perbandingan Kos: Bas vs Grab</h2>
+<ul>
+  <li><strong>CIQ → Pelangi Capsule dengan bas CT1:</strong> RM2 seorang</li>
+  <li><strong>CIQ → Pelangi Capsule dengan Grab:</strong> RM10–15 setiap perjalanan</li>
+  <li><strong>Penjimatan setiap perjalanan:</strong> RM8–13 — cukup untuk satu hidangan di gerai makan</li>
+</ul>
+
+<p>Untuk lawatan 3 hari dengan dua perjalanan bas sehari, menggunakan bas jimatkan kira-kira RM50–75 berbanding Grab — cukup untuk dua malam tambahan di <a href="/rooms">Pelangi Capsule</a>. Pertukaran yang berbaloi jika anda tidak tergesa-gesa.</p>
+
+<p>Ada soalan tentang cara ke sini? Pembantu AI kami Rainbow di <a href="/">chat laman web</a> boleh jawab soalan laluan bas dan arah 24 jam sehari.</p>
+`,
+		},
+		// --- BUS ROUTES (ZH) ---
+		{
+			Slug:          "xinshan-gonggong-qiche-zhinan-beibaoke",
+			Date:          "2026-08-01",
+			LastModified:  "2026-08-01",
+			InLanguage:    "zh-CN",
+			Title:         "新山公共巴士省钱攻略｜背包客出行指南 2026",
+			Excerpt:       "不用每次都叫 Grab！新山公共巴士便宜、冷气足，搞清楚这三条路线就够了。从 JB CIQ 到彩虹胶囊旅舍完整指南。",
+			Category:      "旅行贴士",
+			Author:        "Jay Lew",
+			Tags:          []string{"johor-bahru", "bas", "backpacker", "budget-travel", "public-transport", "taman-pelangi"},
+			FeaturedImage: "/images/blog/jb-bus-guide.webp",
+			ImageAlt:      "Causeway Link CT1 巴士在 JB Sentral 车站候客，前往 Taman Pelangi",
+			AlternateEN:   "jb-public-bus-guide-budget-backpackers",
+			AlternateZH:   "xinshan-gonggong-qiche-zhinan-beibaoke",
+			AlternateMS:   "panduan-bas-awam-jb-pelancong-bajet",
+			Content: `
+<h2>为什么要乘公共巴士？</h2>
+<p>Grab 方便，但对节省预算的背包客来说，新山的公共巴士系统是个宝藏。单程票价 RM1.20–2.00，车内有冷气，搞清楚三条主要路线就能游遍整个城市，不需要打开任何叫车 App。</p>
+
+<p>本指南专为住在 Taman Pelangi <a href="/rooms">彩虹胶囊旅舍</a> 的旅客而写，重点介绍从 JB CIQ / JB Sentral 抵达旅舍的方式，以及如何用巴士去周边景点。</p>
+
+<h2>出发点：JB Sentral 巴士总站</h2>
+<p>新山几乎所有公共巴士路线都从 <strong>JB Sentral</strong> 出发，这里是全市最大的交通枢纽，与 KTM 火车站和 City Square 购物中心相连。如果你从新加坡经长堤入境，好消息是：在 <strong>JB CIQ</strong> 完成海关检查后，只需步行 5 分钟（全程冷气走廊），就能走到 JB Sentral 巴士站，完全不需要另外叫车。</p>
+
+<p>到了 JB Sentral，前往<strong>底层巴士总站</strong>。巴士编号清晰显示在电子告示牌上。可以用现金（最好备好零钱）或 <strong>Touch 'n Go eWallet</strong> 卡付款——如果打算乘坐两次以上的巴士，办一张 TnG 卡非常划算。</p>
+
+<h2>路线一：CT1 — 距离旅舍最近的选择</h2>
+<p><strong>Causeway Link CT1</strong>（JB Sentral → Bayu Puteri）是唯一一条直接进入 Taman Pelangi 住宅区的公共巴士。对彩虹胶囊旅舍的旅客来说，这是首选路线：</p>
+<ol>
+  <li>在 JB Sentral 乘坐 CT1，方向 <strong>Bayu Puteri</strong></li>
+  <li>在 Jalan Serampang 的 <strong>"Opp Pelangi Leisure Mall"</strong> 站下车</li>
+  <li>步行约 <strong>2 分钟（160 米）</strong>即到达 Pelangi Capsule Hostel（26A Jalan Perang）</li>
+</ol>
+<p><strong>票价：</strong>约 RM2 &nbsp;|&nbsp; <strong>班距：</strong>每 80 分钟一班<br>
+<strong>从 JB Sentral 出发时间：</strong>07:00、08:20、09:40、11:00、12:20、15:50、17:10、18:30、19:50<br>
+⚠️ 12:20–15:50 期间停运（请避开这段时间或改乘 J15）</p>
+
+<h2>路线二：J15 — 班次最密，适合灵活出行</h2>
+<p><strong>BAS.MY J15</strong> 每 20 分钟一班（05:00 至凌晨），是本区班次最频繁的路线。但它停靠在 <strong>Jalan Tebrau 主干道</strong>旁边，不进入住宅区。"Opp Plaza Pelangi" 站距 Pelangi Leisure Mall 约 1.5 公里。</p>
+<ul>
+  <li>在 JB Sentral Bus Bay 5 乘 J15，方向 Mid Valley Southkey</li>
+  <li>在 Jalan Tebrau 的 <strong>"Opp Plaza Pelangi"</strong> 站下车 — 走天桥过马路</li>
+  <li>步行 15–20 分钟穿过 Taman Pelangi 住宅区，或叫短途 Grab（约 RM5–8，5 分钟）</li>
+</ul>
+<p><strong>票价：</strong>约 RM1.20 &nbsp;|&nbsp; <strong>班距：</strong>每 20 分钟 &nbsp;|&nbsp; CT1 停运期间的最佳替代选择</p>
+<p><strong>J11、J20、J22</strong> 路线同样停靠"Opp Plaza Pelangi"，可作 J15 的替代选项。</p>
+
+<h2>路线三：Larkin Sentral 长途巴士总站</h2>
+<p>从吉隆坡、槟城或其他城市乘长途客车抵达？你的客车会在 <strong>Larkin Sentral</strong>（新山长途巴士总站，距 JB Sentral 约 5 公里）下客。从 Larkin 乘 <strong>T13</strong> 巴士到 JB Sentral（约 RM1.40），再换乘 CT1 或 J15 前往 Taman Pelangi，总花费不到 RM4。从 Larkin 直接叫 Grab 到旅舍约 RM10–15。</p>
+
+<h2>巴士可到达的周边目的地</h2>
+<table>
+  <thead><tr><th>目的地</th><th>路线</th><th>下车站</th><th>票价</th></tr></thead>
+  <tbody>
+    <tr><td>JB Sentral / City Square</td><td>CT1 或 J15（反向）</td><td>JB Sentral</td><td>RM1.20–2</td></tr>
+    <tr><td>Komtar JBCC / 旺阿福街</td><td>J15 入城方向</td><td>Jalan Wong Ah Fook</td><td>RM1.20</td></tr>
+    <tr><td>Mid Valley Southkey</td><td>J15</td><td>Mid Valley Southkey</td><td>RM1.20</td></tr>
+    <tr><td>KSL City Mall</td><td>J11 或 J22</td><td>KSL City</td><td>RM1.40</td></tr>
+    <tr><td>Larkin Sentral（长途巴士）</td><td>T13</td><td>Larkin Sentral</td><td>RM1.40</td></tr>
+  </tbody>
+</table>
+
+<h2>新手必看乘车贴士</h2>
+<ul>
+  <li><strong>Touch 'n Go eWallet：</strong>在便利店或 7-Eleven 购买 TnG 卡，刷卡上下车，省去找零烦恼。</li>
+  <li><strong>不找零：</strong>现金支付请准备好零钱，司机不找零。</li>
+  <li><strong>Google Maps 可用：</strong>输入目的地选"公交"，新山巴士已收录并显示发车时间。Moovit App 也能查实时到站信息。</li>
+  <li><strong>夜间出行：</strong>J15 运营至凌晨。CT1 末班车从 JB Sentral 出发时间为 19:50 — 之后请乘 J15 再加短途 Grab。</li>
+  <li><strong>补水很重要：</strong>新山天气炎热，等车时记得带水。CT1 每 80 分钟才一班，用 Moovit 查好时间再出门。</li>
+</ul>
+
+<h2>费用对比：巴士 vs Grab</h2>
+<ul>
+  <li><strong>CIQ → 彩虹胶囊旅舍（CT1 巴士）：</strong>RM2 / 人</li>
+  <li><strong>CIQ → 彩虹胶囊旅舍（Grab）：</strong>RM10–15 / 次</li>
+  <li><strong>每次节省：</strong>RM8–13 — 够吃一顿饱饱的小贩美食</li>
+</ul>
+
+<p>3 天行程每天乘两趟巴士，与全程叫 Grab 相比，大约可省下 RM50–75 — 相当于又多住两晚 <a href="/rooms">彩虹胶囊</a>。如果你时间充裕、不赶时间，公共巴士绝对是更聪明的选择。</p>
+
+<p>有关于来旅舍路线的问题？我们的 AI 助手 Rainbow 在<a href="/">网站聊天窗口</a>24 小时在线，可以回答巴士时刻和路线问题。</p>
+`,
+		},
+		// --- TMIYC (EN) ---
+		{
+			Slug:          "tmiyc-johor-bahru-free-outdoor-park-guide",
+			Date:          "2026-08-01",
+			LastModified:  "2026-08-01",
+			Title:         "TMIYC Johor Bahru: Free Outdoor Park Guide for Backpackers (2026)",
+			Excerpt:       "Free entry, open until 11pm, glowing canopy walk, skate park, BMX track and forest trails — TMIYC is JB's best-kept secret for budget travellers. Complete guide from Pelangi Hostel.",
+			Category:      "Things To Do",
+			Author:        "Jay Lew",
+			Tags:          []string{"johor-bahru", "tmiyc", "free", "outdoor", "backpacker", "activities", "hutan-bandar"},
+			FeaturedImage: "/images/blog/tmiyc-jb.webp",
+			ImageAlt:      "The illuminated canopy walk at TMIYC Johor Bahru glowing at night inside Hutan Bandar urban forest",
+			AlternateEN:   "tmiyc-johor-bahru-free-outdoor-park-guide",
+			AlternateZH:   "tmiyc-xinshan-mianfei-huodong-gongyuan",
+			AlternateMS:   "tmiyc-johor-bahru-panduan-taman-riadah-percuma",
+			Content: `
+<h2>What Is TMIYC Johor Bahru?</h2>
+<p><strong>Tunku Mahkota Ismail Youth Centre</strong> (TMIYC) is a free outdoor recreation complex managed by Johor Bahru City Council (MBJB), tucked inside <strong>Hutan Bandar MBJB</strong> — the city's urban forest park in the Ulu Air Molek area. Opened in December 2020, it's become one of JB's most popular evening hangout spots for locals and the city's best-kept secret for backpackers who stumble upon it.</p>
+
+<p>The combination of purpose-built sports facilities, forest trails, and an Instagram-famous glowing canopy walk — all completely free — makes TMIYC a rare find in any Southeast Asian city.</p>
+
+<h2>What's Inside TMIYC</h2>
+
+<h3>🌿 Canopy Walk (Glow in the Dark)</h3>
+<p>The star attraction. An elevated treetop walkway winds through the urban forest canopy, and after dark it glows — the walkway lights up in shifting colours, creating a genuinely magical atmosphere that's been widely shared on social media. Arrive after sunset for the full effect. No booking required, no fee.</p>
+
+<h3>🛹 Skate Park</h3>
+<p>A full concrete outdoor skatepark with rails, quarter pipes, ramps, and flatground. Well-lit at night and popular with JB's local skate scene. Skateboards, scooters, and rollerblades all welcome. If you travel with a board, this is a must-visit.</p>
+
+<h3>🚵 BMX Pump Track and Mountain Bike Trails</h3>
+<p>A flowing pump track for BMX and mountain bikes, plus forest trails through Hutan Bandar. Bicycle and scooter rental is available on site — you don't need to bring your own. Rates vary by session length.</p>
+
+<h3>🧗 Rock Climbing and Parkour Park</h3>
+<p>An outdoor climbing wall and dedicated parkour obstacles make TMIYC popular with the active crowd. Suitable for beginners wanting to try something new in JB on zero budget.</p>
+
+<h3>🍜 Food and Drinks</h3>
+<p>The F&amp;B area inside TMIYC has several outlets described locally as "hipster" — think local bites alongside trendy drinks. Quality varies but prices are fair, and it means you can make a full evening of the park without leaving for dinner. There are also florist kiosks and handicraft stalls if you want to pick up a souvenir.</p>
+
+<h2>Opening Hours and Entry</h2>
+<ul>
+  <li><strong>Hours:</strong> Daily, 7:00 AM – 11:00 PM</li>
+  <li><strong>Entry:</strong> Free (no admission charge)</li>
+  <li><strong>Bicycle/scooter rental:</strong> Paid (rate on site)</li>
+  <li><strong>Best time:</strong> After 7:00 PM for the canopy walk lights and cooler temperatures</li>
+</ul>
+
+<h2>Getting There from Pelangi Capsule Hostel</h2>
+<p>TMIYC is located at Hutan Bandar MBJB, Jalan Yahya Awal, Ulu Air Molek, 80200 Johor Bahru — approximately <strong>3–5 km</strong> from Pelangi Capsule Hostel by road.</p>
+
+<p><strong>Recommended: Grab</strong> (~RM5–8 one-way, 10–15 minutes). This is the most straightforward option from Taman Pelangi. It's cheap enough that even strict budget travellers will find it reasonable — especially when split between two people.</p>
+
+<p><strong>Budget tip:</strong> Grab a group of 3–4 from the hostel and split the fare. RM2 per person each way is exceptional value for a full evening out. Use the hostel common area to find fellow travellers heading in the same direction.</p>
+
+<p>Public bus options exist but require changes at JB Sentral — check Moovit for current Causeway Link routes toward Tasek Utara / Air Molek. Not recommended for a first visit due to the walking distance from bus stops to the park entrance.</p>
+
+<h2>Why Backpackers Love TMIYC</h2>
+<ul>
+  <li><strong>Completely free entry</strong> — rare for an attraction of this quality</li>
+  <li><strong>Open until 11pm</strong> — perfect for the hostel crowd who explore in the evenings</li>
+  <li><strong>Local atmosphere</strong> — the skate park and trails draw JB youth, not tourist buses; you get an authentic slice of local life</li>
+  <li><strong>Urban forest escape</strong> — rare to have genuine forest trails inside a city; great contrast after a day of malls and hawker food</li>
+  <li><strong>Photo-worthy</strong> — the canopy walk is genuinely beautiful at night and earns its Instagram reputation</li>
+  <li><strong>Food on site</strong> — no need to leave the park for dinner</li>
+</ul>
+
+<h2>Combine With Other Nearby Attractions</h2>
+<p>TMIYC pairs well with a JB evening itinerary. From Pelangi Capsule:</p>
+<ol>
+  <li><strong>5:00 PM</strong> — Grab to TMIYC (arrive before sunset)</li>
+  <li><strong>5:30–7:00 PM</strong> — Explore trails, skate park, climbing wall while it's light</li>
+  <li><strong>7:00–8:30 PM</strong> — Canopy walk after dark + dinner at F&amp;B area</li>
+  <li><strong>8:30 PM</strong> — Grab back to hostel or continue to Taman Pelangi's nightlife scene</li>
+</ol>
+
+<p>The Taman Pelangi area itself has speakeasy bars, karaoke, and night-market food stalls within walking distance of the hostel — so the evening can continue long after TMIYC closes.</p>
+
+<p>Ready to explore JB? <a href="/book">Book a capsule at Pelangi</a> and use it as your base for TMIYC, the night markets, and everything else JB has to offer.</p>
+`,
+		},
+		// --- TMIYC (BM) ---
+		{
+			Slug:          "tmiyc-johor-bahru-panduan-taman-riadah-percuma",
+			Date:          "2026-08-01",
+			LastModified:  "2026-08-01",
+			InLanguage:    "ms",
+			Title:         "TMIYC Johor Bahru: Panduan Taman Riadah Percuma 2026",
+			Excerpt:       "Masuk percuma, buka hingga 11 malam, laluan kanopi bercahaya, gelanggang skate, trek BMX dan hutan bandar — TMIYC adalah destinasi tersembunyi terbaik JB untuk pelancong bajet.",
+			Category:      "Aktiviti",
+			Author:        "Jay Lew",
+			Tags:          []string{"johor-bahru", "tmiyc", "percuma", "riadah", "pelancong-bajet", "hutan-bandar"},
+			FeaturedImage: "/images/blog/tmiyc-jb.webp",
+			ImageAlt:      "Laluan kanopi TMIYC Johor Bahru yang bercahaya pada waktu malam dalam Hutan Bandar",
+			AlternateEN:   "tmiyc-johor-bahru-free-outdoor-park-guide",
+			AlternateZH:   "tmiyc-xinshan-mianfei-huodong-gongyuan",
+			AlternateMS:   "tmiyc-johor-bahru-panduan-taman-riadah-percuma",
+			Content: `
+<h2>Apa Itu TMIYC Johor Bahru?</h2>
+<p><strong>Pusat Belia Tunku Mahkota Ismail</strong> (TMIYC) adalah kompleks riadah luar percuma yang diuruskan oleh Majlis Bandaraya Johor Bahru (MBJB), terletak dalam <strong>Hutan Bandar MBJB</strong> di kawasan Ulu Air Molek. Dibuka pada Disember 2020, ia kini menjadi salah satu tempat lepak petang paling popular di JB — dan rahsia terbaik yang belum ramai pelancong tahu.</p>
+
+<p>Gabungan kemudahan sukan bertaraf tinggi, laluan hutan, dan laluan kanopi yang viral di media sosial — semuanya percuma — menjadikan TMIYC satu keunikan yang jarang ada di mana-mana bandar di Asia Tenggara.</p>
+
+<h2>Apa Yang Ada di TMIYC</h2>
+
+<h3>🌿 Laluan Kanopi (Glow in the Dark)</h3>
+<p>Tarikan utama. Laluan kanopi yang ditinggikan mengular melalui hutan bandar, dan selepas gelap ia bercahaya — lampu bertukar warna menghasilkan suasana yang memukau. Tiba selepas matahari terbenam untuk pengalaman penuh. Tiada tempahan diperlukan, masuk percuma.</p>
+
+<h3>🛹 Gelanggang Skate</h3>
+<p>Gelanggang skate luar konkrit penuh dengan rel, quarter pipe, ramp, dan flatground. Berlampu terang pada waktu malam dan popular dalam kalangan komuniti skate JB. Papan luncur, skuter, dan rollerblade dialu-alukan.</p>
+
+<h3>🚵 Trek Pam BMX dan Laluan Basikal Gunung</h3>
+<p>Trek pam yang mengalir untuk BMX dan basikal gunung, ditambah laluan hutan melalui Hutan Bandar. Sewa basikal dan skuter tersedia di tapak — anda tidak perlu bawa sendiri.</p>
+
+<h3>🧗 Panjat Tebing dan Taman Parkour</h3>
+<p>Dinding panjat tebing luar dan halangan parkour khusus. Sesuai untuk pemula yang ingin mencuba aktiviti baharu di JB tanpa kos masuk.</p>
+
+<h3>🍜 Makanan dan Minuman</h3>
+<p>Kawasan F&amp;B dalam TMIYC ada beberapa gerai yang dikenali sebagai "hipster" oleh warga tempatan — pelbagai juadah tempatan dan minuman menarik. Harga berpatutan, dan ini bermakna anda boleh habiskan satu malam penuh di taman tanpa perlu keluar untuk makan malam.</p>
+
+<h2>Waktu Operasi dan Yuran Masuk</h2>
+<ul>
+  <li><strong>Waktu Buka:</strong> Setiap hari, 7:00 pagi – 11:00 malam</li>
+  <li><strong>Masuk:</strong> Percuma</li>
+  <li><strong>Sewa basikal/skuter:</strong> Berbayar (kadar di tapak)</li>
+  <li><strong>Masa terbaik:</strong> Selepas 7:00 malam untuk laluan kanopi bercahaya dan suhu lebih sejuk</li>
+</ul>
+
+<h2>Cara Ke Sana dari Pelangi Capsule Hostel</h2>
+<p>TMIYC terletak di Hutan Bandar MBJB, Jalan Yahya Awal, Ulu Air Molek, 80200 Johor Bahru — kira-kira <strong>3–5 km</strong> dari Pelangi Capsule Hostel melalui jalan raya.</p>
+
+<p><strong>Disyorkan: Grab</strong> (~RM5–8 sehala, 10–15 minit). Ini pilihan paling mudah dari Taman Pelangi. Murah dari segi nilai, terutama jika dikongsi antara dua orang.</p>
+
+<p><strong>Tips jimat:</strong> Ajak rakan sebilik atau pelancong lain dari hostel untuk pergi bersama dan kongsi tambang. RM2 seorang setiap perjalanan adalah nilai yang luar biasa untuk satu malam penuh di luar.</p>
+
+<h2>Kenapa Pelancong Bajet Suka TMIYC</h2>
+<ul>
+  <li><strong>Masuk percuma</strong> — jarang ada tarikan sebegini tanpa bayaran</li>
+  <li><strong>Buka hingga 11 malam</strong> — sesuai untuk kelompok hostel yang suka terokai pada waktu malam</li>
+  <li><strong>Suasana tempatan</strong> — gelanggang skate dan laluan menarik belia JB, bukan bas pelancong; anda dapat mengalami kehidupan sebenar warga tempatan</li>
+  <li><strong>Pelarian hutan bandar</strong> — jarang ada laluan hutan tulen di dalam bandar; kontras yang menyegarkan selepas seharian di pusat membeli-belah dan gerai makan</li>
+  <li><strong>Berbaloi difoto</strong> — laluan kanopi sangat cantik pada waktu malam</li>
+  <li><strong>Ada makanan di tapak</strong> — tak perlu keluar taman untuk makan malam</li>
+</ul>
+
+<p>Bersedia untuk terokai JB? <a href="/book">Tempah kapsul di Pelangi</a> dan jadikannya sebagai pangkalan untuk TMIYC, pasar malam, dan segala-galanya yang JB ada untuk ditawarkan.</p>
+`,
+		},
+		// --- TMIYC (ZH) ---
+		{
+			Slug:          "tmiyc-xinshan-mianfei-huodong-gongyuan",
+			Date:          "2026-08-01",
+			LastModified:  "2026-08-01",
+			InLanguage:    "zh-CN",
+			Title:         "TMIYC 新山免费户外活动公园｜背包客必去景点 2026",
+			Excerpt:       "免费入场、开放至晚上11点、发光天空步道、溜冰场、BMX 跑道和城市森林径 — TMIYC 是新山预算旅行者最值得去的隐藏宝地。",
+			Category:      "玩乐活动",
+			Author:        "Jay Lew",
+			Tags:          []string{"johor-bahru", "tmiyc", "free", "outdoor", "backpacker", "activities", "hutan-bandar"},
+			FeaturedImage: "/images/blog/tmiyc-jb.webp",
+			ImageAlt:      "TMIYC 新山城市森林内夜间发光的天空步道",
+			AlternateEN:   "tmiyc-johor-bahru-free-outdoor-park-guide",
+			AlternateZH:   "tmiyc-xinshan-mianfei-huodong-gongyuan",
+			AlternateMS:   "tmiyc-johor-bahru-panduan-taman-riadah-percuma",
+			Content: `
+<h2>TMIYC 新山是什么？</h2>
+<p><strong>敦古马赫科达伊斯迈青年中心</strong>（Tunku Mahkota Ismail Youth Centre，TMIYC）是由新山市议会（MBJB）管理的免费户外休闲综合设施，坐落在 Ulu Air Molek 区的 <strong>Hutan Bandar MBJB 城市森林公园</strong>内。2020 年 12 月开幕，如今已成为新山最受本地年轻人欢迎的夜间聚点，也是背包客圈子里的隐藏宝地。</p>
+
+<p>齐全的运动设施、森林步道，再加上那条在社交媒体上爆红的发光天空步道——全部免费——让 TMIYC 成为东南亚城市中罕见的存在。</p>
+
+<h2>TMIYC 里面有什么</h2>
+
+<h3>🌿 天空步道（夜间发光）</h3>
+<p>最吸引眼球的主角。一条高架步道蜿蜒穿越城市森林树冠，天黑后灯光亮起——七彩变换的灯光在夜色中营造出梦幻氛围，无数照片流传社交媒体。日落后抵达效果最佳。无需预约，免费进入。</p>
+
+<h3>🛹 溜冰场（Skate Park）</h3>
+<p>全混凝土户外溜冰场，配备栏杆、四分之一管道、坡道和平地区。夜间灯光充足，深受新山本地滑板圈欢迎。滑板、滑板车、旱冰鞋均可使用。如果你带着滑板旅行，这里不可错过。</p>
+
+<h3>🚵 BMX 泵道和山地车径</h3>
+<p>适合 BMX 和山地车的泵道，以及穿越 Hutan Bandar 的林间小径。场地内提供单车和电动滑板车租赁，无需自带装备。</p>
+
+<h3>🧗 攀岩和跑酷公园</h3>
+<p>户外攀岩墙和专属跑酷障碍区，适合零基础初学者体验，完全免费。</p>
+
+<h3>🍜 餐饮区</h3>
+<p>TMIYC 内的餐饮区有多家本地人称为"文艺风"的摊位，提供各类小吃和特色饮料。价格合理，让你可以在园区内度过完整的夜晚而无需外出觅食。园内还有花摊和手工艺品小摊。</p>
+
+<h2>开放时间和门票</h2>
+<ul>
+  <li><strong>开放时间：</strong>每天 7:00 AM – 11:00 PM</li>
+  <li><strong>门票：</strong>免费入场</li>
+  <li><strong>单车/滑板车租赁：</strong>收费（现场询问价格）</li>
+  <li><strong>最佳时间：</strong>晚上 7 点后，天空步道亮灯，气温也凉快许多</li>
+</ul>
+
+<h2>从彩虹胶囊旅舍出发怎么去</h2>
+<p>TMIYC 位于 Hutan Bandar MBJB，Jalan Yahya Awal，Ulu Air Molek，80200 新山——距离 Pelangi Capsule Hostel 约 <strong>3–5 公里</strong>（乘车）。</p>
+
+<p><strong>推荐方式：Grab</strong>（单程约 RM5–8，车程 10–15 分钟）。这是从 Taman Pelangi 出发最方便的方式，价格对背包客来说非常划算——如果两人合乘更实惠。</p>
+
+<p><strong>省钱小技巧：</strong>在旅舍公共区域招募同伴一起出发，3–4 人拼车，每人单程只需约 RM2，性价比极高。</p>
+
+<h2>背包客为什么爱 TMIYC</h2>
+<ul>
+  <li><strong>完全免费</strong>——这种配置的设施收费都应该的，但它不收</li>
+  <li><strong>开放至晚上 11 点</strong>——非常适合旅舍旅客的夜间行程</li>
+  <li><strong>地道本地氛围</strong>——溜冰场和林径聚集的是新山本地年轻人，不是旅游团，体验真实的本地生活</li>
+  <li><strong>城市森林逃离</strong>——在闹市里拥有真正的林间步道，是逛完购物中心和小贩中心后的完美解压</li>
+  <li><strong>出片率极高</strong>——夜间天空步道颜值在线，值得专程来打卡</li>
+  <li><strong>餐饮一站搞定</strong>——无需离园觅食，可在公园内度过完整的夜晚</li>
+</ul>
+
+<h2>推荐一日行程搭配</h2>
+<ol>
+  <li><strong>下午 5:00</strong> — 从旅舍叫 Grab 前往 TMIYC（日落前到达）</li>
+  <li><strong>5:30–7:00 PM</strong> — 趁天亮探索林间步道、溜冰场、攀岩墙</li>
+  <li><strong>7:00–8:30 PM</strong> — 日落后游览发光天空步道 + 在餐饮区用晚餐</li>
+  <li><strong>8:30 PM</strong> — Grab 回旅舍，或继续探索 Taman Pelangi 的夜生活区</li>
+</ol>
+
+<p>Taman Pelangi 区域内有酒吧、卡拉 OK 和夜市小吃，步行即可到达，TMIYC 之后的夜晚可以继续精彩。</p>
+
+<p>准备出发了吗？<a href="/book">预订彩虹胶囊旅舍</a>，以此为基地探索 TMIYC、夜市、以及新山的一切精彩。</p>
+`,
+		},
+		// 72
+		{
+			Slug:          "malaysia-digital-nomad-johor-bahru-guide",
+			Date:          "2026-08-05",
+			Category:      "Travel Tips",
+			Author:        "Jay Lew",
+			ReadTime:      "6 min read",
+			Tags:          []string{"digital-nomad", "remote-work", "johor-bahru", "malaysia", "budget-travel", "work-from-jb"},
+			FeaturedImage: "/images/blog/malaysia-digital-nomad-jb.webp",
+			ImageAlt:      "Digital nomad working on laptop at a Johor Bahru café with city view",
+			Title:         "Malaysia Is the World's Top Digital Nomad Destination — Here's Why Johor Bahru Should Be Your Base",
+			Excerpt:       "Malaysia ranked #1 for digital nomads in 2026. Forget KL — Johor Bahru gives you Singapore-tier connectivity at a fraction of the price, a legal 12-month nomad visa, and capsule accommodation from RM30/night (~US$7).",
+			Content: `
+<h2>Malaysia: The World's Best Country for Digital Nomads</h2>
+<p>It is no longer a secret. Malaysia has been named the <strong>best country in the world for digital nomads</strong> by the Rumavi Global Relocation Index 2026, which scores 192 countries on cost of living, tax rules, safety, visa access, and digital infrastructure. Malaysia scored 80 out of 100 for digital infrastructure alone — ahead of Portugal, Thailand, and every other Southeast Asian competitor. <a href="https://www.timeout.com/news/malaysia-the-best-country-for-digital-nomads-080326" target="_blank" rel="noopener noreferrer">Time Out reported the finding in March 2026</a>.</p>
+
+<p>The Rumavi index evaluates six different relocation profiles — retirees, families, entrepreneurs, and remote workers among them — re-weighting the same 24 indicators for each group. Under the digital-nomad profile, Malaysia ranks first globally: ahead of Portugal (#2), Thailand (#3), Georgia (#4), and Taiwan (#5). Malaysia's overall score across all profiles was 72.0 out of 100, placing it among the top three countries in the world for any type of relocation, <a href="https://theindependent.sg/singapore-ranks-second-in-2026-global-relocation-index/" target="_blank" rel="noopener noreferrer">as The Independent SG reported</a>.</p>
+
+<p>The reasons are practical: fast fibre internet, English widely spoken, halal and non-halal food everywhere, low crime, modern hospitals, and a cost of living that makes Southeast Asian neighbours look expensive.</p>
+
+<h2>The DE Rantau Nomad Pass: Malaysia's Legal 12-Month Visa for Remote Workers</h2>
+<p>Malaysia is one of the few countries in Asia with a dedicated legal pathway for digital nomads. The <strong>DE Rantau Nomad Pass</strong>, launched by the Malaysia Digital Economy Corporation (MDEC), allows remote workers earning at least USD&nbsp;24,000 per year to live and work legally in Malaysia for 12 months, renewable for up to three years. Dependants can join on the same pass.</p>
+
+<p>In June 2024, eligibility was expanded to include founders, CEOs, accountants, legal professionals, and writers — not just software engineers. This makes JB viable for a much broader range of remote professionals. Apply through the official <a href="https://derantau.mdec.com.my" target="_blank" rel="noopener noreferrer">DE Rantau portal</a>. Processing is straightforward; many applicants report approval within two to four weeks.</p>
+
+<h2>Why Johor Bahru — Not KL, Not Penang</h2>
+<p>Kuala Lumpur gets the headlines. But for digital nomads who need Singapore as a backup office, visa run destination, or client hub, <strong>Johor Bahru is strategically superior</strong>.</p>
+
+<h3>Singapore Is 30 Minutes Away — And Getting Even Closer</h3>
+<p>The Johor–Singapore Causeway is one of the busiest border crossings in the world. From JB Sentral, the Causeway Link bus costs SGD&nbsp;3.30 and drops you at Kranji MRT in Singapore. For nomads with Singapore-based clients, co-working meetings, or bank accounts, JB is effectively a satellite suburb of Singapore — at one-fifth of the cost.</p>
+<p>The <strong>RTS Link</strong> — a 4 km rail connection between Bukit Chagar (JB) and Woodlands North (Singapore) — is scheduled to open by end-2026. The crossing will take under five minutes and carry up to 10,000 passengers per hour each way. When it opens, Singapore becomes even more accessible from JB without the queuing variability of the road causeway.</p>
+
+<h3>Cost of Living: The JB Advantage</h3>
+<p>Here is what a nomad's monthly budget looks like in JB versus its competitors:</p>
+<ul>
+  <li><strong>Accommodation (capsule/shared):</strong> from RM30/night (~US$7) at Pelangi Capsule vs SGD&nbsp;70–120/night in Singapore</li>
+  <li><strong>Your daily "office" — JB café style:</strong> order a drink for RM15 or less (~US$4) and work the entire day on free WiFi. That is the real cost of a nomad workspace in JB.</li>
+  <li><strong>Co-working day pass:</strong> RM30–50 (~US$7–12) in JB vs SGD&nbsp;35–60 in Singapore and RM80–120 in KL's central business district</li>
+  <li><strong>Grab ride across the city:</strong> RM8–15 in JB vs SGD&nbsp;15–30 in Singapore</li>
+  <li><strong>Meals at local restaurants:</strong> RM6–12/meal in JB vs SGD&nbsp;15–25 in Singapore</li>
+</ul>
+<p>A nomad living comfortably in JB — café-working, eating out, and making occasional Singapore day trips — can budget RM3,000–4,500/month (~US$730–1,100) total. The same lifestyle in Singapore costs SGD&nbsp;4,000–6,000 per month.</p>
+
+<h3>Connectivity Is Not a Compromise</h3>
+<p>JB's fibre infrastructure is excellent. Most cafés, co-working spaces, and hostels in the central city districts serve speeds of 100–300&nbsp;Mbps. Video calls, large file uploads, and cloud-based workflows run without friction. Unifi and TIME fibre, Malaysia's two leading ISPs, both have strong JB coverage. You are not roughing it — you are working efficiently from a city where your money goes further.</p>
+
+<h3>Proximity to the Rest of Malaysia</h3>
+<p>From JB, the rest of peninsular Malaysia is within easy reach: KL is a 4-hour bus ride (RM25–35), Melaka is 2 hours, and Desaru's beaches are under 90 minutes. Penang, Langkawi, and the Cameron Highlands are budget-flight or overnight-bus territory. JB is a sensible anchor point for nomads who want to explore without burning through their budget on internal flights.</p>
+
+<h2>Where to Stay: Budget-Smart Capsule Accommodation in JB</h2>
+<p>For nomads who prioritise working budget and flexibility over hotel points, capsule accommodation makes sense. <a href="/rooms">Pelangi Capsule Hostel</a> (JB Capsule) in Taman Pelangi offers private locking pod rooms <strong>from RM30/night (~US$7)</strong>, with fast WiFi, USB charging in-pod, air-conditioning, and personal lockers. There is no minimum stay. Monthly rates are available for longer-term nomads.</p>
+
+<p>Taman Pelangi is a central JB neighbourhood with direct Grab access to JB Sentral (Causeway buses), City Square mall, and the main co-working belt. Staying here keeps your daily costs low without sacrificing convenience.</p>
+
+<h2>Practical Notes for Digital Nomads Arriving in JB</h2>
+<ul>
+  <li><strong>SIM card:</strong> Pick up a Digi, Maxis, or Celcom prepaid at JB Sentral or City Square. 30GB data for RM30–40/month is standard.</li>
+  <li><strong>Banking:</strong> Wise and Revolut work well in Malaysia. Local ATMs accept international Visa/Mastercard. Open a Malaysian bank account (Maybank, CIMB) if staying longer-term.</li>
+  <li><strong>Co-working:</strong> Colony @ JB, Common Ground Paradigm, and several independent cafés in the city centre offer reliable day passes. Many nomads work from laptop-friendly cafés in Taman Pelangi, Bukit Indah, or Medini.</li>
+  <li><strong>DE Rantau hubs:</strong> MDEC has designated several JB co-working spaces as official DE Rantau hubs — check the <a href="https://derantau.mdec.com.my" target="_blank" rel="noopener noreferrer">MDEC site</a> for the current list.</li>
+  <li><strong>Tax:</strong> Income earned from foreign employers is generally not subject to Malaysian income tax for non-residents. Consult a tax professional for your specific situation.</li>
+</ul>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>Do I need the DE Rantau pass to work remotely in JB?</h3>
+<p>Not for short stays. Malaysia's standard tourist entry (visa-free for most nationalities, 30–90 days) permits leisure stays. However, if you are earning income while in Malaysia, the DE Rantau pass provides a legal framework and longer permitted stay. For extended nomad stays, the pass is strongly recommended.</p>
+
+<h3>Is JB safe for solo digital nomads?</h3>
+<p>Yes. JB has improved substantially in safety perception over the past five years. Stick to central districts (Taman Pelangi, City Square, Bukit Indah, Medini), use Grab for late-night travel, and exercise standard urban awareness. Most nomads and expats report feeling comfortable and welcomed.</p>
+
+<h3>How fast is the internet at Pelangi Capsule Hostel?</h3>
+<p>We run Unifi fibre with speeds consistently above 100&nbsp;Mbps. The connection handles simultaneous video calls, large uploads, and cloud sync without issue. If you need a dedicated wired connection for critical work, ask at the front desk.</p>
+
+<h3>Can I use JB as a base and commute to Singapore for work?</h3>
+<p>Many residents do exactly this. The Causeway crossing takes 20–60 minutes depending on traffic. Peak hours (7–9am into Singapore, 5–8pm returning to JB) are busier; off-peak crossings are quick. Most Singapore-bound nomads and workers time their crossings to avoid peak flow.</p>
+
+<p>Ready to make JB your nomad base? <a href="/book">Book a pod at Pelangi Capsule Hostel</a> — no minimum stay, flexible check-in, and a community of travellers and remote workers passing through every week.</p>
 `,
 		},
 	}

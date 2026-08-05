@@ -23,10 +23,11 @@
   <meta name="twitter:description" content="{{.Description}}">
   <meta name="twitter:image" content="{{if .OGImage}}{{.OGImage}}{{else}}https://pelangicapsulehostel.com/images/og-image.png{{end}}">
 
-  {{if or .AltEN .AltZH .AltMS}}
+  {{if or .AltEN .AltZH .AltMS .AltIN}}
   {{if .AltEN}}<link rel="alternate" hreflang="en" href="{{.AltEN}}">{{end}}
   {{if .AltZH}}<link rel="alternate" hreflang="zh-CN" href="{{.AltZH}}">{{end}}
   {{if .AltMS}}<link rel="alternate" hreflang="ms" href="{{.AltMS}}">{{end}}
+  {{if .AltIN}}<link rel="alternate" hreflang="en-IN" href="{{.AltIN}}">{{end}}
   {{if .AltEN}}<link rel="alternate" hreflang="x-default" href="{{.AltEN}}">{{end}}
   {{end}}
 
@@ -57,6 +58,8 @@
 
   <link rel="preconnect" href="https://www.youtube.com">
   <link rel="preconnect" href="https://www.google.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://static.cloudflareinsights.com">
   <link rel="dns-prefetch" href="https://ak-d.tripcdn.com">
   <link rel="search" type="application/opensearchdescription+xml" title="Pelangi Hostel" href="/opensearch.xml">
   <link rel="alternate" type="text/plain" href="/llms.txt">
@@ -103,7 +106,7 @@
   <!-- Language selector engine: EN default (no external call); ZH/BM via Google Translate, loaded only when active -->
   <div id="google_translate_element" aria-hidden="true"></div>
   <script>
-  function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'en,zh-CN,ms',autoDisplay:false},'google_translate_element');}
+  function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'en,zh-CN,ms,ja,ko,ar,hi,ta,th,vi,my,es,fr',autoDisplay:false},'google_translate_element');}
   (function(){
     function shortMap(c){return c==='zh-CN'?'中文':c==='ms'?'BM':'EN';}
     function currentLang(){var m=document.cookie.match(/googtrans=\/[^\/]+\/([^;]+)/);var v=m?decodeURIComponent(m[1]):'en';return v||'en';}
