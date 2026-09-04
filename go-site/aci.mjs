@@ -285,7 +285,13 @@ SUITES.blog = {
     }
     const list = await rawGet("/blog");
     check("blog list shows newest published", list.body.includes(newest.slug), newest.slug);
-    const leaked = future.filter((p) => list.body.includes(p.slug));
+    // Match only actual post links (href="/blog/<slug>"), never an <img src>
+    // or other incidental substring match (e.g. a published post's cover
+    // filename that happens to contain a scheduled post's slug).
+    const listHrefSlugs = new Set(
+      [...list.body.matchAll(/href="\/blog\/([a-z0-9-]+)"/g)].map((m) => m[1])
+    );
+    const leaked = future.filter((p) => listHrefSlugs.has(p.slug));
     check("blog list hides scheduled posts", leaked.length === 0, leaked.map((p) => p.slug).join(","));
 
     // Regression pin 2026-07-11: live posts must never render anchors to
@@ -302,32 +308,59 @@ SUITES.blog = {
   },
 };
 
-// pricing — flat RM35/594/500 consistency; stale RM30 weekday and RM45 must be
-// dead on money pages (2026-07-20: nightly price unified to a flat RM35).
+// pricing — Jay's decision (2026-09-05): RM35/night flat is the standard
+// rate. RM30 applies ONLY to a first-time guest's first night when booked
+// direct on the website (a direct-booking special) — every RM30 mention must
+// carry a "direct"/"website"/"book" qualifier nearby, never bare. Monthly is
+// RM600 (Upper Deck) / RM650 (Lower Deck). Never RM45, never RM594, never
+// weekday/weekend-tiered pricing language.
 SUITES.pricing = {
   needsServer: true,
   run: async () => {
     const home = await rawGet("/");
     const rooms = await rawGet("/rooms");
     const llms = await rawGet("/llms.txt");
-    for (const [name, r] of [["home", home], ["rooms", rooms], ["llms.txt", llms]]) {
+    const pages = [["home", home], ["rooms", rooms], ["llms.txt", llms]];
+    for (const [name, r] of pages) {
       check(`${name} has flat RM35`, r.body.includes("RM35"),
         `RM35=${r.body.includes("RM35")}`);
     }
-    check("llms.txt has RM594 monthly", llms.body.includes("594"), "no 594");
+    check("llms.txt has RM600/RM650 monthly", llms.body.includes("RM600") && llms.body.includes("RM650"),
+      `RM600=${llms.body.includes("RM600")} RM650=${llms.body.includes("RM650")}`);
     check("rooms page has RM500 private room", rooms.body.includes("RM500"), "no RM500");
-    for (const [name, r] of [["home", home], ["rooms", rooms], ["llms.txt", llms]]) {
-      check(`${name} has NO stale RM30 weekday rate`, !r.body.includes("RM30"), "RM30 found");
-      check(`${name} has NO stale RM45`, !r.body.includes("RM45"), "RM45 found");
+    // Every RM30 mention must carry a same-sentence "direct"/"website"/"book"
+    // qualifier (EN) or its ZH equivalent (官网/直订/网站/预订) — RM30 is a
+    // direct-booking special, never a bare rate.
+    const qualifierRE = /direct|website|book|官网|直订|网站|预订/i;
+    for (const [name, r] of pages) {
+      const idxs = [];
+      let i = r.body.indexOf("RM30");
+      while (i !== -1) { idxs.push(i); i = r.body.indexOf("RM30", i + 1); }
+      const bare = idxs.filter((idx) => {
+        // Wide enough to reach a sibling caption/badge separated by markup
+        // (e.g. a big price badge with the qualifier in the <p> right below).
+        const window = r.body.slice(Math.max(0, idx - 90), idx + 260);
+        return !qualifierRE.test(window);
+      });
+      check(`${name} every RM30 mention has a direct/website qualifier`, bare.length === 0,
+        `${bare.length} bare RM30 mention(s)`);
+      check(`${name} has NO RM45`, !r.body.includes("RM45"), "RM45 found");
+      check(`${name} has NO RM594`, !r.body.includes("RM594"), "RM594 found");
+      check(`${name} has NO weekday/weekend-tiered pricing wording`,
+        !/RM3[05][^\n]{0,50}(weekday|weekend)|(weekday|weekend)[^\n]{0,50}RM3[05]/i.test(r.body),
+        "weekday/weekend pricing wording found");
     }
     const bookingJs = readFileSync(join(__dirname, "static", "js", "booking.js"), "utf8");
     check("booking.js has no stale 45 weekday rate", !/\b45\b/.test(bookingJs.replace(/RM594/g, "")),
       "literal 45 found in booking.js");
     // Regression pin 2026-07-11: RM45 Lower Deck pricing survived the 07-05 sweep
-    // in 7 blog post bodies (found by the evaluator agent's first hunt). The only
-    // legitimate RM45 left is the RM45–75 phone-plan currency conversion.
+    // in 7 blog post bodies (found by the evaluator agent's first hunt). Legitimate
+    // RM45 occurrences: the RM45–75 phone-plan currency conversion, and a meal-cost
+    // total ("RM15 × 3 days = RM45") in the India-audience cost-comparison table —
+    // neither is a pod price.
     const blogSrc = readFileSync(join(__dirname, "internal", "data", "blog.go"), "utf8")
-      .replace(/RM45[–-]75/g, "");
+      .replace(/RM45[–-]75/g, "")
+      .replace(/× 3 days = RM45/g, "");
     const rm45 = [...blogSrc.matchAll(/.{30}RM45.{10}/g)].map((m) => m[0].trim());
     check("blog.go quotes no RM45 as a pod price (hunt pin 2026-07-11)", rm45.length === 0,
       rm45.slice(0, 3).join(" | "));
@@ -364,7 +397,11 @@ SUITES.seo = {
     const sm = await rawGet("/sitemap.xml");
     check("sitemap.xml → 200 xml", sm.status === 200 && sm.body.includes("<urlset"), `status=${sm.status}`);
     check("sitemap includes newest published post", sm.body.includes(newest.slug), newest.slug);
-    const leaked = future.filter((p) => sm.body.includes(p.slug));
+    // Match only real page <loc> entries, never <image:loc> (a published
+    // post's cover image filename can legitimately contain another post's
+    // slug as a substring — that is not a page URL leak).
+    const smLocs = [...sm.body.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+    const leaked = future.filter((p) => smLocs.some((loc) => loc.includes(`/blog/${p.slug}`)));
     check("sitemap hides scheduled posts", leaked.length === 0, leaked.map((p) => p.slug).join(","));
     check(`sitemap lastmod tracks newest post (${newest.date})`, sm.body.includes(newest.date),
       "newest date not in sitemap");
