@@ -17,12 +17,26 @@
 | Edge | Cloudflare (orange-cloud). Applies **Brotli** compression at the edge — do NOT add gzip middleware to the Go server, it is redundant. |
 | Old Next.js app | PM2 `pelangi-website` (port 3000), **stopped** — backup only |
 
+## Blog cover-image gate
+
+`./build.sh` runs `node scripts/check-blog-covers.mjs` as its first step and **aborts the
+build** if it fails. It checks every blog post's `FeaturedImage` in `internal/data/blog.go`
+against `site/public/images/blog/`:
+
+- every `FeaturedImage` path must exist under `site/public` with the exact filename + extension
+- no two posts may reuse the same `FeaturedImage` unless they are declared language siblings of
+  each other via `AlternateEN`/`AlternateZH`/`AlternateMS`
+
+Run it standalone any time: `node scripts/check-blog-covers.mjs` (add `--live` to also HEAD-check
+every image against production). **Deploy is refused if this gate fails** — fix the duplicate or
+missing cover in `blog.go` (and add the image to `site/public/images/blog/`) before building again.
+
 ## Deploy steps
 
 From `go-site/` on Windows, use Git Bash:
 
 ```bash
-# 1. Build (Tailwind CSS + static linux/amd64 binary)
+# 1. Build (blog-cover gate + Tailwind CSS + static linux/amd64 binary)
 ./build.sh
 
 # 2. Ship the new binary alongside the live one

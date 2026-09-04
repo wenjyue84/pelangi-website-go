@@ -12,6 +12,7 @@ import { readFileSync, existsSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import http from "node:http";
+import https from "node:https";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO = resolve(__dirname, "..");
@@ -56,9 +57,22 @@ function parseBlogPosts() {
   const posts = [];
   // Struct literals list Slug before Date before FeaturedImage; walk in order.
   const re = /Slug:\s+"([^"]+)"[\s\S]*?Date:\s+"([^"]+)"[\s\S]*?FeaturedImage:\s*"([^"]+)"/g;
+  const slugStarts = [];
   let m;
   while ((m = re.exec(src)) !== null) {
     posts.push({ slug: m[1], date: m[2], image: m[3] });
+    slugStarts.push(m.index);
+  }
+  // Second pass: pull AlternateEN/ZH/MS from each post's own block (Slug -> next Slug),
+  // so a field belonging to the following post can never leak onto this one.
+  for (let i = 0; i < posts.length; i++) {
+    const start = slugStarts[i];
+    const end = i + 1 < slugStarts.length ? slugStarts[i + 1] : src.length;
+    const block = src.slice(start, end);
+    for (const field of ["AlternateEN", "AlternateZH", "AlternateMS"]) {
+      const fm = block.match(new RegExp(field + ':\\s*"([^"]*)"'));
+      posts[i][field] = fm && fm[1] ? fm[1] : null;
+    }
   }
   return posts;
 }
@@ -148,6 +162,59 @@ SUITES.integrity = {
     );
     check("every FeaturedImage exists in site/public", missingImg.length === 0,
       missingImg.map((p) => p.image).join(","));
+
+    // No two posts may share a FeaturedImage unless they are declared language
+    // siblings of each other via AlternateEN/AlternateZH/AlternateMS (union-find
+    // over those links, since a pair can declare the link in either direction).
+    {
+      const bySlugP = new Map(posts.map((p) => [p.slug, p]));
+      const parent = new Map();
+      const find = (x) => { while (parent.get(x) && parent.get(x) !== x) x = parent.get(x); return x; };
+      const union = (a, b) => {
+        if (!parent.has(a)) parent.set(a, a);
+        if (!parent.has(b)) parent.set(b, b);
+        const ra = find(a), rb = find(b);
+        if (ra !== rb) parent.set(ra, rb);
+      };
+      for (const p of posts) {
+        if (!parent.has(p.slug)) parent.set(p.slug, p.slug);
+        for (const field of ["AlternateEN", "AlternateZH", "AlternateMS"]) {
+          if (p[field] && bySlugP.has(p[field])) union(p.slug, p[field]);
+        }
+      }
+      const byImage = new Map();
+      for (const p of posts) {
+        if (!byImage.has(p.image)) byImage.set(p.image, []);
+        byImage.get(p.image).push(p.slug);
+      }
+      const violations = [];
+      for (const [image, slugsForImage] of byImage) {
+        if (slugsForImage.length <= 1) continue;
+        const roots = new Set(slugsForImage.map(find));
+        if (roots.size > 1) violations.push(`${image}: ${slugsForImage.join(", ")}`);
+      }
+      check("no FeaturedImage reused across non-sibling posts", violations.length === 0,
+        violations.join(" | "));
+    }
+
+    // --live: also confirm the cover actually resolves on the production site.
+    if (process.argv.includes("--live")) {
+      const uniqueImages = [...new Set(posts.map((p) => p.image).filter((i) => i.startsWith("/images/")))];
+      const badLive = [];
+      for (const image of uniqueImages) {
+        const r = await new Promise((resolvePromise) => {
+          const req = https.request(
+            { host: "pelangicapsulehostel.com", path: image, method: "HEAD", timeout: 10000 },
+            (res) => resolvePromise({ status: res.statusCode })
+          );
+          req.on("timeout", () => { req.destroy(); resolvePromise({ status: 0 }); });
+          req.on("error", () => resolvePromise({ status: 0 }));
+          req.end();
+        });
+        if (r.status !== 200) badLive.push(`${image} (${r.status})`);
+      }
+      check("every FeaturedImage returns 200 on production", badLive.length === 0, badLive.join(", "));
+    }
 
     const idx = parseSearchIndex();
     check("search index parses ≥ 15 entries", idx.length >= 15, `got ${idx.length}`);
