@@ -1,0 +1,417 @@
+{{define "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "@id": "https://pelangicapsulehostel.com/#lodging",
+  "name": "Pelangi Capsule Hostel",
+  "description": "Budget capsule hostel in Johor Bahru, Malaysia from RM35/night (approx ₹630). Close to Singapore, halal food, vegetarian options nearby. Ideal for Indian travelers.",
+  "url": "https://pelangicapsulehostel.com/india",
+  "telephone": "+60127088789",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "26A Jalan Perang, Taman Pelangi",
+    "addressLocality": "Johor Bahru",
+    "addressRegion": "Johor",
+    "postalCode": "80400",
+    "addressCountry": "MY"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 1.48552, "longitude": 103.7594 },
+  "priceRange": "RM35–RM650/month",
+  "currenciesAccepted": "MYR",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Indian travelers, South Asian backpackers"
+  },
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Free WiFi", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "24/7 Self Check-in", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Personal Lockers", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Air Conditioning", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Shared Kitchen", "value": true }
+  ],
+  "sameAs": ["https://pelangicapsulehostel.com"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do Indian nationals need a visa to enter Malaysia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Indian passport holders can apply for an eNTRI (15-day stay) or eVisa online at Malaysia's official immigration portal (imi.gov.my) before arrival. Indian nationals entering from Singapore on a valid Singapore pass may enter Malaysia freely — confirm current rules before travel."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is vegetarian food available near Pelangi Capsule Hostel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Mamak stalls within walking distance serve roti canai, dhal, and dosai from RM3. South Indian banana-leaf restaurants are a short Grab ride at Jalan Dhoby (Little India). Many hawker stalls offer vegetarian-friendly nasi campur and vegetable dishes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the price in Indian Rupees?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "At current rates (approx RM1 ≈ ₹18), our pods are RM35 (≈ ₹630) per night. New guests who book direct on our website pay RM30 (≈ ₹540) their first night. Monthly stays from RM600 (≈ ₹11,280)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I get to Johor Bahru from India?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fly to Kuala Lumpur (KUL) or Senai Airport (JHB) directly. AirAsia and IndiGo operate routes from Chennai, Bangalore, and other cities. From KUL, take a ~4-hour TBS-JB bus (RM25–35). From Senai Airport, take a Grab to the hostel (RM25–35, 25 min)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I pay using GPay or Indian cards?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We accept cash (Malaysian Ringgit), DuitNow QR (supported by GrabPay and major e-wallets), and credit/debit cards. GPay is not directly supported, but currency exchange is available at JB CIQ money changers and City Square mall. Most Indian Visa/Mastercard debit cards work at local ATMs."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pelangicapsulehostel.com" },
+    { "@type": "ListItem", "position": 2, "name": "India Travel Guide", "item": "https://pelangicapsulehostel.com/india" }
+  ]
+}
+</script>
+{{end}}
+
+{{define "content"}}
+{{template "header" .}}
+<main id="main-content" class="min-h-screen bg-stone-50 dark:bg-stone-950">
+  <div class="pt-28 pb-16 container-custom">
+
+    <!-- Hero -->
+    <div class="text-center mb-16 max-w-4xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-full mb-6">
+        <span class="text-lg" aria-hidden="true">🇮🇳</span>
+        <span class="text-sm font-semibold text-orange-700 dark:text-orange-400">For Indian Travelers</span>
+      </div>
+      <h1 class="font-display text-4xl md:text-5xl font-medium mb-4 text-stone-900 dark:text-stone-100">
+        Johor Bahru's Best-Value Capsule Hostel &mdash;
+        <span class="text-amber-700 dark:text-amber-400">&#8377;630/Night</span>
+      </h1>
+      <p class="text-xl text-stone-600 dark:text-stone-400 max-w-2xl mx-auto mb-10">
+        Minutes from Singapore. Halal food, veggie-friendly eats, free WiFi.
+        A smart base for Indian travelers exploring Malaysia.
+      </p>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+        <div class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 p-5 text-center">
+          <div class="font-display text-3xl font-medium text-amber-700 dark:text-amber-400 mb-1">&#8377;630</div>
+          <div class="text-sm font-semibold text-stone-900 dark:text-stone-100">Per night</div>
+          <div class="text-xs text-stone-500 dark:text-stone-400 mt-1">RM35 &middot; approx USD 7.50</div>
+        </div>
+        <div class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 p-5 text-center">
+          <div class="font-display text-3xl font-medium text-amber-700 dark:text-amber-400 mb-1">10 min</div>
+          <div class="text-sm font-semibold text-stone-900 dark:text-stone-100">From CIQ</div>
+          <div class="text-xs text-stone-500 dark:text-stone-400 mt-1">Singapore &rarr; JB border</div>
+        </div>
+        <div class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 p-5 text-center">
+          <div class="font-display text-3xl font-medium text-amber-700 dark:text-amber-400 mb-1">Halal</div>
+          <div class="text-sm font-semibold text-stone-900 dark:text-stone-100">Food nearby</div>
+          <div class="text-xs text-stone-500 dark:text-stone-400 mt-1">Mamak stalls 5 min walk</div>
+        </div>
+        <div class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 p-5 text-center">
+          <div class="font-display text-3xl font-medium text-amber-700 dark:text-amber-400 mb-1">24/7</div>
+          <div class="text-sm font-semibold text-stone-900 dark:text-stone-100">Self check-in</div>
+          <div class="text-xs text-stone-500 dark:text-stone-400 mt-1">Arrive any time</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Two-column layout -->
+    <div class="lg:grid lg:grid-cols-[minmax(0,1fr)_256px] lg:gap-12 max-w-5xl mx-auto">
+      <div class="min-w-0">
+
+        <!-- Mobile ToC -->
+        <div class="mb-12">
+          <nav aria-label="Article table of contents">
+            <div class="lg:hidden border border-stone-200 dark:border-stone-700 rounded-xl overflow-hidden bg-white dark:bg-stone-800">
+              <details>
+                <summary class="w-full flex items-center justify-between px-4 py-3 text-sm font-semibold text-stone-700 dark:text-stone-200 hover:bg-stone-50 dark:hover:bg-stone-700 transition-colors cursor-pointer list-none">
+                  <span>Table of Contents</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                  </svg>
+                </summary>
+                <div class="px-4 pb-4 pt-2 border-t border-stone-100 dark:border-stone-700">
+                  <ol class="space-y-1">
+                    <li><a href="#why-jb" class="block py-1 text-sm text-stone-500 dark:text-stone-400 hover:text-amber-700 dark:hover:text-amber-400 transition-colors">Why JB for Indian Travelers</a></li>
+                    <li><a href="#getting-here" class="block py-1 text-sm text-stone-500 dark:text-stone-400 hover:text-amber-700 dark:hover:text-amber-400 transition-colors">Getting Here from India</a></li>
+                    <li><a href="#visa" class="block py-1 text-sm text-stone-500 dark:text-stone-400 hover:text-amber-700 dark:hover:text-amber-400 transition-colors">Visa Information</a></li>
+                    <li><a href="#food" class="block py-1 text-sm text-stone-500 dark:text-stone-400 hover:text-amber-700 dark:hover:text-amber-400 transition-colors">Food &amp; Indian Cuisine</a></li>
+                    <li><a href="#rooms" class="block py-1 text-sm text-stone-500 dark:text-stone-400 hover:text-amber-700 dark:hover:text-amber-400 transition-colors">Room Options</a></li>
+                    <li><a href="#faq" class="block py-1 text-sm text-stone-500 dark:text-stone-400 hover:text-amber-700 dark:hover:text-amber-400 transition-colors">FAQ</a></li>
+                  </ol>
+                </div>
+              </details>
+            </div>
+          </nav>
+        </div>
+
+        <!-- Why JB -->
+        <section id="why-jb" class="mb-14 scroll-mt-24">
+          <h2 class="font-display text-2xl font-medium text-stone-900 dark:text-stone-100 mb-6">Why Johor Bahru for Indian Travelers</h2>
+          <div class="grid md:grid-cols-3 gap-4 mb-6">
+            <div class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 p-6">
+              <div class="text-2xl mb-3" aria-hidden="true">💰</div>
+              <h3 class="font-semibold text-stone-900 dark:text-stone-100 mb-2">Exceptional Value</h3>
+              <p class="text-sm text-stone-600 dark:text-stone-400">RM35 = ₹630 = USD 7.50 per night. A fraction of what Singapore hotels cost. JB gives you a modern, safe city at a fraction of the price.</p>
+            </div>
+            <div class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 p-6">
+              <div class="text-2xl mb-3" aria-hidden="true">🍛</div>
+              <h3 class="font-semibold text-stone-900 dark:text-stone-100 mb-2">Familiar Food</h3>
+              <p class="text-sm text-stone-600 dark:text-stone-400">Mamak stalls, banana leaf rice, roti canai, dosai, and briyani are everywhere. JB's Indian food scene rivals South Indian cities. Vegetarian options at every corner.</p>
+            </div>
+            <div class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 p-6">
+              <div class="text-2xl mb-3" aria-hidden="true">🚇</div>
+              <h3 class="font-semibold text-stone-900 dark:text-stone-100 mb-2">Gateway Location</h3>
+              <p class="text-sm text-stone-600 dark:text-stone-400">10 minutes from CIQ border to Singapore. Easy day trips to KL (4h bus), Melaka (2h), and Desaru beaches. Perfect regional base.</p>
+            </div>
+          </div>
+          <p class="text-stone-600 dark:text-stone-400 leading-relaxed">
+            Malaysia is one of India's top five outbound travel destinations, and Johor Bahru is the entry point for millions who cross from Singapore. Indian IT professionals working in Singapore often spend weekends here &mdash; the exchange rate alone makes JB feel like a holiday upgrade. At Pelangi Capsule Hostel, you get a Japanese-style capsule pod with a locking door, premium mattress, air-conditioning, and free WiFi for less than the cost of an auto ride across Chennai.
+          </p>
+        </section>
+
+        <!-- Getting Here -->
+        <section id="getting-here" class="mb-14 scroll-mt-24">
+          <h2 class="font-display text-2xl font-medium text-stone-900 dark:text-stone-100 mb-6">Getting to JB from India</h2>
+          <div class="space-y-4 mb-6">
+            <div class="bg-white dark:bg-stone-900 rounded-xl border border-stone-100 dark:border-stone-700 p-5">
+              <h3 class="font-semibold text-stone-900 dark:text-stone-100 mb-1">Chennai &rarr; JB</h3>
+              <p class="text-sm text-stone-600 dark:text-stone-400">AirAsia and IndiGo fly Chennai (MAA) to Kuala Lumpur (KUL). From KUL TBS terminal, take a direct JB bus (4h, RM25&ndash;35). Or fly Chennai to Senai Airport (JHB) if direct flights are available on your dates.</p>
+            </div>
+            <div class="bg-white dark:bg-stone-900 rounded-xl border border-stone-100 dark:border-stone-700 p-5">
+              <h3 class="font-semibold text-stone-900 dark:text-stone-100 mb-1">Bangalore / Hyderabad &rarr; JB</h3>
+              <p class="text-sm text-stone-600 dark:text-stone-400">Fly to KUL via AirAsia, then take the bus from TBS to JB Sentral (Larkin) or JBCC. Grab from the bus terminal to Pelangi Capsule Hostel is RM8&ndash;12.</p>
+            </div>
+            <div class="bg-white dark:bg-stone-900 rounded-xl border border-stone-100 dark:border-stone-700 p-5">
+              <h3 class="font-semibold text-stone-900 dark:text-stone-100 mb-1">Mumbai / Delhi &rarr; JB</h3>
+              <p class="text-sm text-stone-600 dark:text-stone-400">Multiple carriers (Air India, AirAsia, Malaysia Airlines) connect to KUL in 5&ndash;6h. From KUL, bus or domestic flight to JB. Grab within JB is under RM15 from most entry points.</p>
+            </div>
+            <div class="bg-white dark:bg-stone-900 rounded-xl border border-stone-100 dark:border-stone-700 p-5">
+              <h3 class="font-semibold text-stone-900 dark:text-stone-100 mb-1">Via Singapore (common route for SG-based Indians)</h3>
+              <p class="text-sm text-stone-600 dark:text-stone-400">Take the Causeway Link CW1 bus from Queen St Terminal or Woodlands CIQ to JB Sentral. From JB Sentral, Grab to Taman Pelangi takes 10&ndash;15 minutes and costs RM8&ndash;12.</p>
+            </div>
+          </div>
+          <div class="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl p-4 text-sm text-amber-800 dark:text-amber-300">
+            <strong>Tip:</strong> Book a Grab from Larkin Sentral terminal or JBCC (City Square) directly to Taman Pelangi. The hostel address is 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru.
+          </div>
+        </section>
+
+        <!-- Visa -->
+        <section id="visa" class="mb-14 scroll-mt-24">
+          <h2 class="font-display text-2xl font-medium text-stone-900 dark:text-stone-100 mb-6">Visa Information for Indian Passport Holders</h2>
+          <div class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 p-6 mb-4">
+            <div class="space-y-4 text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+              <div>
+                <span class="font-semibold text-stone-900 dark:text-stone-100">eNTRI (eNotification of Travel Information)</span> &mdash; 15-day stay, apply online before travel. No visa sticker required. Suitable for short tourism trips.
+              </div>
+              <div>
+                <span class="font-semibold text-stone-900 dark:text-stone-100">eVisa</span> &mdash; For longer stays or specific purposes. Apply at Malaysia's official immigration portal.
+              </div>
+              <div>
+                <span class="font-semibold text-stone-900 dark:text-stone-100">Singapore Pass holders</span> &mdash; Indian nationals on a valid Singapore Employment Pass (EP), S Pass, or Long-Term Pass entering Malaysia from Singapore may enter visa-free for short stays. Confirm current rules at imi.gov.my before travel.
+              </div>
+            </div>
+            <div class="mt-4 pt-4 border-t border-stone-100 dark:border-stone-700">
+              <a href="https://www.imi.gov.my" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-amber-700 dark:text-amber-400 hover:underline">
+                Official Malaysia Immigration Portal &rarr; imi.gov.my
+              </a>
+            </div>
+          </div>
+          <p class="text-xs text-stone-400 dark:text-stone-500">Visa rules change. Always verify on the official government portal before booking flights.</p>
+        </section>
+
+        <!-- Food -->
+        <section id="food" class="mb-14 scroll-mt-24">
+          <h2 class="font-display text-2xl font-medium text-stone-900 dark:text-stone-100 mb-6">Indian Food &amp; Vegetarian Options Near the Hostel</h2>
+          <p class="text-stone-600 dark:text-stone-400 leading-relaxed mb-6">
+            JB's food scene is a happy surprise for Indian travelers. The Malay-Indian mamak culture means you'll find familiar flavors at every corner &mdash; roti canai, teh tarik, dhal, briyani, and banana leaf rice are daily staples here, not specialty items.
+          </p>
+          <div class="grid md:grid-cols-2 gap-4 mb-6">
+            <div class="bg-white dark:bg-stone-900 rounded-xl border border-stone-100 dark:border-stone-700 p-5">
+              <h3 class="font-semibold text-stone-900 dark:text-stone-100 mb-2">Within 5 Minutes' Walk</h3>
+              <ul class="text-sm text-stone-600 dark:text-stone-400 space-y-1">
+                <li>&bull; Mamak stalls: roti canai, teh tarik, maggi goreng (RM3&ndash;8)</li>
+                <li>&bull; Nasi campur with vegetable options</li>
+                <li>&bull; Taman Pelangi Night Market (Tuesday) &mdash; dosai, vadai, putu piring</li>
+                <li>&bull; 24-hour kopitiam with vegetarian toast &amp; eggs</li>
+              </ul>
+            </div>
+            <div class="bg-white dark:bg-stone-900 rounded-xl border border-stone-100 dark:border-stone-700 p-5">
+              <h3 class="font-semibold text-stone-900 dark:text-stone-100 mb-2">Jalan Dhoby &mdash; Little India (5&ndash;10 min Grab)</h3>
+              <ul class="text-sm text-stone-600 dark:text-stone-400 space-y-1">
+                <li>&bull; South Indian vegetarian restaurants with banana leaf</li>
+                <li>&bull; Indian grocery shops (masala, spices, snacks)</li>
+                <li>&bull; Saree and Indian goods stores</li>
+                <li>&bull; Arulmigu Sri Rajakaliamman Glass Temple (nearby)</li>
+              </ul>
+            </div>
+          </div>
+          <p class="text-sm text-stone-500 dark:text-stone-400">
+            City Square mall (10 min Grab) has food courts, money changers, and SIM card shops. AirAsia can be booked inside the mall for onward travel.
+          </p>
+        </section>
+
+        <!-- Rooms -->
+        <section id="rooms" class="mb-14 scroll-mt-24">
+          <h2 class="font-display text-2xl font-medium text-stone-900 dark:text-stone-100 mb-6">Room Options &amp; Pricing</h2>
+          <div class="space-y-3 mb-6">
+            <div class="bg-white dark:bg-stone-900 rounded-xl border border-stone-100 dark:border-stone-700 p-5 flex items-start gap-4">
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-1">
+                  <h3 class="font-semibold text-stone-900 dark:text-stone-100">Lower Deck Capsule Pod</h3>
+                  <span class="text-xs bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 px-2 py-0.5 rounded-full">Ground level</span>
+                </div>
+                <p class="text-sm text-stone-600 dark:text-stone-400 mb-2">RM35/night flat &middot; RM30 first night for new guests booking direct on our website &middot; ≈ ₹540&ndash;630</p>
+                <p class="text-xs text-stone-400 dark:text-stone-500">Locking door, AC, USB charging, premium mattress</p>
+              </div>
+            </div>
+            <div class="bg-white dark:bg-stone-900 rounded-xl border border-stone-100 dark:border-stone-700 p-5 flex items-start gap-4">
+              <div class="flex-1">
+                <h3 class="font-semibold text-stone-900 dark:text-stone-100 mb-1">Upper Deck Capsule Pod</h3>
+                <p class="text-sm text-stone-600 dark:text-stone-400 mb-2">Same pricing as lower deck &middot; ≈ ₹540&ndash;630/night</p>
+                <p class="text-xs text-stone-400 dark:text-stone-500">Elevated position, same amenities and locking door</p>
+              </div>
+            </div>
+            <div class="bg-white dark:bg-stone-900 rounded-xl border border-stone-100 dark:border-stone-700 p-5 flex items-start gap-4">
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-1">
+                  <h3 class="font-semibold text-stone-900 dark:text-stone-100">Monthly Stay</h3>
+                  <span class="text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-0.5 rounded-full">Popular with SG-based professionals</span>
+                </div>
+                <p class="text-sm text-stone-600 dark:text-stone-400 mb-2">From RM600/month &middot; ≈ ₹11,280</p>
+                <p class="text-xs text-stone-400 dark:text-stone-500">All-inclusive: WiFi, AC, laundry, kitchen access. WhatsApp to confirm availability.</p>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="/book" class="btn-primary inline-flex items-center justify-center gap-2">Check Availability</a>
+            <a href="/rooms" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-amber-700 dark:border-amber-500 text-amber-700 dark:text-amber-400 hover:bg-amber-700 hover:text-white transition-colors font-medium">See All Rooms</a>
+          </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="mb-14 scroll-mt-24">
+          <h2 class="font-display text-2xl font-medium text-stone-900 dark:text-stone-100 mb-6">Frequently Asked Questions — Indian Travelers</h2>
+          <div class="space-y-3">
+            <details class="bg-white dark:bg-stone-900 rounded-xl border border-stone-100 dark:border-stone-700 overflow-hidden group">
+              <summary class="flex items-center justify-between px-5 py-4 cursor-pointer text-sm font-semibold text-stone-800 dark:text-stone-200 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors list-none">
+                Do I need a visa as an Indian national to enter Malaysia?
+                <svg class="w-4 h-4 flex-shrink-0 text-stone-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </summary>
+              <div class="px-5 pb-4 text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-700 pt-3">
+                Indian passport holders can apply for an <strong>eNTRI</strong> (15 days, online) or <strong>eVisa</strong> at Malaysia's official immigration portal before arrival. Indian nationals on a valid Singapore EP/S Pass entering from Singapore may enter Malaysia visa-free for short stays &mdash; always verify the current rules at imi.gov.my.
+              </div>
+            </details>
+            <details class="bg-white dark:bg-stone-900 rounded-xl border border-stone-100 dark:border-stone-700 overflow-hidden group">
+              <summary class="flex items-center justify-between px-5 py-4 cursor-pointer text-sm font-semibold text-stone-800 dark:text-stone-200 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors list-none">
+                Is vegetarian food available near the hostel?
+                <svg class="w-4 h-4 flex-shrink-0 text-stone-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </summary>
+              <div class="px-5 pb-4 text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-700 pt-3">
+                Yes. Mamak stalls within 5 minutes' walk serve roti canai, dhal, dosai, and vegetarian nasi campur daily (including 24 hours at some). South Indian banana leaf restaurants are in Jalan Dhoby (Little India), a short Grab ride away.
+              </div>
+            </details>
+            <details class="bg-white dark:bg-stone-900 rounded-xl border border-stone-100 dark:border-stone-700 overflow-hidden group">
+              <summary class="flex items-center justify-between px-5 py-4 cursor-pointer text-sm font-semibold text-stone-800 dark:text-stone-200 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors list-none">
+                How do I get to Pelangi from Senai International Airport?
+                <svg class="w-4 h-4 flex-shrink-0 text-stone-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </summary>
+              <div class="px-5 pb-4 text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-700 pt-3">
+                Take a Grab or airport taxi to 26A Jalan Perang, Taman Pelangi, Johor Bahru. The ride is 20&ndash;30 minutes and costs approximately RM25&ndash;35. No direct public bus connects Senai to Taman Pelangi.
+              </div>
+            </details>
+            <details class="bg-white dark:bg-stone-900 rounded-xl border border-stone-100 dark:border-stone-700 overflow-hidden group">
+              <summary class="flex items-center justify-between px-5 py-4 cursor-pointer text-sm font-semibold text-stone-800 dark:text-stone-200 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors list-none">
+                Can I pay in Indian Rupees or use GPay?
+                <svg class="w-4 h-4 flex-shrink-0 text-stone-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </summary>
+              <div class="px-5 pb-4 text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-700 pt-3">
+                We accept Malaysian Ringgit cash, DuitNow QR (GrabPay, Touch 'n Go, major e-wallets), and credit/debit cards. GPay is not directly accepted, but money changers at JB CIQ, City Square mall, and Larkin terminal offer good rates for INR &rarr; MYR. Indian Visa/Mastercard debit cards work at most ATMs.
+              </div>
+            </details>
+            <details class="bg-white dark:bg-stone-900 rounded-xl border border-stone-100 dark:border-stone-700 overflow-hidden group">
+              <summary class="flex items-center justify-between px-5 py-4 cursor-pointer text-sm font-semibold text-stone-800 dark:text-stone-200 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors list-none">
+                Is the hostel safe for solo Indian travelers?
+                <svg class="w-4 h-4 flex-shrink-0 text-stone-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </summary>
+              <div class="px-5 pb-4 text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-700 pt-3">
+                Yes. Pelangi has 24/7 CCTV, keypad-secured entry, and personal lockers inside each pod room. Each capsule pod has a sliding door that locks from inside. Taman Pelangi is a safe, family-friendly neighbourhood with plenty of eateries and regular foot traffic at all hours.
+              </div>
+            </details>
+            <details class="bg-white dark:bg-stone-900 rounded-xl border border-stone-100 dark:border-stone-700 overflow-hidden group">
+              <summary class="flex items-center justify-between px-5 py-4 cursor-pointer text-sm font-semibold text-stone-800 dark:text-stone-200 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors list-none">
+                What is the exchange rate? (1 MYR ≈ ₹18)
+                <svg class="w-4 h-4 flex-shrink-0 text-stone-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </summary>
+              <div class="px-5 pb-4 text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-700 pt-3">
+                At the time of writing, 1 MYR ≈ ₹18. So RM35/night ≈ ₹630, and RM600/month ≈ ₹11,280. Always check a live converter (Google, XE) for the most current rate before your trip.
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <!-- Final CTA -->
+        <div class="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl p-8 text-center mb-8">
+          <h2 class="font-display text-2xl font-medium text-stone-900 dark:text-stone-100 mb-3">Ready to Book?</h2>
+          <p class="text-stone-600 dark:text-stone-400 mb-6 max-w-md mx-auto">
+            RM35/night &mdash; ≈ ₹630. Free WiFi, locking capsule pod, vegetarian food steps away. Direct booking, no hidden fees.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="/book" class="btn-primary inline-flex items-center justify-center gap-2">Book Your Pod</a>
+            <a href="/blog/india-to-johor-bahru-travel-guide" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-amber-700 dark:border-amber-500 text-amber-700 dark:text-amber-400 hover:bg-amber-700 hover:text-white transition-colors font-medium">India &rarr; JB Travel Guide &rarr;</a>
+          </div>
+        </div>
+
+      </div><!-- end content column -->
+
+      <!-- Desktop ToC sidebar -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-24">
+          <nav aria-label="Article table of contents">
+            <p class="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-3">On this page</p>
+            <ol class="space-y-1">
+              <li><a href="#why-jb" class="block py-1 text-sm leading-snug text-stone-500 dark:text-stone-400 hover:text-amber-700 dark:hover:text-amber-400 transition-colors">Why JB for Indian Travelers</a></li>
+              <li><a href="#getting-here" class="block py-1 text-sm leading-snug text-stone-500 dark:text-stone-400 hover:text-amber-700 dark:hover:text-amber-400 transition-colors">Getting Here from India</a></li>
+              <li><a href="#visa" class="block py-1 text-sm leading-snug text-stone-500 dark:text-stone-400 hover:text-amber-700 dark:hover:text-amber-400 transition-colors">Visa Information</a></li>
+              <li><a href="#food" class="block py-1 text-sm leading-snug text-stone-500 dark:text-stone-400 hover:text-amber-700 dark:hover:text-amber-400 transition-colors">Food &amp; Indian Cuisine</a></li>
+              <li><a href="#rooms" class="block py-1 text-sm leading-snug text-stone-500 dark:text-stone-400 hover:text-amber-700 dark:hover:text-amber-400 transition-colors">Room Options</a></li>
+              <li><a href="#faq" class="block py-1 text-sm leading-snug text-stone-500 dark:text-stone-400 hover:text-amber-700 dark:hover:text-amber-400 transition-colors">FAQ</a></li>
+            </ol>
+          </nav>
+          <div class="mt-6 p-4 bg-white dark:bg-stone-900 rounded-xl border border-stone-100 dark:border-stone-700">
+            <p class="text-xs text-stone-500 dark:text-stone-400 mb-3">Starting from</p>
+            <p class="font-display text-2xl font-medium text-amber-700 dark:text-amber-400 mb-1">&#8377;630<span class="text-sm font-normal text-stone-400">/night</span></p>
+            <p class="text-xs text-stone-400 mb-3">RM35 &middot; approx USD 7.50</p>
+            <a href="/book" class="btn-primary block text-center text-sm">Book Now</a>
+          </div>
+        </div>
+      </aside>
+
+    </div><!-- end two-column grid -->
+  </div>
+</main>
+{{template "footer" .}}
+{{end}}

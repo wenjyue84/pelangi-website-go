@@ -10,8 +10,8 @@ func init() {
 
 func (h *Handler) visaRun(w http.ResponseWriter, r *http.Request) {
 	p := h.base(
-		"Visa Run Singapore to JB | Pelangi Capsule Hostel",
-		"Complete guide to visa runs from Singapore to Johor Bahru. Learn the process, costs, requirements, and FAQs. Perfect for expats and travelers.",
+		"Visa Run Singapore to JB 2026 | Pelangi Capsule Hostel Guide",
+		"Plan your Singapore to Johor Bahru visa run in 2026. Border crossing tips, CW1 bus guide, best times to cross, and affordable overnight accommodation at RM35/night (RM30 first night for direct website bookings).",
 		"https://pelangicapsulehostel.com/visa-run",
 		"en",
 		enNav,

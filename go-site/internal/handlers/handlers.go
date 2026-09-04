@@ -176,6 +176,7 @@ type BasePage struct {
 	AltEN string
 	AltZH string
 	AltMS string
+	AltIN string // en-IN alternate for India-targeted pages
 	// OGLocale is the og:locale value derived from Lang (en_MY / zh_CN / ms_MY).
 	OGLocale string
 	// TranslatedZH/TranslatedMS are the authored-translation URLs for this EN
@@ -204,7 +205,7 @@ type HomePage struct {
 }
 
 const homeDescription = "Experience Japanese-style capsule accommodation in Taman Pelangi, Johor Bahru. " +
-	"Budget-friendly hostel at a flat RM35/night with free WiFi, 24/7 access, hot showers, and personal lockers. " +
+	"Budget-friendly hostel — RM35/night, or RM30 your first night as a new guest booking direct on our website — with free WiFi, 24/7 access, hot showers, and personal lockers. " +
 	"Perfect base for Singapore day trips - just 30 minutes from the border."
 
 // ogLocale maps an <html lang> code to an Open Graph og:locale value.

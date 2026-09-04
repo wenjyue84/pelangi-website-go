@@ -14,7 +14,11 @@ var FaqItems = []FaqItem{
 	},
 	{
 		Question: "How much does a capsule pod cost per night in Johor Bahru?",
-		Answer:   "Capsule pods at Pelangi Capsule Hostel are a flat RM35 per night, every day of the week. A Malaysia Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is added as required by law. Monthly stays are available from RM594 per month. Book directly on our website at pelangicapsulehostel.com/book for the best rate with no booking fees or OTA commissions.",
+		Answer:   "The standard rate is RM35 per night. First-time guests who book directly on our website at pelangicapsulehostel.com/book pay RM30 for their first night, then RM35 per night from the second night onward — this direct-booking discount does not apply to walk-ins or bookings made another way. Repeat guests pay the standard RM35 per night throughout their stay. A Malaysia Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is added as required by law. Monthly stays are available from RM600/month (Upper Deck) or RM650/month (Lower Deck).",
+	},
+	{
+		Question: "What counts as a first stay at Pelangi Capsule Hostel?",
+		Answer:   "A first stay is your very first booking with Pelangi Capsule Hostel. We verify this by name and phone number against our guest records. If our records show a previous stay under the same name or contact number, the standard RM35 per night rate applies throughout. The hostel reserves the right to charge the standard RM35 rate if records indicate a prior stay.",
 	},
 	{
 		Question: "Where exactly is Pelangi Capsule Hostel located?",
@@ -58,7 +62,7 @@ var FaqItems = []FaqItem{
 	},
 	{
 		Question: "Can I stay monthly at Pelangi Capsule Hostel?",
-		Answer:   "Yes, Pelangi Capsule Hostel offers monthly rates from RM594 per month, making it one of the most affordable long-stay accommodation options in Johor Bahru. Monthly stays are popular with remote workers, digital nomads, and professionals on work assignments in JB. The rate includes all amenities: WiFi, air-conditioning, hot showers, kitchen access, and laundry facilities. We also offer an in-house laundry service at RM5/load for guests — cheaper than the outside dobi. If you prefer your own room, we also rent private rooms nearby from RM500 per month (RM250 deposit) — see the next question.",
+		Answer:   "Yes, Pelangi Capsule Hostel offers monthly rates from RM600/month (Upper Deck) or RM650/month (Lower Deck), making it one of the most affordable long-stay accommodation options in Johor Bahru. Monthly stays are popular with remote workers, digital nomads, and professionals on work assignments in JB. The rate includes all amenities: WiFi, air-conditioning, hot showers, kitchen access, and laundry facilities. We also offer an in-house laundry service at RM5/load for guests — cheaper than the outside dobi. If you prefer your own room, we also rent private rooms nearby from RM500 per month (RM250 deposit) — see the next question.",
 	},
 	{
 		Question: "Do you have private rooms for monthly rent in Johor Bahru?",
@@ -79,5 +83,17 @@ var FaqItems = []FaqItem{
 	{
 		Question: "How do I get from Senai Airport to Pelangi Capsule Hostel?",
 		Answer:   "From Senai International Airport (JHB), take a Grab or taxi to 26A Jalan Perang, Taman Pelangi, Johor Bahru. The ride takes approximately 20–30 minutes and costs around RM25–35 depending on traffic. Airport taxis are available at the arrivals hall, or you can book a Grab ride using the app. There is no direct public bus from Senai Airport to Taman Pelangi.",
+	},
+	{
+		Question: "Do Indian nationals need a visa to enter Malaysia?",
+		Answer:   "Indian passport holders can apply for an eNTRI (15-day stay, online application) or an eVisa through Malaysia's official immigration portal before arrival. Indian nationals entering Malaysia directly from Singapore on a valid Singapore pass or long-term pass may enter Malaysia without a separate visa — check current rules at the official Malaysia Immigration website (imi.gov.my) before travel, as conditions change.",
+	},
+	{
+		Question: "Is vegetarian food available near Pelangi Capsule Hostel?",
+		Answer:   "Yes — Johor Bahru has a vibrant Indian food scene. Mamak stalls within walking distance of the hostel serve roti canai, dhal, dosai, and vegetarian nasi campur at RM3–8 per meal. For dedicated Indian vegetarian restaurants, Jalan Dhoby (Little India area) is a short Grab ride away and has South Indian banana-leaf and thali options. Many Chinese hawker stalls also offer vegetarian-friendly dishes.",
+	},
+	{
+		Question: "What is the price of a capsule pod in Indian Rupees?",
+		Answer:   "At current exchange rates (approximately RM1 ≈ ₹18), our capsule pods are RM35 (≈ ₹630) per night. New guests who book direct on our website pay RM30 (≈ ₹540) for their first night. Monthly stays are from RM600 (≈ ₹11,280). Check a live converter such as Google or XE for the most accurate rate on your travel date.",
 	},
 }

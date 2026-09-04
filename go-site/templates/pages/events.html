@@ -1,0 +1,70 @@
+{{define "head"}}
+<script type="application/ld+json">{{ safeJS .StructuredJSON }}</script>
+{{end}}
+
+{{define "content"}}
+{{template "header" .}}
+<main id="main-content" class="min-h-screen bg-stone-50 dark:bg-stone-950">
+  <div class="pt-20">
+    <section class="container mx-auto px-4 py-16 max-w-4xl">
+      <h1 class="text-4xl font-bold mb-4">What&apos;s On in Johor Bahru</h1>
+      <p class="text-xl text-stone-600 dark:text-stone-400 mb-4">
+        The dates that fill JB&apos;s beds — matches, fairs, festivals and the long weekends when
+        Singapore crosses the Causeway. Every date below links to the source it was checked against.
+      </p>
+      <p class="text-stone-600 dark:text-stone-400 mb-10">
+        Booking around one of these? Pods at
+        <a href="/capsule-hotel-johor-bahru" class="text-amber-700 hover:text-amber-900 hover:underline">Pelangi Capsule Hostel</a>
+        in Taman Pelangi are RM35/night, or RM30 for a first-time guest&apos;s first night when booked direct on our website.
+        <a href="/book" class="text-amber-700 hover:text-amber-900 hover:underline">Check availability &rarr;</a>
+      </p>
+
+      {{if .Events}}
+      <div class="space-y-6">
+        {{range .Events}}
+        <article class="bg-white dark:bg-stone-900 p-6 rounded-lg">
+          <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+            <span class="text-sm font-semibold uppercase tracking-wide text-amber-700 dark:text-amber-500">{{.Category}}</span>
+            <span class="text-sm text-stone-500 dark:text-stone-400">{{.DateLabel}}</span>
+          </div>
+          <h2 class="text-2xl font-semibold mb-2">{{.Name}}</h2>
+          <p class="text-stone-700 dark:text-stone-300 mb-3">{{.Blurb}}</p>
+          <dl class="text-sm text-stone-600 dark:text-stone-400 space-y-1 mb-3">
+            {{if .Venue}}<div><dt class="inline font-medium">Venue:</dt> <dd class="inline">{{.Venue}}{{if .Address}}, {{.Address}}{{end}}</dd></div>{{end}}
+            {{if .Recurring}}<div><dt class="inline font-medium">Runs:</dt> <dd class="inline">{{.Recurring}}</dd></div>{{end}}
+            {{if .TravelNote}}<div><dt class="inline font-medium">If you&apos;re booking a bed:</dt> <dd class="inline">{{.TravelNote}}</dd></div>{{end}}
+          </dl>
+          <div class="flex flex-wrap gap-4 text-sm">
+            {{if .SourceURL}}
+            <a href="{{.SourceURL}}" target="_blank" rel="noopener noreferrer" class="text-stone-500 hover:text-stone-800 dark:text-stone-400 dark:hover:text-stone-200 underline">Source: {{.SourceName}} &#8599;</a>
+            {{end}}
+            {{if .PostSlug}}
+            <a href="/blog/{{.PostSlug}}" class="text-amber-700 hover:text-amber-900 hover:underline">Read the full guide &rarr;</a>
+            {{end}}
+          </div>
+        </article>
+        {{end}}
+      </div>
+      {{else}}
+      <p class="text-stone-600 dark:text-stone-400">No dated events listed right now. Check back soon.</p>
+      {{end}}
+
+      <div class="bg-blue-50 dark:bg-blue-950 border-l-4 border-blue-500 p-6 rounded mt-12">
+        <h2 class="text-xl font-semibold mb-2">Staying for one of these?</h2>
+        <p class="text-stone-700 dark:text-stone-300 mb-4">
+          Capsule pods in Taman Pelangi, 15 minutes from Woodlands CIQ. Book direct — no booking fee,
+          no OTA commission. Event weekends sell out first, so book early.
+        </p>
+        <a href="/book" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition">Check availability</a>
+      </div>
+
+      <p class="text-sm text-stone-500 dark:text-stone-400 mt-8">
+        Dates change. We list only events we could verify against the organiser or a named
+        publication, and we link that source on every row — but always confirm with the organiser
+        before booking travel around a date.
+      </p>
+    </section>
+  </div>
+</main>
+{{template "footer" .}}
+{{end}}

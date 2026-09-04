@@ -11,7 +11,7 @@ func init() {
 func (h *Handler) visitMalaysia2026(w http.ResponseWriter, r *http.Request) {
 	p := h.base(
 		"Visit Malaysia 2026 — Budget Hostel in Johor Bahru | Pelangi Capsule Hostel",
-		"Celebrate Visit Malaysia Year 2026 from Johor Bahru. Budget capsule hostel at a flat RM35/night in Taman Pelangi — perfect base for Singapore day trips via RTS Link, JB attractions, and Visit Johor 2026 events.",
+		"Celebrate Visit Malaysia Year 2026 from Johor Bahru. Budget capsule hostel at RM35/night, or RM30 your first night when booked direct on our website, in Taman Pelangi — perfect base for Singapore day trips via RTS Link, JB attractions, and Visit Johor 2026 events.",
 		"https://pelangicapsulehostel.com/visit-malaysia-2026",
 		"en",
 		enNav,

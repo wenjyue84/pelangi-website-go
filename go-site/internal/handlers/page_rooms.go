@@ -22,7 +22,7 @@ func (h *Handler) rooms(w http.ResponseWriter, r *http.Request) {
 	p := RoomsPage{
 		BasePage: h.base(
 			"Capsule Pod Rooms | Pelangi Capsule Hostel JB",
-			"Private capsule pods at a flat RM35/night in Taman Pelangi, Johor Bahru. Personal climate control, USB charging, LED lighting, and personal locker included.",
+			"Private capsule pods at RM35/night, or RM30 your first night as a new guest booking direct on the website, in Taman Pelangi, Johor Bahru. Personal climate control, USB charging, LED lighting, and personal locker included.",
 			"https://pelangicapsulehostel.com/rooms",
 			"en",
 			enNav,

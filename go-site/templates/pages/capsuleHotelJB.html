@@ -1,0 +1,238 @@
+{{define "head"}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a capsule hotel, and how is it different from a hostel dorm?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A capsule hotel gives each guest an enclosed private sleeping pod instead of an open bunk in a shared room. At Pelangi Capsule Hostel in Johor Bahru, every pod has a sliding door that locks from the inside, a premium mattress, personal fan and air-conditioning, adjustable LED reading light, a USB charging port and a power outlet. A dorm bed puts you in the open with only a curtain, if that. The price sits in the same budget bracket, but the privacy is closer to a small hotel room."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does a capsule hotel in Johor Bahru cost per night?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The standard rate at Pelangi Capsule Hostel is RM35 per night. First-time guests who book direct at pelangicapsulehostel.com/book pay RM30 for their first night, then RM35 per night from the second night onward. Repeat guests pay RM35 throughout. Malaysia Tourism Tax of RM10 per room per night applies to foreign tourists only — Malaysians and permanent residents are exempt. Monthly long stays start from RM600/month (Upper Deck) or RM650/month (Lower Deck)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Johor Bahru city centre safe to stay in?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Johor Bahru is a normal working city — the ordinary precautions of any Southeast Asian city apply: keep your phone out of sight on the street at night, use Grab rather than walking long stretches after dark, and keep valuables locked. At Pelangi Capsule Hostel the building has 24/7 CCTV, secure keypad entry, personal lockers inside the pod room, and a pod door that locks from the inside. There is no curfew, so late arrivals from the Causeway are fine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where should I stay in Johor Bahru without a car?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Stay in a central neighbourhood where food is within walking distance and Grab rides are short. Pelangi Capsule Hostel is at 26A Jalan Perang, Taman Pelangi — a neighbourhood of kopitiam, mamak stalls and restaurants, with the Taman Pelangi night market (pasar malam) every Tuesday from 4:30 PM. A Grab from JB CIQ costs roughly RM8–12, and from Singapore you can take bus CW1 from Woodlands to JB Sentral and Grab the last stretch."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the cheapest place to stay near JB Sentral and the CIQ checkpoint?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Capsule pods are the cheapest private option near the border. Pelangi Capsule Hostel is a short Grab ride (about RM8–12) from JB CIQ and JB Sentral, and 15 minutes by car from the Woodlands CIQ checkpoint on the Singapore side, at RM35 per night, or RM30 on a first-time guest's first night when booked direct on the website."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do capsule pods have air-conditioning and lockers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Each pod at Pelangi Capsule Hostel has personal climate control (fan plus air-conditioning), an adjustable LED reading light, USB charging and a power outlet, and a personal locker inside the pod room. Free high-speed WiFi covers the whole property, including inside the pods, and a fresh towel is provided to every guest."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What time is check-in and check-out?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Check-in is from 2:00 PM and check-out is before 12:00 PM (noon). Self check-in runs 24 hours, so you can arrive any time after 2:00 PM without waiting for reception — useful if you cross the Causeway late. Luggage storage before check-in and after check-out is free."
+      }
+    }
+  ]
+}
+</script>
+{{end}}
+
+{{define "content"}}
+{{template "header" .}}
+<main id="main-content" class="min-h-screen bg-stone-50 dark:bg-stone-950">
+  <div class="pt-20">
+    <section class="container mx-auto px-4 py-16 max-w-5xl">
+      <h1 class="text-4xl font-bold mb-4">Capsule Hotel in Johor Bahru</h1>
+      <p class="text-xl text-stone-600 dark:text-stone-400 mb-8">
+        Pelangi Capsule Hostel runs 30 Japanese-style pods in Taman Pelangi, central Johor Bahru.
+        Every pod is an enclosed space with a door that locks — not a bunk with a curtain.
+        <strong>RM35 per night &mdash; or RM30 for a first-time guest&apos;s first night when booked direct on our website.</strong>
+      </p>
+
+      <div class="flex flex-wrap gap-3 mb-12">
+        <a href="/book" class="inline-block bg-amber-700 hover:bg-amber-800 text-white font-semibold py-3 px-7 rounded-full transition">Check availability</a>
+        <a href="/rooms" class="inline-block border border-stone-300 dark:border-stone-700 hover:bg-stone-100 dark:hover:bg-stone-800 font-semibold py-3 px-7 rounded-full transition">See the pods</a>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-2 mb-12">
+        <div class="bg-white dark:bg-stone-900 p-6 rounded-lg">
+          <h2 class="text-2xl font-semibold mb-4">What you pay</h2>
+          <table class="w-full text-stone-700 dark:text-stone-300">
+            <tbody>
+              <tr class="border-b border-stone-200 dark:border-stone-700">
+                <td class="py-2">First night, first-time guest (book direct on website)</td>
+                <td class="text-right font-semibold">RM30</td>
+              </tr>
+              <tr class="border-b border-stone-200 dark:border-stone-700">
+                <td class="py-2">Every night after (and repeat guests)</td>
+                <td class="text-right font-semibold">RM35</td>
+              </tr>
+              <tr class="border-b border-stone-200 dark:border-stone-700">
+                <td class="py-2">Malaysia Tourism Tax (foreign tourists only)</td>
+                <td class="text-right">RM10 / room / night</td>
+              </tr>
+              <tr>
+                <td class="py-2">Monthly long stay from</td>
+                <td class="text-right font-semibold">From RM600 / month</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-sm text-stone-500 dark:text-stone-400 mt-4">
+            Malaysians and permanent residents are exempt from Tourism Tax. Booking direct means no
+            booking fee and no OTA commission.
+          </p>
+        </div>
+
+        <div class="bg-white dark:bg-stone-900 p-6 rounded-lg">
+          <h2 class="text-2xl font-semibold mb-4">Where it is</h2>
+          <ul class="space-y-3 text-stone-700 dark:text-stone-300">
+            <li><strong>Address:</strong> 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru</li>
+            <li><strong>From Woodlands CIQ (Singapore):</strong> 15 minutes by car</li>
+            <li><strong>From JB CIQ / JB Sentral:</strong> short Grab ride, about RM8–12</li>
+            <li><strong>By public transport:</strong> bus CW1 from Woodlands or bus 170 from Queen Street to JB Sentral, then Grab</li>
+            <li><strong>On foot:</strong> kopitiam, mamak and restaurants across Taman Pelangi; the pasar malam runs every Tuesday from 4:30 PM</li>
+          </ul>
+          <p class="mt-4">
+            <a href="/getting-here" class="text-amber-700 hover:text-amber-900 hover:underline">Full directions &rarr;</a>
+          </p>
+        </div>
+      </div>
+
+      <section class="bg-white dark:bg-stone-900 p-8 rounded-lg mb-12">
+        <h2 class="text-2xl font-semibold mb-6">Capsule pod vs dorm bed vs budget hotel room</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-stone-700 dark:text-stone-300">
+            <thead>
+              <tr class="border-b border-stone-300 dark:border-stone-700">
+                <th class="py-3 pr-4 font-semibold">&nbsp;</th>
+                <th class="py-3 pr-4 font-semibold">Capsule pod</th>
+                <th class="py-3 pr-4 font-semibold">Dorm bed</th>
+                <th class="py-3 font-semibold">Budget hotel room</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-stone-200 dark:border-stone-800">
+                <td class="py-3 pr-4 font-medium">Enclosed space</td>
+                <td class="py-3 pr-4">Yes — sliding door</td>
+                <td class="py-3 pr-4">No — curtain at best</td>
+                <td class="py-3">Yes — full room</td>
+              </tr>
+              <tr class="border-b border-stone-200 dark:border-stone-800">
+                <td class="py-3 pr-4 font-medium">Locks from inside</td>
+                <td class="py-3 pr-4">Yes</td>
+                <td class="py-3 pr-4">No</td>
+                <td class="py-3">Yes</td>
+              </tr>
+              <tr class="border-b border-stone-200 dark:border-stone-800">
+                <td class="py-3 pr-4 font-medium">Own light &amp; power socket</td>
+                <td class="py-3 pr-4">Yes</td>
+                <td class="py-3 pr-4">Varies</td>
+                <td class="py-3">Yes</td>
+              </tr>
+              <tr class="border-b border-stone-200 dark:border-stone-800">
+                <td class="py-3 pr-4 font-medium">Private bathroom</td>
+                <td class="py-3 pr-4">No — shared</td>
+                <td class="py-3 pr-4">No — shared</td>
+                <td class="py-3">Usually yes</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4 font-medium">Our rate</td>
+                <td class="py-3 pr-4 font-semibold">RM35, or RM30 first night if booked direct</td>
+                <td class="py-3 pr-4">n/a — we don&apos;t sell open dorms</td>
+                <td class="py-3">n/a</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-sm text-stone-500 dark:text-stone-400 mt-4">
+          Rates shown are our own published rates. Other properties&apos; pricing changes constantly —
+          check a live comparison rather than trusting a number in an article.
+          For the longer version of this comparison, read
+          <a href="/blog/capsule-pod-vs-private-room-jb-which-to-book" class="text-amber-700 hover:text-amber-900 hover:underline">capsule pod vs private room in JB</a>.
+        </p>
+      </section>
+
+      <section class="bg-white dark:bg-stone-900 p-8 rounded-lg mb-12">
+        <h2 class="text-2xl font-semibold mb-6">What is in every pod</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <ul class="space-y-2 text-stone-700 dark:text-stone-300">
+            <li>&#10003; Sliding door that locks from the inside</li>
+            <li>&#10003; Personal fan and air-conditioning</li>
+            <li>&#10003; Adjustable LED reading light</li>
+            <li>&#10003; USB charging port and power outlet</li>
+          </ul>
+          <ul class="space-y-2 text-stone-700 dark:text-stone-300">
+            <li>&#10003; Personal locker in the pod room</li>
+            <li>&#10003; Free high-speed WiFi, including inside the pods</li>
+            <li>&#10003; Fresh towel; body wash and shampoo in the bathrooms</li>
+            <li>&#10003; Free luggage storage before check-in and after check-out</li>
+          </ul>
+        </div>
+        <p class="mt-6 text-stone-700 dark:text-stone-300">
+          30 pods in total: 24 Lower Deck (ground level, no ladder) and 6 Upper Deck (elevated, quieter).
+          Check-in from 2:00 PM, check-out by 12:00 PM, 24-hour self check-in, no curfew.
+        </p>
+      </section>
+
+      <section class="bg-white dark:bg-stone-900 p-8 rounded-lg mb-12">
+        <h2 class="text-2xl font-semibold mb-6">Common questions</h2>
+        <div class="space-y-6 text-stone-700 dark:text-stone-300">
+          <div>
+            <h3 class="font-semibold text-lg mb-1">Is Johor Bahru city centre safe to stay in?</h3>
+            <p>It is a normal working city, and normal city sense applies: phone out of sight on the street at night, Grab instead of long walks after dark, valuables locked. Our building has 24/7 CCTV, keypad entry, lockers inside the pod room, and a pod door that locks from the inside. No curfew, so a late Causeway crossing is not a problem.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-lg mb-1">Where should I stay in JB without a car?</h3>
+            <p>Somewhere central enough that food is walkable and Grab rides are short. Taman Pelangi is exactly that — restaurants, kopitiam and mamak stalls all around, plus the Tuesday pasar malam from 4:30 PM. See <a href="/blog/getting-around-johor-bahru-no-car-guide" class="text-amber-700 hover:text-amber-900 hover:underline">getting around JB without a car</a>.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-lg mb-1">What is the cheapest stay near JB Sentral and CIQ?</h3>
+            <p>A capsule pod is the cheapest way to get a private, lockable space near the border. We are a RM8–12 Grab ride from JB CIQ and JB Sentral, and 15 minutes by car from Woodlands CIQ on the Singapore side.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-lg mb-1">Can I stay long term?</h3>
+            <p>Yes. Monthly pod stays from RM600/month (Upper Deck) or RM650/month (Lower Deck), WiFi included, no deposit. Details on the <a href="/rooms" class="text-amber-700 hover:text-amber-900 hover:underline">rooms page</a>.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="bg-blue-50 dark:bg-blue-950 border-l-4 border-blue-500 p-6 rounded">
+        <h2 class="text-xl font-semibold mb-2">Book a pod</h2>
+        <p class="text-stone-700 dark:text-stone-300 mb-4">
+          Direct booking, no booking fee, no OTA commission. RM30 your first night as a first-time guest booking direct on our website.
+        </p>
+        <a href="/book" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition">Check availability</a>
+      </div>
+    </section>
+  </div>
+</main>
+{{template "footer" .}}
+{{end}}
