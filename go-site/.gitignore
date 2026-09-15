@@ -2,3 +2,7 @@
 /pelangi-go
 /pelangi-go.exe
 *.test
+/pelangi-site.exe
+/pelangi-test.exe
+*.bak
+*.recovered*

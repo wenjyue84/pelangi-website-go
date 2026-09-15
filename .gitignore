@@ -28,3 +28,6 @@ Thumbs.db
 # Claude/AI folders
 .claude/
 .vercel
+
+bash.exe.stackdump
+**/bash.exe.stackdump
