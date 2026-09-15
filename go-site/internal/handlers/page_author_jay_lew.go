@@ -10,8 +10,8 @@ func init() {
 
 func (h *Handler) authorJayLew(w http.ResponseWriter, r *http.Request) {
 	p := h.base(
-		"Jay Lew — Co-Founder & Author | Pelangi Capsule Hostel",
-		"Jay Lew is the co-founder of Pelangi Capsule Hostel in Johor Bahru and the author of its travel blog. Years of backpacking across Japan and Southeast Asia inform his guides on JB, the Causeway, and budget travel.",
+		"Pelangi Capsule Hostel — Blog & Travel Guides | Johor Bahru",
+		"Pelangi Capsule Hostel is a Japanese-style capsule accommodation in Johor Bahru. Read our travel blog featuring first-hand guides on Johor Bahru, crossing the Singapore Causeway, budget travel, and backpacker tips.",
 		"https://pelangicapsulehostel.com/author/jay-lew",
 		"en",
 		enNav,

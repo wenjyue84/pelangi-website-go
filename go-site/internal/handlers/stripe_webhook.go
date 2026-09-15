@@ -222,6 +222,9 @@ func stripeWebhookSendConfirmation(resendKey, emailTo, name, amountRM, checkIn, 
 		`<tr><td style="padding:8px 0;color:#78716c;width:140px;">Amount paid</td>` +
 		`<td style="padding:8px 0;color:#1c1917;font-weight:600;">RM ` + amountRM + `</td></tr>` +
 		stayRow + `</table>` +
+		`<p style="margin-top:16px;">Travelling into Malaysia? Immigration may ask for proof of accommodation — ` +
+		`<a href="https://pelangicapsulehostel.com/accommodation-proof" style="color:#b45309;">get a printable accommodation confirmation</a> ` +
+		`using your booking reference and last name.</p>` +
 		`<p style="margin-top:16px;">We look forward to hosting you at <strong>Pelangi Capsule Hostel</strong>!</p>` +
 		`<p style="margin-bottom:0;">If you have any questions, WhatsApp us at ` +
 		`<a href="https://wa.me/60127088789" style="color:#b45309;">+60 12-708 8789</a>.</p>` +

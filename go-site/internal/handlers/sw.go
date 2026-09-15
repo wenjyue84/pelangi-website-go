@@ -14,9 +14,9 @@ func (h *Handler) serviceWorker(w http.ResponseWriter, r *http.Request) {
 }
 
 const serviceWorkerJS = `// Pelangi Capsule Hostel — service worker (ported from Serwist sw.ts)
-const CACHE = 'pelangi-v1';
+const CACHE = 'pelangi-v2'; // bump to evict stale /images/ (logo, exterior) — cache-first has no expiry
 const OFFLINE_URL = '/~offline';
-const PRECACHE = [OFFLINE_URL, '/static/css/app.css', '/static/js/app.js', '/favicon.svg'];
+const PRECACHE = [OFFLINE_URL, '/static/css/app.css?v=20260915', '/static/js/app.js', '/favicon.svg'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(

@@ -26,7 +26,7 @@ var RoomTypes = []RoomType{
 			"Japanese-style with LED reading light, USB charging port, and personal locker.",
 		NightlyRate:  35, // flat rate, every day (2026-07-20: unified from RM30 weekday / RM35 weekend)
 		WeekendRate:  35, // flat — same as weekday
-		MonthlyRate:  594,
+		MonthlyRate:  650, // "from" price (2026-08-10: lower deck long stay from RM650)
 		Currency:     "MYR",
 		MaxOccupancy: 1,
 		// Total sellable capsules = 30 (matches the PMS units table, the actual
@@ -50,6 +50,7 @@ var RoomTypes = []RoomType{
 			"Same Japanese-style comfort with LED reading light, USB charging port, and personal locker.",
 		NightlyRate:  35, // flat rate, every day (2026-07-20: unified from RM30 weekday / RM35 weekend)
 		WeekendRate:  35, // flat — same as weekday
+		MonthlyRate:  600, // "from" price (2026-08-10: upper deck long stay from RM600)
 		Currency:     "MYR",
 		MaxOccupancy: 1,
 		TotalUnits:   6,

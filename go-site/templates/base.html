@@ -25,15 +25,15 @@
 
   {{if or .AltEN .AltZH .AltMS .AltIN}}
   {{if .AltEN}}<link rel="alternate" hreflang="en" href="{{.AltEN}}">{{end}}
-  {{if .AltZH}}<link rel="alternate" hreflang="zh-CN" href="{{.AltZH}}">{{end}}
+  {{if .AltZH}}<link rel="alternate" hreflang="zh-CN" href="{{.AltZH}}"><link rel="alternate" hreflang="zh" href="{{.AltZH}}">{{end}}
   {{if .AltMS}}<link rel="alternate" hreflang="ms" href="{{.AltMS}}">{{end}}
   {{if .AltIN}}<link rel="alternate" hreflang="en-IN" href="{{.AltIN}}">{{end}}
   {{if .AltEN}}<link rel="alternate" hreflang="x-default" href="{{.AltEN}}">{{end}}
   {{end}}
 
   <!-- Site-wide entities: Organization + WebSite (stable @ids referenced by page-level schema) -->
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://pelangicapsulehostel.com/#organization","name":"Pelangi Capsule Hostel","url":"https://pelangicapsulehostel.com","logo":{"@type":"ImageObject","url":"https://pelangicapsulehostel.com/images/logo.png"},"telephone":"+60127088789","email":"pelangicapsule@gmail.com","address":{"@type":"PostalAddress","streetAddress":"26A Jalan Perang, Taman Pelangi","addressLocality":"Johor Bahru","addressRegion":"Johor","postalCode":"80400","addressCountry":"MY"},"sameAs":["https://www.facebook.com/pelangicapsulehostel","https://www.instagram.com/pelangicapsulehostel","https://maps.app.goo.gl/maLXetUqYS5MtSLD9","https://www.booking.com/hotel/my/pelangi-hostel-capsule.html","https://www.hostelworld.com/pwa/hosteldetails.php/Pelangi-Capsule-Hostel/Johor-Bahru/317698","https://www.tripadvisor.com/Hotel_Review-g298278-d27125478-Reviews-Pelangi_Capsule_Hostel-Johor_Bahru_Johor_Bahru_District_Johor.html","https://www.agoda.com/pelangi-hostel-capsule/hotel/johor-bahru-my.html","https://www.wikidata.org/wiki/Q140363023"]}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://pelangicapsulehostel.com/#website","url":"https://pelangicapsulehostel.com","name":"Pelangi Capsule Hostel","publisher":{"@id":"https://pelangicapsulehostel.com/#organization"},"inLanguage":["en","zh-CN"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://pelangicapsulehostel.com/#organization","name":"Pelangi Capsule Hostel","url":"https://pelangicapsulehostel.com","logo":{"@type":"ImageObject","url":"https://pelangicapsulehostel.com/images/logo.png"},"telephone":"+60127088789","email":"pelangicapsule@gmail.com","address":{"@type":"PostalAddress","streetAddress":"26A Jalan Perang, Taman Pelangi","addressLocality":"Johor Bahru","addressRegion":"Johor","postalCode":"80400","addressCountry":"MY"},"availableLanguage":[{"@type":"Language","name":"English","alternateName":"en"},{"@type":"Language","name":"Chinese","alternateName":"zh"},{"@type":"Language","name":"Malay","alternateName":"ms"}],"sameAs":["https://www.facebook.com/pelangicapsulehostel","https://www.instagram.com/pelangicapsulehostel","https://maps.app.goo.gl/maLXetUqYS5MtSLD9","https://www.booking.com/hotel/my/pelangi-hostel-capsule.html","https://www.hostelworld.com/pwa/hosteldetails.php/Pelangi-Capsule-Hostel/Johor-Bahru/317698","https://www.tripadvisor.com/Hotel_Review-g298278-d27125478-Reviews-Pelangi_Capsule_Hostel-Johor_Bahru_Johor_Bahru_District_Johor.html","https://www.agoda.com/pelangi-hostel-capsule/hotel/johor-bahru-my.html","https://www.wikidata.org/wiki/Q140363023"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://pelangicapsulehostel.com/#website","url":"https://pelangicapsulehostel.com","name":"Pelangi Capsule Hostel","publisher":{"@id":"https://pelangicapsulehostel.com/#organization"},"inLanguage":["en","zh-CN","ms"]}</script>
 
   <!-- Consent Mode v2: deny all consent parameters before GTM loads -->
   <script>{{- safeJS `window.dataLayer = window.dataLayer || [];function gtag(){window.dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',analytics_storage:'denied',ad_personalization:'denied',functionality_storage:'denied',security_storage:'granted'});` }}</script>
@@ -45,7 +45,7 @@
   <link rel="preload" href="/static/fonts/inter-v20-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/static/fonts/playfair-display-v40-latin-500.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="/static/css/app.css">
+  <link rel="stylesheet" href="/static/css/app.css?v=20260915">
 
   <!-- Neutralize Google Translate's injected top banner + body shift -->
   <style>

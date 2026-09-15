@@ -140,6 +140,6 @@ const kbPoliciesSection = `# Policies & House Rules
 - Common lounge area
 
 ## Monthly Stays
-- Available from RM594/month (Lower Deck Pod)
+- Upper Deck from RM600/month · Lower Deck from RM650/month
 - Includes all amenities: WiFi, A/C, hot showers, kitchen, laundry
 `

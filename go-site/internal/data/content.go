@@ -86,6 +86,19 @@ Book directly on our website for the best rates with no booking fees:
 - [What's On in Johor Bahru](https://pelangicapsulehostel.com/events) — dated calendar of JB events, public holidays, and long weekends that affect accommodation demand
 - [Safety Guidelines](https://pelangicapsulehostel.com/safety-guidelines) — hostel safety and security information
 - [中文页面 (Chinese)](https://pelangicapsulehostel.com/zh) — Simplified Chinese property overview
+- [Guide for Indian Travelers](https://pelangicapsulehostel.com/india) — visa notes, vegetarian food, and routes from India or via Singapore
+
+## For Chinese Travellers
+
+- Simplified Chinese property page: https://pelangicapsulehostel.com/zh — full pricing, amenities, and directions in Mandarin
+- Same rates as the English site: RM35/night flat, RM30 for a first-time guest's first night when booked direct on the website
+- 15 minutes by car from the Woodlands/Singapore checkpoint; DuitNow QR and cash accepted (no WeChat Pay or Alipay integration currently — confirm with staff via WhatsApp before travel)
+
+## For Indian Travellers
+
+- Dedicated guide for Indian travellers: https://pelangicapsulehostel.com/india — visa (eNTRI/eVisa), vegetarian food nearby, getting here from Chennai/Bangalore/Mumbai/Delhi or via Singapore
+- Same RM35/night flat rate; Indian Rupee prices are not quoted directly on the site since the exchange rate changes daily — check a live converter (Google, XE) for today's amount
+- Vegetarian and halal food within walking distance (mamak stalls) and South Indian banana-leaf restaurants a short Grab ride away at Jalan Dhoby (Little India, Johor Bahru)
 
 ## Optional
 
@@ -331,6 +344,14 @@ Book directly on our website for the best rates with no booking fees:
 - **Phone**: +60 12-708 8789 (Jay) or +60 16-762 0815 (Alston)
 - **Google Maps**: https://maps.app.goo.gl/maLXetUqYS5MtSLD9
 
+## For Chinese Travellers
+
+Pelangi Capsule Hostel maintains a full Simplified Chinese property page at https://pelangicapsulehostel.com/zh covering pricing, amenities, check-in, and directions in Mandarin. Rates match the English site: RM35/night flat, RM30 for a first-time guest's first night when booked direct on pelangicapsulehostel.com/book. The hostel is 15 minutes by car from the Woodlands/Singapore checkpoint. Accepted payment: cash (MYR), DuitNow QR, and credit cards — WeChat Pay and Alipay are not currently integrated; confirm with staff via WhatsApp (+60 12-708 8789) before relying on either.
+
+## For Indian Travellers
+
+A dedicated guide for Indian travellers is available at https://pelangicapsulehostel.com/india, covering entry requirements (eNTRI 15-day online notification or eVisa via imi.gov.my), routes from Chennai, Bangalore, Hyderabad, Mumbai, and Delhi via Kuala Lumpur, and the common Singapore-based route through the Woodlands CIQ checkpoint (Causeway Link CW1 bus) or arrival at Larkin bus terminal / Senai International Airport. The rate is RM35/night flat, RM30 for a first-time guest's first night direct on the website; Indian Rupee equivalents are intentionally not fixed on the site because the exchange rate changes daily — check a live converter (Google, XE) for today's amount. Vegetarian and halal food is available within a 5-minute walk (mamak stalls) and South Indian banana-leaf restaurants a short Grab ride away at Jalan Dhoby, Johor Bahru's Little India district.
+
 ## Blog Posts
 
 __BLOG_SECTION__
@@ -353,6 +374,7 @@ __BLOG_SECTION__
 - [Guest Guide](https://pelangicapsulehostel.com/guide)
 - [Contact](https://pelangicapsulehostel.com/contact)
 - [中文页面 (Chinese)](https://pelangicapsulehostel.com/zh)
+- [Guide for Indian Travelers](https://pelangicapsulehostel.com/india)
 - [Privacy Policy](https://pelangicapsulehostel.com/privacy-policy)
 - [Terms & Conditions](https://pelangicapsulehostel.com/terms)
 `

@@ -71,12 +71,12 @@ var staticSitemap = []sitemapEntry{
 		baseURL + "/images/capsule-4.webp", baseURL + "/images/capsule-2.webp",
 		baseURL + "/images/capsule-1.webp", baseURL + "/images/capsule-3.webp",
 	}, alt: map[string]string{"en": baseURL + "/rooms", "zh-CN": baseURL + "/zh/rooms"}},
-	{loc: baseURL + "/about", lastmod: lastMod, freq: "monthly", priority: "0.8", images: []string{baseURL + "/images/exterior.JPG"}, alt: map[string]string{"en": baseURL + "/about", "zh-CN": baseURL + "/zh/about"}},
+	{loc: baseURL + "/about", lastmod: lastMod, freq: "monthly", priority: "0.8", images: []string{baseURL + "/images/exterior-v2.webp"}, alt: map[string]string{"en": baseURL + "/about", "zh-CN": baseURL + "/zh/about"}},
 	{loc: baseURL + "/gallery", lastmod: lastMod, freq: "monthly", priority: "0.8", images: []string{
-		baseURL + "/images/living-room.jpeg", baseURL + "/images/capsule-1.webp", baseURL + "/images/entrance.jpeg",
-		baseURL + "/images/exterior.JPG", baseURL + "/images/capsule-2.webp", baseURL + "/images/toilet.jpg",
-		baseURL + "/images/facility-heater.jpg", baseURL + "/images/sink.jpg", baseURL + "/images/capsule-3.webp",
-		baseURL + "/images/facility-shoes-rack.jpg", baseURL + "/images/facility-1.webp",
+		baseURL + "/images/living-room.webp", baseURL + "/images/capsule-1.webp", baseURL + "/images/entrance.webp",
+		baseURL + "/images/exterior-v2.webp", baseURL + "/images/capsule-2.webp", baseURL + "/images/toilet.webp",
+		baseURL + "/images/facility-heater.webp", baseURL + "/images/sink.webp", baseURL + "/images/capsule-3.webp",
+		baseURL + "/images/facility-shoes-rack.webp", baseURL + "/images/facility-1.webp",
 		baseURL + "/images/facility-2.webp", baseURL + "/images/facility-3.webp",
 	}},
 	{loc: baseURL + "/location", lastmod: lastMod, freq: "monthly", priority: "0.8", alt: map[string]string{"en": baseURL + "/location", "zh-CN": baseURL + "/zh/location"}},
@@ -88,10 +88,13 @@ var staticSitemap = []sitemapEntry{
 	{loc: baseURL + "/guide", lastmod: lastMod, freq: "monthly", priority: "0.6", alt: map[string]string{"en": baseURL + "/guide", "zh-CN": baseURL + "/zh/guide", "ms": baseURL + "/ms/guide"}},
 	{loc: baseURL + "/blog", lastmod: lastMod, freq: "weekly", priority: "0.8"},
 	{loc: baseURL + "/amenities", lastmod: lastMod, freq: "monthly", priority: "0.8", alt: map[string]string{"en": baseURL + "/amenities", "zh-CN": baseURL + "/zh/amenities", "ms": baseURL + "/ms/amenities"}},
+	{loc: baseURL + "/india", lastmod: lastMod, freq: "monthly", priority: "0.85"},
 	{loc: baseURL + "/visit-malaysia-2026", lastmod: lastMod, freq: "monthly", priority: "0.85"},
 	{loc: baseURL + "/johor-election-2026", lastmod: lastMod, freq: "weekly", priority: "0.85"},
 	{loc: baseURL + "/visa-run", lastmod: lastMod, freq: "monthly", priority: "0.85"},
 	{loc: baseURL + "/singapore-jobs", lastmod: lastMod, freq: "monthly", priority: "0.85"},
+	{loc: baseURL + "/capsule-hotel-johor-bahru", lastmod: lastMod, freq: "weekly", priority: "0.9"},
+	{loc: baseURL + "/events", lastmod: lastMod, freq: "weekly", priority: "0.85"},
 	{loc: baseURL + "/sitemap-html", lastmod: lastMod, freq: "monthly", priority: "0.3"},
 	{loc: baseURL + "/zh", lastmod: lastMod, freq: "weekly", priority: "0.95", alt: map[string]string{"en": baseURL, "zh-CN": baseURL + "/zh"}},
 	{loc: baseURL + "/zh/rooms", lastmod: lastMod, freq: "weekly", priority: "0.9", alt: map[string]string{"en": baseURL + "/rooms", "zh-CN": baseURL + "/zh/rooms"}},
@@ -118,8 +121,16 @@ func (h *Handler) sitemap(w http.ResponseWriter, r *http.Request) {
 
 	// Blog category entries (ported from sitemap.ts categoryEntries).
 	for _, cat := range data.GetUniqueCategories() {
+		slug := data.CategoryToSlug(cat)
+		// CategoryToSlug strips non-Latin characters, so CJK/other non-ASCII
+		// category names collapse to "". Emitting those produced six
+		// /blog/category/ entries that 301-redirect — Google flags redirects
+		// in a sitemap. Skip them.
+		if slug == "" {
+			continue
+		}
 		entries = append(entries, sitemapEntry{
-			loc:      baseURL + "/blog/category/" + data.CategoryToSlug(cat),
+			loc:      baseURL + "/blog/category/" + slug,
 			lastmod:  lastMod,
 			freq:     "weekly",
 			priority: "0.65",
@@ -139,6 +150,19 @@ func (h *Handler) sitemap(w http.ResponseWriter, r *http.Request) {
 		}
 		if p.FeaturedImage != "" {
 			e.images = []string{baseURL + p.FeaturedImage}
+		}
+		if p.AlternateEN != "" || p.AlternateZH != "" || p.AlternateMS != "" {
+			alt := map[string]string{}
+			if p.AlternateEN != "" {
+				alt["en"] = baseURL + "/blog/" + p.AlternateEN
+			}
+			if p.AlternateZH != "" {
+				alt["zh-CN"] = baseURL + "/blog/" + p.AlternateZH
+			}
+			if p.AlternateMS != "" {
+				alt["ms"] = baseURL + "/blog/" + p.AlternateMS
+			}
+			e.alt = alt
 		}
 		entries = append(entries, e)
 	}
@@ -191,16 +215,16 @@ var staticImageData = []pageImages{
 		{baseURL + "/images/exterior-1.webp", "Pelangi Capsule Hostel Building Exterior", "Exterior view of Pelangi Capsule Hostel located in Taman Pelangi, Johor Bahru, Malaysia — close to Singapore."},
 	}},
 	{baseURL + "/gallery", []imgEntry{
-		{baseURL + "/images/living-room.jpeg", "Common Area and Living Room — Pelangi Capsule Hostel", "Cozy common area and living room at Pelangi Capsule Hostel Johor Bahru, perfect for socialising with fellow travellers."},
+		{baseURL + "/images/living-room.webp", "Common Area and Living Room — Pelangi Capsule Hostel", "Cozy common area and living room at Pelangi Capsule Hostel Johor Bahru, perfect for socialising with fellow travellers."},
 		{baseURL + "/images/capsule-1.webp", "Capsule Pod Interior — Pelangi Capsule Hostel", "Japanese-style capsule pod interior with privacy features at budget hostel JB."},
-		{baseURL + "/images/entrance.jpeg", "Hostel Entrance — Pelangi Capsule Hostel Taman Pelangi", "Welcoming entrance of Pelangi Capsule Hostel in Taman Pelangi, Johor Bahru."},
-		{baseURL + "/images/exterior.JPG", "Hostel Exterior — Pelangi Capsule Hostel Johor Bahru", "Pelangi Capsule Hostel building exterior in Johor Bahru, Malaysia."},
+		{baseURL + "/images/entrance.webp", "Hostel Entrance — Pelangi Capsule Hostel Taman Pelangi", "Welcoming entrance of Pelangi Capsule Hostel in Taman Pelangi, Johor Bahru."},
+		{baseURL + "/images/exterior-v2.webp", "Hostel Exterior — Pelangi Capsule Hostel Johor Bahru", "Pelangi Capsule Hostel building exterior in Johor Bahru, Malaysia."},
 		{baseURL + "/images/capsule-2.webp", "Premium Capsule Pod Mattress — Pelangi Hostel JB", "Comfortable premium mattress in affordable hostel pod near Singapore."},
-		{baseURL + "/images/toilet.jpg", "Clean Bathroom with Hot Shower — Pelangi Capsule Hostel", "Clean private bathroom with hot shower at Pelangi Hostel JB."},
-		{baseURL + "/images/facility-heater.jpg", "Hot Water Heater Facility — Pelangi Capsule Hostel", "24/7 hot water heater facility at budget accommodation Johor Bahru."},
-		{baseURL + "/images/sink.jpg", "Washing and Sink Area — Pelangi Capsule Hostel", "Washing and sink area at Pelangi Capsule Hostel Johor Bahru."},
+		{baseURL + "/images/toilet.webp", "Clean Bathroom with Hot Shower — Pelangi Capsule Hostel", "Clean private bathroom with hot shower at Pelangi Hostel JB."},
+		{baseURL + "/images/facility-heater.webp", "Hot Water Heater Facility — Pelangi Capsule Hostel", "24/7 hot water heater facility at budget accommodation Johor Bahru."},
+		{baseURL + "/images/sink.webp", "Washing and Sink Area — Pelangi Capsule Hostel", "Washing and sink area at Pelangi Capsule Hostel Johor Bahru."},
 		{baseURL + "/images/capsule-3.webp", "Capsule Pod USB Charging — Pelangi Capsule Hostel", "Capsule pod amenities including USB charging and personal ventilation at Pelangi Hostel."},
-		{baseURL + "/images/facility-shoes-rack.jpg", "Shoe Storage — Pelangi Capsule Hostel Taman Pelangi", "Organized shoe storage at clean hostel in Taman Pelangi, Johor Bahru."},
+		{baseURL + "/images/facility-shoes-rack.webp", "Shoe Storage — Pelangi Capsule Hostel Taman Pelangi", "Organized shoe storage at clean hostel in Taman Pelangi, Johor Bahru."},
 		{baseURL + "/images/facility-1.webp", "Hostel Facilities — Pelangi Capsule Hostel", "Modern facilities at Pelangi Capsule Hostel Johor Bahru for a comfortable stay."},
 		{baseURL + "/images/facility-2.webp", "Hostel Amenities — Pelangi Capsule Hostel", "Well-maintained amenities at Pelangi Capsule Hostel near Singapore."},
 		{baseURL + "/images/facility-3.webp", "Hostel Common Facilities — Pelangi Capsule Hostel", "Shared facilities available to all guests at Pelangi Capsule Hostel JB."},

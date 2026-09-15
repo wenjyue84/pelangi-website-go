@@ -161,6 +161,15 @@ func (h *Handler) blogPost(w http.ResponseWriter, r *http.Request) {
 	bp.OGImage = ogImage
 	bp.OGPublished = post.Date
 	bp.OGModified = lastModified
+	if post.AlternateEN != "" {
+		bp.AltEN = "https://pelangicapsulehostel.com/blog/" + post.AlternateEN
+	}
+	if post.AlternateZH != "" {
+		bp.AltZH = "https://pelangicapsulehostel.com/blog/" + post.AlternateZH
+	}
+	if post.AlternateMS != "" {
+		bp.AltMS = "https://pelangicapsulehostel.com/blog/" + post.AlternateMS
+	}
 
 	p := BlogPostPage{
 		BasePage: bp,
@@ -176,22 +185,19 @@ func (h *Handler) blogPost(w http.ResponseWriter, r *http.Request) {
 }
 
 // blogBuildAuthor mirrors buildAuthor() in BlogStructuredData.tsx.
-// "Jay Lew" resolves to the canonical Person entity; all other bylines resolve
-// to the Organisation entity, preserving E-E-A-T signal consolidation.
+// All bylines resolve to the Organization entity for Pelangi Capsule Hostel,
+// preserving E-E-A-T signal consolidation around the brand.
 func blogBuildAuthor(authorName string) map[string]any {
-	if authorName == "Jay Lew" {
+	if authorName == "Pelangi Capsule Hostel" || authorName == "Jay Lew" {
 		return map[string]any{
-			"@type":    "Person",
-			"@id":      "https://pelangicapsulehostel.com/author/jay-lew#person",
-			"name":     "Jay Lew",
-			"jobTitle": "Co-Founder & Hostel Owner",
-			"worksFor": map[string]any{
-				"@type": "Organization",
-				"@id":   "https://pelangicapsulehostel.com/#organization",
-				"name":  "Pelangi Capsule Hostel",
-				"url":   "https://pelangicapsulehostel.com",
+			"@type": "Organization",
+			"@id":   "https://pelangicapsulehostel.com/#organization",
+			"name":  "Pelangi Capsule Hostel",
+			"url":   "https://pelangicapsulehostel.com",
+			"logo": map[string]any{
+				"@type": "ImageObject",
+				"url":   "https://pelangicapsulehostel.com/logo.png",
 			},
-			"url": "https://pelangicapsulehostel.com/author/jay-lew",
 			"sameAs": []string{
 				"https://www.facebook.com/pelangicapsulehostel",
 				"https://www.instagram.com/pelangicapsulehostel",

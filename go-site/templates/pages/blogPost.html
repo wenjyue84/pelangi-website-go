@@ -143,6 +143,164 @@
           </section>
           {{end}}
 
+          {{/* ── Comments ── */}}
+          <section id="comments" data-slug="{{.Post.Slug}}" class="mt-12 pt-8 border-t border-stone-200 dark:border-stone-700" aria-label="Comments">
+            <h2 class="font-display text-xl font-medium text-stone-900 dark:text-stone-100 mb-6">Comments</h2>
+
+            {{/* Community Guidelines notice */}}
+            <div class="mb-6 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 px-5 py-4 text-sm text-amber-900 dark:text-amber-200">
+              <strong>Community Guidelines:</strong> Be polite and respectful. No spam, hate speech, or sensitive content. Do not share personal information. Admin reserves the right to remove any comment without notice.
+            </div>
+
+            {{/* Existing comments list */}}
+            <div id="comments-list" class="space-y-5 mb-8">
+              <p id="comments-empty" class="text-sm text-stone-400 dark:text-stone-500 hidden">No comments yet. Be the first!</p>
+            </div>
+
+            {{/* Comment form */}}
+            <form id="comment-form" class="space-y-4" novalidate>
+              <input type="hidden" name="slug" value="{{.Post.Slug}}">
+              <div>
+                <label for="comment-author" class="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1">Display Name <span aria-hidden="true" class="text-red-500">*</span></label>
+                <input
+                  id="comment-author"
+                  type="text"
+                  maxlength="80"
+                  placeholder="Your name"
+                  required
+                  class="w-full rounded-lg border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-900 px-3 py-2 text-sm text-stone-900 dark:text-stone-100 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                >
+              </div>
+              <div>
+                <label for="comment-text" class="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1">Comment <span aria-hidden="true" class="text-red-500">*</span></label>
+                <textarea
+                  id="comment-text"
+                  rows="4"
+                  maxlength="1000"
+                  placeholder="Share your thoughts… (5–1,000 characters)"
+                  required
+                  class="w-full rounded-lg border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-900 px-3 py-2 text-sm text-stone-900 dark:text-stone-100 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-500 resize-y"
+                ></textarea>
+                <p class="text-xs text-stone-400 mt-1"><span id="char-count">0</span> / 1,000</p>
+              </div>
+              <div id="comment-error" class="hidden rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 px-4 py-3 text-sm text-red-800 dark:text-red-200" role="alert"></div>
+              <div id="comment-success" class="hidden rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 px-4 py-3 text-sm text-green-800 dark:text-green-200" role="status">
+                Your comment has been posted. Thank you!
+              </div>
+              <button
+                type="submit"
+                id="comment-submit"
+                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-amber-600 text-white text-sm font-medium hover:bg-amber-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Post Comment
+              </button>
+            </form>
+          </section>
+
+          <script>
+          (function() {
+            var slug = document.getElementById('comments').dataset.slug;
+
+            // ── Render helpers ──
+            function escHtml(s) {
+              return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+            }
+            function fmtDate(iso) {
+              try { return new Date(iso).toLocaleDateString('en-MY', {year:'numeric',month:'long',day:'numeric'}); }
+              catch(e) { return iso; }
+            }
+            function renderComment(c) {
+              var el = document.createElement('div');
+              el.className = 'bg-white dark:bg-stone-800 rounded-xl border border-stone-100 dark:border-stone-700 px-5 py-4';
+              el.innerHTML =
+                '<div class="flex items-center gap-2 mb-2">' +
+                  '<span class="font-medium text-stone-800 dark:text-stone-200 text-sm">' + escHtml(c.author_name) + '</span>' +
+                  '<span class="text-stone-300 dark:text-stone-600 text-xs">·</span>' +
+                  '<time class="text-xs text-stone-400 dark:text-stone-500">' + fmtDate(c.created_at) + '</time>' +
+                '</div>' +
+                '<p class="text-sm text-stone-700 dark:text-stone-300 whitespace-pre-wrap">' + escHtml(c.comment_text) + '</p>';
+              return el;
+            }
+
+            // ── Load comments ──
+            var list = document.getElementById('comments-list');
+            var empty = document.getElementById('comments-empty');
+            fetch('/api/comments?slug=' + encodeURIComponent(slug))
+              .then(function(r){ return r.json(); })
+              .then(function(data) {
+                var comments = (data && data.comments) || [];
+                if (comments.length === 0) {
+                  empty.classList.remove('hidden');
+                } else {
+                  comments.forEach(function(c) { list.appendChild(renderComment(c)); });
+                }
+              })
+              .catch(function() { empty.classList.remove('hidden'); });
+
+            // ── Char counter ──
+            var textarea = document.getElementById('comment-text');
+            var counter  = document.getElementById('char-count');
+            textarea.addEventListener('input', function() {
+              counter.textContent = textarea.value.length;
+            });
+
+            // ── Submit ──
+            var form    = document.getElementById('comment-form');
+            var errBox  = document.getElementById('comment-error');
+            var okBox   = document.getElementById('comment-success');
+            var btn     = document.getElementById('comment-submit');
+            var author  = document.getElementById('comment-author');
+
+            form.addEventListener('submit', function(e) {
+              e.preventDefault();
+              errBox.classList.add('hidden');
+              okBox.classList.add('hidden');
+
+              var name = author.value.trim();
+              var text = textarea.value.trim();
+              if (!name) { showErr('Please enter a display name.'); return; }
+              if (text.length < 5) { showErr('Comment must be at least 5 characters.'); return; }
+              if (text.length > 1000) { showErr('Comment must be 1,000 characters or fewer.'); return; }
+
+              btn.disabled = true;
+              btn.textContent = 'Posting…';
+
+              fetch('/api/comments', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({slug: slug, author_name: name, comment_text: text})
+              })
+              .then(function(r){ return r.json().then(function(d){ return {ok: r.ok, status: r.status, data: d}; }); })
+              .then(function(res) {
+                if (res.ok && res.data.success) {
+                  // Append new comment to list without reload.
+                  empty.classList.add('hidden');
+                  list.appendChild(renderComment({
+                    author_name: name,
+                    comment_text: text,
+                    created_at: new Date().toISOString()
+                  }));
+                  form.reset();
+                  counter.textContent = '0';
+                  okBox.classList.remove('hidden');
+                } else {
+                  showErr(res.data.message || 'Failed to post comment. Please try again.');
+                }
+              })
+              .catch(function() { showErr('Network error. Please try again.'); })
+              .finally(function() {
+                btn.disabled = false;
+                btn.textContent = 'Post Comment';
+              });
+            });
+
+            function showErr(msg) {
+              errBox.textContent = msg;
+              errBox.classList.remove('hidden');
+            }
+          })();
+          </script>
+
           {{/* Back link (bottom) */}}
           <div class="mt-12">
             <a

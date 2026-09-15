@@ -1,0 +1,79 @@
+{{define "content"}}
+<main id="main-content" class="min-h-screen bg-stone-50 dark:bg-stone-950">
+  {{template "header" .}}
+  <section class="pt-28 pb-16 container-custom">
+    <div class="max-w-lg mx-auto">
+      <div class="bg-white dark:bg-stone-900 rounded-3xl p-8 shadow-lg border border-stone-100 dark:border-stone-700">
+        <h1 class="font-display text-2xl font-medium text-stone-900 dark:text-stone-100 mb-2">Accommodation Confirmation</h1>
+        <p class="text-stone-600 dark:text-stone-400 text-sm mb-6">Malaysian immigration may ask for proof of where you are staying. Enter your booking details below to open a printable confirmation.</p>
+
+        <form id="ap-form" class="space-y-4">
+          <div>
+            <label for="ap-ref" class="block text-sm font-medium text-stone-800 dark:text-stone-200 mb-1">Booking reference</label>
+            <input id="ap-ref" name="ap-ref" type="text" required autocomplete="off" spellcheck="false" placeholder="PLG-20260816-001"
+              class="w-full rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-amber-600" />
+          </div>
+          <div>
+            <label for="ap-name" class="block text-sm font-medium text-stone-800 dark:text-stone-200 mb-1">Last name</label>
+            <input id="ap-name" name="ap-name" type="text" required autocomplete="family-name" placeholder="As given when booking"
+              class="w-full rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-amber-600" />
+          </div>
+
+          <p id="ap-error" class="hidden text-sm text-red-600 dark:text-red-400"></p>
+
+          <button id="ap-submit" type="submit"
+            class="w-full inline-flex items-center justify-center rounded-xl bg-amber-700 text-white py-3 px-6 font-medium hover:bg-amber-800 transition-colors text-sm disabled:opacity-60">
+            Get my confirmation
+          </button>
+        </form>
+
+        <p class="text-xs text-stone-500 dark:text-stone-400 mt-6">Can&apos;t find your reference? <a href="https://wa.me/60127088789?text=Hi%20Pelangi!%20I%20need%20an%20accommodation%20confirmation%20for%20immigration." target="_blank" rel="noopener noreferrer" class="text-amber-700 dark:text-amber-500 hover:underline">WhatsApp us</a> and we&apos;ll send it to you.</p>
+      </div>
+
+      <p class="text-center text-xs text-stone-400 dark:text-stone-500 mt-6"><a href="/check-in" class="hover:underline">Check-in info</a> · <a href="/" class="hover:underline">Home</a></p>
+    </div>
+  </section>
+  {{template "footer" .}}
+</main>
+<script>
+(function(){
+  var form = document.getElementById("ap-form");
+  if (!form) return;
+  var btn = document.getElementById("ap-submit");
+  var err = document.getElementById("ap-error");
+  var GENERIC = "We couldn't find a booking with those details. Check the reference and last name, or WhatsApp us.";
+
+  function showError(msg){ err.textContent = msg; err.classList.remove("hidden"); }
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    err.classList.add("hidden");
+    var ref = document.getElementById("ap-ref").value.trim();
+    var last = document.getElementById("ap-name").value.trim();
+    if (!ref || !last) { showError(GENERIC); return; }
+
+    btn.disabled = true;
+    btn.textContent = "Checking…";
+    fetch("/api/public/accommodation/lookup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ confirmationNumber: ref, lastName: last })
+    }).then(function(res){
+      if (res.status === 429) { showError("Too many attempts. Please wait a few minutes and try again."); return null; }
+      return res.json().catch(function(){ return null; });
+    }).then(function(data){
+      if (data && data.success && data.data && data.data.docUrl) {
+        window.location.href = data.data.docUrl;
+        return;
+      }
+      if (data !== null) showError(GENERIC);
+    }).catch(function(){
+      showError("Something went wrong. Please try again or WhatsApp us.");
+    }).finally(function(){
+      btn.disabled = false;
+      btn.textContent = "Get my confirmation";
+    });
+  });
+})();
+</script>
+{{end}}

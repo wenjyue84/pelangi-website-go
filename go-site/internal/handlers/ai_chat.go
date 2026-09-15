@@ -18,6 +18,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -40,18 +41,37 @@ func (h *Handler) aiChat(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	var in struct {
-		Message string `json:"message"`
+		Message   string `json:"message"`
+		SessionID string `json:"sessionId"`
+		// Image: optional jpeg/png base64 data URL (payment receipt OCR).
+		// 8MB body cap covers a 5MB image after base64 expansion.
+		Image string `json:"image"`
 	}
-	if err := json.NewDecoder(io.LimitReader(r.Body, 8192)).Decode(&in); err != nil || in.Message == "" {
+	if err := json.NewDecoder(io.LimitReader(r.Body, 8<<20)).Decode(&in); err != nil || (in.Message == "" && in.Image == "") {
 		w.WriteHeader(http.StatusBadRequest)
 		_ = json.NewEncoder(w).Encode(map[string]any{"ok": false, "error": "message required"})
 		return
 	}
+	if in.Image != "" && !strings.HasPrefix(in.Image, "data:image/jpeg;base64,") && !strings.HasPrefix(in.Image, "data:image/png;base64,") {
+		w.WriteHeader(http.StatusBadRequest)
+		_ = json.NewEncoder(w).Encode(map[string]any{"ok": false, "error": "image must be a jpeg/png base64 data URL"})
+		return
+	}
 
-	payload, _ := json.Marshal(map[string]string{
+	// Forward the widget's per-visitor session id — without it every website
+	// guest shares one Rainbow conversation ("web:webchat") and concurrent
+	// chats bleed context into each other.
+	body := map[string]string{
 		"message": in.Message,
 		"profile": rainbowChatProfile(),
-	})
+	}
+	if in.SessionID != "" {
+		body["sessionId"] = in.SessionID
+	}
+	if in.Image != "" {
+		body["image"] = in.Image
+	}
+	payload, _ := json.Marshal(body)
 
 	req, err := http.NewRequestWithContext(r.Context(), http.MethodPost, rainbowChatURL(), bytes.NewReader(payload))
 	if err != nil {
@@ -64,7 +84,12 @@ func (h *Handler) aiChat(w http.ResponseWriter, r *http.Request) {
 		req.Header.Set("x-admin-key", key)
 	}
 
-	client := &http.Client{Timeout: 40 * time.Second}
+	// Image turns run OCR + PMS calls upstream — allow longer.
+	timeout := 40 * time.Second
+	if in.Image != "" {
+		timeout = 75 * time.Second
+	}
+	client := &http.Client{Timeout: timeout}
 	resp, err := client.Do(req)
 	if err != nil {
 		w.WriteHeader(http.StatusBadGateway)
