@@ -408,3 +408,5 @@ html.animations-paused *::after {
   body { font-size: 12pt; }
   .booking-summary, [class*="booking-summary"], [class*="confirmation"] { page-break-inside: avoid; }
 }
+
+.blog-figure{margin:1.75rem 0}.blog-figure img{width:100%;height:auto;border-radius:.75rem;display:block}.blog-figure figcaption{margin-top:.5rem;font-size:.85rem;color:#6b7280;text-align:center}
