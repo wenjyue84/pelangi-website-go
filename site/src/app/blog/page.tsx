@@ -54,12 +54,39 @@ const blogBreadcrumbSchema = {
   ],
 };
 
+// CollectionPage + ItemList so search engines and AI crawlers can read the blog
+// index as a structured list of articles (newest first).
+const blogCollectionSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://pelangicapsulehostel.com/blog#collection",
+  name: "JB Travel Blog | Tips & Guides for Backpackers",
+  description:
+    "Backpacker guides, food tips, day trip ideas, and local secrets for Johor Bahru. Written by the team at Pelangi Capsule Hostel.",
+  url: "https://pelangicapsulehostel.com/blog",
+  isPartOf: { "@id": "https://pelangicapsulehostel.com/#website" },
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: sortedPosts.length,
+    itemListElement: sortedPosts.map((post, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `https://pelangicapsulehostel.com/blog/${post.slug}`,
+      name: post.title,
+    })),
+  },
+};
+
 export default function BlogPage() {
   return (
     <main id="main-content" className="min-h-screen bg-stone-50 dark:bg-stone-950">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogBreadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogCollectionSchema) }}
       />
       <Header />
 

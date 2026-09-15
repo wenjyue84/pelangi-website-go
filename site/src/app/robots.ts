@@ -4,11 +4,14 @@ import { MetadataRoute } from "next";
 // These bots feed ChatGPT, Claude, Perplexity, Gemini, and similar AI search
 // engines. Allowing them ensures fresh content is indexed by AI systems.
 const AI_CRAWLERS = [
-  "GPTBot",           // OpenAI / ChatGPT
+  "GPTBot",           // OpenAI / ChatGPT (training)
+  "OAI-SearchBot",    // OpenAI / ChatGPT Search (live answers & citations)
   "ClaudeBot",        // Anthropic / Claude
   "anthropic-ai",     // Anthropic API crawler
   "PerplexityBot",    // Perplexity AI
   "Perplexity-User",  // Perplexity AI (alternate)
+  "Applebot-Extended", // Apple Intelligence / Siri AI
+  "DuckAssistBot",    // DuckDuckGo AI assistant
   "Amazonbot",        // Amazon Alexa / AWS AI
   "Google-Extended",  // Google Gemini / AI Overviews
   "cohere-ai",        // Cohere AI

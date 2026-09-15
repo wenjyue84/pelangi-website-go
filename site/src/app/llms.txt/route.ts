@@ -1,7 +1,21 @@
+import { blogPosts } from "@/data/blog/posts";
+
+/** Newest content date (published or last-edited) across the blog, for freshness signals. */
+function newestContentDate(): string {
+  return blogPosts
+    .map((p) => p.lastModified ?? p.date)
+    .sort()
+    .at(-1) ?? "";
+}
+
 export async function GET() {
+  const lastUpdated = newestContentDate();
+
   const content = `# Pelangi Capsule Hostel
 
 > Japanese-style capsule hostel in Johor Bahru, Malaysia. Budget-friendly accommodation from RM35/night with free WiFi, 24/7 access, and modern pod amenities. 15 minutes from Singapore via the Woodlands CIQ checkpoint.
+
+**Last Updated:** ${lastUpdated}
 
 ## Services
 
@@ -9,7 +23,7 @@ Pelangi Capsule Hostel offers Japanese-inspired capsule pod accommodation for bu
 
 - **Capsule Pods**: Private sleeping pods with personal climate control, adjustable LED lighting, USB & power outlets, privacy sliding door, premium mattress, and personal locker.
 - **Daily Rate**: From RM35/night (+ RM10/room/night Tourism Tax)
-- **Monthly Rate**: RM594/month
+- **Monthly Rate**: RM600–RM650/month
 - **Check-in**: 3:00 PM onwards (self check-in available)
 - **Check-out**: Before 12:00 PM
 
@@ -55,6 +69,23 @@ Book directly on our website for the best rates with no booking fees:
 - **Instagram**: https://www.instagram.com/pelangicapsulehostel
 - **Email**: pelangicapsule@gmail.com
 
+## Key Pages
+
+- [About](https://pelangicapsulehostel.com/about) — hostel story and team
+- [Rooms](https://pelangicapsulehostel.com/rooms) — capsule pod types and pricing
+- [Amenities](https://pelangicapsulehostel.com/amenities) — facilities and services
+- [Gallery](https://pelangicapsulehostel.com/gallery) — photos of the property
+- [Getting Here & Location](https://pelangicapsulehostel.com/location) — directions from Singapore, JB Sentral, and Senai Airport
+- [Check-in Guide](https://pelangicapsulehostel.com/check-in) — self check-in steps and access details
+- [Visa Run Guide](https://pelangicapsulehostel.com/visa-run) — using JB as a base for Singapore visa runs
+- [Visit Malaysia 2026](https://pelangicapsulehostel.com/visit-malaysia-2026) — Visit Malaysia Year 2026 travel guide
+- [Singapore Jobs Guide](https://pelangicapsulehostel.com/singapore-jobs) — for guests commuting to work in Singapore
+- [Safety Guidelines](https://pelangicapsulehostel.com/safety-guidelines) — hostel safety and security information
+- [Blog](https://pelangicapsulehostel.com/blog) — travel and JB guides
+- [Guest Guide](https://pelangicapsulehostel.com/guide) — practical guest information
+- [Contact](https://pelangicapsulehostel.com/contact) — get in touch
+- [中文页面 (Chinese)](https://pelangicapsulehostel.com/zh) — Simplified Chinese property overview
+
 ## Optional
 
 - [Detailed information including rooms, amenities, FAQ, and blog](/llms-full.txt)
@@ -69,7 +100,7 @@ Book directly on our website for the best rates with no booking fees:
 
 - **胶囊床位**：私人睡眠舱，配备独立空调、阅读灯、USB充电口和个人储物柜
 - **每晚价格**：RM35/晚起
-- **月租价格**：RM594/月
+- **月租价格**：RM600–RM650/月
 - **入住时间**：下午3时起（支持自助入住）
 - **退房时间**：中午12时前
 

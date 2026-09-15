@@ -1,7 +1,7 @@
 "use client";
 
 import type { Route } from "next";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { setLanguagePreference } from "@/app/actions/language";
 
 const LANGUAGES = [
@@ -12,6 +12,12 @@ const LANGUAGES = [
 
 export default function LanguageSwitcher() {
   const router = useRouter();
+  const pathname = usePathname();
+  const currentLang = pathname?.startsWith("/zh")
+    ? "zh"
+    : pathname?.startsWith("/ms")
+    ? "ms"
+    : "en";
 
   const handleLanguageChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
     const langCode = e.currentTarget.value;
@@ -35,7 +41,7 @@ export default function LanguageSwitcher() {
       <select
         id="language-select"
         className="select-base"
-        defaultValue="en"
+        value={currentLang}
         onChange={handleLanguageChange}
         aria-label="Language selector"
       >

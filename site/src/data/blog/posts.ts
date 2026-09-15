@@ -2,6 +2,8 @@ import { changiTransitEN } from "./post-changi-en";
 import { dayTripBaseEN } from "./post-daytrip-en";
 import { changiTransitZH } from "./post-changi-zh";
 import { dayTripBaseZH } from "./post-daytrip-zh";
+import { etsPosts } from "./post-ets";
+import { senaiWorkerMS } from "./post-senai-worker-ms";
 
 export interface BlogPost {
   slug: string;
@@ -16,6 +18,11 @@ export interface BlogPost {
   readingTimeMinutes: number;
   tags: string[];
   featuredImage: string;
+  /** Descriptive alt text for the featured image (falls back to title). */
+  imageAlt?: string;
+  /** BCP-47 language tag for the post body (e.g. "zh-CN"). Auto-detected from
+   *  CJK content in schema when omitted. */
+  inLanguage?: string;
 }
 
 /** Compute reading time from HTML content (200 wpm, minimum 1 min). */
@@ -48,6 +55,9 @@ export function getUniqueCategories(): string[] {
 const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
   {
     slug: "ultimate-jb-food-guide-backpackers",
+    lastModified: "2026-06-26",
+    imageAlt:
+      "A spread of Johor Bahru hawker dishes — roti canai, nasi lemak, and local noodles served at a Taman Pelangi food stall",
     title: "The Ultimate Johor Bahru Food Guide for Backpackers (2026)",
     excerpt:
       "From RM5 hawker meals to legendary seafood spots — everything a budget traveller needs to eat their way through JB like a local.",
@@ -102,6 +112,9 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
   },
   {
     slug: "singapore-to-jb-day-trip-causeway-guide",
+    lastModified: "2026-06-26",
+    imageAlt:
+      "The Johor–Singapore Causeway land border crossing connecting Woodlands to Johor Bahru",
     title: "Singapore to JB Day Trip Guide: How to Cross the Causeway (2026)",
     excerpt:
       "The complete step-by-step guide to crossing the Causeway from Singapore to Johor Bahru — transport options, immigration tips, costs, and what to do once you arrive.",
@@ -275,6 +288,9 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
   },
   {
     slug: "johor-bahru-vs-singapore-why-travellers-base-in-jb",
+    lastModified: "2026-06-26",
+    imageAlt:
+      "Johor Bahru city across the strait from Singapore, illustrating why budget travellers base in JB",
     title: "Johor Bahru vs Singapore: Why Savvy Travellers Base Themselves in JB",
     excerpt:
       "Singapore is spectacular — but staying there drains your budget fast. Smart backpackers stay in JB and day-trip into Singapore. Here's why it works.",
@@ -288,7 +304,7 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 <h2>The Backpacker's Dilemma</h2>
 <p>Singapore is one of the most expensive cities in Asia. A hostel bed costs SGD40–60 per night. A hawker meal — the cheapest eating option — runs SGD5–8. A single day in Singapore can easily cost SGD100–150 including transport, food, and one or two attractions. For backpackers on a Southeast Asian circuit, three nights in Singapore can consume a week's budget for Thailand or Vietnam.</p>
 
-<p>Johor Bahru is 30 minutes across the Causeway, and the cost difference is staggering. The same daily budget that barely covers a Singapore hostel bed and two meals gets you a private capsule, three full meals, transport, and evening snacks in JB. Increasingly, savvy travellers are figuring out the strategy: base yourself in JB, day-trip into Singapore for the highlights, and keep your budget intact.</p>
+<p>Johor Bahru is 30 minutes across the Causeway, and the cost difference is staggering. The same daily budget that barely covers a Singapore hostel bed and two meals gets you a private <a href="/blog/capsule-hostel-johor-bahru-complete-guide">capsule pod</a>, three full meals, transport, and evening snacks in JB. Increasingly, savvy travellers are figuring out the strategy: base yourself in JB, day-trip into Singapore for the highlights, and keep your budget intact.</p>
 
 <h2>The Numbers: Side by Side</h2>
 <p>Here's what the same trip looks like from each city:</p>
@@ -758,9 +774,12 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
   },
   {
     slug: "3-day-jb-backpacker-itinerary-rm250",
+    lastModified: "2026-06-26",
+    imageAlt:
+      "A backpacker exploring Johor Bahru streets on a three-day budget itinerary under RM250",
     title: "3-Day JB Backpacker Itinerary Under RM250 (2026)",
     excerpt:
-      "A complete 3-day itinerary for JB on a tight budget: RM35/night hostel, RM25/day food, RM10/day transport. Day-by-day breakdown with best food spots and activities.",
+      "A complete 3-day itinerary for JB on a tight budget: RM35/night capsule hostel, RM25/day food, RM10/day transport. Day-by-day breakdown with best food spots and activities.",
     date: "2026-04-14",
     category: "Backpacker Tips",
     author: "Jay Lew",
@@ -772,7 +791,7 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 <p>Three days in Johor Bahru for under RM250 total? Yes. This includes accommodation, all meals, transport, and activities. Here's the day-by-day breakdown that proves it.</p>
 
 <h2>Day 1: Arrival & City Orientation</h2>
-<p><strong>Morning (9am–12pm):</strong> Arrive at JB Sentral station. Walk or take local bus (RM2) to <a href="/book">Pelangi Capsule Hostel</a>. Check in early (RM35/night), drop bags, freshen up. Cost: RM2 transport.</p>
+<p><strong>Morning (9am–12pm):</strong> Arrive at JB Sentral station. Walk or take local bus (RM2) to <a href="/book">Pelangi Capsule Hostel</a>. Check in early (RM35/night — see our <a href="/blog/capsule-hostel-johor-bahru-complete-guide">complete guide to capsule hostels in JB</a> if this is your first pod stay), drop bags, freshen up. Cost: RM2 transport.</p>
 <p><strong>Afternoon (1pm–5pm):</strong> Lunch at Sik Bao Sin hawker centre—mixed rice with 3 items, RM6. Walk around Taman Pelangi neighbourhood (free). Visit the traditional Chinese temple nearby (free entry). Coffee at local kopitiam, RM3.</p>
 <p><strong>Evening (6pm–10pm):</strong> Dinner at Taman Sentosa night market—satay skewers (5 sticks, RM3), lok-lok (RM4), teh tarik (RM2). Return to hostel. Total Day 1: RM55.</p>
 
@@ -837,6 +856,103 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 `,
   },
   {
+    slug: "capsule-hostel-johor-bahru-complete-guide",
+    lastModified: "2026-07-29",
+    imageAlt:
+      "Japanese-style capsule pods with privacy curtains and reading lights at Pelangi Capsule Hostel in Taman Pelangi, Johor Bahru",
+    title: "Capsule Hostel Johor Bahru: The Complete Guide to Pod Stays in JB (2026)",
+    excerpt:
+      "Everything you need to know about staying in a capsule hostel in Johor Bahru — what a pod stay is really like, what it costs, how to pick the right one, and why Taman Pelangi is the smartest base for exploring JB and Singapore.",
+    date: "2026-07-29",
+    category: "Backpacker Tips",
+    author: "Jay Lew",
+    readTime: "11 min read",
+    tags: ["johor-bahru", "capsule-hostel", "pod-hotel", "backpacker", "budget-travel", "malaysia", "hostel", "taman-pelangi"],
+    featuredImage: "/images/blog/jb-capsule-hostel-guide.jpg",
+    content: `
+<h2>What Is a Capsule Hostel — and Why JB Is Perfect for One</h2>
+<p>A capsule hostel (sometimes called a pod hotel) gives every guest an enclosed sleeping pod instead of an open bunk. Each pod is your own private box — a comfortable mattress, a privacy curtain or door, a reading light, a power socket, and enough headroom to sit up. You get the affordability of a dormitory with far more privacy and quiet than a traditional bunk-bed hostel. The concept started in Japan in the late 1970s and has since spread across Asia, and Johor Bahru — a border city built around budget-conscious travellers crossing to and from Singapore — is one of the best-value places in the region to try it.</p>
+
+<p>If you've never slept in a capsule before, the appeal is simple: you can draw the curtain, switch on your own light, charge your phone, and read or sleep without a stranger's headlamp in your face. For solo travellers, cross-border commuters, and backpackers on a Southeast Asian circuit, a <strong>capsule hostel in Johor Bahru</strong> hits the sweet spot between the SGD40–60 you'd pay for a hostel bed in Singapore and the privacy you actually want after a long day at the border.</p>
+
+<h2>Capsule Hostel vs Dorm vs Budget Hotel: Which Should You Choose?</h2>
+<p>Understanding the trade-offs helps you book the right thing:</p>
+<table>
+  <thead>
+    <tr><th>Option</th><th>Privacy</th><th>Typical JB price/night</th><th>Best for</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Open dorm bunk</td><td>Low — shared open room</td><td>RM25–40</td><td>The absolute cheapest bed, social backpackers</td></tr>
+    <tr><td>Capsule / pod</td><td>Medium–high — enclosed pod, privacy curtain</td><td>RM30–50</td><td>Solo travellers who want quiet and privacy on a budget</td></tr>
+    <tr><td>Budget hotel room</td><td>High — private room</td><td>RM90–160</td><td>Couples, families, light sleepers who want a full room</td></tr>
+  </tbody>
+</table>
+<p>The capsule sits deliberately in the middle. You pay a little more than an open dorm bed, but you get an enclosed personal space, a lockable luggage locker, and a much better night's sleep. For a single traveller, it's usually the smartest value in the city. At <a href="/rooms">Pelangi Capsule Hostel</a>, pods start at <strong>RM30 for your first night as a first-time guest, then RM35 per night from the second night onwards</strong> — still a fraction of a private room, with the privacy a bunk can't offer.</p>
+
+<h2>What a Pod Stay Is Actually Like</h2>
+<p>Here's what to expect inside a well-run capsule hostel:</p>
+<ul>
+  <li><strong>Your pod:</strong> A single or double mattress inside an enclosed shell, with a privacy curtain, an individual reading light, a power/USB socket, and a small shelf for your phone and glasses.</li>
+  <li><strong>Lockers:</strong> A dedicated locker for your bag and valuables — bring a padlock or check whether the hostel provides one at check-in.</li>
+  <li><strong>Shared bathrooms:</strong> Clean hot-water showers and toilets down the hall, typically several to a floor so you rarely wait.</li>
+  <li><strong>Common areas:</strong> A lounge or shared kitchen where you can eat, work, and meet other travellers — the social heart of any hostel.</li>
+  <li><strong>Free WiFi:</strong> Standard at any modern capsule hostel, essential for planning border crossings and booking Grabs.</li>
+</ul>
+<p>The unwritten rules are about courtesy: keep noise down after quiet hours, use headphones, don't use flash photography near the pods, and keep the shared spaces tidy. Capsule hostels work because everyone respects the shared calm.</p>
+
+<h2>How to Choose a Capsule Hostel in Johor Bahru</h2>
+<p>Not all pods are equal. Before you book, check these five things:</p>
+<ol>
+  <li><strong>Location relative to the border and transport.</strong> JB is spread out. A hostel near a hawker neighbourhood with easy Grab access to CIQ and JB Sentral saves you time and money every single day.</li>
+  <li><strong>Pod build quality.</strong> Look for solid, enclosed pods with a proper privacy curtain or door — not a curtained-off bunk marketed as a "capsule".</li>
+  <li><strong>Cleanliness and reviews.</strong> Read recent reviews specifically mentioning the bathrooms and bedding.</li>
+  <li><strong>Security.</strong> Lockable lockers, keycard or coded entry, and staff on site.</li>
+  <li><strong>Honest pricing.</strong> Check whether the rate is per pod and what's included (WiFi, locker, linen) so there are no surprises at check-in.</li>
+</ol>
+
+<h2>Why Taman Pelangi Is the Smartest Base</h2>
+<p><a href="/rooms">Pelangi Capsule Hostel</a> is located at 26A Jalan Perang, in the heart of <strong>Taman Pelangi</strong> — one of JB's best food-and-neighbourhood districts. That location is the whole point of the strategy:</p>
+<ul>
+  <li><strong>JB Sentral</strong> (train station and main transport hub) is roughly a 10-minute drive / 5 km away — about RM10–15 by Grab, or bus P101 to Pelangi Leisure Mall then a 2-minute walk.</li>
+  <li><strong>CIQ</strong> (the Malaysian border checkpoint) is roughly a 15-minute drive / 6 km away — about RM10–15 by Grab.</li>
+  <li><strong>Singapore</strong> is around 30 minutes away via the CIQ border crossing, making JB an ideal budget base for Singapore day trips.</li>
+</ul>
+<p>Taman Pelangi itself is packed with hawker centres, kopitiams, and local restaurants — meaning you can eat extremely well for RM5–12 a meal without leaving the neighbourhood. Check our <a href="/location">location and directions page</a> for step-by-step routes from every entry point into the city, and our <a href="/guide">JB Backpacker's Guide</a> for what to eat and do once you've dropped your bags.</p>
+
+<h2>The Budget Case: Base in JB, Day-Trip to Singapore</h2>
+<p>The single biggest reason travellers choose a capsule hostel in JB is the maths. A hostel bed in Singapore runs SGD40–60 a night. A pod in JB is a small fraction of that, and you're only 30 minutes from the border. Here's how a typical day compares:</p>
+<table>
+  <thead>
+    <tr><th>Expense</th><th>Singapore</th><th>JB (Pelangi Capsule)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Bed / pod per night</td><td>SGD 40–60</td><td>RM30 first night, RM35 thereafter</td></tr>
+    <tr><td>Breakfast</td><td>SGD 5–8</td><td>RM3–5 (roti canai + teh tarik)</td></tr>
+    <tr><td>Lunch</td><td>SGD 6–10</td><td>RM6–12 (hawker centre)</td></tr>
+    <tr><td>Local transport</td><td>SGD 8–15</td><td>RM8–15 (Grab)</td></tr>
+  </tbody>
+</table>
+<p>Base yourself in JB, cross into Singapore for the highlights on one or two focused day trips, and your accommodation budget stretches roughly three times further. We break the full strategy down in <a href="/blog/johor-bahru-vs-singapore-why-travellers-base-in-jb">Johor Bahru vs Singapore: Why Savvy Travellers Base Themselves in JB</a>.</p>
+
+<h2>Who a Capsule Hostel Is (and Isn't) For</h2>
+<p><strong>A capsule hostel is ideal if you're:</strong> a solo traveller, a backpacker on a budget, a cross-border worker or commuter, a light packer, or anyone who wants privacy and a good night's sleep without paying hotel prices.</p>
+<p><strong>It may not suit you if you're:</strong> travelling as a family needing a single private room, claustrophobic in enclosed spaces, or carrying a lot of oversized luggage. In those cases a private budget room is the better call — but for the vast majority of solo and paired travellers passing through JB, a pod is the value winner.</p>
+
+<h2>Practical Tips for Your First Capsule Stay</h2>
+<ul>
+  <li><strong>Pack a small padlock</strong> for your locker (or confirm the hostel provides one).</li>
+  <li><strong>Bring earplugs and an eye mask</strong> — pods are private but shared floors still have some ambient noise.</li>
+  <li><strong>Charge inside your pod</strong> — most pods have a socket, so you never have to leave devices in a common area.</li>
+  <li><strong>Note the check-in and check-out times</strong> — at Pelangi Capsule, check-in is from 2 PM and check-out is by 12 PM. Arriving early? Ask staff about leaving your bags.</li>
+  <li><strong>Keep valuables on you or locked</strong> — standard hostel common sense anywhere in the world.</li>
+</ul>
+
+<h2>Ready to Try a Pod Stay in JB?</h2>
+<p>A capsule hostel is the most sensible way to sleep in Johor Bahru: private, quiet, secure, and genuinely affordable. Whether you're crossing the Causeway for work, exploring JB's hawker scene, or using the city as a launchpad for Singapore day trips, a pod gives you everything you need and nothing you don't.</p>
+<p><a href="/book">Book a capsule at Pelangi Capsule Hostel</a> — RM30 for your first night, RM35 per night after that — and base yourself in one of JB's best neighbourhoods.</p>
+`,
+  },
+  {
     slug: "xinshan-juzhu-tuijian-jiaonang-lvguan",
     title: "新山住宿推荐：胶囊旅馆体验指南 (2026)",
     excerpt:
@@ -856,7 +972,7 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 
 <h3>房型与价格</h3>
 <ul>
-  <li><strong>混合宿舍（Mixed Dorm）</strong>：每晚 RM35起，月租 RM594</li>
+  <li><strong>混合宿舍（Mixed Dorm）</strong>：每晚 RM35起，月租 RM600起</li>
   <li><strong>女生专用宿舍（Female Dorm）</strong>：同等价格，环境更安全私密</li>
   <li>所有床位均为日式胶囊设计，配备高密度记忆棉床垫</li>
 </ul>
@@ -1552,6 +1668,9 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
   },
   {
     slug: "getting-around-johor-bahru-no-car-guide",
+    lastModified: "2026-06-26",
+    imageAlt:
+      "Getting around Johor Bahru by bus, Grab, and on foot without a car",
     title: "Getting Around Johor Bahru Without a Car — Transport Guide for Backpackers",
     excerpt:
       "Master JB transport on a budget: Grab (RM5–15), Rapid JB buses (RM1–3), walking Taman Pelangi, and crossing to Singapore. Complete price comparison.",
@@ -1920,10 +2039,128 @@ const rawPosts: Omit<BlogPost, "readingTimeMinutes">[] = [
 <p>Ready to eat cheap and eat well? <a href="/book">Book a capsule at Pelangi</a> and dive into JB's food scene.</p>
 `,
   },
+  {
+    slug: "singapore-to-jb-border-crossing-guide-2026",
+    imageAlt:
+      "Buses queueing at the Johor Bahru CIQ complex where travellers clear Malaysian immigration after crossing from Singapore",
+    title: "Singapore to JB in 2026: Cheapest Way to Cross the Border (and Where to Stay After)",
+    excerpt:
+      "Every real bus and Grab option for crossing from Singapore to Johor Bahru, with actual prices — plus the weekday trick that keeps your crossing cheap and fast.",
+    date: "2026-09-13",
+    category: "Travel Guide",
+    author: "Jay Lew",
+    readTime: "7 min read",
+    tags: ["backpacker", "budget", "singapore", "jb", "border-crossing"],
+    featuredImage: "/images/blog/causeway-guide.jpg",
+    content: `
+<h2>The Cheapest Ways Across the Border</h2>
+<p>Every route between Singapore and Johor Bahru involves the same two steps — clear Singapore immigration, then clear Malaysian immigration at JB CIQ — but the bus you pick changes both the price and how long you wait. Here's what actually running the numbers looks like in 2026.</p>
+
+<h3>From Kranji MRT: Causeway Link CW1</h3>
+<p>The cheapest option overall. Take the MRT to Kranji, then board the <strong>Causeway Link CW1</strong> bus for <strong>S$2.60</strong>. It crosses the Causeway, and you clear both checkpoints on the same ticket.</p>
+
+<h3>From Queen Street, Bugis: Causeway Link CW2</h3>
+<p>If you're already in the city centre and don't want to backtrack to Kranji, <strong>CW2</strong> departs from Queen Street in Bugis for <strong>S$4.80</strong>. It runs <strong>24 hours</strong>, which makes it the better pick for a late-night or early-morning crossing.</p>
+
+<h2>Once You're Through Malaysian Immigration at JB CIQ</h2>
+<p>Clearing CIQ drops you at the bus interchange, not directly in town — you still need one more leg to reach Taman Pelangi, where <a href="/rooms">Pelangi Capsule Hostel</a> is based. Three options, in order of price:</p>
+
+<h3>Option 1: CT1 Bus — RM2 (cheapest, closest stop)</h3>
+<p>The <strong>CT1</strong> bus costs <strong>RM2</strong> and stops at <strong>"Opp Pelangi Leisure Mall"</strong> — a 2-minute walk to the hostel, the closest public transport stop there is. The catch: it only runs about once every <strong>80 minutes</strong>, and there's <strong>no service between 12:20pm and 3:50pm</strong>. Check the schedule before you plan around it, or you'll be waiting a while.</p>
+
+<h3>Option 2: J15 Bus — RM1.20 (most frequent)</h3>
+<p>The <strong>J15</strong> bus is actually cheaper at <strong>RM1.20</strong> and runs every <strong>20 minutes</strong> — far more reliable if your arrival time is unpredictable. Alight at <strong>"Opp Plaza Pelangi"</strong>, then it's a <strong>15–20 minute walk</strong> to the hostel, or a short <strong>RM5–8 Grab</strong> if you'd rather not walk with luggage.</p>
+
+<h3>Option 3: Grab Direct from CIQ — RM10–15</h3>
+<p>If you've just crossed the border with bags and don't want to deal with bus schedules, a <strong>Grab straight from CIQ</strong> costs <strong>RM10–15</strong> and takes about <strong>10 minutes</strong> door to door. Worth it if you're tired, it's late, or the CT1 gap has just started.</p>
+
+<h2>Coming from Senai Airport Instead?</h2>
+<p>Flying into Senai (JHB) rather than crossing overland from Singapore, budget <strong>30–40 minutes</strong> to reach Taman Pelangi. The <strong>Causeway Link AA1 shuttle</strong> to JB Sentral costs <strong>RM8</strong>, followed by a local bus or Grab onward. A direct <strong>taxi</strong> runs a fixed <strong>RM60–80</strong>, or book a <strong>Grab for RM50–70</strong>.</p>
+
+<h2>Already at JB Sentral?</h2>
+<p>If you're starting from JB Sentral rather than CIQ directly, the same CT1 (RM2, closest, every 80 min) and J15 (RM1.20, every 20 min) options apply, or take a <strong>Grab for RM10–15</strong>, which covers the distance in 5–10 minutes.</p>
+
+<h2>Weekday vs Weekend: The Timing Trick</h2>
+<p>Fares on the buses above don't change by day — but everything downstream of the crossing does. Friday afternoon through Sunday is when Singapore day-trippers flood across the border, which pushes up Grab fares on both sides and tightens accommodation availability near the checkpoint. If your schedule is flexible, crossing on a <strong>weekday</strong> means shorter immigration queues, calmer bus rides, and Grab prices closer to the low end of the ranges above. This is a general travel pattern at the border, not a guarantee — but it's worth planning around if you can.</p>
+
+<h2>JB as a Stopover, Not Just a Destination</h2>
+<p>Because Johor Bahru sits only <strong>30 minutes from Singapore</strong>, it works well as a stopover on a longer Southeast Asia overland loop rather than a one-off day trip — cheap accommodation and food here let you stretch a budget further before continuing north or flying out of Senai or Changi.</p>
+
+<h2>Where to Stay After You Cross</h2>
+<p><strong>Pelangi Capsule Hostel</strong> is at 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru — a <strong>2-minute walk from the CT1 bus stop</strong> ("Opp Pelangi Leisure Mall"), so if your route lines up with that bus, you're at the door almost as soon as you get off. It's <strong>RM35 flat per capsule per night</strong> (no confusing weekday/weekend split), with <strong>free WiFi</strong> and <strong>guest kitchen access</strong> included. Monthly stays run RM600–650.</p>
+
+<p>The capsules themselves are private, quiet sleeping pods — good for an actual night's sleep after a border crossing — while the common area and kitchen give you a social space to cook, chat, or plan the next leg of your trip when you want company instead of isolation. It's built for backpackers who want both, not a forced-party hostel.</p>
+
+<p>Ready to cross and book a bed on the other side? <a href="/book">Book a capsule at Pelangi Capsule Hostel</a> — RM35 flat, 2 minutes from the CT1 stop.</p>
+`,
+  },
   changiTransitEN,
   dayTripBaseEN,
   changiTransitZH,
   dayTripBaseZH,
+  ...etsPosts,
+  senaiWorkerMS,
+  {
+    slug: "cheapest-capsule-hostel-jb-rm30-first-night",
+    lastModified: "2026-09-13",
+    imageAlt:
+      "A guest checking into a capsule pod at Pelangi Capsule Hostel in Taman Pelangi, Johor Bahru, paying RM30 for their first night",
+    title: "Cheapest Capsule Hostel in JB: RM30 First Night Explained (2026)",
+    excerpt:
+      "Pelangi Capsule Hostel's first-night promo breaks down to RM30 for new guests, RM35 flat every night after. Here's exactly who qualifies, how it works, and how it compares to everything else in Johor Bahru.",
+    date: "2026-09-13",
+    category: "Backpacker Tips",
+    author: "Jay Lew",
+    readTime: "5 min read",
+    tags: ["johor-bahru", "capsule-hostel", "cheap-hostel-jb", "budget-travel", "malaysia", "rm30"],
+    featuredImage: "/images/blog/jb-capsule-hostel-guide.jpg",
+    content: `
+<h2>RM30 for the First Night — the Short Version</h2>
+<p>If you've never stayed at <a href="/rooms">Pelangi Capsule Hostel</a> before, your first night in a capsule pod is <strong>RM30</strong>. Every night after that — for you, or for a returning guest — is <strong>RM35 flat</strong>, no weekday/weekend split, no surge pricing on public holidays. That's the entire pricing model. No fine print buried in a booking engine, no "from RM30" teaser rate that quietly becomes RM60 at checkout.</p>
+
+<p>For a solo traveller planning a short JB stay, RM30 is about as low as an honest, non-dorm bed gets in this city — see our <a href="/blog/capsule-hostel-johor-bahru-complete-guide">complete guide to capsule hostels in Johor Bahru</a> for how a capsule stacks up against open dorms and budget hotel rooms generally.</p>
+
+<h2>Who Actually Qualifies for RM30?</h2>
+<p>The RM30 rate is for <strong>first-time guests, on their first night, booked directly</strong> on <a href="/book">pelangicapsulehostel.com/book</a>. In practice that means:</p>
+<ul>
+  <li>You haven't stayed at Pelangi Capsule Hostel before (checked by name and phone number against our booking records).</li>
+  <li>It applies to night one of your stay only — night two onward is RM35/night, same as everyone else.</li>
+  <li>Book direct on our own site or via WhatsApp — the RM30 rate is ours to offer because there's no OTA commission eating into it. It is not guaranteed on third-party booking platforms.</li>
+</ul>
+<p>Returning guests — even ones who loved it the first time and are back for round two — pay the standard RM35/night. The hostel reserves the right to charge RM35 if records show a previous stay.</p>
+
+<h2>What RM30–35 Actually Buys You</h2>
+<p>Both the Upper Deck and Lower Deck pods are the same price and the same core spec: an enclosed sleeping pod with a lockable sliding privacy door, personal climate control, adjustable LED lighting, USB and power outlets, a premium mattress, and a personal locker. On top of that, every stay includes:</p>
+<ul>
+  <li>Free high-speed WiFi throughout the property</li>
+  <li>Hot showers with body wash and shampoo provided</li>
+  <li>A fully equipped shared kitchen</li>
+  <li>24/7 self-check-in access and CCTV security</li>
+  <li>Luggage storage before check-in or after check-out</li>
+</ul>
+<p>A Malaysia Tourism Tax (TTx) of RM10 per room per night applies to foreign tourists only — Malaysians and permanent residents are exempt — and is added at check-in as required by law, on top of the RM30/RM35 room rate.</p>
+
+<h2>RM30 vs the Rest of Johor Bahru</h2>
+<table>
+  <thead>
+    <tr><th>Option</th><th>Typical JB price/night</th><th>What you get</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Open dorm bunk</td><td>RM25–40</td><td>Shared open room, least privacy</td></tr>
+    <tr><td><strong>Pelangi Capsule — first night</strong></td><td><strong>RM30</strong></td><td>Enclosed pod, lockable door, full amenities</td></tr>
+    <tr><td>Pelangi Capsule — every night after</td><td>RM35</td><td>Same pod, same amenities, flat rate</td></tr>
+    <tr><td>Budget hotel room</td><td>RM90–160</td><td>Private room, no pod</td></tr>
+  </tbody>
+</table>
+<p>RM30 undercuts an open dorm bunk elsewhere in the city while giving you an enclosed, private pod instead of a curtained-off bed — that's the whole appeal of the promo: it's not a discount on a worse product, it's the better product at dorm-bed money for one night.</p>
+
+<h2>Planning a Multi-Night Stay?</h2>
+<p>If you're staying more than one night, the math is simple: RM30 + RM35 × (nights − 1). A 3-night stay works out to RM30 + RM35 + RM35 = RM100 total for the room, before Tourism Tax. Staying a month or longer instead? Monthly rates run from RM600 (Upper Deck) or RM650 (Lower Deck) — see our <a href="/rooms">rooms and rates page</a> for the full breakdown.</p>
+
+<h2>Book the RM30 Rate</h2>
+<p>The RM30 first-night rate is honoured automatically when you book directly — no promo code needed, just book as a new guest on <a href="/book">pelangicapsulehostel.com/book</a> or message us on WhatsApp at +60 12-708 8789. Direct booking is also the only way we can offer this rate at all, since it skips the OTA commission that would otherwise eat the margin.</p>
+`,
+  },
 ];
 
 export const blogPosts: BlogPost[] = rawPosts.map((post) => ({

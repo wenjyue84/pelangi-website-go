@@ -10,7 +10,11 @@ export const faqItems: FaqItem[] = [
   },
   {
     question: "How much does a capsule pod cost per night in Johor Bahru?",
-    answer: "Capsule pods at Pelangi Capsule Hostel start from RM35 per night. A Malaysia Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is added as required by law. Monthly stays are available from RM594 per month. Book directly on our website at pelangicapsulehostel.com/book for the best rate with no booking fees or OTA commissions.",
+    answer: "First-time guests enjoy a special rate of RM30 for the first night, then RM35/night from the second night onward. A Malaysia Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is added as required by law. Monthly stays are available from RM600 per month (Upper Deck Pod) / RM650 per month (Lower Deck Pod). Book directly on our website at pelangicapsulehostel.com/book for the best rate with no booking fees or OTA commissions.",
+  },
+  {
+    question: "What counts as a first stay?",
+    answer: "The first-night RM30 rate is for guests who have not previously stayed at Pelangi Capsule Hostel. We verify this by name and phone number against our booking records. The hostel reserves the right to charge the standard RM35 rate if records show a previous stay.",
   },
   {
     question: "Where exactly is Pelangi Capsule Hostel located?",
@@ -54,7 +58,7 @@ export const faqItems: FaqItem[] = [
   },
   {
     question: "Can I stay monthly at Pelangi Capsule Hostel?",
-    answer: "Yes, Pelangi Capsule Hostel offers monthly rates from RM594 per month, making it one of the most affordable long-stay accommodation options in Johor Bahru. Monthly stays are popular with remote workers, digital nomads, and professionals on work assignments in JB. The rate includes all amenities: WiFi, air-conditioning, hot showers, kitchen access, and laundry facilities. We also offer an in-house laundry service at RM5/load for guests — cheaper than the outside dobi.",
+    answer: "Yes, Pelangi Capsule Hostel offers monthly rates from RM600 per month (Upper Deck Pod) or RM650 per month (Lower Deck Pod), making it one of the most affordable long-stay accommodation options in Johor Bahru. Monthly stays are popular with remote workers, digital nomads, and professionals on work assignments in JB. The rate includes all amenities: WiFi, air-conditioning, hot showers, kitchen access, and laundry facilities. We also offer an in-house laundry service at RM5/load for guests — cheaper than the outside dobi.",
   },
   {
     question: "Is the hostel quiet enough to sleep well?",

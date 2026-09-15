@@ -102,8 +102,8 @@ function initClarity() {
   (function (c: any, l: any, a: string, r: string, i: string) {
     c[a] =
       c[a] ||
-      function () {
-        (c[a].q = c[a].q || []).push(arguments);
+      function (...args: unknown[]) {
+        (c[a].q = c[a].q || []).push(args);
       };
     const t = l.createElement(r);
     t.async = 1;

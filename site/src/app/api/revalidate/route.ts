@@ -109,7 +109,8 @@ async function notifyRainbowKbChange(): Promise<void> {
     } else {
       console.warn(`[revalidate] Rainbow AI KB sync failed: HTTP ${resp.status}`);
     }
-  } catch (err: any) {
-    console.warn(`[revalidate] Rainbow AI KB sync error: ${err.message}`);
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : String(err);
+    console.warn(`[revalidate] Rainbow AI KB sync error: ${message}`);
   }
 }

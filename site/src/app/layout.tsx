@@ -48,8 +48,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://pelangicapsulehostel.com",
     languages: {
+      // No standalone Malay site exists yet, so `ms` is intentionally omitted —
+      // mapping it to /ms/terma (a terms page) falsely told Google that page was
+      // the Malay equivalent of every page. Re-add once a full /ms site ships.
       "en": "https://pelangicapsulehostel.com",
-      "ms": "https://pelangicapsulehostel.com/ms/terma",
       "x-default": "https://pelangicapsulehostel.com",
       "zh-CN": "https://pelangicapsulehostel.com/zh",
       "zh-Hans": "https://pelangicapsulehostel.com/zh",

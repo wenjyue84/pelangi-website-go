@@ -81,12 +81,25 @@ const imageGallerySchema = {
     ],
 };
 
+const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://pelangicapsulehostel.com" },
+        { "@type": "ListItem", position: 2, name: "Gallery", item: "https://pelangicapsulehostel.com/gallery" },
+    ],
+};
+
 export default function GalleryPage() {
     return (
         <main id="main-content" className="min-h-screen bg-stone-50 dark:bg-stone-950">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(imageGallerySchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
             <Header />
             <div className="pt-20">

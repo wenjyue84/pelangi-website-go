@@ -8,6 +8,8 @@
  * Spec: https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps
  */
 
+import { blogPosts } from "@/data/blog/posts";
+
 interface ImageEntry {
     url: string;
     title: string;
@@ -148,8 +150,23 @@ function escapeXml(str: string): string {
         .replace(/'/g, "&apos;");
 }
 
+// Each blog post contributes its featured image, keyed to the post URL so
+// Googlebot can associate the photo with the article it illustrates.
+const blogImageData: PageImages[] = blogPosts.map((post) => ({
+    pageUrl: `${baseUrl}/blog/${post.slug}`,
+    images: [
+        {
+            url: post.featuredImage.startsWith("http")
+                ? post.featuredImage
+                : `${baseUrl}${post.featuredImage}`,
+            title: post.title,
+            caption: post.imageAlt ?? post.excerpt,
+        },
+    ],
+}));
+
 export async function GET() {
-    const urlEntries = imageData
+    const urlEntries = [...imageData, ...blogImageData]
         .map(
             ({ pageUrl, images }) => `
   <url>

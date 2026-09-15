@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Route } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BlogStructuredData from "@/components/BlogStructuredData";
@@ -25,6 +26,13 @@ export async function generateMetadata({ params }: PageProps<'/blog/[slug]'>): P
     return { title: "Post Not Found" };
   }
 
+  // Use the post's own featured photo as the social share image (absolute URL),
+  // falling back to the generic brand OG image only if a post somehow lacks one.
+  const ogImage = post.featuredImage
+    ? `https://pelangicapsulehostel.com${post.featuredImage}`
+    : "https://pelangicapsulehostel.com/images/og-image.png";
+  const isZh = /[一-鿿]/.test(post.title);
+
   return {
     title: post.title,
     description: post.excerpt,
@@ -36,18 +44,25 @@ export async function generateMetadata({ params }: PageProps<'/blog/[slug]'>): P
       description: post.excerpt,
       url: `https://pelangicapsulehostel.com/blog/${post.slug}`,
       siteName: "Pelangi Capsule Hostel",
-      locale: "en_MY",
+      locale: isZh ? "zh_CN" : "en_MY",
       type: "article",
       publishedTime: new Date(post.date).toISOString(),
+      modifiedTime: new Date(post.lastModified ?? post.date).toISOString(),
       authors: [post.author],
       images: [
         {
-          url: "/images/og-image.png",
+          url: ogImage,
           width: 1200,
           height: 630,
-          alt: post.title,
+          alt: post.imageAlt ?? post.title,
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [ogImage],
     },
   };
 }
@@ -64,6 +79,9 @@ export default async function BlogPostPage({ params }: PageProps<'/blog/[slug]'>
   const contentWithIds = annotateMsHtml(addHeadingIds(post.content));
   const relatedPosts = searchRelatedPosts(post.slug, post.tags, post.category);
   const currentPostUrl = `https://pelangicapsulehostel.com/blog/${post.slug}`;
+  // Chinese posts share the /blog/[slug] route; mark the document language so
+  // screen readers and search engines treat the body as Chinese.
+  const isZhPost = /[一-鿿]/.test(post.title);
 
   return (
     <main id="main-content" className="min-h-screen bg-stone-50 dark:bg-stone-950">
@@ -71,7 +89,7 @@ export default async function BlogPostPage({ params }: PageProps<'/blog/[slug]'>
       <BlogPageViewTracker slug={post.slug} title={post.title} />
       <Header />
 
-      <article className="pt-28 pb-16 container-custom">
+      <article className="pt-28 pb-16 container-custom" lang={isZhPost ? "zh-CN" : undefined}>
         <div className="max-w-5xl mx-auto">
           {/* Back link */}
           <Link
@@ -100,7 +118,7 @@ export default async function BlogPostPage({ params }: PageProps<'/blog/[slug]'>
           </span>
 
           {/* Title */}
-          <h1 className="font-display text-3xl md:text-4xl font-medium text-stone-900 dark:text-stone-100 mb-4 leading-tight">
+          <h1 id="post-title" className="font-display text-3xl md:text-4xl font-medium text-stone-900 dark:text-stone-100 mb-4 leading-tight">
             {post.title}
           </h1>
 
@@ -127,6 +145,20 @@ export default async function BlogPostPage({ params }: PageProps<'/blog/[slug]'>
             />
           </div>
 
+          {/* Featured hero image */}
+          {post.featuredImage && (
+            <div className="relative w-full aspect-video rounded-2xl overflow-hidden mb-10 bg-stone-100 dark:bg-stone-800">
+              <Image
+                src={post.featuredImage}
+                alt={post.imageAlt ?? post.title}
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 1024px"
+                className="object-cover"
+              />
+            </div>
+          )}
+
           {/* Two-column layout: content + ToC sidebar */}
           <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_256px] lg:gap-12">
             {/* Main content column */}
@@ -149,14 +181,24 @@ export default async function BlogPostPage({ params }: PageProps<'/blog/[slug]'>
                 <div className="mt-12 pt-8 border-t border-stone-200 dark:border-stone-700">
                   <p className="text-sm font-medium text-stone-500 dark:text-stone-400 mb-3">Tags</p>
                   <div className="flex flex-wrap gap-2">
-                    {post.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 text-sm rounded-full bg-stone-100 text-stone-600 dark:bg-stone-800 dark:text-stone-400"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                    {post.tags.map((tag) =>
+                      /^[a-z0-9-]+$/.test(tag) ? (
+                        <Link
+                          key={tag}
+                          href={("/blog/tag/" + tag) as Route}
+                          className="px-3 py-1 text-sm rounded-full bg-stone-100 text-stone-600 dark:bg-stone-800 dark:text-stone-400"
+                        >
+                          {tag}
+                        </Link>
+                      ) : (
+                        <span
+                          key={tag}
+                          className="px-3 py-1 text-sm rounded-full bg-stone-100 text-stone-600 dark:bg-stone-800 dark:text-stone-400"
+                        >
+                          {tag}
+                        </span>
+                      )
+                    )}
                   </div>
                 </div>
               )}

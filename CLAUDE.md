@@ -99,6 +99,20 @@ Agents: `pelangi-aci-deterministic` (regression) + `pelangi-aci-evaluator` (judg
 in `.claude/agents/`. Browser automation only for pixels/events (Step 6 boundary
 in the setup-aci skill) — everything else goes through the ACI.
 
+## Blog Language Requirements
+
+Every blog post in `go-site/internal/data/blog.go` MUST include an English version. Rules:
+
+- **English is mandatory** for every post. Set `InLanguage: "en"` (or omit — default is EN) and write English content.
+- **Other languages (BM/MS, ZH, ID)** are optional add-ons. Write them as separate `BlogPost` structs with their own slug.
+- **Non-English-primary posts** (e.g. a post targeting Indonesian tourists written in Bahasa Indonesia):
+  - Primary post: `InLanguage: "id"` with ID content
+  - Must have a sibling EN post, linked via `AlternateEN: "<en-slug>"`
+  - The EN post must link back via `AlternateMS/AlternateID` as appropriate
+- **Never publish a post with ONLY a non-English version.** Every non-EN post needs an `AlternateEN` pointing to an existing EN slug.
+- **Chinese posts** must have `InLanguage: "zh-CN"` set explicitly (not left empty).
+- **Multilingual sets** (EN + BM + ZH): all three posts reference each other via `AlternateEN`, `AlternateZH`, `AlternateMS`.
+
 ## Coding Patterns
 
 - One template file per route under `templates/pages/`; page handlers in `internal/handlers/page_*.go`
@@ -114,3 +128,15 @@ If you change room prices, policies, check-in times, or amenities:
 1. Update `go-site/internal/data/rooms.go` / `faq.go` **and** `content.go` (llms bodies, EN + ZH)
 2. Grep templates for the old value — pricing also appears in `templates/pages/*.html` (home, rooms, zh*, visitMalaysia2026, terma…), `static/js/booking.js`, `static/js/widgets_a.js`, and JSON-LD blocks
 3. Build + deploy (`go-site/DEPLOY.md`), then trigger Rainbow AI KB re-sync via admin dashboard or `POST /api/rainbow/knowledge-base/sync`
+
+## Tools
+
+Use these before writing an ad-hoc script. Every path below existed on disk when this block was generated (2026-09-11, hub_lint.py HUB-010); regenerate with `uv run …/_tools/hub-lint/hub_lint.py --path <this folder> --fix --rules HUB-010`.
+
+| Kind | Command (run from this folder) | Notes |
+|---|---|---|
+| ACI | `node go-site/aci.mjs describe|status|query|test` | JSON out; `describe --json` lists suites. Coverage: `1-projects/chief-of-staff/wiki/aci-coverage.md` |
+| npm (in `go-site/`) | `npm run css`, `npm run css:watch` | from `go-site/package.json` |
+| npm (in `site/`) | `npm run dev`, `npm run build`, `npm run start`, `npm run lint`, `npm run analyze`, `npm run size` | from `site/package.json` |
+| Go | `go run .` / `go test ./...` in `go-site/` | from `go-site/go.mod` |
+| scripts | `node go-site/scripts/check-blog-covers.mjs` | 1 file(s) |

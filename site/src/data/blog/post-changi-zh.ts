@@ -30,7 +30,7 @@ export const changiTransitZH = {
 
 <ul>
 <li><strong>上层舱位（Upper Deck Pod）：RM35/晚</strong>（约SGD10 / 约人民币55）——经济之选</li>
-<li><strong>下层舱位（Lower Deck Pod）：RM45/晚</strong>（约SGD13 / 约人民币75）——地面层，上下更方便</li>
+<li><strong>下层舱位（Lower Deck Pod）：RM35/晚</strong>（约SGD10 / 约人民币55）——地面层，上下更方便，同价</li>
 </ul>
 
 <p><strong>一晚直接省SGD100+。</strong>中转时间长的话，住两三晚省下的钱够买张国际机票。而且新山不光能睡觉——好吃的好逛的一大堆，完全可以把中转变成一趟小旅行。</p>
@@ -145,7 +145,7 @@ export const changiTransitZH = {
 <li><strong>行李存放：</strong>提前到或退房后都能寄存，放下行李出去逛</li>
 <li><strong>WiFi：</strong>全馆免费WiFi，网速够用</li>
 <li><strong>24小时Grab：</strong>新山Grab全天跑，凌晨到也不怕没车</li>
-<li><strong>房型：</strong>上层舱位RM35/晚，下层舱位RM45/晚。每个舱位有独立灯、充电口和储物空间</li>
+<li><strong>房型：</strong>上层舱位RM35/晚，下层舱位RM35/晚，同价。每个舱位有独立灯、充电口和储物空间</li>
 </ul>
 
 <p>预订直接点：<a href="/book">在线预订</a></p>

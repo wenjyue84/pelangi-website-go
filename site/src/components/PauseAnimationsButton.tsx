@@ -10,15 +10,19 @@ const STORAGE_KEY = "pelangi-animations-paused";
  * Distinct from prefers-reduced-motion which is an OS-level preference.
  */
 export default function PauseAnimationsButton() {
-  const [paused, setPaused] = useState(false);
+  // Lazy initialiser reads localStorage once at mount (client-only; no SSR
+  // window access because this component is 'use client').
+  const [paused, setPaused] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return localStorage.getItem(STORAGE_KEY) === "true";
+  });
 
-  // Restore persisted preference on mount
+  // Sync the DOM class to match the initial persisted state on mount.
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === "true") {
-      setPaused(true);
+    if (paused) {
       document.documentElement.classList.add("animations-paused");
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function toggle() {

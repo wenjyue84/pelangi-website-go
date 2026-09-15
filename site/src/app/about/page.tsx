@@ -9,6 +9,22 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://pelangicapsulehostel.com/about",
   },
+  openGraph: {
+    title: "About Pelangi Capsule Hostel | Johor Bahru",
+    description: "Our story, mission, and why Pelangi Capsule Hostel is the perfect base for exploring Johor Bahru and Singapore.",
+    url: "https://pelangicapsulehostel.com/about",
+    siteName: "Pelangi Capsule Hostel",
+    locale: "en_MY",
+    type: "website",
+    images: [
+      {
+        url: "/images/exterior-1.webp",
+        width: 1200,
+        height: 630,
+        alt: "Pelangi Capsule Hostel building exterior in Taman Pelangi, Johor Bahru",
+      },
+    ],
+  },
 };
 
 const teamSchema = {
@@ -16,7 +32,7 @@ const teamSchema = {
   "@graph": [
     {
       "@type": "Person",
-      "@id": "https://pelangicapsulehostel.com/about#jay-lew",
+      "@id": "https://pelangicapsulehostel.com/author/jay-lew#person",
       name: "Jay Lew",
       jobTitle: "Co-Founder & Hostel Owner",
       description:
@@ -24,10 +40,11 @@ const teamSchema = {
       telephone: "+60127088789",
       worksFor: {
         "@type": "Organization",
+        "@id": "https://pelangicapsulehostel.com/#organization",
         name: "Pelangi Capsule Hostel",
         url: "https://pelangicapsulehostel.com",
       },
-      url: "https://pelangicapsulehostel.com/about",
+      url: "https://pelangicapsulehostel.com/author/jay-lew",
       sameAs: [
         "https://www.facebook.com/pelangicapsulehostel",
         "https://www.instagram.com/pelangicapsulehostel",
@@ -51,12 +68,35 @@ const teamSchema = {
   ],
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://pelangicapsulehostel.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "About",
+      item: "https://pelangicapsulehostel.com/about",
+    },
+  ],
+};
+
 export default function AboutPage() {
   return (
     <main id="main-content" className="min-h-screen bg-stone-50 dark:bg-stone-950">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(teamSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <Header />
       <div className="pt-20"> {/* Add padding for fixed header */}

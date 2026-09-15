@@ -9,6 +9,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://pelangicapsulehostel.com/visa-run",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Visa Run Singapore to JB | Pelangi Capsule Hostel",
+    description: "Complete guide to visa runs from Singapore to Johor Bahru. Learn the process, costs, requirements, and FAQs. Perfect for expats and travelers.",
+    images: ["/images/og-image.png"],
+  },
 };
 
 const faqSchema = {
@@ -169,7 +175,7 @@ export default function VisaRunPage() {
             <h2 className="text-2xl font-semibold mb-6">Important Reminders</h2>
             <ul className="space-y-3 text-stone-700 dark:text-stone-300">
               <li>
-                <strong>Check visa requirements:</strong> Verify Malaysia's entry requirements for your nationality before traveling.
+                <strong>Check visa requirements:</strong> Verify Malaysia&apos;s entry requirements for your nationality before traveling.
               </li>
               <li>
                 <strong>Keep funds:</strong> Have at least SGD 1,000-1,500 in accessible funds for immigration checks.
@@ -178,7 +184,7 @@ export default function VisaRunPage() {
                 <strong>Plan your return:</strong> Ensure your passport has sufficient blank pages and validity (6+ months recommended).
               </li>
               <li>
-                <strong>Immigration rules:</strong> Be honest during immigration interviews. Visa runs are legitimate, but don't abuse the system.
+                <strong>Immigration rules:</strong> Be honest during immigration interviews. Visa runs are legitimate, but don&apos;t abuse the system.
               </li>
             </ul>
           </section>

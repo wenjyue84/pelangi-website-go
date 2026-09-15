@@ -26,7 +26,7 @@ const FAQ_DATA: FaqEntry[] = [
   {
     question: 'How much does a capsule pod cost?',
     answer:
-      'Capsule pods are RM35 per night — a flat rate every day of the week. A Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is added as required by law. Monthly stays are available from RM594/month. Book directly on our website at pelangicapsulehostel.com/book for the best rate.',
+      'Capsule pods are RM35 per night — a flat rate every day of the week (RM30 for a first-time guest\'s first night). A Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is added as required by law. Monthly stays are available from RM600/month (RM650 for a Lower Deck Pod). Book directly on our website at pelangicapsulehostel.com/book for the best rate.',
     keywords: ['price', 'pricing', 'cost', 'rate', 'rm', 'cheap', 'afford', 'how much', 'per night', 'monthly', 'budget'],
     chipLabel: 'Pricing & rates',
   },
@@ -96,7 +96,7 @@ const FAQ_DATA: FaqEntry[] = [
   {
     question: 'Can I stay monthly?',
     answer:
-      'Yes, monthly rates start from RM594/month including all amenities: WiFi, air-conditioning, hot showers, kitchen access, and laundry facilities. We also offer in-house laundry service at RM5/load (guests only, cheaper than outside dobi). Popular with remote workers and digital nomads.',
+      'Yes, monthly rates start from RM600/month (RM650 for a Lower Deck Pod) including all amenities: WiFi, air-conditioning, hot showers, kitchen access, and laundry facilities. We also offer in-house laundry service at RM5/load (guests only, cheaper than outside dobi). Popular with remote workers and digital nomads.',
     keywords: ['monthly', 'long stay', 'long-term', 'month', 'weekly', 'extended'],
   },
   {

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -84,12 +85,12 @@ export default function OfflinePage() {
             </ul>
           </div>
 
-          <a
+          <Link
             href="/"
             className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-8 py-4 rounded-full transition-colors text-lg shadow-md"
           >
             Try again
-          </a>
+          </Link>
         </div>
       </main>
       <Footer />

@@ -5,6 +5,13 @@ export async function GET() {
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
+  // Newest content date (published or last-edited) across the blog, for freshness signals.
+  const lastUpdated =
+    blogPosts
+      .map((p) => p.lastModified ?? p.date)
+      .sort()
+      .at(-1) ?? "";
+
   const blogSection = sortedPosts
     .map(
       (post) =>
@@ -16,6 +23,8 @@ export async function GET() {
 
 > Japanese-style capsule hostel in Johor Bahru, Malaysia. Budget-friendly accommodation from RM35/night with free WiFi, 24/7 access, and modern pod amenities. 15 minutes from Singapore via the Woodlands CIQ checkpoint.
 
+**Last Updated:** ${lastUpdated}
+
 ## About
 
 Pelangi Capsule Hostel is a Japanese-inspired capsule accommodation in the heart of Taman Pelangi, Johor Bahru. We offer affordable, comfortable, and convenient stays for budget travellers, backpackers, and digital nomads. Our capsule pods provide a unique blend of privacy and community — your own enclosed space with a door that locks, at backpacker prices.
@@ -24,7 +33,7 @@ Pelangi Capsule Hostel is a Japanese-inspired capsule accommodation in the heart
 
 ### Capsule Pod
 - **Price**: From RM35/night (+ RM10/room/night Tourism Tax)
-- **Monthly Rate**: RM594/month
+- **Monthly Rate**: RM600–RM650/month
 - **Features**:
   - Personal climate control (fan/AC)
   - Adjustable LED lighting
@@ -68,7 +77,7 @@ Pelangi Capsule Hostel is a Japanese-inspired capsule accommodation in the heart
 Check-in at Pelangi Capsule Hostel is from 3:00 PM onwards, and check-out is before 12:00 PM (noon). We offer self-check-in so you can arrive anytime after 3 PM without waiting for reception. Early check-in or late check-out may be available on request — contact us via WhatsApp at +60 12-708 8789.
 
 **How much does a capsule pod cost per night in Johor Bahru?**
-Capsule pods at Pelangi Capsule Hostel start from RM35 per night. A Malaysia Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is added as required by law. Monthly stays are available from RM594 per month. Book directly on our website at pelangicapsulehostel.com/book for the best rate with no booking fees or OTA commissions.
+Capsule pods at Pelangi Capsule Hostel start from RM35 per night. A Malaysia Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is added as required by law. Monthly stays are available from RM600–RM650 per month. Book directly on our website at pelangicapsulehostel.com/book for the best rate with no booking fees or OTA commissions.
 
 **Where exactly is Pelangi Capsule Hostel located?**
 Pelangi Capsule Hostel is located at 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru, Johor, Malaysia. Taman Pelangi is a central neighbourhood in Johor Bahru known for restaurants, cafes, and the famous Taman Pelangi Night Market (pasar malam) every Tuesday from 4:30 PM. The hostel is a short Grab ride from JB Sentral, CIQ border checkpoint, and Senai International Airport.
@@ -101,7 +110,7 @@ Yes, safety is a top priority at Pelangi Capsule Hostel. The property has 24/7 C
 Pelangi Capsule Hostel is in Taman Pelangi, one of Johor Bahru's most vibrant neighbourhoods. Within walking distance you will find the Taman Pelangi Night Market (Tuesday pasar malam with 500+ metres of food stalls), Restoran Hua Mui heritage coffee shop, and dozens of local eateries. Nearby attractions include KOMTAR JBCC mall, JB Old Chinese Temple, Arulmigu Sri Rajakaliamman Glass Temple, and the JB Waterfront. Legoland Malaysia is 25 minutes away by car.
 
 **Can I stay monthly at Pelangi Capsule Hostel?**
-Yes, Pelangi Capsule Hostel offers monthly rates from RM594 per month, making it one of the most affordable long-stay accommodation options in Johor Bahru. Monthly stays are popular with remote workers, digital nomads, and professionals on work assignments in JB. The rate includes all amenities: WiFi, air-conditioning, hot showers, kitchen access, and laundry facilities.
+Yes, Pelangi Capsule Hostel offers monthly rates from RM600–RM650 per month, making it one of the most affordable long-stay accommodation options in Johor Bahru. Monthly stays are popular with remote workers, digital nomads, and professionals on work assignments in JB. The rate includes all amenities: WiFi, air-conditioning, hot showers, kitchen access, and laundry facilities.
 
 **Is the hostel quiet enough to sleep well?**
 Pelangi Capsule Hostel enforces a strict quiet policy in all sleeping pod areas. Each capsule is enclosed with a sliding door, providing sound insulation from other guests. For working, socialising, or making calls, there is a separate common lounge area so that the sleeping zone remains peaceful. Earplugs are also available at the front desk if you are a light sleeper.
@@ -154,14 +163,22 @@ ${blogSection}
 
 - [Home](https://pelangicapsulehostel.com/)
 - [About](https://pelangicapsulehostel.com/about)
+- [Author: Jay Lew](https://pelangicapsulehostel.com/author/jay-lew)
 - [Rooms](https://pelangicapsulehostel.com/rooms)
 - [Amenities](https://pelangicapsulehostel.com/amenities)
 - [Gallery](https://pelangicapsulehostel.com/gallery)
 - [Location](https://pelangicapsulehostel.com/location)
+- [Getting Here](https://pelangicapsulehostel.com/getting-here)
+- [Check-in Guide](https://pelangicapsulehostel.com/check-in)
+- [Visa Run Guide](https://pelangicapsulehostel.com/visa-run)
+- [Visit Malaysia 2026](https://pelangicapsulehostel.com/visit-malaysia-2026)
+- [Singapore Jobs Guide](https://pelangicapsulehostel.com/singapore-jobs)
+- [Safety Guidelines](https://pelangicapsulehostel.com/safety-guidelines)
 - [Book Now](https://pelangicapsulehostel.com/book)
 - [Blog](https://pelangicapsulehostel.com/blog)
 - [Guest Guide](https://pelangicapsulehostel.com/guide)
 - [Contact](https://pelangicapsulehostel.com/contact)
+- [中文页面 (Chinese)](https://pelangicapsulehostel.com/zh)
 - [Privacy Policy](https://pelangicapsulehostel.com/privacy-policy)
 - [Terms & Conditions](https://pelangicapsulehostel.com/terms)
 `;

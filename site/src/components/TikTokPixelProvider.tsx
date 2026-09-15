@@ -84,11 +84,12 @@ async function sendServerEvent(
  * - Search: blog/guide search
  */
 export default function TikTokPixelProvider() {
-  const [consented, setConsented] = useState(false);
+  // Read consent cookie once at mount via lazy initialiser (no SSR cookie access).
+  const [consented, setConsented] = useState(() =>
+    typeof window !== "undefined" ? readConsentCookie() : false,
+  );
 
   useEffect(() => {
-    setConsented(readConsentCookie());
-
     function handleConsent(e: Event) {
       const value = (e as CustomEvent<{ consent: string }>).detail.consent;
       setConsented(value === "accepted");

@@ -32,14 +32,14 @@ export const changiTransitEN = {
 
 <p>It's Johor Bahru.</p>
 
-<h2>The JB Alternative: RM35-45 Per Night Instead of SGD150+</h2>
+<h2>The JB Alternative: RM35 Per Night Instead of SGD150+</h2>
 <p>Johor Bahru sits at the southern tip of Peninsular Malaysia, connected to Singapore by the Causeway. It's about 1.5 hours from Changi Airport by public transport, and prices are in a completely different league.</p>
 
-<p>At <a href="/rooms">Pelangi Capsule Hostel</a>, a pod costs <strong>RM35/night for an Upper Deck Pod</strong> or <strong>RM45/night for a Lower Deck Pod</strong> (ground-level, no ladder). That's roughly SGD10-13. Each pod comes with an LED reading light, USB charging port, and personal locker. The hostel is in Taman Pelangi, one of JB's best food neighbourhoods. Hawker centres and local restaurants are everywhere.</p>
+<p>At <a href="/rooms">Pelangi Capsule Hostel</a>, a pod costs a flat <strong>RM35/night</strong> — Upper Deck or Lower Deck (ground-level, no ladder), same rate. That's roughly SGD10-11. Each pod comes with an LED reading light, USB charging port, and personal locker. The hostel is in Taman Pelangi, one of JB's best food neighbourhoods. Hawker centres and local restaurants are everywhere.</p>
 
 <p>Think about it. One night at YOTEL Changi costs the same as <strong>three to four nights</strong> in a JB capsule. One night at the Crowne Plaza Changi equals <strong>a full week</strong> at Pelangi. And instead of sleeping in an airport terminal, you're sleeping in a real neighbourhood where a plate of chicken rice costs RM6 and the teh tarik flows freely.</p>
 
-<p>Non-Malaysian guests pay an additional RM10/room/night tourism tax, so your all-in nightly cost is RM45-55 (SGD13-16). Still dirt cheap.</p>
+<p>Non-Malaysian guests pay an additional RM10/room/night tourism tax, so your all-in nightly cost is RM45 (SGD12-13). Still dirt cheap.</p>
 
 <h2>How to Get from Changi Airport to Johor Bahru</h2>
 <p>Three options, cheapest to most convenient. Pick based on how tired you are and how much you care about saving money.</p>
@@ -249,6 +249,6 @@ export const changiTransitEN = {
 
 <p>The route is simple. The savings are real. And worst case, you end up discovering a city with some of the best street food in Southeast Asia.</p>
 
-<p><strong>Upper Deck Pods start at RM35/night. Lower Deck Pods at RM45/night.</strong> <a href="/book">Book your pod at Pelangi Capsule Hostel</a> and turn your Changi layover from a budget drain into a budget win.</p>
+<p><strong>Pods start at RM35/night, flat rate.</strong> <a href="/book">Book your pod at Pelangi Capsule Hostel</a> and turn your Changi layover from a budget drain into a budget win.</p>
 `,
 };

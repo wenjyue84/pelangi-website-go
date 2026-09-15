@@ -24,8 +24,8 @@ export const ROOM_TYPES: RoomType[] = [
     name: "Lower Deck Pod",
     description:
       "Ground-level capsule pod — easy access, no ladder required. Japanese-style with LED reading light, USB charging port, and personal locker.",
-    nightlyRate: 45,
-    monthlyRate: 594,
+    nightlyRate: 35,
+    monthlyRate: 650,
     currency: "MYR",
     maxOccupancy: 1,
     totalUnits: 18,
@@ -43,6 +43,7 @@ export const ROOM_TYPES: RoomType[] = [
     description:
       "Elevated capsule pod on the upper bunk — more privacy and less foot traffic. Same Japanese-style comfort with LED reading light, USB charging port, and personal locker.",
     nightlyRate: 35,
+    monthlyRate: 600,
     currency: "MYR",
     maxOccupancy: 1,
     totalUnits: 6,

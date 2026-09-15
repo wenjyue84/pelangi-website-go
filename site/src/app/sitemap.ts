@@ -3,11 +3,13 @@ import { blogPosts, categoryToSlug, getUniqueCategories } from "@/data/blog/post
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = "https://pelangicapsulehostel.com";
-    const lastModified = new Date();
+    // Stable build-independent date for static pages (avoids a churning sitemap
+    // where every page's lastmod changes on each deploy). Bump when content changes.
+    const lastModified = new Date("2026-06-26");
 
     const blogPostEntries: MetadataRoute.Sitemap = blogPosts.map((post) => ({
         url: `${baseUrl}/blog/${post.slug}`,
-        lastModified: new Date(post.date),
+        lastModified: new Date(post.lastModified ?? post.date),
         changeFrequency: "monthly",
         priority: 0.7,
         images: [`${baseUrl}${post.featuredImage}`],
@@ -170,6 +172,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified,
             changeFrequency: "monthly",
             priority: 0.3,
+        },
+        {
+            url: `${baseUrl}/author/jay-lew`,
+            lastModified,
+            changeFrequency: "monthly",
+            priority: 0.5,
+        },
+        {
+            url: `${baseUrl}/privacy-policy`,
+            lastModified,
+            changeFrequency: "yearly",
+            priority: 0.3,
+        },
+        {
+            url: `${baseUrl}/terms`,
+            lastModified,
+            changeFrequency: "yearly",
+            priority: 0.3,
+        },
+        {
+            url: `${baseUrl}/safety-guidelines`,
+            lastModified,
+            changeFrequency: "monthly",
+            priority: 0.5,
         },
         ...categoryEntries,
         ...blogPostEntries,

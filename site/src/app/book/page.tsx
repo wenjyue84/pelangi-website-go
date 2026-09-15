@@ -10,11 +10,12 @@ import FpxPaymentForm from "@/components/FpxPaymentForm";
 import HeroTrustBadges from "@/components/HeroTrustBadges";
 import ExitIntentOverlay from "@/components/ExitIntentOverlay";
 import { getCTAText } from "@/lib/flags";
+import type { CTAVariant } from "@/lib/flags";
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Book a Pod | Pelangi Capsule Hostel JB — From RM35/night",
+  title: "Book a Pod | Pelangi Capsule Hostel JB — 1st Night RM30, RM35 from 2nd Night",
   description:
-    "Book your capsule pod at Pelangi Capsule Hostel in Johor Bahru. Direct WhatsApp booking from RM35/night or RM594/month. No platform fees, instant confirmation.",
+    "Book your capsule pod at Pelangi Capsule Hostel in Johor Bahru. First-time guests: 1st night RM30, then RM35/night from the 2nd night. No platform fees, instant confirmation.",
   keywords: [
     "book capsule hostel JB",
     "Johor Bahru hostel booking",
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Book a Pod | Pelangi Capsule Hostel JB",
     description:
-      "Book direct from RM35/night. WhatsApp booking, no platform fees, instant confirmation at Pelangi Capsule Hostel Johor Bahru.",
+      "First-time guests: 1st night RM30, RM35 from 2nd night. WhatsApp booking, no platform fees, instant confirmation at Pelangi Capsule Hostel Johor Bahru.",
     url: "https://pelangicapsulehostel.com/book",
     siteName: "Pelangi Capsule Hostel",
     type: "website",
@@ -120,7 +121,7 @@ const lodgingReservationSchema = {
 export default async function BookPage() {
   // Read variant from middleware (set in response header)
   const headersList = await headers();
-  const variant = (headersList.get("x-variant") ?? "book-now") as any;
+  const variant = (headersList.get("x-variant") ?? "book-now") as CTAVariant;
   const ctaText = getCTAText(variant);
 
   return (
@@ -239,7 +240,7 @@ export default async function BookPage() {
               </div>
               <div className="text-xs tracking-widest uppercase text-amber-700 dark:text-amber-400 mb-2">Monthly Stay</div>
               <div className="flex items-baseline justify-center gap-1 mb-4">
-                <span className="font-display text-5xl font-medium text-stone-900 dark:text-stone-100">RM594</span>
+                <span className="font-display text-5xl font-medium text-stone-900 dark:text-stone-100">RM600</span>
                 <span className="text-stone-500 dark:text-stone-400 ml-1">/month</span>
               </div>
               <div className="text-sm text-stone-500 dark:text-stone-400 mb-2 space-y-1">

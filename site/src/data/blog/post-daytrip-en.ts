@@ -237,7 +237,7 @@ export const dayTripBaseEN = {
 
 <ul>
   <li><strong>RM35/night (Upper Deck Pod):</strong> Top bunk capsule. Cheapest clean, private sleeping space in JB.</li>
-  <li><strong>RM45/night (Lower Deck Pod):</strong> Ground-level capsule, easier to get in and out of. A bit more room for a small premium.</li>
+  <li><strong>RM35/night (Lower Deck Pod):</strong> Ground-level capsule, easier to get in and out of. Same flat rate.</li>
   <li><strong>Taman Pelangi location:</strong> One of JB's best food neighbourhoods. Hawker centres, mamak restaurants, cafes, and night markets all within walking distance.</li>
   <li><strong>15 minutes from CIQ:</strong> A quick Grab ride gets you to the causeway checkpoint. Early morning crossings are easy to manage.</li>
   <li><strong>Lockers for valuables:</strong> Lock up your laptop, extra cash, and travel documents while you spend the day in Singapore.</li>

@@ -31,6 +31,63 @@ export default function SafetyGuidelinesPage() {
     },
   };
 
+  // FAQ rich results are deprecated in Google SERPs (Aug 2023); this FAQPage
+  // schema is retained for AI/LLM extraction (answer engines, assistants).
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What content is prohibited on the Pelangi Capsule Hostel website?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The following content is prohibited and subject to removal: hate speech or discrimination based on protected characteristics; content that promotes, glorifies, or threatens violence; harassment or bullying; content describing, promoting, or facilitating illegal activity; deliberate misinformation; sexual or explicit material; spam or manipulation designed to manipulate ratings; and publication of personal information such as private contact details or identity documents.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How do I report harmful content on the website?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Each review on our website has a \"Report\" button you can click to submit a report. You can also email safety@pelangicapsulehostel.com or call +60 7-2245 6661. When reporting, please include a description of the content and why it violates our guidelines, the author or guest name, the date or timeframe if known, and any additional context or evidence such as screenshots or links.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What happens after I report content, and how long does it take?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "You will receive an acknowledgment of your report within 48 hours. Our team then investigates the reported content against our guidelines, decides whether it is in violation, and removes or edits it as appropriate, communicating the outcome to you subject to privacy considerations. This process typically takes 5-10 business days. Urgent matters involving immediate danger may be prioritized and escalated to relevant authorities.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can you remove reviews posted on third-party platforms like Google or Booking.com?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. We reference reviews hosted on third-party platforms (Google Reviews, Booking.com, Hostelworld, Airpaz) via hyperlinks or by displaying their ratings, but those platforms host their own content and we do not control them. Concerns about content on those platforms should be reported directly to the platform operators.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How does the hostel comply with the Malaysia Online Safety Act 2025?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Pelangi Capsule Hostel complies with the Malaysia Online Safety Act 2025 (Act 866), effective 1 January 2026, by providing tools to report harmful content (Report buttons and a dedicated email contact), publishing clear guidelines on prohibited content, establishing a process for reviewing and responding to reports, and maintaining a system to handle complaints related to online safety. The full text of the Act is available from the MCMC at www.mcmc.gov.my.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Who do I contact for safety-related inquiries?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "For safety-related inquiries or to report harmful content, email safety@pelangicapsulehostel.com or call +60 7-2245 6661. The hostel is located at 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru, Johor, Malaysia, and the contact hours are Monday to Sunday, 9:00 AM to 6:00 PM (Malaysia Time).",
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <Header />
@@ -38,6 +95,10 @@ export default function SafetyGuidelinesPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
         <div className="pt-28 pb-16 container-custom">
           <div className="max-w-3xl mx-auto">
@@ -143,7 +204,7 @@ export default function SafetyGuidelinesPage() {
                 </h2>
                 <p className="text-stone-700 dark:text-stone-300 leading-relaxed mb-4">
                   If you encounter content on our website that you believe violates
-                  these guidelines, we welcome your report. Here's how to file a report:
+                  these guidelines, we welcome your report. Here&apos;s how to file a report:
                 </p>
 
                 <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6 mb-6 not-prose">
@@ -151,7 +212,7 @@ export default function SafetyGuidelinesPage() {
                     Report a Review or Guest Testimonial
                   </h3>
                   <p className="text-stone-700 dark:text-stone-300 text-sm mb-4">
-                    Each review on our website has a "Report" button. Click it to
+                    Each review on our website has a &quot;Report&quot; button. Click it to
                     submit a report with details about why you believe the content
                     violates our guidelines.
                   </p>
@@ -186,7 +247,7 @@ export default function SafetyGuidelinesPage() {
                   Our Response Process
                 </h2>
                 <p className="text-stone-700 dark:text-stone-300 leading-relaxed mb-4">
-                  We take all safety reports seriously. Here's what to expect:
+                  We take all safety reports seriously. Here&apos;s what to expect:
                 </p>
                 <ol className="list-decimal list-inside space-y-3 text-stone-700 dark:text-stone-300">
                   <li>

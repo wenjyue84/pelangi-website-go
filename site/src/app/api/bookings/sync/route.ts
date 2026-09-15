@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
       (checkout.getTime() - checkin.getTime()) / (1000 * 60 * 60 * 24),
     );
 
-    // "Premium Capsule Pod" → upper-deck (RM35); everything else → lower-deck (RM45)
+    // "Premium Capsule Pod" → upper-deck; everything else → lower-deck (both RM35/night flat)
     const isPremium = roomType === "Premium Capsule Pod";
     const upperDeck = ROOM_TYPES.find((r) => r.id === "upper-deck-pod");
     const lowerDeck = ROOM_TYPES.find((r) => r.id === "lower-deck-pod");

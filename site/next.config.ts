@@ -95,7 +95,7 @@ const nextConfig: NextConfig = {
     ],
   },
   async rewrites() {
-    const adminHost = process.env.PMS2_API_URL || "https://admin.pelangicapsulehostel.com";
+    const adminHost = process.env.PMS2_API_URL || "https://pms-capsule.vercel.app";
     // In local dev, set RAINBOW_API_URL=http://localhost:3002 in .env.local
     const rainbowHost = process.env.RAINBOW_API_URL || adminHost;
     return [

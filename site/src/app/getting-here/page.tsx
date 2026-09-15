@@ -30,6 +30,22 @@ export const metadata: Metadata = {
       "Complete guide to reaching Pelangi Capsule Hostel from Singapore — CIQ, RTS Link, MyNIISe QR, and transport options.",
     type: "website",
     url: "https://pelangicapsulehostel.com/getting-here",
+    images: [
+      {
+        url: "/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "How to get to Pelangi Capsule Hostel, Johor Bahru",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "Getting Here — JB Border Crossing, RTS Link & Transport | Pelangi Capsule Hostel",
+    description:
+      "How to reach Pelangi Capsule Hostel in Johor Bahru from Singapore. RTS Link, MyNIISe QR immigration, CIQ bus & Grab, Senai Airport, and DuitNow-PayNow cross-border payment guide.",
+    images: ["/images/og-image.png"],
   },
 };
 

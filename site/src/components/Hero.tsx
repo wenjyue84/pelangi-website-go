@@ -57,7 +57,7 @@ export default function Hero() {
         </h1>
 
         {/* Subtitle */}
-        <p id="speakable-tagline" className="text-lg md:text-xl text-stone-200 mb-10 max-w-xl mx-auto leading-relaxed animate-fade-in delay-200">
+        <p id="speakable-tagline" className="text-lg md:text-xl text-stone-200 mb-8 max-w-xl mx-auto leading-relaxed animate-fade-in delay-200">
           Modern capsule hostel in the heart of Taman Pelangi.
           Privacy, comfort, and connection — all in one place.
         </p>
@@ -80,12 +80,12 @@ export default function Hero() {
         )}
 
         {/* Price display - Elegant */}
-        <div className="inline-flex flex-col items-center mb-10 animate-fade-in delay-300">
+        <div className="inline-flex flex-col items-center mb-8 animate-fade-in delay-300">
           <div className="flex items-baseline gap-2">
-            <span className="text-sm text-stone-400 font-medium">from</span>
-            <span className="font-display text-5xl md:text-6xl font-medium text-white">RM35</span>
-            <span className="text-sm text-stone-400 font-medium">/night</span>
+            <span className="text-sm text-stone-400 font-medium">1st night</span>
+            <span className="font-display text-5xl md:text-6xl font-medium text-white">RM30</span>
           </div>
+          <p className="text-xs text-stone-400 mt-1">RM35 from the 2nd night · first-time guests only</p>
           <div className="mt-2 h-px w-20 bg-linear-to-r from-transparent via-amber-400 to-transparent" />
         </div>
 
@@ -110,8 +110,8 @@ export default function Hero() {
         </div>
 
         {/* Trust indicators */}
-        <div className="mt-16 pt-8 border-t border-white/10 animate-fade-in delay-400">
-          <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+        <div className="mt-12 pt-8 border-t border-white/10 animate-fade-in delay-400">
+          <div className="flex flex-wrap justify-center gap-6 md:gap-8">
             {[
               { icon: "wifi", label: "Free WiFi" },
               { icon: "clock", label: "24/7 Access" },

@@ -234,6 +234,8 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "VacationRental",
     "@id": "https://pelangicapsulehostel.com/#vacation-rental",
+    "mainEntityOfPage": { "@id": "https://pelangicapsulehostel.com/#hostel" },
+    "sameAs": "https://pelangicapsulehostel.com/#hostel",
     "identifier": "pelangi-capsule-hostel-jb",
     "name": "Pelangi Capsule Hostel",
     "description": "Japanese-style capsule hostel in the heart of Johor Bahru. Affordable, private, and comfortable pods with free WiFi, 24/7 access, hot showers, and personal lockers.",
@@ -281,6 +283,9 @@ export default function StructuredData() {
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": "https://pelangicapsulehostel.com/#local-business",
+    "mainEntityOfPage": { "@id": "https://pelangicapsulehostel.com/#hostel" },
+    "sameAs": "https://pelangicapsulehostel.com/#hostel",
     "name": "Pelangi Capsule Hostel",
     "image": "https://pelangicapsulehostel.com/images/hero-main.webp",
     "address": {
@@ -305,11 +310,60 @@ export default function StructuredData() {
     "hasMap": "https://maps.app.goo.gl/maLXetUqYS5MtSLD9"
   };
 
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://pelangicapsulehostel.com/#organization",
+    "name": "Pelangi Capsule Hostel",
+    "alternateName": ["彩虹胶囊旅舍", "Pelangi Hostel Capsule"],
+    "url": "https://pelangicapsulehostel.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://pelangicapsulehostel.com/images/logo.png"
+    },
+    "image": "https://pelangicapsulehostel.com/images/hero-main.webp",
+    "foundingDate": "2023",
+    "founder": {
+      "@type": "Person",
+      "@id": "https://pelangicapsulehostel.com/author/jay-lew#person",
+      "name": "Jay Lew"
+    },
+    "email": "pelangicapsulehostel@gmail.com",
+    "telephone": "+60127088789",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "26A Jalan Perang, Taman Pelangi",
+      "addressLocality": "Johor Bahru",
+      "addressRegion": "Johor",
+      "postalCode": "80400",
+      "addressCountry": "MY"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+60127088789",
+      "contactType": "Reservations",
+      "availableLanguage": ["English", "Chinese", "Malay"],
+      "areaServed": "MY"
+    },
+    "sameAs": [
+      "https://www.facebook.com/pelangicapsulehostel",
+      "https://www.instagram.com/pelangicapsulehostel",
+      "https://maps.app.goo.gl/maLXetUqYS5MtSLD9",
+      "https://www.booking.com/hotel/my/pelangi-hostel-capsule.html",
+      "https://www.hostelworld.com/pwa/hosteldetails.php/Pelangi-Capsule-Hostel/Johor-Bahru/317698",
+      "https://www.tripadvisor.com/Hotel_Review-g298278-d27125478-Reviews-Pelangi_Capsule_Hostel-Johor_Bahru_Johor_Bahru_District_Johor.html",
+      "https://www.agoda.com/en-in/pelangi-hostel-capsule/hotel/johor-bahru-my.html",
+      "https://www.trip.com/hotels/johor-bahru-hotel-detail-108654203/pelangi-hostel-capsule/"
+    ]
+  };
+
   const webSiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": "https://pelangicapsulehostel.com/#website",
     "name": "Pelangi Capsule Hostel",
     "url": "https://pelangicapsulehostel.com",
+    "publisher": { "@id": "https://pelangicapsulehostel.com/#organization" },
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
@@ -354,7 +408,7 @@ export default function StructuredData() {
       {
         "@type": "SiteNavigationElement",
         "name": "Location",
-        "url": "https://pelangicapsulehostel.com/contact"
+        "url": "https://pelangicapsulehostel.com/location"
       },
       {
         "@type": "SiteNavigationElement",
@@ -382,6 +436,10 @@ export default function StructuredData() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
       <script
         type="application/ld+json"

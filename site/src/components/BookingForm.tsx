@@ -192,7 +192,7 @@ export default function BookingForm() {
                 className="select-base w-full"
               >
                 <option value="Capsule Pod">Capsule Pod — RM35–45/night</option>
-                <option value="Monthly Capsule Pod">Monthly Capsule Pod — RM594/month</option>
+                <option value="Monthly Capsule Pod">Monthly Capsule Pod — from RM600/month</option>
               </select>
             </div>
 

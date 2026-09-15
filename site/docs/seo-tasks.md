@@ -58,3 +58,26 @@
 - [ ] Weekly GBP post (Mondays) — ✅ week of 2026-07-06 done (`_evidence/_gbp_post2.png`); next due Mon 2026-07-13
 - [ ] Monthly: `/geo-compare` against GEO-AUDIT-2026-07.md baseline (expect Technical + Schema + Citability to jump from tonight's fixes)
 - [ ] Quarterly: NAP consistency re-check
+
+## 2026-09-06 D2 — Singapore/Batam destinations + backpacker blog posts
+
+- New destination cards added to `go-site/templates/pages/home.html` (`#destinations`): Chinatown & Little India (Singapore), Singapore Hawker Centres (Lau Pa Sat & Maxwell), Batam Island (new "Batam" filter category). Existing Gardens by the Bay / Marina Bay Sands / Jewel / Sentosa cards left as-is (already present).
+- Six new blog posts added to `go-site/internal/data/blog.go`, dated 2026-09-06, EN only (no ZH/MS alternates yet — flag for translation):
+  - `/blog/singapore-on-a-budget-stay-in-jb` — anchor to `/#destinations`, links to the 3 posts below
+  - `/blog/causeway-crossing-guide-backpackers` — anchor to `/blog/batam-day-trip-from-johor-bahru`, `/blog/singapore-on-a-budget-stay-in-jb`
+  - `/blog/gardens-by-the-bay-day-trip-from-jb` — anchor to `/blog/causeway-crossing-guide-backpackers`
+  - `/blog/sentosa-day-trip-from-johor-bahru` — anchor to `/blog/gardens-by-the-bay-day-trip-from-jb`, `/blog/singapore-hawker-food-crawl-from-jb`
+  - `/blog/singapore-hawker-food-crawl-from-jb` — anchor to `/blog/singapore-on-a-budget-stay-in-jb`, `/blog/ultimate-jb-food-guide-backpackers`
+  - `/blog/batam-day-trip-from-johor-bahru` — anchor to nothing existing yet; D1/sitemap should link from `/#destinations` Batam card and from the Causeway guide
+  - Suggested internal-link targets for D1's sitemap/llms.txt pass: all six slugs above, plus the existing `singapore-to-jb-day-trip-causeway-guide` (near-duplicate topic to `causeway-crossing-guide-backpackers` — consider cross-linking both rather than merging, they target slightly different intents).
+- Enrichment: added one new sourced section (Gig Workers Act 2025, RTS Link status, or MDAC Singapore-citizen exemption) to the 4 top-viewed **English** posts per B2's `website-visitors-filters.md` report (`lalamove-driver-malaysia-jb-guide`, `jb-singapore-commuter-guide-2026`, `jb-singapore-immigration-tips-beat-queue-2026`, `jb-grocery-run-guide-singaporeans`). The 5th-ranked post (`xinshan-weixin-zhifubao-zhongguo-youke-zhifu-zhinan`) is Chinese-language and was skipped — belongs to whoever owns ZH content.
+- **Known gap:** no `static/images/` or `public/images/` directory exists in this git checkout (images are deployed manually alongside the binary per `main.go`'s `PUBLIC_DIR` comment). New destination images were placed at `go-site/public/images/destinations/{singapore-chinatown,lau-pa-sat,barelang-bridge}.jpg` (Wikimedia Commons CC, see licences below) — **whoever runs the next deploy must copy this `public/` dir to the server**, it will not ship via the binary alone.
+
+### Blog cover images (site/public/images/blog/) — Wikimedia Commons licences
+
+- `singapore-budget-jb.webp` — "Singapore Marina Bay Dusk 2018-02-27.jpg", CC BY-SA 4.0, Benh LIEU SONG
+- `causeway-crossing-backpackers.webp` — "Woodlands Checkpoint, Singapore - 200301.jpg", CC BY-SA 2.0, Seasurfer (zh.wikipedia)
+- `gardens-by-the-bay-jb.webp` — "Supertree Grove, Gardens by the Bay, Singapore1.jpg", CC0, Mustang Joe
+- `sentosa-jb-daytrip.webp` — "Siloso Beach, Sentosa.JPG", CC BY-SA 4.0, Grayswoodsurrey
+- `singapore-hawker-crawl.webp` — "Maxwell Food Centre, 2024 (02).jpg", CC BY-SA 4.0, Bahnfrend
+- `batam-daytrip-jb.webp` — "Nagoya Hill Hotel.jpg", CC BY-SA 4.0, Akinori Takemoto

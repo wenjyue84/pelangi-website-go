@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, FormEvent } from "react";
+import { useState, FormEvent } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import {
   Elements,
@@ -177,10 +177,7 @@ export default function FpxPaymentForm() {
   const [checkOut, setCheckOut] = useState("");
   const [roomType, setRoomType] = useState("Capsule Pod");
 
-  const [today, setToday] = useState("");
-  useEffect(() => {
-    setToday(new Date().toISOString().split("T")[0]);
-  }, []);
+  const [today] = useState(() => new Date().toISOString().split("T")[0]);
 
   function handleContinue(e: FormEvent) {
     e.preventDefault();
@@ -340,7 +337,7 @@ export default function FpxPaymentForm() {
             className="w-full rounded-xl border border-stone-500 dark:border-stone-600 bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-stone-100 px-4 py-3 text-sm focus-visible:border-amber-500"
           >
             <option value="Capsule Pod">Capsule Pod — RM35–45/night</option>
-            <option value="Monthly Capsule Pod">Monthly Capsule Pod — RM594/month</option>
+            <option value="Monthly Capsule Pod">Monthly Capsule Pod — from RM600/month</option>
           </select>
         </div>
 

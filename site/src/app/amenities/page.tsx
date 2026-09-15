@@ -131,6 +131,25 @@ const amenities = [
   },
 ];
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://pelangicapsulehostel.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Amenities",
+      item: "https://pelangicapsulehostel.com/amenities",
+    },
+  ],
+};
+
 export default function AmenitiesPage() {
   // Generate LocationFeatureSpecification schema
   const amenityFeatures = amenities.map((amenity) => ({
@@ -164,6 +183,10 @@ export default function AmenitiesPage() {
 
   return (
     <main id="main-content" className="min-h-screen bg-stone-50 dark:bg-stone-950">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

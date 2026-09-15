@@ -176,7 +176,7 @@ export default function ZhHomePage() {
                 </h3>
                 <p>
                   胶囊床位每晚 RM35 起（约 SGD 10.50 / USD 7.50）。外国游客须额外缴纳马来西亚旅游税 RM10/间/晚。
-                  长住月租套餐每月 RM594 起。通过我们官网或 WhatsApp 直接预订可享最优惠价格。
+                  长住月租套餐每月 RM600 起。通过我们官网或 WhatsApp 直接预订可享最优惠价格。
                 </p>
               </div>
               <div>

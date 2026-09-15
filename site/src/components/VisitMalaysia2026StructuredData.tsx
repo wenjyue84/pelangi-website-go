@@ -4,7 +4,7 @@ export default function VisitMalaysia2026StructuredData() {
         "@type": "Event",
         "name": "Visit Malaysia Year 2026 — Pelangi Capsule Hostel Campaign Rates",
         "description":
-            "Celebrate Visit Malaysia Year 2026 with budget-friendly capsule hostel accommodation in Johor Bahru. Nightly rates from RM35, weekly from RM210, monthly from RM594. Book directly for best rate guarantee.",
+            "Celebrate Visit Malaysia Year 2026 with budget-friendly capsule hostel accommodation in Johor Bahru. Nightly rates from RM35 (RM30 for a first-time guest's first night), weekly from RM210, monthly from RM600. Book directly for best rate guarantee.",
         "startDate": "2026-01-01T00:00:00+08:00",
         "endDate": "2026-12-31T23:59:59+08:00",
         "eventStatus": "https://schema.org/EventScheduled",
@@ -56,7 +56,7 @@ export default function VisitMalaysia2026StructuredData() {
             {
                 "@type": "Offer",
                 "name": "Monthly Nomad",
-                "price": "594",
+                "price": "600",
                 "priceCurrency": "MYR",
                 "availability": "https://schema.org/InStock",
                 "validFrom": "2026-01-01",

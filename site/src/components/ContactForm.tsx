@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useOptimistic, useEffect, useRef, useState } from "react";
+import { useActionState, useOptimistic, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { submitContactForm, type ContactFormResult } from "@/app/actions/contact";
 import { trackGenerateLead } from "@/lib/gtm-ecommerce";
@@ -76,17 +76,21 @@ export default function ContactForm() {
   const [clientErrors, setClientErrors] = useState<Record<string, string>>({});
   const [turnstileToken, setTurnstileToken] = useState<string>("");
 
+  // Analytics side-effect only — no setState here.
   useEffect(() => {
     if (state?.success && !leadTracked.current) {
       leadTracked.current = true;
       trackGenerateLead("contact_form");
       trackMetaEvent("Contact");
     }
-    // If server returns errors, go back to form
-    if (state && !state.success) {
-      setReviewData(null);
-    }
   }, [state]);
+
+  // Derive effective review data: clear the review step when the server
+  // returns a failure so the user sees the form errors immediately.
+  const effectiveReviewData = useMemo(
+    () => (state && !state.success ? null : reviewData),
+    [state, reviewData],
+  );
 
   /** SC 3.3.3+3.3.4: Validate client-side, then show review step */
   function handleReview(e: React.FormEvent<HTMLFormElement>) {
@@ -129,7 +133,7 @@ export default function ContactForm() {
 
   /** SC 3.3.4: Confirm and submit after review */
   async function handleConfirm() {
-    if (!formRef.current || !reviewData) return;
+    if (!formRef.current || !effectiveReviewData) return;
     const fd = new FormData(formRef.current);
     addOptimistic();
     await formAction(fd);
@@ -137,7 +141,7 @@ export default function ContactForm() {
   }
 
   // Merge server and client errors for display
-  const displayErrors: Record<string, string | undefined> = reviewData ? {} : {
+  const displayErrors: Record<string, string | undefined> = effectiveReviewData ? {} : {
     ...clientErrors,
     ...(optimisticState?.fieldErrors ?? {}),
   };
@@ -166,7 +170,7 @@ export default function ContactForm() {
         <div role="status" aria-live="polite" className="sr-only">
           {optimisticState?.success ? `Inquiry Sent! ${optimisticState.message}` : ''}
           {isPending ? 'Sending your inquiry\u2026' : ''}
-          {reviewData ? 'Please review your inquiry details before submitting.' : ''}
+          {effectiveReviewData ? 'Please review your inquiry details before submitting.' : ''}
         </div>
         <div role="alert" aria-live="assertive" className="sr-only">
           {optimisticState?.message && !optimisticState.success ? optimisticState.message : ''}
@@ -197,7 +201,7 @@ export default function ContactForm() {
             </p>
             <p className="text-green-700 dark:text-green-400 text-sm">{optimisticState.message}</p>
           </div>
-        ) : reviewData ? (
+        ) : effectiveReviewData ? (
           /* SC 3.3.4: Review/confirmation step before final submission */
           <div className="rounded-2xl border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/20 p-6 space-y-4">
             <h3 className="font-display text-lg font-medium text-stone-900 dark:text-stone-100 mb-2">
@@ -209,39 +213,39 @@ export default function ContactForm() {
             <dl className="space-y-3 text-sm">
               <div className="flex gap-3">
                 <dt className="font-medium text-stone-500 dark:text-stone-400 w-28 shrink-0">Name</dt>
-                <dd className="text-stone-900 dark:text-stone-100">{reviewData.name}</dd>
+                <dd className="text-stone-900 dark:text-stone-100">{effectiveReviewData.name}</dd>
               </div>
               <div className="flex gap-3">
                 <dt className="font-medium text-stone-500 dark:text-stone-400 w-28 shrink-0">Email</dt>
-                <dd className="text-stone-900 dark:text-stone-100">{reviewData.email}</dd>
+                <dd className="text-stone-900 dark:text-stone-100">{effectiveReviewData.email}</dd>
               </div>
-              {reviewData.phone && (
+              {effectiveReviewData.phone && (
                 <div className="flex gap-3">
                   <dt className="font-medium text-stone-500 dark:text-stone-400 w-28 shrink-0">Phone</dt>
-                  <dd className="text-stone-900 dark:text-stone-100">{reviewData.phone}</dd>
+                  <dd className="text-stone-900 dark:text-stone-100">{effectiveReviewData.phone}</dd>
                 </div>
               )}
-              {reviewData.checkIn && (
+              {effectiveReviewData.checkIn && (
                 <div className="flex gap-3">
                   <dt className="font-medium text-stone-500 dark:text-stone-400 w-28 shrink-0">Check-in</dt>
-                  <dd className="text-stone-900 dark:text-stone-100">{reviewData.checkIn}</dd>
+                  <dd className="text-stone-900 dark:text-stone-100">{effectiveReviewData.checkIn}</dd>
                 </div>
               )}
-              {reviewData.checkOut && (
+              {effectiveReviewData.checkOut && (
                 <div className="flex gap-3">
                   <dt className="font-medium text-stone-500 dark:text-stone-400 w-28 shrink-0">Check-out</dt>
-                  <dd className="text-stone-900 dark:text-stone-100">{reviewData.checkOut}</dd>
+                  <dd className="text-stone-900 dark:text-stone-100">{effectiveReviewData.checkOut}</dd>
                 </div>
               )}
-              {reviewData.guests && (
+              {effectiveReviewData.guests && (
                 <div className="flex gap-3">
                   <dt className="font-medium text-stone-500 dark:text-stone-400 w-28 shrink-0">Guests</dt>
-                  <dd className="text-stone-900 dark:text-stone-100">{reviewData.guests}</dd>
+                  <dd className="text-stone-900 dark:text-stone-100">{effectiveReviewData.guests}</dd>
                 </div>
               )}
               <div className="flex gap-3">
                 <dt className="font-medium text-stone-500 dark:text-stone-400 w-28 shrink-0">Message</dt>
-                <dd className="text-stone-900 dark:text-stone-100 whitespace-pre-wrap">{reviewData.message}</dd>
+                <dd className="text-stone-900 dark:text-stone-100 whitespace-pre-wrap">{effectiveReviewData.message}</dd>
               </div>
             </dl>
 

@@ -171,7 +171,7 @@ export default function RoomsTabsClient() {
                   Lower Deck — from
                 </div>
                 <div className="flex items-baseline gap-2">
-                  <span className="font-display text-5xl font-medium text-stone-900 dark:text-stone-100">RM45</span>
+                  <span className="font-display text-5xl font-medium text-stone-900 dark:text-stone-100">RM35</span>
                   <span className="text-stone-500 dark:text-stone-400">/night</span>
                 </div>
                 <p className="text-sm text-stone-500 dark:text-stone-400 mt-2">
@@ -181,7 +181,7 @@ export default function RoomsTabsClient() {
               <FeatureList features={standardFeatures} />
               <div className="divider my-8" />
               <div className="space-y-3 mb-8">
-                <RateRow label="Monthly Rate" value="RM594/month" />
+                <RateRow label="Monthly Rate" value="RM650/month" />
                 <RateRow label="Check-in" value="3:00 PM" />
                 <RateRow label="Check-out" value="12:00 PM" />
               </div>
@@ -342,7 +342,7 @@ export default function RoomsTabsClient() {
                   Monthly rate from
                 </div>
                 <div className="flex items-baseline gap-2">
-                  <span className="font-display text-5xl font-medium text-stone-900 dark:text-stone-100">RM594</span>
+                  <span className="font-display text-5xl font-medium text-stone-900 dark:text-stone-100">RM600</span>
                   <span className="text-stone-500 dark:text-stone-400">/month</span>
                 </div>
                 <p className="text-sm text-stone-500 dark:text-stone-400 mt-2">

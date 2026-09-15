@@ -73,7 +73,7 @@ export default function ZhAboutPage() {
                   干净、安全、舒适的落脚之所。
                 </p>
                 <p className="text-stone-700 dark:text-stone-300 leading-relaxed mt-4">
-                  "Pelangi" 在马来语中意为"彩虹"，寓意我们欢迎来自世界各地、不同背景的旅客。
+                  &quot;Pelangi&quot; 在马来语中意为&quot;彩虹&quot;，寓意我们欢迎来自世界各地、不同背景的旅客。
                   从独行背包客到跨境工作者，从周末短游的新加坡旅客到长居月租客，
                   彩虹旅舍是您在新山最温馨的家。
                 </p>

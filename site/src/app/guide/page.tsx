@@ -148,6 +148,7 @@ export default function GuidePage() {
         { id: "food-shopping", text: "Food & Shopping", level: 2 },
         { id: "safety", text: "Safety Tips for Backpackers", level: 2 },
         { id: "apps", text: "Useful Local Apps", level: 2 },
+        { id: "what-backpackers-want", text: "What Backpackers Actually Look For (2026)", level: 2 },
     ];
 
     return (
@@ -487,6 +488,48 @@ export default function GuidePage() {
                                     <p className="text-sm text-stone-600 dark:text-stone-400">{app.desc}</p>
                                 </div>
                             ))}
+                        </div>
+                    </section>
+
+                    {/* Section 8: What Backpackers Actually Look For (2026) */}
+                    <section id="what-backpackers-want" className="mb-16">
+                        <h2 className="font-display text-3xl font-medium mb-2 text-stone-900 dark:text-stone-100 flex items-center gap-3">
+                            <span>🎒</span> What Backpackers Actually Look For (2026)
+                        </h2>
+                        <p className="text-stone-500 dark:text-stone-400 mb-8">
+                            The 2026 backpacker wants a place that&apos;s private enough to actually sleep, and social enough to not
+                            feel like a hotel room. Here&apos;s how that plays out at Pelangi Capsule Hostel.
+                        </p>
+
+                        <div className="grid md:grid-cols-2 gap-6">
+                            <div className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs p-6">
+                                <h3 className="font-bold text-lg text-stone-900 dark:text-stone-100 mb-2">Private capsule to sleep, common area to socialise</h3>
+                                <p className="text-stone-600 dark:text-stone-400 text-sm">
+                                    Your capsule is a private, quiet sleeping pod — not a bunk bed in an open dorm. When you do want company,
+                                    the shared kitchen and common area are right there. Best of both, without the forced-party-hostel feel.
+                                </p>
+                            </div>
+                            <div className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs p-6">
+                                <h3 className="font-bold text-lg text-stone-900 dark:text-stone-100 mb-2">Free WiFi &amp; guest kitchen access</h3>
+                                <p className="text-stone-600 dark:text-stone-400 text-sm">
+                                    Free WiFi throughout, plus guest kitchen access so you can cook your own meals instead of eating out
+                                    every day — useful on a multi-week budget trip.
+                                </p>
+                            </div>
+                            <div className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-700 shadow-xs p-6">
+                                <h3 className="font-bold text-lg text-stone-900 dark:text-stone-100 mb-2">Cleanliness as the real differentiator</h3>
+                                <p className="text-stone-600 dark:text-stone-400 text-sm">
+                                    At this price point, plenty of places compete on rate alone. What keeps backpackers coming back is a
+                                    clean capsule, clean bathroom, and clean common area — not extra amenities.
+                                </p>
+                            </div>
+                            <div className="bg-amber-50 dark:bg-amber-900/20 rounded-2xl border border-amber-200 dark:border-amber-700 p-6">
+                                <h3 className="font-bold text-lg text-stone-900 dark:text-stone-100 mb-2">RM35 flat, no confusing rate tiers</h3>
+                                <p className="text-stone-600 dark:text-stone-400 text-sm">
+                                    One flat rate per capsule per night — RM35, no weekday/weekend split to calculate. Monthly stays run
+                                    RM600–650 for longer trips.
+                                </p>
+                            </div>
                         </div>
                     </section>
 

@@ -142,7 +142,7 @@ export class Beds24Client {
         (1000 * 60 * 60 * 24),
     );
 
-    // Derive rates from canonical rooms data: Lower Deck = RM45, Upper Deck = RM35
+    // Derive rates from canonical rooms data: both Lower Deck and Upper Deck = RM35/night flat
     const lowerDeck = ROOM_TYPES.find((r) => r.id === "lower-deck-pod");
     const upperDeck = ROOM_TYPES.find((r) => r.id === "upper-deck-pod");
     const lowerRate = lowerDeck?.nightlyRate ?? 45;

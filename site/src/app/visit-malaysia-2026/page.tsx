@@ -333,7 +333,7 @@ export default function VisitMalaysia2026Page() {
                                     },
                                     {
                                         name: "Monthly Nomad",
-                                        price: "RM594",
+                                        price: "RM600",
                                         unit: "/month",
                                         features: [
                                             "All weekly amenities included",

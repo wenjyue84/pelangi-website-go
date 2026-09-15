@@ -11,11 +11,50 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "https://pelangicapsulehostel.com/contact",
     },
+    openGraph: {
+        title: "Contact | Pelangi Capsule Hostel Johor Bahru",
+        description: "Contact us at Pelangi Capsule Hostel — visit us in Taman Pelangi, JB. WhatsApp, phone, or email for bookings and inquiries.",
+        url: "https://pelangicapsulehostel.com/contact",
+        siteName: "Pelangi Capsule Hostel",
+        locale: "en_MY",
+        type: "website",
+        images: [
+            {
+                url: "/images/exterior-1.webp",
+                width: 1200,
+                height: 630,
+                alt: "Pelangi Capsule Hostel, Taman Pelangi, Johor Bahru",
+            },
+        ],
+    },
+};
+
+const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+        {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://pelangicapsulehostel.com",
+        },
+        {
+            "@type": "ListItem",
+            position: 2,
+            name: "Contact",
+            item: "https://pelangicapsulehostel.com/contact",
+        },
+    ],
 };
 
 export default function ContactPage() {
     return (
         <main id="main-content" className="min-h-screen bg-stone-50 dark:bg-stone-950">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
             <Header />
             <div className="pt-20">
                 <ContactForm />
