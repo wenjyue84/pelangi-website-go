@@ -41,6 +41,43 @@ func WordCount(html string) int {
 	return len(strings.Fields(_blogTagRE.ReplaceAllString(html, " ")))
 }
 
+// FAQItem is one question/answer pair extracted from a post body, for FAQPage JSON-LD.
+type FAQItem struct {
+	Question string
+	Answer   string
+}
+
+// _faqHeadingRE finds an <h2>/<h3> heading ending in "?" followed by the next
+// block of prose (one or more <p> tags) up to the next heading or end of content.
+var _faqHeadingRE = regexp.MustCompile(`(?is)<h[23][^>]*>([^<]*\?)\s*</h[23]>(.*?)(?:<h[23][^>]*>|$)`)
+var _faqParaRE = regexp.MustCompile(`(?is)<p[^>]*>(.*?)</p>`)
+var _faqTagStripRE = regexp.MustCompile(`<[^>]+>`)
+
+// ExtractFAQs scans post HTML for "question-style" H2/H3 headings and pulls the
+// paragraph(s) immediately following as the answer. Used to generate FAQPage
+// JSON-LD only when a post already contains genuine Q&A content — no invented
+// questions or answers. Returns nil if fewer than 2 qualifying pairs are found
+// (2+ is Google's practical minimum for a useful FAQPage entry).
+func ExtractFAQs(html string) []FAQItem {
+	var out []FAQItem
+	for _, m := range _faqHeadingRE.FindAllStringSubmatch(html, -1) {
+		question := strings.TrimSpace(_faqTagStripRE.ReplaceAllString(m[1], ""))
+		paras := _faqParaRE.FindAllStringSubmatch(m[2], -1)
+		if len(paras) == 0 || question == "" {
+			continue
+		}
+		answer := strings.TrimSpace(_faqTagStripRE.ReplaceAllString(paras[0][1], ""))
+		if answer == "" {
+			continue
+		}
+		out = append(out, FAQItem{Question: question, Answer: answer})
+	}
+	if len(out) < 2 {
+		return nil
+	}
+	return out
+}
+
 // _blogComputeReadingTime estimates reading time (minutes) from raw HTML using
 // 200 wpm with a minimum of 1 minute — matching the TypeScript implementation.
 func _blogComputeReadingTime(html string) int {
@@ -9123,6 +9160,475 @@ var BlogPosts = func() []BlogPost {
 <p><small>Sources: (1) <a href="https://landtransportguru.net/jbbuscw1/" target="_blank" rel="noopener noreferrer">Causeway Link CW1 route and fares, LandTransportGuru</a>; (2) <a href="https://www.lta.gov.sg/content/ltagov/en/upcoming_projects/rail_expansion/JB-Singapore_RTS_link.html" target="_blank" rel="noopener noreferrer">Johor Bahru–Singapore RTS Link, Land Transport Authority Singapore</a>.</small></p>
 
 <p>Ready to make JB your base? <a href="/book">Book a capsule at Pelangi</a> and start planning your Singapore day trips.</p>
+`,
+		},
+		// EN sibling of sewa-bulanan-kapsul-johor-bahru-rm600 / xinshan-yuezu-jiaocang-rm600
+		{
+			Slug:          "monthly-capsule-rent-johor-bahru-rm600-what-you-get",
+			ImageAlt:      "Monthly capsule pod at Pelangi Capsule Hostel, Taman Pelangi, Johor Bahru — long-stay rent from RM600",
+			Title:         "Monthly Capsule Rent in Johor Bahru from RM600: What's Included, Who It Suits, How to Book",
+			Excerpt:       "Workers, interns, students and Singapore commuters keep asking the same question: what do you actually get for RM600/month at a JB capsule hostel? Here's the price table, the honest fit-check, and how to book.",
+			Date:          "2026-09-20",
+			Category:      "Career & Work",
+			Author:        "Pelangi Capsule Hostel",
+			ReadTime:      "6 min read",
+			Tags:          []string{"monthly-stay", "long-stay", "johor-bahru", "capsule-hostel"},
+			FeaturedImage: "/images/blog/monthly-capsule-rent-johor-bahru-rm600.webp",
+			InLanguage:    "en",
+			AlternateEN:   "monthly-capsule-rent-johor-bahru-rm600-what-you-get",
+			AlternateZH:   "xinshan-yuezu-jiaocang-rm600",
+			AlternateMS:   "sewa-bulanan-kapsul-johor-bahru-rm600",
+			Content: `
+<h2>What Monthly Capsule Rent Actually Costs at Pelangi</h2>
+<p>If you're comparing monthly accommodation in Johor Bahru, here are the real numbers before anything else:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Pod Type</th>
+      <th>Monthly Rent</th>
+      <th>What's Included</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Upper Deck capsule</td>
+      <td><strong>RM600/month</strong></td>
+      <td>Utilities, WiFi, 24/7 self check-in</td>
+    </tr>
+    <tr>
+      <td>Lower Deck capsule</td>
+      <td><strong>RM650/month</strong></td>
+      <td>Utilities, WiFi, 24/7 self check-in</td>
+    </tr>
+  </tbody>
+</table>
+<p>There is <strong>no deposit contract and no 12-month tenancy</strong>. You pay for the month you're staying, and you can leave when your plans change. For comparison, our nightly rate is a flat <strong>RM35</strong> every day of the week — the only exception is <strong>RM30 for a first-time guest's first night</strong>, and only when booked directly on our website. The monthly rate is a separate, dedicated arrangement for people staying weeks or months, not a discount ladder off the nightly price.</p>
+
+<figure class="blog-figure"><img src="/images/capsule-1.webp" alt="Capsule pods at Pelangi Capsule Hostel, Taman Pelangi, Johor Bahru" loading="lazy" width="1200" height="800"><figcaption>Capsule pods at Pelangi Capsule Hostel, Taman Pelangi, Johor Bahru.</figcaption></figure>
+
+<h2>Who Monthly Capsule Rent Actually Suits</h2>
+<ul>
+  <li><strong>Workers and interns</strong> on a placement of a few weeks to a few months who don't want to sign a long lease for a short stint</li>
+  <li><strong>Singapore commuters</strong> based in JB for the Causeway crossing who want a fixed monthly cost with no deposit tied up</li>
+  <li><strong>Students</strong> doing an attachment, exchange, or short course who need somewhere to sleep without furnishing a room from scratch</li>
+  <li>Anyone <strong>travelling light</strong> — a bag and a laptop, not furniture</li>
+</ul>
+
+<h2>Who It Doesn't Suit</h2>
+<p>Being upfront here matters more than making a sale:</p>
+<ul>
+  <li>Couples or families needing private, shared living space — a capsule pod is a single-occupant bed, not a family room</li>
+  <li>Anyone who works from home and needs a private desk during the day — pods are for sleeping</li>
+  <li>Anyone with a lot of belongings to store long-term — storage is limited to what fits your locker</li>
+</ul>
+
+<h2>Location: Taman Pelangi, Johor Bahru</h2>
+<p>Pelangi Capsule Hostel sits in Taman Pelangi, close to the JB CIQ checkpoint, the Tuesday night market, and regular bus routes into town and across the Causeway. Shared kitchen and free WiFi are available on-site for cooking a meal or getting work done between shifts.</p>
+
+<h2>How to Book a Monthly Pod</h2>
+<p>WhatsApp us directly at <strong>+60 12-708 8789</strong> to check monthly availability, or browse pod types on the <a href="/rooms">rooms page</a> first. Ready to lock in a date? <a href="/book">Check availability and book here</a>.</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>Is there a deposit for the monthly rate?</h3>
+<p>No. There's no deposit contract for monthly stays — you pay RM600 (Upper Deck) or RM650 (Lower Deck) for the month, with no separate security deposit required.</p>
+
+<h3>Do I need to sign a 12-month tenancy?</h3>
+<p>No. Monthly stays run one month at a time. You can extend month to month or leave when your plans change — there's no long-term tenancy to sign.</p>
+
+<h3>Are utilities and WiFi included in the RM600?</h3>
+<p>Yes. The monthly rate covers your pod, utilities, and WiFi — there are no separate bills to split or chase.</p>
+
+<h3>What's the difference between Upper Deck and Lower Deck?</h3>
+<p>Upper Deck pods are RM600/month and Lower Deck pods are RM650/month. Both include the same utilities, WiFi, and 24/7 self check-in — the difference is simply which deck the pod is on.</p>
+
+<h3>Can I check in any time of day?</h3>
+<p>Yes. Self check-in runs 24/7, so you're not stuck waiting for reception hours to line up with your travel or shift schedule.</p>
+`,
+		},
+		// MS sibling of monthly-capsule-rent-johor-bahru-rm600-what-you-get / xinshan-yuezu-jiaocang-rm600
+		{
+			Slug:          "sewa-bulanan-kapsul-johor-bahru-rm600",
+			ImageAlt:      "Kapsul sewa bulanan di Pelangi Capsule Hostel, Taman Pelangi, Johor Bahru — sewa jangka panjang dari RM600",
+			Title:         "Sewa Bulanan Kapsul di Johor Bahru dari RM600: Apa Yang Anda Dapat, Sesuai Untuk Siapa, Cara Tempah",
+			Excerpt:       "Pekerja, intern, pelajar dan commuter Singapura selalu tanya soalan sama: apa sebenarnya yang anda dapat dengan RM600/bulan di hostel kapsul JB? Ini jadual harga, semakan kesesuaian yang jujur, dan cara tempah.",
+			Date:          "2026-09-20",
+			Category:      "Career & Work",
+			Author:        "Pelangi Capsule Hostel",
+			ReadTime:      "6 min read",
+			Tags:          []string{"monthly-stay", "long-stay", "johor-bahru", "capsule-hostel"},
+			FeaturedImage: "/images/blog/monthly-capsule-rent-johor-bahru-rm600.webp",
+			InLanguage:    "ms",
+			AlternateEN:   "monthly-capsule-rent-johor-bahru-rm600-what-you-get",
+			AlternateZH:   "xinshan-yuezu-jiaocang-rm600",
+			AlternateMS:   "sewa-bulanan-kapsul-johor-bahru-rm600",
+			Content: `
+<h2>Berapa Sebenarnya Kos Sewa Bulanan Kapsul?</h2>
+<p>Kalau anda tengah bandingkan penginapan bulanan di Johor Bahru, ini nombor sebenar sebelum apa-apa lagi:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Jenis Kapsul</th>
+      <th>Sewa Bulanan</th>
+      <th>Apa Yang Termasuk</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Kapsul Upper Deck</td>
+      <td><strong>RM600/bulan</strong></td>
+      <td>Utiliti, WiFi, self check-in 24/7</td>
+    </tr>
+    <tr>
+      <td>Kapsul Lower Deck</td>
+      <td><strong>RM650/bulan</strong></td>
+      <td>Utiliti, WiFi, self check-in 24/7</td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Tiada kontrak deposit dan tiada tenaganti 12 bulan.</strong> Anda bayar untuk bulan yang anda duduk sahaja, dan boleh berhenti bila-bila rancangan berubah. Sebagai perbandingan, kadar harian kami adalah flat <strong>RM35</strong> setiap hari — pengecualian sahaja ialah <strong>RM30 untuk malam pertama tetamu baru</strong>, dan itu pun hanya bila tempah terus di laman web kami. Kadar bulanan ini adalah susunan berasingan untuk sesiapa yang tinggal minggu atau bulan, bukan diskaun daripada kadar harian.</p>
+
+<figure class="blog-figure"><img src="/images/capsule-1.webp" alt="Kapsul di Pelangi Capsule Hostel, Taman Pelangi, Johor Bahru" loading="lazy" width="1200" height="800"><figcaption>Kapsul di Pelangi Capsule Hostel, Taman Pelangi, Johor Bahru.</figcaption></figure>
+
+<h2>Sesuai Untuk Siapa</h2>
+<ul>
+  <li><strong>Pekerja dan intern</strong> yang bertugas beberapa minggu hingga beberapa bulan dan tak nak sign sewa jangka panjang untuk tempoh singkat</li>
+  <li><strong>Commuter ke Singapura</strong> yang berpangkalan di JB dan mahu kos bulanan tetap tanpa deposit terikat</li>
+  <li><strong>Pelajar</strong> yang buat attachment, pertukaran, atau kursus pendek dan perlukan tempat tidur tanpa perlu lengkapkan bilik dari kosong</li>
+  <li>Sesiapa yang <strong>bergerak ringan</strong> — sebeg dan laptop, bukan perabot</li>
+</ul>
+
+<h2>Sesuai Siapa Yang Tidak</h2>
+<p>Lebih baik jujur dari awal:</p>
+<ul>
+  <li>Pasangan atau keluarga yang perlukan ruang tinggal peribadi — kapsul ialah katil untuk seorang, bukan bilik keluarga</li>
+  <li>Sesiapa yang kerja dari rumah dan perlukan meja peribadi waktu siang — kapsul untuk tidur sahaja</li>
+  <li>Sesiapa dengan banyak barang untuk simpan jangka panjang — ruang simpanan terhad kepada loker sahaja</li>
+</ul>
+
+<h2>Lokasi: Taman Pelangi, Johor Bahru</h2>
+<p>Pelangi Capsule Hostel terletak di Taman Pelangi, dekat dengan pusat pemeriksaan CIQ JB, pasar malam Selasa, dan laluan bas yang kerap ke bandar dan merentasi Tambak Johor. Dapur kongsi dan WiFi percuma tersedia di premis untuk masak atau kerja antara syif.</p>
+
+<h2>Cara Tempah Kapsul Bulanan</h2>
+<p>WhatsApp kami terus di <strong>+60 12-708 8789</strong> untuk semak ketersediaan bulanan, atau lihat jenis kapsul di <a href="/rooms">halaman bilik</a> dahulu. Bersedia nak tetapkan tarikh? <a href="/book">Semak ketersediaan dan tempah di sini</a>.</p>
+
+<h2>Soalan Lazim</h2>
+
+<h3>Ada deposit untuk kadar bulanan?</h3>
+<p>Tiada. Tiada kontrak deposit untuk sewa bulanan — anda bayar RM600 (Upper Deck) atau RM650 (Lower Deck) untuk sebulan, tanpa deposit keselamatan berasingan.</p>
+
+<h3>Perlukah saya sign sewa 12 bulan?</h3>
+<p>Tidak. Sewa bulanan berjalan sebulan pada satu-satu masa. Anda boleh sambung bulan ke bulan atau berhenti bila rancangan berubah — tiada tenaganti jangka panjang untuk ditandatangani.</p>
+
+<h3>Utiliti dan WiFi termasuk dalam RM600?</h3>
+<p>Ya. Kadar bulanan merangkumi kapsul, utiliti, dan WiFi anda — tiada bil berasingan untuk dikongsi atau dikejar.</p>
+
+<h3>Apa beza Upper Deck dengan Lower Deck?</h3>
+<p>Kapsul Upper Deck RM600/bulan dan kapsul Lower Deck RM650/bulan. Kedua-duanya termasuk utiliti, WiFi, dan self check-in 24/7 yang sama — bezanya cuma tingkat kapsul tersebut.</p>
+
+<h3>Boleh check-in bila-bila masa?</h3>
+<p>Boleh. Self check-in beroperasi 24/7, jadi anda tak perlu tunggu waktu kaunter selari dengan jadual perjalanan atau syif anda.</p>
+`,
+		},
+		// ZH sibling of monthly-capsule-rent-johor-bahru-rm600-what-you-get / sewa-bulanan-kapsul-johor-bahru-rm600
+		{
+			Slug:          "xinshan-yuezu-jiaocang-rm600",
+			ImageAlt:      "新山胶囊旅馆月租胶囊床位，Taman Pelangi，柔佛新山 — 长租起价RM600",
+			Title:         "新山胶囊床位月租，起价RM600：包含什么、适合谁、怎么预订",
+			Excerpt:       "打工族、实习生、学生和新加坡通勤族常问同一个问题：新山胶囊旅馆月租RM600到底包含什么？这里有价格表、真实的适合度分析，以及预订方式。",
+			Date:          "2026-09-20",
+			Category:      "Career & Work",
+			Author:        "Pelangi Capsule Hostel",
+			ReadTime:      "6 min read",
+			Tags:          []string{"monthly-stay", "long-stay", "johor-bahru", "capsule-hostel"},
+			FeaturedImage: "/images/blog/monthly-capsule-rent-johor-bahru-rm600.webp",
+			InLanguage:    "zh-CN",
+			AlternateEN:   "monthly-capsule-rent-johor-bahru-rm600-what-you-get",
+			AlternateZH:   "xinshan-yuezu-jiaocang-rm600",
+			AlternateMS:   "sewa-bulanan-kapsul-johor-bahru-rm600",
+			Content: `
+<h2>月租胶囊床位到底要多少钱</h2>
+<p>如果你正在比较新山的月租住宿，先看看真实的价格：</p>
+<table>
+  <thead>
+    <tr>
+      <th>床位类型</th>
+      <th>月租</th>
+      <th>包含内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>上层床位（Upper Deck）</td>
+      <td><strong>RM600/月</strong></td>
+      <td>水电费、WiFi、24小时自助入住</td>
+    </tr>
+    <tr>
+      <td>下层床位（Lower Deck）</td>
+      <td><strong>RM650/月</strong></td>
+      <td>水电费、WiFi、24小时自助入住</td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>没有押金合约，也不需要签12个月的租约。</strong>你只需为入住的那个月付费,计划改变时也可以随时结束。作为对比，我们的每晚房价固定为<strong>RM35</strong>,唯一例外是<strong>首次入住客人的第一晚RM30</strong>,而且仅限直接在官网预订。月租是专为长住几周或几个月的客人设计的独立价格,并不是按夜价打折而来。</p>
+
+<figure class="blog-figure"><img src="/images/capsule-1.webp" alt="柔佛新山Taman Pelangi的Pelangi胶囊旅馆床位" loading="lazy" width="1200" height="800"><figcaption>柔佛新山Taman Pelangi的Pelangi胶囊旅馆床位。</figcaption></figure>
+
+<h2>月租适合什么样的人</h2>
+<ul>
+  <li><strong>打工族和实习生</strong>——外派几周到几个月,不想为短期停留签长期租约</li>
+  <li><strong>新加坡通勤族</strong>——常驻新山、往返新柔长堤,想要固定的月度开销,不想压一笔押金</li>
+  <li><strong>学生</strong>——短期实习、交换或课程,需要一个床位而不必从零添置家具</li>
+  <li>任何<strong>轻装出行</strong>的人——一个背包和一台电脑,不是家具</li>
+</ul>
+
+<h2>不适合什么样的人</h2>
+<p>坦白说清楚比硬推销更重要：</p>
+<ul>
+  <li>需要私人共同生活空间的情侣或家庭——胶囊床位是单人床位,不是家庭房</li>
+  <li>需要在家办公、白天需要私人书桌的人——床位只适合睡觉</li>
+  <li>需要长期存放大量物品的人——储物空间仅限于个人储物柜</li>
+</ul>
+
+<h2>地点：柔佛新山Taman Pelangi</h2>
+<p>Pelangi胶囊旅馆位于Taman Pelangi,靠近新山CIQ关卡、星期二夜市,以及往返市区和通关的巴士路线。现场设有共用厨房和免费WiFi,方便做饭或在轮班之间处理工作。</p>
+
+<h2>怎么预订月租床位</h2>
+<p>直接WhatsApp联系我们：<strong>+60 12-708 8789</strong>,查询月租空位,或先浏览<a href="/rooms">房型页面</a>。准备好定日期了？<a href="/book">点此查询空位并预订</a>。</p>
+
+<h2>常见问题</h2>
+
+<h3>月租需要押金吗？</h3>
+<p>不需要。月租没有押金合约——你只需支付RM600（上层）或RM650（下层）的月租,不需要另外的安全押金。</p>
+
+<h3>需要签12个月的租约吗？</h3>
+<p>不需要。月租按月计算,你可以按月续租,或在计划改变时随时结束——不需要签长期租约。</p>
+
+<h3>RM600里包含水电和WiFi吗？</h3>
+<p>包含。月租涵盖床位、水电费和WiFi——没有需要分摊或追讨的额外账单。</p>
+
+<h3>上层和下层床位有什么区别？</h3>
+<p>上层床位RM600/月,下层床位RM650/月。两者都包含相同的水电、WiFi和24小时自助入住服务——区别只在于床位所在的楼层。</p>
+
+<h3>可以随时办理入住吗？</h3>
+<p>可以。自助入住全天24小时开放,不需要配合前台的营业时间来安排你的行程或轮班。</p>
+`,
+		},
+		// 109
+		{
+			Slug:          "jb-night-shift-workers-singapore-commute-ciq-guide",
+			Date:          "2026-09-21",
+			Category:      "Career & Work",
+			Author:        "Pelangi Capsule Hostel",
+			ReadTime:      "6 min read",
+			Tags:          []string{"night-shift", "singapore-commute", "ciq", "causeway", "johor-bahru", "long-stay", "border-crossing"},
+			FeaturedImage: "/images/blog/jb-transit-base-foreign-workers-guide.jpg",
+			ImageAlt:      "Buses and travelers at Woodlands CIQ during a quiet off-peak hour on the Johor-Singapore Causeway",
+			Title:         "Night-Shift Workers Commuting to Singapore from JB: CIQ Crossing Times & Where to Sleep",
+			Excerpt:       "Work nights in Singapore, sleep in JB? The queue pattern at Woodlands CIQ is the opposite of a day commuter's — here's how to time it, and why 24/7 self check-in matters when your shift ends at 3am.",
+			Content: `
+<h2>Why Night-Shift Workers Base in JB</h2>
+<p>A large number of shift workers &mdash; F&amp;B, healthcare, logistics, security, hospitality &mdash; commute daily or weekly across the Causeway between Johor Bahru and Singapore. The appeal is simple: Singapore wages, Malaysia cost of living. Rent, food, and transport in JB run a fraction of Singapore prices, and the border is 15&ndash;30 minutes away by bus or car.</p>
+
+<p>What most guides miss is that <strong>night-shift workers cross at completely different hours than the standard 9-to-5 commuter</strong> &mdash; and that changes almost everything about how you should plan the crossing and where you sleep.</p>
+
+<h2>CIQ Crossing Times: Night-Shift vs Day-Shift</h2>
+<p>Day commuters jam Woodlands CIQ from roughly 6&ndash;9am (Singapore-bound) and 5&ndash;8pm (JB-bound return) on weekdays &mdash; queues that can stretch 45 minutes to over an hour. Night-shift workers usually cross outside these windows entirely, which is the one real advantage of the schedule:</p>
+<ul>
+  <li><strong>Evening crossing (SG-bound, ~8&ndash;10pm):</strong> Ahead of the day-shift's evening surge and generally lighter than 5&ndash;8pm.</li>
+  <li><strong>Early-morning return (JB-bound, ~4&ndash;6am):</strong> Often the quietest window of the whole day &mdash; well before the 6&ndash;9am morning rush builds.</li>
+  <li><strong>Watch for shift-change convoys:</strong> If your workplace runs coordinated shift buses, expect brief clusters of buses arriving at CIQ around common shift-change times, even outside the "official" peak windows.</li>
+</ul>
+<p>Bus frequency on the Causeway Link CW1 and similar cross-border routes thins out late at night, so check the current schedule before you plan a very late or very early crossing &mdash; Grab is a reliable backup on either side of the border at any hour.</p>
+
+<h2>Where 24/7 Self Check-In Actually Matters</h2>
+<p>If your shift ends at 3am and you cross straight back to JB, the last thing you want is to wait for a reception desk to open. <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi runs <strong>24/7 self check-in</strong> &mdash; walk in, check in on your phone, and get straight into your pod, any hour of the day or night. No front-desk hours to work around, no calling ahead to arrange a "late" arrival, because there is no such thing as late here.</p>
+
+<p>Each capsule pod has a lockable sliding door, air-conditioning, and a personal locker for valuables &mdash; useful when you're sleeping through daylight hours after a night shift and want the room dark and secure. Free WiFi and a shared kitchen are available around the clock too.</p>
+
+<h2>Nightly or Monthly? Do the Math on Your Actual Schedule</h2>
+<p>Pelangi's rates:</p>
+<ul>
+  <li><strong>RM35/night</strong> flat rate (RM30 for your first night, direct web booking only).</li>
+  <li><strong>Monthly: RM600 (Upper Deck) or RM650 (Lower Deck)</strong> &mdash; no deposit, and utilities and WiFi are included in the monthly rate.</li>
+</ul>
+<p>If you're only in JB 3&ndash;4 nights a week around a rotating shift schedule, nightly can work out cheaper than committing to a full month. If you're sleeping in JB most nights, the monthly rate is the better deal &mdash; and because it's month-to-month with no lock-in contract, you can switch back to nightly the moment your schedule changes.</p>
+
+<h2>Practical Tips for Shift-Sleepers</h2>
+<ul>
+  <li><strong>Bring an eye mask and earplugs</strong> if you're sleeping during daylight hours &mdash; standard advice for any shared accommodation, capsule or otherwise.</li>
+  <li><strong>Keep your Singapore work pass and Pelangi booking confirmation on your phone</strong> for a smooth, quick immigration check on both sides.</li>
+  <li><strong>Grab from JB CIQ to Taman Pelangi</strong> runs 10&ndash;15 minutes and typically costs RM8&ndash;12, any time of day or night.</li>
+</ul>
+
+<p>Book directly at <a href="/book">pelangicapsulehostel.com/book</a> or WhatsApp <a href="https://wa.me/60127088789">+60 12-708 8789</a> to ask about monthly rates for your specific shift pattern.</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>Is self check-in really available at 3am?</h3>
+<p>Yes. Check-in at Pelangi Capsule Hostel is self-service and available 24 hours a day, every day &mdash; there is no front-desk cutoff time to plan around.</p>
+
+<h3>Is the Causeway actually quieter for early-morning crossings?</h3>
+<p>Generally yes for the pre-6am window, ahead of the main 6&ndash;9am Singapore-bound rush. Expect it to be busier if your crossing coincides with other workplaces' shift-change times.</p>
+
+<h3>Does the monthly rate require a long-term contract?</h3>
+<p>No. Monthly stays at Pelangi run month-to-month with no lock-in and no security deposit &mdash; you pay RM600 (Upper) or RM650 (Lower), which includes utilities and WiFi.</p>
+`,
+		},
+		// 110
+		{
+			Slug:          "settling-in-jb-first-30-days-long-stay-border-worker",
+			Date:          "2026-09-21",
+			Category:      "Career & Work",
+			Author:        "Pelangi Capsule Hostel",
+			ReadTime:      "6 min read",
+			Tags:          []string{"settling-in", "long-stay", "border-worker", "johor-bahru", "taman-pelangi", "singapore-commute"},
+			FeaturedImage: "/images/blog/jb-singapore-commuter.jpg",
+			ImageAlt:      "Taman Pelangi neighbourhood street in Johor Bahru with shopfronts near Pelangi Capsule Hostel",
+			Title:         "First 30 Days in Johor Bahru: A Settling-In Guide for Long-Stay Border Workers",
+			Excerpt:       "SIM card, e-wallet, groceries, laundry, and deciding between nightly and monthly — the practical checklist for anyone basing themselves in Taman Pelangi to commute across the border.",
+			Content: `
+<h2>You've Decided to Base in JB — Now What?</h2>
+<p>Choosing Johor Bahru as your base for a Singapore-facing job is one decision. Actually settling in &mdash; SIM card, money, food, laundry, a place to sleep that doesn't require a long lease &mdash; is another. This is the practical first-month checklist for long-stay border workers basing themselves around Taman Pelangi.</p>
+
+<h2>Get a Malaysian SIM or eSIM</h2>
+<p>Malaysia's main telcos &mdash; Maxis, Digi, Celcom, and U Mobile &mdash; all sell prepaid SIM cards at convenience stores and shopping malls, and several offer eSIM options you can activate before you even land. A local number and data plan make Grab, e-wallets, and WhatsApp groups with coworkers or landlords far easier to manage than relying on roaming.</p>
+
+<h2>Set Up Touch 'n Go eWallet</h2>
+<p>Touch 'n Go eWallet is Malaysia's dominant e-wallet, used for highway tolls, parking, many food stalls, and convenience stores. It's free to download and link to a debit card, and it removes the need to carry small change for daily expenses.</p>
+
+<h2>Currency: SGD to MYR</h2>
+<p>Money changers at shopping malls near the CIQ crossing and in central JB generally offer competitive SGD-MYR rates &mdash; compare a couple before committing to a large exchange, as rates vary day to day.</p>
+
+<h2>Groceries and Laundry Near Taman Pelangi</h2>
+<p>Taman Pelangi is a residential-commercial neighbourhood with grocery stores, convenience stores, and laundromats within easy walking distance, plus the well-known Tuesday night pasar malam for fresh produce and street food. You don't need a car to handle basic day-to-day errands here.</p>
+
+<h2>Where to Sleep: Nightly, Weekly, or Monthly?</h2>
+<p>You don't need to commit to a 12-month lease and a rental deposit just to get started. <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi offers:</p>
+<ul>
+  <li><strong>RM35/night</strong> flat (RM30 your first night via direct web booking).</li>
+  <li><strong>Monthly: RM600 (Upper Deck) or RM650 (Lower Deck)</strong> &mdash; billed month-to-month, no security deposit, utilities and WiFi included.</li>
+</ul>
+<p>This makes it easy to try JB out for your first few weeks on a nightly basis while you scope out longer-term housing, or settle straight into the monthly rate if you already know you're staying. Either way there's no long lease to sign and no deposit tied up.</p>
+
+<h2>Build a Routine</h2>
+<p>A shared kitchen means you can cook rather than eat out every meal, which matters over a full month. Free WiFi throughout and 24/7 self check-in mean your arrival and departure times don't need to work around anyone else's schedule &mdash; useful when your commute or work hours across the border are irregular in the first few weeks.</p>
+
+<p>Book directly at <a href="/book">pelangicapsulehostel.com/book</a> or message us on WhatsApp at <a href="https://wa.me/60127088789">+60 12-708 8789</a> with any questions before you arrive.</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>Do I need a Malaysian bank account to live in JB short-term?</h3>
+<p>Not necessarily for a first month &mdash; Touch 'n Go eWallet and cash cover most day-to-day spending. A local bank account becomes more useful if you plan to stay long-term or need to receive local payments.</p>
+
+<h3>Is a deposit required for the monthly capsule rate?</h3>
+<p>No. Pelangi's monthly rate has no security deposit &mdash; you pay RM600 (Upper Deck) or RM650 (Lower Deck), which already includes utilities and WiFi.</p>
+
+<h3>Can I start on nightly and switch to monthly later?</h3>
+<p>Yes. There's no lock-in contract, so you can stay nightly while you settle in and move to the monthly rate whenever it makes sense for your schedule.</p>
+`,
+		},
+		// 111
+		{
+			Slug:          "capsule-hostel-etiquette-what-to-expect-first-time-jb",
+			Date:          "2026-09-21",
+			Category:      "Backpacker Tips",
+			Author:        "Pelangi Capsule Hostel",
+			ReadTime:      "5 min read",
+			Tags:          []string{"capsule-hostel", "etiquette", "first-time", "backpacker", "johor-bahru", "what-to-expect"},
+			FeaturedImage: "/images/blog/jb-backpacker-itinerary.jpg",
+			ImageAlt:      "Row of private capsule pods with curtains inside a Johor Bahru capsule hostel",
+			Title:         "First Time in a Capsule Hostel? Etiquette and What to Expect in Johor Bahru",
+			Excerpt:       "Never stayed in a capsule pod before? Here's what it actually is, the unwritten etiquette rules, and exactly what to expect from check-in to lights-out.",
+			Content: `
+<h2>What a Capsule Pod Actually Is</h2>
+<p>A capsule hostel isn't a dorm bunk with a curtain &mdash; it's a private, enclosed pod with its own lockable sliding door. At <a href="/rooms">Pelangi Capsule Hostel</a>, each pod has air-conditioning, a reading light, USB charging, and a proper mattress. You get a private sleeping space and share communal areas &mdash; bathroom, kitchen, lounge &mdash; with other guests, similar in spirit to a hostel but with far more privacy than a traditional dorm bed.</p>
+
+<h2>Capsule Hostel Etiquette Basics</h2>
+<p>Capsule hostels worldwide share a common set of unwritten rules, because everyone is sleeping a few feet from a stranger behind a thin door:</p>
+<ul>
+  <li><strong>Use headphones</strong> for calls, videos, or music &mdash; especially after quiet hours.</li>
+  <li><strong>Keep your pod light and door use considerate</strong> at night; the sliding door lets in some light and sound when opened.</li>
+  <li><strong>Don't leave belongings in shared corridors</strong> &mdash; use your personal locker, provided at check-in.</li>
+  <li><strong>Clean up after yourself in the shared kitchen</strong> &mdash; wash your dishes promptly and don't leave food out.</li>
+  <li><strong>Speak quietly in hallways</strong>, particularly late at night or early morning &mdash; other guests may be sleeping at any hour, not just overnight.</li>
+</ul>
+<p>None of this is complicated &mdash; it's the same courtesy you'd expect from a flatmate, condensed into a smaller shared space.</p>
+
+<h2>What to Expect: Check-In to Check-Out</h2>
+<p>Pelangi runs <strong>24/7 self check-in</strong> &mdash; you don't need to arrive within reception hours. Check-in instructions are sent ahead of your stay so you can walk straight into your pod whenever you land, even at midnight after a late border crossing. There's no minimum-stay requirement, so a single night is completely normal.</p>
+
+<p>Facilities you'll have access to: a shared kitchen for cooking your own meals, free WiFi throughout, hot showers, and a personal locker for your bag and valuables. Bring your own padlock if you prefer, or ask about locker options at check-in.</p>
+
+<h2>Tips for Your First Capsule Stay</h2>
+<ul>
+  <li><strong>Pack an eye mask and earplugs</strong> &mdash; useful in any shared sleeping space, capsule or dorm.</li>
+  <li><strong>Charge devices overnight via the in-pod USB port</strong> rather than leaving cables trailing in the corridor.</li>
+  <li><strong>Keep your booking confirmation handy</strong> on your phone for a smooth self check-in.</li>
+</ul>
+
+<p>Book directly at <a href="/book">pelangicapsulehostel.com/book</a> &mdash; RM35/night (RM30 your first night via direct web booking). WhatsApp <a href="https://wa.me/60127088789">+60 12-708 8789</a> if you have any questions before you arrive.</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>Is a capsule pod actually private?</h3>
+<p>Yes. Each pod has its own lockable sliding door &mdash; you're not sharing an open bunk. You share communal spaces like the bathroom and kitchen with other guests, but your sleeping space is enclosed.</p>
+
+<h3>Can I check in late at night?</h3>
+<p>Yes. Check-in is self-service and available 24 hours a day &mdash; there's no reception cutoff to work around.</p>
+
+<h3>Is there a minimum number of nights?</h3>
+<p>No. A single night is completely normal &mdash; RM35/night flat, or RM30 for your first night when you book directly through the website.</p>
+`,
+		},
+		// 112
+		{
+			Slug:          "why-book-pelangi-direct-instead-of-ota-jb",
+			Date:          "2026-09-21",
+			Category:      "Backpacker Tips",
+			Author:        "Pelangi Capsule Hostel",
+			ReadTime:      "5 min read",
+			Tags:          []string{"taman-pelangi", "book-direct", "ota", "johor-bahru", "backpacker", "food"},
+			FeaturedImage: "/images/blog/capsule-pod-vs-private-room-jb-which-to-book.jpg",
+			ImageAlt:      "Street food stalls and shopfronts near Taman Pelangi, Johor Bahru, within walking distance of Pelangi Capsule Hostel",
+			Title:         "Nearby Eats &amp; Sights Around Taman Pelangi — and Why to Book Direct, Not Through an OTA",
+			Excerpt:       "What's actually within walking distance of Pelangi Capsule Hostel, and why the RM30 first-night rate only exists if you skip the OTA and book direct.",
+			Content: `
+<h2>What's Around Taman Pelangi</h2>
+<p>Taman Pelangi isn't a tourist strip, and that's part of its appeal &mdash; it's a real JB neighbourhood, walkable, and close to the border. Within easy reach of <a href="/rooms">Pelangi Capsule Hostel</a> at 26A Jalan Perang:</p>
+<ul>
+  <li><strong>The Tuesday night pasar malam</strong> &mdash; a proper Malaysian street market for food, fruit, and everyday goods, one of the neighbourhood's weekly fixtures.</li>
+  <li><strong>Mamak stalls</strong> &mdash; open-air eateries serving roti canai, dhal, and teh tarik around the clock, a Johor Bahru staple.</li>
+  <li><strong>Convenience stores and money changers</strong> &mdash; for last-minute essentials and currency exchange before or after crossing the border.</li>
+  <li><strong>JB CIQ (Johor-Singapore border)</strong> &mdash; roughly 10&ndash;15 minutes away by Grab.</li>
+</ul>
+<p>For a longer food itinerary or day-trip ideas, see our other <a href="/blog">Johor Bahru travel guides</a>.</p>
+
+<h2>Why Book Direct Instead of an OTA</h2>
+<p>Booking.com, Agoda, and similar platforms are convenient for browsing, but they add a commission on top of the room rate &mdash; a cost that's ultimately built into what you pay. Booking directly at <a href="/book">pelangicapsulehostel.com/book</a> skips that markup entirely.</p>
+
+<p>There are practical reasons too, not just price:</p>
+<ul>
+  <li><strong>The RM30 first-night rate is direct-booking only.</strong> It isn't available through third-party platforms &mdash; it's a discount we can only offer when there's no OTA commission to cover.</li>
+  <li><strong>Direct contact with us on WhatsApp.</strong> Need a late arrival, have a question about your capsule, or want to ask about the monthly rate? Message <a href="https://wa.me/60127088789">+60 12-708 8789</a> directly instead of routing a request through a third-party app.</li>
+  <li><strong>Your booking maps straight to our own availability</strong> &mdash; no syncing delay between a booking platform and our system.</li>
+</ul>
+
+<p>Our standard rate is RM35/night whichever channel you book through &mdash; the RM30 first-night discount and the direct WhatsApp line are what you get for booking direct.</p>
+
+<h2>How to Book Direct</h2>
+<p>Go to <a href="/book">pelangicapsulehostel.com/book</a>, pick your dates, and confirm &mdash; no account, no app download, no booking fee. If you'd rather ask a question first, WhatsApp us at <a href="https://wa.me/60127088789">+60 12-708 8789</a> before you commit.</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>Is the RM30 first-night rate available on Booking.com or Agoda?</h3>
+<p>No &mdash; it's exclusive to direct bookings through pelangicapsulehostel.com/book. Rates on third-party platforms follow our standard RM35/night rate.</p>
+
+<h3>What's within walking distance of the hostel?</h3>
+<p>Mamak stalls, convenience stores, and the Tuesday night pasar malam are all close by in Taman Pelangi, with JB CIQ around 10&ndash;15 minutes away by Grab.</p>
+
+<h3>Can I message the hostel directly if I book on an OTA?</h3>
+<p>Yes, you can still WhatsApp us with questions regardless of how you booked &mdash; but the RM30 first-night rate itself is only available on a direct booking.</p>
 `,
 		},
 	}
