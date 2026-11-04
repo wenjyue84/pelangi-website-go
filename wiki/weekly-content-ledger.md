@@ -33,3 +33,6 @@ Follow-up by me after the agent: CW1 "RM2.60 (~SGD0.80)" fare removed from the v
 - Unfixed from fact-check: CW1 fare still "RM2.60" in several other posts (secondary source says S$2.00 cashless / S$2.60 cash from Woodlands); MDAC rules from secondary sources only; Chinese ETS post (`ktm-ets-train-johor-bahru-chinese-guide`) mirrors the English one but was not edited; Chinese post says passport validity 6 months without a source; Lalamove/Grab/Foodpanda earnings bands unverifiable; "end-February" wording across some RTS posts rests on Mothership (Malay Mail says "February 2027").
 - Not done: the other ~2 of 10 planned fact-checks; BM/ZH sibling versions of the 4 new posts (optional).
 - Build shipped the whole `go-site` working tree incl. other uncommitted edits; nothing committed.
+
+### Daily 2026-11-04
+- `singapore-vep-fee-s50-january-2027-driving-from-jb` (EN). Sources: freemalaysiatoday.com 2026-02-06, mothership.sg 2026-04-10; LTA notice not read (stated). Cover: ZKang123, Commons, CC BY-SA 4.0.

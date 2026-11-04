@@ -68,3 +68,9 @@ New post johor-bahru-mall-events-30-oct-15-nov-2026 (blog_jb_mall_events_2026102
 - Build + ACI 110/110, deployed (binary backup `pelangi-go.bak.20261030-043700`, covers scp'd), live: 4 slugs 200, in sitemap, covers `--live` pass, IndexNow 200.
 - Check-in time: owner-confirmed 2:00 PM (site CLAUDE.md's 3:00 PM is stale); a wrong 3 PM briefly written in this run was reverted before build.
 - Build shipped the whole go-site working tree (other uncommitted edits went out too). No commit made.
+
+## [2026-11-04] content | daily blog: Singapore VEP S$50 from 1 Jan 2027
+- Slug `singapore-vep-fee-s50-january-2027-driving-from-jb`; file `go-site/internal/data/blog_vep_2027_20261104.go`. EN only.
+- Sources fetched 2026-11-04: freemalaysiatoday.com (Bernama 2026-02-06), mothership.sg (2026-04-10). paultan.org 403; LTA page not read (stated in post). GVP/OBU price not stated.
+- Cover: Wikimedia Commons ZKang123 CC BY-SA 4.0 (Woodlands Checkpoint Dec 2023), cropped; CREDITS.md updated.
+- Deployed, live 200 + marker, cover 200, in sitemap, cover gate --live PASSED. go vet + go test ok.
