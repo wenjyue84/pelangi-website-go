@@ -1,0 +1,148 @@
+{
+ "slug": "singapore-work-pass-guide-malaysians",
+ "images": [
+  {
+   "file": "singapore-work-pass-guide-malaysians-1.webp",
+   "alt": "Ministry of Manpower signage on its building in Singapore",
+   "width": 1024,
+   "height": 768,
+   "author": "Michael Coghlan from Adelaide, Australia",
+   "licence": "CC BY-SA 2.0",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ministry_of_Manpower_(5742929694).jpg",
+   "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Ministry_of_Manpower_%285742929694%29.jpg"
+  },
+  {
+   "file": "singapore-work-pass-guide-malaysians-2.webp",
+   "alt": "Raffles Place financial district skyline in Singapore",
+   "width": 1200,
+   "height": 750,
+   "author": "Calvin Teo (User:Advanced)",
+   "licence": "CC BY-SA 3.0",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_Skyline_Raffles_Place.jpg",
+   "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Singapore_Skyline_Raffles_Place.jpg"
+  }
+ ],
+ "inserts": [
+  {
+   "afterExact": "<p>Malaysia is Singapore's top source of migrant workers, accounting for 30% of foreign labour. The Ministry of Manpower (MOM) manages work passes under three main categories: Employment Pass (EP), S Pass, and Work Permit. Each serves a different skill level and salary band. Understanding which pass you qualify for is critical before job hunting.</p>",
+   "html": "<figure class=\"blog-figure\"><img src=\"/images/blog/singapore-work-pass-guide-malaysians-1.webp\" alt=\"Ministry of Manpower signage on its building in Singapore\" loading=\"lazy\" width=\"1024\" height=\"768\"><figcaption>Photo: Michael Coghlan, Wikimedia Commons, CC BY-SA 2.0.</figcaption></figure>"
+  },
+  {
+   "afterExact": "<p><strong>Best for:</strong> Fresh graduates from prestigious universities, tech professionals, finance roles, engineering, and management positions. If you have a degree, aim for EP—it's the most stable and flexible pass.</p>",
+   "html": "<figure class=\"blog-figure\"><img src=\"/images/blog/singapore-work-pass-guide-malaysians-2.webp\" alt=\"Raffles Place financial district skyline in Singapore\" loading=\"lazy\" width=\"1200\" height=\"750\"><figcaption>Photo: Calvin Teo, Wikimedia Commons, CC BY-SA 3.0.</figcaption></figure>"
+  }
+ ],
+ "officialSection": "<h2>Official Information</h2>\n<p>Figures below were checked against Singapore's Ministry of Manpower (MOM) pages on 1 October 2026. Rules change, so confirm on MOM before you apply.</p>\n<ul>\n<li><strong>Employment Pass salary:</strong> MOM lists the minimum qualifying salary as $5,600 a month for general sectors ($6,200 for financial services), rising with age from 23. From 1 January 2027 it becomes $6,000 ($6,600 for financial services). <a href=\"https://www.mom.gov.sg/passes-and-permits/employment-pass/eligibility\" target=\"_blank\" rel=\"noopener noreferrer\">MOM: EP eligibility</a></li>\n<li><strong>COMPASS:</strong> EP applicants must earn 40 points on COMPASS, unless they earn a fixed monthly salary of at least $22,500 or fall under another listed exemption. <a href=\"https://www.mom.gov.sg/passes-and-permits/employment-pass/eligibility\" target=\"_blank\" rel=\"noopener noreferrer\">MOM: EP eligibility</a></li>\n<li><strong>EP validity:</strong> first-time candidates up to 2 years, renewals up to 3 years. <a href=\"https://www.mom.gov.sg/passes-and-permits/employment-pass/key-facts\" target=\"_blank\" rel=\"noopener noreferrer\">MOM: EP key facts</a></li>\n<li><strong>S Pass salary and validity:</strong> new candidates need at least $3,300 a month (rising with age; $3,600 from 1 January 2027). First-time passes run up to 2 years, renewals up to 3, and employers are subject to a quota and levy. <a href=\"https://www.mom.gov.sg/passes-and-permits/s-pass/eligibility\" target=\"_blank\" rel=\"noopener noreferrer\">MOM: S Pass eligibility</a> / <a href=\"https://www.mom.gov.sg/passes-and-permits/s-pass/key-facts\" target=\"_blank\" rel=\"noopener noreferrer\">MOM: S Pass key facts</a></li>\n<li><strong>Work Permit:</strong> for semi-skilled workers from approved source countries or regions in the construction, manufacturing, marine shipyard, process or services sectors. Valid up to 2 years; family passes are not available. <a href=\"https://www.mom.gov.sg/passes-and-permits/work-permit-for-foreign-worker/key-facts\" target=\"_blank\" rel=\"noopener noreferrer\">MOM: Work Permit key facts</a></li>\n<li><strong>Bringing family on an EP:</strong> spouse and children need the EP holder to earn at least $6,000 a month; parents need at least $12,000. <a href=\"https://www.mom.gov.sg/passes-and-permits/employment-pass/passes-for-family\" target=\"_blank\" rel=\"noopener noreferrer\">MOM: EP passes for family</a></li>\n</ul>",
+ "discrepancies": [
+  {
+   "existing": "<td>SGD 5,000/month</td>  (EP minimum salary, table) and 'Minimum salary SGD5,000/month' / 'EP minimum is SGD5,000'",
+   "official": "MOM: EP minimum $5,600 a month (general), $6,200 financial services; $6,000 / $6,600 from 1 Jan 2027.",
+   "url": "https://www.mom.gov.sg/passes-and-permits/employment-pass/eligibility",
+   "fetched": "2026-10-01",
+   "suggestedReplacement": "SGD 5,600/month (SGD 6,000 from 1 Jan 2027); update every 'SGD5,000' EP mention, including the FAQ 'EP minimum is SGD5,000' answer and the Red Flags 'SGD3,500 for EP' example."
+  },
+  {
+   "existing": "<td>SGD 3,150/month</td>  (S Pass minimum, table) and 'Minimum salary SGD3,150/month' / 'S Pass starts at SGD3,150'",
+   "official": "MOM: new S Pass candidates need at least $3,300 a month; $3,600 from 1 Jan 2027.",
+   "url": "https://www.mom.gov.sg/passes-and-permits/s-pass/eligibility",
+   "fetched": "2026-10-01",
+   "suggestedReplacement": "SGD 3,300/month (SGD 3,600 from 1 Jan 2027); update all SGD3,150 mentions."
+  },
+  {
+   "existing": "<td>Up to 3 years</td> (EP validity)",
+   "official": "MOM: first-time EP up to 2 years; renewals up to 3 years.",
+   "url": "https://www.mom.gov.sg/passes-and-permits/employment-pass/key-facts",
+   "fetched": "2026-10-01",
+   "suggestedReplacement": "Up to 2 years first time, up to 3 on renewal"
+  },
+  {
+   "existing": "<td>Up to 2 years</td> (S Pass validity)",
+   "official": "MOM: first-time S Pass up to 2 years; renewals up to 3 years.",
+   "url": "https://www.mom.gov.sg/passes-and-permits/s-pass/key-facts",
+   "fetched": "2026-10-01",
+   "suggestedReplacement": "Up to 2 years first time, up to 3 on renewal"
+  },
+  {
+   "existing": "<td>Yes (spouse + kids)</td> (EP family)",
+   "official": "MOM: family passes require the EP holder to earn at least $6,000 a month; parents at least $12,000.",
+   "url": "https://www.mom.gov.sg/passes-and-permits/employment-pass/passes-for-family",
+   "fetched": "2026-10-01",
+   "suggestedReplacement": "Yes, if you earn at least SGD6,000/month (spouse and children)"
+  },
+  {
+   "existing": "<strong>Who qualifies:</strong> Diploma holders or those with 5+ years relevant work experience.",
+   "official": "MOM: S Pass eligibility page is salary-based; 'declaring qualifications is optional'. No diploma/5-year rule appears on the page fetched.",
+   "url": "https://www.mom.gov.sg/passes-and-permits/s-pass/eligibility",
+   "fetched": "2026-10-01",
+   "suggestedReplacement": "Skilled workers (associate professionals and technicians) earning at least SGD3,300/month who may not meet EP criteria; an employer self-assessment tool is available on MOM."
+  },
+  {
+   "existing": "No quota limits; approved applications are processed first-in-first-out.",
+   "official": "MOM: EP requires 40 COMPASS points unless exempt (e.g. fixed salary of at least $22,500); employers must show fair consideration of all jobseekers. S Pass employers are subject to quota and levy.",
+   "url": "https://www.mom.gov.sg/passes-and-permits/employment-pass/eligibility",
+   "fetched": "2026-10-01",
+   "suggestedReplacement": "EP applications are assessed under COMPASS (40 points needed, unless exempt), not simple first-in-first-out."
+  },
+  {
+   "existing": "Semi-skilled and unskilled workers in approved sectors: construction, marine, food, healthcare, domestic work.",
+   "official": "MOM: semi-skilled migrant workers from approved source countries/regions in the construction, manufacturing, marine shipyard, process or services sector. Malaysia's eligibility as a source country was NOT confirmed from the page fetched.",
+   "url": "https://www.mom.gov.sg/passes-and-permits/work-permit-for-foreign-worker/key-facts",
+   "fetched": "2026-10-01",
+   "suggestedReplacement": "Semi-skilled workers from approved source countries or regions in the construction, manufacturing, marine shipyard, process or services sectors."
+  },
+  {
+   "existing": "Processing time rows (EP 1-4 weeks, S Pass 2-8 weeks, Work Permit 1-2 weeks) and 'Malaysia ... accounting for 30% of foreign labour'",
+   "official": "UNVERIFIED: neither figure appears on the MOM pages fetched. Not proven wrong.",
+   "url": "https://www.mom.gov.sg/passes-and-permits/employment-pass/key-facts",
+   "fetched": "2026-10-01",
+   "suggestedReplacement": "Hold for a separate source check or soften."
+  }
+ ],
+ "sourcesFetched": [
+  {
+   "url": "https://www.mom.gov.sg/passes-and-permits/employment-pass/eligibility",
+   "fetched": "2026-10-01",
+   "usedFor": "EP salary, COMPASS"
+  },
+  {
+   "url": "https://www.mom.gov.sg/passes-and-permits/employment-pass",
+   "fetched": "2026-10-01",
+   "usedFor": "EP overview ($5,600)"
+  },
+  {
+   "url": "https://www.mom.gov.sg/passes-and-permits/employment-pass/key-facts",
+   "fetched": "2026-10-01",
+   "usedFor": "EP validity"
+  },
+  {
+   "url": "https://www.mom.gov.sg/passes-and-permits/employment-pass/passes-for-family",
+   "fetched": "2026-10-01",
+   "usedFor": "EP family salary thresholds"
+  },
+  {
+   "url": "https://www.mom.gov.sg/passes-and-permits/s-pass/eligibility",
+   "fetched": "2026-10-01",
+   "usedFor": "S Pass salary"
+  },
+  {
+   "url": "https://www.mom.gov.sg/passes-and-permits/s-pass",
+   "fetched": "2026-10-01",
+   "usedFor": "S Pass overview, MyCareersFuture advert rule"
+  },
+  {
+   "url": "https://www.mom.gov.sg/passes-and-permits/s-pass/key-facts",
+   "fetched": "2026-10-01",
+   "usedFor": "S Pass validity, quota"
+  },
+  {
+   "url": "https://www.mom.gov.sg/passes-and-permits/work-permit-for-foreign-worker/key-facts",
+   "fetched": "2026-10-01",
+   "usedFor": "Work Permit validity, sectors, family"
+  },
+  {
+   "url": "https://www.mom.gov.sg/passes-and-permits/work-permit-for-foreign-worker",
+   "fetched": "2026-10-01",
+   "usedFor": "Work Permit overview"
+  }
+ ]
+}

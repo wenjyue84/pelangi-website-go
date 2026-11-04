@@ -92,6 +92,9 @@ var staticSitemap = []sitemapEntry{
 	{loc: baseURL + "/visit-malaysia-2026", lastmod: lastMod, freq: "monthly", priority: "0.85"},
 	{loc: baseURL + "/johor-election-2026", lastmod: lastMod, freq: "weekly", priority: "0.85"},
 	{loc: baseURL + "/visa-run", lastmod: lastMod, freq: "monthly", priority: "0.85"},
+	{loc: baseURL + "/tourist-help", lastmod: lastMod, freq: "monthly", priority: "0.8"},
+	{loc: baseURL + "/tourist-assistance", lastmod: lastMod, freq: "monthly", priority: "0.7"},
+	{loc: baseURL + "/creators", lastmod: lastMod, freq: "monthly", priority: "0.6"},
 	{loc: baseURL + "/singapore-jobs", lastmod: lastMod, freq: "monthly", priority: "0.85"},
 	{loc: baseURL + "/capsule-hotel-johor-bahru", lastmod: lastMod, freq: "weekly", priority: "0.9"},
 	{loc: baseURL + "/events", lastmod: lastMod, freq: "weekly", priority: "0.85"},
@@ -151,7 +154,7 @@ func (h *Handler) sitemap(w http.ResponseWriter, r *http.Request) {
 		if p.FeaturedImage != "" {
 			e.images = []string{baseURL + p.FeaturedImage}
 		}
-		if p.AlternateEN != "" || p.AlternateZH != "" || p.AlternateMS != "" {
+		if p.AlternateEN != "" || p.AlternateZH != "" || p.AlternateMS != "" || p.AlternateHI != "" {
 			alt := map[string]string{}
 			if p.AlternateEN != "" {
 				alt["en"] = baseURL + "/blog/" + p.AlternateEN
@@ -161,6 +164,9 @@ func (h *Handler) sitemap(w http.ResponseWriter, r *http.Request) {
 			}
 			if p.AlternateMS != "" {
 				alt["ms"] = baseURL + "/blog/" + p.AlternateMS
+			}
+			if p.AlternateHI != "" {
+				alt["hi"] = baseURL + "/blog/" + p.AlternateHI
 			}
 			e.alt = alt
 		}

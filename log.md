@@ -1,5 +1,7 @@
 # Log — pelangi-website
 
+## [2026-09-25] seo-content+fix+deploy | Visa-run SEO/GEO enrichment (research-backed) + sitewide stale-price cleanup + fare images. (1) Enriched both visa-run posts (singapore-expat-visa-run-johor-bahru-guide-2026, jb-visa-run-cheapest-routes-thailand-brunei-indonesia) + visaRun.html pillar: fixed stale CW1 fare RM2.70→RM2.60, added MDAC section (Singapore-citizen exemption), added 2026 immigration-crackdown stat (Malay Mail/Inpro sourced), corrected Brunei overland route (no direct express, Miri transfers), Batam ferry time/price ranges, fixed dead RM30/35 weekday-weekend price in article 2 (→ RM35 flat/RM30 first-night-direct/RM600-650 monthly), added 2 new FAQPage entries + internal-link graph (pillar↔both articles, jb-singapore-commuter-guide-2026, singapore-to-jb-day-trip-causeway-guide, settling-in-jb-first-30-days, singapore-work-pass-guide-malaysians). (2) Found + fixed 37 MORE occurrences of the same dead weekday/weekend RM30/35 split pricing across other posts (site-wide, not just visa articles) + 2 more stale CW1 fares (RM3.50/RM2.70→RM2.60). Added missing AlternateHI struct field, wired end-to-end (handlers/template/sitemap hreflang/ACI), set on singapore-expat-visa-run-johor-bahru-guide-2026↔singapore-malaysia-visa-run-indian-passport-hindi. (3) Jay's directive: official images for bus/fee pricing across transport-focused articles — sourced 5 Wikimedia Commons CC-licensed photos (CW1 bus, JB Sentral, Larkin Sentral, RTS Link Woodlands North, Batam Centre ferry terminal), embedded across 15 articles (EN/BM/ZH) with fare-source citations; fixed 2 more stale fares found in the process (KTM ETS RM79-110→RM90-115 per KTMB 2026, Batam ferry terminal HarbourFront→Singapore Cruise Centre since 27 Jul 2026 closure). No fabricated/mismatched images used — text-only citation kept where no license-clear current image existed. ACI 111/111 pass each round, go vet/build clean, blog-cover gate pass. All 3 rounds deployed to Hetzner (pelangi-website-go), live-verified (200s + content/image grep on deployed HTML).
+
 ## [2026-07-17] brief | gate blocked (durian post live today = 0d gap); top shortlist: T1 Causeway overnight avg 8.2, T3 RTS Link cost avg 7.8, T8 cross-causeway worker avg 7.6 — all ≥7.5, publish earliest Jul 20; occupancy 60.6% (20/33 Fri); BLOCKER: Periskope offline, GBP post 4d overdue, STAAH RM45 still wrong
 
 ## [2026-07-16] brief | gate blocked (Jul 14 = 2d ago, need 3d → opens Jul 17, taken); top: T5 Causeway Jam Guide avg 9.4, T3 MDAC avg 8.4 — queued Sep 19/22; occupancy 54.5% (18/33 Thu); BLOCKER: undeployed binary + GBP post 3d overdue
@@ -51,3 +53,18 @@
 ## [2026-07-12] i18n | Top-right language selector live (EN default / 中文 / BM), Google-Translate-driven, whole site incl. blog; verified /rooms renders 1462 CJK chars
 
 ## [2026-07-18] brief | Health green (63.6% occ Sat); ⚠️ deploy 21632f7 before Sep 10 (Sep 10/13/16 posts undeployed); AC malfunction Jul 17 (ops); gate FAILED 3d spacing; top content topic JB Hostel vs Airbnb 7.75 avg → Sep 19 slot; rogue SG-commuter agent wrote 3 unapproved drafts in blog-drafts-2026-07-18/; STAAH RM45 Booking.com blocker persists
+
+## [2026-10-27] blog+deploy | JB mall events post (30 Oct-15 Nov 2026)
+New post johor-bahru-mall-events-30-oct-15-nov-2026 (blog_jb_mall_events_20261026.go, cover via go-site/scripts/gen_blog_cover.py), built + deployed to Hetzner, live 200. Scheduled task PelangiBlogEvents Wed+Fri 10:00 (skill pelangi-blog-events). Build shipped other uncommitted go-site edits; no commit made.
+
+## [2026-10-30] content | JB mall events edition 31 Oct – 14 Nov 2026
+- Slug `johor-bahru-mall-events-31-oct-14-nov-2026`; file `go-site/internal/data/blog_jb_mall_events_20261030.go`; cover generated + scp'd.
+- Sources fetched 2026-10-30: johormalls.com event pages, midvalleysouthkey.com/whats-on, suteramall.com. No confirmed data for City Square / Komtar JBCC / Paradigm / AEON (stated in post). johormalls.com only pages 1 of 3 read; Sutera "Load More" unread.
+- Deployed (Jay pre-authorised 2026-10-26): binary swapped, `pm2 restart pelangi-website-go` (pm2 needs full path /home/deploy/.nvm/versions/node/v24.15.0/bin/pm2 over non-login ssh). Verified 200 + marker string live; cover gate --live PASSED.
+- Build shipped whole go-site working tree: ~74 other uncommitted files in `git status --short go-site` (unrelated edits) went out with it. No commit made.
+
+## [2026-10-30] content | weekly run 1: 8 checked, 7 corrected, 4 new
+- First `pelangi-weekly` run (skill modelled on senaibilik-weekly; ledger `wiki/weekly-content-ledger.md`). 8 older posts fact-checked/corrected in `blog.go`; 4 new EN posts (`blog_weekly_20261030_border.go`, `_yearend.go`): MDAC + SG arrival card, Causeway year-end school holidays, JB Christmas/New Year 2026-27, money/SGD/QR payments.
+- Build + ACI 110/110, deployed (binary backup `pelangi-go.bak.20261030-043700`, covers scp'd), live: 4 slugs 200, in sitemap, covers `--live` pass, IndexNow 200.
+- Check-in time: owner-confirmed 2:00 PM (site CLAUDE.md's 3:00 PM is stale); a wrong 3 PM briefly written in this run was reverted before build.
+- Build shipped the whole go-site working tree (other uncommitted edits went out too). No commit made.

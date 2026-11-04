@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{.Lang}}" data-scroll-behavior="smooth">
+<html lang="{{.Lang}}" data-scroll-behavior="smooth"{{if .Festival}} data-festival="{{.Festival}}"{{end}}>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,16 +23,17 @@
   <meta name="twitter:description" content="{{.Description}}">
   <meta name="twitter:image" content="{{if .OGImage}}{{.OGImage}}{{else}}https://pelangicapsulehostel.com/images/og-image.png{{end}}">
 
-  {{if or .AltEN .AltZH .AltMS .AltIN}}
+  {{if or .AltEN .AltZH .AltMS .AltHI .AltIN}}
   {{if .AltEN}}<link rel="alternate" hreflang="en" href="{{.AltEN}}">{{end}}
   {{if .AltZH}}<link rel="alternate" hreflang="zh-CN" href="{{.AltZH}}"><link rel="alternate" hreflang="zh" href="{{.AltZH}}">{{end}}
   {{if .AltMS}}<link rel="alternate" hreflang="ms" href="{{.AltMS}}">{{end}}
+  {{if .AltHI}}<link rel="alternate" hreflang="hi" href="{{.AltHI}}">{{end}}
   {{if .AltIN}}<link rel="alternate" hreflang="en-IN" href="{{.AltIN}}">{{end}}
   {{if .AltEN}}<link rel="alternate" hreflang="x-default" href="{{.AltEN}}">{{end}}
   {{end}}
 
   <!-- Site-wide entities: Organization + WebSite (stable @ids referenced by page-level schema) -->
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://pelangicapsulehostel.com/#organization","name":"Pelangi Capsule Hostel","url":"https://pelangicapsulehostel.com","logo":{"@type":"ImageObject","url":"https://pelangicapsulehostel.com/images/logo.png"},"telephone":"+60127088789","email":"pelangicapsule@gmail.com","address":{"@type":"PostalAddress","streetAddress":"26A Jalan Perang, Taman Pelangi","addressLocality":"Johor Bahru","addressRegion":"Johor","postalCode":"80400","addressCountry":"MY"},"availableLanguage":[{"@type":"Language","name":"English","alternateName":"en"},{"@type":"Language","name":"Chinese","alternateName":"zh"},{"@type":"Language","name":"Malay","alternateName":"ms"}],"sameAs":["https://www.facebook.com/pelangicapsulehostel","https://www.instagram.com/pelangicapsulehostel","https://maps.app.goo.gl/maLXetUqYS5MtSLD9","https://www.booking.com/hotel/my/pelangi-hostel-capsule.html","https://www.hostelworld.com/pwa/hosteldetails.php/Pelangi-Capsule-Hostel/Johor-Bahru/317698","https://www.tripadvisor.com/Hotel_Review-g298278-d27125478-Reviews-Pelangi_Capsule_Hostel-Johor_Bahru_Johor_Bahru_District_Johor.html","https://www.agoda.com/pelangi-hostel-capsule/hotel/johor-bahru-my.html","https://www.wikidata.org/wiki/Q140363023"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://pelangicapsulehostel.com/#organization","name":"Pelangi Capsule Hostel","url":"https://pelangicapsulehostel.com","logo":{"@type":"ImageObject","url":"https://pelangicapsulehostel.com/images/logo.png"},"telephone":"+60103084289","email":"pelangicapsule@gmail.com","address":{"@type":"PostalAddress","streetAddress":"26A Jalan Perang, Taman Pelangi","addressLocality":"Johor Bahru","addressRegion":"Johor","postalCode":"80400","addressCountry":"MY"},"availableLanguage":[{"@type":"Language","name":"English","alternateName":"en"},{"@type":"Language","name":"Chinese","alternateName":"zh"},{"@type":"Language","name":"Malay","alternateName":"ms"}],"sameAs":["https://www.facebook.com/pelangicapsulehostel","https://www.instagram.com/pelangicapsulehostel","https://maps.app.goo.gl/maLXetUqYS5MtSLD9","https://www.booking.com/hotel/my/pelangi-hostel-capsule.html","https://www.hostelworld.com/pwa/hosteldetails.php/Pelangi-Capsule-Hostel/Johor-Bahru/317698","https://www.tripadvisor.com/Hotel_Review-g298278-d27125478-Reviews-Pelangi_Capsule_Hostel-Johor_Bahru_Johor_Bahru_District_Johor.html","https://www.agoda.com/pelangi-hostel-capsule/hotel/johor-bahru-my.html","https://www.wikidata.org/wiki/Q140363023"]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://pelangicapsulehostel.com/#website","url":"https://pelangicapsulehostel.com","name":"Pelangi Capsule Hostel","publisher":{"@id":"https://pelangicapsulehostel.com/#organization"},"inLanguage":["en","zh-CN","ms"]}</script>
 
   <!-- Consent Mode v2: deny all consent parameters before GTM loads -->
@@ -46,6 +47,8 @@
   <link rel="preload" href="/static/fonts/playfair-display-v40-latin-500.woff2" as="font" type="font/woff2" crossorigin>
 
   <link rel="stylesheet" href="/static/css/app.css?v=20260915">
+  <link rel="stylesheet" href="/static/css/festival.css?v=20261104">
+  <link rel="stylesheet" href="/static/css/motion.css?v=20261104">
 
   <!-- Neutralize Google Translate's injected top banner + body shift -->
   <style>
@@ -92,6 +95,8 @@
   <script>{{safeJS (printf `(function(){var b=document.getElementById('site-banner');if(!b)return;var k='pelangi-banner-%s';try{if(localStorage.getItem(k))return;}catch(e){}b.classList.remove('hidden');var h=document.querySelector('header');function pad(){if(h)h.style.top=b.offsetHeight+'px';}pad();window.addEventListener('resize',pad);var x=document.getElementById('site-banner-close');if(x)x.addEventListener('click',function(){try{localStorage.setItem(k,'1');}catch(e){}b.classList.add('hidden');if(h)h.style.top='';});})();` .BannerID)}}</script>
   {{end}}
 
+  {{template "festivalDecor" .}}
+
   {{template "content" .}}
 
   {{template "widgetsA" .}}
@@ -99,6 +104,7 @@
 
   <script>window.__PELANGI_CFG = {metaPixelId:"{{.MetaPixelID}}",tiktokPixelId:"{{.TikTokPixelID}}",sentryDsn:"{{.SentryDSN}}",clarityId:"{{.ClarityID}}",ga:"{{.GA}}"};</script>
   <script src="/static/js/app.js" defer></script>
+  <script src="/static/js/motion.js?v=20261104" defer></script>
   <script src="/static/js/widgets_a.js?v=sid2" defer></script>
   <script src="/static/js/booking.js?v=rm35" defer></script>
   <script src="/static/js/analytics.js" defer></script>

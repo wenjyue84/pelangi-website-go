@@ -1,0 +1,50 @@
+{
+  "slug": "grab-driver-jb-guide-2026",
+  "images": [
+    {"file": "grab-driver-jb-guide-2026-1.webp", "alt": "JB Sentral station and the Sultan Iskandar CIQ complex in Johor Bahru, seen from the north-east", "width": 1200, "height": 900, "author": "Slleong", "licence": "CC0 1.0", "sourceUrl": "https://commons.wikimedia.org/wiki/File:JB_Sentral_4.jpg", "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/d/df/JB_Sentral_4.jpg"},
+    {"file": "grab-driver-jb-guide-2026-2.webp", "alt": "Car pick-up point at JB Sentral station with the linkbridge entrance to R&F Mall across the driveway", "width": 1200, "height": 902, "author": "JohnLim99", "licence": "CC BY-SA 4.0", "sourceUrl": "https://commons.wikimedia.org/wiki/File:JB_Sentral_Station_Pick-up_Point_-_R%26F_Mall_Linkbridge_Entry_-_8_Oct_2025_(1).jpg", "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d9/JB_Sentral_Station_Pick-up_Point_-_R%26F_Mall_Linkbridge_Entry_-_8_Oct_2025_%281%29.jpg"}
+  ],
+  "inserts": [
+    {"afterExact": "<h2>Where the Demand Is: JB Hotspots</h2>",
+     "html": "<figure class=\"blog-figure\"><img src=\"/images/blog/grab-driver-jb-guide-2026-1.webp\" alt=\"JB Sentral station and the Sultan Iskandar CIQ complex in Johor Bahru, seen from the north-east\" loading=\"lazy\" width=\"1200\" height=\"900\"><figcaption>Photo: Slleong, <a href=\"https://commons.wikimedia.org/wiki/File:JB_Sentral_4.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">Wikimedia Commons</a>, CC0.</figcaption></figure>"},
+    {"afterExact": "<p><strong>Step 5:</strong> Pass the background check, activate, and start accepting jobs.</p>",
+     "html": "<figure class=\"blog-figure\"><img src=\"/images/blog/grab-driver-jb-guide-2026-2.webp\" alt=\"Car pick-up point at JB Sentral station with the linkbridge entrance to R&amp;F Mall across the driveway\" loading=\"lazy\" width=\"1200\" height=\"902\"><figcaption>The car pick-up point at JB Sentral, one of the busiest spots for rides. Photo: JohnLim99, <a href=\"https://commons.wikimedia.org/wiki/File:JB_Sentral_Station_Pick-up_Point_-_R%26F_Mall_Linkbridge_Entry_-_8_Oct_2025_(1).jpg\" target=\"_blank\" rel=\"noopener noreferrer\">Wikimedia Commons</a>, CC BY-SA 4.0.</figcaption></figure>"}
+  ],
+  "officialSection": "<h2>Official Information</h2>\n<ul>\n  <li><strong>Grab's driver requirements:</strong> Malaysian aged 21 to 69 with a blue NRIC, a Malaysian Competent Driving Licence, an E-Hailing PSV Licence, a vehicle not older than 15 years, E-Hailing Vehicle Insurance, and a personal bank account matching the NRIC. <a href=\"https://www.grab.com/my/driver/\" target=\"_blank\" rel=\"noopener noreferrer\">Grab Malaysia, driver page</a></li>\n  <li><strong>Grab's reimbursements (limited time, T&amp;Cs apply):</strong> PSV licence RM20, medical check-up RM50 to RM80, EVP RM110, Puspakom RM70; PSV training cost varies by city. <a href=\"https://www.grab.com/my/driver/\" target=\"_blank\" rel=\"noopener noreferrer\">Grab Malaysia, driver page</a></li>\n  <li><strong>EVP:</strong> Grab processes eligible EVP applications in the APAD system, taking about 5 working days. The vehicle must be no older than 15 years, with a civilian-ID owner who is a Malaysian citizen or permanent resident, and JPJ vehicle code AB or AD (pick-up trucks are excluded). <a href=\"https://www.grab.com/my/driver-evpsemenanjungmy/\" target=\"_blank\" rel=\"noopener noreferrer\">Grab Malaysia, EVP process</a></li>\n  <li><strong>APAD rules:</strong> E-hailing drivers must be Malaysian citizens, registered with a licensed e-hailing operator, hold a valid JPJ PSV vocational licence, and drive a vehicle with a valid eVP issued by APAD; driving without these may be penalised under the Land Public Transport Act 2010. <a href=\"https://helpdesk.apad.gov.my/help/article/e-hailing-driver-requirements\" target=\"_blank\" rel=\"noopener noreferrer\">APAD Knowledge Base</a></li>\n  <li><strong>Where permits are issued:</strong> APAD handles e-hailing vehicle permits through its iSPKP commercial vehicle licensing system. <a href=\"https://www.apad.gov.my\" target=\"_blank\" rel=\"noopener noreferrer\">APAD</a></li>\n</ul>\n",
+  "officialSectionPlacement": "Insert immediately before the line `<h2>A Cheap Base Makes the Maths Work</h2>` (post has a final '## Sources' list after the CTA; keep that as is). Alternative: place right before `<h2>Sources</h2>` in this post.",
+  "discrepancies": [
+    {"existing": "<li><strong>Puspakom inspection</strong> if the vehicle is older than 3 years</li>",
+     "official": "Grab's driver page only lists a Puspakom reimbursement (RM70); no fetched official page states the 3-year threshold. Unverified.",
+     "url": "https://www.grab.com/my/driver/",
+     "fetched": "2026-10-01",
+     "suggestedReplacement": "<li><strong>Puspakom inspection</strong> where required (Grab currently reimburses RM70 for it)</li>"},
+    {"existing": "<li><strong>E-hailing PSV licence</strong> (Grab currently subsidises the PSV training, licence, and medical check-up)</li>",
+     "official": "Grab reimburses PSV training (varies by city), PSV licence RM20, medical RM50-RM80, EVP RM110, Puspakom RM70, 'Limited Time Only', T&Cs apply.",
+     "url": "https://www.grab.com/my/driver/",
+     "fetched": "2026-10-01",
+     "suggestedReplacement": "(Grab currently reimburses PSV-related costs for a limited time; terms apply)"},
+    {"existing": "<li>A car <strong>not older than 15 years</strong>, registered in your own name</li>",
+     "official": "Grab lists 'a vehicle that's not older than 15 years' plus a vehicle ownership certificate; the EVP page requires the owner to be a Malaysian citizen/PR with civilian ID (not company/police/military). 'Own name' is not stated verbatim.",
+     "url": "https://www.grab.com/my/driver-evpsemenanjungmy/",
+     "fetched": "2026-10-01",
+     "suggestedReplacement": "<li>A car <strong>not older than 15 years</strong>, with ownership documents (the owner must be a Malaysian citizen or permanent resident with a civilian ID)</li>"},
+    {"existing": "<p><strong>Step 2:</strong> Upload documents — licence, NRIC, vehicle registration with valid roadtax, insurance.</p>",
+     "official": "Grab's steps: register in app, get PSV licence with Grab's help, arrange E-Hailing Vehicle Insurance, submit documents, verification, start earning. E-Hailing Vehicle Insurance is a stated requirement (article says only 'insurance'); also 'not previously banned or terminated as a Grab Driver-Partner'.",
+     "url": "https://www.grab.com/my/driver/",
+     "fetched": "2026-10-01",
+     "suggestedReplacement": "Optional: add 'E-Hailing Vehicle Insurance' wording and the not-previously-banned condition. Age 21-69, 15-year limit, EVP, bank account all match the article."},
+    {"existing": "<p>Since October 2019, e-hailing drivers in Malaysia must hold a <strong>PSV (Public Service Vehicle) licence</strong>.",
+     "official": "APAD confirms PSV licence is required; the October 2019 start date was not on any official page fetched (only seen in a non-official news search result). Unverified date.",
+     "url": "https://helpdesk.apad.gov.my/help/article/e-hailing-driver-requirements",
+     "fetched": "2026-10-01",
+     "suggestedReplacement": "E-hailing drivers in Malaysia must hold a PSV (Public Service Vehicle) licence from JPJ."}
+  ],
+  "sourcesFetched": [
+    {"url": "https://www.grab.com/my/driver/", "fetched": "2026-10-01", "usedFor": "Driver requirements, reimbursements, sign-up steps"},
+    {"url": "https://www.grab.com/my/driver-evpsemenanjungmy/", "fetched": "2026-10-01", "usedFor": "EVP requirements (15-year, owner, AB/AD code, ~5 working days)"},
+    {"url": "https://helpdesk.apad.gov.my/help/article/e-hailing-driver-requirements", "fetched": "2026-10-01", "usedFor": "APAD requirements: citizen, operator, PSV, eVP, Act 2010"},
+    {"url": "https://www.apad.gov.my", "fetched": "2026-10-01", "usedFor": "eVP and iSPKP system (iportal.ispkp.gov.my)"},
+    {"url": "https://jpj.my/misc/application_for_psv_license.htm", "fetched": "2026-10-01", "usedFor": "PSV prerequisites (medical, training, tests, CDL valid >1 yr). NOT used in bullets: domain jpj.my not confirmed as the official JPJ domain"},
+    {"url": "https://www.jpj.gov.my", "fetched": "2026-10-01", "usedFor": "Checked, no PSV page found on landing page"}
+  ]
+}

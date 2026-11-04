@@ -8,19 +8,20 @@ package data
 func init() {
 	posts := []BlogPost{
 		{
-			Slug:         "road-accident-in-johor-bahru-tourist-guide",
-			Title:        "Road Accident in Johor Bahru as a Tourist: What to Do Step by Step",
-			Excerpt:      "A calm, practical checklist for travellers hurt or shaken in a road accident in Malaysia: who to call, what evidence to collect, why the police report matters, and how Pelangi can offer a 24-hour free stay to accident victims.",
-			Date:         "2026-10-16",
-			LastModified: "2026-10-16",
-			Category:     "Travel Tips",
-			Author:       "Pelangi Capsule Hostel",
-			ReadTime:     "6 min read",
-			Tags:         []string{"road-accident", "emergency", "police-report", "johor-bahru", "tourist-safety", "csr"},
-			ImageAlt:     "",
-			InLanguage:   "en",
-			AlternateZH:  "jiaotong-yiwai-xinshan-youke-zenme-ban-zhinan",
-			AlternateMS:  "kemalangan-jalan-raya-johor-bahru-panduan-pelancong",
+			Slug:          "road-accident-in-johor-bahru-tourist-guide",
+			Title:         "Road Accident in Johor Bahru as a Tourist: What to Do Step by Step",
+			Excerpt:       "A calm, practical checklist for travellers hurt or shaken in a road accident in Malaysia: who to call, what evidence to collect, why the police report matters, and how Pelangi can offer a 24-hour free stay to accident victims.",
+			Date:          "2026-10-16",
+			LastModified:  "2026-10-16",
+			Category:      "Travel Tips",
+			Author:        "Pelangi Capsule Hostel",
+			ReadTime:      "6 min read",
+			Tags:          []string{"road-accident", "emergency", "police-report", "johor-bahru", "tourist-safety", "csr"},
+			FeaturedImage: "/images/blog/jb-expressway-evening-traffic-accident-tourist-guide-unsplash.webp",
+			ImageAlt:      "Cars on a Malaysian expressway at dusk beside an elevated road, with red tail lights and a 60 km/h speed sign",
+			InLanguage:    "en",
+			AlternateZH:   "jiaotong-yiwai-xinshan-youke-zenme-ban-zhinan",
+			AlternateMS:   "kemalangan-jalan-raya-johor-bahru-panduan-pelancong",
 			Content: `
 <div class="bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-500 p-5 rounded mb-8 text-stone-700 dark:text-stone-300">
 <p><strong>Emergency numbers first:</strong> call <strong>999</strong> (Malaysia's emergency number for police, ambulance and fire). <strong>112</strong> also works from a mobile phone. If anyone is hurt, call before doing anything else.</p>

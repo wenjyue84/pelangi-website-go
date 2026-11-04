@@ -1,0 +1,106 @@
+{
+ "slug": "how-malaysians-find-jobs-singapore-2026",
+ "images": [
+  {
+   "file": "how-malaysians-find-jobs-singapore-2026-1.webp",
+   "alt": "A block of HDB public housing flats in Bishan, Singapore",
+   "width": 1200,
+   "height": 944,
+   "author": "MapStaringEnthusiast",
+   "licence": "CC0",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bishan_HDB_apartment_block_501.jpg",
+   "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/3/31/Bishan_HDB_apartment_block_501.jpg"
+  },
+  {
+   "file": "how-malaysians-find-jobs-singapore-2026-2.webp",
+   "alt": "The Johor-Singapore Causeway seen across the Straits of Johor",
+   "width": 1200,
+   "height": 800,
+   "author": "Johan Jönsson (Julle)",
+   "licence": "CC BY-SA 4.0",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File:Johor_Causeway.jpg",
+   "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Johor_Causeway.jpg"
+  }
+ ],
+ "inserts": [
+  {
+   "afterExact": "<p>HDB flats (Housing Development Board—Singapore's public housing) are your best value: SGD1,000–1,500/month for a shared room. Private condominiums cost SGD1,800–3,000. For your first month, use <strong>HeyStay, Airbnb, PropertyGuru</strong> while apartment hunting. Once hired, contact your company's HR for corporate housing programs—many large employers have partner blocks with discounts.</p>",
+   "html": "<figure class=\"blog-figure\"><img src=\"/images/blog/how-malaysians-find-jobs-singapore-2026-1.webp\" alt=\"A block of HDB public housing flats in Bishan, Singapore\" loading=\"lazy\" width=\"1200\" height=\"944\"><figcaption>Photo: MapStaringEnthusiast, Wikimedia Commons, CC0.</figcaption></figure>"
+  },
+  {
+   "afterExact": "<p>If job-hunting while based in Malaysia, <a href=\"/rooms\">stay at Pelangi Capsule in Johor Bahru</a>—just 20 minutes from the Causeway—at RM50–80 per night. You can interview in Singapore daily while keeping accommodation costs low.</p>",
+   "html": "<figure class=\"blog-figure\"><img src=\"/images/blog/how-malaysians-find-jobs-singapore-2026-2.webp\" alt=\"The Johor-Singapore Causeway seen across the Straits of Johor\" loading=\"lazy\" width=\"1200\" height=\"800\"><figcaption>Photo: Johan Jönsson (Julle), Wikimedia Commons, CC BY-SA 4.0.</figcaption></figure>"
+  }
+ ],
+ "officialSection": "<h2>Official Information</h2>\n<p>Figures below were checked against Singapore's Ministry of Manpower (MOM) pages on 1 October 2026. Rules change, so confirm on MOM before you apply.</p>\n<ul>\n<li><strong>Employment Pass salary:</strong> MOM lists the minimum qualifying salary as $5,600 a month for general sectors ($6,200 for financial services), rising with age from 23. From 1 January 2027 it becomes $6,000 ($6,600 for financial services). <a href=\"https://www.mom.gov.sg/passes-and-permits/employment-pass/eligibility\" target=\"_blank\" rel=\"noopener noreferrer\">MOM: EP eligibility</a></li>\n<li><strong>COMPASS:</strong> EP applicants must earn 40 points on COMPASS, unless they earn a fixed monthly salary of at least $22,500 or fall under another listed exemption. <a href=\"https://www.mom.gov.sg/passes-and-permits/employment-pass/eligibility\" target=\"_blank\" rel=\"noopener noreferrer\">MOM: EP eligibility</a></li>\n<li><strong>EP validity:</strong> first-time candidates up to 2 years, renewals up to 3 years. <a href=\"https://www.mom.gov.sg/passes-and-permits/employment-pass/key-facts\" target=\"_blank\" rel=\"noopener noreferrer\">MOM: EP key facts</a></li>\n<li><strong>S Pass salary and validity:</strong> new candidates need at least $3,300 a month (rising with age; $3,600 from 1 January 2027). First-time passes run up to 2 years, renewals up to 3, and employers are subject to a quota and levy. <a href=\"https://www.mom.gov.sg/passes-and-permits/s-pass/eligibility\" target=\"_blank\" rel=\"noopener noreferrer\">MOM: S Pass eligibility</a> / <a href=\"https://www.mom.gov.sg/passes-and-permits/s-pass/key-facts\" target=\"_blank\" rel=\"noopener noreferrer\">MOM: S Pass key facts</a></li>\n<li><strong>Work Permit:</strong> for semi-skilled workers from approved source countries or regions in the construction, manufacturing, marine shipyard, process or services sectors. Valid up to 2 years; family passes are not available. <a href=\"https://www.mom.gov.sg/passes-and-permits/work-permit-for-foreign-worker/key-facts\" target=\"_blank\" rel=\"noopener noreferrer\">MOM: Work Permit key facts</a></li>\n<li><strong>Bringing family on an EP:</strong> spouse and children need the EP holder to earn at least $6,000 a month; parents need at least $12,000. <a href=\"https://www.mom.gov.sg/passes-and-permits/employment-pass/passes-for-family\" target=\"_blank\" rel=\"noopener noreferrer\">MOM: EP passes for family</a></li>\n</ul>",
+ "discrepancies": [
+  {
+   "existing": "<strong>Employment Pass (EP)</strong> is for professionals and managers earning SGD5,000+ monthly with recognised qualifications.",
+   "official": "MOM: minimum qualifying salary is $5,600 a month (general sectors), $6,200 for financial services; $6,000 / $6,600 from 1 Jan 2027.",
+   "url": "https://www.mom.gov.sg/passes-and-permits/employment-pass/eligibility",
+   "fetched": "2026-10-01",
+   "suggestedReplacement": "<strong>Employment Pass (EP)</strong> is for professionals and managers earning at least SGD5,600 monthly (SGD6,000 from 1 January 2027); the minimum rises with age and is higher in financial services."
+  },
+  {
+   "existing": "<strong>S Pass</strong> targets skilled workers earning SGD3,150–4,999 with technical expertise or credentials or certifications.",
+   "official": "MOM: new S Pass candidates need at least $3,300 a month ($3,600 from 1 Jan 2027). Declaring qualifications is optional. Upper bound 4,999 is not an MOM figure (EP minimum is 5,600).",
+   "url": "https://www.mom.gov.sg/passes-and-permits/s-pass/eligibility",
+   "fetched": "2026-10-01",
+   "suggestedReplacement": "<strong>S Pass</strong> targets skilled workers earning at least SGD3,300 monthly (SGD3,600 from 1 January 2027) who may not meet EP criteria, subject to a quota."
+  },
+  {
+   "existing": "Processing takes 2–4 weeks.",
+   "official": "UNVERIFIED: the MOM pages fetched (EP/S Pass eligibility, key facts) do not state processing times. Not a proven error; consider softening to 'processing time varies'.",
+   "url": "https://www.mom.gov.sg/passes-and-permits/employment-pass/key-facts",
+   "fetched": "2026-10-01",
+   "suggestedReplacement": "Processing time varies by case; ask your employer or check MOM."
+  }
+ ],
+ "sourcesFetched": [
+  {
+   "url": "https://www.mom.gov.sg/passes-and-permits/employment-pass/eligibility",
+   "fetched": "2026-10-01",
+   "usedFor": "EP salary, COMPASS"
+  },
+  {
+   "url": "https://www.mom.gov.sg/passes-and-permits/employment-pass",
+   "fetched": "2026-10-01",
+   "usedFor": "EP overview ($5,600)"
+  },
+  {
+   "url": "https://www.mom.gov.sg/passes-and-permits/employment-pass/key-facts",
+   "fetched": "2026-10-01",
+   "usedFor": "EP validity"
+  },
+  {
+   "url": "https://www.mom.gov.sg/passes-and-permits/employment-pass/passes-for-family",
+   "fetched": "2026-10-01",
+   "usedFor": "EP family salary thresholds"
+  },
+  {
+   "url": "https://www.mom.gov.sg/passes-and-permits/s-pass/eligibility",
+   "fetched": "2026-10-01",
+   "usedFor": "S Pass salary"
+  },
+  {
+   "url": "https://www.mom.gov.sg/passes-and-permits/s-pass",
+   "fetched": "2026-10-01",
+   "usedFor": "S Pass overview, MyCareersFuture advert rule"
+  },
+  {
+   "url": "https://www.mom.gov.sg/passes-and-permits/s-pass/key-facts",
+   "fetched": "2026-10-01",
+   "usedFor": "S Pass validity, quota"
+  },
+  {
+   "url": "https://www.mom.gov.sg/passes-and-permits/work-permit-for-foreign-worker/key-facts",
+   "fetched": "2026-10-01",
+   "usedFor": "Work Permit validity, sectors, family"
+  },
+  {
+   "url": "https://www.mom.gov.sg/passes-and-permits/work-permit-for-foreign-worker",
+   "fetched": "2026-10-01",
+   "usedFor": "Work Permit overview"
+  }
+ ]
+}

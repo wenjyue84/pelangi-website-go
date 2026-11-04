@@ -205,7 +205,7 @@ func mcpHostelInfo() map[string]any {
 		"address": "Taman Pelangi, Johor Bahru, Johor, Malaysia",
 		"contact": map[string]any{
 			"phone":    "+60 12 7088789",
-			"whatsapp": "https://wa.me/60127088789",
+			"whatsapp": "https://wa.me/60103084289",
 			"email":    "pelangi.capsulehostel@gmail.com",
 			"website":  "https://pelangicapsulehostel.com",
 		},
@@ -349,7 +349,7 @@ func mcpCreateInquiry(args map[string]any) map[string]any {
 		return map[string]any{
 			"content": []any{map[string]string{
 				"type": "text",
-				"text": `{"success":false,"message":"Inquiry submission requires a database connection. Please contact us via WhatsApp: +60127088789"}`,
+				"text": `{"success":false,"message":"Inquiry submission requires a database connection. Please contact us via WhatsApp: +60103084289"}`,
 			}},
 			"isError": true,
 		}
@@ -363,7 +363,7 @@ func mcpCreateInquiry(args map[string]any) map[string]any {
 		str("checkIn"), str("checkOut"), guests, str("sessionId"), "chatbot")
 	if err != nil {
 		return map[string]any{
-			"content": []any{map[string]string{"type": "text", "text": `{"success":false,"message":"Could not save inquiry. Please WhatsApp +60127088789"}`}},
+			"content": []any{map[string]string{"type": "text", "text": `{"success":false,"message":"Could not save inquiry. Please WhatsApp +60103084289"}`}},
 			"isError": true,
 		}
 	}
@@ -382,6 +382,6 @@ func mcpBookingLink() map[string]any {
 		"payment_methods":  []string{"FPX online banking (Malaysian banks)", "Credit/debit card via Stripe"},
 		"currency":         "MYR",
 		"note":             "Book directly on our website for the best price. No extra fees.",
-		"whatsapp_booking": "Send 'BOOK' to +60127088789 for manual booking assistance.",
+		"whatsapp_booking": "Send 'BOOK' to +60103084289 for manual booking assistance.",
 	})
 }

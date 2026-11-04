@@ -176,6 +176,7 @@ type BasePage struct {
 	AltEN string
 	AltZH string
 	AltMS string
+	AltHI string // hi alternate for Hindi language sibling (blog posts)
 	AltIN string // en-IN alternate for India-targeted pages
 	// OGLocale is the og:locale value derived from Lang (en_MY / zh_CN / ms_MY).
 	OGLocale string
@@ -189,6 +190,15 @@ type BasePage struct {
 	// localStorage dismissal so a new campaign re-shows the banner.
 	BannerHTML string
 	BannerID   string
+	// Festival decoration (auto-switched by date, see data.ActiveFestival).
+	// Festival is "" when none is active. FestivalPreview (env
+	// FESTIVAL_PREVIEW=1) lets the client honour ?festival=<key>.
+	Festival         string
+	FestivalMotif    string
+	FestivalFx       string
+	FestivalGreeting string
+	FestivalPreview  bool
+	FestivalTable    []FestivalPreviewItem
 	// Analytics config injected to the client (consent-gated init in analytics.js).
 	MetaPixelID   string
 	TikTokPixelID string
@@ -222,7 +232,14 @@ func ogLocale(lang string) string {
 
 func (h *Handler) base(title, description, canonical, lang string, nav []NavLink) BasePage {
 	banner, bannerID := activeBanner()
+	fest := festivalFields(lang, time.Now())
 	return BasePage{
+		Festival:         fest.Key,
+		FestivalMotif:    fest.Motif,
+		FestivalFx:       fest.Fx,
+		FestivalGreeting: fest.Greeting,
+		FestivalPreview:  fest.Preview,
+		FestivalTable:    fest.Table,
 		Title:         title,
 		Description:   description,
 		Canonical:     canonical,

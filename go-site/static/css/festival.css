@@ -1,0 +1,124 @@
+/* Festival decoration. Inert unless <html data-festival="..."> is set by the
+   server (internal/data/festivals.go) or by the ?festival= preview switch.
+   Layout is never touched: everything is fixed-position overlay with
+   pointer-events:none, except the dismissible greeting chip. */
+
+.fd-root { display: none; }
+html[data-festival] .fd-root { display: block; }
+
+/* ---- per-festival tokens: 1-4 are decor fills, chip-* is the AA-checked pair ---- */
+html[data-festival="chinese-new-year"]       { --fd-1:#c8102e; --fd-2:#8b0000; --fd-3:#f5c518; --fd-4:#fff4d6; --fd-chip-bg:#8b0000; --fd-chip-fg:#fff4d6; }
+html[data-festival="hari-raya-aidilfitri"]   { --fd-1:#0b6e4f; --fd-2:#1b3a57; --fd-3:#d4af37; --fd-4:#f4ebd0; --fd-chip-bg:#0b5a41; --fd-chip-fg:#f4ebd0; }
+html[data-festival="hari-raya-haji"]         { --fd-1:#0b6e4f; --fd-2:#14213d; --fd-3:#c9a227; --fd-4:#f4ebd0; --fd-chip-bg:#14213d; --fd-chip-fg:#f4ebd0; }
+html[data-festival="deepavali"]              { --fd-1:#ff9933; --fd-2:#c2185b; --fd-3:#ffd700; --fd-4:#4a148c; --fd-chip-bg:#4a148c; --fd-chip-fg:#ffe9b0; }
+html[data-festival="thaipusam"]              { --fd-1:#e65100; --fd-2:#6a1b9a; --fd-3:#ffc107; --fd-4:#fff8e1; --fd-chip-bg:#6a1b9a; --fd-chip-fg:#fff8e1; }
+html[data-festival="wesak"]                  { --fd-1:#7e57c2; --fd-2:#6d4c41; --fd-3:#f9a825; --fd-4:#ffffff; --fd-chip-bg:#5d4037; --fd-chip-fg:#fff8e1; }
+html[data-festival="mid-autumn"]             { --fd-1:#b71c1c; --fd-2:#1a237e; --fd-3:#ffc107; --fd-4:#ffe0b2; --fd-chip-bg:#1a237e; --fd-chip-fg:#ffe0b2; }
+html[data-festival="awal-muharram"]          { --fd-1:#1b5e20; --fd-2:#263238; --fd-3:#b8860b; --fd-4:#f4ebd0; --fd-chip-bg:#1b5e20; --fd-chip-fg:#f4ebd0; }
+html[data-festival="christmas"]              { --fd-1:#b71c1c; --fd-2:#1b5e20; --fd-3:#ffd700; --fd-4:#ffffff; --fd-chip-bg:#b71c1c; --fd-chip-fg:#ffffff; }
+html[data-festival="new-year"]               { --fd-1:#c0c0c0; --fd-2:#0d1b2a; --fd-3:#ffd700; --fd-4:#e0e1dd; --fd-chip-bg:#0d1b2a; --fd-chip-fg:#ffd700; }
+html[data-festival="labour-day"]             { --fd-1:#d32f2f; --fd-2:#1565c0; --fd-3:#ffc107; --fd-4:#fafafa; --fd-chip-bg:#1565c0; --fd-chip-fg:#ffffff; }
+html[data-festival="malaysia-day"],
+html[data-festival="merdeka"]                { --fd-1:#cc0001; --fd-2:#010066; --fd-3:#ffcc00; --fd-4:#ffffff; --fd-chip-bg:#010066; --fd-chip-fg:#ffcc00; }
+html[data-festival="singapore-national-day"] { --fd-1:#ef3340; --fd-2:#c8102e; --fd-3:#1f2a44; --fd-4:#ffffff; --fd-chip-bg:#c8102e; --fd-chip-fg:#ffffff; }
+html[data-festival="mothers-day"]            { --fd-1:#f48fb1; --fd-2:#ce93d8; --fd-3:#a5d6a7; --fd-4:#fff1f2; --fd-chip-bg:#ad1457; --fd-chip-fg:#fff1f2; }
+html[data-festival="fathers-day"]            { --fd-1:#1e3a5f; --fd-2:#4fc3f7; --fd-3:#8d6e63; --fd-4:#f5f5f5; --fd-chip-bg:#1e3a5f; --fd-chip-fg:#f5f5f5; }
+
+/* ---- soft colour wash from the top corners (never over 10%) ---- */
+.fd-tint {
+  position: fixed; inset: 0; pointer-events: none; z-index: 1;
+  background:
+    radial-gradient(60rem 28rem at 0% 0%, color-mix(in srgb, var(--fd-1) 10%, transparent), transparent 70%),
+    radial-gradient(60rem 28rem at 100% 0%, color-mix(in srgb, var(--fd-3) 10%, transparent), transparent 70%);
+}
+
+/* ---- 4px ribbon across the very top ---- */
+.fd-stripe {
+  position: fixed; top: 0; left: 0; right: 0; height: 4px; z-index: 70; pointer-events: none;
+  background: repeating-linear-gradient(90deg, var(--fd-1) 0 28px, var(--fd-3) 28px 36px, var(--fd-2) 36px 64px, var(--fd-3) 64px 72px);
+  transform-origin: left center;
+  animation: fd-stripe-in .9s cubic-bezier(.2,.8,.2,1) both;
+}
+
+/* ---- pendants hang from the bottom edge of the fixed header (72px) ---- */
+.fd-garland { position: fixed; top: 72px; left: 0; right: 0; height: 0; z-index: 45; pointer-events: none; }
+.fd-pend { position: absolute; top: 0; width: 48px; display: block; transform: translateX(-50%); }
+.fd-pend-0 { left: 5%;  --len: 18px; --swing: 5s;   --d: 0s; }
+.fd-pend-1 { left: 19%; --len: 34px; --swing: 6.2s; --d: -1.6s; }
+.fd-pend-2 { left: 81%; --len: 26px; --swing: 5.6s; --d: -.8s; }
+.fd-pend-3 { left: 95%; --len: 40px; --swing: 6.6s; --d: -2.4s; }
+
+.fd-pend { animation: fd-drop 1.1s cubic-bezier(.22,1.2,.36,1) both; }
+.fd-pend-0 { animation-delay: .25s; } .fd-pend-1 { animation-delay: .4s; }
+.fd-pend-2 { animation-delay: .55s; } .fd-pend-3 { animation-delay: .7s; }
+
+.fd-sw {
+  display: block; width: 48px; padding-top: var(--len); position: relative;
+  transform-origin: 50% 0; animation: fd-swing var(--swing) ease-in-out var(--d) infinite alternate;
+}
+.fd-sw::before { /* the string */
+  content: ""; position: absolute; top: 0; left: 50%; width: 1.5px; height: var(--len);
+  background: var(--fd-3); opacity: .9; transform: translateX(-50%);
+}
+.fd-sv { display: block; width: 48px; height: 64px; filter: drop-shadow(0 4px 6px rgba(0,0,0,.22)); }
+
+/* ---- greeting chip ---- */
+.fd-chip {
+  position: fixed; top: 82px; left: 50%; z-index: 55; max-width: min(92vw, 34rem);
+  display: flex; align-items: center; gap: .25rem; padding: .35rem .35rem .35rem 1rem;
+  border-radius: 999px; background: var(--fd-chip-bg); color: var(--fd-chip-fg);
+  font-size: .875rem; line-height: 1.35; font-weight: 500;
+  box-shadow: 0 6px 20px rgba(0,0,0,.2), inset 0 0 0 1px color-mix(in srgb, var(--fd-3) 55%, transparent);
+  transform: translateX(-50%);
+  animation: fd-chip-in .7s cubic-bezier(.2,.8,.2,1) 1s both;
+}
+.fd-chip[hidden] { display: none; }
+.fd-chip-text { padding-block: .2rem; }
+.fd-chip-x {
+  display: inline-grid; place-items: center; width: 2.25rem; height: 2.25rem; flex: none;
+  border: 0; border-radius: 999px; background: transparent; color: inherit; cursor: pointer; opacity: .8;
+}
+.fd-chip-x:hover { opacity: 1; background: color-mix(in srgb, var(--fd-chip-fg) 16%, transparent); }
+.fd-chip-x:focus-visible { outline: 2px solid var(--fd-chip-fg); outline-offset: 1px; opacity: 1; }
+
+html[data-festival] ::selection { background: var(--fd-chip-bg); color: var(--fd-chip-fg); }
+
+/* ---- one-shot fireworks, only for festivals flagged data-fd-fx="burst" ---- */
+.fd-bursts { display: none; }
+.fd-root[data-fd-fx="burst"] .fd-bursts { display: block; position: fixed; inset: 0; z-index: 44; pointer-events: none; overflow: hidden; }
+.fd-bursts i {
+  position: absolute; width: 11rem; height: 11rem; margin: -5.5rem 0 0 -5.5rem; border-radius: 50%; opacity: 0;
+  background:
+    repeating-conic-gradient(from 0deg, var(--fd-3) 0 3deg, transparent 3deg 22.5deg);
+  -webkit-mask: radial-gradient(circle, transparent 28%, #000 30%, #000 62%, transparent 66%);
+          mask: radial-gradient(circle, transparent 28%, #000 30%, #000 62%, transparent 66%);
+  animation: fd-burst 1.9s cubic-bezier(.12,.7,.3,1) both;
+}
+.fd-bursts i:nth-child(1) { left: 14%; top: 30%; animation-delay: .5s; }
+.fd-bursts i:nth-child(2) { left: 86%; top: 26%; animation-delay: .95s; background: repeating-conic-gradient(from 8deg, var(--fd-1) 0 3deg, transparent 3deg 22.5deg); }
+.fd-bursts i:nth-child(3) { left: 50%; top: 22%; animation-delay: 1.4s; width: 8rem; height: 8rem; margin: -4rem 0 0 -4rem; }
+
+@keyframes fd-drop { from { transform: translate(-50%, -140%); opacity: 0; } 60% { opacity: 1; } to { transform: translate(-50%, 0); opacity: 1; } }
+@keyframes fd-swing { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
+@keyframes fd-stripe-in { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes fd-chip-in { from { opacity: 0; transform: translate(-50%, -10px); } to { opacity: 1; transform: translate(-50%, 0); } }
+@keyframes fd-burst { 0% { opacity: 0; transform: scale(.15); } 12% { opacity: .95; } 100% { opacity: 0; transform: scale(1.15); } }
+
+/* ---- small screens: fewer, smaller pendants; chip stays out of the way ---- */
+@media (max-width: 767px) {
+  .fd-pend-1, .fd-pend-2 { display: none; }
+  .fd-pend-0 { left: 9%; }
+  .fd-pend-3 { left: 91%; }
+  .fd-sv, .fd-sw, .fd-pend { width: 36px; }
+  .fd-sv { height: 48px; }
+  .fd-chip { top: 78px; font-size: .8125rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fd-stripe, .fd-pend, .fd-sw, .fd-chip, .fd-bursts i { animation: none !important; }
+  .fd-pend { transform: translateX(-50%); }
+  .fd-chip { transform: translateX(-50%); }
+  .fd-root[data-fd-fx="burst"] .fd-bursts { display: none; }
+}
+
+@media print { .fd-root { display: none !important; } }

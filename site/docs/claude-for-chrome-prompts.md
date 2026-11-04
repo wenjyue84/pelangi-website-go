@@ -16,7 +16,7 @@ Account: wenjyue@gmail.com — pick the "Pelangi Capsule Hostel" profile (26A Ja
 Steps:
 1. Find "Ask for reviews" (or "Share review form") → copy the short link (g.page/r/...).
 2. Go to "Add update" / "Add post".
-3. Post text: "Pods from RM30/night on weekdays (RM35 weekends) — Japanese-style capsules in Taman Pelangi, 15 min from the Singapore Causeway. Free WiFi, 24/7 self check-in, hot showers. Tuesday night market right at our doorstep. Book direct: pelangicapsulehostel.com/book"
+3. Post text: "Pods RM35/night (RM30 first night when you book direct) — Japanese-style capsules in Taman Pelangi, 15 min from the Singapore Causeway. Free WiFi, 24/7 self check-in, hot showers. Tuesday night market right at our doorstep. Book direct: pelangicapsulehostel.com/book"
 4. Attach a photo from the profile's existing photo library (pick a capsule-pod interior shot).
 5. Publish.
 
@@ -37,7 +37,7 @@ Listing: Pelangi Capsule Hostel, Johor Bahru — location ID 27125478
 Steps:
 1. If the claim is still pending legal certification / identity verification, surface exactly what it's asking for and pause for Jay.
 2. Once in the management console: complete the amenities checklist (free WiFi, air-con, 24h check-in, lockers, shared kitchen, hot showers, laundry, luggage storage).
-3. Set price range: RM30–35 per night.
+3. Set price: RM35 per night (flat). Do not enter RM30 — that is a direct-web first-night rate only.
 4. Upload 10–20 photos (Jay will provide a folder — ask him for the path, or reuse photos from the website gallery at pelangicapsulehostel.com/gallery by asking Jay to save them first).
 5. Answer any unanswered "Travellers ask" questions using facts from pelangicapsulehostel.com/llms.txt.
 

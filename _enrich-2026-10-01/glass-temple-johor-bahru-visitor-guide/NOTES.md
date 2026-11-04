@@ -1,0 +1,6 @@
+# glass-temple-johor-bahru-visitor-guide
+Images (2, Wikimedia Commons, CC BY 4.0, author Chainwit., licence read from extmetadata API 2026-10-01): img 47 (interior mosaic), img 76 (shrine). Placed after the "Most Hindu temples..." and "dedicated to Goddess Kaliamman" paragraphs. Check that figcaption wording is acceptable (links to the Commons file page).
+Rejected: "Glass Temple - Flickr.jpg" (CC BY 2.0, exterior gopuram; not verified it is the same temple, skipped); img 22/32 (nandi / deity close-ups, less relevant).
+Official section: insert before the line `<h2>Where to Stay in JB</h2>` (CTA). 4 bullets, all from tourism.johor.gov.my (fetched 2026-10-01). Only one official source fetched (the temple has no official site found).
+BIG discrepancies: address (article says Jalan Tan Hiok Nee; official says Jalan Tun Abdul Razak 1/1, Wadihana), hours (8-12/4-8 vs 10am-10pm), fee (RM3-5 vs RM10), "1990s" glasswork start (official: established 1922). A web search snippet (not fetched) claimed tourist hours 1-5pm and 22 Lorong 1 Jalan Tebrau; NOT used because unverified. Sibling posts (tan-hiok-nee, pasar-karat) likely repeat the wrong location.
+Dress code/photography: no official source found; left as-is.

@@ -173,7 +173,7 @@ func (h *Handler) manifest(w http.ResponseWriter, r *http.Request) {
 // ─── /.well-known/security.txt — ported from app/.well-known/security.txt/route.ts ───
 
 const securityTxt = `Contact: mailto:pelangicapsule@gmail.com
-Contact: https://wa.me/60127088789
+Contact: https://wa.me/60103084289
 Expires: 2027-03-13T00:00:00.000Z
 Preferred-Languages: en, ms
 Canonical: https://pelangicapsulehostel.com/.well-known/security.txt

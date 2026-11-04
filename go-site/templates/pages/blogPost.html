@@ -1,6 +1,7 @@
 {{define "head"}}
 <script type="application/ld+json">{{ safeJS .StructuredJSON }}</script>
 <script type="application/ld+json">{{ safeJS .BreadcrumbJSON }}</script>
+{{if .FAQJSON}}<script type="application/ld+json">{{ safeJS .FAQJSON }}</script>{{end}}
 {{end}}
 
 {{define "content"}}

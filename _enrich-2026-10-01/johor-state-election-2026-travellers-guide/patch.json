@@ -1,0 +1,40 @@
+{
+  "slug": "johor-state-election-2026-travellers-guide",
+  "images": [
+    {"file": "johor-state-election-2026-travellers-guide-1.webp", "alt": "Bangunan Sultan Ibrahim, the Johor state government building in Johor Bahru, seen from the front", "width": 845, "height": 1200, "author": "Stefan Fussan", "licence": "CC BY-SA 3.0", "sourceUrl": "https://commons.wikimedia.org/wiki/File:Johor_Bahru_-_Bangunan_Sultan_Ibrahim_0002.jpg", "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/0/02/Johor_Bahru_-_Bangunan_Sultan_Ibrahim_0002.jpg"},
+    {"file": "johor-state-election-2026-travellers-guide-2.webp", "alt": "The Second Link bridge between Johor and Singapore, a long concrete viaduct over the Tebrau and Tuas waters in sepia tones", "width": 1200, "height": 453, "author": "mohamed.shaaz", "licence": "CC BY-SA 2.0", "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Second_Link_connecting_Singapore_and_Johor,_Malaysia.jpg", "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9c/The_Second_Link_connecting_Singapore_and_Johor%2C_Malaysia.jpg"}
+  ],
+  "inserts": [
+    {"afterExact": "<p>Johor holds its <strong>16th State Assembly election</strong> with polling on <strong>Saturday 11 July 2026</strong>. Polling day is a <strong>public holiday in Johor state</strong> (not in the rest of Malaysia or Singapore). Early voting for police and military personnel happens on 7 July, and campaigning runs until 11:59 PM on 10 July.</p>",
+     "html": "<figure class=\"blog-figure\"><img src=\"/images/blog/johor-state-election-2026-travellers-guide-1.webp\" alt=\"Bangunan Sultan Ibrahim, the Johor state government building in Johor Bahru, seen from the front\" loading=\"lazy\" width=\"845\" height=\"1200\"><figcaption>Photo: Stefan Fussan, <a href=\"https://commons.wikimedia.org/wiki/File:Johor_Bahru_-_Bangunan_Sultan_Ibrahim_0002.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">Wikimedia Commons</a>, CC BY-SA 3.0.</figcaption></figure>"},
+    {"afterExact": "<p>During the last state election in 2022, Causeway queues on election eve stretched for hours. Expect the same pattern at both the Causeway (Woodlands) and the Second Link (Tuas).</p>",
+     "html": "<figure class=\"blog-figure\"><img src=\"/images/blog/johor-state-election-2026-travellers-guide-2.webp\" alt=\"The Second Link bridge between Johor and Singapore, a long concrete viaduct over the Tebrau and Tuas waters in sepia tones\" loading=\"lazy\" width=\"1200\" height=\"453\"><figcaption>Photo: mohamed.shaaz, <a href=\"https://commons.wikimedia.org/wiki/File:The_Second_Link_connecting_Singapore_and_Johor,_Malaysia.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">Wikimedia Commons</a>, CC BY-SA 2.0.</figcaption></figure>"}
+  ],
+  "officialSection": "<h2>Official Information</h2>\n<ul>\n  <li><strong>Dates:</strong> The Election Commission (SPR) set nomination for 27 June 2026, early voting for 7 July 2026 and polling day for Saturday 11 July 2026, with a 14-day campaign ending 11:59 PM on 10 July. <a href=\"https://berita.rtm.gov.my/nasional/senarai-berita-nasional/senarai-artikel/spr-tetapkan-prn-johor-pada-11-julai-negeri-sembilan-1-ogos/\" target=\"_blank\" rel=\"noopener noreferrer\">RTM (SPR announcement)</a></li>\n  <li><strong>Seats:</strong> The 16th Johor State Election filled 56 state assembly seats. <a href=\"https://berita.rtm.gov.my/nasional/senarai-berita-nasional/senarai-artikel/spr-tetapkan-prn-johor-pada-11-julai-negeri-sembilan-1-ogos/\" target=\"_blank\" rel=\"noopener noreferrer\">RTM (SPR announcement)</a></li>\n  <li><strong>Public holidays:</strong> The Johor state government's 2026 public holiday list shows only one July holiday, Hari Hol Almarhum Sultan Iskandar on Tuesday 21 July 2026; polling day (11 July) is not listed. <a href=\"https://www.johor.gov.my/rakyat/cuti-umum-2\" target=\"_blank\" rel=\"noopener noreferrer\">Kerajaan Johor, Cuti Umum 2026</a></li>\n  <li><strong>Extra holiday after the vote:</strong> Johor declared Monday 13 July 2026 a Hari Cuti Peristiwa (special event holiday) to thank voters for taking part in the election. <a href=\"https://berita.rtm.gov.my/nasional/senarai-berita-nasional/senarai-artikel/johor-isytihar-esok-sebagai-hari-cuti-peristiwa/\" target=\"_blank\" rel=\"noopener noreferrer\">RTM</a></li>\n  <li><strong>Official updates:</strong> The Election Commission's Johor office publishes notices for the state election. <a href=\"https://spr.gov.my/johor/\" target=\"_blank\" rel=\"noopener noreferrer\">SPR Johor</a></li>\n</ul>\n",
+  "officialSectionPlacement": "Insert immediately before the line `<h2>Your Stay at Pelangi Capsule Hostel</h2>` (the post has no Sources section; the final CTA/stay section follows). Alternative: append right before the closing backtick.",
+  "discrepancies": [
+    {"existing": "Polling day is a <strong>public holiday in Johor state</strong> (not in the rest of Malaysia or Singapore).",
+     "official": "The Johor state government 2026 public holiday list shows only one July entry: Hari Hol Almarhum Sultan Iskandar, 21/07/2026 (Tuesday). 11 July and 13 July are not on the list. Separately, on 12 July 2026 Johor declared 13 July (Monday) a Hari Cuti Peristiwa after the election. Note 11 July 2026 is a Saturday. No fetched official page confirms a public holiday on polling day.",
+     "url": "https://www.johor.gov.my/rakyat/cuti-umum-2",
+     "fetched": "2026-10-01",
+     "suggestedReplacement": "Polling day, Saturday 11 July 2026, falls on a weekend; Johor later declared Monday 13 July a special event holiday (Hari Cuti Peristiwa)."},
+    {"existing": "The whole post is written in the future tense (\"Johor holds its 16th State Assembly election ... Expect the same pattern\").",
+     "official": "The election took place on 11 July 2026 as scheduled (SPR dates confirmed); RTM reports Barisan Nasional won 48 of 56 seats. Dates in the post (nomination 27 June, early voting 7 July, polling 11 July, campaign to 11:59 PM 10 July) are correct.",
+     "url": "https://berita.rtm.gov.my/nasional/senarai-berita-nasional/senarai-artikel/johor-isytihar-esok-sebagai-hari-cuti-peristiwa/",
+     "fetched": "2026-10-01",
+     "suggestedReplacement": "Consider an update note at the top: 'Update: this election took place on 11 July 2026. This guide is kept as a reference for how election weekends affect travel to JB.' (editorial decision for Jay)"},
+    {"existing": "<li><strong>Closed:</strong> banks, government offices, and some offices/factories.</li>",
+     "official": "Not verifiable: no fetched official page lists what closes on polling day, and polling day is not on the Johor public holiday list.",
+     "url": "https://www.johor.gov.my/rakyat/cuti-umum-2",
+     "fetched": "2026-10-01",
+     "suggestedReplacement": "Consider rewording as 'Saturday is a normal weekend day for most banks and government offices (many are closed on Saturdays anyway)' or remove the claim."}
+  ],
+  "sourcesFetched": [
+    {"url": "https://berita.rtm.gov.my/nasional/senarai-berita-nasional/senarai-artikel/spr-tetapkan-prn-johor-pada-11-julai-negeri-sembilan-1-ogos/", "fetched": "2026-10-01", "usedFor": "SPR-announced dates (nomination 27 Jun, early voting 7 Jul, polling 11 Jul, 14-day campaign, 56 seats)"},
+    {"url": "https://bernama.com/en/news.php?id=2573555", "fetched": "2026-10-01", "usedFor": "Cross-check of dates; 2,727,926 registered voters. Does not mention a polling-day holiday."},
+    {"url": "https://www.johor.gov.my/rakyat/cuti-umum-2", "fetched": "2026-10-01", "usedFor": "Johor 2026 public holiday list (July: only 21 Jul)"},
+    {"url": "https://berita.rtm.gov.my/nasional/senarai-berita-nasional/senarai-artikel/johor-isytihar-esok-sebagai-hari-cuti-peristiwa/", "fetched": "2026-10-01", "usedFor": "13 July Hari Cuti Peristiwa; BN 48/56 result"},
+    {"url": "https://www.spr.gov.my", "fetched": "2026-10-01", "usedFor": "Checked, no Johor dates on homepage"},
+    {"url": "https://spr.gov.my/johor/", "fetched": "2026-10-01", "usedFor": "Checked, no dates listed on the fetched content; linked only as the official notices page"}
+  ]
+}

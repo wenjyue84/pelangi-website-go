@@ -1,0 +1,71 @@
+/* Motion layer. transform/opacity/scale/translate only; no layout properties.
+   Content is visible by default: hidden states exist only after motion.js adds
+   .m-pre to below-the-fold nodes. Reduced motion falls back to a plain fade. */
+:root { --m-out: cubic-bezier(.23, 1, .32, 1); }
+
+/* ---- hero: staggered text rise. The LCP image keeps opacity 1 throughout. ---- */
+@keyframes m-rise { from { opacity: 0; transform: translate3d(0, 18px, 0); } to { opacity: 1; transform: none; } }
+@keyframes m-settle { from { scale: 1.16; } to { scale: 1.08; } }
+@keyframes m-drift { from { translate: 0 0; } to { translate: 0 4%; } }
+
+main section.min-h-screen > .relative.z-10 > * { animation: m-rise .72s var(--m-out) both; }
+main section.min-h-screen > .relative.z-10 > :nth-child(1) { animation-delay: .06s; }
+main section.min-h-screen > .relative.z-10 > :nth-child(2) { animation-delay: .14s; }
+main section.min-h-screen > .relative.z-10 > :nth-child(3) { animation-delay: .22s; }
+main section.min-h-screen > .relative.z-10 > :nth-child(4) { animation-delay: .30s; }
+main section.min-h-screen > .relative.z-10 > :nth-child(5) { animation-delay: .38s; }
+main section.min-h-screen > .relative.z-10 > :nth-child(n+6) { animation-delay: .46s; }
+
+/* hero photo: slow settle, then parallax drift on scroll (compositor-driven, no JS) */
+main section.min-h-screen > .absolute.inset-0 { overflow: clip; }
+main section.min-h-screen > .absolute.inset-0 > img { scale: 1.08; animation: m-settle 1.8s var(--m-out) both; }
+@supports (animation-timeline: scroll()) {
+  main section.min-h-screen > .absolute.inset-0 > img {
+    animation: m-settle 1.8s var(--m-out) both, m-drift linear both;
+    animation-timeline: auto, scroll(root block);
+    animation-range: normal, 0 100vh;
+  }
+}
+
+/* ---- scroll reveal (classes are added by motion.js only) ---- */
+.m-pre { opacity: 0; transform: translate3d(0, 22px, 0); }
+.m-pre.m-in {
+  opacity: 1; transform: none;
+  transition: opacity .6s var(--m-out) calc(var(--mi, 0) * 70ms), transform .6s var(--m-out) calc(var(--mi, 0) * 70ms);
+}
+
+/* ---- press / hover micro-interactions ---- */
+:is(a, button)[class*="rounded-full"]:not(.fd-chip-x), :is(a, button)[class*="rounded-xl"][class*="bg-"] {
+  transition-property: color, background-color, border-color, box-shadow, opacity, translate, scale;
+  transition-duration: .16s; transition-timing-function: ease-out;
+}
+:is(a, button)[class*="rounded-full"]:not(.fd-chip-x):active, :is(a, button)[class*="rounded-xl"][class*="bg-"]:active { scale: .97; }
+main a.group:active > div { scale: .985; transition: scale .12s ease-out; }
+@media (hover: hover) and (pointer: fine) {
+  :is(a, button)[class*="rounded-full"][class*="bg-amber"]:hover, :is(a, button)[class*="rounded-xl"][class*="bg-amber"]:hover { translate: 0 -1px; }
+  main a.group:hover > div { box-shadow: 0 18px 36px -14px rgba(28, 25, 23, .28); }
+}
+
+/* ---- festival ambience: floating motifs (created by motion.js, capped) ---- */
+.m-fx { position: fixed; inset: 0; z-index: 44; pointer-events: none; overflow: hidden; }
+.m-fx i {
+  position: absolute; left: var(--x); top: 0; width: var(--s); height: calc(var(--s) * 1.33); opacity: 0;
+  animation: m-float var(--t) linear var(--d) infinite;
+}
+.m-fx svg { display: block; width: 100%; height: 100%; opacity: .8; animation: m-sway calc(var(--t) / 4) ease-in-out var(--d) infinite alternate; }
+.m-fx[data-dir="down"] i { animation-name: m-fall; }
+.m-fx.m-paused i, .m-fx.m-paused svg { animation-play-state: paused; }
+@keyframes m-float { 0% { transform: translate3d(0, 105vh, 0); opacity: 0; } 10% { opacity: 1; } 85% { opacity: 1; } 100% { transform: translate3d(0, -15vh, 0); opacity: 0; } }
+@keyframes m-fall  { 0% { transform: translate3d(0, -12vh, 0) rotate(0); opacity: 0; } 10% { opacity: 1; } 85% { opacity: 1; } 100% { transform: translate3d(0, 105vh, 0) rotate(200deg); opacity: 0; } }
+@keyframes m-sway { from { transform: translate3d(-14px, 0, 0); } to { transform: translate3d(14px, 0, 0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  main section.min-h-screen > .relative.z-10 > * { animation: m-fade .4s ease-out both; animation-delay: 0s; }
+  main section.min-h-screen > .absolute.inset-0 > img { animation: none; scale: 1; }
+  .m-pre { transform: none; }
+  .m-pre.m-in { transition: opacity .3s ease-out; }
+  .m-fx { display: none; }
+  :is(a, button):active, main a.group:active > div { scale: 1 !important; }
+}
+@keyframes m-fade { from { opacity: 0; } to { opacity: 1; } }
+@media print { .m-fx { display: none; } .m-pre { opacity: 1; transform: none; } }

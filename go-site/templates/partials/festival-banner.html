@@ -1,0 +1,37 @@
+{{define "festivalDecor"}}{{if or .Festival .FestivalPreview}}
+<!-- Festival decoration: chosen per request by date (internal/data/festivals.go), styled by /static/css/festival.css. Purely decorative except the greeting chip. -->
+<div class="fd-root" data-fd-fx="{{.FestivalFx}}">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="fd-m-lantern" viewBox="0 0 48 64"><rect x="18" y="2" width="12" height="5" rx="1.5" fill="var(--fd-3)"/><ellipse cx="24" cy="30" rx="20" ry="22" fill="var(--fd-1)"/><path d="M24 8v44M14 10c-6 12-6 32 0 40M34 10c6 12 6 32 0 40" stroke="var(--fd-3)" stroke-width="1.4" fill="none" opacity=".75"/><rect x="17" y="50" width="14" height="5" rx="1.5" fill="var(--fd-3)"/><path d="M24 55v8M20 55l-1 7M28 55l1 7" stroke="var(--fd-3)" stroke-width="1.6" stroke-linecap="round"/></symbol>
+      <symbol id="fd-m-diya" viewBox="0 0 48 64"><path d="M24 4c9 11 11 18 0 29-11-11-9-18 0-29z" fill="var(--fd-3)"/><path d="M24 15c4 5 5 8 0 13-5-5-4-8 0-13z" fill="var(--fd-1)"/><path d="M4 36h40c0 14-9 24-20 24S4 50 4 36z" fill="var(--fd-2)"/><path d="M10 42h28" stroke="var(--fd-3)" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="50" r="2.4" fill="var(--fd-3)"/></symbol>
+      <symbol id="fd-m-crescent" viewBox="0 0 48 64"><path d="M30 6a22 22 0 1 0 0 46 17 17 0 1 1 0-46z" fill="var(--fd-3)"/><polygon points="37,16 39,22 45,22 40,26 42,32 37,28 32,32 34,26 29,22 35,22" fill="var(--fd-1)"/></symbol>
+      <symbol id="fd-m-sparkle" viewBox="0 0 48 64"><path d="M24 4c2 16 6 20 20 24-14 4-18 8-20 24-2-16-6-20-20-24 14-4 18-8 20-24z" fill="var(--fd-3)"/><path d="M38 44c1 5 2 6 6 7-4 1-5 2-6 7-1-5-2-6-6-7 4-1 5-2 6-7z" fill="var(--fd-1)"/></symbol>
+      <symbol id="fd-m-heart" viewBox="0 0 48 64"><path d="M24 54C2 38 5 12 18 12c4 0 6 2 6 6 0-4 2-6 6-6 13 0 16 26-6 42z" fill="var(--fd-1)"/><path d="M14 20c-3 2-4 6-3 10" stroke="var(--fd-4)" stroke-width="2.4" stroke-linecap="round" fill="none" opacity=".7"/></symbol>
+      <symbol id="fd-m-tie" viewBox="0 0 48 64"><path d="M18 4h12l3 11-9 5-9-5z" fill="var(--fd-3)"/><path d="M21 18h6l7 30-10 10-10-10z" fill="var(--fd-1)"/><path d="M17 34l14-4M16 42l16-5" stroke="var(--fd-3)" stroke-width="2" opacity=".85"/></symbol>
+      <symbol id="fd-m-gear" viewBox="0 0 48 64"><circle cx="24" cy="30" r="19" fill="none" stroke="var(--fd-3)" stroke-width="7" stroke-dasharray="7.5 7.5"/><circle cx="24" cy="30" r="15" fill="var(--fd-1)"/><circle cx="24" cy="30" r="6" fill="var(--fd-4)"/></symbol>
+      <symbol id="fd-m-lotus" viewBox="0 0 48 64"><g fill="var(--fd-3)"><ellipse cx="24" cy="30" rx="7" ry="20" transform="rotate(-48 24 50)"/><ellipse cx="24" cy="30" rx="7" ry="20" transform="rotate(48 24 50)"/></g><g fill="var(--fd-1)"><ellipse cx="24" cy="28" rx="8" ry="22" transform="rotate(-24 24 50)"/><ellipse cx="24" cy="28" rx="8" ry="22" transform="rotate(24 24 50)"/></g><ellipse cx="24" cy="28" rx="8" ry="23" fill="var(--fd-2)"/><path d="M8 52h32" stroke="var(--fd-3)" stroke-width="3" stroke-linecap="round"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="fd-tint" aria-hidden="true"></div>
+  <div class="fd-stripe" aria-hidden="true"></div>
+
+  <div class="fd-garland" aria-hidden="true">
+    <span class="fd-pend fd-pend-0"><span class="fd-sw"><svg class="fd-sv" viewBox="0 0 48 64" width="48" height="64" focusable="false"><use href="#fd-m-{{if .FestivalMotif}}{{.FestivalMotif}}{{else}}lantern{{end}}"/></svg></span></span>
+    <span class="fd-pend fd-pend-1"><span class="fd-sw"><svg class="fd-sv" viewBox="0 0 48 64" width="48" height="64" focusable="false"><use href="#fd-m-{{if .FestivalMotif}}{{.FestivalMotif}}{{else}}lantern{{end}}"/></svg></span></span>
+    <span class="fd-pend fd-pend-2"><span class="fd-sw"><svg class="fd-sv" viewBox="0 0 48 64" width="48" height="64" focusable="false"><use href="#fd-m-{{if .FestivalMotif}}{{.FestivalMotif}}{{else}}lantern{{end}}"/></svg></span></span>
+    <span class="fd-pend fd-pend-3"><span class="fd-sw"><svg class="fd-sv" viewBox="0 0 48 64" width="48" height="64" focusable="false"><use href="#fd-m-{{if .FestivalMotif}}{{.FestivalMotif}}{{else}}lantern{{end}}"/></svg></span></span>
+  </div>
+
+  <div class="fd-bursts" aria-hidden="true"><i></i><i></i><i></i></div>
+
+  <div class="fd-chip" role="status" data-fd-chip{{if not .FestivalGreeting}} hidden{{end}}>
+    <span class="fd-chip-text" data-fd-text>{{.FestivalGreeting}}</span>
+    <button type="button" class="fd-chip-x" data-fd-close aria-label="Dismiss festival greeting"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+</div>
+<script>{{safeJS `(function(){var h=document.documentElement,c=document.querySelector('[data-fd-chip]');if(!c)return;var k='pelangi-fd-'+(h.getAttribute('data-festival')||'');try{if(sessionStorage.getItem(k))c.setAttribute('hidden','')}catch(e){}var x=c.querySelector('[data-fd-close]');if(x)x.addEventListener('click',function(){c.setAttribute('hidden','');try{sessionStorage.setItem(k,'1')}catch(e){}})})();`}}</script>
+{{if .FestivalPreview}}<script>window.__FD_TABLE={{.FestivalTable}};</script>
+<script>{{safeJS `(function(){var p=new URLSearchParams(location.search).get('festival');if(!p||!window.__FD_TABLE)return;var t=window.__FD_TABLE,f=null;for(var i=0;i<t.length;i++){if(t[i].Key===p){f=t[i];break}}if(!f)return;var h=document.documentElement;h.setAttribute('data-festival',f.Key);var r=document.querySelector('.fd-root');r.setAttribute('data-fd-fx',f.Fx||'');var u=r.querySelectorAll('.fd-sv use');for(var j=0;j<u.length;j++)u[j].setAttribute('href','#fd-m-'+f.Motif);var c=document.querySelector('[data-fd-chip]');c.removeAttribute('hidden');c.querySelector('[data-fd-text]').textContent=f.Greeting;var b=r.querySelector('.fd-bursts');if(b){var n=b.cloneNode(true);b.parentNode.replaceChild(n,b)}})();`}}</script>{{end}}
+{{end}}{{end}}

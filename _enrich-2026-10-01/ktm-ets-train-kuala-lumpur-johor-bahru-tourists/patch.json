@@ -1,0 +1,124 @@
+{
+ "slug": "ktm-ets-train-kuala-lumpur-johor-bahru-tourists",
+ "images": [
+  {
+   "file": "ktm-ets-train-kuala-lumpur-johor-bahru-tourists-1.webp",
+   "alt": "A KTM ETS train at Gemas station, Negeri Sembilan, with the Gemas sign visible on the platform canopy",
+   "width": 1200,
+   "height": 900,
+   "author": "Slleong",
+   "licence": "CC0 1.0",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gemas_New_Station_3.jpg",
+   "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Gemas_New_Station_3.jpg"
+  },
+  {
+   "file": "ktm-ets-train-kuala-lumpur-johor-bahru-tourists-2.webp",
+   "alt": "Passengers with luggage on the ETS platform at KL Sentral, Kuala Lumpur, with an ETS train arriving",
+   "width": 1200,
+   "height": 900,
+   "author": "Hiroki.loh.st",
+   "licence": "CC BY-SA 4.0",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File:KLS_ETS_Platform.jpg",
+   "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4c/KLS_ETS_Platform.jpg"
+  },
+  {
+   "file": "ktm-ets-train-kuala-lumpur-johor-bahru-tourists-3.webp",
+   "alt": "Inside a KTM ETS Class 93 carriage: rows of padded seats with headrests and fold-down tables",
+   "width": 1200,
+   "height": 800,
+   "author": "Cmglee",
+   "licence": "CC BY-SA 4.0",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cmglee_KTM_ETS_Class_93_interior.jpg",
+   "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/d/da/Cmglee_KTM_ETS_Class_93_interior.jpg"
+  }
+ ],
+ "inserts": [
+  {
+   "afterExact": "<p>One practical note: some services run directly through, while on certain schedules passengers may need to <strong>change trains at Gemas</strong>. If your ticket shows a change at Gemas, the connecting service departs from the same station, usually with a short wait. Check your itinerary when booking.</p>",
+   "html": "<figure class=\"blog-figure\"><img src=\"/images/blog/ktm-ets-train-kuala-lumpur-johor-bahru-tourists-1.webp\" alt=\"A KTM ETS train at Gemas station, Negeri Sembilan, with the Gemas sign visible on the platform canopy\" loading=\"lazy\" width=\"1200\" height=\"900\"><figcaption>Photo: Slleong, Wikimedia Commons, <a href=\"https://creativecommons.org/publicdomain/zero/1.0/\" target=\"_blank\" rel=\"noopener noreferrer\">CC0</a>.</figcaption></figure>"
+  },
+  {
+   "afterExact": "<p>KL Sentral is connected to the KTM Komuter, MRT, LRT, monorail, KLIA Ekspres, and city buses. Arrive at least <strong>30 minutes before departure</strong>. Stock up at station shops for the journey.</p>",
+   "html": "<figure class=\"blog-figure\"><img src=\"/images/blog/ktm-ets-train-kuala-lumpur-johor-bahru-tourists-2.webp\" alt=\"Passengers with luggage on the ETS platform at KL Sentral, Kuala Lumpur, with an ETS train arriving\" loading=\"lazy\" width=\"1200\" height=\"900\"><figcaption>Photo: Hiroki.loh.st, Wikimedia Commons, <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-SA 4.0</a>.</figcaption></figure>"
+  },
+  {
+   "afterExact": "<p>ETS trains are clean, air-conditioned, and comfortable. Each seat has adequate legroom and a fold-down tray table. Food trolley service available. Power sockets at most seats on ETS trains. Free WiFi on many services, though connectivity varies.</p>",
+   "html": "<figure class=\"blog-figure\"><img src=\"/images/blog/ktm-ets-train-kuala-lumpur-johor-bahru-tourists-3.webp\" alt=\"Inside a KTM ETS Class 93 carriage: rows of padded seats with headrests and fold-down tables\" loading=\"lazy\" width=\"1200\" height=\"800\"><figcaption>Photo: Cmglee, Wikimedia Commons, <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-SA 4.0</a>.</figcaption></figure>"
+  }
+ ],
+ "officialSection": "<h2>Official Information</h2>\n<ul>\n  <li>KTMB lists three ETS service types: ETS Platinum (stops at only the main stations), ETS Gold (stops at more stations) and ETS Silver (almost all-stop between KL Sentral and Ipoh, lowest fares). Source: <a href=\"https://www.ktmb.com.my/ets.html\" target=\"_blank\" rel=\"noopener noreferrer\">KTMB — ETS</a></li>\n  <li>KTMB's ETS timetable effective 18 April 2026 (updated 3 April 2026) lists JB Sentral as a stop, with northbound departures at 08:40, 12:45 and 16:20 and southbound arrivals at 12:15, 19:35 and 21:55. Timetables change, so check the current version. Source: <a href=\"https://www.ktmb.com.my/assets/pdf/2026/Jadual%20Tren%20ETS%2018%20Apr%202026.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">KTMB ETS timetable, 18 April 2026 (PDF)</a></li>\n  <li>KTMB's onboard facilities page lists a headrest seat with a food tray, a 3-pin power outlet below the seat, an F&amp;B bistro in Coach C, luggage racks and washrooms. Source: <a href=\"https://www.ktmb.com.my/Onboard.html\" target=\"_blank\" rel=\"noopener noreferrer\">KTMB — ETS onboard facilities</a></li>\n  <li>Tickets are sold through KTMB's online ticketing system (KITS), linked from the KTMB timetable page. The fare for your date is shown there at booking. Source: <a href=\"https://www.ktmb.com.my/traintime.html\" target=\"_blank\" rel=\"noopener noreferrer\">KTMB — train timetable and ticketing</a></li>\n</ul>",
+ "discrepancies": [
+  {
+   "existing": "Fares run approximately <strong>RM90 to RM115</strong> for KL Sentral to JB Sentral as of 2026",
+   "official": "UNVERIFIED: no KTMB page fetched this session states a KL Sentral-JB Sentral fare (fares are dynamic, shown only in the KTMB booking system). A third-party site (train36.com, not official, not used) shows Platinum RM96-109 and Gold from RM73.",
+   "url": "https://www.ktmb.com.my/ets.html",
+   "fetched": "2026-10-01",
+   "suggestedReplacement": "Fares vary by class, date and demand (ETS Platinum has typically been around RM90-RM115); the exact fare for your date is shown on the KTMB booking site."
+  },
+  {
+   "existing": "Free WiFi on many services, though connectivity varies.",
+   "official": "KTMB's onboard facilities page does not list WiFi among ETS facilities.",
+   "url": "https://www.ktmb.com.my/Onboard.html",
+   "fetched": "2026-10-01",
+   "suggestedReplacement": "Do not rely on onboard WiFi (KTMB's facilities page does not list it); download tickets and maps beforehand."
+  },
+  {
+   "existing": "Food trolley service available.",
+   "official": "KTMB's onboard facilities page lists an 'F&B Bistro at coach C'; trolley service is not mentioned.",
+   "url": "https://www.ktmb.com.my/Onboard.html",
+   "fetched": "2026-10-01",
+   "suggestedReplacement": "Food and drinks are sold at the F&B bistro in Coach C."
+  },
+  {
+   "existing": "<li><strong>ETS Platinum:</strong> ... <strong>ETS Gold:</strong> ... <strong>ETS Business:</strong> ...",
+   "official": "KTMB's ETS page lists Platinum, Gold and Silver. The 18 Apr 2026 timetable legend also shows 'ETS Business Class' (on EP trains) and 'ETS Express'. Silver (KL Sentral-Ipoh only, does not serve JB) is not mentioned in the article.",
+   "url": "https://www.ktmb.com.my/ets.html",
+   "fetched": "2026-10-01",
+   "suggestedReplacement": "Optional: no change needed for a KL-JB audience."
+  },
+  {
+   "existing": "on certain schedules passengers may need to <strong>change trains at Gemas</strong>",
+   "official": "UNVERIFIED: the official 18 Apr 2026 timetable shows through services calling at Gemas and JB Sentral (southbound JB Sentral arrivals 12:15, 19:35, 21:55); it does not say whether any service needs a change at Gemas.",
+   "url": "https://www.ktmb.com.my/assets/pdf/2026/Jadual%20Tren%20ETS%2018%20Apr%202026.pdf",
+   "fetched": "2026-10-01",
+   "suggestedReplacement": "No change needed; keep the 'check your itinerary' wording."
+  }
+ ],
+ "sourcesFetched": [
+  {
+   "url": "https://www.ktmb.com.my/ets.html",
+   "fetched": "2026-10-01",
+   "usedFor": "ETS types; Gemas-Padang Besar; no KL-JB fares/times on page"
+  },
+  {
+   "url": "https://www.ktmb.com.my/assets/pdf/2026/Jadual%20Tren%20ETS%2018%20Apr%202026.pdf",
+   "fetched": "2026-10-01",
+   "usedFor": "JB Sentral times (PDF text extracted locally with pypdf)"
+  },
+  {
+   "url": "https://www.ktmb.com.my/Onboard.html",
+   "fetched": "2026-10-01",
+   "usedFor": "onboard facilities"
+  },
+  {
+   "url": "https://www.ktmb.com.my/traintime.html",
+   "fetched": "2026-10-01",
+   "usedFor": "ticketing link (KITS); no fares"
+  },
+  {
+   "url": "https://www.ktmb.com.my/ets-from-kl-to-singapore.html",
+   "fetched": "2026-10-01",
+   "usedFor": "FAILED: page returned an error"
+  },
+  {
+   "url": "https://www.ktmb.com.my/ets-routes-map.html",
+   "fetched": "2026-10-01",
+   "usedFor": "FAILED: empty content"
+  },
+  {
+   "url": "https://commons.wikimedia.org/w/api.php",
+   "fetched": "2026-10-01",
+   "usedFor": "image licence/author metadata"
+  }
+ ]
+}

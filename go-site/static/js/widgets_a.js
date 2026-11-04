@@ -9,7 +9,7 @@
     {
       question: "What time is check-in and check-out?",
       answer:
-        "Check-in is from 2:00 PM onwards, and check-out is before 12:00 PM (noon). We offer self-check-in so you can arrive anytime after 2 PM. Early check-in or late check-out may be available on request — message us on WhatsApp at +60 12-708 8789.",
+        "Check-in is from 2:00 PM onwards, and check-out is before 12:00 PM (noon). We offer self-check-in so you can arrive anytime after 2 PM. Early check-in or late check-out may be available on request — message us on WhatsApp at +60 10-308 4289.",
       keywords: ["check-in","check-out","checkout","checkin","time","arrive","arrival","early","late"],
       chipLabel: "Check-in times",
     },
@@ -92,7 +92,7 @@
     {
       question: "How do I book a capsule?",
       answer:
-        "Booking is easy and direct bookings get the best rate (no middleman fees). Just pick your dates and pay online at pelangicapsulehostel.com/book — pods are RM35/night, a flat rate every day. Check-in is from 2:00 PM (self check-in, so you can arrive anytime after 2 PM) and check-out is before 12:00 PM. If you'd rather book by message or need help with dates, WhatsApp us at +60 12-708 8789.",
+        "Booking is easy and direct bookings get the best rate (no middleman fees). Just pick your dates and pay online at pelangicapsulehostel.com/book — pods are RM35/night, a flat rate every day. Check-in is from 2:00 PM (self check-in, so you can arrive anytime after 2 PM) and check-out is before 12:00 PM. If you'd rather book by message or need help with dates, WhatsApp us at +60 10-308 4289.",
       keywords: ["book","booking","reserve","reservation","reservations","availability","available","stay","nights","night","how do i book","how to book","make a booking","room for"],
       chipLabel: "Book now",
     },
@@ -102,14 +102,14 @@
   var QUICK_FAQ_INDICES = [12, 0, 1, 2, 3];
 
   var GREETING =
-    "Hi! Welcome to Pelangi Capsule Hostel 🌈\n\nFor real help, our team is on WhatsApp at +60 12-708 8789 (fastest, always human).\n\nPrefer to try our AI Assistant (Beta)? Just tap a topic below or type your question — it can help with rooms, pricing, check-in, booking and more. It’s still in beta, so double-check anything important with our team.";
+    "Hi! Welcome to Pelangi Capsule Hostel 🌈\n\nFor real help, our Rainbot AI assistant is on WhatsApp 24/7 at +60 10-308 4289 (fastest reply; it hands over to our human staff when needed).\n\nPrefer to try our AI Assistant (Beta)? Just tap a topic below or type your question — it can help with rooms, pricing, check-in, booking and more. It’s still in beta, so double-check anything important with our team.";
 
   // Appended when the AI is unavailable and we fall back to a canned FAQ answer.
   var AI_FALLBACK_NOTE =
-    "\n\n(Our AI Assistant is in beta and couldn’t answer live just now — for anything important please WhatsApp our team at +60 12-708 8789.)";
+    "\n\n(Our AI Assistant is in beta and couldn’t answer live just now — for anything important please WhatsApp 24/7 (AI assistant) at +60 10-308 4289.)";
 
   var FALLBACK =
-    "I’m not sure about that one. Our AI Assistant is in beta — for specific questions please contact our team on WhatsApp at +60 12-708 8789 or visit our contact page.";
+    "I’m not sure about that one. Our AI Assistant is in beta — for specific questions please contact us on WhatsApp 24/7 (AI assistant) at +60 10-308 4289 or visit our contact page.";
 
   // ─── sessionStorage keys ──────────────────────────────────────────
   var CHAT_SESSION_KEY     = "chatwidget_history";

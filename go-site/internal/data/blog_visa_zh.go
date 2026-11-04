@@ -17,8 +17,8 @@ func init() {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "8 min read",
 			Tags:          []string{"中国护照", "签证", "新加坡", "新山", "visa-run", "马来西亚免签", "过关攻略"},
-			FeaturedImage: "/images/blog/singapore-expat-visa-run-johor-bahru-guide-2026.webp",
-			ImageAlt:      "新柔长堤边境口岸，许多持中国护照的旅客经此往返新加坡与新山",
+			FeaturedImage: "/images/blog/singapore-woodlands-checkpoint-visit-pass-stamp-passport.webp",
+			ImageAlt:      "Singapore immigration Visit Pass entry stamp at Woodlands Checkpoint in a passport page",
 			InLanguage:    "zh-CN",
 			Content: `
 <h2>什么是"Visa Run"（续签跑）？为什么会有人这样做？</h2>
@@ -95,8 +95,8 @@ func init() {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "7 min read",
 			Tags:          []string{"新加坡", "新山", "过关", "长堤", "Tuas", "Woodlands", "交通攻略"},
-			FeaturedImage: "/images/blog/causeway-guide.webp",
-			ImageAlt:      "新柔长堤Woodlands关口，往返新加坡与新山的巴士通道",
+			FeaturedImage: "/images/blog/causeway-woodlands-jb-skyline-dusk-schristia.webp",
+			ImageAlt:      "黄昏时分的新柔长堤,车流从新加坡一侧驶向新山市区天际线",
 			InLanguage:    "zh-CN",
 			Content: `
 <h2>两个口岸：新柔长堤（Woodlands）vs 第二通道（Tuas）</h2>
@@ -174,9 +174,10 @@ func init() {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "7 min read",
 			Tags:          []string{"马来西亚免签", "中国护照", "MDAC", "90天规则", "再入境", "签证政策"},
-			FeaturedImage: "/images/blog/xinshan-juzhu-tuijian-jiaonang-lvguan.webp",
-			ImageAlt:      "马来西亚入境检查柜台，持中国护照旅客办理免签入境",
+			FeaturedImage: "/images/blog/malaysia-90-day-visa-free-passport-entry-stamp-cover.webp",
+			ImageAlt:      "Malaysia Immigration entry stamp on a passport page, Bukit Berapit checkpoint (close-up)",
 			InLanguage:    "zh-CN",
+			AlternateEN:   "singapore-expat-visa-run-johor-bahru-guide-2026",
 			Content: `
 <h2>官方规则原文：不是"想待多久待多久"</h2>
 <p>中国驻马来西亚大使馆发布的《关于中马互免签证协定的常见问题与解答》明确写道：</p>
@@ -219,7 +220,7 @@ func init() {
 </ol>
 
 <h2>顺路安排：在新山过境点附近住一晚</h2>
-<p>如果你的再入境安排需要经过新山（比如从新加坡方向出入境），<a href="/">Pelangi Capsule Hostel</a> 位于Taman Pelangi，距离新山CIQ车程约10-15分钟，胶囊房干净独立，官网直接预订首晚价格更优惠。出入境交通细节可参考《<a href="/blog/xinjiapo-qu-xinshan-laihui-guocheng-2026">从新加坡去新山走一趟再回来：实际流程与费用</a>》。</p>
+<p>如果你的再入境安排需要经过新山（比如从新加坡方向出入境），<a href="/">Pelangi Capsule Hostel</a> 位于Taman Pelangi，距离新山CIQ车程约10-15分钟，胶囊房干净独立，官网直接预订首晚价格更优惠。出入境交通细节可参考《<a href="/blog/xinjiapo-qu-xinshan-laihui-guocheng-2026">从新加坡去新山走一趟再回来：实际流程与费用</a>》。如果你想看英文版更完整的新加坡出发签证跑攻略（费用、排队时段、住宿建议），可参考《<a href="/blog/singapore-expat-visa-run-johor-bahru-guide-2026">Singapore Expat Visa Run to Johor Bahru: 2026 Guide</a>》。</p>
 
 <h2>免责声明</h2>
 <p>本文仅供参考，不构成法律或移民建议。免签政策、停留天数及入境要求可能随时调整，请以马来西亚移民局（Imigresen Malaysia）及中国驻马来西亚大使馆最新官方公告为准，具体个案建议直接咨询官方机构或专业移民顾问。</p>

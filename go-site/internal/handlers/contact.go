@@ -101,7 +101,7 @@ func (h *Handler) contactSubmit(w http.ResponseWriter, r *http.Request) {
 	resendKey := os.Getenv("RESEND_API_KEY")
 	admins := adminRecipients()
 	if resendKey == "" || len(admins) == 0 {
-		writeJSON(w, http.StatusOK, contactResult{Success: false, Message: "Our contact form is temporarily unavailable. Please WhatsApp us at +60 12-708 8789."})
+		writeJSON(w, http.StatusOK, contactResult{Success: false, Message: "Our contact form is temporarily unavailable. Please WhatsApp us at +60 10-308 4289."})
 		return
 	}
 
@@ -111,7 +111,7 @@ func (h *Handler) contactSubmit(w http.ResponseWriter, r *http.Request) {
 		From: "Pelangi Capsule Hostel <noreply@pelangicapsulehostel.com>", To: admins,
 		Subject: "New inquiry from " + name, HTML: adminHTML, ReplyTo: email,
 	}); err != nil {
-		writeJSON(w, http.StatusOK, contactResult{Success: false, Message: "Something went wrong. Please try again or WhatsApp us at +60 12-708 8789."})
+		writeJSON(w, http.StatusOK, contactResult{Success: false, Message: "Something went wrong. Please try again or WhatsApp us at +60 10-308 4289."})
 		return
 	}
 
@@ -268,7 +268,7 @@ func buildGuestAutoReplyHTML(name string) string {
     <p>In the meantime, you can:</p>
     <ul style="padding-left:20px;line-height:1.8;">
       <li><a href="https://www.booking.com/hotel/my/pelangi-hostel-capsule.html" style="color:#b45309;">Book directly on Booking.com</a></li>
-      <li>WhatsApp us at <a href="https://wa.me/60127088789" style="color:#b45309;">+60 12-708 8789</a></li>
+      <li>WhatsApp us at <a href="https://wa.me/60103084289" style="color:#b45309;">+60 10-308 4289</a></li>
     </ul>
     <p style="margin-bottom:0;">We look forward to hosting you!</p>
   </div>

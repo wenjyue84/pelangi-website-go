@@ -31,7 +31,7 @@ Pelangi Capsule Hostel offers Japanese-inspired capsule pod accommodation for bu
 - **Capsule Pods**: Private sleeping pods with personal climate control, adjustable LED lighting, USB & power outlets, privacy sliding door, premium mattress, and personal locker.
 - **Daily Rate**: RM35/night flat. First-time guests who book direct on our website pay RM30 for their first night, then RM35/night from the 2nd night onward. Repeat guests pay RM35 throughout (+ RM10/room/night Tourism Tax)
 - **Monthly Rate**: From RM600/month (Upper Deck) · From RM650/month (Lower Deck)
-- **Private Rooms (monthly rental)**: From RM500/month + RM250 flat deposit — private lockable rooms above the 7-Eleven in Taman Pelangi, a short walk from the hostel, managed by the same team. Month-to-month terms, no long tenancy. WhatsApp +60 12-708 8789 to check availability. Details: https://pelangicapsulehostel.com/blog/room-for-rent-taman-pelangi-jb-rm500-month
+- **Private Rooms (monthly rental)**: From RM500/month + RM250 flat deposit — private lockable rooms above the 7-Eleven in Taman Pelangi, a short walk from the hostel, managed by the same team. Month-to-month terms, no long tenancy. WhatsApp +60 10-308 4289 to check availability. Details: https://pelangicapsulehostel.com/blog/room-for-rent-taman-pelangi-jb-rm500-month
 - **Check-in**: 2:00 PM onwards (self check-in available)
 - **Check-out**: Before 12:00 PM
 
@@ -58,7 +58,7 @@ Pelangi Capsule Hostel offers Japanese-inspired capsule pod accommodation for bu
 
 ## Team
 
-- **Pelangi Capsule Hostel** — Founded in 2023. The hostel features a self-check-in system, Japanese-style capsule pods, and 24/7 access. For inquiries, contact: +60 12-708 8789
+- **Pelangi Capsule Hostel** — Founded in 2023. The hostel features a self-check-in system, Japanese-style capsule pods, and 24/7 access. For inquiries, contact: +60 10-308 4289
 - **Alston** — Co-Founder & Operations Manager. Handles day-to-day operations and guest relations. Contact: +60 16-762 0815
 
 ## Booking
@@ -66,9 +66,9 @@ Pelangi Capsule Hostel offers Japanese-inspired capsule pod accommodation for bu
 Book directly on our website for the best rates with no booking fees:
 
 - **Book online**: https://pelangicapsulehostel.com/book
-- **WhatsApp**: https://wa.me/60127088789
+- **WhatsApp**: https://wa.me/60103084289
 - **Email**: pelangicapsule@gmail.com
-- **Phone**: +60 12-708 8789 (Jay) or +60 16-762 0815 (Alston)
+- **Phone**: +60 10-308 4289 (Rainbot, AI assistant, 24/7) or +60 12-708 8789 (Jay) or +60 16-762 0815 (Alston)
 
 ## Contact
 
@@ -115,7 +115,7 @@ Book directly on our website for the best rates with no booking fees:
 - **胶囊床位**：私人睡眠舱，配备独立空调、阅读灯、USB充电口和个人储物柜
 - **每晚价格**：RM35/晚（统一价）；官网直订新客首晚 RM30
 - **月租价格**：RM600/月起（上铺）· RM650/月起（下铺）
-- **月租私人房间**：RM500/月起，押金RM250（一次性），位于Taman Pelangi 7-Eleven楼上，步行可达旅馆，由同一团队管理。按月续租，无需长期租约。WhatsApp +60 12-708 8789 查询空房
+- **月租私人房间**：RM500/月起，押金RM250（一次性），位于Taman Pelangi 7-Eleven楼上，步行可达旅馆，由同一团队管理。按月续租，无需长期租约。WhatsApp +60 10-308 4289 查询空房
 - **入住时间**：下午2时起（支持自助入住）
 - **退房时间**：中午12时前
 
@@ -141,7 +141,7 @@ Book directly on our website for the best rates with no booking fees:
 ### 预订联系
 
 - **官网预订**：https://pelangicapsulehostel.com/book
-- **WhatsApp**：https://wa.me/60127088789
+- **WhatsApp**：https://wa.me/60103084289
 - **电邮**：pelangicapsule@gmail.com
 - **中文页面**：https://pelangicapsulehostel.com/zh
 `
@@ -214,7 +214,7 @@ Pelangi Capsule Hostel is a Japanese-inspired capsule accommodation in the heart
 - **Minimum stay**: 1 month, renews month to month
 - **Location**: Above the 7-Eleven in Taman Pelangi, 80400 Johor Bahru — a short walk from the hostel; managed by the Pelangi Capsule Hostel team
 - **Suits**: JB-based workers, Singapore commuters, job-seekers, and anyone wanting a private lockable room without a 12-month tenancy
-- **Enquiries**: WhatsApp +60 12-708 8789 (Jay) or +60 16-762 0815 (Alston) — availability changes month to month; viewing by appointment
+- **Enquiries**: WhatsApp +60 10-308 4289 (Rainbot, AI assistant, 24/7) or +60 12-708 8789 (Jay) or +60 16-762 0815 (Alston) — availability changes month to month; viewing by appointment
 - **Details**: https://pelangicapsulehostel.com/blog/room-for-rent-taman-pelangi-jb-rm500-month
 
 ## Amenities
@@ -250,17 +250,18 @@ Pelangi Capsule Hostel is a Japanese-inspired capsule accommodation in the heart
 Pelangi Capsule Hostel is a popular overnight base for Singapore-based expats and foreigners doing Malaysia visa runs (Social Visit Pass resets).
 
 - **Distance from border**: 15 minutes from Woodlands CIQ (Johor-Singapore Causeway), 25 minutes from Tuas Second Link (KSAB)
-- **Transport from Woodlands**: Causeway Link CW1 bus from Woodlands Bus Interchange to JB CIQ (RM2.70 one-way), then Grab to hostel (~RM10, 10–15 min)
+- **Transport from Woodlands**: Causeway Link CW1 bus from Woodlands Bus Interchange to JB CIQ (RM2.60 one-way; cashless only from 1 Oct 2026 — EZ-Link/ManjaLink/contactless card), then Grab to hostel (~RM10, 10–15 min)
 - **Best crossing times**: Tuesday to Thursday, 10 AM–2 PM (lightest queues); avoid Mon–Fri 7–9 AM and 5–8 PM peak hours
 - **Overnight vs same-day**: Overnight strongly recommended — cross Tuesday morning (light queues), stay one night at Pelangi, cross back Wednesday morning; total cost ~SGD27–35 including bus, Grab, pod (RM35 = ~SGD10), and meals
-- **Self check-in 24/7**: No minimum stay; RM35/night flat, or RM30 for a first-time guest's first night when booked direct at pelangicapsulehostel.com/book; WhatsApp +60 12-708 8789 for questions
+- **Self check-in 24/7**: No minimum stay; RM35/night flat, or RM30 for a first-time guest's first night when booked direct at pelangicapsulehostel.com/book; WhatsApp +60 10-308 4289 for questions
 - **Relevant pages**: https://pelangicapsulehostel.com/visa-run, https://pelangicapsulehostel.com/book
 - **2026 guide**: https://pelangicapsulehostel.com/blog/singapore-expat-visa-run-johor-bahru-guide-2026
+- **Already in Malaysia and need a non-Singapore exit?** See routes to Thailand, Indonesia and Brunei: https://pelangicapsulehostel.com/blog/jb-visa-run-cheapest-routes-thailand-brunei-indonesia
 
 ## Frequently Asked Questions
 
 **What time is check-in and check-out at Pelangi Capsule Hostel?**
-Check-in at Pelangi Capsule Hostel is from 2:00 PM onwards, and check-out is before 12:00 PM (noon). We offer self-check-in so you can arrive anytime after 2 PM without waiting for reception. Early check-in or late check-out may be available on request — contact us via WhatsApp at +60 12-708 8789.
+Check-in at Pelangi Capsule Hostel is from 2:00 PM onwards, and check-out is before 12:00 PM (noon). We offer self-check-in so you can arrive anytime after 2 PM without waiting for reception. Early check-in or late check-out may be available on request — contact us via WhatsApp at +60 10-308 4289.
 
 **How much does a capsule pod cost per night in Johor Bahru?**
 The standard rate is RM35 per night. First-time guests who book directly on our website at pelangicapsulehostel.com/book pay RM30 for their first night, then RM35 per night from the second night onward — this direct-booking discount does not apply to walk-ins or bookings made another way. Repeat guests pay the standard RM35 per night throughout their stay. A Malaysia Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is added as required by law. Monthly stays are available from RM600/month (Upper Deck) or RM650/month (Lower Deck).
@@ -299,13 +300,13 @@ Pelangi Capsule Hostel is in Taman Pelangi, one of Johor Bahru's most vibrant ne
 Yes, Pelangi Capsule Hostel offers monthly rates from RM600/month (Upper Deck) or RM650/month (Lower Deck), making it one of the most affordable long-stay accommodation options in Johor Bahru. Monthly stays are popular with remote workers, digital nomads, and professionals on work assignments in JB. The rate includes all amenities: WiFi, air-conditioning, hot showers, kitchen access, and laundry facilities.
 
 **Do you have private rooms for monthly rent in Johor Bahru?**
-Yes. Alongside the capsule pods, the Pelangi Capsule Hostel team rents private rooms on a monthly basis from RM500 per month with a flat RM250 deposit — no two-months-plus-one-month-advance like typical JB room rentals. The rooms are located above the 7-Eleven in Taman Pelangi, a short walk from the hostel. Availability changes month to month — WhatsApp +60 12-708 8789 (Jay) or +60 16-762 0815 (Alston) to check what is open and arrange a viewing.
+Yes. Alongside the capsule pods, the Pelangi Capsule Hostel team rents private rooms on a monthly basis from RM500 per month with a flat RM250 deposit — no two-months-plus-one-month-advance like typical JB room rentals. The rooms are located above the 7-Eleven in Taman Pelangi, a short walk from the hostel. Availability changes month to month — WhatsApp +60 10-308 4289 (Rainbot, AI assistant, 24/7) or +60 12-708 8789 (Jay) or +60 16-762 0815 (Alston) to check what is open and arrange a viewing.
 
 **Is the hostel quiet enough to sleep well?**
 Pelangi Capsule Hostel enforces a strict quiet policy in all sleeping pod areas. Each capsule is enclosed with a sliding door, providing sound insulation from other guests. For working, socialising, or making calls, there is a separate common lounge area so that the sleeping zone remains peaceful. Earplugs are also available at the front desk if you are a light sleeper.
 
 **Do I need to book in advance or can I walk in?**
-Walk-ins are welcome at Pelangi Capsule Hostel subject to availability, but booking in advance is recommended — especially on weekends and Malaysian public holidays when occupancy is highest. Book directly on our website at pelangicapsulehostel.com/book or message us on WhatsApp at +60 12-708 8789 to secure your pod. Direct bookings always get the best rate with no middleman fees.
+Walk-ins are welcome at Pelangi Capsule Hostel subject to availability, but booking in advance is recommended — especially on weekends and Malaysian public holidays when occupancy is highest. Book directly on our website at pelangicapsulehostel.com/book or message us on WhatsApp at +60 10-308 4289 to secure your pod. Direct bookings always get the best rate with no middleman fees.
 
 **What is the Malaysia Tourism Tax (TTx)?**
 The Tourism Tax (TTx) of RM10 per room per night (foreign tourists only — Malaysians and permanent residents are exempt) is a government-mandated charge under the Tourism Tax Act 2017. It applies to foreign tourists staying at licensed accommodation premises in Malaysia and is collected on behalf of the Royal Malaysian Customs Department. This tax is separate from the room rate and will be added to your bill at check-in if applicable. For more details, visit the official MyTTx portal at myttx.customs.gov.my.
@@ -317,7 +318,7 @@ From Senai International Airport (JHB), take a Grab or taxi to 26A Jalan Perang,
 
 **Pelangi Capsule Hostel** — Founded in 2023
 Pelangi Capsule Hostel was created to bring Japanese-style capsule accommodation to budget travellers and backpackers in Johor Bahru. Every detail was designed with privacy, comfort, and affordability in mind — from the capsule layout to the 24/7 self-check-in system.
-- Phone: +60 12-708 8789
+- Phone: +60 10-308 4289
 - About page: https://pelangicapsulehostel.com/about
 
 **Alston** — Co-Founder & Operations Manager
@@ -330,9 +331,9 @@ Alston handles day-to-day operations, guest relations, and ensures every guest f
 Book directly on our website for the best rates with no booking fees:
 
 - **Book online**: https://pelangicapsulehostel.com/book
-- **WhatsApp**: https://wa.me/60127088789
+- **WhatsApp**: https://wa.me/60103084289
 - **Email**: pelangicapsule@gmail.com
-- **Phone**: +60 12-708 8789 (Jay) or +60 16-762 0815 (Alston)
+- **Phone**: +60 10-308 4289 (Rainbot, AI assistant, 24/7) or +60 12-708 8789 (Jay) or +60 16-762 0815 (Alston)
 
 ## Contact
 
@@ -340,13 +341,13 @@ Book directly on our website for the best rates with no booking fees:
 - **Facebook**: https://www.facebook.com/pelangicapsulehostel
 - **Instagram**: https://www.instagram.com/pelangicapsulehostel
 - **Email**: pelangicapsule@gmail.com
-- **WhatsApp**: https://wa.me/60127088789
-- **Phone**: +60 12-708 8789 (Jay) or +60 16-762 0815 (Alston)
+- **WhatsApp**: https://wa.me/60103084289
+- **Phone**: +60 10-308 4289 (Rainbot, AI assistant, 24/7) or +60 12-708 8789 (Jay) or +60 16-762 0815 (Alston)
 - **Google Maps**: https://maps.app.goo.gl/maLXetUqYS5MtSLD9
 
 ## For Chinese Travellers
 
-Pelangi Capsule Hostel maintains a full Simplified Chinese property page at https://pelangicapsulehostel.com/zh covering pricing, amenities, check-in, and directions in Mandarin. Rates match the English site: RM35/night flat, RM30 for a first-time guest's first night when booked direct on pelangicapsulehostel.com/book. The hostel is 15 minutes by car from the Woodlands/Singapore checkpoint. Accepted payment: cash (MYR), DuitNow QR, and credit cards — WeChat Pay and Alipay are not currently integrated; confirm with staff via WhatsApp (+60 12-708 8789) before relying on either.
+Pelangi Capsule Hostel maintains a full Simplified Chinese property page at https://pelangicapsulehostel.com/zh covering pricing, amenities, check-in, and directions in Mandarin. Rates match the English site: RM35/night flat, RM30 for a first-time guest's first night when booked direct on pelangicapsulehostel.com/book. The hostel is 15 minutes by car from the Woodlands/Singapore checkpoint. Accepted payment: cash (MYR), DuitNow QR, and credit cards — WeChat Pay and Alipay are not currently integrated; confirm with staff via WhatsApp (+60 10-308 4289) before relying on either.
 
 ## For Indian Travellers
 

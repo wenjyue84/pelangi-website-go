@@ -26,6 +26,7 @@ type BlogPost struct {
 	AlternateEN        string // slug of EN language sibling (empty if no multilingual set)
 	AlternateZH        string // slug of ZH language sibling
 	AlternateMS        string // slug of MS/BM language sibling
+	AlternateHI        string // slug of HI/Hindi language sibling
 }
 
 // _blogTagRE strips HTML tags when computing reading time.
@@ -102,6 +103,7 @@ var BlogPosts = func() []BlogPost {
 			Date:     "2026-08-07",
 			Category: "Travel Tips",
 			Author:        "Pelangi Capsule Hostel",
+			AlternateHI:   "singapore-malaysia-visa-run-indian-passport-hindi",
 			Tags:     []string{"visa-run", "singapore", "expat", "johor-bahru", "causeway", "border-crossing", "malaysia-visa"},
 			FeaturedImage: "/images/blog/singapore-expat-visa-run-johor-bahru-guide-2026.webp",
 			ImageAlt:      "The Johor-Singapore Causeway border crossing used by expats doing a visa run from Singapore to Johor Bahru",
@@ -117,7 +119,7 @@ var BlogPosts = func() []BlogPost {
 <figure class="blog-figure"><img src="/images/destinations/singapore.webp" alt="Singapore skyline at dusk" loading="lazy" width="1200" height="800"><figcaption>Singapore skyline at dusk.</figcaption></figure>
 
 <h2>Why Johor Bahru Is the Logical Choice from Singapore</h2>
-<p>JB is the closest international border to Singapore — 15 minutes from Woodlands CIQ by car, 30–45 minutes by bus including the crossing. It is also the cheapest option: a Causeway Link CW1 bus costs RM2.70 one-way (~SGD0.80). Compare that to flying to Thailand or Indonesia for the same administrative outcome.</p>
+<p>JB is the closest international border to Singapore — 15 minutes from Woodlands CIQ by car, 30–45 minutes by bus including the crossing. It is also the cheapest option: a Causeway Link CW1 bus is only a few ringgit one-way (check the current fare on Causeway Link's website). Compare that to flying to Thailand or Indonesia for the same administrative outcome.</p>
 
 <p>Beyond logistics, JB has real overnight value: excellent food, affordable accommodation, and shopping — all at roughly one-third of Singapore prices. A JB visa run is not just an administrative chore. Done right, it is a cheap overnight break that resets your pass and your budget simultaneously.</p>
 
@@ -130,7 +132,7 @@ var BlogPosts = func() []BlogPost {
 
 <h2>Transport Options</h2>
 <ul>
-  <li><strong>Causeway Link CW1 bus</strong> — RM2.70 one-way from Woodlands Bus Interchange (Singapore) to JB CIQ. The most convenient option for foot passengers. Purchase the return ticket at JB CIQ for the same price. The bus runs frequently throughout the day and is clearly marked at Woodlands Bus Interchange.</li>
+  <li><strong>Causeway Link CW1 bus</strong> — from Woodlands Bus Interchange (Singapore) to JB CIQ; the fare is roughly RM2.60 on the Malaysian side (fares from Woodlands are charged in SGD, so check the current amount on <a href="https://www.causewaylink.com.my" target="_blank" rel="noopener">causewaylink.com.my</a>). The most convenient option for foot passengers. The bus runs frequently throughout the day and is clearly marked at Woodlands Bus Interchange. <strong>Cashless from 1 October 2026:</strong> Causeway Link says cash is no longer accepted on its cross-border buses from that date — pay with a ManjaLink card, a contactless debit/credit card, or the LUGO app.</li>
   <li><strong>Grab from JB CIQ to Pelangi</strong> — once you clear Malaysian immigration at JB CIQ, Grab to Taman Pelangi costs approximately RM8–12 and takes 10–15 minutes. Book through the Grab app using your Singapore number — it works in Malaysia.</li>
   <li><strong>Personal vehicle</strong> — toll is RM2.90 on the Malaysia side (cash or Touch 'n Go). Singapore ERP applies on the Singapore end. Fast when traffic is light; the worst option when it is not.</li>
 </ul>
@@ -169,9 +171,9 @@ var BlogPosts = func() []BlogPost {
 <table>
 <thead><tr><th>Item</th><th>RM</th><th>~SGD</th></tr></thead>
 <tbody>
-  <tr><td>CW1 bus Woodlands → JB CIQ (one-way)</td><td>RM2.70</td><td>~SGD0.80</td></tr>
+  <tr><td>CW1 bus Woodlands → JB CIQ (one-way)</td><td colspan="2">A few ringgit/dollars — check the current fare on Causeway Link</td></tr>
   <tr><td>Grab JB CIQ → Pelangi Hostel</td><td>~RM10</td><td>~SGD3</td></tr>
-  <tr><td>Pelangi capsule pod (1 night, first-timer rate)</td><td>RM30</td><td>~SGD9</td></tr>
+  <tr><td>Pelangi capsule pod (1 night, first-timer rate, direct booking only)</td><td>RM30</td><td>~SGD9</td></tr>
   <tr><td>Dinner + breakfast at local mamak</td><td>RM30–50</td><td>~SGD9–15</td></tr>
   <tr><td>Grab Pelangi → JB CIQ + CW1 bus (return)</td><td>~RM13</td><td>~SGD4</td></tr>
   <tr><td><strong>Total overnight visa run</strong></td><td><strong>~RM86–106</strong></td><td><strong>~SGD25–32</strong></td></tr>
@@ -182,6 +184,15 @@ var BlogPosts = func() []BlogPost {
 
 
 <figure class="blog-figure"><img src="/images/entrance.webp" alt="Entrance to Pelangi Capsule Hostel, Jalan Perang, Taman Pelangi" loading="lazy" width="1200" height="800"><figcaption>Entrance to Pelangi Capsule Hostel, Jalan Perang, Taman Pelangi.</figcaption></figure>
+
+<h2>Malaysia's Digital Arrival Card (MDAC): Do You Need One?</h2>
+<h3>Mandatory since 1 January 2024 — still required</h3>
+<p>Malaysia's Digital Arrival Card (MDAC) has been mandatory since 1 January 2024 and is still required for land-checkpoint crossings, including Woodlands-side CIQ (Bangunan Sultan Iskandar) and Tuas-side CIQ (Kompleks Sultan Abu Bakar). Submit it online within 3 days before you arrive, using Malaysia's official immigration portal — it takes a few minutes and there is no fee.</p>
+<p><strong>Singapore citizens were announced as exempt from the MDAC at every entry point</strong> (Home Minister's announcement, December 2023; confirm on the official Immigration Department portal before you travel). Almost everyone else reading this guide is not: EP and S Pass holders, and every other nationality doing a visa run through JB, must complete the MDAC before crossing. Do it the night before, not at the checkpoint — filling it in on your phone while queueing at the border defeats the purpose.</p>
+
+<h2>Is Doing This Repeatedly Risky in 2026?</h2>
+<p>Malaysian media reported that nationwide immigration operations between 1 January and 9 March 2026 recorded 2,618 operations and 9,497 arrests overall, with 1,158 people specifically detained for Social Visit Pass abuse under Regulation 39(b) — the same provision that covers repeated tourist-status "visa runs." The crackdown was publicly backed by the Prime Minister, and Malaysian immigration is reported to now use data analytics at the border to flag travellers with a pattern of fast, repeat entries and exits for extra questioning.</p>
+<p>This doesn't mean an occasional overnight reset is a problem — it isn't, and it's exactly what this guide describes. It means the practical risk profile has shifted: doing the same crossing on a tight, predictable cycle for months on end is more likely to draw a longer interview at the counter than it was a year or two ago. If you expect to need more than a handful of resets, it is worth looking at a longer-term pass instead of relying on visa runs indefinitely.</p>
 
 <h2>What Immigration Asks</h2>
 <p>Both Malaysian and Singapore immigration officers see visa run crossings every day. There is nothing unusual about them. Here is what to expect:</p>
@@ -205,7 +216,7 @@ var BlogPosts = func() []BlogPost {
 
 <p>Book directly at <a href="/book">pelangicapsulehostel.com/book</a> — no booking fees, best rate guaranteed. WhatsApp <a href="https://wa.me/60127088789">+60 12-708 8789</a> if you need to arrange a late arrival or check availability for a specific night.</p>
 
-<p>For the complete reference page with schema-validated FAQ, step-by-step HowTo, and transport details, see the <a href="/visa-run">Visa Run Guide</a>.</p>
+<p>For the complete reference page with schema-validated FAQ, step-by-step HowTo, and transport details, see the <a href="/visa-run">Visa Run Guide</a>. Already in Malaysia and need a non-Singapore exit route? See our guide to the <a href="/blog/jb-visa-run-cheapest-routes-thailand-brunei-indonesia">cheapest routes to Thailand, Indonesia and Brunei from JB</a>.</p>
 
 <h2>Frequently Asked Questions</h2>
 
@@ -216,10 +227,10 @@ var BlogPosts = func() []BlogPost {
 <p>EP and S Pass holders have long-term Singapore work passes, so they are not subject to Singapore's 30-day tourist entry limits. However, if they hold a Malaysia Social Visit Pass that is about to expire, they still need to exit and re-enter Malaysia to reset that pass — which a JB visa run accomplishes.</p>
 
 <h3>What bus goes from Singapore to JB CIQ?</h3>
-<p>Causeway Link CW1 from Woodlands Bus Interchange. One-way fare: RM2.70 (~SGD0.80). It departs frequently and goes directly to JB CIQ terminal. From Woodlands MRT, walk 5 minutes to the bus interchange — clearly signposted for JB buses.</p>
+<p>Causeway Link CW1 from Woodlands Bus Interchange. Fares are low (roughly RM2.60 from the JB side; confirm the current fare with Causeway Link). It departs frequently and goes directly to JB CIQ terminal. From Woodlands MRT, walk 5 minutes to the bus interchange — clearly signposted for JB buses. From 1 October 2026, Causeway Link cross-border buses are cashless — ManjaLink card, contactless debit/credit card or the LUGO app, no cash.</p>
 
 <h3>How long does the whole visa run take?</h3>
-<p>For an overnight run: depart Singapore at 9 AM, cross in 45 min (light day), Grab to Pelangi by 11 AM, check in at 2 PM, return crossing next morning by 11 AM — total ~26 hours elapsed, most of it sleeping and eating. Same-day: 4–6 hours minimum, often more.</p>
+<p>For an overnight run: depart Singapore at 9 AM, cross in 45 min (light day), Grab to Pelangi by 11 AM, check in from 2 PM, return crossing next morning by 11 AM — total ~26 hours elapsed, most of it sleeping and eating. Same-day: 4–6 hours minimum, often more.</p>
 
 <h3>Does Malaysia charge an entry fee at the Causeway?</h3>
 <p>No. Malaysia does not charge an entry fee for most nationalities crossing at the Causeway on a Social Visit Pass. The costs are transport (bus/Grab), accommodation, and meals. Confirm the current rules at <a href="https://www.imi.gov.my" target="_blank" rel="noopener noreferrer">imi.gov.my</a> for your specific nationality.</p>
@@ -305,8 +316,8 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime: "5 min read",
 			Tags:     []string{"food", "vegetarian", "indian-travelers", "johor-bahru", "taman-pelangi"},
-			FeaturedImage: "/images/blog/jb-vegetarian-indian-food.webp",
-			ImageAlt:      "Banana leaf rice spread and roti canai at a Johor Bahru mamak restaurant",
+			FeaturedImage: "/images/blog/south-indian-vegetarian-banana-leaf-thali.webp",
+			ImageAlt:      "South Indian vegetarian meal served on a banana leaf with rice, papad, curries and side dishes in steel bowls",
 			Title:         "Vegetarian Food in Johor Bahru: An Indian Traveler's Guide",
 			Excerpt:       "From banana leaf thali to roti canai — JB's Indian food scene is better than you'd expect. Best spots within 1km of Taman Pelangi.",
 			Content: `
@@ -384,7 +395,7 @@ var BlogPosts = func() []BlogPost {
 		{
 			Slug:          "ultimate-jb-food-guide-backpackers",
 			LastModified:  "2026-06-26",
-			ImageAlt:      "A spread of Johor Bahru hawker dishes — roti canai, nasi lemak, and local noodles served at a Taman Pelangi food stall",
+			ImageAlt:      "Plate of grilled chicken satay skewers with cucumber, red onion and two bowls of peanut sauce on a yellow table",
 			Title:         "The Ultimate Johor Bahru Food Guide for Backpackers (2026)",
 			Excerpt:       "From RM5 hawker meals to legendary seafood spots — everything a budget traveller needs to eat their way through JB like a local.",
 			Date:          "2026-02-20",
@@ -392,7 +403,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "8 min read",
 			Tags:          []string{"johor-bahru", "food", "backpacker", "budget-travel", "malaysia", "hawker"},
-			FeaturedImage: "/images/blog/jb-food-guide.webp",
+			FeaturedImage: "/images/blog/jb-hawker-satay-spread-cover.webp",
 			Content: `
 <h2>Why JB Is a Backpacker's Food Paradise</h2>
 <p>Johor Bahru sits at the crossroads of Malay, Chinese, Indian, and Peranakan culinary traditions — and the prices are absurdly low. A full meal at a hawker centre runs RM5–12, a pulled tea costs RM2, and the quality of food rivals cities ten times its size. For backpackers crossing the border from Singapore, where a similar meal costs SGD8–15, JB feels like a food revelation.</p>
@@ -477,10 +488,12 @@ var BlogPosts = func() []BlogPost {
   <li><strong>Clear Malaysian immigration:</strong> Everyone exits again, clears Malaysian passport control at JB CIQ (Customs, Immigration &amp; Quarantine).</li>
   <li><strong>Arrive in JB:</strong> You're now at JB Sentral, connected to City Square Mall and the city centre.</li>
 </ol>
-<p>Cost: SGD1.50–2 per way. The entire crossing takes 30–60 minutes on a good day, or 2–3 hours during peak periods (Friday evenings, public holidays, school holidays).</p>
+<p>Cost: a few ringgit one-way on the Malaysia side; fares on the Singapore side differ by operator and boarding stop, so check the current amount with Causeway Link or SBS Transit. The entire crossing takes 30–60 minutes on a good day, or 2–3 hours during peak periods (Friday evenings, public holidays, school holidays).</p>
 
-<h2>Option 2: Train (RTS Link — Coming Soon)</h2>
-<p>The Johor Bahru–Singapore Rapid Transit System (RTS Link) has been in development and will eventually connect Bukit Chagar in JB to Woodlands North in Singapore. Until it's operational, the bus remains your best bet. Check KTMB for any shuttle train services that may be running between JB Sentral and Woodlands.</p>
+<figure class="blog-figure"><img src="/images/blog/causeway-link-cw1-bus-commons.jpg" alt="A Causeway Link CW1 bus, the main cross-border bus route between Woodlands, Singapore and JB Sentral, Malaysia" loading="lazy" width="1200" height="800"><figcaption>A Causeway Link CW1 bus crossing between Singapore and Johor Bahru. One-way fare: RM2.60 (~SGD0.80) boarding from the Malaysia side. Source: <a href="https://landtransportguru.net/jbbuscw1/" target="_blank" rel="noopener noreferrer">Land Transport Guru — Causeway Link CW1</a>, verified 2026-09-25. Photo: LN9267, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>, via Wikimedia Commons.</figcaption></figure>
+
+<h2>Option 2: Train (RTS Link — Now Expected February 2027)</h2>
+<p>The Johor Bahru–Singapore Rapid Transit System (RTS Link) will connect Bukit Chagar in JB to Woodlands North in Singapore in about 5 minutes. As of mid-2026, the line is over 90% complete, with systems testing under way. On 2 October 2026 the operator said passenger service is now expected around the end of February 2027 (previously end-2026), subject to safety certification and approvals. Expected fare is RM15.50–RM21.70 one-way (roughly S$5–S$7) — not yet finalised. Until it opens, the bus remains your best bet.</p>
 
 
 <figure class="blog-figure"><img src="/images/destinations/marina-bay-sands.webp" alt="Marina Bay Sands, Singapore" loading="lazy" width="1200" height="800"><figcaption>Marina Bay Sands, Singapore.</figcaption></figure>
@@ -496,6 +509,7 @@ var BlogPosts = func() []BlogPost {
   <li><strong>Keep your departure card:</strong> Malaysian immigration staples a small card into your passport. Don't lose it — you need it when leaving Malaysia.</li>
 </ul>
 
+<p>Crossing specifically to reset an expiring Malaysia Social Visit Pass rather than just for a day trip? See our dedicated <a href="/blog/singapore-expat-visa-run-johor-bahru-guide-2026">Singapore expat visa run guide</a> for queue timing, documents, and where to stay overnight.</p>
 
 <figure class="blog-figure"><img src="/images/entrance.webp" alt="Entrance to Pelangi Capsule Hostel, Jalan Perang, Taman Pelangi" loading="lazy" width="1200" height="800"><figcaption>Entrance to Pelangi Capsule Hostel, Jalan Perang, Taman Pelangi.</figcaption></figure>
 
@@ -782,6 +796,7 @@ var BlogPosts = func() []BlogPost {
 		// 7
 		{
 			Slug:          "how-malaysians-find-jobs-singapore-2026",
+			LastModified: "2026-10-02",
 			Title:         "How Malaysians Can Find Jobs in Singapore (2026 Guide)",
 			Excerpt:       "Step-by-step guide for Malaysian job seekers: job portals, work passes, salary expectations, and interview tips for landing a Singapore role.",
 			Date:          "2026-04-14",
@@ -795,7 +810,7 @@ var BlogPosts = func() []BlogPost {
 <p>Singapore attracts Malaysian professionals seeking higher salaries. A RM6,000 earner might earn SGD6,500 (RM24,000)—a massive jump. The economy, institutions, and international companies create opportunities unavailable in Malaysia. Securing a role requires strategy, timing, and understanding visa rules.</p>
 
 <h2>Understanding Singapore Work Passes</h2>
-<p>Singapore issues three main work passes for foreigners. <strong>Employment Pass (EP)</strong> is for professionals and managers earning SGD5,000+ monthly with recognised qualifications. <strong>S Pass</strong> targets skilled workers earning SGD3,150–4,999 with technical expertise or credentials or certifications. <strong>Work Permit</strong> is for semi-skilled and unskilled workers in manufacturing, construction, and service sectors.</p>
+<p>Singapore issues three main work passes for foreigners. <strong>Employment Pass (EP)</strong> is for professionals and managers earning at least SGD5,600 monthly (SGD6,000 from 1 January 2027); the minimum rises with age and is higher in financial services. <strong>S Pass</strong> targets skilled workers earning at least SGD3,300 monthly (SGD3,600 from 1 January 2027) who may not meet EP criteria, subject to a quota. <strong>Work Permit</strong> is for semi-skilled and unskilled workers in manufacturing, construction, and service sectors.</p>
 <p>Your employer must sponsor your visa—you cannot apply independently. After job offer, your sponsor submits the application to MOM (Ministry of Manpower). Processing takes 2–4 weeks. Once approved, you have 30 days to enter Singapore. Total timeline from application to starting work: typically 4–6 weeks. Plan accordingly. Most Malaysians aim for EP or S Pass.</p>
 
 <h2>Step 1: Choose the Right Job Portals</h2>
@@ -823,7 +838,9 @@ var BlogPosts = func() []BlogPost {
 
 <h2>Accommodation Strategy</h2>
 <p>HDB flats (Housing Development Board—Singapore's public housing) are your best value: SGD1,000–1,500/month for a shared room. Private condominiums cost SGD1,800–3,000. For your first month, use <strong>HeyStay, Airbnb, PropertyGuru</strong> while apartment hunting. Once hired, contact your company's HR for corporate housing programs—many large employers have partner blocks with discounts.</p>
+<figure class="blog-figure"><img src="/images/blog/how-malaysians-find-jobs-singapore-2026-1.webp" alt="A block of HDB public housing flats in Bishan, Singapore" loading="lazy" width="1200" height="944"><figcaption>Photo: MapStaringEnthusiast, Wikimedia Commons, CC0.</figcaption></figure>
 <p>If job-hunting while based in Malaysia, <a href="/rooms">stay at Pelangi Capsule in Johor Bahru</a>—just 20 minutes from the Causeway—at RM50–80 per night. You can interview in Singapore daily while keeping accommodation costs low.</p>
+<figure class="blog-figure"><img src="/images/blog/how-malaysians-find-jobs-singapore-2026-2.webp" alt="The Johor-Singapore Causeway seen across the Straits of Johor" loading="lazy" width="1200" height="800"><figcaption>Photo: Johan Jönsson (Julle), Wikimedia Commons, CC BY-SA 4.0.</figcaption></figure>
 
 <h2>Optimize Application Materials</h2>
 <p>Highlight transferable skills: leadership, languages, cross-cultural experience. Singapore values multilingual candidates. Tailor cover letters—mention Singapore specifically, not generic templates. LinkedIn is your digital resume. Get recommendations. Set headline to "Role Title | Open to Singapore Relocation". Emphasize any English, Mandarin, or Tamil skills—multinational firms value them.</p>
@@ -842,11 +859,23 @@ var BlogPosts = func() []BlogPost {
 
 <h2>Making Your Move</h2>
 <p>Cross-border job hunting is achievable with clear strategy. Start applications 10 weeks ahead. Use LinkedIn and MyCareersFuture daily. Engage reputable agencies. Understand visa timelines and requirements. The salary premium is substantial—expect 3–5x growth. The process is bureaucratic but predictable. Many Malaysians hesitate due to visa complexity; educated candidates succeed. Move intentionally, and you'll cross the Causeway as a prepared professional ready to thrive in Singapore's economy.</p>
+
+<h2>Official Information</h2>
+<p>Figures below were checked against Singapore's Ministry of Manpower (MOM) pages on 1 October 2026. Rules change, so confirm on MOM before you apply.</p>
+<ul>
+<li><strong>Employment Pass salary:</strong> MOM lists the minimum qualifying salary as $5,600 a month for general sectors ($6,200 for financial services), rising with age from 23. From 1 January 2027 it becomes $6,000 ($6,600 for financial services). <a href="https://www.mom.gov.sg/passes-and-permits/employment-pass/eligibility" target="_blank" rel="noopener noreferrer">MOM: EP eligibility</a></li>
+<li><strong>COMPASS:</strong> EP applicants must earn 40 points on COMPASS, unless they earn a fixed monthly salary of at least $22,500 or fall under another listed exemption. <a href="https://www.mom.gov.sg/passes-and-permits/employment-pass/eligibility" target="_blank" rel="noopener noreferrer">MOM: EP eligibility</a></li>
+<li><strong>EP validity:</strong> first-time candidates up to 2 years, renewals up to 3 years. <a href="https://www.mom.gov.sg/passes-and-permits/employment-pass/key-facts" target="_blank" rel="noopener noreferrer">MOM: EP key facts</a></li>
+<li><strong>S Pass salary and validity:</strong> new candidates need at least $3,300 a month (rising with age; $3,600 from 1 January 2027). First-time passes run up to 2 years, renewals up to 3, and employers are subject to a quota and levy. <a href="https://www.mom.gov.sg/passes-and-permits/s-pass/eligibility" target="_blank" rel="noopener noreferrer">MOM: S Pass eligibility</a> / <a href="https://www.mom.gov.sg/passes-and-permits/s-pass/key-facts" target="_blank" rel="noopener noreferrer">MOM: S Pass key facts</a></li>
+<li><strong>Work Permit:</strong> for semi-skilled workers from approved source countries or regions in the construction, manufacturing, marine shipyard, process or services sectors. Valid up to 2 years; family passes are not available. <a href="https://www.mom.gov.sg/passes-and-permits/work-permit-for-foreign-worker/key-facts" target="_blank" rel="noopener noreferrer">MOM: Work Permit key facts</a></li>
+<li><strong>Bringing family on an EP:</strong> spouse and children need the EP holder to earn at least $6,000 a month; parents need at least $12,000. <a href="https://www.mom.gov.sg/passes-and-permits/employment-pass/passes-for-family" target="_blank" rel="noopener noreferrer">MOM: EP passes for family</a></li>
+</ul>
 `,
 		},
 		// 8
 		{
 			Slug:          "singapore-work-pass-guide-malaysians",
+			LastModified: "2026-10-02",
 			Title:         "Singapore Work Pass Guide for Malaysians: EP vs S Pass vs Work Permit",
 			Excerpt:       "Understand the three main Singapore work pass types for Malaysians: Employment Pass, S Pass, and Work Permit. Compare salary minimums, eligibility, and which visa suits your career stage.",
 			Date:          "2026-04-14",
@@ -858,6 +887,7 @@ var BlogPosts = func() []BlogPost {
 			Content: `
 <h2>Singapore's Work Visa System Explained</h2>
 <p>Malaysia is Singapore's top source of migrant workers, accounting for 30% of foreign labour. The Ministry of Manpower (MOM) manages work passes under three main categories: Employment Pass (EP), S Pass, and Work Permit. Each serves a different skill level and salary band. Understanding which pass you qualify for is critical before job hunting.</p>
+<figure class="blog-figure"><img src="/images/blog/singapore-work-pass-guide-malaysians-1.webp" alt="Ministry of Manpower signage on its building in Singapore" loading="lazy" width="1024" height="768"><figcaption>Photo: Michael Coghlan, Wikimedia Commons, CC BY-SA 2.0.</figcaption></figure>
 
 
 <h2>Quick Comparison: EP vs S Pass vs Work Permit</h2>
@@ -870,8 +900,8 @@ var BlogPosts = func() []BlogPost {
 </tr>
 <tr>
 <td><strong>Minimum Salary</strong></td>
-<td>SGD 5,000/month</td>
-<td>SGD 3,150/month</td>
+<td>SGD 5,600/month (general sectors)</td>
+<td>SGD 3,300/month</td>
 <td>No fixed minimum</td>
 </tr>
 <tr>
@@ -888,13 +918,13 @@ var BlogPosts = func() []BlogPost {
 </tr>
 <tr>
 <td><strong>Validity</strong></td>
-<td>Up to 3 years</td>
-<td>Up to 2 years</td>
+<td>Up to 2 years first-time; up to 3 on renewal</td>
+<td>Up to 2 years first-time; up to 3 on renewal</td>
 <td>Up to 2 years</td>
 </tr>
 <tr>
 <td><strong>Family Dependents</strong></td>
-<td>Yes (spouse + kids)</td>
+<td>Yes, if the EP holder earns at least SGD 6,000/month</td>
 <td>Limited (with approval)</td>
 <td>No</td>
 </tr>
@@ -907,13 +937,14 @@ var BlogPosts = func() []BlogPost {
 </table>
 
 <h2>Employment Pass (EP): For Professionals</h2>
-<p><strong>Who qualifies:</strong> Degree-holders, managers, specialists. Minimum salary SGD5,000/month. No work experience requirement, but higher salary expectation if experienced.</p>
-<p><strong>Employer responsibilities:</strong> Employer files with MOM using standard form. They bear sponsorship costs (typically SGD500–1,500). Processing takes 1–4 weeks. No quota limits; approved applications are processed first-in-first-out.</p>
+<p><strong>Who qualifies:</strong> Degree-holders, managers, specialists. Minimum salary SGD5,600/month in general sectors. No work experience requirement, but higher salary expectation if experienced.</p>
+<p><strong>Employer responsibilities:</strong> Employer files with MOM using standard form. They bear sponsorship costs (typically SGD500–1,500). Processing takes 1–4 weeks. Applicants must score at least 40 points under MOM's COMPASS framework unless exempt.</p>
 <p><strong>Best for:</strong> Fresh graduates from prestigious universities, tech professionals, finance roles, engineering, and management positions. If you have a degree, aim for EP—it's the most stable and flexible pass.</p>
+<figure class="blog-figure"><img src="/images/blog/singapore-work-pass-guide-malaysians-2.webp" alt="Raffles Place financial district skyline in Singapore" loading="lazy" width="1200" height="750"><figcaption>Photo: Calvin Teo, Wikimedia Commons, CC BY-SA 3.0.</figcaption></figure>
 
 
 <h2>S Pass: The Middle Ground</h2>
-<p><strong>Who qualifies:</strong> Diploma holders or those with 5+ years relevant work experience. Minimum salary SGD3,150/month. Evaluated on skill level, proven experience, and salary competitiveness.</p>
+<p><strong>Who qualifies:</strong> Skilled workers. Minimum salary SGD3,300/month; declaring qualifications is optional. Evaluated on skill level, proven experience, and salary competitiveness.</p>
 <p><strong>Processing:</strong> 2–8 weeks, slower than EP because MOM evaluates local job market impact. There are annual quotas; applications processed when quota available. This pass is popular with mid-career Malaysians.</p>
 <p><strong>Best for:</strong> Technicians, supervisors, mid-level specialists without university degrees. If you have strong experience but no degree, S Pass is realistic and widely available.</p>
 
@@ -929,7 +960,7 @@ var BlogPosts = func() []BlogPost {
 <p><strong>A:</strong> Unlikely. MOM policy requires degree for EP unless you're a rare specialist (e.g., executive chef with global recognition). With 8 years experience, your S Pass is stronger. Some borderline cases where MOM approves EP anyway—always try, worst case is rejection. Your employer can reapply as S Pass.</p>
 
 <h3>Q: What salary should I negotiate for?</h3>
-<p><strong>A:</strong> EP minimum is SGD5,000; most employers offer SGD5,500–8,000 for mid-career (3–5 years). S Pass starts at SGD3,150 but realistic offers are SGD3,800–5,500. Never go below the MOM minimum—visa will be rejected. Always negotiate above minimum; accepting SGD5,000 EP sets your ceiling for 3 years until next renewal.</p>
+<p><strong>A:</strong> EP minimum is SGD5,600 in general sectors; most employers offer SGD5,500–8,000 for mid-career (3–5 years). S Pass starts at SGD3,300 but realistic offers are SGD3,800–5,500. Never go below the MOM minimum—visa will be rejected. Always negotiate above minimum; accepting SGD5,600 EP sets your ceiling for 3 years until next renewal.</p>
 
 <h3>Q: Can I bring my family on a Work Permit?</h3>
 <p><strong>A:</strong> No. Work Permits are non-family passes. EP allows spouse + dependent children (usually up to age 22). S Pass dependents require separate approval, rarely granted. If family is priority, aim for EP. If you're Work Permit, your family stays in Malaysia.</p>
@@ -949,6 +980,19 @@ var BlogPosts = func() []BlogPost {
 
 <h2>Your Next Move</h2>
 <p>Identify your profile (degree? experience? target salary?) and apply strategically. EP is fastest and most flexible; push for it if degree-eligible. S Pass is realistic for experienced non-graduates. Start applications 12 weeks before desired start date. The Singapore salary premium (3–5x your Malaysia salary) justifies the bureaucracy. Move intentionally, understand your visa category, and cross the Causeway ready to thrive.</p>
+
+<p>Waiting on your EP or S Pass approval and still on a Malaysia Social Visit Pass in the meantime? See our <a href="/blog/singapore-expat-visa-run-johor-bahru-guide-2026">Singapore expat visa run guide</a> for how to reset it legally while your application processes.</p>
+
+<h2>Official Information</h2>
+<p>Figures below were checked against Singapore's Ministry of Manpower (MOM) pages on 1 October 2026. Rules change, so confirm on MOM before you apply.</p>
+<ul>
+<li><strong>Employment Pass salary:</strong> MOM lists the minimum qualifying salary as $5,600 a month for general sectors ($6,200 for financial services), rising with age from 23. From 1 January 2027 it becomes $6,000 ($6,600 for financial services). <a href="https://www.mom.gov.sg/passes-and-permits/employment-pass/eligibility" target="_blank" rel="noopener noreferrer">MOM: EP eligibility</a></li>
+<li><strong>COMPASS:</strong> EP applicants must earn 40 points on COMPASS, unless they earn a fixed monthly salary of at least $22,500 or fall under another listed exemption. <a href="https://www.mom.gov.sg/passes-and-permits/employment-pass/eligibility" target="_blank" rel="noopener noreferrer">MOM: EP eligibility</a></li>
+<li><strong>EP validity:</strong> first-time candidates up to 2 years, renewals up to 3 years. <a href="https://www.mom.gov.sg/passes-and-permits/employment-pass/key-facts" target="_blank" rel="noopener noreferrer">MOM: EP key facts</a></li>
+<li><strong>S Pass salary and validity:</strong> new candidates need at least $3,300 a month (rising with age; $3,600 from 1 January 2027). First-time passes run up to 2 years, renewals up to 3, and employers are subject to a quota and levy. <a href="https://www.mom.gov.sg/passes-and-permits/s-pass/eligibility" target="_blank" rel="noopener noreferrer">MOM: S Pass eligibility</a> / <a href="https://www.mom.gov.sg/passes-and-permits/s-pass/key-facts" target="_blank" rel="noopener noreferrer">MOM: S Pass key facts</a></li>
+<li><strong>Work Permit:</strong> for semi-skilled workers from approved source countries or regions in the construction, manufacturing, marine shipyard, process or services sectors. Valid up to 2 years; family passes are not available. <a href="https://www.mom.gov.sg/passes-and-permits/work-permit-for-foreign-worker/key-facts" target="_blank" rel="noopener noreferrer">MOM: Work Permit key facts</a></li>
+<li><strong>Bringing family on an EP:</strong> spouse and children need the EP holder to earn at least $6,000 a month; parents need at least $12,000. <a href="https://www.mom.gov.sg/passes-and-permits/employment-pass/passes-for-family" target="_blank" rel="noopener noreferrer">MOM: EP passes for family</a></li>
+</ul>
 `,
 		},
 		// 9
@@ -1017,6 +1061,8 @@ var BlogPosts = func() []BlogPost {
 </tr>
 </table>
 <p><strong>Pro tip:</strong> Causeway Link and SBS are cheapest and most frequent. Buy monthly passes for RM60–80 (saves 20% vs daily tickets). Causeway Link passes sold at JB Sentral; SBS through their Larkin Sentral office.</p>
+
+<figure class="blog-figure"><img src="/images/blog/causeway-link-cw1-bus-commons.jpg" alt="A Causeway Link CW1 bus, the main cross-border bus route between Woodlands, Singapore and JB Sentral, Malaysia" loading="lazy" width="1200" height="800"><figcaption>A Causeway Link CW1 bus crossing between Singapore and Johor Bahru. The single-route CW1 fare is RM2.60 one-way (~SGD0.80) boarding from the Malaysia side. Source: <a href="https://landtransportguru.net/jbbuscw1/" target="_blank" rel="noopener noreferrer">Land Transport Guru — Causeway Link CW1</a>, verified 2026-09-25. Photo: LN9267, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>, via Wikimedia Commons.</figcaption></figure>
 
 <h2>The CIQ Process: What to Expect</h2>
 <p>CIQ stands for Customs, Immigration, Quarantine. You clear Malaysia's exit checkpoint, then Singapore's entry. On buses, everyone steps off, queues through their respective counters, and re-boards. The whole thing takes 20–40 minutes depending on how busy the checkpoint is.</p>
@@ -1091,6 +1137,8 @@ var BlogPosts = func() []BlogPost {
 <h2>Where to Stay When You First Arrive</h2>
 <p>For the first 1–3 months while you find a longer-term place, <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi works well as a base. Japanese-style capsule pods from RM35–50/night, hot showers, lockers, and fast WiFi. The neighbourhood has hawker centres, banks, and transport options nearby. It's also where a lot of other commuters and new arrivals stay, which is useful if you're navigating this for the first time.</p>
 
+<p>Still on a tourist Social Visit Pass while your EP or S Pass processes? You'll need to reset it before it expires — see our <a href="/blog/singapore-expat-visa-run-johor-bahru-guide-2026">Singapore expat visa run guide</a> for the full process, costs, and queue timing, or the <a href="/blog/jb-visa-run-cheapest-routes-thailand-brunei-indonesia">cheapest routes to Thailand, Indonesia and Brunei</a> if you'd rather not use the Singapore crossing repeatedly.</p>
+
 <h2>Finding Longer-Term Housing</h2>
 <p>Once your work pass is sorted, switch to a 12-month lease. Target neighbourhoods near JB Sentral and the Causeway: Taman Pelangi, Danga Bay, and Larkin are all reasonable. One-bedroom private flats in these areas run RM800–1,500/month. <a href="/getting-here">Getting to Pelangi from the Causeway</a> takes 10–15 minutes by Grab, so it's a decent indicator of transport connections for any flat you're considering in the same area.</p>
 
@@ -1098,7 +1146,7 @@ var BlogPosts = func() []BlogPost {
 <p>Daily commuting isn't glamorous. The Causeway is a routine, not an adventure. But most commuters settle into the rhythm within two weeks, and the financial upside — SGD50,000+ in savings annually at a mid-level salary — is hard to argue with. Weather delays are rare, roadwork is predictable, and the bus runs reliably. The 1.5-hour daily round trip is the trade. Most people find it's worth it.</p>
 
 <h2>Make Pelangi Your Commuter Base</h2>
-<p>Hundreds of cross-border commuters have used <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi as their first JB base — capsule pods are <strong>RM30/night on weekdays (RM35 weekends)</strong>, or <strong>from RM600/month</strong> (Upper Deck) / <strong>RM650/month</strong> (Lower Deck) for long-stayers, with no deposit and no minimum tenancy. Private rooms are also available from <strong>RM500/month</strong>, right above the 7-Eleven on Jalan Perang. Fast WiFi, lockers, hot showers, 24/7 self check-in for pre-dawn Causeway crossings, and the CIQ checkpoint is 10–15 minutes away.</p>
+<p>Hundreds of cross-border commuters have used <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi as their first JB base — capsule pods are <strong>RM35/night flat</strong> (<strong>RM30 for your first night</strong>, direct-booking only), or <strong>from RM600/month</strong> (Upper Deck) / <strong>RM650/month</strong> (Lower Deck) for long-stayers, with no deposit and no minimum tenancy. Private rooms are also available from <strong>RM500/month</strong>, right above the 7-Eleven on Jalan Perang. Fast WiFi, lockers, hot showers, 24/7 self check-in for pre-dawn Causeway crossings, and the CIQ checkpoint is 10–15 minutes away.</p>
 <p><a href="/book">Book a pod</a>, or compare the numbers first: the <a href="/blog/rm594-month-jb-long-stay-singapore-commute-base">honest maths of RM600/month capsule living</a> and the <a href="/blog/room-for-rent-taman-pelangi-jb-rm500-month">RM500/month private room guide</a>.</p>
 `,
 		},
@@ -1499,7 +1547,7 @@ var BlogPosts = func() []BlogPost {
 
 
 <h2>Earnings & Vehicle Types</h2>
-<p><strong>Pay per job varies by distance and vehicle:</strong></p>
+<p><strong>Pay per job varies by distance and vehicle.</strong> Lalamove does not publish a fixed per-job pay scale, so the ranges below are rough field estimates from JB drivers, not official figures:</p>
 <ul>
   <li><strong>Bike (motorcycle):</strong> RM25–40, under 5 kg, fastest urban delivery</li>
   <li><strong>Car (sedan/SUV):</strong> RM40–65, medium loads, general parcels</li>
@@ -1522,11 +1570,11 @@ var BlogPosts = func() []BlogPost {
 <p><strong>Step 2:</strong> Upload clear photos of all documents (license, registration, insurance).</p>
 <p><strong>Step 3:</strong> Lalamove calls to verify your identity and bank details.</p>
 <p><strong>Step 4:</strong> Vehicle inspection (usually photo-based in JB; in-person if requested).</p>
-<p><strong>Step 5:</strong> Approval in 3–5 days → Go live and accept jobs.</p>
+<p><strong>Step 5:</strong> Approval, usually within days → Go live and accept jobs. Lalamove's Malaysia driver page lists age 18+, a driver's licence and your own motorcycle, car, van, 4x4 or lorry, and delivery sign-ups include a short online training. <strong>Check before you go:</strong> current requirements at <a href="https://www.lalamove.com/en-my/driver" target="_blank" rel="noopener noreferrer">lalamove.com/en-my/driver</a>.</p>
 
 <h2>Why Lalamove?</h2>
 <p><strong>Flexibility:</strong> 24/7 availability, no shift requirements, no boss. Accept 2 jobs or 20 — your choice.</p>
-<p><strong>Keep Your Earnings:</strong> Lalamove's 15–20% platform fee is transparent. No hidden deductions.</p>
+<p><strong>Keep Your Earnings:</strong> Lalamove takes a platform commission on each job; check the current rate in the driver app before you commit.</p>
 <p><strong>Cross-Border Demand:</strong> JB's proximity to Singapore creates high demand for parcels and documents (RM50–80 for long deliveries).</p>
 
 
@@ -1534,18 +1582,18 @@ var BlogPosts = func() []BlogPost {
 <table style="width:100%;border-collapse:collapse;margin:1rem 0">
 <tr style="border-bottom:1px solid #ddd"><th style="text-align:left;padding:0.5rem">Platform</th><th style="padding:0.5rem">RM/Job</th><th style="padding:0.5rem">Focus</th></tr>
 <tr style="border-bottom:1px solid #ddd"><td style="padding:0.5rem"><strong>Lalamove</strong></td><td style="padding:0.5rem">25–80</td><td style="padding:0.5rem">General parcels, logistics</td></tr>
-<tr style="border-bottom:1px solid #ddd"><td style="padding:0.5rem"><strong>Foodpanda</strong></td><td style="padding:0.5rem">15–40</td><td style="padding:0.5rem">Food delivery</td></tr>
-<tr><td style="padding:0.5rem"><strong>Grab</strong></td><td style="padding:0.5rem">20–50</td><td style="padding:0.5rem">Rides + parcels</td></tr>
+<tr style="border-bottom:1px solid #ddd"><td style="padding:0.5rem"><strong>Foodpanda</strong></td><td style="padding:0.5rem">5–8 + tips</td><td style="padding:0.5rem">Food delivery</td></tr>
+<tr><td style="padding:0.5rem"><strong>Grab</strong></td><td style="padding:0.5rem">5–50</td><td style="padding:0.5rem">Rides + parcels</td></tr>
 </table>
 
-<p><strong>Lalamove wins:</strong> Highest payouts. No restaurant partnership needed — any customer, any parcel.</p>
+<p><strong>Lalamove wins:</strong> Usually the highest pay per job. No restaurant partnership needed — any customer, any parcel.</p>
 <p><strong>Tip:</strong> Many drivers work all three platforms. Lalamove mornings, Foodpanda lunch, Grab evenings = maximized income. The full side-by-side is in our <a href="/blog/delivery-gig-apps-jb-comparison-2026">JB gig app comparison</a>, with deep-dives on <a href="/blog/grab-driver-jb-guide-2026">Grab driving in JB</a> and <a href="/blog/foodpanda-rider-jb-guide-2026">Foodpanda riding in JB</a>.</p>
 
 <h2>Start Today</h2>
 <p>Download Lalamove Driver, submit documents, and earn within days. You're your own boss—set your hours, keep your income, grow your earnings.</p>
 
 <h2>Need a Cheap Base While You Drive?</h2>
-<p>Many gig drivers in JB keep overheads low by staying at <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi — capsule pods from <strong>RM30/night on weekdays (RM35 weekends)</strong>, or <strong>RM600/month</strong> for long-stayers. Private rooms are also available from <strong>RM500/month</strong>, right above the 7-Eleven on Jalan Perang. Fast WiFi for the driver app, lockers, hot showers, and a base 15 minutes from the Causeway — cross-border delivery jobs start at your doorstep.</p>
+<p>Many gig drivers in JB keep overheads low by staying at <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi — capsule pods from <strong>RM35/night flat</strong> (<strong>RM30 for your first night</strong>, direct-booking only), or <strong>RM600/month</strong> for long-stayers. Private rooms are also available from <strong>RM500/month</strong>, right above the 7-Eleven on Jalan Perang. Fast WiFi for the driver app, lockers, hot showers, and a base 15 minutes from the Causeway — cross-border delivery jobs start at your doorstep.</p>
 <p><a href="/book">Book a pod</a>, or compare the numbers first: the <a href="/blog/rm594-month-jb-long-stay-singapore-commute-base">honest maths of RM600/month capsule living</a> and the <a href="/blog/room-for-rent-taman-pelangi-jb-rm500-month">RM500/month private room guide</a>.</p>
 `,
 		},
@@ -1763,7 +1811,7 @@ var BlogPosts = func() []BlogPost {
 <p>如从国内直飞新山士乃国际机场（IATA代码：JHB），流程更简单：</p>
 <ol>
   <li>飞机落地后，跟随"Immigration"指示牌</li>
-  <li>在外国人通道排队，出示护照和入境卡（飞机上会发放，也可提前在网上填写）</li>
+  <li>在外国人通道排队，出示护照和已提交的 MDAC 数字入境卡二维码（需提前在移民局官网填写）</li>
   <li>采集指纹、盖章，通关完成</li>
   <li>出关后叫 Grab 前往市区（约25-35分钟，RM25-35）</li>
 </ol>
@@ -1771,7 +1819,8 @@ var BlogPosts = func() []BlogPost {
 <h2>常见问题</h2>
 
 <h3>需要提前申请什么吗？</h3>
-<p>无需任何申请，也无需填写电子表格（eNTRI/eVISA）。直接凭护照入境即可。</p>
+<p>无需申请签证（eNTRI/eVISA）。但自2024年起，外国游客入境前须在马来西亚移民局官方网站免费填写“马来西亚数字入境卡”（MDAC），一般要求在抵达前3天内提交，请务必以<a href="https://www.imi.gov.my" target="_blank" rel="noopener noreferrer">移民局官网</a>的最新规定为准，并警惕收费的代办网站。</p>
+<p><strong>更新（2026年10月）：</strong>据2024年6月中马两国公布的安排，马来西亚对中国公民的免签政策有效期至2026年12月31日。出行日期在2026年底之后的游客，请先向马来西亚移民局或中国外交部领事服务网确认免签是否延期，再订票。</p>
 
 <h3>可以在马来西亚工作吗？</h3>
 <p>不可以。免签入境仅限旅游、探亲、短期商务。如需工作，须另行申请工作签证。</p>
@@ -2342,7 +2391,7 @@ var BlogPosts = func() []BlogPost {
 			FeaturedImage: "/images/blog/taman-pelangi-neighborhood-guide.webp",
 			Content: `
 <h2>Getting Here</h2>
-<p><strong>Taman Pelangi</strong> is a mature residential and commercial district in central Johor Bahru, about 3 km from JB Sentral. From Singapore: take the MRT to Woodlands, cross via Causeway Link bus (RM3.50), then a 10-minute Grab (~RM8) or bus 23/41 from the JB Sentral bus terminal directly to Taman Pelangi. From JB City Centre: 10-minute Grab (RM8–12) or a 25-minute walk via Jalan Abdul Samad.</p>
+<p><strong>Taman Pelangi</strong> is a mature residential and commercial district in central Johor Bahru, about 3 km from JB Sentral. From Singapore: take the MRT to Woodlands, cross via Causeway Link bus (RM2.60, cashless-only from 1 Oct 2026), then a 10-minute Grab (~RM8) or bus 23/41 from the JB Sentral bus terminal directly to Taman Pelangi. From JB City Centre: 10-minute Grab (RM8–12) or a 25-minute walk via Jalan Abdul Samad.</p>
 
 
 <figure class="blog-figure"><img src="/images/destinations/tan-hiok-nee-new.webp" alt="Tan Hiok Nee heritage street, Johor Bahru" loading="lazy" width="1200" height="800"><figcaption>Tan Hiok Nee heritage street, Johor Bahru.</figcaption></figure>
@@ -2498,9 +2547,9 @@ var BlogPosts = func() []BlogPost {
 
 <figure class="blog-figure"><img src="/images/destinations/jewel.webp" alt="Jewel Changi Airport, Singapore" loading="lazy" width="1200" height="800"><figcaption>Jewel Changi Airport, Singapore.</figcaption></figure>
 
-<h2>The JB Alternative: RM30-35 Per Night Instead of SGD150+</h2>
+<h2>The JB Alternative: RM35 Per Night Instead of SGD150+</h2>
 <p>Johor Bahru sits at the southern tip of Peninsular Malaysia, connected to Singapore by the Causeway. It's about 1.5 hours from Changi Airport by public transport, and prices are in a completely different league.</p>
-<p>At <a href="/rooms">Pelangi Capsule Hostel</a>, a pod costs <strong>RM30/night on weekdays and RM35/night on weekends</strong> — Upper and Lower Deck (ground-level, no ladder) are the same price. That's roughly SGD9-11. Each pod comes with an LED reading light, USB charging port, and personal locker. The hostel is in Taman Pelangi, one of JB's best food neighbourhoods. Hawker centres and local restaurants are everywhere.</p>
+<p>At <a href="/rooms">Pelangi Capsule Hostel</a>, a pod costs <strong>RM35/night flat</strong> (<strong>RM30 for your first night</strong>, direct-booking only) — Upper and Lower Deck (ground-level, no ladder) are the same price. That's roughly SGD9-11. Each pod comes with an LED reading light, USB charging port, and personal locker. The hostel is in Taman Pelangi, one of JB's best food neighbourhoods. Hawker centres and local restaurants are everywhere.</p>
 <p>Think about it. One night at YOTEL Changi costs the same as <strong>three to four nights</strong> in a JB capsule. One night at the Crowne Plaza Changi equals <strong>a full week</strong> at Pelangi. And instead of sleeping in an airport terminal, you're sleeping in a real neighbourhood where a plate of chicken rice costs RM6 and the teh tarik flows freely.</p>
 <p>Non-Malaysian guests pay an additional RM10/room/night tourism tax, so your all-in nightly cost is RM40-45 (SGD11-13). Still dirt cheap.</p>
 <h2>How to Get from Changi Airport to Johor Bahru</h2>
@@ -2512,6 +2561,8 @@ var BlogPosts = func() []BlogPost {
   <li><strong>JB CIQ to Pelangi Capsule:</strong> Grab, ~10 minutes, RM6-10.</li>
 </ol>
 <p><strong>Total cost:</strong> ~SGD5-6. <strong>Total time:</strong> 1.5-2 hours.</p>
+
+<figure class="blog-figure"><img src="/images/blog/causeway-link-cw1-bus-commons.jpg" alt="A Causeway Link CW1 bus, the main cross-border bus route between Woodlands, Singapore and JB Sentral, Malaysia" loading="lazy" width="1200" height="800"><figcaption>A Causeway Link CW1 bus crossing between Singapore and Johor Bahru — the cheapest leg of the Changi-to-JB route. Fare from the Malaysia side: RM2.60 one-way (~SGD0.80); via EZ-Link from the Singapore side, S$1.28–S$2.50. Source: <a href="https://landtransportguru.net/jbbuscw1/" target="_blank" rel="noopener noreferrer">Land Transport Guru</a>, verified 2026-09-25. Photo: LN9267, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>, via Wikimedia Commons.</figcaption></figure>
 <p>You can also take the Thomson-East Coast Line to Woodlands North, walk through Singapore immigration, then take CW1 across.</p>
 <h3>Option 2: Direct Coach (SGD10-15, 1.5-2 hours)</h3>
 <p><strong>Transtar</strong> and <strong>Causeway Link</strong> run coaches from Queen Street Bus Terminal (near Bugis) to JB Sentral every 15-30 minutes. Cost SGD10-15. Comfortable seats, aircon, driver handles border crossings.</p>
@@ -2582,7 +2633,7 @@ var BlogPosts = func() []BlogPost {
 </ul>
 <h2>The Bottom Line</h2>
 <p>Changi is a great airport and an expensive place to sleep. If you have 8+ hours and you're watching your budget, JB is 90 minutes south, five times cheaper, and far more interesting than Terminal 3.</p>
-<p><strong>Pods from RM30/night on weekdays, RM35/night on weekends — Upper and Lower Deck same price.</strong> <a href="/book">Book your pod at Pelangi Capsule Hostel</a> and turn your Changi layover into a budget win.</p>
+<p><strong>Pods from RM35/night flat (RM30 for your first night, direct-booking only) — Upper and Lower Deck same price.</strong> <a href="/book">Book your pod at Pelangi Capsule Hostel</a> and turn your Changi layover into a budget win.</p>
 `,
 		},
 		// 30
@@ -2721,7 +2772,7 @@ var BlogPosts = func() []BlogPost {
 </ul>
 <h2>Why Pelangi Capsule Is the Ideal Base</h2>
 <ul>
-  <li><strong>RM30/night on weekdays (Upper or Lower Deck)</strong> — cheapest clean, private sleeping space in JB.</li>
+  <li><strong>RM35/night flat, RM30 for your first night if booked direct (Upper or Lower Deck)</strong> — cheapest clean, private sleeping space in JB.</li>
   <li><strong>RM35/night on weekends</strong> — same pods, weekend rate; Lower Deck is ground-level with easier access.</li>
   <li><strong>Taman Pelangi</strong> — hawker centres, mamak, cafes, night markets walking distance.</li>
   <li><strong>15 min from CIQ</strong> — quick Grab to causeway checkpoint.</li>
@@ -2930,6 +2981,7 @@ var BlogPosts = func() []BlogPost {
 		// 33
 		{
 			Slug:          "ktm-ets-train-kuala-lumpur-johor-bahru-tourists",
+			LastModified: "2026-10-02",
 			Title:         "KTM ETS Train: Kuala Lumpur to Johor Bahru for Tourists (2026)",
 			Excerpt:       "The KTM ETS train is one of the most comfortable and affordable ways to travel between Kuala Lumpur and Johor Bahru. Here's everything you need to know about classes, booking, fares, and arriving in JB.",
 			Date:          "2026-06-18",
@@ -2947,14 +2999,17 @@ var BlogPosts = func() []BlogPost {
 <h2>Understanding the KTM ETS Route</h2>
 <p>The KTM ETS network connects most major cities on the west coast of Peninsular Malaysia. The Kuala Lumpur to Johor Bahru route typically runs <strong>KL Sentral to JB Sentral</strong>, with the train passing through Seremban, Gemas, Segamat, Kluang, and Kempas Baru, among other stops.</p>
 <p>One practical note: some services run directly through, while on certain schedules passengers may need to <strong>change trains at Gemas</strong>. If your ticket shows a change at Gemas, the connecting service departs from the same station, usually with a short wait. Check your itinerary when booking.</p>
-<p>The approximate journey time from KL Sentral to JB Sentral is <strong>around 4.5 to 5.5 hours</strong> on faster services.</p>
+<figure class="blog-figure"><img src="/images/blog/ktm-ets-train-kuala-lumpur-johor-bahru-tourists-1.webp" alt="A KTM ETS train at Gemas station, Negeri Sembilan, with the Gemas sign visible on the platform canopy" loading="lazy" width="1200" height="900"><figcaption>Photo: Slleong, Wikimedia Commons, <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer">CC0</a>.</figcaption></figure>
+<p>The approximate journey time from KL Sentral to JB Sentral is <strong>about 4.5 hours</strong> on the fastest services (news reports of the December 2025 launch quoted roughly 4 hours 20 minutes to 4.5 hours; slower services take longer).</p>
 <h2>ETS Train Classes</h2>
 <ul>
   <li><strong>ETS Platinum:</strong> Fastest services, fewer stops, wider seats with good legroom. Preferred for KL–JB.</li>
   <li><strong>ETS Gold:</strong> Slightly slower, more intermediate stops. Comfortable seats.</li>
   <li><strong>ETS Business:</strong> Premium tier on select services, larger seats. Check availability when booking.</li>
 </ul>
-<p>For most tourists, <strong>ETS Platinum is the go-to choice</strong>. Fares approximately <strong>RM79 to RM110</strong> for KL Sentral to JB Sentral — check the KTMB website for current pricing.</p>
+<p>For most tourists, <strong>ETS Platinum is the go-to choice</strong>. KL Sentral to JB Sentral tickets were launched from <strong>RM82 one-way</strong> (Paultan, December 2025), and published 2026 guides put a typical Platinum economy fare at around RM100 — pricing is dynamic (higher on weekends and holidays), so check the KTMB website for the exact fare on your travel date.</p>
+
+<figure class="blog-figure"><img src="/images/blog/jb-sentral-station-commons.jpg" alt="JB Sentral railway station entrance, Johor Bahru — the terminus for KTM ETS trains from Kuala Lumpur" loading="lazy" width="1200" height="800"><figcaption>JB Sentral railway station, the Johor Bahru terminus for the KTM ETS. KL Sentral–JB Sentral fares started from RM82 one-way at launch; check current fares on <a href="https://www.ktmb.com.my/ets.html" target="_blank" rel="noopener noreferrer">KTMB — Electric Train Service</a>. Photo: Joshua, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>, via Wikimedia Commons.</figcaption></figure>
 
 <h2>How to Book KTM ETS Tickets</h2>
 <h3>KTMB Official Website and App</h3>
@@ -2967,9 +3022,11 @@ var BlogPosts = func() []BlogPost {
 <p><strong>Buy early.</strong> KL–JB tickets sell out fast, particularly Friday evenings (KL to JB) and Sunday evenings (JB to KL). Book 1–2 weeks ahead; for Hari Raya and Chinese New Year, book a month or more in advance.</p>
 <h2>Travelling from KL Sentral</h2>
 <p>KL Sentral is connected to the KTM Komuter, MRT, LRT, monorail, KLIA Ekspres, and city buses. Arrive at least <strong>30 minutes before departure</strong>. Stock up at station shops for the journey.</p>
+<figure class="blog-figure"><img src="/images/blog/ktm-ets-train-kuala-lumpur-johor-bahru-tourists-2.webp" alt="Passengers with luggage on the ETS platform at KL Sentral, Kuala Lumpur, with an ETS train arriving" loading="lazy" width="1200" height="900"><figcaption>Photo: Hiroki.loh.st, Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>.</figcaption></figure>
 
 <h2>The Journey: What to Expect on Board</h2>
 <p>ETS trains are clean, air-conditioned, and comfortable. Each seat has adequate legroom and a fold-down tray table. Food trolley service available. Power sockets at most seats on ETS trains. Free WiFi on many services, though connectivity varies.</p>
+<figure class="blog-figure"><img src="/images/blog/ktm-ets-train-kuala-lumpur-johor-bahru-tourists-3.webp" alt="Inside a KTM ETS Class 93 carriage: rows of padded seats with headrests and fold-down tables" loading="lazy" width="1200" height="800"><figcaption>Photo: Cmglee, Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>.</figcaption></figure>
 <h2>Arriving at JB Sentral</h2>
 <p>JB Sentral is directly adjacent to the <strong>Kotaraya-CIQ complex</strong> — minutes from the Singapore Causeway checkpoint if continuing to Singapore. City Square Mall is next door with food, shops, and money changers.</p>
 <p>Grab from JB Sentral to <strong>Pelangi Capsule Hostel in Taman Pelangi</strong>: approximately <strong>10 minutes</strong>, around <strong>RM8 to RM12</strong>. Enter "26A Jalan Perang, Taman Pelangi" in the Grab app.</p>
@@ -2984,8 +3041,17 @@ var BlogPosts = func() []BlogPost {
 </ul>
 <h2>Staying in Taman Pelangi After the Train</h2>
 <p>Taman Pelangi is one of JB's most food-rich neighbourhoods. Within walking distance: hawker centres, old-school kopitiams, seafood restaurants, and late-night mamak stalls.</p>
-<p>Check-in at Pelangi is from <strong>2:00 PM</strong>. Drop your bags earlier and head out to explore. <a href="/rooms">Pods from RM30/night on weekdays (RM35 weekends)</a> — Upper and Lower Deck same price.</p>
+<p>Check-in at Pelangi is from <strong>2:00 PM</strong>. If you arrive earlier, ask us on WhatsApp about leaving your bags before you head out to explore. <a href="/rooms">Pods from RM35/night flat (RM30 for your first night, direct-booking only)</a> — Upper and Lower Deck same price.</p>
+<h2>Official Information</h2>
+<ul>
+  <li>KTMB lists three ETS service types: ETS Platinum (stops at only the main stations), ETS Gold (stops at more stations) and ETS Silver (almost all-stop between KL Sentral and Ipoh, lowest fares). Source: <a href="https://www.ktmb.com.my/ets.html" target="_blank" rel="noopener noreferrer">KTMB — ETS</a></li>
+  <li>KTMB's ETS timetable effective 18 April 2026 (updated 3 April 2026) lists JB Sentral as a stop, but departure times change often — check the current timetable on ktmb.com.my before you travel. Source: <a href="https://www.ktmb.com.my/assets/pdf/2026/Jadual%20Tren%20ETS%2018%20Apr%202026.pdf" target="_blank" rel="noopener noreferrer">KTMB ETS timetable, 18 April 2026 (PDF)</a></li>
+  <li>KTMB's onboard facilities page lists a headrest seat with a food tray, a 3-pin power outlet below the seat, an F&amp;B bistro in Coach C, luggage racks and washrooms. Source: <a href="https://www.ktmb.com.my/Onboard.html" target="_blank" rel="noopener noreferrer">KTMB — ETS onboard facilities</a></li>
+  <li>Tickets are sold through KTMB's online ticketing system (KITS), linked from the KTMB timetable page. The fare for your date is shown there at booking. Source: <a href="https://www.ktmb.com.my/traintime.html" target="_blank" rel="noopener noreferrer">KTMB — train timetable and ticketing</a></li>
+</ul>
+
 <p><a href="/book">Book your pod at Pelangi Capsule Hostel</a> and make the most of your JB trip.</p>
+
 `,
 		},
 		// 34
@@ -3009,6 +3075,8 @@ var BlogPosts = func() []BlogPost {
 <h2>Understanding the JB Sentral Layout</h2>
 <p>JB Sentral station is connected to <strong>City Square Mall</strong> (directly adjoining the station), the <strong>JB CIQ</strong> building for those heading to or from Singapore, and a bus terminal. The whole area is enclosed and air-conditioned.</p>
 <p>When you exit the train platform, follow signs for the main station exit or City Square Mall. The ground floor has money changers, convenience stores, food courts, ATMs, and a pharmacy. If you see signs for the Singapore Causeway or CIQ — that is the border crossing to Singapore, not what you want. Make your way toward the station taxi/Grab pick-up areas.</p>
+
+<figure class="blog-figure"><img src="/images/blog/jb-sentral-station-commons.jpg" alt="JB Sentral railway station entrance, Johor Bahru — the terminus for KTM ETS trains from Kuala Lumpur" loading="lazy" width="1200" height="800"><figcaption>JB Sentral railway station entrance — where KTM ETS trains from KL Sentral arrive, adjoining City Square Mall and the JB CIQ border complex. Photo: Joshua, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>, via Wikimedia Commons.</figcaption></figure>
 
 <h2>Getting from JB Sentral to Taman Pelangi</h2>
 <h3>Option 1: Grab (Recommended)</h3>
@@ -3038,7 +3106,7 @@ var BlogPosts = func() []BlogPost {
   <li><strong>Check-out time:</strong> 12:00 PM (noon).</li>
   <li><strong>Address:</strong> 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru.</li>
   <li><strong>WiFi:</strong> Free throughout. Network: pelangi capsule, password: ilovestaycapsule.</li>
-  <li><strong>Pods:</strong> <a href="/rooms">RM30/night on weekdays, RM35/night on weekends</a> — Upper and Lower Deck same price. LED reading light, USB charging port, personal locker per pod.</li>
+  <li><strong>Pods:</strong> <a href="/rooms">RM35/night flat (RM30 first night, direct-booking only)</a> — Upper and Lower Deck same price. LED reading light, USB charging port, personal locker per pod.</li>
   <li><strong>Tourism tax:</strong> Non-Malaysian guests pay RM10 per room per night at check-in.</li>
 </ul>
 <p>Arriving late or have questions? Reach us via the WhatsApp link on our <a href="/getting-here">Getting Here page</a>.</p>
@@ -3064,7 +3132,9 @@ var BlogPosts = func() []BlogPost {
 <h2>为什么选择坐火车去新山？</h2>
 <p>很多游客去新山（Johor Bahru，简称JB）会选择飞机或大巴，但 <strong>KTM ETS 电气化列车</strong>其实是更舒适、更省心的选择——尤其是从吉隆坡出发的旅客。</p>
 <p>ETS 直接开进 <strong>JB Sentral（新山中央火车站）</strong>，就在市中心，旁边就是 City Square 购物中心和新柔长堤关口。不像飞到仙奈机场（Senai Airport）还要再打车进城，下了火车基本上就到了。</p>
-<p>吉隆坡到新山的 ETS 票价约 <strong>RM79 至 RM110 左右</strong>（视座位等级和班次），比机票便宜，还省去了机场来回的时间。</p>
+<p>吉隆坡到新山的 ETS Platinum 票价约 <strong>RM90 至 RM115</strong>（2026年，视座位等级、班次及周末/假期浮动），比机票便宜，还省去了机场来回的时间。以 <a href="https://www.ktmb.com.my/ets.html" target="_blank" rel="noopener noreferrer">KTMB 官网</a>实时票价为准（2026-09-25 核实）。</p>
+
+<figure class="blog-figure"><img src="/images/blog/jb-sentral-station-commons.jpg" alt="新山中央车站（JB Sentral）入口，KTM ETS 列车终点站" loading="lazy" width="1200" height="800"><figcaption>新山中央车站（JB Sentral）入口——来自吉隆坡中央车站的 KTM ETS 列车终点。ETS Platinum 票价约 RM90–RM115（2026年）。来源：<a href="https://www.ktmb.com.my/ets.html" target="_blank" rel="noopener noreferrer">KTMB 官网</a>。摄影：Joshua，<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>，来自 Wikimedia Commons。</figcaption></figure>
 
 <h2>KTM ETS 是什么？</h2>
 <p>KTM ETS（Electric Train Service）是马来西亚国家铁路公司 KTMB 运营的城际列车，连接半岛西海岸各大城市。<strong>吉隆坡到新山</strong>是主要干线，途经芙蓉（Seremban）、格马斯（Gemas）、昔加末（Segamat）、居銮（Kluang）等城市，最终抵达 JB Sentral。</p>
@@ -3129,7 +3199,7 @@ var BlogPosts = func() []BlogPost {
 		// 36
 		{
 			Slug:          "johor-state-election-2026-travellers-guide",
-			LastModified:  "2026-07-03",
+			LastModified: "2026-10-02",
 			ImageAlt:      "Bangunan Sultan Ibrahim, the Johor state government building in Johor Bahru",
 			Title:         "Johor State Election 11 July 2026: What Travellers to JB Need to Know",
 			Excerpt:       "Johor votes on Saturday 11 July 2026 — a public holiday in the state. Here's how the election weekend affects your JB trip: Causeway traffic, shop hours, safety, and why it's actually a great weekend to stay put in Johor Bahru.",
@@ -3142,12 +3212,14 @@ var BlogPosts = func() []BlogPost {
 			Content: `
 <h2>The Short Version</h2>
 <p>Johor holds its <strong>16th State Assembly election</strong> with polling on <strong>Saturday 11 July 2026</strong>. Polling day is a <strong>public holiday in Johor state</strong> (not in the rest of Malaysia or Singapore). Early voting for police and military personnel happens on 7 July, and campaigning runs until 11:59 PM on 10 July.</p>
+<figure class="blog-figure"><img src="/images/blog/johor-state-election-2026-travellers-guide-1.webp" alt="Bangunan Sultan Ibrahim, the Johor state government building in Johor Bahru, seen from the front" loading="lazy" width="845" height="1200"><figcaption>Photo: Stefan Fussan, <a href="https://commons.wikimedia.org/wiki/File:Johor_Bahru_-_Bangunan_Sultan_Ibrahim_0002.jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>, CC BY-SA 3.0.</figcaption></figure>
 <p>For travellers, the practical impacts are simple: a much busier Causeway from <strong>10–12 July</strong>, some shops opening late on polling day, and higher demand for JB accommodation that weekend. Everything else — attractions, malls, transport, and <a href="/rooms">your capsule pod at Pelangi</a> — runs as normal. See our dedicated <a href="/johor-election-2026">election weekend guide for guests</a> for the quick-reference version.</p>
 
 
 <h2>Why the Causeway Gets Crazy</h2>
 <p>Hundreds of thousands of Johoreans live and work in Singapore, and Malaysian elections require voting in person in your home constituency. That means a huge wave of voters crossing back into JB on <strong>Friday night 10 July</strong> and <strong>Saturday morning 11 July</strong>, then returning to Singapore on <strong>Sunday 12 July</strong> — on top of the normal weekend crowd.</p>
 <p>During the last state election in 2022, Causeway queues on election eve stretched for hours. Expect the same pattern at both the Causeway (Woodlands) and the Second Link (Tuas).</p>
+<figure class="blog-figure"><img src="/images/blog/johor-state-election-2026-travellers-guide-2.webp" alt="The Second Link bridge between Johor and Singapore, a long concrete viaduct over the Tebrau and Tuas waters in sepia tones" loading="lazy" width="1200" height="453"><figcaption>Photo: mohamed.shaaz, <a href="https://commons.wikimedia.org/wiki/File:The_Second_Link_connecting_Singapore_and_Johor,_Malaysia.jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>, CC BY-SA 2.0.</figcaption></figure>
 <h3>How to beat the queue</h3>
 <ul>
   <li><strong>Cross before 7 AM or after 9 PM</strong> — the golden rule applies double on election weekend.</li>
@@ -3178,6 +3250,16 @@ var BlogPosts = func() []BlogPost {
   <li><strong>You're not going anywhere anyway.</strong> If you're mid-way through a JB↔SG itinerary, riding out the border rush from a RM35 pod beats sitting in a bus queue for three hours.</li>
 </ul>
 
+<h2>Official Information</h2>
+<ul>
+  <li><strong>Dates:</strong> The Election Commission (SPR) set nomination for 27 June 2026, early voting for 7 July 2026 and polling day for Saturday 11 July 2026, with a 14-day campaign ending 11:59 PM on 10 July. <a href="https://berita.rtm.gov.my/nasional/senarai-berita-nasional/senarai-artikel/spr-tetapkan-prn-johor-pada-11-julai-negeri-sembilan-1-ogos/" target="_blank" rel="noopener noreferrer">RTM (SPR announcement)</a></li>
+  <li><strong>Seats:</strong> The 16th Johor State Election filled 56 state assembly seats. <a href="https://berita.rtm.gov.my/nasional/senarai-berita-nasional/senarai-artikel/spr-tetapkan-prn-johor-pada-11-julai-negeri-sembilan-1-ogos/" target="_blank" rel="noopener noreferrer">RTM (SPR announcement)</a></li>
+  <li><strong>Public holidays:</strong> The Johor state government's 2026 public holiday list shows only one July holiday, Hari Hol Almarhum Sultan Iskandar on Tuesday 21 July 2026; polling day (11 July) is not listed. <a href="https://www.johor.gov.my/rakyat/cuti-umum-2" target="_blank" rel="noopener noreferrer">Kerajaan Johor, Cuti Umum 2026</a></li>
+  <li><strong>Extra holiday after the vote:</strong> Johor declared Monday 13 July 2026 a Hari Cuti Peristiwa (special event holiday) to thank voters for taking part in the election. <a href="https://berita.rtm.gov.my/nasional/senarai-berita-nasional/senarai-artikel/johor-isytihar-esok-sebagai-hari-cuti-peristiwa/" target="_blank" rel="noopener noreferrer">RTM</a></li>
+  <li><strong>Official updates:</strong> The Election Commission's Johor office publishes notices for the state election. <a href="https://spr.gov.my/johor/" target="_blank" rel="noopener noreferrer">SPR Johor</a></li>
+</ul>
+
+
 <h2>Your Stay at Pelangi Capsule Hostel</h2>
 <p>We operate <strong>completely as usual</strong> through the election weekend:</p>
 <ul>
@@ -3192,7 +3274,8 @@ var BlogPosts = func() []BlogPost {
 		// 37
 		{
 			Slug:          "rts-link-jb-singapore-final-testing-2026",
-			ImageAlt:      "Vehicles crossing the Johor–Singapore Causeway, soon to be relieved by the RTS Link rail line connecting Bukit Chagar to Woodlands North",
+			LastModified: "2026-10-06",
+			ImageAlt:      "Aerial view of the RTS Link Bukit Chagar station in Johor Bahru, with the elevated rail viaduct leading out from the station building",
 			Title:         "JB–Singapore RTS Link 2026: What the Final Testing Phase Means for Travellers",
 			Excerpt:       "The RTS Link is now in comprehensive testing with customs and immigration agencies from both countries. Here is what the timeline means for commuters and travellers planning a stay in Johor Bahru before and after opening.",
 			Date:          "2026-07-05",
@@ -3200,10 +3283,12 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "5 min read",
 			Tags:          []string{"rts-link", "johor-bahru", "singapore", "commuter", "causeway", "jb-travel-2026", "rail"},
-			FeaturedImage: "/images/blog/rts-link-jb-singapore-final-testing-2026.webp",
+			FeaturedImage: "/images/blog/rts-link-bukit-chagar-station-aerial.webp",
 			Content: `
 <h2>The Short Version</h2>
-<p>The Johor Bahru–Singapore RTS Link is a 4 km light rail line connecting <strong>Bukit Chagar station (JB)</strong> to <strong>Woodlands North station (Singapore)</strong>. Trials began in December 2025 without passengers, and from July 2026 the project entered its final comprehensive testing phase — the most complex stretch, involving customs, immigration, and security agencies from both countries simultaneously. Targeted completion remains <strong>31 December 2026</strong>, with full public operations expected by <strong>January 2027</strong>.</p>
+<p>The Johor Bahru–Singapore RTS Link is a 4 km light rail line connecting <strong>Bukit Chagar station (JB)</strong> to <strong>Woodlands North station (Singapore)</strong>. Trials began in December 2025 without passengers, and from July 2026 the project entered its final comprehensive testing phase — the most complex stretch, involving customs, immigration, and security agencies from both countries simultaneously. Final tests and trial runs are still expected to finish by <strong>31 December 2026</strong>, but on 2 October 2026 the operator moved the expected start of passenger service to around the <strong>end of February 2027</strong> to allow for independent safety certification and approvals from both governments.</p>
+<p><strong>Update, 6 October 2026:</strong> the RTS Link's passenger service is now expected around the end of February 2027, not end-2026 (operator announcement of 2 October 2026). See <a href="/blog/rts-link-delayed-february-2027-visa-run-jb">RTS Link delayed to February 2027: what it means for JB visa runs and stays</a>. Dates below that say 2026 or January 2027 are the earlier targets.</p>
+
 <p>If you are planning a trip to JB in the second half of 2026, or thinking about commuting between both cities once the line opens, this is the timeline you need to understand.</p>
 
 
@@ -3219,6 +3304,8 @@ var BlogPosts = func() []BlogPost {
 </ul>
 <p>The fare range, once confirmed, will make crossing dramatically faster than sitting in Causeway traffic — and far more predictable.</p>
 
+<figure class="blog-figure"><img src="/images/blog/rts-link-woodlands-north-commons.jpg" alt="The Woodlands North RTS Link station, Singapore, viewed from across the Strait of Johor" loading="lazy" width="1200" height="800"><figcaption>Woodlands North station, the Singapore terminus of the RTS Link, viewed from the Johor side. Expected one-way fare: S$5–S$7 (RM15.50–RM21.70), not yet finalised as of mid-2026. Source: <a href="https://www.lta.gov.sg/content/ltagov/en/upcoming_projects/rail_expansion/JB-Singapore_RTS_link.html" target="_blank" rel="noopener noreferrer">Land Transport Authority, Singapore — RTS Link project page</a>. Photo: ZKang123, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>, via Wikimedia Commons.</figcaption></figure>
+
 <h2>What This Means If You Are Commuting Now</h2>
 <p>The RTS Link is not open yet. Until it is, the two main options remain:</p>
 <ul>
@@ -3226,10 +3313,12 @@ var BlogPosts = func() []BlogPost {
   <li><strong>KTM Shuttle Tebrau:</strong> Runs between JB Sentral and Woodlands CIQ. Short hop, roughly RM5 from the JB side, useful for avoiding the Causeway pedestrian queue.</li>
 </ul>
 <p>The current crossing experience — functional, but queues at peak hours can stretch 30–90 minutes — is exactly why the RTS Link is being watched so closely. <a href="/blog/jb-singapore-commuter-guide-2026">Our JB–Singapore commuter guide covers current crossing options in detail.</a> The <a href="/blog/singapore-to-jb-day-trip-causeway-guide">day-trip Causeway guide</a> is also worth reading if you are visiting from Singapore for the first time.</p>
+<figure class="blog-figure"><img src="/images/blog/rts-link-jb-singapore-final-testing-2026-2.webp" alt="Aerial view of the Johor-Singapore Causeway with traffic and buses crossing the Strait of Johor" loading="lazy" width="1200" height="900"><figcaption>Photo: ZKang123, Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>.</figcaption></figure>
 
 
 <h2>The Accommodation Logic for 2026 and Early 2027</h2>
 <p>Once the RTS Link opens, Bukit Chagar becomes the new focal point for travellers crossing from Singapore. Demand for accommodation within easy reach of that station will increase — it is a straightforward consequence of making the crossing faster and more predictable.</p>
+<figure class="blog-figure"><img src="/images/blog/rts-link-jb-singapore-final-testing-2026-1.webp" alt="The Bukit Chagar RTS Link station building in Johor Bahru under construction in June 2026, seen above vehicles queuing on the approach road" loading="lazy" width="1200" height="900"><figcaption>Photo: ZKang123, Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>. Taken 13 June 2026 during construction.</figcaption></figure>
 <p>Pelangi Capsule Hostel is roughly <strong>10 minutes' drive from the Bukit Chagar station area</strong>, putting you in the same corridor as JB Sentral and the causeway checkpoint. The same proximity that makes us convenient for current bus and KTM crossings will hold once the RTS opens.</p>
 
 <table>
@@ -3247,7 +3336,7 @@ var BlogPosts = func() []BlogPost {
       <td>45–90 min including queue</td>
     </tr>
     <tr>
-      <td>From Jan 2027 (projected)</td>
+      <td>From about end-Feb 2027 (estimate)</td>
       <td>RTS Link (Bukit Chagar ↔ Woodlands North)</td>
       <td>~5 min rail + immigration time</td>
     </tr>
@@ -3255,14 +3344,22 @@ var BlogPosts = func() []BlogPost {
 </table>
 
 <h2>Planning Your Stay Around the Timeline</h2>
-<p>If you are visiting JB now, treat the current situation as business as usual — Causeway crossings are manageable with the right timing (avoid Sunday evenings, Malaysian public holidays, and peak-hour Fridays). If you are planning a trip for early 2027, it is worth watching LTA's official updates before booking transport, as the January 2027 operational date could shift slightly depending on how the remaining testing phases resolve.</p>
-<p>For commuters already living between both cities, JB accommodation is increasingly a practical choice. At <strong>RM30/night on weekdays</strong> and <strong>RM35/night on weekends</strong>, a monthly stay from <strong>RM600/month</strong>, and a 10-minute drive to the crossing — the numbers work well as a base while the RTS testing phase completes.</p>
+<p>If you are visiting JB now, treat the current situation as business as usual — Causeway crossings are manageable with the right timing (avoid Sunday evenings, Malaysian public holidays, and peak-hour Fridays). If you are planning a trip for early 2027, it is worth watching LTA's official updates before booking transport, as the February 2027 estimate depends on safety certification and government approvals that have not happened yet and could shift.</p>
+<p>For commuters already living between both cities, JB accommodation is increasingly a practical choice. At <strong>RM35/night flat</strong> (<strong>RM30</strong> for your first night if booked direct), a monthly stay from <strong>RM600/month</strong> (Upper Deck) or <strong>RM650/month</strong> (Lower Deck), and a 10-minute drive to the crossing — the numbers work well as a base while the RTS testing phase completes.</p>
 <p>We offer <strong>24/7 self check-in</strong>, free WiFi, and standard check-in from <strong>2:00 PM</strong> (check-out by <strong>12:00 PM</strong>). WhatsApp us on <strong>+60 12-708 8789</strong> if you have questions about long stays or flexible arrangements.</p>
 <p>See our <a href="/blog/3-day-jb-backpacker-itinerary-rm250">3-day JB backpacker itinerary</a> if you are still working out what to do once you arrive.</p>
 
 
+<h2>Official Information</h2>
+<ul>
+  <li>Singapore's LTA describes the RTS Link as a 4 km line with two stations (Woodlands North and Bukit Chagar), about five minutes' journey time and capacity for up to 10,000 commuters per hour in each direction. LTA's project page gave a target of end-2026; on 2 October 2026 the operator announced end-February 2027. Source: <a href="https://www.lta.gov.sg/content/ltagov/en/upcoming_projects/rail_expansion/JB-Singapore_RTS_link.html" target="_blank" rel="noopener noreferrer">LTA — JB-Singapore RTS Link project page</a></li>
+  <li>An LTA news release dated 20 September 2026 says bus Service 968 will be introduced to support the opening of the RTS Link Woodlands North station. It does not give an opening date. Source: <a href="https://www.lta.gov.sg/content/ltagov/en/newsroom/2026/9/news-releases/improved-bus-connectivity-for-commuters-with-more-services-and-e.html" target="_blank" rel="noopener noreferrer">LTA news release, 20 Sep 2026</a></li>
+  <li>On fares, Singapore's Acting Minister for Transport said that under the bilateral agreement the operator, RTSO, determines the fares, and that LTA awaits RTSO's announcement of fares in due course. Source: <a href="https://www.mot.gov.sg/news-resources/newsroom/speech-by-acting-minister-for-transport-mr-jeffrey-siow-at-ministry-of-transport-s-committee-of-supply-debate-2026/" target="_blank" rel="noopener noreferrer">MOT Singapore — Committee of Supply Debate 2026 speech</a></li>
+  <li>LTA's January 2024 factsheet gave the same end-of-2026 target. Check LTA's project page for the latest announcement before booking travel that depends on the opening date. Source: <a href="https://www.lta.gov.sg/content/ltagov/en/newsroom/2024/1/news-releases/Updates_on_JB-RTS_link.html" target="_blank" rel="noopener noreferrer">LTA factsheet, 11 Jan 2024</a></li>
+</ul>
+
 <h2>Book a Pod</h2>
-<p>Whether you are crossing for a day trip, a week of work, or planning ahead for the RTS era, Pelangi gives you a quiet, affordable base close to the action. <a href="/book">Book your capsule pod here</a> — or check <a href="/rooms">room types and pricing</a> if you want to compare weekday and weekend rates before committing.</p>
+<p>Whether you are crossing for a day trip, a week of work, or planning ahead for the RTS era, Pelangi gives you a quiet, affordable base close to the action. <a href="/book">Book your capsule pod here</a> — or check <a href="/rooms">room types and pricing</a> before committing.</p>
 
 <h2>Sources</h2>
 <ul>
@@ -3270,12 +3367,13 @@ var BlogPosts = func() []BlogPost {
   <li><a href="https://paultan.org/2025/11/04/rts-link-first-trial-phase-to-begin-in-december-without-passengers-still-targeted-for-dec-2026-completion/" target="_blank" rel="noopener">paultan.org — RTS Link first trial phase to begin in December, still targeted for Dec 2026 completion</a></li>
   <li><a href="https://www.mot.gov.sg/news-resources/newsroom/singapore-and-malaysia-commemorate-the-unveiling-of-the--first-johor-bahru---singapore-rts-link-train/" target="_blank" rel="noopener">Ministry of Transport Singapore — Unveiling of the first JB–Singapore RTS Link train</a></li>
 </ul>
+
 `,
 		},
 		// 38 — scheduled: goes live 2026-07-08
 		{
 			Slug:          "july-best-month-visit-johor-bahru-low-season",
-			ImageAlt:      "Quiet morning at a Johor Bahru attraction during July low season, with short queues and overcast tropical sky",
+			ImageAlt:      "Sunny sky and blue-green Johor Strait over the Johor Bahru skyline and Sultan Iskandar CIQ complex on a quiet day",
 			Title:         "Why July Is Actually the Best Month to Visit Johor Bahru on a Budget",
 			Excerpt:       "Low season in JB means shorter queues, cheaper pods, and durian at its absolute peak. Here is an honest look at what July offers — and one thing worth planning around.",
 			Date:          "2026-07-08",
@@ -3283,7 +3381,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "7 min read",
 			Tags:          []string{"johor-bahru", "july", "low-season", "durian-season", "budget-travel", "things-to-do", "travel-tips"},
-			FeaturedImage: "/images/blog/july-best-month-visit-johor-bahru-low-season.webp",
+			FeaturedImage: "/images/blog/johor-bahru-sunny-sky-ciq-skyline-commons.webp",
 			Content: `
 <h2>The Short Version</h2>
 <p>July is a low-season month for JB tourism. That means shorter queues at LEGOLAND and other attractions, easier table-finding at popular restaurants, and the same accommodation you would pay a premium for in December available at everyday rates. It also coincides with <strong>peak durian season</strong> — arguably the single best reason to be in Johor in the middle of the year. There is one scheduling note worth knowing about (more on that below), but overall, July is quietly one of the better months to visit if you are travelling on a budget.</p>
@@ -3324,7 +3422,7 @@ var BlogPosts = func() []BlogPost {
 <figure class="blog-figure"><img src="/images/destinations/pasar-malam.webp" alt="A pasar malam (night market) in Johor Bahru" loading="lazy" width="1200" height="800"><figcaption>A pasar malam (night market) in Johor Bahru.</figcaption></figure>
 
 <h2>A Budget Week Skeleton</h2>
-<p>If you are planning a week in JB on a tight budget, arriving on a weekday is the straightforward move — capsule pods at Pelangi are <strong>RM30/night on weekdays</strong>, versus <strong>RM35/night on weekends</strong>. Across a 5-night weekday stay, that is RM150 for accommodation.</p>
+<p>If you are planning a week in JB on a tight budget, capsule pods at Pelangi are <strong>RM35/night flat</strong> (<strong>RM30</strong> for your first night if booked direct on the website). Across a 5-night stay, that is roughly RM175 for accommodation.</p>
 
 <table>
   <thead>
@@ -3382,7 +3480,7 @@ var BlogPosts = func() []BlogPost {
 		// 39 — scheduled: goes live 2026-07-11
 		{
 			Slug:          "rm594-month-jb-long-stay-singapore-commute-base",
-			ImageAlt:      "Inside a capsule pod at Pelangi Capsule Hostel, Johor Bahru — monthly stays from RM600 for Singapore commuters",
+			ImageAlt:      "Early-morning view of the Johor-Singapore Causeway with commuter traffic and a bus heading towards Woodlands",
 			Title:         "RM600/Month Capsule Pod: The Honest Maths for JB-Based Singapore Commuters",
 			Excerpt:       "If you're starting a new job in Singapore and not ready to sign a 12-month tenancy, a monthly capsule pod in JB changes the financial equation significantly. Here's how the numbers actually stack up.",
 			Date:          "2026-07-11",
@@ -3390,7 +3488,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "7 min read",
 			Tags:          []string{"monthly-stay", "jb-singapore-commute", "budget-accommodation", "johor-bahru", "long-stay", "capsule-hostel", "cost-of-living"},
-			FeaturedImage: "/images/blog/rm594-month-jb-long-stay-singapore-commute-base.webp",
+			FeaturedImage: "/images/blog/causeway-morning-commute-jb-singapore-cover.webp",
 			Content: `
 <h2>The Problem With Signing a Tenancy Before Your Job Starts</h2>
 <p>You've landed a job offer in Singapore. The start date is three weeks away. Your new employer wants you at the office in Toa Payoh. You're sitting in Johor Bahru, Googling "room rental JB near CIQ" and realising that every room listing comes with strings attached: two months deposit, one month advance, 12-month contract, utilities separate.</p>
@@ -3401,7 +3499,7 @@ var BlogPosts = func() []BlogPost {
 
 <h2>What a Monthly Stay at Pelangi Actually Costs</h2>
 <p>Monthly stays at Pelangi start from <strong>RM600/month</strong>. That rate covers your capsule pod, utilities, and WiFi — no separate bills, no deposit contract, no minimum tenure beyond the month you pay for. You can check in on a Monday and check out 30 days later if something changes.</p>
-<p>The nightly rate for short stays is <strong>RM30 on weekdays and RM35 on weekends</strong>. If you're doing a full calendar month of 30 nights at those nightly rates you'd pay more — the monthly rate is specifically designed for people settling in for the longer haul. Check-in is 2:00 PM, check-out 12:00 PM, and the building has 24/7 self check-in, which matters if you're crossing the Causeway on irregular shift times.</p>
+<p>The nightly rate for short stays is <strong>RM35/night flat</strong> (<strong>RM30</strong> for your first night if booked direct on the website). If you're doing a full calendar month of 30 nights at that nightly rate you'd pay more — the monthly rate is specifically designed for people settling in for the longer haul. Check-in is 2:00 PM, check-out 12:00 PM, and the building has 24/7 self check-in, which matters if you're crossing the Causeway on irregular shift times.</p>
 <p>For a full look at room types and availability, see our <a href="/rooms">rooms page</a>.</p>
 
 <h2>What a Conventional JB Room Rental Actually Costs</h2>
@@ -3501,7 +3599,7 @@ var BlogPosts = func() []BlogPost {
 		// 40 — scheduled: goes live 2026-07-14
 		{
 			Slug:          "singapore-lqs-1800-july-2026-malaysians-guide",
-			ImageAlt:      "Malaysian workers boarding a Causeway bus at JB Sentral for the daily commute to Singapore",
+			ImageAlt:      "Singapore central business district skyline at dusk across Marina Bay, where Malaysian work pass holders earn their salaries",
 			Title:         "Singapore LQS Rises to S$1,800 in July 2026: What Malaysian Job Seekers Need to Know",
 			Excerpt:       "Singapore's Local Qualifying Salary increased to S$1,800 on 1 July 2026. If you're a Malaysian applying for or renewing a Work Permit or S Pass, here's what the change actually means for your job hunt and timing.",
 			Date:          "2026-07-14",
@@ -3509,7 +3607,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "7 min read",
 			Tags:          []string{"singapore", "work-permit", "lqs", "s-pass", "malaysian-workers", "career", "policy-2026"},
-			FeaturedImage: "/images/blog/singapore-lqs-1800-july-2026-malaysians-guide.webp",
+			FeaturedImage: "/images/blog/singapore-cbd-skyline-marina-bay-sunset-salary-threshold.webp",
 			Content: `
 <h2>Singapore's Local Qualifying Salary Changed on 1 July 2026</h2>
 <p>If you're a Malaysian looking for work in Singapore — or already there on a Work Permit or S Pass and due for renewal — there's a policy update that directly affects your chances of getting hired or renewed: the <strong>Local Qualifying Salary (LQS) rose from S$1,600 to S$1,800</strong> effective 1 July 2026.</p>
@@ -3579,7 +3677,7 @@ var BlogPosts = func() []BlogPost {
 <p>For a broader guide to the job-hunting process itself, see <a href="/blog/how-malaysians-find-jobs-singapore-2026">how Malaysians find jobs in Singapore in 2026</a> and the full <a href="/blog/singapore-work-pass-guide-malaysians">Singapore work pass guide for Malaysians</a>.</p>
 
 <h2>Staying at Pelangi During the Transition Period</h2>
-<p>Pelangi Capsule Hostel is a 10-minute drive from JB Sentral and CIQ. If you're commuting daily to Singapore for interviews, trial shifts, or your first weeks on a new job, the location works in your favour. Pods are <strong>RM30/night on weekdays and RM35/night on weekends</strong>, with monthly rates from <strong>RM600</strong> (utilities and WiFi included). No deposit, no minimum tenancy — monthly stays renew on your terms.</p>
+<p>Pelangi Capsule Hostel is a 10-minute drive from JB Sentral and CIQ. If you're commuting daily to Singapore for interviews, trial shifts, or your first weeks on a new job, the location works in your favour. Pods are <strong>RM35/night flat</strong> (<strong>RM30</strong> for your first night if booked direct on the website), with monthly rates from <strong>RM600</strong> (Upper Deck) or <strong>RM650</strong> (Lower Deck) (utilities and WiFi included). No deposit, no minimum tenancy — monthly stays renew on your terms.</p>
 <p>24/7 self check-in means the building works around your hours, not the other way around. If you're crossing before 7:00 AM to beat the Causeway rush, that flexibility matters.</p>
 <p>Questions? WhatsApp us directly at <strong>+60 12-708 8789</strong>.</p>
 <p><a href="/book">Check availability and book a stay here.</a></p>
@@ -3595,7 +3693,7 @@ var BlogPosts = func() []BlogPost {
 		// 41 — scheduled: goes live 2026-07-17
 		{
 			Slug:          "jb-durian-season-july-2026-budget-guide",
-			ImageAlt:      "Durian stalls at night along Jalan Tan Hiok Nee heritage street, Johor Bahru, with crates of Musang King and D24",
+			ImageAlt:      "Spiky whole durians on a market stall table with a pack of opened durian flesh at the edge of the frame",
 			Title:         "JB Durian Season July 2026: A Budget Traveller's Guide to Eating Well Without Getting Ripped Off",
 			Excerpt:       "July is peak durian season in Johor Bahru, and Jalan Tan Hiok Nee lights up every night with stalls piled high with Musang King, D24, and kampung varieties. Here is how to eat smart and avoid the common traps.",
 			Date:          "2026-07-17",
@@ -3603,7 +3701,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "6 min read",
 			Tags:          []string{"durian-season", "johor-bahru", "food", "musang-king", "budget-travel", "tan-hiok-nee", "night-stalls"},
-			FeaturedImage: "/images/blog/jb-durian-season-july-2026-budget-guide.webp",
+			FeaturedImage: "/images/blog/jb-durian-stall-opened-durian-market-cover.webp",
 			Content: `
 <h2>Why July Is the Best Time to Visit JB for Durian</h2>
 <p>If you time your trip to Johor Bahru in July, you land in the middle of peak durian season. Supply trucks roll down from Pahang and Johor's inland orchards every night, and the heritage streets around <strong>Jalan Tan Hiok Nee</strong> transform into a durian lover's circuit from early evening onwards. Stalls stack crates three rows deep, and the smell hits you from the end of the street — you will not miss them.</p>
@@ -3665,7 +3763,7 @@ var BlogPosts = func() []BlogPost {
 <p>July is a strong month for JB beyond durian. The city runs a steady calendar of events through the month. Check the <a href="https://thingstodoinjohorbahru.com/events/" target="_blank" rel="noopener">Things to Do in Johor Bahru events page</a> for what is running during your specific dates.</p>
 
 <h2>Staying Near the Action</h2>
-<p>Pelangi Capsule Hostel puts you in Taman Pelangi — close to the city's food belt, ~10 minutes from JB Sentral and the CIQ checkpoint, and a short Grab from Tan Hiok Nee. <a href="/rooms">Capsule pods</a> are RM30/night on weekdays and RM35/night on weekends, with monthly rates from RM600. Check-in is 2:00 PM, check-out 12:00 PM, and the property runs 24/7 self check-in — so if your durian run goes late, there is no reception cut-off to worry about. WhatsApp us at <strong>+60 12-708 8789</strong> if you have any questions before you arrive.</p>
+<p>Pelangi Capsule Hostel puts you in Taman Pelangi — close to the city's food belt, ~10 minutes from JB Sentral and the CIQ checkpoint, and a short Grab from Tan Hiok Nee. <a href="/rooms">Capsule pods</a> are RM35/night flat (RM30 for your first night if booked direct on the website), with monthly rates from RM600 (Upper Deck) or RM650 (Lower Deck). Check-in is 2:00 PM, check-out 12:00 PM, and the property runs 24/7 self check-in — so if your durian run goes late, there is no reception cut-off to worry about. WhatsApp us at <strong>+60 12-708 8789</strong> if you have any questions before you arrive.</p>
 <p>Ready to book your July stay? <a href="/book">Check availability and secure your pod here.</a></p>
 
 <h2>Sources</h2>
@@ -3678,7 +3776,7 @@ var BlogPosts = func() []BlogPost {
 		// 42 — pulled forward to 2026-07-12 for max indexing runway before the 25-26 Jul fair
 		{
 			Slug:          "mystarjob-fair-jb-july-2026-weekend-plan",
-			ImageAlt:      "Job fair exhibition hall at Mid Valley Southkey Johor Bahru with attendees in business attire visiting employer booths",
+			ImageAlt:      "Job fair hall with employer booths and job seekers talking to recruiters over tables of brochures",
 			Title:         "myStarjob Fair JB July 2026: A Job-Hunter's Weekend Plan on a Budget",
 			Excerpt:       "The myStarjob Fair returns to Mid Valley Southkey on 25–26 July 2026. Here is how to plan a productive two-day job-hunting weekend in JB — what to bring, how to prepare, and how to keep your total spend around RM125.",
 			Date:          "2026-07-12",
@@ -3686,7 +3784,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "6 min read",
 			Tags:          []string{"job-fair", "johor-bahru", "jobs", "work-in-singapore", "career", "budget-weekend", "mid-valley-southkey"},
-			FeaturedImage: "/images/blog/mystarjob-fair-jb-july-2026-weekend-plan.webp",
+			FeaturedImage: "/images/blog/mystarjob-job-fair-hall-booths-jb.webp",
 			Content: `
 <h2>The myStarjob Fair Is Coming to JB — Here Is How to Make the Most of It</h2>
 <p>The <strong>myStarjob Fair</strong> is scheduled for <strong>Saturday 25 and Sunday 26 July 2026</strong>, from 11:00 AM, at <strong>Mid Valley Exhibition Centre, Mid Valley Southkey, Johor Bahru</strong>. It brings together employers from Malaysia and Singapore under one roof — which makes it genuinely worth planning a weekend trip around if you are a job-hunter based in Johor or crossing from Singapore.</p>
@@ -3758,7 +3856,7 @@ var BlogPosts = func() []BlogPost {
 <p>The hostel runs <strong>24/7 self check-in</strong>, so if you are arriving late Friday after work or the commute from Singapore, there is no reception deadline to worry about. Check in at whatever time suits you.</p>
 
 <h2>Booking Your Stay</h2>
-<p>Pelangi Capsule Hostel is at <strong>26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru</strong>. Pods are <strong>RM30/night weekdays and RM35/night weekends</strong>, with 24/7 self check-in, free WiFi, and check-out at 12:00 PM — giving you a relaxed Sunday morning before heading back. WhatsApp us on <strong>+60 12-708 8789</strong> with any questions.</p>
+<p>Pelangi Capsule Hostel is at <strong>26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru</strong>. Pods are <strong>RM35/night flat</strong> (<strong>RM30</strong> for your first night if booked direct on the website), with 24/7 self check-in, free WiFi, and check-out at 12:00 PM — giving you a relaxed Sunday morning before heading back. WhatsApp us on <strong>+60 12-708 8789</strong> with any questions.</p>
 <p><a href="/book">Book your fair-weekend stay now before pods fill up.</a> Weekend dates around large job fairs move quickly.</p>
 
 <h2>Sources</h2>
@@ -3771,7 +3869,7 @@ var BlogPosts = func() []BlogPost {
 		// 43 — scheduled: goes live 2026-07-23
 		{
 			Slug:          "jb-transit-base-foreign-workers-guide",
-			ImageAlt:      "Capsule pod interior at Pelangi Capsule Hostel, Johor Bahru — clean sleeping pod with privacy screen for transit workers",
+			ImageAlt:      "Intercity and city buses parked at the Larkin Sentral bus terminal platforms in Johor Bahru, a main transit hub for workers arriving in JB",
 			Title:         "Using Johor Bahru as a Transit Base: A Practical Guide for Foreign Workers",
 			Excerpt:       "If you're between Singapore work contracts or heading home on a budget flight, JB is a cheaper, practical overnight base than any airport hotel — here's how to make it work.",
 			Date:          "2026-07-23",
@@ -3779,7 +3877,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "5 min read",
 			Tags:          []string{"johor-bahru", "transit", "foreign-workers", "senai-airport", "changi", "budget-accommodation", "causeway"},
-			FeaturedImage: "/images/blog/jb-transit-base-foreign-workers-guide.webp",
+			FeaturedImage: "/images/blog/larkin-sentral-bus-platform-foreign-worker-transit-cover.webp",
 			Content: `
 <h2>The Short Version</h2>
 <p>We see this pattern regularly at Pelangi Capsule Hostel: a guest from Myanmar, Indonesia, or the Philippines checks in late at night, sleeps, and is gone by morning to catch a flight or cross back into Singapore. Sometimes it's two or three nights while they sort paperwork or wait on a work-permit outcome. JB has become a quiet but reliable transit hub for foreign workers in the region — and this guide explains why, and how to plan it properly.</p>
@@ -3788,7 +3886,7 @@ var BlogPosts = func() []BlogPost {
 <figure class="blog-figure"><img src="/images/capsule-1.webp" alt="Capsule pods at Pelangi Capsule Hostel, Taman Pelangi, Johor Bahru" loading="lazy" width="1200" height="800"><figcaption>Capsule pods at Pelangi Capsule Hostel, Taman Pelangi, Johor Bahru.</figcaption></figure>
 
 <h2>Why JB Makes Sense as a Transit Base</h2>
-<p>The cost logic is straightforward. A capsule pod at Pelangi is <strong>RM30 per night on weekdays and RM35 on weekends</strong>, with monthly stays from RM600. Compare that to airport hotel rates in Singapore or even budget hostels near Changi — you are almost always paying significantly more on the Singapore side. For workers who are between contracts, waiting on documentation, or simply passing through on their way home, those savings compound over even a short stay.</p>
+<p>The cost logic is straightforward. A capsule pod at Pelangi is <strong>RM35 per night flat</strong> (<strong>RM30</strong> for your first night if booked direct on the website), with monthly stays from RM600 (Upper Deck) or RM650 (Lower Deck). Compare that to airport hotel rates in Singapore or even budget hostels near Changi — you are almost always paying significantly more on the Singapore side. For workers who are between contracts, waiting on documentation, or simply passing through on their way home, those savings compound over even a short stay.</p>
 <p>Beyond cost, JB gives you options. You have two realistic routes for your onward journey: fly out of <strong>Senai International Airport (JHB)</strong> or cross the Causeway and use <strong>Changi Airport (SIN)</strong>. Both are covered below.</p>
 
 <h2>Option 1: Flying from Senai International Airport</h2>
@@ -3818,7 +3916,7 @@ var BlogPosts = func() []BlogPost {
 <figure class="blog-figure"><img src="/images/capsule-4.webp" alt="A made-up capsule bed at Pelangi Capsule Hostel" loading="lazy" width="1200" height="800"><figcaption>A made-up capsule bed at Pelangi Capsule Hostel.</figcaption></figure>
 
 <h2>Waiting on a Singapore Work Permit?</h2>
-<p>We regularly host workers who are in a holding pattern — permit applications submitted, MOM processing ongoing, and a decision still pending. Waiting that out in JB is significantly cheaper than staying in Singapore on a tourist budget. RM30–35 per night for a clean capsule pod with free WiFi gives you a workable base: you can monitor email, respond to your employer or agent, and stay close enough to cross over quickly when called.</p>
+<p>We regularly host workers who are in a holding pattern — permit applications submitted, MOM processing ongoing, and a decision still pending. Waiting that out in JB is significantly cheaper than staying in Singapore on a tourist budget. RM35/night flat (RM30 for your first night if booked direct on the website) for a clean capsule pod with free WiFi gives you a workable base: you can monitor email, respond to your employer or agent, and stay close enough to cross over quickly when called.</p>
 <p>The <a href="/blog/singapore-work-pass-guide-malaysians">Singapore work pass guide</a> covers the main permit types, processing timelines, and what workers typically need to prepare during the waiting period.</p>
 
 <h2>What Pelangi Offers Transit Guests</h2>
@@ -3831,16 +3929,16 @@ var BlogPosts = func() []BlogPost {
   </thead>
   <tbody>
     <tr>
-      <td>Nightly rate (weekday)</td>
-      <td>RM30</td>
-    </tr>
-    <tr>
-      <td>Nightly rate (weekend)</td>
+      <td>Nightly rate (flat)</td>
       <td>RM35</td>
     </tr>
     <tr>
+      <td>First night (direct booking)</td>
+      <td>RM30</td>
+    </tr>
+    <tr>
       <td>Monthly stay</td>
-      <td>From RM600</td>
+      <td>From RM600 (Upper Deck) / RM650 (Lower Deck)</td>
     </tr>
     <tr>
       <td>Check-in / check-out</td>
@@ -3877,7 +3975,7 @@ var BlogPosts = func() []BlogPost {
 		// 44
 		{
 			Slug:          "room-for-rent-taman-pelangi-jb-rm500-month",
-			ImageAlt:      "Private room for monthly rent above the 7-Eleven in Taman Pelangi, Johor Bahru — from RM500 per month",
+			ImageAlt:      "Simple private room with two single beds, a desk and a large window opening to greenery",
 			Title:         "Room for Rent in Taman Pelangi, Johor Bahru: Private Rooms from RM500/Month",
 			Excerpt:       "Looking for a bilik sewa in central JB without the usual two-plus-one deposit? We rent private rooms above the 7-Eleven in Taman Pelangi from RM500/month with a flat RM250 deposit — managed by the Pelangi Capsule Hostel team.",
 			Date:          "2026-07-08",
@@ -3885,7 +3983,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "6 min read",
 			Tags:          []string{"room-for-rent", "bilik-sewa", "taman-pelangi", "johor-bahru", "monthly-rental", "long-stay", "budget-accommodation"},
-			FeaturedImage: "/images/blog/room-for-rent-taman-pelangi-jb-rm500-month.webp",
+			FeaturedImage: "/images/blog/private-room-simple-twin-room-window-cover.webp",
 			Content: `
 <h2>The Short Version</h2>
 <p>Alongside our capsule pods, we rent out <strong>private rooms on a monthly basis from RM500/month</strong>, located above the 7-Eleven in Taman Pelangi — a short walk from Pelangi Capsule Hostel and managed by the same team. The deposit is a flat <strong>RM250</strong>, not the two-months-plus-one-month advance that most JB room rentals ask for. If you want your own lockable room in one of JB's most convenient neighbourhoods without signing a 12-month tenancy, this is that option.</p>
@@ -3938,7 +4036,7 @@ var BlogPosts = func() []BlogPost {
     <tr><td>Amenities</td><td>7-Eleven downstairs, neighbourhood on foot</td><td>Hostel WiFi, kitchen, lounge, laundry at RM5/load</td></tr>
   </tbody>
 </table>
-<p>If you are weighing the capsule option, the <a href="/rooms">rooms page</a> has full pod details, and nightly stays run RM30 on weekdays / RM35 on weekends if you want to trial the area before committing to a month.</p>
+<p>If you are weighing the capsule option, the <a href="/rooms">rooms page</a> has full pod details, and nightly stays run RM35/night flat (RM30 for your first night if booked direct on the website) if you want to trial the area before committing to a month.</p>
 
 
 <figure class="blog-figure"><img src="/images/capsule-4.webp" alt="A made-up capsule bed at Pelangi Capsule Hostel" loading="lazy" width="1200" height="800"><figcaption>A made-up capsule bed at Pelangi Capsule Hostel.</figcaption></figure>
@@ -3958,6 +4056,7 @@ var BlogPosts = func() []BlogPost {
 		// 45 — scheduled: goes live 2026-07-26
 		{
 			Slug:          "grab-driver-jb-guide-2026",
+			LastModified: "2026-10-02",
 			ImageAlt:      "E-hailing driver's view of Johor Bahru city traffic near the CIQ checkpoint — Grab driving in JB",
 			Title:         "Becoming a Grab Driver in Johor Bahru 2026: PSV Licence, Sign-Up, and Realistic Earnings",
 			Excerpt:       "Everything you need to drive for Grab in JB: the PSV licence and EVP process, what Grab subsidises, where the demand hotspots are, and how e-hailing compares with delivery work.",
@@ -3992,6 +4091,7 @@ var BlogPosts = func() []BlogPost {
 <p><strong>Step 3:</strong> Complete the PSV course and medical check-up (book through the app flow).</p>
 <p><strong>Step 4:</strong> Send the car for Puspakom inspection if it is older than 3 years; Grab processes your EVP.</p>
 <p><strong>Step 5:</strong> Pass the background check, activate, and start accepting jobs.</p>
+<figure class="blog-figure"><img src="/images/blog/grab-driver-jb-guide-2026-2.webp" alt="Car pick-up point at JB Sentral station with the linkbridge entrance to R&amp;F Mall across the driveway" loading="lazy" width="1200" height="902"><figcaption>The car pick-up point at JB Sentral, one of the busiest spots for rides. Photo: JohnLim99, <a href="https://commons.wikimedia.org/wiki/File:JB_Sentral_Station_Pick-up_Point_-_R%26F_Mall_Linkbridge_Entry_-_8_Oct_2025_(1).jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>, CC BY-SA 4.0.</figcaption></figure>
 
 
 <h2>Realistic Earnings in JB</h2>
@@ -4010,6 +4110,7 @@ var BlogPosts = func() []BlogPost {
 <p>Petrol, tolls, and car wear come out of that, so a full-time JB Grab driver clearing RM2,500–4,000 a month is a realistic band — not the RM8,000 fantasy figures you see in ads. Weekend nights and public holidays around the malls and checkpoint are where surge pricing genuinely moves the number.</p>
 
 <h2>Where the Demand Is: JB Hotspots</h2>
+<figure class="blog-figure"><img src="/images/blog/grab-driver-jb-guide-2026-1.webp" alt="JB Sentral station and the Sultan Iskandar CIQ complex in Johor Bahru, seen from the north-east" loading="lazy" width="1200" height="900"><figcaption>Photo: Slleong, <a href="https://commons.wikimedia.org/wiki/File:JB_Sentral_4.jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>, CC0.</figcaption></figure>
 <ul>
   <li><strong>CIQ / JB Sentral</strong> — the single most reliable queue in the city. Arrivals from Singapore need rides all day; peak after work hours and weekend mornings.</li>
   <li><strong>City Square, KSL, Mid Valley Southkey, Paradigm</strong> — mall runs are short but constant; weekend afternoons stack trips back-to-back.</li>
@@ -4033,8 +4134,18 @@ var BlogPosts = func() []BlogPost {
 </table>
 <p>Many JB drivers run both: passengers during commute peaks, parcels in the flat mid-afternoon. Our <a href="/blog/delivery-gig-apps-jb-comparison-2026">full JB gig-app comparison</a> breaks down all four major platforms daypart by daypart.</p>
 
+<h2>Official Information</h2>
+<ul>
+  <li><strong>Grab's driver requirements:</strong> Malaysian aged 21 to 69 with a blue NRIC, a Malaysian Competent Driving Licence, an E-Hailing PSV Licence, a vehicle not older than 15 years, E-Hailing Vehicle Insurance, and a personal bank account matching the NRIC. <a href="https://www.grab.com/my/driver/" target="_blank" rel="noopener noreferrer">Grab Malaysia, driver page</a></li>
+  <li><strong>Grab's reimbursements (limited time, T&amp;Cs apply):</strong> PSV licence RM20, medical check-up RM50 to RM80, EVP RM110, Puspakom RM70; PSV training cost varies by city. <a href="https://www.grab.com/my/driver/" target="_blank" rel="noopener noreferrer">Grab Malaysia, driver page</a></li>
+  <li><strong>EVP:</strong> Grab processes eligible EVP applications in the APAD system, taking about 5 working days. The vehicle must be no older than 15 years, with a civilian-ID owner who is a Malaysian citizen or permanent resident, and JPJ vehicle code AB or AD (pick-up trucks are excluded). <a href="https://www.grab.com/my/driver-evpsemenanjungmy/" target="_blank" rel="noopener noreferrer">Grab Malaysia, EVP process</a></li>
+  <li><strong>APAD rules:</strong> E-hailing drivers must be Malaysian citizens, registered with a licensed e-hailing operator, hold a valid JPJ PSV vocational licence, and drive a vehicle with a valid eVP issued by APAD; driving without these may be penalised under the Land Public Transport Act 2010. <a href="https://helpdesk.apad.gov.my/help/article/e-hailing-driver-requirements" target="_blank" rel="noopener noreferrer">APAD Knowledge Base</a></li>
+  <li><strong>Where permits are issued:</strong> APAD handles e-hailing vehicle permits through its iSPKP commercial vehicle licensing system. <a href="https://www.apad.gov.my" target="_blank" rel="noopener noreferrer">APAD</a></li>
+</ul>
+
+
 <h2>A Cheap Base Makes the Maths Work</h2>
-<p>The biggest lever on gig income is not the app — it is your fixed costs. Drivers staying at <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi pay <strong>RM30/night on weekdays (RM35 weekends)</strong>, or <strong>RM600/month</strong> for long-stayers, with private rooms from <strong>RM500/month</strong> above the 7-Eleven on Jalan Perang. You are 10–15 minutes from the CIQ queue, in the middle of the mall belt, with fast WiFi for the driver app and 24/7 self check-in after late shifts.</p>
+<p>The biggest lever on gig income is not the app — it is your fixed costs. Drivers staying at <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi pay <strong>RM35/night flat</strong> (<strong>RM30</strong> for your first night if booked direct on the website), or <strong>RM600/month</strong> for long-stayers, with private rooms from <strong>RM500/month</strong> above the 7-Eleven on Jalan Perang. You are 10–15 minutes from the CIQ queue, in the middle of the mall belt, with fast WiFi for the driver app and 24/7 self check-in after late shifts.</p>
 <p><a href="/book">Book a pod</a>, or run the numbers first with our <a href="/blog/gig-worker-jb-monthly-budget-guide">gig worker monthly budget guide</a> and the <a href="/blog/rm594-month-jb-long-stay-singapore-commute-base">RM600/month capsule maths</a>.</p>
 
 <h2>Sources</h2>
@@ -4046,7 +4157,7 @@ var BlogPosts = func() []BlogPost {
 		// 46 — scheduled: goes live 2026-07-29
 		{
 			Slug:          "delivery-gig-apps-jb-comparison-2026",
-			ImageAlt:      "Delivery riders from different gig platforms waiting outside a Johor Bahru mall with thermal bags and parcels",
+			ImageAlt:      "Three delivery motorbikes with green, orange and pink insulated delivery boxes parked side by side on a Johor Bahru shophouse street",
 			Title:         "Grab vs Lalamove vs Foodpanda in JB 2026: Which Gig App Actually Pays?",
 			Excerpt:       "The honest side-by-side for Johor Bahru gig workers: per-job pay, licence hurdles, vehicle requirements, and which app to run at which time of day.",
 			Date:          "2026-07-29",
@@ -4054,7 +4165,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "7 min read",
 			Tags:          []string{"gig-economy", "johor-bahru", "grab", "lalamove", "foodpanda", "delivery", "comparison"},
-			FeaturedImage: "/images/blog/delivery-gig-apps-jb-comparison-2026.webp",
+			FeaturedImage: "/images/blog/delivery-gig-apps-three-delivery-bikes-jb.webp",
 			Content: `
 <h2>The Question Every New JB Gig Worker Asks</h2>
 <p>Which app should I sign up for first? The honest answer for Johor Bahru in 2026: it depends on your vehicle, your licence, and which hours you can actually work. Each platform has a different sweet spot, and the drivers earning the most here run two or three of them in rotation rather than staying loyal to one.</p>
@@ -4104,7 +4215,7 @@ var BlogPosts = func() []BlogPost {
 
 
 <h2>Keep Your Overheads Gig-Sized</h2>
-<p>A 12-month tenancy with a two-plus-one deposit makes no sense when your income flexes week to week. <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi — mid-belt between the CIQ, City Square, and KSL — runs <strong>RM30/night on weekdays (RM35 weekends)</strong>, <strong>RM600/month</strong> for capsule long-stayers, and private rooms from <strong>RM500/month</strong> above the 7-Eleven on Jalan Perang, all with fast WiFi and 24/7 self check-in for late shifts.</p>
+<p>A 12-month tenancy with a two-plus-one deposit makes no sense when your income flexes week to week. <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi — mid-belt between the CIQ, City Square, and KSL — runs <strong>RM35/night flat</strong> (<strong>RM30</strong> for your first night if booked direct on the website), <strong>RM600/month</strong> (Upper Deck) or <strong>RM650/month</strong> (Lower Deck) for capsule long-stayers, and private rooms from <strong>RM500/month</strong> above the 7-Eleven on Jalan Perang, all with fast WiFi and 24/7 self check-in for late shifts.</p>
 <p><a href="/book">Book a pod</a>, or see exactly how a gig income covers a JB month in our <a href="/blog/gig-worker-jb-monthly-budget-guide">gig worker monthly budget guide</a>.</p>
 
 <h2>Sources</h2>
@@ -4118,7 +4229,7 @@ var BlogPosts = func() []BlogPost {
 		// 47 — scheduled: goes live 2026-08-01
 		{
 			Slug:          "gig-worker-jb-monthly-budget-guide",
-			ImageAlt:      "Monthly budget planning for a gig worker in Johor Bahru — calculator, hawker meal, and capsule hostel room keys",
+			ImageAlt:      "Delivery rider seen from behind on a scooter with a green thermal delivery bag, waiting at a busy shop-lined street in Malaysia",
 			Title:         "Living in JB on Gig Income: The Full Monthly Budget (RM600 Rent, RM10 Meals, Real Numbers)",
 			Excerpt:       "What a month in Johor Bahru actually costs a delivery rider or e-hailing driver: rent from RM500–594, hawker food at RM10–15 a meal, petrol, data — and how much a stacked gig income leaves over.",
 			Date:          "2026-08-01",
@@ -4126,7 +4237,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "7 min read",
 			Tags:          []string{"gig-economy", "johor-bahru", "budget", "cost-of-living", "monthly-stay", "long-stay", "delivery"},
-			FeaturedImage: "/images/blog/gig-worker-jb-monthly-budget-guide.webp",
+			FeaturedImage: "/images/blog/gig-worker-jb-delivery-rider-grab-bag-street.webp",
 			Content: `
 <h2>The Question Behind Every Gig Sign-Up</h2>
 <p>Can I actually live on this? Delivery and e-hailing income in JB flexes week to week, so the way to answer it is from the cost side: pin your fixed costs low enough that an average month clears them comfortably, and a bad month still covers them. This post lays out a complete, honest month of JB costs for a gig worker — no aspirational condo rent, no pretending you cook every meal.</p>
@@ -4185,7 +4296,7 @@ var BlogPosts = func() []BlogPost {
 
 
 <h2>Start the Month</h2>
-<p>Nightly pods are <strong>RM30 on weekdays and RM35 on weekends</strong> if you want to trial the area for a week before committing to a month. <a href="/book">Book a pod here</a>, browse <a href="/rooms">room details and photos</a>, or WhatsApp <strong>+60 12-708 8789</strong> and ask about monthly capsule or private-room availability — we will tell you straight what is open.</p>
+<p>Nightly pods are <strong>RM35/night flat</strong> (<strong>RM30</strong> for your first night if booked direct on the website) if you want to trial the area for a week before committing to a month. <a href="/book">Book a pod here</a>, browse <a href="/rooms">room details and photos</a>, or WhatsApp <strong>+60 12-708 8789</strong> and ask about monthly capsule or private-room availability — we will tell you straight what is open.</p>
 
 <h2>Sources</h2>
 <ul>
@@ -4198,7 +4309,7 @@ var BlogPosts = func() []BlogPost {
 		// 48 — scheduled: goes live 2026-08-04
 		{
 			Slug:          "foodpanda-rider-jb-guide-2026",
-			ImageAlt:      "foodpanda delivery rider on a motorcycle with pink thermal bag navigating a Johor Bahru street at dusk",
+			ImageAlt:      "Delivery rider in a pink polo on a scooter with a blank pink insulated box, waiting at a traffic light on a shophouse street",
 			Title:         "Foodpanda Rider in JB 2026: Shifts, Sign-Up, Gear, and What You Really Earn Per Hour",
 			Excerpt:       "The deep-dive for Johor Bahru foodpanda riders: how the shift-session system works, the minimal sign-up requirements (P licence accepted), what gear you need, and honest RM-per-hour numbers.",
 			Date:          "2026-08-04",
@@ -4206,7 +4317,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "6 min read",
 			Tags:          []string{"gig-economy", "johor-bahru", "foodpanda", "delivery", "rider", "malaysia", "side-hustle"},
-			FeaturedImage: "/images/blog/foodpanda-rider-jb-guide-2026.webp",
+			FeaturedImage: "/images/blog/pink-delivery-rider-scooter-jb-street.webp",
 			Content: `
 <h2>The Lowest Barrier in the JB Gig Economy</h2>
 <p>Of the major gig platforms operating in Johor Bahru, foodpanda has the gentlest entry requirements — which is exactly why it is the first app most new riders activate. Per foodpanda Malaysia's official rider page, you need:</p>
@@ -4222,7 +4333,7 @@ var BlogPosts = func() []BlogPost {
 <h2>How the Shift System Actually Works</h2>
 <p>Foodpanda is the odd one out among JB gig apps: you do not simply go online whenever you feel like it. Riders <strong>book shift sessions in advance</strong> through the rider platform, choosing the time blocks that suit them. In practice:</p>
 <ul>
-  <li><strong>Sessions are released in batches</strong>, and riders with better performance stats generally get earlier access to pick the prime slots.</li>
+  <li><strong>Sessions are released in batches</strong>, and riders report that those with better performance stats often get earlier access to the prime slots (foodpanda's rider page does not spell out how sessions are allocated).</li>
   <li><strong>The prime slots are exactly when you would guess:</strong> lunch (11 am–2 pm) and dinner (6–9 pm), plus weekend evenings.</li>
   <li><strong>Booking a shift is a commitment</strong> — repeated no-shows hurt your standing and your access to good future slots.</li>
 </ul>
@@ -4264,7 +4375,7 @@ var BlogPosts = func() []BlogPost {
 <p>Short version: foodpanda is the easiest start and the most predictable during booked peaks; Lalamove pays more per job with a fully open schedule; Grab has the deepest demand but a real licensing hurdle. The full side-by-side — requirements, pay, and the three-app daily rotation JB riders actually run — is in our <a href="/blog/delivery-gig-apps-jb-comparison-2026">JB gig app comparison</a>.</p>
 
 <h2>A Rider's Base in Taman Pelangi</h2>
-<p>Your shift schedule is peaks-based, so live where the peaks are. <a href="/rooms">Pelangi Capsule Hostel</a> puts you inside the delivery zone: pods at <strong>RM30/night weekdays (RM35 weekends)</strong>, <strong>RM600/month</strong> for monthly capsule stays, and private rooms from <strong>RM500/month</strong> above the 7-Eleven on Jalan Perang. Hot showers after a rain shift, lockers for your gear, fast WiFi for session booking, and 24/7 self check-in when dinner peak runs late.</p>
+<p>Your shift schedule is peaks-based, so live where the peaks are. <a href="/rooms">Pelangi Capsule Hostel</a> puts you inside the delivery zone: pods at <strong>RM35/night flat</strong> (<strong>RM30</strong> for your first night if booked direct on the website), <strong>RM600/month</strong> (Upper Deck) or <strong>RM650/month</strong> (Lower Deck) for monthly capsule stays, and private rooms from <strong>RM500/month</strong> above the 7-Eleven on Jalan Perang. Hot showers after a rain shift, lockers for your gear, fast WiFi for session booking, and 24/7 self check-in when dinner peak runs late.</p>
 <p><a href="/book">Book a pod</a>, or plan the whole month first with the <a href="/blog/gig-worker-jb-monthly-budget-guide">gig worker JB budget guide</a>.</p>
 
 <h2>Sources</h2>
@@ -4411,7 +4522,7 @@ var BlogPosts = func() []BlogPost {
 
 <h2>Staying at Pelangi Capsule Hostel</h2>
 <p>If you are staying with us at <strong>Pelangi Capsule Hostel</strong> (26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru), our front desk staff can help you identify the nearest clinic, arrange a Grab to the hospital, or assist with basic communication. WhatsApp us any time at <a href="https://wa.me/60127088789" target="_blank" rel="noopener">+60 12-708 8789</a>.</p>
-<p>Our pods start at <strong>RM30/night weekdays</strong> and <strong>RM35/night weekends</strong>, with monthly stays from <strong>RM600</strong>. Check-in from 2:00 PM, check-out by 12:00 PM. <a href="/book">Book your stay</a> and travel with one less thing to worry about.</p>
+<p>Our pods start at <strong>RM35/night flat</strong> (<strong>RM30</strong> for your first night if booked direct on the website), with monthly stays from <strong>RM600</strong> (Upper Deck) or <strong>RM650</strong> (Lower Deck). Check-in from 2:00 PM, check-out by 12:00 PM. <a href="/book">Book your stay</a> and travel with one less thing to worry about.</p>
 
 <h2>Sources</h2>
 <ul>
@@ -4584,7 +4695,7 @@ var BlogPosts = func() []BlogPost {
 
 <h2>A Safe Base in JB</h2>
 <p>If you are passing through or staying in Johor Bahru, having a secure, reliable base helps. At <strong>Pelangi Capsule Hostel</strong>, we host a mix of budget travellers, Singapore commuters, and cross-border workers every week — and we are always happy to share local knowledge, including what to watch out for in the area.</p>
-<p>We are located at <strong>26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru</strong>. Capsule pods start from <strong>RM30/night on weekdays</strong> and <strong>RM35/night on weekends</strong>, with monthly packages from <strong>RM600</strong>. Check-in is at 2 PM and check-out at 12 PM. <a href="/book">Book your pod here</a> or <a href="/contact">reach us on WhatsApp at +60 12-708 8789</a>.</p>
+<p>We are located at <strong>26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru</strong>. Capsule pods start from <strong>RM35/night flat</strong> (<strong>RM30</strong> for your first night if booked direct on the website), with monthly packages from <strong>RM600</strong> (Upper Deck) or <strong>RM650</strong> (Lower Deck). Check-in is at 2 PM and check-out at 12 PM. <a href="/book">Book your pod here</a> or <a href="/contact">reach us on WhatsApp at +60 12-708 8789</a>.</p>
 
 <h2>Sources</h2>
 <ul>
@@ -4700,7 +4811,7 @@ var BlogPosts = func() []BlogPost {
 <p>Economy rice is one slice of the cheap-food ecosystem here. Taman Pelangi also has mamak stalls open until midnight, a <a href="/blog/taman-pelangi-tuesday-night-market-guide">Tuesday night market</a> where mains run RM5–8, and old-school kopitiams serving kaya toast breakfasts for under RM5. If you want the full neighbourhood food map, see our <a href="/blog/ultimate-jb-food-guide-backpackers">JB cheap eats guide for backpackers</a>.</p>
 
 <h2>Staying Close to the Food</h2>
-<p>Pelangi Capsule Hostel is at <strong>26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru</strong> — the same street as Bar Wang Rice and FECA &amp; Kopi, two minutes from the hawker centre. Pods start at <strong>RM30/night on weekdays and RM35 on weekends</strong>. Monthly stays from <strong>RM600</strong>. Check-in from 2 PM, check-out by 12 PM. Questions? WhatsApp us at <strong>+60 12-708 8789</strong>.</p>
+<p>Pelangi Capsule Hostel is at <strong>26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru</strong> — the same street as Bar Wang Rice and FECA &amp; Kopi, two minutes from the hawker centre. Pods start at <strong>RM35/night flat</strong> (<strong>RM30</strong> for your first night if booked direct on the website). Monthly stays from <strong>RM600</strong> (Upper Deck) or <strong>RM650</strong> (Lower Deck). Check-in from 2 PM, check-out by 12 PM. Questions? WhatsApp us at <strong>+60 12-708 8789</strong>.</p>
 <p><a href="/book">Book a pod</a> or <a href="/contact">get in touch</a> if you want to know more about what is walking distance from the hostel.</p>
 
 <h2>Sources</h2>
@@ -4810,7 +4921,7 @@ var BlogPosts = func() []BlogPost {
 <h2>The Common Room Shortcut</h2>
 <p>If you are staying at a hostel, you already have a built-in language exchange venue. Common rooms attract travellers from Singapore, Indonesia, mainland China, Japan, Korea, and Europe — all in the same space, all open to conversation by definition. The social dynamic of a hostel lounge is lower-stakes than a formal meetup: you start talking about the food you just ate, and twenty minutes later you are explaining idioms to each other.</p>
 <p>At <strong>Pelangi Capsule Hostel</strong> in Taman Pelangi, the common area is where guests naturally gather in the evenings. We have hosted guests from across Southeast Asia and beyond, and informal language exchanges happen here without anyone organising them. It is the most frictionless way to start — no app needed, no scheduling, just show up.</p>
-<p>Pods start at <strong>RM30/night on weekdays, RM35 on weekends</strong>, with monthly stays from <strong>RM600</strong>. Check-in is from 2:00 PM, check-out by 12:00 PM. Find us at 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru. WhatsApp us at <strong>+60 12-708 8789</strong> or <a href="/book">book a pod online</a> — and start practising from day one.</p>
+<p>Pods start at <strong>RM35/night flat</strong> (<strong>RM30</strong> for your first night if booked direct on the website), with monthly stays from <strong>RM600</strong> (Upper Deck) or <strong>RM650</strong> (Lower Deck). Check-in is from 2:00 PM, check-out by 12:00 PM. Find us at 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru. WhatsApp us at <strong>+60 12-708 8789</strong> or <a href="/book">book a pod online</a> — and start practising from day one.</p>
 
 <h2>Sources</h2>
 <ul>
@@ -4828,7 +4939,7 @@ var BlogPosts = func() []BlogPost {
 		// 53 — scheduled: goes live 2026-08-19
 		{
 			Slug:          "malaysia-tourism-tax-jb-hostel-walk-in-guide",
-			ImageAlt:      "Budget traveller arriving at a JB hostel reception desk, paying cash for a pod",
+			ImageAlt:      "Hostel reception counter with a card payment terminal, a printed receipt, a closed passport and a desk bell",
 			Title:         "Malaysia Tourism Tax at JB Hostels: What Foreign Guests Pay — and Why Walk-In Cash Visits Can Be Different",
 			Excerpt:       "Foreign visitors pay RM10 per night in tourism tax at most Malaysian accommodation. But walk-in cash bookings are handled differently in practice. Here's what the tax covers, who it applies to, and why budget travellers arriving in person sometimes find a lower final bill.",
 			Date:          "2026-08-19",
@@ -4836,7 +4947,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "5 min read",
 			Tags:          []string{"tourism-tax", "budget-travel", "johor-bahru", "cash-payment", "walk-in", "malaysia-travel", "practical-guide"},
-			FeaturedImage: "/images/blog/malaysia-tourism-tax-jb-hostel-walk-in-guide.webp",
+			FeaturedImage: "/images/blog/malaysia-tourism-tax-hostel-reception-payment-counter.webp",
 			Content: `
 <h2>What Is Malaysia's Tourism Tax?</h2>
 <p>Malaysia introduced the Tourism Tax (TTx) in 2017 under the Tourism Tax Act. The rate is <strong>RM10 per room per night</strong>, and it applies to registered accommodation properties — which includes most hotels, guesthouses, serviced apartments, and hostels in Johor Bahru.</p>
@@ -4858,7 +4969,7 @@ var BlogPosts = func() []BlogPost {
 <p>Walk-in bookings — where you arrive in person, request a bed, and pay cash at the front desk — go through a different administrative process. There is no pre-submitted passport, no online form capturing your nationality in advance, and no system automatically applying the tax before you step inside.</p>
 <p>Individual properties have some discretion in how they handle on-site registration for cash walk-in guests. Some run a streamlined check-in focused on room assignment and payment rather than detailed document verification. Guests who have booked this way have reported that the tourism tax was not added to their bill.</p>
 <p>This is not universal — some properties are diligent about collecting TTx from all guests regardless of booking method. But the administrative difference between a pre-registered online booking and a cash walk-in is real, and that difference can result in a lower final bill.</p>
-<p><em>Note: Under Malaysian law, the obligation to collect and remit tourism tax sits with the accommodation operator, not the guest. If a property does not charge it, that is a matter between the operator and the relevant authority.</em></p>
+<p><em>Note: Under Malaysian law, the obligation to collect and remit tourism tax sits with the accommodation operator, not the guest. If a property does not charge it, that is a matter between the operator and the relevant authority. Rates and exemptions can change, so check the current rules with the <a href="https://www.customs.gov.my" target="_blank" rel="noopener">Royal Malaysian Customs Department</a> before you travel.</em></p>
 
 <h2>Other Reasons to Walk In and Pay Cash</h2>
 <p>Tourism tax aside, there are several practical reasons why budget travellers prefer to book in person:</p>
@@ -4872,7 +4983,7 @@ var BlogPosts = func() []BlogPost {
 
 
 <h2>Walk-In Rates at Pelangi Capsule Hostel</h2>
-<p>At <strong>Pelangi Capsule Hostel</strong>, capsule pods start at <strong>RM30/night on weekdays, RM35/night on weekends</strong>. Monthly stays from <strong>RM600</strong>. Walk-in guests are welcome — no reservation required if beds are available.</p>
+<p>At <strong>Pelangi Capsule Hostel</strong>, capsule pods start at <strong>RM35/night flat</strong> (<strong>RM30</strong> for your first night if booked direct on the website). Monthly stays from <strong>RM600</strong> (Upper Deck) or <strong>RM650</strong> (Lower Deck). Walk-in guests are welcome — no reservation required if beds are available.</p>
 <p>We are at 26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru — about 10 minutes by Grab from JB Sentral or the Causeway CW1/CW2 bus stops. Check-in from 2:00 PM, checkout by 12:00 PM.</p>
 <p>Want to check availability before walking in? <a href="/book">See live availability here</a> or WhatsApp us at +60 12-708 8789. Full specs and photos at our <a href="/rooms">rooms page</a>.</p>
 
@@ -4886,7 +4997,7 @@ var BlogPosts = func() []BlogPost {
 		// 54 — scheduled: goes live 2026-08-22
 		{
 			Slug:          "jalan-perang-food-guide-taman-pelangi",
-			ImageAlt:      "Jalan Perang food street in Taman Pelangi JB with lit-up restaurant signage at night",
+			ImageAlt:      "Night street food stalls with blue canopies, steaming woks and satay grills under string lights on a Johor Bahru shophouse street",
 			Title:         "What to Eat on Jalan Perang: A Food Street Guide from Pelangi Capsule Hostel's Doorstep",
 			Excerpt:       "Five confirmed-open restaurants within a short walk of the hostel — Korean BBQ, Japanese-Western fusion, heritage zi char from 1979, Teochew fish head soup, and halal Korean-Japanese. All on the same street.",
 			Date:          "2026-08-22",
@@ -4894,7 +5005,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "6 min read",
 			Tags:          []string{"johor-bahru", "food-guide", "taman-pelangi", "jalan-perang", "korean-bbq", "halal", "budget-food", "local-eats"},
-			FeaturedImage: "/images/blog/jalan-perang-food-guide-taman-pelangi.webp",
+			FeaturedImage: "/images/blog/jalan-perang-night-food-stalls-cover.webp",
 			Content: `
 <h2>Five Restaurants on the Hostel's Own Street</h2>
 <p>Jalan Perang is one of Taman Pelangi's best-kept food secrets. Within a five-minute walk from Pelangi Capsule Hostel, you have Korean BBQ, Japanese-Western fusion, Teochew fish soup, and one of JB's most famous heritage zi char restaurants — all on the same street. No Grab needed.</p>
@@ -4973,7 +5084,7 @@ var BlogPosts = func() []BlogPost {
   <li><strong>Budget</strong> — Ah Kaw and CM Restaurant are lowest cost. Dusk and Yeon run RM25–40 for a full meal.</li>
 </ul>
 
-<p>Staying on Jalan Perang makes it easy — check in at <a href="/book">Pelangi Capsule Hostel</a> (from RM30/night on weekdays) and walk out for dinner. Full room specs at <a href="/rooms">our rooms page</a>.</p>
+<p>Staying on Jalan Perang makes it easy — check in at <a href="/book">Pelangi Capsule Hostel</a> (from RM35/night flat, RM30 for your first night if booked direct on the website) and walk out for dinner. Full room specs at <a href="/rooms">our rooms page</a>.</p>
 
 <h2>Sources</h2>
 <ul>
@@ -4988,7 +5099,7 @@ var BlogPosts = func() []BlogPost {
 		// 55 — scheduled: goes live 2026-08-25
 		{
 			Slug:          "new-cafes-taman-pelangi-jb-2025-2026",
-			ImageAlt:      "Interior of a modern cafe in Taman Pelangi JB with warm lighting and artisan drinks",
+			ImageAlt:      "Bright modern cafe counter with espresso equipment, coffee grinders and a glass case of pastries",
 			Title:         "3 New Cafes and Bars That Opened in Taman Pelangi JB in 2025 and 2026",
 			Excerpt:       "Rowan & Betty (brunch), Cha Haus (artisan Chinese tea), and Bar9 (JB's first meatless bar with live music) — all confirmed open in Taman Pelangi as of mid-2026, all within a short walk of each other.",
 			Date:          "2026-08-25",
@@ -4996,7 +5107,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "5 min read",
 			Tags:          []string{"taman-pelangi", "johor-bahru", "new-cafe", "brunch", "tea", "bar", "2026", "jb-food"},
-			FeaturedImage: "/images/blog/new-cafes-taman-pelangi-jb-2025-2026.webp",
+			FeaturedImage: "/images/blog/new-cafes-taman-pelangi-jb-cafe-counter-pastries-unsplash.webp",
 			Content: `
 <h2>Taman Pelangi's Cafe Scene Is Growing Fast</h2>
 <p>Taman Pelangi has had a strong food reputation for years — Korean BBQ, heritage zi char, and late-night seafood along Jalan Perang. But its cafe scene has expanded quickly in the last twelve months. Three new venues opened in 2025 and early 2026, covering brunch, artisan tea, and nightlife. All three are confirmed open as of mid-2026 with multiple independent sources.</p>
@@ -5056,7 +5167,7 @@ var BlogPosts = func() []BlogPost {
 
 <h2>Getting Here from Pelangi Capsule Hostel</h2>
 <p>All three venues are within Taman Pelangi. Rowan & Betty and Cha Haus are near the commercial centre on Jalan Sri Pelangi — about a 10–15 minute walk or short Grab ride from the hostel at 26A Jalan Perang. Bar9 is on Jalan Kuning, roughly midway.</p>
-<p>Pods at <a href="/rooms">Pelangi Capsule Hostel</a> start from <strong>RM30/night on weekdays, RM35 on weekends</strong>. <a href="/book">Check live availability here</a>, or walk in at 26A Jalan Perang.</p>
+<p>Pods at <a href="/rooms">Pelangi Capsule Hostel</a> start from <strong>RM35/night flat</strong> (<strong>RM30</strong> for your first night if booked direct on the website). <a href="/book">Check live availability here</a>, or walk in at 26A Jalan Perang.</p>
 
 <h2>Sources</h2>
 <ul>
@@ -5209,18 +5320,19 @@ var BlogPosts = func() []BlogPost {
 		// 56 — scheduled: goes live 2026-08-28
 		{
 			Slug:          "taman-pelangi-jb-development-rts-link-2026",
-			ImageAlt:      "Aerial view of Taman Pelangi Johor Bahru neighbourhood with development cranes in the background",
+			ImageAlt:      "Cream-coloured shophouse blocks and a shady tree on a Taman Pelangi street corner in Johor Bahru in golden afternoon light",
 			Title:         "Why Taman Pelangi in Johor Bahru Is Worth Visiting Now — Before the RTS Link Changes Everything",
-			Excerpt:       "The JB-Singapore RTS Link is targeted to open by end of 2026. Taman Pelangi sits approximately 3 km from Bukit Chagar station and is already seeing developer attention — RM1.5 billion in new residential projects, 90% sold at launch. Budget accommodation is still RM30/night.",
+			Excerpt:       "The JB-Singapore RTS Link is now expected to open around end-February 2027 (delayed from end-2026). Taman Pelangi sits approximately 3 km from Bukit Chagar station and is already seeing developer attention — RM1.5 billion in new residential projects, 90% sold at launch. Budget accommodation is still RM30/night.",
 			Date:          "2026-08-28",
 			Category:      "Travel & Transport",
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "6 min read",
 			Tags:          []string{"rts-link", "johor-bahru", "taman-pelangi", "singapore", "property", "travel", "budget-travel", "commuter"},
-			FeaturedImage: "/images/blog/taman-pelangi-jb-development-rts-link-2026.webp",
+			FeaturedImage: "/images/blog/taman-pelangi-shophouse-street-jalan-sri-pelangi.webp",
 			Content: `
 <h2>The RTS Link Is Coming — and Taman Pelangi Is 3 km Away</h2>
-<p>The Johor Bahru–Singapore RTS Link is targeted to open by end of 2026. When it does, the journey between Bukit Chagar station in JB and Woodlands North in Singapore will take approximately five minutes. For Malaysians working in Singapore, for Singaporeans visiting JB for food and a weekend away, and for budget travellers using JB as a cheaper base — this changes the map significantly.</p>
+<p><strong>Update, 6 October 2026:</strong> the RTS Link's passenger service is now expected around the end of February 2027, not end-2026 (operator announcement of 2 October 2026). See <a href="/blog/rts-link-delayed-february-2027-visa-run-jb">RTS Link delayed to February 2027: what it means for JB visa runs and stays</a>. Dates below that say 2026 or January 2027 are the earlier targets.</p>
+<p>The Johor Bahru–Singapore RTS Link was targeted to open by end of 2026 and is now expected around end-February 2027. When it does, the journey between Bukit Chagar station in JB and Woodlands North in Singapore will take approximately five minutes. For Malaysians working in Singapore, for Singaporeans visiting JB for food and a weekend away, and for budget travellers using JB as a cheaper base — this changes the map significantly.</p>
 <p>Taman Pelangi is approximately 3 km from Bukit Chagar station (according to Mah Sing, the developer of the area's largest new project — cited across Bernama, The Star, and KLSE Screener). That is a 10-minute Grab or a manageable commute. And right now, before the RTS Link opens, it is still one of JB's most affordable neighbourhoods with its local character intact.</p>
 
 
@@ -5252,7 +5364,7 @@ var BlogPosts = func() []BlogPost {
 
 <h2>What This Means for Budget Travellers Right Now</h2>
 <p>The short version: <strong>Taman Pelangi is still at pre-RTS prices, and that window is finite.</strong></p>
-<p>A capsule pod at Pelangi Capsule Hostel — located at 26A Jalan Perang in Taman Pelangi — costs <strong>RM30/night on weekdays, RM35 on weekends</strong>. Monthly stays from RM600. The street outside has a Korean BBQ that has been running for 17 years, a heritage zi char restaurant dating to 1979, Japanese-Western fusion cafes, and new brunch spots that opened in 2025 and 2026. It is a neighbourhood that still functions like one.</p>
+<p>A capsule pod at Pelangi Capsule Hostel — located at 26A Jalan Perang in Taman Pelangi — costs <strong>RM35/night flat</strong> (<strong>RM30</strong> for your first night if booked direct on the website). Monthly stays from RM600 (Upper Deck) or RM650 (Lower Deck). The street outside has a Korean BBQ that has been running for 17 years, a heritage zi char restaurant dating to 1979, Japanese-Western fusion cafes, and new brunch spots that opened in 2025 and 2026. It is a neighbourhood that still functions like one.</p>
 <p>When the RTS Link opens and weekend visitors from Singapore begin flowing through Bukit Chagar in volume, demand for affordable accommodation in the area will grow. Property developers have already priced that in. Short-stay rates have not — yet.</p>
 
 <h2>Practical Notes for Visitors</h2>
@@ -5339,9 +5451,9 @@ var BlogPosts = func() []BlogPost {
       <td>~S$26–38 (two days of eating)</td>
     </tr>
     <tr>
-      <td>Sleep (capsule pod, RM30 weekday)</td>
+      <td>Sleep (capsule pod, RM35 flat)</td>
       <td>—</td>
-      <td>~S$9.50 (RM30 at ~3.15 rate)</td>
+      <td>~S$11 (RM35 at ~3.15 rate)</td>
     </tr>
     <tr>
       <td>Evening activities (market, supper)</td>
@@ -5362,7 +5474,7 @@ var BlogPosts = func() []BlogPost {
 
 <h2>What About the RTS Link?</h2>
 
-<p>The JB–Singapore RTS Link — a 4 km cross-border rail connecting Bukit Chagar in JB to Woodlands North in Singapore — is targeted to open by end of December 2026, with some reports flagging a possible slip to early January 2027 as systems testing progresses (sources: YouTrip Singapore; JBSkyOne, July 2026). The journey time will be approximately five minutes. Indicative fares are S$5–7 one way.</p>
+<p>The JB–Singapore RTS Link — a 4 km cross-border rail connecting Bukit Chagar in JB to Woodlands North in Singapore — was targeted to open by end of December 2026; on 2 October 2026 the operator said passenger service is now expected around end-February 2027 (source: Mothership, 2 Oct 2026). The journey time will be approximately five minutes. Indicative fares are S$5–7 one way.</p>
 
 <p>When it opens, day-tripping will become even easier — which means even more Singaporeans will do it, and the Causeway crowd will redistribute rather than disappear. The Tuesday night market will still be on Tuesdays. Supper will still run past midnight. The morning dim sum queue will still be shorter at 8am than at 10am. The overnight advantage does not go away when the RTS opens — if anything, having a five-minute crossing option makes a spontaneous Tuesday-to-Wednesday overnight trip more practical, not less.</p>
 
@@ -5374,10 +5486,9 @@ var BlogPosts = func() []BlogPost {
 <p>If you are doing this for the first time and want to keep costs low, a capsule pod hostel is the right call. <a href="/rooms">Pelangi Capsule Hostel</a> is at <strong>26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru</strong> — walking distance from the Tuesday night market, a 10-minute Grab from JB Sentral, and surrounded by the food scene described above.</p>
 
 <ul>
-  <li><strong>Weekday pods:</strong> RM30/night (~S$9.50)</li>
-  <li><strong>Weekend pods:</strong> RM35/night (~S$11)</li>
-  <li><strong>Monthly stay:</strong> from RM600/month (~S$188)</li>
-  <li><strong>Check-in:</strong> 3:00 PM | <strong>Check-out:</strong> 12:00 PM</li>
+  <li><strong>Pods:</strong> RM35/night flat (~S$11), RM30 for your first night if booked direct on the website (~S$9.50)</li>
+  <li><strong>Monthly stay:</strong> from RM600/month Upper Deck (~S$188) or RM650/month Lower Deck (~S$206)</li>
+  <li><strong>Check-in:</strong> 2:00 PM | <strong>Check-out:</strong> 12:00 PM</li>
   <li><strong>WiFi:</strong> Free, included</li>
   <li><strong>Booking:</strong> <a href="/book">Check live availability</a> or walk in</li>
 </ul>
@@ -5404,7 +5515,7 @@ var BlogPosts = func() []BlogPost {
 <p>Taman Pelangi is one of JB's more established residential and commercial neighbourhoods with active street-level activity well into the evening — restaurants, cafes, and convenience shops stay open past 11 PM. Standard precautions apply: stay on main streets, use Grab rather than walking long distances after midnight, and keep valuables out of sight. The area immediately around Jalan Perang and the commercial centre is well-lit and regularly trafficked.</p>
 
 <h2>How much does a capsule hostel cost in Johor Bahru in 2026?</h2>
-<p>At Pelangi Capsule Hostel (26A Jalan Perang, Taman Pelangi), capsule pods cost <strong>RM30/night on weekdays and RM35/night on weekends</strong>. At the July 2026 exchange rate of approximately SGD 1 = RM3.15, that works out to roughly S$9.50–S$11 per night — significantly cheaper than comparable capsule hostels in Singapore (typically S$35–60/night). Monthly stays are available from RM600.</p>
+<p>At Pelangi Capsule Hostel (26A Jalan Perang, Taman Pelangi), capsule pods cost <strong>RM35/night flat</strong> (<strong>RM30</strong> for your first night if booked direct on the website). At the July 2026 exchange rate of approximately SGD 1 = RM3.15, that works out to roughly S$9.50–S$11 per night — significantly cheaper than comparable capsule hostels in Singapore (typically S$35–60/night). Monthly stays are available from RM600.</p>
 
 <h2>Is the Causeway crowded in the morning when crossing from Singapore to JB?</h2>
 <p>Causeway traffic from Singapore into JB is typically lightest on weekday mornings between 6am and 8am, and heaviest on Friday evenings, Saturday mornings, and Sunday evenings returning to Singapore. The record single-day crossing was 589,000 travellers on 19 December 2025 (source: ICA Singapore). If you are crossing on a weekend, the 9am–11am window is usually better than midday. Staying overnight in JB and crossing back on a weekday morning almost entirely eliminates queue time.</p>
@@ -5493,6 +5604,8 @@ var BlogPosts = func() []BlogPost {
   </tbody>
 </table>
 
+<figure class="blog-figure"><img src="/images/blog/causeway-link-cw1-bus-commons.jpg" alt="A Causeway Link CW1 bus, the main cross-border bus route between Woodlands, Singapore and JB Sentral, Malaysia" loading="lazy" width="1200" height="800"><figcaption>A Causeway Link CW1 bus crossing between Singapore and Johor Bahru. One-way fare: RM2.60 (~SGD0.80) boarding from the Malaysia side. Source: <a href="https://landtransportguru.net/jbbuscw1/" target="_blank" rel="noopener noreferrer">Land Transport Guru — Causeway Link CW1</a>, verified 2026-09-25. Photo: LN9267, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>, via Wikimedia Commons.</figcaption></figure>
+
 <h2>The Taxi Tout Problem at JB CIQ — What Actually Happens</h2>
 <p>This is not a rare edge case. In December 2025, Mothership.sg documented touts at JB Sentral quoting S$120 for rides to Singapore — switching to Singapore dollars mid-sentence when they spot a Singaporean face. The Stomp.sg forums have had complaints stretching back years: touts tell passengers the taxi queue is full or broken, offer a "special deal," then charge three to four times the proper fare once the passenger is in the car (Stomp.sg; Mothership.sg, 2025).</p>
 <p>The organised approach is worth understanding: one person spots you and asks where you are going, a second one appears to "confirm the price," and a third leads you to a waiting car. By the time you realise something is off, you are already committed. The tell is always the same: <strong>they approached you, not the other way around.</strong></p>
@@ -5530,7 +5643,7 @@ var BlogPosts = func() []BlogPost {
 <p>Download <strong>MyNIISe</strong> before you cross. It replaced MyBorderPass on 28 February 2026 and is now the official group QR clearance system at Johor Bahru checkpoints, including Sultan Iskandar Building and Sultan Abu Bakar Complex (Malaysia Immigration Department, via WeirdKaya; paultan.org, 2026). Register your passport details, generate a QR code, and use it at the autogate. For groups, one QR covers everyone — the old system required individual scans. The time saving is real.</p>
 <p>After that, have Grab installed and a Malaysian SIM ready. Those two things — MyNIISe and Grab — will handle 90% of what goes wrong for first-time crossers.</p>
 
-<p>Once you clear customs safely and land in JB, your first decision is where to stay. <a href="/book">Pelangi Capsule Hostel</a> is at 26A Jalan Perang, Taman Pelangi — about 10 minutes by Grab from JB Sentral. Pods from <strong>RM30/night weekdays, RM35/night weekends</strong>, monthly from RM600. No deposit headaches, 24/7 self check-in, and WiFi that actually works. <a href="/book">Check availability here</a> or WhatsApp us at <strong>+60 12-708 8789</strong>.</p>
+<p>Once you clear customs safely and land in JB, your first decision is where to stay. <a href="/book">Pelangi Capsule Hostel</a> is at 26A Jalan Perang, Taman Pelangi — about 10 minutes by Grab from JB Sentral. Pods from <strong>RM35/night flat</strong> (<strong>RM30</strong> for your first night if booked direct on the website), monthly from RM600 (Upper Deck) or RM650 (Lower Deck). No deposit headaches, 24/7 self check-in, and WiFi that actually works. <a href="/book">Check availability here</a> or WhatsApp us at <strong>+60 12-708 8789</strong>.</p>
 
 <h2>Frequently Asked Questions</h2>
 
@@ -5544,7 +5657,7 @@ var BlogPosts = func() []BlogPost {
 <p>On a good weekday morning, total border crossing time (both immigration halls plus bus travel) is 30–50 minutes. On a Friday evening or before a public holiday, it can take 2–3 hours. The physical distance across the Causeway is about 1 km, which takes 5 minutes by bus when traffic is clear. Queue at immigration — not the bridge itself — is what determines your total time. Check CausewayTraffic.sg before you leave for live traffic conditions.</p>
 
 <h3>Is there an easier way to cross the Causeway in 2026?</h3>
-<p>The MyNIISe app (which replaced MyBorderPass on 28 February 2026) significantly reduces queue time at the autogate lanes — especially for groups, since one QR code now clears everyone together. Download and register before you travel. Beyond that, timing your crossing outside of Friday evening and Sunday evening peaks makes the biggest practical difference. The Johor Bahru–Singapore RTS Link rail service is targeted to open by end of 2026, which will add a 5-minute train option between Bukit Chagar (JB) and Woodlands North (Singapore), but it is not yet operational as of the date of this post.</p>
+<p>The MyNIISe app (which replaced MyBorderPass on 28 February 2026) significantly reduces queue time at the autogate lanes — especially for groups, since one QR code now clears everyone together. Download and register before you travel. Beyond that, timing your crossing outside of Friday evening and Sunday evening peaks makes the biggest practical difference. The Johor Bahru–Singapore RTS Link rail service is now expected to open around end-February 2027 (delayed from end-2026), which will add a 5-minute train option between Bukit Chagar (JB) and Woodlands North (Singapore), but it is not yet operational as of the date of this post.</p>
 
 <h2>Sources</h2>
 <ul>
@@ -5563,20 +5676,22 @@ var BlogPosts = func() []BlogPost {
 		// 60 — scheduled: goes live 2026-09-10
 		{
 			Slug:          "rts-link-january-2027-jb-travel-guide",
-			Title:         "RTS Link Opens January 2027: What JB Travellers Need to Know Now",
-			Excerpt:       "The Johor Bahru–Singapore RTS Link is 90%+ complete and targeting January 2027. Here's what co-located CIQ, RM15–21 fares, and a 5-minute crossing mean for your next JB stay.",
+			Title:         "RTS Link Now Expected February 2027: What JB Travellers Need to Know",
+			LastModified:  "2026-10-06",
+			Excerpt:       "The Johor Bahru–Singapore RTS Link is 90%+ complete and now expected to open around end-February 2027 (delayed from end-2026). Here's what co-located CIQ, RM15–21 fares, and a 5-minute crossing mean for your next JB stay.",
 			Date:          "2026-09-10",
 			Category:      "Travel Tips",
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "7 min read",
 			Tags:          []string{"rts-link", "johor-bahru", "singapore", "border-crossing", "commuter", "travel-tips"},
-			FeaturedImage: "/images/blog/rts-link-january-2027-jb-travel-guide.webp",
-			ImageAlt:      "RTS Link elevated rail structure at Bukit Chagar station in Johor Bahru under construction, nearly complete in 2026",
+			FeaturedImage: "/images/blog/rts-link-elevated-train-johor-bahru-viaduct.webp",
+			ImageAlt:      "RTS Link train running on the elevated viaduct above Johor Bahru rooftops and trees",
 			InLanguage:    "en",
 			Content: `
 <h2>What the RTS Link Means for JB Travellers</h2>
 
-<p>The Johor Bahru–Singapore Rapid Transit System (RTS Link) is now more than 90% complete, with full passenger operations targeted for January 2027. Systems testing begins September 2026. After years of delays and negotiations, the cross-border rail link is finally close enough to plan around — and if you're staying in JB, it changes the calculus on how you commute, visit, or base yourself on the Malaysian side of the causeway.</p>
+<p><strong>Update, 6 October 2026:</strong> the RTS Link's passenger service is now expected around the end of February 2027, not end-2026 (operator announcement of 2 October 2026). See <a href="/blog/rts-link-delayed-february-2027-visa-run-jb">RTS Link delayed to February 2027: what it means for JB visa runs and stays</a>. Dates below that say 2026 or January 2027 are the earlier targets.</p>
+<p>The Johor Bahru–Singapore Rapid Transit System (RTS Link) is now more than 90% complete. It was targeted for January 2027; the operator has since said passenger service is expected around end-February 2027. Systems testing began September 2026. After years of delays and negotiations, the cross-border rail link is finally close enough to plan around — and if you're staying in JB, it changes the calculus on how you commute, visit, or base yourself on the Malaysian side of the causeway.</p>
 
 <p>This guide covers the confirmed facts: fares, stations, journey time, immigration process, and what the opening means practically for travellers staying near <a href="/getting-here">Taman Pelangi</a>.</p>
 
@@ -5591,9 +5706,11 @@ var BlogPosts = func() []BlogPost {
   <li><strong>Journey time:</strong> approximately 5 minutes across the strait</li>
   <li><strong>Expected fare:</strong> RM15.50–RM21.70 one way (approximately S$5–S$7)</li>
   <li><strong>Systems testing:</strong> begins September 2026</li>
-  <li><strong>Full operations target:</strong> January 2027</li>
+  <li><strong>Full operations target:</strong> February 2027 (earlier target: January 2027; subject to safety certification and final regulatory approvals)</li>
   <li><strong>Construction progress:</strong> 90%+ complete as of May 2026</li>
 </ul>
+
+<figure class="blog-figure"><img src="/images/blog/rts-link-woodlands-north-commons.jpg" alt="The Woodlands North RTS Link station, Singapore, viewed from across the Strait of Johor" loading="lazy" width="1200" height="800"><figcaption>Woodlands North station, the Singapore terminus of the RTS Link, viewed from the Johor side. Expected fare: RM15.50–RM21.70 one-way (~S$5–S$7), earlier target January 2027, now expected around end-February 2027. Source: <a href="https://railwaynews.net/rts-link-project-johor-bahru-singapore-lrt-system.html" target="_blank" rel="noopener noreferrer">Railway News — RTS Link project</a>, verified 2026-09-25. Photo: ZKang123, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>, via Wikimedia Commons.</figcaption></figure>
 
 <h2>Single Immigration Clearance — No More Double Queue</h2>
 
@@ -5616,7 +5733,7 @@ var BlogPosts = func() []BlogPost {
   </thead>
   <tbody>
     <tr>
-      <td>RTS Link (from Jan 2027)</td>
+      <td>RTS Link (from about end-Feb 2027, estimate)</td>
       <td>~5 min rail + clearance time</td>
       <td>RM15.50–RM21.70 one way</td>
       <td>Single checkpoint at departing station</td>
@@ -5664,10 +5781,10 @@ var BlogPosts = func() []BlogPost {
 <h2>FAQ: RTS Link for JB Travellers</h2>
 
 <h3>When exactly does the RTS Link open?</h3>
-<p>The confirmed target is January 2027. Systems testing begins in September 2026. No specific opening date within January 2027 has been officially announced. Track updates from Prasarana (Malaysia) and the Land Transport Authority (Singapore) for confirmed dates closer to opening.</p>
+<p>The earlier January 2027 target has been pushed back: in a joint statement on 2 October 2026, Singapore's Land Transport Authority and Malaysia's Transport Ministry said the operator now expects passenger service around February 2027, subject to independent safety certification and final regulatory approvals. No exact opening date has been announced. Check the <a href="https://www.lta.gov.sg" target="_blank" rel="noopener">LTA</a> and Malaysia's Transport Ministry for the official date.</p>
 
 <h3>How much will a single trip cost?</h3>
-<p>Expected fares are in the range of RM15.50–RM21.70 one way, equivalent to approximately S$5–S$7. These are projected fares based on planning documents — final confirmed pricing has not been officially published as of mid-2026. Fares may vary by time of day or distance-based calculation once the ticketing system is finalised.</p>
+<p>Expected fares are in the range of RM15.50–RM21.70 one way, equivalent to approximately S$5–S$7. These are projected fares based on planning documents — final pricing has not been officially published; on 20 October 2026 Transport Minister Anthony Loke said fares will be announced jointly with Singapore by the end of 2026 (Malay Mail). Fares may vary by time of day or distance-based calculation once the ticketing system is finalised.</p>
 
 <h3>Do I still need to carry my passport?</h3>
 <p>Yes. The RTS Link is a cross-border rail service; you are crossing an international boundary. You will need a valid travel document — passport for most nationalities — for immigration clearance at the departing station. The co-location arrangement streamlines the process, but does not remove the immigration requirement.</p>
@@ -5677,9 +5794,9 @@ var BlogPosts = func() []BlogPost {
 
 <h2>Plan Your JB Stay Around the RTS Link</h2>
 
-<p>If you're arriving in JB before January 2027, the current crossing options remain: express buses via Larkin or Queen Street terminal, or Grab across the Causeway. Once the RTS Link opens, Bukit Chagar becomes a practical base for anyone commuting into Singapore regularly — and Taman Pelangi, 10 minutes away by Grab, will be well-positioned for that new commuter pattern.</p>
+<p>If you're arriving in JB before the RTS Link opens (estimated end-February 2027), the current crossing options remain: express buses via Larkin or Queen Street terminal, or Grab across the Causeway. Once the RTS Link opens, Bukit Chagar becomes a practical base for anyone commuting into Singapore regularly — and Taman Pelangi, 10 minutes away by Grab, will be well-positioned for that new commuter pattern.</p>
 
-<p>Pelangi Capsule Hostel offers <a href="/rooms">capsule pods</a> from RM30/night on weekdays and RM35/night on weekends, with monthly rates from RM600. Whether you're visiting JB to scope out the neighbourhood ahead of the RTS Link opening, or you're a commuter looking for a flexible short-term base, <a href="/book">book a stay</a> and see the area for yourself.</p>
+<p>Pelangi Capsule Hostel offers <a href="/rooms">capsule pods</a> at RM35/night flat (RM30 for your first night if booked direct on the website), with monthly rates from RM600 (Upper Deck) or RM650 (Lower Deck). Whether you're visiting JB to scope out the neighbourhood ahead of the RTS Link opening, or you're a commuter looking for a flexible short-term base, <a href="/book">book a stay</a> and see the area for yourself.</p>
 
 <h2>Sources</h2>
 <ul>
@@ -5698,8 +5815,8 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "8 min read",
 			Tags:          []string{"visa-run", "johor-bahru", "thailand", "brunei", "indonesia", "budget-travel", "border-crossing", "malaysia-visa"},
-			FeaturedImage: "/images/blog/jb-visa-run-cheapest-routes-thailand-brunei-indonesia.webp",
-			ImageAlt:      "Larkin Sentral bus terminal in Johor Bahru, the departure point for cross-border buses to Thailand and beyond for visa runners",
+			FeaturedImage: "/images/blog/senai-airport-budget-flights-visa-run-jb.webp",
+			ImageAlt:      "Senai International Airport terminal frontage in Johor Bahru, departure point for budget flights to Thailand, Brunei and Indonesia",
 			InLanguage:    "en",
 			Content: `
 <p>If you're staying in Johor Bahru on a Malaysia Social Visit Pass and the 30-day clock is ticking, you have more exit options than most people realise. You don't need to fly. From JB you can reach Thailand, Indonesia, Brunei, or even just pop into Singapore and back — each with different trade-offs in cost, travel time, and immigration scrutiny.</p>
@@ -5739,11 +5856,11 @@ var BlogPosts = func() []BlogPost {
 <p>The Indonesian islands of Batam and Bintan in the Riau Islands are a quick ferry hop away and offer a legitimately different country exit — useful if you want to vary your travel history rather than doing the same Thailand border run every time.</p>
 
 <h3>How to get there from JB</h3>
-<p>The most reliable JB–Batam ferry route departs from <strong>Stulang Laut Ferry Terminal</strong> (near JB city centre) or from <strong>Pasir Gudang</strong>. Ferries also run from Tanah Merah Ferry Terminal in Singapore if you're transiting through Singapore first. Operators include <strong>Batam Fast</strong> and others. The crossing takes approximately <strong>1–1.5 hours</strong>.</p>
+<p>The most reliable JB–Batam ferry route departs from <strong>Stulang Laut Ferry Terminal</strong> (near JB city centre) or from <strong>Pasir Gudang</strong>. Ferries also run from Tanah Merah Ferry Terminal in Singapore if you're transiting through Singapore first. Operators include <strong>Batam Fast</strong> and others. The crossing takes approximately <strong>1–2.5 hours depending on terminal</strong>: Pasir Gudang → Batam (Nongsapura) on Batam Fast Ferry is the quicker option at around 1 hour, while Stulang Laut is slower at around 2 hours 30 minutes but runs more frequently — roughly 4 times daily.</p>
 
 <h3>Cost</h3>
 <ul>
-  <li>Ferry JB → Batam one way: approximately <strong>RM100–120</strong> (prices vary by operator and season)</li>
+  <li>Ferry JB → Batam one way: approximately <strong>RM77–120</strong> (prices vary by operator, terminal, and season)</li>
   <li>Indonesian entry: Malaysian and Singaporean passport holders enter Batam/Riau Islands visa-free for 30 days. Most other nationalities can get a <strong>Visa on Arrival (VoA)</strong> at the Batam ferry terminal — IDR 500,000 (~RM150 / ~SGD 45) for a 30-day stay, or a cheaper 7-day VoA (IDR 250,000) exclusive to the Riau Islands zone</li>
   <li>Total round trip (transport only): roughly <strong>RM200–250</strong> depending on nationality and operator</li>
 </ul>
@@ -5759,18 +5876,18 @@ var BlogPosts = func() []BlogPost {
 <p>The most obvious route: cross the Causeway or Second Link from JB into Singapore, spend a few hours, and re-enter Malaysia. No bus to Hat Yai, no ferry to Batam — just a 20-minute Grab or bus ride across the border.</p>
 
 <h3>How to get there</h3>
-<p>Take the <strong>Causeway Link</strong> CW1 or CW2 bus from JB Sentral to Woodlands CIQ (~RM3.50 one way), or take a Grab across the Second Link (Tuas). The crossing itself takes 20–40 minutes depending on traffic.</p>
+<p>Take the <strong>Causeway Link</strong> CW1 or CW2 bus from JB Sentral to Woodlands CIQ (RM2.60 one way — the same CW1 service used on the Singapore-to-JB direction), or take a Grab across the Second Link (Tuas). The crossing itself takes 20–40 minutes depending on traffic. <strong>Going cashless from 1 October 2026:</strong> CW1 buses will only accept EZ-Link, ManjaLink, or another contactless card — cash fares are being phased out.</p>
 
 <h3>Cost</h3>
 <ul>
-  <li>Bus JB → Singapore one way: <strong>RM3.50–5</strong></li>
+  <li>Bus JB → Singapore one way: <strong>RM2.60</strong></li>
   <li>No Singapore visa required for most nationalities (30-day social visit)</li>
   <li>Budget for a few hours in Singapore: food, transport — SGD 20–40 is typical</li>
-  <li>Total round trip: effectively <strong>RM10–15 in transport</strong>, plus whatever you spend in Singapore</li>
+  <li>Total round trip: effectively <strong>RM5–10 in transport</strong>, plus whatever you spend in Singapore</li>
 </ul>
 
 <h3>Re-entry</h3>
-<p>You exit Malaysia at Johor Bahru CIQ and re-enter the same day or next day. In theory, this resets your Malaysia Social Visit Pass. In practice, Malaysian immigration at JB CIQ is aware that Singapore crossings are commonly used as visa runs, and officers may question frequent re-entrants.</p>
+<p>You exit Malaysia at Johor Bahru CIQ and re-enter the same day or next day. In theory, this resets your Malaysia Social Visit Pass. In practice, Malaysian immigration at JB CIQ is aware that Singapore crossings are commonly used as visa runs, and officers may question frequent re-entrants. For the reverse direction — Singapore-based expats crossing into JB — see our dedicated <a href="/blog/singapore-expat-visa-run-johor-bahru-guide-2026">Singapore expat visa run guide</a>, which covers queue timing, documents, and where to stay in detail.</p>
 
 <h3>Hassle level: Medium–High for frequent runners</h3>
 <p>The Singapore route is fine for a one-off or occasional reset. If you've done it multiple times in recent months, expect more questions at the counter. Vary your routes if you're a long-term visa runner.</p>
@@ -5778,10 +5895,10 @@ var BlogPosts = func() []BlogPost {
 
 <h2>Route 4: Brunei — The Long-Haul Circuit</h2>
 
-<p>Brunei is a legitimate visa run destination and produces a convincingly "different" travel record, but it is not a quick trip. Overland from JB, you must cross through Sarawak (Kuching, Sibu, Miri) before reaching Brunei — a journey of roughly <strong>18–24 hours</strong> by bus if you do it in stages, or 12–14 hours if you take a direct overnight express and push through.</p>
+<p>Brunei is a legitimate visa run destination and produces a convincingly "different" travel record, but it is not a quick trip, and there is no single direct express bus anymore. Overland from JB, you must cross through Sarawak (Kuching, Sibu, Miri) before reaching Brunei — a journey of roughly <strong>18–24 hours</strong> by bus if you do it in stages. The old PHLS Express direct Miri–Brunei coach stopped running around 2021, so "one bus, push through" is no longer realistic.</p>
 
 <h3>How to get there</h3>
-<p>From Larkin Sentral, operators run coaches to Kuching, Miri, and onward to Brunei. The full overland route: JB → Kuching (~10h) → Miri (~10h) → Brunei Border at Sungai Tujuh (~1h). Alternatively, fly JB to Kota Kinabalu or Miri (AirAsia from Senai International Airport) and bus to Brunei — this saves 10+ hours.</p>
+<p>From Larkin Sentral, operators run coaches to Kuching, Miri, and onward toward Brunei. The full overland route: JB → Kuching (~10h) → Miri (~10h) → Brunei border at Sungai Tujuh (~1h). The practical fast option most people actually use is to fly JB to Miri — AirAsia operates this route Monday, Wednesday, Friday and Sunday from Senai International Airport — then continue by bus. From Miri, take the Miri-Belait Bus Company service to the Sungai Tujuh border, <strong>transfer at Kuala Belait</strong>, then <strong>transfer again at Seria</strong>, before finally arriving in Bandar Seri Begawan. It's a multi-leg trip with two changes, not a single through-service. A newer direct Bandar Seri Begawan bus service (Bus Asia) was reported to launch in March 2026, but this is single-sourced and unconfirmed — confirm the current schedule with the operator before relying on it.</p>
 
 <h3>Cost</h3>
 <ul>
@@ -5826,7 +5943,7 @@ var BlogPosts = func() []BlogPost {
     </tr>
     <tr>
       <td>Singapore (Causeway)</td>
-      <td>RM10–15 + spending</td>
+      <td>RM5–10 + spending</td>
       <td>2–4h round trip</td>
       <td>30 or 90 days</td>
       <td>Medium–High (if frequent)</td>
@@ -5851,6 +5968,13 @@ var BlogPosts = func() []BlogPost {
   <li><strong>Bring cash in the destination currency.</strong> THB for Thailand, IDR for Indonesia, SGD for Singapore, BND for Brunei.</li>
 </ul>
 
+<h2>Malaysia's Digital Arrival Card (MDAC): Don't Forget the Re-entry Side</h2>
+<p>Every route in this guide ends the same way: coming back into Malaysia. Malaysia's Digital Arrival Card (MDAC) has been mandatory since 1 January 2024 and still applies on re-entry, including at land checkpoints such as Bangunan Sultan Iskandar (Woodlands-side CIQ) and Kompleks Sultan Abu Bakar (Tuas-side CIQ) if your route brings you back through JB. Submit it online within 3 days before you arrive, on Malaysia's official immigration portal — it's free and takes a few minutes.</p>
+<p><strong>Singapore citizens are exempt from the MDAC at every entry point.</strong> If you're not a Singapore citizen — which is most people doing any of the routes above — you need to complete it before every single re-entry, not just the first one.</p>
+
+<h2>Is Doing This Repeatedly Risky in 2026?</h2>
+<p>Malaysian media reported that nationwide immigration operations between 1 January and 9 March 2026 recorded 2,618 operations and 9,497 arrests overall, with 1,158 people specifically detained for Social Visit Pass abuse under Regulation 39(b) — the provision that covers repeated tourist-status entries. The crackdown was publicly backed by the Prime Minister, and Malaysian immigration is reported to now use data analytics at the border to flag travellers with a pattern of fast, repeat entries and exits for extra questioning at the gate.</p>
+<p>Varying your route — Hat Yai one time, Batam the next, an occasional Brunei trip — genuinely helps here, since it doesn't produce the same predictable "out Monday, back Wednesday" pattern that draws scrutiny. It's not about avoiding a legitimate reset; it's about knowing your real risk profile if you're doing this on a tight, repeating cycle for months at a stretch.</p>
 
 <h2>Frequently Asked Questions</h2>
 
@@ -5870,7 +5994,7 @@ var BlogPosts = func() []BlogPost {
 
 <p>Whether you're catching a 6 AM bus to Hat Yai from Larkin or an early ferry to Batam, having a comfortable and affordable base in JB makes the logistics much easier. <a href="/rooms">Pelangi Capsule Hostel</a> is located in Taman Pelangi — a 10-minute Grab ride from Larkin Sentral and 15 minutes from Stulang Laut Ferry Terminal.</p>
 
-<p>Capsule pods start from <strong>RM30/night on weekdays and RM35/night on weekends</strong>. You get a private sleeping pod with curtain, your own power socket and USB charging, air-conditioning, and free high-speed WiFi — everything you need to plan your crossing, rest up before an early departure, and settle back in after the run. Monthly stays from RM600/month are also available for longer-term visitors managing repeated visa resets. For dedicated visa-run logistics and transport options, see our <a href="/visa-run">visa-run page</a>.</p>
+<p>Capsule pods are <strong>RM35/night flat</strong> (<strong>RM30 for your first night</strong>, direct-booking only at pelangicapsulehostel.com). You get a private sleeping pod with curtain, your own power socket and USB charging, air-conditioning, and free high-speed WiFi — everything you need to plan your crossing, rest up before an early departure, and settle back in after the run. <strong>Monthly stays from RM600/month (Upper Deck) or RM650/month (Lower Deck)</strong> are also available for longer-term visitors managing repeated visa resets. For dedicated visa-run logistics and transport options, see our <a href="/visa-run">visa-run page</a>.</p>
 
 <p><a href="/book">Book your pod at Pelangi Capsule Hostel</a> — no OTA fees, best rate guaranteed direct.</p>
 
@@ -5936,7 +6060,7 @@ var BlogPosts = func() []BlogPost {
   <tbody>
     <tr>
       <td><strong>Price (per night)</strong></td>
-      <td>RM30 (weekday) / RM35 (weekend)</td>
+      <td>RM35 flat (RM30 first night, direct booking only)</td>
       <td>RM60–RM300 depending on type</td>
     </tr>
     <tr>
@@ -6431,7 +6555,7 @@ var BlogPosts = func() []BlogPost {
 		{
 			Slug:          "budget-accommodation-johor-bahru-taman-pelangi-guide",
 			LastModified:  "2026-07-30",
-			ImageAlt:      "Worker at a desk in a modern capsule hostel common area in Johor Bahru, laptop open, capsule pods in background",
+			ImageAlt:      "A corridor lined with a row of stacked capsule pods in a capsule hostel",
 			Title:         "Budget Accommodation in Johor Bahru: A Traveller's Guide to Capsule Pods in Taman Pelangi (2026)",
 			Excerpt:       "Looking for cheap accommodation in Johor Bahru near JB Sentral? Real rates, location details, check-in process and everything you need to know about Pelangi Capsule Hostel in Taman Pelangi.",
 			Date:          "2026-07-30",
@@ -6439,7 +6563,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "6 min read",
 			Tags:          []string{"johor-bahru", "budget-accommodation", "capsule-hostel", "taman-pelangi", "cheap-stay", "jb-hostel"},
-			FeaturedImage: "/images/blog/monthly-stay-capsule-hostel-jb-workers-interns-2026.webp",
+			FeaturedImage: "/images/blog/capsule-pod-row-hostel-corridor-cover.webp",
 			InLanguage:    "en",
 			AlternateEN:   "budget-accommodation-johor-bahru-taman-pelangi-guide",
 			AlternateMS:   "hotel-murah-johor-bahru-taman-pelangi-panduan",
@@ -6530,7 +6654,7 @@ var BlogPosts = func() []BlogPost {
 		{
 			Slug:          "hotel-murah-johor-bahru-taman-pelangi-panduan",
 			LastModified:  "2026-07-30",
-			ImageAlt:      "Worker at a desk in a modern capsule hostel common area in Johor Bahru, laptop open, capsule pods in background",
+			ImageAlt:      "Bilik dorm kapsul yang bersih di Johor Bahru dengan katil dua tingkat putih, linen putih, langsir kayu dan tingkap cerah",
 			Title:         "Hotel Murah Johor Bahru: Panduan Bilik Sewa Harian di Taman Pelangi (2026)",
 			Excerpt:       "Cari hotel murah di Johor Bahru atau bilik sewa harian dekat JB Sentral? Ini kadar sebenar, lokasi, cara sampai dan apa yang anda dapat di Pelangi Capsule Hostel, Taman Pelangi.",
 			Date:          "2026-07-30",
@@ -6538,7 +6662,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "6 min read",
 			Tags:          []string{"johor-bahru", "hotel-murah", "bilik-sewa-harian", "taman-pelangi", "bajet", "bahasa-melayu"},
-			FeaturedImage: "/images/blog/monthly-stay-capsule-hostel-jb-workers-interns-2026.webp",
+			FeaturedImage: "/images/blog/budget-stay-johor-bahru-capsule-dorm-bright-bunks-cover.webp",
 			InLanguage:    "ms",
 			AlternateEN:   "budget-accommodation-johor-bahru-taman-pelangi-guide",
 			AlternateMS:   "hotel-murah-johor-bahru-taman-pelangi-panduan",
@@ -6678,6 +6802,8 @@ var BlogPosts = func() []BlogPost {
 <h2>Route 3: Larkin Sentral for Long-Distance Buses</h2>
 <p>Arriving from Kuala Lumpur, Penang, or other Malaysian cities? Your express bus will drop you at <strong>Larkin Sentral</strong>, JB's long-distance bus terminal, about 5km north of JB Sentral. From Larkin, take <strong>bus T13</strong> to JB Sentral (fare ~RM1.40), then connect to CT1 or J15 for Taman Pelangi. Total cost: under RM4. Grab direct from Larkin to Pelangi Capsule runs ~RM10–15.</p>
 
+<figure class="blog-figure"><img src="/images/blog/larkin-sentral-bus-terminal-commons.jpg" alt="Larkin Sentral bus terminal, Johor Bahru — the city's long-distance and local bus hub" loading="lazy" width="1200" height="800"><figcaption>Larkin Sentral, JB's main long-distance and local bus terminal. City routes such as CT1 and J15 run RM1.20–2 per ride. Photo: ペウゲオト (Peugeot), <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a>, via Wikimedia Commons.</figcaption></figure>
+
 
 <h2>Getting Around JB by Bus: Nearby Destinations</h2>
 <table>
@@ -6767,6 +6893,8 @@ var BlogPosts = func() []BlogPost {
 <h2>Laluan 3: Larkin Sentral untuk Bas Jarak Jauh</h2>
 <p>Tiba dari Kuala Lumpur, Pulau Pinang atau bandar lain? Bas ekspres anda akan menurunkan anda di <strong>Larkin Sentral</strong>, terminal bas jarak jauh JB, kira-kira 5km utara JB Sentral. Dari Larkin, naik <strong>bas T13</strong> ke JB Sentral (tambang ~RM1.40), kemudian sambung CT1 atau J15 ke Taman Pelangi. Jumlah kos: bawah RM4. Grab terus dari Larkin ke Pelangi Capsule lebih kurang RM10–15.</p>
 
+<figure class="blog-figure"><img src="/images/blog/larkin-sentral-bus-terminal-commons.jpg" alt="Terminal Larkin Sentral, Johor Bahru — hab bas jarak jauh dan bas tempatan bandar" loading="lazy" width="1200" height="800"><figcaption>Larkin Sentral, terminal bas utama JB untuk perjalanan jarak jauh dan tempatan. Tambang laluan bandar seperti CT1 dan J15: RM1.20–2. Foto: ペウゲオト (Peugeot), <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a>, melalui Wikimedia Commons.</figcaption></figure>
+
 
 <h2>Destinasi Berdekatan dengan Bas</h2>
 <table>
@@ -6854,6 +6982,8 @@ var BlogPosts = func() []BlogPost {
 
 <h2>路线三：Larkin Sentral 长途巴士总站</h2>
 <p>从吉隆坡、槟城或其他城市乘长途客车抵达？你的客车会在 <strong>Larkin Sentral</strong>（新山长途巴士总站，距 JB Sentral 约 5 公里）下客。从 Larkin 乘 <strong>T13</strong> 巴士到 JB Sentral（约 RM1.40），再换乘 CT1 或 J15 前往 Taman Pelangi，总花费不到 RM4。从 Larkin 直接叫 Grab 到旅舍约 RM10–15。</p>
+
+<figure class="blog-figure"><img src="/images/blog/larkin-sentral-bus-terminal-commons.jpg" alt="新山 Larkin Sentral 巴士总站——长途与市区巴士枢纽" loading="lazy" width="1200" height="800"><figcaption>Larkin Sentral，新山主要的长途与市区巴士总站。CT1、J15 等市区路线票价约 RM1.20–2。摄影：ペウゲオト（Peugeot），<a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a>，来自 Wikimedia Commons。</figcaption></figure>
 
 
 <h2>巴士可到达的周边目的地</h2>
@@ -7173,7 +7303,7 @@ var BlogPosts = func() []BlogPost {
 
 <h3>Singapore Is 30 Minutes Away — And Getting Even Closer</h3>
 <p>The Johor–Singapore Causeway is one of the busiest border crossings in the world. From JB Sentral, the Causeway Link bus costs SGD&nbsp;3.30 and drops you at Kranji MRT in Singapore. For nomads with Singapore-based clients, co-working meetings, or bank accounts, JB is effectively a satellite suburb of Singapore — at one-fifth of the cost.</p>
-<p>The <strong>RTS Link</strong> — a 4 km rail connection between Bukit Chagar (JB) and Woodlands North (Singapore) — is scheduled to open by end-2026. The crossing will take under five minutes and carry up to 10,000 passengers per hour each way. When it opens, Singapore becomes even more accessible from JB without the queuing variability of the road causeway.</p>
+<p>The <strong>RTS Link</strong> — a 4 km rail connection between Bukit Chagar (JB) and Woodlands North (Singapore) — is now expected to open around end-February 2027 (delayed from end-2026). The crossing will take under five minutes and carry up to 10,000 passengers per hour each way. When it opens, Singapore becomes even more accessible from JB without the queuing variability of the road causeway.</p>
 
 <h3>Cost of Living: The JB Advantage</h3>
 <p>Here is what a nomad's monthly budget looks like in JB versus its competitors:</p>
@@ -7412,6 +7542,8 @@ var BlogPosts = func() []BlogPost {
 <p>Take the North-South MRT line to <strong>Kranji MRT</strong>. Exit and board <strong>Causeway Link CW1</strong> at the bus terminal directly outside the station. Pay SGD3.30 with your EZ-Link card, contactless Mastercard/Visa, or Apple/Google Pay. The bus crosses the Causeway, stops at Woodlands Checkpoint (Singapore immigration &mdash; everyone exits, clears passport control, re-boards), then delivers you to <strong>JB Sentral</strong> on the Malaysian side where you clear Malaysian immigration. This is the cheapest crossing available.</p>
 <p><strong>Also available from Queen Street Bus Terminal</strong> (near Bugis MRT): SBS Transit <strong>bus 170</strong> and <strong>170X</strong> serve the same Causeway route at similar fares.</p>
 
+<figure class="blog-figure"><img src="/images/blog/causeway-link-cw1-bus-commons.jpg" alt="A Causeway Link CW1 bus, the main cross-border bus route between Woodlands, Singapore and JB Sentral, Malaysia" loading="lazy" width="1200" height="800"><figcaption>A Causeway Link CW1 bus crossing between Singapore and Johor Bahru — boarded from Kranji MRT via EZ-Link for SGD3.30, or RM2.60 (~SGD0.80) if paid on the Malaysia side. Source: <a href="https://landtransportguru.net/jbbuscw1/" target="_blank" rel="noopener noreferrer">Land Transport Guru — Causeway Link CW1</a>, verified 2026-09-25. Photo: LN9267, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>, via Wikimedia Commons.</figcaption></figure>
+
 <h3>Option 2: MyLink / Handal Direct Coach &mdash; SGD5&ndash;8</h3>
 <p><strong>MyLink Express</strong> and <strong>Handal Indah</strong> run air-conditioned coaches from Queen Street Bus Terminal (adjacent to Bugis MRT, Exit A) directly to JB Sentral every 15&ndash;30 minutes. Cost is SGD5&ndash;8 one-way. Comfortable reclining seats; you still exit and clear immigration on both sides, but the experience is more relaxed than a standing city bus.</p>
 
@@ -7512,7 +7644,7 @@ var BlogPosts = func() []BlogPost {
   <li><strong>Batam Fast Ferry</strong> — armada feri cepat, waktu tempuh sekitar <strong>45–55 menit</strong>. Tersedia beberapa jadwal per hari. Harga tiket berkisar <strong>RM35–45 satu arah</strong> (setara IDR 110.000–145.000 kurs 2026).</li>
   <li><strong>Sindo Ferry</strong> — alternatif dengan jadwal berbeda, harga serupa.</li>
 </ul>
-<p>Alternatif lain: naik feri dari Batam ke Harbourfront Singapura, lalu menyeberang ke JB via bus CW1 Causeway Link (RM2.70 dari Woodlands). Rute ini lebih panjang dan butuh lebih banyak cap di paspor, tapi bisa jadi pilihan jika jadwal feri langsung tidak cocok.</p>
+<p>Alternatif lain: naik feri dari Batam ke Harbourfront Singapura, lalu menyeberang ke JB via bus CW1 Causeway Link (RM2.60 dari Woodlands, hanya cashless mulai 1 Okt 2026). Rute ini lebih panjang dan butuh lebih banyak cap di paspor, tapi bisa jadi pilihan jika jadwal feri langsung tidak cocok.</p>
 <p><strong>Tips penting:</strong> Pastikan paspormu masih berlaku minimal 6 bulan. Bawa dokumen perjalanan dan, jika ada, surat penawaran kerja atau referensi. Imigrasi Malaysia berhak menanyakan tujuan kunjungan dan dana yang dibawa.</p>
 
 <h2>Dari Stulang Laut ke Taman Pelangi</h2>
@@ -7729,6 +7861,7 @@ var BlogPosts = func() []BlogPost {
 		// 87 — scheduled: goes live 2026-08-10
 		{
 			Slug:          "glass-temple-johor-bahru-visitor-guide",
+			LastModified: "2026-10-02",
 			Title:         "Arulmigu Sri Rajakaliamman Glass Temple: JB's Unique Hindu Landmark",
 			Excerpt:       "JB's Glass Temple is one of a kind in Malaysia — every interior surface is tiled with coloured glass. Here is how to visit, what it costs, and what makes it worth the trip.",
 			Date:          "2026-08-10",
@@ -7743,16 +7876,18 @@ var BlogPosts = func() []BlogPost {
 <p>The <strong>Arulmigu Sri Rajakaliamman Glass Temple</strong> in Johor Bahru is one of Malaysia's most visually arresting religious sites. Dedicated to Goddess Kaliamman, the temple's entire interior — walls, pillars, ceilings, and altar surrounds — is covered in millions of pieces of coloured glass mosaic. The effect is kaleidoscopic and genuinely unlike any other temple in Southeast Asia. Entry costs a few ringgit and takes around 30 minutes, making it one of JB's most rewarding quick stops.</p>
 
 <h2>Location</h2>
-<p>The temple is located at <strong>Jalan Tan Hiok Nee, Johor Bahru</strong>, in the heart of JB's heritage district, a short walk from Jalan Wong Ah Fook and approximately 1 km from JB City Square. From Taman Pelangi, Grab takes around 10–12 minutes and costs RM6–10. The temple is walkable from JB Sentral if you enjoy a 15–20 minute walk through the older parts of the city centre.</p>
+<p>The temple is located at <strong>Jalan Tun Abdul Razak 1/1, Wadihana, 80300 Johor Bahru</strong> (address per Tourism Johor). [Also review the 'Combining with Nearby Attractions' section and the tan-hiok-nee post, which both place the temple on Jalan Tan Hiok Nee / in the heritage street; walking times there are unverified.] From Taman Pelangi, Grab takes around 10–12 minutes and costs RM6–10. The temple is walkable from JB Sentral if you enjoy a 15–20 minute walk through the older parts of the city centre.</p>
 
 
 <h2>Opening Hours and Entry Fee</h2>
-<p>The temple is typically open to visitors from <strong>8 AM to noon and 4 PM to 8 PM daily</strong>. Entry includes a small fee of approximately <strong>RM3–5</strong> for adults (check at the gate, as fees may be updated). Photography inside is permitted with respectful behaviour — the temple management actively welcomes visitors and tourists.</p>
+<p>Tourism Johor lists the temple as open <strong>10 AM to 10 PM daily</strong>, with an entrance fee of <strong>RM10</strong> (check at the gate, as hours and fees may change). Photography inside is permitted with respectful behaviour — the temple management actively welcomes visitors and tourists.</p>
 
 <h2>What Makes It Unique</h2>
-<p>Most Hindu temples feature intricate painted sculptures and carved gopurams. The Sri Rajakaliamman temple took a different approach: beginning in the 1990s, the community began covering every interior surface with hand-set glass tiles in jewel-toned colours — blue, green, gold, red, and white. The process took years and continues to be refined. The result is that even at midday, when natural light enters through coloured glass panels, the interior glows.</p>
+<p>Most Hindu temples feature intricate painted sculptures and carved gopurams. The Sri Rajakaliamman temple took a different approach: The temple was established in 1922; today about 95% of its walls, ceiling and pillars are covered with stained-glass mirrors imported from Thailand, Japan and Belgium. (Remove the unverified '1990s' start date and 'millions of pieces' claim.) in jewel-toned colours — blue, green, gold, red, and white. The process took years and continues to be refined. The result is that even at midday, when natural light enters through coloured glass panels, the interior glows.</p>
+<figure class="blog-figure"><img src="/images/blog/glass-temple-johor-bahru-visitor-guide-1.webp" alt="Interior of the Arulmigu Sri Rajakaliamman Glass Temple in Johor Bahru, with walls, pillars and ceiling covered in glass mosaic" loading="lazy" width="1200" height="900"><figcaption>Photo: Chainwit., <a href="https://commons.wikimedia.org/wiki/File:Arulmigu_Sri_Rajakaliamman_Glass_Temple,_JB_(2025)_-_img_47.jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>, CC BY 4.0.</figcaption></figure>
 
 <p>The temple is dedicated to Goddess Kaliamman, a form of the goddess Kali worshipped primarily by Tamil Hindus. It serves as an active place of worship for JB's Indian community, not just a tourist attraction — visitors are asked to behave respectfully, remove shoes, and speak quietly inside.</p>
+<figure class="blog-figure"><img src="/images/blog/glass-temple-johor-bahru-visitor-guide-2.webp" alt="Decorated shrine with a Ganesha figure on each side inside the Glass Temple, Johor Bahru" loading="lazy" width="1200" height="900"><figcaption>Photo: Chainwit., <a href="https://commons.wikimedia.org/wiki/File:Arulmigu_Sri_Rajakaliamman_Glass_Temple,_JB_(2025)_-_img_76.jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>, CC BY 4.0.</figcaption></figure>
 
 
 <h2>What to Wear</h2>
@@ -7770,6 +7905,15 @@ var BlogPosts = func() []BlogPost {
 
 <h2>Combining with Nearby Attractions</h2>
 <p>The Glass Temple is located near <strong>Tan Hiok Nee Heritage Street</strong> — JB's most photogenic colonial shophouse row, now home to independent cafes, vintage shops, and street art. From there, the <strong>Johor Bahru Old Chinese Temple</strong> is a 5-minute walk, and <strong>Jalan Wong Ah Fook</strong>'s hawker food stalls are within easy reach for lunch. This heritage district can be covered on foot in a relaxed half-day.</p>
+
+<h2>Official Information</h2>
+<ul>
+  <li><strong>Address:</strong> Jalan Tun Abdul Razak 1/1, Wadihana, 80300 Johor Bahru. <a href="https://tourism.johor.gov.my/arulmigu-sri-rajakaliamman-glass-temple/" target="_blank" rel="noopener noreferrer">Tourism Johor</a></li>
+  <li><strong>Opening hours:</strong> 10.00 am – 10.00 pm, open every day. <a href="https://tourism.johor.gov.my/arulmigu-sri-rajakaliamman-glass-temple/" target="_blank" rel="noopener noreferrer">Tourism Johor</a></li>
+  <li><strong>Entrance fee:</strong> RM10.00. <a href="https://tourism.johor.gov.my/arulmigu-sri-rajakaliamman-glass-temple/" target="_blank" rel="noopener noreferrer">Tourism Johor</a></li>
+  <li><strong>History:</strong> established in 1922; about 95% of the walls, ceiling and pillars are covered with stained-glass mirrors imported from Thailand, Japan and Belgium. <a href="https://tourism.johor.gov.my/arulmigu-sri-rajakaliamman-glass-temple/" target="_blank" rel="noopener noreferrer">Tourism Johor</a></li>
+</ul>
+<p>Details above were checked against the Tourism Johor listing on 1 October 2026. Temple hours and fees can change, so confirm with the temple before you go.</p>
 
 <h2>Where to Stay in JB</h2>
 <p><a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi is a 10-minute Grab ride from the Glass Temple district. Private capsule pods from <strong>RM35/night</strong> with free WiFi, personal locker, and 24/7 self check-in. Monthly stays available from RM600 with no deposit.</p>
@@ -8025,6 +8169,7 @@ var BlogPosts = func() []BlogPost {
 		// 91 — scheduled: goes live 2026-08-14
 		{
 			Slug:          "legoland-malaysia-johor-bahru-visitor-guide",
+			LastModified: "2026-10-02",
 			Title:         "LEGOLAND Malaysia Guide: Tickets, Tips &amp; Getting There from JB",
 			Excerpt:       "Malaysia's only LEGOLAND is in Nusajaya, 20 minutes from JB city centre. Here is what to expect, how much it costs, and how to make the most of a day there.",
 			Date:          "2026-08-14",
@@ -8040,6 +8185,7 @@ var BlogPosts = func() []BlogPost {
 
 <h2>Location</h2>
 <p>LEGOLAND Malaysia is located in <strong>Medini, Nusajaya (Iskandar Puteri)</strong>, Johor — approximately 20–30 km west of JB city centre. Travel time from JB Sentral or Taman Pelangi by Grab is around <strong>25–35 minutes</strong> and costs approximately RM25–40 one-way. The park is also accessible from Singapore via the Tuas Second Link (Second Causeway) — the LEGOLAND Malaysia Hotel offers a dedicated shuttle service from Singapore.</p>
+<figure class="blog-figure"><img src="/images/blog/legoland-malaysia-johor-bahru-visitor-guide-1.webp" alt="The LEGOLAND Malaysia entrance gate with the LEGOLAND Malaysia sign and brick-style towers" loading="lazy" width="1200" height="900"><figcaption>Photo: milst1, <a href="https://commons.wikimedia.org/wiki/File:Entrance_Legoland_Malaysia.jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>, CC BY-SA 2.0.</figcaption></figure>
 
 
 <h2>Tickets and Pricing</h2>
@@ -8057,16 +8203,17 @@ var BlogPosts = func() []BlogPost {
 
 <h3>MINILAND</h3>
 <p>The most iconic feature of any LEGOLAND — a scaled recreation of Asian landmarks built from over 30 million LEGO bricks. The Asian MINILAND includes models of iconic structures from across Southeast and East Asia: KL's Petronas Towers, Singapore's Marina Bay Sands, Bangkok's temples, and more. Impressive in scale and detail, and the best photography location in the park.</p>
+<figure class="blog-figure"><img src="/images/blog/legoland-malaysia-johor-bahru-visitor-guide-2.webp" alt="A LEGO brick model of a Chinese palace complex at MINILAND, LEGOLAND Malaysia" loading="lazy" width="1200" height="900"><figcaption>Photo: milst1, <a href="https://commons.wikimedia.org/wiki/File:Miniland_Legoland_Malaysia.jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>, CC BY-SA 2.0.</figcaption></figure>
 
 <h3>Rides and Zones</h3>
-<p>The park has seven themed zones: LEGO City, LEGO Kingdoms, Adventure, LEGO NINJAGO World, LEGO Technic, IMAGINATION, and Land of Adventure. Ride intensity ranges from gentle carousel-style attractions for young children to moderate coaster rides. The coasters here are family-friendly rather than thrill-seeker grade — most adults will find them low-intensity compared to a standard theme park.</p>
+<p>The park has eight themed lands and 40+ rides, shows and attractions (per the official site). Ride intensity ranges from gentle carousel-style attractions for young children to moderate coaster rides. The coasters here are family-friendly rather than thrill-seeker grade — most adults will find them low-intensity compared to a standard theme park.</p>
 
 <h3>SEA LIFE Malaysia Aquarium</h3>
 <p>Attached to the LEGOLAND resort, SEA LIFE Malaysia features ocean tunnels and marine species displays. Combined tickets with LEGOLAND are available and often better value than buying separately.</p>
 
 
 <h2>Water Park</h2>
-<p>The LEGOLAND Water Park has nearly 20 slides and attractions, including a lazy river, wave pool, and several family slides. It is separate from the theme park and requires its own ticket (or a combo). Lockers are available inside for a fee. Bring your own towel — rental towels are available but limited.</p>
+<p>The LEGOLAND Water Park has 20+ slides, rides and water play areas., including a lazy river, wave pool, and several family slides. It is separate from the theme park and requires its own ticket (or a combo). Lockers are available inside for a fee. Bring your own towel — rental towels are available but limited.</p>
 
 <h2>Best Time to Visit</h2>
 <p>Weekday mornings are significantly less crowded than weekends and Malaysian school holidays. Arrive at park opening (10 AM) to get through the most popular rides before queues build. Avoid Malaysian public holidays and Singapore school holidays — these are peak crowd days.</p>
@@ -8080,6 +8227,15 @@ var BlogPosts = func() []BlogPost {
   <li>Reusable water bottle — the park has filling stations</li>
   <li>Snacks to reduce food spend inside (outside food is permitted in designated areas)</li>
 </ul>
+
+<h2>Official Information</h2>
+<ul>
+  <li><strong>Address:</strong> 7 Jalan LEGOLAND, Bandar Medini Iskandar Malaysia, 79250 Iskandar Puteri (Nusajaya), Johor. <a href="https://www.legoland.com.my/" target="_blank" rel="noopener noreferrer">LEGOLAND Malaysia Resort</a></li>
+  <li><strong>Tickets:</strong> the official site advertises a Day Ticket from RM69 when booked online, and a Water Park special at RM88. Prices change with dates and promotions, so check the live price before you go. <a href="https://www.legoland.com.my/" target="_blank" rel="noopener noreferrer">LEGOLAND Malaysia Resort</a></li>
+  <li><strong>Hours:</strong> the official calendar shows different times by day. On 1 October 2026 it listed the Theme Park 11 am – 8 pm (last entry 7 pm), the Water Park 10 am – 6 pm, and SEA LIFE 10 am – 6 pm (last entry 5 pm); the next day the Theme Park was 10 am – 9 pm. <a href="https://www.legoland.com.my/plan-your-day/before-you-visit/opening-hours/" target="_blank" rel="noopener noreferrer">LEGOLAND Malaysia opening hours</a></li>
+  <li><strong>Size:</strong> the theme park has 8 themed lands and 40+ rides, shows and attractions; the Water Park has 20+ slides, rides and water play areas. <a href="https://www.legoland.com.my/" target="_blank" rel="noopener noreferrer">LEGOLAND Malaysia Resort</a></li>
+</ul>
+<p>Details above were checked on LEGOLAND Malaysia's official site on 1 October 2026; opening times and prices change, so always confirm before you travel.</p>
 
 <h2>Where to Stay Before or After</h2>
 <p>LEGOLAND Malaysia Hotel is the most immersive option, but at RM500–900/night it is beyond budget territory. <a href="/rooms">Pelangi Capsule Hostel</a> in Taman Pelangi offers capsule pods from <strong>RM35/night</strong> — a 25-minute Grab to LEGOLAND and walking distance to JB's hawker food for dinner after the park. 24/7 self check-in means a late return from the park is not a problem.</p>
@@ -8102,7 +8258,7 @@ var BlogPosts = func() []BlogPost {
 		{
 			Slug:          "rts-link-johor-bahru-singapore-traveler-guide",
 			Title:         "RTS Link JB–Singapore: Fares, Stations, and What Changes When It Opens",
-			Excerpt:       "The Rapid Transit System Link between Woodlands North and Bukit Chagar opens by end-2026, cutting the crossing to 5 minutes. Here is every confirmed detail — fares, e-gates, and what it means for your JB trip.",
+			Excerpt:       "The Rapid Transit System Link between Woodlands North and Bukit Chagar is now expected around end-February 2027 (delayed from end-2026), cutting the crossing to 5 minutes. Here is every confirmed detail — fares, e-gates, and what it means for your JB trip.",
 			Date:          "2026-08-15",
 			Category:      "Travel Tips",
 			Author:        "Pelangi Capsule Hostel",
@@ -8111,7 +8267,7 @@ var BlogPosts = func() []BlogPost {
 			FeaturedImage: "/images/blog/rts-link-johor-bahru-singapore-traveler-guide.webp",
 			ImageAlt:      "The Bukit Chagar RTS Link station under construction in Johor Bahru",
 			Content: `
-<p>The Johor Bahru–Singapore Rapid Transit System (RTS) Link is the most significant cross-border infrastructure project between Malaysia and Singapore in decades. When it opens — targeted for December 2026 or January 2027 — it will reduce the physical crossing time between the two countries from 30–90 minutes by bus to approximately <strong>5 minutes by train</strong>. Here is every confirmed detail you need to plan your JB trip around it.</p>
+<p>The Johor Bahru–Singapore Rapid Transit System (RTS) Link is the most significant cross-border infrastructure project between Malaysia and Singapore in decades. When it opens — originally targeted for end-2026, now expected around end-February 2027 — it will reduce the physical crossing time between the two countries from 30–90 minutes by bus to approximately <strong>5 minutes by train</strong>. Here is every confirmed detail you need to plan your JB trip around it.</p>
 
 <h2>What Is the RTS Link?</h2>
 <p>The RTS Link is a light rail transit line connecting <strong>Woodlands North MRT station</strong> in Singapore to <strong>Bukit Chagar station</strong> in Johor Bahru. It runs entirely on an elevated viaduct across the Strait of Johor — a separate crossing from the existing Johor-Singapore Causeway. The 4 km line takes approximately 5 minutes from platform to platform.</p>
@@ -8125,16 +8281,18 @@ var BlogPosts = func() []BlogPost {
 </thead>
 <tbody>
   <tr><td>Journey time (train only)</td><td>~5 minutes</td></tr>
-  <tr><td>Target opening</td><td>December 2026 – January 2027</td></tr>
+  <tr><td>Target opening</td><td>Around February 2027 (earlier target: end-2026; joint LTA / Malaysia Transport Ministry statement, 2 October 2026)</td></tr>
   <tr><td>Expected one-way fare</td><td>S$5–S$7 (adult)</td></tr>
   <tr><td>Daily capacity at launch</td><td>~40,000 passengers/day</td></tr>
   <tr><td>Ultimate daily capacity</td><td>~140,000 passengers/day</td></tr>
-  <tr><td>Singapore terminal</td><td>Woodlands North MRT (North-South Line)</td></tr>
+  <tr><td>Singapore terminal</td><td>Woodlands North MRT (Thomson-East Coast Line)</td></tr>
   <tr><td>JB terminal</td><td>Bukit Chagar, central JB</td></tr>
   <tr><td>Immigration clearance</td><td>AI-assisted e-gates — targeted 7-second clearance time</td></tr>
 </tbody>
 </table>
 <p>Fares have not been finalised at the time of writing. The S$5–S$7 range comes from official briefings and press reports through mid-2026. Confirm current fares on the <a href="https://www.mot.gov.sg" target="_blank" rel="noopener noreferrer">Singapore Ministry of Transport website</a> before you travel.</p>
+
+<figure class="blog-figure"><img src="/images/blog/rts-link-woodlands-north-commons.jpg" alt="The Woodlands North RTS Link station, Singapore, viewed from across the Strait of Johor" loading="lazy" width="1200" height="800"><figcaption>Woodlands North station, the Singapore terminus of the RTS Link, viewed from the Johor side. Expected one-way fare: S$5–S$7, not yet finalised as of mid-2026. Source: <a href="https://www.lta.gov.sg/content/ltagov/en/upcoming_projects/rail_expansion/JB-Singapore_RTS_link.html" target="_blank" rel="noopener noreferrer">Land Transport Authority, Singapore</a>. Photo: ZKang123, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>, via Wikimedia Commons.</figcaption></figure>
 
 <h2>How the Immigration Process Changes</h2>
 <p>Currently, crossing by bus requires two stops: Singapore departure (Woodlands Checkpoint) and Malaysian arrival (Sultan Iskandar CIQ, JB Sentral) — two queues, two buildings, sometimes two buses. The RTS Link consolidates this into a single, climate-controlled station experience at each end.</p>
@@ -8161,7 +8319,7 @@ var BlogPosts = func() []BlogPost {
 <h2>Frequently Asked Questions</h2>
 
 <h3>When does the RTS Link open?</h3>
-<p>The target is December 2026, with some official sources citing January 2027. The date has not been locked in at the time of writing. Follow Singapore's Ministry of Transport and Malaysia's Ministry of Works for the final announcement.</p>
+<p>Not before around February 2027. The earlier end-2026 target was pushed back in a joint LTA / Malaysia Transport Ministry statement on 2 October 2026, and the exact date has not been announced. Follow Singapore's <a href="https://www.lta.gov.sg" target="_blank" rel="noopener noreferrer">LTA</a> and Malaysia's Transport Ministry for the final announcement; Transport Minister Anthony Loke said on 20 October 2026 that fares will be announced jointly by the end of 2026.</p>
 
 <h3>How much does the RTS Link cost?</h3>
 <p>The expected fare is S$5–S$7 one-way for adults. Official pricing has not been confirmed. For comparison, the Causeway Link CW1 bus costs SGD3.30 one-way.</p>
@@ -8263,7 +8421,7 @@ var BlogPosts = func() []BlogPost {
 <p>The JB–Singapore border crossing has changed significantly in 2025–2026. Singaporean travellers can now clear Malaysian immigration with a QR code using a mobile app — no passport stamping at the counter, no manual queue for eligible holders. E-gates are live at Sultan Iskandar CIQ. Real-time queue tracking is available on your phone. If you are still crossing the old way, you are almost certainly waiting longer than you need to. This guide covers every tool and technique available right now.</p>
 
 <h2>Tool 1: MyNIISe App — QR Code Immigration Clearance</h2>
-<p>The <strong>MyNIISe app</strong> (available on iOS and Android, free) is Malaysia's official immigration pre-clearance system. As of September 2025, Singaporean travellers can generate a QR code that clears Malaysian immigration at the autogate — without queuing at a manual counter. A group travelling together can even share a single QR code at the gate.</p>
+<p>The <strong>MyNIISe app</strong> (available on iOS and Android, free) is Malaysia's official immigration pre-clearance system. As of September 2025, Singaporean travellers can generate a QR code that clears Malaysian immigration at the autogate — without queuing at a manual counter (The Star and NST reported the Johor rollout starting 22 September 2025). Rules for families or groups sharing a code differ by app and checkpoint, so <strong>check before you go</strong> on the official MyNIISe / Immigration Department channels.</p>
 <p>How to set it up:</p>
 <ol>
   <li>Download MyNIISe from the App Store or Google Play.</li>
@@ -8319,7 +8477,7 @@ var BlogPosts = func() []BlogPost {
 <ul>
   <li><strong>Valid passport</strong> (at least 6 months validity from travel date)</li>
   <li><strong>MyNIISe app</strong> installed and QR code generated before you leave Singapore</li>
-  <li><strong>Proof of funds:</strong> Malaysia technically requires RM500 or equivalent accessible funds. Have your bank app ready to show.</li>
+  <li><strong>Proof of funds:</strong> officers may ask foreign visitors to show sufficient funds for their stay; there is no single figure we can confirm, so have your bank app ready to show.</li>
   <li><strong>Accommodation booking:</strong> If asked by Malaysian immigration, a booking confirmation (Pelangi Capsule Hostel for example) is clear proof of plans. Officers rarely ask on a normal weekday; useful to have if your crossing timing looks unusual.</li>
   <li><strong>Return transport:</strong> Bus 170 or CW1 goes from JB Sentral back to Singapore — no advance booking needed. Or use cross-border Grab for door-to-door.</li>
 </ul>
@@ -8339,8 +8497,8 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "6 min read",
 			Tags:          []string{"shopping", "johor-bahru", "singapore", "sks-city-mall", "horizon-mall", "malls", "budget-travel", "kkv"},
-			FeaturedImage: "/images/blog/new-jb-malls-2026-singaporeans-guide.webp",
-			ImageAlt:      "Interior of Johor Bahru City Square shopping mall",
+			FeaturedImage: "/images/blog/jb-shopping-mall-atrium-cover.webp",
+			ImageAlt:      "Multi-level shopping mall atrium in Johor Bahru with indoor planters and a steel-truss roof",
 			Content: `
 <p>JB's mall landscape has shifted noticeably in 2025–2026. Two new openings — SKS City Mall and Horizon Mall — have added options beyond the well-established KSL City Mall, AEON Tebrau, and KOMTAR JBCC. If you have not visited JB in the past year, this guide covers what is new, what is worth your time, and how the new malls fit into a shopping day from Singapore.</p>
 
@@ -8735,20 +8893,22 @@ var BlogPosts = func() []BlogPost {
 			FeaturedImage: "/images/blog/batam-daytrip-jb.webp",
 			ImageAlt:      "The Barelang Bridge linking Batam to the Rempang and Galang islands, Indonesia",
 			Title:         "Batam Day Trip from Johor Bahru: Ferry, Visa & Itinerary (2026)",
-			Excerpt:       "A JB-based day trip to Batam, Indonesia — the HarbourFront ferry connection, visa notes, and what to see: Barelang Bridge, Nagoya Hill, and Nongsa.",
+			Excerpt:       "A JB-based day trip to Batam, Indonesia — the Singapore ferry connection (now via Singapore Cruise Centre), visa notes, and what to see: Barelang Bridge, Nagoya Hill, and Nongsa.",
 			Content: `
 <h2>An Unusual But Doable Route</h2>
-<p>Batam is an Indonesian island roughly an hour's ferry ride from Singapore's HarbourFront terminal — not directly connected to Johor Bahru by sea. For JB-based travellers, a Batam trip means crossing the Causeway into Singapore first, then taking the ferry onward from HarbourFront. It's a longer day than most of the destinations in this guide, so treat it as a full-day or overnight side trip rather than a quick jaunt.</p>
+<p>Batam is an Indonesian island roughly an hour's ferry ride from Singapore — not directly connected to Johor Bahru by sea. For JB-based travellers, a Batam trip means crossing the Causeway into Singapore first, then taking the ferry onward. It's a longer day than most of the destinations in this guide, so treat it as a full-day or overnight side trip rather than a quick jaunt. <strong>Note:</strong> the old HarbourFront Centre ferry terminal closed on 27 July 2026 — ferries to Batam now depart from the new <strong>Singapore Cruise Centre</strong> terminal at 5 HarbourFront Avenue, a short walk from the former building and still served by the HarbourFront MRT interchange<sup>3</sup>.</p>
 
 <figure class="blog-figure"><img src="/images/destinations/barelang-bridge.jpg" alt="Barelang Bridge, Batam" loading="lazy" width="1200" height="800"><figcaption>Barelang Bridge, Batam.</figcaption></figure>
 
 <h2>Route from JB</h2>
 <ol>
   <li><strong>JB to Singapore:</strong> cross the Causeway by Causeway Link bus (CW1/CW2/CW5) or bus 170 from JB CIQ, clearing both immigration checkpoints on foot<sup>1</sup>.</li>
-  <li><strong>Singapore to HarbourFront:</strong> take the MRT to HarbourFront station (Circle Line / North East Line).</li>
-  <li><strong>HarbourFront to Batam Centre:</strong> board a ferry — sailings run roughly hourly, with the first departure from Batam Centre around 6:00 AM and the last around 8:35 PM, and the crossing itself takes about an hour<sup>2</sup>. Several operators (Sindo Ferry, Batam Fast Ferry, Majestic Fast Ferry) run this route; book your ferry ticket in advance.</li>
+  <li><strong>Singapore to the ferry terminal:</strong> take the MRT to HarbourFront station (Circle Line / North East Line interchange), then follow signs to the Singapore Cruise Centre terminal (the ferry terminal formerly known as HarbourFront Centre, which closed 27 July 2026)<sup>3</sup>.</li>
+  <li><strong>Singapore to Batam Centre:</strong> board a ferry — sailings run roughly hourly, with the first departure from Batam Centre around 6:00 AM and the last around 8:35 PM, and the crossing itself takes about an hour<sup>2</sup>. Several operators (Sindo Ferry, Batam Fast Ferry, Majestic Fast Ferry) run this route; book your ferry ticket in advance.</li>
 </ol>
 <p>Total one-way travel time from JB CIQ to Batam Centre runs 2.5–3 hours including both border crossings and the ferry itself.</p>
+
+<figure class="blog-figure"><img src="/images/blog/batam-centre-ferry-terminal-commons.jpg" alt="The ferry terminal at Batam Centre, Indonesia, serving the Singapore–Batam crossing" loading="lazy" width="1200" height="800"><figcaption>The ferry terminal at Batam Centre — the Indonesian side of the Singapore–Batam crossing used on this route. Return ferry fare: roughly SGD70–85 depending on operator, season, and fuel surcharge. Sources: <a href="https://www.directferries.com/batam_centre_harbourfront_centre_ferry.htm" target="_blank" rel="noopener noreferrer">Direct Ferries</a>; <a href="https://www.sindoferry.com.sg/ticket-fares" target="_blank" rel="noopener noreferrer">Sindo Ferry fares</a>, verified 2026-09-25.</figcaption></figure>
 
 <h2>Visa and Entry Requirements</h2>
 <p>Entering Indonesia requires its own visa process, separate from your Malaysia or Singapore entry. Many nationalities can obtain a visa-on-arrival or an electronic visa-on-arrival (eVOA) for a short Batam visit, but requirements vary by passport and change over time. Check Indonesia's official immigration channels for your nationality before booking a ferry ticket — do not assume visa-free entry without confirming.</p>
@@ -8764,19 +8924,19 @@ var BlogPosts = func() []BlogPost {
 
 <h2>Suggested One-Day Plan</h2>
 <ol>
-  <li><strong>Very early morning:</strong> cross the Causeway from JB, then head straight to HarbourFront for an early ferry.</li>
+  <li><strong>Very early morning:</strong> cross the Causeway from JB, then head straight to the Singapore Cruise Centre ferry terminal for an early sailing.</li>
   <li><strong>Morning:</strong> arrive at Batam Centre, grab a taxi or arrange transport to Barelang Bridge for photos.</li>
   <li><strong>Midday:</strong> Nagoya Hill for lunch and duty-free-style shopping.</li>
   <li><strong>Afternoon:</strong> Nongsa for a beach walk before heading back to Batam Centre for the return ferry.</li>
-  <li><strong>Evening:</strong> ferry back to HarbourFront, MRT to Woodlands, bus back across the Causeway to JB.</li>
+  <li><strong>Evening:</strong> ferry back to Singapore, MRT to Woodlands, bus back across the Causeway to JB.</li>
 </ol>
 <p>Given the total travel time, some travellers prefer to treat Batam as an overnight trip rather than squeezing it into a single day — factor this in when planning around your JB accommodation.</p>
 
 <h2>Budget for the Trip</h2>
 <ul>
   <li>Causeway bus fare (return): SGD3–6</li>
-  <li>Singapore MRT to HarbourFront: SGD2–4</li>
-  <li>Ferry ticket (return, HarbourFront–Batam Centre): from around USD60–70 depending on operator and season<sup>2</sup></li>
+  <li>Singapore MRT to the ferry terminal: SGD2–4</li>
+  <li>Ferry ticket (return, Singapore–Batam Centre): roughly SGD70–85, including the fuel surcharge introduced March 2026 — check the operator's site for the exact current fare<sup>2</sup></li>
   <li>Local transport and food on Batam: significantly cheaper than Singapore, comparable to or below JB prices</li>
 </ul>
 <p>The ferry ticket is the single biggest cost of this trip — factor it in before committing, especially if travelling solo.</p>
@@ -8787,18 +8947,18 @@ var BlogPosts = func() []BlogPost {
 <h2>Frequently Asked Questions</h2>
 
 <h3>Can I reach Batam directly from Johor Bahru without going through Singapore?</h3>
-<p>There is no direct ferry from JB to Batam. The standard route goes via Singapore's HarbourFront terminal, meaning you cross the Causeway first.</p>
+<p>There is no direct ferry from JB to Batam. The standard route goes via Singapore's ferry terminal (Singapore Cruise Centre, formerly HarbourFront Centre), meaning you cross the Causeway first.</p>
 
 <h3>Do I need a visa for Batam?</h3>
 <p>Requirements vary by nationality. Check Indonesia's official immigration guidance for your passport before booking — do not assume visa-free entry.</p>
 
-<h3>How long does the ferry from HarbourFront to Batam Centre take?</h3>
+<h3>How long does the ferry from Singapore to Batam Centre take?</h3>
 <p>About one hour, with sailings running roughly hourly through the day from around 6:00 AM to 8:35 PM.</p>
 
 <h3>Is a Batam day trip realistic from a JB base, or should I stay overnight?</h3>
 <p>It's tight but doable in a single very early-to-late day. Many travellers prefer an overnight in Batam to avoid rushing, then return to JB the next day.</p>
 
-<p><small>Sources: (1) <a href="https://landtransportguru.net/jbbuscw1/" target="_blank" rel="noopener noreferrer">Causeway Link CW1 fares, LandTransportGuru</a>; (2) <a href="https://www.directferries.com/batam_centre_harbourfront_centre_ferry.htm" target="_blank" rel="noopener noreferrer">HarbourFront–Batam Centre ferry schedule and pricing, Direct Ferries</a>.</small></p>
+<p><small>Sources: (1) <a href="https://landtransportguru.net/jbbuscw1/" target="_blank" rel="noopener noreferrer">Causeway Link CW1 fares, LandTransportGuru</a>; (2) <a href="https://www.sindoferry.com.sg/ticket-fares" target="_blank" rel="noopener noreferrer">Sindo Ferry — ticket fares</a> and <a href="https://www.directferries.com/batam_centre_harbourfront_centre_ferry.htm" target="_blank" rel="noopener noreferrer">Direct Ferries — Batam Centre–Singapore ferry schedule and pricing</a>; (3) <a href="https://littlebigreddot.com/batam-ferry-from-singapore-2026-new-harbourfront-terminal/" target="_blank" rel="noopener noreferrer">HarbourFront Centre closure and Singapore Cruise Centre terminal move, LittleBigRedDot (2026)</a>.</small></p>
 
 <p>Planning a multi-country side trip? <a href="/book">Book a capsule at Pelangi</a> and use JB as your regional base.</p>
 `,
@@ -8822,6 +8982,8 @@ var BlogPosts = func() []BlogPost {
 
 <h2>Bus: Causeway Link CW1, CW2, CW5</h2>
 <p>The most common backpacker route is the bus from Woodlands Checkpoint (Singapore side) to JB CIQ or onward to Larkin Sentral bus terminal. Causeway Link operates the <strong>CW1</strong> (to Larkin Sentral), <strong>CW2</strong>, and <strong>CW5</strong> services. Fares are flat regardless of whether you disembark at JB CIQ or ride further to Larkin — reported around RM2.60 (CW1), RM4.80 (CW2), and RM4.60 (CW5) heading into JB, with Singapore-side fares similarly low<sup>1</sup>. As of late 2026, CW2 and CW5 have gone cashless, with CW1 following on 1 October 2026 — check the operator's current payment requirements before you travel<sup>1</sup>.</p>
+
+<figure class="blog-figure"><img src="/images/blog/causeway-link-cw1-bus-commons.jpg" alt="A Causeway Link CW1 bus, the main cross-border bus route between Woodlands, Singapore and JB Sentral, Malaysia" loading="lazy" width="1200" height="800"><figcaption>A Causeway Link CW1 bus crossing between Singapore and Johor Bahru. One-way fare: RM2.60 (~SGD0.80) boarding from the Malaysia side. Source: <a href="https://landtransportguru.net/jbbuscw1/" target="_blank" rel="noopener noreferrer">Land Transport Guru — Causeway Link CW1</a>, verified 2026-09-25. Photo: LN9267, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>, via Wikimedia Commons.</figcaption></figure>
 
 <p>The process is the same for every route:</p>
 <ol>
@@ -8851,7 +9013,7 @@ var BlogPosts = func() []BlogPost {
 <figure class="blog-figure"><img src="/images/entrance.webp" alt="Entrance to Pelangi Capsule Hostel, Jalan Perang, Taman Pelangi" loading="lazy" width="1200" height="800"><figcaption>Entrance to Pelangi Capsule Hostel, Jalan Perang, Taman Pelangi.</figcaption></figure>
 
 <h2>Ferry Option: Via Batam</h2>
-<p>If your route includes Indonesia, ferries run roughly hourly between Singapore's HarbourFront terminal and Batam Centre, with the first sailing around 6:00 AM and the last around 8:35 PM, taking about an hour each way<sup>3</sup>. This is a separate crossing from the JB Causeway and requires its own ticket and, for many nationalities, an Indonesian visa-on-arrival or eVOA — see our <a href="/blog/batam-day-trip-from-johor-bahru">Batam day-trip guide</a> for the full route from a JB base.</p>
+<p>If your route includes Indonesia, ferries run roughly hourly between Singapore and Batam Centre, with the first sailing around 6:00 AM and the last around 8:35 PM, taking about an hour each way<sup>3</sup>. Note that the old HarbourFront Centre ferry terminal closed on 27 July 2026 — sailings now depart from the new Singapore Cruise Centre terminal nearby, still served by the HarbourFront MRT interchange. This is a separate crossing from the JB Causeway and requires its own ticket and, for many nationalities, an Indonesian visa-on-arrival or eVOA — see our <a href="/blog/batam-day-trip-from-johor-bahru">Batam day-trip guide</a> for the full route from a JB base.</p>
 
 <h2>Cost Comparison</h2>
 <table>
@@ -8870,7 +9032,7 @@ var BlogPosts = func() []BlogPost {
 <p>CW1 to Larkin Sentral is the most common choice for backpackers heading further into Malaysia; if you only want JB Sentral / City Square Mall, any of the Causeway Link services or bus 170 will drop you close by.</p>
 
 <h3>Is the RTS Link open yet?</h3>
-<p>Not as of this writing — it is under construction with a targeted opening by the end of 2026, according to Singapore's LTA. Check official RTS Link or LTA announcements before planning a trip around it.</p>
+<p>Not as of this writing — it is under construction. LTA's project page gave an end-2026 target; on 2 October 2026 the operator said passenger service is now expected around end-February 2027. Check official RTS Link or LTA announcements before planning a trip around it.</p>
 
 <h3>Can I pay for the Causeway Link bus with cash?</h3>
 <p>CW2 and CW5 have already gone cashless (as of August 2026); CW1 is scheduled to go cashless from 1 October 2026. Carry a contactless card or the relevant transit app to be safe.</p>
@@ -9126,7 +9288,7 @@ var BlogPosts = func() []BlogPost {
 <figure class="blog-figure"><img src="/images/destinations/marina-bay-sands.webp" alt="Marina Bay Sands, Singapore" loading="lazy" width="1200" height="800"><figcaption>Marina Bay Sands, Singapore.</figcaption></figure>
 
 <h2>What's Coming: The RTS Link</h2>
-<p>A rail option — the Johor Bahru–Singapore Rapid Transit System (RTS Link) — connecting Woodlands North to Bukit Chagar station in JB with an approximately 5-minute crossing time, is under construction and targeted to begin passenger service by the end of 2026, according to Singapore's Land Transport Authority<sup>2</sup>. Until it opens, the bus and ferry routes covered in this guide remain the standard way to cross.</p>
+<p>A rail option — the Johor Bahru–Singapore Rapid Transit System (RTS Link) — connecting Woodlands North to Bukit Chagar station in JB with an approximately 5-minute crossing time, is under construction and originally targeted for the end of 2026 and now expected around end-February 2027 (operator announcement, 2 October 2026)<sup>2</sup>. Until it opens, the bus and ferry routes covered in this guide remain the standard way to cross.</p>
 
 <h2>Build Your Singapore Hit List</h2>
 <p>Base yourself in JB and Singapore's biggest attractions are all within a single day trip:</p>
@@ -9165,7 +9327,7 @@ var BlogPosts = func() []BlogPost {
 		// EN sibling of sewa-bulanan-kapsul-johor-bahru-rm600 / xinshan-yuezu-jiaocang-rm600
 		{
 			Slug:          "monthly-capsule-rent-johor-bahru-rm600-what-you-get",
-			ImageAlt:      "Monthly capsule pod at Pelangi Capsule Hostel, Taman Pelangi, Johor Bahru — long-stay rent from RM600",
+			ImageAlt:      "Inside a Pelangi Capsule Hostel pod in Johor Bahru, with a made bed, folded blanket, padded wall panel and built-in control panel under blue LED lighting",
 			Title:         "Monthly Capsule Rent in Johor Bahru from RM600: What's Included, Who It Suits, How to Book",
 			Excerpt:       "Workers, interns, students and Singapore commuters keep asking the same question: what do you actually get for RM600/month at a JB capsule hostel? Here's the price table, the honest fit-check, and how to book.",
 			Date:          "2026-09-20",
@@ -9173,7 +9335,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "6 min read",
 			Tags:          []string{"monthly-stay", "long-stay", "johor-bahru", "capsule-hostel"},
-			FeaturedImage: "/images/blog/monthly-capsule-rent-johor-bahru-rm600.webp",
+			FeaturedImage: "/images/blog/pelangi-capsule-pod-interior-monthly-stay-cover.webp",
 			InLanguage:    "en",
 			AlternateEN:   "monthly-capsule-rent-johor-bahru-rm600-what-you-get",
 			AlternateZH:   "xinshan-yuezu-jiaocang-rm600",
@@ -9249,7 +9411,7 @@ var BlogPosts = func() []BlogPost {
 		// MS sibling of monthly-capsule-rent-johor-bahru-rm600-what-you-get / xinshan-yuezu-jiaocang-rm600
 		{
 			Slug:          "sewa-bulanan-kapsul-johor-bahru-rm600",
-			ImageAlt:      "Kapsul sewa bulanan di Pelangi Capsule Hostel, Taman Pelangi, Johor Bahru — sewa jangka panjang dari RM600",
+			ImageAlt:      "Bantal putih di kapsul tidur dengan kepala katil kayu bercahaya hangat, sesuai untuk penginapan bulanan",
 			Title:         "Sewa Bulanan Kapsul di Johor Bahru dari RM600: Apa Yang Anda Dapat, Sesuai Untuk Siapa, Cara Tempah",
 			Excerpt:       "Pekerja, intern, pelajar dan commuter Singapura selalu tanya soalan sama: apa sebenarnya yang anda dapat dengan RM600/bulan di hostel kapsul JB? Ini jadual harga, semakan kesesuaian yang jujur, dan cara tempah.",
 			Date:          "2026-09-20",
@@ -9257,7 +9419,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "6 min read",
 			Tags:          []string{"monthly-stay", "long-stay", "johor-bahru", "capsule-hostel"},
-			FeaturedImage: "/images/blog/monthly-capsule-rent-johor-bahru-rm600.webp",
+			FeaturedImage: "/images/blog/capsule-pod-warm-wood-headboard-pillow-monthly-stay-cover.webp",
 			InLanguage:    "ms",
 			AlternateEN:   "monthly-capsule-rent-johor-bahru-rm600-what-you-get",
 			AlternateZH:   "xinshan-yuezu-jiaocang-rm600",
@@ -9333,7 +9495,7 @@ var BlogPosts = func() []BlogPost {
 		// ZH sibling of monthly-capsule-rent-johor-bahru-rm600-what-you-get / sewa-bulanan-kapsul-johor-bahru-rm600
 		{
 			Slug:          "xinshan-yuezu-jiaocang-rm600",
-			ImageAlt:      "新山胶囊旅馆月租胶囊床位，Taman Pelangi，柔佛新山 — 长租起价RM600",
+			ImageAlt:      "Johor Bahru city skyline at dusk with lit apartment towers and the causeway road, a base for a monthly capsule stay",
 			Title:         "新山胶囊床位月租，起价RM600：包含什么、适合谁、怎么预订",
 			Excerpt:       "打工族、实习生、学生和新加坡通勤族常问同一个问题：新山胶囊旅馆月租RM600到底包含什么？这里有价格表、真实的适合度分析，以及预订方式。",
 			Date:          "2026-09-20",
@@ -9341,7 +9503,7 @@ var BlogPosts = func() []BlogPost {
 			Author:        "Pelangi Capsule Hostel",
 			ReadTime:      "6 min read",
 			Tags:          []string{"monthly-stay", "long-stay", "johor-bahru", "capsule-hostel"},
-			FeaturedImage: "/images/blog/monthly-capsule-rent-johor-bahru-rm600.webp",
+			FeaturedImage: "/images/blog/johor-bahru-night-skyline-monthly-capsule-stay.webp",
 			InLanguage:    "zh-CN",
 			AlternateEN:   "monthly-capsule-rent-johor-bahru-rm600-what-you-get",
 			AlternateZH:   "xinshan-yuezu-jiaocang-rm600",
@@ -9500,6 +9662,9 @@ var BlogPosts = func() []BlogPost {
 <h2>Currency: SGD to MYR</h2>
 <p>Money changers at shopping malls near the CIQ crossing and in central JB generally offer competitive SGD-MYR rates &mdash; compare a couple before committing to a large exchange, as rates vary day to day.</p>
 
+<h2>Still on a Tourist Pass? Don't Let It Lapse</h2>
+<p>If you're settling in around Taman Pelangi before a long-term work or student pass comes through, you're likely still on a 30-day Malaysia Social Visit Pass in the meantime &mdash; and it needs to be reset before it expires, not after. See our <a href="/blog/singapore-expat-visa-run-johor-bahru-guide-2026">Singapore expat visa run guide</a> for the full process, or the <a href="/blog/jb-visa-run-cheapest-routes-thailand-brunei-indonesia">cheapest routes to Thailand, Indonesia and Brunei</a> if you don't want to rely on the Singapore crossing every time.</p>
+
 <h2>Groceries and Laundry Near Taman Pelangi</h2>
 <p>Taman Pelangi is a residential-commercial neighbourhood with grocery stores, convenience stores, and laundromats within easy walking distance, plus the well-known Tuesday night pasar malam for fresh produce and street food. You don't need a car to handle basic day-to-day errands here.</p>
 
@@ -9629,6 +9794,389 @@ var BlogPosts = func() []BlogPost {
 
 <h3>Can I message the hostel directly if I book on an OTA?</h3>
 <p>Yes, you can still WhatsApp us with questions regardless of how you booked &mdash; but the RM30 first-night rate itself is only available on a direct booking.</p>
+`,
+		},
+		// 113
+		{
+			Slug:          "booking-platform-policies-compared-booking-com-agoda-hostelworld-trip-com-jb",
+			Date:          "2026-10-03",
+			Category:      "Backpacker Tips",
+			Author:        "Pelangi Capsule Hostel",
+			ReadTime:      "7 min read",
+			Tags:          []string{"booking-platforms", "cancellation-policy", "booking-com", "agoda", "hostelworld", "trip-com", "johor-bahru", "capsule-hostel"},
+			FeaturedImage: "/images/blog/booking-platform-policies-compared-jb-capsule-hostel.jpg",
+			ImageAlt:      "Entrance sign of Pelangi Capsule Hostel on Jalan Perang, Taman Pelangi, listing Agoda, Airbnb, Booking.com, Trip.com and WhatsApp as booking channels",
+			Title:         "Booking.com vs Agoda vs Hostelworld vs Trip.com: How Their Booking Policies Differ for a JB Capsule Hostel",
+			Excerpt:       "Same capsule, four booking platforms, four sets of rules. A plain-English comparison of cancellation, payment, no-show and change policies — and what to check before you pay.",
+			Content: `
+<h2>Same Hostel, Different Rules</h2>
+<p>Pelangi Capsule Hostel is listed on several booking platforms &mdash; our front sign on Jalan Perang shows Agoda, Airbnb, Booking.com and Trip.com, and you can also <a href="/book">book direct</a> or message us on WhatsApp. Guests often assume a booking works the same way everywhere. It doesn't. Each platform has its own way of handling cancellation, payment timing, no-shows and date changes, and the details you agreed to depend on <em>where</em> you booked.</p>
+<p>This guide compares what four platforms say in their own help and policy pages. It is a summary, not legal advice, and platforms change their wording &mdash; the terms on <strong>your</strong> booking confirmation are the ones that count.</p>
+
+<h2>The One Idea That Explains Most Differences</h2>
+<p>On Booking.com, Agoda and Trip.com, <strong>the property sets the cancellation policy</strong>, and the platform enforces it. Booking.com's FAQ says cancellation fees "are determined by the property and listed in your cancellation policy". Trip.com's help pages say it "enforces hotel-specific rules (they don't set policies &mdash; hotels do)". Agoda tells properties they can set the cancellation policy in their partner portal.</p>
+<p>So two capsule hostels on the same platform can have very different terms. Always read the policy shown for the specific rate you choose, because most properties offer both a flexible rate and a cheaper non-refundable rate.</p>
+
+<h2>Side-by-Side Comparison</h2>
+<table>
+<thead>
+  <tr><th></th><th>Booking.com</th><th>Agoda</th><th>Hostelworld</th><th>Trip.com</th></tr>
+</thead>
+<tbody>
+  <tr><td>Who sets cancellation terms</td><td>The property</td><td>The property</td><td>The hostel (normally at least 24 hours before check-in)</td><td>The hotel / property</td></tr>
+  <tr><td>When you pay</td><td>Up to the property; often at check-in, but some require a deposit or prepayment</td><td>Either prepaid (&ldquo;Agoda Collect&rdquo;) or pay at the property (&ldquo;Property Collect&rdquo;), depending on the rate</td><td>A deposit online; the balance at the hostel on arrival</td><td>&ldquo;Most hotels accept payment at the hotel with no prepayment required&rdquo;; prepay is also offered</td></tr>
+  <tr><td>No-show</td><td>Penalty depends on the property's policy, charged to the card on the booking</td><td>Fee follows the booking's cancellation policy</td><td>Hostel may charge up to one night</td><td>May be charged, generally about one night</td></tr>
+  <tr><td>Changing dates</td><td>From the confirmation email or the site; non-refundable bookings can't have dates changed</td><td>Via the confirmation email link or &ldquo;Manage Bookings&rdquo;</td><td>Agreed directly with the hostel</td><td>Before the hotel's deadline; non-refundable rates can't be modified</td></tr>
+  <tr><td>Who to contact</td><td>Property for stay details and charges; Booking.com for payment problems</td><td>Property contact is on your confirmation voucher</td><td>Hostel for accommodation issues; Hostelworld for booking issues</td><td>Hotel for facility charges; Trip.com for the booking</td></tr>
+</tbody>
+</table>
+<p>If a cell says &ldquo;depends&rdquo;, that is deliberate &mdash; it really does depend on the rate you picked.</p>
+
+<h2>Flexible vs Non-Refundable: The Difference That Costs Real Money</h2>
+<p>Whichever platform you use, the biggest practical difference is the rate type:</p>
+<ul>
+  <li><strong>Free cancellation / flexible:</strong> you can cancel without paying a fee, but only up to a deadline set by the property. Booking.com describes this as free cancellation "within the time frame specified".</li>
+  <li><strong>Non-refundable:</strong> usually a lower price, with a fee or total loss of payment if you cancel or change. Booking.com says changing the dates of a non-refundable booking isn't possible; Trip.com says non-refundable rates cannot be cancelled or modified (with limited exceptions for emergencies).</li>
+</ul>
+<p>If your plans might shift &mdash; a delayed flight, a causeway queue, a job interview that moves &mdash; the flexible rate is usually worth the small premium.</p>
+
+<h2>What This Means at Pelangi</h2>
+<ul>
+  <li><strong>Our standard rate is RM35/night</strong> whichever channel you book through. The RM30 first-night rate is only for direct bookings made on our website &mdash; see <a href="/blog/why-book-pelangi-direct-instead-of-ota-jb">why we ask guests to book direct</a>.</li>
+  <li><strong>You can always WhatsApp us</strong> at <a href="https://wa.me/60127088789">+60 12-708 8789</a> with questions about your stay, however you booked.</li>
+  <li><strong>The cancellation terms that apply are the ones the platform showed you when you booked.</strong> We can't override a platform's rules from our side, so check them before you pay.</li>
+  <li>For payment timing and the Hostelworld deposit model, read our separate guides: <a href="/blog/pay-now-vs-pay-at-property-booking-platforms-explained-jb">pay now vs pay at property</a> and <a href="/blog/hostelworld-deposit-pay-balance-at-hostel-explained-jb">how Hostelworld deposits work</a>.</li>
+</ul>
+
+<h2>A 60-Second Checklist Before You Book</h2>
+<ol>
+  <li>Is the rate <strong>free-cancellation or non-refundable</strong>, and what is the deadline?</li>
+  <li>Do you <strong>pay now, pay a deposit, or pay at the property</strong>?</li>
+  <li>What happens at <strong>no-show</strong>, and which card would be charged?</li>
+  <li>Can you <strong>change dates</strong> on this rate?</li>
+  <li>Have you told the property your <strong>estimated arrival time</strong>? (More in our <a href="/blog/no-show-late-arrival-policies-booking-platforms-jb-hostel">no-show and late-arrival guide</a>.)</li>
+</ol>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>Is it cheaper to book on Booking.com, Agoda or Trip.com?</h3>
+<p>Our standard rate is RM35/night on every channel. The only cheaper price we offer is RM30 for a first night when you book direct on our website.</p>
+
+<h3>Can Pelangi cancel my booking for free if I booked on a platform?</h3>
+<p>Cancellation follows the policy shown on the platform for the rate you booked. Check your confirmation or the platform's booking page &mdash; those terms decide whether a fee applies.</p>
+
+<h3>Which platform should I contact if something goes wrong with my booking?</h3>
+<p>For questions about your stay, contact the property. For payment or booking-system problems, the platform's customer service is usually the right place. Booking.com and Hostelworld both state this split in their help pages.</p>
+
+<h2>Official Information</h2>
+<p>The policy points above were checked against each platform's published pages on 3 October 2026. Wording and rules change, so confirm on the platform before you rely on them. Some Agoda details come from Agoda's guidance to properties rather than a guest-facing page.</p>
+<ul>
+<li><strong>Booking.com:</strong> property sets cancellation fees; free cancellation vs non-refundable; non-refundable dates can't be changed. <a href="https://secure.booking.com/faq.en-us.html?aid=330843" target="_blank" rel="noopener noreferrer">Booking.com FAQ</a> &middot; <a href="https://www.booking.com/content/terms.html" target="_blank" rel="noopener noreferrer">Booking.com terms</a></li>
+<li><strong>Agoda:</strong> property sets cancellation policy; prepaid vs pay-at-property; no-show fees follow the policy. <a href="https://partnerhub.agoda.com/how-do-i-set-up-a-cancellation-policy/" target="_blank" rel="noopener noreferrer">Agoda: cancellation policy</a> &middot; <a href="https://partnerhub.agoda.com/introduction-to-property-collect/" target="_blank" rel="noopener noreferrer">Agoda: Property Collect</a> &middot; <a href="https://partnerhub.agoda.com/what-can-i-do-if-the-guest-did-not-show-up-no-show/" target="_blank" rel="noopener noreferrer">Agoda: no-show</a></li>
+<li><strong>Hostelworld:</strong> deposit plus balance on arrival; hostel's cancellation policy; no-show up to one night; changes agreed with the hostel. <a href="https://www.hostelworld.com/legal/hostel-terms-and-conditions/" target="_blank" rel="noopener noreferrer">Hostelworld terms and conditions</a></li>
+<li><strong>Trip.com:</strong> hotels set policies; most hotels accept payment at the hotel; no-show charge generally one night. <a href="https://pages.trip.com/faq/en/hotel.html" target="_blank" rel="noopener noreferrer">Trip.com hotel FAQ</a> &middot; <a href="https://us.trip.com/ask/questions/trip.com-hotel-refund.html" target="_blank" rel="noopener noreferrer">Trip.com refunds</a></li>
+</ul>
+`,
+		},
+		// 114
+		{
+			Slug:          "hostelworld-deposit-pay-balance-at-hostel-explained-jb",
+			Date:          "2026-10-03",
+			Category:      "Backpacker Tips",
+			Author:        "Pelangi Capsule Hostel",
+			ReadTime:      "5 min read",
+			Tags:          []string{"hostelworld", "deposit", "booking-policy", "pay-at-hostel", "johor-bahru", "capsule-hostel", "backpacker"},
+			FeaturedImage: "/images/blog/hostelworld-deposit-pay-balance-at-hostel-jb.webp",
+			ImageAlt:      "Capsule pods in the sleeping area of Pelangi Capsule Hostel, Johor Bahru",
+			Title:         "Booked on Hostelworld? Why You Only Paid a Deposit — and What to Bring to Pay the Rest in JB",
+			Excerpt:       "Hostelworld charges a deposit online and the balance is paid at the hostel. Here is how that works, what is refundable, and what to expect when you arrive at a JB capsule hostel.",
+			Content: `
+<h2>You Paid Online — But Not the Full Price</h2>
+<p>If you booked a capsule at Pelangi through Hostelworld and your online payment looked smaller than the room total, that is how Hostelworld is designed to work. It is different from Booking.com, Agoda or Trip.com, where you may pay the full amount in advance or pay everything at the property. With Hostelworld, <strong>part of the price is paid online and the rest is paid to the hostel</strong>.</p>
+
+<h2>How Hostelworld's Deposit Model Works</h2>
+<p>According to Hostelworld's terms and conditions:</p>
+<ul>
+  <li><strong>A deposit is paid online.</strong> The terms describe it as "a part payment towards the total value of your booking" and say it is non-refundable unless the hostel agrees otherwise.</li>
+  <li><strong>There is also a flat booking fee</strong>, which the terms say is non-refundable in all circumstances.</li>
+  <li><strong>You pay the balance to the hostel on arrival.</strong> The terms say the guest is responsible for paying the balance "to the travel services provider on arrival".</li>
+</ul>
+<p>Hostelworld's own blog says the deposit is typically around 12&ndash;15% of the total cost. That figure comes from a blog post, not the terms, so treat it as a rough guide and check your own confirmation for the exact amount.</p>
+
+<h2>What About Refunds?</h2>
+<p>The refund rules depend on the rate type and the hostel's policy:</p>
+<ul>
+  <li>The terms say cancellation deadlines are normally at least 24 hours before your agreed check-in date.</li>
+  <li>Hostelworld's blog explains that on a flexible rate, cancelling within the hostel's allowed window returns the deposit; on a non-refundable rate the deposit is lost.</li>
+  <li>Changes to dates are meant to be agreed directly with the hostel, according to the terms.</li>
+</ul>
+<p>Because details can differ by rate and over time, read the cancellation terms on your Hostelworld booking page before you pay.</p>
+
+<h2>No-Shows on Hostelworld</h2>
+<p>If you don't arrive, the terms say you authorise the hostel to charge an amount not exceeding one night's stay. If you might arrive late, <a href="https://wa.me/60127088789">message us on WhatsApp</a> with your estimated arrival time so we know you're coming &mdash; see our <a href="/blog/no-show-late-arrival-policies-booking-platforms-jb-hostel">no-show and late-arrival guide</a> for how the platforms compare.</p>
+
+<h2>Paying the Balance at Pelangi</h2>
+<p>When you arrive at Pelangi Capsule Hostel, we will tell you the balance still to pay for your Hostelworld booking. Cash in Malaysian Ringgit is the simplest way to settle it. We also accept DuitNow QR (including Touch 'n Go, Boost and GrabPay through your bank or e-wallet app) and credit cards. If you are crossing from Singapore, there are money changers near JB CIQ, so you can exchange before you come.</p>
+<ul>
+  <li>Keep your Hostelworld booking confirmation handy so we can match your name and dates.</li>
+  <li>Bring your passport or ID &mdash; see our <a href="/blog/check-in-id-tourism-tax-booking-platforms-jb">guide to ID and tourism tax at check-in</a>.</li>
+  <li>Check-in at Pelangi is self-service, so you can arrive without waiting at a reception desk.</li>
+</ul>
+
+<h2>Hostelworld vs Booking Direct</h2>
+<p>Our standard rate is RM35/night on every channel. If you haven't booked yet, booking direct on <a href="/book">our website</a> gets a first-timer rate of RM30 for the first night, with no booking fee. If you already booked on Hostelworld, no problem &mdash; just bring the balance. For a broader comparison, see <a href="/blog/booking-platform-policies-compared-booking-com-agoda-hostelworld-trip-com-jb">how four platforms' policies differ</a>.</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>Do I pay the rest of my Hostelworld booking before I arrive?</h3>
+<p>No. Hostelworld's terms say the balance is paid to the hostel on arrival. At Pelangi, you settle it when you check in.</p>
+
+<h3>Is the Hostelworld deposit refundable?</h3>
+<p>It depends on the rate and the hostel's cancellation policy. The terms say the deposit is non-refundable unless the hostel agrees otherwise, and the booking fee is non-refundable in all circumstances. Read your booking's cancellation terms before paying.</p>
+
+<h3>Can I pay the Hostelworld balance by card or QR?</h3>
+<p>At Pelangi we accept cash (MYR), DuitNow QR and credit cards. Hostelworld's own terms don't specify the payment method for the balance, so it is set by each hostel.</p>
+
+<h2>Official Information</h2>
+<p>Checked against Hostelworld's published pages on 3 October 2026. Hostelworld can change these terms, so confirm on your booking page.</p>
+<ul>
+<li><strong>Deposit, booking fee, balance on arrival, cancellation deadlines, no-show, amendments:</strong> <a href="https://www.hostelworld.com/legal/hostel-terms-and-conditions/" target="_blank" rel="noopener noreferrer">Hostelworld hostel terms and conditions</a></li>
+<li><strong>Typical deposit size and flexible-rate refunds:</strong> <a href="https://www.hostelworld.com/blog/is-hostelworld-legit/" target="_blank" rel="noopener noreferrer">Hostelworld blog: is Hostelworld legit</a> &middot; <a href="https://www.hostelworld.com/blog/how-to-save-money-using-hostelworlds-flexible-booking-options/" target="_blank" rel="noopener noreferrer">Hostelworld blog: flexible booking options</a></li>
+</ul>
+`,
+		},
+		// 115
+		{
+			Slug:          "pay-now-vs-pay-at-property-booking-platforms-explained-jb",
+			Date:          "2026-10-03",
+			Category:      "Backpacker Tips",
+			Author:        "Pelangi Capsule Hostel",
+			ReadTime:      "6 min read",
+			Tags:          []string{"pay-at-property", "prepayment", "agoda", "booking-com", "trip-com", "payment", "johor-bahru", "capsule-hostel"},
+			FeaturedImage: "/images/blog/pay-now-vs-pay-at-property-booking-platforms-jb.webp",
+			ImageAlt:      "Common area and reception counter of Pelangi Capsule Hostel, where guests settle payments on arrival",
+			Title:         "Pay Now vs Pay at the Property: How Booking Platforms Handle Payment (and What to Expect in JB)",
+			Excerpt:       "Prepaid, pay at the hotel, deposit-only, card guarantee — each platform handles payment differently. Here is what each model means for your wallet and your check-in.",
+			Content: `
+<h2>Why Payment Timing Matters</h2>
+<p>When you book a capsule in Johor Bahru, <em>when</em> you pay is as important as <em>how much</em>. Pay too early on a non-refundable rate and you lose money if plans change; arrive expecting to pay at the property and discover you already paid, and you may wonder why. Each platform uses its own payment model. Here is how the main ones describe it.</p>
+
+<h2>The Four Models You'll See</h2>
+
+<h3>1. Prepaid by the platform</h3>
+<p>You pay the platform when you book. Agoda calls this &ldquo;Agoda Collect&rdquo;: the guest pays Agoda in advance. At the property, you generally just check in &mdash; but you may still owe local charges that are collected on site.</p>
+
+<h3>2. Pay at the property, with a card as a guarantee</h3>
+<p>Agoda's &ldquo;Property Collect&rdquo; works this way: you give card details to secure the booking and pay at the property. Agoda's guidance to properties says the card is charged only if a no-show is reported. Booking.com says it is up to the property and depends on its payment policy, and notes that most properties need a valid credit card to guarantee the reservation. Trip.com says most hotels accept payment at the hotel with no prepayment required.</p>
+
+<h3>3. Deposit now, balance at the property</h3>
+<p>This is Hostelworld's model: a deposit and booking fee online, balance on arrival. See our full guide to <a href="/blog/hostelworld-deposit-pay-balance-at-hostel-explained-jb">how Hostelworld deposits work</a>.</p>
+
+<h3>4. Deposit or prepayment required by the property</h3>
+<p>Booking.com's FAQ says some properties require a deposit or prepayment at the time of reservation. The amount and refund terms are set by the property and shown during booking.</p>
+
+<h2>Comparison at a Glance</h2>
+<table>
+<thead>
+  <tr><th>Platform</th><th>Typical payment pattern</th><th>What to check</th></tr>
+</thead>
+<tbody>
+  <tr><td>Booking.com</td><td>Set by the property &mdash; commonly at check-in, sometimes deposit or prepayment</td><td>The payment policy on the property page and your confirmation</td></tr>
+  <tr><td>Agoda</td><td>Prepaid, or pay at the property with a card guarantee</td><td>Whether your rate says pay now or pay at hotel</td></tr>
+  <tr><td>Hostelworld</td><td>Deposit and booking fee online; balance at the hostel</td><td>The balance due on arrival</td></tr>
+  <tr><td>Trip.com</td><td>Mostly pay at the hotel; prepay option available</td><td>Whether your booking is prepaid</td></tr>
+</tbody>
+</table>
+
+<h2>What Happens When You Arrive at Pelangi</h2>
+<ul>
+  <li><strong>If you prepaid</strong> through a platform, bring your confirmation and your passport or ID. We match your booking and you check in.</li>
+  <li><strong>If you pay at the property</strong> (including a Hostelworld balance), we tell you the amount due when you arrive. We accept cash (MYR), DuitNow QR and credit cards.</li>
+  <li><strong>Local charges</strong> such as the government tourism tax for foreign guests can apply on top of a room price &mdash; read our <a href="/blog/check-in-id-tourism-tax-booking-platforms-jb">tourism tax and ID guide</a>.</li>
+</ul>
+<p>Our standard rate is RM35/night on every channel, and the RM30 first-night rate applies to direct website bookings. If you are comparing the platforms' broader rules, see our <a href="/blog/booking-platform-policies-compared-booking-com-agoda-hostelworld-trip-com-jb">four-platform policy comparison</a>.</p>
+
+<h2>Tips to Avoid Payment Surprises</h2>
+<ol>
+  <li>Screenshot the payment section of your booking before you pay.</li>
+  <li>If you see &ldquo;pay at property&rdquo;, assume a card may be needed as a guarantee.</li>
+  <li>Keep some Ringgit or a DuitNow-capable e-wallet for anything due on arrival.</li>
+  <li>If your confirmation says &ldquo;paid&rdquo; but the amount looks partial, check whether it is a deposit.</li>
+</ol>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>If I booked on Agoda with pay at hotel, will my card be charged before I arrive?</h3>
+<p>Agoda's guidance to properties says that under Property Collect the guest's card details secure the booking and Agoda charges the card after a no-show is reported. Always check the terms shown for your own rate.</p>
+
+<h3>Can I pay at Pelangi by DuitNow QR?</h3>
+<p>Yes. We accept cash in Malaysian Ringgit, DuitNow QR and credit cards. DuitNow QR works with most Malaysian bank apps and e-wallets.</p>
+
+<h3>I paid online but the hostel asked for more money. Why?</h3>
+<p>You may have paid only a deposit (as with Hostelworld) or a rate that excludes local charges. Check the payment line on your booking confirmation, and message us on <a href="https://wa.me/60127088789">WhatsApp</a> if anything looks unclear.</p>
+
+<h2>Official Information</h2>
+<p>Checked against each platform's published pages on 3 October 2026. Agoda points come from Agoda's guidance to properties; confirm the guest-facing wording on your own booking.</p>
+<ul>
+<li><strong>Agoda:</strong> <a href="https://partnerhub.agoda.com/introduction-to-property-collect/" target="_blank" rel="noopener noreferrer">Property Collect</a> &middot; <a href="https://partnerhub.agoda.com/how-do-i-offer-pay-at-hotel-to-guests/" target="_blank" rel="noopener noreferrer">Pay at hotel</a></li>
+<li><strong>Booking.com:</strong> payment is up to the property; some require deposits. <a href="https://secure.booking.com/faq.en-us.html?aid=330843" target="_blank" rel="noopener noreferrer">Booking.com FAQ</a></li>
+<li><strong>Hostelworld:</strong> <a href="https://www.hostelworld.com/legal/hostel-terms-and-conditions/" target="_blank" rel="noopener noreferrer">Hostelworld terms and conditions</a></li>
+<li><strong>Trip.com:</strong> <a href="https://pages.trip.com/faq/en/hotel.html" target="_blank" rel="noopener noreferrer">Trip.com hotel FAQ</a></li>
+</ul>
+`,
+		},
+		// 116
+		{
+			Slug:          "no-show-late-arrival-policies-booking-platforms-jb-hostel",
+			Date:          "2026-10-03",
+			Category:      "Backpacker Tips",
+			Author:        "Pelangi Capsule Hostel",
+			ReadTime:      "6 min read",
+			Tags:          []string{"no-show", "late-arrival", "cancellation-policy", "booking-platforms", "self-check-in", "johor-bahru", "capsule-hostel"},
+			FeaturedImage: "/images/blog/no-show-late-arrival-booking-platforms-jb-hostel.webp",
+			ImageAlt:      "Street frontage of Pelangi Capsule Hostel on Jalan Perang in Taman Pelangi, Johor Bahru, where guests self check-in",
+			Title:         "No-Show and Late Arrival Policies: How Booking.com, Agoda, Hostelworld and Trip.com Compare",
+			Excerpt:       "Arriving late is normal at the causeway. Not arriving at all can cost you a night. Here is how four platforms treat no-shows, and how to tell a JB hostel you're running late.",
+			Content: `
+<h2>Late Is Fine. Silent Is Risky.</h2>
+<p>Border queues, delayed buses and last-minute interviews mean many guests reach Johor Bahru later than planned. A late arrival is usually not a problem if the property knows you're coming. A <strong>no-show</strong> &mdash; not arriving and not cancelling &mdash; is where platforms start charging. Here's how they differ.</p>
+
+<h2>No-Show Rules by Platform</h2>
+<table>
+<thead>
+  <tr><th>Platform</th><th>What the platform says about no-shows</th></tr>
+</thead>
+<tbody>
+  <tr><td>Booking.com</td><td>Any penalties are charged to the card provided at booking, and the amount depends on the property's no-show policy.</td></tr>
+  <tr><td>Agoda</td><td>No-show fees are charged based on the cancellation policy applied to the booking. On pay-at-property rates, Agoda attempts to charge the guest's stored card after a reported no-show.</td></tr>
+  <tr><td>Hostelworld</td><td>If you fail to arrive by the agreed check-in time, the hostel may charge up to one night's stay.</td></tr>
+  <tr><td>Trip.com</td><td>You may incur a no-show charge if you don't show up or cancel after the hotel's deadline, generally about one night.</td></tr>
+</tbody>
+</table>
+<p>The pattern is similar: roughly one night is the common exposure, but the exact outcome depends on your rate and the property's policy.</p>
+
+<h2>Telling the Property You'll Be Late</h2>
+<ul>
+  <li><strong>Booking.com</strong> lets you state an estimated check-in time while booking, though it notes the property can't always accommodate requests.</li>
+  <li><strong>Agoda</strong> displays check-in information on the property page and sends check-in details to guests a few days before arrival; it also lets guests send the property a request through &ldquo;Manage My Bookings&rdquo;.</li>
+  <li><strong>Trip.com</strong> explains that hotels use estimated arrival times to get rooms ready.</li>
+  <li><strong>Hostelworld</strong> refers to an agreed check-in time in its no-show terms; confirm arrival details directly with the hostel.</li>
+</ul>
+<p>The simplest approach on any platform: <strong>message the hostel directly</strong>. At Pelangi you can WhatsApp <a href="https://wa.me/60127088789">+60 12-708 8789</a> with your name, booking platform and estimated arrival time.</p>
+
+<h2>Arriving Late at Pelangi</h2>
+<p>Pelangi uses a self check-in system, so you do not need to line up at a staffed desk. Our entrance is on Jalan Perang in Taman Pelangi, a short ride from JB CIQ. A few practical tips for arriving after dark:</p>
+<ul>
+  <li>Save the address and our WhatsApp number before you travel.</li>
+  <li>Have your booking confirmation and passport or ID ready &mdash; see our <a href="/blog/check-in-id-tourism-tax-booking-platforms-jb">ID and tourism tax guide</a>.</li>
+  <li>If you booked on Hostelworld, remember the balance is paid at the hostel &mdash; read <a href="/blog/hostelworld-deposit-pay-balance-at-hostel-explained-jb">how that works</a>.</li>
+</ul>
+<p>For getting here, our <a href="/blog/singapore-to-jb-day-trip-causeway-guide">causeway guide</a> covers the crossing.</p>
+
+<h2>How to Avoid Paying for a Night You Didn't Use</h2>
+<ol>
+  <li><strong>Cancel before the deadline</strong> if your plans change. The deadline is part of your rate.</li>
+  <li><strong>Choose a flexible rate</strong> if your arrival is uncertain.</li>
+  <li><strong>Tell the property</strong> if you will arrive late &mdash; don't rely on the platform to pass the message on.</li>
+  <li><strong>Keep your confirmation</strong> and screenshot the cancellation terms when you book.</li>
+</ol>
+<p>For the wider comparison of platform rules, see <a href="/blog/booking-platform-policies-compared-booking-com-agoda-hostelworld-trip-com-jb">our four-platform policy guide</a>.</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>Will I be charged if I arrive very late?</h3>
+<p>A late arrival is different from a no-show. If the property knows you're coming and you do arrive, platforms generally treat it as a normal stay. A no-show charge applies if you don't arrive at all. Still, tell the property your estimated arrival time.</p>
+
+<h3>What counts as a no-show?</h3>
+<p>Hostelworld's terms refer to failing to arrive by the agreed check-in time; Trip.com refers to not showing up or cancelling after the hotel's deadline. Exact definitions are in your own booking terms.</p>
+
+<h3>Can I check in to Pelangi at night?</h3>
+<p>Pelangi offers self check-in. Message us on WhatsApp before you travel so we know you're on the way and can confirm the arrival steps for your booking.</p>
+
+<h2>Official Information</h2>
+<p>Checked against each platform's published pages on 3 October 2026. Agoda points come from Agoda's guidance to properties.</p>
+<ul>
+<li><strong>Booking.com:</strong> <a href="https://secure.booking.com/faq.en-us.html?aid=330843" target="_blank" rel="noopener noreferrer">Booking.com FAQ</a> &middot; <a href="https://www.booking.com/content/terms.html" target="_blank" rel="noopener noreferrer">Booking.com terms</a></li>
+<li><strong>Agoda:</strong> <a href="https://partnerhub.agoda.com/what-can-i-do-if-the-guest-did-not-show-up-no-show/" target="_blank" rel="noopener noreferrer">no-show</a> &middot; <a href="https://partnerhub.agoda.com/how-do-i-add-property-directions-check-in-info-and-house-rules/" target="_blank" rel="noopener noreferrer">check-in information</a></li>
+<li><strong>Hostelworld:</strong> <a href="https://www.hostelworld.com/legal/hostel-terms-and-conditions/" target="_blank" rel="noopener noreferrer">terms and conditions</a></li>
+<li><strong>Trip.com:</strong> <a href="https://pages.trip.com/faq/en/hotel.html" target="_blank" rel="noopener noreferrer">hotel FAQ</a></li>
+</ul>
+`,
+		},
+		// 117
+		{
+			Slug:          "check-in-id-tourism-tax-booking-platforms-jb",
+			Date:          "2026-10-03",
+			Category:      "Backpacker Tips",
+			Author:        "Pelangi Capsule Hostel",
+			ReadTime:      "6 min read",
+			Tags:          []string{"tourism-tax", "passport", "check-in", "booking-platforms", "agoda", "trip-com", "johor-bahru", "capsule-hostel"},
+			FeaturedImage: "/images/blog/check-in-id-tourism-tax-booking-platforms-jb.webp",
+			ImageAlt:      "Inside a capsule pod at Pelangi Capsule Hostel, Johor Bahru",
+			Title:         "Passport, ID and Tourism Tax at Check-In: What Each Booking Platform Tells You About a JB Hostel",
+			Excerpt:       "What do you actually need at the desk? Platforms say different things about ID, and Malaysia adds a RM10-per-night tourism tax for foreign guests. Here is the plain version.",
+			Content: `
+<h2>Two Things That Surprise Guests at Check-In</h2>
+<p>Most guests expect to show a booking confirmation. Two things often come as a surprise: being asked for <strong>passport or ID</strong>, and being told about a <strong>government tourism tax</strong> that wasn't in the platform's headline price. Platforms say different things about both, so this guide pulls the details together for a Johor Bahru hostel.</p>
+
+<h2>ID at Check-In: What Platforms Say</h2>
+<table>
+<thead>
+  <tr><th>Platform</th><th>What its published pages say about ID</th></tr>
+</thead>
+<tbody>
+  <tr><td>Agoda</td><td>Agoda's guidance to properties says the guest checking in should present valid photo ID matching the name on the booking confirmation.</td></tr>
+  <tr><td>Trip.com</td><td>Its hotel FAQ says &ldquo;Please present your valid ID at check-in.&rdquo;</td></tr>
+  <tr><td>Booking.com</td><td>Its FAQ says most properties need a valid credit card to guarantee the reservation; the pages we checked don't set out an ID rule, so follow the property's instructions.</td></tr>
+  <tr><td>Hostelworld</td><td>Its terms set an age requirement (you must be 18 or older to book) but we found no ID rule in the terms; Hostelworld's blog notes most hostels ask for photo ID.</td></tr>
+</tbody>
+</table>
+<p>In practice, bring your <strong>passport (foreign visitors) or Malaysian IC / driving licence</strong> to any hostel, whichever platform you used. Malaysia has long had rules requiring lodging keepers to keep a register of guests, including an identity card or passport number &mdash; one reason almost every Malaysian hostel asks.</p>
+<p>Make sure the <strong>name on your ID matches the name on your booking</strong>. A mismatch is the most common reason a check-in takes longer than it should.</p>
+
+<h2>Malaysia's Tourism Tax: RM10 per Room per Night</h2>
+<p>Malaysia charges a Tourism Tax on stays at accommodation premises. According to the Royal Malaysian Customs Department's guide, the rate is RM10 per room per night, charged to tourists; Malaysian citizens and permanent residents are exempt. The Tourism Tax Act's definition of accommodation premises includes hostels. The tax applied from 2017, was exempted during the pandemic period, and applied again from 1 January 2023.</p>
+<p>Our own FAQ explains that Pelangi follows this rule: foreign tourists pay RM10 per room per night, and Malaysians are exempt. For a longer explainer aimed at walk-in guests, see <a href="/blog/malaysia-tourism-tax-jb-hostel-walk-in-guide">our tourism tax guide</a>.</p>
+
+<h2>Is the Tax in the Price You Saw?</h2>
+<p>This is where platforms differ &mdash; and where guests get confused:</p>
+<ul>
+  <li><strong>Trip.com</strong> says room rates on hotel display pages do not include taxes or service fees; the total including taxes and service fees is shown on the booking confirmation page.</li>
+  <li><strong>Booking.com</strong> says any additional charges or taxes are defined by the property and local tax rules.</li>
+  <li><strong>Hostelworld</strong>'s terms say the price displayed is ultimately the property's responsibility, including value-added and other additional taxes, and don't specify how a city tax is collected.</li>
+  <li><strong>Agoda</strong> published guidance for properties on Malaysia's Tourism Tax in connection with pay-at-property bookings; the page we found was labelled as applying through 2025, so check your own booking for how it is shown today.</li>
+</ul>
+<p>Malaysia's Customs department has also extended tax liability to digital platforms for accommodation booked through them, with a grace period that ran to 31 December 2025. How a specific booking handles the tax can therefore differ by platform and by rate. <strong>Look at the final total on your confirmation, and ask us if a line is unclear.</strong></p>
+
+<h2>What to Expect at Pelangi</h2>
+<ul>
+  <li>Bring your passport or Malaysian ID, matching the name on your booking.</li>
+  <li>If you are a foreign tourist, expect RM10 per room per night to apply unless your booking already shows it included. Ask us if you're unsure.</li>
+  <li>If you booked on Hostelworld, the balance is paid at the hostel &mdash; see <a href="/blog/hostelworld-deposit-pay-balance-at-hostel-explained-jb">our deposit guide</a>.</li>
+  <li>We accept cash (MYR), DuitNow QR and credit cards. Our standard rate is RM35/night on every channel; see <a href="/blog/pay-now-vs-pay-at-property-booking-platforms-explained-jb">payment timing by platform</a>.</li>
+</ul>
+<p>Message <a href="https://wa.me/60127088789">+60 12-708 8789</a> if you want to confirm what applies to your booking before you arrive.</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>Do Malaysians pay the tourism tax?</h3>
+<p>No. The Customs Department's guide says Malaysian citizens and permanent residents are exempt. It applies to tourists who are not citizens or permanent residents.</p>
+
+<h3>Is the RM10 tourism tax charged per person?</h3>
+<p>It is charged per room per night, according to the Customs Department's guide. For a capsule hostel, ask us how it applies to your booking.</p>
+
+<h3>Do I need my passport if I'm from Singapore?</h3>
+<p>Bring your passport or valid ID. Foreign visitors, including Singapore residents, should carry a passport when crossing the border and at check-in.</p>
+
+<h2>Official Information</h2>
+<p>Checked on 3 October 2026. Tax rules and platform wording change, so confirm on the official pages.</p>
+<ul>
+<li><strong>Tourism Tax rate, exemptions, hostels in scope:</strong> <a href="https://www.myttx.customs.gov.my/wp-content/uploads/2022/05/APPENDIX-A-General-Guide.pdf" target="_blank" rel="noopener noreferrer">Royal Malaysian Customs: Tourism Tax general guide</a> &middot; <a href="https://www.myttx.customs.gov.my/announcements/" target="_blank" rel="noopener noreferrer">MyTTx announcements</a></li>
+<li><strong>Trip.com:</strong> ID at check-in; taxes and service fees on the confirmation page. <a href="https://pages.trip.com/faq/en/hotel.html" target="_blank" rel="noopener noreferrer">Trip.com hotel FAQ</a></li>
+<li><strong>Agoda:</strong> photo ID at check-in; Malaysia Tourism Tax guidance for properties. <a href="https://partnerhub.agoda.com/agoda-bookings-check-in-procedures/" target="_blank" rel="noopener noreferrer">Agoda: check-in procedures</a> &middot; <a href="https://partnerhub.agoda.com/malaysian-tourism-tax-faqs/" target="_blank" rel="noopener noreferrer">Agoda: Malaysian tourism tax FAQs</a></li>
+<li><strong>Booking.com:</strong> <a href="https://secure.booking.com/faq.en-us.html?aid=330843" target="_blank" rel="noopener noreferrer">Booking.com FAQ</a></li>
+<li><strong>Hostelworld:</strong> <a href="https://www.hostelworld.com/legal/hostel-terms-and-conditions/" target="_blank" rel="noopener noreferrer">terms and conditions</a></li>
+</ul>
 `,
 		},
 	}

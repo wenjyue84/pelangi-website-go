@@ -1,0 +1,67 @@
+{{define "head"}}{{end}}
+
+{{define "content"}}
+{{template "header" .}}
+<main id="main-content" class="min-h-screen bg-stone-50 dark:bg-stone-950">
+  <div class="pt-20">
+    <section class="container mx-auto px-4 py-16">
+      <h1 class="text-4xl font-bold mb-4">Emergency &amp; Help for Tourists in Johor Bahru</h1>
+      <p class="text-xl text-stone-600 dark:text-stone-400 mb-8">
+        Illness, a road accident, a lost passport or an overstay can happen to anyone. Start here for calm, practical guides, and see what Pelangi Capsule Hostel can do to help.
+      </p>
+
+      <div class="bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-500 p-5 rounded mb-8 text-stone-700 dark:text-stone-300" id="emergency">
+        <h2 class="text-lg font-semibold mb-1">In an emergency, call 999 first</h2>
+        <p class="text-sm leading-relaxed">
+          Malaysia's emergency number is <strong>999</strong>. Dialling <strong>112</strong> from a mobile phone also reaches emergency services. Get medical help before anything else; everything in the guides below can wait until people are safe.
+        </p>
+      </div>
+
+      <div class="bg-white dark:bg-stone-900 p-8 rounded-lg mb-8" id="guides">
+        <h2 class="text-2xl font-semibold mb-4">Step-by-Step Guides</h2>
+        <ul class="space-y-4 text-stone-700 dark:text-stone-300">
+          <li><a href="/blog/sick-in-johor-bahru-tourist-medical-help-guide" class="underline text-amber-700 dark:text-amber-300 font-semibold">Sick in Johor Bahru? A tourist's medical help guide</a><br>Who to call, where to go, what to bring and how bills and insurance usually work.</li>
+          <li><a href="/blog/road-accident-in-johor-bahru-tourist-guide" class="underline text-amber-700 dark:text-amber-300 font-semibold">Road accident in Johor Bahru: what tourists should do</a><br>Safety, police report, insurance and rental-car steps.</li>
+          <li><a href="/blog/lost-passport-in-malaysia-what-tourists-must-do" class="underline text-amber-700 dark:text-amber-300 font-semibold">Lost your passport in Malaysia?</a><br>Police report, embassy and Immigration steps in order.</li>
+          <li><a href="/blog/overstayed-in-malaysia-how-to-go-home-splp" class="underline text-amber-700 dark:text-amber-300 font-semibold">Overstayed? How to go home (SPLP / Special Pass)</a><br>What to expect and how to leave properly.</li>
+          <li><a href="/blog/medical-emergency-johor-bahru-hospitals-clinics-foreigner-costs" class="underline text-amber-700 dark:text-amber-300 font-semibold">Hospitals, clinics and foreigner costs in Johor Bahru</a></li>
+        </ul>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-2 mb-8">
+        <div class="bg-white dark:bg-stone-900 p-6 rounded-lg" id="assistance">
+          <h2 class="text-2xl font-semibold mb-3">Pelangi Tourist Assistance</h2>
+          <p class="text-stone-700 dark:text-stone-300 mb-3">
+            There is a police station just beside our capsules. With a police report and evidence of a road accident, we may offer up to 24 hours free stay, subject to availability and management discretion.
+          </p>
+          <a href="/tourist-assistance" class="underline text-amber-700 dark:text-amber-300">How we help tourists in distress</a>
+        </div>
+        <div class="bg-white dark:bg-stone-900 p-6 rounded-lg" id="creators">
+          <h2 class="text-2xl font-semibold mb-3">For YouTubers and Creators</h2>
+          <p class="text-stone-700 dark:text-stone-300 mb-3">
+            5,000+ followers and want to make a video about Pelangi? Free nights are negotiable on video quality and following.
+          </p>
+          <a href="/creators" class="underline text-amber-700 dark:text-amber-300">Creator stays at Pelangi</a>
+        </div>
+      </div>
+
+      <div class="bg-white dark:bg-stone-900 p-8 rounded-lg mb-8" id="more">
+        <h2 class="text-2xl font-semibold mb-4">Also Useful</h2>
+        <ul class="space-y-2 text-stone-700 dark:text-stone-300">
+          <li><a href="/visa-run" class="underline text-amber-700 dark:text-amber-300">Visa run guide for Johor Bahru</a></li>
+          <li><a href="/location" class="underline text-amber-700 dark:text-amber-300">Our location in Taman Pelangi</a></li>
+          <li><a href="/getting-here" class="underline text-amber-700 dark:text-amber-300">Getting here</a></li>
+        </ul>
+        <p class="mt-4">
+          <a href="https://wa.me/{{rainbotPhone}}" class="inline-block px-5 py-3 rounded bg-amber-500 text-white font-semibold" target="_blank" rel="noopener">WhatsApp Pelangi: {{rainbotDisplay}}</a>
+        </p>
+      </div>
+
+      <p class="text-sm text-stone-500 dark:text-stone-400">
+        General information, not legal or medical advice. Rules change, so confirm with the police, hospital, embassy or Immigration.
+      </p>
+    </section>
+  </div>
+</main>
+{{template "footer" .}}
+{{end}}

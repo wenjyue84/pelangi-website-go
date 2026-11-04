@@ -1,0 +1,91 @@
+{
+ "slug": "legoland-malaysia-johor-bahru-visitor-guide",
+ "images": [
+  {
+   "file": "legoland-malaysia-johor-bahru-visitor-guide-1.webp",
+   "alt": "The LEGOLAND Malaysia entrance gate with the LEGOLAND Malaysia sign and brick-style towers",
+   "author": "milst1",
+   "licence": "CC BY-SA 2.0",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File:Entrance_Legoland_Malaysia.jpg",
+   "fileUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Entrance_Legoland_Malaysia.jpg",
+   "width": 1200,
+   "height": 900
+  },
+  {
+   "file": "legoland-malaysia-johor-bahru-visitor-guide-2.webp",
+   "alt": "A LEGO brick model of a Chinese palace complex at MINILAND, LEGOLAND Malaysia",
+   "author": "milst1",
+   "licence": "CC BY-SA 2.0",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File:Miniland_Legoland_Malaysia.jpg",
+   "fileUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Miniland_Legoland_Malaysia.jpg",
+   "width": 1200,
+   "height": 900
+  }
+ ],
+ "inserts": [
+  {
+   "afterExact": "<p>LEGOLAND Malaysia is located in <strong>Medini, Nusajaya (Iskandar Puteri)</strong>, Johor — approximately 20–30 km west of JB city centre. Travel time from JB Sentral or Taman Pelangi by Grab is around <strong>25–35 minutes</strong> and costs approximately RM25–40 one-way. The park is also accessible from Singapore via the Tuas Second Link (Second Causeway) — the LEGOLAND Malaysia Hotel offers a dedicated shuttle service from Singapore.</p>",
+   "html": "<figure class=\"blog-figure\"><img src=\"/images/blog/legoland-malaysia-johor-bahru-visitor-guide-1.webp\" alt=\"The LEGOLAND Malaysia entrance gate with the LEGOLAND Malaysia sign and brick-style towers\" loading=\"lazy\" width=\"1200\" height=\"900\"><figcaption>Photo: milst1, <a href=\"https://commons.wikimedia.org/wiki/File:Entrance_Legoland_Malaysia.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">Wikimedia Commons</a>, CC BY-SA 2.0.</figcaption></figure>"
+  },
+  {
+   "afterExact": "<p>The most iconic feature of any LEGOLAND — a scaled recreation of Asian landmarks built from over 30 million LEGO bricks. The Asian MINILAND includes models of iconic structures from across Southeast and East Asia: KL's Petronas Towers, Singapore's Marina Bay Sands, Bangkok's temples, and more. Impressive in scale and detail, and the best photography location in the park.</p>",
+   "html": "<figure class=\"blog-figure\"><img src=\"/images/blog/legoland-malaysia-johor-bahru-visitor-guide-2.webp\" alt=\"A LEGO brick model of a Chinese palace complex at MINILAND, LEGOLAND Malaysia\" loading=\"lazy\" width=\"1200\" height=\"900\"><figcaption>Photo: milst1, <a href=\"https://commons.wikimedia.org/wiki/File:Miniland_Legoland_Malaysia.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">Wikimedia Commons</a>, CC BY-SA 2.0.</figcaption></figure>"
+  }
+ ],
+ "officialSection": "<h2>Official Information</h2>\n<ul>\n  <li><strong>Address:</strong> 7 Jalan LEGOLAND, Bandar Medini Iskandar Malaysia, 79250 Iskandar Puteri (Nusajaya), Johor. <a href=\"https://www.legoland.com.my/\" target=\"_blank\" rel=\"noopener noreferrer\">LEGOLAND Malaysia Resort</a></li>\n  <li><strong>Tickets:</strong> the official site advertises a Day Ticket from RM69 when booked online, and a Water Park special at RM88. Prices change with dates and promotions, so check the live price before you go. <a href=\"https://www.legoland.com.my/\" target=\"_blank\" rel=\"noopener noreferrer\">LEGOLAND Malaysia Resort</a></li>\n  <li><strong>Hours:</strong> the official calendar shows different times by day. On 1 October 2026 it listed the Theme Park 11 am – 8 pm (last entry 7 pm), the Water Park 10 am – 6 pm, and SEA LIFE 10 am – 6 pm (last entry 5 pm); the next day the Theme Park was 10 am – 9 pm. <a href=\"https://www.legoland.com.my/plan-your-day/before-you-visit/opening-hours/\" target=\"_blank\" rel=\"noopener noreferrer\">LEGOLAND Malaysia opening hours</a></li>\n  <li><strong>Size:</strong> the theme park has 8 themed lands and 40+ rides, shows and attractions; the Water Park has 20+ slides, rides and water play areas. <a href=\"https://www.legoland.com.my/\" target=\"_blank\" rel=\"noopener noreferrer\">LEGOLAND Malaysia Resort</a></li>\n</ul>\n<p>Details above were checked on LEGOLAND Malaysia's official site on 1 October 2026; opening times and prices change, so always confirm before you travel.</p>",
+ "officialSectionPlacement": "insert immediately before the exact line <h2>Where to Stay Before or After</h2> (the CTA block), i.e. after the content and before the Where to Stay/CTA/FAQ tail",
+ "discrepancies": [
+  {
+   "existing": "<li><strong>Theme Park only — Adult (Malaysian):</strong> approximately RM110–130</li> (and the other four ticket bullets: RM130–160 foreign, RM90–110 water park, RM180–230 combo)",
+   "official": "Official homepage: 'Day Ticket from RM69 – book online & save'; 'Water Park Special: Only RM88'. No Malaysian vs foreign split appears on the page.",
+   "url": "https://www.legoland.com.my/",
+   "suggestedReplacement": "Official online Day Tickets start from RM69 and the Water Park has been advertised at RM88; gate and peak-date prices are higher. Replace the five invented ranges with 'from RM69 online (check legoland.com.my for the current price)'. Mark the Malaysian/foreign split as unverified or remove.",
+   "fetched": "2026-10-01"
+  },
+  {
+   "existing": "Arrive at park opening (10 AM) to get through the most popular rides before queues build.",
+   "official": "Theme Park hours vary by day: 11am–8pm on 1 Oct 2026, 10am–9pm the next day (Water Park and SEA LIFE 10am–6pm).",
+   "url": "https://www.legoland.com.my/plan-your-day/before-you-visit/opening-hours/",
+   "suggestedReplacement": "Arrive at park opening (the Theme Park opens at 10 or 11 AM depending on the day — check the official opening-hours calendar)...",
+   "fetched": "2026-10-01"
+  },
+  {
+   "existing": "The park has seven themed zones: LEGO City, LEGO Kingdoms, Adventure, LEGO NINJAGO World, LEGO Technic, IMAGINATION, and Land of Adventure.",
+   "official": "Homepage: '8 themed lands and 40+ rides, shows, and attractions'. Land names not listed on the fetched page.",
+   "url": "https://www.legoland.com.my/",
+   "suggestedReplacement": "The park has eight themed lands and 40+ rides, shows and attractions (per the official site).",
+   "fetched": "2026-10-01"
+  },
+  {
+   "existing": "The LEGOLAND Water Park has nearly 20 slides and attractions",
+   "official": "Homepage: 'Water Park features 20+ slides, rides, and water play areas'.",
+   "url": "https://www.legoland.com.my/",
+   "suggestedReplacement": "The LEGOLAND Water Park has 20+ slides, rides and water play areas.",
+   "fetched": "2026-10-01"
+  },
+  {
+   "existing": "MINILAND ... built from over 30 million LEGO bricks / first LEGOLAND theme park in Asia / hotel RM500–900/night",
+   "official": "Not stated on the fetched official pages (page gives no brick count; hotel page not fetched).",
+   "url": "https://www.legoland.com.my/",
+   "suggestedReplacement": "Unverified; keep only if a second official source is fetched, otherwise soften.",
+   "fetched": "2026-10-01"
+  }
+ ],
+ "sourcesFetched": [
+  {
+   "url": "https://www.legoland.com.my/",
+   "fetched": "2026-10-01",
+   "usedFor": "address, ticket-from prices, lands/slides counts"
+  },
+  {
+   "url": "https://www.legoland.com.my/plan-your-day/before-you-visit/opening-hours/",
+   "fetched": "2026-10-01",
+   "usedFor": "opening hours"
+  },
+  {
+   "url": "https://commons.wikimedia.org/w/api.php (extmetadata for 2 files)",
+   "fetched": "2026-10-01",
+   "usedFor": "image licence/author"
+  }
+ ]
+}

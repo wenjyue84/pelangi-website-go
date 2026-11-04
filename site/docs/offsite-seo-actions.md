@@ -12,7 +12,7 @@
 ## 1. Google Business Profile — weekly cadence (highest ROI)
 
 - **Post weekly** (Mon, ~5 min): one photo + 2–3 sentences. Rotate: pod interior /
-  night-market food / guest tip / price ("pods from RM30/night on weekdays").
+  night-market food / guest tip / price ("pods RM35/night — RM30 first night when you book direct").
 - **Review-ask script** (send to happy guests at checkout via WhatsApp):
   > "Glad you enjoyed your stay! 🌈 If you have 30 seconds, a Google review helps small
   > hostels like us a lot: https://g.page/r/CV-GmpNH-zs1EBE/review — thank you!"
@@ -23,7 +23,7 @@
 ## 2. TripAdvisor (claimed — now build it out)
 
 - Upload 15–20 photos (pods, bathroom, lounge, kitchen, exterior, night market).
-- Fill amenities checklist completely; set price range RM30–35.
+- Fill amenities checklist completely; set price RM35/night (flat; RM30 is direct-web first night only — don't use it as the range floor).
 - Same review-ask flow as GBP but alternate weeks (don't split every guest's attention).
 - Answer the "travellers ask" questions on the listing.
 

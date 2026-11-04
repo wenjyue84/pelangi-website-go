@@ -153,7 +153,7 @@ Format: <code>accounts/123456789012345</code> and <code>accounts/123.../location
 <h2>Post Now</h2>
 <form method="POST" action="/admin/gbp/posts/now">
   <label>Post text (max 1500 chars)</label>
-  <textarea name="text" placeholder="July is durian season in JB — roadside stalls from RM10 a portion…&#10;Pods from RM35/night this weekend. pelangicapsulehostel.com or WhatsApp 012-708 8789." maxlength="1500"></textarea>
+  <textarea name="text" placeholder="July is durian season in JB — roadside stalls from RM10 a portion…&#10;Pods from RM35/night this weekend. pelangicapsulehostel.com or WhatsApp 010-308 4289." maxlength="1500"></textarea>
   <button type="submit" class="btn-primary">Post to GBP now</button>
 </form></div>`)
 

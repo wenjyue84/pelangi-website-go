@@ -29,6 +29,7 @@ type BlogPostPage struct {
 	FormattedDate  string // "2 January 2006"
 	StructuredJSON string // BlogPosting JSON-LD (safeHTML)
 	BreadcrumbJSON string // BreadcrumbList JSON-LD (safeHTML)
+	FAQJSON        string // FAQPage JSON-LD (safeHTML); empty if post has no Q&A headings
 }
 
 func init() {
@@ -150,6 +151,29 @@ func (h *Handler) blogPost(w http.ResponseWriter, r *http.Request) {
 	sj, _ := json.Marshal(blogPosting)
 	bj, _ := json.Marshal(breadcrumb)
 
+	// FAQPage JSON-LD — only emitted when the post body already has 2+
+	// question-style headings with answer text (no invented Q&A).
+	var fj []byte
+	if faqs := data.ExtractFAQs(post.Content); len(faqs) > 0 {
+		items := make([]map[string]any, len(faqs))
+		for i, f := range faqs {
+			items[i] = map[string]any{
+				"@type": "Question",
+				"name":  f.Question,
+				"acceptedAnswer": map[string]any{
+					"@type": "Answer",
+					"text":  f.Answer,
+				},
+			}
+		}
+		faqPage := map[string]any{
+			"@context":         "https://schema.org",
+			"@type":            "FAQPage",
+			"mainEntity":       items,
+		}
+		fj, _ = json.Marshal(faqPage)
+	}
+
 	bp := h.base(
 		post.Title,
 		post.Excerpt,
@@ -170,6 +194,9 @@ func (h *Handler) blogPost(w http.ResponseWriter, r *http.Request) {
 	if post.AlternateMS != "" {
 		bp.AltMS = "https://pelangicapsulehostel.com/blog/" + post.AlternateMS
 	}
+	if post.AlternateHI != "" {
+		bp.AltHI = "https://pelangicapsulehostel.com/blog/" + post.AlternateHI
+	}
 
 	p := BlogPostPage{
 		BasePage: bp,
@@ -180,6 +207,7 @@ func (h *Handler) blogPost(w http.ResponseWriter, r *http.Request) {
 		FormattedDate:  blogFormatLong(post.Date),
 		StructuredJSON: string(sj),
 		BreadcrumbJSON: string(bj),
+		FAQJSON:        string(fj),
 	}
 	h.renderPage(w, "blogPost.html", p)
 }

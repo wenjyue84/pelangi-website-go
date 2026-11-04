@@ -1,0 +1,108 @@
+{
+ "slug": "rts-link-jb-singapore-final-testing-2026",
+ "images": [
+  {
+   "file": "rts-link-jb-singapore-final-testing-2026-1.webp",
+   "alt": "The Bukit Chagar RTS Link station building in Johor Bahru under construction in June 2026, seen above vehicles queuing on the approach road",
+   "width": 1200,
+   "height": 900,
+   "author": "ZKang123",
+   "licence": "CC BY-SA 4.0",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bukit_Chagar_RTS_station_construction_site_20260613_111526.jpg",
+   "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/0/04/Bukit_Chagar_RTS_station_construction_site_20260613_111526.jpg"
+  },
+  {
+   "file": "rts-link-jb-singapore-final-testing-2026-2.webp",
+   "alt": "Aerial view of the Johor-Singapore Causeway with traffic and buses crossing the Strait of Johor",
+   "width": 1200,
+   "height": 900,
+   "author": "ZKang123",
+   "licence": "CC BY-SA 4.0",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File:Johor-Singapore_Causeway_20240817_082257.jpg",
+   "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/8/85/Johor-Singapore_Causeway_20240817_082257.jpg"
+  }
+ ],
+ "inserts": [
+  {
+   "afterExact": "<p>Once the RTS Link opens, Bukit Chagar becomes the new focal point for travellers crossing from Singapore. Demand for accommodation within easy reach of that station will increase — it is a straightforward consequence of making the crossing faster and more predictable.</p>",
+   "html": "<figure class=\"blog-figure\"><img src=\"/images/blog/rts-link-jb-singapore-final-testing-2026-1.webp\" alt=\"The Bukit Chagar RTS Link station building in Johor Bahru under construction in June 2026, seen above vehicles queuing on the approach road\" loading=\"lazy\" width=\"1200\" height=\"900\"><figcaption>Photo: ZKang123, Wikimedia Commons, <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-SA 4.0</a>. Taken 13 June 2026 during construction.</figcaption></figure>"
+  },
+  {
+   "afterExact": "<p>The current crossing experience — functional, but queues at peak hours can stretch 30–90 minutes — is exactly why the RTS Link is being watched so closely. <a href=\"/blog/jb-singapore-commuter-guide-2026\">Our JB–Singapore commuter guide covers current crossing options in detail.</a> The <a href=\"/blog/singapore-to-jb-day-trip-causeway-guide\">day-trip Causeway guide</a> is also worth reading if you are visiting from Singapore for the first time.</p>",
+   "html": "<figure class=\"blog-figure\"><img src=\"/images/blog/rts-link-jb-singapore-final-testing-2026-2.webp\" alt=\"Aerial view of the Johor-Singapore Causeway with traffic and buses crossing the Strait of Johor\" loading=\"lazy\" width=\"1200\" height=\"900\"><figcaption>Photo: ZKang123, Wikimedia Commons, <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-SA 4.0</a>.</figcaption></figure>"
+  }
+ ],
+ "officialSection": "<h2>Official Information</h2>\n<ul>\n  <li>Singapore's LTA describes the RTS Link as a 4 km line with two stations (Woodlands North and Bukit Chagar), about five minutes' journey time and capacity for up to 10,000 commuters per hour in each direction. It says the line is targeted to start passenger service at the end of 2026. Source: <a href=\"https://www.lta.gov.sg/content/ltagov/en/upcoming_projects/rail_expansion/JB-Singapore_RTS_link.html\" target=\"_blank\" rel=\"noopener noreferrer\">LTA — JB-Singapore RTS Link project page</a></li>\n  <li>An LTA news release dated 20 September 2026 says bus Service 968 will be introduced to support the opening of the RTS Link Woodlands North station. It does not give an opening date. Source: <a href=\"https://www.lta.gov.sg/content/ltagov/en/newsroom/2026/9/news-releases/improved-bus-connectivity-for-commuters-with-more-services-and-e.html\" target=\"_blank\" rel=\"noopener noreferrer\">LTA news release, 20 Sep 2026</a></li>\n  <li>On fares, Singapore's Acting Minister for Transport said that under the bilateral agreement the operator, RTSO, determines the fares, and that LTA awaits RTSO's announcement of fares in due course. Source: <a href=\"https://www.mot.gov.sg/news-resources/newsroom/speech-by-acting-minister-for-transport-mr-jeffrey-siow-at-ministry-of-transport-s-committee-of-supply-debate-2026/\" target=\"_blank\" rel=\"noopener noreferrer\">MOT Singapore — Committee of Supply Debate 2026 speech</a></li>\n  <li>LTA's January 2024 factsheet gave the same end-of-2026 target. Check LTA's project page for the latest announcement before booking travel that depends on the opening date. Source: <a href=\"https://www.lta.gov.sg/content/ltagov/en/newsroom/2024/1/news-releases/Updates_on_JB-RTS_link.html\" target=\"_blank\" rel=\"noopener noreferrer\">LTA factsheet, 11 Jan 2024</a></li>\n</ul>",
+ "discrepancies": [
+  {
+   "existing": "Targeted completion remains <strong>31 December 2026</strong>, with full public operations expected by <strong>January 2027</strong>.",
+   "official": "LTA's project page still says 'targeted to commence passenger service at the end of 2026'. September 2026 news reports (paultan.org 15 Sep, Mothership, Malay Mail 6 Sep; secondary, not official pages) say LTA announced Woodlands North complete on 4 Sep 2026 and service is on course for 2027 / January 2027. No fetched official LTA/MOT page states January 2027 or a specific date.",
+   "url": "https://www.lta.gov.sg/content/ltagov/en/upcoming_projects/rail_expansion/JB-Singapore_RTS_link.html",
+   "fetched": "2026-10-01",
+   "suggestedReplacement": "LTA's project page targets passenger service for the end of 2026; press reports in September 2026 point to a January 2027 start. No official opening date has been confirmed."
+  },
+  {
+   "existing": "systems and operational works had passed <strong>65% completion</strong> (per the November 2025 progress report)",
+   "official": "Outdated per press: Woodlands North station reported complete 4 Sep 2026; Minister Loke reportedly said Malaysian-side station and rail infrastructure is complete and final integration testing is starting (paultan.org 15 Sep 2026, secondary source; the LTA release fetched only mentions Service 968).",
+   "url": "https://paultan.org/2026/09/15/johor-bahru-singapore-rts-link-woodlands-north-station-completed-on-course-to-begin-service-in-2027/",
+   "fetched": "2026-10-01",
+   "suggestedReplacement": "Update: Singapore completed the Woodlands North station in September 2026, and the project is entering final integration testing between the two countries (press reports)."
+  },
+  {
+   "existing": "Expected one-way fare: S$5–S$7 (final fares to be confirmed in the second half of 2026)",
+   "official": "MOT Singapore: fares are set by operator RTSO; 'We await RTSO's announcement of fares in due course.' The S$5-S$7 figure was announced by the Malaysian counterpart, whom the Minister said he had not discussed fares with. Malay Mail 3 Apr 2026 (secondary): Loke said the fare proposal goes to both governments by Q3 2026.",
+   "url": "https://www.mot.gov.sg/news-resources/newsroom/speech-by-acting-minister-for-transport-mr-jeffrey-siow-at-ministry-of-transport-s-committee-of-supply-debate-2026/",
+   "fetched": "2026-10-01",
+   "suggestedReplacement": "Expected one-way fare: about S$5-S$7 as indicated by Malaysian officials; the operator RTSO has yet to announce official fares."
+  },
+  {
+   "existing": "<li><strong>Rolling stock:</strong> 8 train sets, 4 coaches each</li>",
+   "official": "UNVERIFIED: the LTA project page fetched does not state train-set numbers.",
+   "url": "https://www.lta.gov.sg/content/ltagov/en/upcoming_projects/rail_expansion/JB-Singapore_RTS_link.html",
+   "fetched": "2026-10-01",
+   "suggestedReplacement": "Not contradicted, simply not confirmed from official pages fetched this session."
+  }
+ ],
+ "sourcesFetched": [
+  {
+   "url": "https://www.lta.gov.sg/content/ltagov/en/upcoming_projects/rail_expansion/JB-Singapore_RTS_link.html",
+   "fetched": "2026-10-01",
+   "usedFor": "length, stations, capacity, 5 min, end-2026 target; no trains/fares/testing"
+  },
+  {
+   "url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2026/9/news-releases/improved-bus-connectivity-for-commuters-with-more-services-and-e.html",
+   "fetched": "2026-10-01",
+   "usedFor": "20 Sep 2026 release: Service 968"
+  },
+  {
+   "url": "https://www.mot.gov.sg/news-resources/newsroom/speech-by-acting-minister-for-transport-mr-jeffrey-siow-at-ministry-of-transport-s-committee-of-supply-debate-2026/",
+   "fetched": "2026-10-01",
+   "usedFor": "fares set by RTSO"
+  },
+  {
+   "url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2024/1/news-releases/Updates_on_JB-RTS_link.html",
+   "fetched": "2026-10-01",
+   "usedFor": "Jan 2024 factsheet: end-2026"
+  },
+  {
+   "url": "https://paultan.org/2026/09/15/johor-bahru-singapore-rts-link-woodlands-north-station-completed-on-course-to-begin-service-in-2027/",
+   "fetched": "2026-10-01",
+   "usedFor": "SECONDARY: 2027 timing, Loke statement (discrepancy evidence only)"
+  },
+  {
+   "url": "https://www.malaymail.com/news/malaysia/2026/04/03/rts-link-fare-proposal-to-be-presented-by-q3-says-loke/214955",
+   "fetched": "2026-10-01",
+   "usedFor": "SECONDARY: fare proposal by Q3"
+  },
+  {
+   "url": "https://mothership.sg/2026/09/woodlands-north-station-constructed-rts-link/",
+   "fetched": "2026-10-01",
+   "usedFor": "SECONDARY: January 2027; no official link found"
+  },
+  {
+   "url": "https://commons.wikimedia.org/w/api.php",
+   "fetched": "2026-10-01",
+   "usedFor": "image licence/author metadata"
+  }
+ ]
+}

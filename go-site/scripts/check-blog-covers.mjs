@@ -5,7 +5,7 @@
 // Checks:
 //   (a) every post's FeaturedImage exists in site/public with the exact filename+extension
 //   (b) no two posts share a FeaturedImage unless they are declared language siblings of
-//       each other via AlternateEN/AlternateZH/AlternateMS
+//       each other via AlternateEN/AlternateZH/AlternateMS/AlternateHI
 //   (c) with --live: every referenced image returns 200 on https://pelangicapsulehostel.com
 //
 // Exit 0 = pass, 1 = fail (with a readable violation list on stderr).
@@ -35,7 +35,7 @@ function parseBlogPosts() {
     const start = slugStarts[i];
     const end = i + 1 < slugStarts.length ? slugStarts[i + 1] : src.length;
     const block = src.slice(start, end);
-    for (const field of ["AlternateEN", "AlternateZH", "AlternateMS"]) {
+    for (const field of ["AlternateEN", "AlternateZH", "AlternateMS", "AlternateHI"]) {
       const fm = block.match(new RegExp(field + ':\\s*"([^"]*)"'));
       posts[i][field] = fm && fm[1] ? fm[1] : null;
     }
@@ -62,7 +62,7 @@ function checkNoBadDuplicates(posts) {
   };
   for (const p of posts) {
     if (!parent.has(p.slug)) parent.set(p.slug, p.slug);
-    for (const field of ["AlternateEN", "AlternateZH", "AlternateMS"]) {
+    for (const field of ["AlternateEN", "AlternateZH", "AlternateMS", "AlternateHI"]) {
       if (p[field] && bySlug.has(p[field])) union(p.slug, p[field]);
     }
   }

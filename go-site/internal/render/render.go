@@ -11,6 +11,8 @@ import (
 	"io/fs"
 	"path"
 	"strings"
+
+	"pelangi-website/internal/data"
 )
 
 // Renderer holds one fully-parsed template set per page file.
@@ -24,6 +26,9 @@ var funcs = template.FuncMap{
 	// safeJS injects pre-trusted inline script bodies (consent mode, GTM).
 	"safeJS": func(s string) template.JS { return template.JS(s) },
 	"safeURL": func(s string) template.URL { return template.URL(s) },
+	// Primary contact: Rainbot AI WhatsApp assistant (see data/contact.go).
+	"rainbotPhone":   func() string { return data.RainbotPhone },
+	"rainbotDisplay": func() string { return data.RainbotPhoneDisplay },
 }
 
 // New parses every templates/pages/*.html file against base.html + partials.

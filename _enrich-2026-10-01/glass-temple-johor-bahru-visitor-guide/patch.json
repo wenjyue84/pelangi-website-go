@@ -1,0 +1,79 @@
+{
+ "slug": "glass-temple-johor-bahru-visitor-guide",
+ "images": [
+  {
+   "file": "glass-temple-johor-bahru-visitor-guide-1.webp",
+   "alt": "Interior of the Arulmigu Sri Rajakaliamman Glass Temple in Johor Bahru, with walls, pillars and ceiling covered in glass mosaic",
+   "author": "Chainwit.",
+   "licence": "CC BY 4.0",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File:Arulmigu_Sri_Rajakaliamman_Glass_Temple,_JB_(2025)_-_img_47.jpg",
+   "fileUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Arulmigu_Sri_Rajakaliamman_Glass_Temple,_JB_(2025)_-_img_47.jpg",
+   "width": 1200,
+   "height": 900
+  },
+  {
+   "file": "glass-temple-johor-bahru-visitor-guide-2.webp",
+   "alt": "Decorated shrine with a Ganesha figure on each side inside the Glass Temple, Johor Bahru",
+   "author": "Chainwit.",
+   "licence": "CC BY 4.0",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File:Arulmigu_Sri_Rajakaliamman_Glass_Temple,_JB_(2025)_-_img_76.jpg",
+   "fileUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Arulmigu_Sri_Rajakaliamman_Glass_Temple,_JB_(2025)_-_img_76.jpg",
+   "width": 1200,
+   "height": 900
+  }
+ ],
+ "inserts": [
+  {
+   "afterExact": "<p>Most Hindu temples feature intricate painted sculptures and carved gopurams. The Sri Rajakaliamman temple took a different approach: beginning in the 1990s, the community began covering every interior surface with hand-set glass tiles in jewel-toned colours — blue, green, gold, red, and white. The process took years and continues to be refined. The result is that even at midday, when natural light enters through coloured glass panels, the interior glows.</p>",
+   "html": "<figure class=\"blog-figure\"><img src=\"/images/blog/glass-temple-johor-bahru-visitor-guide-1.webp\" alt=\"Interior of the Arulmigu Sri Rajakaliamman Glass Temple in Johor Bahru, with walls, pillars and ceiling covered in glass mosaic\" loading=\"lazy\" width=\"1200\" height=\"900\"><figcaption>Photo: Chainwit., <a href=\"https://commons.wikimedia.org/wiki/File:Arulmigu_Sri_Rajakaliamman_Glass_Temple,_JB_(2025)_-_img_47.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">Wikimedia Commons</a>, CC BY 4.0.</figcaption></figure>"
+  },
+  {
+   "afterExact": "<p>The temple is dedicated to Goddess Kaliamman, a form of the goddess Kali worshipped primarily by Tamil Hindus. It serves as an active place of worship for JB's Indian community, not just a tourist attraction — visitors are asked to behave respectfully, remove shoes, and speak quietly inside.</p>",
+   "html": "<figure class=\"blog-figure\"><img src=\"/images/blog/glass-temple-johor-bahru-visitor-guide-2.webp\" alt=\"Decorated shrine with a Ganesha figure on each side inside the Glass Temple, Johor Bahru\" loading=\"lazy\" width=\"1200\" height=\"900\"><figcaption>Photo: Chainwit., <a href=\"https://commons.wikimedia.org/wiki/File:Arulmigu_Sri_Rajakaliamman_Glass_Temple,_JB_(2025)_-_img_76.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">Wikimedia Commons</a>, CC BY 4.0.</figcaption></figure>"
+  }
+ ],
+ "officialSection": "<h2>Official Information</h2>\n<ul>\n  <li><strong>Address:</strong> Jalan Tun Abdul Razak 1/1, Wadihana, 80300 Johor Bahru. <a href=\"https://tourism.johor.gov.my/arulmigu-sri-rajakaliamman-glass-temple/\" target=\"_blank\" rel=\"noopener noreferrer\">Tourism Johor</a></li>\n  <li><strong>Opening hours:</strong> 10.00 am – 10.00 pm, open every day. <a href=\"https://tourism.johor.gov.my/arulmigu-sri-rajakaliamman-glass-temple/\" target=\"_blank\" rel=\"noopener noreferrer\">Tourism Johor</a></li>\n  <li><strong>Entrance fee:</strong> RM10.00. <a href=\"https://tourism.johor.gov.my/arulmigu-sri-rajakaliamman-glass-temple/\" target=\"_blank\" rel=\"noopener noreferrer\">Tourism Johor</a></li>\n  <li><strong>History:</strong> established in 1922; about 95% of the walls, ceiling and pillars are covered with stained-glass mirrors imported from Thailand, Japan and Belgium. <a href=\"https://tourism.johor.gov.my/arulmigu-sri-rajakaliamman-glass-temple/\" target=\"_blank\" rel=\"noopener noreferrer\">Tourism Johor</a></li>\n</ul>\n<p>Details above were checked against the Tourism Johor listing on 1 October 2026. Temple hours and fees can change, so confirm with the temple before you go.</p>",
+ "officialSectionPlacement": "insert immediately before the exact line <h2>Where to Stay in JB</h2> (the CTA block), i.e. after the content and before the Where to Stay/CTA/FAQ tail",
+ "discrepancies": [
+  {
+   "existing": "The temple is located at <strong>Jalan Tan Hiok Nee, Johor Bahru</strong>, in the heart of JB's heritage district, a short walk from Jalan Wong Ah Fook and approximately 1 km from JB City Square.",
+   "official": "Tourism Johor lists the address as Jalan Tun Abdul Razak 1/1, Wadihana, 80300 Johor Bahru.",
+   "url": "https://tourism.johor.gov.my/arulmigu-sri-rajakaliamman-glass-temple/",
+   "suggestedReplacement": "The temple is located at <strong>Jalan Tun Abdul Razak 1/1, Wadihana, 80300 Johor Bahru</strong> (address per Tourism Johor). [Also review the 'Combining with Nearby Attractions' section and the tan-hiok-nee post, which both place the temple on Jalan Tan Hiok Nee / in the heritage street; walking times there are unverified.]",
+   "fetched": "2026-10-01"
+  },
+  {
+   "existing": "The temple is typically open to visitors from <strong>8 AM to noon and 4 PM to 8 PM daily</strong>. Entry includes a small fee of approximately <strong>RM3–5</strong> for adults (check at the gate, as fees may be updated).",
+   "official": "Opening hours 10.00am – 10.00pm (open everyday); entrance fee RM10.00 only.",
+   "url": "https://tourism.johor.gov.my/arulmigu-sri-rajakaliamman-glass-temple/",
+   "suggestedReplacement": "Tourism Johor lists the temple as open <strong>10 AM to 10 PM daily</strong>, with an entrance fee of <strong>RM10</strong> (check at the gate, as hours and fees may change).",
+   "fetched": "2026-10-01"
+  },
+  {
+   "existing": "beginning in the 1990s, the community began covering every interior surface with hand-set glass tiles",
+   "official": "Temple established in 1922; 95% of walls, ceiling and pillars covered with stained-glass mirrors imported from Thailand, Japan and Belgium. The page does not state when the glasswork began.",
+   "url": "https://tourism.johor.gov.my/arulmigu-sri-rajakaliamman-glass-temple/",
+   "suggestedReplacement": "The temple was established in 1922; today about 95% of its walls, ceiling and pillars are covered with stained-glass mirrors imported from Thailand, Japan and Belgium. (Remove the unverified '1990s' start date and 'millions of pieces' claim.)",
+   "fetched": "2026-10-01"
+  },
+  {
+   "existing": "Photography inside is permitted with respectful behaviour / Modest dress is required (shoes off, sarongs, leather)",
+   "official": "Tourism Johor page does not state dress code or photography rules.",
+   "url": "https://tourism.johor.gov.my/arulmigu-sri-rajakaliamman-glass-temple/",
+   "suggestedReplacement": "Unverified by official source; keep but soften or confirm with the temple (+60 19-730 4436 per Tourism Johor).",
+   "fetched": "2026-10-01"
+  }
+ ],
+ "sourcesFetched": [
+  {
+   "url": "https://tourism.johor.gov.my/arulmigu-sri-rajakaliamman-glass-temple/",
+   "fetched": "2026-10-01",
+   "usedFor": "address, hours, fee, 1922 establishment, glass facts"
+  },
+  {
+   "url": "https://commons.wikimedia.org/w/api.php (extmetadata for 2 files)",
+   "fetched": "2026-10-01",
+   "usedFor": "image licence/author"
+  }
+ ]
+}

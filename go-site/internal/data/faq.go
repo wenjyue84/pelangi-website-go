@@ -10,7 +10,7 @@ type FaqItem struct {
 var FaqItems = []FaqItem{
 	{
 		Question: "What time is check-in and check-out at Pelangi Capsule Hostel?",
-		Answer:   "Check-in at Pelangi Capsule Hostel is from 2:00 PM onwards, and check-out is before 12:00 PM (noon). We offer self-check-in so you can arrive anytime after 2 PM without waiting for reception. Early check-in or late check-out may be available on request — contact us via WhatsApp at +60 12-708 8789.",
+		Answer:   "Check-in at Pelangi Capsule Hostel is from 2:00 PM onwards, and check-out is before 12:00 PM (noon). We offer self-check-in so you can arrive anytime after 2 PM without waiting for reception. Early check-in or late check-out may be available on request — contact us via WhatsApp at +60 10-308 4289.",
 	},
 	{
 		Question: "How much does a capsule pod cost per night in Johor Bahru?",
@@ -66,7 +66,7 @@ var FaqItems = []FaqItem{
 	},
 	{
 		Question: "Do you have private rooms for monthly rent in Johor Bahru?",
-		Answer:   "Yes. Alongside our capsule pods, the Pelangi Capsule Hostel team rents private rooms on a monthly basis from RM500 per month with a flat RM250 deposit — no two-months-plus-one-month-advance like typical JB room rentals. The rooms are located above the 7-Eleven in Taman Pelangi, a short walk from the hostel, with the neighbourhood's eateries and the Tuesday night market at your doorstep and the Singapore CIQ checkpoint about 15 minutes away. Availability changes month to month — WhatsApp +60 12-708 8789 (Jay) or +60 16-762 0815 (Alston) to check what is open and arrange a viewing.",
+		Answer:   "Yes. Alongside our capsule pods, the Pelangi Capsule Hostel team rents private rooms on a monthly basis from RM500 per month with a flat RM250 deposit — no two-months-plus-one-month-advance like typical JB room rentals. The rooms are located above the 7-Eleven in Taman Pelangi, a short walk from the hostel, with the neighbourhood's eateries and the Tuesday night market at your doorstep and the Singapore CIQ checkpoint about 15 minutes away. Availability changes month to month — WhatsApp +60 10-308 4289 (Jay) or +60 16-762 0815 (Alston) to check what is open and arrange a viewing.",
 	},
 	{
 		Question: "Is the hostel quiet enough to sleep well?",
@@ -74,7 +74,7 @@ var FaqItems = []FaqItem{
 	},
 	{
 		Question: "Do I need to book in advance or can I walk in?",
-		Answer:   "Walk-ins are welcome at Pelangi Capsule Hostel subject to availability, but booking in advance is recommended — especially on weekends and Malaysian public holidays when occupancy is highest. Book directly on our website at pelangicapsulehostel.com/book or message us on WhatsApp at +60 12-708 8789 to secure your pod. Direct bookings always get the best rate with no middleman fees.",
+		Answer:   "Walk-ins are welcome at Pelangi Capsule Hostel subject to availability, but booking in advance is recommended — especially on weekends and Malaysian public holidays when occupancy is highest. Book directly on our website at pelangicapsulehostel.com/book or message us on WhatsApp at +60 10-308 4289 to secure your pod. Direct bookings always get the best rate with no middleman fees.",
 	},
 	{
 		Question: "What is the Malaysia Tourism Tax (TTx)?",

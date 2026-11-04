@@ -69,7 +69,7 @@ function parseBlogPosts() {
     const start = slugStarts[i];
     const end = i + 1 < slugStarts.length ? slugStarts[i + 1] : src.length;
     const block = src.slice(start, end);
-    for (const field of ["AlternateEN", "AlternateZH", "AlternateMS"]) {
+    for (const field of ["AlternateEN", "AlternateZH", "AlternateMS", "AlternateHI"]) {
       const fm = block.match(new RegExp(field + ':\\s*"([^"]*)"'));
       posts[i][field] = fm && fm[1] ? fm[1] : null;
     }
@@ -164,8 +164,8 @@ SUITES.integrity = {
       missingImg.map((p) => p.image).join(","));
 
     // No two posts may share a FeaturedImage unless they are declared language
-    // siblings of each other via AlternateEN/AlternateZH/AlternateMS (union-find
-    // over those links, since a pair can declare the link in either direction).
+    // siblings of each other via AlternateEN/AlternateZH/AlternateMS/AlternateHI
+    // (union-find over those links, since a pair can declare the link in either direction).
     {
       const bySlugP = new Map(posts.map((p) => [p.slug, p]));
       const parent = new Map();
@@ -178,7 +178,7 @@ SUITES.integrity = {
       };
       for (const p of posts) {
         if (!parent.has(p.slug)) parent.set(p.slug, p.slug);
-        for (const field of ["AlternateEN", "AlternateZH", "AlternateMS"]) {
+        for (const field of ["AlternateEN", "AlternateZH", "AlternateMS", "AlternateHI"]) {
           if (p[field] && bySlugP.has(p[field])) union(p.slug, p[field]);
         }
       }

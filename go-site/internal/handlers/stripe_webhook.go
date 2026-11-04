@@ -227,7 +227,7 @@ func stripeWebhookSendConfirmation(resendKey, emailTo, name, amountRM, checkIn, 
 		`using your booking reference and last name.</p>` +
 		`<p style="margin-top:16px;">We look forward to hosting you at <strong>Pelangi Capsule Hostel</strong>!</p>` +
 		`<p style="margin-bottom:0;">If you have any questions, WhatsApp us at ` +
-		`<a href="https://wa.me/60127088789" style="color:#b45309;">+60 12-708 8789</a>.</p>` +
+		`<a href="https://wa.me/60103084289" style="color:#b45309;">+60 10-308 4289</a>.</p>` +
 		`</div><p style="text-align:center;font-size:12px;color:#a8a29e;margin-top:24px;">` +
 		`26A Jalan Perang, Taman Pelangi, 80400 Johor Bahru, Johor, Malaysia</p></div>`
 	if err := resendSend(resendKey, resendEmail{

@@ -99,7 +99,7 @@ const kbLocationSection = `# Location & Transport
 - Legoland Malaysia — 25 min drive
 
 ## Contact
-- **WhatsApp:** +60 12-708 8789 (Jay) | +60 16-762 0815 (Alston)
+- **WhatsApp:** +60 10-308 4289 (Rainbot, AI assistant 24/7) | +60 12-708 8789 (Jay) | +60 16-762 0815 (Alston)
 - **Email:** pelangicapsule@gmail.com
 - **Website:** https://pelangicapsulehostel.com
 - **Book online:** https://pelangicapsulehostel.com/book
