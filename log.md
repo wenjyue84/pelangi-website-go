@@ -74,3 +74,17 @@ New post johor-bahru-mall-events-30-oct-15-nov-2026 (blog_jb_mall_events_2026102
 - Sources fetched 2026-11-04: freemalaysiatoday.com (Bernama 2026-02-06), mothership.sg (2026-04-10). paultan.org 403; LTA page not read (stated in post). GVP/OBU price not stated.
 - Cover: Wikimedia Commons ZKang123 CC BY-SA 4.0 (Woodlands Checkpoint Dec 2023), cropped; CREDITS.md updated.
 - Deployed, live 200 + marker, cover 200, in sitemap, cover gate --live PASSED. go vet + go test ok.
+
+## [2026-11-04] content | JB mall events (Wed run): no change, skipped
+- Searched 2026-11-04: johormalls.com events, midvalleysouthkey.com upcoming-week, suteramall.com, WebSearch (City Square, Komtar JBCC, Paradigm, AEON). Window 5-18 Nov.
+- vs edition `johor-bahru-mall-events-31-oct-14-nov-2026`: only expiries (Yume ACG Fest, Karnival Jom Heboh, BIG Pharmacy expo ended 1 Nov). No new dated event. Still-running: Deepavali MVS to 15 Nov, TCE Baby Expo 7-9 Nov, LEGOLAND Brick-Tacular from 13 Nov. Furniture Fair / Tastefully: dates still not stated on own pages. Sutera Mall homepage lists event names only, no dates. Fewer than 3 changed events, so no post, build or deploy.
+- Next edition (Fri 6 Nov) should pick up new items if johormalls.com adds them. No commit.
+
+## [2026-11-04] content | daily blog (2nd run): no post
+- no post: daily article already shipped today (VEP S$50, commit be07623). Searched 2026-11-04 (Causeway news, RTS Link, MY visa-free CN/IN, year-end holidays): nothing new beyond existing posts (RTS: Loke 2026-10-20 fares by year-end, opening Feb 2027; CN/IN visa-free extension status unconfirmed). No commit.
+
+## [2026-11-05] content | daily blog: Deepavali long weekend Causeway delays
+- Slug `deepavali-long-weekend-2026-causeway-delays-woodlands-outage`; file `go-site/internal/data/blog_deepavali_causeway_20261105.go`. EN only.
+- Sources fetched 2026-11-05: ica.gov.sg Deepavali advisory (page dates conflict, stated), thestar.com.my 2026-11-04 (Woodlands power outage). Malay Mail 2026-11-01 403, not read. No peak hours given (stated).
+- Cover: generated text cover (gen_blog_cover.py; no suitable CC photo found). CREDITS.md updated.
+- Deployed; live 200 + marker, cover 200, in sitemap, cover gate --live PASSED. Incident: first scp'd stale `pelangi-go-linux` (Sep 20) instead of build output `pelangi-go` -> all separate-file posts 404 for ~4 min; fixed with correct binary (stale one kept as pelangi-go.stale.20261105 on VPS). Build output file is `go-site/pelangi-go`.

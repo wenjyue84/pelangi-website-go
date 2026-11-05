@@ -36,3 +36,6 @@ Follow-up by me after the agent: CW1 "RM2.60 (~SGD0.80)" fare removed from the v
 
 ### Daily 2026-11-04
 - `singapore-vep-fee-s50-january-2027-driving-from-jb` (EN). Sources: freemalaysiatoday.com 2026-02-06, mothership.sg 2026-04-10; LTA notice not read (stated). Cover: ZKang123, Commons, CC BY-SA 4.0.
+
+### Daily 2026-11-05
+- `deepavali-long-weekend-2026-causeway-delays-woodlands-outage` (EN). Sources: ica.gov.sg Deepavali advisory, thestar.com.my 2026-11-04. Malay Mail 403 (unread). Cover: generated (gen_blog_cover.py), no third-party licence.
