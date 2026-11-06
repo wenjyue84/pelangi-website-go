@@ -88,3 +88,16 @@ New post johor-bahru-mall-events-30-oct-15-nov-2026 (blog_jb_mall_events_2026102
 - Sources fetched 2026-11-05: ica.gov.sg Deepavali advisory (page dates conflict, stated), thestar.com.my 2026-11-04 (Woodlands power outage). Malay Mail 2026-11-01 403, not read. No peak hours given (stated).
 - Cover: generated text cover (gen_blog_cover.py; no suitable CC photo found). CREDITS.md updated.
 - Deployed; live 200 + marker, cover 200, in sitemap, cover gate --live PASSED. Incident: first scp'd stale `pelangi-go-linux` (Sep 20) instead of build output `pelangi-go` -> all separate-file posts 404 for ~4 min; fixed with correct binary (stale one kept as pelangi-go.stale.20261105 on VPS). Build output file is `go-site/pelangi-go`.
+
+## [2026-11-06] content | JB mall events edition 7–20 Nov 2026 (Wed/Fri series)
+- Post `johor-bahru-mall-events-7-nov-20-nov-2026` (go-site/internal/data/blog_jb_mall_events_20261106.go), cover `site/public/images/blog/johor-bahru-mall-events-7-nov-20-nov-2026.webp`.
+- Sources fetched 2026-11-06: johormalls.com event pages, midvalleysouthkey.com event pages, suteramall.com Happenings. Web search: no confirmed Nov events for City Square / Paradigm / Komtar JBCC / AEON Tebrau (stated in post). Majestic Johor Festival (search snippet only, source page 404) left out.
+- Built via Git Bash `build.sh` (PowerShell `bash` = WSL, fails); cover gate passed. Deployed: cover + binary scp, backup `pelangi-go.bak.*`, `pm2 restart pelangi-website-go` (pm2 needs nvm sourced in non-interactive ssh).
+- Verified: /blog/<slug> 200 with marker text, cover 200, listed on /blog, `check-blog-covers.mjs --live` PASSED. Not committed.
+- Unrelated untracked in go-site: `pelangi-go-linux` (stale, 2026-09-20), `pelangi-website.exe`. Not shipped (build output is `pelangi-go`).
+
+## [2026-11-06] content | daily blog: Northeast Monsoon 2026/27 JB travel tips
+- Slug `northeast-monsoon-2026-27-johor-bahru-travel-tips`; file `go-site/internal/data/blog_monsoon_jb_20261106.go`. EN only.
+- Sources fetched 2026-11-06: says.com 2026-10-27 (METMalaysia outlook), thevibes.com 2026-10-27 (3,682 hotspots). No Johor-specific warning found (stated in post). Checked and dropped: "ICA denies Woodlands outage" (repost only; ICA page is 2022), 2026 Deepavali toll discount (no source).
+- Cover: generated text cover (no suitable CC photo). CREDITS.md updated.
+- Deployed; live 200 + marker, cover 200, in sitemap, cover gate --live PASSED. go vet + go test ok.
