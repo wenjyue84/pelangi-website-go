@@ -42,3 +42,6 @@ Follow-up by me after the agent: CW1 "RM2.60 (~SGD0.80)" fare removed from the v
 
 ### Daily 2026-11-06
 - `northeast-monsoon-2026-27-johor-bahru-travel-tips` (EN). Sources: says.com 2026-10-27, thevibes.com 2026-10-27; no Johor-specific warning (stated). Cover: generated (gen_blog_cover.py), no third-party licence.
+
+### Daily 2026-11-07
+- `malaysia-multiple-entry-visa-31-nationalities-visa-run-jb` (EN). Sources: ivisa.com, visasnews.com, curlytales.com (Sept 2026), imi.gov.my title only; nationality list/existing-MEV validity unconfirmed (stated). Cover: generated (gen_blog_cover.py), no third-party licence.

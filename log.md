@@ -101,3 +101,9 @@ New post johor-bahru-mall-events-30-oct-15-nov-2026 (blog_jb_mall_events_2026102
 - Sources fetched 2026-11-06: says.com 2026-10-27 (METMalaysia outlook), thevibes.com 2026-10-27 (3,682 hotspots). No Johor-specific warning found (stated in post). Checked and dropped: "ICA denies Woodlands outage" (repost only; ICA page is 2022), 2026 Deepavali toll discount (no source).
 - Cover: generated text cover (no suitable CC photo). CREDITS.md updated.
 - Deployed; live 200 + marker, cover 200, in sitemap, cover gate --live PASSED. go vet + go test ok.
+
+## [2026-11-07] content | daily blog: Malaysia MEV limited to 31 nationalities (visa-run guide)
+- Slug `malaysia-multiple-entry-visa-31-nationalities-visa-run-jb`; file `go-site/internal/data/blog_mev_20261107.go`. EN only.
+- Sources fetched 2026-11-07: ivisa.com (2026-09-03), visasnews.com (2026-09-04), curlytales.com (2026-09-04), imi.gov.my announcement (title only, body not read). 31-nationality list, existing-MEV validity and eligible-vs-restricted framing unconfirmed (stated in post; no country list printed).
+- Cover: generated text cover (gen_blog_cover.py). CREDITS.md updated.
+- Deployed (cover + binary, backup, pm2 restart). Live: post 200 + marker, cover 200, on /blog and sitemap, `check-blog-covers.mjs --live` PASSED. go vet + go test ok.
