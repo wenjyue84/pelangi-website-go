@@ -107,3 +107,9 @@ New post johor-bahru-mall-events-30-oct-15-nov-2026 (blog_jb_mall_events_2026102
 - Sources fetched 2026-11-07: ivisa.com (2026-09-03), visasnews.com (2026-09-04), curlytales.com (2026-09-04), imi.gov.my announcement (title only, body not read). 31-nationality list, existing-MEV validity and eligible-vs-restricted framing unconfirmed (stated in post; no country list printed).
 - Cover: generated text cover (gen_blog_cover.py). CREDITS.md updated.
 - Deployed (cover + binary, backup, pm2 restart). Live: post 200 + marker, cover 200, on /blog and sitemap, `check-blog-covers.mjs --live` PASSED. go vet + go test ok.
+
+## [2026-11-08] content | daily blog: Malaysia visa-free for India/China runs to 31 Dec 2026
+- Slug `malaysia-visa-free-india-china-ends-31-december-2026-jb-visa-run`; file `go-site/internal/data/blog_visafree_20261108.go`. EN only.
+- Sources fetched 2026-11-08: thestar.com.my 2024-12-20, outlooktraveller.com 2025-08-13. EY page 404. No extension past 31 Dec 2026 found (stated in post); MDAC timing sources conflict (not quoted).
+- Cover: generated text cover (gen_blog_cover.py). CREDITS.md updated.
+- Deployed; live 200 + marker, cover 200, in sitemap, cover gate --live PASSED. go vet + go test ok.
