@@ -113,3 +113,9 @@ New post johor-bahru-mall-events-30-oct-15-nov-2026 (blog_jb_mall_events_2026102
 - Sources fetched 2026-11-08: thestar.com.my 2024-12-20, outlooktraveller.com 2025-08-13. EY page 404. No extension past 31 Dec 2026 found (stated in post); MDAC timing sources conflict (not quoted).
 - Cover: generated text cover (gen_blog_cover.py). CREDITS.md updated.
 - Deployed; live 200 + marker, cover 200, in sitemap, cover gate --live PASSED. go vet + go test ok.
+
+## [2026-11-09] content | daily blog: Singapore VEP blocked for unpaid fines (in force 2 Nov 2026)
+- Slug `singapore-vep-unpaid-fines-blocked-from-2-november-2026-driving-from-jb`; file `go-site/internal/data/blog_vep_fines_20261109.go`. EN only.
+- Sources fetched 2026-11-09: lta.gov.sg release (2026-05-15, upd 05-26), mha.gov.sg release (2026-05-15), nst.com.my (2026-10-11). The Star 2026-09-22 headline only (stated in post). No post-2-Nov enforcement report found, no penalty amounts (stated in post).
+- Cover: generated text cover (gen_blog_cover.py). CREDITS.md updated.
+- Deployed; live 200 + marker, cover 200, cover gate --live PASSED. go vet + go test ok.
