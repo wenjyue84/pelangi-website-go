@@ -119,3 +119,9 @@ New post johor-bahru-mall-events-30-oct-15-nov-2026 (blog_jb_mall_events_2026102
 - Sources fetched 2026-11-09: lta.gov.sg release (2026-05-15, upd 05-26), mha.gov.sg release (2026-05-15), nst.com.my (2026-10-11). The Star 2026-09-22 headline only (stated in post). No post-2-Nov enforcement report found, no penalty amounts (stated in post).
 - Cover: generated text cover (gen_blog_cover.py). CREDITS.md updated.
 - Deployed; live 200 + marker, cover 200, cover gate --live PASSED. go vet + go test ok.
+
+## [2026-11-10] content | daily blog: Larkin Sentral RM2 boarding charge for Singapore-bound buses
+- Slug `larkin-sentral-rm2-boarding-fee-singapore-bound-buses-jb`; file `go-site/internal/data/blog_larkin_rm2_20261110.go`. EN only.
+- Sources fetched 2026-11-10: landtransportguru.net (2026-06-26; SJE page upd 06-28), mothership.sg 2023-01-02, thestar.com.my 2026-06-25 (taxi S$15 from 2027). No official Larkin notice found (stated in post); cashless-only claim from reader comments, not stated as fact.
+- Cover: generated text cover (gen_blog_cover.py). CREDITS.md updated.
+- Deployed; live 200 + marker, cover 200, in sitemap, cover gate --live PASSED. go vet + go test ok.
