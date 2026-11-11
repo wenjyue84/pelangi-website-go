@@ -125,3 +125,9 @@ New post johor-bahru-mall-events-30-oct-15-nov-2026 (blog_jb_mall_events_2026102
 - Sources fetched 2026-11-10: landtransportguru.net (2026-06-26; SJE page upd 06-28), mothership.sg 2023-01-02, thestar.com.my 2026-06-25 (taxi S$15 from 2027). No official Larkin notice found (stated in post); cashless-only claim from reader comments, not stated as fact.
 - Cover: generated text cover (gen_blog_cover.py). CREDITS.md updated.
 - Deployed; live 200 + marker, cover 200, in sitemap, cover gate --live PASSED. go vet + go test ok.
+
+## [2026-11-11] content | daily blog: Visit Johor Year extended into 2027 + RM3 Johor Travel Charge
+- Slug `visit-johor-year-extended-2027-travel-charge-rm3-what-visitors-know`; file `go-site/internal/data/blog_visit_johor_20261111.go`. EN only.
+- Sources fetched 2026-11-11: thestar.com.my (2026-10-27), nst.com.my (2026-10-26), malaymail.com (2025-11-22), theiskandarian.com + e.vnexpress.net (2025-11-25). Per-person/per-night rule, exemptions, collectors unconfirmed (stated in post); no 2026 page on the charge found.
+- Cover: generated text cover (gen_blog_cover.py). CREDITS.md updated.
+- Deployed; live 200 + marker, cover 200, cover gate --live PASSED. go vet + go test ok.
