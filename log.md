@@ -131,3 +131,13 @@ New post johor-bahru-mall-events-30-oct-15-nov-2026 (blog_jb_mall_events_2026102
 - Sources fetched 2026-11-11: thestar.com.my (2026-10-27), nst.com.my (2026-10-26), malaymail.com (2025-11-22), theiskandarian.com + e.vnexpress.net (2025-11-25). Per-person/per-night rule, exemptions, collectors unconfirmed (stated in post); no 2026 page on the charge found.
 - Cover: generated text cover (gen_blog_cover.py). CREDITS.md updated.
 - Deployed; live 200 + marker, cover 200, cover gate --live PASSED. go vet + go test ok.
+
+## [2026-11-13] content | JB mall events (Fri): no change, run skipped
+- Window 14-27 Nov 2026. Fetched 2026-11-13: johormalls.com events tag (first 10 of 38 only), midvalleysouthkey.com What's On, suteramall.com Happenings (+ event pages), 2 WebSearches (City Square / Paradigm / Komtar JBCC / AEON Tebrau: no confirmed events).
+- Vs edition `johor-bahru-mall-events-12-nov-25-nov-2026` (2026-11-11): only 1 event newly in window (Sutera Jingle & Joy Christmas Carnival, 27 Nov-25 Dec). Others same or outside window (28 Nov: Ducktastic Dash Run, Tadika Visi Genius Graduation, Blood Donation BE MDRT; Mega Parenthood Workshop 14 Nov is at Trove Hotel, not a mall). Rule needs >=3 changed events, so no post, no build, no deploy.
+- Next edition (Mon-Wed window from ~18 Nov) will pick up the 28 Nov items. Working tree has unrelated untracked go-site files (pelangi-go-linux, pelangi-website.exe, earlier mall-events post files).
+
+## [2026-11-13] content | daily blog: cross-border taxi quota 300 to 500 from 16 Nov 2026
+- Slug `cross-border-taxi-quota-500-cdg-zig-kumpool-16-november-2026-jb`; file `go-site/internal/data/blog_taxi_quota_20261113.go`. EN only.
+- Sources fetched 2026-11-13: thestar.com.my + nst.com.my (both 2026-11-06), littlebigreddot.com (2026-11-08). Malay Mail 403 (not used). No official LTA/APAD notice fetched (stated in post); app fares of CDG Zig/Kumpool unpublished (stated).
+- Cover: generated text cover (gen_blog_cover.py). CREDITS.md updated. go vet + go test ok.

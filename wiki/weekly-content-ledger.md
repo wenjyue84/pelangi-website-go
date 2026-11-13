@@ -54,3 +54,5 @@ Follow-up by me after the agent: CW1 "RM2.60 (~SGD0.80)" fare removed from the v
 - Daily 2026-11-10: `larkin-sentral-rm2-boarding-fee-singapore-bound-buses-jb` (EN). Sources: landtransportguru.net (2026-06-26), mothership.sg (2023-01-02), thestar.com.my (2026-06-25); no official notice found (stated). Cover: generated text cover, own work, no third-party licence.
 
 - Daily 2026-11-11: `visit-johor-year-extended-2027-travel-charge-rm3-what-visitors-know` (EN). Sources: The Star 2026-10-27, NST 2026-10-26, Malay Mail 2025-11-22, Iskandarian + VnExpress 2025-11-25; charge rules unconfirmed (stated). Cover: generated text cover, own work, no third-party licence.
+
+- Daily 2026-11-13: `cross-border-taxi-quota-500-cdg-zig-kumpool-16-november-2026-jb` (EN). Sources: thestar.com.my (2026-11-06, ST/ANN), nst.com.my (2026-11-06), littlebigreddot.com (2026-11-08); no official LTA/APAD page fetched, Malay Mail 403 (stated). Cover: generated text cover, own work, no third-party licence.
