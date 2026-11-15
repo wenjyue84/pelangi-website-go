@@ -141,3 +141,14 @@ New post johor-bahru-mall-events-30-oct-15-nov-2026 (blog_jb_mall_events_2026102
 - Slug `cross-border-taxi-quota-500-cdg-zig-kumpool-16-november-2026-jb`; file `go-site/internal/data/blog_taxi_quota_20261113.go`. EN only.
 - Sources fetched 2026-11-13: thestar.com.my + nst.com.my (both 2026-11-06), littlebigreddot.com (2026-11-08). Malay Mail 403 (not used). No official LTA/APAD notice fetched (stated in post); app fares of CDG Zig/Kumpool unpublished (stated).
 - Cover: generated text cover (gen_blog_cover.py). CREDITS.md updated. go vet + go test ok.
+
+## [2026-11-14] content | daily blog: Causeway 4 Nov 2026 jam, ICA denies power outage (+ correction to 5 Nov post)
+- Slug `causeway-4-november-2026-jam-no-power-outage-ica-says-jb`; file `go-site/internal/data/blog_causeway_nov4_20261114.go`. EN only.
+- Sources fetched 2026-11-14: mothership.sg (2026-11-05, ICA statement), thestar.com.my (2026-11-04). The Star's separate 5 Nov clarification and ICA Facebook not fetched (stated in post).
+- Corrected `blog_deepavali_causeway_20261105.go` (it repeated the power-outage claim): title, excerpt, section, FAQ, LastModified 2026-11-14.
+- Cover: generated text cover. CREDITS.md updated. go vet + go test ok.
+
+## [2026-11-15] content | daily blog: Johor-Singapore digital border clearance targeted for January 2027
+- Slug `digital-border-clearance-january-2027-tuas-woodlands-apcs-jb-travellers`; file `go-site/internal/data/blog_digital_clearance_20261115.go`. EN only.
+- Sources fetched 2026-11-15: thevibes.com (2026-07-05), ica.gov.sg media release (2026-05-08, via summariser). Malay Mail (MyNIISe, 1 Jan 2027 Bukit Chagar) 403, snippet only, flagged unconfirmed in post. Dropped the "VEP exit ban 15 Nov" idea: sources were 2025.
+- Cover: generated text cover. CREDITS.md updated. go vet + go test + build.sh gate ok; deployed; live post/cover 200, --live gate passed.

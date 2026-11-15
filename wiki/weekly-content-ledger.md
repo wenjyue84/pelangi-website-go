@@ -56,3 +56,7 @@ Follow-up by me after the agent: CW1 "RM2.60 (~SGD0.80)" fare removed from the v
 - Daily 2026-11-11: `visit-johor-year-extended-2027-travel-charge-rm3-what-visitors-know` (EN). Sources: The Star 2026-10-27, NST 2026-10-26, Malay Mail 2025-11-22, Iskandarian + VnExpress 2025-11-25; charge rules unconfirmed (stated). Cover: generated text cover, own work, no third-party licence.
 
 - Daily 2026-11-13: `cross-border-taxi-quota-500-cdg-zig-kumpool-16-november-2026-jb` (EN). Sources: thestar.com.my (2026-11-06, ST/ANN), nst.com.my (2026-11-06), littlebigreddot.com (2026-11-08); no official LTA/APAD page fetched, Malay Mail 403 (stated). Cover: generated text cover, own work, no third-party licence.
+
+- Daily 2026-11-14: `causeway-4-november-2026-jam-no-power-outage-ica-says-jb` (EN). Sources: mothership.sg (2026-11-05), thestar.com.my (2026-11-04); ICA Facebook and Star 5 Nov clarification unread (stated). Also corrected the 2026-11-05 post that had stated a Woodlands power outage as fact. Cover: generated text cover, own work, no third-party licence.
+
+- Daily 2026-11-15: `digital-border-clearance-january-2027-tuas-woodlands-apcs-jb-travellers` (EN). Sources: thevibes.com (2026-07-05), ica.gov.sg release (2026-05-08, via summariser); MyNIISe date unconfirmed, Malay Mail 403 (stated). Cover: generated text cover, own work, no third-party licence.
