@@ -152,3 +152,6 @@ New post johor-bahru-mall-events-30-oct-15-nov-2026 (blog_jb_mall_events_2026102
 - Slug `digital-border-clearance-january-2027-tuas-woodlands-apcs-jb-travellers`; file `go-site/internal/data/blog_digital_clearance_20261115.go`. EN only.
 - Sources fetched 2026-11-15: thevibes.com (2026-07-05), ica.gov.sg media release (2026-05-08, via summariser). Malay Mail (MyNIISe, 1 Jan 2027 Bukit Chagar) 403, snippet only, flagged unconfirmed in post. Dropped the "VEP exit ban 15 Nov" idea: sources were 2025.
 - Cover: generated text cover. CREDITS.md updated. go vet + go test + build.sh gate ok; deployed; live post/cover 200, --live gate passed.
+
+## [2026-11-16] content | daily blog: no post
+- no post: no fresh topic with verifiable facts. Year-end school-holiday Causeway (MOE 21 Nov-31 Dec 2026 confirmed) already covered by `causeway-year-end-school-holidays-2026-jb-crossing-tips` and `jb-christmas-new-year-2026-27-school-holidays-guide`; taxi quota, RTS, digital clearance, Visit Johor already shipped; no 2026 ICA year-end advisory found (only 2022-2025). Majestic Johor Festival grand final (13-22 Nov, Dataran Bandaraya JB) seen only as a search snippet; visitjohor2026.my pages 404 / JS-only, programme unconfirmed. Nothing shipped.
