@@ -62,3 +62,5 @@ Follow-up by me after the agent: CW1 "RM2.60 (~SGD0.80)" fare removed from the v
 - Daily 2026-11-15: `digital-border-clearance-january-2027-tuas-woodlands-apcs-jb-travellers` (EN). Sources: thevibes.com (2026-07-05), ica.gov.sg release (2026-05-08, via summariser); MyNIISe date unconfirmed, Malay Mail 403 (stated). Cover: generated text cover, own work, no third-party licence.
 
 - Daily 2026-11-16: no post (no verifiable fresh topic; see log.md).
+
+- Daily 2026-11-17: `festival-orkid-johor-bahru-2026-hutan-bandar-19-23-november` (EN). Sources: visitjohor2026.my event page p=12132, thesmartlocal.com Hutan Bandar guide (2026-05-20); fee/hours/programme not published (stated). Cover: generated text cover, own work, no third-party licence.
