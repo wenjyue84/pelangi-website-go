@@ -160,3 +160,13 @@ New post johor-bahru-mall-events-30-oct-15-nov-2026 (blog_jb_mall_events_2026102
 - Slug `festival-orkid-johor-bahru-2026-hutan-bandar-19-23-november`; file `go-site/internal/data/blog_orchid_festival_20261117.go`. EN only.
 - Sources fetched 2026-11-17: visitjohor2026.my p=12132 (dates, venue, MBJB organiser; no fee/hours/programme, stated in post), thesmartlocal.com Hutan Bandar guide (2026-05-20; address, hours, fees). downtownjb.my 403; visitjohor2026 p=10268/12133 blocked by fetch proxy.
 - Cover: generated text cover. CREDITS.md updated. go vet + go test + build.sh gate ok; deployed; live post/cover 200, --live gate passed.
+
+## [2026-11-18] content | JB mall events 19 Nov - 2 Dec 2026 (Wed/Fri edition)
+- Slug `johor-bahru-mall-events-19-nov-2-dec-2026`; file `go-site/internal/data/blog_jb_mall_events_20261118.go`. EN only.
+- Sources fetched 2026-11-18: johormalls.com (events list, Pet Expo, Ducktastic Dash Run, LEGOLAND), midvalleysouthkey.com What's On, suteramall.com Happenings (eid 299/302/303 detail; others listing only). City Square, Paradigm, Komtar JBCC, AEON Tebrau/Bukit Indah, Angsana: no confirmed dates found, stated in post. Tastefully Expo (Southkey) and Sutera Stamp & Currency Fair left out: no dates.
+- Changed vs 11-Nov edition: Pet Expo, M.A.C pop-up, Jingle & Joy carnival, Blood Donation BE MDRT, Tadika graduation (5 new).
+- Cover: generated text cover. build.sh gate ok (run via Git Bash; PowerShell `bash` hits WSL). Deployed; pm2 not on ssh PATH, used ~/.nvm/versions/node/v24.15.0/bin/pm2. Live post/cover 200, --live gate passed.
+- Unrelated uncommitted files shipped in the build: blog_deepavali_causeway_20261105.go (M), blog_causeway_nov4_20261114.go, blog_jb_mall_events_20261106.go, blog_jb_mall_events_20261111.go.
+
+## [2026-11-18] content | daily blog: no post (daily edition)
+- no post: only fresh lead was GEGO Music Festival, Kota Jail, 25-27 Dec 2026 (organiser Joho Event), seen only in search snippets from visitjohor2026.my; the event page fetches as 404, no lineup/tickets/hours, no independent second source (thesmartlocal Kota Jail page 404). Other leads (Causeway 4 Nov jam, taxi quota, RTS Feb 2027, VEP, Deepavali delays) already shipped. Mall-events post went out earlier today. Nothing shipped.
