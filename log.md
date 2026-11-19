@@ -170,3 +170,8 @@ New post johor-bahru-mall-events-30-oct-15-nov-2026 (blog_jb_mall_events_2026102
 
 ## [2026-11-18] content | daily blog: no post (daily edition)
 - no post: only fresh lead was GEGO Music Festival, Kota Jail, 25-27 Dec 2026 (organiser Joho Event), seen only in search snippets from visitjohor2026.my; the event page fetches as 404, no lineup/tickets/hours, no independent second source (thesmartlocal Kota Jail page 404). Other leads (Causeway 4 Nov jam, taxi quota, RTS Feb 2027, VEP, Deepavali delays) already shipped. Mall-events post went out earlier today. Nothing shipped.
+
+## [2026-11-19] content | daily blog: Year-end school holidays 2026, ICA heavy-traffic advisory
+- Slug `year-end-school-holidays-2026-woodlands-tuas-heavy-traffic-20-nov-3-jan-jb-guide`; file `go-site/internal/data/blog_yearend_holiday_traffic_20261119.go`. EN only.
+- Sources fetched 2026-11-19: ICA media release 2026-11-16 (all figures), says.com MOE 2026 holiday list (Johor Group B 5-31 Dec), mothership.sg 2025-11 (context). The Star 2026 copy blocked by fetch proxy, Malay Mail 403, cutisekolah 404 (stated in post).
+- Cover: generated text cover. go vet + go test + build.sh gate ok; deployed; live post/cover 200, --live gate passed.

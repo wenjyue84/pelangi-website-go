@@ -66,3 +66,5 @@ Follow-up by me after the agent: CW1 "RM2.60 (~SGD0.80)" fare removed from the v
 - Daily 2026-11-17: `festival-orkid-johor-bahru-2026-hutan-bandar-19-23-november` (EN). Sources: visitjohor2026.my event page p=12132, thesmartlocal.com Hutan Bandar guide (2026-05-20); fee/hours/programme not published (stated). Cover: generated text cover, own work, no third-party licence.
 
 - Daily 2026-11-18: no post (GEGO Music Festival 25-27 Dec seen only as search snippet, event page 404, no second source; see log.md).
+
+- Daily 2026-11-19: `year-end-school-holidays-2026-woodlands-tuas-heavy-traffic-20-nov-3-jan-jb-guide` (EN). Sources: ICA release 2026-11-16, says.com (MOE holidays), mothership.sg 2025-11 (context); The Star/Malay Mail unread (stated). Cover: generated text cover, own work, no third-party licence.
