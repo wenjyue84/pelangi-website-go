@@ -175,3 +175,16 @@ New post johor-bahru-mall-events-30-oct-15-nov-2026 (blog_jb_mall_events_2026102
 - Slug `year-end-school-holidays-2026-woodlands-tuas-heavy-traffic-20-nov-3-jan-jb-guide`; file `go-site/internal/data/blog_yearend_holiday_traffic_20261119.go`. EN only.
 - Sources fetched 2026-11-19: ICA media release 2026-11-16 (all figures), says.com MOE 2026 holiday list (Johor Group B 5-31 Dec), mothership.sg 2025-11 (context). The Star 2026 copy blocked by fetch proxy, Malay Mail 403, cutisekolah 404 (stated in post).
 - Cover: generated text cover. go vet + go test + build.sh gate ok; deployed; live post/cover 200, --live gate passed.
+
+## [2026-11-20] content | mall events: no change, no post
+- Skill run (Fri edition, window 21 Nov - 4 Dec). Fetched 2026-11-20: johormalls.com/news?tag=events (newest event item still Pet Expo, 15 Nov), midvalleysouthkey.com What's On upcoming week, suteramall.com Happenings (eid list identical to 11-18), 3 WebSearches (Paradigm, AEON Tebrau/Bukit Indah, City Square, Komtar JBCC) found no confirmed 2026 dates.
+- Only change vs the 2026-11-18 edition: Mid Valley Southkey "Christmas 2026", mall-wide, Ground Floor, 20 Nov 2026 - 3 Jan 2027 (new). 1 changed event < 3 threshold, so skipped. Nothing built or deployed.
+- Working tree has unrelated uncommitted edits (blog_deepavali_causeway_20261105.go, blog_causeway_nov4_20261114.go, blog_jb_mall_events_20261106/1111/1118.go, binaries); untouched.
+
+## [2026-11-20] content | daily blog: no post (daily edition)
+- no post: 6 WebSearches (Causeway/Woodlands, RTS Link, JB news, MDAC/immigration, Christmas/countdown events, monsoon/flood) found nothing new and verifiable. Only items: Causeway 4 Nov jam (shipped 11-14), RTS Feb 2027 (shipped), NE monsoon + 337 flood hotspots (shipped 11-06), year-end holiday traffic (shipped 11-19). No Dec 2026 Christmas/countdown dates published yet; MDAC/NIISe item has no Johor-specific detail. No page fetched with a new fact, so nothing written. Nothing shipped.
+
+## [2026-11-21] content | daily blog: RTS Link Bukit Chagar body scanners
+- Slug `rts-link-body-scanners-bukit-chagar-checkpoint-what-to-expect-2026`; file `go-site/internal/data/blog_rts_body_scanners_20261121.go`. EN only.
+- Sources fetched 2026-11-21: Malay Mail 2026-10-28, The Star 2026-10-29, Bernama 2026-05-08, The Star 2026-05-08. Conflicting equipment counts and opening month (Jan/early/Feb 2027) stated in the post as unreconciled.
+- Cover: generated text cover. vet + test + build.sh gate ok; deployed; live post/cover 200, --live gate passed. Binary also carried other sessions' uncommitted mall/causeway posts already in the tree.
