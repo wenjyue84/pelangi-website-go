@@ -188,3 +188,6 @@ New post johor-bahru-mall-events-30-oct-15-nov-2026 (blog_jb_mall_events_2026102
 - Slug `rts-link-body-scanners-bukit-chagar-checkpoint-what-to-expect-2026`; file `go-site/internal/data/blog_rts_body_scanners_20261121.go`. EN only.
 - Sources fetched 2026-11-21: Malay Mail 2026-10-28, The Star 2026-10-29, Bernama 2026-05-08, The Star 2026-05-08. Conflicting equipment counts and opening month (Jan/early/Feb 2027) stated in the post as unreconciled.
 - Cover: generated text cover. vet + test + build.sh gate ok; deployed; live post/cover 200, --live gate passed. Binary also carried other sessions' uncommitted mall/causeway posts already in the tree.
+
+## [2026-11-22] content | daily blog: no post (daily edition)
+- no post: 6 WebSearches + 2 fetch rounds. Karnival Jom Heboh JB ended 1 Nov (NST 2026-10-30/11-01 fetched), JB Festival ended 20 Sep (The Star 2026-09-24 fetched), Majestic Johor Festival Grand Final ends today 22 Nov (only a visitjohor2026.my snippet; page 404, no second source), Festival Orkid already shipped 11-17. No fresh border/immigration/transport news found (results all 2022-2025). Nothing shipped.
