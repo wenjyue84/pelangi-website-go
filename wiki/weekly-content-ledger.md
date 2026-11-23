@@ -72,3 +72,5 @@ Follow-up by me after the agent: CW1 "RM2.60 (~SGD0.80)" fare removed from the v
 - Daily 2026-11-21: `rts-link-body-scanners-bukit-chagar-checkpoint-what-to-expect-2026` (EN). Sources: Malay Mail 2026-10-28, The Star 2026-10-29, Bernama 2026-05-08, The Star 2026-05-08; sources conflict on counts/opening month (stated in post). Cover: generated text cover (own work, no licence issue).
 
 - Daily 2026-11-22: no post (no verifiable fresh topic; see log.md).
+
+- Daily 2026-11-23: no post (no verifiable fresh topic; see log.md).

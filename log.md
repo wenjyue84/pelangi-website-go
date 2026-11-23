@@ -191,3 +191,6 @@ New post johor-bahru-mall-events-30-oct-15-nov-2026 (blog_jb_mall_events_2026102
 
 ## [2026-11-22] content | daily blog: no post (daily edition)
 - no post: 6 WebSearches + 2 fetch rounds. Karnival Jom Heboh JB ended 1 Nov (NST 2026-10-30/11-01 fetched), JB Festival ended 20 Sep (The Star 2026-09-24 fetched), Majestic Johor Festival Grand Final ends today 22 Nov (only a visitjohor2026.my snippet; page 404, no second source), Festival Orkid already shipped 11-17. No fresh border/immigration/transport news found (results all 2022-2025). Nothing shipped.
+
+## [2026-11-23] content | daily blog: no post (daily edition)
+- no post: 8 WebSearches (Causeway/Woodlands, border rules, Christmas/countdown JB, RTS Link, Johor news, 1 Dec travel rules, ICA advisory) found nothing new and verifiable. Only fresh item: ICA/AsiaOne 2026-11-19 Woodlands heavy departure traffic (AsiaOne fetched), but its wrong-passport/QR figures and year-end advisory already shipped 11-19; a one-morning tailback is not a standalone post. Business Today VEP/SGAC page returned 403 and the topic is already in the 11-09/11-19 posts. No JB Christmas 2026 dates published yet. Nothing shipped.
