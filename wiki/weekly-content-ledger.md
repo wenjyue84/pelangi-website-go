@@ -74,3 +74,5 @@ Follow-up by me after the agent: CW1 "RM2.60 (~SGD0.80)" fare removed from the v
 - Daily 2026-11-22: no post (no verifiable fresh topic; see log.md).
 
 - Daily 2026-11-23: no post (no verifiable fresh topic; see log.md).
+
+- Daily 2026-11-24: `malaysia-ends-visa-free-entry-indian-nationals-1-january-2027-jb-travellers` (EN). Sources: dtnext.in, deccanchronicle.com, dailypioneer.com (PTI), visasnews.com, all 2026-11-19 citing JIM notice 2026-11-17; official page unread, fee/China status unconfirmed (stated). Cover: generated text cover, own work, no third-party licence.

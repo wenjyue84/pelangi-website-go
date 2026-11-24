@@ -194,3 +194,8 @@ New post johor-bahru-mall-events-30-oct-15-nov-2026 (blog_jb_mall_events_2026102
 
 ## [2026-11-23] content | daily blog: no post (daily edition)
 - no post: 8 WebSearches (Causeway/Woodlands, border rules, Christmas/countdown JB, RTS Link, Johor news, 1 Dec travel rules, ICA advisory) found nothing new and verifiable. Only fresh item: ICA/AsiaOne 2026-11-19 Woodlands heavy departure traffic (AsiaOne fetched), but its wrong-passport/QR figures and year-end advisory already shipped 11-19; a one-morning tailback is not a standalone post. Business Today VEP/SGAC page returned 403 and the topic is already in the 11-09/11-19 posts. No JB Christmas 2026 dates published yet. Nothing shipped.
+
+## [2026-11-24] content | daily blog: Malaysia ends visa-free entry for Indian passports from 1 Jan 2027
+- Slug `malaysia-ends-visa-free-entry-indian-nationals-1-january-2027-jb-travellers`; file `go-site/internal/data/blog_visafree_india_ends_20261124.go`. EN only.
+- Sources fetched 2026-11-24: DT Next, Deccan Chronicle, Daily Pioneer (PTI), VisasNews (all 2026-11-19, citing JIM notice 2026-11-17). Official JIM/MyVISA page not read; fee/visa type/China status not stated by sources (stated in post). Follows up 2026-11-08 post (no extension found then).
+- Cover: generated text cover. vet + test + build.sh gate ok; deployed; live post/cover 200, --live gate passed.
