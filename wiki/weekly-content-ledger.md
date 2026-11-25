@@ -76,3 +76,5 @@ Follow-up by me after the agent: CW1 "RM2.60 (~SGD0.80)" fare removed from the v
 - Daily 2026-11-23: no post (no verifiable fresh topic; see log.md).
 
 - Daily 2026-11-24: `malaysia-ends-visa-free-entry-indian-nationals-1-january-2027-jb-travellers` (EN). Sources: dtnext.in, deccanchronicle.com, dailypioneer.com (PTI), visasnews.com, all 2026-11-19 citing JIM notice 2026-11-17; official page unread, fee/China status unconfirmed (stated). Cover: generated text cover, own work, no third-party licence.
+
+- Daily 2026-11-25: `malaysian-10-year-passport-online-renewal-2-november-2026-jb-border-commuters` (EN). Sources: nst.com.my 2026-11-01, ringgitplus.com 2026-11-03, imi.gov.my fee page; Malay Mail 403 unread. Cover: generated text cover (own work, no licence issue).

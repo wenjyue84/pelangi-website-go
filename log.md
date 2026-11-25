@@ -199,3 +199,8 @@ New post johor-bahru-mall-events-30-oct-15-nov-2026 (blog_jb_mall_events_2026102
 - Slug `malaysia-ends-visa-free-entry-indian-nationals-1-january-2027-jb-travellers`; file `go-site/internal/data/blog_visafree_india_ends_20261124.go`. EN only.
 - Sources fetched 2026-11-24: DT Next, Deccan Chronicle, Daily Pioneer (PTI), VisasNews (all 2026-11-19, citing JIM notice 2026-11-17). Official JIM/MyVISA page not read; fee/visa type/China status not stated by sources (stated in post). Follows up 2026-11-08 post (no extension found then).
 - Cover: generated text cover. vet + test + build.sh gate ok; deployed; live post/cover 200, --live gate passed.
+
+## [2026-11-25] content | Malaysian 10-year passport online renewal (Daily blog)
+- Slug `malaysian-10-year-passport-online-renewal-2-november-2026-jb-border-commuters`; file `go-site/internal/data/blog_passport_10yr_20261125.go`. EN only.
+- Sources fetched 2026-11-25: nst.com.my (2026-11-01), ringgitplus.com (2026-11-03), imi.gov.my fee page (undated). Malay Mail 403, not used. Processing time and 6-month rule not stated by sources; post says so. Replacement-fee row came via summary of imi.gov.my; post flags it.
+- Cover: generated text cover (gen_blog_cover.py). Gates ok; deployed; live post 200 + marker, cover 200, check-blog-covers --live passed.
