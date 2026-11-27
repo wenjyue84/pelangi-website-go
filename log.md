@@ -213,3 +213,13 @@ New post johor-bahru-mall-events-30-oct-15-nov-2026 (blog_jb_mall_events_2026102
 - Slug `malaysian-10-year-passport-online-renewal-2-november-2026-jb-border-commuters`; file `go-site/internal/data/blog_passport_10yr_20261125.go`. EN only.
 - Sources fetched 2026-11-25: nst.com.my (2026-11-01), ringgitplus.com (2026-11-03), imi.gov.my fee page (undated). Malay Mail 403, not used. Processing time and 6-month rule not stated by sources; post says so. Replacement-fee row came via summary of imi.gov.my; post flags it.
 - Cover: generated text cover (gen_blog_cover.py). Gates ok; deployed; live post 200 + marker, cover 200, check-blog-covers --live passed.
+
+## [2026-11-27] content | JB mall events 28 Nov – 11 Dec 2026 (Fri edition)
+- Slug `johor-bahru-mall-events-28-nov-11-dec-2026`; file `go-site/internal/data/blog_jb_mall_events_20261127.go`; cover `site/public/images/blog/johor-bahru-mall-events-28-nov-11-dec-2026.webp` (gen_blog_cover.py). EN only.
+- Changed vs 20261125 edition: new JB Sofa & Mattress Fair and Watsons Health & Beauty Expo (3–6 Dec, MVEC), Sutera one-day items (28 Nov), Exotic Pets (to 29 Nov); M.A.C pop-up and Furniture & Electrical Fair dropped (ended / no dates).
+- Sources fetched 2026-11-27: johormalls.com (Pet Expo, Ducktastic, LEGOLAND), midvalleysouthkey.com upcoming-week + Christmas 2026, suteramall.com Happenings (names/dates only; detail pages not opened). City Square/Paradigm/Komtar JBCC/AEON Tebrau: no confirmed dates, post says so.
+- Built (cover gate ok), deployed (cover scp, binary swap, pm2 restart; pm2 not on non-interactive ssh PATH, used /home/deploy/.nvm/versions/node/v24.15.0/bin/pm2). Live post 200 + marker, in /blog index, cover 200, check-blog-covers --live PASSED. No commit.
+- Build shipped unrelated uncommitted edits: go-site handlers.go, middleware.go, seo_meta.go (+test), blog_deepavali_causeway_20261105.go, blog_causeway_nov4_20261114.go, earlier mall-events editions.
+
+## [2026-11-27] content | no daily blog (no verifiable fresh topic)
+- no post: searched Causeway/JB news, Singapore-border rules, December JB events, Malaysia visitor rules. Fresh items already covered (VEP S$50, VEP fines, taxi quota, India visa-free end, passport renewal, RTS scanners, digital clearance, school holidays). Foreign-visitor medical-cost announcement (16 Nov) not found in any fetched source; Woodlands worker-bus hall is a June 2026 item, not fresh. No December JB event with 2026 dates confirmed. Mall-events Fri edition already shipped today.
